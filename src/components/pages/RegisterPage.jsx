@@ -158,7 +158,7 @@ const RegisterPageInner = () => {
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-slate-300 font-bold">
-                  <div className="p-2 bg-white/10 rounded-xl">
+                  <div className="p-2 bg-white/10 rounded-lg lg:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-400" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
@@ -174,26 +174,26 @@ const RegisterPageInner = () => {
         <div className="flex-1 flex items-center justify-center overflow-y-auto py-4 lg:py-8">
           <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl space-y-6 rounded-[3rem]">
             <div className="text-center space-y-3">
-              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Create account</h2>
+              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Register</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Fill in your details to create your free account.
               </p>
             </div>
 
             {/* Google Sign-Up */}
-            <div className="space-y-4">
+            <div className="space-y-4 mt-2">
               <button
                 type="button"
                 onClick={() => googleSignup()}
                 disabled={isGoogleLoading}
-                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group disabled:opacity-60"
+                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group disabled:opacity-60"
               >
                 {isGoogleLoading ? (
-                  <span className="text-slate-500">Connecting to Google...</span>
+                  <span className="text-slate-500 normal-case">Connecting to Google...</span>
                 ) : (
                   <>
                     <img src="/google.svg" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    Sign up with Google
+                    Continue with Google
                   </>
                 )}
               </button>
@@ -201,7 +201,7 @@ const RegisterPageInner = () => {
               <div className="relative flex items-center">
                 <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
                 <span className="flex-shrink mx-4 text-xs font-black text-slate-500 dark:text-slate-400 tracking-[0.08em]">
-                  Or sign up with email
+                  Or register with email
                 </span>
                 <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
               </div>
@@ -311,7 +311,7 @@ const RegisterPageInner = () => {
                 type="submit"
                 disabled={isLoading || passwordStrength < 60}
               >
-                {isLoading ? 'Creating account...' : 'Create account'}
+                {isLoading ? 'Registering...' : 'Register'}
               </Button>
             </form>
 
@@ -319,7 +319,7 @@ const RegisterPageInner = () => {
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Already have an account?{' '}
                 <Link href="/login" className="text-primary-700 dark:text-primary-500 hover:underline font-black">
-                  Log in
+                  LOGIN
                 </Link>
               </p>
             </div>

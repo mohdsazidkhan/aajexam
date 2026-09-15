@@ -203,7 +203,7 @@ const DashboardPage = () => {
           { label: 'ACTIVE PRO', value: (stats.activeProUsers || 0).toLocaleString('en-IN'), subtitle: `${stats.activeSubscriptions || 0} active subscriptions`, icon: Crown, color: 'purple' },
           { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts`, icon: Sparkles, color: 'rose' },
         ].map((item, idx) => (
-          <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-xl lg:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
+          <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
             <div className="flex items-center justify-between relative z-10">
               <div>
                 <p className={`text-${item.color}-600 dark:text-${item.color}-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2`}>{item.label}</p>
@@ -248,7 +248,7 @@ const DashboardPage = () => {
                   hoverable
                   padded={false}
                   onClick={() => router.push(card.link)}
-                  className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2rem] overflow-hidden group"
+                  className="h-full border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2rem] overflow-hidden group"
                 >
                   <div className="p-3 lg:p-5 flex flex-col h-full relative">
                     <div className="flex items-center justify-between mb-3">
@@ -280,7 +280,7 @@ const DashboardPage = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] p-0 lg:p-4 shadow-2xl border-none relative overflow-hidden"
+        className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] p-0 lg:p-4 shadow-2xl border-none relative overflow-hidden"
       >
         <div className="flex items-center gap-3 lg:gap-6 mb-4 px-0 lg:px-6">
           <div className="w-14 h-14 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-600 shadow-xl border border-primary-500/20">
@@ -317,7 +317,7 @@ const DashboardPage = () => {
               whileHover={{ x: 10 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Link href={action.href} className="flex items-center p-3 lg:p-6 rounded-xl lg:rounded-[2rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-4 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
+              <Link href={action.href} className="flex items-center p-3 lg:p-6 rounded-lg lg:rounded-xl lg:rounded-[2rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-4 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
                 <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-lg lg:rounded-[1.25rem] flex items-center justify-center mr-5 shadow-inner group-hover:rotate-6 transition-transform shrink-0">
                   <action.icon className="w-7 h-7" />
                 </div>

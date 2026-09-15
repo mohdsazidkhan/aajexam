@@ -106,33 +106,33 @@ const AdminQuizQuestions = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><HelpCircle className="w-6 h-6 text-amber-500" /> Questions</h1>
-        <button onClick={openCreate} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-amber-600"><Plus className="w-4 h-4" /> Add Question</button>
+        <button onClick={openCreate} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-amber-600"><Plus className="w-4 h-4" /> Add Question</button>
       </div>
 
       {/* Filters */}
       <div className="flex flex-wrap gap-2">
-        <select value={filters.exam} onChange={e => { setFilters({ ...filters, exam: e.target.value, subject: "", topic: "" }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm">
+        <select value={filters.exam} onChange={e => { setFilters({ ...filters, exam: e.target.value, subject: "", topic: "" }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Exams</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
         </select>
-        <select value={filters.subject} onChange={e => { setFilters({ ...filters, subject: e.target.value, topic: "" }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm">
+        <select value={filters.subject} onChange={e => { setFilters({ ...filters, subject: e.target.value, topic: "" }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Subjects</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
         </select>
-        <select value={filters.topic} onChange={e => { setFilters({ ...filters, topic: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm">
+        <select value={filters.topic} onChange={e => { setFilters({ ...filters, topic: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Topics</option>{topics.filter(t => !filters.subject || (t.subject?._id || t.subject) === filters.subject).map(t => <option key={t._id} value={t._id}>{t.name}</option>)}
         </select>
-        <select value={filters.difficulty} onChange={e => { setFilters({ ...filters, difficulty: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm">
+        <select value={filters.difficulty} onChange={e => { setFilters({ ...filters, difficulty: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Difficulty</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>
         </select>
         <div className="relative flex-1 min-w-[200px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input type="text" placeholder="Search question text..." value={filters.search} onChange={e => setFilters({ ...filters, search: e.target.value })} onKeyDown={e => e.key === 'Enter' && handleSearch()} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm" />
+          <input type="text" placeholder="Search question text..." value={filters.search} onChange={e => setFilters({ ...filters, search: e.target.value })} onKeyDown={e => e.key === 'Enter' && handleSearch()} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
         </div>
       </div>
 
       {loading ? <AdminTableSkeleton /> : (
         <div className="space-y-3">
           {questions.map((q, idx) => (
-            <div key={q._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4">
+            <div key={q._id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 p-4">
               <div className="flex justify-between items-start gap-3">
                 <div className="flex-1">
                   <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">{q.questionText}</p>
@@ -180,38 +180,38 @@ const AdminQuizQuestions = () => {
             </div>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="grid grid-cols-3 gap-2">
-                <select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs">
+                <select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs">
                   <option value="">Exam</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
                 </select>
-                <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs">
+                <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs">
                   <option value="">Subject</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
                 </select>
-                <select required value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs">
+                <select required value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs">
                   <option value="">Topic</option>{filteredTopics.map(t => <option key={t._id} value={t._id}>{t.name}</option>)}
                 </select>
               </div>
-              <textarea required placeholder="Question Text" rows={3} value={form.questionText} onChange={e => setForm({ ...form, questionText: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm" />
+              <textarea required placeholder="Question Text" rows={3} value={form.questionText} onChange={e => setForm({ ...form, questionText: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
               <div className="space-y-2">
                 <p className="text-xs font-bold text-slate-500">Options (select correct answer):</p>
                 {form.options.map((opt, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <input type="radio" name="correct" checked={opt.isCorrect} onChange={() => updateOption(i, "isCorrect", true)} className="accent-green-500" />
                     <span className="text-xs font-bold text-slate-500 w-4">{String.fromCharCode(65 + i)}</span>
-                    <input required placeholder={`Option ${String.fromCharCode(65 + i)}`} value={opt.text} onChange={e => updateOption(i, "text", e.target.value)} className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm" />
+                    <input required placeholder={`Option ${String.fromCharCode(65 + i)}`} value={opt.text} onChange={e => updateOption(i, "text", e.target.value)} className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
                   </div>
                 ))}
               </div>
-              <textarea placeholder="Explanation (optional)" rows={2} value={form.explanation} onChange={e => setForm({ ...form, explanation: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm" />
+              <textarea placeholder="Explanation (optional)" rows={2} value={form.explanation} onChange={e => setForm({ ...form, explanation: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
               <div className="grid grid-cols-3 gap-2">
-                <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs">
+                <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs">
                   <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>
                 </select>
-                <select value={form.language} onChange={e => setForm({ ...form, language: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs">
+                <select value={form.language} onChange={e => setForm({ ...form, language: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs">
                   <option value="hi">Hindi</option><option value="en">English</option>
                 </select>
-                <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-xs" />
+                <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs" />
               </div>
-              <button type="submit" className="w-full bg-amber-500 text-white py-2.5 rounded-xl font-bold hover:bg-amber-600">{editing ? 'Update' : 'Create'}</button>
+              <button type="submit" className="w-full bg-amber-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-amber-600">{editing ? 'Update' : 'Create'}</button>
             </form>
           </div>
         </div>

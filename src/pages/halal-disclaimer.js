@@ -77,7 +77,7 @@ export default function HalalDisclaimer() {
                                                 {item.title}
                                             </h3>
                                             {item.evidence && (
-                                                <p className="italic mb-3 text-slate-500 dark:text-slate-400 font-medium text-sm leading-relaxed block bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                                                <p className="italic mb-3 text-slate-500 dark:text-slate-400 font-medium text-sm leading-relaxed block bg-white dark:bg-slate-900 p-4 rounded-lg lg:rounded-xl border border-slate-100 dark:border-slate-800">
                                                     {item.evidence}
                                                 </p>
                                             )}

@@ -149,7 +149,7 @@ const BookmarksPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleUnbookmark(reel._id); }}
-                                          className="p-1.5 text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-xl transition-colors"
+                                          className="p-1.5 text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"
                                           title="Remove bookmark"
                                        >
                                           <BookmarkCheck className="w-5 h-5" />

@@ -156,7 +156,7 @@ export default function ReferralHistory() {
                 <select
                   value={filterType}
                   onChange={handleFilterChange}
-                  className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
+                  className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
                 >
                   <option value="all">All Reward Types</option>
                   <option value="plan99">Plan 99 Reward (₹33)</option>
@@ -167,7 +167,7 @@ export default function ReferralHistory() {
                 searchTerm={searchTerm}
                 onSearchChange={handleSearch}
                 placeholder="Search..."
-                className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl lg:rounded-[2.5rem] py-2 shadow-xl"
+                className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] py-2 shadow-xl"
               />
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function ReferralHistory() {
                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                           <Link href={`/admin/user-referral-detail?userId=${tx.inviter?._id}`} className="group/link block">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover/link:bg-primary-600 transition-all uppercase">
+                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover/link:bg-primary-600 transition-all uppercase">
                                 {tx.inviter?.name?.[0]?.toUpperCase() || 'U'}
                               </div>
                               <div>
@@ -260,7 +260,7 @@ export default function ReferralHistory() {
                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                           {tx.invitee ? (
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center font-black text-xs border border-emerald-500/20">
+                              <div className="w-10 h-10 bg-emerald-500/10 text-emerald-500 rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs border border-emerald-500/20">
                                 <User className="w-5 h-5" />
                               </div>
                               <div>

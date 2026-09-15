@@ -306,8 +306,8 @@ const SearchPage = () => {
             const isFollowing = followMap[userId];
             const isThisLoading = followLoading === userId;
             return (
-               <div className="flex items-center gap-3 px-1 py-2.5 rounded-xl transition-colors">
-                  <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-xl">
+               <div className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl transition-colors">
+                  <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
                      <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
@@ -329,7 +329,7 @@ const SearchPage = () => {
          }
          case 'test':
             return (
-               <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -342,7 +342,7 @@ const SearchPage = () => {
          case 'examCategory':
          case 'pattern':
             return (
-               <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
@@ -353,7 +353,7 @@ const SearchPage = () => {
             );
          case 'quiz':
             return (
-               <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -371,7 +371,7 @@ const SearchPage = () => {
             );
          case 'subject':
             return (
-               <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -382,7 +382,7 @@ const SearchPage = () => {
             );
          case 'topic':
             return (
-               <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -393,7 +393,7 @@ const SearchPage = () => {
             );
          case 'hashtag':
             return (
-               <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
@@ -404,7 +404,7 @@ const SearchPage = () => {
             );
          case 'blog':
             return (
-               <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -415,7 +415,7 @@ const SearchPage = () => {
             );
          case 'note':
             return (
-               <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -426,7 +426,7 @@ const SearchPage = () => {
             );
          case 'examNews':
             return (
-               <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -437,7 +437,7 @@ const SearchPage = () => {
             );
          case 'currentAffair':
             return (
-               <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-700 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -504,7 +504,7 @@ const SearchPage = () => {
                      <input
                         ref={inputRef}
                         type="text"
-                        className="w-full bg-slate-100 dark:bg-slate-800 rounded-xl py-2 lg:py-3 pl-9 pr-8 text-sm lg:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
+                        className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2 lg:py-3 pl-9 pr-8 text-sm lg:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
                         placeholder="Search"
                         value={query}
                         onFocus={() => setIsFocused(true)}
@@ -522,7 +522,7 @@ const SearchPage = () => {
 
                      {/* Recent searches — only while focused, before any query is typed */}
                      {isFocused && !query.trim() && recentSearches.length > 0 && (
-                        <div className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl shadow-lg z-50 overflow-hidden">
+                        <div className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg lg:rounded-xl shadow-lg z-50 overflow-hidden">
                            {recentSearches.map((term, i) => (
                               <button
                                  key={i}
@@ -639,7 +639,7 @@ const SearchPage = () => {
                            </div>
                         ) : (
                            <>
-                              <div className="grid grid-cols-3 lg:grid-cols-4 gap-px lg:gap-0.5 rounded-xl overflow-hidden">
+                              <div className="grid grid-cols-3 lg:grid-cols-4 gap-px lg:gap-0.5 rounded-lg lg:rounded-xl overflow-hidden">
                                  {currentTabData.items.map(reel => renderReelCard(reel, 'grid'))}
                               </div>
                               {currentTabData.hasMore && (

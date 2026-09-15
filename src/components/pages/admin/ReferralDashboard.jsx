@@ -107,7 +107,7 @@ export default function ReferralDashboard() {
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
+                  <div className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
                     <Filter className="w-5 h-5" />
                   </div>
                   <div>
@@ -170,7 +170,7 @@ export default function ReferralDashboard() {
                         >
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
+                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
                                 {u.name?.[0]?.toUpperCase() || 'U'}
                               </div>
                               <div>

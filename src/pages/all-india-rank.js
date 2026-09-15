@@ -14,7 +14,7 @@ import { getCurrentUser } from '../lib/utils/authUtils';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 const LeaderboardSkeleton = () => (
@@ -294,7 +294,7 @@ const AllIndiaRankPage = () => {
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title="Refresh Ranks"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-black text-[10px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-muted hover:border-blue-300 dark:hover:border-blue-700 transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-muted hover:border-blue-300 dark:hover:border-blue-700 transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">Refresh</span>

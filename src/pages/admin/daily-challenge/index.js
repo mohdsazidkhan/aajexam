@@ -108,28 +108,28 @@ const AdminDailyChallenge = () => {
             </div>
             <div className="p-2 space-y-3">
               <div className="flex items-center gap-3 flex-wrap">
-                <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
+                <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
                   <option value={new Date().getFullYear()}>{new Date().getFullYear()}</option>
                   <option value={new Date().getFullYear() + 1}>{new Date().getFullYear() + 1}</option>
                 </select>
-                <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
+                <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
                   {Array.from({ length: 12 }).map((_, i) => (
                     <option key={i} value={i}>{new Date(2000, i, 1).toLocaleString('default', { month: 'long' })}</option>
                   ))}
                 </select>
-                <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
+                <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
                   <option value={5}>5 Questions / Day</option>
                   <option value={10}>10 Questions / Day</option>
                   <option value={15}>15 Questions / Day</option>
                   <option value={20}>20 Questions / Day</option>
                 </select>
-                <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="px-4 py-2 bg-emerald-500 text-white rounded-xl text-xs font-bold disabled:opacity-50">
+                <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="px-4 py-2 bg-emerald-500 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50">
                   <Calendar className="w-3 h-3 inline mr-1" />{bulkGenerating ? 'Generating...' : 'Generate Month'}
                 </button>
               </div>
 
               {bulkProgress && (
-                <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
                       Generating: <span className="text-primary-600">{bulkProgress.currentDate}</span>
@@ -173,9 +173,9 @@ const AdminDailyChallenge = () => {
 
         {totalPages > 1 && (
           <div className="flex justify-center gap-4">
-            <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+            <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
             <span className="text-sm font-bold text-slate-500 py-2">Page {page}/{totalPages}</span>
-            <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+            <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
           </div>
         )}
       </div>

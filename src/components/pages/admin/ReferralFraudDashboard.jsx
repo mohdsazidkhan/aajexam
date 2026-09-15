@@ -93,7 +93,7 @@ export default function ReferralFraudDashboard() {
               {stats.map((s, i) => (
                 <motion.div key={s.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
                   className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-4 border-slate-100 dark:border-white/10 p-4 lg:p-6 shadow-xl">
-                  <div className={`inline-flex p-2.5 rounded-xl mb-3 ${s.tone}`}><s.icon className="w-5 h-5" /></div>
+                  <div className={`inline-flex p-2.5 rounded-lg lg:rounded-xl mb-3 ${s.tone}`}><s.icon className="w-5 h-5" /></div>
                   <div className="text-2xl lg:text-3xl font-black tracking-tighter">{s.value ?? 0}</div>
                   <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-1">{s.label}</div>
                 </motion.div>
@@ -114,10 +114,10 @@ export default function ReferralFraudDashboard() {
             {/* Filters */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-4 border-slate-100 dark:border-white/10 p-4 lg:p-6 mb-4 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl"><Filter className="w-4 h-4" /></div>
+                <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl"><Filter className="w-4 h-4" /></div>
                 {['all', 'high', 'medium', 'low'].map(r => (
                   <button key={r} onClick={() => { setRisk(r); setPage(1); }}
-                    className={`text-[9px] font-black uppercase tracking-widest px-3 py-2 rounded-xl border transition-all ${risk === r
+                    className={`text-[9px] font-black uppercase tracking-widest px-3 py-2 rounded-lg lg:rounded-xl border transition-all ${risk === r
                       ? 'bg-primary-500 text-white border-primary-500'
                       : 'bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-500'}`}>
                     {r}
@@ -189,7 +189,7 @@ export default function ReferralFraudDashboard() {
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">earned</div>
                           </div>
                           <button onClick={() => setExpanded(open ? null : u._id)}
-                            className="p-2.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                            className="p-2.5 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
                             {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                           </button>
                         </div>
@@ -209,7 +209,7 @@ export default function ReferralFraudDashboard() {
                                   const created = r.createdAt ? new Date(r.createdAt).getTime() : 0;
                                   const dormant = !r.lastLoginDate || (new Date(r.lastLoginDate).getTime() - created < 3 * 60 * 1000);
                                   return (
-                                    <div key={r._id} className="flex items-center justify-between gap-2 bg-white dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10 px-3 py-2">
+                                    <div key={r._id} className="flex items-center justify-between gap-2 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-white/10 px-3 py-2">
                                       <div className="min-w-0">
                                         <div className="text-[11px] font-black truncate">{r.name || 'Unknown'}</div>
                                         <div className="text-[9px] text-slate-400 font-bold truncate">{r.email}</div>

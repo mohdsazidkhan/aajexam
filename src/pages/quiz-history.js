@@ -71,7 +71,7 @@ const QuizHistoryPage = () => {
                   </div>
                   <div className="flex gap-3">
                      <select
-                        className="px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold outline-none focus:border-primary-500"
+                        className="px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none focus:border-primary-500"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">All</option>
@@ -103,7 +103,7 @@ const QuizHistoryPage = () => {
                                  <div className="space-y-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">
-                                       <div className="p-2.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl">
+                                       <div className="p-2.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl">
                                           <BrainCircuit className="w-5 h-5 text-emerald-600" />
                                        </div>
                                        {isCompleted && (
@@ -185,9 +185,9 @@ const QuizHistoryPage = () => {
                {/* Pagination */}
                {totalPages > 1 && (
                   <div className="flex justify-center items-center gap-4 pt-6">
-                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
                      <span className="text-sm font-bold text-slate-500">Page {currentPage} of {totalPages}</span>
-                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
                   </div>
                )}
             </SubscriptionGuard>

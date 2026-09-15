@@ -84,7 +84,7 @@ function AnswerItem({
   const isOwner = String(item.author?._id) === String(currentUserId);
 
   return (
-    <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-slate-200 dark:border-slate-700' : item.isAcceptedAnswer ? 'border-2 border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-xl p-3' : ''} py-3`}>
+    <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-slate-200 dark:border-slate-700' : item.isAcceptedAnswer ? 'border-2 border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-lg lg:rounded-xl p-3' : ''} py-3`}>
       {item.isAcceptedAnswer && !isReply && (
         <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
           <CheckCircle2 className="w-3.5 h-3.5" /> Accepted Answer
@@ -293,7 +293,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
       </div>
 
       {user ? (
-        <div className="mb-4 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60">
+        <div className="mb-4 p-3 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60">
           <textarea
             value={newAnswer}
             onChange={e => setNewAnswer(e.target.value)}
@@ -312,7 +312,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
           </div>
         </div>
       ) : (
-        <div className="mb-4 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-center">
+        <div className="mb-4 p-3 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-center">
           <p className="text-sm text-slate-500">
             <Link href="/login" className="text-primary-600 font-bold hover:underline">Login</Link> to post an answer
           </p>

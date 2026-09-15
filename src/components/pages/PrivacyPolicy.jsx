@@ -233,8 +233,8 @@ const PrivacyPolicy = () => {
                                     <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-orange-500" /> Showing personalized advertisements</li>
                                  </ul>
                                  <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
-                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 dark:text-primary-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
-                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 dark:text-primary-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
+                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 dark:text-primary-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
+                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 dark:text-primary-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
                                  </div>
                               </div>
                            </div>

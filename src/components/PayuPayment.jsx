@@ -52,7 +52,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       {paymentData?.txnid && (
         <div className="p-5 bg-slate-50 dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center gap-3 text-primary-700 dark:text-primary-500">
-            <div className="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center text-white shadow-duo-secondary">
+            <div className="w-10 h-10 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center text-white shadow-duo-secondary">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>

@@ -61,7 +61,7 @@ const Pagination = ({
       {/* Visual Info Display */}
       {showInfo && (
         <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit">
-           Result: <span className="text-slate-900 dark:text-white px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-xl mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-700 dark:text-primary-500 font-black">{totalItems}</span>
+           Result: <span className="text-slate-900 dark:text-white px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-700 dark:text-primary-500 font-black">{totalItems}</span>
         </div>
       )}
 

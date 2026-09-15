@@ -42,7 +42,7 @@ const AdminMentors = () => {
         <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-500" /> Mentors</h1>
-            <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 outline-none">
+            <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold bg-white dark:bg-slate-800 outline-none">
               <option value="">All</option>
               <option value="pending">Pending</option>
               <option value="active">Active</option>
@@ -97,9 +97,9 @@ const AdminMentors = () => {
 
           {totalPages > 1 && (
             <div className="flex justify-center gap-4">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
               <span className="text-sm font-bold text-slate-500 py-2">Page {page}/{totalPages}</span>
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
             </div>
           )}
         </div>

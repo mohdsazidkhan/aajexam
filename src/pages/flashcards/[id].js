@@ -145,7 +145,7 @@ export default function FlashcardDeck() {
                                     <img 
                                         src={currentCard.image} 
                                         alt="Flashcard content" 
-                                        className="w-full h-auto max-h-48 object-contain mb-6 rounded-xl"
+                                        className="w-full h-auto max-h-48 object-contain mb-6 rounded-lg lg:rounded-xl"
                                     />
                                 )}
                                 <div 

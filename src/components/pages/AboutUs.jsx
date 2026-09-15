@@ -117,7 +117,7 @@ const AboutUs = () => {
                      <p className="text-slate-700 dark:text-slate-400 font-bold leading-relaxed">We use simple and effective ways to help you study. Our platform is built to boost your score in SSC, UPSC, Banking, and Railway exams.</p>
                   </div>
                   <div className="space-y-2">
-                     <div className="p-3 bg-blue-500/10 text-blue-500 w-fit rounded-xl"><Target className="w-5 h-5" /></div>
+                     <div className="p-3 bg-blue-500/10 text-blue-500 w-fit rounded-lg lg:rounded-xl"><Target className="w-5 h-5" /></div>
                      <h4 className="font-black uppercase text-sm">All Subjects Covered</h4>
                      <p className="text-xs font-medium text-slate-600 dark:text-slate-400">We cover Maths, English, and General Knowledge for all major government exams.</p>
                   </div>

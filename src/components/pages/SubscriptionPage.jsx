@@ -116,7 +116,7 @@ const SubscriptionPage = () => {
           <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' : 'bg-slate-950 shadow-2xl'}`}>
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-8">
               <div className="flex items-start gap-3 lg:gap-6">
-                <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-5 h-5 lg:w-8 lg:h-8" />
                 </div>
                 <div className="space-y-1 lg:space-y-2">

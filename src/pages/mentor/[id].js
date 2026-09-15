@@ -164,7 +164,7 @@ export default function MentorProfilePage() {
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-emerald-500" /> Exams Cleared</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
-                <div key={i} className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/10 rounded-xl">
+                <div key={i} className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/10 rounded-lg lg:rounded-xl">
                   <span className="text-sm font-bold text-slate-900 dark:text-white">{exam.examName}</span>
                   <div className="flex items-center gap-3 text-xs font-bold text-slate-500">
                     <span><Calendar className="w-3 h-3 inline" /> {exam.year}</span>
@@ -239,9 +239,9 @@ export default function MentorProfilePage() {
           <div className="flex gap-2 mb-5">
             <input type="text" placeholder="Ask a question..." value={question} onChange={e => setQuestion(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
-              className="flex-1 bg-white dark:bg-slate-800 rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700" />
+              className="flex-1 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700" />
             <button onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
-              className="px-4 py-2.5 bg-primary-500 text-white rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
+              className="px-4 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
               <Send className="w-4 h-4" />
             </button>
           </div>
@@ -250,7 +250,7 @@ export default function MentorProfilePage() {
           {mentor.amaThreads?.length > 0 ? (
             <div className="space-y-4">
               {mentor.amaThreads.map((thread, i) => (
-                <div key={i} className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl space-y-2">
+                <div key={i} className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl space-y-2">
                   <div>
                     {thread.askedBy && <Link href={`/u/${thread.askedBy.username || thread.askedBy.name}`} className="text-[10px] font-black text-primary-600 dark:text-primary-400 mr-1.5 hover:underline">@{thread.askedBy.username || thread.askedBy.name}</Link>}
                     <span className="text-sm font-bold text-slate-900 dark:text-white">{thread.question}</span>
@@ -265,13 +265,13 @@ export default function MentorProfilePage() {
                       <div className="flex gap-2">
                         <input type="text" placeholder="Write your answer..." value={answerText} onChange={e => setAnswerText(e.target.value)}
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
-                          className="flex-1 bg-white dark:bg-slate-800 rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-200 dark:border-slate-700" />
+                          className="flex-1 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-200 dark:border-slate-700" />
                         <button onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
-                          className="px-3 py-2 bg-primary-500 text-white rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
+                          className="px-3 py-2 bg-primary-500 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
                           <Send className="w-4 h-4" />
                         </button>
                         <button onClick={() => { setAnsweringId(null); setAnswerText(''); }}
-                          className="px-3 py-2 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-xl text-xs font-bold shrink-0">
+                          className="px-3 py-2 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl text-xs font-bold shrink-0">
                           Cancel
                         </button>
                       </div>

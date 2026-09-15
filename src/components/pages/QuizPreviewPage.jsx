@@ -134,22 +134,22 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <div className="bg-indigo-50 dark:bg-indigo-900/30 rounded-xl p-3 text-center">
+            <div className="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg lg:rounded-xl p-3 text-center">
               <HelpCircle className="w-6 h-6 text-indigo-600 dark:text-indigo-400 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.questions?.length || 0}</div>
               <div className="text-xs text-slate-500">Questions</div>
             </div>
-            <div className="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-3 text-center">
+            <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg lg:rounded-xl p-3 text-center">
               <Clock className="w-6 h-6 text-blue-600 dark:text-blue-400 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.duration}</div>
               <div className="text-xs text-slate-500">Minutes</div>
             </div>
-            <div className={`rounded-xl p-3 text-center ${difficultyColor}`}>
+            <div className={`rounded-lg lg:rounded-xl p-3 text-center ${difficultyColor}`}>
               <BarChart3 className="w-6 h-6 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white capitalize">{quiz.difficulty}</div>
               <div className="text-xs text-slate-500">Difficulty</div>
             </div>
-            <div className="bg-emerald-50 dark:bg-emerald-900/30 rounded-xl p-3 text-center">
+            <div className="bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl p-3 text-center">
               <Trophy className="w-6 h-6 text-emerald-600 dark:text-emerald-400 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.totalMarks}</div>
               <div className="text-xs text-slate-500">Total Marks</div>
@@ -173,7 +173,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           {/* Start Button */}
           <button
             onClick={handleStartQuiz}
-            className={`w-full px-8 py-4 rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
+            className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
               isLocked
                 ? 'bg-gradient-to-r from-amber-500 to-amber-700 text-white hover:from-amber-600 hover:to-amber-800'
                 : 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700'
@@ -193,7 +193,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Quiz Stats */}
         {quiz.totalAttempts > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 lg:p-6 shadow-lg mb-6 border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Users className="w-5 h-5 text-primary-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Quiz Statistics</h2>
@@ -213,7 +213,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Tags */}
         {quiz.tags?.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 lg:p-6 shadow-lg mb-6 border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-3">
               <Tag className="w-5 h-5 text-slate-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Tags</h2>
@@ -230,7 +230,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 lg:p-6 shadow-lg border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-yellow-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Leaderboard</h2>

@@ -286,7 +286,7 @@ const AdminReels = () => {
                               </div>
                             </td>
                             <td className="px-6 py-6 font-medium">
-                              <span className={`px-4 py-1 rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-4 ${STATUS_COLORS[item.status]}`}>
+                              <span className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-4 ${STATUS_COLORS[item.status]}`}>
                                 {item.status}
                               </span>
                             </td>
@@ -314,7 +314,7 @@ const AdminReels = () => {
                       <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-inner transition-all overflow-hidden">
                         <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-slate-500/5 to-transparent rounded-bl-[2rem] -z-0" />
 
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-duo ${TYPE_COLORS[item.type]}`}>
+                        <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-duo ${TYPE_COLORS[item.type]}`}>
                           <Icon className="w-5 h-5" />
                         </div>
 
@@ -345,7 +345,7 @@ const AdminReels = () => {
                           </div>
                           
                           {(item.status === 'pending' || item.status === 'rejected') && (
-                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 text-[9px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-lg lg:rounded-xl bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 text-[9px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all flex items-center justify-center gap-1.5">
                               <CheckCircle2 className="w-3 h-3" /> Approve & Live
                             </button>
                           )}

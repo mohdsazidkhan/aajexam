@@ -63,10 +63,10 @@ const MentorsPage = () => {
               <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-500" /> Mentors</h1>
               <p className="text-sm font-bold text-slate-400">Learn from students who cleared exams</p>
             </div>
-            <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-500 text-white rounded-xl text-xs font-bold">Become Mentor</button>
+            <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-500 text-white rounded-lg lg:rounded-xl text-xs font-bold">Become Mentor</button>
           </div>
 
-          <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2">
+          <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl px-3 py-2">
             <Search className="w-4 h-4 text-slate-400" />
             <input type="text" placeholder="Search by exam name..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
               className="flex-1 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
@@ -122,9 +122,9 @@ const MentorsPage = () => {
 
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-4">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
               <span className="text-sm font-bold text-slate-500">Page {page} of {totalPages}</span>
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
             </div>
           )}
         </SubscriptionGuard>

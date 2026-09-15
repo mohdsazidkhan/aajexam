@@ -10,7 +10,7 @@ import { generateBreadcrumbSchema } from '../utils/schema';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 const NewsSkeleton = () => (
@@ -24,7 +24,7 @@ const NewsSkeleton = () => (
             <Sh className="w-12 h-12 rounded-2xl shrink-0" />
             <div className="flex-1 space-y-2"><Sh className="h-4 w-3/4 rounded-lg" /><Sh className="h-2.5 w-1/2 rounded-full" /></div>
           </div>
-          <div className="flex gap-2"><Sh className="h-7 w-20 rounded-xl" /><Sh className="h-7 w-16 rounded-xl" /></div>
+          <div className="flex gap-2"><Sh className="h-7 w-20 rounded-lg lg:rounded-xl" /><Sh className="h-7 w-16 rounded-lg lg:rounded-xl" /></div>
         </div>
       ))}
     </div>
@@ -92,7 +92,7 @@ const ExamNewsPage = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search news..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none focus:ring-2 focus:ring-amber-500/30" />
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none focus:ring-2 focus:ring-amber-500/30" />
             </div>
           </div>
         </div>
@@ -147,12 +147,12 @@ const ExamNewsPage = () => {
                   )}
 
                   <div className="flex items-center flex-wrap gap-2 pt-1">
-                    <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-xl border ${cfg.chip}`}>
+                    <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-lg lg:rounded-xl border ${cfg.chip}`}>
                       <Icon className="w-3 h-3" />
                       {cfg.label}
                     </div>
                     {item.isPinned && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-black text-red-600 dark:text-red-400 uppercase bg-red-50 dark:bg-red-900/30 px-2.5 py-1.5 rounded-xl border border-red-100 dark:border-red-800/50">
+                      <div className="flex items-center gap-1.5 text-[10px] font-black text-red-600 dark:text-red-400 uppercase bg-red-50 dark:bg-red-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-red-100 dark:border-red-800/50">
                         <Pin className="w-3 h-3" /> Pinned
                       </div>
                     )}
@@ -175,10 +175,10 @@ const ExamNewsPage = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-6">
             <button disabled={page === 1} onClick={() => setPage(page - 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
             <span className="text-sm font-black text-slate-500">Page {page} of {totalPages}</span>
             <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-xl text-sm font-black disabled:opacity-30">Next</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
           </div>
         )}
       </section>

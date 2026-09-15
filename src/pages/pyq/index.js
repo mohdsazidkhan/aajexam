@@ -129,7 +129,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterExam}
                                     onChange={onExamChange}
-                                    className="px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold outline-none"
+                                    className="px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none"
                                 >
                                     <option value="">All Exams</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -137,7 +137,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterYear}
                                     onChange={onYearChange}
-                                    className="px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold outline-none"
+                                    className="px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none"
                                 >
                                     <option value="">All Years</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
@@ -271,9 +271,9 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                         {totalPages > 1 && (
                             <div className="flex justify-center items-center gap-4 mt-8">
-                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
                                 <span className="text-sm font-bold text-slate-500">Page {page} of {totalPages}</span>
-                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
                             </div>
                         )}
                     </section>
@@ -332,7 +332,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             { icon: '🧠', text: 'Weakness analysis' },
                                             { icon: '🚀', text: 'Unlimited mock tests' },
                                         ].map((item) => (
-                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-xl px-3 py-2">
+                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl px-3 py-2">
                                                 <span>{item.icon}</span> {item.text}
                                             </div>
                                         ))}

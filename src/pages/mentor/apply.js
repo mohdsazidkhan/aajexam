@@ -56,7 +56,7 @@ export default function MentorApply() {
     }
   };
 
-  const inputClass = "w-full bg-white dark:bg-slate-800 rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700";
+  const inputClass = "w-full bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700";
   const labelClass = "text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1.5 block";
 
   return (
@@ -68,7 +68,7 @@ export default function MentorApply() {
       />
       <div className="max-w-2xl mx-auto py-4 lg:py-8 px-4">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center">
             <Users className="w-5 h-5 text-primary-600" />
           </div>
           <div>
@@ -83,7 +83,7 @@ export default function MentorApply() {
             <label className={labelClass}>Exams Cleared *</label>
             <div className="space-y-3">
               {form.examsCleared.map((exam, i) => (
-                <div key={i} className="flex flex-wrap gap-2 items-start p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                <div key={i} className="flex flex-wrap gap-2 items-start p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700">
                   <input placeholder="Exam name *" value={exam.examName} onChange={e => updateExam(i, 'examName', e.target.value)} className={`${inputClass} flex-1 min-w-[150px]`} />
                   <input type="number" placeholder="Year *" value={exam.year} onChange={e => updateExam(i, 'year', e.target.value)} className={`${inputClass} w-24`} />
                   <input type="number" placeholder="Rank" value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />

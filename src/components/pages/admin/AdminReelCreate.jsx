@@ -27,7 +27,7 @@ const COLOR_MAP = {
   green: 'border-green-500 bg-green-50 dark:bg-green-950/30',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const AdminReelCreate = () => {
@@ -242,7 +242,7 @@ const AdminReelCreate = () => {
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <button onClick={() => router.back()} className="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+              <button onClick={() => router.back()} className="p-2 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                 <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
               </button>
               <div>
@@ -523,7 +523,7 @@ const AdminReelCreate = () => {
                     {filteredAudios.map(a => (
                       <div key={a.value}
                         onClick={() => handleAudioSelect(a.value)}
-                        className={`flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all ${audioFile === a.value
+                        className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl cursor-pointer transition-all ${audioFile === a.value
                           ? 'bg-pink-50 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-700'
                           : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                       >
@@ -582,7 +582,7 @@ const AdminReelCreate = () => {
                   <Button type="submit" disabled={loading} className="flex-1 sm:flex-none">
                     {loading ? 'Creating...' : 'Create & Publish Reel'}
                   </Button>
-                  <button type="button" onClick={() => router.back()} className="px-6 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+                  <button type="button" onClick={() => router.back()} className="px-6 py-2.5 rounded-lg lg:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                     Cancel
                   </button>
                 </div>

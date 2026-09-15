@@ -98,7 +98,7 @@ const RevisionPage = () => {
               const isActive = activeTab === tab.key;
               return (
                 <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                  className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-black transition ${isActive ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                  className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl text-[11px] font-black transition ${isActive ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                   <Icon className="w-3.5 h-3.5" />
                   <span>{tab.label}</span>
                   <span className={`px-1.5 py-0.5 rounded-full text-[9px] ${isActive ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{count}</span>
@@ -124,11 +124,11 @@ const RevisionPage = () => {
               {!showAnswer ? (
                 <div className="space-y-3">
                   {currentItem.questionSnapshot?.options?.map((opt, i) => (
-                    <div key={i} className="px-4 py-3 rounded-xl text-sm font-bold border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                    <div key={i} className="px-4 py-3 rounded-lg lg:rounded-xl text-sm font-bold border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
                       <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt}
                     </div>
                   ))}
-                  <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-500 hover:bg-primary-600 transition text-white rounded-xl text-sm font-bold mt-2">Show Answer</button>
+                  <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-500 hover:bg-primary-600 transition text-white rounded-lg lg:rounded-xl text-sm font-bold mt-2">Show Answer</button>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -136,21 +136,21 @@ const RevisionPage = () => {
                     {currentItem.questionSnapshot?.options?.map((opt, i) => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
                       return (
-                        <div key={i} className={`px-4 py-3 rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
+                        <div key={i} className={`px-4 py-3 rounded-lg lg:rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
                           <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-emerald-500 ml-2" />}
                         </div>
                       );
                     })}
                   </div>
                   {currentItem.questionSnapshot?.explanation && (
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-xs leading-relaxed text-blue-700 dark:text-blue-300">{currentItem.questionSnapshot.explanation}</div>
+                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg lg:rounded-xl text-xs leading-relaxed text-blue-700 dark:text-blue-300">{currentItem.questionSnapshot.explanation}</div>
                   )}
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider text-center">How well did you know this?</p>
                     <div className="grid grid-cols-3 gap-3">
-                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-xl text-xs font-bold hover:bg-red-100 dark:hover:bg-red-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
-                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400 rounded-xl text-xs font-bold hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
-                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 rounded-xl text-xs font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
+                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-red-100 dark:hover:bg-red-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
+                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
+                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
                     </div>
                   </div>
                 </div>

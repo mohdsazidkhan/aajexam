@@ -13,7 +13,7 @@ import Seo from '../Seo';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 const QuizListSkeleton = () => (
@@ -36,9 +36,9 @@ const QuizListSkeleton = () => (
           </div>
           <Sh className="h-2.5 w-24 rounded-full" />
           <div className="flex gap-2">
-            <Sh className="h-7 w-16 rounded-xl" />
-            <Sh className="h-7 w-16 rounded-xl" />
-            <Sh className="h-7 w-16 rounded-xl" />
+            <Sh className="h-7 w-16 rounded-lg lg:rounded-xl" />
+            <Sh className="h-7 w-16 rounded-lg lg:rounded-xl" />
+            <Sh className="h-7 w-16 rounded-lg lg:rounded-xl" />
           </div>
         </div>
       ))}
@@ -119,7 +119,7 @@ const QuizListPage = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search quizzes..." value={search} onChange={e => setSearch(e.target.value)}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-emerald-500/30 border-none" />
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-emerald-500/30 border-none" />
             </div>
           </div>
         </div>
@@ -172,16 +172,16 @@ const QuizListPage = () => {
 
                 {/* Stat chips */}
                 <div className="flex items-center flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-cyan-600 dark:text-cyan-400 uppercase bg-cyan-50 dark:bg-cyan-900/30 px-2.5 py-1.5 rounded-xl border border-cyan-100 dark:border-cyan-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-cyan-600 dark:text-cyan-400 uppercase bg-cyan-50 dark:bg-cyan-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-cyan-100 dark:border-cyan-800/50">
                     <HelpCircle className="w-3 h-3" />
                     {quiz.totalQuestions || 0} Qs
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-violet-600 dark:text-violet-400 uppercase bg-violet-50 dark:bg-violet-900/30 px-2.5 py-1.5 rounded-xl border border-violet-100 dark:border-violet-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-violet-600 dark:text-violet-400 uppercase bg-violet-50 dark:bg-violet-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-violet-100 dark:border-violet-800/50">
                     <Clock className="w-3 h-3" />
                     {quiz.duration || 0} min
                   </div>
                   {quiz.difficulty && (
-                    <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-xl border ${diffChip(quiz.difficulty)}`}>
+                    <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-lg lg:rounded-xl border ${diffChip(quiz.difficulty)}`}>
                       <BarChart2 className="w-3 h-3" />
                       {quiz.difficulty}
                     </div>
@@ -205,10 +205,10 @@ const QuizListPage = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-6">
             <button disabled={page === 1} onClick={() => setPage(page - 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
             <span className="text-sm font-black text-slate-500">Page {page} of {totalPages}</span>
             <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-xl text-sm font-black disabled:opacity-30">Next</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
           </div>
         )}
       </section>

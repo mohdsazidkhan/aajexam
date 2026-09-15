@@ -118,7 +118,7 @@ const MyChallengesPage = () => {
                                        </button>
                                     </div>
 
-                                    <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-xl">
+                                    <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-lg lg:rounded-xl">
                                        <div className="flex-1">
                                           <div className="text-[10px] font-bold text-slate-400 uppercase">Your Score</div>
                                           <div className="text-lg font-black text-indigo-600 dark:text-indigo-400">{Math.round(hostPercentage)}%</div>

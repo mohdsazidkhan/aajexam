@@ -359,7 +359,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             key={idx}
                             onClick={() => setCurrentQIndex(idx)}
                             className={`
-                              h-10 rounded-xl font-black text-xs transition-all border-b-4
+                              h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-4
                               ${isCurrent ? 'bg-primary-500 text-white border-primary-700 -translate-y-1' :
                                 isMarked ? 'bg-accent-orange text-white border-[#d97706]' :
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
@@ -382,7 +382,7 @@ const TestStart = ({ resolvedId } = {}) => {
         <section className="flex-1 overflow-y-auto p-4 lg:px-10 lg:py-28 lg:pb-8 scroll-smooth relative">
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)} title="Show panel"
-              className="hidden lg:flex absolute top-20 left-2 z-10 items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">
+              className="hidden lg:flex absolute top-20 left-2 z-10 items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">
               <PanelLeftOpen className="w-4 h-4" />
             </button>
           )}
@@ -413,7 +413,7 @@ const TestStart = ({ resolvedId } = {}) => {
               )}
 
               {currentQ.questionImage && (
-                <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
               )}
 
               <div className="grid grid-cols-1 gap-4">
@@ -434,7 +434,7 @@ const TestStart = ({ resolvedId } = {}) => {
                         `}
                     >
                       <div className={`
-                            w-10 h-10 rounded-xl flex items-center justify-center font-black text-lg shrink-0 transition-colors
+                            w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black text-lg shrink-0 transition-colors
                             ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}
                          `}>
                         {String.fromCharCode(65 + idx)}

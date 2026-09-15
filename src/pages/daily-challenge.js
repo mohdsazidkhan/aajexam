@@ -157,7 +157,7 @@ const DailyChallengePage = () => {
             </div>
             <h2 className="text-xl font-black">Ready for Today&apos;s Challenge?</h2>
             <p className="text-sm text-slate-500">Complete it to maintain your streak!</p>
-            <button onClick={() => setStarted(true)} className="px-8 py-3 bg-primary-500 text-white rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+            <button onClick={() => setStarted(true)} className="px-8 py-3 bg-primary-500 text-white rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
               Start Challenge <ArrowRight className="w-4 h-4 inline ml-2" />
             </button>
           </Card>
@@ -177,7 +177,7 @@ const DailyChallengePage = () => {
               <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
                   <button key={i} onClick={() => selectOption(i)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all border-2 ${answers[currentQ]?.selectedOptionIndex === i
+                    className={`w-full text-left px-4 py-3 rounded-lg lg:rounded-xl text-sm font-bold transition-all border-2 ${answers[currentQ]?.selectedOptionIndex === i
                       ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300'
                       : 'border-slate-100 dark:border-slate-800 hover:border-slate-300 text-slate-700 dark:text-slate-300'}`}>
                     <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt.text || opt}
@@ -188,8 +188,8 @@ const DailyChallengePage = () => {
             <div className="flex justify-between">
               <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-2.5 text-sm font-bold text-slate-500 disabled:opacity-30 disabled:cursor-not-allowed">Previous</button>
               {currentQ < challenge.questions.length - 1
-                ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition">Next</button>
-                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-emerald-500 text-white rounded-xl text-sm font-bold hover:bg-emerald-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
+                ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition">Next</button>
+                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-emerald-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-emerald-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
               }
             </div>
           </div>
@@ -231,7 +231,7 @@ const DailyChallengePage = () => {
                     const isSkipped = !ans || ans.selectedOptionIndex === -1;
                     const isCorrect = ans?.isCorrect;
                     return (
-                      <div key={q._id || idx} className={`rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
                         <div className="flex items-start gap-2 mb-2">
                           <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-emerald-500' : 'bg-red-500'}`}>{idx + 1}</div>
                           <p className="text-sm font-medium text-slate-800 dark:text-white">{q.questionText}</p>
@@ -280,7 +280,7 @@ const DailyChallengePage = () => {
                   <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><Trophy className="w-4 h-4 text-yellow-500" /> Today&apos;s Leaderboard</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                     {leaderboard.slice(0, 10).map((entry, i) => (
-                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                      <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-2 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                         <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
                         <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
                         <span className="text-sm font-black text-primary-500">{entry.score}</span>

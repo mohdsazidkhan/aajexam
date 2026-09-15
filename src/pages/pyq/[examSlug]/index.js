@@ -256,7 +256,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                             { icon: '🧠', text: 'Weakness analysis' },
                                             { icon: '🚀', text: 'Unlimited mock tests' },
                                         ].map((item) => (
-                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-xl px-3 py-2">
+                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl px-3 py-2">
                                                 <span>{item.icon}</span> {item.text}
                                             </div>
                                         ))}

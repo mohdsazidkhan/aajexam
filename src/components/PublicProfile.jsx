@@ -402,7 +402,7 @@ const PublicProfile = ({ username }) => {
                             <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-purple-500 transition-colors">{quiz.title}</h4>
                             <div className="flex items-center gap-3 mt-3 flex-wrap">
                               {quiz.difficulty && (
-                                <span className={`text-[8px] font-black px-4 py-1.5 rounded-xl uppercase tracking-widest border-2 ${quiz.difficulty === 'Easy' ? 'bg-green-50 text-green-500 border-green-100' :
+                                <span className={`text-[8px] font-black px-4 py-1.5 rounded-lg lg:rounded-xl uppercase tracking-widest border-2 ${quiz.difficulty === 'Easy' ? 'bg-green-50 text-green-500 border-green-100' :
                                   quiz.difficulty === 'Medium' ? 'bg-amber-50 text-amber-500 border-amber-100' :
                                     'bg-red-50 text-red-500 border-red-100'
                                   }`}>
@@ -454,7 +454,7 @@ const PublicProfile = ({ username }) => {
                               key={idx}
                               className="px-6 py-4 rounded-2xl border-2 bg-slate-50 dark:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest flex items-center gap-4 group-hover:border-slate-200 transition-all"
                             >
-                              <span className="w-8 h-8 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center border-2 border-slate-100 dark:border-slate-700 text-slate-600 dark:text-slate-400">{String.fromCharCode(65 + idx)}</span>
+                              <span className="w-8 h-8 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center border-2 border-slate-100 dark:border-slate-700 text-slate-600 dark:text-slate-400">{String.fromCharCode(65 + idx)}</span>
                               <span className="flex-1">{option}</span>
                             </div>
                           ))}

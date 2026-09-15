@@ -35,7 +35,7 @@ const CalendarSkeleton = () => (
   <div className="space-y-4">
     <Sh className="h-48 lg:h-52 w-full rounded-[2.5rem]" />
     <div className="grid grid-cols-7 gap-1">
-      {Array.from({ length: 35 }).map((_, i) => <Sh key={i} className="h-12 sm:h-14 rounded-xl" />)}
+      {Array.from({ length: 35 }).map((_, i) => <Sh key={i} className="h-12 sm:h-14 rounded-lg lg:rounded-xl" />)}
     </div>
   </div>
 );
@@ -57,7 +57,7 @@ const EventCard = ({ event, compact = false }) => {
   if (compact) {
     return (
       <Link href={`/exam-news/${event.examNewsSlug}`}>
-        <div className={`flex items-start gap-2.5 p-3 rounded-xl border ${cfg.border} ${cfg.color} transition-all hover:opacity-80 group`}>
+        <div className={`flex items-start gap-2.5 p-3 rounded-lg lg:rounded-xl border ${cfg.border} ${cfg.color} transition-all hover:opacity-80 group`}>
           <Icon className="w-4 h-4 flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <p className="text-[11px] font-black truncate leading-tight">{event.label}</p>
@@ -76,7 +76,7 @@ const EventCard = ({ event, compact = false }) => {
         animate={{ opacity: 1, y: 0 }}
         className={`flex items-start gap-3 p-3.5 rounded-2xl border-2 border-b-4 ${cfg.border} bg-background-surface hover:border-opacity-80 transition-all group cursor-pointer`}
       >
-        <div className={`w-9 h-9 rounded-xl ${cfg.color} flex items-center justify-center flex-shrink-0`}>
+        <div className={`w-9 h-9 rounded-lg lg:rounded-xl ${cfg.color} flex items-center justify-center flex-shrink-0`}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
@@ -253,7 +253,7 @@ const ExamCalendarPage = () => {
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Prev</span>
@@ -275,7 +275,7 @@ const ExamCalendarPage = () => {
 
           <button
             onClick={nextMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="w-4 h-4" />

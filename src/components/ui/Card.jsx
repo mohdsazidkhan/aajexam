@@ -34,7 +34,7 @@ const Card = ({
   };
 
   const radii = {
-    xl: 'rounded-xl',
+    xl: 'rounded-lg lg:rounded-xl',
     '2xl': 'rounded-2xl',
     '3xl': 'rounded-3xl',
     '4xl': 'rounded-[2.5rem]',

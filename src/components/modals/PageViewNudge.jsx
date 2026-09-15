@@ -68,7 +68,7 @@ const NudgeInner = ({ onClose }) => {
 
         {/* Content */}
         <div className="flex-1 flex items-start sm:items-center gap-4">
-           <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-500/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 border border-primary-500/30">
+           <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-500/20 rounded-lg lg:rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 border border-primary-500/30">
               <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primary-400" />
            </div>
            <div>
@@ -85,7 +85,7 @@ const NudgeInner = ({ onClose }) => {
         <button
            onClick={() => googleSignup()}
            disabled={isGoogleLoading}
-           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg border-b-4 border-primary-700 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
+           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg lg:rounded-xl shadow-lg border-b-4 border-primary-700 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
         >
            {isGoogleLoading ? (
                <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />

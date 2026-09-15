@@ -81,9 +81,9 @@ const PublicNavbar = () => {
                   const isActive = router.pathname === link.href;
                   return (
                     <Link title={link.title} key={link.href} href={link.href}>
-                      <button className={`relative px-2.5 py-2 rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-700 dark:text-primary-500' : 'text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-400'}`}>
+                      <button className={`relative px-2.5 py-2 rounded-lg lg:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-700 dark:text-primary-500' : 'text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-400'}`}>
                         {isActive && (
-                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200/50 dark:border-slate-700/50" />
+                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl shadow-lg border border-slate-200/50 dark:border-slate-700/50" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
                           {link.label}
@@ -107,10 +107,7 @@ const PublicNavbar = () => {
               </button>
 
               <Link href="/login">
-                <Button variant="ghost" size="sm" className="hidden sm:flex px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Login</Button>
-              </Link>
-              <Link href="/register">
-                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">Join Now</Button>
+                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">Get Started</Button>
               </Link>
             </div>
           </div>

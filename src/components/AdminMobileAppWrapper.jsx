@@ -71,7 +71,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
           <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
 
           <div className="flex items-center gap-3 relative z-10 transition-transform active:scale-95">
-            <Link href="/admin/dashboard" className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 p-0.5 shadow-duo-primary">
+            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 p-0.5 shadow-duo-primary">
               <div className="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center text-white text-sm font-black italic">A</div>
             </Link>
             <div className="flex flex-col">
@@ -87,7 +87,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
             <motion.button
               whileTap={{ scale: 0.9, y: 1 }}
               onClick={toggleTheme}
-              className={`w-10 h-10 flex items-center justify-center rounded-xl border-b-4 transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700 text-amber-400' : 'bg-slate-100 border-slate-300 text-slate-600'
+              className={`w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl border-b-4 transition-all ${darkMode ? 'bg-slate-800/50 border-slate-700 text-amber-400' : 'bg-slate-100 border-slate-300 text-slate-600'
                 }`}
             >
               {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -98,7 +98,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               <motion.button
                 whileTap={{ scale: 0.9, y: 1 }}
                 onClick={() => secureLogout(router)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-rose-500 border-b-4 border-rose-700 text-white shadow-lg shadow-rose-500/20"
+                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-rose-500 border-b-4 border-rose-700 text-white shadow-lg shadow-rose-500/20"
               >
                 <LogOut className="w-4 h-4" />
               </motion.button>
@@ -108,7 +108,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
             <motion.button
               whileTap={{ scale: 0.9, y: 1 }}
               onClick={() => dispatch(toggleSidebar())}
-              className={`w-10 h-10 flex items-center justify-center rounded-xl border-b-4 transition-all ${isOpen ? 'bg-primary-600 border-primary-800' : 'bg-primary-500 border-primary-700'
+              className={`w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl border-b-4 transition-all ${isOpen ? 'bg-primary-600 border-primary-800' : 'bg-primary-500 border-primary-700'
                 } text-white shadow-lg shadow-primary-500/20`}
             >
               {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}

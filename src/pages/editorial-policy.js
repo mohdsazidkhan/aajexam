@@ -111,7 +111,7 @@ export default function EditorialPolicy() {
                     {/* User Feedback */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-primary-500 rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>

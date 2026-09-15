@@ -183,7 +183,7 @@ const BlogsPage = () => {
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Exam preparation tips, guides & insights</p>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-3 bg-white dark:bg-gray-800 rounded-xl p-3 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col lg:flex-row items-center gap-3 bg-white dark:bg-gray-800 rounded-lg lg:rounded-xl p-3 shadow-sm border border-gray-200 dark:border-gray-700">
             {/* View Toggle */}
             <div className="flex items-center gap-2">
               <button onClick={() => setViewMode('grid')}

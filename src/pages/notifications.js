@@ -148,8 +148,8 @@ const NotificationsPage = () => {
                     </div>
 
                     <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-500 hover:bg-primary-500/10 rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-red-500 hover:bg-red-500/10 rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-500 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-red-500 hover:bg-red-500/10 rounded-lg lg:rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

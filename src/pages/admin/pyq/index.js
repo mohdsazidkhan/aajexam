@@ -74,7 +74,7 @@ const AdminPYQ = () => {
                 <select
                   value={selectedExamId}
                   onChange={handleExamChange}
-                  className="pl-8 pr-3 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition min-w-[160px]"
+                  className="pl-8 pr-3 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition min-w-[160px]"
                 >
                   <option value="">All Exams</option>
                   {exams.map(exam => (
@@ -82,7 +82,7 @@ const AdminPYQ = () => {
                   ))}
                 </select>
               </div>
-              <button onClick={() => router.push('/admin/pyq/create')} className="px-4 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition flex items-center gap-2 flex-shrink-0">
+              <button onClick={() => router.push('/admin/pyq/create')} className="px-4 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition flex items-center gap-2 flex-shrink-0">
                 <Plus className="w-4 h-4" /> New PYQ
               </button>
             </div>
@@ -128,9 +128,9 @@ const AdminPYQ = () => {
 
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-3 pt-2">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30 disabled:cursor-not-allowed">Prev</button>
+              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30 disabled:cursor-not-allowed">Prev</button>
               <span className="text-sm font-bold text-slate-500">Page {page}/{totalPages}</span>
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-sm font-bold disabled:opacity-30 disabled:cursor-not-allowed">Next</button>
+              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30 disabled:cursor-not-allowed">Next</button>
             </div>
           )}
         </div>

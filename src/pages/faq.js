@@ -208,7 +208,7 @@ const FAQ = () => {
                         return (
                             <div key={catIndex} className="mb-8 lg:mb-12">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-purple-500 rounded-lg lg:rounded-xl flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
                                     <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -247,7 +247,7 @@ const FAQ = () => {
                             </p>
                             <button
                                 onClick={() => router.push('/contact')}
-                                className="bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
+                                className="bg-gray-800 text-white px-8 py-3 rounded-lg lg:rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
                             >
                                 Contact Support
                             </button>

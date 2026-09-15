@@ -2,7 +2,7 @@ import React from 'react';
 
 // Basic shimmer block (mirrors PrivateSkeletons.jsx's local `Sh`)
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 // Generic admin table page: filter/search bar + data table.
@@ -11,7 +11,7 @@ export const AdminTableSkeleton = ({ rows = 8, columns = 6 }) => (
   <div className="space-y-6 font-outfit w-full">
     {/* Header */}
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <Sh className="h-7 w-56 rounded-xl" />
+      <Sh className="h-7 w-56 rounded-lg lg:rounded-xl" />
       <Sh className="h-10 w-36 rounded-2xl" />
     </div>
 
@@ -43,11 +43,11 @@ export const AdminTableSkeleton = ({ rows = 8, columns = 6 }) => (
 // Admin dashboard/analytics page: stat cards + chart area.
 export const AdminDashboardSkeleton = () => (
   <div className="space-y-6 lg:space-y-8 font-outfit w-full">
-    <Sh className="h-7 w-64 rounded-xl" />
+    <Sh className="h-7 w-64 rounded-lg lg:rounded-xl" />
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {[1, 2, 3, 4].map(i => (
         <div key={i} className="bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-5 space-y-3">
-          <Sh className="w-10 h-10 rounded-xl" />
+          <Sh className="w-10 h-10 rounded-lg lg:rounded-xl" />
           <Sh className="h-6 w-20 rounded-lg" />
           <Sh className="h-2.5 w-24 rounded-full" />
         </div>
@@ -56,7 +56,7 @@ export const AdminDashboardSkeleton = () => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-4">
         <Sh className="h-5 w-40 rounded-lg" />
-        <Sh className="h-64 w-full rounded-xl" />
+        <Sh className="h-64 w-full rounded-lg lg:rounded-xl" />
       </div>
       <div className="bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-4">
         <Sh className="h-5 w-32 rounded-lg" />
@@ -74,7 +74,7 @@ export const AdminDashboardSkeleton = () => (
 // Admin create/edit form page.
 export const AdminFormSkeleton = ({ fields = 5 }) => (
   <div className="max-w-3xl mx-auto space-y-6 font-outfit w-full">
-    <Sh className="h-7 w-56 rounded-xl" />
+    <Sh className="h-7 w-56 rounded-lg lg:rounded-xl" />
     <div className="bg-white dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 space-y-5">
       {Array.from({ length: fields }).map((_, i) => (
         <div key={i} className="space-y-2">

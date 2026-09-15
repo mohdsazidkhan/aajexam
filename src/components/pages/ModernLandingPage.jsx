@@ -434,7 +434,7 @@ const ModernLandingPage = () => {
                         <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
                         <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.</p>
                         <div className="pt-2 lg:pt-4">
-                           <Button variant="primary" size="lg" className="shadow-xl rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
+                           <Button variant="primary" size="lg" className="shadow-xl rounded-lg lg:rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
                               Start referring
                            </Button>
                         </div>

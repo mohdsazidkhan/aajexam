@@ -36,7 +36,7 @@ import HomePageSkeleton from "../HomePageSkeleton";
 const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) => (
    <div className="flex items-center justify-between mb-4">
       <div className="flex items-center gap-2.5">
-         <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${iconBg}`}>
+         <div className={`w-9 h-9 rounded-lg lg:rounded-xl flex items-center justify-center ${iconBg}`}>
             <IconComp className={`w-[18px] h-[18px] ${iconColor}`} />
          </div>
          <h2 className="text-base lg:text-lg font-black text-slate-900 dark:text-white tracking-tight">
@@ -86,7 +86,7 @@ const QuizCard = ({ item, onClick }) => (
       onClick={onClick}
       className="min-w-[160px] lg:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
    >
-      <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center">
+      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-violet-500/10 flex items-center justify-center">
          <Brain className="w-5 h-5 text-violet-500" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -126,7 +126,7 @@ const TopicCard = ({ item, onClick }) => (
       onClick={onClick}
       className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-amber-500/10 flex items-center justify-center">
          <Layers className="w-5 h-5 text-amber-500" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -289,7 +289,7 @@ const HomePage = () => {
                      <p className="text-xs lg:text-sm text-slate-400 font-medium mt-0.5">Prepare Your Exam Today</p>
                   </div>
                   {streakCount > 0 && (
-                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-orange-500/10 rounded-xl">
+                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-orange-500/10 rounded-lg lg:rounded-xl">
                         <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
                         <span className="text-xs font-black text-orange-600 dark:text-orange-400">{streakCount}</span>
                      </div>

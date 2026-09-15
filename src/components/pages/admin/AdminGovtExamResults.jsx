@@ -285,7 +285,7 @@ const AdminGovtExamResults = () => {
           </motion.div>
 
           {/* Quick Filters */}
-          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
+          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 text-[10px] uppercase font-black tracking-widest">
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                 <Compass className="w-4 h-4 text-primary-600" />
@@ -331,7 +331,7 @@ const AdminGovtExamResults = () => {
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -374,7 +374,7 @@ const AdminGovtExamResults = () => {
                               {a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-white dark:bg-white/5 text-primary-600 rounded-xl border border-slate-100 shadow-md hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
+                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-white dark:bg-white/5 text-primary-600 rounded-lg lg:rounded-xl border border-slate-100 shadow-md hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
                             </td>
                           </motion.tr>
                         ))}
@@ -386,7 +386,7 @@ const AdminGovtExamResults = () => {
                 {viewMode === 'list' && (
                   <div className="space-y-3 lg:space-y-6">
                     {attempts.map((a, idx) => (
-                      <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
+                      <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
                         <div className="flex items-center gap-3 lg:gap-6">
                           <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-2xl ${a.rank <= 3 ? 'bg-amber-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>#{a.rank || '-'}</div>
                           <div>
@@ -405,7 +405,7 @@ const AdminGovtExamResults = () => {
                             <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{formatTime(a.totalTime)}</div>
                             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}</div>
                           </div>
-                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 lg:px-6 py-3 bg-primary-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-primary-600/20">View Details</motion.button>
+                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 lg:px-6 py-3 bg-primary-600 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-primary-600/20">View Details</motion.button>
                         </div>
                       </motion.div>
                     ))}
@@ -442,7 +442,7 @@ const AdminGovtExamResults = () => {
                         { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'amber' }
                       ].map((s, i) => (
                         <div key={i} className="bg-slate-50 dark:bg-white/5 p-6 rounded-3xl border-2 border-slate-100 dark:border-white/5">
-                          <div className={`p-3 bg-${s.color}-500/10 text-${s.color}-500 rounded-xl w-fit mb-3`}><s.icon className="w-4 h-4" /></div>
+                          <div className={`p-3 bg-${s.color}-500/10 text-${s.color}-500 rounded-lg lg:rounded-xl w-fit mb-3`}><s.icon className="w-4 h-4" /></div>
                           <div className="text-2xl font-black text-slate-900 dark:text-white uppercase italic">{s.val}</div>
                           <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{s.label}</div>
                         </div>
@@ -456,7 +456,7 @@ const AdminGovtExamResults = () => {
                       </div>
                       <div className="space-y-3 lg:space-y-6">
                         {selectedAttempt.answers?.map((ans, i) => (
-                          <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
+                          <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
                               <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>{i + 1}</div>
                               <div>
@@ -468,7 +468,7 @@ const AdminGovtExamResults = () => {
                               </div>
                             </div>
                             <div className="flex flex-col items-end gap-2 shrink-0">
-                              <div className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
+                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
                                 {ans.isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
                                 {ans.isCorrect ? 'Correct' : 'Incorrect'}
                               </div>
@@ -479,7 +479,7 @@ const AdminGovtExamResults = () => {
                       </div>
                     </div>
 
-                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl transition-all hover:translate-y-[-4px]">Close</button>
+                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl transition-all hover:translate-y-[-4px]">Close</button>
                   </div>
                 </motion.div>
               </div>

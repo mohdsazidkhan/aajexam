@@ -160,7 +160,7 @@ const AdminUserWallets = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode(mode.id)}
-                  className={`flex-1 lg:flex-none p-3 rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                  className={`flex-1 lg:flex-none p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <mode.icon className="w-4 h-4 mx-auto" />
                 </motion.button>
@@ -172,7 +172,7 @@ const AdminUserWallets = () => {
               <select
                 value={itemsPerPage}
                 onChange={handleItemsPerPageChange}
-                className="w-full lg:w-auto bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 {[10, 20, 50, 100, 250, 500, 1000].map(v => <option key={v} value={v}>{v}</option>)}
               </select>
@@ -280,7 +280,7 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                   >
                     <div className="flex items-center gap-3 lg:gap-6">
                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg">
@@ -327,7 +327,7 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
+                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                       <Wallet className="w-24 h-24 text-primary-500 -rotate-12" />

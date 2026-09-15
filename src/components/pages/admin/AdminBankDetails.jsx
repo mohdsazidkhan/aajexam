@@ -123,7 +123,7 @@ export default function AdminBankDetails() {
   };
 
   const TableView = () => (
-    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
       <div className="overflow-x-auto selection:bg-primary-500/30">
         <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
           <thead>
@@ -315,7 +315,7 @@ export default function AdminBankDetails() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
         >
           <div className="flex items-center gap-3 lg:gap-6">
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
@@ -339,7 +339,7 @@ export default function AdminBankDetails() {
 
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:mx-8">
             <div className="px-3 lg:px-6 py-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/5 flex gap-4 items-center">
-              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl">
+              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
                 <CreditCard className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
@@ -350,7 +350,7 @@ export default function AdminBankDetails() {
             </div>
 
             <div className="px-3 lg:px-6 py-4 bg-primary-500/5 rounded-2xl border-2 border-primary-500/10 flex gap-4 items-center">
-              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-xl">
+              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
                 <University className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
@@ -415,7 +415,7 @@ export default function AdminBankDetails() {
       </motion.div>
 
       {/* Controls Bar */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
         <div className="lg:col-span-2">
           <div className="relative group/search">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
@@ -440,7 +440,7 @@ export default function AdminBankDetails() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode(mode)}
-              className={`flex-1 p-3 rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`flex-1 p-3 rounded-lg lg:rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
             >
               <Icon className="w-4 h-4" />
             </motion.button>

@@ -41,12 +41,12 @@ export default function QuestionList({ questions = [], title = 'Questions with s
               {q.image && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={q.image} alt={`Figure for question ${qi + 1}`} loading="lazy" decoding="async"
-                  className="my-3 max-h-72 w-auto rounded-xl border-2 border-slate-200 dark:border-slate-700" />
+                  className="my-3 max-h-72 w-auto rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-700" />
               )}
 
               <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 list-none p-0">
                 {(q.options || []).map((opt, oi) => (
-                  <li key={opt._id || oi} className="text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-xl border-2 border-slate-100 dark:border-slate-800 px-3 py-2">
+                  <li key={opt._id || oi} className="text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-slate-800 px-3 py-2">
                     <span className="font-black text-slate-500 dark:text-slate-500 mr-2">{LABELS[oi] || oi + 1}.</span>
                     {opt.text}
                   </li>

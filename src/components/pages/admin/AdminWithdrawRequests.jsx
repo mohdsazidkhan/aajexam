@@ -138,7 +138,7 @@ const AdminWithdrawRequests = () => {
     {
       key: 'status', header: 'Status', render: (_, req) => (
         <div className="space-y-3">
-          <div className={`px-4 py-1 rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' :
+          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' :
               req.status === 'approved' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' :
                 req.status === 'rejected' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' :
                   'bg-primary-500/10 text-primary-500 border-primary-500/20'
@@ -156,7 +156,7 @@ const AdminWithdrawRequests = () => {
             </div>
           )}
           {req.status === 'approved' && (
-            <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="w-full py-2 bg-primary-600 text-white rounded-xl text-[9px] font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2">
+            <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="w-full py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2">
               <Send className="w-3 h-3" /> Mark as Paid
             </motion.button>
           )}
@@ -210,7 +210,7 @@ const AdminWithdrawRequests = () => {
             <button
               key={opt.value}
               onClick={() => { setStatus(opt.value); setPage(1); }}
-              className={`w-full lg:w-auto px-4 lg:px-8 py-5 rounded-xl lg:rounded-[2.5rem] border-4 transition-all flex items-center gap-4 relative group overflow-hidden ${status === opt.value
+              className={`w-full lg:w-auto px-4 lg:px-8 py-5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 transition-all flex items-center gap-4 relative group overflow-hidden ${status === opt.value
                   ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-500 shadow-2xl'
                   : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-primary-500/30'
                 }`}
@@ -239,13 +239,13 @@ const AdminWithdrawRequests = () => {
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               {viewMode === 'table' ? (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto selection:bg-primary-500/30">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto selection:bg-primary-500/30">
                   <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} />
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
                       <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
                       <div className="flex justify-between items-start mb-4 lg:mb-8">
                         <div className="flex items-center gap-4">
@@ -255,7 +255,7 @@ const AdminWithdrawRequests = () => {
                             <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} wallet</div>
                           </div>
                         </div>
-                        <div className={`px-3 py-1 rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : req.status === 'rejected' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
+                        <div className={`px-3 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : req.status === 'rejected' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' : 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                       </div>
 
                       <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border-2 border-slate-100 dark:border-white/5">

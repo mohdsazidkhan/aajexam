@@ -172,7 +172,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.exam}
               onChange={(e) => handleFilterChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
             >
               <option value="">All Exams</option>
               {exams.map(exam => (
@@ -185,7 +185,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.sort}
               onChange={(e) => handleFilterChange('sort', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
             >
               <option value="latest">Latest First</option>
               <option value="popular">Most Popular</option>
@@ -258,7 +258,7 @@ const CommunityQuestionsPage = () => {
 
                 {/* Image */}
                 {q.image && (
-                  <div className="mb-3 rounded-xl overflow-hidden border-2 border-border-primary">
+                  <div className="mb-3 rounded-lg lg:rounded-xl overflow-hidden border-2 border-border-primary">
                     <img src={q.image} alt="Question" className="w-full max-h-80 object-contain bg-slate-50 dark:bg-slate-900" />
                   </div>
                 )}
@@ -269,7 +269,7 @@ const CommunityQuestionsPage = () => {
                     {q.options.filter(o => o.text?.trim()).map((opt, i) => (
                       <div
                         key={i}
-                        className="px-3 py-2 rounded-xl border-2 border-border-primary bg-background-surface text-content-secondary text-sm font-semibold"
+                        className="px-3 py-2 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-content-secondary text-sm font-semibold"
                       >
                         <span className="font-black mr-2 text-xs">{String.fromCharCode(65 + i)}.</span>
                         {opt.text}
@@ -281,7 +281,7 @@ const CommunityQuestionsPage = () => {
                 {/* Open to answer CTA */}
                 <Link
                   href={`/community-questions/${q._id}`}
-                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
+                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
                 >
                   <span className="text-xs font-bold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
                     Attempt & See Explanation
@@ -336,7 +336,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
-              className="p-2 rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -346,7 +346,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= pagination.totalPages}
-              className="p-2 rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

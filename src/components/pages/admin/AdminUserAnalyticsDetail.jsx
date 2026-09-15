@@ -32,7 +32,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 + 0.3 }}
-            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden cursor-default"
+            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden cursor-default"
         >
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -146,7 +146,7 @@ const AdminUserAnalyticsDetail = () => {
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-xl lg:rounded-[2.5rem] border-4 shadow-2xl overflow-hidden
+                                className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 shadow-2xl overflow-hidden
                                         ${netEarnings >= 0 ? "bg-emerald-500 border-emerald-400/50" : "bg-rose-500 border-rose-400/50"}`}
                             >
                                 <div className="relative z-10 flex flex-col items-center">

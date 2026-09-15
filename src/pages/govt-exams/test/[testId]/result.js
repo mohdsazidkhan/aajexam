@@ -379,7 +379,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
                     <div className="p-3 lg:p-6 space-y-4">
                       {q.questionImage && (
-                        <img src={q.questionImage} alt="" className="max-h-72 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                        <img src={q.questionImage} alt="" className="max-h-72 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                       )}
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                         {q.options.map((opt, oIdx) => {
@@ -394,7 +394,7 @@ const TestResult = ({ resolvedId } = {}) => {
                                 isSelected ? 'bg-accent-red/10 border-accent-red text-accent-red' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>
-                              <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-green-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
+                              <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-green-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
                                 {String.fromCharCode(65 + oIdx)}
                               </div>
                               <div className="flex-1 flex flex-col gap-2">
@@ -412,7 +412,7 @@ const TestResult = ({ resolvedId } = {}) => {
                           {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
                           {q.explanationImage && (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                           )}
                         </div>
                       )}

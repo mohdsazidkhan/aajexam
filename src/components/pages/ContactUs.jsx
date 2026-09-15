@@ -103,7 +103,7 @@ const ContactUs = ({ contactInfo = {
                            { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'orange' }
                         ].map((item, i) => (
                            <Card key={i} className="p-6 lg:p-8 flex items-center gap-6 lg:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] lg:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
-                              <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-xl lg:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
+                              <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
                                  <item.icon className="w-5 h-5 lg:w-6 lg:h-6" />
                               </div>
                               <div className="min-w-0">
@@ -124,7 +124,7 @@ const ContactUs = ({ contactInfo = {
                            </div>
                            <div className="flex flex-wrap gap-4">
                               {socialLinks.map((s, i) => (
-                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-500 hover:text-white dark:hover:text-white flex items-center justify-center rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
+                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-500 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg lg:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
                                     <s.icon className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
                                  </a>
                               ))}

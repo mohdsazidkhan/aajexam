@@ -55,7 +55,7 @@ const ReelsSaved = () => {
         {/* Header */}
         <div className="sticky top-0 z-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div className="flex items-center gap-3 max-w-2xl mx-auto">
-            <Link href="/reels" className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+            <Link href="/reels" className="p-2 rounded-lg lg:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
               <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
             </Link>
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -122,7 +122,7 @@ const ReelsSaved = () => {
               {hasMore && (
                 <button
                   onClick={() => setPage(p => p + 1)}
-                  className="w-full py-3 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10 rounded-xl"
+                  className="w-full py-3 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10 rounded-lg lg:rounded-xl"
                 >
                   Load more
                 </button>

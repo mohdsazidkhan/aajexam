@@ -146,10 +146,10 @@ const ProfilePage = () => {
                 </div>
 
                 <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                  <Button variant="primary" size="lg" className="px-8 py-4 rounded-xl lg:rounded-2xl text-sm font-black shadow-duo-primary" onClick={() => router.push('/edit-profile')}>
+                  <Button variant="primary" size="lg" className="px-8 py-4 rounded-lg lg:rounded-xl lg:rounded-2xl text-sm font-black shadow-duo-primary" onClick={() => router.push('/edit-profile')}>
                     Edit profile
                   </Button>
-                  <Button variant="ghost" size="lg" icon={Settings} className="px-8 py-4 rounded-xl lg:rounded-2xl border-2 border-border-primary text-sm font-semibold bg-background-surface" onClick={() => router.push('/settings')}>
+                  <Button variant="ghost" size="lg" icon={Settings} className="px-8 py-4 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-border-primary text-sm font-semibold bg-background-surface" onClick={() => router.push('/settings')}>
                     Account settings
                   </Button>
                 </div>
@@ -186,7 +186,7 @@ const ProfilePage = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveSubTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
               >
                 <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-500'}`} />
                 {tab.label}
@@ -274,7 +274,7 @@ const ProfilePage = () => {
                           {bankDetails.accountHolderName || 'Account holder'} · Account ending {bankDetails.accountNumber?.slice(-4) || '----'}
                         </p>
                       </div>
-                      <Button variant="ghost" className="px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white hover:text-primary-600 dark:hover:text-primary-400" onClick={() => router.push('/settings')}>
+                      <Button variant="ghost" className="px-6 py-3 rounded-lg lg:rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white hover:text-primary-600 dark:hover:text-primary-400" onClick={() => router.push('/settings')}>
                         Update
                       </Button>
                     </div>

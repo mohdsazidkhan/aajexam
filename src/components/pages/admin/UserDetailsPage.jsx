@@ -130,7 +130,7 @@ export default function UserDetailsPage() {
             { label: 'Avg. Activity', val: '84%', icon: Activity, color: 'emerald' },
             { label: 'Verified Users', val: '92%', icon: UserCheck, color: 'indigo' }
           ].map((s, i) => (
-            <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-lg group hover:border-primary-500/30 transition-all">
+            <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-lg group hover:border-primary-500/30 transition-all">
               <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><s.icon className="w-5 h-5" /></div>
               <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none mb-1">{s.val}</div>
               <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{s.label}</div>
@@ -139,7 +139,7 @@ export default function UserDetailsPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
           <div className="flex-1 relative group w-full lg:max-w-xl">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
             <input
@@ -167,7 +167,7 @@ export default function UserDetailsPage() {
             <div className="flex items-center justify-center py-32"><AdminDetailSkeleton /></div>
           ) : error ? (
             <div className="text-center py-32">
-              <div className="p-3 lg:p-8 bg-rose-500/10 rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block"><MailWarning className="w-16 h-16 text-rose-500" /></div>
+              <div className="p-3 lg:p-8 bg-rose-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block"><MailWarning className="w-16 h-16 text-rose-500" /></div>
               <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Problem</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
               <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 lg:mt-8 px-4 lg:px-10 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Try Again</button>
@@ -181,7 +181,7 @@ export default function UserDetailsPage() {
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -250,11 +250,11 @@ export default function UserDetailsPage() {
               {viewMode === 'grid' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                   {userDetails.map((u, i) => (
-                    <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl text-center group relative overflow-hidden flex flex-col font-outfit">
+                    <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl text-center group relative overflow-hidden flex flex-col font-outfit">
                       <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus === 'PRO' ? 'bg-amber-400' : 'bg-primary-500'}`} />
                       <div className="mb-6 mx-auto relative">
                         <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
-                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-xl border-2 border-amber-400 shadow-xl"><Crown className="w-4 h-4 text-amber-500" /></div>}
+                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-amber-400 shadow-xl"><Crown className="w-4 h-4 text-amber-500" /></div>}
                       </div>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-500 transition-colors block">{u.name || 'Anonymous'}</Link>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 lg:mb-8 hover:text-primary-500 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
@@ -270,9 +270,9 @@ export default function UserDetailsPage() {
                       </div>
 
                       <div className="space-y-4 mb-4 lg:mb-8">
-                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-blue-500/50" /> {u.email || 'N/A'}</div>
-                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Phone className="w-4 text-emerald-500/50" /> {u.phone || 'N/A'}</div>
-                        <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-blue-500/50" /> {u.email || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Phone className="w-4 text-emerald-500/50" /> {u.phone || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
 
                       <Link href={`/u/${u.username}`} target="_blank" className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all text-center block">View Full Profile</Link>
@@ -284,8 +284,8 @@ export default function UserDetailsPage() {
               {viewMode === 'list' && (
                 <div className="space-y-3 lg:space-y-6">
                   {userDetails.map((u, i) => (
-                    <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl flex flex-col md:flex-row md:items-center gap-3 lg:gap-8 group hover:border-primary-500/30 transition-all font-outfit">
-                      <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl lg:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-xl shrink-0">{u.name?.[0] || 'U'}</div>
+                    <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl flex flex-col md:flex-row md:items-center gap-3 lg:gap-8 group hover:border-primary-500/30 transition-all font-outfit">
+                      <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-xl shrink-0">{u.name?.[0] || 'U'}</div>
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                           <div>
@@ -305,7 +305,7 @@ export default function UserDetailsPage() {
                         <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
                           <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-blue-500/50" /> {u.email || 'No email'}</div>
                           <div className="flex items-center gap-2 text-[9px] font-black text-slate-400"><Calendar className="w-4 text-primary-500/50" /> {formatDate(u.createdAt)}</div>
-                          <div className={`px-4 py-1 rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
+                          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>
                       <button className="p-6 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-3xl hover:bg-primary-500 hover:text-white transition-all shadow-md"><ChevronRight className="w-6 h-6" /></button>

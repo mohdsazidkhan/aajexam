@@ -498,7 +498,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Right column: preview + campaign progress --- */}
             <div className="space-y-4">
               {campaign && (
-                <div className="border border-slate-200 dark:border-white/10 rounded-xl p-4 bg-slate-50 dark:bg-white/5">
+                <div className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl p-4 bg-slate-50 dark:bg-white/5">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-sm font-bold">
                       {isDraft && '📝 Draft'}

@@ -144,10 +144,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         alt={profile.name}
                         width={112}
                         height={112}
-                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-xl sm:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700"
+                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700"
                       />
                     ) : (
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-xl sm:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
                       {profile.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -175,7 +175,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 )}
                 {isOwnProfile && (
                   <button
-                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
+                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg lg:rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
                     onClick={() => router.push('/profile/settings')}
                   >
                     Edit Profile
@@ -230,7 +230,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 {profile.badges.map((badge, index) => (
                   <span
                     key={index}
-                    className="px-3 py-2 sm:px-4 sm:py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider border border-slate-100 dark:border-slate-700"
+                    className="px-3 py-2 sm:px-4 sm:py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg lg:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider border border-slate-100 dark:border-slate-700"
                   >
                     {badge}
                   </span>
@@ -247,19 +247,19 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 Exam Statistics
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
                     {0}
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-emerald-600">
                     {0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Best</span>
                 </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-orange-600">
                     {0}%
                   </span>
@@ -293,7 +293,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
                   return (
                     <Link href="/reels" key={reel._id}>
-                      <div className={`relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br ${config.gradient} group cursor-pointer`}>
+                      <div className={`relative aspect-[3/4] rounded-lg lg:rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br ${config.gradient} group cursor-pointer`}>
                         {/* Content preview */}
                         <div className="absolute inset-0 p-2.5 sm:p-3 pb-8 sm:pb-9 flex flex-col justify-between">
                           {/* Type badge */}
@@ -327,7 +327,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <button
                   onClick={() => fetchReels(reelsPage + 1)}
                   disabled={reelsLoading}
-                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 dark:text-primary-400 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 dark:text-primary-400 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                 >
                   {reelsLoading ? 'Loading...' : 'Load More Reels'}
                 </button>

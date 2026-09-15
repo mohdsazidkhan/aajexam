@@ -52,7 +52,7 @@ const SubjectAccordion = ({ subject }) => {
               ) : (
                 <div className="space-y-1.5">
                   {subject.topics.map(topic => (
-                    <div key={topic._id} className="flex items-center justify-between p-3 rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors">
+                    <div key={topic._id} className="flex items-center justify-between p-3 rounded-lg lg:rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors">
                       <div className="flex items-center gap-3">
                         {topic.isCompleted ? (
                           <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" />
@@ -164,7 +164,7 @@ const SyllabusTrackerPage = () => {
               <select
                 value={selectedExam}
                 onChange={e => setSelectedExam(e.target.value)}
-                className="w-full appearance-none bg-background-surface border border-border-primary text-content-primary text-sm font-bold rounded-xl py-3 pl-10 pr-10 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 cursor-pointer"
+                className="w-full appearance-none bg-background-surface border border-border-primary text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 cursor-pointer"
               >
                 <option value="">Select Exam to Track</option>
                 {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}

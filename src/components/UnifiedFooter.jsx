@@ -90,7 +90,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow us on ${social.icon.name || 'social media'}`}
-                  className="w-10 h-10 lg:w-11 lg:h-11 rounded-xl lg:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-600 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
+                  className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl lg:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-600 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
@@ -107,7 +107,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               {operationalLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-500 group-hover:border-primary-500/30 transition-all shadow-inner">
+                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-500 group-hover:border-primary-500/30 transition-all shadow-inner">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
@@ -126,7 +126,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               {legalLinksMap.map((link) => (
                 <li key={link.name}>
                   <Link href={link.path} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-500 group-hover:border-primary-500/30 transition-all shadow-inner">
+                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-500 group-hover:border-primary-500/30 transition-all shadow-inner">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>

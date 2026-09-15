@@ -2,7 +2,7 @@ import React from 'react';
 
 // Basic shimmer block
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 // ─── Shared Layout Wrapper ───
@@ -13,7 +13,7 @@ export const ListSkeleton = ({ rows = 5 }) => (
   <div className="space-y-4 font-outfit w-full">
     {Array.from({ length: rows }).map((_, i) => (
       <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-4 lg:p-5 flex gap-4">
-        <Sh className="w-12 h-12 rounded-xl shrink-0" />
+        <Sh className="w-12 h-12 rounded-lg lg:rounded-xl shrink-0" />
         <div className="flex-1 space-y-3 py-1">
           <Sh className="h-4 w-3/4 max-w-sm rounded-lg" />
           <div className="flex gap-2">
@@ -30,7 +30,7 @@ export const GridSkeleton = ({ count = 6 }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 font-outfit">
     {Array.from({ length: count }).map((_, i) => (
       <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 flex flex-col gap-4">
-        <Sh className="w-full aspect-[4/3] rounded-xl" />
+        <Sh className="w-full aspect-[4/3] rounded-lg lg:rounded-xl" />
         <div className="space-y-3">
           <Sh className="h-4 w-full rounded-lg" />
           <Sh className="h-4 w-2/3 rounded-lg" />
@@ -63,10 +63,10 @@ export const DashboardSkeleton = () => (
         <Sh className="h-6 w-48 rounded-lg" />
         <Sh className="h-8 w-24 rounded-full" />
       </div>
-      <Sh className="h-64 w-full rounded-xl" />
+      <Sh className="h-64 w-full rounded-lg lg:rounded-xl" />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <Sh className="h-32 rounded-xl" />
-        <Sh className="h-32 rounded-xl" />
+        <Sh className="h-32 rounded-lg lg:rounded-xl" />
+        <Sh className="h-32 rounded-lg lg:rounded-xl" />
       </div>
     </div>
   </div>
@@ -97,7 +97,7 @@ export const ProfileSkeleton = () => (
     <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 space-y-4">
       {[1, 2, 3, 4].map(i => (
         <div key={i} className="flex gap-4">
-          <Sh className="w-10 h-10 rounded-xl shrink-0" />
+          <Sh className="w-10 h-10 rounded-lg lg:rounded-xl shrink-0" />
           <div className="flex-1 space-y-2 py-1">
             <Sh className="h-4 w-1/3 rounded-lg" />
             <Sh className="h-3 w-full rounded-md" />
@@ -111,7 +111,7 @@ export const ProfileSkeleton = () => (
 export const SubscriptionSkeleton = () => (
   <div className="space-y-6 lg:space-y-10 font-outfit w-full">
     <div className="text-center space-y-4 max-w-2xl mx-auto">
-      <Sh className="h-8 w-64 mx-auto rounded-xl" />
+      <Sh className="h-8 w-64 mx-auto rounded-lg lg:rounded-xl" />
       <Sh className="h-4 w-full rounded-lg" />
       <Sh className="h-4 w-3/4 mx-auto rounded-lg" />
     </div>
@@ -121,7 +121,7 @@ export const SubscriptionSkeleton = () => (
         <div key={i} className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-6">
           <Sh className="h-6 w-32 rounded-lg" />
           <div className="space-y-2">
-            <Sh className="h-10 w-40 rounded-xl" />
+            <Sh className="h-10 w-40 rounded-lg lg:rounded-xl" />
             <Sh className="h-3 w-24 rounded-md" />
           </div>
           <Sh className="h-12 w-full rounded-full" />
@@ -145,15 +145,15 @@ export const QuizAttemptSkeleton = () => (
     <div className="bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-700 p-4 flex items-center justify-between gap-4">
       <Sh className="h-3 w-24 rounded-full" />
       <Sh className="h-2.5 flex-1 max-w-md rounded-full" />
-      <Sh className="h-8 w-16 rounded-xl shrink-0" />
+      <Sh className="h-8 w-16 rounded-lg lg:rounded-xl shrink-0" />
     </div>
 
     <div className="max-w-3xl mx-auto p-4 lg:p-8 space-y-6">
       {/* Question card */}
       <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 space-y-6">
         <Sh className="h-3 w-20 rounded-full" />
-        <Sh className="h-6 w-full rounded-xl" />
-        <Sh className="h-6 w-2/3 rounded-xl" />
+        <Sh className="h-6 w-full rounded-lg lg:rounded-xl" />
+        <Sh className="h-6 w-2/3 rounded-lg lg:rounded-xl" />
 
         {/* Options */}
         <div className="space-y-3 pt-4">
@@ -211,7 +211,7 @@ export const ReelFeedSkeleton = () => (
 
 export const FormSkeleton = ({ fields = 4 }) => (
   <div className="max-w-2xl mx-auto bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 space-y-5 font-outfit">
-    <Sh className="h-7 w-56 rounded-xl" />
+    <Sh className="h-7 w-56 rounded-lg lg:rounded-xl" />
     {Array.from({ length: fields }).map((_, i) => (
       <div key={i} className="space-y-2">
         <Sh className="h-3 w-24 rounded-md" />
@@ -228,8 +228,8 @@ export const DetailSkeleton = () => (
     <div className="relative bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 text-center">
       <div className="space-y-4 max-w-3xl mx-auto flex flex-col items-center">
         <Sh className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl" />
-        <Sh className="h-8 lg:h-10 w-full rounded-xl" />
-        <Sh className="h-8 lg:h-10 w-3/4 rounded-xl" />
+        <Sh className="h-8 lg:h-10 w-full rounded-lg lg:rounded-xl" />
+        <Sh className="h-8 lg:h-10 w-3/4 rounded-lg lg:rounded-xl" />
         <div className="flex gap-4 justify-center mt-4">
           <Sh className="h-8 w-24 rounded-full" />
           <Sh className="h-8 w-24 rounded-full" />

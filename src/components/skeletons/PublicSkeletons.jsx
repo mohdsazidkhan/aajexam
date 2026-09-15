@@ -8,13 +8,13 @@
 
 // ─── Base shimmer block ───────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 // ─── Reusable row skeleton (icon + 2 text lines + badges) ────────────────────
 const RowSkeleton = ({ badgeCount = 2 }) => (
   <div className="flex items-center gap-3 p-3 lg:p-4 bg-white dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700/60">
-    <Sh className="w-10 h-10 lg:w-12 lg:h-12 shrink-0 rounded-xl" />
+    <Sh className="w-10 h-10 lg:w-12 lg:h-12 shrink-0 rounded-lg lg:rounded-xl" />
     <div className="flex-1 space-y-2 min-w-0">
       <Sh className="h-3.5 w-3/4 rounded-lg" />
       <Sh className="h-2.5 w-1/2 rounded-lg" />
@@ -32,10 +32,10 @@ const RowSkeleton = ({ badgeCount = 2 }) => (
 const ListHeaderSkeleton = () => (
   <div className="space-y-4 mb-6">
     <div className="flex items-center justify-between">
-      <Sh className="h-7 w-28 rounded-xl" />
+      <Sh className="h-7 w-28 rounded-lg lg:rounded-xl" />
       <Sh className="h-4 w-16 rounded-full" />
     </div>
-    <Sh className="h-10 w-full rounded-xl" />
+    <Sh className="h-10 w-full rounded-lg lg:rounded-xl" />
   </div>
 );
 
@@ -43,7 +43,7 @@ const ListHeaderSkeleton = () => (
 const HeroBannerSkeleton = () => (
   <div className="rounded-2xl p-6 bg-slate-100 dark:bg-slate-800/60 space-y-3 mb-5">
     <Sh className="h-4 w-24 rounded-full" />
-    <Sh className="h-8 w-48 rounded-xl" />
+    <Sh className="h-8 w-48 rounded-lg lg:rounded-xl" />
     <Sh className="h-3 w-64 rounded-lg" />
     <div className="flex gap-2 mt-2">
       <Sh className="h-7 w-20 rounded-lg" />
@@ -77,7 +77,7 @@ const GridCardSkeleton = () => (
 export const ExamCardSkeleton = () => (
   <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 space-y-3">
     <div className="flex items-start gap-3">
-      <Sh className="w-12 h-12 rounded-xl shrink-0" />
+      <Sh className="w-12 h-12 rounded-lg lg:rounded-xl shrink-0" />
       <div className="flex-1 space-y-2">
         <Sh className="h-4 w-3/4 rounded-lg" />
         <Sh className="h-3 w-1/2 rounded-full" />
@@ -105,7 +105,7 @@ const QuizPreviewSkeleton = () => (
       <div className="flex items-start gap-4">
         <Sh className="w-14 h-14 rounded-2xl shrink-0" />
         <div className="flex-1 space-y-3">
-          <Sh className="h-6 w-3/4 rounded-xl" />
+          <Sh className="h-6 w-3/4 rounded-lg lg:rounded-xl" />
           <Sh className="h-4 w-1/2 rounded-lg" />
           <div className="flex gap-2 flex-wrap">
             {[1,2,3,4].map(i => <Sh key={i} className="h-6 w-20 rounded-lg" />)}
@@ -126,7 +126,7 @@ const QuizPreviewSkeleton = () => (
     </div>
     {/* Leaderboard */}
     <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 space-y-4">
-      <Sh className="h-5 w-32 rounded-xl" />
+      <Sh className="h-5 w-32 rounded-lg lg:rounded-xl" />
       {[1,2,3].map(i => <RowSkeleton key={i} badgeCount={1} />)}
     </div>
   </div>
@@ -140,8 +140,8 @@ const BlogDetailSkeleton = () => (
     <Sh className="h-64 lg:h-96 w-full rounded-3xl" />
     <div className="space-y-4">
       <Sh className="h-3 w-24 rounded-full" />
-      <Sh className="h-8 w-5/6 rounded-xl" />
-      <Sh className="h-8 w-3/4 rounded-xl" />
+      <Sh className="h-8 w-5/6 rounded-lg lg:rounded-xl" />
+      <Sh className="h-8 w-3/4 rounded-lg lg:rounded-xl" />
       {/* Meta row */}
       <div className="flex gap-4">
         <Sh className="h-3 w-16 rounded-full" />
@@ -164,7 +164,7 @@ const BlogDetailSkeleton = () => (
 export const AuthFormSkeleton = () => (
   <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-950 px-4">
     <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-5 animate-pulse">
-      <Sh className="h-8 w-40 mx-auto rounded-xl" />
+      <Sh className="h-8 w-40 mx-auto rounded-lg lg:rounded-xl" />
       <Sh className="h-3 w-56 mx-auto rounded-lg" />
       <div className="space-y-4 pt-4">
         <Sh className="h-12 w-full rounded-2xl" />
@@ -183,8 +183,8 @@ const DetailPageSkeleton = ({ color = 'from-indigo-500 to-violet-600' }) => (
       <Sh className="h-4 w-16 rounded-full mb-4" />
       {/* Hero banner */}
       <div className={`bg-gradient-to-br ${color} rounded-2xl p-6 mb-5 space-y-3 opacity-40`}>
-        <Sh className="h-8 w-8 rounded-xl bg-white/40" />
-        <Sh className="h-7 w-48 rounded-xl bg-white/40" />
+        <Sh className="h-8 w-8 rounded-lg lg:rounded-xl bg-white/40" />
+        <Sh className="h-7 w-48 rounded-lg lg:rounded-xl bg-white/40" />
         <Sh className="h-3 w-64 rounded-lg bg-white/40" />
         <div className="flex gap-2">
           <Sh className="h-7 w-20 rounded-lg bg-white/40" />
@@ -280,8 +280,8 @@ export const BlogListSkeleton = () => (
   <div className="animate-pulse space-y-6 py-6">
     {/* Filters */}
     <div className="flex gap-3">
-      <Sh className="h-9 w-32 rounded-xl" />
-      <Sh className="h-9 flex-1 rounded-xl" />
+      <Sh className="h-9 w-32 rounded-lg lg:rounded-xl" />
+      <Sh className="h-9 flex-1 rounded-lg lg:rounded-xl" />
     </div>
     {/* Grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
@@ -289,9 +289,9 @@ export const BlogListSkeleton = () => (
     </div>
     {/* Pagination */}
     <div className="flex justify-center gap-2 pt-4">
-      <Sh className="h-9 w-20 rounded-xl" />
-      <Sh className="h-9 w-9 rounded-xl" />
-      <Sh className="h-9 w-20 rounded-xl" />
+      <Sh className="h-9 w-20 rounded-lg lg:rounded-xl" />
+      <Sh className="h-9 w-9 rounded-lg lg:rounded-xl" />
+      <Sh className="h-9 w-20 rounded-lg lg:rounded-xl" />
     </div>
   </div>
 );
@@ -302,8 +302,8 @@ export const BlogDetailPageSkeleton = BlogDetailSkeleton;
 /** Skeleton for the dynamic loading fallback in Next.js pages (inline JSX) */
 export const PageLoadingFallback = () => (
   <div className="min-h-screen flex flex-col gap-4 p-4 animate-pulse">
-    <Sh className="h-8 w-48 rounded-xl mt-6" />
-    <Sh className="h-10 w-full rounded-xl" />
+    <Sh className="h-8 w-48 rounded-lg lg:rounded-xl mt-6" />
+    <Sh className="h-10 w-full rounded-lg lg:rounded-xl" />
     <div className="space-y-3 mt-2">
       {Array.from({ length: 8 }).map((_, i) => <RowSkeleton key={i} badgeCount={2} />)}
     </div>

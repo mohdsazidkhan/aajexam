@@ -84,7 +84,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             <button 
               onClick={handleStartAdaptive}
               disabled={generatingAdaptive}
-              className="w-full sm:w-auto bg-white text-cyan-600 hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto bg-white text-cyan-600 hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg lg:rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {generatingAdaptive ? (
                 <><div className="w-4 h-4 border-2 border-cyan-600 border-t-transparent rounded-full animate-spin" /> GENERATING...</>
@@ -145,8 +145,8 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No quizzes</p></div> : quizzes.map((quiz, idx) => (
               <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all">
+                <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
                   <p className="text-xs text-slate-400">{quiz.subject?.name || ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
@@ -164,8 +164,8 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               const done = test.userAttempt?.status === 'Completed';
               return (
                 <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
-                  className={`flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-xl border ${done ? 'border-cyan-200' : 'border-slate-200 dark:border-slate-700'}`}>
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-cyan-100 text-cyan-600' : 'bg-slate-100 text-slate-400'}`}>
+                  className={`flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border ${done ? 'border-cyan-200' : 'border-slate-200 dark:border-slate-700'}`}>
+                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-cyan-100 text-cyan-600' : 'bg-slate-100 text-slate-400'}`}>
                     {done ? <Trophy className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   </div>
                   <div className="flex-1 min-w-0">

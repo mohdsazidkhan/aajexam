@@ -267,7 +267,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {subjects.length > 0 ? subjects.map((subject) => (
-              <div key={subject._id} className="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={subject._id} className="flex items-center justify-between gap-3 p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                 <span className="text-sm font-bold text-content-primary">{subject.name}</span>
                 {subject.slug ? (
                   <button
@@ -283,7 +283,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 )}
               </div>
             )) : subjectAreas.map((subject) => (
-              <div key={subject} className="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={subject} className="flex items-center justify-between gap-3 p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
                   onClick={() => setActiveTab('quizzes')}
@@ -345,7 +345,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       </p>
                     </div>
                   </div>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
                     Practice {subject.name} →
                   </span>
                 </Card>
@@ -380,7 +380,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     </div>
                   </div>
                   <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? 'set' : 'sets'} · {topic.questionCount} Qs</p>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
                     Practice {topic.name} →
                   </span>
                 </Card>
@@ -438,12 +438,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       <div className="flex gap-2">
                         {isCompleted && (
                           <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
-                            className="flex-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                            className="flex-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
                             Results
                           </button>
                         )}
                         <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
-                          className={`flex-1 text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
+                          className={`flex-1 text-[10px] font-black px-4 py-2 rounded-lg lg:rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
                           {isCompleted ? 'Retake' : 'Start'}
                         </button>
                       </div>
@@ -487,7 +487,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     <p className="text-xs font-bold text-content-muted">{quiz.duration} min · {quiz.totalMarks} marks</p>
                     <div className="flex items-center gap-2 mt-auto">
                         <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="flex-1 text-center text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-xl uppercase">Start</span>
+                        <span className="flex-1 text-center text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">Start</span>
                       </div>
                   </Card>
                 </motion.div>

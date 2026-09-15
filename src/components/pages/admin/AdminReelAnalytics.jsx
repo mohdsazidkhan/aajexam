@@ -17,7 +17,7 @@ const StatCard = ({ icon: Icon, label, value, color, delay = 0 }) => (
     className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5"
   >
     <div className="flex items-center gap-3">
-      <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 ${color}`}>
+      <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg lg:rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 ${color}`}>
         <Icon className="w-5 h-5" />
       </div>
       <div className="min-w-0">
@@ -98,7 +98,7 @@ const AdminReelAnalytics = () => {
                   <h3 className="font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight text-sm sm:text-base">By Subject</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
                     {data.subjectBreakdown.map(item => (
-                      <div key={item._id} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800">
+                      <div key={item._id} className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800">
                         <p className="font-black text-slate-900 dark:text-white text-xs sm:text-sm truncate uppercase tracking-tight">{item._id}</p>
                         <p className="text-[10px] sm:text-xs font-bold text-slate-400 mt-1">{item.count} reels &middot; {item.views} views</p>
                       </div>
@@ -111,7 +111,7 @@ const AdminReelAnalytics = () => {
                   <h3 className="font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight text-sm sm:text-base">Top 10 Reels</h3>
                   <div className="space-y-1">
                     {data.topReels.map((reel, i) => (
-                      <div key={reel._id} className="flex items-start sm:items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                      <div key={reel._id} className="flex items-start sm:items-center gap-3 p-3 rounded-lg lg:rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                         <span className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-black text-slate-500 shrink-0 mt-0.5 sm:mt-0">{i + 1}</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white line-clamp-2 sm:truncate">

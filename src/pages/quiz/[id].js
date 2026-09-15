@@ -126,18 +126,18 @@ export default function QuizPreview({
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
               {quiz?.duration && (
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                   <div className="text-lg font-black text-slate-900 dark:text-white">{quiz.duration}</div>
                   <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Minutes</div>
                 </div>
               )}
               {quiz?.totalMarks && (
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                   <div className="text-lg font-black text-slate-900 dark:text-white">{quiz.totalMarks}</div>
                   <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Marks</div>
                 </div>
               )}
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-emerald-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>

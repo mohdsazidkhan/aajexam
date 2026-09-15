@@ -216,7 +216,7 @@ const AdminReferralAnalytics = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`relative overflow-hidden ${stat.color} rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 text-white shadow-2xl ${stat.shadow}`}
+                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 text-white shadow-2xl ${stat.shadow}`}
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-20">
                                         <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2 text-white" />
@@ -281,7 +281,7 @@ const AdminReferralAnalytics = () => {
                             <button
                                 onClick={exportToCSV}
                                 disabled={analytics.length === 0}
-                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-emerald-600 rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-emerald-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-emerald-600 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-emerald-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
                             >
                                 <Download className="w-5 h-5" /> Export CSV
                             </button>
@@ -317,13 +317,13 @@ const AdminReferralAnalytics = () => {
                                                 initial={{ opacity: 0, scale: 0.95 }}
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
                                             >
                                                 <div className="relative mb-4 lg:mb-8">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-4 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-emerald-500 transition-all uppercase font-black text-xl">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
                                                     </div>
-                                                    <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-2 rounded-xl shadow-lg border-4 border-white dark:border-[#060813]">
+                                                    <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white p-2 rounded-lg lg:rounded-xl shadow-lg border-4 border-white dark:border-[#060813]">
                                                         <Award className="w-4 h-4" />
                                                     </div>
                                                 </div>
@@ -363,7 +363,7 @@ const AdminReferralAnalytics = () => {
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-10"
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-emerald-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-10"
                                             >
                                                 <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-4 border-slate-100 dark:border-white/10 shadow-xl group-hover:scale-110 group-hover:bg-emerald-500 transition-all uppercase font-black text-2xl">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
@@ -429,7 +429,7 @@ const AdminReferralAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                             <div className="flex items-center gap-4">
-                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-emerald-500 transition-all uppercase">
+                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-emerald-500 transition-all uppercase">
                                                                     {user.name?.[0]?.toUpperCase()}
                                                                 </div>
                                                                 <div>

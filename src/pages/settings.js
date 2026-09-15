@@ -122,7 +122,7 @@ const SettingsPage = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3 lg:px-6 py-2.5 rounded-xl text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
+                  className={`flex items-center gap-2 px-3 lg:px-6 py-2.5 rounded-lg lg:rounded-xl text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
                     ? 'bg-primary-500 text-white shadow-duo-primary scale-105'
                     : 'text-content-secondary hover:text-primary-600 hover:bg-slate-100 dark:hover:bg-slate-700/50'
                     }`}

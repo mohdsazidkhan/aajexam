@@ -128,7 +128,7 @@ export default function CommunityQuestionDetailPage() {
                     key={i}
                     disabled={attempted}
                     onClick={() => setSelectedOption(i)}
-                    className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition text-sm ${cls} disabled:cursor-default`}
+                    className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition text-sm ${cls} disabled:cursor-default`}
                   >
                     <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-emerald-500 text-white' : attempted && isSel ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
                       {String.fromCharCode(65 + i)}
@@ -144,7 +144,7 @@ export default function CommunityQuestionDetailPage() {
                 <button
                   disabled={selectedOption === null}
                   onClick={() => setAttempted(true)}
-                  className="w-full px-4 py-2.5 mt-1 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-2.5 mt-1 bg-primary-500 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Submit Answer
                 </button>

@@ -63,7 +63,7 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 // --- Helper: Stat Mini Card ---
 const StatMini = ({ icon: Icon, label, value, color = 'text-primary-500', bg = 'bg-primary-50' }) => (
    <div className="flex items-center gap-3 p-3 rounded-2xl bg-background-surface-secondary/50">
-      <div className={`p-2 rounded-xl ${bg} dark:bg-slate-700/50 ${color}`}>
+      <div className={`p-2 rounded-lg lg:rounded-xl ${bg} dark:bg-slate-700/50 ${color}`}>
          <Icon className="w-4 h-4" />
       </div>
       <div>
@@ -519,14 +519,14 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                               <Card className="p-5 border-border-primary flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg lg:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Blog Earnings</span>
                                  </div>
                                  <span className="font-black text-lg text-blue-600">{wallet?.blogEarnings || 0}</span>
                               </Card>
                               <Card className="p-5 border-border-primary flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-lg lg:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Referral Rewards</span>
                                  </div>
                                  <span className="font-black text-lg text-orange-600">{wallet?.referralRewards || 0}</span>
@@ -544,7 +544,7 @@ const MyAnalyticsPage = () => {
                                     <div className="flex items-center gap-2 bg-background-surface-secondary p-3 rounded-2xl">
                                        <span className="flex-1 font-black text-lg font-mono tracking-wider">{referral?.code || '---'}</span>
                                        <button onClick={copyReferralCode}
-                                          className="p-2 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-colors">
+                                          className="p-2 bg-primary-500 text-white rounded-lg lg:rounded-xl hover:bg-primary-600 transition-colors">
                                           {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                                        </button>
                                     </div>

@@ -143,7 +143,7 @@ export default function AdminContacts() {
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 lg:gap-6 w-full lg:w-auto">
                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-xl">
+                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
                       <Filter className="w-5 h-5" />
                     </div>
                     <div>
@@ -201,7 +201,7 @@ export default function AdminContacts() {
                  animate={{ opacity: 1, scale: 1 }}
                  className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
-                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
@@ -240,7 +240,7 @@ export default function AdminContacts() {
                               <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + i + 1}</span>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                               <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase">
+                               <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase">
                                  {contact.name?.[0].toUpperCase() || 'U'}
                                </div>
                             </td>
@@ -259,10 +259,10 @@ export default function AdminContacts() {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="flex justify-center gap-3">
-                                  <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-lg active:scale-95">
+                                  <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-lg active:scale-95">
                                      <Send className="w-4 h-4" />
                                   </button>
-                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-lg active:scale-95">
+                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-lg lg:rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-lg active:scale-95">
                                      <Trash2 className="w-4 h-4" />
                                   </button>
                                </div>
@@ -282,7 +282,7 @@ export default function AdminContacts() {
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.05 }}
-                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
                        >
                           <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-lg">
                              {contact.name?.[0].toUpperCase() || 'U'}
@@ -301,10 +301,10 @@ export default function AdminContacts() {
                                 <span className="text-[9px] font-black uppercase text-slate-400">{formatDate(contact.createdAt)}</span>
                              </div>
                              <div className="flex gap-2">
-                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-xl hover:bg-primary-500 hover:text-white transition-all active:scale-95">
+                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-500 hover:text-white transition-all active:scale-95">
                                    <Send className="w-4 h-4" />
                                 </button>
-                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-xl hover:bg-rose-500 hover:text-white transition-all active:scale-95">
+                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-lg lg:rounded-xl hover:bg-rose-500 hover:text-white transition-all active:scale-95">
                                    <Trash2 className="w-4 h-4" />
                                 </button>
                              </div>
@@ -322,7 +322,7 @@ export default function AdminContacts() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
+                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
                       >
                          <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 group-hover:text-white transition-all">
                             <User className="w-7 h-7" />

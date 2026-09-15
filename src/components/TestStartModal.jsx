@@ -85,26 +85,26 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{categoryName}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{examTitle}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
+                <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 bg-amber-50 dark:bg-amber-900/30 rounded-xl flex items-center justify-center text-amber-600 shadow-sm">
+                  <div className="w-10 h-10 bg-amber-50 dark:bg-amber-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-amber-600 shadow-sm">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{pattern.totalMarks} Marks</span>
@@ -112,7 +112,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-red-50 dark:bg-red-900/30 rounded-xl flex items-center justify-center text-red-600 shadow-sm">
+                  <div className="w-10 h-10 bg-red-50 dark:bg-red-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-red-600 shadow-sm">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-red-600 dark:text-red-400 uppercase tracking-widest text-center">
@@ -121,7 +121,7 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
+                  <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest text-center">

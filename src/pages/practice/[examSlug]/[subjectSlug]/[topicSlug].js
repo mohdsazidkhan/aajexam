@@ -100,15 +100,15 @@ export default function TopicPractice({
               {totalQuestions} {topicName} questions for {examName}, split into {quizCount} timed practice set{quizCount === 1 ? '' : 's'} — every question with its answer and explanation.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-slate-900 dark:text-white">{totalQuestions}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Questions</div>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-slate-900 dark:text-white">{quizCount}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Practice sets</div>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-emerald-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
@@ -147,16 +147,16 @@ export default function TopicPractice({
             </h2>
             <div className="flex flex-wrap gap-3">
               {exam?.slug && (
-                <Link href={`/govt-exams/exam/${exam.slug}`} className="bg-primary-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
+                <Link href={`/govt-exams/exam/${exam.slug}`} className="bg-primary-600 text-white px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
                   {examName} syllabus &amp; pattern
                 </Link>
               )}
               {hasPyq && exam?.slug && (
-                <Link href={`/pyq/${exam.slug}`} className="bg-white dark:bg-slate-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+                <Link href={`/pyq/${exam.slug}`} className="bg-white dark:bg-slate-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                   Full {examName} question papers
                 </Link>
               )}
-              <Link href={subjectUrl} className="bg-white dark:bg-slate-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              <Link href={subjectUrl} className="bg-white dark:bg-slate-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                 All {examName} {subjectName} practice
               </Link>
             </div>

@@ -55,12 +55,12 @@ const ReadinessPage = () => {
 
           <Card className="p-4 lg:p-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
-              className="flex-1 px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm outline-none">
+              className="flex-1 px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
               <option value="">Select Exam</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </select>
             <button onClick={analyzeReadiness} disabled={!selectedExam || analyzing}
-              className="px-6 py-2.5 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              className="px-6 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? 'Analyzing...' : 'Analyze'}
             </button>
           </Card>

@@ -113,7 +113,7 @@ const LoginPage = () => {
                 { icon: Sparkles, text: 'Play daily quizzes subject & topic wise' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
-                  <div className="p-2 bg-primary-500/10 rounded-xl">
+                  <div className="p-2 bg-primary-500/10 rounded-lg lg:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-700 dark:text-primary-500" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
@@ -137,7 +137,7 @@ const LoginPage = () => {
             <div className="space-y-4">
               <button
                 onClick={() => googleLogin()}
-                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 lg:mt-2"
+                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 lg:mt-2"
               >
                 <img src="/google.svg" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Continue with Google
@@ -197,7 +197,7 @@ const LoginPage = () => {
                 </div>
 
                 <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-duo-primary" type="submit" disabled={isLoading}>
-                  {isLoading ? 'Signing in...' : 'Sign in'}
+                  {isLoading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>
             </div>
@@ -206,7 +206,7 @@ const LoginPage = () => {
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Don&apos;t have an account?{' '}
                 <Link href="/register" className="text-primary-700 dark:text-primary-500 hover:underline font-black">
-                  Create New
+                  REGISTER
                 </Link>
               </p>
             </div>

@@ -165,7 +165,7 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
           <Card className="p-4 lg:p-10 space-y-3 lg:space-y-6 border-2">
             <div className="flex items-center justify-between">
-              <div className="p-2.5 lg:p-4 bg-slate-500/10 text-slate-500 rounded-xl lg:rounded-2xl">
+              <div className="p-2.5 lg:p-4 bg-slate-500/10 text-slate-500 rounded-lg lg:rounded-xl lg:rounded-2xl">
                 <GraduationCap className="w-5 h-5 lg:w-7 lg:h-7" />
               </div>
               <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest px-2.5 lg:px-3 py-1 rounded-full bg-slate-500/10 text-slate-500">Free forever</span>
@@ -190,7 +190,7 @@ const FeaturesPage = () => {
           <Card className="p-4 lg:p-10 space-y-3 lg:space-y-6 border-2 border-primary-500/40 relative overflow-hidden">
             <Crown className="absolute -bottom-8 -right-8 w-40 h-40 text-primary-500/5" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 lg:p-4 bg-primary-500/10 text-primary-600 rounded-xl lg:rounded-2xl">
+              <div className="p-2.5 lg:p-4 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl lg:rounded-2xl">
                 <Crown className="w-5 h-5 lg:w-7 lg:h-7" />
               </div>
               <ProBadge size="sm" />
@@ -217,7 +217,7 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {HIGHLIGHTS.map((h, i) => (
             <Card key={i} className="p-4 lg:p-8 group space-y-2.5 lg:space-y-5 border-2 hover:border-primary-500/50 transition-all duration-300">
-              <div className={`p-2.5 lg:p-4 bg-${h.color}-500/10 text-${h.color}-500 rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform w-fit shadow-sm`}>
+              <div className={`p-2.5 lg:p-4 bg-${h.color}-500/10 text-${h.color}-500 rounded-lg lg:rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform w-fit shadow-sm`}>
                 <h.icon className="w-4 h-4 lg:w-6 lg:h-6" />
               </div>
               <div className="space-y-1 lg:space-y-2">

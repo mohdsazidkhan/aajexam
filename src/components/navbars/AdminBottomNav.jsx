@@ -87,7 +87,7 @@ const AdminBottomNav = () => {
                       }}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all active:bg-slate-50 dark:active:bg-slate-800"
                     >
-                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
+                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className="w-5 h-5 text-white" />
                       </div>
                       <div className="text-left">

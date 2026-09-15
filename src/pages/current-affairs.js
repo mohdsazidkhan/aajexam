@@ -13,7 +13,7 @@ import { generateBreadcrumbSchema } from '../utils/schema';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
 );
 
 const CASkeleton = () => (
@@ -28,7 +28,7 @@ const CASkeleton = () => (
             <div className="flex-1 space-y-2"><Sh className="h-4 w-3/4 rounded-lg" /><Sh className="h-2.5 w-1/2 rounded-full" /></div>
           </div>
           <Sh className="h-3 w-full rounded-lg" />
-          <div className="flex gap-2"><Sh className="h-7 w-16 rounded-xl" /><Sh className="h-7 w-16 rounded-xl" /></div>
+          <div className="flex gap-2"><Sh className="h-7 w-16 rounded-lg lg:rounded-xl" /><Sh className="h-7 w-16 rounded-lg lg:rounded-xl" /></div>
         </div>
       ))}
     </div>
@@ -111,17 +111,17 @@ const CurrentAffairsPage = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search current affairs..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none" />
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none" />
             </div>
             <div className="relative">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
               <DatePicker selected={selectedDate} onChange={d => { setSelectedDate(d); setPage(1); }}
                 dateFormat="MMM yyyy" showMonthYearPicker placeholderText="Pick month..." isClearable={false}
-                className="w-full sm:w-48 bg-slate-100 dark:bg-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none" />
+                className="w-full sm:w-48 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none" />
             </div>
             {hasFilters && (
               <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); setPage(1); }}
-                className="flex items-center gap-1 px-4 py-2.5 bg-white/20 text-white rounded-xl text-xs font-black uppercase border border-white/30">
+                className="flex items-center gap-1 px-4 py-2.5 bg-white/20 text-white rounded-lg lg:rounded-xl text-xs font-black uppercase border border-white/30">
                 <X className="w-3 h-3" /> Clear
               </button>
             )}
@@ -193,16 +193,16 @@ const CurrentAffairsPage = () => {
                   )}
 
                   <div className="flex items-center flex-wrap gap-2 pt-1">
-                    <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-xl border ${cfg.chip}`}>
+                    <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-lg lg:rounded-xl border ${cfg.chip}`}>
                       <Tag className="w-3 h-3" />
                       {affair.category}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-600">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-600">
                       <Eye className="w-3 h-3" />
                       {affair.views || 0}
                     </div>
                     {affair.questions?.length > 0 && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1.5 rounded-xl border border-amber-100 dark:border-amber-800/50">
+                      <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-amber-100 dark:border-amber-800/50">
                         <Tag className="w-3 h-3" />
                         {affair.questions.length} Qs
                       </div>
@@ -227,10 +227,10 @@ const CurrentAffairsPage = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-6">
             <button disabled={page === 1} onClick={() => setPage(page - 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
             <span className="text-sm font-black text-slate-500">Page {page} of {totalPages}</span>
             <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-xl text-sm font-black disabled:opacity-30">Next</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
           </div>
         )}
       </section>

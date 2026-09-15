@@ -197,7 +197,7 @@ const AdminExpenses = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
+                        className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                     >
                         <div className="absolute top-0 left-0 w-full h-1 bg-red-500" />
                         <div className="p-4 bg-red-500/10 text-red-500 rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
@@ -215,7 +215,7 @@ const AdminExpenses = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
+                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-primary-500" />
                             <div className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl w-fit mb-6 group-hover:rotate-12 transition-transform capitalize font-black text-xs">
@@ -304,7 +304,7 @@ const AdminExpenses = () => {
                                                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
                                                 </td>
                                                 <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
-                                                    <span className="px-4 py-1.5 rounded-xl bg-primary-500 text-white text-[9px] font-black uppercase tracking-widest shadow-lg shadow-primary-500/20">
+                                                    <span className="px-4 py-1.5 rounded-lg lg:rounded-xl bg-primary-500 text-white text-[9px] font-black uppercase tracking-widest shadow-lg shadow-primary-500/20">
                                                         {expense.category}
                                                     </span>
                                                 </td>
@@ -320,14 +320,14 @@ const AdminExpenses = () => {
                                                         <motion.button
                                                             whileHover={{ scale: 1.1 }}
                                                             onClick={() => handleOpenModal(expense)}
-                                                            className="p-3 bg-primary-500/10 text-primary-500 rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-sm"
+                                                            className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-sm"
                                                         >
                                                             <Edit3 className="w-4 h-4" />
                                                         </motion.button>
                                                         <motion.button
                                                             whileHover={{ scale: 1.1 }}
                                                             onClick={() => handleDelete(expense._id)}
-                                                            className="p-3 bg-red-500/10 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                                                            className="p-3 bg-red-500/10 text-red-500 rounded-lg lg:rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm"
                                                         >
                                                             <Trash2 className="w-4 h-4" />
                                                         </motion.button>
@@ -344,7 +344,7 @@ const AdminExpenses = () => {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl w-fit mx-auto">
+                    <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/5 shadow-2xl w-fit mx-auto">
                         <motion.button
                             whileHover={{ x: -2 }}
                             onClick={() => fetchExpenses(page - 1)}
@@ -382,7 +382,7 @@ const AdminExpenses = () => {
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className="relative bg-white dark:bg-slate-900 w-full max-w-xl max-h-[75vh] rounded-xl lg:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col border-4 border-slate-100 dark:border-white/10"
+                                className="relative bg-white dark:bg-slate-900 w-full max-w-xl max-h-[75vh] rounded-lg lg:rounded-xl lg:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col border-4 border-slate-100 dark:border-white/10"
                             >
                                 <div className="bg-slate-900 p-4 lg:p-10 text-white relative overflow-hidden">
                                     <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-10">

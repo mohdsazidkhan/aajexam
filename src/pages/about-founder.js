@@ -191,7 +191,7 @@ export default function AboutAuthor() {
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
                                 href="mailto:support@mohdsazidkhan.com"
-                                className="flex items-center gap-3 bg-indigo-500 text-white px-6 py-3 rounded-xl hover:bg-indigo-600 transition-all"
+                                className="flex items-center gap-3 bg-indigo-500 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-indigo-600 transition-all"
                             >
                                 <FaEnvelope className="text-xl" />
                                 <span>Email</span>
@@ -200,7 +200,7 @@ export default function AboutAuthor() {
                                 href="https://www.linkedin.com/in/mohd-sazid-khan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-xl hover:bg-primary-800 transition-all"
+                                className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
                             >
                                 <FaLinkedin className="text-xl" />
                                 <span>LinkedIn</span>
@@ -209,7 +209,7 @@ export default function AboutAuthor() {
                                 href="https://github.com/mohdsazidkhan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 transition-all"
+                                className="flex items-center gap-3 bg-green-600 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-green-700 transition-all"
                             >
                                 <FaGithub className="text-xl" />
                                 <span>GitHub</span>

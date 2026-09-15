@@ -49,7 +49,7 @@ const AdminNotes = () => {
 
   if (loading) return <AdminTableSkeleton />;
 
-  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
+  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
   const difficultyColor = (d) => d === 'advanced' ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400' : d === 'intermediate' ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
 
@@ -60,7 +60,7 @@ const AdminNotes = () => {
         <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><StickyNote className="w-6 h-6 text-primary-500" /> Notes & Formulas</h1>
-            <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-500 text-white'}`}>
+            <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-500 text-white'}`}>
               {showForm ? <><Trash2 className="w-3 h-3" /> Cancel</> : <><Plus className="w-3 h-3" /> Add Note</>}
             </button>
           </div>
@@ -115,8 +115,8 @@ const AdminNotes = () => {
                 </div>
               </div>
               <div className="p-5 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3">
-                <button onClick={handleSave} className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 text-white rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
-                <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
+                <button onClick={handleSave} className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+                <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg lg:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
               </div>
             </Card>
           )}
@@ -124,7 +124,7 @@ const AdminNotes = () => {
           {/* View Toggle & Count */}
           <div className="flex items-center justify-between">
             <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{notes.length} item{notes.length !== 1 ? 's' : ''} on this page</p>
-            <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl p-1 gap-0.5">
+            <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl p-1 gap-0.5">
               {[
                 { mode: 'table', icon: Table2, label: 'Table' },
                 { mode: 'list', icon: List, label: 'List' },
@@ -226,8 +226,8 @@ const AdminNotes = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{n.title}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-blue-500" /></button>
-                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-red-500" /></button>
+                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-blue-500" /></button>
+                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-red-500" /></button>
                   </div>
                 </Card>
               ))}
@@ -238,7 +238,7 @@ const AdminNotes = () => {
           {totalPages > 1 && (
             <div className="flex items-center justify-center gap-2">
               <button disabled={page === 1} onClick={() => setPage(page - 1)}
-                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                className="p-2 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
                 <ChevronLeft className="w-4 h-4" />
               </button>
               {Array.from({ length: totalPages }, (_, i) => i + 1)
@@ -253,13 +253,13 @@ const AdminNotes = () => {
                     <span key={`dot-${i}`} className="px-1 text-slate-400 text-xs">...</span>
                   ) : (
                     <button key={p} onClick={() => setPage(p)}
-                      className={`w-8 h-8 rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                       {p}
                     </button>
                   )
                 )}
               <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                className="p-2 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>

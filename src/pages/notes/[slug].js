@@ -113,7 +113,7 @@ const NoteDetailPage = () => {
               {note.contributor?.name && <span>By {note.contributor.name}</span>}
             </div>
           </div>
-          <button onClick={toggleBookmark} className={`p-2 rounded-xl transition-colors ${bookmarked ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
+          <button onClick={toggleBookmark} className={`p-2 rounded-lg lg:rounded-xl transition-colors ${bookmarked ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
             <Bookmark className="w-5 h-5" fill={bookmarked ? 'currentColor' : 'none'} />
           </button>
         </div>

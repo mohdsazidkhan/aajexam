@@ -53,7 +53,7 @@ export default function Disclaimer() {
                             ].map((section, idx) => (section &&
                                 <section key={idx}>
                                     <div className="flex items-center gap-4 mb-6">
-                                        <div className={`w-10 h-10 ${section.color} rounded-xl flex items-center justify-center shadow-duo text-white`}>
+                                        <div className={`w-10 h-10 ${section.color} rounded-lg lg:rounded-xl flex items-center justify-center shadow-duo text-white`}>
                                             <section.icon className="text-xl" />
                                         </div>
                                         <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{section.title}</h2>

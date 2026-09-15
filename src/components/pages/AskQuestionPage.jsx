@@ -181,7 +181,7 @@ const AskQuestionPage = () => {
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <Link href="/community-questions">
-            <button className="p-2 rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 transition-colors">
+            <button className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 transition-colors">
               <ArrowLeft className="w-5 h-5" />
             </button>
           </Link>
@@ -196,7 +196,7 @@ const AskQuestionPage = () => {
         <form onSubmit={handleSubmit}>
           {/* Error */}
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 border-2 border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 text-sm font-semibold">
+            <div className="mb-4 px-4 py-3 rounded-lg lg:rounded-xl bg-rose-50 dark:bg-rose-500/10 border-2 border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 text-sm font-semibold">
               {error}
             </div>
           )}
@@ -207,7 +207,7 @@ const AskQuestionPage = () => {
             <select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
               required
             >
               <option value="">Select Exam</option>
@@ -229,7 +229,7 @@ const AskQuestionPage = () => {
               rows={4}
               maxLength={2000}
               required
-              className="w-full px-3 py-2.5 rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors resize-none"
             />
             <p className="text-[10px] text-content-muted text-right mt-1">
               {form.question.length}/2000
@@ -239,7 +239,7 @@ const AskQuestionPage = () => {
             <div className="mt-3">
               {form.image ? (
                 <div className="relative inline-block">
-                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-xl border-2 border-border-primary" />
+                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg lg:rounded-xl border-2 border-border-primary" />
                   <button
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
@@ -249,7 +249,7 @@ const AskQuestionPage = () => {
                   </button>
                 </div>
               ) : (
-                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border-2 border-dashed border-border-primary text-content-muted text-xs font-bold cursor-pointer hover:border-primary-500 hover:text-primary-500 transition-colors">
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-border-primary text-content-muted text-xs font-bold cursor-pointer hover:border-primary-500 hover:text-primary-500 transition-colors">
                   <ImageIcon className="w-4 h-4" />
                   {uploadingImage ? 'Uploading...' : 'Add Image (optional)'}
                   <input
@@ -287,12 +287,12 @@ const AskQuestionPage = () => {
                     value={opt.text}
                     onChange={(e) => handleOptionChange(i, 'text', e.target.value)}
                     placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                    className="flex-1 px-3 py-2 rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors"
+                    className="flex-1 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
-                    className={`p-2 rounded-xl border-2 text-xs font-bold transition-colors ${
+                    className={`p-2 rounded-lg lg:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
                         ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600'
                         : 'border-border-primary text-content-muted hover:border-emerald-400'
@@ -305,7 +305,7 @@ const AskQuestionPage = () => {
                     <button
                       type="button"
                       onClick={() => removeOption(i)}
-                      className="p-2 rounded-xl border-2 border-border-primary text-content-muted hover:border-rose-400 hover:text-rose-500 transition-colors"
+                      className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-rose-400 hover:text-rose-500 transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -324,7 +324,7 @@ const AskQuestionPage = () => {
               placeholder="Add an explanation for the answer..."
               rows={3}
               maxLength={3000}
-              className="w-full px-3 py-2.5 rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors resize-none"
             />
           </Card>
 

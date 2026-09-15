@@ -111,7 +111,7 @@ const PracticeTestsEducational = ({ levels }) => {
                             { title: "Recharge", text: "Take scheduled breaks to maintain focus.", color: "primary" },
                         ].map((tip, idx) => (
                             <div key={idx} className="bg-slate-50 dark:bg-slate-900 p-4 lg:p-8 rounded-[2.5rem] border-4 border-b-[8px] border-slate-100 dark:border-slate-800 shadow-xl transition-all hover:-translate-y-2 group/tip active:translate-y-0 active:border-b-4">
-                                <h3 className={`inline-flex px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-white mb-6 shadow-duo-${tip.color} bg-${tip.color}-500 transform -rotate-2 group-hover/tip:rotate-0 transition-transform`}>
+                                <h3 className={`inline-flex px-5 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-widest text-white mb-6 shadow-duo-${tip.color} bg-${tip.color}-500 transform -rotate-2 group-hover/tip:rotate-0 transition-transform`}>
                                     {tip.title}
                                 </h3>
                                 <p className="text-[10px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">

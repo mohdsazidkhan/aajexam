@@ -28,10 +28,10 @@ import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 const formatNumber = (num) => (num || 0).toLocaleString('en-IN');
 
 const StatCard = ({ title, count, icon: Icon, color }) => (
-  <Card hoverable padded={false} className="border border-slate-200 dark:border-white/5 shadow-lg bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl overflow-hidden group">
+  <Card hoverable padded={false} className="border border-slate-200 dark:border-white/5 shadow-lg bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl overflow-hidden group">
     <div className="p-4 flex flex-col relative">
       <div className="flex items-center justify-between mb-3">
-        <div className={`w-10 h-10 rounded-xl bg-${color}-500/10 text-${color}-600 dark:text-${color}-400 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner`}>
+        <div className={`w-10 h-10 rounded-lg lg:rounded-xl bg-${color}-500/10 text-${color}-600 dark:text-${color}-400 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner`}>
           <Icon className="w-5 h-5" />
         </div>
         <div className={`text-xl lg:text-2xl font-black tracking-tighter text-${color}-600 dark:text-${color}-400 tabular-nums italic`}>
@@ -311,7 +311,7 @@ const ExamOverviewPage = () => {
       </div>
 
       {/* Main Content Area */}
-      <Card variant="white" padded={false} className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden shadow-sm">
+      <Card variant="white" padded={false} className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-lg lg:rounded-xl overflow-hidden shadow-sm">
 
         {/* Toolbar */}
         <div className="p-4 border-b border-slate-200 dark:border-white/10 flex flex-col md:flex-row gap-4 items-center justify-between bg-slate-50 dark:bg-slate-800/50">
@@ -456,7 +456,7 @@ const ExamOverviewPage = () => {
               filteredExams.map(exam => {
                 const isExpanded = expandedRows.has(exam._id);
                 return (
-                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
+                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
@@ -536,7 +536,7 @@ const ExamOverviewPage = () => {
               filteredExams.map(exam => {
                 const isExpanded = expandedRows.has(exam._id);
                 return (
-                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
+                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
                     <div className="p-5 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
                         <div>

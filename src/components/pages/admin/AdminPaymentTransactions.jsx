@@ -285,7 +285,7 @@ const AdminPaymentTransactions = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl group hover:border-primary-500/30 transition-all font-outfit"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl group hover:border-primary-500/30 transition-all font-outfit"
             >
               <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform`}>
                 <stat.icon className="w-6 h-6" />
@@ -344,7 +344,7 @@ const AdminPaymentTransactions = () => {
               <div className="text-rose-500 font-black uppercase tracking-widest">{error}</div>
             </motion.div>
           ) : transactions.length === 0 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-2xl">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-2xl">
               <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 lg:mb-8 opacity-20" />
               <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Transactions Found</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your filters or search terms to find transactions.</p>
@@ -387,14 +387,14 @@ const AdminPaymentTransactions = () => {
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right tabular-nums font-black text-slate-900 dark:text-white">{formatCurrency(t.amount)}</td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className="flex justify-center">
-                              <div className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
+                              <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
                                 {getStatusIcon(t.payuStatus || t.status)}
                                 {t.payuStatus || t.status || 'Unknown'}
                               </div>
                             </div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                            <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl">
+                            <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
                               {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                             </motion.button>
                           </td>
@@ -408,14 +408,14 @@ const AdminPaymentTransactions = () => {
               {viewMode === 'grid' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                   {transactions.map((t, idx) => (
-                    <motion.div key={t._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl flex flex-col font-outfit relative overflow-hidden">
+                    <motion.div key={t._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl flex flex-col font-outfit relative overflow-hidden">
                       <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
                       <div className="flex justify-between items-start mb-4 lg:mb-8">
-                        <div className={`px-4 py-1.5 rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${getStatusColor(t.payuStatus || t.status)}`}>
+                        <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
                           {t.payuStatus || t.status || 'Unknown'}
                         </div>
-                        <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl">
+                        <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
                           {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </motion.button>
                       </div>
@@ -444,7 +444,7 @@ const AdminPaymentTransactions = () => {
               {viewMode === 'list' && (
                 <div className="space-y-3 lg:space-y-6">
                   {transactions.map((t, idx) => (
-                    <motion.div key={t._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl">
+                    <motion.div key={t._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl">
                       <div className="flex items-center gap-3 lg:gap-6">
                         <div className={`p-4 rounded-2xl border-2 ${getStatusColor(t.payuStatus || t.status)} shadow-sm`}>{getStatusIcon(t.payuStatus || t.status)}</div>
                         <div>
@@ -479,7 +479,7 @@ const AdminPaymentTransactions = () => {
             <button
               onClick={() => handlePageChange(pagination.currentPage - 1)}
               disabled={pagination.currentPage === 1}
-              className="p-3 rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"
+              className="p-3 rounded-lg lg:rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -490,7 +490,7 @@ const AdminPaymentTransactions = () => {
                   <button
                     key={pageNum}
                     onClick={() => handlePageChange(pageNum)}
-                    className={`w-10 h-10 rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === pageNum ? 'bg-primary-500 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-600'}`}
+                    className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === pageNum ? 'bg-primary-500 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-600'}`}
                   >
                     {pageNum.toString().padStart(2, '0')}
                   </button>
@@ -500,7 +500,7 @@ const AdminPaymentTransactions = () => {
             <button
               onClick={() => handlePageChange(pagination.currentPage + 1)}
               disabled={pagination.currentPage === pagination.totalPages}
-              className="p-3 rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"
+              className="p-3 rounded-lg lg:rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

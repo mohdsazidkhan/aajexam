@@ -64,15 +64,15 @@ const AdminQuizTopics = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><Layers className="w-6 h-6 text-cyan-500" /> Topics</h1>
-        <button onClick={openCreate} className="flex items-center gap-2 bg-cyan-500 text-white px-4 py-2 rounded-xl font-bold text-sm hover:bg-cyan-600"><Plus className="w-4 h-4" /> Add Topic</button>
+        <button onClick={openCreate} className="flex items-center gap-2 bg-cyan-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-cyan-600"><Plus className="w-4 h-4" /> Add Topic</button>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-          <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm" />
+          <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
         </div>
-        <select value={filterSubject} onChange={e => setFilterSubject(e.target.value)} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm">
+        <select value={filterSubject} onChange={e => setFilterSubject(e.target.value)} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="all">All Subjects</option>
           {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
         </select>
@@ -111,14 +111,14 @@ const AdminQuizTopics = () => {
               <button onClick={() => setShowModal(false)}><X className="w-5 h-5 text-slate-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm">
+              <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm">
                 <option value="">Select Subject</option>
                 {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
               </select>
-              <input required placeholder="Topic Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm" />
-              <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm" />
-              <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-cyan-500 text-white py-2.5 rounded-xl font-bold hover:bg-cyan-600">{editing ? 'Update' : 'Create'}</button>
+              <input required placeholder="Topic Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
+              <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
+              <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
+              <button type="submit" className="w-full bg-cyan-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-cyan-600">{editing ? 'Update' : 'Create'}</button>
             </form>
           </div>
         </div>

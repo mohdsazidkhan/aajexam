@@ -428,7 +428,7 @@ const StudentsPage = () => {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
                 >
                   <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                     <stat.icon className="w-5 h-5" />
@@ -506,7 +506,7 @@ const StudentsPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
               >
-                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
+                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                   <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Students Found</h3>
@@ -605,7 +605,7 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
                       >
                         <div className="w-20 h-20 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
@@ -663,10 +663,10 @@ const StudentsPage = () => {
                         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-500 to-primary-500" />
 
                         <div className="mt-4 mb-6 relative">
-                          <div className="w-24 h-24 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
-                          <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
+                          <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
                             <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-amber-500' : 'text-slate-300'}`} />
                           </div>
                         </div>
@@ -796,7 +796,7 @@ const StudentsPage = () => {
                             className={`p-6 rounded-3xl border-2 cursor-pointer transition-all flex items-center justify-between group ${createFormData.planId === tier.id ? 'bg-primary-500/10 border-primary-500/30 shadow-xl' : 'bg-slate-50 dark:bg-white/5 border-transparent opacity-60 hover:opacity-100'}`}
                           >
                             <div className="flex items-center gap-4">
-                              <div className={`p-3 rounded-xl bg-${tier.color}-500/10 text-${tier.color}-500`}>
+                              <div className={`p-3 rounded-lg lg:rounded-xl bg-${tier.color}-500/10 text-${tier.color}-500`}>
                                 <tier.icon className="w-5 h-5" />
                               </div>
                               <div>

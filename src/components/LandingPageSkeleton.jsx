@@ -80,7 +80,7 @@ const LandingPageSkeleton = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
                         {[1, 2, 3, 4].map((i) => (
                             <div key={i} className="h-64 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900/50 border-4 border-slate-100 dark:border-slate-800 p-8 shadow-xl">
-                                <Skeleton width="50%" height="2rem" className="mb-6 rounded-xl" />
+                                <Skeleton width="50%" height="2rem" className="mb-6 rounded-lg lg:rounded-xl" />
                                 <Skeleton width="100%" height="1rem" className="mb-4 rounded-lg" />
                                 <Skeleton width="80%" height="1rem" className="mb-8 rounded-lg" />
                                 <Skeleton width="40%" height="3rem" className="rounded-2xl" />

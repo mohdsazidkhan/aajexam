@@ -474,7 +474,7 @@ const DashboardAnalytics = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-primary-600/30 transition-all hover:scale-[1.02]"
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-primary-600/30 transition-all hover:scale-[1.02]"
                >
                  <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
@@ -494,10 +494,10 @@ const DashboardAnalytics = () => {
           {/* Tables */}
           <div className="grid grid-cols-1 gap-4">
             {/* Recent Activity */}
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-3 lg:p-6 shadow-lg">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg lg:rounded-xl p-3 lg:p-6 shadow-lg">
               <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary-500/10 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary-500/10 rounded-lg lg:rounded-xl flex items-center justify-center">
                     <BarChart3 className="w-6 h-6 text-primary-500" />
                   </div>
                   <div>

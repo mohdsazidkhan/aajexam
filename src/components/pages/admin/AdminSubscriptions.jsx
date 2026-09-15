@@ -34,7 +34,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden cursor-default"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden cursor-default"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -441,7 +441,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setViewMode(mode)}
-                      className={`p-3 rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <Icon className="w-4 h-4" />
                     </motion.button>
@@ -486,7 +486,7 @@ const AdminSubscriptions = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
         >
           <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
             <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
@@ -498,7 +498,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.plan}
                 onChange={(e) => handleFilterChange('plan', e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
               >
                 <option value="all">All Plans</option>
                 {filterOptions.plans.map(plan => (
@@ -509,7 +509,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.status}
                 onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
               >
                 <option value="all">All Statuses</option>
                 {filterOptions.statuses.slice(1).map(status => (
@@ -520,7 +520,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.year}
                 onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
               >
                 <option value="">All Years</option>
                 {filterOptions.years.map(year => (
@@ -531,7 +531,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.month}
                 onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
               >
                 <option value={0}>All Months</option>
                 {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -544,7 +544,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.limit}
                 onChange={(e) => handlePageSizeChange(e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
               >
                 {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
               </select>
@@ -673,7 +673,7 @@ const AdminSubscriptions = () => {
                                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
                                   whileTap={{ scale: 0.9 }}
                                   onClick={() => toggleSubscriptionDetails(subscription._id)}
-                                  className="p-3 text-primary-500 rounded-xl"
+                                  className="p-3 text-primary-500 rounded-lg lg:rounded-xl"
                                 >
                                   {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </motion.button>
@@ -681,7 +681,7 @@ const AdminSubscriptions = () => {
                                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
                                   whileTap={{ scale: 0.9 }}
                                   onClick={() => openExtendModal(subscription)}
-                                  className="p-3 text-emerald-500 rounded-xl"
+                                  className="p-3 text-emerald-500 rounded-lg lg:rounded-xl"
                                 >
                                   <Plus className="w-4 h-4" />
                                 </motion.button>
@@ -715,7 +715,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => openExtendModal(subscription)}
-                            className="p-3 bg-emerald-500/10 text-emerald-500 rounded-xl border-2 border-emerald-500/20"
+                            className="p-3 bg-emerald-500/10 text-emerald-500 rounded-lg lg:rounded-xl border-2 border-emerald-500/20"
                           >
                             <Plus className="w-4 h-4" />
                           </motion.button>
@@ -773,7 +773,7 @@ const AdminSubscriptions = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                     >
                       <div className="flex items-center gap-3 lg:gap-6">
                         <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg">
@@ -851,7 +851,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => handlePageChange(page)}
-                            className={`w-10 h-10 rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
+                            className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
                           >
                             {page}
                           </motion.button>
@@ -909,7 +909,7 @@ const AdminSubscriptions = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
                     <div className="space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
                       <select

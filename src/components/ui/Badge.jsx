@@ -29,7 +29,7 @@ const Badge = ({
 
   const sizes = {
     sm: 'px-2.5 py-1 text-[8px] font-black uppercase tracking-[0.2em] rounded-lg border-b-2',
-    lg: 'px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] rounded-xl border-b-[3px]',
+    lg: 'px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] rounded-lg lg:rounded-xl border-b-[3px]',
     lg: 'px-6 py-2 text-xs font-black uppercase tracking-[0.4em] rounded-2xl border-b-4',
   };
 

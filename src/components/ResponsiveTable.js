@@ -124,7 +124,7 @@ const ResponsiveTable = ({
                         whileHover={{ scale: 1.15, y: -2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                        className={`p-2.5 rounded-xl transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/30 hover:bg-rose-100' :
+                        className={`p-2.5 rounded-lg lg:rounded-xl transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/30 hover:bg-rose-100' :
                           action.variant === 'success' ? 'text-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 hover:bg-emerald-100' :
                             'text-primary-700 dark:text-primary-500 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
@@ -176,7 +176,7 @@ const ResponsiveTable = ({
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                    className={`p-3.5 lg:p-3 rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/40 hover:bg-rose-100' :
+                    className={`p-3.5 lg:p-3 rounded-lg lg:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/40 hover:bg-rose-100' :
                       action.variant === 'success' ? 'bg-emerald-50 text-emerald-500 dark:bg-emerald-950/40 hover:bg-emerald-100' :
                         'bg-primary-50 text-primary-700 dark:text-primary-500 dark:bg-primary-950/40 hover:bg-primary-100'
                       }`}
@@ -211,7 +211,7 @@ const ResponsiveTable = ({
             {/* Hero Header */}
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-500 p-0.5 shadow-xl group-hover:rotate-6 transition-transform duration-500">
-                <div className="w-full h-full bg-slate-900 rounded-xl flex items-center justify-center text-white font-black text-2xl italic">
+                <div className="w-full h-full bg-slate-900 rounded-lg lg:rounded-xl flex items-center justify-center text-white font-black text-2xl italic">
                   {(row.name || row[columns[0]?.key] || 'U')[0]}
                 </div>
               </div>
@@ -249,7 +249,7 @@ const ResponsiveTable = ({
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                    className={`p-4 lg:p-3 rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/30 hover:bg-rose-100' :
+                    className={`p-4 lg:p-3 rounded-lg lg:rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/30 hover:bg-rose-100' :
                       'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:text-primary-500 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
                       }`}
                   >

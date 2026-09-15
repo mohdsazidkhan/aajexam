@@ -85,7 +85,7 @@ const StreakPage = () => {
             {streak?.todayCompleted
               ? <><Shield className="w-10 h-10 text-emerald-500 mx-auto mb-2" /><h2 className="text-lg font-black text-emerald-700 dark:text-emerald-300">Today&apos;s Challenge Complete!</h2></>
               : <><Flame className="w-10 h-10 text-orange-500 mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-orange-700 dark:text-orange-300">Complete Today&apos;s Challenge to Keep Streak!</h2>
-                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</Link></>
+                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</Link></>
             }
           </Card>
         </motion.div>
@@ -97,7 +97,7 @@ const StreakPage = () => {
               <h3 className="text-sm font-black text-slate-900 dark:text-white">Use Streak Freeze</h3>
               <p className="text-[10px] text-slate-400">Skip today without breaking streak (Pro only)</p>
             </div>
-            <button onClick={useFreeze} className="px-4 py-2 bg-blue-500 text-white rounded-xl text-xs font-bold hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <button onClick={useFreeze} className="px-4 py-2 bg-blue-500 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               <Snowflake className="w-3 h-3 inline mr-1" /> Use Freeze
             </button>
           </Card>
@@ -111,7 +111,7 @@ const StreakPage = () => {
               <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-primary-500" /> Streak Leaderboard</h3>
               <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                 {leaderboard.map((entry, i) => (
-                  <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                  <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                     <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
                     <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
                     <span className="text-sm font-black text-orange-500 flex items-center gap-1"><Flame className="w-3 h-3" />{entry.currentStreak}</span>

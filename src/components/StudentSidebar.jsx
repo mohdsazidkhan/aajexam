@@ -177,12 +177,12 @@ const StudentSidebar = () => {
                 const active = isActiveRoute(item.path);
                 return (
                   <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined}>
-                    <button className={`w-full flex items-center justify-between px-2 py-2 rounded-xl transition-all duration-200 relative group overflow-hidden ${active
+                    <button className={`w-full flex items-center justify-between px-2 py-2 rounded-lg lg:rounded-xl transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
                       {active && (
-                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-xl" />
+                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-lg lg:rounded-xl" />
                       )}
                       <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
@@ -204,7 +204,7 @@ const StudentSidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5 min-w-[240px]">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-xl bg-rose-50 dark:bg-rose-500/15 text-rose-600 dark:text-rose-300 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/25 transition-colors flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-lg lg:rounded-xl bg-rose-50 dark:bg-rose-500/15 text-rose-600 dark:text-rose-300 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/25 transition-colors flex items-center justify-center gap-2 group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>

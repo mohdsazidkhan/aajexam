@@ -134,7 +134,7 @@ const MyQuestionsPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleDelete(q._id); }}
-                                          className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl transition-colors"
+                                          className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg lg:rounded-xl transition-colors"
                                           title="Delete question"
                                        >
                                           <Trash2 className="w-4 h-4" />
@@ -165,7 +165,7 @@ const MyQuestionsPage = () => {
                                     {hasOptions && (
                                        <div className="space-y-1.5">
                                           {q.options.slice(0, 4).map((opt, i) => (
-                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-green-50 dark:bg-green-900/10 text-green-700' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
+                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg lg:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-green-50 dark:bg-green-900/10 text-green-700' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
                                                 <span className="w-4 h-4 rounded-full border-2 flex items-center justify-center text-[8px] font-black flex-shrink-0 border-current">
                                                    {String.fromCharCode(65 + i)}
                                                 </span>

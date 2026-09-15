@@ -48,7 +48,7 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
   return (
     <button
       className={`
-        px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all duration-200 inline-flex items-center justify-center gap-1.5
+        px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg lg:rounded-xl text-[11px] font-black uppercase tracking-wider transition-all duration-200 inline-flex items-center justify-center gap-1.5
         ${isFollowing
           ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/30'
           : 'bg-primary-500 hover:bg-primary-600 text-white border-2 border-b-4 border-primary-700 active:translate-y-0.5 active:border-b-2'

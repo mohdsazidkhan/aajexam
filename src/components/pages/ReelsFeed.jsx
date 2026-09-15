@@ -141,7 +141,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               whileTap={!answered ? { scale: 0.97 } : {}}
               onClick={() => handleSelect(i)}
               disabled={answered}
-              className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-xl lg:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
+              className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
             >
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
                 ? 'border-green-400 bg-green-400 text-green-900'
@@ -208,7 +208,7 @@ const TipReelCard = ({ reel, onTagPress }) => (
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
 
     {reel.formula && (
-      <div className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
+      <div className="p-2 sm:p-4 rounded-lg lg:rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
         <p className="text-md sm:text-lg font-bold text-yellow-300">{reel.formula}</p>
       </div>
     )}
@@ -296,7 +296,7 @@ const PollReelCard = ({ reel, onVote }) => {
               whileTap={!voted ? { scale: 0.97 } : {}}
               onClick={() => handleVote(i)}
               disabled={voted}
-              className="w-full text-left relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 p-2 sm:p-3.5"
+              className="w-full text-left relative overflow-hidden rounded-lg lg:rounded-xl sm:rounded-2xl border border-white/10 p-2 sm:p-3.5"
             >
               {voted && (
                 <motion.div
@@ -404,7 +404,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
         <div className="flex flex-wrap gap-2">
           {[['all', 'All'], ['question', 'Questions'], ['fact', 'Facts'], ['tip', 'Tips'], ['current_affairs', 'CA'], ['poll', 'Polls']].map(([val, label]) => (
             <button key={val} onClick={() => onChange({ ...selected, type: val === 'all' ? '' : val })}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${(!selected.type && val === 'all') || selected.type === val
+              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold transition-all border ${(!selected.type && val === 'all') || selected.type === val
                 ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10 hover:border-white/20'}`}>
               {label}
             </button>
@@ -418,10 +418,10 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
           <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-3">Subject</p>
           <div className="flex flex-wrap gap-2">
             <button onClick={() => onChange({ ...selected, subject: '' })}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border ${!selected.subject ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
+              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${!selected.subject ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
             {filters.subjects.map(s => (
               <button key={s} onClick={() => onChange({ ...selected, subject: s })}
-                className={`px-4 py-2 rounded-xl text-xs font-bold border ${selected.subject === s ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{s}</button>
+                className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${selected.subject === s ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{s}</button>
             ))}
           </div>
         </section>
@@ -433,10 +433,10 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
           <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-3">Exam Target</p>
           <div className="flex flex-wrap gap-2">
             <button onClick={() => onChange({ ...selected, examType: '' })}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border ${!selected.examType ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
+              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${!selected.examType ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
             {filters.examTypes.map(e => (
               <button key={e} onClick={() => onChange({ ...selected, examType: e })}
-                className={`px-4 py-2 rounded-xl text-xs font-bold border ${selected.examType === e ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{e}</button>
+                className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${selected.examType === e ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{e}</button>
             ))}
           </div>
         </section>
@@ -448,7 +448,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
         <div className="flex flex-wrap gap-2 pb-4">
           {['all', 'easy', 'medium', 'hard'].map(d => (
             <button key={d} onClick={() => onChange({ ...selected, difficulty: d === 'all' ? '' : d })}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border ${(!selected.difficulty && d === 'all') || selected.difficulty === d
+              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${(!selected.difficulty && d === 'all') || selected.difficulty === d
                 ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>
               {d.charAt(0).toUpperCase() + d.slice(1)}
             </button>
@@ -800,7 +800,7 @@ const ReelsFeed = () => {
         <Flame className="w-16 h-16 text-slate-600 mb-4" />
         <p className="text-lg font-bold mb-2">No reels yet</p>
         <p className="text-sm text-white/50 text-center">Reels will appear here once published</p>
-        <Link href="/" className="mt-6 px-6 py-2.5 rounded-xl bg-white/10 text-sm font-semibold hover:bg-white/20 transition-colors">
+        <Link href="/" className="mt-6 px-6 py-2.5 rounded-lg lg:rounded-xl bg-white/10 text-sm font-semibold hover:bg-white/20 transition-colors">
           Go Home
         </Link>
       </div>
@@ -1312,7 +1312,7 @@ const ReelsFeed = () => {
                       onClick={() => setShowCreateDrawer(false)}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border border-white/10 hover:border-white/20 transition-all active:bg-white/5"
                     >
-                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
+                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className="w-5 h-5 text-white" />
                       </div>
                       <div className="text-left">

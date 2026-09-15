@@ -64,7 +64,7 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isSidebarOpen}
-              className={`w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${showHamburger ? 'flex' : 'hidden lg:flex'
+              className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${showHamburger ? 'flex' : 'hidden lg:flex'
                 } ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   : 'bg-transparent lg:bg-primary-500 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-duo-primary lg:hover:scale-105'
@@ -169,13 +169,13 @@ const StudentNavbar = () => {
               className="fixed top-12 lg:top-20 right-3 lg:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
             >
               {/* User info */}
-              <div className="px-3 py-2.5 mb-1 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+              <div className="px-3 py-2.5 mb-1 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50">
 
                 <p className="text-[10px] text-slate-400 truncate">{user.email}</p>
               </div>
 
               {/* Wallet — mobile only (in dropdown) */}
-              <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-amber-50 dark:bg-amber-900/10 mb-1">
+              <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl bg-amber-50 dark:bg-amber-900/10 mb-1">
                 <Wallet className="w-4 h-4 text-amber-500" />
                 <span className="text-sm font-bold text-amber-700 dark:text-amber-400">Balance</span>
                 <span className="ml-auto text-sm font-black text-amber-600 dark:text-amber-400 flex items-center gap-0.5">
@@ -188,7 +188,7 @@ const StudentNavbar = () => {
                 { label: 'Settings', icon: Settings, path: '/settings' },
               ].map(item => (
                 <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                  <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                  <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                     <item.icon className="w-4 h-4 text-slate-400" /> {item.label}
                   </button>
                 </Link>
@@ -197,7 +197,7 @@ const StudentNavbar = () => {
               {/* Theme toggle — mobile only */}
               <button
                 onClick={() => { toggleTheme(); setShowProfileMenu(false); }}
-                className="lg:hidden w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
+                className="lg:hidden w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
               >
                 {darkMode ? <Sun className="w-4 h-4 text-slate-400" /> : <Moon className="w-4 h-4 text-slate-400" />}
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
@@ -207,7 +207,7 @@ const StudentNavbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all"
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all"
               >
                 <LogOut className="w-4 h-4" /> Log out
               </button>

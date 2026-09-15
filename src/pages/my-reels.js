@@ -183,7 +183,7 @@ const MyReelsPage = () => {
 
                                     {/* Rejected reason */}
                                     {reel.status === 'rejected' && reel.adminNotes && (
-                                       <p className="text-[11px] font-bold text-red-500 bg-red-50 dark:bg-red-900/10 p-2 rounded-xl">
+                                       <p className="text-[11px] font-bold text-red-500 bg-red-50 dark:bg-red-900/10 p-2 rounded-lg lg:rounded-xl">
                                           Reason: {reel.adminNotes}
                                        </p>
                                     )}

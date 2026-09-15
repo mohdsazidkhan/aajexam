@@ -212,7 +212,7 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-8 py-6">
                                                 <div className="flex items-center gap-4">
-                                                   <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
+                                                   <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -247,7 +247,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       className={`w-10 h-10 rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-500 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
+                                       className={`w-10 h-10 rounded-lg lg:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-500 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
                                     >
                                        {i + 1}
                                     </button>

@@ -74,7 +74,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden font-outfit"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden font-outfit"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -203,7 +203,7 @@ const FinancialAnalytics = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-xl lg:rounded-[3rem] border-4 border-emerald-500/20 relative overflow-hidden group">
+              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-emerald-500/20 relative overflow-hidden group">
                <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
                <div className="flex items-center gap-3 shrink-0">
                  <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-emerald-500" />
@@ -285,7 +285,7 @@ const FinancialAnalytics = () => {
                           {topRevenuePlans.map((p, idx) => (
                             <motion.tr key={idx} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="group hover:bg-emerald-500/5 transition-all">
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-amber-500 text-white shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
+                                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-amber-500 text-white shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">

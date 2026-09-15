@@ -303,13 +303,13 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t-2 border-slate-200 dark:border-slate-800 p-4 flex gap-3 shadow-2xl">
                         <button
                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
-                            className="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-xl text-xs shadow-duo-primary transition-all"
+                            className="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg lg:rounded-xl text-xs shadow-duo-primary transition-all"
                         >
                             Attempt Free →
                         </button>
                         <button
                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
-                            className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-xl text-xs transition-all"
+                            className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-lg lg:rounded-xl text-xs transition-all"
                         >
                             Log In
                         </button>

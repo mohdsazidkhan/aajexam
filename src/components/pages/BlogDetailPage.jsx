@@ -100,7 +100,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           <div className="text-6xl mb-4">📝</div>
           <h1 className="text-2xl font-bold mb-2">Blog Not Found</h1>
           <p className="text-gray-600 dark:text-gray-300 mb-6">The blog you're looking for doesn't exist or has been removed.</p>
-          <Link href="/blog" className="bg-primary-500 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+          <Link href="/blog" className="bg-primary-500 text-white px-6 py-3 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
             Browse All Blogs
           </Link>
         </div>
@@ -173,7 +173,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 py-6 border-t border-b border-gray-200 dark:border-gray-700 mb-6">
           <div className="flex items-center gap-4">
             <button onClick={handleLike} disabled={liked}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-sm transition-colors ${liked
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm transition-colors ${liked
                 ? 'bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400'
                 : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-red-100 hover:text-red-700'}`}>
               <Heart className={`w-4 h-4 ${liked ? 'fill-red-500' : ''}`} />
@@ -182,7 +182,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
             {canNativeShare ? (
               <button onClick={handleNativeShare}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-xl font-bold text-sm hover:bg-primary-600">
+                className="flex items-center gap-2 px-4 py-2 bg-primary-500 text-white rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600">
                 <Share2 className="w-4 h-4" /> Share
               </button>
             ) : (
@@ -219,22 +219,22 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           <div className="flex flex-wrap gap-3">
             {blog.exam?.slug && (
               <Link href={`/govt-exams/exam/${blog.exam.slug}`}
-                className="bg-primary-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
+                className="bg-primary-600 text-white px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
                 {blog.exam.name} syllabus & pattern
               </Link>
             )}
             {hasPyq && blog.exam?.slug && (
               <Link href={`/pyq/${blog.exam.slug}`}
-                className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+                className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                 Previous year question papers
               </Link>
             )}
             <Link href="/quizzes"
-              className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
               Free practice quizzes
             </Link>
             <Link href="/govt-exams"
-              className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              className="bg-white dark:bg-gray-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
               All government exams
             </Link>
           </div>
@@ -286,7 +286,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Back */}
         <div className="text-center">
           <Link href="/blog"
-            className="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+            className="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
         </div>
