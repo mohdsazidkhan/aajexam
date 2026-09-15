@@ -127,7 +127,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Profile Header */}
         <div className="mb-6">
           {/* Banner */}
-          <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-br from-primary-500 to-emerald-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800">
+          <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.15),transparent)] rounded-2xl md:rounded-3xl" />
           </div>
 
@@ -176,7 +176,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 {isOwnProfile && (
                   <button
                     className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg lg:rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
-                    onClick={() => router.push('/profile/settings')}
+                    onClick={() => router.push('/settings')}
                   >
                     Edit Profile
                   </button>
@@ -186,6 +186,22 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               {/* Bio */}
               {profile.bio && (
                 <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed mt-3">{profile.bio}</p>
+              )}
+
+              {/* City + Target exam */}
+              {(profile.city || profile.primaryTargetExam) && (
+                <div className="flex flex-wrap items-center gap-2 mt-3">
+                  {profile.city && (
+                    <span className="px-3 py-1.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] sm:text-xs font-bold border border-slate-100 dark:border-slate-700">
+                      📍 {profile.city}
+                    </span>
+                  )}
+                  {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
+                    <span className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 rounded-lg text-[10px] sm:text-xs font-bold border border-primary-100 dark:border-primary-900/40">
+                      🎯 Preparing for {profile.primaryTargetExam}
+                    </span>
+                  )}
+                </div>
               )}
 
               {/* Stats Row */}
@@ -254,7 +270,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-emerald-600">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
                     {0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Best</span>
@@ -285,7 +301,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     fact: { icon: Lightbulb, gradient: 'from-purple-600 to-pink-600', label: 'Fact' },
                     tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600', label: 'Tip' },
                     current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700', label: 'Current Affairs' },
-                    poll: { icon: BarChart3, gradient: 'from-green-500 to-emerald-700', label: 'Poll' },
+                    poll: { icon: BarChart3, gradient: 'from-primary-500 to-primary-700', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;
                   const Icon = config.icon;

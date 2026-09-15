@@ -349,7 +349,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           {STEPS.map((s, i) => (
             <React.Fragment key={s.key}>
               <div className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap ${
-                i < activeStep ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+                i < activeStep ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
                   : i === activeStep ? 'bg-primary-500 text-white'
                   : 'bg-slate-100 text-slate-400 dark:bg-white/5 dark:text-slate-500'
               }`}>
@@ -451,7 +451,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="border-t border-slate-100 dark:border-white/10 pt-4">
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Send Test Email
-                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-green-600 dark:text-green-400">✓ sent to {campaign.testSentTo}</span>}
+                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600 dark:text-primary-400">✓ sent to {campaign.testSentTo}</span>}
                   </label>
                   <div className="flex gap-2">
                     <input type="email" placeholder="admin@example.com" value={testEmail} onChange={(e) => setTestEmail(e.target.value)} className={inputClass} />
@@ -522,7 +522,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                       <div className="grid grid-cols-3 gap-2 mt-3 text-center text-sm">
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-green-600 dark:text-green-400 font-bold">{campaign.sentCount}</div>
+                          <div className="text-primary-600 dark:text-primary-400 font-bold">{campaign.sentCount}</div>
                           <div className="text-[10px] text-slate-500 uppercase">Sent</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
@@ -577,7 +577,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                         <>
                           <div className="flex items-center justify-between mb-2">
                             <p className="text-xs text-slate-600 dark:text-slate-300">
-                              Sent to <strong className="text-green-600 dark:text-green-400">{recipients.counts.sent}</strong>
+                              Sent to <strong className="text-primary-600 dark:text-primary-400">{recipients.counts.sent}</strong>
                               {recipients.counts.failed > 0 && (<> · failed <strong className="text-red-500">{recipients.counts.failed}</strong></>)}
                             </p>
                             <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-secondary-600 dark:text-secondary-400 hover:underline disabled:opacity-50">Refresh</button>
@@ -595,7 +595,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                                   </div>
                                   <span className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-semibold ${
                                     r.status === 'sent'
-                                      ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+                                      ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
                                       : 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300'
                                   }`} title={r.error || ''}>{r.status}</span>
                                 </div>

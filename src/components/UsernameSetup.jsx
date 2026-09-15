@@ -105,7 +105,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           placeholder="username"
           maxLength={20}
           className={`username-input flex-1 border-none outline-none text-base font-black bg-transparent text-slate-900 dark:text-white placeholder:text-slate-300 ${username && username !== currentUsername
-            ? (available === true ? 'text-green-600' : available === false ? 'text-primary-700 dark:text-primary-500' : '')
+            ? (available === true ? 'text-primary-600' : available === false ? 'text-primary-700 dark:text-primary-500' : '')
             : ''
             }`}
         />
@@ -113,7 +113,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           <span className="checking-spinner w-6 h-6 border-4 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-green-600">Ã¢Å“â€œ</span>
+          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€œ</span>
         )}
         {available === false && (
           <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-700 dark:text-primary-500">Ã¢Å“â€”</span>
@@ -130,7 +130,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
 
       {message && (
         <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
-          ? 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400 border border-green-300 dark:border-green-700'
+          ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 border border-primary-300 dark:border-primary-700'
           : available === false
             ? 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-400 border border-red-300 dark:border-red-700'
             : 'bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 border border-primary-300 dark:border-primary-700'

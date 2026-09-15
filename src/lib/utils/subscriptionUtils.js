@@ -312,9 +312,9 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
 
       return {
         text: 'Active',
-        textColor: currentTheme === 'dark' ? 'text-green-400' : 'text-green-600',
-        bgColor: currentTheme === 'dark' ? 'bg-green-900/30' : 'bg-green-50',
-        borderColor: currentTheme === 'dark' ? 'border-green-700' : 'border-green-200',
+        textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-600',
+        bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
+        borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
         icon: '✅'
       };
     }

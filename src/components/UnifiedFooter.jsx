@@ -166,11 +166,11 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label="Contact us on WhatsApp"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center group-hover/item:bg-emerald-500 group-hover/item:text-white transition-all shadow-duo-primary">
+                  <div className="w-11 h-11 bg-primary-500/10 text-primary-500 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-500 group-hover/item:text-white transition-all shadow-duo-primary">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-emerald-500 transition-colors">WhatsApp</p>
+                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-primary-500 transition-colors">WhatsApp</p>
                     <p className="text-xs font-bold text-content-secondary">{config.CONTACT.PHONE}</p>
                   </div>
                 </a>
@@ -178,12 +178,12 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
               <div className="px-5 py-3 bg-slate-50 dark:bg-white/5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
                   <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">System status</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-amber-500" />
-                  <span className="text-[11px] font-black text-emerald-700 dark:text-emerald-500 tracking-[0.08em]">Stable</span>
+                  <span className="text-[11px] font-black text-primary-700 dark:text-primary-500 tracking-[0.08em]">Stable</span>
                 </div>
               </div>
             </Card>

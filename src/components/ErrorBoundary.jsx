@@ -94,7 +94,7 @@ class ErrorBoundary extends React.Component {
                       <RefreshCcw className="w-3.5 h-3.5 rotate-90" />
                     </div>
                   </summary>
-                  <div className="p-8 bg-slate-950 text-emerald-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
+                  <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2 mb-4 text-rose-400 border-b border-rose-900/30 pb-2">
                       <AlertCircle className="w-4 h-4" /> <span>Error Info</span>
                     </div>

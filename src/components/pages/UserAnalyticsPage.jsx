@@ -219,7 +219,7 @@ const MyAnalyticsPage = () => {
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Viewed</p>
                            </Card>
                            <Card className="text-center p-4 border-border-primary rounded-[2rem]">
-                              <div className="p-3 bg-green-50 dark:bg-slate-700/50 text-green-500 rounded-2xl w-fit mx-auto mb-2"><FileText className="w-6 h-6" /></div>
+                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-500 rounded-2xl w-fit mx-auto mb-2"><FileText className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{data?.myReels?.totalPosted || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Posted</p>
                            </Card>
@@ -278,7 +278,7 @@ const MyAnalyticsPage = () => {
                         {/* Overall Quiz Stats */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                            <StatMini icon={Zap} label="Total Quizzes" value={quiz?.totalAttempts || 0} color="text-blue-500" bg="bg-blue-50" />
-                           <StatMini icon={Target} label="Avg Accuracy" value={`${quiz?.avgAccuracy || 0}%`} color="text-green-500" bg="bg-green-50" />
+                           <StatMini icon={Target} label="Avg Accuracy" value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-500" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label="Best Score" value={`${quiz?.bestScore || 0}%`} color="text-amber-500" bg="bg-amber-50" />
                            <StatMini icon={Clock} label="Total Time" value={`${Math.round((quiz?.totalTime || 0) / 60)}m`} color="text-purple-500" bg="bg-purple-50" />
                         </div>
@@ -288,8 +288,8 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span className="text-2xl font-black font-outfit text-green-600">{quiz?.totalCorrect || 0}</span>
+                                    <CheckCircle className="w-5 h-5 text-primary-500" />
+                                    <span className="text-2xl font-black font-outfit text-primary-600">{quiz?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Correct</p>
                               </div>
@@ -324,7 +324,7 @@ const MyAnalyticsPage = () => {
                                                 <div className="flex justify-between items-center">
                                                    <span className="font-black text-base">{s.name}</span>
                                                    <div className="flex items-center gap-3 text-xs font-bold text-content-secondary">
-                                                      <span className="text-green-600">{s.totalCorrect} correct</span>
+                                                      <span className="text-primary-600">{s.totalCorrect} correct</span>
                                                       <span className="text-red-500">{s.totalWrong} wrong</span>
                                                       <span>{s.attempts} attempts</span>
                                                    </div>
@@ -352,7 +352,7 @@ const MyAnalyticsPage = () => {
                                              <p className="text-[10px] font-bold text-content-secondary">{t.subjectName} &bull; {t.attempts} attempts</p>
                                           </div>
                                           <div className="flex items-center gap-3">
-                                             <span className="text-green-600 text-xs font-bold">{t.totalCorrect}  </span>
+                                             <span className="text-primary-600 text-xs font-bold">{t.totalCorrect}  </span>
                                              <span className="text-red-500 text-xs font-bold">{t.totalWrong}  </span>
                                              <span className="font-black text-sm text-primary-500">{t.avgAccuracy}%</span>
                                           </div>
@@ -384,7 +384,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                            <StatMini icon={GraduationCap} label="Total Exams" value={exam?.totalAttempts || 0} color="text-purple-500" bg="bg-purple-50" />
-                           <StatMini icon={Target} label="Avg Accuracy" value={`${exam?.avgAccuracy || 0}%`} color="text-green-500" bg="bg-green-50" />
+                           <StatMini icon={Target} label="Avg Accuracy" value={`${exam?.avgAccuracy || 0}%`} color="text-primary-500" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label="Best Accuracy" value={`${exam?.bestAccuracy || 0}%`} color="text-amber-500" bg="bg-amber-50" />
                         </div>
 
@@ -392,8 +392,8 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-2 gap-4 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <CheckCircle className="w-5 h-5 text-green-500" />
-                                    <span className="text-2xl font-black font-outfit text-green-600">{exam?.totalCorrect || 0}</span>
+                                    <CheckCircle className="w-5 h-5 text-primary-500" />
+                                    <span className="text-2xl font-black font-outfit text-primary-600">{exam?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Correct</p>
                               </div>
@@ -422,7 +422,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                            <StatMini icon={Eye} label="Reels Viewed" value={reel?.totalViewed || 0} color="text-blue-500" bg="bg-blue-50" />
-                           <StatMini icon={CheckCircle} label="Questions Answered" value={reel?.totalAnswered || 0} color="text-green-500" bg="bg-green-50" />
+                           <StatMini icon={CheckCircle} label="Questions Answered" value={reel?.totalAnswered || 0} color="text-primary-500" bg="bg-primary-50" />
                            <StatMini icon={Target} label="Reel Accuracy" value={`${reel?.accuracy || 0}%`} color="text-purple-500" bg="bg-purple-50" />
                            <StatMini icon={Clock} label="Time Spent" value={`${Math.round((reel?.totalTimeSpent || 0) / 60)}m`} color="text-amber-500" bg="bg-amber-50" />
                         </div>
@@ -442,7 +442,7 @@ const MyAnalyticsPage = () => {
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">Saved</p>
                               </div>
                               <div>
-                                 <Share2 className="w-5 h-5 text-green-500 mx-auto mb-1" />
+                                 <Share2 className="w-5 h-5 text-primary-500 mx-auto mb-1" />
                                  <p className="text-xl font-black font-outfit">{reel?.totalShared || 0}</p>
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">Shared</p>
                               </div>
@@ -498,7 +498,7 @@ const MyAnalyticsPage = () => {
                         {/* Earned / Spent */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                            <Card className="flex items-center gap-5 p-5 border-border-primary rounded-3xl">
-                              <div className="p-4 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
+                              <div className="p-4 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
                               <div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Total Earned</p>
                                  <p className="text-2xl font-black font-outfit">{wallet?.totalEarnings || 0}</p>

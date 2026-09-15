@@ -60,7 +60,7 @@ const AdminMentors = () => {
                     <p className="text-[10px] text-slate-400">{m.user?.email}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`px-2 py-0.5 rounded text-[9px] font-black ${m.status === 'active' ? 'bg-emerald-50 text-emerald-600' : m.status === 'pending' ? 'bg-yellow-50 text-yellow-600' : 'bg-red-50 text-red-600'}`}>{m.status}</span>
+                    <span className={`px-2 py-0.5 rounded text-[9px] font-black ${m.status === 'active' ? 'bg-primary-50 text-primary-600' : m.status === 'pending' ? 'bg-yellow-50 text-yellow-600' : 'bg-red-50 text-red-600'}`}>{m.status}</span>
                     {m.isVerified && <Shield className="w-4 h-4 text-blue-500" />}
                   </div>
                 </div>
@@ -78,7 +78,7 @@ const AdminMentors = () => {
                 <div className="flex gap-2">
                   {m.status === 'pending' && (
                     <>
-                      <button onClick={() => updateStatus(m._id, 'active', true)} className="px-3 py-1.5 bg-emerald-50 text-emerald-600 rounded-lg text-[10px] font-bold hover:bg-emerald-100"><CheckCircle className="w-3 h-3 inline mr-1" />Approve & Verify</button>
+                      <button onClick={() => updateStatus(m._id, 'active', true)} className="px-3 py-1.5 bg-primary-50 text-primary-600 rounded-lg text-[10px] font-bold hover:bg-primary-100"><CheckCircle className="w-3 h-3 inline mr-1" />Approve & Verify</button>
                       <button onClick={() => updateStatus(m._id, 'rejected', false)} className="px-3 py-1.5 bg-red-50 text-red-600 rounded-lg text-[10px] font-bold hover:bg-red-100"><XCircle className="w-3 h-3 inline mr-1" />Reject</button>
                     </>
                   )}

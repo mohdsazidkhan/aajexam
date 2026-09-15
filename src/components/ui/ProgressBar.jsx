@@ -20,7 +20,7 @@ const ProgressBar = ({
   const variants = {
     primary: 'bg-primary-500 shadow-duo-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
     secondary: 'bg-primary-500 shadow-duo-secondary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
-    emerald: 'bg-emerald-500 shadow-duo-emerald shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+    emerald: 'bg-primary-500 shadow-duo-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
     amber: 'bg-amber-500 shadow-duo-amber shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
     rose: 'bg-rose-500 shadow-duo-rose shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
     indigo: 'bg-indigo-500 shadow-duo-indigo shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',

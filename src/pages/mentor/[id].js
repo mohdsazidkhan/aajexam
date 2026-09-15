@@ -146,7 +146,7 @@ export default function MentorProfilePage() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-xl font-black text-slate-900 dark:text-white">{mentor.user?.name || 'Mentor'}</h1>
-                {mentor.isVerified && <Shield className="w-4 h-4 text-emerald-500" />}
+                {mentor.isVerified && <Shield className="w-4 h-4 text-primary-500" />}
               </div>
               {mentor.user?.bio && <p className="text-sm text-slate-500 mb-3">{mentor.user.bio}</p>}
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500">
@@ -161,10 +161,10 @@ export default function MentorProfilePage() {
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
           <Card className="p-5">
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-emerald-500" /> Exams Cleared</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-primary-500" /> Exams Cleared</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
-                <div key={i} className="flex items-center justify-between p-3 bg-emerald-50 dark:bg-emerald-900/10 rounded-lg lg:rounded-xl">
+                <div key={i} className="flex items-center justify-between p-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg lg:rounded-xl">
                   <span className="text-sm font-bold text-slate-900 dark:text-white">{exam.examName}</span>
                   <div className="flex items-center gap-3 text-xs font-bold text-slate-500">
                     <span><Calendar className="w-3 h-3 inline" /> {exam.year}</span>
@@ -257,7 +257,7 @@ export default function MentorProfilePage() {
                   </div>
                   {thread.answer ? (
                     <div className="pl-3 border-l-2 border-primary-500">
-                      <Link href={`/u/${mentor.user?.username || mentor.user?.name}`} className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 mr-1.5 hover:underline">@{mentor.user?.username || mentor.user?.name}</Link>
+                      <Link href={`/u/${mentor.user?.username || mentor.user?.name}`} className="text-[10px] font-black text-primary-600 dark:text-primary-400 mr-1.5 hover:underline">@{mentor.user?.username || mentor.user?.name}</Link>
                       <span className="text-sm text-slate-600 dark:text-slate-400">{thread.answer}</span>
                     </div>
                   ) : isOwner ? (

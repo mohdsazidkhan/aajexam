@@ -27,7 +27,7 @@ const timeAgo = (date) => {
 
 const RoleBadge = ({ role }) => {
   if (role === 'mentor') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300 rounded">
       <GraduationCap className="w-2.5 h-2.5" /> MENTOR
     </span>
   );
@@ -84,9 +84,9 @@ function AnswerItem({
   const isOwner = String(item.author?._id) === String(currentUserId);
 
   return (
-    <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-slate-200 dark:border-slate-700' : item.isAcceptedAnswer ? 'border-2 border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-lg lg:rounded-xl p-3' : ''} py-3`}>
+    <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-slate-200 dark:border-slate-700' : item.isAcceptedAnswer ? 'border-2 border-primary-400 bg-primary-50/50 dark:bg-primary-900/10 rounded-lg lg:rounded-xl p-3' : ''} py-3`}>
       {item.isAcceptedAnswer && !isReply && (
-        <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
+        <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-bold text-primary-700 dark:text-primary-400 uppercase tracking-wider">
           <CheckCircle2 className="w-3.5 h-3.5" /> Accepted Answer
         </div>
       )}
@@ -94,7 +94,7 @@ function AnswerItem({
         <div className="flex flex-col items-center gap-0.5 shrink-0">
           <button
             onClick={() => handleVote('up')}
-            className={`p-1 rounded hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition ${myVote === 'up' ? 'text-emerald-600' : 'text-slate-400'}`}
+            className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-600' : 'text-slate-400'}`}
           >
             <ThumbsUp className="w-4 h-4" />
           </button>
@@ -144,7 +144,7 @@ function AnswerItem({
             {canAccept && !isReply && (
               <button
                 onClick={() => onAccept(item._id)}
-                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-emerald-600 font-bold' : 'text-slate-400 hover:text-emerald-600'}`}
+                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 font-bold' : 'text-slate-400 hover:text-primary-600'}`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 {item.isAcceptedAnswer ? 'Accepted' : 'Accept'}

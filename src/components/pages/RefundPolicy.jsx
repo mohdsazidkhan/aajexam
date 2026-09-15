@@ -49,11 +49,11 @@ const RefundPolicy = () => {
                      animate={{ y: 0, opacity: 1 }}
                      className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-duo-secondary flex items-center justify-center mx-auto border-4 border-slate-50 dark:border-slate-700"
                   >
-                     <Banknote className="w-14 h-14 text-emerald-500" />
+                     <Banknote className="w-14 h-14 text-primary-500" />
                   </motion.div>
                   <div className="space-y-4">
                      <h1 className="text-xl lg:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
-                        Refund <span className="text-emerald-500">Policy</span>
+                        Refund <span className="text-primary-500">Policy</span>
                      </h1>
                      <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] max-w-2xl mx-auto px-6">
                         SUBSCRIPTION TERMS AND REFUND CONDITIONS
@@ -71,13 +71,13 @@ const RefundPolicy = () => {
                   <aside className="lg:col-span-4 hidden lg:block">
                      <div className="sticky top-24 space-y-8">
                         <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-2 border-slate-100 dark:border-slate-800">
-                           <h3 className="text-sm font-black uppercase tracking-[0.3em] text-emerald-600 mb-8 px-2">Table of Contents</h3>
+                           <h3 className="text-sm font-black uppercase tracking-[0.3em] text-primary-600 mb-8 px-2">Table of Contents</h3>
                            <nav className="space-y-2">
                               {sections.map((section) => (
                                  <a
                                     key={section.id}
                                     href={`#${section.id}`}
-                                    className="flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-400 hover:text-emerald-500 transition-all font-black text-[10px] uppercase tracking-widest group"
+                                    className="flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-400 hover:text-primary-500 transition-all font-black text-[10px] uppercase tracking-widest group"
                                  >
                                     <section.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                     {section.title}
@@ -86,10 +86,10 @@ const RefundPolicy = () => {
                            </nav>
                         </div>
 
-                        <div className="bg-slate-900 text-white p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-l-[10px] border-emerald-500 relative overflow-hidden">
+                        <div className="bg-slate-900 text-white p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-l-[10px] border-primary-500 relative overflow-hidden">
                            <ShieldCheck className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-white/5" />
                            <div className="relative z-10 space-y-4">
-                              <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400">Payment Status</p>
+                              <p className="text-[10px] font-black uppercase tracking-widest text-primary-400">Payment Status</p>
                               <h4 className="text-xl font-black uppercase tracking-tight">Account Activation</h4>
                               <p className="text-sm font-medium text-slate-400 leading-relaxed">Subscriptions provide immediate access to all features. Therefore, refunds are only provided under specific conditions.</p>
                            </div>
@@ -168,10 +168,10 @@ const RefundPolicy = () => {
 
                      {/* 4. Refund Exceptions */}
                      <section id="eligibility" className="bg-slate-900 rounded-[2rem]  lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-emerald-500/20 text-emerald-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-emerald-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/20">
                               <CircleCheck className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white leading-none">4. Refund Exceptions</h2>
@@ -183,15 +183,15 @@ const RefundPolicy = () => {
                            </p>
 
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-emerald-500/30 transition-all">
-                                 <div className="flex items-center gap-4 text-emerald-500">
+                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-primary-500/30 transition-all">
+                                 <div className="flex items-center gap-4 text-primary-500">
                                     <TriangleAlert className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Double Payment</h4>
                                  </div>
                                  <p className="text-xs font-medium text-slate-400 leading-relaxed">When you are accidentally charged twice for the same plan.</p>
                               </div>
-                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-emerald-500/30 transition-all">
-                                 <div className="flex items-center gap-4 text-emerald-500">
+                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-primary-500/30 transition-all">
+                                 <div className="flex items-center gap-4 text-primary-500">
                                     <Zap className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Activation Failure</h4>
                                  </div>
@@ -199,7 +199,7 @@ const RefundPolicy = () => {
                               </div>
                            </div>
 
-                           <div className="p-10 bg-emerald-500/10 rounded-[3rem] border-l-8 border-emerald-500">
+                           <div className="p-10 bg-primary-500/10 rounded-[3rem] border-l-8 border-primary-500">
                               <p className="text-sm font-medium text-slate-400 leading-relaxed">
                                  <strong>REQUEST:</strong> Contact us within 7 days of payment. If approved, your refund will go back to the account you paid from within a few banking days.
                               </p>

@@ -90,7 +90,7 @@ export const getAdminRoleColor = (role) => {
     case ADMIN_ROLES.ADMIN:
       return 'text-primary-600 bg-primary-100 dark:text-primary-400 dark:bg-primary-900/20';
     case ADMIN_ROLES.MODERATOR:
-      return 'text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20';
+      return 'text-primary-600 bg-primary-100 dark:text-primary-400 dark:bg-primary-900/20';
     default:
       return 'text-gray-600 bg-gray-100 dark:text-gray-400 dark:bg-gray-900/20';
   }

@@ -33,7 +33,11 @@ export async function POST(req, { params }) {
         // gets mutated + saved below so it must stay a hydrated document. Neither
         // fetch depends on the other, so run them concurrently.
         const [test, attempt] = await Promise.all([
-            PracticeTest.findById(testId).populate('examPattern', 'sections negativeMarking title exam').lean(),
+            PracticeTest.findById(testId).populate({
+                path: 'examPattern',
+                select: 'sections negativeMarking title exam',
+                populate: { path: 'exam', select: 'name' }
+            }).lean(),
             UserTestAttempt.findOne(attemptQuery)
         ]);
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
@@ -85,7 +89,7 @@ export async function POST(req, { params }) {
                 if (user) {
                     const totalMarks = test.totalMarks || 0;
                     const scorePct = totalMarks > 0 ? (Math.max(evaluation.totalScore, 0) / totalMarks) * 100 : 0;
-                    const subjectKey = String(test.examPattern?.exam || test.examPattern?._id || 'Mock');
+                    const subjectKey = test.examPattern?.exam?.name || test.examPattern?.title || 'Mock';
                     user.updatePerformanceMetrics({ subject: subjectKey }, Math.round(scorePct));
                     user.markModified('performanceMetrics.examStats.subjectAccuracy');
                     await user.save();

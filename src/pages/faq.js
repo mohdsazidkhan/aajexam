@@ -227,7 +227,7 @@ const FAQ = () => {
                                                 <span>{faq.q}</span>
                                             </h3>
                                             <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
-                                                <span className="text-green-500 font-semibold">A:</span> {faq.a}
+                                                <span className="text-primary-500 font-semibold">A:</span> {faq.a}
                                             </p>
                                         </div>
                                     ))}

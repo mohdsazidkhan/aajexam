@@ -34,7 +34,7 @@ const NewsSkeleton = () => (
 // ─── Type config ───────────────────────────────────────────────────────────────
 const typeConfig = {
   notification: { icon: Bell,         color: 'from-blue-500 to-blue-700',    chip: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border-blue-100 dark:border-blue-800/50',       label: 'Notification' },
-  admit_card:   { icon: CreditCard,   color: 'from-emerald-500 to-emerald-700', chip: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border-emerald-100 dark:border-emerald-800/50', label: 'Admit Card' },
+  admit_card:   { icon: CreditCard,   color: 'from-primary-500 to-primary-700', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
   result:       { icon: BarChart2,    color: 'from-orange-500 to-orange-700', chip: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 border-orange-100 dark:border-orange-800/50', label: 'Result' },
   answer_key:   { icon: Key,          color: 'from-purple-500 to-purple-700', chip: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 border-purple-100 dark:border-purple-800/50', label: 'Answer Key' },
   vacancy:      { icon: Users,        color: 'from-pink-500 to-pink-700',     chip: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 border-pink-100 dark:border-pink-800/50',     label: 'Vacancy' },

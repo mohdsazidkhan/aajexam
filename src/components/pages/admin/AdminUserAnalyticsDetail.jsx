@@ -20,7 +20,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
     const colors = {
         primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
         secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-        emerald: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+        emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
         amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
         rose: "text-rose-500 bg-rose-500/10 border-rose-500/20",
         purple: "text-primary-500 bg-primary-500/10 border-primary-500/20",
@@ -147,7 +147,7 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 shadow-2xl overflow-hidden
-                                        ${netEarnings >= 0 ? "bg-emerald-500 border-emerald-400/50" : "bg-rose-500 border-rose-400/50"}`}
+                                        ${netEarnings >= 0 ? "bg-primary-500 border-primary-400/50" : "bg-rose-500 border-rose-400/50"}`}
                             >
                                 <div className="relative z-10 flex flex-col items-center">
                                     <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mb-2">{netEarnings >= 0 ? 'Net Earnings' : 'Net Loss'}</span>
@@ -203,7 +203,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-emerald-500/20 text-emerald-600 rounded-2xl shadow-inner">
+                                    <div className="p-4 bg-primary-500/20 text-primary-600 rounded-2xl shadow-inner">
                                         <Coins className="w-6 h-6" />
                                     </div>
                                     <div>

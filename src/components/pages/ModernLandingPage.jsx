@@ -194,7 +194,7 @@ const ModernLandingPage = () => {
                {[0, 1].map((iteration) => (
                   <div key={iteration} className="flex items-center gap-12 pr-12">
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-500 animate-pulse"></span>
                         <span className="text-primary-600 dark:text-primary-400 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
                         Registered Users (Last 30 Days)
                      </div>
@@ -228,7 +228,7 @@ const ModernLandingPage = () => {
                      {[
                         { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
                         { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
-                        { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" }
+                        { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" }
                      ].map((item, i) => (
                         <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-duo border-2 border-slate-200 dark:border-slate-700">
                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
@@ -278,8 +278,8 @@ const ModernLandingPage = () => {
             </div>
             <div className="container mx-auto px-4 lg:px-6 relative z-10">
                <div className="text-center space-y-4 mb-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-black tracking-[0.1em] text-emerald-400 uppercase">
-                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-400 uppercase">
+                     <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
                      Last Year PYQ — Always Free
                   </div>
                   <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
@@ -298,7 +298,7 @@ const ModernLandingPage = () => {
                         { color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
                         { color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
                         { color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
-                        { color: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/20', text: 'text-emerald-400' },
+                        { color: 'from-primary-500/20 to-primary-600/10', border: 'border-primary-500/20', text: 'text-primary-400' },
                         { color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
                      ];
                      const theme = colors[idx % colors.length];
@@ -313,7 +313,7 @@ const ModernLandingPage = () => {
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.pyqCount} PYQs</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.practiceTestCount} Practice Tests</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{exam.quizCount} Quizzes</span>
-                           <span className="text-[10px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                           <span className="text-[10px] font-black text-primary-400 bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                         </motion.div>
                      );
                   }) : [
@@ -321,7 +321,7 @@ const ModernLandingPage = () => {
                      { name: 'SSC CHSL Tier 1', papers: '24+', color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
                      { name: 'RRB GROUP D', papers: '18+', color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
                      { name: 'SSC CPO', papers: '17+', color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
-                     { name: 'UPSC Prelims', papers: '14+', color: 'from-emerald-500/20 to-emerald-600/10', border: 'border-emerald-500/20', text: 'text-emerald-400' },
+                     { name: 'UPSC Prelims', papers: '14+', color: 'from-primary-500/20 to-primary-600/10', border: 'border-primary-500/20', text: 'text-primary-400' },
                      { name: 'SSC GD Constable', papers: '25+', color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
                   ].map((exam) => (
                      <motion.div
@@ -332,7 +332,7 @@ const ModernLandingPage = () => {
                      >
                         <span className={`text-sm lg:text-base font-black ${exam.text}`}>{exam.name}</span>
                         <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{exam.papers} papers</span>
-                        <span className="text-[10px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                        <span className="text-[10px] font-black text-primary-400 bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                      </motion.div>
                   ))}
                </div>

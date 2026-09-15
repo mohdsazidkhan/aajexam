@@ -24,11 +24,11 @@ const TYPE_COLORS = {
   fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
   tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
   current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-  poll: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const STATUS_COLORS = {
-  published: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  published: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
   pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
   draft: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400',
   rejected: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
@@ -295,7 +295,7 @@ const AdminReels = () => {
                                 <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-rose-50 dark:bg-rose-950/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
                                 <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
                                 {(item.status === 'pending' || item.status === 'rejected') && (
-                                  <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 text-emerald-500 hover:bg-emerald-500 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
+                                  <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-500 hover:bg-primary-500 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
                                 )}
                               </div>
                             </td>
@@ -345,14 +345,14 @@ const AdminReels = () => {
                           </div>
                           
                           {(item.status === 'pending' || item.status === 'rejected') && (
-                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-lg lg:rounded-xl bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 text-[9px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[9px] font-black uppercase tracking-widest hover:bg-primary-500 hover:text-white transition-all flex items-center justify-center gap-1.5">
                               <CheckCircle2 className="w-3 h-3" /> Approve & Live
                             </button>
                           )}
                         </div>
 
                         {/* Status Dot */}
-                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-emerald-500' : item.status === 'pending' ? 'bg-amber-500' : 'bg-rose-500'}`} />
+                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-primary-500' : item.status === 'pending' ? 'bg-amber-500' : 'bg-rose-500'}`} />
                       </motion.div>
                     );
                   })}

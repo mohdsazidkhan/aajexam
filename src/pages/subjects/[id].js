@@ -97,7 +97,7 @@ export default function SubjectDetail({
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Quizzes</div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-xl font-black text-emerald-600">FREE</div>
+                <div className="text-xl font-black text-primary-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
             </div>

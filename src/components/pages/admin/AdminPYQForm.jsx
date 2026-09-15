@@ -325,7 +325,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <Card className="p-5 lg:p-6 space-y-5">
                         <div className="flex items-center justify-between">
                             <h2 className="text-sm font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">Questions ({form.questions.length})</h2>
-                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-emerald-500 text-white rounded-lg text-xs font-bold hover:bg-emerald-600 transition flex items-center gap-1">
+                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-primary-500 text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
                                 <Plus className="w-3 h-3" /> Add Question
                             </button>
                         </div>
@@ -371,7 +371,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <div key={oi} className="space-y-1.5">
                                             <div className="flex items-center gap-2">
                                                 <button type="button" onClick={() => updateQuestion(qi, { correctAnswerIndex: oi })}
-                                                    className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 text-slate-400'}`}>
+                                                    className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-primary-500 border-primary-500 text-white' : 'border-slate-300 text-slate-400'}`}>
                                                     {String.fromCharCode(65 + oi)}
                                                 </button>
                                                 <input type="text" value={opt} onChange={e => updateOption(qi, oi, e.target.value)}

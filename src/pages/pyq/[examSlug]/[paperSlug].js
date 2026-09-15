@@ -119,7 +119,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                         <div className="flex items-center gap-3 flex-wrap mb-6">
                             <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">PYQ {paper.pyqYear || ''}</span>
                             {paper.pyqShift && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{paper.pyqShift}</span>}
-                            <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 rounded-full text-[10px] font-black text-emerald-700 dark:text-emerald-300 uppercase tracking-widest">{examName}</span>
+                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">{examName}</span>
                             {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-amber-100 dark:bg-amber-900/30 rounded-full text-[10px] font-black text-amber-700 dark:text-amber-300 uppercase tracking-widest">Free</span>}
                         </div>
 
@@ -142,7 +142,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Marks</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaClock className="text-xl text-emerald-600 mx-auto mb-2" />
+                                <FaClock className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.duration}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Minutes</div>
                             </div>
@@ -229,14 +229,14 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                             {q.options.map((opt, oi) => {
                                                 const isCorrect = oi === q.correctAnswerIndex;
                                                 return (
-                                                    <li key={oi} className={`px-4 py-2 rounded-lg border-2 font-medium text-sm ${isCorrect ? 'border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}`}>
+                                                    <li key={oi} className={`px-4 py-2 rounded-lg border-2 font-medium text-sm ${isCorrect ? 'border-primary-300 bg-primary-50 dark:bg-primary-900/20 dark:border-primary-700 text-primary-800 dark:text-primary-300' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}`}>
                                                         <span className="font-black mr-2">{String.fromCharCode(65 + oi)}.</span>
                                                         {opt}
                                                         {q.optionImages?.[oi] && (
                                                             /* eslint-disable-next-line @next/next/no-img-element */
                                                             <img src={q.optionImages[oi]} alt={`Option ${String.fromCharCode(65 + oi)}`} loading="lazy" className="max-w-full mt-2 rounded border border-slate-200 dark:border-slate-700" />
                                                         )}
-                                                        {isCorrect && <FaCheckCircle className="inline ml-2 text-emerald-600" />}
+                                                        {isCorrect && <FaCheckCircle className="inline ml-2 text-primary-600" />}
                                                     </li>
                                                 );
                                             })}
@@ -259,8 +259,8 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] pointer-events-none" />
                                 <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-6">
                                     <div className="flex-1 space-y-3">
-                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-black text-emerald-400 uppercase tracking-wider">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Free account required
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black text-primary-400 uppercase tracking-wider">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" /> Free account required
                                         </div>
                                         <h3 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">
                                             Attempt All {paper.questionCount || 0} Questions

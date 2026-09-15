@@ -114,7 +114,7 @@ const MyChallengesPage = () => {
                                           className="p-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 transition-colors shadow-sm"
                                           title="Copy Invite Link"
                                        >
-                                          {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                                          {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-500" /> : <Copy className="w-4 h-4" />}
                                        </button>
                                     </div>
 
@@ -147,7 +147,7 @@ const MyChallengesPage = () => {
                                              <div key={i} className={`flex items-center justify-between p-2.5 rounded-lg border ${
                                                 (ch.attempt?.percentage || 0) > hostPercentage 
                                                    ? 'bg-red-50 dark:bg-red-900/10 border-red-100 dark:border-red-900/30' 
-                                                   : 'bg-green-50 dark:bg-green-900/10 border-green-100 dark:border-green-900/30'
+                                                   : 'bg-primary-50 dark:bg-primary-900/10 border-primary-100 dark:border-primary-900/30'
                                              }`}>
                                                 <div className="flex items-center gap-2">
                                                    <div className="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold">
@@ -155,7 +155,7 @@ const MyChallengesPage = () => {
                                                    </div>
                                                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{ch.user?.name || 'Unknown'}</span>
                                                 </div>
-                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'}`}>
+                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-red-600 dark:text-red-400' : 'text-primary-600 dark:text-primary-400'}`}>
                                                    {Math.round(ch.attempt?.percentage || 0)}%
                                                 </div>
                                              </div>

@@ -38,6 +38,8 @@ export async function GET(req, { params }) {
                 name: user.name,
                 username: user.username,
                 bio: user.bio,
+                city: user.city,
+                primaryTargetExam: user.primaryTargetExam,
                 profilePicture: user.profilePicture,
                 badges: user.badges,
                 followersCount,

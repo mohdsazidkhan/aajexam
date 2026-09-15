@@ -48,7 +48,7 @@ const QuizListSkeleton = () => (
 
 // ─── Difficulty color map ──────────────────────────────────────────────────────
 const diffChip = (d) => {
-  if (d === 'easy') return 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border-emerald-100 dark:border-emerald-800/50';
+  if (d === 'easy') return 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50';
   if (d === 'hard') return 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border-red-100 dark:border-red-800/50';
   return 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 border-amber-100 dark:border-amber-800/50';
 };
@@ -115,8 +115,8 @@ const QuizListPage = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-emerald-600/20 dark:border-emerald-900/30">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-600 to-emerald-500 dark:from-slate-900 dark:via-emerald-900/40 dark:to-slate-900" />
+      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-teal-600 to-primary-500 dark:from-slate-900 dark:via-primary-900/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -127,7 +127,7 @@ const QuizListPage = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search quizzes..." value={search} onChange={e => setSearch(e.target.value)}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-emerald-500/30 border-none" />
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@ const QuizListPage = () => {
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-emerald-500 text-white border-emerald-600'
+                    ? 'bg-primary-500 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -156,10 +156,10 @@ const QuizListPage = () => {
           {filtered.map((quiz, idx) => (
             <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
               <Card hoverable onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                className="group p-5 flex flex-col gap-4 border-border-primary hover:border-emerald-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
+                className="group p-5 flex flex-col gap-4 border-border-primary hover:border-primary-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-600 flex items-center justify-center shrink-0 shadow-md">
                       <BrainCircuit className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -167,7 +167,7 @@ const QuizListPage = () => {
                       {quiz.subject?.name && <p className="text-[10px] font-bold text-content-muted uppercase">{quiz.subject.name}</p>}
                     </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                 </div>
 
                 {/* Topic / access badge */}
@@ -204,7 +204,7 @@ const QuizListPage = () => {
               <BrainCircuit className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No quizzes found</h3>
               <button onClick={() => { setActiveFilter('all'); setSearch(''); }}
-                className="px-6 py-2.5 bg-emerald-500 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-500 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

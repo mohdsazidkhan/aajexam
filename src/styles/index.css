@@ -17,6 +17,10 @@
 
 @layer base {
   :root {
+    /* Font tokens */
+    --font-primary: var(--font-outfit), 'Plus Jakarta Sans', sans-serif;
+    --font-hindi: var(--font-devanagari), 'Noto Sans Devanagari', sans-serif;
+
     /* Central Theme Tokens - Light Mode */
     --bg-page: #f8fafc;
     --bg-surface: #ffffff;
@@ -58,7 +62,8 @@
   html, body {
     background-color: var(--bg-page);
     color: var(--text-primary);
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-primary);
+    font-weight: 400;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -66,8 +71,18 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-primary);
+    font-weight: 700;
     letter-spacing: -0.02em;
+  }
+
+  button {
+    font-family: var(--font-primary);
+    font-weight: 600;
+  }
+
+  :lang(hi) {
+    font-family: var(--font-hindi);
   }
 
   ::selection {

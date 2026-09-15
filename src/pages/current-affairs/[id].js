@@ -103,7 +103,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
                 <p className="text-xs font-bold text-slate-700 dark:text-slate-300">Q{i + 1}. {q.questionText}</p>
                 <div className="grid grid-cols-2 gap-1">
                   {q.options?.map((opt, j) => (
-                    <span key={j} className={`text-[10px] px-2 py-1 rounded ${opt.isCorrect ? 'bg-emerald-50 text-emerald-700 font-bold' : 'text-slate-500'}`}>
+                    <span key={j} className={`text-[10px] px-2 py-1 rounded ${opt.isCorrect ? 'bg-primary-50 text-primary-700 font-bold' : 'text-slate-500'}`}>
                       {String.fromCharCode(65 + j)}. {opt.text}
                     </span>
                   ))}

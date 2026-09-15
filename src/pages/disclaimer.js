@@ -46,7 +46,7 @@ export default function Disclaimer() {
                                 },
                                 {
                                     icon: FaShieldAlt,
-                                    color: 'bg-emerald-500',
+                                    color: 'bg-primary-500',
                                     title: 'Educational Nature',
                                     content: 'AajExam is an educational platform designed to help users prepare for government competitive exams. While our quizzes are based on historical exam patterns and expert research, they do not guarantee success in any official examination. Your performance on AajExam is an indicator of practice levels and should not be taken as a final prediction of official exam results.'
                                 }

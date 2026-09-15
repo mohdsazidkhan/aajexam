@@ -180,13 +180,13 @@ const StudyPlanPage = () => {
                   <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold mt-1">
                     <span><Clock className="w-3 h-3 inline" /> {plan.dailyHours}h/day</span>
                     <span><Target className="w-3 h-3 inline" /> {plan.totalDays} days</span>
-                    <span className={`px-2 py-0.5 rounded ${plan.status === 'active' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'}`}>{plan.status}</span>
+                    <span className={`px-2 py-0.5 rounded ${plan.status === 'active' ? 'bg-primary-50 text-primary-600' : 'bg-slate-100 text-slate-500'}`}>{plan.status}</span>
                     <span className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded">{plan.generatedBy === 'ai' ? 'AI' : 'Template'}</span>
                   </div>
                 </div>
                 <div className="flex gap-1">
                   <button onClick={() => togglePlanStatus(plan._id, plan.status)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                    {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-emerald-500" />}
+                    {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-500" />}
                   </button>
                   <button onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4 text-red-400" /></button>
                 </div>
@@ -235,9 +235,9 @@ const StudyPlanPage = () => {
                     )}
                   </div>
                   {week.tasks?.map((task, ti) => (
-                    <div key={ti} className={`flex items-center gap-3 px-3 py-3 rounded-lg ${task.isCompleted ? 'bg-emerald-50 dark:bg-emerald-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
+                    <div key={ti} className={`flex items-center gap-3 px-3 py-3 rounded-lg ${task.isCompleted ? 'bg-primary-50 dark:bg-primary-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
                       <button onClick={() => completeTask(activePlan._id, wi, ti)}
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${task.isCompleted ? 'border-emerald-500 bg-emerald-500' : 'border-slate-300'}`}>
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${task.isCompleted ? 'border-primary-500 bg-primary-500' : 'border-slate-300'}`}>
                         {task.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}
                       </button>
                       <div className="flex-1">
@@ -260,8 +260,8 @@ const StudyPlanPage = () => {
                       <h3 className="text-xs font-black text-slate-900 dark:text-white">{dayName(d.date)}, {fmtDate(d.date)}</h3>
                     </div>
                     {d.tasks?.map((t, ti) => (
-                      <div key={ti} className={`flex items-center gap-3 px-3 py-2 rounded-lg ${t.isCompleted ? 'bg-emerald-50 dark:bg-emerald-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${t.isCompleted ? 'border-emerald-500 bg-emerald-500' : 'border-slate-300'}`}>
+                      <div key={ti} className={`flex items-center gap-3 px-3 py-2 rounded-lg ${t.isCompleted ? 'bg-primary-50 dark:bg-primary-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${t.isCompleted ? 'border-primary-500 bg-primary-500' : 'border-slate-300'}`}>
                           {t.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}
                         </div>
                         <div className="flex-1">

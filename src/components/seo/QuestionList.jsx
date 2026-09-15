@@ -58,7 +58,7 @@ export default function QuestionList({ questions = [], title = 'Questions with s
                   <summary className="cursor-pointer text-xs font-black uppercase tracking-widest text-primary-700 dark:text-primary-400">
                     Show answer
                   </summary>
-                  <p className="mt-2 text-sm font-bold text-emerald-700 dark:text-emerald-400">
+                  <p className="mt-2 text-sm font-bold text-primary-700 dark:text-primary-400">
                     Answer: {LABELS[correctIndex] || correctIndex + 1}. {q.options[correctIndex]?.text}
                   </p>
                   {q.explanation && (

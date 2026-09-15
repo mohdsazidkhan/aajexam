@@ -23,7 +23,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
   const colors = {
     primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    emerald: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+    emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     rose: "text-rose-500 bg-rose-500/10 border-rose-500/20",
     purple: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
@@ -327,7 +327,7 @@ const AdminSubscriptions = () => {
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'active': return <CheckCircle className="w-4 h-4 text-emerald-500" />;
+      case 'active': return <CheckCircle className="w-4 h-4 text-primary-500" />;
       case 'expired': return <Clock className="w-4 h-4 text-amber-500" />;
       case 'inactive': return <XCircle className="w-4 h-4 text-rose-500" />;
       case 'cancelled': return <AlertTriangle className="w-4 h-4 text-slate-400" />;
@@ -337,7 +337,7 @@ const AdminSubscriptions = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'active': return "text-emerald-500 bg-emerald-500/10 border-emerald-500/20";
+      case 'active': return "text-primary-500 bg-primary-500/10 border-primary-500/20";
       case 'expired': return "text-amber-500 bg-amber-500/10 border-amber-500/20";
       case 'inactive': return "text-rose-500 bg-rose-500/10 border-rose-500/20";
       default: return "text-slate-500 bg-slate-500/10 border-slate-500/20";
@@ -653,7 +653,7 @@ const AdminSubscriptions = () => {
                             <td className="px-3 lg:px-6 py-3 lg:py-6">
                               <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
                                 <div className="flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                  <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
                                   <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -681,7 +681,7 @@ const AdminSubscriptions = () => {
                                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
                                   whileTap={{ scale: 0.9 }}
                                   onClick={() => openExtendModal(subscription)}
-                                  className="p-3 text-emerald-500 rounded-lg lg:rounded-xl"
+                                  className="p-3 text-primary-500 rounded-lg lg:rounded-xl"
                                 >
                                   <Plus className="w-4 h-4" />
                                 </motion.button>
@@ -715,7 +715,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => openExtendModal(subscription)}
-                            className="p-3 bg-emerald-500/10 text-emerald-500 rounded-lg lg:rounded-xl border-2 border-emerald-500/20"
+                            className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl border-2 border-primary-500/20"
                           >
                             <Plus className="w-4 h-4" />
                           </motion.button>
@@ -809,7 +809,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => openExtendModal(subscription)}
-                            className="p-4 bg-emerald-500/10 text-emerald-500 rounded-2xl border-2 border-emerald-500/20"
+                            className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl border-2 border-primary-500/20"
                           >
                             <Plus className="w-5 h-5" />
                           </motion.button>
@@ -900,7 +900,7 @@ const AdminSubscriptions = () => {
 
                 <div className="p-4 lg:p-12 overflow-y-auto">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-4 bg-emerald-500/20 text-emerald-500 rounded-3xl">
+                    <div className="p-4 bg-primary-500/20 text-primary-500 rounded-3xl">
                       <Layers className="w-8 h-8" />
                     </div>
                     <div className="flex flex-col">
@@ -915,7 +915,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={extendForm.plan}
                         onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="free">Free</option>
                         <option value="basic">Basic</option>
@@ -928,7 +928,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={extendForm.duration}
                         onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-emerald-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="1 month">1 Month</option>
                         <option value="2 months">2 Months</option>
@@ -959,7 +959,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleExtendSubscription}
-                      className="flex-[2] py-5 bg-emerald-500 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-emerald-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="flex-[2] py-5 bg-primary-500 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-primary-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
                       disabled={extending}
                     >
                       {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}

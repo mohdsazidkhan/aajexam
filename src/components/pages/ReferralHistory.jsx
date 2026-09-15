@@ -227,7 +227,7 @@ export default function ReferralHistory() {
                                                 </span>
                                              </td>
                                              <td className="px-8 py-6">
-                                                <p className="text-sm font-black text-emerald-500 uppercase">+₹{tx.amount}</p>
+                                                <p className="text-sm font-black text-primary-500 uppercase">+₹{tx.amount}</p>
                                              </td>
                                              <td className="px-8 py-6 text-right">
                                                 <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Balance</p>

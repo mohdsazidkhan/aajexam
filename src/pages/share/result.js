@@ -105,7 +105,7 @@ export default function SharedResult({ stats }) {
             {[
               { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: 'text-yellow-500' },
               { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: 'text-primary-500' },
-              { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-green-500' },
+              { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-primary-500' },
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: 'text-purple-500' },
             ].map((item, idx) => (
               <Card key={idx} className="flex flex-col items-center text-center p-6 gap-2 border-2">

@@ -39,11 +39,11 @@ const CASkeleton = () => (
 const catConfig = {
   national:      { icon: Globe,    color: 'from-blue-500 to-blue-700',    chip: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border-blue-100 dark:border-blue-800/50' },
   international: { icon: Globe,    color: 'from-violet-500 to-violet-700', chip: 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/30 border-violet-100 dark:border-violet-800/50' },
-  economy:       { icon: TrendingUp, color: 'from-emerald-500 to-emerald-700', chip: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 border-emerald-100 dark:border-emerald-800/50' },
+  economy:       { icon: TrendingUp, color: 'from-primary-500 to-primary-700', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
   sports:        { icon: Trophy,   color: 'from-orange-500 to-orange-700', chip: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 border-orange-100 dark:border-orange-800/50' },
   science:       { icon: Sparkles, color: 'from-cyan-500 to-cyan-700',    chip: 'text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 border-cyan-100 dark:border-cyan-800/50' },
   defence:       { icon: Sword,    color: 'from-red-500 to-red-700',      chip: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border-red-100 dark:border-red-800/50' },
-  environment:   { icon: Leaf,     color: 'from-green-500 to-green-700',  chip: 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border-green-100 dark:border-green-800/50' },
+  environment:   { icon: Leaf,     color: 'from-primary-500 to-primary-700',  chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
   awards:        { icon: Trophy,   color: 'from-amber-500 to-amber-700',  chip: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 border-amber-100 dark:border-amber-800/50' },
   appointments:  { icon: Sparkles, color: 'from-pink-500 to-pink-700',    chip: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 border-pink-100 dark:border-pink-800/50' },
 };

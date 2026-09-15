@@ -46,8 +46,8 @@ const EducationalContent = ({ content }) => {
             icon: TrendingUp,
             title: "Data Analytics",
             description: "Live performance Stats and precision accuracy mapping.",
-            color: "text-emerald-500",
-            bg: "bg-emerald-50 dark:bg-emerald-900/10"
+            color: "text-primary-500",
+            bg: "bg-primary-50 dark:bg-primary-900/10"
         },
         {
             icon: Trophy,

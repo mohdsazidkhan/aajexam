@@ -81,11 +81,11 @@ const ForgotPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-6"
                 >
-                  <div className="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-primary-500/10 text-primary-500 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-black font-outfit uppercase text-emerald-600">Email sent</h3>
+                    <h3 className="text-xl font-black font-outfit uppercase text-primary-600">Email sent</h3>
                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em] leading-relaxed">
                       We have sent a reset link to your email. Please check your inbox.
                     </p>

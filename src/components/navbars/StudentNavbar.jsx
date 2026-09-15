@@ -140,7 +140,7 @@ const StudentNavbar = () => {
                         ? 'bg-gradient-to-r from-slate-500 via-slate-600 to-slate-500'
                         : isPro
                           ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500'
-                          : 'bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'
+                          : 'bg-gradient-to-r from-primary-500 via-primary-500 to-teal-500'
                       }`}
                     >
                       {plan}

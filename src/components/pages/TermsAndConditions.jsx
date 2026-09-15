@@ -171,10 +171,10 @@ const TermsAndConditions = () => {
 
                      {/* 3. Subscription & Payments */}
                      <section id="subscription" className="bg-slate-900 rounded-[2rem]  lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-emerald-500/20 text-emerald-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-emerald-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/20">
                               <Users className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white">3. Subscription Plans</h2>
@@ -182,21 +182,21 @@ const TermsAndConditions = () => {
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
                            <div className="p-8 bg-white/5 rounded-[2.5rem] border-2 border-white/10 space-y-4">
-                              <h4 className="text-emerald-500 font-black uppercase tracking-widest text-xs">Free Plan</h4>
+                              <h4 className="text-primary-500 font-black uppercase tracking-widest text-xs">Free Plan</h4>
                               <p className="text-sm font-medium text-slate-400">Access to Levels 0-9 for basic exam preparation.</p>
                            </div>
-                           <div className="p-8 bg-emerald-500/10 rounded-[2.5rem] border-2 border-emerald-500/20 space-y-4 shadow-duo-emerald group hover:scale-[1.02] transition-transform">
+                           <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-4 shadow-duo-primary group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
-                                 <Zap className="w-4 h-4 text-emerald-500" />
+                                 <Zap className="w-4 h-4 text-primary-500" />
                               </div>
                               <p className="text-sm font-medium text-slate-200">Complete access to all levels, advanced features, and premium study materials.</p>
                            </div>
                         </div>
 
-                        <div className="p-10 bg-white/5 rounded-[3.5rem] border-l-8 border-emerald-500 relative z-10">
+                        <div className="p-10 bg-white/5 rounded-[3.5rem] border-l-8 border-primary-500 relative z-10">
                            <p className="text-sm font-medium text-slate-400 leading-relaxed">
-                              <strong className="text-emerald-500">PAYMENT TERMS:</strong> All subscription fees are processed securely and are non-refundable. If your account is banned for breaking rules, you will not receive a refund.
+                              <strong className="text-primary-500">PAYMENT TERMS:</strong> All subscription fees are processed securely and are non-refundable. If your account is banned for breaking rules, you will not receive a refund.
                            </p>
                         </div>
                      </section>

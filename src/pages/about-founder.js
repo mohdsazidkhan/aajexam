@@ -97,7 +97,7 @@ export default function AboutAuthor() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {[
                                 { title: 'Full-Stack Development', desc: 'Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.', color: 'bg-primary-500' },
-                                { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-emerald-500' },
+                                { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-primary-500' },
                                 { title: 'System Architecture', desc: 'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color: 'bg-purple-500' },
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
@@ -114,7 +114,7 @@ export default function AboutAuthor() {
 
                     {/* Vision & Mission */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <div className="flex items-center gap-4 mb-10">
                             <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
                                 <FaTrophy className="text-white text-2xl" />
@@ -146,7 +146,7 @@ export default function AboutAuthor() {
                     {/* Achievements */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-emerald-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-emerald-700">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Key Achievements</h2>
@@ -154,7 +154,7 @@ export default function AboutAuthor() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {[
                                 { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-500' },
-                                { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-green-500' },
+                                { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-primary-500' },
                                 { title: 'Content Curation', desc: 'Curated thousands of exam questions across multiple subjects.', color: 'bg-purple-500' },
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
@@ -209,7 +209,7 @@ export default function AboutAuthor() {
                                 href="https://github.com/mohdsazidkhan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-green-600 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-green-700 transition-all"
+                                className="flex items-center gap-3 bg-primary-600 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-700 transition-all"
                             >
                                 <FaGithub className="text-xl" />
                                 <span>GitHub</span>

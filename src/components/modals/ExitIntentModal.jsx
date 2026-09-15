@@ -73,7 +73,7 @@ const ExitIntentModalInner = ({ onClose }) => {
 
         <div className="p-8 text-center relative overflow-hidden">
           <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10">
             <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl border-4 border-white dark:border-slate-800">
@@ -84,12 +84,12 @@ const ExitIntentModalInner = ({ onClose }) => {
               Wait! Don't Leave Empty Handed.
             </h2>
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              Sign up in 10 seconds to unlock a <span className="text-emerald-500 font-black">Free Premium Mock Test</span> and personalized progress tracking.
+              Sign up in 10 seconds to unlock a <span className="text-primary-500 font-black">Free Premium Mock Test</span> and personalized progress tracking.
             </p>
 
             <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
+                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
                 Free Latest PYQ PDF & Tests
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">

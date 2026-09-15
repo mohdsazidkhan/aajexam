@@ -48,7 +48,7 @@ const QuizHistoryPage = () => {
    };
 
    if (loading && attempts.length === 0) return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-emerald-500 selection:text-white">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-primary-500 selection:text-white">
          <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
       </div>
    );
@@ -99,12 +99,12 @@ const QuizHistoryPage = () => {
 
                         return (
                            <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="p-5 group hover:shadow-xl transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-emerald-500">
+                              <Card className="p-5 group hover:shadow-xl transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500">
                                  <div className="space-y-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">
-                                       <div className="p-2.5 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl">
-                                          <BrainCircuit className="w-5 h-5 text-emerald-600" />
+                                       <div className="p-2.5 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl">
+                                          <BrainCircuit className="w-5 h-5 text-primary-600" />
                                        </div>
                                        {isCompleted && (
                                           <div className={`w-9 h-9 rounded-full border-4 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black text-lg`}>
@@ -130,7 +130,7 @@ const QuizHistoryPage = () => {
                                           <div className="space-y-2">
                                              <div className="flex justify-between items-end">
                                                 <span className="text-[10px] font-black text-slate-400">Accuracy</span>
-                                                <span className="text-sm font-black text-emerald-600">{Math.round(attempt.accuracy || 0)}%</span>
+                                                <span className="text-sm font-black text-primary-600">{Math.round(attempt.accuracy || 0)}%</span>
                                              </div>
                                              <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" />
                                           </div>
@@ -142,7 +142,7 @@ const QuizHistoryPage = () => {
                                              </div>
                                              <div className="text-center">
                                                 <span className="text-[9px] font-black text-slate-400 block">Correct</span>
-                                                <p className="text-sm font-black text-green-600">{attempt.correctCount}/{attempt.correctCount + attempt.wrongCount + (attempt.skippedCount || 0)}</p>
+                                                <p className="text-sm font-black text-primary-600">{attempt.correctCount}/{attempt.correctCount + attempt.wrongCount + (attempt.skippedCount || 0)}</p>
                                              </div>
                                              <div className="text-center">
                                                 <span className="text-[9px] font-black text-slate-400 block">Rank</span>
@@ -161,7 +161,7 @@ const QuizHistoryPage = () => {
                                        {isCompleted ? (
                                           <button
                                              onClick={() => router.push(`/quiz-result/${attempt._id}`)}
-                                             className="flex items-center gap-1 text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition-colors"
+                                             className="flex items-center gap-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-1.5 rounded-lg hover:bg-primary-100 transition-colors"
                                           >
                                              <Eye className="w-3 h-3" /> View Result
                                           </button>

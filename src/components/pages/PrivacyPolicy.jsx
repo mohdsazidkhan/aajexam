@@ -173,10 +173,10 @@ const PrivacyPolicy = () => {
 
                      {/* 2. Use of Information */}
                      <section id="use" className="bg-slate-900 rounded-[2rem]  lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-emerald-500/20 text-emerald-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-emerald-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/20">
                               <Eye className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white">2. How We Use Information</h2>
@@ -189,13 +189,13 @@ const PrivacyPolicy = () => {
                               "To process referral rewards when friends you invite upgrade to PRO."
                            ].map((text, i) => (
                               <div key={i} className="flex gap-6 group">
-                                 <div className="w-1 h-12 bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors rounded-full" />
+                                 <div className="w-1 h-12 bg-primary-500/20 group-hover:bg-primary-500 transition-colors rounded-full" />
                                  <p className="text-sm font-medium text-slate-400 leading-loose pt-2">{text}</p>
                               </div>
                            ))}
 
-                           <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem]  lg:rounded-[3rem] border-l-8 border-emerald-500 space-y-6">
-                              <div className="flex items-center gap-4 text-emerald-500">
+                           <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem]  lg:rounded-[3rem] border-l-8 border-primary-500 space-y-6">
+                              <div className="flex items-center gap-4 text-primary-500">
                                  <Zap className="w-6 h-6" />
                                  <h4 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h4>
                               </div>

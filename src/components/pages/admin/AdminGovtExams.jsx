@@ -261,8 +261,8 @@ const AdminGovtExams = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.category?.name || 'Uncategorized'}</td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6">
                         <div className="flex justify-center">
-                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
+                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-rose-500'}`} />
                             {exam.isActive ? 'Online' : 'Offline'}
                           </div>
                         </div>
@@ -294,7 +294,7 @@ const AdminGovtExams = () => {
               {filteredExams.map((exam, idx) => (
                 <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit">
                   <div className="absolute top-6 right-6">
-                    <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
+                    <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
                       {exam.isActive ? 'LIVE STATUS' : 'INACTIVE'}
                     </div>
                   </div>
@@ -337,7 +337,7 @@ const AdminGovtExams = () => {
                       <div className="flex items-center gap-4">
                         <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{exam.category?.name}</div>
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-rose-500'}`} />
                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
                         </div>
                       </div>
@@ -406,7 +406,7 @@ const AdminGovtExams = () => {
                 </div>
                 <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
                   <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-lg lg:rounded-xl ${formData.isActive ? 'bg-emerald-500/10 text-emerald-500' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
+                    <div className={`p-3 rounded-lg lg:rounded-xl ${formData.isActive ? 'bg-primary-500/10 text-primary-500' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
                     <div>
                       <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Active Status</p>
                       <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>

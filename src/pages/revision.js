@@ -85,7 +85,7 @@ const RevisionPage = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-red-500">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Due Today</p></Card>
               <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-blue-500">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">This Week</p></Card>
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-emerald-500">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Accuracy</p></Card>
+              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-primary-500">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Accuracy</p></Card>
               <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Items</p></Card>
             </div>
           )}
@@ -136,8 +136,8 @@ const RevisionPage = () => {
                     {currentItem.questionSnapshot?.options?.map((opt, i) => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
                       return (
-                        <div key={i} className={`px-4 py-3 rounded-lg lg:rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
-                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-emerald-500 ml-2" />}
+                        <div key={i} className={`px-4 py-3 rounded-lg lg:rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
+                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-500 ml-2" />}
                         </div>
                       );
                     })}
@@ -150,7 +150,7 @@ const RevisionPage = () => {
                     <div className="grid grid-cols-3 gap-3">
                       <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-red-100 dark:hover:bg-red-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
                       <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
-                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
+                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
                     </div>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const RevisionPage = () => {
             </Card>
           ) : (
             <Card className="p-8 text-center space-y-4">
-              <Zap className="w-12 h-12 text-emerald-500 mx-auto" />
+              <Zap className="w-12 h-12 text-primary-500 mx-auto" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? 'All Caught Up!' : 'Koi item nahi'}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {activeTab === 'all'

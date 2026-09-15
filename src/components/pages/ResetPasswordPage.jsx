@@ -100,11 +100,11 @@ const ResetPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-8"
                 >
-                  <div className="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-primary-500/10 text-primary-500 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-lg font-black font-outfit uppercase text-emerald-600">Password Updated</h3>
+                    <h3 className="text-lg font-black font-outfit uppercase text-primary-600">Password Updated</h3>
                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
                       Your password has been reset. Redirecting to login...
                     </p>
@@ -113,7 +113,7 @@ const ResetPasswordPage = () => {
                         initial={{ width: 0 }}
                         animate={{ width: '100%' }}
                         transition={{ duration: 2 }}
-                        className="h-full bg-emerald-500"
+                        className="h-full bg-primary-500"
                       />
                     </div>
                   </div>

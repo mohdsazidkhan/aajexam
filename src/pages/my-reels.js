@@ -41,7 +41,7 @@ const TYPE_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-   published: { label: 'Published', icon: CheckCircle, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
+   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
    pending: { label: 'Pending', icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
    rejected: { label: 'Rejected', icon: XCircle, color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20' },
    draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-gray-50 dark:bg-gray-900/20' },
@@ -172,7 +172,7 @@ const MyReelsPage = () => {
                                           </span>
                                        )}
                                        {reel.difficulty && (
-                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-green-600 bg-green-50 dark:bg-green-900/20' : reel.difficulty === 'hard' ? 'text-red-600 bg-red-50 dark:bg-red-900/20' : 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20'}`}>
+                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-red-600 bg-red-50 dark:bg-red-900/20' : 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20'}`}>
                                              {reel.difficulty}
                                           </span>
                                        )}

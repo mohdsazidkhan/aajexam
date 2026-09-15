@@ -21,7 +21,7 @@ const SUBJECT_GRADIENTS = {
   'Quantitative': 'from-blue-900 via-blue-800 to-blue-600',
   'Quant': 'from-blue-900 via-blue-800 to-blue-600',
   'Reasoning': 'from-purple-900 via-purple-800 to-purple-600',
-  'English': 'from-emerald-900 via-emerald-800 to-emerald-600',
+  'English': 'from-primary-900 via-primary-800 to-primary-600',
   'GK': 'from-orange-900 via-orange-800 to-orange-600',
   'General': 'from-slate-900 via-slate-800 to-slate-600',
 };
@@ -31,7 +31,7 @@ const TYPE_GRADIENTS = {
   'fact': 'from-purple-900 via-indigo-900 to-purple-700',
   'tip': 'from-amber-900 via-amber-800 to-yellow-700',
   'current_affairs': 'from-red-900 via-rose-800 to-red-700',
-  'poll': 'from-teal-900 via-emerald-800 to-green-700',
+  'poll': 'from-teal-900 via-primary-800 to-primary-700',
 };
 
 const TYPE_ICONS = {
@@ -43,7 +43,7 @@ const TYPE_ICONS = {
 };
 
 const DIFFICULTY_STYLES = {
-  easy: 'bg-green-500/20 text-green-300 border-green-500/30',
+  easy: 'bg-primary-500/20 text-primary-300 border-primary-500/30',
   medium: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
   hard: 'bg-red-500/20 text-red-300 border-red-500/30',
 };
@@ -125,7 +125,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
           let optionStyle = 'border-white/15 bg-white/5 hover:bg-white/10';
           if (answered && result) {
             if (i === result.correctAnswerIndex) {
-              optionStyle = 'border-green-400/60 bg-green-500/20';
+              optionStyle = 'border-primary-400/60 bg-primary-500/20';
             } else if (i === selected && !result.isCorrect) {
               optionStyle = 'border-red-400/60 bg-red-500/20';
             } else {
@@ -144,7 +144,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
             >
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
-                ? 'border-green-400 bg-green-400 text-green-900'
+                ? 'border-primary-400 bg-primary-400 text-primary-900'
                 : answered && i === selected && !result?.isCorrect
                   ? 'border-red-400 bg-red-400 text-red-900'
                   : i === selected ? 'border-white bg-white text-slate-900' : 'border-white/30 text-white/60'}`}>
@@ -280,10 +280,10 @@ const PollReelCard = ({ reel, onVote }) => {
   return (
     <div className="flex flex-col h-full px-4 pb-4 justify-center">
       <div className="flex items-center gap-2 mb-2 sm:mb-4">
-        <BarChart3 className="w-4 h-4 text-green-400" />
-        <span className="text-[10px] font-bold uppercase tracking-widest text-green-400/80">Community Poll</span>
+        <BarChart3 className="w-4 h-4 text-primary-400" />
+        <span className="text-[10px] font-bold uppercase tracking-widest text-primary-400/80">Community Poll</span>
       </div>
-      <div className="h-px bg-gradient-to-r from-transparent via-green-400/30 to-transparent mb-5" />
+      <div className="h-px bg-gradient-to-r from-transparent via-primary-400/30 to-transparent mb-5" />
 
       <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.pollQuestion}</h2>
 
@@ -303,7 +303,7 @@ const PollReelCard = ({ reel, onVote }) => {
                   initial={{ width: 0 }}
                   animate={{ width: `${pct}%` }}
                   transition={{ duration: 0.6, ease: 'easeOut' }}
-                  className={`absolute inset-y-0 left-0 ${i === votedIndex ? 'bg-green-500/20' : 'bg-white/5'}`}
+                  className={`absolute inset-y-0 left-0 ${i === votedIndex ? 'bg-primary-500/20' : 'bg-white/5'}`}
                 />
               )}
               <div className="relative flex justify-between items-center">
@@ -1304,7 +1304,7 @@ const ReelsFeed = () => {
                     { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-purple-500 to-pink-600', desc: 'Quick fact or one-liner' },
                     { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-yellow-500 to-orange-600', desc: 'Shortcut or formula' },
                     { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-red-500 to-rose-600', desc: 'Daily CA card' },
-                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-green-500 to-emerald-600', desc: 'Community poll' },
+                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-primary-500 to-primary-600', desc: 'Community poll' },
                   ].map((type) => (
                     <Link
                       key={type.value}

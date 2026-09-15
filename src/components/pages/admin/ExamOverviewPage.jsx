@@ -174,7 +174,7 @@ const ExamDetails = ({ exam }) => (
             <div key={b._id} className="text-[11px] px-3 py-2 bg-amber-50/50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 rounded-lg flex flex-col justify-center">
               <span className="truncate font-medium mb-1" title={b.title}>{b.title}</span>
               <div className="flex items-center justify-between">
-                <span className={`text-[9px] font-bold uppercase ${b.status === 'published' ? 'text-green-600' : 'text-amber-600'}`}>{b.status}</span>
+                <span className={`text-[9px] font-bold uppercase ${b.status === 'published' ? 'text-primary-600' : 'text-amber-600'}`}>{b.status}</span>
                 <span className="text-slate-400 text-[9px]">{b.views || 0} views</span>
               </div>
             </div>
@@ -392,7 +392,7 @@ const ExamOverviewPage = () => {
                             {exam.category?.name || '-'}
                           </td>
                           <td className="p-4 text-center font-semibold text-cyan-600 dark:text-cyan-400">{exam.counts.patterns}</td>
-                          <td className="p-4 text-center font-semibold text-emerald-600 dark:text-emerald-400">{exam.counts.subjects}</td>
+                          <td className="p-4 text-center font-semibold text-primary-600 dark:text-primary-400">{exam.counts.subjects}</td>
                           <td className="p-4 text-center font-semibold text-teal-600 dark:text-teal-400">{exam.counts.topics}</td>
                           <td className="p-4 text-center font-semibold text-purple-600 dark:text-purple-400">{exam.counts.quizzes}</td>
                           <td className="p-4 text-center font-semibold text-rose-600 dark:text-rose-400">{exam.counts.pyqs}</td>
@@ -408,7 +408,7 @@ const ExamOverviewPage = () => {
                           <td className="p-4 text-center font-semibold text-amber-600 dark:text-amber-400">{exam.counts.blogs}</td>
                           <td className="p-4 text-center">
                             {exam.isActive ? (
-                              <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase">
+                              <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-[10px] font-bold uppercase">
                                 Active
                               </span>
                             ) : (
@@ -466,7 +466,7 @@ const ExamOverviewPage = () => {
                           <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                             {exam.name}
                             {exam.isActive ? (
-                              <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[9px] font-bold uppercase">Active</span>
+                              <span className="px-1.5 py-0.5 rounded bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-[9px] font-bold uppercase">Active</span>
                             ) : (
                               <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-[9px] font-bold uppercase">Inactive</span>
                             )}
@@ -482,7 +482,7 @@ const ExamOverviewPage = () => {
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Sub</div>
-                          <div className="text-sm font-bold text-emerald-600">{exam.counts.subjects}</div>
+                          <div className="text-sm font-bold text-primary-600">{exam.counts.subjects}</div>
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Top</div>
@@ -544,7 +544,7 @@ const ExamOverviewPage = () => {
                           <p className="text-xs text-slate-500 font-medium">{exam.code} • {exam.category?.name || 'Uncategorized'}</p>
                         </div>
                         {exam.isActive ? (
-                          <span className="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase shrink-0">Active</span>
+                          <span className="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-[10px] font-bold uppercase shrink-0">Active</span>
                         ) : (
                           <span className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-[10px] font-bold uppercase shrink-0">Inactive</span>
                         )}
@@ -557,7 +557,7 @@ const ExamOverviewPage = () => {
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Subjects</div>
-                          <div className="text-lg font-bold text-emerald-600 leading-none">{exam.counts.subjects}</div>
+                          <div className="text-lg font-bold text-primary-600 leading-none">{exam.counts.subjects}</div>
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Topics</div>

@@ -214,7 +214,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                     <History className="w-3 h-3" />
                     {exam.pyqCount || 0} PYQs
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-emerald-100 dark:border-emerald-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {exam.quizCount || 0} Quizzes
                   </div>

@@ -465,16 +465,16 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             </div>
           ) : (
             quizzes.map((quiz, idx) => {
-              const diffColor = quiz.difficulty === 'easy' ? 'text-green-600 bg-green-50' : quiz.difficulty === 'hard' ? 'text-red-600 bg-red-50' : 'text-yellow-600 bg-yellow-50';
+              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-red-600 bg-red-50' : 'text-yellow-600 bg-yellow-50';
               return (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                   <Card
                     hoverable
                     onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                    className="group h-full border-2 border-border-primary hover:border-emerald-500 transition-all p-4 flex flex-col gap-3"
+                    className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-600 flex items-center justify-center shrink-0">
                         <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -487,7 +487,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     <p className="text-xs font-bold text-content-muted">{quiz.duration} min · {quiz.totalMarks} marks</p>
                     <div className="flex items-center gap-2 mt-auto">
                         <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="flex-1 text-center text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">Start</span>
+                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">Start</span>
                       </div>
                   </Card>
                 </motion.div>
@@ -551,7 +551,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white border-none p-6 lg:p-8">
+        <Card className="bg-gradient-to-br from-primary-500 to-teal-600 text-white border-none p-6 lg:p-8">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

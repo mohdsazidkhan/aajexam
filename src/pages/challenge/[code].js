@@ -98,7 +98,7 @@ export default function ChallengePage() {
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
                         ) : (
-                            <div className="bg-emerald-500/20 border border-emerald-400/30 text-emerald-100 px-6 py-3 rounded-lg lg:rounded-xl font-bold flex items-center gap-2">
+                            <div className="bg-primary-500/20 border border-primary-400/30 text-primary-100 px-6 py-3 rounded-lg lg:rounded-xl font-bold flex items-center gap-2">
                                 <Trophy className="w-5 h-5" /> You have completed this challenge!
                             </div>
                         )}

@@ -104,7 +104,7 @@ export default function AdminBankDetails() {
       free: "text-slate-500 bg-slate-500/10 border-slate-500/20",
       basic: "text-primary-500 bg-primary-500/10 border-primary-500/20",
       premium: "text-rose-500 bg-rose-500/10 border-rose-500/20",
-      pro: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+      pro: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     };
 
     return (

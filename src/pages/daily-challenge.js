@@ -189,7 +189,7 @@ const DailyChallengePage = () => {
               <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-2.5 text-sm font-bold text-slate-500 disabled:opacity-30 disabled:cursor-not-allowed">Previous</button>
               {currentQ < challenge.questions.length - 1
                 ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition">Next</button>
-                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-emerald-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-emerald-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
+                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
               }
             </div>
           </div>
@@ -199,7 +199,7 @@ const DailyChallengePage = () => {
         {attempted && attemptData && (
           <div className="space-y-6">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <Card className="p-6 text-center space-y-4 bg-gradient-to-br from-primary-50 to-emerald-50 dark:from-primary-900/20 dark:to-emerald-900/20 ring-4 ring-emerald-500/20 shadow-xl">
+              <Card className="p-6 text-center space-y-4 bg-gradient-to-br from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 ring-4 ring-primary-500/20 shadow-xl">
                 <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
@@ -207,7 +207,7 @@ const DailyChallengePage = () => {
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Score</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-3xl font-black text-emerald-500">{attemptData.accuracy}%</p>
+                    <p className="text-3xl font-black text-primary-500">{attemptData.accuracy}%</p>
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Accuracy</p>
                   </div>
                   <div className="space-y-1">
@@ -231,9 +231,9 @@ const DailyChallengePage = () => {
                     const isSkipped = !ans || ans.selectedOptionIndex === -1;
                     const isCorrect = ans?.isCorrect;
                     return (
-                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
                         <div className="flex items-start gap-2 mb-2">
-                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-emerald-500' : 'bg-red-500'}`}>{idx + 1}</div>
+                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-primary-500' : 'bg-red-500'}`}>{idx + 1}</div>
                           <p className="text-sm font-medium text-slate-800 dark:text-white">{q.questionText}</p>
                         </div>
                         <div className="space-y-1 ml-8">
@@ -241,11 +241,11 @@ const DailyChallengePage = () => {
                             const isSel = ans?.selectedOptionIndex === oi;
                             const isRight = oi === correctIdx;
                             let cls = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
-                            if (isRight) cls = 'bg-emerald-100 dark:bg-emerald-900/30 border-emerald-400';
+                            if (isRight) cls = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400';
                             if (isSel && !isCorrect) cls = 'bg-red-100 dark:bg-red-900/30 border-red-400';
                             return (
                               <div key={oi} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${cls}`}>
-                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />}
+                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 shrink-0" />}
                                 {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />}
                                 {!isRight && !isSel && <div className="w-3.5 h-3.5 shrink-0" />}
                                 <span className="text-slate-700 dark:text-slate-300">{opt.text || opt}</span>

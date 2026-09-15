@@ -72,7 +72,7 @@ const DashboardAnalytics = () => {
   const getGradientColors = (gradientClass) => {
     const gradientMap = {
       'from-primary-500 to-primary-600': '#3b82f6, #4f46e5',
-      'from-green-500 to-emerald-600': '#10b981, #059669',
+      'from-primary-500 to-primary-600': '#10b981, #059669',
       'from-primary-500 to-primary-600': '#eab308, #ea580c',
       'from-primary-500 to-pink-600': '#8b5cf6, #db2777',
       'from-primary-500 to-primary-600': '#6366f1, #2563eb',
@@ -210,7 +210,7 @@ const DashboardAnalytics = () => {
                 </td>
                 <td className="py-4 px-4">
                   <div className="flex items-center gap-2">
-                    <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
+                    <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
                       a.score >= 60 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
                         a.score >= 40 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
                           'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
@@ -277,8 +277,8 @@ const DashboardAnalytics = () => {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-emerald-500/10 rounded-md flex items-center justify-center">
-                  <BookOpen className="w-3.5 h-3.5 text-emerald-500" />
+                <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
+                  <BookOpen className="w-3.5 h-3.5 text-primary-500" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300 font-medium limit-text-1">
                   {a.quiz?.title || 'Unknown Quiz'}
@@ -289,7 +289,7 @@ const DashboardAnalytics = () => {
                 <div className="w-6 h-6 bg-amber-500/10 rounded-md flex items-center justify-center">
                   <Trophy className="w-3.5 h-3.5 text-amber-500" />
                 </div>
-                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-emerald-600' : 'text-slate-700 dark:text-slate-300'}`}>
+                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`}>
                   {a.score || 0} Scored
                 </span>
               </div>
@@ -344,8 +344,8 @@ const DashboardAnalytics = () => {
 
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-md flex items-center justify-center">
-                    <BookOpen className="w-3.5 h-3.5 text-emerald-500" />
+                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
+                    <BookOpen className="w-3.5 h-3.5 text-primary-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
                     {a.quiz?.title || 'Unknown Quiz'}
@@ -356,7 +356,7 @@ const DashboardAnalytics = () => {
                   <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
                     <Trophy className="w-3.5 h-3.5 text-amber-500" />
                   </div>
-                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-green-600 dark:text-green-400' :
+                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600 dark:text-primary-400' :
                     a.score >= 60 ? 'text-primary-700 dark:text-primary-500 dark:text-primary-400' :
                       a.score >= 40 ? 'text-primary-700 dark:text-primary-500 dark:text-primary-400' :
                         'text-primary-700 dark:text-primary-500 dark:text-red-400'
@@ -442,7 +442,7 @@ const DashboardAnalytics = () => {
                  label: 'Total Quizzes',
                  icon: <BarChart3 />,
                  value: data.overview?.totalQuizzes,
-                 gradient: 'text-emerald-600 bg-emerald-600/10 border-emerald-600/20'
+                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
                },
                {
                  label: 'TOTAL REVENUE',

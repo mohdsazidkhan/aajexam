@@ -402,7 +402,7 @@ const PublicProfile = ({ username }) => {
                             <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-purple-500 transition-colors">{quiz.title}</h4>
                             <div className="flex items-center gap-3 mt-3 flex-wrap">
                               {quiz.difficulty && (
-                                <span className={`text-[8px] font-black px-4 py-1.5 rounded-lg lg:rounded-xl uppercase tracking-widest border-2 ${quiz.difficulty === 'Easy' ? 'bg-green-50 text-green-500 border-green-100' :
+                                <span className={`text-[8px] font-black px-4 py-1.5 rounded-lg lg:rounded-xl uppercase tracking-widest border-2 ${quiz.difficulty === 'Easy' ? 'bg-primary-50 text-primary-500 border-primary-100' :
                                   quiz.difficulty === 'Medium' ? 'bg-amber-50 text-amber-500 border-amber-100' :
                                     'bg-red-50 text-red-500 border-red-100'
                                   }`}>

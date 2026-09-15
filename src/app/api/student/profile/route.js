@@ -44,7 +44,7 @@ export async function GET(req) {
         return NextResponse.json({
             success: true,
             user: {
-                ...user.toObject(),
+                ...user.toObject({ flattenMaps: true }),
                 profileCompletion,
                 bankDetail: bankDetail || null,
                 // Add unified wallet fields

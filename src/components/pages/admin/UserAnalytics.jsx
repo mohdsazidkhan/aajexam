@@ -345,7 +345,7 @@ const UserAnalytics = () => {
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-lg lg:rounded-xl">
+              <div className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
                 <LineChart className="w-5 h-5" />
               </div>
               <div>

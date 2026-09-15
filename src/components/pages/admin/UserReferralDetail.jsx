@@ -156,10 +156,10 @@ export default function UserReferralDetail() {
                         <div className="space-y-4">
 
                             <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                REFERRAL <span className="text-emerald-500">DETAIL</span>
+                                REFERRAL <span className="text-primary-500">DETAIL</span>
                             </h1>
                             <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
-                                <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
+                                <div className="w-12 h-12 bg-primary-500 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
                                     {user?.name?.[0].toUpperCase()}
                                 </div>
                                 <div>
@@ -175,7 +175,7 @@ export default function UserReferralDetail() {
                                 onClick={() => router.push('/admin/referral-history')}
                                 className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                             >
-                                <ArrowLeft className="w-4 h-4 text-emerald-500" /> Back to History
+                                <ArrowLeft className="w-4 h-4 text-primary-500" /> Back to History
                             </button>
                         </div>
                     </div>
@@ -208,13 +208,13 @@ export default function UserReferralDetail() {
                         { id: 'total', label: 'Total Earned', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
                         { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                     ].map((tier) => (
-                        <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-emerald-500/30 transition-all">
+                        <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl group hover:border-primary-500/30 transition-all">
                             <div className="p-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit">
                                 <tier.icon className="w-5 h-5" />
                             </div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
                             <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">₹{tier.amount.toLocaleString()}</div>
-                            <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
+                            <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
                         </div>
                     ))}
                 </div>
@@ -222,7 +222,7 @@ export default function UserReferralDetail() {
                 {/* Table Controller */}
                 <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-emerald-500/10 text-emerald-500 rounded-lg lg:rounded-xl">
+                        <div className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
                             <Zap className="w-5 h-5" />
                         </div>
                         <div>
@@ -235,7 +235,7 @@ export default function UserReferralDetail() {
                         <div className="relative group">
                             <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <select
-                                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-emerald-500/30 transition-all font-outfit"
+                                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                             >
                                 <option>Filter by Date</option>
                             </select>
@@ -283,7 +283,7 @@ export default function UserReferralDetail() {
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: i * 0.05 }}
-                                            className="group hover:bg-emerald-500/5 transition-all"
+                                            className="group hover:bg-primary-500/5 transition-all"
                                         >
                                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                 <div className="flex flex-col">
@@ -298,7 +298,7 @@ export default function UserReferralDetail() {
                                                             {tx.invitee.name?.[0].toUpperCase() || 'U'}
                                                         </div>
                                                         <div>
-                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-emerald-500 transition-colors uppercase">{tx.invitee.name}</div>
+                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{tx.invitee.name}</div>
                                                             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.invitee.email}</div>
                                                         </div>
                                                     </div>
@@ -312,7 +312,7 @@ export default function UserReferralDetail() {
                                                 </div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                <div className="text-sm font-black text-emerald-500 tabular-nums italic">+₹{tx.amount}</div>
+                                                <div className="text-sm font-black text-primary-500 tabular-nums italic">+₹{tx.amount}</div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>

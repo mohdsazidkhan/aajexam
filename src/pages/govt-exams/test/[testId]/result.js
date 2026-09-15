@@ -340,7 +340,7 @@ const TestResult = ({ resolvedId } = {}) => {
                         <span className="font-black text-primary-500">{stats.score} pts</span>
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
-                        <div className="bg-green-500 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
+                        <div className="bg-primary-500 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
                         <div className="bg-accent-red h-full flex-1" />
                       </div>
                       <div className="flex justify-between text-[10px] font-black mt-2 text-gray-400 uppercase">
@@ -366,15 +366,15 @@ const TestResult = ({ resolvedId } = {}) => {
                 const isSkipped = attempt?.selectedIndex === -1 || !attempt;
 
                 return (
-                  <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-green-500/20' : isSkipped ? 'border-gray-200' : 'border-accent-red/20'}`}>
-                    <div className={`p-3 lg:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-green-500/5' : isSkipped ? 'bg-gray-50' : 'bg-accent-red/5'}`}>
+                  <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-accent-red/20'}`}>
+                    <div className={`p-3 lg:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-accent-red/5'}`}>
                       <div className="space-y-1">
-                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-green-500' : isSkipped ? 'text-gray-400' : 'text-accent-red'}`}>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-500' : isSkipped ? 'text-gray-400' : 'text-accent-red'}`}>
                           {isCorrect ? 'PERFECT' : isSkipped ? 'SKIPPED' : 'INCORRECT'}
                         </span>
                         <h4 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h4>
                       </div>
-                      {isCorrect ? <CircleCheck className="text-green-500 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-accent-red w-8 h-8" />}
+                      {isCorrect ? <CircleCheck className="text-primary-500 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-accent-red w-8 h-8" />}
                     </div>
 
                     <div className="p-3 lg:p-6 space-y-4">
@@ -390,11 +390,11 @@ const TestResult = ({ resolvedId } = {}) => {
                           return (
                             <div key={oIdx} className={`
                                   p-3 rounded-2xl flex items-start gap-3 border-2 text-sm
-                                  ${isAnswer ? 'bg-green-100 border-green-500 text-green-700' :
+                                  ${isAnswer ? 'bg-primary-100 border-primary-500 text-primary-700' :
                                 isSelected ? 'bg-accent-red/10 border-accent-red text-accent-red' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>
-                              <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-green-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
+                              <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
                                 {String.fromCharCode(65 + oIdx)}
                               </div>
                               <div className="flex-1 flex flex-col gap-2">

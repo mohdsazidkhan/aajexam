@@ -17,7 +17,7 @@ const TYPE_COLORS = {
   fact: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
   tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
   current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-  poll: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const ReelsSaved = () => {
@@ -101,7 +101,7 @@ const ReelsSaved = () => {
                             <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">{reel.subject}</span>
                           )}
                           {reel.difficulty && (
-                            <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${reel.difficulty === 'easy' ? 'border-green-200 text-green-600 dark:border-green-900/30 dark:text-green-400'
+                            <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${reel.difficulty === 'easy' ? 'border-primary-200 text-primary-600 dark:border-primary-900/30 dark:text-primary-400'
                               : reel.difficulty === 'hard' ? 'border-red-200 text-red-600 dark:border-red-900/30 dark:text-red-400'
                                 : 'border-yellow-200 text-yellow-600 dark:border-yellow-900/30 dark:text-yellow-400'}`}>
                               {reel.difficulty}

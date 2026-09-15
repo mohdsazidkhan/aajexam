@@ -118,7 +118,7 @@ export default function CommunityQuestionDetailPage() {
                 const isRight = i === correctIndex;
                 let cls = 'border-slate-200 dark:border-slate-700 hover:border-primary-300 bg-white dark:bg-slate-800';
                 if (attempted) {
-                  if (isRight) cls = 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20';
+                  if (isRight) cls = 'border-primary-400 bg-primary-50 dark:bg-primary-900/20';
                   else if (isSel) cls = 'border-red-400 bg-red-50 dark:bg-red-900/20';
                 } else if (isSel) {
                   cls = 'border-primary-500 bg-primary-50 dark:bg-primary-900/20';
@@ -130,11 +130,11 @@ export default function CommunityQuestionDetailPage() {
                     onClick={() => setSelectedOption(i)}
                     className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition text-sm ${cls} disabled:cursor-default`}
                   >
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-emerald-500 text-white' : attempted && isSel ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-primary-500 text-white' : attempted && isSel ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
                       {String.fromCharCode(65 + i)}
                     </div>
                     <span className="flex-1 text-slate-800 dark:text-slate-200">{opt.text}</span>
-                    {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
+                    {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-primary-600 shrink-0" />}
                     {attempted && isSel && !isRight && <XCircle className="w-4 h-4 text-red-600 shrink-0" />}
                   </button>
                 );

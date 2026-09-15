@@ -61,7 +61,7 @@ const AdminReelAnalytics = () => {
                 {/* Overview Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                   <StatCard icon={Flame} label="Total Reels" value={data.overview.totalReels} delay={0} color="bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400" />
-                  <StatCard icon={CheckCircle2} label="Published" value={data.overview.publishedReels} delay={0.05} color="bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400" />
+                  <StatCard icon={CheckCircle2} label="Published" value={data.overview.publishedReels} delay={0.05} color="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400" />
                   <StatCard icon={TrendingUp} label="Pending" value={data.overview.pendingReels} delay={0.1} color="bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400" />
                   <StatCard icon={Eye} label="Total Views" value={data.overview.totalViews} delay={0.15} color="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400" />
                   <StatCard icon={Heart} label="Total Likes" value={data.overview.totalLikes} delay={0.2} color="bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400" />

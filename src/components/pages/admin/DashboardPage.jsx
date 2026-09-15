@@ -90,7 +90,7 @@ const DashboardPage = () => {
   const sections = [
     {
       title: 'USERS & ENGAGEMENT',
-      accent: 'text-emerald-600',
+      accent: 'text-primary-600',
       cards: [
         { title: 'Total Students', count: stats.students || 0, link: '/admin/students', icon: Users, subtitle: `${stats.newStudentsThisMonth || 0} new this month` },
         { title: 'New Today', count: stats.newStudentsToday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups today' },
@@ -136,7 +136,7 @@ const DashboardPage = () => {
     },
     {
       title: 'FINANCE & PAYOUTS',
-      accent: 'text-emerald-600',
+      accent: 'text-primary-600',
       cards: [
         { title: 'Total Revenue', count: formatINR(stats.totalRevenue), link: '/admin/payment-transactions', icon: Banknote, subtitle: 'Lifetime' },
         { title: 'Revenue Today', count: formatINR(stats.revenueToday), link: '/admin/payment-transactions', icon: TrendingUp, subtitle: formatINR(stats.revenueThisMonth) + ' this month' },

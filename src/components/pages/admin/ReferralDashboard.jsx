@@ -188,7 +188,7 @@ export default function ReferralDashboard() {
                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{u.referredBy || 'Direct Signup'}</span>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                            <div className="text-xl font-black italic tracking-tighter text-emerald-500 tabular-nums">₹{u.walletBalance || 0}</div>
+                            <div className="text-xl font-black italic tracking-tighter text-primary-500 tabular-nums">₹{u.walletBalance || 0}</div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Wallet Balance</div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -198,7 +198,7 @@ export default function ReferralDashboard() {
                                   {u.referralRewards.slice(0, 2).map((reward, idx) => (
                                     <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-lg shadow-inner">
                                       <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-                                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-emerald-500">₹{reward.amount}</span></span>
+                                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{getRewardTypeLabel(reward.type)}: <span className="text-primary-500">₹{reward.amount}</span></span>
                                     </div>
                                   ))}
                                   {u.referralRewards.length > 2 && (

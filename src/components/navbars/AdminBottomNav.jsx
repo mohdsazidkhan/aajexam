@@ -25,7 +25,7 @@ const REEL_TYPES = [
   { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-primary-500 to-pink-600', desc: 'Quick fact or one-liner' },
   { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-yellow-500 to-orange-600', desc: 'Shortcut or formula' },
   { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-red-500 to-rose-600', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-green-500 to-emerald-600', desc: 'Community poll' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-primary-500 to-primary-600', desc: 'Community poll' },
 ];
 
 const AdminBottomNav = () => {

@@ -111,7 +111,7 @@ const PaymentTransactions = () => {
     switch (status) {
       case 'paid':
       case 'success':
-        return <FaCheckCircle className="text-green-500" />;
+        return <FaCheckCircle className="text-primary-500" />;
       case 'failed':
       case 'failure':
         return <FaTimesCircle className="text-red-500" />;
@@ -129,7 +129,7 @@ const PaymentTransactions = () => {
     switch (status) {
       case 'paid':
       case 'success':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
+        return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
       case 'failed':
       case 'failure':
         return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300';
@@ -162,7 +162,7 @@ const PaymentTransactions = () => {
   };
 
   const getTypeColor = (type, source) => {
-    if (type === 'credit') return 'text-green-600 dark:text-green-400';
+    if (type === 'credit') return 'text-primary-600 dark:text-primary-400';
     if (type === 'debit') return 'text-primary-700 dark:text-primary-500 dark:text-red-400';
     if (source === 'payment_order') return 'text-primary-700 dark:text-primary-500 dark:text-primary-400';
     return 'text-gray-600 dark:text-gray-400';
@@ -233,11 +233,11 @@ const PaymentTransactions = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Total Investment</p>
-                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-green-500 transition-colors">
+                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-500 transition-colors">
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-green-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-duo-primary border-2 lg:border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-duo-primary border-2 lg:border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-sm lg:text-3xl" />
                 </div>
               </div>

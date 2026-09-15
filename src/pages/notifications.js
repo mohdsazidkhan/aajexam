@@ -81,7 +81,7 @@ const NotificationsPage = () => {
 
   const getIcon = (type) => {
     switch (type) {
-      case 'test_completed': return <Target className="w-5 h-5 text-green-500" />;
+      case 'test_completed': return <Target className="w-5 h-5 text-primary-500" />;
       case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-500" />;
       case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-red-500" />;
       default: return <Info className="w-5 h-5 text-blue-500" />;

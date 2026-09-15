@@ -113,7 +113,7 @@ const SubscriptionPage = () => {
 
       <div className="space-y-4 lg:space-y-8 animate-fade-in mx-auto mt-2 lg:mt-4">
         {subscription && (
-          <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' : 'bg-slate-950 shadow-2xl'}`}>
+          <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-gradient-to-br from-primary-500 to-primary-700' : 'bg-slate-950 shadow-2xl'}`}>
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-8">
               <div className="flex items-start gap-3 lg:gap-6">
                 <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -224,7 +224,7 @@ const SubscriptionPage = () => {
 
                   <div className="pt-5 lg:pt-10 relative z-10">
                     {isCurrent ? (
-                      <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-xs lg:text-sm bg-emerald-500/5 py-3 lg:py-4 rounded-2xl w-full border-2 border-emerald-500/20">
+                      <div className="flex items-center justify-center gap-2 text-primary-600 dark:text-primary-400 font-semibold text-xs lg:text-sm bg-primary-500/5 py-3 lg:py-4 rounded-2xl w-full border-2 border-primary-500/20">
                         <CircleCheck className="w-4 h-4" />
                         Current plan
                       </div>

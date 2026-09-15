@@ -69,7 +69,7 @@ const ContactUs = ({ contactInfo = {
       { icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL, color: 'slate-800' },
       { icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL, color: 'red-600' },
       { icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL, color: 'blue-700' },
-      { icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL, color: 'emerald-500' },
+      { icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL, color: 'primary-500' },
       { icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL, color: 'indigo-500' },
       { icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL, color: 'sky-500' },
       { icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL, color: 'red-500' },
@@ -200,7 +200,7 @@ const ContactUs = ({ contactInfo = {
 
                            <AnimatePresence>
                               {status === 'success' && (
-                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-emerald-500/25 text-emerald-600 rounded-2xl border-2 border-emerald-500/20 flex items-center gap-3">
+                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-primary-500/25 text-primary-600 rounded-2xl border-2 border-primary-500/20 flex items-center gap-3">
                                     <CircleCheck className="w-5 h-5" />
                                     <span className="text-xs font-black uppercase tracking-widest">Message Sent Successfully!</span>
                                  </motion.div>

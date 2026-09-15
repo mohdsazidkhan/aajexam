@@ -64,7 +64,7 @@ function Error({ statusCode }) {
               {statusCode !== 404 && (
                 <button
                   onClick={() => window.location.reload()}
-                  className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-duo border-b-4 border-emerald-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                  className="flex-1 bg-primary-500 hover:bg-primary-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-duo border-b-4 border-primary-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
                 >
                   Try Again
                 </button>

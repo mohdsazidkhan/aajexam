@@ -107,7 +107,7 @@ const AdminPYQ = () => {
                       <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-600 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>
                       {t.pyqShift && <span className="text-[10px] font-bold text-slate-400">{t.pyqShift}</span>}
                       {t.examPattern?.exam?.name && <span className="text-[10px] font-bold text-slate-400">· {t.examPattern.exam.name}</span>}
-                      <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20' : 'bg-amber-50 text-amber-600 dark:bg-amber-900/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
+                      <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-amber-50 text-amber-600 dark:bg-amber-900/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
                     </div>
                     <h3 className="text-sm font-black text-slate-900 dark:text-white truncate">{t.title}</h3>
                     <p className="text-[10px] text-slate-400">{t.questions?.length || 0} questions · {t.duration} min · {t.totalMarks} marks</p>

@@ -138,7 +138,7 @@ const AdminQuizQuestions = () => {
                   <p className="text-sm font-bold text-slate-900 dark:text-white mb-2">{q.questionText}</p>
                   <div className="grid grid-cols-2 gap-1.5">
                     {q.options?.map((opt, i) => (
-                      <div key={i} className={`text-xs px-2 py-1.5 rounded-lg border ${opt.isCorrect ? 'bg-green-50 border-green-300 text-green-700 font-bold' : 'bg-slate-50 border-slate-200 text-slate-600'}`}>
+                      <div key={i} className={`text-xs px-2 py-1.5 rounded-lg border ${opt.isCorrect ? 'bg-primary-50 border-primary-300 text-primary-700 font-bold' : 'bg-slate-50 border-slate-200 text-slate-600'}`}>
                         {String.fromCharCode(65 + i)}. {opt.text}
                       </div>
                     ))}
@@ -147,7 +147,7 @@ const AdminQuizQuestions = () => {
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">{q.exam?.name}</span>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary-100 text-primary-600">{q.subject?.name}</span>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-600">{q.topic?.name}</span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-green-100 text-green-600' : q.difficulty === 'hard' ? 'bg-red-100 text-red-600' : 'bg-yellow-100 text-yellow-600'}`}>{q.difficulty}</span>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-primary-100 text-primary-600' : q.difficulty === 'hard' ? 'bg-red-100 text-red-600' : 'bg-yellow-100 text-yellow-600'}`}>{q.difficulty}</span>
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
@@ -195,7 +195,7 @@ const AdminQuizQuestions = () => {
                 <p className="text-xs font-bold text-slate-500">Options (select correct answer):</p>
                 {form.options.map((opt, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <input type="radio" name="correct" checked={opt.isCorrect} onChange={() => updateOption(i, "isCorrect", true)} className="accent-green-500" />
+                    <input type="radio" name="correct" checked={opt.isCorrect} onChange={() => updateOption(i, "isCorrect", true)} className="accent-primary-500" />
                     <span className="text-xs font-bold text-slate-500 w-4">{String.fromCharCode(65 + i)}</span>
                     <input required placeholder={`Option ${String.fromCharCode(65 + i)}`} value={opt.text} onChange={e => updateOption(i, "text", e.target.value)} className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
                   </div>

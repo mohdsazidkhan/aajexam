@@ -19,7 +19,7 @@ const TYPES = [
   { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-purple-400 bg-purple-50 dark:bg-purple-950/30', desc: 'Quick fact or one-liner' },
   { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-amber-400 bg-amber-50 dark:bg-amber-950/30', desc: 'Shortcut or formula' },
   { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-red-400 bg-red-50 dark:bg-red-950/30', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-green-400 bg-green-50 dark:bg-green-950/30', desc: 'Community poll' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-primary-400 bg-primary-50 dark:bg-primary-950/30', desc: 'Community poll' },
 ];
 
 const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400";
@@ -276,7 +276,7 @@ const ReelCreate = () => {
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-green-500 bg-green-500 text-white' : 'border-slate-300 text-slate-400'}`}>
+                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-500 bg-primary-500 text-white' : 'border-slate-300 text-slate-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
@@ -327,7 +327,7 @@ const ReelCreate = () => {
 
               {/* Poll */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-green-200 dark:border-green-800 p-4 space-y-3">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-4 space-y-3">
                   <div><label className={labelClass}>Poll Question *</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
                   <div>
                     {pollOptions.map((o, i) => (

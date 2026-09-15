@@ -96,7 +96,7 @@ const userSchema = new mongoose.Schema({
   statusChangedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null }, // Admin who changed status
 
   // AajExam Transformation Fields
-  primaryTargetExam: { type: String, default: 'General' }, // e.g. SSC-CHSL, UPSC-CSE
+  primaryTargetExam: { type: String, default: 'All Exams' }, // e.g. SSC-CHSL, UPSC-CSE, or 'All Exams'
   performanceMetrics: {
     examStats: {
       overallReadiness: { type: Number, default: 0 }, // 0-100 scale

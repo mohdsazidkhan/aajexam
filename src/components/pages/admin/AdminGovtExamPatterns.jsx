@@ -410,9 +410,9 @@ const AdminGovtExamPatterns = () => {
                     </div>
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-4">
-                    <div className="p-6 bg-emerald-500/5 rounded-3xl border-2 border-emerald-500/10 flex justify-between items-center font-outfit">
-                      <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Total Marks</span>
-                      <span className="text-2xl font-black text-emerald-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
+                    <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 flex justify-between items-center font-outfit">
+                      <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Total Marks</span>
+                      <span className="text-2xl font-black text-primary-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
                     </div>
                     <button type="submit" className="w-full py-5 bg-primary-500 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-xl flex items-center justify-center gap-3">
                       <CheckCircle2 className="w-5 h-5" /> {editingPattern ? 'Update Pattern' : 'Create Pattern'}

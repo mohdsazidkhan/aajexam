@@ -179,7 +179,7 @@ const AdminPaymentTransactions = () => {
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
-      case 'completed': case 'success': return 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20';
+      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-500 border-primary-500/20';
       case 'failed': case 'failure': return 'bg-rose-500/10 text-rose-500 border-rose-500/20';
       case 'pending': case 'created': case 'authorized': return 'bg-primary-500/10 text-primary-500 border-primary-500/20';
       case 'refunded': return 'bg-amber-500/10 text-amber-500 border-amber-500/20';

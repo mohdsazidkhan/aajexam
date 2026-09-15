@@ -20,7 +20,7 @@ const fmtSec = (sec) => {
 // Returns speed badge props based on seconds taken
 const speedBadge = (sec) => {
   if (!sec || sec <= 0) return null;
-  if (sec <= 20) return { label: 'Fast', icon: <Zap className="w-3 h-3" />, cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' };
+  if (sec <= 20) return { label: 'Fast', icon: <Zap className="w-3 h-3" />, cls: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400' };
   if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' };
   return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' };
 };
@@ -34,7 +34,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard.length === 0) {
     return (
       <div className="text-center py-4 mb-4">
-        <div className="bg-gradient-to-r from-yellow-50 to-emerald-50 dark:from-yellow-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-emerald-700">
+        <div className="bg-gradient-to-r from-yellow-50 to-primary-50 dark:from-yellow-900/20 dark:to-primary-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-primary-700">
           <Trophy className="w-10 h-10 text-yellow-500 mx-auto mb-3" />
           <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-1">No Leaderboard Yet</h3>
           <p className="text-sm text-slate-500 dark:text-slate-400">Be the first to complete this quiz!</p>
@@ -427,13 +427,13 @@ const AttemptQuizPage = () => {
   // ─── SUBMITTED: Result View ───
   if (submitted && result) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden pb-24">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden pb-24">
         {/* Confetti */}
         {showConfetti && (
           <div className="fixed inset-0 pointer-events-none z-50">
             {[...Array(40)].map((_, i) => (
               <div key={i} className="absolute animate-bounce" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s`, animationDuration: `${1 + Math.random() * 2}s` }}>
-                <div className={`w-2 h-2 rounded-full ${['bg-yellow-400', 'bg-red-400', 'bg-blue-400', 'bg-green-400', 'bg-purple-400'][Math.floor(Math.random() * 5)]}`} />
+                <div className={`w-2 h-2 rounded-full ${['bg-yellow-400', 'bg-red-400', 'bg-blue-400', 'bg-primary-400', 'bg-purple-400'][Math.floor(Math.random() * 5)]}`} />
               </div>
             ))}
           </div>
@@ -442,9 +442,9 @@ const AttemptQuizPage = () => {
         <div className="container mx-auto px-3 lg:px-10 pt-6 pb-8">
           {/* Result Card */}
           <div className="text-center mb-6">
-            <div className="bg-gradient-to-r from-green-50 via-blue-50 to-emerald-50 dark:from-green-900/30 dark:via-blue-900/30 dark:to-emerald-900/30 rounded-2xl p-5 lg:p-8 border border-green-200 dark:border-green-700 shadow-xl">
+            <div className="bg-gradient-to-r from-primary-50 via-blue-50 to-primary-50 dark:from-primary-900/30 dark:via-blue-900/30 dark:to-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
               <div className="flex justify-center mb-4">
-                <div className="w-20 h-20 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center animate-pulse">
+                <div className="w-20 h-20 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full flex items-center justify-center animate-pulse">
                   <Trophy className="w-10 h-10 text-white" />
                 </div>
               </div>
@@ -452,7 +452,7 @@ const AttemptQuizPage = () => {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
-                  <div className="text-xl font-bold text-green-600 dark:text-green-400">{result.correctCount}</div>
+                  <div className="text-xl font-bold text-primary-600 dark:text-primary-400">{result.correctCount}</div>
                   <div className="text-xs text-slate-500">Correct</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
@@ -500,10 +500,10 @@ const AttemptQuizPage = () => {
                 const badge = speedBadge(secTaken);
 
                 return (
-                  <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                  <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
                     {/* Question header */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-green-500' : 'bg-red-500'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-primary-500' : 'bg-red-500'}`}>
                         {index + 1}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -529,12 +529,12 @@ const AttemptQuizPage = () => {
                         const isSelected = ans.selectedOptionIndex === optIdx;
                         const isCorrectOpt = optIdx === correctIndex;
                         let optClass = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
-                        if (isCorrectOpt) optClass = 'bg-green-100 dark:bg-green-900/30 border-green-400 dark:border-green-600';
+                        if (isCorrectOpt) optClass = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400 dark:border-primary-600';
                         if (isSelected && !isCorrect) optClass = 'bg-red-100 dark:bg-red-900/30 border-red-400 dark:border-red-600';
 
                         return (
                           <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
-                            {isCorrectOpt && <CheckCircle className="w-4 h-4 text-green-600 shrink-0" />}
+                            {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
                             {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 shrink-0" />}
                             {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
                             <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>
@@ -585,7 +585,7 @@ const AttemptQuizPage = () => {
               <button onClick={handleBack} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
                 <ArrowLeft className="w-4 h-4" /> Go Back
               </button>
-              <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+              <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-teal-600 hover:from-primary-700 hover:to-teal-700 text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
                 <Home className="w-4 h-4" /> Home
               </button>
             </div>
@@ -597,7 +597,7 @@ const AttemptQuizPage = () => {
 
   // ─── QUIZ IN PROGRESS ───
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden">
       <div className="container mx-auto px-3 lg:px-10 pt-3 pb-32">
 
         {/* Quiz Header */}
@@ -606,7 +606,7 @@ const AttemptQuizPage = () => {
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
             <div className="flex items-center gap-2 flex-1 min-w-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-teal-600 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0">
                 <BrainCircuit className="w-4 h-4 text-white" />
               </div>
               <div className="min-w-0">
@@ -627,9 +627,9 @@ const AttemptQuizPage = () => {
                     setCurrentQuestionIndex(idx);
                   }}
                   className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                      ? 'bg-emerald-500 text-white shadow-md scale-110'
+                      ? 'bg-primary-500 text-white shadow-md scale-110'
                       : answers[idx] !== null
-                        ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300'
+                        ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-300'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
                     }`}
                 >
@@ -665,7 +665,7 @@ const AttemptQuizPage = () => {
 
           {/* Progress bar */}
           <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
-            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+            <div className="bg-gradient-to-r from-primary-500 to-teal-500 h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
           <div className="flex justify-between mt-1">
             <span className="text-[10px] text-slate-400">Q {currentQuestionIndex + 1}/{quiz.questions.length}</span>
@@ -690,9 +690,9 @@ const AttemptQuizPage = () => {
                   setCurrentQuestionIndex(idx);
                 }}
                 className={`w-7 h-7 shrink-0 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                    ? 'bg-emerald-500 text-white shadow-md scale-110'
+                    ? 'bg-primary-500 text-white shadow-md scale-110'
                     : answers[idx] !== null
-                      ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300'
+                      ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-300'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
                   }`}
               >
@@ -735,15 +735,15 @@ const AttemptQuizPage = () => {
                   key={optIdx}
                   onClick={() => handleSelect(optIdx)}
                   className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition-all duration-200 ${isSelected
-                      ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 shadow-md'
+                      ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30 shadow-md'
                       : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
                     }`}
                 >
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-emerald-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
                     }`}>
                     {String.fromCharCode(65 + optIdx)}
                   </div>
-                  <span className={`text-sm font-medium ${isSelected ? 'text-emerald-800 dark:text-emerald-200' : 'text-slate-700 dark:text-slate-300'}`}>
+                  <span className={`text-sm font-medium ${isSelected ? 'text-primary-800 dark:text-primary-200' : 'text-slate-700 dark:text-slate-300'}`}>
                     {translated?.optionTexts?.[optIdx] || option.text}
                   </span>
                 </button>
@@ -773,7 +773,7 @@ const AttemptQuizPage = () => {
             ) : (
               <button
                 onClick={handleNextQuestion}
-                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md transition-all"
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-gradient-to-r from-primary-600 to-teal-600 text-white shadow-md transition-all"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </button>

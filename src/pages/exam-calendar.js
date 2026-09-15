@@ -14,7 +14,7 @@ import Seo from '../components/Seo';
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
   notification: { icon: Bell, color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400', dot: 'bg-blue-500', label: 'Notification', border: 'border-blue-200 dark:border-blue-800/50' },
-  admit_card:   { icon: CreditCard, color: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-500', label: 'Admit Card', border: 'border-emerald-200 dark:border-emerald-800/50' },
+  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400', dot: 'bg-primary-500', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
   result:       { icon: BarChart2, color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400', dot: 'bg-orange-500', label: 'Result', border: 'border-orange-200 dark:border-orange-800/50' },
   answer_key:   { icon: Key, color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400', dot: 'bg-purple-500', label: 'Answer Key', border: 'border-purple-200 dark:border-purple-800/50' },
   vacancy:      { icon: Users, color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400', dot: 'bg-pink-500', label: 'Vacancy', border: 'border-pink-200 dark:border-pink-800/50' },
@@ -211,7 +211,7 @@ const ExamCalendarPage = () => {
 
         {/* ── Hero ── */}
         <section className="relative rounded-[2rem] lg:rounded-[2.5rem] p-6 sm:p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-teal-600/20 dark:border-teal-900/30">
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-emerald-600 to-cyan-600 dark:from-teal-900 dark:via-emerald-900/70 dark:to-slate-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-primary-600 to-cyan-600 dark:from-teal-900 dark:via-primary-900/70 dark:to-slate-900" />
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-white/5 rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-white/5 rounded-full pointer-events-none" />
           <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-white/10 pointer-events-none" />

@@ -28,7 +28,7 @@ import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 
 const STATUS_CONFIG = {
-   approved: { label: 'Approved', icon: CheckCircle, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
+   approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
    pending: { label: 'Pending', icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
    rejected: { label: 'Rejected', icon: XCircle, color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20' },
 };
@@ -165,12 +165,12 @@ const MyQuestionsPage = () => {
                                     {hasOptions && (
                                        <div className="space-y-1.5">
                                           {q.options.slice(0, 4).map((opt, i) => (
-                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg lg:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-green-50 dark:bg-green-900/10 text-green-700' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
+                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg lg:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-900/10 text-primary-700' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
                                                 <span className="w-4 h-4 rounded-full border-2 flex items-center justify-center text-[8px] font-black flex-shrink-0 border-current">
                                                    {String.fromCharCode(65 + i)}
                                                 </span>
                                                 <span className="line-clamp-1">{opt.text}</span>
-                                                {opt.isCorrect && <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0 ml-auto" />}
+                                                {opt.isCorrect && <CheckCircle className="w-3 h-3 text-primary-500 flex-shrink-0 ml-auto" />}
                                              </div>
                                           ))}
                                        </div>

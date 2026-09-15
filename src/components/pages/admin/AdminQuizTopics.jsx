@@ -90,7 +90,7 @@ const AdminQuizTopics = () => {
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{t.name}</td>
                   <td className="px-4 py-3 text-slate-500">{t.subject?.name || '-'}</td>
                   <td className="px-4 py-3 text-slate-500">{t.order}</td>
-                  <td className="px-4 py-3"><span className={`text-xs font-bold px-2 py-1 rounded-full ${t.isActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>{t.isActive ? 'Active' : 'Inactive'}</span></td>
+                  <td className="px-4 py-3"><span className={`text-xs font-bold px-2 py-1 rounded-full ${t.isActive ? 'bg-primary-100 text-primary-700' : 'bg-red-100 text-red-700'}`}>{t.isActive ? 'Active' : 'Inactive'}</span></td>
                   <td className="px-4 py-3 text-right">
                     <button onClick={() => openEdit(t)} className="p-1.5 text-cyan-500 hover:bg-cyan-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
                     <button onClick={() => handleDelete(t._id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>

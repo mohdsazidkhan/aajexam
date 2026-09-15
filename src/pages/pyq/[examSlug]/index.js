@@ -128,7 +128,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Years Covered</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaTrophy className="text-xl text-emerald-600 mx-auto mb-2" />
+                                <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-2xl font-black text-slate-900 dark:text-white">FREE</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">To Attempt</div>
                             </div>
@@ -185,7 +185,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                                             {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[9px] font-black text-emerald-500 uppercase tracking-wider">Free Access</span>
+                                                        <span className="text-[9px] font-black text-primary-500 uppercase tracking-wider">Free Access</span>
                                                     )}
                                                 </div>
                                                 <h3 className="text-sm lg:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-3 line-clamp-2">{p.title}</h3>

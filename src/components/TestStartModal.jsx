@@ -97,7 +97,7 @@ const TestStartModal = ({
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{examTitle}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{durationText}</span>
@@ -121,10 +121,10 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-emerald-600 shadow-sm">
+                  <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest text-center">
+                  <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest text-center">
                     No Negative Marking
                   </span>
                 </div>
@@ -186,7 +186,7 @@ const TestStartModal = ({
                   type="checkbox"
                   checked={acceptedRules}
                   onChange={(e) => setAcceptedRules(e.target.checked)}
-                  className="w-10 h-10 border-4 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-green-500 checked:border-green-500 transition-all cursor-pointer shadow-duo"
+                  className="w-10 h-10 border-4 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-500 checked:border-primary-500 transition-all cursor-pointer shadow-duo"
                 />
                 {acceptedRules && (
                   <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />

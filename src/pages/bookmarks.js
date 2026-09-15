@@ -39,7 +39,7 @@ const TYPE_CONFIG = {
 };
 
 const DIFFICULTY_STYLES = {
-   easy: 'text-green-600 bg-green-50 dark:bg-green-900/20',
+   easy: 'text-primary-600 bg-primary-50 dark:bg-primary-900/20',
    medium: 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20',
    hard: 'text-red-600 bg-red-50 dark:bg-red-900/20',
 };
@@ -174,7 +174,7 @@ const BookmarksPage = () => {
                                     <div className="space-y-1">
                                        <p className="font-black text-sm lg:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
                                        {reel.type === 'question' && reel.userInteraction?.answered && (
-                                          <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-green-600' : 'text-red-500'}`}>
+                                          <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-primary-600' : 'text-red-500'}`}>
                                              {reel.userInteraction.isCorrect ? <CheckCircle className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
                                              {reel.userInteraction.isCorrect ? 'Answered correctly' : 'Answered incorrectly'}
                                           </div>

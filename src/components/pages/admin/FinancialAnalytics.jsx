@@ -65,7 +65,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
   const colors = {
     primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    emerald: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+    emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
   };
 
@@ -175,10 +175,10 @@ const FinancialAnalytics = () => {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
               <div className="space-y-3 lg:space-y-6 flex-1">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-emerald-500/20 text-emerald-500 rounded-2xl shadow-sm">
+                  <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl shadow-sm">
                     <Banknote className="w-6 h-6" />
                   </div>
-                   <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Admin / Financial Analytics</span>
+                   <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">Admin / Financial Analytics</span>
                  </div>
                  <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    Revenue Analytics
@@ -197,19 +197,19 @@ const FinancialAnalytics = () => {
                       <option value="current-year">Annual</option>
                     </select>
                   </div>
-                   <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-emerald-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
+                   <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
                      <DownloadCloud className="w-4 h-4" /> Export CSV
                    </motion.button>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-emerald-500/20 relative overflow-hidden group">
-               <span className="text-[10px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
+              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-primary-500/5 dark:bg-primary-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-primary-500/20 relative overflow-hidden group">
+               <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
                <div className="flex items-center gap-3 shrink-0">
-                 <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-emerald-500" />
+                 <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-primary-500" />
                  <span className="text-4xl lg:text-7xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">{(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}</span>
                </div>
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/10 blur-[80px] group-hover:scale-150 transition-transform duration-500" />
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-500/10 blur-[80px] group-hover:scale-150 transition-transform duration-500" />
               </div>
             </div>
           </motion.div>
@@ -251,7 +251,7 @@ const FinancialAnalytics = () => {
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Over Time</h3>
-                       <BarChart3 className="w-5 h-5 text-emerald-500 opacity-30" />
+                       <BarChart3 className="w-5 h-5 text-primary-500 opacity-30" />
                     </div>
                     <div className="h-80">
                        <Line data={{ labels: revenueTrendLabels, datasets: [{ label: 'Revenue', data: revenueTrendData, borderColor: '#10B981', backgroundColor: 'rgba(16,185,129,0.1)', fill: true, tension: 0.4 }] }} options={chartOptions} />
@@ -283,15 +283,15 @@ const FinancialAnalytics = () => {
                        </thead>
                        <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                           {topRevenuePlans.map((p, idx) => (
-                            <motion.tr key={idx} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="group hover:bg-emerald-500/5 transition-all">
+                            <motion.tr key={idx} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="group hover:bg-primary-500/5 transition-all">
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-amber-500 text-white shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">
-                                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg ${idx === 0 ? 'bg-emerald-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
+                                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg ${idx === 0 ? 'bg-primary-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
                                      <div>
-                                        <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter group-hover:text-emerald-500 transition-colors">{p.planName || p._id || 'Unknown'}</div>
+                                        <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter group-hover:text-primary-500 transition-colors">{p.planName || p._id || 'Unknown'}</div>
                                         <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">Subscription Plan</div>
                                      </div>
                                   </div>
@@ -301,7 +301,7 @@ const FinancialAnalytics = () => {
                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Subscribers</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                  <div className="text-2xl font-black text-emerald-500 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
+                                  <div className="text-2xl font-black text-primary-500 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Revenue</div>
                                </td>
                             </motion.tr>

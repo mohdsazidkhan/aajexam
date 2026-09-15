@@ -144,7 +144,7 @@ const REEL_TYPE_CONFIG = {
    fact: { icon: BookOpen, color: 'text-violet-600', bg: 'bg-violet-500/10', label: 'Fact' },
    tip: { icon: Lightbulb, color: 'text-amber-600', bg: 'bg-amber-500/10', label: 'Tip' },
    current_affairs: { icon: Newspaper, color: 'text-rose-600', bg: 'bg-rose-500/10', label: 'Current Affairs' },
-   poll: { icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-500/10', label: 'Poll' },
+   poll: { icon: BarChart3, color: 'text-primary-600', bg: 'bg-primary-500/10', label: 'Poll' },
 };
 
 // ─── Blog Card ───
@@ -333,7 +333,7 @@ const HomePage = () => {
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-emerald-500 mb-1.5" />
+                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{averageMockScore}%</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
                   </div>
@@ -355,7 +355,7 @@ const HomePage = () => {
                <div className="grid grid-cols-3 gap-2.5 md:gap-3 lg:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-emerald-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-emerald-700"
+                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-primary-700"
                   >
                      <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
                         <Zap className="w-7 h-7 text-white" />

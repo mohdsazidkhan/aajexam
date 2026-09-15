@@ -14,7 +14,7 @@ const STATUS_STYLES = {
   published: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
   active: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
   paused: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
-  completed: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+  completed: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
 };
 const STATUS_LABEL = {
   draft: '📝 Draft', published: '✅ Published', active: '📤 Sending',
@@ -261,7 +261,7 @@ const EmailCampaignsListPage = () => {
                       </td>
                       <td className="px-4 py-3"><StatusBadge status={c.status} /></td>
                       <td className="px-4 py-3"><Progress c={c} /></td>
-                      <td className="px-4 py-3 text-green-600 dark:text-green-400 font-semibold">{c.sentCount || 0}</td>
+                      <td className="px-4 py-3 text-primary-600 dark:text-primary-400 font-semibold">{c.sentCount || 0}</td>
                       <td className="px-4 py-3 text-red-500 font-semibold">{c.failedCount || 0}</td>
                       <td className="px-4 py-3 text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</td>
                       <td className="px-4 py-3">
@@ -323,7 +323,7 @@ const EmailCampaignsListPage = () => {
                   <div className="mt-auto space-y-3">
                     <Progress c={c} />
                     <div className="grid grid-cols-3 gap-1 text-center">
-                      <div><div className="text-green-600 dark:text-green-400 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
+                      <div><div className="text-primary-600 dark:text-primary-400 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
                       <div><div className="text-red-500 font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
                       <div><div className="text-blue-600 dark:text-blue-400 font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
                     </div>

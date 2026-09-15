@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
+import Subject from '@/models/Subject';
 import Question from '@/models/Question';
 import QuizAttempt from '@/models/QuizAttempt';
 import User from '@/models/User';
@@ -111,7 +112,8 @@ export async function POST(req, { params }) {
         try {
             const user = await User.findById(auth.user._id);
             if (user) {
-                const subjectKey = String(quiz.subject || 'General');
+                const subjectDoc = quiz.subject ? await Subject.findById(quiz.subject).select('name').lean() : null;
+                const subjectKey = subjectDoc?.name || 'General';
                 user.updatePerformanceMetrics({ subject: subjectKey }, Math.round(percentage));
                 user.markModified('performanceMetrics.examStats.subjectAccuracy');
                 await user.save();

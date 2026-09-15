@@ -119,17 +119,17 @@ const AdminQuizQuizzes = () => {
     } catch (e) { toast.error("Failed"); }
   };
 
-  const statusColor = (s) => s === 'published' ? 'bg-green-100 text-green-700' : s === 'archived' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700';
+  const statusColor = (s) => s === 'published' ? 'bg-primary-100 text-primary-700' : s === 'archived' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700';
 
   if (!isMounted) return null;
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BrainCircuit className="w-6 h-6 text-emerald-500" /> Quizzes</h1>
+        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BrainCircuit className="w-6 h-6 text-primary-500" /> Quizzes</h1>
         <div className="flex gap-2">
           <button onClick={async () => { if (!confirm('Generate 1 quiz (5 questions) for every topic? This may take a minute.')) return; setLoading(true); try { const res = await API.seedQuizzes(); if (res?.success) { toast.success(`${res.stats.quizzesCreated} quizzes, ${res.stats.questionsCreated} questions created!`); fetchQuizzes(); } else toast.error(res?.message || 'Failed'); } catch (e) { toast.error('Failed'); } finally { setLoading(false); } }} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-amber-600"><Database className="w-4 h-4" /> Seed Quizzes</button>
-          <button onClick={openCreate} className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-emerald-600"><Plus className="w-4 h-4" /> Create Quiz</button>
+          <button onClick={openCreate} className="flex items-center gap-2 bg-primary-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Create Quiz</button>
         </div>
       </div>
 
@@ -162,8 +162,8 @@ const AdminQuizQuizzes = () => {
                 </div>
                 <div className="flex gap-1 shrink-0">
                   <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg"><Plus className="w-4 h-4" /></button>
-                  <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-green-500 hover:bg-green-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                  <button onClick={() => openEdit(q)} className="p-1.5 text-emerald-500 hover:bg-emerald-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                  <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-500 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+                  <button onClick={() => openEdit(q)} className="p-1.5 text-primary-500 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
                   <button onClick={() => handleDelete(q._id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
@@ -205,10 +205,10 @@ const AdminQuizQuizzes = () => {
               <div className="grid grid-cols-3 gap-2">
                 <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option><option value="mixed">Mixed</option></select>
                 <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="topic_practice">Topic Practice</option><option value="subject_test">Subject Test</option><option value="full_mock">Full Mock</option></select>
-                <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })} className="accent-emerald-500" /> Free</label>
+                <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })} className="accent-primary-500" /> Free</label>
               </div>
               <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-emerald-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-emerald-600">{editing ? 'Update' : 'Create as Draft'}</button>
+              <button type="submit" className="w-full bg-primary-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create as Draft'}</button>
             </form>
           </div>
         </div>
@@ -226,17 +226,17 @@ const AdminQuizQuizzes = () => {
             <div className="flex-1 overflow-y-auto space-y-2">
               {availableQuestions.length === 0 ? <p className="text-center text-slate-400 py-8">No new questions available for this quiz filters</p> :
                 availableQuestions.map(q => (
-                  <label key={q._id} className={`flex items-start gap-3 p-3 rounded-lg lg:rounded-xl border cursor-pointer transition-all ${selectedQIds.includes(q._id) ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20' : 'border-slate-200 dark:border-slate-700'}`}>
-                    <input type="checkbox" checked={selectedQIds.includes(q._id)} onChange={e => { if (e.target.checked) setSelectedQIds([...selectedQIds, q._id]); else setSelectedQIds(selectedQIds.filter(id => id !== q._id)); }} className="mt-1 accent-emerald-500" />
+                  <label key={q._id} className={`flex items-start gap-3 p-3 rounded-lg lg:rounded-xl border cursor-pointer transition-all ${selectedQIds.includes(q._id) ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-200 dark:border-slate-700'}`}>
+                    <input type="checkbox" checked={selectedQIds.includes(q._id)} onChange={e => { if (e.target.checked) setSelectedQIds([...selectedQIds, q._id]); else setSelectedQIds(selectedQIds.filter(id => id !== q._id)); }} className="mt-1 accent-primary-500" />
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-slate-900 dark:text-white">{q.questionText}</p>
-                      <div className="flex gap-1 mt-1">{q.options?.map((o, i) => <span key={i} className={`text-[10px] px-1.5 py-0.5 rounded ${o.isCorrect ? 'bg-green-100 text-green-700 font-bold' : 'bg-slate-100 text-slate-500'}`}>{String.fromCharCode(65 + i)}</span>)}</div>
+                      <div className="flex gap-1 mt-1">{q.options?.map((o, i) => <span key={i} className={`text-[10px] px-1.5 py-0.5 rounded ${o.isCorrect ? 'bg-primary-100 text-primary-700 font-bold' : 'bg-slate-100 text-slate-500'}`}>{String.fromCharCode(65 + i)}</span>)}</div>
                     </div>
                   </label>
                 ))
               }
             </div>
-            <button onClick={handleAddQuestions} disabled={!selectedQIds.length} className="mt-4 w-full bg-emerald-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-emerald-600 disabled:opacity-30">Add {selectedQIds.length} Questions</button>
+            <button onClick={handleAddQuestions} disabled={!selectedQIds.length} className="mt-4 w-full bg-primary-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600 disabled:opacity-30">Add {selectedQIds.length} Questions</button>
           </div>
         </div>
       )}

@@ -25,7 +25,7 @@ const TYPE_COLORS = {
   fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
   tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
   current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-  poll: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400";
@@ -371,7 +371,7 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-3">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
                           className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
-                            ? 'border-green-500 bg-green-500 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-green-400'}`}>
+                            ? 'border-primary-500 bg-primary-500 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input type="text" value={opt}
@@ -379,7 +379,7 @@ const AdminReelEdit = () => {
                           placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
                       </div>
                     ))}
-                    <p className="text-xs text-green-600 dark:text-green-400">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                    <p className="text-xs text-primary-600 dark:text-primary-400">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                   </div>
                   <div>
                     <label className={labelClass}>Explanation</label>
@@ -509,8 +509,8 @@ const AdminReelEdit = () => {
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-green-200 dark:border-green-800 p-5 space-y-4">
-                  <h3 className="font-bold text-green-700 dark:text-green-400">Poll Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-4">
+                  <h3 className="font-bold text-primary-700 dark:text-primary-400">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
                     <input type="text" value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} />

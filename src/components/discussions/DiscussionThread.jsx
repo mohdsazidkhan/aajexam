@@ -26,7 +26,7 @@ const timeAgo = (date) => {
 
 const RoleBadge = ({ role }) => {
   if (role === 'mentor') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300 rounded">
       <GraduationCap className="w-2.5 h-2.5" /> MENTOR
     </span>
   );
@@ -125,7 +125,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
           <div className="mt-1.5 flex items-center gap-3 text-xs">
             <button
               onClick={() => handleVote('up')}
-              className={`flex items-center gap-1 hover:text-emerald-600 transition ${myVote === 'up' ? 'text-emerald-600 font-bold' : 'text-slate-500'}`}
+              className={`flex items-center gap-1 hover:text-primary-600 transition ${myVote === 'up' ? 'text-primary-600 font-bold' : 'text-slate-500'}`}
             >
               <ThumbsUp className="w-3.5 h-3.5" /> {upvotes}
             </button>

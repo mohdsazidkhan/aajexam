@@ -167,7 +167,7 @@ const AskQuestionPage = () => {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
         <Card className="text-center max-w-md w-full" radius="2xl">
-          <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
+          <CheckCircle className="w-16 h-16 text-primary-500 mx-auto mb-4" />
           <h2 className="text-xl font-black text-content-primary uppercase mb-2">Question Posted!</h2>
           <p className="text-sm text-content-muted">Redirecting to community questions...</p>
         </Card>
@@ -294,8 +294,8 @@ const AskQuestionPage = () => {
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
                     className={`p-2 rounded-lg lg:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
-                        ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600'
-                        : 'border-border-primary text-content-muted hover:border-emerald-400'
+                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
+                        : 'border-border-primary text-content-muted hover:border-primary-400'
                     }`}
                     title="Mark as correct answer"
                   >

@@ -15,7 +15,7 @@ export async function PUT(req) {
         const userId = auth.user._id;
 
         // Fields allowed to be updated
-        const { name, email, phone, bio, education, profileImage } = body;
+        const { name, phone, bio, city, isPublicProfile, primaryTargetExam, socialLinks } = body;
 
         const user = await User.findById(userId);
         if (!user) {
@@ -23,11 +23,14 @@ export async function PUT(req) {
         }
 
         if (name) user.name = name;
-        if (email) user.email = email;
         if (phone) user.phone = phone;
-        if (bio) user.bio = bio;
-        if (education) user.education = education;
-        if (profileImage) user.profileImage = profileImage;
+        if (bio !== undefined) user.bio = bio;
+        if (city !== undefined) user.city = city;
+        if (isPublicProfile !== undefined) user.isPublicProfile = !!isPublicProfile;
+        if (primaryTargetExam) user.primaryTargetExam = primaryTargetExam;
+        if (socialLinks && typeof socialLinks === 'object') {
+            user.socialLinks = { ...(user.socialLinks?.toObject?.() || user.socialLinks || {}), ...socialLinks };
+        }
 
         await user.save();
 
@@ -39,7 +42,12 @@ export async function PUT(req) {
                 username: user.username,
                 phone: user.phone,
                 role: user.role,
-                profileImage: user.profileImage
+                bio: user.bio,
+                city: user.city,
+                isPublicProfile: user.isPublicProfile,
+                primaryTargetExam: user.primaryTargetExam,
+                socialLinks: user.socialLinks,
+                profilePicture: user.profilePicture
             }
         }, 'Profile updated successfully');
     } catch (error) {

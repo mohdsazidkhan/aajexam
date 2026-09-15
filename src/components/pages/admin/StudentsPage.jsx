@@ -230,7 +230,7 @@ const StudentsPage = () => {
       key: 'walletBalance',
       header: 'Wallet Balance',
       render: (_, student) => (
-        <div className="text-sm font-semibold text-green-700 dark:text-green-400">
+        <div className="text-sm font-semibold text-primary-700 dark:text-primary-400">
           {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(student.walletBalance || 0)}
         </div>
       )
@@ -263,7 +263,7 @@ const StudentsPage = () => {
       key: 'referralCode',
       header: 'Referral Code',
       render: (_, student) => (
-        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
           {student.referralCode || 'N/A'}
         </div>
       )
@@ -274,7 +274,7 @@ const StudentsPage = () => {
       render: (_, student) => {
         if (student.status === 'active') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
               {student.status || 'N/A'}
             </div>
           )
@@ -558,7 +558,7 @@ const StudentsPage = () => {
                               </div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="text-sm font-black text-emerald-500 tabular-nums">
+                              <div className="text-sm font-black text-primary-500 tabular-nums">
                                 {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(student.walletBalance || 0)}
                               </div>
                             </td>
@@ -575,7 +575,7 @@ const StudentsPage = () => {
                               </div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest w-fit border ${student.status === 'active' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' :
+                              <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest w-fit border ${student.status === 'active' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' :
                                 student.status === 'suspended' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' :
                                   'bg-slate-500/10 text-slate-500 border-slate-500/20'
                                 }`}>
@@ -615,7 +615,7 @@ const StudentsPage = () => {
                           <div className="flex flex-wrap items-center gap-4">
                             <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors">{student.name}</Link>
                             {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-500 transition-colors">@{student.username}</Link>}
-                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-emerald-500/20 bg-emerald-500/10 text-emerald-500 ${student.subscriptionStatus === 'PRO' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
+                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-500 ${student.subscriptionStatus === 'PRO' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
                               {student.subscriptionStatus || 'FREE'}
                             </div>
                           </div>
@@ -626,8 +626,8 @@ const StudentsPage = () => {
                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{student.email}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <Wallet className="w-4 h-4 text-emerald-500/50" />
-                              <span className="text-[10px] font-black text-emerald-500 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
+                              <Wallet className="w-4 h-4 text-primary-500/50" />
+                              <span className="text-[10px] font-black text-primary-500 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Crown className="w-4 h-4 text-amber-500/50" />
@@ -681,7 +681,7 @@ const StudentsPage = () => {
                           </div>
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
-                            <div className="text-sm font-black text-emerald-500 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
+                            <div className="text-sm font-black text-primary-500 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
                           </div>
                         </div>
                         <div className="w-full p-3 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 mb-4 flex items-center gap-2">

@@ -66,37 +66,37 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* WHAT'S NEW */}
-          <div className="bg-green-50 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-2xl p-6">
-            <h3 className="text-sm lg:text-lg font-black text-green-800 dark:text-green-200 mb-3 uppercase tracking-tight">
+          <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-700 rounded-2xl p-6">
+            <h3 className="text-sm lg:text-lg font-black text-primary-800 dark:text-primary-200 mb-3 uppercase tracking-tight">
               ✅ What's Available
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📝</span>
                 <div>
-                  <p className="font-bold text-green-800 dark:text-green-200 text-sm">Real Exam Patterns</p>
-                  <p className="text-xs text-green-600 dark:text-green-400">SSC, UPSC, Banking, Railway & more</p>
+                  <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Real Exam Patterns</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-400">SSC, UPSC, Banking, Railway & more</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📊</span>
                 <div>
-                  <p className="font-bold text-green-800 dark:text-green-200 text-sm">Full-Length Mock Tests</p>
-                  <p className="text-xs text-green-600 dark:text-green-400">With section-wise analysis</p>
+                  <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Full-Length Mock Tests</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-400">With section-wise analysis</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">🏆</span>
                 <div>
-                  <p className="font-bold text-green-800 dark:text-green-200 text-sm">Test Leaderboards</p>
-                  <p className="text-xs text-green-600 dark:text-green-400">Compare your rank with others</p>
+                  <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Test Leaderboards</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-400">Compare your rank with others</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📈</span>
                 <div>
-                  <p className="font-bold text-green-800 dark:text-green-200 text-sm">Detailed Analytics</p>
-                  <p className="text-xs text-green-600 dark:text-green-400">Track accuracy, speed & progress</p>
+                  <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Detailed Analytics</p>
+                  <p className="text-xs text-primary-600 dark:text-primary-400">Track accuracy, speed & progress</p>
                 </div>
               </div>
             </div>

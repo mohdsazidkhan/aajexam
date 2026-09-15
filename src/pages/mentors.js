@@ -83,7 +83,7 @@ const MentorsPage = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="text-sm font-black text-slate-900 dark:text-white">{mentor.user?.name || 'Mentor'}</h3>
-                      {mentor.isVerified && <span className="text-[9px] font-bold text-emerald-500 flex items-center gap-1"><Shield className="w-3 h-3" /> Verified</span>}
+                      {mentor.isVerified && <span className="text-[9px] font-bold text-primary-500 flex items-center gap-1"><Shield className="w-3 h-3" /> Verified</span>}
                     </div>
                     <div className="flex items-center gap-1">
                       <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
@@ -94,7 +94,7 @@ const MentorsPage = () => {
                   {mentor.examsCleared?.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {mentor.examsCleared.map((exam, j) => (
-                        <span key={j} className="px-2 py-0.5 bg-emerald-50 dark:bg-emerald-900/20 rounded text-[9px] font-bold text-emerald-600">
+                        <span key={j} className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/20 rounded text-[9px] font-bold text-primary-600">
                           <Award className="w-3 h-3 inline mr-0.5" />{exam.examName} {exam.year}
                         </span>
                       ))}

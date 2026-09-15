@@ -340,7 +340,7 @@ export default function AdminContacts() {
                                   <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest italic">{formatDate(contact.createdAt)} @ {formatTime(contact.createdAt)}</span>
                                </div>
                                <div className="flex items-center gap-2">
-                                  <ShieldCheck className="w-4 h-4 text-emerald-500/50" />
+                                  <ShieldCheck className="w-4 h-4 text-primary-500/50" />
                                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Verified</span>
                                </div>
                             </div>

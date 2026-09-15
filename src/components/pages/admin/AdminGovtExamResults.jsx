@@ -365,7 +365,7 @@ const AdminGovtExamResults = () => {
                               <div className="text-[9px] font-black text-primary-600 uppercase tracking-widest leading-none mt-1">{a.practiceTest?.title?.substring(0, 20) || 'Test'}...</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase inline-flex items-center gap-2 ${a.accuracy >= 80 ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : a.accuracy >= 60 ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
+                              <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase inline-flex items-center gap-2 ${a.accuracy >= 80 ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : a.accuracy >= 60 ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
                                 {a.accuracy?.toFixed(1) || 0}% Acc
                               </div>
                               <div className="text-[9px] font-black text-slate-400 uppercase mt-1 ml-1 flex items-center gap-1"><Clock className="w-3 h-3" /> {formatTime(a.totalTime)}</div>
@@ -392,7 +392,7 @@ const AdminGovtExamResults = () => {
                           <div>
                             <div className="flex items-center gap-3 mb-1">
                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{a.user?.name || 'User'}</h3>
-                              <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${a.accuracy >= 75 ? 'bg-emerald-500 text-white' : 'bg-primary-600 text-white shadow-inner'}`}>{a.accuracy?.toFixed(1)}%</span>
+                              <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${a.accuracy >= 75 ? 'bg-primary-500 text-white' : 'bg-primary-600 text-white shadow-inner'}`}>{a.accuracy?.toFixed(1)}%</span>
                             </div>
                             <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                               <span>{a.practiceTest?.title || 'Practice Test'}</span>
@@ -458,7 +458,7 @@ const AdminGovtExamResults = () => {
                         {selectedAttempt.answers?.map((ans, i) => (
                           <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
-                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>{i + 1}</div>
+                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-primary-500 text-white' : 'bg-rose-500 text-white'}`}>{i + 1}</div>
                               <div>
                                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question not available'}</p>
                                 <div className="flex gap-4">
@@ -468,7 +468,7 @@ const AdminGovtExamResults = () => {
                               </div>
                             </div>
                             <div className="flex flex-col items-end gap-2 shrink-0">
-                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
+                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
                                 {ans.isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
                                 {ans.isCorrect ? 'Correct' : 'Incorrect'}
                               </div>

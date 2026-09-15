@@ -68,7 +68,7 @@ const rankConfig = {
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = ['bg-violet-500', 'bg-blue-500', 'bg-emerald-500', 'bg-rose-500', 'bg-amber-500', 'bg-pink-500', 'bg-cyan-500', 'bg-indigo-500'];
+const AVATAR_COLORS = ['bg-violet-500', 'bg-blue-500', 'bg-primary-500', 'bg-rose-500', 'bg-amber-500', 'bg-pink-500', 'bg-cyan-500', 'bg-indigo-500'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const [imgFailed, setImgFailed] = useState(false);
@@ -444,7 +444,7 @@ const LeaderboardPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
               { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-indigo-500 dark:text-indigo-400' },
-              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-emerald-500 dark:text-emerald-400' },
+              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-500 dark:text-primary-400' },
               { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-orange-500 dark:text-orange-400' },
             ].map((stat, i) => (
               <Card key={i} padded={false} className="p-3 sm:p-4 text-center">

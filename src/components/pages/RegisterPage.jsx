@@ -127,8 +127,8 @@ const RegisterPageInner = () => {
   };
 
   const passwordStrengthLabel = passwordStrength < 40 ? 'Weak' : passwordStrength < 80 ? 'Good' : 'Strong';
-  const passwordStrengthColor = passwordStrength < 40 ? 'text-red-500' : passwordStrength < 80 ? 'text-amber-500' : 'text-green-500';
-  const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'green-500';
+  const passwordStrengthColor = passwordStrength < 40 ? 'text-red-500' : passwordStrength < 80 ? 'text-amber-500' : 'text-primary-500';
+  const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'primary-500';
 
   return (
     <MobileAppWrapper showHeader={true} title="Register">

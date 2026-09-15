@@ -69,7 +69,7 @@ export default function EditorialPolicy() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
                             {[
                                 { step: 1, title: 'Expert Development', desc: 'Questions created by subject matter experts with extensive experience in government exams.', color: 'bg-primary-500' },
-                                { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-emerald-500' },
+                                { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-primary-500' },
                                 { step: 3, title: 'Verification', desc: 'Factual information cross-verified with authoritative sources and government publications.', color: 'bg-purple-500' },
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
@@ -88,17 +88,17 @@ export default function EditorialPolicy() {
 
                     {/* Quality Standards */}
                     <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-b-[12px] border-slate-800 shadow-2xl relative overflow-hidden text-center">
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <h2 className="text-xl lg:text-4xl font-black text-white mb-12 uppercase tracking-tight relative z-10">Quality Standards</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                             {[
                                 { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-500' },
-                                { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-emerald-500' },
+                                { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-primary-500' },
                                 { title: 'Clarity', desc: 'Unambiguous and easily understood', color: 'bg-purple-500' },
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
-                                    <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center shadow-duo-secondary">
+                                    <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center shadow-duo-secondary">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
                                     <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
@@ -154,19 +154,19 @@ export default function EditorialPolicy() {
                             </p>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                                     <span><strong>No Plagiarism:</strong> All content is original or properly attributed. We do not copy questions from other sources without proper licensing.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                                     <span><strong>Transparency:</strong> We clearly disclose our content creation process, review mechanisms, and update schedules.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                                     <span><strong>No Misleading Claims:</strong> We do not make false promises about exam success or guaranteed results. Our platform provides practice and preparation tools, but success depends on individual effort.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
                                     <span><strong>Respect for Intellectual Property:</strong> We respect copyright laws and obtain proper permissions for any third-party content used on our platform.</span>
                                 </li>
                             </ul>

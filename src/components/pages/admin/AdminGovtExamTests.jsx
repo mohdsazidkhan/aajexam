@@ -326,7 +326,7 @@ const AdminGovtExamTests = () => {
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">{test.questions?.length || 0} Questions</td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">{test.duration} Min</td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 w-fit ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
+                                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 w-fit ${test.isFree ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
                                              {test.isFree ? <Zap className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
                                              {test.isFree ? 'Public' : 'Premium'}
                                           </div>
@@ -351,7 +351,7 @@ const AdminGovtExamTests = () => {
                                  <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
                                  <div className="flex justify-between items-start mb-4 lg:mb-8">
                                     <div className="p-4 bg-slate-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform"><FileText className="w-6 h-6 text-slate-400 group-hover:text-primary-500" /></div>
-                                    <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase tracking-widest border-2 ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
+                                    <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase tracking-widest border-2 ${test.isFree ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>
                                        {test.isFree ? 'FREE' : 'PREMIUM'}
                                     </div>
                                  </div>
@@ -390,7 +390,7 @@ const AdminGovtExamTests = () => {
                                     </div>
                                  </div>
                                  <div className="flex items-center gap-4">
-                                    <div className={`px-4 py-2 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase ${test.isFree ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{test.isFree ? 'Free' : 'Premium'}</div>
+                                    <div className={`px-4 py-2 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase ${test.isFree ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{test.isFree ? 'Free' : 'Premium'}</div>
                                     <motion.button onClick={() => handleEdit(test)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
                                     <motion.button onClick={() => handleDelete(test._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-rose-500 transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
                                  </div>
@@ -513,7 +513,7 @@ const AdminGovtExamTests = () => {
                                                 <div key={idx} className="space-y-2">
                                                    <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Option {idx + 1}</label>
                                                    <div className="relative group">
-                                                      <div onClick={() => setCurrentQuestion({ ...currentQuestion, correctAnswerIndex: idx })} className={`absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 cursor-pointer flex items-center justify-center transition-all ${currentQuestion.correctAnswerIndex === idx ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white dark:bg-white/10 border-slate-200'}`}>
+                                                      <div onClick={() => setCurrentQuestion({ ...currentQuestion, correctAnswerIndex: idx })} className={`absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 cursor-pointer flex items-center justify-center transition-all ${currentQuestion.correctAnswerIndex === idx ? 'bg-primary-500 border-primary-500 text-white' : 'bg-white dark:bg-white/10 border-slate-200'}`}>
                                                          {currentQuestion.correctAnswerIndex === idx ? <CheckCircle className="w-4 h-4" /> : <div className="w-2 h-2 rounded-full bg-slate-200" />}
                                                       </div>
                                                       <input type="text" value={opt} onChange={(e) => {

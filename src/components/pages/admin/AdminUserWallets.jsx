@@ -240,7 +240,7 @@ const AdminUserWallets = () => {
                             <div className="flex items-center gap-2"><Phone className="w-3 h-3" /> {row.user?.phone || row.phone || '-'}</div>
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
-                            <div className="text-sm font-black text-emerald-600 dark:text-emerald-500 tabular-nums italic tracking-tighter">
+                            <div className="text-sm font-black text-primary-600 dark:text-primary-500 tabular-nums italic tracking-tighter">
                               {formatAmount(row.amount || row.walletBalance)}
                             </div>
                           </td>
@@ -254,8 +254,8 @@ const AdminUserWallets = () => {
                                 <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{row.questionCounts?.total || 0}</span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-[8px] font-black text-emerald-500 uppercase">APPROVED</span>
-                                <span className="text-xs font-black text-emerald-500 tabular-nums">{row.questionCounts?.approved || 0}</span>
+                                <span className="text-[8px] font-black text-primary-500 uppercase">APPROVED</span>
+                                <span className="text-xs font-black text-primary-500 tabular-nums">{row.questionCounts?.approved || 0}</span>
                               </div>
                             </div>
                           </td>
@@ -308,7 +308,7 @@ const AdminUserWallets = () => {
                       <div className="w-[2px] h-8 bg-slate-100 dark:bg-white/5 hidden lg:block" />
                       <div className="flex flex-col items-end">
                         <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">BALANCE</span>
-                        <div className="text-xl font-black text-emerald-600 dark:text-emerald-500 italic tracking-tighter tabular-nums">
+                        <div className="text-xl font-black text-primary-600 dark:text-primary-500 italic tracking-tighter tabular-nums">
                           {formatAmount(row.amount || row.walletBalance)}
                         </div>
                       </div>
@@ -361,7 +361,7 @@ const AdminUserWallets = () => {
 
                     <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border-2 border-slate-100 dark:border-white/5">
                       <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 block">BALANCE</span>
-                      <div className="text-3xl font-black text-emerald-600 dark:text-emerald-500 italic tracking-tighter leading-none">{formatAmount(row.amount || row.walletBalance)}</div>
+                      <div className="text-3xl font-black text-primary-600 dark:text-primary-500 italic tracking-tighter leading-none">{formatAmount(row.amount || row.walletBalance)}</div>
                     </div>
                   </motion.div>
                 ))}

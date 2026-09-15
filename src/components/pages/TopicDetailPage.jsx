@@ -145,13 +145,13 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No quizzes</p></div> : quizzes.map((quiz, idx) => (
               <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-emerald-500 transition-all">
-                <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-500 transition-all">
+                <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary-500 to-teal-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
                   <p className="text-xs text-slate-400">{quiz.subject?.name || ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
                 </div>
-                <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-2 rounded-lg uppercase">Start</span>
+                <span className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-2 rounded-lg uppercase">Start</span>
               </motion.div>
             ))}
           </div>

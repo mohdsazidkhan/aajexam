@@ -68,8 +68,8 @@ const StreakPage = () => {
             <p className="text-[10px] font-bold text-slate-400 uppercase">Longest Streak</p>
           </Card>
           <Card className="p-4 text-center space-y-1">
-            <Calendar className="w-8 h-8 text-emerald-500 mx-auto" />
-            <p className="text-3xl font-black text-emerald-500">{streak?.totalActiveDays || 0}</p>
+            <Calendar className="w-8 h-8 text-primary-500 mx-auto" />
+            <p className="text-3xl font-black text-primary-500">{streak?.totalActiveDays || 0}</p>
             <p className="text-[10px] font-bold text-slate-400 uppercase">Active Days</p>
           </Card>
           <Card className="p-4 text-center space-y-1">
@@ -81,9 +81,9 @@ const StreakPage = () => {
 
         {/* Today Status */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-          <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-emerald-50 dark:bg-emerald-900/20 ring-4 ring-emerald-500/20' : 'bg-orange-50 dark:bg-orange-900/20 ring-4 ring-orange-500/30'}`}>
+          <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20' : 'bg-orange-50 dark:bg-orange-900/20 ring-4 ring-orange-500/30'}`}>
             {streak?.todayCompleted
-              ? <><Shield className="w-10 h-10 text-emerald-500 mx-auto mb-2" /><h2 className="text-lg font-black text-emerald-700 dark:text-emerald-300">Today&apos;s Challenge Complete!</h2></>
+              ? <><Shield className="w-10 h-10 text-primary-500 mx-auto mb-2" /><h2 className="text-lg font-black text-primary-700 dark:text-primary-300">Today&apos;s Challenge Complete!</h2></>
               : <><Flame className="w-10 h-10 text-orange-500 mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-orange-700 dark:text-orange-300">Complete Today&apos;s Challenge to Keep Streak!</h2>
                 <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</Link></>
             }

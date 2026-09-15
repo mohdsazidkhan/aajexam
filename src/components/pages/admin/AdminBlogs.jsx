@@ -132,7 +132,7 @@ const AdminBlogs = () => {
 
   const getStatusBadge = (status) => {
     const cfg = {
-      published: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
+      published: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300',
       draft: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
       archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
     };
@@ -198,7 +198,7 @@ const AdminBlogs = () => {
                     {blog.status === 'published' ? (
                       <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 hover:text-orange-800 dark:text-orange-400 text-xs font-bold">Unpublish</button>
                     ) : (
-                      <button onClick={() => handlePublish(blog._id)} className="text-green-600 hover:text-green-800 dark:text-green-400 text-xs font-bold">Publish</button>
+                      <button onClick={() => handlePublish(blog._id)} className="text-primary-600 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
                     )}
                     <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured">
                       <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-yellow-500 fill-yellow-500' : 'text-gray-400'}`} />
@@ -239,7 +239,7 @@ const AdminBlogs = () => {
             {blog.status === 'published' ? (
               <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 dark:text-orange-400 text-xs font-bold">Unpublish</button>
             ) : (
-              <button onClick={() => handlePublish(blog._id)} className="text-green-600 dark:text-green-400 text-xs font-bold">Publish</button>
+              <button onClick={() => handlePublish(blog._id)} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Publish</button>
             )}
             <button onClick={() => handleToggleFeatured(blog._id)}>
               <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-yellow-500 fill-yellow-500' : 'text-gray-400'}`} />
@@ -279,7 +279,7 @@ const AdminBlogs = () => {
               {blog.status === 'published' ? (
                 <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 dark:text-orange-400 text-xs font-bold">Unpublish</button>
               ) : (
-                <button onClick={() => handlePublish(blog._id)} className="text-green-600 dark:text-green-400 text-xs font-bold">Publish</button>
+                <button onClick={() => handlePublish(blog._id)} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Publish</button>
               )}
               <button onClick={() => handleDelete(blog._id)} className="text-red-600 dark:text-red-400 text-xs font-bold">Delete</button>
             </div>

@@ -68,7 +68,7 @@ export default function ReferralFraudDashboard() {
     { label: 'Flagged Referrers', value: summary.flaggedReferrers, icon: ShieldAlert, tone: 'text-primary-500 bg-primary-500/10' },
     { label: 'High Risk', value: summary.highRisk, icon: AlertTriangle, tone: 'text-rose-500 bg-rose-500/10' },
     { label: 'Medium Risk', value: summary.mediumRisk, icon: Fingerprint, tone: 'text-amber-500 bg-amber-500/10' },
-    { label: 'Reward At Risk', value: inr(summary.rewardAtRisk), icon: Banknote, tone: 'text-emerald-500 bg-emerald-500/10' },
+    { label: 'Reward At Risk', value: inr(summary.rewardAtRisk), icon: Banknote, tone: 'text-primary-500 bg-primary-500/10' },
   ] : [];
 
   return (
@@ -138,7 +138,7 @@ export default function ReferralFraudDashboard() {
             <AdminTableSkeleton />
           ) : rows.length === 0 ? (
             <div className="min-h-[30vh] flex flex-col items-center justify-center text-center">
-              <ShieldCheck className="w-14 h-14 text-emerald-500 mb-4" />
+              <ShieldCheck className="w-14 h-14 text-primary-500 mb-4" />
               <div className="text-lg font-black uppercase tracking-tight">No suspicious referrers</div>
               <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">Nothing matched the current filter.</div>
             </div>
@@ -185,7 +185,7 @@ export default function ReferralFraudDashboard() {
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">invites</div>
                           </div>
                           <div className="text-center">
-                            <div className="text-lg font-black text-emerald-500">{inr(u.referralEarnings)}</div>
+                            <div className="text-lg font-black text-primary-500">{inr(u.referralEarnings)}</div>
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">earned</div>
                           </div>
                           <button onClick={() => setExpanded(open ? null : u._id)}

@@ -19,7 +19,7 @@ const Badge = ({
   const variants = {
     primary: 'bg-primary-500 text-white shadow-duo-primary border-primary-600',
     secondary: 'bg-primary-500 text-white shadow-duo-secondary border-primary-600',
-    emerald: 'bg-emerald-500 text-white shadow-duo-emerald border-emerald-600',
+    emerald: 'bg-primary-500 text-white shadow-duo-primary border-primary-600',
     amber: 'bg-amber-500 text-white shadow-duo-amber border-amber-600',
     rose: 'bg-rose-500 text-white shadow-duo-rose border-rose-600',
     indigo: 'bg-indigo-500 text-white shadow-duo-indigo border-indigo-600',

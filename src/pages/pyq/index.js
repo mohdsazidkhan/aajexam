@@ -173,14 +173,14 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             {/* Progress Bar UI */}
                                             <div className="space-y-1.5 mt-auto">
                                                 <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
-                                                    <span className={completed > 0 ? 'text-emerald-500' : 'text-slate-400'}>
+                                                    <span className={completed > 0 ? 'text-primary-500' : 'text-slate-400'}>
                                                         {completed > 0 ? 'In Progress' : 'Start Now'}
                                                     </span>
                                                     <span className="text-slate-500">{completed}/{total}</span>
                                                 </div>
                                                 <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                                                     <div 
-                                                        className="h-full bg-emerald-500 rounded-full transition-all duration-1000 ease-out" 
+                                                        className="h-full bg-primary-500 rounded-full transition-all duration-1000 ease-out" 
                                                         style={{ width: `${pct}%` }} 
                                                     />
                                                 </div>
@@ -238,7 +238,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
                                                         <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{test.pyqYear || 'PYQ'}</span>
-                                                        {test.isLastYear && <span className="px-2 py-1 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg text-[10px] font-black text-emerald-600">LATEST</span>}
+                                                        {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">LATEST</span>}
                                                     </div>
                                                     {test.pyqShift && <span className="text-[10px] font-bold text-slate-400">{test.pyqShift}</span>}
                                                 </div>
@@ -256,7 +256,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                                             {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[10px] font-black text-emerald-500 uppercase tracking-wider">Free Access</span>
+                                                        <span className="text-[10px] font-black text-primary-500 uppercase tracking-wider">Free Access</span>
                                                     )}
                                                     <div className="flex items-center gap-1 text-[10px] font-black text-primary-500">
                                                         {hasAccess ? 'Practice Now' : 'Unlock with PRO'} <ChevronRight className="w-3 h-3" />

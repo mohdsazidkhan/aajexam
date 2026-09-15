@@ -22,15 +22,15 @@ export default function HalalDisclaimer() {
 
             <div className="min-h-screen  font-outfit relative overflow-hidden">
                 {/* Background atmosphere */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 my-4">
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-2xl p-4 md:p-8 lg:p-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <div className="text-center mb-12">
-                            <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-duo-secondary">
+                            <div className="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-duo-secondary">
                                 <FaMosque className="text-white text-3xl" />
                             </div>
                             <h1 className="text-2xl lg:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter leading-tight">Halal Disclaimer</h1>
@@ -44,7 +44,7 @@ export default function HalalDisclaimer() {
 
                             <section className="bg-slate-50 dark:bg-slate-800/50 p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800">
                                 <h2 className="text-md md:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
-                                    <div className="w-2 h-10 bg-emerald-500 rounded-full" />
+                                    <div className="w-2 h-10 bg-primary-500 rounded-full" />
                                     Why AajExam is Halal
                                 </h2>
 
@@ -71,9 +71,9 @@ export default function HalalDisclaimer() {
                                             desc: 'All subscription plans, access levels, and referral reward conditions are clearly stated. No user is misled about what they are paying for or what they will earn.'
                                         }
                                     ].map((item, idx) => (
-                                        <div key={idx} className="relative pl-8 border-l-4 border-emerald-500/20">
+                                        <div key={idx} className="relative pl-8 border-l-4 border-primary-500/20">
                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-2">
-                                                <FaCheckCircle className="text-emerald-500 text-lg flex-shrink-0" />
+                                                <FaCheckCircle className="text-primary-500 text-lg flex-shrink-0" />
                                                 {item.title}
                                             </h3>
                                             {item.evidence && (
@@ -95,7 +95,7 @@ export default function HalalDisclaimer() {
                                 <div className="space-y-6">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
                                         For Shariah-related inquiries:<br />
-                                        <strong className="text-emerald-600 dark:text-emerald-400 text-sm">{config.SUPPORT_EMAIL || 'support@mohdsazidkhan.com'}</strong>
+                                        <strong className="text-primary-600 dark:text-primary-400 text-sm">{config.SUPPORT_EMAIL || 'support@mohdsazidkhan.com'}</strong>
                                     </p>
                                     <button
                                         onClick={() => (window.location.href = '/')}

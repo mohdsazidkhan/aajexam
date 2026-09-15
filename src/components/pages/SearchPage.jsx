@@ -60,7 +60,7 @@ const TABS = [
 const SECTION_META = {
    exam: { label: 'Exams', icon: ShieldCheck, color: 'text-blue-500' },
    test: { label: 'Practice Tests', icon: FileText, color: 'text-primary-500' },
-   quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-emerald-500' },
+   quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-primary-500' },
    reel: { label: 'Reels', icon: Play, color: 'text-slate-500 dark:text-slate-400' },
    subject: { label: 'Subjects', icon: BookMarked, color: 'text-indigo-500' },
    topic: { label: 'Topics', icon: Layers, color: 'text-cyan-500' },
@@ -85,7 +85,7 @@ const REEL_TYPE_CONFIG = {
    fact: { icon: BookOpen, gradient: 'from-purple-600 to-pink-600' },
    tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600' },
    current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700' },
-   poll: { icon: BarChart3, gradient: 'from-green-500 to-emerald-700' },
+   poll: { icon: BarChart3, gradient: 'from-primary-500 to-primary-700' },
 };
 
 const formatCount = (n) => {
@@ -354,7 +354,7 @@ const SearchPage = () => {
          case 'quiz':
             return (
                <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">
@@ -362,7 +362,7 @@ const SearchPage = () => {
                      </p>
                   </div>
                   <div className="flex flex-col items-end gap-0.5 shrink-0">
-                     <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">START</span>
+                     <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">START</span>
                      {item.totalAttempts > 0 && (
                         <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
                      )}

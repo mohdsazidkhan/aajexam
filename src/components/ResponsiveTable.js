@@ -125,7 +125,7 @@ const ResponsiveTable = ({
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                         className={`p-2.5 rounded-lg lg:rounded-xl transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/30 hover:bg-rose-100' :
-                          action.variant === 'success' ? 'text-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 hover:bg-emerald-100' :
+                          action.variant === 'success' ? 'text-primary-500 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
                             'text-primary-700 dark:text-primary-500 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
                         title={action.label}
@@ -177,7 +177,7 @@ const ResponsiveTable = ({
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                     className={`p-3.5 lg:p-3 rounded-lg lg:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-rose-50 text-rose-500 dark:bg-rose-950/40 hover:bg-rose-100' :
-                      action.variant === 'success' ? 'bg-emerald-50 text-emerald-500 dark:bg-emerald-950/40 hover:bg-emerald-100' :
+                      action.variant === 'success' ? 'bg-primary-50 text-primary-500 dark:bg-primary-950/40 hover:bg-primary-100' :
                         'bg-primary-50 text-primary-700 dark:text-primary-500 dark:bg-primary-950/40 hover:bg-primary-100'
                       }`}
                   >
@@ -220,8 +220,8 @@ const ResponsiveTable = ({
                   {row.name || row[columns[0]?.key] || 'Unknown Object'}
                 </h3>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <Activity className="w-3 h-3 text-emerald-500" />
-                  <span className="text-[9px] font-black text-emerald-500 uppercase tracking-widest">{row.status || 'Active'}</span>
+                  <Activity className="w-3 h-3 text-primary-500" />
+                  <span className="text-[9px] font-black text-primary-500 uppercase tracking-widest">{row.status || 'Active'}</span>
                 </div>
               </div>
             </div>

@@ -51,7 +51,7 @@ const AdminNotes = () => {
 
   const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
-  const difficultyColor = (d) => d === 'advanced' ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400' : d === 'intermediate' ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
+  const difficultyColor = (d) => d === 'advanced' ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400' : d === 'intermediate' ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
 
   return (
     <AdminRoute>
