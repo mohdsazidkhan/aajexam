@@ -233,7 +233,7 @@ async function loadSeries(examSlug, subjectSlug) {
 
   const [exam, subject] = await Promise.all([
     Exam.findOne({ slug: examSlug }).select('_id name slug').lean(),
-    Subject.findOne({ slug: subjectSlug }).select('_id name slug').lean(),
+    Subject.findOne({ slug: subjectSlug, isActive: { $ne: false } }).select('_id name slug').lean(),
   ]);
   if (!exam || !subject) return null;
 

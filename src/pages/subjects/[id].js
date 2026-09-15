@@ -217,7 +217,10 @@ export async function getServerSideProps({ params, res }) {
       if (!idDoc) return { notFound: true };
     }
 
-    const subject = await Subject.findOne(isObjectId(segment) ? { _id: segment } : { slug: segment })
+    const subject = await Subject.findOne({
+      ...(isObjectId(segment) ? { _id: segment } : { slug: segment }),
+      isActive: { $ne: false },
+    })
       .select('_id name slug description icon')
       .lean();
 

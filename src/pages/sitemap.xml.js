@@ -33,7 +33,7 @@ const xmlUrl = ({ loc, lastmod, changefreq, priority }) => {
    </url>`;
 };
 
-function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [] }) {
+function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [] }) {
     // Only PUBLIC, non-login pages here. Login-gated pages (profile, history,
     // dashboards, etc.) and admin pages are excluded by design and are also
     // disallowed in robots.txt + carry noIndex meta on the page itself.
@@ -93,7 +93,11 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         pyqPapers.filter(p => p?.slug && p?.examSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/pyq/${p.examSlug}/${p.slug}`, lastmod: p.updatedAt || p.publishedAt || p.createdAt, changefreq: 'monthly', priority: '0.9' })).join(''),
         // /practice/<examSlug>/<subjectSlug> — consolidated subject-wise PYQ banks.
         // These replace the thousands of noindexed 10-question quiz slices.
-        practiceSeries.filter(p => p?.examSlug && p?.subjectSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/practice/${p.examSlug}/${p.subjectSlug}`, changefreq: 'weekly', priority: '0.85' })).join('')
+        practiceSeries.filter(p => p?.examSlug && p?.subjectSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/practice/${p.examSlug}/${p.subjectSlug}`, changefreq: 'weekly', priority: '0.85' })).join(''),
+        // /practice/<examSlug>/<subjectSlug>/<topicSlug> — same qualification
+        // rules as that page's own getStaticPaths (min questions + subject must
+        // have 2+ distinct topics), so we never submit a URL that 404s.
+        practiceTopics.filter(p => p?.examSlug && p?.subjectSlug && p?.topicSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/practice/${p.examSlug}/${p.subjectSlug}/${p.topicSlug}`, changefreq: 'monthly', priority: '0.75' })).join('')
     ];
 
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -134,8 +138,8 @@ export async function getServerSideProps({ res }) {
             safeFind(() => import('../models/StudyNote'), 'slug updatedAt publishedAt createdAt', {}, 5000, { publishedAt: -1 }),
             safeFind(() => import('../models/ExamNews'), '_id slug updatedAt createdAt', {}, 5000, { createdAt: -1 }),
             safeFind(() => import('../models/CurrentAffair'), '_id slug updatedAt date createdAt', {}, 5000, { date: -1 }),
-            safeFind(() => import('../models/Subject'), '_id slug updatedAt createdAt', {}, 5000),
-            safeFind(() => import('../models/Topic'), '_id slug updatedAt createdAt', {}, 5000),
+            safeFind(() => import('../models/Subject'), '_id slug updatedAt createdAt', { isActive: { $ne: false } }, 5000),
+            safeFind(() => import('../models/Topic'), '_id slug updatedAt createdAt', { isActive: { $ne: false } }, 5000),
             safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt',
                 // The auto-sliced quiz series carries noindexOverride, so submitting
                 // it would just pad the sitemap with URLs Google is told not to index.
@@ -200,6 +204,46 @@ export async function getServerSideProps({ res }) {
             console.error('Sitemap: practice series section failed:', e);
         }
 
+        // /practice/<exam>/<subject>/<topic> — mirrors that page's own
+        // getStaticPaths exactly: MIN_QUESTIONS_TO_INDEX=10 per (exam,subject,topic)
+        // group, and the subject must have 2+ distinct qualifying topics for the
+        // exam (otherwise the topic page would just duplicate its subject page).
+        let practiceTopics = [];
+        try {
+            const Quiz = (await import('../models/Quiz')).default;
+            const Topic = (await import('../models/Topic')).default;
+            const Subject = (await import('../models/Subject')).default;
+            const groups = await Quiz.aggregate([
+                { $match: { type: 'subject_test', status: 'published', topic: { $ne: null } } },
+                { $unwind: '$applicableExams' },
+                { $group: { _id: { exam: '$applicableExams', subject: '$subject', topic: '$topic' }, questions: { $sum: { $size: { $ifNull: ['$questions', []] } } } } },
+                { $match: { questions: { $gte: 10 } } },
+            ]);
+            const topicCountPerExamSubject = new Map();
+            groups.forEach((g) => {
+                const key = `${g._id.exam}::${g._id.subject}`;
+                topicCountPerExamSubject.set(key, (topicCountPerExamSubject.get(key) || 0) + 1);
+            });
+            const qualifyingGroups = groups.filter((g) => topicCountPerExamSubject.get(`${g._id.exam}::${g._id.subject}`) >= 2);
+            const [topicExams, topicSubjects, topicTopics] = await Promise.all([
+                Exam.find({ _id: { $in: qualifyingGroups.map(g => g._id.exam) }, isActive: true }).select('slug').lean(),
+                Subject.find({ _id: { $in: qualifyingGroups.map(g => g._id.subject) }, isActive: { $ne: false } }).select('slug').lean(),
+                Topic.find({ _id: { $in: qualifyingGroups.map(g => g._id.topic) }, isActive: { $ne: false } }).select('slug').lean(),
+            ]);
+            const topicExamSlugs = new Map(topicExams.map(e => [String(e._id), e.slug]));
+            const topicSubjectSlugs = new Map(topicSubjects.map(s => [String(s._id), s.slug]));
+            const topicTopicSlugs = new Map(topicTopics.map(t => [String(t._id), t.slug]));
+            practiceTopics = qualifyingGroups
+                .map(g => ({
+                    examSlug: topicExamSlugs.get(String(g._id.exam)),
+                    subjectSlug: topicSubjectSlugs.get(String(g._id.subject)),
+                    topicSlug: topicTopicSlugs.get(String(g._id.topic)),
+                }))
+                .filter(p => p.examSlug && p.subjectSlug && p.topicSlug);
+        } catch (e) {
+            console.error('Sitemap: practice topics section failed:', e);
+        }
+
         // Derive per-exam PYQ index URLs from distinct exam slugs in pyqPapers
         const pyqExamIndexMap = new Map();
         pyqPapers.forEach(p => {
@@ -211,7 +255,7 @@ export async function getServerSideProps({ res }) {
         });
         const pyqExamIndexes = Array.from(pyqExamIndexMap.values());
 
-        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries });
+        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics });
 
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');

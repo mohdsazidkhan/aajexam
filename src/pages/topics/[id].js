@@ -226,7 +226,10 @@ export async function getServerSideProps({ params, res }) {
       if (!idDoc) return { notFound: true };
     }
 
-    const topic = await Topic.findOne(isObjectId(segment) ? { _id: segment } : { slug: segment })
+    const topic = await Topic.findOne({
+      ...(isObjectId(segment) ? { _id: segment } : { slug: segment }),
+      isActive: { $ne: false },
+    })
       .select('_id name slug description subject')
       .populate('subject', 'name slug')
       .lean();

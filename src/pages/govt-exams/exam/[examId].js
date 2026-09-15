@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
   ChevronRight, Play, Eye, Lock, Unlock, History,
-  GraduationCap, HelpCircle, ListChecks, Search, UserPlus, Info
+  GraduationCap, HelpCircle, ListChecks, Search, UserPlus, Info, BookOpen, FolderOpen
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -24,13 +24,16 @@ import {
 } from '../../../utils/schema';
 import { EXAM_SEO_FACTS, EXAM_FACTS_SOURCED_DATE } from '../../../lib/data/examSeoFacts';
 
-const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialError = '', seo, examId, aboutText = '', robotsMeta = 'index, follow' }) => {
+const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialSubjects = [], initialTopics = [], initialQuestionCount = 0, initialError = '', seo, examId, aboutText = '', robotsMeta = 'index, follow' }) => {
   const router = useRouter();
   const [exam, setExam] = useState(initialExam);
-  const [activeTab, setActiveTab] = useState('tests');
+  const [activeTab, setActiveTab] = useState('subjects');
   const [practiceTests, setPracticeTests] = useState(initialPracticeTests);
   const [pyqs, setPyqs] = useState(initialPyqs);
   const [quizzes, setQuizzes] = useState(initialQuizzes);
+  const [subjects] = useState(initialSubjects);
+  const [topics] = useState(initialTopics);
+  const [questionCount] = useState(initialQuestionCount);
   const [loading, setLoading] = useState(!initialExam && !initialError);
   const [error, setError] = useState(initialError);
 
@@ -80,6 +83,8 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
   const examName = exam?.name || 'Government Exam';
   const tabs = [
+    { key: 'subjects', label: 'Subjects', icon: BookOpen, count: subjects.length },
+    { key: 'topics', label: 'Topics', icon: FolderOpen, count: topics.length },
     { key: 'tests', label: 'Practice Tests', icon: FileText, count: practiceTests.length },
     { key: 'pyqs', label: "PYQ's", icon: History, count: pyqs.length },
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
@@ -89,7 +94,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
   const examCode = exam?.code ? ` (${exam.code})` : '';
   const examCategory = exam?.category?.name;
   const facts = exam?.slug ? EXAM_SEO_FACTS[exam.slug] : null;
-  const subjectAreas = facts?.subjectAreas || [];
+  const subjectAreas = subjects.length ? subjects.map((s) => s.name) : (facts?.subjectAreas || []);
   const seoTitle = seo?.title || `${examName}${examCode} – Syllabus, Pattern, Free Practice Tests & Previous Year Papers | AajExam`;
   const seoDescription = seo?.description || `${examName}${examCode} preparation hub on AajExam — syllabus, exam pattern, ${practiceTests.length} free practice tests, ${pyqs.length} previous year question papers (PYQs) and ${quizzes.length} topic-wise quizzes with detailed solutions and sectional analysis.`.slice(0, 160);
   const seoKeywords = [
@@ -180,6 +185,16 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <p className="text-primary-100 font-bold text-sm lg:text-base opacity-90">PYQ, Practice Tests &amp; Online Questions</p>
           {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">Code: {exam.code}</p>}
           <div className="flex flex-wrap gap-2 pt-2">
+            {subjects.length > 0 && (
+              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+                <BookOpen className="w-3.5 h-3.5" /> {subjects.length} Subjects
+              </span>
+            )}
+            {topics.length > 0 && (
+              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+                <FolderOpen className="w-3.5 h-3.5" /> {topics.length} Topics
+              </span>
+            )}
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
               <FileText className="w-3.5 h-3.5" /> {practiceTests.length} Tests
             </span>
@@ -189,6 +204,11 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
               <BrainCircuit className="w-3.5 h-3.5" /> {quizzes.length} Quizzes
             </span>
+            {questionCount > 0 && (
+              <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
+                <ListChecks className="w-3.5 h-3.5" /> {questionCount} Questions
+              </span>
+            )}
           </div>
         </div>
         <Target className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/10 -rotate-12" />
@@ -246,7 +266,23 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             {examName} Syllabus &amp; Subjects
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            {subjectAreas.map((subject) => (
+            {subjects.length > 0 ? subjects.map((subject) => (
+              <div key={subject._id} className="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+                <span className="text-sm font-bold text-content-primary">{subject.name}</span>
+                {subject.slug ? (
+                  <button
+                    onClick={() => router.push(`/practice/${exam.slug}/${subject.slug}`)}
+                    className="text-[10px] font-black text-primary-600 uppercase whitespace-nowrap"
+                  >
+                    Practice {subject.name} Questions →
+                  </button>
+                ) : (
+                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 uppercase whitespace-nowrap">
+                    Practice Questions →
+                  </button>
+                )}
+              </div>
+            )) : subjectAreas.map((subject) => (
               <div key={subject} className="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
@@ -283,6 +319,77 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </div>
 
       {/* Tab Content */}
+      {activeTab === 'subjects' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {subjects.length === 0 ? (
+            <div className="col-span-full py-16 text-center space-y-3">
+              <BookOpen className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
+              <p className="text-sm font-bold text-slate-400">No subjects available yet</p>
+            </div>
+          ) : (
+            subjects.map((subject, idx) => (
+              <motion.div key={subject._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                <Card
+                  hoverable
+                  onClick={() => router.push(`/practice/${exam.slug}/${subject.slug}`)}
+                  className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-indigo-600 flex items-center justify-center shrink-0">
+                      <BookOpen className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{subject.name}</h3>
+                      <p className="text-xs font-bold text-content-muted">
+                        {subject.quizCount} {subject.quizCount === 1 ? 'set' : 'sets'} · {subject.questionCount} Qs
+                      </p>
+                    </div>
+                  </div>
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                    Practice {subject.name} →
+                  </span>
+                </Card>
+              </motion.div>
+            ))
+          )}
+        </div>
+      )}
+
+      {activeTab === 'topics' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {topics.length === 0 ? (
+            <div className="col-span-full py-16 text-center space-y-3">
+              <FolderOpen className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
+              <p className="text-sm font-bold text-slate-400">No topics available yet</p>
+            </div>
+          ) : (
+            topics.map((topic, idx) => (
+              <motion.div key={topic._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+                <Card
+                  hoverable
+                  onClick={() => router.push(`/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}`)}
+                  className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shrink-0">
+                      <FolderOpen className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{topic.name}</h3>
+                      <p className="text-xs font-bold text-content-muted truncate">{topic.subjectName}</p>
+                    </div>
+                  </div>
+                  <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? 'set' : 'sets'} · {topic.questionCount} Qs</p>
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                    Practice {topic.name} →
+                  </span>
+                </Card>
+              </motion.div>
+            ))
+          )}
+        </div>
+      )}
+
       {(activeTab === 'tests' || activeTab === 'pyqs') && (() => {
         const isPyqTab = activeTab === 'pyqs';
         const list = isPyqTab ? pyqs : practiceTests;
@@ -532,10 +639,52 @@ export async function getServerSideProps({ params }) {
       Quiz.find({ applicableExams: examId, status: 'published' })
         .populate('subject', 'name slug')
         .populate('topic', 'name slug')
-        .select('-questions')
+        .select('subject topic questions title slug duration totalMarks difficulty publishedAt')
         .sort({ publishedAt: -1 })
         .lean()
     ]);
+
+    // Derive real Subjects/Topics/Question-count for this exam from its actual
+    // quiz content (mirrors the Quiz-based aggregation the
+    // /practice/[examSlug]/[subjectSlug] page already uses) rather than
+    // Subject.exams/Topic.exams or Question.exam, which carry mixed
+    // string/ObjectId legacy data and/or aren't reliably tagged per-exam.
+    const subjectMap = new Map();
+    const topicMap = new Map();
+    let questionCount = 0;
+    for (const q of quizDocs) {
+      const qCount = q.questions?.length || 0;
+      questionCount += qCount;
+      if (q.subject?._id) {
+        const key = String(q.subject._id);
+        const entry = subjectMap.get(key) || { _id: key, name: q.subject.name, slug: q.subject.slug, quizCount: 0, questionCount: 0 };
+        entry.quizCount += 1;
+        entry.questionCount += qCount;
+        subjectMap.set(key, entry);
+      }
+      if (q.topic?._id) {
+        const key = String(q.topic._id);
+        const entry = topicMap.get(key) || {
+          _id: key,
+          name: q.topic.name,
+          slug: q.topic.slug,
+          subjectName: q.subject?.name || '',
+          subjectSlug: q.subject?.slug || '',
+          quizCount: 0,
+          questionCount: 0
+        };
+        entry.quizCount += 1;
+        entry.questionCount += qCount;
+        topicMap.set(key, entry);
+      }
+      delete q.questions; // only needed transiently for the counts above
+    }
+    const subjects = Array.from(subjectMap.values())
+      .filter((s) => s.slug)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    const topics = Array.from(topicMap.values())
+      .filter((t) => t.slug && t.subjectSlug)
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     const pIds = patternDocs.map(p => p._id);
     const [ptDocs, pyqDocs] = pIds.length > 0
@@ -589,6 +738,9 @@ export async function getServerSideProps({ params }) {
         initialPracticeTests: practiceTests,
         initialPyqs: pyqs,
         initialQuizzes: JSON.parse(JSON.stringify(quizDocs)),
+        initialSubjects: subjects,
+        initialTopics: topics,
+        initialQuestionCount: questionCount,
         seo: { title: `${exam.name} - Practice | AajExam` },
         aboutText,
         robotsMeta: robots.robots,
