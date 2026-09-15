@@ -122,11 +122,13 @@ const SubscriptionPage = () => {
                 <div className="space-y-1 lg:space-y-2">
                   <p className="text-[10px] lg:text-sm font-semibold opacity-80">Your current plan</p>
                   <h1 className="text-sm lg:text-3xl font-black font-outfit leading-tight uppercase">
-                    {subscription.planName} plan is active
+                    {subscription.planName} plan {subscription.status === 'active' ? 'is active' : 'has expired'}
                   </h1>
                   <p className="text-[11px] lg:text-base font-medium opacity-90">
                     {subscription.expiryDate
-                      ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
+                      ? subscription.status === 'active'
+                        ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
+                        : `Expired on ${new Date(subscription.expiryDate).toLocaleDateString()} — renew to regain PRO access.`
                       : (subscription.planName || '').toUpperCase() === 'FREE'
                         ? 'Upgrade to PRO to unlock all practice tests and detailed analytics.'
                         : 'Pick a plan below to unlock all exam practice tests.'}
