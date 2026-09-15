@@ -117,26 +117,33 @@ const StudentNavbar = () => {
                 gold avatar; FREE = green ring + green avatar. The user's
                 first initial sits inside in white. */}
             {(() => {
-              const plan = (user.subscriptionStatus || 'FREE').toUpperCase();
-              const isPro = plan === 'PRO';
+              const rawPlan = (user.subscriptionStatus || 'FREE').toUpperCase();
+              // subscriptionStatus isn't downgraded server-side when the
+              // subscription lapses (known backend gap) — check expiry here
+              // too so the badge doesn't claim active PRO after it's expired.
+              const isExpired = rawPlan === 'PRO' && user.subscriptionExpiry && new Date(user.subscriptionExpiry) <= new Date();
+              const plan = isExpired ? 'EXPIRED' : rawPlan;
+              const isPro = rawPlan === 'PRO' && !isExpired;
               return (
                 <button
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
                   aria-label={`${plan} plan – Profile menu`}
                   aria-expanded={showProfileMenu}
-                  title={`${plan} plan`}
+                  title={isExpired ? 'PRO plan expired' : `${plan} plan`}
                   className="p-0.5 rounded-full"
                 >
                   <div className="relative w-8 h-8 lg:w-11 lg:h-11">
-                  
+
                     {/* Floating Badge */}
                     <span
-                      className={`absolute -bottom-2 left-0 right-0 z-20 text-[8px] lg:text-[9px] font-black uppercase tracking-widest px-1.5 py-[2px] rounded-full text-white backdrop-blur-md shadow-lg border border-white/20 ${(user.subscriptionStatus || 'FREE').toUpperCase() === 'PRO'
-                        ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500'
-                        : 'bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'
+                      className={`absolute -bottom-2 left-0 right-0 z-20 text-[8px] lg:text-[9px] font-black uppercase tracking-widest px-1.5 py-[2px] rounded-full text-white backdrop-blur-md shadow-lg border border-white/20 ${isExpired
+                        ? 'bg-gradient-to-r from-slate-500 via-slate-600 to-slate-500'
+                        : isPro
+                          ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500'
+                          : 'bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500'
                       }`}
                     >
-                      {(user.subscriptionStatus || 'FREE').toUpperCase()}
+                      {plan}
                     </span>
                     {/* Avatar ring and image/initial */}
                     <div className={`w-full h-full rounded-full overflow-hidden p-[2px]`}>
