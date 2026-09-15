@@ -17,34 +17,18 @@ export async function GET(req, { params }) {
 
         const user = auth.user;
 
-        // TIERED ACCESS CHECK
+        // TIERED ACCESS CHECK — driven by the PracticeTest's own accessLevel
+        // field (FREE/PRO), set per document (latest-year PYQ per exam pattern,
+        // and the most recently added practice test per exam pattern, are FREE;
+        // everything else is PRO). PRO users and admins always pass.
         const currentStatus = (user.subscriptionStatus || 'FREE').toUpperCase();
-        
-        if (test.isPYQ) {
-            // Find max year for this pattern to check if it's "Last Year"
-            const maxYearDoc = await PracticeTest.findOne({ examPattern: test.examPattern?._id || test.examPattern, isPYQ: true })
-                .sort({ pyqYear: -1 })
-                .select('pyqYear')
-                .lean();
-            
-            const isLastYear = test.pyqYear && maxYearDoc && test.pyqYear === maxYearDoc.pyqYear;
-            
-            if (!isLastYear && currentStatus !== 'PRO' && user.role !== 'admin') {
-                return NextResponse.json({
-                    success: false,
-                    message: 'Only last year\'s PYQs are FREE. Upgrade to PRO to unlock all previous year papers!'
-                }, { status: 403 });
-            }
-        } else {
-            // 2. Full Mocks (non-PYQ): First one is FREE, rest are PRO
-            if (currentStatus !== 'PRO' && user.role !== 'admin') {
-                if ((user.fullMockAttemptCount || 0) >= 1) {
-                    return NextResponse.json({
-                        success: false,
-                        message: 'First Mock was free. Upgrade to PRO for unlimited mocks!'
-                    }, { status: 403 });
-                }
-            }
+        const isPro = currentStatus === 'PRO' || user.role === 'admin';
+
+        if (!isPro && test.accessLevel === 'PRO') {
+            const message = test.isPYQ
+                ? 'Only the latest year\'s PYQ is FREE. Upgrade to PRO to unlock all previous year papers!'
+                : 'This practice test is PRO-only. Upgrade to PRO for unlimited mocks!';
+            return NextResponse.json({ success: false, message }, { status: 403 });
         }
 
         let attempt = await UserTestAttempt.findOne({ user: user.id, practiceTest: testId, status: 'InProgress' });
