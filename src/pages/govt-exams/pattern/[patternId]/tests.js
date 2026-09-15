@@ -84,12 +84,12 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       router.push('/login?redirect=' + encodeURIComponent(router.asPath));
       return;
     }
-    // Logic: PYQs are PRO. Full Mocks: first is free, rest are PRO.
+    // Logic: latest-year PYQ is free, older years are PRO. Full Mocks: first is free, rest are PRO.
     const isPro = (user?.subscriptionStatus || '').toUpperCase() === 'PRO' || user?.role === 'admin';
     let isLocked = false;
     if (!isPro) {
       if (test.isPYQ) {
-        isLocked = true;
+        isLocked = !test.isLastYear;
       } else if ((user?.fullMockAttemptCount || 0) >= 1) {
         isLocked = true;
       }
@@ -165,11 +165,11 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
             const isCompleted = test.userAttempt?.status === 'Completed';
             const isPro = (user?.subscriptionStatus || '').toUpperCase() === 'PRO' || user?.role === 'admin';
 
-            // Logic: PYQs are PRO. Full Mocks: first is free, rest are PRO.
+            // Logic: latest-year PYQ is free, older years are PRO. Full Mocks: first is free, rest are PRO.
             let isLocked = false;
             if (!isPro) {
               if (test.isPYQ) {
-                isLocked = true;
+                isLocked = !test.isLastYear;
               } else if ((user?.fullMockAttemptCount || 0) >= 1) {
                 isLocked = true;
               }
