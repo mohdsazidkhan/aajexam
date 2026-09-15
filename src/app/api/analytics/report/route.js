@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
+import QuizAttempt from '@/models/QuizAttempt';
 import { protect } from '@/middleware/auth';
 
 export async function GET(req) {
@@ -12,11 +13,14 @@ export async function GET(req) {
         }
 
         const userId = auth.user.id;
-        
+
         // Fetch only the performanceMetrics and primaryTargetExam fields for maximum speed
-        const user = await User.findById(userId)
-            .select('performanceMetrics.examStats primaryTargetExam name')
-            .lean();
+        const [user, quizzesAttempted] = await Promise.all([
+            User.findById(userId)
+                .select('performanceMetrics.examStats primaryTargetExam name')
+                .lean(),
+            QuizAttempt.countDocuments({ user: userId, status: 'Completed' }),
+        ]);
 
         if (!user) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
@@ -28,6 +32,7 @@ export async function GET(req) {
                 name: user.name,
                 primaryTargetExam: user.primaryTargetExam,
                 performanceMetrics: user.performanceMetrics,
+                quizzesAttempted,
                 legacyProgress: {}
             }
         });

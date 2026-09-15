@@ -69,9 +69,14 @@ const PublicNavbar = () => {
             {/* --- Logo --- */}
             <Link href="/" className="flex gap-2 group items-center relative z-10">
               <div className="absolute -inset-2 bg-primary-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tighter relative text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-700 dark:text-primary-500 text-glow-primary">EXAM</span>
-              </span>
+              <div className="relative flex flex-col leading-none">
+                <span className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
+                  AAJ<span className="text-primary-700 dark:text-primary-500 text-glow-primary">EXAM</span>
+                </span>
+                <span className="hidden sm:block text-[9px] lg:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
+                  Prepare Your Exam Today
+                </span>
+              </div>
             </Link>
 
             {/* --- Desktop Navigation --- */}

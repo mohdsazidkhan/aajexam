@@ -74,19 +74,27 @@ const StudentNavbar = () => {
             </button>
 
             {/* Logo — desktop only (left-aligned) */}
-            <Link href="/home" className="hidden lg:flex items-center">
+            <Link href="/home" className="hidden lg:flex flex-col leading-none">
               <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                 AAJ<span className="text-primary-600">EXAM</span>
+              </span>
+              <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
+                Prepare Your Exam Today
               </span>
             </Link>
           </div>
 
-          {/* Center — Logo on mobile */}
+          {/* Center — Logo on mobile, logged-in user's name on desktop */}
           <Link href="/home" className="lg:hidden absolute left-1/2 -translate-x-1/2">
             <span className="text-lg font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
               AAJ<span className="text-primary-600">EXAM</span>
             </span>
           </Link>
+          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
+            <span className="uppercase text-lg font-black text-slate-700 dark:text-slate-300 truncate max-w-xs">
+              Welcome back, <span className="text-primary-500">{user.name}</span>
+            </span>
+          </div>
 
           {/* Right */}
           <div className="flex items-center gap-1.5 lg:gap-4">

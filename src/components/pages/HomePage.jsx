@@ -274,30 +274,25 @@ const HomePage = () => {
    const averageMockScore = examStats.averageMockScore ?? 0;
    const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
    const streakCount = examStats.streakCount ?? 0;
+   const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
 
    return (
       <div className="relative selection:bg-primary-500 selection:text-white font-outfit">
          <div className="space-y-5 md:space-y-6 lg:space-y-8">
 
-            {/* ── Greeting + Stats ── */}
+            {/* ── Stats ── */}
             <section className="px-0 lg:px-4 pt-2 lg:pt-4">
-               <div className="flex items-center justify-between mb-3 lg:mb-6">
-                  <div>
-                     <h1 className="text-xl md:text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">
-                        Hi, <span className="text-primary-600">{user?.name?.split(' ')[0] || 'Student'}</span>
-                     </h1>
-                     <p className="text-xs lg:text-sm text-slate-400 font-medium mt-0.5">Prepare Your Exam Today</p>
-                  </div>
-                  {streakCount > 0 && (
+               {streakCount > 0 && (
+                  <div className="flex items-center justify-end mb-3 lg:mb-6">
                      <div className="flex items-center gap-1 px-2.5 py-1.5 bg-orange-500/10 rounded-lg lg:rounded-xl">
                         <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
                         <span className="text-xs font-black text-orange-600 dark:text-orange-400">{streakCount}</span>
                      </div>
-                  )}
-               </div>
+                  </div>
+               )}
 
                {/* Quick Stats */}
-               <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4">
+               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
                      <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
@@ -312,6 +307,11 @@ const HomePage = () => {
                      <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-blue-500 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
+                     <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-purple-500 mb-1.5" />
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
                   </div>
                </div>
             </section>
