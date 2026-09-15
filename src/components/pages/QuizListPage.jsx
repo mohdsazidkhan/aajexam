@@ -66,14 +66,23 @@ const QuizListPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    API.getQuizzes({ page, limit: 30 }).then(res => {
+    const params = { page, limit: 30 };
+    if (activeFilter !== 'all') params.difficulty = activeFilter;
+    API.getQuizzes(params).then(res => {
       if (res.success) {
         setQuizzes(res.data || []);
         setTotalPages(res.pagination?.totalPages || 1);
         setTotalCount(res.pagination?.total || res.data?.length || 0);
       }
     }).finally(() => setLoading(false));
-  }, [page]);
+  }, [page, activeFilter]);
+
+  // Difficulty is now filtered server-side (see effect above) — switching
+  // tabs must restart from page 1, since the old page number may not exist
+  // in the newly-filtered result set.
+  useEffect(() => {
+    setPage(1);
+  }, [activeFilter]);
 
   const filters = [
     { id: 'all', label: 'All Quizzes', icon: Sparkles },
@@ -84,7 +93,6 @@ const QuizListPage = () => {
 
   const filtered = useMemo(() => {
     let list = quizzes;
-    if (activeFilter !== 'all') list = list.filter(q => q.difficulty === activeFilter);
     if (search.trim()) {
       const q = search.trim().toLowerCase();
       list = list.filter(qu =>

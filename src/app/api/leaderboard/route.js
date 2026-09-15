@@ -28,14 +28,19 @@ export async function GET(req) {
         }
 
         const Model = type === 'exam' ? UserTestAttempt : QuizAttempt;
-        
-        // Define groupings based on model differences
+
+        // Define groupings based on model differences.
+        // UserTestAttempt (exam) has no totalMarks of its own — each attempt's
+        // real max marks live on its PracticeTest, joined in via the extra
+        // $lookup/$unwind/$addFields stages below rather than left as 0.
         const groupStage = type === 'exam' ? {
             _id: '$user',
             totalQuizzes: { $sum: 1 },
             avgPercentage: { $avg: '$accuracy' }, // UserTestAttempt lacks 'percentage', fallback to accuracy
             avgAccuracy: { $avg: '$accuracy' },
             totalScore: { $sum: '$score' },
+            totalMarks: { $sum: '$practiceTestMarks' },
+            totalCorrect: { $sum: '$correctCount' },
             bestScore: { $max: '$score' },
         } : {
             _id: '$user',
@@ -43,8 +48,23 @@ export async function GET(req) {
             avgPercentage: { $avg: '$percentage' },
             avgAccuracy: { $avg: '$accuracy' },
             totalScore: { $sum: '$score' },
+            totalMarks: { $sum: '$totalMarks' },
+            totalCorrect: { $sum: '$correctCount' },
             bestScore: { $max: '$percentage' },
         };
+
+        const examMarksLookupStages = type === 'exam' ? [
+            {
+                $lookup: {
+                    from: 'practicetests',
+                    localField: 'practiceTest',
+                    foreignField: '_id',
+                    as: 'practiceTestDoc'
+                }
+            },
+            { $unwind: { path: '$practiceTestDoc', preserveNullAndEmptyArrays: true } },
+            { $addFields: { practiceTestMarks: { $ifNull: ['$practiceTestDoc.totalMarks', 0] } } },
+        ] : [];
 
         // Aggregate attempts grouped by user
         const leaderboard = await Model.aggregate([
@@ -54,6 +74,7 @@ export async function GET(req) {
                     ...dateFilter,
                 }
             },
+            ...examMarksLookupStages,
             {
                 $group: groupStage
             },
@@ -61,7 +82,7 @@ export async function GET(req) {
                 $match: { totalQuizzes: { $gte: 1 } }
             },
             {
-                $sort: { avgPercentage: -1, avgAccuracy: -1, totalQuizzes: -1 }
+                $sort: { avgAccuracy: -1, avgPercentage: -1, totalQuizzes: -1 }
             },
             { $limit: limit },
             // Join User data
@@ -102,6 +123,8 @@ export async function GET(req) {
                     avgPercentage: { $round: ['$avgPercentage', 1] },
                     avgAccuracy: { $round: ['$avgAccuracy', 1] },
                     totalScore: { $round: ['$totalScore', 1] },
+                    totalMarks: { $ifNull: ['$totalMarks', 0] },
+                    totalCorrect: { $ifNull: ['$totalCorrect', 0] },
                     bestScore: { $round: ['$bestScore', 1] },
                     currentStreak: { $ifNull: ['$streak.currentStreak', 0] },
                     longestStreak: { $ifNull: ['$streak.longestStreak', 0] },

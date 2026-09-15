@@ -147,6 +147,31 @@ const REEL_TYPE_CONFIG = {
    poll: { icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-500/10', label: 'Poll' },
 };
 
+// ─── Blog Card ───
+const BlogCard = ({ item, onClick }) => (
+   <div
+      onClick={onClick}
+      className="min-w-[200px] lg:min-w-[220px] rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
+   >
+      <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
+         {/* eslint-disable-next-line @next/next/no-img-element */}
+         <img
+            src={item.featuredImage || '/default_banner.png'}
+            alt={item.featuredImageAlt || item.title}
+            className="w-full h-full object-cover"
+         />
+      </div>
+      <div className="p-3.5 flex flex-col gap-1.5">
+         <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
+            {item.title}
+         </p>
+         {item.excerpt && (
+            <p className="text-[11px] font-semibold text-slate-400 leading-snug line-clamp-2">{item.excerpt}</p>
+         )}
+      </div>
+   </div>
+);
+
 const ReelCard = ({ item, onClick }) => {
    const cfg = REEL_TYPE_CONFIG[item.type] || REEL_TYPE_CONFIG.fact;
    const TypeIcon = cfg.icon;
@@ -189,10 +214,11 @@ const HomePage = () => {
    const [subjects, setSubjects] = useState([]);
    const [topics, setTopics] = useState([]);
    const [reels, setReels] = useState([]);
+   const [blogs, setBlogs] = useState([]);
 
    // Section loading
    const [sectionsLoading, setSectionsLoading] = useState({
-      exams: true, quizzes: true, subjects: true, topics: true, reels: true,
+      exams: true, quizzes: true, subjects: true, topics: true, reels: true, blogs: true,
    });
 
    // Performance stats
@@ -247,6 +273,14 @@ const HomePage = () => {
             })
             .catch(e => console.error('Reels fetch error:', e))
             .finally(() => setSectionsLoading(prev => ({ ...prev, reels: false }))),
+
+         // Blogs
+         API.getPublishedBlogs({ limit: 10 })
+            .then(res => {
+               if (res.success && res.data?.blogs) setBlogs(res.data.blogs);
+            })
+            .catch(e => console.error('Blogs fetch error:', e))
+            .finally(() => setSectionsLoading(prev => ({ ...prev, blogs: false }))),
 
          // Performance
          API.getAnalyticsReport()
@@ -454,7 +488,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ REELS ═══════ */}
-            <section className="px-0 lg:px-4 pb-8">
+            <section className="px-0 lg:px-4">
                <SectionHeader
                   title="Reels"
                   icon={PlayCircle}
@@ -475,6 +509,32 @@ const HomePage = () => {
                      </div>
                   ) : (
                      <p className="text-sm font-semibold text-slate-400 text-center py-8">No reels available</p>
+                  )
+               }
+            </section>
+
+            {/* ═══════ BLOGS ═══════ */}
+            <section className="px-0 lg:px-4 pb-8">
+               <SectionHeader
+                  title="Blogs"
+                  icon={FileText}
+                  iconColor="text-orange-500"
+                  iconBg="bg-orange-500/10"
+                  onViewAll={() => router.push('/blog')}
+               />
+               {sectionsLoading.blogs ? <SectionSkeleton /> :
+                  blogs.length > 0 ? (
+                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+                        {blogs.slice(0, 10).map(item => (
+                           <BlogCard
+                              key={item._id}
+                              item={item}
+                              onClick={() => router.push(`/blog/${item.slug}`)}
+                           />
+                        ))}
+                     </div>
+                  ) : (
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No blogs available</p>
                   )
                }
             </section>

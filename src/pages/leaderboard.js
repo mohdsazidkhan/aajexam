@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  Star, Zap, ChevronRight, Users, RefreshCw, FileText, BrainCircuit
+  Star, Zap, ChevronRight, ChevronLeft, Users, RefreshCw, FileText, BrainCircuit
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -71,6 +71,7 @@ const rankConfig = {
 const AVATAR_COLORS = ['bg-violet-500', 'bg-blue-500', 'bg-emerald-500', 'bg-rose-500', 'bg-amber-500', 'bg-pink-500', 'bg-cyan-500', 'bg-indigo-500'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
+  const [imgFailed, setImgFailed] = useState(false);
   const sizes = {
     sm: 'w-8 h-8 text-[11px]',
     md: 'w-10 h-10 text-sm',
@@ -83,10 +84,11 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 
   const ringClass = ring && rc ? `ring-4 ${rc.ringColor} ring-offset-2 ring-offset-background-surface` : '';
 
-  return entry?.profilePicture ? (
+  return entry?.profilePicture && !imgFailed ? (
     <img
       src={entry.profilePicture}
       alt={entry.name || 'User'}
+      onError={() => setImgFailed(true)}
       className={`${sizes[size]} rounded-full object-cover flex-shrink-0 ${ringClass}`}
     />
   ) : (
@@ -128,8 +130,8 @@ const Podium = ({ top3, currentUserId }) => {
             {isMe && (
               <span className="text-[9px] font-black uppercase bg-indigo-500 text-white px-1.5 py-0.5 rounded-full">You</span>
             )}
-            <div className="text-center max-w-[72px] sm:max-w-[88px]">
-              <p className={`text-[11px] sm:text-xs font-black truncate ${isMe ? 'text-indigo-300' : 'text-white'}`}>
+            <div className="text-center max-w-[76px] sm:max-w-[96px]">
+              <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-indigo-300' : 'text-white'}`}>
                 {entry.name || entry.username || 'User'}
               </p>
               <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}%</p>
@@ -144,11 +146,43 @@ const Podium = ({ top3, currentUserId }) => {
   );
 };
 
-// ─── List Row ─────────────────────────────────────────────────────────────────
+// ─── Shared table column template (kept identical between header & rows so
+// everything lines up on desktop) — desktop only; mobile uses a stacked card. ──
+const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_20px]';
+
+// ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
 const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
   const rc = rankConfig[entry.rank];
   const isMe = String(entry.userId) === String(currentUserId);
   const isTop3 = entry.rank <= 3;
+
+  const rankBadge = (
+    <div className={`
+      w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
+      ${isTop3 ? `bg-gradient-to-br ${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
+    `}>
+      {entry.rank}
+    </div>
+  );
+
+  const identity = (
+    <div className="min-w-0">
+      <div className="flex items-center gap-1.5 flex-wrap">
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-indigo-600 dark:text-indigo-400' : 'text-content-primary'}`}>
+          {entry.name || entry.username || 'Anonymous'}
+        </p>
+        {isMe && (
+          <span className="text-[9px] font-black uppercase bg-indigo-500 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
+        )}
+        {entry.subscriptionStatus === 'PRO' && (
+          <span className="text-[9px] font-black uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
+        )}
+      </div>
+      {entry.username && (
+        <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>
+      )}
+    </div>
+  );
 
   return (
     <motion.div
@@ -157,61 +191,82 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
       transition={{ delay: Math.min(index * 0.025, 0.5) }}
     >
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
+        {/* ── Desktop: table row ── */}
         <div className={`
-          flex items-center gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+          hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
           ${isMe
             ? 'border-indigo-300 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-950/30 border-b-indigo-400 dark:border-b-indigo-600'
             : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
           }
         `}>
-          {/* Rank badge */}
-          <div className={`
-            w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-            ${isTop3
-              ? `bg-gradient-to-br ${rc.gradient} text-white shadow-md`
-              : 'bg-slate-100 dark:bg-slate-800 text-content-muted'
-            }
-          `}>
-            {entry.rank}
+          {rankBadge}
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Avatar entry={entry} size="md" />
+            {identity}
           </div>
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
+            <Target className="w-3 h-3 text-content-muted" />{entry.totalQuizzes}
+          </p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalMarks ?? 0}</p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalCorrect ?? 0}</p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
+          <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
+          <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+        </div>
 
-          {/* Avatar */}
-          <Avatar entry={entry} size="md" />
-
-          {/* Name & Stats */}
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-indigo-600 dark:text-indigo-400' : 'text-content-primary'}`}>
-                {entry.name || entry.username || 'Anonymous'}
-              </p>
-              {isMe && (
-                <span className="text-[9px] font-black uppercase bg-indigo-500 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
-              )}
-              {entry.subscriptionStatus === 'PRO' && (
-                <span className="text-[9px] font-black uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
-              )}
-            </div>
-            <div className="flex items-center gap-2.5 mt-0.5 flex-wrap">
-              <span className="text-[10px] font-bold text-content-muted flex items-center gap-1">
-                <Target className="w-3 h-3" />{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'}
-              </span>
+        {/* ── Mobile: stacked card — every stat carries its own heading ── */}
+        <div className={`
+          flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+          ${isMe
+            ? 'border-indigo-300 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-950/30 border-b-indigo-400 dark:border-b-indigo-600'
+            : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
+          }
+        `}>
+          <div className="flex items-center gap-3">
+            {rankBadge}
+            <Avatar entry={entry} size="md" />
+            <div className="flex-1 min-w-0">
+              {identity}
               {entry.currentStreak > 0 && (
-                <span className="text-[10px] font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1">
+                <span className="text-[10px] font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1 mt-0.5">
                   <Flame className="w-3 h-3" />{entry.currentStreak} day streak
                 </span>
               )}
             </div>
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
 
-          {/* Score */}
-          <div className="text-right flex-shrink-0">
-            <p className={`text-base font-black ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>
-              {entry.avgPercentage}%
-            </p>
-            <p className="text-[10px] font-bold text-content-muted">{entry.avgAccuracy}% acc</p>
+          <div className="grid grid-cols-3 gap-2 pl-[52px]">
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{type === 'quiz' ? 'Quizzes' : 'Exams'}</p>
+              <p className="text-sm font-black text-content-primary">{entry.totalQuizzes}</p>
+            </div>
+            {type === 'quiz' && (
+              <>
+                <div>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Marks</p>
+                  <p className="text-sm font-black text-content-primary">{entry.totalMarks ?? 0}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Correct</p>
+                  <p className="text-sm font-black text-content-primary">{entry.totalCorrect ?? 0}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Score</p>
+                  <p className="text-sm font-black text-content-primary">{entry.totalScore ?? 0}</p>
+                </div>
+              </>
+            )}
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Accuracy</p>
+              <p className={`text-sm font-black ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Avg Score</p>
+              <p className="text-sm font-black text-content-primary">{entry.avgPercentage}%</p>
+            </div>
           </div>
-
-          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 hidden sm:block" />
         </div>
       </Link>
     </motion.div>
@@ -225,19 +280,21 @@ const MyRankCard = ({ entry, type }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="sticky bottom-4 z-30 px-1"
+      className="sticky bottom-4 z-30 px-1 mt-4"
     >
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 flex items-center gap-3 shadow-duo-primary">
-        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">
-          #{entry.rank}
-        </div>
-        <Avatar entry={entry} size="md" />
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-black text-white truncate">Your Rank</p>
-          <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'} · {entry.avgPercentage}% avg score</p>
-        </div>
-        <div className="text-right flex-shrink-0">
-          <p className="text-xl font-black text-white">#{entry.rank}</p>
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-duo-primary">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">
+            #{entry.rank}
+          </div>
+          <Avatar entry={entry} size="md" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-black text-white truncate">Your Rank</p>
+            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'} · {entry.avgPercentage}% avg score</p>
+          </div>
+          <div className="text-right flex-shrink-0">
+            <p className="text-xl font-black text-white">#{entry.rank}</p>
+          </div>
         </div>
       </Card>
     </motion.div>
@@ -251,6 +308,8 @@ const LeaderboardPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [page, setPage] = useState(1);
+  const ROWS_PER_PAGE = 10;
   const currentUser = typeof window !== 'undefined' ? getCurrentUser() : null;
   const currentUserId = currentUser?._id || currentUser?.id;
 
@@ -269,9 +328,12 @@ const LeaderboardPage = () => {
   }, [period, type]);
 
   useEffect(() => { fetchLeaderboard(); }, [fetchLeaderboard]);
+  useEffect(() => { setPage(1); }, [type, period]);
 
   const top3 = data.slice(0, 3);
   const rest = data.slice(3);
+  const totalPages = Math.max(1, Math.ceil(rest.length / ROWS_PER_PAGE));
+  const pagedRest = rest.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
   const myEntry = data.find(e => String(e.userId) === String(currentUserId));
 
   return (
@@ -417,25 +479,50 @@ const LeaderboardPage = () => {
               exit={{ opacity: 0 }}
               className="space-y-2"
             >
-              {/* Column header */}
-              <div className="flex items-center gap-3 px-3.5 pb-1">
-                <p className="w-8 text-[10px] font-black text-content-muted uppercase text-center">#</p>
-                <div className="w-10 flex-shrink-0" />
-                <p className="text-[10px] font-black text-content-muted uppercase flex-1">Player</p>
-                <p className="text-[10px] font-black text-content-muted uppercase">Avg Score</p>
-                <div className="w-4 hidden sm:block" />
+              {/* Column header — desktop table only; mobile list has no header row */}
+              <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
+                <p className="text-[10px] font-black text-content-muted uppercase">Player</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{type === 'quiz' ? 'Quizzes' : 'Exams'}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">Marks</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">Correct</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">Score</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">Accuracy</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">Avg Score</p>
+                <div />
               </div>
 
-              {/* All rows */}
-              {data.map((entry, i) => (
+              {/* Rows — top 3 already shown on the podium above */}
+              {pagedRest.map((entry, i) => (
                 <LeaderboardRow
                   key={entry.userId}
                   entry={entry}
-                  index={i}
+                  index={(page - 1) * ROWS_PER_PAGE + i}
                   currentUserId={currentUserId}
                   type={type}
                 />
               ))}
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-3 pt-4">
+                  <button
+                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <span className="text-xs font-black text-content-muted uppercase">Page {page} of {totalPages}</span>
+                  <button
+                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                    className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         )}
