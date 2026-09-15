@@ -187,7 +187,7 @@ const ProfilePage = () => {
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto space-y-4 lg:space-y-6 mt-0 mb-4 lg:mb-4">
+      <div className="container mx-auto space-y-4 lg:space-y-6 mt-4 mb-4 lg:mb-4">
 
         {/* Hero — single full-width card, responsive from mobile to desktop */}
         <Card className="p-5 lg:p-10 space-y-6" radius="3xl">
@@ -289,8 +289,8 @@ const ProfilePage = () => {
                   <div className="flex items-center gap-4">
                     <Target className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
                     <div>
-                      <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary">Complete your profile</h2>
-                      <p className="text-xs lg:text-sm font-medium text-content-secondary">A complete profile helps you stand out and unlocks rewards.</p>
+                      <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Complete your profile</h2>
+                      <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">A complete profile helps you stand out and unlocks rewards.</p>
                     </div>
                   </div>
                   <ProgressBar progress={completion.percentage} variant="primary" height="md" />
@@ -310,8 +310,8 @@ const ProfilePage = () => {
                 <div className="flex items-center gap-4">
                   <TrendingUp className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
                   <div>
-                    <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary">Exam performance</h2>
-                    <p className="text-xs lg:text-sm font-medium text-content-secondary">Preparing for {student?.primaryTargetExam || 'All Exams'}.</p>
+                    <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Exam performance</h2>
+                    <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Preparing for {student?.primaryTargetExam || 'All Exams'}.</p>
                   </div>
                 </div>
 
@@ -345,19 +345,21 @@ const ProfilePage = () => {
 
               {/* Badges */}
               <Card className="p-6 lg:p-8 space-y-6" radius="3xl">
-                <div className="flex items-center gap-4">
-                  <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
-                  <div>
-                    <h2 className="text-lg lg:text-xl font-black font-outfit tracking-tight text-content-primary">Badges</h2>
-                    <p className="text-xs font-medium text-content-secondary">Earned through activity and achievements.</p>
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
+                    <div>
+                      <h2 className="text-lg lg:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Badges</h2>
+                      <p className="text-xs font-medium text-content-secondary pb-1">Earned through activity and achievements.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
-                    <span key={index} className="px-4 py-2.5 bg-background-surface-secondary text-content-primary rounded-xl text-xs font-black uppercase tracking-wider border border-border-primary">
-                      {badge}
-                    </span>
-                  ))}
+                  <div className="flex flex-wrap gap-3 lg:justify-end lg:flex-shrink-0">
+                    {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
+                      <span key={index} className="px-4 py-2.5 bg-background-surface-secondary text-content-primary rounded-xl text-xs font-black uppercase tracking-wider border border-border-primary">
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </Card>
 
@@ -365,7 +367,7 @@ const ProfilePage = () => {
               <Card className="p-6 lg:p-8 space-y-6" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-600" />
-                  <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary">Account details</h3>
+                  <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Account details</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {accountDetails.map((item) => (
@@ -387,7 +389,7 @@ const ProfilePage = () => {
                 <Card className="p-6 lg:p-8 space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-primary-500" />
-                    <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary">Your referral code</h3>
+                    <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-border-primary rounded-xl px-4 py-3 select-all text-content-primary">
@@ -416,8 +418,8 @@ const ProfilePage = () => {
               <Card className="p-4 lg:p-10 space-y-4 lg:space-y-8 relative overflow-hidden" radius="3xl">
                 <div className="flex items-center justify-between gap-4 relative z-10">
                   <div>
-                    <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary">Payout details</h2>
-                    <p className="text-sm font-medium text-content-secondary">Add your bank details to receive prize money.</p>
+                    <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Payout details</h2>
+                    <p className="text-sm font-medium text-content-secondary pb-1">Add your bank details to receive prize money.</p>
                   </div>
                   {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-500 text-white text-xs font-semibold">Linked</span>}
                 </div>
@@ -472,8 +474,8 @@ const ProfilePage = () => {
             >
               <Card className="p-8 space-y-6" radius="3xl">
                 <div className="space-y-1">
-                  <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary">Quick actions</h2>
-                  <p className="text-sm font-medium text-content-secondary">Jump to the places you are most likely to need next.</p>
+                  <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Quick actions</h2>
+                  <p className="text-sm font-medium text-content-secondary pb-1">Jump to the places you are most likely to need next.</p>
                 </div>
 
                 <div className="space-y-3">
@@ -496,9 +498,9 @@ const ProfilePage = () => {
               <Card className="p-8 space-y-4" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-500" />
-                  <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary">Account safety</h2>
+                  <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Account safety</h2>
                 </div>
-                <p className="text-sm font-medium text-content-secondary leading-relaxed">
+                <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
                   Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
                 </p>
                 <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-red-500 text-white shadow-duo-red rounded-2xl">
