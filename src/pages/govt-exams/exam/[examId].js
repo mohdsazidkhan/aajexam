@@ -289,9 +289,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         const EmptyIcon = isPyqTab ? History : FileText;
         const emptyText = isPyqTab ? "No PYQ's available yet" : 'No practice tests available yet';
         return (
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {list.length === 0 ? (
-              <div className="py-16 text-center space-y-3">
+              <div className="col-span-full py-16 text-center space-y-3">
                 <EmptyIcon className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
                 <p className="text-sm font-bold text-slate-400">{emptyText}</p>
               </div>
@@ -301,40 +301,44 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                    <Card className={`group border-2 transition-all p-4 overflow-hidden ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-500'}`}>
-                      <div className="flex items-center gap-4">
+                    <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-500'}`}>
+                      <div className="flex items-center gap-3">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : isPyqTab ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
                           {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm lg:text-base font-black text-content-primary uppercase truncate">{test.title}</h3>
+                          <h3 className="text-sm font-black text-content-primary uppercase truncate">{test.title}</h3>
                           <p className="text-xs font-bold text-content-muted">
                             {test.questionCount || 0} Q · {test.totalMarks || 0} marks · {formatDuration(test.duration || 60)}
-                            {test.examPattern?.title ? ` · ${test.examPattern.title}` : ''}
                           </p>
-                          {pyqMeta && (
-                            <p className="text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 uppercase">
-                              {[test.pyqExamName, test.pyqYear, test.pyqShift].filter(Boolean).join(' · ')}
-                            </p>
-                          )}
-                          {isCompleted && test.userAttempt && (
-                            <p className="text-xs font-bold text-primary-600 mt-1">
-                              Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
-                            </p>
-                          )}
                         </div>
-                        <div className="flex gap-2 shrink-0">
-                          {isCompleted && (
-                            <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
-                              className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
-                              Results
-                            </button>
-                          )}
-                          <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
-                            className={`text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
-                            {isCompleted ? 'Retake' : 'Start'}
+                      </div>
+                      <div className="flex-1 min-w-0 space-y-1">
+                        {test.examPattern?.title && (
+                          <p className="text-xs font-bold text-content-muted truncate">{test.examPattern.title}</p>
+                        )}
+                        {pyqMeta && (
+                          <p className="text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase">
+                            {[test.pyqExamName, test.pyqYear, test.pyqShift].filter(Boolean).join(' · ')}
+                          </p>
+                        )}
+                        {isCompleted && test.userAttempt && (
+                          <p className="text-xs font-bold text-primary-600">
+                            Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex gap-2">
+                        {isCompleted && (
+                          <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
+                            className="flex-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-xl uppercase">
+                            Results
                           </button>
-                        </div>
+                        )}
+                        <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
+                          className={`flex-1 text-[10px] font-black px-4 py-2 rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-500'}`}>
+                          {isCompleted ? 'Retake' : 'Start'}
+                        </button>
                       </div>
                     </Card>
                   </motion.div>
@@ -346,9 +350,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       })()}
 
       {activeTab === 'quizzes' && (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {quizzes.length === 0 ? (
-            <div className="py-16 text-center space-y-3">
+            <div className="col-span-full py-16 text-center space-y-3">
               <BrainCircuit className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
               <p className="text-sm font-bold text-slate-400">No quizzes available yet</p>
             </div>
@@ -360,23 +364,24 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   <Card
                     hoverable
                     onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                    className="group border-2 border-border-primary hover:border-emerald-500 transition-all p-4"
+                    className="group h-full border-2 border-border-primary hover:border-emerald-500 transition-all p-4 flex flex-col gap-3"
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shrink-0">
                         <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-sm lg:text-base font-black text-content-primary uppercase truncate">{quiz.title}</h3>
-                        <p className="text-xs font-bold text-content-muted">
-                          {quiz.subject?.name || ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''} · {quiz.duration} min · {quiz.totalMarks} marks
+                        <h3 className="text-sm font-black text-content-primary uppercase truncate">{quiz.title}</h3>
+                        <p className="text-xs font-bold text-content-muted truncate">
+                          {quiz.subject?.name || ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 shrink-0">
-                        <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-xl uppercase">Start</span>
-                      </div>
                     </div>
+                    <p className="text-xs font-bold text-content-muted">{quiz.duration} min · {quiz.totalMarks} marks</p>
+                    <div className="flex items-center gap-2 mt-auto">
+                        <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
+                        <span className="flex-1 text-center text-[10px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 rounded-xl uppercase">Start</span>
+                      </div>
                   </Card>
                 </motion.div>
               );
