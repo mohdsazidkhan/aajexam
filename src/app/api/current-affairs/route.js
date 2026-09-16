@@ -8,6 +8,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const category = searchParams.get('category');
+        const day = searchParams.get('day');
         const month = searchParams.get('month');
         const year = searchParams.get('year');
         const page = parseInt(searchParams.get('page')) || 1;
@@ -18,7 +19,11 @@ export async function GET(req) {
         if (category) query.category = category;
         if (search) query.$text = { $search: search };
 
-        if (month && year) {
+        if (day && month && year) {
+            const startDate = new Date(year, month - 1, day);
+            const endDate = new Date(year, month - 1, day, 23, 59, 59, 999);
+            query.date = { $gte: startDate, $lte: endDate };
+        } else if (month && year) {
             const startDate = new Date(year, month - 1, 1);
             const endDate = new Date(year, month, 0, 23, 59, 59);
             query.date = { $gte: startDate, $lte: endDate };
