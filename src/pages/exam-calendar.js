@@ -82,7 +82,7 @@ const EventCard = ({ event, compact = false }) => {
         <div className="flex-1 min-w-0">
           <p className="text-sm font-black text-content-primary leading-tight line-clamp-2">{event.label}</p>
           {(event.examName || event.examNewsTitle) && (
-            <p className="text-[11px] font-bold text-content-muted mt-0.5 truncate">
+            <p className="text-base font-black text-content-primary mt-0.5 truncate">
               {event.examName || event.examNewsTitle}
             </p>
           )}
@@ -129,7 +129,7 @@ const DayPanel = ({ date, events, onClose }) => {
               Close
             </button>
           </div>
-          <div className="p-4 space-y-2.5">
+          <div className="p-4 grid grid-cols-1 lg:grid-cols-3 gap-2.5">
             {events.map((ev, i) => (
               <EventCard key={i} event={ev} />
             ))}
@@ -381,7 +381,7 @@ const ExamCalendarPage = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="space-y-2.5 overflow-hidden"
+                  className="grid grid-cols-1 lg:grid-cols-3 gap-2.5 overflow-hidden"
                 >
                   {upcoming.map((ev, i) => (
                     <motion.div
