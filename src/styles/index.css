@@ -18,8 +18,7 @@
 @layer base {
   :root {
     /* Font tokens */
-    --font-primary: var(--font-outfit), 'Plus Jakarta Sans', sans-serif;
-    --font-hindi: var(--font-devanagari), 'Noto Sans Devanagari', sans-serif;
+    --font-primary: var(--font-roboto), 'Roboto', sans-serif;
 
     /* Central Theme Tokens - Light Mode */
     --bg-page: #f8fafc;
@@ -81,10 +80,6 @@
     font-weight: 600;
   }
 
-  :lang(hi) {
-    font-family: var(--font-hindi);
-  }
-
   ::selection {
     background-color: #58cc02;
     color: white;
@@ -144,7 +139,7 @@
 
   /* Typography Polish */
   .text-premium {
-    @apply tracking-tight leading-tight font-black uppercase font-outfit;
+    @apply tracking-tight leading-tight font-black uppercase;
   }
 
   .text-glow-primary {

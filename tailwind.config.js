@@ -10,9 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ['var(--font-outfit)', 'Plus Jakarta Sans', 'sans-serif'],
-        nunito: ['var(--font-nunito)', 'Plus Jakarta Sans', 'sans-serif'],
-        hindi: ['var(--font-devanagari)', 'Noto Sans Devanagari', 'sans-serif'],
+        sans: ['var(--font-roboto)', 'Roboto', 'sans-serif'],
       },
       colors: {
         primary: {

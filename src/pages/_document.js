@@ -1,8 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { roboto } from '../lib/fonts';
 
 export default function Document() {
   return (
-    <Html lang="en" dir="ltr">
+    <Html lang="en" dir="ltr" className={roboto.variable}>
       <Head>
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />

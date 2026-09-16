@@ -15,7 +15,7 @@ import '../styles/App.css';
 import '../styles/darkMode.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
-import { Plus_Jakarta_Sans, Noto_Sans_Devanagari } from 'next/font/google';
+import { roboto } from '../lib/fonts';
 
 const Toaster = dynamic(
   () => import('react-hot-toast').then((m) => m.Toaster),
@@ -32,24 +32,6 @@ const ExitIntentModal = dynamic(() => import('../components/modals/ExitIntentMod
 
 const PageViewNudge = dynamic(() => import('../components/modals/PageViewNudge'), {
   ssr: false,
-});
-
-const outfit = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-outfit',
-  display: 'swap',
-});
-
-const nunito = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-nunito',
-  display: 'swap',
-});
-
-const notoSansDevanagari = Noto_Sans_Devanagari({
-  subsets: ['devanagari', 'latin'],
-  variable: '--font-devanagari',
-  display: 'swap',
 });
 
 // Global styles for mobile optimization
@@ -198,7 +180,7 @@ function AppContent({ Component, pageProps }) {
       ) : null}
 
       <ErrorBoundary>
-        <div className={`${outfit.variable} ${nunito.variable} ${notoSansDevanagari.variable}`}>
+        <div className={roboto.variable}>
           {renderContent()}
         </div>
       </ErrorBoundary>
