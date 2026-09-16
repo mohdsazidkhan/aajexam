@@ -3,6 +3,27 @@ import dbConnect from '@/lib/db';
 import MentorProfile from '@/models/MentorProfile';
 import { protect, admin } from '@/middleware/auth';
 
+// GET - Full mentor profile detail
+export async function GET(req, { params }) {
+    try {
+        const auth = await protect(req);
+        if (!auth.authenticated || !admin(auth.user)) return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
+        await dbConnect();
+        const { id } = await params;
+
+        const mentor = await MentorProfile.findById(id)
+            .populate('user', 'name email username phone createdAt')
+            .populate('verifiedBy', 'name email')
+            .populate('amaThreads.askedBy', 'name username')
+            .lean();
+
+        if (!mentor) return NextResponse.json({ message: 'Not found' }, { status: 404 });
+        return NextResponse.json({ success: true, data: mentor });
+    } catch (error) {
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    }
+}
+
 // PUT - Approve/reject/suspend mentor
 export async function PUT(req, { params }) {
     try {
