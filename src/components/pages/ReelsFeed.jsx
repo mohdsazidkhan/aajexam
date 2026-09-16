@@ -817,8 +817,8 @@ const ReelsFeed = () => {
       // the feed feels truly immersive on phones.
       // Desktop: render inside StudentLayout's main column so it respects
       // the sidebar offset and navbar like every other page. Height is
-      // viewport minus the 80px desktop navbar.
-      className="w-full overflow-hidden select-none bg-black fixed inset-0 h-[100dvh] z-[180] lg:static lg:inset-auto lg:h-[calc(100vh-80px)] lg:z-auto"
+      // viewport minus the 64px desktop navbar.
+      className="w-full overflow-hidden select-none bg-black fixed inset-0 h-[100dvh] z-[180] lg:static lg:inset-auto lg:h-[calc(100vh-64px)] lg:z-auto"
     >
       {/* Filter Panel — overlay */}
       <AnimatePresence>

@@ -204,9 +204,7 @@ const ReelCreate = () => {
       <div className="min-h-screen">
         <div className="sticky top-0 z-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div className="flex items-center gap-3 max-w-2xl mx-auto">
-            <Link href="/reels" className="p-2 rounded-lg lg:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
-              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            </Link>
+          
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Flame className="w-5 h-5 text-orange-500" /> Create Reel
             </h1>
@@ -216,11 +214,11 @@ const ReelCreate = () => {
         <div className="max-w-2xl mx-auto p-0 sm:p-6">
           {!type ? (
             <div className="space-y-4">
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
+              <p className="mt-2 lg:mt-0 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
+              <div className="grid grid-cols-2 lg:grid-cols-2 gap-3">
                 {TYPES.map(t => (
                   <motion.button key={t.value} whileTap={{ scale: 0.97 }} onClick={() => setType(t.value)}
-                    className={`p-5 rounded-2xl border-2 text-left transition-all ${t.color}`}>
+                    className={`p-2.5 lg:p-5 rounded-xl lg:rounded-2xl border-2 text-left transition-all ${t.color}`}>
                     <t.icon className="w-8 h-8 mb-3 opacity-70" />
                     <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{t.label}</h3>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{t.desc}</p>

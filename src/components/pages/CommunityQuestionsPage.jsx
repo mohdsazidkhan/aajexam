@@ -142,9 +142,9 @@ const CommunityQuestionsPage = () => {
 
   return (
     <div className="min-h-screen bg-background-primary">
-      <div className="container mx-auto">
+      <div className="mx-auto py-2 lg:py-4">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div className="flex items-center justify-between gap-4">
           <div>
             <h1 className="text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight">
               Community Questions
@@ -153,21 +153,7 @@ const CommunityQuestionsPage = () => {
               Practice questions shared by fellow students
             </p>
           </div>
-          {authenticated && (
-            <Link href="/community-questions/ask">
-              <Button className='mx-auto' variant="primary" size="sm" icon={MessageSquarePlus}>
-                Post Question
-              </Button>
-            </Link>
-          )}
-        </div>
-
-        {/* Filters */}
-        <Card className="mb-0 lg:mb-6" radius="2xl">
-          <div className="flex items-center gap-2 mb-3">
-            <Filter className="w-4 h-4 text-content-muted" />
-            <span className="text-xs font-bold text-content-muted uppercase tracking-wider">Filters</span>
-          </div>
+          {/* Filters */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <select
               value={filters.exam}
@@ -191,20 +177,29 @@ const CommunityQuestionsPage = () => {
               <option value="popular">Most Popular</option>
             </select>
           </div>
-        </Card>
+          {authenticated && (
+            <Link href="/community-questions/ask">
+              <Button variant="primary" size="sm" icon={MessageSquarePlus}>
+                Post Question
+              </Button>
+            </Link>
+          )}
+        </div>
+
+     
 
         {/* Content */}
         {loading ? (
           <ListSkeleton rows={6} />
         ) : error ? (
-          <Card className="text-center py-4 lg:py-8">
+          <Card className="text-center py-2 lg:py-4">
             <p className="text-content-muted text-sm">{error}</p>
             <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-500 text-sm font-bold hover:underline">
               Try Again
             </button>
           </Card>
         ) : questions.length === 0 ? (
-          <Card className="text-center py-4 lg:py-8">
+          <Card className="text-center py-2 lg:py-4">
             <MessageSquarePlus className="w-12 h-12 text-content-muted mx-auto mb-3 opacity-50" />
             <h3 className="text-lg font-bold text-content-primary mb-1">No Questions Yet</h3>
             <p className="text-sm text-content-muted mb-4">Be the first to share a question with the community!</p>
@@ -217,7 +212,7 @@ const CommunityQuestionsPage = () => {
             )}
           </Card>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 container py-4 lg:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 container py-2 lg:py-4">
             {questions.map((q) => (
               <Card key={q._id} radius="2xl" hoverable className="group">
                 {/* Author & Meta */}

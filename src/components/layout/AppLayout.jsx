@@ -102,7 +102,7 @@ const AppLayout = ({ children }) => {
             width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
             transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
           }}
-          className="lg:pt-20"
+          className="lg:pt-16"
         >
           {children}
         </div>
@@ -132,7 +132,7 @@ const AppLayout = ({ children }) => {
           )}
         </AnimatePresence>
         {showAppNav && !isUserAdmin && <StudentSidebar />}
-        <div className="h-full lg:pt-20" style={{ overflow: 'hidden' }}>
+        <div className="h-full lg:pt-16" style={{ overflow: 'hidden' }}>
           {children}
         </div>
         {showAppNav && !isUserAdmin && (
@@ -179,8 +179,8 @@ const AppLayout = ({ children }) => {
         }}
         className={`min-h-screen
           ${showAppNav ?
-            'pt-12 lg:pt-20 pb-10 lg:pb-0 px-4 lg:px-0' :
-            (isFullscreenPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-20')
+            'pt-12 lg:pt-16 pb-10 lg:pb-0 px-4 lg:px-0' :
+            (isFullscreenPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-16')
           }`}>
         <div className={`mx-auto transition-all duration-500 ${showAppNav ? 'container px-0 lg:px-4' : (isFullscreenPage ? 'max-w-full px-0' : 'px-4 md:px-6 container')}`}>
           <AnimatePresence mode="wait">

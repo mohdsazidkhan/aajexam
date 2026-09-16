@@ -154,11 +154,11 @@
   }
 }
 
-/* Desktop Styles (LG+) - navbar is 80px tall */
+/* Desktop Styles (LG+) - navbar is 64px tall */
 @media (min-width: 1025px) {
   .student-layout-content {
-    margin-top: 80px;
-    min-height: calc(100vh - 80px);
+    margin-top: 64px;
+    min-height: calc(100vh - 64px);
   }
 
   .student-main-content {

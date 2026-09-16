@@ -54,7 +54,7 @@ const StudentNavbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-20 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/50 flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-16 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/50 flex items-center">
         <div className="w-full mx-auto px-4 flex items-center justify-between">
 
           {/* Left */}
@@ -181,7 +181,7 @@ const StudentNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 lg:top-20 right-3 lg:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
+              className="fixed top-12 lg:top-16 right-3 lg:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
             >
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50">

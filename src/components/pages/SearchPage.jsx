@@ -487,7 +487,7 @@ const SearchPage = () => {
          {/* ── Fixed Header: Search bar + Tabs — truly pinned to top on web and mobile ── */}
          <div
             ref={headerRef}
-            className={`fixed top-0 lg:top-20 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
+            className={`fixed top-0 lg:top-16 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
                isAuthenticated() && isSidebarOpen ? 'lg:left-60' : ''
             }`}
          >
