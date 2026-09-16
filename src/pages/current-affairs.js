@@ -118,12 +118,8 @@ const CurrentAffairsPage = () => {
             </div>
             <div className="relative flex gap-2">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
-              <select value={selectedDay} onChange={e => { setSelectedDay(Number(e.target.value)); setPage(1); }}
-                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
-                {dayOptions.map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
               <select value={selectedMonth} onChange={e => { setSelectedMonth(Number(e.target.value)); setPage(1); }}
-                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
                 {MONTH_NAMES.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
               </select>
               <select value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setPage(1); }}
@@ -132,7 +128,7 @@ const CurrentAffairsPage = () => {
               </select>
             </div>
             {hasFilters && (
-              <button onClick={() => { setSearch(''); setSelectedDay(now.getDate()); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}
+              <button onClick={() => { setSearch(''); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}
                 className="flex items-center gap-1 px-4 py-2.5 bg-white/20 text-white rounded-lg lg:rounded-xl text-xs font-black uppercase border border-white/30">
                 <X className="w-3 h-3" /> Clear
               </button>
@@ -160,7 +156,7 @@ const CurrentAffairsPage = () => {
         </div>
 
         {/* Today highlight */}
-        {todayAffairs?.total > 0 && !search && isToday && category === 'all' && (
+        {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
           <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 rounded-2xl p-4 border border-rose-100 dark:border-rose-800/30">
             <h2 className="text-sm font-black text-rose-700 dark:text-rose-300 mb-2 flex items-center gap-2">
               <Flame className="w-4 h-4" /> Today — {todayAffairs.total} Updates
