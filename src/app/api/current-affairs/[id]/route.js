@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
 import CurrentAffair from '@/models/CurrentAffair';
 
@@ -7,7 +8,9 @@ export async function GET(req, { params }) {
     try {
         await dbConnect();
         const { id } = await params;
-        const affair = await CurrentAffair.findById(id).lean();
+        const affair = mongoose.Types.ObjectId.isValid(id) && id.length === 24
+            ? await CurrentAffair.findById(id).lean()
+            : await CurrentAffair.findOne({ slug: id }).lean();
         if (!affair) return NextResponse.json({ message: 'Not found' }, { status: 404 });
 
         affair.views += 1;

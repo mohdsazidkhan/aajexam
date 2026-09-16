@@ -31,7 +31,7 @@ export async function GET(req) {
 
         const [affairs, total] = await Promise.all([
             CurrentAffair.find(query)
-                .select('title category date keyPoints tags views questions.length')
+                .select('title slug category date keyPoints tags views questions.length')
                 .sort({ date: -1 })
                 .skip((page - 1) * limit)
                 .limit(limit)
