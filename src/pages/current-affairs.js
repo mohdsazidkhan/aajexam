@@ -52,7 +52,6 @@ const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'Ju
 const now = new Date();
 const CURRENT_YEAR = now.getFullYear();
 const YEAR_OPTIONS = Array.from({ length: 5 }, (_, i) => CURRENT_YEAR - i);
-const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
 
 const CurrentAffairsPage = () => {
   const [affairs, setAffairs] = useState([]);
@@ -62,23 +61,15 @@ const CurrentAffairsPage = () => {
   const [search, setSearch] = useState('');
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
   const [selectedMonth, setSelectedMonth] = useState(now.getMonth() + 1);
-  const [selectedDay, setSelectedDay] = useState(now.getDate());
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
-
-  const dayCount = daysInMonth(selectedYear, selectedMonth);
-  const dayOptions = Array.from({ length: dayCount }, (_, i) => i + 1);
-
-  useEffect(() => {
-    if (selectedDay > dayCount) setSelectedDay(dayCount);
-  }, [dayCount, selectedDay]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const params = new URLSearchParams({ page, limit: 30, day: selectedDay, month: selectedMonth, year: selectedYear });
+        const params = new URLSearchParams({ page, limit: 30, month: selectedMonth, year: selectedYear });
         if (category !== 'all') params.set('category', category);
         if (search.trim()) params.set('search', search.trim());
         const [listRes, todayRes] = await Promise.all([
@@ -90,10 +81,10 @@ const CurrentAffairsPage = () => {
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, [category, page, search, selectedDay, selectedMonth, selectedYear]);
+  }, [category, page, search, selectedMonth, selectedYear]);
 
-  const isToday = selectedDay === now.getDate() && selectedMonth === (now.getMonth() + 1) && selectedYear === CURRENT_YEAR;
-  const hasFilters = search.trim() || !isToday || category !== 'all';
+  const isCurrentMonth = selectedMonth === (now.getMonth() + 1) && selectedYear === CURRENT_YEAR;
+  const hasFilters = search.trim() || !isCurrentMonth || category !== 'all';
 
   const filterPills = [
     { id: 'all', label: 'All', icon: Sparkles },
