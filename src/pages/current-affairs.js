@@ -2,9 +2,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X, TrendingUp, Sparkles, Globe, Flame, Trophy, Sword, Leaf } from 'lucide-react';
 import { useRouter } from 'next/router';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import '../components/datepicker-custom.css';
 import { motion } from 'framer-motion';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
@@ -51,25 +48,39 @@ const defaultCat = { icon: Newspaper, color: 'from-slate-400 to-slate-600', chip
 
 const categories = ['all', 'national', 'international', 'economy', 'science', 'sports', 'awards', 'appointments', 'defence', 'environment'];
 
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const now = new Date();
+const CURRENT_YEAR = now.getFullYear();
+const YEAR_OPTIONS = Array.from({ length: 5 }, (_, i) => CURRENT_YEAR - i);
+const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
+
 const CurrentAffairsPage = () => {
   const [affairs, setAffairs] = useState([]);
   const [todayAffairs, setTodayAffairs] = useState(null);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState('all');
   const [search, setSearch] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
+  const [selectedMonth, setSelectedMonth] = useState(now.getMonth() + 1);
+  const [selectedDay, setSelectedDay] = useState(now.getDate());
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
+
+  const dayCount = daysInMonth(selectedYear, selectedMonth);
+  const dayOptions = Array.from({ length: dayCount }, (_, i) => i + 1);
+
+  useEffect(() => {
+    if (selectedDay > dayCount) setSelectedDay(dayCount);
+  }, [dayCount, selectedDay]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const params = new URLSearchParams({ page, limit: 30 });
+        const params = new URLSearchParams({ page, limit: 30, day: selectedDay, month: selectedMonth, year: selectedYear });
         if (category !== 'all') params.set('category', category);
         if (search.trim()) params.set('search', search.trim());
-        if (selectedDate) { params.set('month', selectedDate.getMonth() + 1); params.set('year', selectedDate.getFullYear()); }
         const [listRes, todayRes] = await Promise.all([
           API.request(`/api/current-affairs?${params}`),
           API.request('/api/current-affairs/today')
@@ -79,9 +90,10 @@ const CurrentAffairsPage = () => {
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, [category, page, search, selectedDate]);
+  }, [category, page, search, selectedDay, selectedMonth, selectedYear]);
 
-  const hasFilters = search.trim() || selectedDate || category !== 'all';
+  const isToday = selectedDay === now.getDate() && selectedMonth === (now.getMonth() + 1) && selectedYear === CURRENT_YEAR;
+  const hasFilters = search.trim() || !isToday || category !== 'all';
 
   const filterPills = [
     { id: 'all', label: 'All', icon: Sparkles },
@@ -113,14 +125,23 @@ const CurrentAffairsPage = () => {
               <input type="text" placeholder="Search current affairs..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
                 className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none" />
             </div>
-            <div className="relative">
+            <div className="relative flex gap-2">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
-              <DatePicker selected={selectedDate} onChange={d => { setSelectedDate(d); setPage(1); }}
-                dateFormat="MMM yyyy" showMonthYearPicker placeholderText="Pick month..." isClearable={false}
-                className="w-full sm:w-48 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none" />
+              <select value={selectedDay} onChange={e => { setSelectedDay(Number(e.target.value)); setPage(1); }}
+                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                {dayOptions.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+              <select value={selectedMonth} onChange={e => { setSelectedMonth(Number(e.target.value)); setPage(1); }}
+                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                {MONTH_NAMES.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
+              </select>
+              <select value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setPage(1); }}
+                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                {YEAR_OPTIONS.map(y => <option key={y} value={y}>{y}</option>)}
+              </select>
             </div>
             {hasFilters && (
-              <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); setPage(1); }}
+              <button onClick={() => { setSearch(''); setSelectedDay(now.getDate()); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}
                 className="flex items-center gap-1 px-4 py-2.5 bg-white/20 text-white rounded-lg lg:rounded-xl text-xs font-black uppercase border border-white/30">
                 <X className="w-3 h-3" /> Clear
               </button>
@@ -148,7 +169,7 @@ const CurrentAffairsPage = () => {
         </div>
 
         {/* Today highlight */}
-        {todayAffairs?.total > 0 && !search && !selectedDate && category === 'all' && (
+        {todayAffairs?.total > 0 && !search && isToday && category === 'all' && (
           <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 rounded-2xl p-4 border border-rose-100 dark:border-rose-800/30">
             <h2 className="text-sm font-black text-rose-700 dark:text-rose-300 mb-2 flex items-center gap-2">
               <Flame className="w-4 h-4" /> Today — {todayAffairs.total} Updates
