@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Megaphone, ArrowLeft, Calendar, ExternalLink, Eye } from 'lucide-react';
+import { Megaphone, Calendar, ExternalLink, Eye } from 'lucide-react';
 import { useRouter } from 'next/router';
 import API from '../../lib/api';
 import Card from '../../components/ui/Card';
@@ -68,8 +68,6 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
         ]}
       />
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-4">
-        <button onClick={() => router.push('/exam-news')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
-
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded text-[9px] font-black text-blue-600 uppercase">{news.type?.replace('_', ' ')}</span>
