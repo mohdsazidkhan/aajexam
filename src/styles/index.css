@@ -18,7 +18,7 @@
 @layer base {
   :root {
     /* Font tokens */
-    --font-primary: var(--font-roboto), 'Roboto', sans-serif;
+    --font-primary: var(--font-lato), Lato, 'Noto Sans', sans-serif;
 
     /* Central Theme Tokens - Light Mode */
     --bg-page: #f8fafc;
@@ -70,13 +70,11 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   button {
-    font-family: var(--font-primary);
     font-weight: 600;
   }
 

@@ -1,9 +1,9 @@
-import { Roboto } from 'next/font/google';
+import { Lato } from 'next/font/google';
 
-export const roboto = Roboto({
+export const lato = Lato({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700', '900'],
-  variable: '--font-roboto',
+  weight: ['100', '300', '400', '700', '900'],
+  variable: '--font-lato',
   display: 'optional',
   adjustFontFallback: true,
 });

@@ -15,7 +15,7 @@ import '../styles/App.css';
 import '../styles/darkMode.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
-import { roboto } from '../lib/fonts';
+import { lato } from '../lib/fonts';
 
 const Toaster = dynamic(
   () => import('react-hot-toast').then((m) => m.Toaster),
@@ -180,7 +180,7 @@ function AppContent({ Component, pageProps }) {
       ) : null}
 
       <ErrorBoundary>
-        <div className={roboto.variable}>
+        <div className={lato.variable}>
           {renderContent()}
         </div>
       </ErrorBoundary>
