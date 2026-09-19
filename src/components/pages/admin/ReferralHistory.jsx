@@ -175,8 +175,8 @@ export default function ReferralHistory() {
           {summary && (
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 mb-4">
               {[
-                { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-black dark:bg-white text-white dark:text-black shadow-black/20 dark:shadow-white/10" },
-                { label: "PLAN 99", value: summary.plan99Rewards, icon: Award, color: "bg-black dark:bg-white text-white dark:text-black shadow-black/20 dark:shadow-white/10" }
+                { label:"TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color:"bg-primary-700 text-white shadow-black/20"},
+                { label:"PLAN 99", value: summary.plan99Rewards, icon: Award, color:"bg-primary-700 text-white shadow-black/20"}
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

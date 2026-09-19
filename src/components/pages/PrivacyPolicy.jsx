@@ -193,7 +193,7 @@ const PrivacyPolicy = () => {
                               <div className="p-4 lg:p-10 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
                                     <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h4>
-                                    <div className="px-4 py-1.5 bg-black dark:bg-white text-white dark:text-black text-[9px] font-black uppercase tracking-widest rounded-full shadow-aajexam-accent">GOOGLE ADSENSE</div>
+                                    <div className="px-4 py-1.5 bg-primary-700 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-aajexam-accent">GOOGLE ADSENSE</div>
                                  </div>
                                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                                     <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing ads based on your interests</li>

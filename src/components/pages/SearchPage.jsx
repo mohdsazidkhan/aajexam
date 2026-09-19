@@ -78,10 +78,10 @@ const EMPTY_SECTIONS = () => SECTION_ORDER.reduce((acc, key) => {
 }, {});
 
 const REEL_TYPE_CONFIG = {
-   question: { icon: HelpCircle, gradient: 'bg-black dark:bg-white' },
-   fact: { icon: BookOpen, gradient: 'bg-black dark:bg-white' },
-   tip: { icon: Zap, gradient: 'bg-black dark:bg-white' },
-   current_affairs: { icon: Newspaper, gradient: 'bg-black dark:bg-white' },
+   question: { icon: HelpCircle, gradient: 'bg-primary-700' },
+   fact: { icon: BookOpen, gradient: 'bg-primary-700' },
+   tip: { icon: Zap, gradient: 'bg-primary-700' },
+   current_affairs: { icon: Newspaper, gradient: 'bg-primary-700' },
    poll: { icon: BarChart3, gradient: 'bg-primary-700' },
 };
 
@@ -305,7 +305,7 @@ const SearchPage = () => {
             return (
                <div className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
                   <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
-                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black dark:bg-white p-[2px] shrink-0">
+                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-primary-700 p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
                      <div className="min-w-0 flex-1">
@@ -340,7 +340,7 @@ const SearchPage = () => {
          case 'pattern':
             return (
                <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
                      <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
@@ -369,7 +369,7 @@ const SearchPage = () => {
          case 'subject':
             return (
                <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
@@ -380,7 +380,7 @@ const SearchPage = () => {
          case 'topic':
             return (
                <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -391,7 +391,7 @@ const SearchPage = () => {
          case 'hashtag':
             return (
                <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
                      <p className="text-xs text-slate-400">{item.count} question{item.count !== 1 ? 's' : ''}</p>
@@ -402,7 +402,7 @@ const SearchPage = () => {
          case 'blog':
             return (
                <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
@@ -413,7 +413,7 @@ const SearchPage = () => {
          case 'note':
             return (
                <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
@@ -424,7 +424,7 @@ const SearchPage = () => {
          case 'examNews':
             return (
                <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
@@ -435,7 +435,7 @@ const SearchPage = () => {
          case 'currentAffair':
             return (
                <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>

@@ -46,7 +46,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   return (
     <div className="mt-6">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-black dark:bg-white rounded-lg lg:rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
           <Trophy className="w-5 h-5 text-white" />
         </div>
         <h3 className="text-lg font-bold text-slate-800 dark:text-white">Leaderboard</h3>
@@ -58,9 +58,9 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
           const isCurrentUser = entry.user?._id === currentUser?.id;
           return (
             <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl ${isCurrentUser ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white' : 'bg-white/60 dark:bg-slate-700/60'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-black text-sm font-bold shrink-0 ${index === 0 ? 'bg-black dark:bg-white' :
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${index === 0 ?'bg-primary-700':
                   index === 1 ? 'bg-slate-400' :
-                    index === 2 ? 'bg-black dark:bg-white' :
+                    index === 2 ?'bg-primary-700':
                       'bg-slate-300 dark:bg-slate-600'
                 }`}>
                 {index === 0 ? <Crown className="w-4 h-4" /> : index + 1}
@@ -342,7 +342,7 @@ const AttemptQuizPage = () => {
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
         <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 dark:border-white">
           <div className="text-center">
-            <div className="w-14 h-14 bg-black dark:bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="w-7 h-7 text-white" />
             </div>
             <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-3">Exit Quiz?</h2>
@@ -356,7 +356,7 @@ const AttemptQuizPage = () => {
               <button onClick={() => handleExitConfirm(false)} className="flex-1 px-4 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg lg:rounded-xl font-medium transition-colors">
                 Continue Quiz
               </button>
-              <button onClick={() => handleExitConfirm(true)} className="flex-1 px-4 py-2.5 bg-black dark:bg-white hover:bg-black text-white dark:text-black rounded-lg lg:rounded-xl font-medium transition-colors">
+              <button onClick={() => handleExitConfirm(true)} className="flex-1 px-4 py-2.5 bg-primary-700 hover:bg-black text-white rounded-lg lg:rounded-xl font-medium transition-colors">
                 Exit & Submit
               </button>
             </div>
@@ -433,7 +433,7 @@ const AttemptQuizPage = () => {
           <div className="fixed inset-0 pointer-events-none z-50">
             {[...Array(40)].map((_, i) => (
               <div key={i} className="absolute animate-bounce" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s`, animationDuration: `${1 + Math.random() * 2}s` }}>
-                <div className={`w-2 h-2 rounded-full ${['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-400', 'bg-black dark:bg-white'][Math.floor(Math.random() * 5)]}`} />
+                <div className={`w-2 h-2 rounded-full ${['bg-primary-700','bg-primary-700','bg-primary-700','bg-primary-400','bg-primary-700'][Math.floor(Math.random() * 5)]}`} />
               </div>
             ))}
           </div>
@@ -481,7 +481,7 @@ const AttemptQuizPage = () => {
           {/* Quiz Review */}
           <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-black dark:bg-white rounded-lg lg:rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
                 <Brain className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-lg font-bold text-slate-800 dark:text-white">Quiz Review</h2>
@@ -503,7 +503,7 @@ const AttemptQuizPage = () => {
                   <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                     {/* Question header */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-700 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>
                         {index + 1}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -571,7 +571,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleChallenge}
                 disabled={isGeneratingChallenge}
-                className="w-full px-6 py-4 bg-black dark:bg-white hover:bg-black text-white dark:text-black rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-primary-700 hover:bg-black text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isGeneratingChallenge ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -715,7 +715,7 @@ const AttemptQuizPage = () => {
 
           {translating && (
             <p className="text-[11px] font-bold text-black dark:text-white mb-3 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse"/>
               हिंदी में अनुवाद हो रहा है… (अभी अंग्रेज़ी दिख रही है)
             </p>
           )}
@@ -766,7 +766,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-black dark:bg-white text-white dark:text-black shadow-md transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-primary-700 text-white shadow-md transition-all disabled:opacity-50"
               >
                 {submitting ? 'Submitting...' : 'Submit Quiz'}
               </button>

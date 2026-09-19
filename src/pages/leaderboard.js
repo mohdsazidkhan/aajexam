@@ -42,12 +42,12 @@ const PERIODS = [
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
   1: {
-    gradient: 'bg-black dark:bg-white',
-    numberText: 'text-white dark:text-black',
-    ringColor: 'ring-black/10 dark:ring-white/10',
-    textColor: 'text-black dark:text-white',
+    gradient: 'bg-primary-700',
+    numberText: 'text-white',
+    ringColor: 'ring-primary-700/10',
+    textColor: 'text-primary-700',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
-    pillBg: 'bg-black dark:bg-white text-white dark:text-black',
+    pillBg: 'bg-primary-700 text-white',
     icon: Crown,
   },
   2: {
@@ -72,14 +72,14 @@ const rankConfig = {
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
 const AVATAR_COLORS = [
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
   { bg: 'bg-primary-700', text: 'text-white' },
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
-  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-blue-600', text: 'text-white' },
+  { bg: 'bg-rose-600', text: 'text-white' },
+  { bg: 'bg-amber-600', text: 'text-white' },
+  { bg: 'bg-violet-600', text: 'text-white' },
+  { bg: 'bg-cyan-600', text: 'text-white' },
+  { bg: 'bg-orange-600', text: 'text-white' },
+  { bg: 'bg-emerald-600', text: 'text-white' },
 ];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
@@ -117,12 +117,12 @@ const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
   const podiumGradient = {
-    1: 'bg-black dark:bg-white',
+    1: 'bg-primary-700',
     2: 'bg-slate-400',
     3: 'bg-slate-100 dark:bg-slate-800',
   };
   const podiumTextColor = {
-    1: 'text-white dark:text-black',
+    1: 'text-white',
     2: 'text-white',
     3: 'text-black dark:text-white',
   };
@@ -146,7 +146,7 @@ const Podium = ({ top3, currentUserId }) => {
             {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
             <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
             {isMe && (
-              <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full">You</span>
+              <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>
             )}
             <div className="text-center max-w-[76px] sm:max-w-[96px]">
               <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
@@ -190,7 +190,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           {entry.name || entry.username || 'Anonymous'}
         </p>
         {isMe && (
-          <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
+          <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
         )}
         {entry.subscriptionStatus === 'PRO' && (
           <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
@@ -379,7 +379,7 @@ const LeaderboardPage = () => {
                 <button
                   onClick={() => setType('quiz')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'quiz' ? 'bg-black dark:bg-white text-white dark:text-black shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                    type === 'quiz' ? 'bg-primary-700 text-white shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <BrainCircuit className="w-4 h-4" /> Quizzes
@@ -387,7 +387,7 @@ const LeaderboardPage = () => {
                 <button
                   onClick={() => setType('exam')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'exam' ? 'bg-black dark:bg-white text-white dark:text-black shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                    type === 'exam' ? 'bg-primary-700 text-white shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <FileText className="w-4 h-4" /> Exams
@@ -423,7 +423,7 @@ const LeaderboardPage = () => {
         </section>
 
         {/* ── Period Tabs ── */}
-        <div className="flex gap-2 sm:gap-3">
+        <div className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
           {PERIODS.map(p => {
             const Icon = p.icon;
             const isActive = period === p.id;
@@ -432,16 +432,15 @@ const LeaderboardPage = () => {
                 key={p.id}
                 onClick={() => setPeriod(p.id)}
                 className={`
-                  flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide border-2 transition-all active:translate-y-0.5
+                  shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
                   ${isActive
-                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-lg'
+                    ? 'bg-primary-700 text-white border-primary-700 shadow-lg'
                     : 'bg-background-surface text-content-muted border-border-primary hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
                   }
                 `}
               >
                 <Icon className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{p.label}</span>
-                <span className="sm:hidden">{p.label.split(' ')[0]}</span>
+                <span>{p.label}</span>
               </button>
             );
           })}
@@ -450,7 +449,7 @@ const LeaderboardPage = () => {
             onClick={() => fetchLeaderboard(true)}
             disabled={refreshing || loading}
             title="Refresh"
-            className="px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+            className="shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
           >
             <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
           </button>
@@ -482,7 +481,7 @@ const LeaderboardPage = () => {
             <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">No data yet for this period</h3>
             <p className="text-sm text-content-muted font-bold">Attempt quizzes to appear on the leaderboard!</p>
             <Link href="/quizzes">
-              <button className="px-6 py-2.5 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase mt-2 transition-colors">
+              <button className="px-6 py-2.5 bg-primary-700 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
                 Start a Quiz
               </button>
             </Link>

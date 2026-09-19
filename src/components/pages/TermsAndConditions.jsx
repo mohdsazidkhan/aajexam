@@ -183,14 +183,14 @@ const TermsAndConditions = () => {
                               <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h4>
                               <ul className="space-y-8">
                                  <li className="flex gap-6">
-                                    <div className="w-2.5 h-10 bg-black dark:bg-white rounded-full shrink-0" />
+                                    <div className="w-2.5 h-10 bg-primary-700 rounded-full shrink-0"/>
                                     <div>
                                        <p className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-1">Daily Challenges</p>
                                        <p className="text-xs font-medium text-slate-600 dark:text-slate-400 px-0">Earn rewards through daily, weekly, and monthly effort.</p>
                                     </div>
                                  </li>
                                  <li className="flex gap-6">
-                                    <div className="w-2.5 h-10 bg-black dark:bg-white rounded-full shrink-0" />
+                                    <div className="w-2.5 h-10 bg-primary-700 rounded-full shrink-0"/>
                                     <div>
                                        <p className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-1">Referral Bonus</p>
                                        <p className="text-xs font-medium text-slate-600 dark:text-slate-400 px-0">Earn bonuses for inviting your friends to join the platform.</p>

@@ -243,7 +243,7 @@ const AskQuestionPage = () => {
                   <button
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
-                    className="absolute -top-2 -right-2 p-1 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg"
+                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-700 text-white shadow-lg"
                   >
                     <X className="w-3 h-3" />
                   </button>

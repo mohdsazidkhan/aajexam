@@ -34,15 +34,15 @@ const CASkeleton = () => (
 
 // ─── Category icon / color map ─────────────────────────────────────────────────
 const catConfig = {
-  national:      { icon: Globe,    color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
-  international: { icon: Globe,    color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  national: { icon: Globe, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  international: { icon: Globe, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
   economy:       { icon: TrendingUp, color: 'bg-primary-700', chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  sports:        { icon: Trophy,   color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
-  science:       { icon: Sparkles, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
-  defence:       { icon: Sword,    color: 'bg-black dark:bg-white',      chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  sports: { icon: Trophy, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  science: { icon: Sparkles, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  defence: { icon: Sword, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
   environment:   { icon: Leaf,     color: 'bg-primary-700',  chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  awards:        { icon: Trophy,   color: 'bg-black dark:bg-white',  chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
-  appointments:  { icon: Sparkles, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  awards: { icon: Trophy, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  appointments: { icon: Sparkles, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
 };
 const defaultCat = { icon: Newspaper, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' };
 
@@ -146,7 +146,7 @@ const CurrentAffairsPage = () => {
               <button key={f.id} onClick={() => { setCategory(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   category === f.id
-                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
+                    ?'bg-primary-700 text-white border-primary-700'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -226,7 +226,7 @@ const CurrentAffairsPage = () => {
               <Newspaper className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No current affairs found</h3>
               <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); }}
-                className="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

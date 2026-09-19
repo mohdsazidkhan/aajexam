@@ -33,12 +33,12 @@ const NotesSkeleton = () => (
 
 // ─── Note type config ──────────────────────────────────────────────────────────
 const noteTypeConfig = {
-  notes:            { icon: BookOpen,   color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',    label: 'Notes' },
-  formulas:         { icon: Calculator, color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label: 'Formulas' },
-  shortcuts:        { icon: Zap,        color: 'bg-black dark:bg-white',   chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label: 'Shortcuts' },
-  important_points: { icon: Hash,       color: 'bg-black dark:bg-white',       chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',        label: 'Key Points' },
-  tables:           { icon: StickyNote, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',    label: 'Tables' },
-  mnemonics:        { icon: Sparkles,   color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',    label: 'Mnemonics' },
+  notes: { icon: BookOpen, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Notes'},
+  formulas: { icon: Calculator, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Formulas'},
+  shortcuts: { icon: Zap, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Shortcuts'},
+  important_points: { icon: Hash, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Key Points'},
+  tables: { icon: StickyNote, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Tables'},
+  mnemonics: { icon: Sparkles, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Mnemonics'},
 };
 const defaultNoteType = { icon: StickyNote, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200', label: 'Note' };
 
@@ -109,7 +109,7 @@ const NotesPage = () => {
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   type === f.id
-                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
+                    ?'bg-primary-700 text-white border-primary-700'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -169,7 +169,7 @@ const NotesPage = () => {
               <StickyNote className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No notes found</h3>
               <button onClick={() => { setType('all'); setSearch(''); }}
-                className="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

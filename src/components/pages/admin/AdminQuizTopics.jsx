@@ -64,7 +64,7 @@ const AdminQuizTopics = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><Layers className="w-6 h-6 text-black dark:text-white" /> Topics</h1>
-        <button onClick={openCreate} className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-black dark:hover:bg-white"><Plus className="w-4 h-4" /> Add Topic</button>
+        <button onClick={openCreate} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-800"><Plus className="w-4 h-4"/> Add Topic</button>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
@@ -118,7 +118,7 @@ const AdminQuizTopics = () => {
               <input required placeholder="Topic Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
               <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
               <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-black dark:bg-white text-white dark:text-black py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-black dark:hover:bg-white">{editing ? 'Update' : 'Create'}</button>
+              <button type="submit"className="w-full bg-primary-700 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-800">{editing ?'Update':'Create'}</button>
             </form>
           </div>
         </div>

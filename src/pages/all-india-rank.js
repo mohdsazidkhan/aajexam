@@ -35,13 +35,13 @@ const LeaderboardSkeleton = () => (
 
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
-  1: { gradient: 'bg-black dark:bg-white', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black' },
+  1: { gradient: 'bg-primary-700', ringColor: 'ring-primary-700/10', textColor: 'text-white' },
   2: { gradient: 'bg-slate-400', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
   3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-white' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = ['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-700', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white'];
+const AVATAR_COLORS = ['bg-primary-700', 'bg-blue-600', 'bg-rose-600', 'bg-amber-600', 'bg-violet-600', 'bg-cyan-600', 'bg-orange-600', 'bg-emerald-600'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
@@ -63,7 +63,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
-  const podiumGradient = { 1: 'bg-black dark:bg-white', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
+  const podiumGradient = { 1: 'bg-primary-700', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
 
   return (
     <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
@@ -80,7 +80,7 @@ const Podium = ({ top3, currentUserId }) => {
           >
             {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
             <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
-            {isMe && <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full">You</span>}
+            {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>}
             <div className="text-center max-w-[76px] sm:max-w-[96px]">
               <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-black dark:text-white' : 'text-white'}`}>
                 {entry.name || entry.username || 'User'}
@@ -119,7 +119,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
         <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white dark:text-white' : 'text-content-primary'}`}>
           {entry.name || entry.username || 'Anonymous'}
         </p>
-        {isMe && <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
+        {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
         {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -406,7 +406,7 @@ const AllIndiaRankPage = () => {
                 <p className="text-sm text-content-muted font-bold">No test attempts match the current filter.</p>
                 <button 
                   onClick={() => setSelectedExamId('')}
-                  className="px-6 py-2.5 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase mt-2 transition-colors"
+                  className="px-6 py-2.5 bg-primary-700 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors"
                 >
                   View All Exams
                 </button>

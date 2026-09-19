@@ -296,7 +296,7 @@ const TestResult = ({ resolvedId } = {}) => {
                           <tr key={idx} className={`border-b dark:border-slate-700 last:border-0 ${isUser ? 'bg-primary-500/10' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-gray-100 dark:bg-slate-700'}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ?'bg-primary-700 text-white':'bg-gray-100 dark:bg-slate-700'}`}>
                                   {displayRank === 1 ? <Crown className="w-4 h-4" /> : displayRank}
                                 </div>
                                 <span className="font-bold text-sm">{entry.user?.name || 'Anonymous Player'}</span>
@@ -341,7 +341,7 @@ const TestResult = ({ resolvedId } = {}) => {
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
                         <div className="bg-primary-700 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
-                        <div className="bg-black dark:bg-white h-full flex-1" />
+                        <div className="bg-primary-700 h-full flex-1"/>
                       </div>
                       <div className="flex justify-between text-[10px] font-black mt-2 text-gray-400 uppercase">
                         <span>{stats.correct} Correct</span>

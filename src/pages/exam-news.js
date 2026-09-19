@@ -33,12 +33,12 @@ const NewsSkeleton = () => (
 
 // ─── Type config ───────────────────────────────────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell,         color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',       label: 'Notification' },
+  notification: { icon: Bell, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Notification'},
   admit_card:   { icon: CreditCard,   color: 'bg-primary-700', chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
-  result:       { icon: BarChart2,    color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Result' },
-  answer_key:   { icon: Key,          color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Answer Key' },
-  vacancy:      { icon: Users,        color: 'bg-black dark:bg-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',     label: 'Vacancy' },
-  date_change:  { icon: AlertTriangle, color: 'bg-black dark:bg-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',           label: 'Date Change' },
+  result: { icon: BarChart2, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Result'},
+  answer_key: { icon: Key, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Answer Key'},
+  vacancy: { icon: Users, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Vacancy'},
+  date_change: { icon: AlertTriangle, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Date Change'},
 };
 const defaultType = { icon: Megaphone, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
 
@@ -107,7 +107,7 @@ const ExamNewsPage = () => {
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   type === f.id
-                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
+                    ?'bg-primary-700 text-white border-primary-700'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -167,7 +167,7 @@ const ExamNewsPage = () => {
               <Megaphone className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No news found</h3>
               <button onClick={() => { setType('all'); setSearch(''); setPage(1); }}
-                className="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

@@ -175,7 +175,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
             onClick={handleStartQuiz}
             className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
               isLocked
-                ? 'bg-black dark:bg-white text-white dark:text-black hover:bg-black dark:bg-white'
+                ?'bg-primary-700 text-white hover:bg-primary-700'
                 : 'bg-primary-600 text-white hover:bg-primary-700'
             }`}
           >
@@ -239,7 +239,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
               {leaderboard.slice(0, 10).map((entry, i) => (
                 <div key={entry._id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-                    i === 0 ? 'bg-black dark:bg-white' : i === 1 ? 'bg-slate-400' : i === 2 ? 'bg-black dark:bg-white' : 'bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                    i === 0 ?'bg-primary-700': i === 1 ?'bg-slate-400': i === 2 ?'bg-primary-700':'bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
                   }`}>
                     {i + 1}
                   </div>

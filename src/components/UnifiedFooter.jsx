@@ -138,7 +138,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
           <div className="space-y-8">
             <h4 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse"/>
               Support
             </h4>
             <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-xl backdrop-blur-xl max-w-xs lg:max-w-none mx-auto sm:mx-0">

@@ -146,7 +146,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
                 ? 'border-primary-400 bg-primary-400 text-primary-900'
                 : answered && i === selected && !result?.isCorrect
-                  ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
+                  ?'border-primary-700 bg-primary-700 text-white'
                   : i === selected ? 'border-white bg-white text-slate-900' : 'border-white/30 text-white/60'}`}>
                 {answered ? (i === result?.correctAnswerIndex ? '✓' : i === selected && !result?.isCorrect ? '✗' : String.fromCharCode(65 + i)) : String.fromCharCode(65 + i)}
               </span>
@@ -1300,10 +1300,10 @@ const ReelsFeed = () => {
                 </div>
                 <div className="space-y-2.5">
                   {[
-                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-black dark:bg-white', desc: 'MCQ with explanation' },
-                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-black dark:bg-white', desc: 'Quick fact or one-liner' },
-                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-black dark:bg-white', desc: 'Shortcut or formula' },
-                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-black dark:bg-white', desc: 'Daily CA card' },
+                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-700', desc: 'MCQ with explanation' },
+                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-700', desc: 'Quick fact or one-liner' },
+                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-700', desc: 'Shortcut or formula' },
+                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-700', desc: 'Daily CA card' },
                     { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-700', desc: 'Community poll' },
                   ].map((type) => (
                     <Link

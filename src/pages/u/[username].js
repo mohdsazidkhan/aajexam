@@ -95,7 +95,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
-          className="px-6 py-2 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-semibold rounded-lg transition-colors"
+          className="px-6 py-2 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-lg transition-colors"
         >
           Go Back
         </button>
@@ -295,10 +295,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
                 {reels.map((reel) => {
                   const typeConfig = {
-                    question: { icon: FileText, gradient: 'bg-black dark:bg-white', label: 'Question' },
-                    fact: { icon: Lightbulb, gradient: 'bg-black dark:bg-white', label: 'Fact' },
-                    tip: { icon: Zap, gradient: 'bg-black dark:bg-white', label: 'Tip' },
-                    current_affairs: { icon: Newspaper, gradient: 'bg-black dark:bg-white', label: 'Current Affairs' },
+                    question: { icon: FileText, gradient: 'bg-primary-700', label: 'Question' },
+                    fact: { icon: Lightbulb, gradient: 'bg-primary-700', label: 'Fact' },
+                    tip: { icon: Zap, gradient: 'bg-primary-700', label: 'Tip' },
+                    current_affairs: { icon: Newspaper, gradient: 'bg-primary-700', label: 'Current Affairs' },
                     poll: { icon: BarChart3, gradient: 'bg-primary-700', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;

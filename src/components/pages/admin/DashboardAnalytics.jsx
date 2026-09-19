@@ -76,7 +76,7 @@ const DashboardAnalytics = () => {
       'bg-primary-700': '#eab308, #ea580c',
       'bg-primary-700': '#8b5cf6, #db2777',
       'bg-primary-700': '#6366f1, #2563eb',
-      'bg-black dark:bg-white': '#ec4899, #e11d48'
+'bg-primary-700':'#ec4899, #e11d48'
     };
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
   };

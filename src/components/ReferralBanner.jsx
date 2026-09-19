@@ -121,14 +121,14 @@ const ReferralBanner = ({ user }) => {
             </button>
             <button
               onClick={shareOnTelegram}
-              className="bg-black dark:bg-white hover:opacity-90 text-white dark:text-black font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-700 hover:opacity-90 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
             >
               <Send className="w-5 h-5" />
               Telegram
             </button>
             <button
               onClick={copyReferralMessage}
-              className="bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-700 hover:bg-primary-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
             >
               <Copy className="w-5 h-5" />
               Copy Text

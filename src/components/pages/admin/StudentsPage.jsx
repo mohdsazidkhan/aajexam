@@ -207,7 +207,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div className="flex items-center">
           <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
-            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-black dark:bg-white flex items-center justify-center">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-primary-700 flex items-center justify-center">
               <span className="text-white font-medium text-sm sm:text-base">
                 {student.name?.charAt(0)?.toUpperCase() || 'U'}
               </span>

@@ -245,7 +245,7 @@ export default function UserDetailsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                   {userDetails.map((u, i) => (
                     <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl text-center group relative overflow-hidden flex flex-col font-outfit">
-                      <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus === 'PRO' ? 'bg-black dark:bg-white' : 'bg-primary-700'}`} />
+                      <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus ==='PRO'?'bg-primary-700':'bg-primary-700'}`} />
                       <div className="mb-6 mx-auto relative">
                         <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
                         {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-black dark:border-white shadow-xl"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}

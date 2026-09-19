@@ -354,7 +354,7 @@ export default function AdminContacts() {
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-aajexam-accent hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-aajexam-accent hover:scale-105 active:scale-95 transition-all"
                             >
                                <Trash2 className="w-5 h-5" /> Delete
                             </button>

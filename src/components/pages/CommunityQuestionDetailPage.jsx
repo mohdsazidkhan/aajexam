@@ -130,7 +130,7 @@ export default function CommunityQuestionDetailPage() {
                     onClick={() => setSelectedOption(i)}
                     className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition text-sm ${cls} disabled:cursor-default`}
                   >
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-primary-700 text-white' : attempted && isSel ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ?'bg-primary-700 text-white': attempted && isSel ?'bg-primary-700 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
                       {String.fromCharCode(65 + i)}
                     </div>
                     <span className="flex-1 text-slate-800 dark:text-slate-200">{opt.text}</span>

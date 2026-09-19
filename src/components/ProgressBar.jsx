@@ -12,9 +12,9 @@
 const COLOR_MAP = {
     orange: 'bg-primary-700 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
     blue: 'bg-primary-700 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
-    purple: 'bg-black dark:bg-white shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    purple:'bg-primary-700 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
     green: 'bg-primary-700 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
-    red: 'bg-black dark:bg-white shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
+    red:'bg-primary-700 shadow-[inset_0_-4px_0_rgba(0,0,0,0.2)]',
 };
 
 const HEIGHT_MAP = {

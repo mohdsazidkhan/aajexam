@@ -207,8 +207,8 @@ const AdminReferralAnalytics = () => {
                             {[
                                 { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-700", shadow: "shadow-primary-500/20" },
                                 { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-700", shadow: "shadow-primary-500/20" },
-                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", text: "text-white dark:text-black", shadow: "shadow-black/20 dark:shadow-white/10" },
-                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", text: "text-white dark:text-black", shadow: "shadow-black/20 dark:shadow-white/10" }
+                                { label:"TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color:"bg-primary-700", text:"text-white", shadow:"shadow-black/20"},
+                                { label:"THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color:"bg-primary-700", text:"text-white", shadow:"shadow-black/20"}
                             ].map((stat, i) => (
                                 <motion.div
                                     key={stat.label}

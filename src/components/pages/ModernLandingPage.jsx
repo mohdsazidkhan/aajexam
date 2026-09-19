@@ -199,17 +199,17 @@ const ModernLandingPage = () => {
                         Registered Users (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
                         Practice Test Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
                         PYQ's Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
                         Quiz Attempts (Last 30 Days)
                      </div>
@@ -341,7 +341,7 @@ const ModernLandingPage = () => {
                   </motion.button>
                   <button
                      onClick={() => router.push('/pyq')}
-                     className="w-full sm:w-auto px-8 py-4 bg-black dark:bg-white hover:opacity-90 text-white dark:text-black font-black uppercase tracking-widest rounded-2xl border border-black dark:border-white transition-all text-sm"
+                     className="w-full sm:w-auto px-8 py-4 bg-primary-700 hover:opacity-90 text-white font-black uppercase tracking-widest rounded-2xl border border-primary-700 transition-all text-sm"
                   >
                      Browse All PYQs
                   </button>

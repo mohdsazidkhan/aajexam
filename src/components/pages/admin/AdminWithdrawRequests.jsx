@@ -152,7 +152,7 @@ const AdminWithdrawRequests = () => {
           {req.status === 'pending' && (
             <div className="flex gap-2">
               <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-700 text-white rounded-lg shadow-lg"><CheckCircle2 className="w-4 h-4" /></motion.button>
-              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-black dark:bg-white text-white dark:text-black rounded-lg shadow-lg"><XCircle className="w-4 h-4" /></motion.button>
+              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id,'rejected')} className="p-2 bg-primary-700 text-white rounded-lg shadow-lg"><XCircle className="w-4 h-4"/></motion.button>
             </div>
           )}
           {req.status === 'approved' && (

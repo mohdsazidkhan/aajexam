@@ -167,7 +167,7 @@ const AdminReels = () => {
                   key={tab.value}
                   onClick={() => { setStatusFilter(tab.value); setPage(1); }}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${statusFilter === tab.value
-                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg shadow-black/20 dark:shadow-white/10'
+                    ?'bg-primary-700 text-white shadow-lg shadow-black/20'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700'
                     }`}
                 >
@@ -352,7 +352,7 @@ const AdminReels = () => {
                         </div>
 
                         {/* Status Dot */}
-                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-primary-700' : item.status === 'pending' ? 'bg-black dark:bg-white' : 'bg-black dark:bg-white'}`} />
+                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status ==='published'?'bg-primary-700': item.status ==='pending'?'bg-primary-700':'bg-primary-700'}`} />
                       </motion.div>
                     );
                   })}

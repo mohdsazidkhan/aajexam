@@ -97,7 +97,7 @@ const StreakPage = () => {
               <h3 className="text-sm font-black text-slate-900 dark:text-white">Use Streak Freeze</h3>
               <p className="text-[10px] text-slate-400">Skip today without breaking streak (Pro only)</p>
             </div>
-            <button onClick={useFreeze} className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-lg lg:rounded-xl text-xs font-bold hover:bg-black dark:hover:bg-white transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <button onClick={useFreeze} className="px-4 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
               <Snowflake className="w-3 h-3 inline mr-1" /> Use Freeze
             </button>
           </Card>

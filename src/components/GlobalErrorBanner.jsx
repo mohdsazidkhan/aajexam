@@ -14,7 +14,7 @@ export default function GlobalErrorBanner() {
         <div className="absolute inset-0 bg-black/5 dark:bg-white/5 pointer-events-none group-hover:bg-black/10 dark:group-hover:bg-white/10 transition-colors"></div>
         
         <div className="flex items-center gap-6 relative z-10">
-          <div className="w-14 h-14 bg-black dark:bg-white rounded-2xl flex items-center justify-center text-white dark:text-black shadow-aajexam-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
+          <div className="w-14 h-14 bg-primary-700 rounded-2xl flex items-center justify-center text-white shadow-aajexam-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>

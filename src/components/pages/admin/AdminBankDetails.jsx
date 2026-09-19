@@ -471,7 +471,7 @@ export default function AdminBankDetails() {
         </div>
       ) : error ? (
         <div className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
-          <div className="w-20 h-20 bg-black dark:bg-white rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-black/20 dark:shadow-white/10">
+          <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-black/20">
             <Zap className="w-10 h-10 text-white" />
           </div>
           <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>

@@ -469,7 +469,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 3: Publish ---- */}
               {isDraft && campaign && (
                 <button onClick={publishNow} disabled={busyAction}
-                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black shadow-md disabled:opacity-50">
+                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-700 hover:bg-primary-800 text-white shadow-md disabled:opacity-50">
                   🚀 Publish Now
                 </button>
               )}
@@ -537,7 +537,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                       <div className="flex flex-wrap gap-2 mt-3">
                         {isSendingPhase && isRunning && (
-                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black">Pause</button>
+                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-700 hover:bg-primary-800 text-white">Pause</button>
                         )}
                         {isSendingPhase && !isRunning && (
                           <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-700 hover:bg-primary-600 text-white disabled:opacity-50">

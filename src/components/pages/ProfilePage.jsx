@@ -200,7 +200,7 @@ const ProfilePage = () => {
                 <h1 className="text-xl lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
                   {student?.name || 'Student'}
                 </h1>
-                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ? 'bg-black dark:bg-white text-white dark:text-black shadow-aajexam-accent' : 'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-700 text-white shadow-aajexam-accent':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
                   {isPro ? 'PRO' : 'FREE'}
                 </span>
                 {isPro && student?.subscriptionExpiry && (
@@ -503,7 +503,7 @@ const ProfilePage = () => {
                 <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
                   Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
                 </p>
-                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-black dark:bg-white text-white dark:text-black shadow-aajexam-accent rounded-2xl">
+                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-primary-700 text-white shadow-aajexam-accent rounded-2xl">
                   Log out
                 </Button>
               </Card>

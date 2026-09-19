@@ -17,9 +17,9 @@ import {
 const PAGE_LIMIT = 20;
 
 const RISK_STYLES = {
-  high: { chip: 'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30 dark:border-white/30', bar: 'bg-black dark:bg-white', label: 'HIGH' },
-  medium: { chip: 'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30 dark:border-white/30', bar: 'bg-black dark:bg-white', label: 'MEDIUM' },
-  low: { chip: 'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30 dark:border-white/30', bar: 'bg-black dark:bg-white', label: 'LOW' },
+  high: { chip:'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30', bar:'bg-primary-700', label:'HIGH'},
+  medium: { chip:'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30', bar:'bg-primary-700', label:'MEDIUM'},
+  low: { chip:'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30', bar:'bg-primary-700', label:'LOW'},
 };
 
 const SIGNAL_LABELS = {

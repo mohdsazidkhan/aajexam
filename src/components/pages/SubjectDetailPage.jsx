@@ -29,7 +29,7 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
         <button onClick={() => router.back()} className="hidden lg:flex items-center gap-1 text-sm text-primary-700 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
-        <div className="bg-black dark:bg-white rounded-2xl p-6 text-white dark:text-black mb-5">
+        <div className="bg-primary-700 rounded-2xl p-6 text-white mb-5">
           <BookMarked className="w-8 h-8 mb-2" />
           <h1 className="text-xl lg:text-3xl font-black uppercase">{subject.name}</h1>
           {subject.description && <p className="text-sm opacity-80 mt-1">{subject.description}</p>}

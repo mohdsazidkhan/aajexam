@@ -98,7 +98,7 @@ export default function AboutAuthor() {
                             {[
                                 { title: 'Full-Stack Development', desc: 'Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.', color: 'bg-primary-700' },
                                 { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-primary-700' },
-                                { title: 'System Architecture', desc: 'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color: 'bg-black dark:bg-white' },
+                                { title:'System Architecture', desc:'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color:'bg-primary-700'},
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
@@ -155,7 +155,7 @@ export default function AboutAuthor() {
                             {[
                                 { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-700' },
                                 { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-primary-700' },
-                                { title: 'Content Curation', desc: 'Curated thousands of exam questions across multiple subjects.', color: 'bg-black dark:bg-white' },
+                                { title:'Content Curation', desc:'Curated thousands of exam questions across multiple subjects.', color:'bg-primary-700'},
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
@@ -191,7 +191,7 @@ export default function AboutAuthor() {
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
                                 href="mailto:support@mohdsazidkhan.com"
-                                className="flex items-center gap-3 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white transition-all"
+                                className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
                             >
                                 <FaEnvelope className="text-xl" />
                                 <span>Email</span>

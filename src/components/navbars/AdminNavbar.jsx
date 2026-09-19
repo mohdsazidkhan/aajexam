@@ -109,7 +109,7 @@ const AdminNavbar = () => {
               <button className="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary-500/10 hover:text-primary-700 transition-all border border-slate-200/50 dark:border-white/5">
                 <Bell className="w-5 h-5" />
                 {notifCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-black dark:bg-white text-white dark:text-black text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-950 animate-pulse">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary-700 text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-950 animate-pulse">
                     {notifCount > 9 ? '9+' : notifCount}
                   </span>
                 )}
@@ -162,7 +162,7 @@ const AdminNavbar = () => {
                 <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                   <Bell className="w-4 h-4 text-slate-400" /> Notifications
                   {notifCount > 0 && (
-                    <span className="ml-auto w-5 h-5 bg-black dark:bg-white text-white dark:text-black text-[10px] font-black rounded-full flex items-center justify-center">
+                    <span className="ml-auto w-5 h-5 bg-primary-700 text-white text-[10px] font-black rounded-full flex items-center justify-center">
                       {notifCount > 9 ? '9+' : notifCount}
                     </span>
                   )}

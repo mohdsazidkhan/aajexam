@@ -68,7 +68,7 @@ class ErrorBoundary extends React.Component {
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ y: 0, scale: 0.98 }}
                   onClick={() => window.location.reload()}
-                  className="flex-1 px-8 py-5 bg-black dark:bg-white text-white dark:text-black rounded-3xl border-b-[8px] border-black dark:border-white shadow-aajexam-accent font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
+                  className="flex-1 px-8 py-5 bg-primary-700 text-white rounded-3xl border-b-[8px] border-primary-700 shadow-aajexam-accent font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
                 >
                   <RefreshCcw className="w-5 h-5" /> Try Again
                 </motion.button>

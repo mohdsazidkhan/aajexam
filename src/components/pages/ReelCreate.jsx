@@ -173,7 +173,7 @@ const ReelCreate = () => {
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">Login required to create reels</p>
-            <Link href="/login" className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-black dark:bg-white text-white dark:text-black text-sm font-semibold">Login</Link>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-primary-700 text-white text-sm font-semibold">Login</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -376,7 +376,7 @@ const ReelCreate = () => {
                       {/* Play/Pause */}
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'bg-primary-700 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       {/* Info */}
@@ -391,7 +391,7 @@ const ReelCreate = () => {
                       </div>
                       {/* Selected check */}
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-black dark:bg-white flex items-center justify-center shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center shrink-0">
                           <span className="text-white text-[10px] font-bold">✓</span>
                         </div>
                       )}
@@ -406,7 +406,7 @@ const ReelCreate = () => {
                 {audioPlaying && (
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-primary-700 animate-pulse"/>
                       <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
                     </div>
                     <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">

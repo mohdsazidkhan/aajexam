@@ -70,7 +70,7 @@ export default function EditorialPolicy() {
                             {[
                                 { step: 1, title: 'Expert Development', desc: 'Questions created by subject matter experts with extensive experience in government exams.', color: 'bg-primary-700' },
                                 { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-primary-700' },
-                                { step: 3, title: 'Verification', desc: 'Factual information cross-verified with authoritative sources and government publications.', color: 'bg-black dark:bg-white' },
+                                { step: 3, title:'Verification', desc:'Factual information cross-verified with authoritative sources and government publications.', color:'bg-primary-700'},
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
@@ -94,7 +94,7 @@ export default function EditorialPolicy() {
                             {[
                                 { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-700' },
                                 { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-primary-700' },
-                                { title: 'Clarity', desc: 'Unambiguous and easily understood', color: 'bg-black dark:bg-white' },
+                                { title:'Clarity', desc:'Unambiguous and easily understood', color:'bg-primary-700'},
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
@@ -111,7 +111,7 @@ export default function EditorialPolicy() {
                     {/* User Feedback */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-black dark:bg-white rounded-lg lg:rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>

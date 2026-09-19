@@ -13,13 +13,13 @@ import Seo from '../components/Seo';
 
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Notification', border: 'border-slate-200 dark:border-slate-800' },
+  notification: { icon: Bell, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Notification', border:'border-slate-200 dark:border-slate-800'},
   admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-700', dot: 'bg-primary-700', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
-  result:       { icon: BarChart2, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Result', border: 'border-slate-200 dark:border-slate-800' },
-  answer_key:   { icon: Key, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Answer Key', border: 'border-slate-200 dark:border-slate-800' },
-  vacancy:      { icon: Users, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Vacancy', border: 'border-slate-200 dark:border-slate-800' },
-  date_change:  { icon: AlertTriangle, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Date Change', border: 'border-slate-200 dark:border-slate-800' },
-  syllabus:     { icon: Megaphone, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Syllabus', border: 'border-slate-200 dark:border-slate-800' },
+  result: { icon: BarChart2, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Result', border:'border-slate-200 dark:border-slate-800'},
+  answer_key: { icon: Key, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Answer Key', border:'border-slate-200 dark:border-slate-800'},
+  vacancy: { icon: Users, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Vacancy', border:'border-slate-200 dark:border-slate-800'},
+  date_change: { icon: AlertTriangle, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Date Change', border:'border-slate-200 dark:border-slate-800'},
+  syllabus: { icon: Megaphone, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Syllabus', border:'border-slate-200 dark:border-slate-800'},
   other:        { icon: Megaphone, color: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400', dot: 'bg-slate-400', label: 'Other', border: 'border-slate-200 dark:border-slate-700' },
 };
 const getType = (t) => typeConfig[t] || typeConfig.other;
@@ -406,7 +406,7 @@ const ExamCalendarPage = () => {
             <h3 className="text-lg font-black text-content-muted uppercase">No events this month</h3>
             <p className="text-sm text-content-muted font-bold">Check back later or navigate to another month.</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase mt-2 transition-colors">
+              <button className="px-6 py-2.5 bg-primary-700 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
                 View Exam News
               </button>
             </Link>

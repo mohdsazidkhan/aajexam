@@ -377,7 +377,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">
                       <FolderOpen className="w-5 h-5 text-white dark:text-black" />
                     </div>
                     <div className="flex-1 min-w-0">

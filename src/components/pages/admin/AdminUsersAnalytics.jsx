@@ -222,7 +222,7 @@ const AdminUsersAnalytics = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                                         {students.map((s, idx) => (
                                             <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative flex flex-col group overflow-hidden">
-                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'PRO' ? 'bg-black dark:bg-white' : 'bg-primary-700'}`} />
+                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus ==='PRO'?'bg-primary-700':'bg-primary-700'}`} />
                                                 <div className="mb-6 mx-auto">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{(s.name || 'U')[0]}</div>
                                                 </div>

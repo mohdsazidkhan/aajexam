@@ -73,7 +73,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <button onClick={() => router.back()} className="hidden lg:flex items-center gap-1 text-sm text-primary-700 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
-        <div className="bg-black dark:bg-white rounded-2xl p-6 text-white dark:text-black mb-5">
+        <div className="bg-primary-700 rounded-2xl p-6 text-white mb-5">
           <Layers className="w-8 h-8 mb-2" />
           <h1 className="text-xl lg:text-3xl font-black uppercase">{topic.name}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -103,7 +103,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <div className="flex gap-2 mb-5 sticky top-16 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
           {tabs.map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-2 shrink-0 ${activeTab === tab.key ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-2 shrink-0 ${activeTab === tab.key ?'bg-primary-700 text-white border-primary-700':'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
               <tab.icon className="w-3.5 h-3.5" /> {tab.label} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{tab.count}</span>
             </button>
           ))}
@@ -122,7 +122,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                 onClick={() => router.push(`/flashcards/${deck.slug || deck._id}`)}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700"
               >
-                <div className="absolute inset-0 bg-black dark:bg-white opacity-90 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-primary-700 opacity-90 group-hover:opacity-100 transition-opacity"/>
                 <div className="absolute inset-0 p-4 flex flex-col justify-between">
                   <div className="flex justify-between items-start">
                     <span className="bg-black/20 dark:bg-white/20 backdrop-blur-sm text-white dark:text-black text-[10px] font-black uppercase px-2 py-1 rounded-md flex items-center gap-1">

@@ -350,7 +350,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <div className="relative inline-block">
                                                 <img src={q.questionImage} alt="" className="h-20 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                                                 <button type="button" onClick={() => updateQuestion(qi, { questionImage: '' })}
-                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center hover:bg-black dark:hover:bg-white">
+                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-primary-700 text-white rounded-full flex items-center justify-center hover:bg-primary-800">
                                                     <X className="w-3 h-3" />
                                                 </button>
                                             </div>

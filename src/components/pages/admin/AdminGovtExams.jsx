@@ -261,7 +261,7 @@ const AdminGovtExams = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6">
                         <div className="flex justify-center">
                           <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-700 animate-pulse' : 'bg-black dark:bg-white'}`} />
+                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ?'bg-primary-700 animate-pulse':'bg-primary-700'}`} />
                             {exam.isActive ? 'Online' : 'Offline'}
                           </div>
                         </div>
@@ -336,7 +336,7 @@ const AdminGovtExams = () => {
                       <div className="flex items-center gap-4">
                         <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest">{exam.category?.name}</div>
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-700 animate-pulse' : 'bg-black dark:bg-white'}`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ?'bg-primary-700 animate-pulse':'bg-primary-700'}`} />
                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
                         </div>
                       </div>

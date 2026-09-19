@@ -346,7 +346,7 @@ const AdminGovtExamResults = () => {
                         {attempts.map((a, idx) => (
                           <motion.tr key={a._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-primary-500/5 transition-all">
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
+                              <div className={`w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ?'bg-primary-700 text-white shadow-lg':'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
                                 #{a.rank || '-'}
                               </div>
                             </td>
@@ -387,7 +387,7 @@ const AdminGovtExamResults = () => {
                     {attempts.map((a, idx) => (
                       <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
                         <div className="flex items-center gap-3 lg:gap-6">
-                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-2xl ${a.rank <= 3 ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>#{a.rank || '-'}</div>
+                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-2xl ${a.rank <= 3 ?'bg-primary-700 text-white':'bg-slate-900 text-white dark:bg-white'}`}>#{a.rank ||'-'}</div>
                           <div>
                             <div className="flex items-center gap-3 mb-1">
                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{a.user?.name || 'User'}</h3>
@@ -457,7 +457,7 @@ const AdminGovtExamResults = () => {
                         {selectedAttempt.answers?.map((ans, i) => (
                           <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
-                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-primary-700 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>{i + 1}</div>
+                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>{i + 1}</div>
                               <div>
                                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question not available'}</p>
                                 <div className="flex gap-4">

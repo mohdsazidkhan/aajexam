@@ -93,7 +93,7 @@ const PublicProfile = ({ username }) => {
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
-          className="px-6 py-2 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-semibold rounded-lg transition-colors"
+          className="px-6 py-2 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-lg transition-colors"
         >
           Go Back
         </button>
@@ -314,7 +314,7 @@ const PublicProfile = ({ username }) => {
                   </div>
                 )}
                 {contributions.quizzes.total > 0 && (
-                  <div className="p-6 bg-black dark:bg-white rounded-2xl text-center shadow-aajexam-accent border-2 border-white dark:border-slate-800">
+                  <div className="p-6 bg-primary-700 rounded-2xl text-center shadow-aajexam-accent border-2 border-white dark:border-slate-800">
                     <div className="text-xl lg:text-3xl font-black text-white">
                       {contributions.quizzes.total}
                     </div>
@@ -390,7 +390,7 @@ const PublicProfile = ({ username }) => {
               {contributions.quizzes.total > 0 && (
                 <div className="mb-10">
                   <h3 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3">
-                    <span className="w-2 h-2 bg-black dark:bg-white rounded-full"></span>
+                    <span className="w-2 h-2 bg-primary-700 rounded-full"></span>
                     Training Quizzes ({contributions.quizzes.total})
                   </h3>
                   <div className="space-y-4">

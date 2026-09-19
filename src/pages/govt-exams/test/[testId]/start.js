@@ -277,7 +277,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
           {/* Right: Timer & Tools */}
           <div className="flex items-center gap-3 pointer-events-auto">
-            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-2xl border-2 ${timeLeft < 300 ? 'bg-black dark:bg-white text-white dark:text-black border-white/20 animate-pulse' : 'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-2xl border-2 ${timeLeft < 300 ?'bg-primary-700 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
               <Clock className="w-5 h-5 text-current opacity-80" />
               <span className="font-mono text-xl lg:text-2xl font-black">{formatTime(timeLeft)}</span>
             </div>
@@ -361,7 +361,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             className={`
                               h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-2
                               ${isCurrent ? 'bg-primary-700 text-white border-primary-700 -translate-y-1' :
-                                isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
+                                isMarked ?'bg-primary-700 text-white border-primary-700':
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
                             `}
@@ -407,7 +407,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
               {translatingQ && (
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[11px] font-black text-black dark:text-white uppercase tracking-widest">
-                  <span className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-primary-700 animate-pulse"/>
                   Translating to हिंदी…
                 </div>
               )}
@@ -555,7 +555,7 @@ const TestStart = ({ resolvedId } = {}) => {
                               key={idx}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
                               className={`h-14 rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-700 text-white border-primary-700' :
-                                isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
+                                isMarked ?'bg-primary-700 text-white border-primary-700':
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
                             >

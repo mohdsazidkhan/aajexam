@@ -197,7 +197,7 @@ const AdminExpenses = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                     >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-black dark:bg-white" />
+                        <div className="absolute top-0 left-0 w-full h-1 bg-primary-700"/>
                         <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
                             <IndianRupee className="w-6 h-6" />
                         </div>

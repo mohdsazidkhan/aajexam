@@ -279,7 +279,7 @@ const FinancialAnalytics = () => {
                           {topRevenuePlans.map((p, idx) => (
                             <motion.tr key={idx} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="group hover:bg-primary-500/5 transition-all">
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-black dark:bg-white text-white dark:text-black shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
+                                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ?'bg-primary-700 text-white shadow-xl rotate-6':'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">

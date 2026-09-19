@@ -358,7 +358,7 @@ const SettingsPage = () => {
                         <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
                         <p className="text-sm font-bold text-content-secondary">Use a strong password to keep your account safe.</p>
                       </div>
-                      <div className="p-4 bg-black dark:bg-white text-white dark:text-black rounded-3xl shadow-aajexam-accent">
+                      <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-aajexam-accent">
                         <ShieldCheck className="w-6 h-6" />
                       </div>
                     </div>
