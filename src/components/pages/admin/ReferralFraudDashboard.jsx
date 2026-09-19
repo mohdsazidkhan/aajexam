@@ -79,7 +79,7 @@ export default function ReferralFraudDashboard() {
 
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
-            <div className="space-y-3 mb-5">
+            <div className="space-y-2 mb-5">
               <h1 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter leading-none italic flex items-center gap-3">
                 <ShieldAlert className="w-8 h-8 lg:w-10 lg:h-10 text-black dark:text-white" />
                 REFERRAL <span className="text-black dark:text-white">FRAUD</span>

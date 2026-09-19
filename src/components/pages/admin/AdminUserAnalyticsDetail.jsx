@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 
 import {
-    ArrowLeft, LayoutDashboard, IndianRupee, Trophy, TrendingUp,
+    ArrowLeft, IndianRupee, Trophy, TrendingUp,
     Wallet, Users, UserPlus, GraduationCap,
     HelpCircle, Folder, Layers, Book, Coins,
     ArrowUp, ArrowDown, PieChart, Activity, Zap, Cpu, Mail, Star
@@ -116,15 +116,9 @@ const AdminUserAnalyticsDetail = () => {
                                 >
                                     <ArrowLeft className="w-6 h-6" />
                                 </motion.button>
-                                <div className="flex items-center gap-3">
-                                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
-                                        <LayoutDashboard className="w-6 h-6" />
-                                    </div>
-                                    <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.3em]">User Analytics // Performance Analysis</span>
-                                </div>
                             </div>
 
-                            <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
+                            <h1 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
                                 {loading ? 'Loading...' : (userData.name || 'User Performance')}
                             </h1>
 

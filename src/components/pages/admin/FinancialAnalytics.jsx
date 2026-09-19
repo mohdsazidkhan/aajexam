@@ -173,8 +173,8 @@ const FinancialAnalytics = () => {
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
-              <div className="space-y-3 lg:space-y-6 flex-1">
-                 <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
+              <div className="space-y-2 flex-1">
+                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                    Revenue Analytics
                  </h1>
                 

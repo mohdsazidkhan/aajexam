@@ -130,8 +130,7 @@ export default function AdminContacts() {
             className="mb-4"
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-              <div className="space-y-4">
-
+              <div className="space-y-2">
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   CONTACT <span className="text-primary-500">MESSAGES</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
                 </h1>

@@ -159,8 +159,7 @@ const AdminGovtExamCategories = () => {
           className="mb-4"
         >
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-            <div className="space-y-4">
-
+            <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                 GOVT <span className="text-primary-500">EXAMS</span> <span className="text-slate-300 dark:text-white ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
               </h1>

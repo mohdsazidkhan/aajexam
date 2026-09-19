@@ -251,8 +251,7 @@ const AdminGovtExamResults = () => {
           {/* Header */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
-              <div className="space-y-4">
-
+              <div className="space-y-2">
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   EXAM <span className="text-primary-600">RESULTS</span>
                 </h1>

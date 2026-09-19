@@ -137,7 +137,7 @@ const AdminNotificationsPage = () => {
             className="mb-4"
           >
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-              <div className="space-y-4">
+              <div className="space-y-2">
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
                   NOTIFI<span className="text-black dark:text-white">CATIONS</span>
                 </h1>

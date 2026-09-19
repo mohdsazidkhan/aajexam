@@ -107,9 +107,7 @@ const AdminUserWallets = () => {
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
-            <div className="space-y-3 lg:space-y-6">
-              
-
+            <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                 STUDENT <span className="text-primary-600">WALLETS</span>
               </h1>
