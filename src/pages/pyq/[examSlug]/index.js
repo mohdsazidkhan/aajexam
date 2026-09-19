@@ -136,7 +136,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                     </header>
 
                     {/* Long-form intro */}
-                    <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
+                    <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-700 mr-3" /> About {examName} PYQs
                         </h2>
@@ -147,7 +147,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* Year-grouped paper listings */}
                     {years.length === 0 ? (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 text-center px-0 py-4 lg:p-8">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 text-center px-0 py-4 lg:py-8">
                             <FaListOl className="text-5xl text-slate-300 dark:text-slate-700 mx-auto mb-4" />
                             <h2 className="text-xl font-black text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-tight">No PYQ papers seeded yet</h2>
                             <p className="text-slate-500 font-medium">{examName} previous year papers will appear here as soon as they are added.</p>
@@ -284,7 +284,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* FAQ */}
                     {faqs?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                                 Frequently Asked Questions
                             </h2>
@@ -301,7 +301,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                     {/* Other exams */}
                     {otherExams?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                                 Other Exam PYQs
                             </h2>

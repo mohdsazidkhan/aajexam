@@ -433,7 +433,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
       {/* --- Share Result --- */}
       {mounted && result && (
-        <section className="px-0 py-4 lg:p-8">
+        <section className="px-0 py-4 lg:py-8">
           <Card className="p-2 lg:p-4 border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
@@ -466,7 +466,7 @@ const TestResult = ({ resolvedId } = {}) => {
       )}
 
       {/* --- Action Bar --- */}
-      <section className="flex flex-col lg:flex-row justify-center items-center gap-4 px-0 py-4 lg:p-8">
+      <section className="flex flex-col lg:flex-row justify-center items-center gap-4 px-0 py-4 lg:py-8">
         <Button
           variant="primary"
           size="lg"

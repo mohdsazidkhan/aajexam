@@ -184,7 +184,7 @@ const MyAnalyticsPage = () => {
             </section>
 
             {/* --- Tab Switcher --- */}
-            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 rounded-[2rem] max-w-full px-0 py-4 lg:p-8">
+            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 rounded-[2rem] max-w-full px-0 py-4 lg:py-8">
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
                      className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-5 py-2.5 rounded-full font-black text-xs uppercase transition-all ${activeTab === tab.key ? 'bg-primary-700 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>

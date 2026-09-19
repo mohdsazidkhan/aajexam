@@ -86,7 +86,7 @@ export default function ReferralHistory() {
          <div className="container mx-auto mt-0 space-y-2 lg:space-y-4 lg:space-y-8">
 
             {/* --- Header Section --- */}
-            <section className="relative text-center space-y-2 lg:space-y-4 lg:space-y-8 px-0 py-4 lg:p-8">
+            <section className="relative text-center space-y-2 lg:space-y-4 lg:space-y-8 px-0 py-4 lg:py-8">
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10">
                   <Users className="w-10 h-10" />
                </motion.div>

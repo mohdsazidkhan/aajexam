@@ -173,7 +173,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section className="border-y border-slate-200 dark:border-slate-700 overflow-hidden relative flex px-0 py-4 lg:p-8">
+         <section className="border-y border-slate-200 dark:border-slate-700 overflow-hidden relative flex px-0 py-4 lg:py-8">
             <style>{`
                @keyframes marquee {
                   0% { transform: translateX(0); }
@@ -219,7 +219,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── 3-Step How It Works ── */}
-         <section className="border-t-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:p-8">
+         <section className="border-t-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
             <div className="container mx-auto px-4 lg:px-8">
                <div className="max-w-4xl mx-auto">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -248,7 +248,7 @@ const ModernLandingPage = () => {
          </section>
 
 
-         <section className="border-y-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:p-8">
+         <section className="border-y-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
             <div className="container mx-auto px-4 lg:px-6">
                <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
                   {[
@@ -272,7 +272,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="bg-slate-50 dark:bg-slate-950 relative overflow-hidden px-0 py-4 lg:p-8">
+         <section className="bg-slate-50 dark:bg-slate-950 relative overflow-hidden px-0 py-4 lg:py-8">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary-500/10 blur-[80px] opacity-60" />
             </div>
@@ -436,7 +436,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="overflow-hidden relative px-0 py-4 lg:p-8">
+         <section className="overflow-hidden relative px-0 py-4 lg:py-8">
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="flex flex-col gap-10 lg:gap-20">
                   <div className="space-y-8 lg:space-y-16 text-center w-full">
@@ -472,7 +472,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="px-0 py-4 lg:p-8">
+         <section className="px-0 py-4 lg:py-8">
             <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-sm p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
                <div className="relative z-10 space-y-8">
                   <motion.h2

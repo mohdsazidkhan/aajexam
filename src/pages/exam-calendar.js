@@ -210,7 +210,7 @@ const ExamCalendarPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:p-8">
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:py-8">
           <div className="absolute inset-0 bg-white dark:bg-black" />
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />

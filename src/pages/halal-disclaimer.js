@@ -42,7 +42,7 @@ export default function HalalDisclaimer() {
                                 We at AajExam are committed to ensuring that our platform aligns with the ethical and spiritual guidelines of Islamic Shariah, offering educational quizzes in a way that is Halal, transparent, and fair.
                             </p>
 
-                            <section className="rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:p-8">
+                            <section className="rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
                                 <h2 className="text-md md:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
                                     <div className="w-2 h-10 bg-primary-700 rounded-full" />
                                     Why AajExam is Halal
@@ -87,7 +87,7 @@ export default function HalalDisclaimer() {
                                 </div>
                             </section>
 
-                            <section className="text-center border-t border-slate-100 dark:border-slate-800 px-0 py-4 lg:p-8">
+                            <section className="text-center border-t border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
                                 <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Conclusion</h2>
                                 <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed mb-8">
                                     The AajExam model is designed to be educational, rewarding, and fully Halal, offering transparency and merit-based rewards.

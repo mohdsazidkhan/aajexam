@@ -146,7 +146,7 @@ export default function QuizPreview({
 
           {/* About — long-form intro */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About This Quiz
               </h2>
@@ -157,7 +157,7 @@ export default function QuizPreview({
           )}
 
           {seriesHref && (
-            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 lg:p-8">
+            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 lg:py-8">
               <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
                 This is one set from a larger bank.{' '}
                 <Link href={seriesHref.href} className="text-primary-700 dark:text-primary-400 underline">
@@ -180,7 +180,7 @@ export default function QuizPreview({
 
           {/* FAQ */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
@@ -197,7 +197,7 @@ export default function QuizPreview({
 
           {/* Related quizzes */}
           {relatedQuizzes.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Related {topicName || subjectName || ''} Quizzes
               </h2>

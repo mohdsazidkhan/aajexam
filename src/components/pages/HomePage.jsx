@@ -311,9 +311,9 @@ const HomePage = () => {
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-700 selection:text-white font-outfit">
+      <div className="relative selection:bg-primary-700 selection:text-white font-outfit mt-4 lg:mt-8">
             {/* ── Stats ── */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                {streakCount > 0 && (
                   <div className="flex items-center justify-end mb-3 lg:mb-6">
                      <div className="flex items-center gap-1 px-2.5 py-1.5 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl">
@@ -349,7 +349,7 @@ const HomePage = () => {
             </section>
 
             {/* ── Quick Actions ── */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3 lg:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
@@ -391,7 +391,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ GOVT EXAMS ═══════ */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <SectionHeader
                   title="Govt. Exams"
                   icon={GraduationCap}
@@ -417,7 +417,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ QUIZZES ═══════ */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <SectionHeader
                   title="Quizzes"
                   icon={Brain}
@@ -443,7 +443,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ SUBJECTS ═══════ */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <SectionHeader
                   title="Subjects"
                   icon={BookOpen}
@@ -469,7 +469,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ TOPICS ═══════ */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <SectionHeader
                   title="Topics"
                   icon={Layers}
@@ -495,7 +495,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ REELS ═══════ */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <SectionHeader
                   title="Reels"
                   icon={PlayCircle}
@@ -521,7 +521,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ BLOGS ═══════ */}
-            <section className="px-0 py-4 lg:p-8">
+            <section className="px-0 py-2 lg:py-4">
                <SectionHeader
                   title="Blogs"
                   icon={FileText}

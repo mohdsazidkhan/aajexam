@@ -69,7 +69,7 @@ const EducationalContent = ({ content }) => {
     };
 
     return (
-        <section className="font-outfit overflow-hidden dark: px-0 py-4 lg:p-8">
+        <section className="font-outfit overflow-hidden dark: px-0 py-4 lg:py-8">
             <div className="mx-auto space-y-24">
 
                 {/* Header Section */}
