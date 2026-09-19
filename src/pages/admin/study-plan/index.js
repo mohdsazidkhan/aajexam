@@ -67,6 +67,9 @@ const AdminStudyPlanPage = () => {
                       <div>
                         <div className="text-sm text-slate-400 uppercase tracking-[0.2em]">{plan.exam?.name || 'Unknown Exam'}</div>
                         <h2 className="text-xl font-black text-slate-900 dark:text-white">{plan.title || 'Study Plan'}</h2>
+                        <div className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                          By {plan.user?.name || plan.user?.username || 'Unknown User'}
+                        </div>
                       </div>
                       <div className="text-sm text-slate-500 dark:text-slate-400">
                         {plan.status?.toUpperCase() || 'UNKNOWN'} · {plan.weeklySchedule?.length ?? 0} weeks

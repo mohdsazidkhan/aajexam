@@ -208,18 +208,18 @@ const AdminReferralAnalytics = () => {
                             {[
                                 { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
                                 { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
-                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", shadow: "shadow-black/20 dark:shadow-white/10" },
-                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", shadow: "shadow-black/20 dark:shadow-white/10" }
+                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", text: "text-white dark:text-black", shadow: "shadow-black/20 dark:shadow-white/10" },
+                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", text: "text-white dark:text-black", shadow: "shadow-black/20 dark:shadow-white/10" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={stat.label}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 text-white shadow-2xl ${stat.shadow}`}
+                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 ${stat.text || 'text-white'} shadow-2xl ${stat.shadow}`}
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-20">
-                                        <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2 text-white" />
+                                        <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2" />
                                     </div>
                                     <div className="relative z-10 space-y-4">
                                         <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{stat.label}</div>
