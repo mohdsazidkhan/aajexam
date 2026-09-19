@@ -172,7 +172,7 @@ const BlogsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className="min-h-screen bg-background-page">
       <div className="container mx-auto py-2 lg:py-4">
         {/* Header & Filters */}
         <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between mb-6 gap-4">

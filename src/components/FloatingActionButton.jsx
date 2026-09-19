@@ -51,7 +51,7 @@ const FloatingActionButton = () => {
       <div className="fab-container font-outfit">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="fab-button shadow-aajexam-primary border-4 border-white dark:border-slate-800"
+          className="fab-button shadow-aajexam-primary border-2 border-white dark:border-slate-800"
           aria-label="Create Quiz or Question"
         >
           <FaPlus className="text-xl" />
@@ -83,8 +83,7 @@ const FloatingActionButton = () => {
           border-radius: 24px;
           background: #58cc02;
           color: white;
-          border: 4px solid white;
-          border-bottom-width: 8px;
+          border: 2px solid white;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -100,7 +99,6 @@ const FloatingActionButton = () => {
 
         .fab-button:active {
           transform: translateY(4px);
-          border-bottom-width: 4px;
         }
 
         /* Modal Backdrop */
@@ -238,7 +236,6 @@ const FloatingActionButton = () => {
           padding: 24px;
           border-radius: 24px;
           border: 2px solid #f0f0f0;
-          border-bottom-width: 6px;
           background: white;
           cursor: pointer;
           transition: all 0.2s;
@@ -253,25 +250,24 @@ const FloatingActionButton = () => {
 
         .action-card:active {
           transform: translateY(2px);
-          border-bottom-width: 2px;
         }
 
         .quiz-card {
-          border-color: #e0e7ff;
-          background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+          border-color: #f7fff0;
+          background: #f7fff0;
         }
 
         .quiz-card:hover {
-          border-color: #818cf8;
+          border-color: #58cc02;
         }
 
         .question-card {
-          border-color: #fce7f3;
-          background: linear-gradient(135deg, #fef3f8 0%, #fce7f3 100%);
+          border-color: #f1f1f1;
+          background: #f1f1f1;
         }
 
         .question-card:hover {
-          border-color: #f472b6;
+          border-color: #000000;
         }
 
         :global(.dark) .action-card {
@@ -279,13 +275,13 @@ const FloatingActionButton = () => {
         }
 
         :global(.dark) .quiz-card {
-          background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%);
-          border-color: #6366f1;
+          background: #235002;
+          border-color: #58cc02;
         }
 
         :global(.dark) .question-card {
-          background: linear-gradient(135deg, #831843 0%, #9d174d 100%);
-          border-color: #ec4899;
+          background: #131f24;
+          border-color: #ffffff;
         }
 
         /* Action Card Icon */
@@ -300,13 +296,18 @@ const FloatingActionButton = () => {
         }
 
         .quiz-icon {
-          background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+          background: #58cc02;
           color: white;
         }
 
         .question-icon {
-          background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+          background: #000000;
           color: white;
+        }
+
+        :global(.dark) .question-icon {
+          background: #ffffff;
+          color: #000000;
         }
 
         /* Action Card Content */

@@ -204,9 +204,9 @@ const PaymentTransactions = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[2.5rem] shadow-2xl border-2 border-b-4 lg:border-b-8 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[2.5rem] shadow-2xl border-2 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit">
       {/* Header */}
-      <div className="bg-primary-500 p-4 lg:p-8 text-white shadow-aajexam-primary border-b-4 lg:border-b-8 border-white/20 relative overflow-hidden group">
+      <div className="bg-primary-500 p-4 lg:p-8 text-white shadow-aajexam-primary border-b-2 lg:border-b-2 border-white/20 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 lg:gap-8 relative z-10">
           <div>
@@ -216,7 +216,7 @@ const PaymentTransactions = () => {
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-4 py-2.5 lg:px-8 lg:py-5 rounded-lg lg:rounded-xl lg:rounded-2xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 lg:space-x-3 border-2 lg:border-4 border-white/10 shadow-sm"
+              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-4 py-2.5 lg:px-8 lg:py-5 rounded-lg lg:rounded-xl lg:rounded-2xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 lg:space-x-3 border-2 lg:border-2 border-white/10 shadow-sm"
             >
               <FaFilter className="text-xs lg:text-sm" />
               <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest">Filters</span>
@@ -229,7 +229,7 @@ const PaymentTransactions = () => {
       {summary && (
         <div className="p-3 lg:p-14 bg-white dark:bg-slate-900/50">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-4 border-b-4 lg:border-b-[12px] border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-2 border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Total Investment</p>
@@ -237,12 +237,12 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-sm lg:text-3xl" />
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-4 border-b-4 lg:border-b-[12px] border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-2 border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Total Transactions</p>
@@ -250,12 +250,12 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-4 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-2 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
                   <FaReceipt className="text-sm lg:text-3xl" />
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-4 border-b-4 lg:border-b-[12px] border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-2 border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Successful Clear</p>
@@ -263,7 +263,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-secondary border-2 lg:border-4 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-secondary border-2 lg:border-2 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -365,7 +365,7 @@ const PaymentTransactions = () => {
         ) : (
           <div className="space-y-3 lg:space-y-6">
             {filteredTransactions.map((transaction) => (
-              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl lg:rounded-[2rem] shadow-lg lg:shadow-xl border-2 border-b-4 lg:border-b-8 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
+              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl lg:rounded-[2rem] shadow-lg lg:shadow-xl border-2 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
                 {/* Transaction Header */}
                 <div className="p-3 lg:p-8 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                   <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 lg:gap-6">

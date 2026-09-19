@@ -13,7 +13,7 @@ export default function CategoriesGone() {
             <div style={{ maxWidth: 520 }}>
                 <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>This category page has moved</h1>
                 <p style={{ color: '#475569', lineHeight: 1.6 }}>
-                    Browse our <Link href="/govt-exams" style={{ color: '#dc2626', textDecoration: 'underline' }}>full government-exam catalogue</Link> to find the exam category you were looking for.
+                    Browse our <Link href="/govt-exams" style={{ color: '#58cc02', textDecoration: 'underline' }}>full government-exam catalogue</Link> to find the exam category you were looking for.
                 </p>
             </div>
         </div>

@@ -156,7 +156,7 @@ export default function ReferralHistory() {
                 <select
                   value={filterType}
                   onChange={handleFilterChange}
-                  className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
+                  className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
                 >
                   <option value="all">All Reward Types</option>
                   <option value="plan99">Plan 99 Reward (₹33)</option>
@@ -167,7 +167,7 @@ export default function ReferralHistory() {
                 searchTerm={searchTerm}
                 onSearchChange={handleSearch}
                 placeholder="Search..."
-                className="bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] py-2 shadow-xl"
+                className="bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] py-2 shadow-xl"
               />
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function ReferralHistory() {
               key="empty"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+              className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
             >
               <History className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
               <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS FOUND</h3>
@@ -215,7 +215,7 @@ export default function ReferralHistory() {
               key="content"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
             >
               <div className="overflow-x-auto">
                 <table className="w-full">

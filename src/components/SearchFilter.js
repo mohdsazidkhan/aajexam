@@ -20,7 +20,7 @@ const SearchFilter = ({
   const hasActiveFilters = Object.values(filters).some(value => value && value !== '');
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-4 border-slate-100 dark:border-slate-800 p-4 mb-8 transition-all duration-300">
+    <div className="w-full bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 p-4 mb-8 transition-all duration-300">
       <div className="flex flex-col lg:flex-row items-center gap-4">
         {/* Search Input Area */}
         <div className="relative flex-1 w-full group">
@@ -68,7 +68,7 @@ const SearchFilter = ({
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 onClick={onClearFilters}
-                className="flex items-center gap-2 px-6 py-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white rounded-2xl border-b-4 border-slate-200 dark:border-slate-800 dark:border-white/50 hover:bg-slate-100 dark:hover:bg-white/40 transition-all duration-300 group shadow-sm hover:shadow-md"
+                className="flex items-center gap-2 px-6 py-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white rounded-2xl border-b-2 border-slate-200 dark:border-slate-800 dark:border-white/50 hover:bg-slate-100 dark:hover:bg-white/40 transition-all duration-300 group shadow-sm hover:shadow-md"
               >
                 <X className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Clear Filters</span>

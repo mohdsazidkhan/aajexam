@@ -73,7 +73,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
                 AAJ<span className="text-primary-700 dark:text-primary-500 text-glow-primary">EXAM</span>
               </h2>
-              <div className="h-1 w-12 bg-gradient-to-r from-primary-500 to-transparent rounded-full" />
+              <div className="h-1 w-12 bg-primary-500 rounded-full" />
             </div>
 
             <p className="text-sm font-bold text-content-secondary leading-relaxed max-w-xs">

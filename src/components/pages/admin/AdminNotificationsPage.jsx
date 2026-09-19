@@ -150,7 +150,7 @@ const AdminNotificationsPage = () => {
                     <select
                       value={limit}
                       onChange={(e) => handleLimitChange(e.target.value)}
-                      className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl outline-none"
+                      className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl outline-none"
                     >
                       {[10, 20, 50, 100].map((n) => (
                         <option key={n} value={n}>{n} per page</option>
@@ -159,7 +159,7 @@ const AdminNotificationsPage = () => {
                  </div>
                  <button
                     onClick={handleClearAll}
-                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all flex items-center gap-3 active:scale-95"
+                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all flex items-center gap-3 active:scale-95"
                  >
                    <Trash2 className="w-4 h-4" /> Clear All
                  </button>
@@ -174,7 +174,7 @@ const AdminNotificationsPage = () => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
@@ -207,7 +207,7 @@ const AdminNotificationsPage = () => {
                          }
                          router.push(href);
                        }}
-                       className={`group relative rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 p-3 lg:p-8 cursor-pointer transition-all shadow-xl hover:scale-[1.02] flex flex-col ${n.isRead 
+                       className={`group relative rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-xl hover:scale-[1.02] flex flex-col ${n.isRead 
                          ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
                          : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-primary-500/20 active-signal'}`}
                      >
@@ -253,7 +253,7 @@ const AdminNotificationsPage = () => {
               <button
                 onClick={handlePrev}
                 disabled={page <= 1}
-                className="p-6 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -265,7 +265,7 @@ const AdminNotificationsPage = () => {
               <button
                 onClick={handleNext}
                 disabled={page >= totalPages}
-                className="p-6 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

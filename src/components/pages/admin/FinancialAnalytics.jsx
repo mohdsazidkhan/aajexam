@@ -74,7 +74,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden font-outfit"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden font-outfit"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -203,7 +203,7 @@ const FinancialAnalytics = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-primary-500/5 dark:bg-primary-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-primary-500/20 relative overflow-hidden group">
+              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-primary-500/5 dark:bg-primary-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-primary-500/20 relative overflow-hidden group">
                <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
                <div className="flex items-center gap-3 shrink-0">
                  <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-primary-500" />
@@ -220,7 +220,7 @@ const FinancialAnalytics = () => {
                  <AdminDashboardSkeleton />
                </div>
             ) : error ? (
-              <div className="text-center py-32 bg-black/5 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-black/10 dark:border-white/10">
+              <div className="text-center py-32 bg-black/5 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-black/10 dark:border-white/10">
                 <Zap className="w-16 h-16 text-black dark:text-white mx-auto mb-6" />
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                 <p className="text-black dark:text-white text-[10px] font-black uppercase tracking-widest">{error}</p>
@@ -238,7 +238,7 @@ const FinancialAnalytics = () => {
 
                 {/* Performance Grids */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
-                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
+                  <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Subscription Tiers</h3>
                        <PieChart className="w-5 h-5 text-primary-500 opacity-30" />
@@ -248,19 +248,19 @@ const FinancialAnalytics = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Over Time</h3>
                        <BarChart3 className="w-5 h-5 text-primary-500 opacity-30" />
                     </div>
                     <div className="h-80">
-                       <Line data={{ labels: revenueTrendLabels, datasets: [{ label: 'Revenue', data: revenueTrendData, borderColor: '#10B981', backgroundColor: 'rgba(16,185,129,0.1)', fill: true, tension: 0.4 }] }} options={chartOptions} />
+                       <Line data={{ labels: revenueTrendLabels, datasets: [{ label: 'Revenue', data: revenueTrendData, borderColor: '#58cc02', backgroundColor: 'rgba(88,204,2,0.1)', fill: true, tension: 0.4 }] }} options={chartOptions} />
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Subscriptions Deep Dive */}
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl overflow-hidden">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl overflow-hidden">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-4">
                        <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl"><Activity className="w-6 h-6" /></div>

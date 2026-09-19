@@ -66,7 +66,7 @@ const SectionSkeleton = () => (
 const GovtExamCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <GraduationCap className="w-6 h-6 text-black dark:text-white" />
@@ -84,7 +84,7 @@ const GovtExamCard = ({ item, onClick }) => (
 const QuizCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[160px] lg:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+      className="min-w-[160px] lg:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
    >
       <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <Brain className="w-5 h-5 text-black dark:text-white" />
@@ -104,7 +104,7 @@ const QuizCard = ({ item, onClick }) => (
 const SubjectCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <BookOpen className="w-6 h-6 text-black dark:text-white" />
@@ -124,7 +124,7 @@ const SubjectCard = ({ item, onClick }) => (
 const TopicCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <Layers className="w-5 h-5 text-black dark:text-white" />
@@ -151,7 +151,7 @@ const REEL_TYPE_CONFIG = {
 const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[200px] lg:min-w-[220px] rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
+      className="min-w-[200px] lg:min-w-[220px] rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
    >
       <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
          {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -179,7 +179,7 @@ const ReelCard = ({ item, onClick }) => {
    return (
       <div
          onClick={onClick}
-         className="min-w-[180px] lg:min-w-[200px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+         className="min-w-[180px] lg:min-w-[200px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
       >
          <div className={`flex items-center gap-1.5 self-start px-2 py-1 rounded-lg ${cfg.bg}`}>
             <TypeIcon className={`w-3.5 h-3.5 ${cfg.color}`} />
@@ -355,7 +355,7 @@ const HomePage = () => {
                <div className="grid grid-cols-3 gap-2.5 md:gap-3 lg:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-primary-700"
+                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-primary-700"
                   >
                      <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
                         <Zap className="w-7 h-7 text-white" />
@@ -364,7 +364,7 @@ const HomePage = () => {
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
-                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-primary-700"
+                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-primary-700"
                   >
                      <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
                         <FileText className="w-7 h-7 text-white" />
@@ -373,7 +373,7 @@ const HomePage = () => {
                   </button>
                   <button
                      onClick={() => router.push('/community-questions')}
-                     className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-black dark:border-white"
+                     className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-black dark:border-white"
                   >
                      <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
                         <MessageSquare className="w-7 h-7 text-white" />

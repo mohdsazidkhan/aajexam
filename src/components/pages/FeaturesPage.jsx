@@ -269,7 +269,7 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="p-4 lg:p-8">
-          <Card className="p-5 lg:p-16 text-center bg-slate-950 dark:bg-slate-900 border-4 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[2rem] lg:rounded-[4rem]">
+          <Card className="p-5 lg:p-16 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[2rem] lg:rounded-[4rem]">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
             <div className="relative z-10 space-y-4 lg:space-y-8">

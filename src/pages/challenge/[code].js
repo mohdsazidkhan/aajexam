@@ -40,7 +40,7 @@ export default function ChallengePage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-white dark:bg-slate-900 pb-24 font-outfit">
+            <div className="min-h-screen bg-background-page pb-24 font-outfit">
                 <div className="max-w-xl mx-auto px-4 py-8 animate-pulse">
                     <div className="h-5 w-32 bg-slate-200 dark:bg-slate-800 rounded-full mb-6" />
                     <div className="bg-slate-200 dark:bg-slate-800 rounded-[2rem] p-8 flex flex-col items-center gap-4">
@@ -60,7 +60,7 @@ export default function ChallengePage() {
     const hostScore = leaderboard.find(l => l.isHost);
 
     return (
-        <div className="min-h-screen bg-white dark:bg-slate-900 pb-24 font-outfit">
+        <div className="min-h-screen bg-background-page pb-24 font-outfit">
             <Seo title="Quiz Challenge!" description="You've been challenged to beat a quiz score." />
 
             <div className="max-w-xl mx-auto px-4 py-8">
@@ -69,7 +69,7 @@ export default function ChallengePage() {
                 </button>
 
                 {/* Challenge Header Card */}
-                <div className="bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white rounded-[2rem] p-8 text-center shadow-2xl relative overflow-hidden mb-8">
+                <div className="bg-black dark:bg-white rounded-[2rem] p-8 text-center shadow-2xl relative overflow-hidden mb-8">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-black opacity-10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4" />
                     
@@ -118,7 +118,7 @@ export default function ChallengePage() {
                         <div className="space-y-3">
                             {leaderboard.map((entry, index) => (
                                 <div key={index} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
-                                    index === 0 ? 'bg-gradient-to-r from-slate-100 dark:from-slate-800 to-slate-100 dark:to-slate-800 border border-slate-200 dark:border-slate-800 dark:from-white/20 dark:to-white/20 dark:border-white' :
+                                    index === 0 ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:bg-white/20 dark:border-white' :
                                     'bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
                                 }`}>
                                     <div className="flex-shrink-0">

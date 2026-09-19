@@ -26,7 +26,7 @@ export default function HalalDisclaimer() {
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 my-4">
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-2xl p-4 md:p-8 lg:p-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-2xl p-4 md:p-8 lg:p-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <div className="text-center mb-12">
@@ -99,7 +99,7 @@ export default function HalalDisclaimer() {
                                     </p>
                                     <button
                                         onClick={() => (window.location.href = '/')}
-                                        className="bg-primary-500 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-aajexam-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 transition-all"
+                                        className="bg-primary-500 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 transition-all"
                                     >
                                         Back to Home
                                     </button>

@@ -42,12 +42,12 @@ const RefundPolicy = () => {
          <div className="min-h-screen font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16  border-b-4 border-slate-100 dark:border-slate-800 ">
+            <div className="relative overflow-hidden py-8 lg:py-16  border-b-2 border-slate-100 dark:border-slate-800 ">
                <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ y: 20, opacity: 0 }}
                      animate={{ y: 0, opacity: 1 }}
-                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-aajexam-secondary flex items-center justify-center mx-auto border-4 border-slate-50 dark:border-slate-700"
+                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-aajexam-secondary flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
                   >
                      <Banknote className="w-14 h-14 text-primary-500" />
                   </motion.div>
@@ -61,7 +61,6 @@ const RefundPolicy = () => {
                   </div>
                </div>
                {/* Background Grid Pattern */}
-               <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             </div>
 
             <div className="container mx-auto max-w-7xl">

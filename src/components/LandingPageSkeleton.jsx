@@ -5,7 +5,7 @@ const LandingPageSkeleton = () => {
     return (
         <div className="min-h-screen  transition-colors duration-300 pt-12 sm:pt-0">
             {/* Navbar Skeleton */}
-            <header className="fixed z-[99] w-full bg-white dark:bg-slate-900 border-b-4 border-slate-100 dark:border-slate-800 top-0">
+            <header className="fixed z-[99] w-full bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 top-0">
                 <div className="container mx-auto px-6 lg:px-12">
                     <div className="flex justify-between items-center h-20">
                         {/* Logo Placeholder */}
@@ -52,7 +52,7 @@ const LandingPageSkeleton = () => {
                 </div>
 
                 {/* Stats Grid Skeleton */}
-                <div className="mt-16 bg-white dark:bg-slate-900/50 rounded-[3rem] p-10 border-4 border-b-[12px] border-slate-100 dark:border-slate-800 shadow-xl">
+                <div className="mt-16 bg-white dark:bg-slate-900/50 rounded-[3rem] p-10 border-2 border-slate-100 dark:border-slate-800 shadow-xl">
                     <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-cols-6 gap-8">
                         {[...Array(6)].map((_, i) => (
                             <div key={i} className="flex flex-col items-center gap-4">
@@ -69,7 +69,7 @@ const LandingPageSkeleton = () => {
 
             {/* Content Section Skeleton */}
             <div className="container mx-auto px-6 pb-24">
-                <div className="bg-white dark:bg-slate-800 border-4 border-b-[12px] border-slate-100 dark:border-slate-700 rounded-[3.5rem] p-10 lg:p-20 shadow-2xl relative overflow-hidden">
+                <div className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-700 rounded-[3.5rem] p-10 lg:p-20 shadow-2xl relative overflow-hidden">
                     <div className="flex flex-col items-center mb-16 relative z-10">
                         <Skeleton width="100px" height="100px" borderRadius="2rem" className="mb-8 shadow-aajexam rotate-3" />
                         <Skeleton width="70%" height="4rem" borderRadius="24px" className="mb-6" />
@@ -79,7 +79,7 @@ const LandingPageSkeleton = () => {
                     {/* Reward Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
                         {[1, 2, 3, 4].map((i) => (
-                            <div key={i} className="h-64 rounded-[2.5rem] bg-white dark:bg-slate-900/50 border-4 border-slate-100 dark:border-slate-800 p-8 shadow-xl">
+                            <div key={i} className="h-64 rounded-[2.5rem] bg-white dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 p-8 shadow-xl">
                                 <Skeleton width="50%" height="2rem" className="mb-6 rounded-lg lg:rounded-xl" />
                                 <Skeleton width="100%" height="1rem" className="mb-4 rounded-lg" />
                                 <Skeleton width="80%" height="1rem" className="mb-8 rounded-lg" />

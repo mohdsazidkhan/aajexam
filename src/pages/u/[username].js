@@ -83,7 +83,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit">
+    <div className="min-h-screen bg-background-page pb-20 font-outfit">
       <div className="container mx-auto px-4 py-8"><ProfileSkeleton /></div>
     </div>
   );
@@ -127,13 +127,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Profile Header */}
         <div className="mb-6">
           {/* Banner */}
-          <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.15),transparent)] rounded-2xl md:rounded-3xl" />
-          </div>
+          <div className="h-32 sm:h-40 lg:h-48 bg-primary-500 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
 
           {/* Profile Card - overlaps banner */}
           <div className="-mt-16 sm:-mt-20 relative z-10">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-5 lg:p-6">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-5 lg:p-6">
               {/* Avatar + Info + Action */}
               <div className="flex items-start gap-3 sm:gap-4">
                 {/* Avatar */}
@@ -144,10 +142,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         alt={profile.name}
                         width={112}
                         height={112}
-                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700"
+                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700"
                       />
                     ) : (
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
                       {profile.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -175,7 +173,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 )}
                 {isOwnProfile && (
                   <button
-                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg lg:rounded-xl border-2 border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
+                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
                     onClick={() => router.push('/settings')}
                   >
                     Edit Profile
@@ -237,7 +235,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         <div className="space-y-4 pb-8">
           {/* Badges Section */}
           {profile.badges && profile.badges.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                 Badges
@@ -257,7 +255,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Quiz Statistics Section */}
           {(profile.isPublicProfile || isOwnProfile) && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                 Exam Statistics
@@ -287,7 +285,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Reels Grid — Instagram style */}
           {reels.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
                 <PlayCircle className="w-5 h-5" />
@@ -297,11 +295,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
                 {reels.map((reel) => {
                   const typeConfig = {
-                    question: { icon: FileText, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Question' },
-                    fact: { icon: Lightbulb, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Fact' },
-                    tip: { icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Tip' },
-                    current_affairs: { icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Current Affairs' },
-                    poll: { icon: BarChart3, gradient: 'from-primary-500 to-primary-700', label: 'Poll' },
+                    question: { icon: FileText, gradient: 'bg-black dark:bg-white', label: 'Question' },
+                    fact: { icon: Lightbulb, gradient: 'bg-black dark:bg-white', label: 'Fact' },
+                    tip: { icon: Zap, gradient: 'bg-black dark:bg-white', label: 'Tip' },
+                    current_affairs: { icon: Newspaper, gradient: 'bg-black dark:bg-white', label: 'Current Affairs' },
+                    poll: { icon: BarChart3, gradient: 'bg-primary-500', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;
                   const Icon = config.icon;
@@ -309,7 +307,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
                   return (
                     <Link href="/reels" key={reel._id}>
-                      <div className={`relative aspect-[3/4] rounded-lg lg:rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br ${config.gradient} group cursor-pointer`}>
+                      <div className={`relative aspect-[3/4] rounded-lg lg:rounded-xl sm:rounded-2xl overflow-hidden ${config.gradient} group cursor-pointer`}>
                         {/* Content preview */}
                         <div className="absolute inset-0 p-2.5 sm:p-3 pb-8 sm:pb-9 flex flex-col justify-between">
                           {/* Type badge */}
@@ -323,7 +321,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                           </p>
                         </div>
                         {/* Bottom overlay with views */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-2.5 pb-2 pt-6">
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-2.5 pb-2 pt-6">
                           <div className="flex items-center gap-1">
                             <Eye className="w-3 h-3 text-white/90" />
                             <span className="text-[10px] sm:text-[11px] font-bold text-white/90">
@@ -353,7 +351,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Private Profile Message */}
           {!profile.isPublicProfile && !isOwnProfile && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-8 sm:p-10 border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl text-center">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-8 sm:p-10 border-2 border-slate-200 dark:border-slate-800 shadow-xl text-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
                 🔒
               </div>

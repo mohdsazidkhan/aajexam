@@ -26,10 +26,10 @@ const Loading = ({
   };
 
   const colorMap = {
-    primary: 'from-primary-400 to-primary-600 shadow-primary-500/20',
-    secondary: 'from-primary-400 to-primary-600 shadow-primary-500/20',
-    accent: 'from-black dark:from-white to-black dark:to-white shadow-black/20/20 dark:shadow-white/10/20',
-    gray: 'from-slate-400 to-slate-600 shadow-slate-500/20',
+    primary: 'bg-primary-400 shadow-primary-500/20',
+    secondary: 'bg-primary-400 shadow-primary-500/20',
+    accent: 'bg-black dark:bg-white shadow-black/20/20 dark:shadow-white/10/20',
+    gray: 'bg-slate-400 shadow-slate-500/20',
   };
 
   const selectedSize = sizeMap[size] || sizeMap.md;
@@ -53,7 +53,7 @@ const Loading = ({
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute ${selectedSize.ring} rounded-full bg-gradient-to-br ${selectedColor} blur-xl`}
+          className={`absolute ${selectedSize.ring} rounded-full ${selectedColor} blur-xl`}
         />
 
         {/* Center Glowing Core */}
@@ -67,7 +67,7 @@ const Loading = ({
             ]
           }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className={`relative ${selectedSize.dot} rounded-full bg-gradient-to-br ${selectedColor} z-10 shadow-lg`}
+          className={`relative ${selectedSize.dot} rounded-full ${selectedColor} z-10 shadow-lg`}
         />
 
         {/* Loading Message */}

@@ -170,7 +170,7 @@ const ReelCreate = () => {
   if (!isAuthenticated()) {
     return (
       <MobileAppWrapper>
-        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">Login required to create reels</p>
             <Link href="/login" className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-black dark:bg-white text-white dark:text-black text-sm font-semibold">Login</Link>

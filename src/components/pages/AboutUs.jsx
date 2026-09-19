@@ -66,7 +66,7 @@ const AboutUs = () => {
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary rotate-12">
                   <Sparkles className="text-white w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
@@ -92,7 +92,7 @@ const AboutUs = () => {
 
             {/* --- Mission & Vision --- */}
             <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-4 lg:p-8">
-               <Card className="p-10 space-y-8 border-none bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl relative overflow-hidden">
+               <Card className="p-10 space-y-8 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
                      <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-400 backdrop-blur-sm border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
@@ -168,7 +168,7 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section className="p-4 lg:p-8">
-               <Card className="p-12 text-center bg-gradient-to-r from-primary-500 to-primary-500 border-none text-white shadow-aajexam-primary relative overflow-hidden">
+               <Card className="p-12 text-center bg-primary-500 border-none text-white shadow-aajexam-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>

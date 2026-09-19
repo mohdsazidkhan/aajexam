@@ -8,7 +8,7 @@ const PracticeTestsEducational = ({ levels }) => {
                 {/* Main Heading with Icon */}
                 <div className="text-center mb-20 animate-bounce-in">
                     <div className="inline-block mb-6">
-                        <div className="w-24 h-24 bg-primary-500 rounded-[2rem] flex items-center justify-center shadow-aajexam-primary border-4 border-white dark:border-slate-800 rotate-3">
+                        <div className="w-24 h-24 bg-primary-500 rounded-[2rem] flex items-center justify-center shadow-aajexam-primary border-2 border-white dark:border-slate-800 rotate-3">
                             <FaTrophy className="text-4xl text-white" />
                         </div>
                     </div>
@@ -23,10 +23,10 @@ const PracticeTestsEducational = ({ levels }) => {
                 {/* Educational Content Cards */}
                 <div className="space-y-12 mb-20">
                     {/* About Practice Test System */}
-                    <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl border-4 border-b-[12px] border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
+                    <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl border-2 border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
-                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-primary border-4 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
+                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-primary border-2 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
                                 <FaBook className="text-4xl text-white" />
                             </div>
                             <div className="flex-1 text-center lg:text-left">
@@ -46,10 +46,10 @@ const PracticeTestsEducational = ({ levels }) => {
                     </div>
 
                     {/* Learning Methodology */}
-                    <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl border-4 border-b-[12px] border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
+                    <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-2xl border-2 border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
-                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-secondary border-4 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
+                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-secondary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
                                 <FaChartLine className="text-4xl text-white" />
                             </div>
                             <div className="flex-1 text-center lg:text-left">
@@ -69,10 +69,10 @@ const PracticeTestsEducational = ({ levels }) => {
                     </div>
 
                     {/* Exam Coverage */}
-                    <div className="group bg-white dark:bg-slate-900/50 rounded-[2.5rem] p-10 lg:p-14 shadow-xl border-4 border-b-[12px] border-slate-100 dark:border-slate-800 transition-all hover:-translate-y-2 relative overflow-hidden">
+                    <div className="group bg-white dark:bg-slate-900/50 rounded-[2.5rem] p-10 lg:p-14 shadow-xl border-2 border-slate-100 dark:border-slate-800 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-24 lg:w-48 h-24 lg:h-48 bg-primary-500/5 rounded-full blur-3xl -ml-24 -mb-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
-                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-primary border-4 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
+                            <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-primary border-2 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
                                 <FaGraduationCap className="text-4xl text-white" />
                             </div>
                             <div className="flex-1 text-center lg:text-left">
@@ -93,8 +93,7 @@ const PracticeTestsEducational = ({ levels }) => {
                 </div>
 
                 {/* Preparation Tips Section */}
-                <div className="bg-white dark:bg-slate-800 rounded-[3rem] p-4 md:p-8 lg:p-12 border-4 border-b-[16px] border-slate-100 dark:border-slate-700 shadow-2xl relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 2px, transparent 2px)', backgroundSize: '32px 32px' }}></div>
+                <div className="bg-white dark:bg-slate-800 rounded-[3rem] p-4 md:p-8 lg:p-12 border-2 border-slate-100 dark:border-slate-700 shadow-2xl relative overflow-hidden">
                     <div className="text-center mb-4 lg:mb-8 relative z-10">
                         <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                             Aspirant <span className="text-primary-700 dark:text-primary-500">Tips</span>
@@ -110,7 +109,7 @@ const PracticeTestsEducational = ({ levels }) => {
                             { title: "Social Learning", text: "Compete on leaderboards to stay motivated.", color: "slate" },
                             { title: "Recharge", text: "Take scheduled breaks to maintain focus.", color: "primary" },
                         ].map((tip, idx) => (
-                            <div key={idx} className="bg-white dark:bg-slate-900 p-4 lg:p-8 rounded-[2.5rem] border-4 border-b-[8px] border-slate-100 dark:border-slate-800 shadow-xl transition-all hover:-translate-y-2 group/tip active:translate-y-0 active:border-b-4">
+                            <div key={idx} className="bg-white dark:bg-slate-900 p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 shadow-xl transition-all hover:-translate-y-2 group/tip active:translate-y-0">
                                 <h3 className={`inline-flex px-5 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-widest text-white mb-6 shadow-aajexam-${tip.color} bg-${tip.color}-500 transform -rotate-2 group-hover/tip:rotate-0 transition-transform`}>
                                     {tip.title}
                                 </h3>

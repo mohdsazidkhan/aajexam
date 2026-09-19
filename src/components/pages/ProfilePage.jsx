@@ -60,10 +60,10 @@ const Avatar = ({ student, sizeClass }) => (
       alt={student?.name || 'Profile'}
       width={112}
       height={112}
-      className={`${sizeClass} rounded-lg lg:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
+      className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
     />
   ) : (
-    <div className={`${sizeClass} rounded-lg lg:rounded-2xl border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
+    <div className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
       {student?.name?.charAt(0)?.toUpperCase() || 'U'}
     </div>
   )

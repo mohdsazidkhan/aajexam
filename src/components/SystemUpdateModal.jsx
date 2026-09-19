@@ -29,10 +29,10 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
       />
 
       <div
-        className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border-2 border-b-8 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border-2 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* HEADER */}
-        <div className="bg-primary-500 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-aajexam-primary border-b-4 border-white/20">
+        <div className="bg-primary-500 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-aajexam-primary border-b-2 border-white/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-xl transform -rotate-6">

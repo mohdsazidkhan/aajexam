@@ -48,7 +48,7 @@ const QuizHistoryPage = () => {
    };
 
    if (loading && attempts.length === 0) return (
-      <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen bg-background-page pb-20 font-outfit selection:bg-primary-500 selection:text-white">
          <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
       </div>
    );
@@ -107,7 +107,7 @@ const QuizHistoryPage = () => {
                                           <BrainCircuit className="w-5 h-5 text-primary-600" />
                                        </div>
                                        {isCompleted && (
-                                          <div className={`w-9 h-9 rounded-full border-4 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black text-lg`}>
+                                          <div className={`w-9 h-9 rounded-full border-2 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black text-lg`}>
                                              {rank.label}
                                           </div>
                                        )}

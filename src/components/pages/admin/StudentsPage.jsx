@@ -207,7 +207,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div className="flex items-center">
           <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
-            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gradient-to-r from-black dark:from-white to-primary-500 flex items-center justify-center">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-black dark:bg-white flex items-center justify-center">
               <span className="text-white font-medium text-sm sm:text-base">
                 {student.name?.charAt(0)?.toUpperCase() || 'U'}
               </span>
@@ -428,7 +428,7 @@ const StudentsPage = () => {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
                 >
                   <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                     <stat.icon className="w-5 h-5" />
@@ -441,7 +441,7 @@ const StudentsPage = () => {
           </motion.div>
 
           {/* Search & Filter Controls */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
               <div className="flex-1 relative group w-full lg:max-w-2xl">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
@@ -504,7 +504,7 @@ const StudentsPage = () => {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
               >
                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                   <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
@@ -521,7 +521,7 @@ const StudentsPage = () => {
               >
                 {/* View Render Logic */}
                 {viewMode === "table" && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                     <table className="w-full min-w-[700px]">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
@@ -548,7 +548,7 @@ const StudentsPage = () => {
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-400 tabular-nums">{((currentPage - 1) * itemsPerPage) + i + 1}</td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-2xl flex items-center justify-center text-white font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <div className="w-12 h-12 bg-primary-500 rounded-2xl flex items-center justify-center text-white font-black shadow-lg group-hover:scale-110 transition-transform">
                                   {student.name?.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
@@ -605,9 +605,9 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
                       >
-                        <div className="w-20 h-20 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <div className="w-20 h-20 bg-primary-500 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
                         </div>
 
@@ -658,12 +658,12 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-2xl flex flex-col items-center text-center cursor-pointer overflow-hidden"
+                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-2xl flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
-                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-500 to-primary-500" />
+                        <div className="absolute top-0 left-0 w-full h-2 bg-primary-500" />
 
                         <div className="mt-4 mb-6 relative">
-                          <div className="w-24 h-24 bg-gradient-to-tr from-primary-500 to-primary-500 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-primary-500 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
@@ -740,7 +740,7 @@ const StudentsPage = () => {
                 initial={{ opacity: 0, scale: 0.95, y: 40 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 40 }}
-                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
+                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
               >
                 <div className="p-4 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3 lg:gap-6">

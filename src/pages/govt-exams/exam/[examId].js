@@ -176,7 +176,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none shadow-aajexam-primary overflow-hidden relative">
+      <Card className="bg-primary-500 text-white border-none shadow-aajexam-primary overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
@@ -303,7 +303,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 ${
               activeTab === tab.key
                 ? 'bg-primary-500 text-white border-primary-600'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700'
@@ -335,7 +335,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0">
                       <BookOpen className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -371,7 +371,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0">
                       <FolderOpen className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -474,7 +474,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0">
                         <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -551,7 +551,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none p-6 lg:p-8">
+        <Card className="bg-primary-500 text-white border-none p-6 lg:p-8">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

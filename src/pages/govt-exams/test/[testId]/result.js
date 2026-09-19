@@ -140,7 +140,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
         <Card className={`
           relative overflow-hidden text-center py-8 px-5 lg:py-12 lg:px-8 border-none shadow-2xl
-          ${isGreat ? 'bg-gradient-to-br from-primary-500 to-black dark:to-white text-white' : 'bg-white dark:bg-slate-800'}
+          ${isGreat ? 'bg-primary-500 text-white' : 'bg-white dark:bg-slate-800'}
         `}>
           <div className="relative z-10 space-y-6">
             <motion.div
@@ -434,7 +434,7 @@ const TestResult = ({ resolvedId } = {}) => {
       {/* --- Share Result --- */}
       {mounted && result && (
         <section className="p-4 lg:p-8">
-          <Card className="p-6 lg:p-8 border-2 bg-gradient-to-br from-primary-50 to-slate-100 dark:to-slate-800 dark:from-slate-800 dark:to-white/40">
+          <Card className="p-6 lg:p-8 border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">

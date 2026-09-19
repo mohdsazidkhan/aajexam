@@ -77,12 +77,12 @@ const ContactUs = ({ contactInfo = {
 
    return (
       <MobileAppWrapper title="Contact Support">
-         <div className="min-h-screen bg-white dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit mt-0">
+         <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white font-outfit mt-0">
             <div className="container mx-auto px-4 lg:px-10 py-10 lg:py-20 space-y-12 lg:space-y-20">
 
                {/* --- Header Section --- */}
                <section className="text-center space-y-6 relative overflow-hidden">
-                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-4 border-white/10 rotate-12">
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-2 border-white/10 rotate-12">
                      <MessageSquare className="w-10 h-10" />
                   </motion.div>
                   <div className="space-y-4">
@@ -134,7 +134,7 @@ const ContactUs = ({ contactInfo = {
                      </Card>
 
                      {/* Support Info */}
-                     <Card className="p-8 border-none bg-gradient-to-br from-primary-500 via-black dark:via-white to-primary-600 text-white shadow-aajexam-secondary rounded-[3rem] overflow-hidden group relative">
+                     <Card className="p-8 border-none bg-primary-500 text-white shadow-aajexam-secondary rounded-[3rem] overflow-hidden group relative">
                         <div className="flex items-center gap-5 relative z-10">
                            <div className="w-14 h-14 bg-white/20 rounded-2xl backdrop-blur-md border-2 border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-lg">
                               <Headset className="w-8 h-8" />
@@ -150,7 +150,7 @@ const ContactUs = ({ contactInfo = {
 
                   {/* --- Contact Form --- */}
                   <div className="lg:col-span-6">
-                     <Card className="p-6 lg:p-8 space-y-8 border-2 border-b-[12px] border-slate-200/80 dark:border-slate-800 shadow-2xl rounded-[3rem] lg:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
+                     <Card className="p-6 lg:p-8 space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-2xl rounded-[3rem] lg:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -ml-32 -mt-32" />
 
                         <div className="space-y-6 relative z-10">

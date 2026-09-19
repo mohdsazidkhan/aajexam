@@ -81,11 +81,11 @@ const EMPTY_SECTIONS = () => SECTION_ORDER.reduce((acc, key) => {
 }, {});
 
 const REEL_TYPE_CONFIG = {
-   question: { icon: HelpCircle, gradient: 'from-black dark:from-white to-black dark:to-white' },
-   fact: { icon: BookOpen, gradient: 'from-black dark:from-white to-black dark:to-white' },
-   tip: { icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white' },
-   current_affairs: { icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white' },
-   poll: { icon: BarChart3, gradient: 'from-primary-500 to-primary-700' },
+   question: { icon: HelpCircle, gradient: 'bg-black dark:bg-white' },
+   fact: { icon: BookOpen, gradient: 'bg-black dark:bg-white' },
+   tip: { icon: Zap, gradient: 'bg-black dark:bg-white' },
+   current_affairs: { icon: Newspaper, gradient: 'bg-black dark:bg-white' },
+   poll: { icon: BarChart3, gradient: 'bg-primary-500' },
 };
 
 const formatCount = (n) => {
@@ -308,7 +308,7 @@ const SearchPage = () => {
             return (
                <div className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl transition-colors">
                   <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
-                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gradient-to-br from-black dark:from-white to-black dark:to-white p-[2px] shrink-0">
+                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black dark:bg-white p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
                      <div className="min-w-0 flex-1">
@@ -330,7 +330,7 @@ const SearchPage = () => {
          case 'test':
             return (
                <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">{item.duration} min · {item.totalMarks} marks</p>
@@ -343,7 +343,7 @@ const SearchPage = () => {
          case 'pattern':
             return (
                <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
                      <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
@@ -354,7 +354,7 @@ const SearchPage = () => {
          case 'quiz':
             return (
                <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">
@@ -372,7 +372,7 @@ const SearchPage = () => {
          case 'subject':
             return (
                <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
@@ -383,7 +383,7 @@ const SearchPage = () => {
          case 'topic':
             return (
                <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -394,7 +394,7 @@ const SearchPage = () => {
          case 'hashtag':
             return (
                <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
                      <p className="text-xs text-slate-400">{item.count} question{item.count !== 1 ? 's' : ''}</p>
@@ -405,7 +405,7 @@ const SearchPage = () => {
          case 'blog':
             return (
                <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
@@ -416,7 +416,7 @@ const SearchPage = () => {
          case 'note':
             return (
                <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
@@ -427,7 +427,7 @@ const SearchPage = () => {
          case 'examNews':
             return (
                <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
@@ -438,7 +438,7 @@ const SearchPage = () => {
          case 'currentAffair':
             return (
                <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white dark:text-black" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>
@@ -458,9 +458,9 @@ const SearchPage = () => {
       const isGrid = size === 'grid';
       return (
          <Link href="/reels" key={reel._id} className={isGrid ? '' : 'shrink-0 w-28'}>
-            <div className={`relative w-full overflow-hidden bg-gradient-to-br ${config.gradient} ${isGrid ? 'aspect-square' : 'h-40'}`}>
+            <div className={`relative w-full overflow-hidden ${config.gradient} ${isGrid ? 'aspect-square' : 'h-40'}`}>
                <div className="absolute top-1.5 left-1.5 z-10"><ReelIcon className="w-3 h-3 text-white/60" /></div>
-               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-8 px-2 pb-2">
+               <div className="absolute inset-x-0 bottom-0 bg-black/80 pt-8 px-2 pb-2">
                   <p className="text-[9px] font-bold text-white leading-tight line-clamp-2 mb-1">{displayTitle || 'Untitled'}</p>
                   <div className="flex items-center gap-1.5">
                      <Play className="w-2 h-2 text-white/80 fill-white/80" />
@@ -479,7 +479,7 @@ const SearchPage = () => {
    const hasAnySectionResults = SECTION_ORDER.some(key => (sections[key]?.items || []).length > 0);
 
    return (
-      <div className="min-h-screen bg-white dark:bg-slate-900 selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen bg-background-page selection:bg-primary-500 selection:text-white">
          <Head>
             <title>Search | AajExam</title>
          </Head>

@@ -168,7 +168,7 @@ const AdminGovtExamCategories = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-              <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-4 border-slate-100 dark:border-white/10 shadow-xl">
+              <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl">
                 {[
                   { icon: TableIcon, id: 'table', label: 'TAB' },
                   { icon: List, id: 'list', label: 'LIN' },
@@ -205,7 +205,7 @@ const AdminGovtExamCategories = () => {
               key="empty"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+              className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
             >
               <Shield className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
               <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO CATEGORIES FOUND</h3>
@@ -219,7 +219,7 @@ const AdminGovtExamCategories = () => {
             >
               {/* Table View */}
               {viewMode === "table" && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
                   <table className="w-full">
                     <thead>
                       <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
@@ -282,9 +282,9 @@ const AdminGovtExamCategories = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
                     >
-                      <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-4 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20' : 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20'}`}>
+                      <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20' : 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20'}`}>
                         {category.type === 'Central' ? <Globe className="w-10 h-10" /> : <Map className="w-10 h-10" />}
                       </div>
 
@@ -303,10 +303,10 @@ const AdminGovtExamCategories = () => {
                       </div>
 
                       <div className="flex gap-4">
-                        <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                        <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                           <Edit className="w-6 h-6" />
                         </button>
-                        <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                        <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                           <Trash2 className="w-6 h-6" />
                         </button>
                       </div>
@@ -324,9 +324,9 @@ const AdminGovtExamCategories = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
                     >
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-4 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white' : 'bg-primary-500 border-primary-200 text-white'}`}>
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-2 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white' : 'bg-primary-500 border-primary-200 text-white'}`}>
                         {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
                       </div>
 
@@ -362,9 +362,9 @@ const AdminGovtExamCategories = () => {
                 initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
-                className="bg-white dark:bg-[#0f172a] rounded-2xl lg:rounded-[3.5rem] border-8 border-slate-100 dark:border-white/5 max-w-lg w-full max-h-[75vh] overflow-hidden flex flex-col shadow-2xl"
+                className="bg-white dark:bg-[#0f172a] rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/5 max-w-lg w-full max-h-[75vh] overflow-hidden flex flex-col shadow-2xl"
               >
-                <div className="p-4 lg:p-10 border-b-4 border-slate-50 dark:border-white/5 flex items-center justify-between">
+                <div className="p-4 lg:p-10 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
                       <Settings className="w-6 h-6" />
@@ -385,7 +385,7 @@ const AdminGovtExamCategories = () => {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                      className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
                       placeholder="Category name..."
                       required
                     />
@@ -397,7 +397,7 @@ const AdminGovtExamCategories = () => {
                       <select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
+                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
                         required
                       >
                         <option value="Central">CENTRAL</option>
@@ -413,7 +413,7 @@ const AdminGovtExamCategories = () => {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows="4"
-                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
                       placeholder="Enter description..."
                     />
                   </div>

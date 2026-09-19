@@ -89,7 +89,7 @@ const HowItWorks = () => {
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden p-4 lg:p-8">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-4 border-white/10 rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-2 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
@@ -112,7 +112,7 @@ const HowItWorks = () => {
                      className={`relative flex flex-col lg:flex-row items-center gap-12 ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
                   >
                      {/* Step Marker */}
-                     <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden lg:flex">
+                     <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden lg:flex">
                         <div className={`w-3 h-3 rounded-full bg-${step.color}-500 shadow-lg`} />
                      </div>
 
@@ -198,7 +198,7 @@ const HowItWorks = () => {
 
             {/* --- CTA --- */}
             <section className="p-4 lg:p-8">
-               <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-4 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
+               <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 

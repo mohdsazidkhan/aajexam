@@ -155,7 +155,7 @@ export default function MentorApply() {
 
           {/* Submit */}
           <button type="submit" disabled={loading}
-            className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-3 px-8 rounded-2xl transition-all shadow-aajexam-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
+            className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-3 px-8 rounded-2xl transition-all shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
             <Send className="w-4 h-4" /> {loading ? 'Submitting...' : 'Submit Application'}
           </button>
         </form>

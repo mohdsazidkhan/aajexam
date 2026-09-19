@@ -44,7 +44,7 @@ const ForgotPasswordPage = () => {
   return (
     <MobileAppWrapper showHeader={true} title="Account Recovery">
       <Seo title="Forgot Password – AajExam" description="Reset your AajExam password securely." noIndex={true} canonical="/forgot-password" />
-      <div className="h-auto lg:min-h-screen bg-white dark:bg-slate-900 flex flex-col selection:bg-primary-500 selection:text-white">
+      <div className="h-auto lg:min-h-screen bg-background-page flex flex-col selection:bg-primary-500 selection:text-white">
         <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
           {/* --- Background Decorative Icons --- */}
           <div className="absolute top-20 left-20 opacity-5 rotate-12 hidden lg:block"><ShieldQuestion className="w-64 h-64" /></div>

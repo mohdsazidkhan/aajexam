@@ -75,7 +75,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
   if (!quiz) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-background-page">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">Quiz Not Found</h1>
           <Link href="/search" className="text-primary-600 hover:text-primary-700">← Back to Search</Link>
@@ -89,7 +89,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
       'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30';
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 py-5 lg:py-12 px-4 pb-24">
+    <div className="min-h-screen bg-background-page py-5 lg:py-12 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
 
         {/* Breadcrumb */}
@@ -120,7 +120,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         {/* Quiz Header Card */}
         <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 lg:p-8 shadow-xl mb-6 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center mb-4">
-            <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center mr-4 shrink-0">
+            <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-primary-500 flex items-center justify-center mr-4 shrink-0">
               <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
             </div>
             <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
@@ -175,8 +175,8 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
             onClick={handleStartQuiz}
             className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
               isLocked
-                ? 'bg-gradient-to-r from-black dark:from-white to-black dark:to-white text-white dark:text-black hover:from-black dark:from-white hover:to-black dark:to-white'
-                : 'bg-gradient-to-r from-primary-600 to-black dark:to-white text-white hover:from-primary-700 hover:to-black dark:to-white'
+                ? 'bg-black dark:bg-white text-white dark:text-black hover:bg-black dark:bg-white'
+                : 'bg-primary-600 text-white hover:bg-primary-700'
             }`}
           >
             {isLocked ? (

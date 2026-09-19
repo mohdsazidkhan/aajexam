@@ -46,10 +46,10 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-center justify-center z-[9999] p-4 font-outfit">
-      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-2xl border-2 border-b-8 border-border-primary max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
+      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-2xl border-2 border-border-primary max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-aajexam-secondary border-4 border-white dark:border-slate-700">
+          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-aajexam-secondary border-2 border-white dark:border-slate-700">
             <FaSchool className="text-white text-xl lg:text-3xl" />
           </div>
 
@@ -179,14 +179,14 @@ const TestStartModal = ({
             </ul>
           </div>
 
-          <div className="bg-slate-100 dark:bg-slate-800/30 p-6 rounded-[2rem] border-2 border-b-8 border-slate-200/50 dark:border-slate-700/30 mb-8 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all group">
+          <div className="bg-slate-100 dark:bg-slate-800/30 p-6 rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 mb-8 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all group">
             <label className="flex items-center gap-4 cursor-pointer">
               <div className="relative">
                 <input
                   type="checkbox"
                   checked={acceptedRules}
                   onChange={(e) => setAcceptedRules(e.target.checked)}
-                  className="w-10 h-10 border-4 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-500 checked:border-primary-500 transition-all cursor-pointer shadow-aajexam"
+                  className="w-10 h-10 border-2 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-500 checked:border-primary-500 transition-all cursor-pointer shadow-aajexam"
                 />
                 {acceptedRules && (
                   <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />
@@ -209,7 +209,7 @@ const TestStartModal = ({
             <button
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
-              className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-4 ${acceptedRules
+              className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
                 ? 'bg-primary-500 text-white border-white/20 shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}

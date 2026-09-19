@@ -117,9 +117,9 @@ const QuizResultDetail = () => {
 
         {/* Score Card */}
         <div className="text-center mb-6">
-          <div className="bg-gradient-to-r from-primary-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-primary-900/30 dark:via-white/30 dark:to-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
+          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
             <div className="flex justify-center mb-3">
-              <div className="w-16 h-16 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-primary-400 rounded-full flex items-center justify-center">
                 <Trophy className="w-8 h-8 text-white" />
               </div>
             </div>
@@ -146,7 +146,7 @@ const QuizResultDetail = () => {
             </div>
 
             {attempt.rank && (
-              <div className="bg-gradient-to-r from-slate-100 dark:from-slate-800 to-slate-100 dark:to-slate-800 dark:from-white/30 dark:to-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl inline-flex items-center gap-2">
+              <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl inline-flex items-center gap-2">
                 <Crown className="w-4 h-4" />
                 <span className="font-semibold text-sm">Rank #{attempt.rank} · Top {Math.round(attempt.percentile || 0)}%</span>
               </div>
@@ -157,7 +157,7 @@ const QuizResultDetail = () => {
         {/* Question Review */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-r from-black dark:from-white to-black dark:to-white rounded-lg lg:rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-black dark:bg-white rounded-lg lg:rounded-xl flex items-center justify-center">
               <Brain className="w-5 h-5 text-white" />
             </div>
             <h2 className="text-lg font-bold text-slate-800 dark:text-white">Question Review</h2>
@@ -270,10 +270,10 @@ const QuizResultDetail = () => {
           <button 
             onClick={handleChallenge} 
             disabled={isGeneratingChallenge}
-            className="w-full px-6 py-4 bg-gradient-to-r from-black dark:from-white to-black dark:to-white hover:from-black hover:to-black text-white dark:text-black rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full px-6 py-4 bg-black dark:bg-white hover:bg-black text-white dark:text-black rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {isGeneratingChallenge ? (
-              <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+              <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             ) : (
               <><Users className="w-6 h-6" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
             )}
@@ -283,7 +283,7 @@ const QuizResultDetail = () => {
             <button onClick={() => router.push('/quiz-history')} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
               <ArrowLeft className="w-4 h-4" /> Quiz History
             </button>
-            <button onClick={() => router.push('/quizzes')} className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-black dark:to-white hover:from-primary-700 hover:to-black text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+            <button onClick={() => router.push('/quizzes')} className="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
               <BrainCircuit className="w-4 h-4" /> More Quizzes
             </button>
           </div>

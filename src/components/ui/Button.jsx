@@ -54,7 +54,7 @@ const Button = ({
     >
       {/* Premium Shimmer Overlay */}
       {!disabled && (variant === 'primary' || variant === 'secondary') && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
+        <div className="absolute inset-0 bg-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
       )}
 
       {/* Button Content */}

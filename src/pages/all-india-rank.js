@@ -20,7 +20,7 @@ const Sh = ({ className = '' }) => (
 const LeaderboardSkeleton = () => (
   <div className="space-y-3">
     {Array.from({ length: 8 }).map((_, i) => (
-      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-border-primary border-b-4">
+      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-border-primary">
         <Sh className="w-8 h-8 rounded-full flex-shrink-0" />
         <Sh className="w-10 h-10 rounded-full flex-shrink-0" />
         <div className="flex-1 space-y-2">
@@ -35,9 +35,9 @@ const LeaderboardSkeleton = () => (
 
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
-  1: { gradient: 'from-black dark:from-white to-black dark:to-white', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black' },
-  2: { gradient: 'from-slate-300 to-slate-500', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
-  3: { gradient: 'from-slate-100 dark:from-slate-800 to-black dark:to-white', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-white' },
+  1: { gradient: 'bg-black dark:bg-white', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black' },
+  2: { gradient: 'bg-slate-400', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
+  3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-white' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
@@ -63,7 +63,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
-  const podiumGradient = { 1: 'from-black dark:from-white to-black dark:to-white', 2: 'from-slate-300 to-slate-400', 3: 'from-slate-100 dark:from-slate-800 to-black dark:to-white' };
+  const podiumGradient = { 1: 'bg-black dark:bg-white', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
 
   return (
     <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
@@ -87,7 +87,7 @@ const Podium = ({ top3, currentUserId }) => {
               </p>
               <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}% avg</p>
             </div>
-            <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} bg-gradient-to-b ${podiumGradient[entry.rank] || 'from-slate-300 to-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
+            <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
               <span className="text-white font-black text-sm">#{entry.rank}</span>
             </div>
           </motion.div>
@@ -108,7 +108,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
   const rankBadge = (
     <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-      ${isTop3 ? `bg-gradient-to-br ${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}`}>
+      ${isTop3 ? `${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}`}>
       {entry.rank}
     </div>
   );
@@ -137,7 +137,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
     <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: Math.min(index * 0.025, 0.5) }}>
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
-        <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+        <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           {rankBadge}
           <div className="flex items-center gap-2.5 min-w-0">
@@ -156,7 +156,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
         </div>
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
-        <div className={`flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+        <div className={`flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           <div className="flex items-center gap-3">
             {rankBadge}
@@ -298,9 +298,9 @@ const AllIndiaRankPage = () => {
           <div className="space-y-5 lg:space-y-8">
             
             {/* ── Hero Banner — gold-accented premium treatment, distinct from the free Leaderboard page ── */}
-            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-black/30 dark:border-white/30 dark:border-white/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black dark:via-white to-slate-900" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 dark:from-white/10 via-transparent to-transparent" />
+            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/30 dark:border-white/30 dark:border-white/20">
+              <div className="absolute inset-0 bg-slate-900" />
+              <div className="absolute inset-0 bg-black/10 dark:bg-white/10" />
               <div className="absolute top-0 right-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none blur-2xl" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 dark:bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none blur-2xl" />
 
@@ -309,7 +309,7 @@ const AllIndiaRankPage = () => {
                 {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-black/20 dark:from-white/20 via-black/20 dark:via-white/20 to-black/20 dark:to-white/20 border border-black/40 dark:border-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white dark:text-black text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
+                  className="inline-flex items-center gap-2 bg-black/20 dark:bg-white/20 border border-black/40 dark:border-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white dark:text-black text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
                 >
                   <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                     <Sparkles className="w-3.5 h-3.5 text-black dark:text-white" />
@@ -371,7 +371,7 @@ const AllIndiaRankPage = () => {
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title="Refresh Ranks"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">Refresh</span>

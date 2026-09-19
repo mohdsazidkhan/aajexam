@@ -59,7 +59,7 @@ const Card = ({
     >
       {/* Premium Shimmer for Highlights */}
       {variant.includes('glass') && (
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/5 pointer-events-none" />
+        <div className="absolute inset-0 bg-white/5 pointer-events-none" />
       )}
 
       <div className="relative z-10">

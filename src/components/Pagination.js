@@ -73,7 +73,7 @@ const Pagination = ({
           whileTap={currentPage > 1 ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-300 border-b-4 shadow-sm ${
+          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-300 border-b-2 shadow-sm ${
             currentPage === 1
               ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed'
               : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'
@@ -95,7 +95,7 @@ const Pagination = ({
                  whileTap={!isDots && !isCurrent ? { y: 0 } : {}}
                  onClick={() => !isDots && onPageChange(page)}
                  disabled={isDots}
-                 className={`min-w-[44px] h-11 px-2 flex items-center justify-center rounded-2xl font-black font-outfit text-xs transition-all duration-300 border-b-4 ${
+                 className={`min-w-[44px] h-11 px-2 flex items-center justify-center rounded-2xl font-black font-outfit text-xs transition-all duration-300 border-b-2 ${
                    isCurrent
                      ? 'bg-primary-500 border-primary-600 text-white shadow-aajexam-primary translate-y-0.5'
                      : isDots
@@ -115,7 +115,7 @@ const Pagination = ({
           whileTap={currentPage < totalPages ? { y: 0 } : {}}
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-300 border-b-4 shadow-sm ${
+          className={`flex items-center justify-center w-11 h-11 rounded-2xl transition-all duration-300 border-b-2 shadow-sm ${
             currentPage === totalPages
               ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed'
               : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600'

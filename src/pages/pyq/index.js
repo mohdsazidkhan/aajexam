@@ -113,7 +113,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     </nav>
 
                     {/* Hero */}
-                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
                             <div className="space-y-2">
                                 <span className="block text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest">PYQ Library</span>
@@ -148,7 +148,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                     {/* Browse by exam — high-value internal linking for SEO */}
                     {examsWithPYQ.length > 0 && (
-                        <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+                        <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight flex items-center">
                                 <FaGraduationCap className="text-primary-600 mr-3" /> Browse PYQs by Exam
                             </h2>
@@ -193,7 +193,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     )}
 
                     {/* Long-form intro */}
-                    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+                    <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> Why Solve PYQs?
                         </h2>
@@ -203,7 +203,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     </section>
 
                     {/* Latest / filtered list */}
-                    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+                    <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                         <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
                                 {filterExam || filterYear ? 'Filtered Papers' : 'Latest PYQ Papers'}
@@ -293,7 +293,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {/* Dark header */}
-                                <div className="bg-gradient-to-br from-slate-900 to-slate-950 p-6 text-white relative overflow-hidden">
+                                <div className="bg-slate-900 p-6 text-white relative overflow-hidden">
                                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/10 rounded-full blur-2xl" />
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="space-y-1">
@@ -342,7 +342,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     <div className="flex flex-col gap-3 pt-1">
                                         <button
                                             onClick={() => router.push('/subscription')}
-                                            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-lg shadow-primary-500/20 border-b-4 border-primary-700 active:translate-y-0.5 transition-all"
+                                            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-lg shadow-primary-500/20 border-b-2 border-primary-700 active:translate-y-0.5 transition-all"
                                         >
                                             Get PRO — Unlock All PYQs →
                                         </button>
@@ -359,7 +359,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     )}
 
                     {/* FAQ */}
-                    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+                    <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                             Frequently Asked Questions
                         </h2>

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const flashcardSchema = new mongoose.Schema({
     content: { type: String, required: true }, // HTML/Markdown allowed
     image: { type: String }, // Optional image URL
-    backgroundColor: { type: String, default: 'bg-gradient-to-br from-black dark:from-white to-black dark:to-white' } // Tailwind classes for card background
+    backgroundColor: { type: String, default: 'bg-black dark:bg-white' } // Tailwind classes for card background
 });
 
 const flashcardDeckSchema = new mongoose.Schema({

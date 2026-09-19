@@ -53,7 +53,7 @@ export default function SharedResult({ stats }) {
 
       <PublicNavbar />
 
-      <main className="min-h-screen bg-white dark:bg-slate-900 py-12 px-4">
+      <main className="min-h-screen bg-background-page py-12 px-4">
         <div className="max-w-4xl mx-auto space-y-10">
 
           <motion.div
@@ -61,7 +61,7 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-2xl bg-gradient-to-br from-primary-500 via-black dark:via-white to-black dark:to-white text-white p-8 lg:p-12">
+            <Card className="relative overflow-hidden border-none shadow-2xl bg-primary-500 text-white p-8 lg:p-12">
               <div className="absolute top-0 right-0 opacity-10">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>

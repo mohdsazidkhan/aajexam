@@ -119,7 +119,7 @@ const ExamHistoryPage = () => {
                                           <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-colors">
                                              <GraduationCap className="w-6 h-6" />
                                           </div>
-                                          <div className={`w-10 h-10 rounded-full border-4 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black font-outfit text-xl shadow-sm`}>
+                                          <div className={`w-10 h-10 rounded-full border-2 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black font-outfit text-xl shadow-sm`}>
                                              {rank.label}
                                           </div>
                                        </div>

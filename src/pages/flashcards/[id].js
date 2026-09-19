@@ -74,7 +74,7 @@ export default function FlashcardDeck() {
     }
 
     const currentCard = deck.cards[currentIndex];
-    const bgClass = currentCard.backgroundColor || 'bg-gradient-to-br from-black dark:from-white to-black dark:to-white';
+    const bgClass = currentCard.backgroundColor || 'bg-black dark:bg-white';
 
     return (
         <div className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden font-outfit select-none">
@@ -91,7 +91,7 @@ export default function FlashcardDeck() {
                 <div className="absolute inset-0 bg-black/20" />
 
                 {/* Top UI / Progress Bar */}
-                <div className="absolute top-0 left-0 right-0 z-20 p-4 pt-6 sm:pt-4 bg-gradient-to-b from-black/60 to-transparent">
+                <div className="absolute top-0 left-0 right-0 z-20 p-4 pt-6 sm:pt-4 bg-black/60">
                     {/* Segmented Progress */}
                     <div className="flex gap-1 mb-4">
                         {deck.cards.map((_, idx) => (

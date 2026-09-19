@@ -80,7 +80,7 @@ export default function CommunityQuestionDetailPage() {
         <Card className="p-5 lg:p-6 space-y-4">
           {/* Author + exam */}
           <div className="flex items-center gap-2 text-xs">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-400 to-black dark:to-white text-white text-xs font-bold flex items-center justify-center">
+            <div className="w-7 h-7 rounded-full bg-primary-400 text-white text-xs font-bold flex items-center justify-center">
               {(question.author?.name || '?').charAt(0).toUpperCase()}
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || 'User'}</span>

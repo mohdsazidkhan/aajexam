@@ -28,8 +28,8 @@ export default function Custom500() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
-        <div className="max-w-md w-full bg-white dark:bg-slate-900 shadow-2xl rounded-[3rem] p-10 text-center border-2 border-b-8 border-slate-200 dark:border-slate-800 relative z-10">
-          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-[2rem] mb-8 shadow-aajexam-secondary border-4 border-white dark:border-slate-800">
+        <div className="max-w-md w-full bg-white dark:bg-slate-900 shadow-2xl rounded-[3rem] p-10 text-center border-2 border-slate-200 dark:border-slate-800 relative z-10">
+          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-[2rem] mb-8 shadow-aajexam-secondary border-2 border-white dark:border-slate-800">
             <svg className="w-12 h-12 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -50,20 +50,20 @@ export default function Custom500() {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => window.location.reload()}
-              className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-aajexam-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+              className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
               Try Again
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleGoHome}
-                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-aajexam border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-aajexam border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
               >
                 Home
               </button>
               <button
                 onClick={handleGoBack}
-                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-aajexam border-b-4 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-aajexam border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
               >
                 Back
               </button>

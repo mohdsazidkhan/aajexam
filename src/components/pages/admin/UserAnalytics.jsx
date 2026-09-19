@@ -285,7 +285,7 @@ const UserAnalytics = () => {
         </motion.div>
 
         {/* Controller Bar */}
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
               <Filter className="w-5 h-5" />
@@ -341,7 +341,7 @@ const UserAnalytics = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">

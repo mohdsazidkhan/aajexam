@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
+        <div className="min-h-screen flex items-center justify-center bg-background-page p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -45,8 +45,8 @@ class ErrorBoundary extends React.Component {
                 className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 lg:w-48 h-24 lg:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
               />
 
-              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-4 border-black/20 dark:border-white/20 shadow-2xl mb-10 group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-black/10 dark:from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-2xl mb-10 group overflow-hidden">
+                <div className="absolute inset-0 bg-black/10 dark:bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <ShieldAlert className="w-16 h-16 text-black dark:text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
               </div>
 
@@ -59,7 +59,7 @@ class ErrorBoundary extends React.Component {
             </div>
 
             {/* Action Console Area */}
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-4 border-slate-100 dark:border-slate-800 p-10 shadow-2xl space-y-8 relative overflow-hidden">
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 p-10 shadow-2xl space-y-8 relative overflow-hidden">
               {/* Secondary Decorative Glow */}
               <div className="absolute -right-20 -bottom-20 w-40 h-40 bg-primary-500/5 rounded-full blur-[60px] pointer-events-none" />
 

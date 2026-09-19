@@ -252,7 +252,7 @@ const AdminGovtExamTests = () => {
                   { label: 'PAID TESTS', val: testStats.paid, icon: Lock, color: 'primary' },
                   { label: 'AVG DURATION', val: `${testStats.avgDuration}m`, icon: Timer, color: 'primary' }
                ].map((stat, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl group transition-all">
+                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl group transition-all">
                      <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-inner`}><stat.icon className="w-6 h-6" /></div>
                      <div className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{stat.val}</div>
                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>
@@ -261,7 +261,7 @@ const AdminGovtExamTests = () => {
             </div>
 
             {/* Hierarchical Filters */}
-            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
+            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6 font-outfit text-[10px] font-black uppercase tracking-widest">
                   <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
                      <Compass className="w-4 h-4 text-primary-600" />
@@ -292,7 +292,7 @@ const AdminGovtExamTests = () => {
                {loading ? (
                   <div className="flex items-center justify-center py-24"><AdminTableSkeleton /></div>
                ) : tests.length === 0 ? (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
                      <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                      <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">No Tests Found</h3>
                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Select a pattern above to view its tests, or create a new test.</p>
@@ -300,7 +300,7 @@ const AdminGovtExamTests = () => {
                ) : (
                   <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                      {viewMode === 'table' && (
-                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
                            <table className="w-full border-collapse">
                               <thead>
                                  <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -347,7 +347,7 @@ const AdminGovtExamTests = () => {
                      {viewMode === 'grid' && (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                            {tests.map((test, idx) => (
-                              <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit group overflow-hidden">
+                              <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit group overflow-hidden">
                                  <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
                                  <div className="flex justify-between items-start mb-4 lg:mb-8">
                                     <div className="p-4 bg-slate-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform"><FileText className="w-6 h-6 text-slate-400 group-hover:text-primary-500" /></div>
@@ -378,7 +378,7 @@ const AdminGovtExamTests = () => {
                      {viewMode === 'list' && (
                         <div className="space-y-3 lg:space-y-6">
                            {tests.map((test, idx) => (
-                              <motion.div key={test._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
+                              <motion.div key={test._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
                                  <div className="flex items-center gap-3 lg:gap-6">
                                     <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-primary-500 group-hover:text-white transition-all"><FileText className="w-8 h-8" /></div>
                                     <div>
@@ -408,7 +408,7 @@ const AdminGovtExamTests = () => {
                {showModal && (
                   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-12">
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80 backdrop-blur-xl" />
-                     <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-h-[75vh] bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
+                     <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-h-[75vh] bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
 
                         <div className="p-3 lg:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
                            <div className="flex items-center gap-4">
@@ -429,7 +429,7 @@ const AdminGovtExamTests = () => {
                         <div className="flex-1 overflow-y-auto p-3 lg:p-10 custom-scrollbar">
                            {uploadMode ? (
                               <div className="max-w-4xl mx-auto space-y-4 lg:space-y-8">
-                                 <div className="p-3 lg:p-8 bg-primary-500/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-dashed border-primary-500/20">
+                                 <div className="p-3 lg:p-8 bg-primary-500/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-primary-500/20">
                                     <div className="flex items-center gap-4 mb-6">
                                        <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm text-primary-500"><Download className="w-6 h-6" /></div>
                                        <div>

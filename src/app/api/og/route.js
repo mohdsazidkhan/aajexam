@@ -19,7 +19,7 @@ export async function GET(request) {
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#0f172a',
-          backgroundImage: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+          backgroundImage: '#0f172a',
           fontFamily: 'system-ui, sans-serif',
         }}
       >
@@ -31,7 +31,7 @@ export async function GET(request) {
             left: 0,
             right: 0,
             height: '6px',
-            background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)',
+            background: '#58cc02',
           }}
         />
 
@@ -58,7 +58,7 @@ export async function GET(request) {
               style={{
                 fontSize: '32px',
                 fontWeight: 800,
-                color: '#3b82f6',
+                color: '#58cc02',
                 letterSpacing: '-1px',
               }}
             >

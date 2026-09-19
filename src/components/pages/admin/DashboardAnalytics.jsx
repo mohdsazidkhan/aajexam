@@ -71,12 +71,12 @@ const DashboardAnalytics = () => {
   // Helper function to convert Tailwind gradient classes to CSS colors
   const getGradientColors = (gradientClass) => {
     const gradientMap = {
-      'from-primary-500 to-primary-600': '#3b82f6, #4f46e5',
-      'from-primary-500 to-primary-600': '#10b981, #059669',
-      'from-primary-500 to-primary-600': '#eab308, #ea580c',
-      'from-primary-500 to-black dark:to-white': '#8b5cf6, #db2777',
-      'from-primary-500 to-primary-600': '#6366f1, #2563eb',
-      'from-black dark:from-white to-black dark:to-white': '#ec4899, #e11d48'
+      'bg-primary-500': '#3b82f6, #4f46e5',
+      'bg-primary-500': '#10b981, #059669',
+      'bg-primary-500': '#eab308, #ea580c',
+      'bg-primary-500': '#8b5cf6, #db2777',
+      'bg-primary-500': '#6366f1, #2563eb',
+      'bg-black dark:bg-white': '#ec4899, #e11d48'
     };
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
   };
@@ -328,10 +328,10 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-gradient-to-r from-primary-50 to-primary-50 dark:from-primary-900/20 dark:to-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
+          <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
                   <User className="w-5 h-5 text-primary-500" />
                 </div>
                 <div>
@@ -344,7 +344,7 @@ const DashboardAnalytics = () => {
 
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
                     <BookOpen className="w-3.5 h-3.5 text-primary-500" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
@@ -353,7 +353,7 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
                     <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
                   </div>
                   <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600 dark:text-primary-400' :
@@ -366,7 +366,7 @@ const DashboardAnalytics = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-slate-100 dark:to-slate-800 dark:from-primary-900/30 dark:to-white/30 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
                     <Calendar className="w-3.5 h-3.5 text-primary-500" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
@@ -399,7 +399,7 @@ const DashboardAnalytics = () => {
   if (loading) return <AdminDashboardSkeleton />;
 
   if (error) return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 p-6 text-black dark:text-white">
+    <div className="min-h-screen bg-background-page p-6 text-black dark:text-white">
       <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-3 rounded">
         {error}
       </div>
@@ -407,7 +407,7 @@ const DashboardAnalytics = () => {
   );
 
   if (!data) return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 p-6 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
+    <div className="min-h-screen bg-background-page p-6 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
       No data available
     </div>
   );
@@ -474,7 +474,7 @@ const DashboardAnalytics = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-primary-600/30 transition-all hover:scale-[1.02]"
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-primary-600/30 transition-all hover:scale-[1.02]"
                >
                  <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>

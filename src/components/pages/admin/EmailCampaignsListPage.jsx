@@ -163,7 +163,7 @@ const EmailCampaignsListPage = () => {
   const Progress = ({ c }) => (
     <div className="min-w-[120px]">
       <div className="w-full bg-slate-200 dark:bg-white/10 rounded-full h-1.5 overflow-hidden">
-        <div className="bg-gradient-to-r from-primary-500 to-primary-600 h-1.5" style={{ width: `${pctOf(c)}%` }} />
+        <div className="bg-primary-500 h-1.5" style={{ width: `${pctOf(c)}%` }} />
       </div>
       <div className="text-[10px] text-slate-500 mt-1">
         {(c.sentCount || 0) + (c.failedCount || 0)} / {c.totalTargeted || 0} ({pctOf(c)}%)

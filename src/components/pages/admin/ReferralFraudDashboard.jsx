@@ -92,7 +92,7 @@ export default function ReferralFraudDashboard() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5 mb-5">
               {stats.map((s, i) => (
                 <motion.div key={s.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                  className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-4 border-slate-100 dark:border-white/10 p-4 lg:p-6 shadow-xl">
+                  className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-2 border-slate-100 dark:border-white/10 p-4 lg:p-6 shadow-xl">
                   <div className={`inline-flex p-2.5 rounded-lg lg:rounded-xl mb-3 ${s.tone}`}><s.icon className="w-5 h-5" /></div>
                   <div className="text-2xl lg:text-3xl font-black tracking-tighter">{s.value ?? 0}</div>
                   <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest mt-1">{s.label}</div>
@@ -112,7 +112,7 @@ export default function ReferralFraudDashboard() {
             )}
 
             {/* Filters */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-4 border-slate-100 dark:border-white/10 p-4 lg:p-6 mb-4 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-2 border-slate-100 dark:border-white/10 p-4 lg:p-6 mb-4 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl"><Filter className="w-4 h-4" /></div>
                 {['all', 'high', 'medium', 'low'].map(r => (
@@ -150,7 +150,7 @@ export default function ReferralFraudDashboard() {
                   const open = expanded === u._id;
                   return (
                     <motion.div key={u._id} layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                      className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-4 border-slate-100 dark:border-white/10 shadow-xl overflow-hidden">
+                      className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-xl overflow-hidden">
                       <div className="p-4 lg:p-6 flex flex-col lg:flex-row lg:items-center gap-4">
                         {/* Risk score dial */}
                         <div className="flex items-center gap-4 lg:w-64">

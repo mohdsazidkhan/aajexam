@@ -135,7 +135,7 @@ const Modal = ({
                     variant="secondary"
                     size="sm"
                     onClick={onClose}
-                    className="!p-3 border-b-4 hover:border-b-2 hover:translate-y-0.5"
+                    className="!p-3 border-b-2 hover:border-b-2 hover:translate-y-0.5"
                     icon={X}
                   />
                 )}

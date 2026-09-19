@@ -85,7 +85,7 @@ const NudgeInner = ({ onClose }) => {
         <button
            onClick={() => googleSignup()}
            disabled={isGoogleLoading}
-           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg lg:rounded-xl shadow-lg border-b-4 border-primary-700 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
+           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg lg:rounded-xl shadow-lg border-b-2 border-primary-700 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
         >
            {isGoogleLoading ? (
                <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />

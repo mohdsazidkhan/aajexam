@@ -162,7 +162,7 @@ const BlogDetailSkeleton = () => (
 
 // ─── Auth form skeleton (login / register) ────────────────────────────────────
 export const AuthFormSkeleton = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 px-4">
+  <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
     <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-5 animate-pulse">
       <Sh className="h-8 w-40 mx-auto rounded-lg lg:rounded-xl" />
       <Sh className="h-3 w-56 mx-auto rounded-lg" />
@@ -176,13 +176,13 @@ export const AuthFormSkeleton = () => (
 );
 
 // ─── Subject/Topic detail skeleton ────────────────────────────────────────────
-const DetailPageSkeleton = ({ color = 'from-black dark:from-white to-black dark:to-white' }) => (
+const DetailPageSkeleton = ({ color = 'bg-black dark:bg-white' }) => (
   <div className="min-h-screen pb-24 animate-pulse">
     <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
       {/* Back button */}
       <Sh className="h-4 w-16 rounded-full mb-4" />
       {/* Hero banner */}
-      <div className={`bg-gradient-to-br ${color} rounded-2xl p-6 mb-5 space-y-3 opacity-40`}>
+      <div className={`${color} rounded-2xl p-6 mb-5 space-y-3 opacity-40`}>
         <Sh className="h-8 w-8 rounded-lg lg:rounded-xl bg-white/40" />
         <Sh className="h-7 w-48 rounded-lg lg:rounded-xl bg-white/40" />
         <Sh className="h-3 w-64 rounded-lg bg-white/40" />
@@ -264,12 +264,12 @@ export const GovtExamsListSkeleton = () => (
 
 /** Skeleton for /subjects/[id] */
 export const SubjectDetailSkeleton = () => (
-  <DetailPageSkeleton color="from-black dark:from-white to-black dark:to-white" />
+  <DetailPageSkeleton color="bg-black dark:bg-white" />
 );
 
 /** Skeleton for /topics/[id] */
 export const TopicDetailSkeleton = () => (
-  <DetailPageSkeleton color="from-black dark:from-white to-black dark:to-white" />
+  <DetailPageSkeleton color="bg-black dark:bg-white" />
 );
 
 /** Skeleton for /quiz/[id] (QuizPreviewPage) */

@@ -19,7 +19,7 @@ const Sh = ({ className = '' }) => (
 const LeaderboardSkeleton = () => (
   <div className="space-y-3">
     {Array.from({ length: 8 }).map((_, i) => (
-      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-border-primary border-b-4">
+      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-border-primary">
         <Sh className="w-8 h-8 rounded-full flex-shrink-0" />
         <Sh className="w-10 h-10 rounded-full flex-shrink-0" />
         <div className="flex-1 space-y-2">
@@ -42,27 +42,27 @@ const PERIODS = [
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
   1: {
-    gradient: 'from-black dark:from-white to-black dark:to-white',
+    gradient: 'bg-black dark:bg-white',
     ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10',
     textColor: 'text-black dark:text-white dark:text-white',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white',
-    pillBg: 'bg-gradient-to-r from-black dark:from-white to-black dark:to-white text-white dark:text-black',
+    pillBg: 'bg-black dark:bg-white text-white dark:text-black',
     icon: Crown,
   },
   2: {
-    gradient: 'from-slate-300 to-slate-500',
+    gradient: 'bg-slate-400',
     ringColor: 'ring-slate-400 dark:ring-slate-500',
     textColor: 'text-slate-500 dark:text-slate-400',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300',
-    pillBg: 'bg-gradient-to-r from-slate-300 to-slate-500 text-white',
+    pillBg: 'bg-slate-300 text-white',
     icon: Medal,
   },
   3: {
-    gradient: 'from-slate-100 dark:from-slate-800 to-black dark:to-white',
+    gradient: 'bg-slate-100 dark:bg-slate-800',
     ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10',
     textColor: 'text-black dark:text-white dark:text-white',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white',
-    pillBg: 'bg-gradient-to-r from-slate-100 dark:from-slate-800 to-black dark:to-white text-white',
+    pillBg: 'bg-slate-100 dark:bg-slate-800 text-white',
     icon: Medal,
   },
 };
@@ -104,9 +104,9 @@ const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
   const podiumGradient = {
-    1: 'from-black dark:from-white to-black dark:to-white',
-    2: 'from-slate-300 to-slate-400',
-    3: 'from-slate-100 dark:from-slate-800 to-black dark:to-white',
+    1: 'bg-black dark:bg-white',
+    2: 'bg-slate-400',
+    3: 'bg-slate-100 dark:bg-slate-800',
   };
 
   return (
@@ -136,7 +136,7 @@ const Podium = ({ top3, currentUserId }) => {
               </p>
               <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}%</p>
             </div>
-            <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} bg-gradient-to-b ${podiumGradient[entry.rank] || 'from-slate-300 to-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
+            <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
               <span className="text-white font-black text-sm">#{entry.rank}</span>
             </div>
           </motion.div>
@@ -159,7 +159,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
   const rankBadge = (
     <div className={`
       w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-      ${isTop3 ? `bg-gradient-to-br ${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
+      ${isTop3 ? `${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
     `}>
       {entry.rank}
     </div>
@@ -193,7 +193,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`
-          hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+          hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600'
             : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
@@ -217,7 +217,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`
-          flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
+          flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600'
             : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
@@ -348,9 +348,9 @@ const LeaderboardPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero Banner ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30">
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30">
           {/* Gradient works in both dark/light via dark: class on body (class-based dark mode) */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white dark:to-slate-900" />
+          <div className="absolute inset-0 bg-black dark:bg-white" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
@@ -415,7 +415,7 @@ const LeaderboardPage = () => {
                 key={p.id}
                 onClick={() => setPeriod(p.id)}
                 className={`
-                  flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide border-2 border-b-4 transition-all active:translate-y-0.5
+                  flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide border-2 transition-all active:translate-y-0.5
                   ${isActive
                     ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-lg'
                     : 'bg-background-surface text-content-muted border-border-primary hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
@@ -433,7 +433,7 @@ const LeaderboardPage = () => {
             onClick={() => fetchLeaderboard(true)}
             disabled={refreshing || loading}
             title="Refresh"
-            className="px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+            className="px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
           >
             <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
           </button>

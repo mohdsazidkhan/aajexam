@@ -102,7 +102,7 @@ export default function MentorProfilePage() {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit">
+    <div className="min-h-screen bg-background-page pb-20 font-outfit">
       <div className="container mx-auto px-4 py-8"><ProfileSkeleton /></div>
     </div>
   );

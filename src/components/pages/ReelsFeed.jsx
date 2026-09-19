@@ -16,22 +16,22 @@ import {
   Music, Volume2, VolumeX, Disc3
 } from 'lucide-react';
 
-// ──── Gradient config per subject ────
+// ──── Flat background per subject (immersive full-bleed card, always dark) ────
 const SUBJECT_GRADIENTS = {
-  'Quantitative': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'Quant': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'Reasoning': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'English': 'from-primary-900 via-primary-800 to-primary-600',
-  'GK': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'General': 'from-slate-900 via-slate-800 to-slate-600',
+  'Quantitative': 'bg-slate-900',
+  'Quant': 'bg-slate-900',
+  'Reasoning': 'bg-slate-900',
+  'English': 'bg-slate-900',
+  'GK': 'bg-slate-900',
+  'General': 'bg-slate-900',
 };
 
 const TYPE_GRADIENTS = {
-  'question': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'fact': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'tip': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'current_affairs': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
-  'poll': 'from-black dark:from-white via-primary-800 to-primary-700',
+  'question': 'bg-slate-900',
+  'fact': 'bg-slate-900',
+  'tip': 'bg-slate-900',
+  'current_affairs': 'bg-slate-900',
+  'poll': 'bg-slate-900',
 };
 
 const TYPE_ICONS = {
@@ -173,7 +173,7 @@ const FactReelCard = ({ reel, onTagPress }) => (
       <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-bold uppercase tracking-widest text-white/70">#{reel.subject}</ClickableTag>
       {reel.topic && <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.topic}</ClickableTag>}
     </div>
-    <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-2 sm:mb-4" />
+    <div className="h-px bg-transparent mb-2 sm:mb-4" />
 
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
@@ -203,7 +203,7 @@ const TipReelCard = ({ reel, onTagPress }) => (
       <span className="text-[10px] font-bold uppercase tracking-widest text-black/80 dark:text-white/80">Quick Trick</span>
       {reel.subject && <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.subject}</ClickableTag>}
     </div>
-    <div className="h-px bg-gradient-to-r from-transparent via-black/30 dark:via-white/30 to-transparent mb-5" />
+    <div className="h-px bg-transparent mb-5" />
 
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
 
@@ -228,7 +228,7 @@ const CAReelCard = ({ reel, onTagPress }) => (
       <span>📅 {reel.caDate ? new Date(reel.caDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}</span>
       {reel.caCategory && <ClickableTag text={reel.caCategory} onPress={onTagPress} className="text-xs text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white">#{reel.caCategory}</ClickableTag>}
     </div>
-    {/* <div className="h-px bg-gradient-to-r from-transparent via-black/30 dark:via-white/30 to-transparent mb-5" /> */}
+    {/* <div className="h-px bg-transparent mb-5" /> */}
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-extrabold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
     {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-2 sm:mb-4">{reel.content}</p>}
@@ -283,7 +283,7 @@ const PollReelCard = ({ reel, onVote }) => {
         <BarChart3 className="w-4 h-4 text-primary-400" />
         <span className="text-[10px] font-bold uppercase tracking-widest text-primary-400/80">Community Poll</span>
       </div>
-      <div className="h-px bg-gradient-to-r from-transparent via-primary-400/30 to-transparent mb-5" />
+      <div className="h-px bg-transparent mb-5" />
 
       <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.pollQuestion}</h2>
 
@@ -786,8 +786,8 @@ const ReelsFeed = () => {
 
   const currentReel = reels[currentIndex];
   const getGradient = (reel) => {
-    if (!reel) return 'from-slate-900 to-slate-800';
-    return SUBJECT_GRADIENTS[reel.subject] || TYPE_GRADIENTS[reel.type] || 'from-slate-900 via-slate-800 to-slate-700';
+    if (!reel) return 'bg-slate-900';
+    return SUBJECT_GRADIENTS[reel.subject] || TYPE_GRADIENTS[reel.type] || 'bg-slate-900';
   };
 
   if (loading) {
@@ -841,10 +841,10 @@ const ReelsFeed = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -60 }}
             transition={{ duration: 0.25 }}
-            className={`h-full w-full bg-gradient-to-b ${getGradient(currentReel)} relative`}
+            className={`h-full w-full ${getGradient(currentReel)} relative`}
           >
             {/* ── Top: minimal header (like Insta) ── */}
-            <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-3 pt-2 pb-8 bg-gradient-to-b from-black/50 to-transparent">
+            <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-3 pt-2 pb-8 bg-black/50">
               <div className="flex items-center gap-2">
                 <Link href="/home" className="p-1.5">
                   <ArrowLeft className="w-5 h-5 text-white" />
@@ -959,7 +959,7 @@ const ReelsFeed = () => {
               {currentReel.audioFile && currentReel.duration > 0 && (
                 <button onClick={toggleMute} className="relative w-10 h-10">
                   <div
-                    className="w-full h-full rounded-full border-2 border-white/20 bg-gradient-to-br from-slate-800 via-slate-900 to-black flex items-center justify-center"
+                    className="w-full h-full rounded-full border-2 border-white/20 bg-slate-800 flex items-center justify-center"
                     style={{
                       animation: isAudioPlaying && !isMuted ? 'spin 3s linear infinite' : 'none',
                     }}
@@ -1300,11 +1300,11 @@ const ReelsFeed = () => {
                 </div>
                 <div className="space-y-2.5">
                   {[
-                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'MCQ with explanation' },
-                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Quick fact or one-liner' },
-                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Shortcut or formula' },
-                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Daily CA card' },
-                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-primary-500 to-primary-600', desc: 'Community poll' },
+                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-black dark:bg-white', desc: 'MCQ with explanation' },
+                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-black dark:bg-white', desc: 'Quick fact or one-liner' },
+                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-black dark:bg-white', desc: 'Shortcut or formula' },
+                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-black dark:bg-white', desc: 'Daily CA card' },
+                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-500', desc: 'Community poll' },
                   ].map((type) => (
                     <Link
                       key={type.value}
@@ -1312,7 +1312,7 @@ const ReelsFeed = () => {
                       onClick={() => setShowCreateDrawer(false)}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border border-white/10 hover:border-white/20 transition-all active:bg-white/5"
                     >
-                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
+                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className="w-5 h-5 text-white" />
                       </div>
                       <div className="text-left">

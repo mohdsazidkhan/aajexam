@@ -49,7 +49,7 @@ const ReferralBanner = ({ user }) => {
 
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
+    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
       {/* Decorative background */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none" />
 
@@ -78,7 +78,7 @@ const ReferralBanner = ({ user }) => {
       </div>
 
       {/* Referral Code Section */}
-      <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 mb-8 border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-xl">
+      <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700 shadow-xl">
         <div className="text-center">
           <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mb-6">
             Your Invitation Code

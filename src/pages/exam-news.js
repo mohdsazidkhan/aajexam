@@ -19,7 +19,7 @@ const NewsSkeleton = () => (
     <div className="flex gap-2 px-1">{[1,2,3,4,5].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}</div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
       {Array.from({ length: 9 }).map((_, i) => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 border-b-8 p-5 space-y-3">
+        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 space-y-3">
           <div className="flex gap-3">
             <Sh className="w-12 h-12 rounded-2xl shrink-0" />
             <div className="flex-1 space-y-2"><Sh className="h-4 w-3/4 rounded-lg" /><Sh className="h-2.5 w-1/2 rounded-full" /></div>
@@ -33,14 +33,14 @@ const NewsSkeleton = () => (
 
 // ─── Type config ───────────────────────────────────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell,         color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',       label: 'Notification' },
-  admit_card:   { icon: CreditCard,   color: 'from-primary-500 to-primary-700', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
-  result:       { icon: BarChart2,    color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Result' },
-  answer_key:   { icon: Key,          color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Answer Key' },
-  vacancy:      { icon: Users,        color: 'from-black dark:from-white to-black dark:to-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',     label: 'Vacancy' },
-  date_change:  { icon: AlertTriangle, color: 'from-black dark:from-white to-black dark:to-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',           label: 'Date Change' },
+  notification: { icon: Bell,         color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',       label: 'Notification' },
+  admit_card:   { icon: CreditCard,   color: 'bg-primary-500', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
+  result:       { icon: BarChart2,    color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Result' },
+  answer_key:   { icon: Key,          color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Answer Key' },
+  vacancy:      { icon: Users,        color: 'bg-black dark:bg-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',     label: 'Vacancy' },
+  date_change:  { icon: AlertTriangle, color: 'bg-black dark:bg-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',           label: 'Date Change' },
 };
-const defaultType = { icon: Megaphone, color: 'from-slate-400 to-slate-600', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
+const defaultType = { icon: Megaphone, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
 
 const typeFilters = [
   { id: 'all', label: 'All News', icon: Sparkles },
@@ -80,8 +80,8 @@ const ExamNewsPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Exam News', url: '/exam-news' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white dark:from-slate-900 dark:via-white/40 dark:to-slate-900" />
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
+        <div className="absolute inset-0 bg-black dark:bg-white dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -105,7 +105,7 @@ const ExamNewsPage = () => {
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
             {typeFilters.map(f => (
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 active:translate-y-0.5 ${
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   type === f.id
                     ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
@@ -127,7 +127,7 @@ const ExamNewsPage = () => {
                   className="group p-5 flex flex-col gap-4 border-border-primary hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cfg.color} flex items-center justify-center shrink-0 shadow-md relative`}>
+                      <div className={`w-12 h-12 rounded-2xl ${cfg.color} flex items-center justify-center shrink-0 shadow-md relative`}>
                         <Icon className="w-6 h-6 text-white" />
                         {item.isPinned && <Pin className="w-3 h-3 text-black dark:text-white absolute -top-1 -right-1" />}
                       </div>
@@ -175,10 +175,10 @@ const ExamNewsPage = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-6">
             <button disabled={page === 1} onClick={() => setPage(page - 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
             <span className="text-sm font-black text-slate-500">Page {page} of {totalPages}</span>
             <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 border-b-4 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
           </div>
         )}
       </section>

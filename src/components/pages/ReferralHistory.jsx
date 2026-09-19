@@ -120,7 +120,7 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="p-5 lg:p-8 group hover:scale-[1.02] transition-transform border-b-4 border-border-primary hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
+                     <Card key={i} className="p-5 lg:p-8 group hover:scale-[1.02] transition-transform border-b-2 border-border-primary hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
                         <div className="flex justify-between items-start mb-4 lg:mb-6">
                            <div className={`p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-2xl`}>
                               <s.icon className="w-6 h-6" />

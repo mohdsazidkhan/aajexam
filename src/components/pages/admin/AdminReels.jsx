@@ -228,7 +228,7 @@ const AdminReels = () => {
                 </motion.div>
               ) : viewMode === 'table' ? (
                 /* Custom Desktop Table */
-                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="hidden lg:block overflow-hidden rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
+                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="hidden lg:block overflow-hidden rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-slate-50 dark:bg-slate-800/50 border-b-2 border-slate-100 dark:border-slate-800">
@@ -286,7 +286,7 @@ const AdminReels = () => {
                               </div>
                             </td>
                             <td className="px-6 py-6 font-medium">
-                              <span className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-4 ${STATUS_COLORS[item.status]}`}>
+                              <span className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-2 ${STATUS_COLORS[item.status]}`}>
                                 {item.status}
                               </span>
                             </td>
@@ -312,7 +312,7 @@ const AdminReels = () => {
                     const Icon = TYPE_ICONS[item.type] || HelpCircle;
                     return (
                       <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-inner transition-all overflow-hidden">
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-slate-500/5 to-transparent rounded-bl-[2rem] -z-0" />
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-slate-500/5 rounded-bl-[2rem] -z-0" />
 
                         <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-aajexam ${TYPE_COLORS[item.type]}`}>
                           <Icon className="w-5 h-5" />

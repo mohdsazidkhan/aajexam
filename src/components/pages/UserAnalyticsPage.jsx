@@ -152,7 +152,7 @@ const MyAnalyticsPage = () => {
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none shadow-aajexam-primary p-5 lg:p-8 overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
+               <Card className="bg-primary-500 text-white border-none shadow-aajexam-primary p-5 lg:p-8 overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-8">
                      <div className="space-y-2 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
@@ -481,7 +481,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         {/* Balance Card */}
-                        <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none shadow-aajexam-primary p-6 lg:p-8 rounded-[2rem] lg:rounded-[3rem]">
+                        <Card className="bg-primary-500 text-white border-none shadow-aajexam-primary p-6 lg:p-8 rounded-[2rem] lg:rounded-[3rem]">
                            <div className="flex justify-between items-start mb-6">
                               <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
                               <span className="text-xs font-black opacity-60 uppercase">Wallet Balance</span>

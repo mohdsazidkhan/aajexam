@@ -55,7 +55,7 @@ const MyChallengesPage = () => {
    };
 
    if (loading && challenges.length === 0) return (
-      <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
+      <div className="min-h-screen bg-background-page pb-20 font-outfit selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
          <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
       </div>
    );
@@ -99,7 +99,7 @@ const MyChallengesPage = () => {
                            <motion.div key={challenge._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="p-0 overflow-hidden group hover:shadow-xl transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
                                  {/* Challenge Header */}
-                                 <div className="p-5 bg-gradient-to-br from-slate-100 dark:from-slate-800 to-slate-100 dark:to-slate-800 dark:from-white/20 dark:to-white/20 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
+                                 <div className="p-5 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
                                     <div className="flex justify-between items-start mb-4">
                                        <div>
                                           <div className="text-[10px] font-black uppercase tracking-wider text-black dark:text-white mb-1 flex items-center gap-1">

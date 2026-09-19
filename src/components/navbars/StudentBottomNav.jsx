@@ -21,11 +21,11 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const REEL_TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-primary-500 to-primary-600', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-black dark:bg-white', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-black dark:bg-white', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-black dark:bg-white', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-black dark:bg-white', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-500', desc: 'Community poll' },
 ];
 
 const StudentBottomNav = () => {
@@ -87,7 +87,7 @@ const StudentBottomNav = () => {
                       }}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all active:bg-slate-50 dark:active:bg-slate-800"
                     >
-                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl bg-gradient-to-br ${type.gradient} flex items-center justify-center shrink-0`}>
+                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className="w-5 h-5 text-white" />
                       </div>
                       <div className="text-left">
@@ -115,7 +115,7 @@ const StudentBottomNav = () => {
                 onClick={() => setShowCreate(true)}
                 className="flex items-center justify-center mb-2 px-2"
               >
-                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30">
+                <div className="w-11 h-11 rounded-2xl bg-primary-500 flex items-center justify-center shadow-lg shadow-primary-500/30">
                   <Plus className="w-6 h-6 text-white" />
                 </div>
               </button>

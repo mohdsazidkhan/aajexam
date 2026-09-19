@@ -42,25 +42,25 @@ function StepBar({ step }) {
               <div style={{
                 width: 36, height: 36, borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: done ? '#22c55e' : active ? 'linear-gradient(135deg,#6366f1,#8b5cf6)' : 'rgba(255,255,255,0.08)',
-                border: active ? '2px solid #8b5cf6' : done ? '2px solid #22c55e' : '2px solid rgba(255,255,255,0.15)',
+                background: done ? '#58cc02' : active ? '#58cc02' : 'rgba(255,255,255,0.08)',
+                border: active ? '2px solid #58cc02' : done ? '2px solid #58cc02' : '2px solid rgba(255,255,255,0.15)',
                 fontWeight: 700, fontSize: 14,
                 color: (active || done) ? '#fff' : '#64748b',
                 transition: 'all 0.3s',
-                boxShadow: active ? '0 0 16px rgba(139,92,246,0.5)' : 'none',
+                boxShadow: active ? '0 0 16px rgba(88,204,2,0.5)' : 'none',
               }}>
                 {done ? <CheckCircle2 size={16} /> : i + 1}
               </div>
               <span style={{
                 fontSize: 11, fontWeight: active ? 700 : 500,
-                color: active ? '#a78bfa' : done ? '#22c55e' : '#64748b',
+                color: active ? '#94f54d' : done ? '#58cc02' : '#64748b',
                 whiteSpace: 'nowrap',
               }}>{label}</span>
             </div>
             {i < steps.length - 1 && (
               <div style={{
                 flex: 1, height: 2, margin: '0 8px', marginBottom: 22,
-                background: done ? '#22c55e' : 'rgba(255,255,255,0.08)',
+                background: done ? '#58cc02' : 'rgba(255,255,255,0.08)',
                 transition: 'background 0.4s',
               }} />
             )}
@@ -77,16 +77,16 @@ function StepBar({ step }) {
 function SectionCard({ section, status, error, questions, streamText, expanded, onToggle }) {
   const statusColor = {
     [STATUS.IDLE]: '#64748b',
-    [STATUS.GENERATING]: '#f59e0b',
-    [STATUS.DONE]: '#22c55e',
-    [STATUS.ERROR]: '#ef4444',
+    [STATUS.GENERATING]: '#e2e8f0',
+    [STATUS.DONE]: '#58cc02',
+    [STATUS.ERROR]: '#e2e8f0',
   }[status];
 
   const statusIcon = {
     [STATUS.IDLE]: <Target size={15} color="#64748b" />,
-    [STATUS.GENERATING]: <Loader2 size={15} color="#f59e0b" style={{ animation: 'spin 1s linear infinite' }} />,
-    [STATUS.DONE]: <CheckCircle2 size={15} color="#22c55e" />,
-    [STATUS.ERROR]: <XCircle size={15} color="#ef4444" />,
+    [STATUS.GENERATING]: <Loader2 size={15} color="#e2e8f0" style={{ animation: 'spin 1s linear infinite' }} />,
+    [STATUS.DONE]: <CheckCircle2 size={15} color="#58cc02" />,
+    [STATUS.ERROR]: <XCircle size={15} color="#e2e8f0" />,
   }[status];
 
   return (
@@ -95,12 +95,12 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
       animate={{ opacity: 1, y: 0 }}
       style={{
         background: 'rgba(255,255,255,0.04)',
-        border: `1px solid ${status === STATUS.GENERATING ? 'rgba(245,158,11,0.4)' : status === STATUS.DONE ? 'rgba(34,197,94,0.25)' : status === STATUS.ERROR ? 'rgba(239,68,68,0.3)' : 'rgba(255,255,255,0.08)'}`,
+        border: `1px solid ${status === STATUS.GENERATING ? 'rgba(226,232,240,0.4)' : status === STATUS.DONE ? 'rgba(88,204,2,0.25)' : status === STATUS.ERROR ? 'rgba(226,232,240,0.3)' : 'rgba(255,255,255,0.08)'}`,
         borderRadius: 14,
         marginBottom: 12,
         overflow: 'hidden',
         transition: 'border-color 0.3s',
-        boxShadow: status === STATUS.GENERATING ? '0 0 20px rgba(245,158,11,0.1)' : 'none',
+        boxShadow: status === STATUS.GENERATING ? '0 0 20px rgba(226,232,240,0.1)' : 'none',
       }}
     >
       {/* Header */}
@@ -114,7 +114,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
         <div style={{
           width: 8, height: 8, borderRadius: '50%',
           background: statusColor,
-          boxShadow: status === STATUS.GENERATING ? '0 0 10px rgba(245,158,11,0.8)' : 'none',
+          boxShadow: status === STATUS.GENERATING ? '0 0 10px rgba(226,232,240,0.8)' : 'none',
           animation: status === STATUS.GENERATING ? 'pulse 1.5s ease-in-out infinite' : 'none',
         }} />
         <span style={{ flex: 1, fontWeight: 600, fontSize: 14, color: '#e2e8f0' }}>
@@ -139,7 +139,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
 
       {/* Error message */}
       {status === STATUS.ERROR && error && (
-        <div style={{ padding: '8px 18px 14px', color: '#fca5a5', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div style={{ padding: '8px 18px 14px', color: '#e2e8f0', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6 }}>
           <AlertCircle size={13} /> {error}
         </div>
       )}
@@ -159,7 +159,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
               {status === STATUS.GENERATING && streamText && (
                 <div style={{ 
                   background: 'rgba(0,0,0,0.3)', padding: '12px 16px', borderRadius: 10,
-                  border: '1px solid rgba(99,102,241,0.2)', color: '#a78bfa',
+                  border: '1px solid rgba(88,204,2,0.2)', color: '#94f54d',
                   fontSize: 12, fontFamily: 'monospace', whiteSpace: 'pre-wrap',
                   maxHeight: 250, overflowY: 'auto'
                 }}>
@@ -185,7 +185,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
 function QuestionPreview({ question, index }) {
   const [showExplanation, setShowExplanation] = useState(false);
 
-  const diffColors = { easy: '#22c55e', medium: '#f59e0b', hard: '#ef4444' };
+  const diffColors = { easy: '#58cc02', medium: '#e2e8f0', hard: '#e2e8f0' };
 
   return (
     <div style={{
@@ -197,8 +197,8 @@ function QuestionPreview({ question, index }) {
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
         <span style={{
           minWidth: 24, height: 24, borderRadius: 6,
-          background: 'rgba(99,102,241,0.2)', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#a78bfa',
+          background: 'rgba(88,204,2,0.2)', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#94f54d',
         }}>
           {index + 1}
         </span>
@@ -207,8 +207,8 @@ function QuestionPreview({ question, index }) {
         </p>
         <span style={{
           fontSize: 10, fontWeight: 600, padding: '2px 7px', borderRadius: 20,
-          background: `${diffColors[question.difficulty] || '#f59e0b'}22`,
-          color: diffColors[question.difficulty] || '#f59e0b',
+          background: `${diffColors[question.difficulty] || '#e2e8f0'}22`,
+          color: diffColors[question.difficulty] || '#e2e8f0',
         }}>
           {question.difficulty}
         </span>
@@ -219,9 +219,9 @@ function QuestionPreview({ question, index }) {
         {question.options.map((opt, oi) => (
           <div key={oi} style={{
             padding: '6px 10px', borderRadius: 7, fontSize: 12,
-            background: oi === question.correctAnswerIndex ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${oi === question.correctAnswerIndex ? 'rgba(34,197,94,0.4)' : 'rgba(255,255,255,0.06)'}`,
-            color: oi === question.correctAnswerIndex ? '#86efac' : '#94a3b8',
+            background: oi === question.correctAnswerIndex ? 'rgba(88,204,2,0.15)' : 'rgba(255,255,255,0.04)',
+            border: `1px solid ${oi === question.correctAnswerIndex ? 'rgba(88,204,2,0.4)' : 'rgba(255,255,255,0.06)'}`,
+            color: oi === question.correctAnswerIndex ? '#bcff85' : '#94a3b8',
             fontWeight: oi === question.correctAnswerIndex ? 600 : 400,
           }}>
             {['A', 'B', 'C', 'D'][oi]}. {opt}
@@ -232,7 +232,7 @@ function QuestionPreview({ question, index }) {
       {/* Hint */}
       {question.hint && (
         <div style={{ fontSize: 11, color: '#64748b', marginBottom: 6, display: 'flex', gap: 5, alignItems: 'flex-start' }}>
-          <span style={{ color: '#f59e0b', fontWeight: 700, minWidth: 30 }}>Hint:</span>
+          <span style={{ color: '#e2e8f0', fontWeight: 700, minWidth: 30 }}>Hint:</span>
           <span>{question.hint}</span>
         </div>
       )}
@@ -242,7 +242,7 @@ function QuestionPreview({ question, index }) {
         onClick={() => setShowExplanation(!showExplanation)}
         style={{
           background: 'none', border: 'none', cursor: 'pointer',
-          fontSize: 11, color: '#6366f1', display: 'flex', alignItems: 'center', gap: 4,
+          fontSize: 11, color: '#58cc02', display: 'flex', alignItems: 'center', gap: 4,
           padding: 0, fontFamily: 'inherit',
         }}
       >
@@ -261,7 +261,7 @@ function QuestionPreview({ question, index }) {
           {question.tags.map((t, ti) => (
             <span key={ti} style={{
               fontSize: 10, padding: '2px 6px', borderRadius: 10,
-              background: 'rgba(99,102,241,0.12)', color: '#818cf8',
+              background: 'rgba(88,204,2,0.12)', color: '#94f54d',
             }}>#{t}</span>
           ))}
         </div>
@@ -592,9 +592,9 @@ const AdminGenerateTests = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
               <div style={{
                 width: 38, height: 38, borderRadius: 10,
-                background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                background: '#58cc02',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 0 20px rgba(99,102,241,0.4)',
+                boxShadow: '0 0 20px rgba(88,204,2,0.4)',
               }}>
                 <Sparkles size={18} color="#fff" />
               </div>
@@ -626,7 +626,7 @@ const AdminGenerateTests = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 28 }}>
               <h2 style={{ margin: '0 0 20px', fontSize: 16, fontWeight: 700, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <BookOpen size={16} color="#8b5cf6" /> Select Exam
+                <BookOpen size={16} color="#58cc02" /> Select Exam
               </h2>
 
               {/* Category */}
@@ -666,8 +666,8 @@ const AdminGenerateTests = () => {
                           transition: 'all 0.2s',
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
-                          e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)';
+                          e.currentTarget.style.background = 'rgba(88,204,2,0.15)';
+                          e.currentTarget.style.borderColor = 'rgba(88,204,2,0.4)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
@@ -678,7 +678,7 @@ const AdminGenerateTests = () => {
                           <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 3 }}>{exam.name}</div>
                           <div style={{ fontSize: 11, color: '#64748b' }}>{exam.code}</div>
                         </div>
-                        <ChevronRight size={16} color="#6366f1" />
+                        <ChevronRight size={16} color="#58cc02" />
                       </button>
                     ))}
                   </div>
@@ -694,9 +694,9 @@ const AdminGenerateTests = () => {
             <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Layers size={16} color="#8b5cf6" /> Select Exam Pattern
+                  <Layers size={16} color="#58cc02" /> Select Exam Pattern
                 </h2>
-                <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 20, background: 'rgba(139,92,246,0.15)', color: '#a78bfa' }}>
+                <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 20, background: 'rgba(88,204,2,0.15)', color: '#94f54d' }}>
                   {selectedExam.name}
                 </span>
               </div>
@@ -720,8 +720,8 @@ const AdminGenerateTests = () => {
                         transition: 'all 0.2s',
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(99,102,241,0.1)';
-                        e.currentTarget.style.borderColor = 'rgba(99,102,241,0.35)';
+                        e.currentTarget.style.background = 'rgba(88,204,2,0.1)';
+                        e.currentTarget.style.borderColor = 'rgba(88,204,2,0.35)';
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
@@ -730,14 +730,14 @@ const AdminGenerateTests = () => {
                     >
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
                         <span style={{ fontSize: 15, fontWeight: 700 }}>{pattern.title}</span>
-                        <ChevronRight size={16} color="#6366f1" />
+                        <ChevronRight size={16} color="#58cc02" />
                       </div>
                       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                         <StatChip icon={<Clock size={11} />} label={`${pattern.duration} min`} />
                         <StatChip icon={<Trophy size={11} />} label={`${pattern.totalMarks} marks`} />
                         <StatChip icon={<Layers size={11} />} label={`${pattern.sections?.length || 0} sections`} />
                         {pattern.negativeMarking > 0 && (
-                          <StatChip icon={<Shield size={11} />} label={`-${pattern.negativeMarking} negative`} color="#ef4444" />
+                          <StatChip icon={<Shield size={11} />} label={`-${pattern.negativeMarking} negative`} color="#e2e8f0" />
                         )}
                       </div>
                       {pattern.sections?.length > 0 && (
@@ -745,7 +745,7 @@ const AdminGenerateTests = () => {
                           {pattern.sections.map((s, si) => (
                             <span key={si} style={{
                               fontSize: 11, padding: '3px 8px', borderRadius: 8,
-                              background: 'rgba(99,102,241,0.12)', color: '#818cf8',
+                              background: 'rgba(88,204,2,0.12)', color: '#94f54d',
                             }}>
                               {s.name} ({s.totalQuestions}Q)
                             </span>
@@ -766,7 +766,7 @@ const AdminGenerateTests = () => {
             {/* Config card */}
             <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
               <h2 style={{ margin: '0 0 18px', fontSize: 15, fontWeight: 700, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <Sparkles size={15} color="#8b5cf6" /> Generation Config
+                <Sparkles size={15} color="#58cc02" /> Generation Config
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
                 {/* Title */}
@@ -792,9 +792,9 @@ const AdminGenerateTests = () => {
                         onClick={() => !generating && setLanguage(val)}
                         style={{
                           flex: 1, padding: '10px 12px', borderRadius: 10, cursor: generating ? 'not-allowed' : 'pointer',
-                          background: language === val ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.04)',
-                          border: `1px solid ${language === val ? '#6366f1' : 'rgba(255,255,255,0.1)'}`,
-                          color: language === val ? '#a78bfa' : '#94a3b8',
+                          background: language === val ? 'rgba(88,204,2,0.25)' : 'rgba(255,255,255,0.04)',
+                          border: `1px solid ${language === val ? '#58cc02' : 'rgba(255,255,255,0.1)'}`,
+                          color: language === val ? '#94f54d' : '#94a3b8',
                           fontFamily: 'inherit', fontSize: 13, fontWeight: language === val ? 700 : 400,
                           transition: 'all 0.2s',
                         }}
@@ -838,11 +838,11 @@ const AdminGenerateTests = () => {
                 onClick={handleGenerate}
                 style={{
                   width: '100%', padding: '16px', marginBottom: 20, borderRadius: 14,
-                  background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                  background: '#58cc02',
                   border: 'none', color: '#fff', fontSize: 15, fontWeight: 700,
                   cursor: 'pointer', fontFamily: 'inherit',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  boxShadow: '0 4px 24px rgba(99,102,241,0.4)',
+                  boxShadow: '0 4px 24px rgba(88,204,2,0.4)',
                 }}
               >
                 <Zap size={16} /> Generate {totalExpected} Questions with AI
@@ -853,11 +853,11 @@ const AdminGenerateTests = () => {
               <div style={{ display: 'flex', gap: 10, marginBottom: 20 }}>
                 <div style={{
                   flex: 1, padding: '14px 18px', borderRadius: 12,
-                  background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)',
+                  background: 'rgba(226,232,240,0.08)', border: '1px solid rgba(226,232,240,0.2)',
                   display: 'flex', alignItems: 'center', gap: 10,
                 }}>
-                  <Loader2 size={16} color="#f59e0b" style={{ animation: 'spin 1s linear infinite' }} />
-                  <span style={{ fontSize: 13, color: '#fcd34d', fontWeight: 600 }}>
+                  <Loader2 size={16} color="#e2e8f0" style={{ animation: 'spin 1s linear infinite' }} />
+                  <span style={{ fontSize: 13, color: '#e2e8f0', fontWeight: 600 }}>
                     Generating questions… ({totalGenerated}/{totalExpected} done)
                   </span>
                 </div>
@@ -865,8 +865,8 @@ const AdminGenerateTests = () => {
                   onClick={handleCancel}
                   style={{
                     padding: '12px 18px', borderRadius: 12, cursor: 'pointer',
-                    background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.25)',
-                    color: '#fca5a5', fontFamily: 'inherit', fontSize: 13, fontWeight: 600,
+                    background: 'rgba(226,232,240,0.1)', border: '1px solid rgba(226,232,240,0.25)',
+                    color: '#e2e8f0', fontFamily: 'inherit', fontSize: 13, fontWeight: 600,
                   }}
                 >
                   Cancel
@@ -901,16 +901,16 @@ const AdminGenerateTests = () => {
                   animate={{ opacity: 1, y: 0 }}
                   style={{
                     marginTop: 24, padding: '20px 24px', borderRadius: 16,
-                    background: 'rgba(34,197,94,0.07)', border: '1px solid rgba(34,197,94,0.25)',
+                    background: 'rgba(88,204,2,0.07)', border: '1px solid rgba(88,204,2,0.25)',
                     display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap',
                   }}
                 >
-                  <CheckCircle2 size={22} color="#22c55e" />
+                  <CheckCircle2 size={22} color="#58cc02" />
                   <div style={{ flex: 1 }}>
-                    <p style={{ margin: 0, fontWeight: 700, color: '#86efac', fontSize: 15 }}>
+                    <p style={{ margin: 0, fontWeight: 700, color: '#bcff85', fontSize: 15 }}>
                       Generation complete — {totalGenerated} questions ready
                     </p>
-                    <p style={{ margin: '3px 0 0', fontSize: 12, color: '#4ade80' }}>
+                    <p style={{ margin: '3px 0 0', fontSize: 12, color: '#94f54d' }}>
                       Review the questions above, then save as a Practice Test
                     </p>
                   </div>
@@ -920,9 +920,9 @@ const AdminGenerateTests = () => {
                     style={{
                       display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px',
                       borderRadius: 12, cursor: saving ? 'not-allowed' : 'pointer',
-                      background: saving ? 'rgba(255,255,255,0.08)' : 'linear-gradient(135deg,#22c55e,#16a34a)',
+                      background: saving ? 'rgba(255,255,255,0.08)' : '#58cc02',
                       border: 'none', color: '#fff', fontFamily: 'inherit', fontSize: 14, fontWeight: 700,
-                      boxShadow: saving ? 'none' : '0 4px 16px rgba(34,197,94,0.35)',
+                      boxShadow: saving ? 'none' : '0 4px 16px rgba(88,204,2,0.35)',
                       opacity: !testTitle.trim() ? 0.5 : 1,
                     }}
                   >

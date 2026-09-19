@@ -78,7 +78,7 @@ export const ProfileSkeleton = () => (
     <div className="relative bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 flex flex-col items-center gap-4 text-center overflow-hidden">
       <Sh className="absolute inset-0 w-full h-32 lg:h-48 rounded-t-[2rem]" />
       <div className="relative z-10 mt-16 lg:mt-24 space-y-4 flex flex-col items-center">
-        <Sh className="w-24 h-24 lg:w-32 lg:h-32 rounded-full border-4 border-white dark:border-slate-800" />
+        <Sh className="w-24 h-24 lg:w-32 lg:h-32 rounded-full border-2 border-white dark:border-slate-800" />
         <Sh className="h-6 w-48 rounded-lg" />
         <Sh className="h-3 w-32 rounded-full" />
         <div className="flex gap-2">
@@ -140,7 +140,7 @@ export const SubscriptionSkeleton = () => (
 );
 
 export const QuizAttemptSkeleton = () => (
-  <div className="min-h-screen bg-white dark:bg-slate-900 font-outfit">
+  <div className="min-h-screen bg-background-page font-outfit">
     {/* Top bar: progress + timer */}
     <div className="bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-700 p-4 flex items-center justify-between gap-4">
       <Sh className="h-3 w-24 rounded-full" />

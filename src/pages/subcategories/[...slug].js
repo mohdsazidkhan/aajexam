@@ -15,7 +15,7 @@ export default function SubcategoriesGone() {
             <div style={{ maxWidth: 520 }}>
                 <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>This page has moved</h1>
                 <p style={{ color: '#475569', lineHeight: 1.6 }}>
-                    Browse our <Link href="/topics" style={{ color: '#dc2626', textDecoration: 'underline' }}>topics catalogue</Link> or <Link href="/subjects" style={{ color: '#dc2626', textDecoration: 'underline' }}>subjects catalogue</Link> for the resource you were looking for.
+                    Browse our <Link href="/topics" style={{ color: '#58cc02', textDecoration: 'underline' }}>topics catalogue</Link> or <Link href="/subjects" style={{ color: '#58cc02', textDecoration: 'underline' }}>subjects catalogue</Link> for the resource you were looking for.
                 </p>
             </div>
         </div>

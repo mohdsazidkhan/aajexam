@@ -129,8 +129,8 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       />
 
       {/* Hero */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30 p-4 lg:p-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-primary-600 to-primary-500 dark:from-slate-900 dark:via-primary-900/40 dark:to-slate-900" />
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-primary-600/20 dark:border-primary-900/30 p-4 lg:p-8">
+        <div className="absolute inset-0 bg-primary-500 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-4 mx-auto text-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
@@ -162,7 +162,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
             <div className="flex gap-2 overflow-x-auto no-scrollbar">
               {filters.map(f => (
                 <button key={f.id} onClick={() => setActiveFilter(f.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 active:translate-y-0.5 ${
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                     activeFilter === f.id ? 'bg-primary-500 text-white border-primary-600' : 'bg-background-surface text-content-secondary border-border-primary'
                   }`}>
                   <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -183,7 +183,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0 shadow-md">
                       <ShieldCheck className="w-6 h-6 text-white" />
                     </div>
                     <div>

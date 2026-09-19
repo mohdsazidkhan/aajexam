@@ -210,7 +210,7 @@ const AdminWithdrawRequests = () => {
             <button
               key={opt.value}
               onClick={() => { setStatus(opt.value); setPage(1); }}
-              className={`w-full lg:w-auto px-4 lg:px-8 py-5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 transition-all flex items-center gap-4 relative group overflow-hidden ${status === opt.value
+              className={`w-full lg:w-auto px-4 lg:px-8 py-5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 transition-all flex items-center gap-4 relative group overflow-hidden ${status === opt.value
                   ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-500 shadow-2xl'
                   : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-primary-500/30'
                 }`}
@@ -231,7 +231,7 @@ const AdminWithdrawRequests = () => {
           {loading ? (
             <div className="flex items-center justify-center py-32"><AdminTableSkeleton /></div>
           ) : items.length === 0 ? (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
               <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
               <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Withdrawal Requests</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No pending withdrawal requests at this time.</p>
@@ -239,13 +239,13 @@ const AdminWithdrawRequests = () => {
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               {viewMode === 'table' ? (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto selection:bg-primary-500/30">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto selection:bg-primary-500/30">
                   <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} />
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
                       <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
                       <div className="flex justify-between items-start mb-4 lg:mb-8">
                         <div className="flex items-center gap-4">

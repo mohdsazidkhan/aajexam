@@ -96,13 +96,13 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
       <section className="space-y-6">
         <button
           onClick={() => router.push('/govt-exams')}
-          className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-aajexam border-2 border-b-4 border-slate-200 dark:border-slate-800 active:translate-y-1 active:border-b-0 transition-all w-fit"
+          className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-800 active:translate-y-1 active:border-b-0 transition-all w-fit"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Hub
         </button>
 
-        <div className="bg-slate-950 rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-14 shadow-2xl relative overflow-hidden border-2 border-b-[12px] border-slate-800">
+        <div className="bg-slate-950 rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-14 shadow-2xl relative overflow-hidden border-2 border-slate-800">
           {/* Background atmosphere */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full blur-3xl -ml-32 -mb-32" />
@@ -140,9 +140,9 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
             >
               <div
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-b-8 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-500 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
+                className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-500 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
               >
-                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-aajexam-secondary border-b-8 border-primary-700">
+                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-aajexam-secondary border-b-2 border-primary-700">
                   {exam.code?.[0] || 'E'}
                 </div>
 

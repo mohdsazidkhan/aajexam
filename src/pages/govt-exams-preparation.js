@@ -79,7 +79,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {exams.length > 0 ? (
                                     exams.map((exam, index) => (
-                                        <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem] p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-b-8 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
+                                        <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem] p-4 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
                                             <div>
                                                 <div className="w-16 h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center mb-6 shadow-aajexam border-2 border-white dark:border-slate-800 overflow-hidden">
                                                     {exam.logo ? (
@@ -97,7 +97,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                             </div>
                                             <button
                                                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                                                className="w-full bg-primary-500 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-aajexam-primary border-b-4 border-primary-700 active:translate-y-1 active:border-b-0"
+                                                className="w-full bg-primary-500 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0"
                                             >
                                                 Start Practice <FaChartLine className="ml-2" />
                                             </button>
@@ -116,7 +116,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                     <button
                                         onClick={() => handlePageChange(pagination.currentPage - 1)}
                                         disabled={pagination.currentPage <= 1}
-                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-b-4 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-aajexam active:translate-y-1 active:border-b-0"
+                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-aajexam active:translate-y-1 active:border-b-0"
                                     >
                                         <FaChevronLeft className="w-4 h-4" />
                                     </button>
@@ -135,7 +135,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                                 <button
                                                     key={pageNum}
                                                     onClick={() => handlePageChange(pageNum)}
-                                                    className={`w-12 h-12 rounded-2xl font-black transition-all shadow-aajexam border-2 border-b-4 ${isActive
+                                                    className={`w-12 h-12 rounded-2xl font-black transition-all shadow-aajexam border-2 ${isActive
                                                         ? 'bg-primary-500 border-primary-700 text-white active:translate-y-1 active:border-b-0'
                                                         : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 active:translate-y-1 active:border-b-0'
                                                         }`}
@@ -149,7 +149,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                     <button
                                         onClick={() => handlePageChange(pagination.currentPage + 1)}
                                         disabled={!pagination.hasMore}
-                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-b-4 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-aajexam active:translate-y-1 active:border-b-0"
+                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-aajexam active:translate-y-1 active:border-b-0"
                                     >
                                         <FaChevronRight className="w-4 h-4" />
                                     </button>
@@ -158,7 +158,7 @@ export default function GovtExamsPreparation({ initialData }) {
                         </>
                     )}
 
-                    <div className="mt-32 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 lg:p-10 xl:p-20 text-white text-center border-4 border-slate-800 relative overflow-hidden shadow-2xl">
+                    <div className="mt-32 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 lg:p-10 xl:p-20 text-white text-center border-2 border-slate-800 relative overflow-hidden shadow-2xl">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 

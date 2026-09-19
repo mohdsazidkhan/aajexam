@@ -137,7 +137,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       </section>
 
       {/* --- Pattern Quest Card --- */}
-      <Card className="bg-gradient-to-br from-black dark:from-white to-black dark:to-white text-white dark:text-black border-none shadow-[0_4px_0_0_#b366ff] overflow-hidden relative">
+      <Card className="bg-black dark:bg-white text-white dark:text-black border-none shadow-[0_4px_0_0_#b366ff] overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <Zap className="w-4 h-4" />

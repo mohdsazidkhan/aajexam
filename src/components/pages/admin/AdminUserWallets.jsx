@@ -100,7 +100,7 @@ const AdminUserWallets = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
+          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
             <Wallet className="w-64 h-64 text-primary-500 -rotate-12" />
@@ -144,7 +144,7 @@ const AdminUserWallets = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
               placeholder="Search by username..."
-              className="w-full pl-14 pr-8 py-4 bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
+              className="w-full pl-14 pr-8 py-4 bg-white/80 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
             />
           </div>
 
@@ -172,7 +172,7 @@ const AdminUserWallets = () => {
               <select
                 value={itemsPerPage}
                 onChange={handleItemsPerPageChange}
-                className="w-full lg:w-auto bg-white/80 dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-white/80 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 {[10, 20, 50, 100, 250, 500, 1000].map(v => <option key={v} value={v}>{v}</option>)}
               </select>
@@ -185,7 +185,7 @@ const AdminUserWallets = () => {
             <AdminTableSkeleton />
           </div>
         ) : items.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-96 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl">
+          <div className="flex flex-col items-center justify-center h-96 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl">
             <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-6" />
             <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">No Wallet Records Found</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md text-center">There are no student wallets matching your search. Try adjusting your filters or check back later.</p>
@@ -193,7 +193,7 @@ const AdminUserWallets = () => {
         ) : (
           <>
             {viewMode === 'table' && (
-              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                 <div className="overflow-x-auto selection:bg-primary-500/30 text-nowrap">
                   <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                     <thead>
@@ -221,7 +221,7 @@ const AdminUserWallets = () => {
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6">
                             <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                              <div className="w-10 h-10 rounded-2xl bg-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
                                 <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
                                   {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                                 </div>
@@ -280,10 +280,10 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                   >
                     <div className="flex items-center gap-3 lg:gap-6">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[2px] shadow-lg">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-500 p-[2px] shadow-lg">
                         <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-500">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                         </div>
@@ -327,14 +327,14 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
+                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                       <Wallet className="w-24 h-24 text-primary-500 -rotate-12" />
                     </div>
 
                     <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-8 pb-6 border-b-2 border-slate-50 dark:border-white/5">
-                      <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-primary-500 to-primary-500 p-[3px] shadow-xl">
+                      <div className="w-16 h-16 rounded-3xl bg-primary-500 p-[3px] shadow-xl">
                         <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                         </div>

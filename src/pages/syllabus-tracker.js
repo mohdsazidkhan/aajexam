@@ -15,7 +15,7 @@ const SubjectAccordion = ({ subject }) => {
   const isAllDone = subject.completedTopics === subject.totalTopics && subject.totalTopics > 0;
 
   return (
-    <Card padded={false} className="overflow-hidden mb-4 border-2 border-border-primary border-b-4 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all">
+    <Card padded={false} className="overflow-hidden mb-4 border-2 border-border-primary hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
@@ -177,12 +177,12 @@ const SyllabusTrackerPage = () => {
 
           {/* ── Data View ── */}
           {selectedExam && loadingData ? (
-            <div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-black/30 dark:border-white/30 border-t-primary-500 rounded-full animate-spin" /></div>
+            <div className="py-20 flex justify-center"><div className="w-8 h-8 border-2 border-black/30 dark:border-white/30 border-t-primary-500 rounded-full animate-spin" /></div>
           ) : selectedExam && trackerData ? (
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
 
               {/* Progress Header */}
-              <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-8 border-black dark:border-white">
+              <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-2 border-black dark:border-white">
                 <div className="relative w-32 h-32 flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path className="text-slate-100 dark:text-slate-800" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />

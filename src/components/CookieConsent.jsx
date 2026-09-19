@@ -64,7 +64,7 @@ const CookieConsent = () => {
                     </button>
                     <button
                         onClick={handleAccept}
-                        className="flex-[2] lg:flex-none px-6 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black uppercase tracking-[0.1em] text-[10px] shadow-aajexam-primary hover:bg-primary-800 transition-all active:translate-y-1 active:shadow-none border-b-4 border-primary-900"
+                        className="flex-[2] lg:flex-none px-6 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black uppercase tracking-[0.1em] text-[10px] shadow-aajexam-primary hover:bg-primary-800 transition-all active:translate-y-1 active:shadow-none border-b-2 border-primary-900"
                     >
                         Accept
                     </button>

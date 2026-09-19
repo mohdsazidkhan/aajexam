@@ -60,11 +60,11 @@ const ShareComponent = ({ url, text, imageUrl }) => {
         ) : (
           <>
             {[
-              { href: `https://wa.me/?text=${encodedText}%0A${encodedUrl}`, icon: <FaWhatsapp />, color: "#25D366", label: "Whatsapp" },
-              { href: `https://t.me/share/url?text=${telegramTextFirst}`, icon: <FaTelegramPlane />, color: "#0088cc", label: "Telegram" },
-              { onClick: handleInstagramShare, icon: <FaInstagram />, color: "#E1306C", label: "Instagram" },
-              { href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, icon: <FaFacebook />, color: "#3b5998", label: "Facebook" },
-              { href: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`, icon: <FaTwitter />, color: "#1DA1F2", label: "Twitter" },
+              { href: `https://wa.me/?text=${encodedText}%0A${encodedUrl}`, icon: <FaWhatsapp />, label: "Whatsapp" },
+              { href: `https://t.me/share/url?text=${telegramTextFirst}`, icon: <FaTelegramPlane />, label: "Telegram" },
+              { onClick: handleInstagramShare, icon: <FaInstagram />, label: "Instagram" },
+              { href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, icon: <FaFacebook />, label: "Facebook" },
+              { href: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`, icon: <FaTwitter />, label: "Twitter" },
             ].map((social, idx) => (
               social.href ? (
                 <a
@@ -72,8 +72,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-aajexam transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800"
-                  style={{ color: social.color }}
+                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-aajexam transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800 text-primary-500"
                   title={social.label}
                 >
                   <span className="text-xl">{social.icon}</span>
@@ -82,8 +81,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
                 <button
                   key={idx}
                   onClick={social.onClick}
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-aajexam transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800"
-                  style={{ color: social.color }}
+                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-aajexam transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800 text-primary-500"
                   title={social.label}
                 >
                   <span className="text-xl">{social.icon}</span>

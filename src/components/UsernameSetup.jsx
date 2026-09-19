@@ -90,13 +90,13 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
   const canSave = isValid && (username === currentUsername || available === true);
 
   return (
-    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 lg:p-10 border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-2xl max-w-[500px] mx-auto font-outfit">
+    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-2xl max-w-[500px] mx-auto font-outfit">
       <h3 className="m-0 mb-2 text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Set Your Username</h3>
       <p className="username-info m-0 mb-8 text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
         Choose a unique username that others can use to find and follow you.
       </p>
 
-      <div className="username-input-group flex items-center border-2 border-b-4 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-500 shadow-inner">
+      <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-500 shadow-inner">
         <div className="username-prefix text-lg font-black text-slate-600 dark:text-slate-400 mr-2">@</div>
         <input
           type="text"
@@ -110,7 +110,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
             }`}
         />
         {checking && (
-          <span className="checking-spinner w-6 h-6 border-4 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
+          <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
           <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€œ</span>

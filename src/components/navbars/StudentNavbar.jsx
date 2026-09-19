@@ -137,10 +137,10 @@ const StudentNavbar = () => {
                     {/* Floating Badge */}
                     <span
                       className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[7px] lg:text-[8px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full text-white backdrop-blur-md shadow-lg border border-white/20 ${isExpired
-                        ? 'bg-gradient-to-r from-slate-500 via-slate-600 to-slate-500'
+                        ? 'bg-slate-500'
                         : isPro
-                          ? 'bg-gradient-to-r from-black dark:from-white via-black dark:via-white to-black dark:to-white'
-                          : 'bg-gradient-to-r from-primary-500 via-primary-500 to-black dark:to-white'
+                          ? 'bg-black dark:bg-white'
+                          : 'bg-primary-500'
                       }`}
                     >
                       {plan}

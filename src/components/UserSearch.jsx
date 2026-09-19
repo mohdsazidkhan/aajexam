@@ -53,10 +53,10 @@ const UserSearch = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search students by name or username..."
-          className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-b-4 border-slate-200 dark:border-slate-800 rounded-2xl outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:white focus:border-primary-500 shadow-sm"
+          className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-slate-200 dark:border-slate-800 rounded-2xl outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:white focus:border-primary-500 shadow-sm"
         />
         {loading && (
-          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border-4 border-slate-100 dark:border-slate-700 border-t-primary-500 rounded-full animate-spin"></span>
+          <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border-2 border-slate-100 dark:border-slate-700 border-t-primary-500 rounded-full animate-spin"></span>
         )}
       </div>
 
@@ -71,7 +71,7 @@ const UserSearch = () => {
           {users.map((user) => (
             <div
               key={user._id}
-              className="user-result-item flex items-center gap-5 p-5 bg-white dark:bg-slate-900 rounded-3xl border-2 border-b-8 border-slate-200 dark:border-slate-800 shadow-xl cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
+              className="user-result-item flex items-center gap-5 p-5 bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-xl cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
               onClick={() => handleUserClick(user.username)}
             >
               <img

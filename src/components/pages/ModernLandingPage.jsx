@@ -85,7 +85,7 @@ const ModernLandingPage = () => {
       <MobileAppWrapper showHeader={true} title="Home">
          <section className="relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-gradient-to-b from-primary-500/20 via-primary-500/10 to-transparent blur-[120px] opacity-70" />
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-primary-500/20 blur-[120px] opacity-70" />
                <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/15 rounded-full blur-[100px] animate-pulse" />
                <div className="absolute bottom-1/4 left-[5%] w-80 h-80 bg-primary-500/15 rounded-full blur-[100px]" />
             </div>
@@ -272,9 +272,9 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden p-4 lg:p-8">
+         <section className="bg-slate-50 dark:bg-slate-950 relative overflow-hidden p-4 lg:p-8">
             <div className="absolute inset-0 pointer-events-none">
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary-500/10 via-transparent to-transparent blur-[80px] opacity-60" />
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary-500/10 blur-[80px] opacity-60" />
             </div>
             <div className="container mx-auto px-4 lg:px-6 relative z-10">
                <div className="text-center space-y-4 mb-10">
@@ -294,12 +294,12 @@ const ModernLandingPage = () => {
                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
                   {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam, idx) => {
                      const colors = [
-                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'from-primary-500/20 to-primary-600/10', border: 'border-primary-500/20', text: 'text-primary-400' },
-                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'bg-primary-500/20', border: 'border-primary-500/20', text: 'text-primary-400' },
+                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
                      ];
                      const theme = colors[idx % colors.length];
                      return (
@@ -307,7 +307,7 @@ const ModernLandingPage = () => {
                            key={exam._id}
                            whileHover={{ scale: 1.04, y: -4 }}
                            onClick={() => router.push('/pyq')}
-                           className={`cursor-pointer p-4 rounded-2xl bg-gradient-to-br ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
+                           className={`cursor-pointer p-4 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
                         >
                            <span className={`text-sm lg:text-base font-black ${theme.text} mb-1`}>{exam.name}</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.pyqCount} PYQs</span>
@@ -317,18 +317,18 @@ const ModernLandingPage = () => {
                         </motion.div>
                      );
                   }) : [
-                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'RRB GROUP D', papers: '18+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'SSC CPO', papers: '17+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'UPSC Prelims', papers: '14+', color: 'from-primary-500/20 to-primary-600/10', border: 'border-primary-500/20', text: 'text-primary-400' },
-                     { name: 'SSC GD Constable', papers: '25+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'RRB GROUP D', papers: '18+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'SSC CPO', papers: '17+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'UPSC Prelims', papers: '14+', color: 'bg-primary-500/20', border: 'border-primary-500/20', text: 'text-primary-400' },
+                     { name: 'SSC GD Constable', papers: '25+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
                   ].map((exam) => (
                      <motion.div
                         key={exam.name}
                         whileHover={{ scale: 1.04, y: -4 }}
                         onClick={() => router.push('/pyq')}
-                        className={`cursor-pointer p-4 rounded-2xl bg-gradient-to-br ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
+                        className={`cursor-pointer p-4 rounded-2xl ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
                      >
                         <span className={`text-sm lg:text-base font-black ${exam.text}`}>{exam.name}</span>
                         <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{exam.papers} papers</span>
@@ -367,7 +367,7 @@ const ModernLandingPage = () => {
                </div>
 
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 lg:min-h-[800px]">
-                  <Card className="lg:col-span-8 p-6 lg:p-16 bg-gradient-to-br from-primary-600 to-primary-700 border-none shadow-2xl text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] lg:rounded-[4rem]">
+                  <Card className="lg:col-span-8 p-6 lg:p-16 bg-primary-600 border-none shadow-2xl text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] lg:rounded-[4rem]">
                      <div className="space-y-6 relative z-10 max-w-xl">
                         <div className="p-4 lg:p-5 bg-white/20 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] w-fit shadow-xl border-2 border-white/20">
                            <Trophy className="w-10 h-10 lg:w-12 lg:h-12" />
@@ -381,7 +381,7 @@ const ModernLandingPage = () => {
                         </div>
                      </div>
                      <Rocket className="absolute -right-16 -bottom-16 w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] opacity-10 rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
-                     <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-white/10 to-transparent pointer-events-none" />
+                     <div className="absolute top-0 right-0 w-full h-full bg-white/10 pointer-events-none" />
                   </Card>
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-500 transition-all group rounded-[2rem] lg:rounded-[4rem] shadow-xl">
@@ -398,7 +398,7 @@ const ModernLandingPage = () => {
                               <motion.div
                                  initial={{ width: 0 }}
                                  whileInView={{ width: `${width}%` }}
-                                 className="h-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-aajexam-secondary"
+                                 className="h-full bg-primary-500 shadow-aajexam-secondary"
                               />
                            </div>
                         ))}
@@ -462,7 +462,7 @@ const ModernLandingPage = () => {
                            { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
                            { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
                         ].map((item, index) => (
-                           <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-b-8 border-slate-100 dark:border-slate-800 shadow-xl group hover:-translate-y-2 transition-all">
+                           <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-xl group hover:-translate-y-2 transition-all">
                               <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-700 dark:text-primary-500 mb-6 group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
                                  <item.icon className="w-8 h-8" />
                               </div>
@@ -503,7 +503,6 @@ const ModernLandingPage = () => {
                      </Button>
                   </div>
                </div>
-               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(88,204,2,0.15)_0,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                <Sparkles className="absolute -top-20 -left-20 w-96 h-96 opacity-10 animate-pulse text-primary-500" />
                <Zap className="absolute -bottom-20 -right-20 w-96 h-96 opacity-10 rotate-12 text-primary-500" />
             </Card>

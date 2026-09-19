@@ -86,7 +86,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
   return (
     <div className={`${isReply ? 'ml-6 pl-3 border-l-2 border-slate-200 dark:border-slate-700' : ''} py-2`}>
       <div className="flex items-start gap-2">
-        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-400 to-black dark:to-white text-white text-xs font-bold flex items-center justify-center shrink-0">
+        <div className="w-7 h-7 rounded-full bg-primary-400 text-white text-xs font-bold flex items-center justify-center shrink-0">
           {(item.author?.name || '?').charAt(0).toUpperCase()}
         </div>
         <div className="flex-1 min-w-0">

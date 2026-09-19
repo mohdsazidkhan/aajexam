@@ -109,7 +109,7 @@ function AnswerItem({
 
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-1.5 text-xs mb-1">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary-400 to-black dark:to-white text-white text-[10px] font-bold flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-primary-400 text-white text-[10px] font-bold flex items-center justify-center">
               {(item.author?.name || '?').charAt(0).toUpperCase()}
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || 'User'}</span>

@@ -209,7 +209,7 @@ const TestStart = ({ resolvedId } = {}) => {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col items-center justify-center space-y-4">
+    <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
       <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
     </div>
@@ -359,7 +359,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             key={idx}
                             onClick={() => setCurrentQIndex(idx)}
                             className={`
-                              h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-4
+                              h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-2
                               ${isCurrent ? 'bg-primary-500 text-white border-primary-700 -translate-y-1' :
                                 isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
@@ -426,7 +426,7 @@ const TestStart = ({ resolvedId } = {}) => {
                       disabled={translatingQ}
                       onClick={() => handleAnswer(idx)}
                       className={`
-                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4 border-b-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-4 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
+                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
                           ? 'bg-primary-500 text-white border-primary-600 shadow-aajexam-primary'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
@@ -554,7 +554,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             <button
                               key={idx}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
-                              className={`h-14 rounded-2xl font-black border-b-4 ${isCurrent ? 'bg-primary-500 text-white border-primary-700' :
+                              className={`h-14 rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-500 text-white border-primary-700' :
                                 isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}

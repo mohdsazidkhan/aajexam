@@ -123,7 +123,7 @@ const AdminNavbar = () => {
               aria-expanded={showProfileMenu}
               className="p-0.5 rounded-full"
             >
-              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-gradient-to-br from-primary-500 to-primary-500 p-[2px]">
+              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-primary-500 p-[2px]">
                 <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase">
                   {user?.name?.charAt(0) || 'A'}
                 </div>

@@ -19,7 +19,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       <button
         onClick={handlePayuPayment}
         disabled={loading}
-        className={`w-full py-6 px-10 rounded-[2rem] font-black text-sm text-white transition-all shadow-aajexam-primary border-4 border-white/20 active:translate-y-2 active:shadow-none border-b-[12px] border-primary-700 ${
+        className={`w-full py-6 px-10 rounded-[2rem] font-black text-sm text-white transition-all shadow-aajexam-primary border-2 border-white/20 active:translate-y-2 active:shadow-none border-primary-700 ${
           loading
             ? 'bg-slate-400 border-slate-500 cursor-not-allowed shadow-none translate-y-2 opacity-80'
             : 'bg-primary-500 hover:bg-primary-600 hover:-translate-y-1'

@@ -50,7 +50,7 @@ const Skeleton = ({
           variants={shimmerVariants}
           initial="initial"
           animate="animate"
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-white/5 to-transparent skew-x-[-20deg]"
+          className="absolute inset-0 bg-transparent skew-x-[-20deg]"
         />
       )}
       

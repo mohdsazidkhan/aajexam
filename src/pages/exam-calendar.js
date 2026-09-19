@@ -74,7 +74,7 @@ const EventCard = ({ event, compact = false }) => {
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`flex items-start gap-3 p-3.5 rounded-2xl border-2 border-b-4 ${cfg.border} bg-background-surface hover:border-opacity-80 transition-all group cursor-pointer`}
+        className={`flex items-start gap-3 p-3.5 rounded-2xl border-2 ${cfg.border} bg-background-surface hover:border-opacity-80 transition-all group cursor-pointer`}
       >
         <div className={`w-9 h-9 rounded-lg lg:rounded-xl ${cfg.color} flex items-center justify-center flex-shrink-0`}>
           <Icon className="w-4 h-4" />
@@ -210,8 +210,8 @@ const ExamCalendarPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
-          <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-primary-600 to-black dark:to-white dark:via-primary-900/70 dark:to-slate-900" />
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
+          <div className="absolute inset-0 bg-black dark:bg-white" />
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-white/5 rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-white/5 rounded-full pointer-events-none" />
           <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-white/10 pointer-events-none" />
@@ -253,7 +253,7 @@ const ExamCalendarPage = () => {
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Prev</span>
@@ -275,7 +275,7 @@ const ExamCalendarPage = () => {
 
           <button
             onClick={nextMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="w-4 h-4" />
