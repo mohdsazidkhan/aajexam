@@ -271,7 +271,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 <span className="text-sm font-bold text-content-primary">{subject.name}</span>
                 {subject.slug ? (
                   <button
-                    onClick={() => router.push(`/practice/${exam.slug}/${subject.slug}`)}
+                    onClick={() => router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`)}
                     className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                   >
                     Practice {subject.name} Questions →
@@ -331,7 +331,10 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <motion.div key={subject._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card
                   hoverable
-                  onClick={() => subject.slug ? router.push(`/practice/${exam.slug}/${subject.slug}`) : setActiveTab('quizzes')}
+                  onClick={() => {
+                    if (!subject.slug) return setActiveTab('quizzes');
+                    router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`);
+                  }}
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
@@ -367,7 +370,10 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <motion.div key={topic._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card
                   hoverable
-                  onClick={() => (topic.subjectSlug && topic.slug) ? router.push(`/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}`) : setActiveTab('quizzes')}
+                  onClick={() => {
+                    if (!topic.slug) return setActiveTab('quizzes');
+                    router.push(topic.hasSeries && topic.subjectSlug ? `/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}` : `/topics/${topic.slug}`);
+                  }}
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
@@ -639,7 +645,7 @@ export async function getServerSideProps({ params }) {
       Quiz.find({ applicableExams: examId, status: 'published' })
         .populate('subject', 'name slug')
         .populate('topic', 'name slug')
-        .select('subject topic questions title slug duration totalMarks difficulty publishedAt')
+        .select('subject topic questions title slug type duration totalMarks difficulty publishedAt')
         .sort({ publishedAt: -1 })
         .lean()
     ]);
@@ -655,11 +661,13 @@ export async function getServerSideProps({ params }) {
     for (const q of quizDocs) {
       const qCount = q.questions?.length || 0;
       questionCount += qCount;
+      const isSeriesQuiz = q.type === 'subject_test';
       if (q.subject?._id) {
         const key = String(q.subject._id);
-        const entry = subjectMap.get(key) || { _id: key, name: q.subject.name, slug: q.subject.slug, quizCount: 0, questionCount: 0 };
+        const entry = subjectMap.get(key) || { _id: key, name: q.subject.name, slug: q.subject.slug, quizCount: 0, questionCount: 0, hasSeries: false };
         entry.quizCount += 1;
         entry.questionCount += qCount;
+        if (isSeriesQuiz) entry.hasSeries = true;
         subjectMap.set(key, entry);
       }
       if (q.topic?._id) {
@@ -671,10 +679,12 @@ export async function getServerSideProps({ params }) {
           subjectName: q.subject?.name || '',
           subjectSlug: q.subject?.slug || '',
           quizCount: 0,
-          questionCount: 0
+          questionCount: 0,
+          hasSeries: false
         };
         entry.quizCount += 1;
         entry.questionCount += qCount;
+        if (isSeriesQuiz) entry.hasSeries = true;
         topicMap.set(key, entry);
       }
       delete q.questions; // only needed transiently for the counts above

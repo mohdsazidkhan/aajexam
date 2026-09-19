@@ -21,14 +21,17 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
 
   useEffect(() => {
     if (!lookupId) return;
-    API.getTopicDetail(lookupId).then(res => {
+    setLoading(true);
+    const detailPromise = API.getTopicDetail(lookupId).then(res => {
       if (res.success) { setTopic(res.topic); setPracticeTests(res.practiceTests || []); setQuizzes(res.quizzes || []); }
     }).catch(console.error);
 
     // Fetch flashcards for this topic
-    API.request(`/api/flashcards?topic=${lookupId}`).then(res => {
+    const flashcardsPromise = API.request(`/api/flashcards?topic=${lookupId}`).then(res => {
       if (res?.success) setFlashcards(res.data || []);
-    }).catch(console.error).finally(() => setLoading(false));
+    }).catch(console.error);
+
+    Promise.all([detailPromise, flashcardsPromise]).finally(() => setLoading(false));
   }, [lookupId]);
 
   if (loading) return <TopicDetailSkeleton />;

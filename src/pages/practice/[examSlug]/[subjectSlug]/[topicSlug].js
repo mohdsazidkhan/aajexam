@@ -358,24 +358,44 @@ export async function getStaticProps({ params }) {
         image: q.image || '',
       }));
 
-    // Sibling topics under the same exam+subject, for internal linking.
-    const Topic = (await import('../../../../models/Topic')).default;
-    const relatedTopics = await Topic.find({
+    // Sibling topics/subjects under the same exam — derived from actual
+    // published subject_test quiz content (like loadSeries/loadTopicSeries
+    // above), not the legacy Subject.exams/Topic.exams tag arrays, which
+    // aren't reliably kept in sync and can point at topics/subjects with no
+    // real series for this exam (a dead link straight to a 404).
+    const Quiz = (await import('../../../../models/Quiz')).default;
+    const siblingQuizDocs = await Quiz.find({
+      type: 'subject_test',
+      status: 'published',
+      applicableExams: exam._id,
       subject: subject._id,
-      exams: { $in: [exam._id, String(exam._id)] },
-      _id: { $ne: topic._id },
-      isActive: { $ne: false },
       slug: { $exists: true, $nin: [null, ''] },
-    }).select('name slug').limit(12).lean();
+    }).select('topic').lean();
+    const siblingTopicIds = [...new Set(siblingQuizDocs.map((q) => String(q.topic)).filter((id) => id && id !== String(topic._id)))];
 
-    // Sibling subjects under the same exam.
+    const Topic = (await import('../../../../models/Topic')).default;
+    const relatedTopics = siblingTopicIds.length > 0
+      ? await Topic.find({
+          _id: { $in: siblingTopicIds },
+          isActive: { $ne: false },
+          slug: { $exists: true, $nin: [null, ''] },
+        }).select('name slug').limit(12).lean()
+      : [];
+
+    const subjectQuizGroups = await Quiz.aggregate([
+      { $match: { type: 'subject_test', status: 'published', applicableExams: exam._id, subject: { $ne: subject._id } } },
+      { $group: { _id: '$subject' } },
+    ]);
+    const siblingSubjectIds = subjectQuizGroups.map((g) => g._id).filter(Boolean);
+
     const Subject = (await import('../../../../models/Subject')).default;
-    const relatedSubjects = await Subject.find({
-      exams: { $in: [exam._id, String(exam._id)] },
-      _id: { $ne: subject._id },
-      isActive: { $ne: false },
-      slug: { $exists: true, $nin: [null, ''] },
-    }).select('name slug').limit(12).lean();
+    const relatedSubjects = siblingSubjectIds.length > 0
+      ? await Subject.find({
+          _id: { $in: siblingSubjectIds },
+          isActive: { $ne: false },
+          slug: { $exists: true, $nin: [null, ''] },
+        }).select('name slug').limit(12).lean()
+      : [];
 
     // Does the exam have full PYQ papers to link on to? (exam-level fact only —
     // never claimed as topic-specific PYQ content, since PracticeTest/PYQ
