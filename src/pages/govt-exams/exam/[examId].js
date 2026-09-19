@@ -74,7 +74,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     return (
       <div className="space-y-6 animate-fade-in py-10">
         <Skeleton height="120px" borderRadius="1.5rem" />
-        <div className="space-y-4">
+        <div className="space-y-2 lg:space-y-4">
           {[1, 2, 3].map(i => <Skeleton key={i} height="80px" borderRadius="1.5rem" />)}
         </div>
       </div>
@@ -545,7 +545,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <HelpCircle className="w-5 h-5 text-primary-700" />
           Frequently Asked Questions
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-2 lg:space-y-4">
           {faqItems.map((item) => (
             <div key={item.question} className="border-b border-slate-100 dark:border-slate-800 pb-4 last:border-0 last:pb-0">
               <p className="text-sm font-black text-content-primary mb-1">{item.question}</p>

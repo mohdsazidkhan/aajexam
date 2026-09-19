@@ -110,7 +110,7 @@ const EducationalContent = ({ content }) => {
                                 <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-sm bg-slate-50 dark:bg-slate-800`}>
                                     <card.icon className={`w-8 h-8 text-${card.color}-500`} />
                                 </div>
-                                <div className="space-y-4">
+                                <div className="space-y-2 lg:space-y-4">
                                     <h3 className="text-md md:text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight group-hover:text-primary-700 transition-colors">
                                         {card.title}
                                     </h3>

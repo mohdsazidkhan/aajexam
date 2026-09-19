@@ -59,7 +59,7 @@ const ForgotPasswordPage = () => {
           <Card className="p-10 border-none shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
 
             {/* Header */}
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-2 lg:space-y-4">
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
@@ -118,7 +118,7 @@ const ForgotPasswordPage = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     <Button
                       type="submit"
                       variant="primary"

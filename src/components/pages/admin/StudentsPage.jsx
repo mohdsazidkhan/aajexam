@@ -427,7 +427,7 @@ const StudentsPage = () => {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
+                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
                 >
                   <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                     <stat.icon className="w-5 h-5" />
@@ -505,7 +505,7 @@ const StudentsPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
               >
-                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                   <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Students Found</h3>
@@ -516,7 +516,7 @@ const StudentsPage = () => {
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="space-y-4 lg:space-y-12"
+                className="space-y-2 lg:space-y-4 lg:space-y-12"
               >
                 {/* View Render Logic */}
                 {viewMode === "table" && (
@@ -604,13 +604,13 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
                       >
                         <div className="w-20 h-20 bg-primary-700 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
                         </div>
 
-                        <div className="flex-1 space-y-4">
+                        <div className="flex-1 space-y-2 lg:space-y-4">
                           <div className="flex flex-wrap items-center gap-4">
                             <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-700 transition-colors">{student.name}</Link>
                             {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-700 transition-colors">@{student.username}</Link>}
@@ -662,7 +662,7 @@ const StudentsPage = () => {
                         <div className="absolute top-0 left-0 w-full h-2 bg-primary-700" />
 
                         <div className="mt-4 mb-6 relative">
-                          <div className="w-24 h-24 bg-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-primary-700 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-sm">
@@ -766,8 +766,8 @@ const StudentsPage = () => {
                 </div>
 
                 <div className="p-4 lg:p-10 overflow-y-auto">
-                  <form onSubmit={handleCreateSubscription} className="space-y-4 lg:space-y-8">
-                    <div className="space-y-4">
+                  <form onSubmit={handleCreateSubscription} className="space-y-2 lg:space-y-4 lg:space-y-8">
+                    <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Student Email</label>
                       <div className="relative group">
                         <Mail className="absolute left-8 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />

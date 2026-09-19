@@ -132,7 +132,7 @@ const BlogsPage = () => {
   );
 
   const ListView = () => (
-    <div className="space-y-4">
+    <div className="space-y-2 lg:space-y-4">
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`}
           className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row">

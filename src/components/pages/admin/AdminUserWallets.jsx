@@ -278,7 +278,7 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                   >
                     <div className="flex items-center gap-3 lg:gap-6">
                       <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-sm">
@@ -325,7 +325,7 @@ const AdminUserWallets = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden"
+                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
                       <Wallet className="w-24 h-24 text-primary-700 -rotate-12" />
@@ -346,7 +346,7 @@ const AdminUserWallets = () => {
                       </div>
                     </div>
 
-                    <div className="space-y-4 mb-4 lg:mb-8">
+                    <div className="space-y-2 lg:space-y-4 mb-4 lg:mb-8">
                       <div className="flex items-center justify-between">
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">STATUS</span>
                         <span className="text-sm font-black italic tabular-nums text-slate-400">{row.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE'}</span>

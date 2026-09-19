@@ -473,7 +473,7 @@ const DashboardAnalytics = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-600/30 transition-all hover:scale-[1.02]"
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-600/30 transition-all hover:scale-[1.02]"
                >
                  <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>

@@ -215,12 +215,12 @@ const AdminReferralAnalytics = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 ${stat.text || 'text-white'} shadow-sm ${stat.shadow}`}
+                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl xl:rounded-[2.5rem] p-3 lg:p-8 ${stat.text || 'text-white'} shadow-sm ${stat.shadow}`}
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-20">
                                         <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2" />
                                     </div>
-                                    <div className="relative z-10 space-y-4">
+                                    <div className="relative z-10 space-y-2 lg:space-y-4">
                                         <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{stat.label}</div>
                                         <div className="text-3xl lg:text-4xl font-black italic tracking-tighter tabular-nums">{stat.value}</div>
                                     </div>
@@ -280,7 +280,7 @@ const AdminReferralAnalytics = () => {
                             <button
                                 onClick={exportToCSV}
                                 disabled={analytics.length === 0}
-                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] shadow-sm hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-700 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] shadow-sm hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
                             >
                                 <Download className="w-5 h-5" /> Export CSV
                             </button>
@@ -305,7 +305,7 @@ const AdminReferralAnalytics = () => {
                                 key="content"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="space-y-4 lg:space-y-12"
+                                className="space-y-2 lg:space-y-4 lg:space-y-12"
                             >
                                 {/* Grid Visualization */}
                                 {viewMode === 'grid' && (
@@ -316,7 +316,7 @@ const AdminReferralAnalytics = () => {
                                                 initial={{ opacity: 0, scale: 0.95 }}
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
                                             >
                                                 <div className="relative mb-4 lg:mb-8">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-xl">
@@ -362,13 +362,13 @@ const AdminReferralAnalytics = () => {
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-10"
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-10"
                                             >
                                                 <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-2xl">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                 </div>
 
-                                                <div className="flex-1 space-y-4">
+                                                <div className="flex-1 space-y-2 lg:space-y-4">
                                                     <div className="flex flex-wrap items-center gap-4">
                                                         <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-700 transition-colors">{user.name || 'Unknown'}</h3>
                                                         <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-primary-500/20 text-primary-700 bg-primary-500/5 italic">{user.referralCode}</div>

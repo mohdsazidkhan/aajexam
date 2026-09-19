@@ -571,7 +571,7 @@ const SearchPage = () => {
                      <div className="px-3 lg:px-8"><ListSkeleton rows={6} /></div>
                   ) : activeTab === 'all' ? (
                      /* ══════ ALL TAB — Sectioned Layout ══════ */
-                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2 lg:space-y-4">
 
                         {/* ── Sections, in SECTION_ORDER (Reels rendered as a horizontal-scroll strip) ── */}
                         {SECTION_ORDER.map(key => {

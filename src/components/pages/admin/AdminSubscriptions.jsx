@@ -34,7 +34,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -484,7 +484,7 @@ const AdminSubscriptions = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-sm"
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-sm"
         >
           <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
             <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
@@ -582,7 +582,7 @@ const AdminSubscriptions = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="space-y-4 lg:space-y-12"
+              className="space-y-2 lg:space-y-4 lg:space-y-12"
             >
               {/* Table View */}
               {viewMode === 'table' && (
@@ -771,7 +771,7 @@ const AdminSubscriptions = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                     >
                       <div className="flex items-center gap-3 lg:gap-6">
                         <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-sm">
@@ -907,8 +907,8 @@ const AdminSubscriptions = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
-                    <div className="space-y-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
                       <select
                         value={extendForm.plan}
@@ -921,7 +921,7 @@ const AdminSubscriptions = () => {
                         <option value="pro">Pro</option>
                       </select>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">DURATION</label>
                       <select
                         value={extendForm.duration}

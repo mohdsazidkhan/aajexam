@@ -209,7 +209,7 @@ const TestStart = ({ resolvedId } = {}) => {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-4">
+    <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-2 lg:space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
       <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
     </div>
@@ -334,7 +334,7 @@ const TestStart = ({ resolvedId } = {}) => {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Question Map</h3>
               {sectionNames.map((secName) => {
                 const group = sectionGroups[secName];
@@ -393,7 +393,7 @@ const TestStart = ({ resolvedId } = {}) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="mx-auto space-y-4"
+              className="mx-auto space-y-2 lg:space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-700 uppercase shrink-0">

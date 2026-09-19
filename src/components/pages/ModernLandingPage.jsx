@@ -115,7 +115,7 @@ const ModernLandingPage = () => {
                      Trusted by students across India
                   </div>
 
-                  <div className="space-y-4 lg:space-y-6">
+                  <div className="space-y-2 lg:space-y-4 lg:space-y-6">
                      <h1
                         className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] text-slate-900 dark:text-white"
                      >
@@ -277,7 +277,7 @@ const ModernLandingPage = () => {
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary-500/10 blur-[80px] opacity-60" />
             </div>
             <div className="container mx-auto px-4 lg:px-6 relative z-10">
-               <div className="text-center space-y-4 mb-10">
+               <div className="text-center space-y-2 lg:space-y-4 mb-10">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-700 dark:text-primary-400 uppercase">
                      <span className="w-2 h-2 rounded-full bg-primary-700 animate-pulse" />
                      Last Year PYQ — Always Free
@@ -377,7 +377,7 @@ const ModernLandingPage = () => {
                   </Card>
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] lg:rounded-[4rem] shadow-sm">
-                     <div className="space-y-4 lg:space-y-6">
+                     <div className="space-y-2 lg:space-y-4 lg:space-y-6">
                         <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Flame className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>
@@ -398,7 +398,7 @@ const ModernLandingPage = () => {
                   </Card>
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] lg:rounded-[4rem] shadow-sm">
-                     <div className="space-y-4 lg:space-y-6">
+                     <div className="space-y-2 lg:space-y-4 lg:space-y-6">
                         <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Zap className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>
@@ -419,14 +419,14 @@ const ModernLandingPage = () => {
                   </Card>
 
                   <Card className="lg:col-span-8 p-5 lg:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col lg:flex-row items-center gap-6 lg:gap-10 overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">
-                     <div className="flex-1 space-y-4 lg:space-y-6 relative z-10 text-center lg:text-left">
+                     <div className="flex-1 space-y-2 lg:space-y-4 lg:space-y-6 relative z-10 text-center lg:text-left">
                         <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-700 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto lg:mx-0">
                            <Medal className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
                         <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.</p>
                         <div className="pt-2 lg:pt-4">
-                           <Button variant="primary" size="lg" className="shadow-sm rounded-lg lg:rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
+                           <Button variant="primary" size="lg" className="shadow-sm rounded-lg lg:rounded-xl xl:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
                               Start referring
                            </Button>
                         </div>

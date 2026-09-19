@@ -146,7 +146,7 @@ const MyReelsPage = () => {
                         return (
                            <motion.div key={reel._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="p-5 group hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full">
-                                 <div className="space-y-4 flex-1">
+                                 <div className="space-y-2 lg:space-y-4 flex-1">
                                     {/* Top: Type + Status */}
                                     <div className="flex items-center justify-between">
                                        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${typeConfig.bg} ${typeConfig.color}`}>

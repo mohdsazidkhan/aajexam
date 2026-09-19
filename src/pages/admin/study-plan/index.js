@@ -55,7 +55,7 @@ const AdminStudyPlanPage = () => {
           {loading ? (
             <AdminTableSkeleton />
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {plans.length === 0 ? (
                 <Card className="p-6 text-center text-slate-500 dark:text-slate-400">
                   No study plans available. Study planner admin controls can be added here once backend support is present.

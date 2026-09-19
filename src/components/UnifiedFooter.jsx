@@ -69,7 +69,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
       <div className="container mx-auto py-4 lg:py-8 px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 lg:mb-20">
           <div className="lg:col-span-1 space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
                 AAJ<span className="text-primary-700 text-glow-primary">EXAM</span>
               </h2>
@@ -90,7 +90,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow us on ${social.icon.name || 'social media'}`}
-                  className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl lg:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-700 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
+                  className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl xl:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-700 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>

@@ -185,7 +185,7 @@ const AdminGovtExamCategories = () => {
               </div>
               <button
                 onClick={handleCreate}
-                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
+                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
               >
                 <Plus className="w-5 h-5" /> ADD CATEGORY
               </button>
@@ -281,7 +281,7 @@ const AdminGovtExamCategories = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
                     >
                       <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 shadow-sm transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-700 border-primary-200 text-white shadow-sm' : 'bg-primary-700 border-primary-200 text-white shadow-sm'}`}>
                         {category.type === 'Central' ? <Globe className="w-10 h-10" /> : <Map className="w-10 h-10" />}
@@ -323,7 +323,7 @@ const AdminGovtExamCategories = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center"
                     >
                       <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-2 shadow-sm group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-700 border-primary-200 text-white' : 'bg-primary-700 border-primary-200 text-white'}`}>
                         {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
@@ -377,7 +377,7 @@ const AdminGovtExamCategories = () => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8 overflow-y-auto">
+                <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-2 lg:space-y-4 lg:space-y-8 overflow-y-auto">
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-2">CATEGORY NAME</label>
                     <input
@@ -412,7 +412,7 @@ const AdminGovtExamCategories = () => {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows="4"
-                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
+                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
                       placeholder="Enter description..."
                     />
                   </div>

@@ -393,7 +393,7 @@ const PublicProfile = ({ username }) => {
                     <span className="w-2 h-2 bg-primary-700 rounded-full"></span>
                     Training Quizzes ({contributions.quizzes.total})
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     {contributions.quizzes.items.map((quiz) => (
                       <div key={quiz._id} className="p-6 bg-white dark:bg-slate-900/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 hover:border-black dark:hover:border-white hover:-translate-y-1 active:translate-y-0 transition-all group shadow-sm">
                         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">

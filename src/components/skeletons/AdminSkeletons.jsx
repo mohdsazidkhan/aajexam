@@ -54,11 +54,11 @@ export const AdminDashboardSkeleton = () => (
       ))}
     </div>
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="lg:col-span-2 bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-4">
+      <div className="lg:col-span-2 bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-2 lg:space-y-4">
         <Sh className="h-5 w-40 rounded-lg" />
         <Sh className="h-64 w-full rounded-lg lg:rounded-xl" />
       </div>
-      <div className="bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-4">
+      <div className="bg-white dark:bg-white/5 rounded-[1.5rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-2 lg:space-y-4">
         <Sh className="h-5 w-32 rounded-lg" />
         {[1, 2, 3, 4].map(i => (
           <div key={i} className="flex items-center gap-3">
@@ -108,7 +108,7 @@ export const AdminDetailSkeleton = () => (
         </div>
       ))}
     </div>
-    <div className="bg-white dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-4">
+    <div className="bg-white dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 p-6 space-y-2 lg:space-y-4">
       {[1, 2, 3].map(i => (
         <Sh key={i} className="h-14 w-full rounded-2xl" />
       ))}

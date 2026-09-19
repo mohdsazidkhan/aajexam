@@ -232,7 +232,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         </div>
 
         {/* Content Sections */}
-        <div className="space-y-4 pb-8">
+        <div className="space-y-2 lg:space-y-4 pb-8">
           {/* Badges Section */}
           {profile.badges && profile.badges.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">

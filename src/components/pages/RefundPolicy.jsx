@@ -51,7 +51,7 @@ const RefundPolicy = () => {
                   >
                      <Banknote className="w-14 h-14 text-primary-700" />
                   </motion.div>
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                      <h1 className="text-xl lg:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
                         Refund <span className="text-primary-700">Policy</span>
                      </h1>
@@ -93,11 +93,11 @@ const RefundPolicy = () => {
                               </p>
                            </div>
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                              <div className="p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
+                              <div className="p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-2 lg:space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">No Refund Condition</h4>
                                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Access to the platform is provided regardless of your test performance or leaderboard rank.</p>
                               </div>
-                              <div className="p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
+                              <div className="p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-2 lg:space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Content Access</h4>
                                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Subscription fees cover access to study materials and practice tests, not guaranteed rewards.</p>
                               </div>
@@ -151,14 +151,14 @@ const RefundPolicy = () => {
                            </p>
 
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-primary-500/30 transition-all">
+                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-2 lg:space-y-4 hover:border-primary-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-primary-700">
                                     <TriangleAlert className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Double Payment</h4>
                                  </div>
                                  <p className="text-xs font-medium text-slate-400 leading-relaxed">When you are accidentally charged twice for the same plan.</p>
                               </div>
-                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-4 hover:border-primary-500/30 transition-all">
+                              <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-2 lg:space-y-4 hover:border-primary-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-primary-700">
                                     <Zap className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Activation Failure</h4>
@@ -187,7 +187,7 @@ const RefundPolicy = () => {
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">PAYMENT SUPPORT</p>
                               </div>
                            </div>
-                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 lg:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
                               <p className="text-xl lg:text-2xl font-black text-primary-700 tracking-tight">support@mohdsazidkhan.com</p>
                            </div>

@@ -31,7 +31,7 @@ const ProgressBar = ({
   const progressValue = Math.min(Math.max(progress, 0), 100);
 
   return (
-    <div className={`w-full space-y-4 ${className}`}>
+    <div className={`w-full space-y-2 lg:space-y-4 ${className}`}>
       {(label || showPercentage) && (
         <div className="flex justify-between items-end px-4">
           <div className="flex items-center gap-3">

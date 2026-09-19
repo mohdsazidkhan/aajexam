@@ -110,7 +110,7 @@ const DailyChallengePage = () => {
           { name: 'Daily Challenge', url: '/daily-challenge' }
         ])}
       />
-      <div className="text-center space-y-4">
+      <div className="text-center space-y-2 lg:space-y-4">
         <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto"><Target className="w-10 h-10 text-slate-300" /></div>
         <h2 className="text-2xl font-black text-slate-400">No Challenge Today</h2>
         <p className="text-sm text-slate-400">Come back tomorrow for a new challenge!</p>
@@ -165,14 +165,14 @@ const DailyChallengePage = () => {
 
         {/* Quiz in progress */}
         {started && !attempted && (
-          <div className="space-y-4">
+          <div className="space-y-2 lg:space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-sm font-bold text-slate-500">Q {currentQ + 1}/{challenge.questions.length}</span>
               <span className={`text-sm font-black flex items-center gap-1 ${timeLeft < 60 ? 'text-black dark:text-white' : 'text-slate-600 dark:text-slate-300'}`}>
                 <Clock className="w-4 h-4" /> {formatTime(timeLeft)}
               </span>
             </div>
-            <Card className="p-5 lg:p-6 space-y-4">
+            <Card className="p-5 lg:p-6 space-y-2 lg:space-y-4">
               <h3 className="text-base lg:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{challenge.questions[currentQ].questionText}</h3>
               <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
@@ -199,7 +199,7 @@ const DailyChallengePage = () => {
         {attempted && attemptData && (
           <div className="space-y-6">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <Card className="p-6 text-center space-y-4 bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20 shadow-sm">
+              <Card className="p-6 text-center space-y-2 lg:space-y-4 bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20 shadow-sm">
                 <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
@@ -220,11 +220,11 @@ const DailyChallengePage = () => {
 
             {/* Per-question review + discussion */}
             {challenge?.questions?.length > 0 && (
-              <Card className="p-4 lg:p-5 space-y-4">
+              <Card className="p-4 lg:p-5 space-y-2 lg:space-y-4">
                 <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <Target className="w-4 h-4 text-primary-700" /> Question Review & Discussion
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-2 lg:space-y-4">
                   {challenge.questions.map((q, idx) => {
                     const ans = attemptData?.answers?.[idx];
                     const correctIdx = q.options?.findIndex(o => o.isCorrect);

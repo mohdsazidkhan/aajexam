@@ -67,7 +67,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
           ])
         ]}
       />
-      <div className="py-0 lg:py-6 space-y-4">
+      <div className="py-0 lg:py-6 space-y-2 lg:space-y-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>

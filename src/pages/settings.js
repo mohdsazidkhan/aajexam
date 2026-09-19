@@ -127,7 +127,7 @@ const SettingsPage = () => {
 
         <div className="container mx-auto mt-4 space-y-6 lg:space-y-12">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-6">
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <h1 className="text-3xl lg:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
               <p className="text-sm lg:text-base font-bold text-content-secondary max-w-xl">
                 Update your profile, add bank details and change your password.
@@ -281,7 +281,7 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="lg:col-span-4 space-y-6">
-                    <Card className="p-6 bg-slate-900 border-none text-white rounded-[2.5rem] space-y-4">
+                    <Card className="p-6 bg-slate-900 border-none text-white rounded-[2.5rem] space-y-2 lg:space-y-4">
                       <div className="flex items-center gap-3">
                         <Info className="w-5 h-5 text-primary-400" />
                         <h3 className="font-outfit font-black tracking-tight text-lg">Why this matters</h3>
@@ -339,7 +339,7 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="lg:col-span-4 space-y-6">
-                    <Card className="p-6 rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-4">
+                    <Card className="p-6 rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 lg:space-y-4">
                       <CreditCard className="w-10 h-10 mx-auto text-primary-700" />
                       <h3 className="font-outfit font-black tracking-tight text-lg">Secure handling</h3>
                       <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">

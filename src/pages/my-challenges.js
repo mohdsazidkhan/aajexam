@@ -80,7 +80,7 @@ const MyChallengesPage = () => {
 
                {/* Results */}
                {challenges.length === 0 ? (
-                  <div className="py-16 text-center space-y-4">
+                  <div className="py-16 text-center space-y-2 lg:space-y-4">
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <Swords className="w-10 h-10 text-slate-300" />
                      </div>

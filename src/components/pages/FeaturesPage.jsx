@@ -165,7 +165,7 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
           <Card className="p-4 lg:p-10 space-y-3 lg:space-y-6 border-2">
             <div className="flex items-center justify-between">
-              <div className="p-2.5 lg:p-4 bg-slate-500/10 text-slate-500 rounded-lg lg:rounded-xl lg:rounded-2xl">
+              <div className="p-2.5 lg:p-4 bg-slate-500/10 text-slate-500 rounded-lg lg:rounded-xl xl:rounded-2xl">
                 <GraduationCap className="w-5 h-5 lg:w-7 lg:h-7" />
               </div>
               <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest px-2.5 lg:px-3 py-1 rounded-full bg-slate-500/10 text-slate-500">Free forever</span>
@@ -190,7 +190,7 @@ const FeaturesPage = () => {
           <Card className="p-4 lg:p-10 space-y-3 lg:space-y-6 border-2 border-primary-500/40 relative overflow-hidden">
             <Crown className="absolute -bottom-8 -right-8 w-40 h-40 text-primary-500/5" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 lg:p-4 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl lg:rounded-2xl">
+              <div className="p-2.5 lg:p-4 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl xl:rounded-2xl">
                 <Crown className="w-5 h-5 lg:w-7 lg:h-7" />
               </div>
               <ProBadge size="sm" />
@@ -217,7 +217,7 @@ const FeaturesPage = () => {
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {HIGHLIGHTS.map((h, i) => (
             <Card key={i} className="p-4 lg:p-8 group space-y-2.5 lg:space-y-5 border-2 hover:border-primary-500/50 transition-all duration-300">
-              <div className={`p-2.5 lg:p-4 bg-${h.color}-500/10 text-${h.color}-500 rounded-lg lg:rounded-xl lg:rounded-2xl group-hover:scale-110 transition-transform w-fit shadow-sm`}>
+              <div className={`p-2.5 lg:p-4 bg-${h.color}-500/10 text-${h.color}-500 rounded-lg lg:rounded-xl xl:rounded-2xl group-hover:scale-110 transition-transform w-fit shadow-sm`}>
                 <h.icon className="w-4 h-4 lg:w-6 lg:h-6" />
               </div>
               <div className="space-y-1 lg:space-y-2">
@@ -229,7 +229,7 @@ const FeaturesPage = () => {
         </section>
 
         {/* --- Full comparison --- */}
-        <section className="space-y-4 lg:space-y-8">
+        <section className="space-y-2 lg:space-y-4 lg:space-y-8">
           <div className="text-center space-y-1.5 lg:space-y-2 max-w-2xl mx-auto">
             <h2 className="text-base lg:text-3xl font-black font-outfit uppercase tracking-tight">Full feature comparison</h2>
             <p className="text-[10px] lg:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] lg:tracking-[0.15em] px-2">Enforced on the server — locked content shows a real upgrade gate, not just a hidden button</p>
@@ -272,7 +272,7 @@ const FeaturesPage = () => {
           <Card className="p-5 lg:p-16 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[2rem] lg:rounded-[4rem]">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
-            <div className="relative z-10 space-y-4 lg:space-y-8">
+            <div className="relative z-10 space-y-2 lg:space-y-4 lg:space-y-8">
               <h2 className="text-lg lg:text-4xl font-black font-outfit uppercase tracking-tight lg:tracking-tighter">Ready to go <span className="text-primary-400">PRO</span>?</h2>
               <p className="text-xs lg:text-lg font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-1">
                 Two tiers only — Free and PRO at ₹{proPrice}/month. No confusing add-ons.

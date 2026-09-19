@@ -166,7 +166,7 @@ const StudentSidebar = () => {
     >
 
       {/* Navigation */}
-      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-0 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-0 space-y-2 lg:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
@@ -177,7 +177,7 @@ const StudentSidebar = () => {
                 const active = isActiveRoute(item.path);
                 return (
                   <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined}>
-                    <button className={`w-full flex items-center justify-between px-2 py-2 rounded-lg lg:rounded-xl transition-all duration-200 relative group overflow-hidden ${active
+                    <button className={`w-full flex items-center justify-between px-2 py-2 transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>

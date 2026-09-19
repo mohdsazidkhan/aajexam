@@ -92,7 +92,7 @@ const HowItWorks = () => {
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
-               <div className="space-y-4">
+               <div className="space-y-2 lg:space-y-4">
                   <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-700">Works</span></h1>
                   <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and earn by referring friends.</p>
                </div>

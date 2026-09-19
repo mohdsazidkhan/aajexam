@@ -32,7 +32,7 @@ const Sh = ({ className = '' }) => (
   <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg ${className}`} />
 );
 const CalendarSkeleton = () => (
-  <div className="space-y-4">
+  <div className="space-y-2 lg:space-y-4">
     <Sh className="h-48 lg:h-52 w-full rounded-[2.5rem]" />
     <div className="grid grid-cols-7 gap-1">
       {Array.from({ length: 35 }).map((_, i) => <Sh key={i} className="h-12 sm:h-14 rounded-lg lg:rounded-xl" />)}
@@ -401,7 +401,7 @@ const ExamCalendarPage = () => {
 
         {/* Empty state */}
         {totalEvents === 0 && upcoming.length === 0 && (
-          <div className="py-16 text-center space-y-4">
+          <div className="py-16 text-center space-y-2 lg:space-y-4">
             <CalendarDays className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
             <h3 className="text-lg font-black text-content-muted uppercase">No events this month</h3>
             <p className="text-sm text-content-muted font-bold">Check back later or navigate to another month.</p>

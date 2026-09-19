@@ -10,7 +10,7 @@ const Sh = ({ className = '' }) => (
 // These skeletons assume they are injected into the container where the content usually is.
 
 export const ListSkeleton = ({ rows = 5 }) => (
-  <div className="space-y-4 font-outfit w-full">
+  <div className="space-y-2 lg:space-y-4 font-outfit w-full">
     {Array.from({ length: rows }).map((_, i) => (
       <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-4 lg:p-5 flex gap-4">
         <Sh className="w-12 h-12 rounded-lg lg:rounded-xl shrink-0" />
@@ -77,7 +77,7 @@ export const ProfileSkeleton = () => (
     {/* Header / Banner */}
     <div className="relative bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 flex flex-col items-center gap-4 text-center overflow-hidden">
       <Sh className="absolute inset-0 w-full h-32 lg:h-48 rounded-t-[2rem]" />
-      <div className="relative z-10 mt-16 lg:mt-24 space-y-4 flex flex-col items-center">
+      <div className="relative z-10 mt-16 lg:mt-24 space-y-2 lg:space-y-4 flex flex-col items-center">
         <Sh className="w-24 h-24 lg:w-32 lg:h-32 rounded-full border-2 border-white dark:border-slate-800" />
         <Sh className="h-6 w-48 rounded-lg" />
         <Sh className="h-3 w-32 rounded-full" />
@@ -94,7 +94,7 @@ export const ProfileSkeleton = () => (
     </div>
 
     {/* Content */}
-    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 space-y-4">
+    <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 space-y-2 lg:space-y-4">
       {[1, 2, 3, 4].map(i => (
         <div key={i} className="flex gap-4">
           <Sh className="w-10 h-10 rounded-lg lg:rounded-xl shrink-0" />
@@ -110,7 +110,7 @@ export const ProfileSkeleton = () => (
 
 export const SubscriptionSkeleton = () => (
   <div className="space-y-6 lg:space-y-10 font-outfit w-full">
-    <div className="text-center space-y-4 max-w-2xl mx-auto">
+    <div className="text-center space-y-2 lg:space-y-4 max-w-2xl mx-auto">
       <Sh className="h-8 w-64 mx-auto rounded-lg lg:rounded-xl" />
       <Sh className="h-4 w-full rounded-lg" />
       <Sh className="h-4 w-3/4 mx-auto rounded-lg" />
@@ -125,7 +125,7 @@ export const SubscriptionSkeleton = () => (
             <Sh className="h-3 w-24 rounded-md" />
           </div>
           <Sh className="h-12 w-full rounded-full" />
-          <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+          <div className="space-y-2 lg:space-y-4 pt-4 border-t border-slate-100 dark:border-slate-700">
             {[1,2,3,4,5].map(j => (
               <div key={j} className="flex gap-3 items-center">
                 <Sh className="w-5 h-5 rounded-full shrink-0" />
@@ -188,7 +188,7 @@ export const CommentSkeleton = ({ rows = 3 }) => (
 
 export const ReelFeedSkeleton = () => (
   <div className="h-full flex flex-col items-center justify-center bg-slate-950 px-6" style={{ height: '100dvh' }}>
-    <div className="w-full max-w-sm space-y-4 animate-pulse">
+    <div className="w-full max-w-sm space-y-2 lg:space-y-4 animate-pulse">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-full bg-slate-800" />
         <div className="space-y-2 flex-1">
@@ -226,7 +226,7 @@ export const QAThreadSkeleton = () => (
   <div className="space-y-5 font-outfit w-full">
     <Sh className="h-4 w-28 rounded-full" />
 
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-5 lg:p-6 space-y-4">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 p-5 lg:p-6 space-y-2 lg:space-y-4">
       <div className="flex items-center gap-2">
         <Sh className="w-7 h-7 rounded-full shrink-0" />
         <Sh className="h-3 w-24 rounded-full" />
@@ -304,7 +304,7 @@ export const RevisionSkeleton = () => (
 export const QuizResultSkeleton = () => (
   <div className="space-y-6 font-outfit w-full">
     {/* Result card */}
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-5 lg:p-8 text-center space-y-4">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-5 lg:p-8 text-center space-y-2 lg:space-y-4">
       <Sh className="w-16 h-16 rounded-full mx-auto" />
       <Sh className="h-5 w-2/3 mx-auto rounded-lg" />
       <Sh className="h-3 w-1/3 mx-auto rounded-full" />
@@ -341,7 +341,7 @@ export const DetailSkeleton = () => (
   <div className="space-y-6 lg:space-y-8 font-outfit w-full">
     {/* Header / Banner */}
     <div className="relative bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 text-center">
-      <div className="space-y-4 max-w-3xl mx-auto flex flex-col items-center">
+      <div className="space-y-2 lg:space-y-4 max-w-3xl mx-auto flex flex-col items-center">
         <Sh className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl" />
         <Sh className="h-8 lg:h-10 w-full rounded-lg lg:rounded-xl" />
         <Sh className="h-8 lg:h-10 w-3/4 rounded-lg lg:rounded-xl" />
@@ -355,14 +355,14 @@ export const DetailSkeleton = () => (
     {/* Content */}
     <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-6 lg:p-10 space-y-6">
       <Sh className="w-full aspect-video rounded-[1.5rem]" />
-      <div className="space-y-4 pt-4">
+      <div className="space-y-2 lg:space-y-4 pt-4">
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-11/12 rounded-lg" />
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-10/12 rounded-lg" />
       </div>
-      <div className="space-y-4 pt-8">
+      <div className="space-y-2 lg:space-y-4 pt-8">
         <Sh className="h-8 w-1/3 rounded-lg" />
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-9/12 rounded-lg" />

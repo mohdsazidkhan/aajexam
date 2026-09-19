@@ -166,7 +166,7 @@ const PayuSuccess = () => {
       <div className="min-h-screen py-8">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-2 lg:space-y-4">
               <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto ${success ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white'}`}>
                 {success ? <CheckCircle2 className="w-12 h-12" /> : <CircleAlert className="w-12 h-12" />}
               </div>
@@ -181,7 +181,7 @@ const PayuSuccess = () => {
             </div>
 
             {success && detailRows.length > 0 && (
-              <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8 space-y-4">
+              <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8 space-y-2 lg:space-y-4">
                 <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Transaction details</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (

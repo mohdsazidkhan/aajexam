@@ -83,14 +83,14 @@ export default function ReferralHistory() {
    return (
       <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white">
 
-         <div className="container mx-auto mt-0 space-y-4 lg:space-y-8">
+         <div className="container mx-auto mt-0 space-y-2 lg:space-y-4 lg:space-y-8">
 
             {/* --- Header Section --- */}
-            <section className="relative text-center space-y-4 lg:space-y-8 px-0 py-4 lg:p-8">
+            <section className="relative text-center space-y-2 lg:space-y-4 lg:space-y-8 px-0 py-4 lg:p-8">
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10">
                   <Users className="w-10 h-10" />
                </motion.div>
-               <div className="space-y-4">
+               <div className="space-y-2 lg:space-y-4">
                   <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-700">History</span></h1>
                   <p className="text-sm font-bold text-content-secondary uppercase tracking-[0.3em] max-w-2xl mx-auto">Share your link with friends. When they buy the PRO plan (first time), you earn ₹33.</p>
                </div>
@@ -144,7 +144,7 @@ export default function ReferralHistory() {
                      <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">See which type of referral gave you how much money</p>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                      {[
                         { label: 'Friend Buys ₹99 Plan', type: 'plan99', color: 'primary' }
                      ].map((b, i) => {
@@ -195,7 +195,7 @@ export default function ReferralHistory() {
                            </Button>
                         </Card>
                      ) : (
-                        <div className="space-y-4">
+                        <div className="space-y-2 lg:space-y-4">
                            <Card className="overflow-hidden border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">

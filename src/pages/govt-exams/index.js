@@ -132,7 +132,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:p-8">
         <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div className="space-y-4 mx-auto text-center">
+          <div className="space-y-2 lg:space-y-4 mx-auto text-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
               className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
               <TrendingUp className="w-3.5 h-3.5" /> {exams.length} Exams Available
@@ -156,7 +156,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       </section>
 
       {/* Filters + Search */}
-      <section className="space-y-4">
+      <section className="space-y-2 lg:space-y-4">
         <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-4 -mx-4 px-4 border-b border-slate-200 dark:border-slate-800/50">
           <div className="flex items-center gap-3">
             <div className="flex gap-2 overflow-x-auto no-scrollbar">
@@ -224,7 +224,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           ))}
 
           {filteredExams.length === 0 && !loading && (
-            <div className="col-span-full py-20 text-center space-y-4">
+            <div className="col-span-full py-20 text-center space-y-2 lg:space-y-4">
               <Search className="w-20 h-20 text-gray-300 mx-auto" />
               <h3 className="text-xl font-black text-gray-400 uppercase">No exams found</h3>
               <Button variant="primary" onClick={() => { setActiveFilter('all'); setSearchQuery(''); }}>View All</Button>

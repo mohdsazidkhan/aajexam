@@ -141,7 +141,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               whileTap={!answered ? { scale: 0.97 } : {}}
               onClick={() => handleSelect(i)}
               disabled={answered}
-              className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
+              className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
             >
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
                 ? 'border-primary-400 bg-primary-400 text-primary-900'
@@ -1093,7 +1093,7 @@ const ReelsFeed = () => {
                     <div className="w-10 h-1 rounded-full bg-white/20" />
                   </div>
 
-                  <div className="px-5 pb-6 space-y-4">
+                  <div className="px-5 pb-6 space-y-2 lg:space-y-4">
                     {/* Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">

@@ -162,7 +162,7 @@ const Sidebar = () => {
   return (
     <div className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-2 px-0 space-y-4 scrollbar-premium relative z-10">
+      <nav className="flex-1 overflow-y-auto py-2 px-0 space-y-2 lg:space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">

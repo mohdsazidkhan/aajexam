@@ -200,7 +200,7 @@ export default function AdminContacts() {
                  animate={{ opacity: 1, scale: 1 }}
                  className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                >
-                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
@@ -211,7 +211,7 @@ export default function AdminContacts() {
                  key="content"
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="space-y-4 lg:space-y-12"
+                 className="space-y-2 lg:space-y-4 lg:space-y-12"
                >
                 {viewMode === 'table' && (
                   <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
@@ -281,7 +281,7 @@ export default function AdminContacts() {
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.05 }}
-                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
+                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
                        >
                           <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-lg">
                              {contact.name?.[0].toUpperCase() || 'U'}
@@ -321,13 +321,13 @@ export default function AdminContacts() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
+                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
                       >
                          <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 group-hover:text-white transition-all">
                             <User className="w-7 h-7" />
                          </div>
 
-                         <div className="flex-1 space-y-4">
+                         <div className="flex-1 space-y-2 lg:space-y-4">
                             <div className="flex flex-wrap items-center gap-4">
                                <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-700 transition-colors">{contact.name || 'Unknown'}</h3>
                                <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">{contact.email || 'No email'}</div>

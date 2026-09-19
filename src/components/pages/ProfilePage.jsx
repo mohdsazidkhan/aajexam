@@ -187,7 +187,7 @@ const ProfilePage = () => {
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto space-y-4 lg:space-y-6 mt-4 mb-4 lg:mb-4">
+      <div className="container mx-auto space-y-2 lg:space-y-4 lg:space-y-6 mt-4 mb-4 lg:mb-4">
 
         {/* Hero — single full-width card, responsive from mobile to desktop */}
         <Card className="p-5 lg:p-10 space-y-6" radius="3xl">
@@ -330,11 +330,11 @@ const ProfilePage = () => {
                 </div>
 
                 {subjectAccuracy.length > 0 && (
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-content-secondary">
                       <BookOpen className="w-4 h-4" /> Subject-wise accuracy
                     </p>
-                    <div className="space-y-4">
+                    <div className="space-y-2 lg:space-y-4">
                       {subjectAccuracy.map(([subject, score]) => (
                         <ProgressBar key={subject} progress={score} variant="primary" height="sm" label={subject} />
                       ))}
@@ -386,7 +386,7 @@ const ProfilePage = () => {
 
               {/* Referral code */}
               {student?.referralCode && (
-                <Card className="p-2 lg:p-4 space-y-4" radius="3xl">
+                <Card className="p-2 lg:p-4 space-y-2 lg:space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-primary-700" />
                     <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
@@ -415,7 +415,7 @@ const ProfilePage = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="p-4 lg:p-10 space-y-4 lg:space-y-8 relative overflow-hidden" radius="3xl">
+              <Card className="p-4 lg:p-10 space-y-2 lg:space-y-4 lg:space-y-8 relative overflow-hidden" radius="3xl">
                 <div className="flex items-center justify-between gap-4 relative z-10">
                   <div>
                     <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Payout details</h2>
@@ -495,7 +495,7 @@ const ProfilePage = () => {
                 </div>
               </Card>
 
-              <Card className="p-8 space-y-4" radius="3xl">
+              <Card className="p-8 space-y-2 lg:space-y-4" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-700" />
                   <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Account safety</h2>

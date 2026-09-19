@@ -176,7 +176,7 @@ const AdminNotificationsPage = () => {
                  animate={{ opacity: 1, scale: 1 }}
                  className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                >
-                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Notifications</h3>
@@ -207,7 +207,7 @@ const AdminNotificationsPage = () => {
                          }
                          router.push(href);
                        }}
-                       className={`group relative rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col ${n.isRead 
+                       className={`group relative rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col ${n.isRead 
                          ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
                          : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-sm active-signal'}`}
                      >

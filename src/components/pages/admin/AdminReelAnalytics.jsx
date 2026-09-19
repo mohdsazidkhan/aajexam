@@ -71,7 +71,7 @@ const AdminReelAnalytics = () => {
                 {/* Type Breakdown */}
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-5">
                   <h3 className="font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight text-sm sm:text-base">By Type</h3>
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     {data.typeBreakdown.map(item => {
                       const maxCount = Math.max(...data.typeBreakdown.map(i => i.count));
                       const pct = maxCount > 0 ? (item.count / maxCount) * 100 : 0;

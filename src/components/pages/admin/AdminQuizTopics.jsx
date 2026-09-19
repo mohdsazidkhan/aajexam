@@ -110,7 +110,7 @@ const AdminQuizTopics = () => {
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Topic</h2>
               <button onClick={() => setShowModal(false)}><X className="w-5 h-5 text-slate-400" /></button>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-2 lg:space-y-4">
               <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm">
                 <option value="">Select Subject</option>
                 {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}

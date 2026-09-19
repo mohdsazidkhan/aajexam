@@ -101,7 +101,7 @@ const ReferralBanner = ({ user }) => {
 
 
       {/* Share Buttons */}
-      <div className="space-y-4">
+      <div className="space-y-2 lg:space-y-4">
         <button
           onClick={() => setShowShareOptions(!showShareOptions)}
           className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-sm transition-all active:translate-y-1 flex items-center justify-center gap-3"

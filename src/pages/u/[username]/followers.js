@@ -85,7 +85,7 @@ export default function FollowersListPage() {
               <p className="text-sm lg:text-lg font-black text-slate-400 uppercase tracking-tight">No followers yet</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {followers.map((user) => (
                 <div
                   key={user._id}

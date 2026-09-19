@@ -74,7 +74,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden font-outfit"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden font-outfit"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -197,7 +197,7 @@ const FinancialAnalytics = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-primary-500/5 dark:bg-primary-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-primary-500/20 relative overflow-hidden group">
+              <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-primary-500/5 dark:bg-primary-500/10 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-primary-500/20 relative overflow-hidden group">
                <span className="text-[10px] font-black text-primary-700 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
                <div className="flex items-center gap-3 shrink-0">
                  <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-primary-700" />
@@ -220,7 +220,7 @@ const FinancialAnalytics = () => {
                 <p className="text-black dark:text-white text-[10px] font-black uppercase tracking-widest">{error}</p>
               </div>
             ) : (
-              <div className="space-y-4 lg:space-y-12">
+              <div className="space-y-2 lg:space-y-4 lg:space-y-12">
                 
                 {/* Financial Metrics */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">

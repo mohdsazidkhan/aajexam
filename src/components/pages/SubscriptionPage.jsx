@@ -111,12 +111,12 @@ const SubscriptionPage = () => {
         <title>Subscription | AajExam</title>
       </Head>
 
-      <div className="space-y-4 lg:space-y-8 animate-fade-in mx-auto mt-2 lg:mt-4">
+      <div className="space-y-2 lg:space-y-4 lg:space-y-8 animate-fade-in mx-auto mt-2 lg:mt-4">
         {subscription && (
           <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-primary-700' : 'bg-slate-950 shadow-sm'}`}>
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-8">
               <div className="flex items-start gap-3 lg:gap-6">
-                <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-5 h-5 lg:w-8 lg:h-8" />
                 </div>
                 <div className="space-y-1 lg:space-y-2">
@@ -187,7 +187,7 @@ const SubscriptionPage = () => {
 
               return (
                 <Card key={plan.key} className={`p-4 lg:p-10 flex flex-col justify-between group transition-all duration-300 h-full relative rounded-2xl lg:rounded-[3.5rem] border-2 ${theme.card} ${isCurrent ? 'ring-2 ring-primary-500/40' : ''}`}>
-                  <div className="space-y-4 lg:space-y-8 relative z-10">
+                  <div className="space-y-2 lg:space-y-4 lg:space-y-8 relative z-10">
                     <div className="flex justify-between items-start gap-3 lg:gap-4">
                       <div className={`p-2.5 lg:p-4 rounded-2xl lg:rounded-3xl ${theme.iconWrap}`}>
                         <plan.icon className="w-6 h-6 lg:w-10 lg:h-10" />

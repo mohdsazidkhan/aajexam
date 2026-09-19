@@ -284,7 +284,7 @@ const AdminGovtExamResults = () => {
           </motion.div>
 
           {/* Quick Filters */}
-          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
+          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 text-[10px] uppercase font-black tracking-widest">
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                 <Compass className="w-4 h-4 text-primary-700" />
@@ -330,7 +330,7 @@ const AdminGovtExamResults = () => {
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -385,7 +385,7 @@ const AdminGovtExamResults = () => {
                 {viewMode === 'list' && (
                   <div className="space-y-3 lg:space-y-6">
                     {attempts.map((a, idx) => (
-                      <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
+                      <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                         <div className="flex items-center gap-3 lg:gap-6">
                           <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ?'bg-primary-700 text-white':'bg-slate-900 text-white dark:bg-white'}`}>#{a.rank ||'-'}</div>
                           <div>
@@ -432,7 +432,7 @@ const AdminGovtExamResults = () => {
                     <button onClick={() => setShowDetails(false)} className="p-4 bg-white dark:bg-white/5 rounded-2xl text-slate-400 hover:text-black dark:hover:text-white transition-colors shadow-sm"><X className="w-6 h-6" /></button>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto p-4 lg:p-10 custom-scrollbar space-y-4 lg:space-y-12">
+                  <div className="flex-1 overflow-y-auto p-4 lg:p-10 custom-scrollbar space-y-2 lg:space-y-4 lg:space-y-12">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-8">
                       {[
                         { label: 'Score', val: selectedAttempt.score, icon: Target, color: 'primary' },
@@ -448,14 +448,14 @@ const AdminGovtExamResults = () => {
                       ))}
                     </div>
 
-                    <div className="space-y-4 lg:space-y-8">
+                    <div className="space-y-2 lg:space-y-4 lg:space-y-8">
                       <div className="flex items-center gap-4 mb-4">
                         <Binary className="w-5 h-5 text-primary-700" />
                         <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Questions & Answers</h3>
                       </div>
                       <div className="space-y-3 lg:space-y-6">
                         {selectedAttempt.answers?.map((ans, i) => (
-                          <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
+                          <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
                               <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-sm ${ans.isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>{i + 1}</div>
                               <div>
@@ -478,7 +478,7 @@ const AdminGovtExamResults = () => {
                       </div>
                     </div>
 
-                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-sm transition-all hover:translate-y-[-4px]">Close</button>
+                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-sm transition-all hover:translate-y-[-4px]">Close</button>
                   </div>
                 </motion.div>
               </div>

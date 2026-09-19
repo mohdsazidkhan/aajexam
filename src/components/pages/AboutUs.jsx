@@ -69,7 +69,7 @@ const AboutUs = () => {
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-sm rotate-12">
                   <Sparkles className="text-white w-10 h-10" />
                </motion.div>
-               <div className="space-y-4">
+               <div className="space-y-2 lg:space-y-4">
                   <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-700">Us</span></h1>
                   <p className="text-lg md:text-xl lg:text-2xl font-medium text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">Practice daily. Learn more. Get the job you always wanted.</p>
                </div>
@@ -99,7 +99,7 @@ const AboutUs = () => {
                      </div>
                      <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tight leading-none">Good Education <br />For Every Student</h2>
                      <p className="text-slate-300 font-bold leading-relaxed">AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.</p>
-                     <div className="space-y-4">
+                     <div className="space-y-2 lg:space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
                            <div key={i} className="flex items-center gap-3">
                               <div className="w-5 h-5 bg-primary-700 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
@@ -112,7 +112,7 @@ const AboutUs = () => {
                </Card>
 
                <div className="space-y-10 px-4">
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                      <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-wide">How We Help You</h3>
                      <p className="text-slate-700 dark:text-slate-400 font-bold leading-relaxed">We use simple and effective ways to help you study. Our platform is built to boost your score in SSC, UPSC, Banking, and Railway exams.</p>
                   </div>

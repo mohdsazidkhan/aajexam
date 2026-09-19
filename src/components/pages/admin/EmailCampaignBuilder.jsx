@@ -380,7 +380,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* --- Editor --- */}
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {!canEditFields && (
                 <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
                   {isPublished
@@ -496,7 +496,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             </div>
 
             {/* --- Right column: preview + campaign progress --- */}
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {campaign && (
                 <div className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl p-4 bg-slate-50 dark:bg-white/5">
                   <div className="flex items-center justify-between mb-2">

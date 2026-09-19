@@ -216,7 +216,7 @@ const FAQ = () => {
                                     </h2>
                                 </div>
 
-                                <div className="space-y-4">
+                                <div className="space-y-2 lg:space-y-4">
                                     {category.questions.map((faq, qIndex) => (
                                         <div
                                             key={qIndex}

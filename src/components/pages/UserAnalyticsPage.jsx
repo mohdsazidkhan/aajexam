@@ -251,7 +251,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Subject-wise Quick View (from quiz) */}
                         {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-4">
+                           <div className="space-y-2 lg:space-y-4">
                               <SectionHeader icon={BarChart3} title="Subject Performance" subtitle="Based on your quiz attempts" />
                               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                  {quiz.subjectWise.map((s, idx) => {
@@ -311,7 +311,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Subject Wise */}
                         {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-4">
+                           <div className="space-y-2 lg:space-y-4">
                               <SectionHeader icon={BookOpen} title="Subject Wise Performance" />
                               <div className="space-y-3">
                                  {quiz.subjectWise.map((s, idx) => {
@@ -339,7 +339,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Topic Wise */}
                         {quiz?.topicWise?.length > 0 && (
-                           <div className="space-y-4">
+                           <div className="space-y-2 lg:space-y-4">
                               <SectionHeader icon={Target} title="Topic Wise Performance" subtitle="Top topics by attempts" />
                               <div className="space-y-2">
                                  {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((t, idx) => (
@@ -449,7 +449,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Reel Subject Wise */}
                         {reel?.subjectWise?.length > 0 && (
-                           <div className="space-y-4">
+                           <div className="space-y-2 lg:space-y-4">
                               <SectionHeader icon={BookOpen} title="Reel Subject Performance" subtitle="Question reels you answered" />
                               <div className="space-y-3">
                                  {reel.subjectWise.map((s, idx) => {
@@ -511,7 +511,7 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Earnings Breakdown */}
-                        <div className="space-y-4">
+                        <div className="space-y-2 lg:space-y-4">
                            <SectionHeader icon={Coins} title="Earnings Breakdown" />
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                               <Card className="p-5 border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
@@ -532,7 +532,7 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Referral Section */}
-                        <div className="space-y-4">
+                        <div className="space-y-2 lg:space-y-4">
                            <SectionHeader icon={UserPlus} title="Referral" subtitle={`${referral?.count || 0} people joined using your code`} />
                            <Card className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
                               <div className="flex flex-col sm:flex-row items-center gap-4">

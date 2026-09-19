@@ -106,7 +106,7 @@ const StreakPage = () => {
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-            <Card className="p-5 lg:p-6 space-y-4 relative overflow-hidden">
+            <Card className="p-5 lg:p-6 space-y-2 lg:space-y-4 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
               <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-primary-700" /> Streak Leaderboard</h3>
               <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>

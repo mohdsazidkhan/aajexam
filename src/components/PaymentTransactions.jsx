@@ -216,7 +216,7 @@ const PaymentTransactions = () => {
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-4 py-2.5 lg:px-8 lg:py-5 rounded-lg lg:rounded-xl lg:rounded-2xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 lg:space-x-3 border-2 lg:border-2 border-white/10 shadow-sm"
+              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-4 py-2.5 lg:px-8 lg:py-5 rounded-lg lg:rounded-xl xl:rounded-2xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 lg:space-x-3 border-2 lg:border-2 border-white/10 shadow-sm"
             >
               <FaFilter className="text-xs lg:text-sm" />
               <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest">Filters</span>
@@ -237,7 +237,7 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-sm border-2 lg:border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-sm border-2 lg:border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -250,7 +250,7 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-sm border-2 lg:border-2 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-sm border-2 lg:border-2 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
                   <FaReceipt className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -263,7 +263,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-sm border-2 lg:border-2 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-sm border-2 lg:border-2 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -284,7 +284,7 @@ const PaymentTransactions = () => {
                 placeholder="Search history..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 lg:pl-12 pr-3 lg:pr-4 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
+                className="w-full pl-9 lg:pl-12 pr-3 lg:pr-4 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
               />
             </div>
 
@@ -292,7 +292,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value={1}>January</option>
               <option value={2}>February</option>
@@ -312,7 +312,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -323,7 +323,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="paid">Paid</option>
@@ -350,14 +350,14 @@ const PaymentTransactions = () => {
       <div className="p-3 lg:p-12">
         {error ? (
           <div className="text-center py-10 lg:py-20">
-            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-sm border-2 border-white">
+            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-sm border-2 border-white">
               <FaExclamationTriangle className="text-black dark:text-white text-base lg:text-2xl" />
             </div>
             <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{error}</p>
           </div>
         ) : filteredTransactions.length === 0 ? (
           <div className="text-center py-10 lg:py-20">
-            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-sm border-2 border-white">
+            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-sm border-2 border-white">
               <FaReceipt className="text-slate-600 dark:text-slate-400 text-base lg:text-2xl" />
             </div>
             <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">No records found</p>
@@ -365,7 +365,7 @@ const PaymentTransactions = () => {
         ) : (
           <div className="space-y-3 lg:space-y-6">
             {filteredTransactions.map((transaction) => (
-              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl lg:rounded-[2rem] shadow-sm lg:shadow-sm border-2 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
+              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl xl:rounded-[2rem] shadow-sm lg:shadow-sm border-2 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
                 {/* Transaction Header */}
                 <div className="p-3 lg:p-8 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                   <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 lg:gap-6">
@@ -407,7 +407,7 @@ const PaymentTransactions = () => {
 
                     <button
                       onClick={() => toggleTransactionDetails(transaction.id)}
-                      className="self-end lg:self-auto p-2.5 lg:p-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
+                      className="self-end lg:self-auto p-2.5 lg:p-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
                     >
                       {expandedTransaction === transaction.id ? <FaEyeSlash /> : <FaEye />}
                     </button>
@@ -419,7 +419,7 @@ const PaymentTransactions = () => {
                   <div className="border-t-2 border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-3 lg:p-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">
                       {/* Payment Details */}
-                      <div className="bg-white dark:bg-slate-800 p-3 lg:p-6 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                      <div className="bg-white dark:bg-slate-800 p-3 lg:p-6 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h4 className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 lg:mb-6 flex items-center gap-2 lg:gap-3">
                           <FaCreditCard className="text-primary-700" />
                           Payment Details
@@ -441,7 +441,7 @@ const PaymentTransactions = () => {
                       </div>
 
                       {/* Info Details */}
-                      <div className="bg-white dark:bg-slate-800 p-3 lg:p-6 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                      <div className="bg-white dark:bg-slate-800 p-3 lg:p-6 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h4 className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 lg:mb-6 flex items-center gap-2 lg:gap-3">
                           <FaReceipt className="text-primary-700" />
                           Transaction Details
@@ -475,7 +475,7 @@ const PaymentTransactions = () => {
               <button
                 onClick={() => handlePageChange(pagination.currentPage - 1)}
                 disabled={!pagination.hasPrev}
-                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
+                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
               >
                 <FaChevronLeft className="text-xs lg:text-sm" />
               </button>
@@ -487,7 +487,7 @@ const PaymentTransactions = () => {
                     <button
                       key={page}
                       onClick={() => handlePageChange(page)}
-                      className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-all ${page === pagination.currentPage
+                      className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl xl:rounded-2xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-all ${page === pagination.currentPage
                         ? 'bg-primary-700 text-white shadow-sm border-2 border-white'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1'
                         }`}
@@ -501,7 +501,7 @@ const PaymentTransactions = () => {
               <button
                 onClick={() => handlePageChange(pagination.currentPage + 1)}
                 disabled={!pagination.hasNext}
-                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
+                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
               >
                 <FaChevronRight className="text-xs lg:text-sm" />
               </button>

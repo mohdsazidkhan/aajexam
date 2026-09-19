@@ -24,7 +24,7 @@ const QuizListSkeleton = () => (
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
       {Array.from({ length: 9 }).map((_, i) => (
-        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 space-y-4">
+        <div key={i} className="bg-white dark:bg-slate-800 rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-700 p-5 space-y-2 lg:space-y-4">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <Sh className="w-12 h-12 rounded-2xl shrink-0" />
@@ -135,8 +135,8 @@ const QuizListPage = () => {
       </section>
 
       {/* ── Filters ── */}
-      <section className="space-y-4">
-        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
+      <section className="space-y-2 lg:space-y-4">
+        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-0 lg:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
             {filters.map(f => (
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
@@ -200,7 +200,7 @@ const QuizListPage = () => {
           ))}
 
           {filtered.length === 0 && !loading && (
-            <div className="col-span-full py-20 text-center space-y-4">
+            <div className="col-span-full py-20 text-center space-y-2 lg:space-y-4">
               <BrainCircuit className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No quizzes found</h3>
               <button onClick={() => { setActiveFilter('all'); setSearch(''); }}

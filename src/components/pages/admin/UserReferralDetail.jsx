@@ -126,7 +126,7 @@ export default function UserReferralDetail() {
     if (!userId || error) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center p-3 lg:p-8">
-                <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] shadow-sm border-b-2 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
+                <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] shadow-sm border-b-2 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                     <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                 </div>
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">{error ? 'Error' : 'User Not Found'}</h3>
@@ -172,7 +172,7 @@ export default function UserReferralDetail() {
                         <div className="flex flex-wrap items-center gap-4">
                             <button
                                 onClick={() => router.push('/admin/referral-history')}
-                                className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
+                                className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
                             >
                                 <ArrowLeft className="w-4 h-4 text-primary-700" /> Back to History
                             </button>
@@ -189,7 +189,7 @@ export default function UserReferralDetail() {
                         ].map((stat, i) => (
                             <div
                                 key={stat.label}
-                                className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
+                                className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
                             >
                                 <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                                     <stat.icon className="w-5 h-5" />
@@ -207,7 +207,7 @@ export default function UserReferralDetail() {
                         { id: 'total', label: 'Total Earned', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
                         { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                     ].map((tier) => (
-                        <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group hover:border-primary-500/30 transition-all">
+                        <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group hover:border-primary-500/30 transition-all">
                             <div className="p-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit">
                                 <tier.icon className="w-5 h-5" />
                             </div>
@@ -252,7 +252,7 @@ export default function UserReferralDetail() {
                             animate={{ opacity: 1, scale: 1 }}
                             className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                         >
-                            <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                            <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                                 <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                             </div>
                             <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS YET</h3>

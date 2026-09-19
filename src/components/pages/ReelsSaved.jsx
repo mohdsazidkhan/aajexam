@@ -77,7 +77,7 @@ const ReelsSaved = () => {
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {reels.map((reel, i) => {
                 const Icon = TYPE_ICONS[reel.type];
                 return (

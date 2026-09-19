@@ -69,7 +69,7 @@ const AdminNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isSidebarOpen}
-              className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${
+              className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   : 'bg-transparent lg:bg-primary-700 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-sm lg:hover:scale-105'

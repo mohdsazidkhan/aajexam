@@ -123,7 +123,7 @@ export default function AdminBankDetails() {
   };
 
   const TableView = () => (
-    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
+    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
       <div className="overflow-x-auto selection:bg-primary-500/30">
         <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
           <thead>
@@ -245,7 +245,7 @@ export default function AdminBankDetails() {
           </div>
 
           <div className="space-y-3 lg:space-y-6">
-            <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-4 shadow-sm">
+            <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-2 lg:space-y-4 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT HOLDER</span>
                 <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase">
@@ -260,7 +260,7 @@ export default function AdminBankDetails() {
               </div>
             </div>
 
-            <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 space-y-4">
+            <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 space-y-2 lg:space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <University className="w-4 h-4 text-primary-700" />
@@ -315,7 +315,7 @@ export default function AdminBankDetails() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
         >
           <div className="flex items-center gap-3 lg:gap-6">
             <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
@@ -415,7 +415,7 @@ export default function AdminBankDetails() {
       </motion.div>
 
       {/* Controls Bar */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
         <div className="lg:col-span-2">
           <div className="relative group/search">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />

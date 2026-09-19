@@ -270,7 +270,7 @@ const TestResult = ({ resolvedId } = {}) => {
               className="space-y-12"
             >
               {/* Leaderboard */}
-              <div className="space-y-4">
+              <div className="space-y-2 lg:space-y-4">
                 <div className="flex items-end justify-between px-2 gap-2 flex-wrap">
                   <h3 className="text-xl font-black font-outfit uppercase">Leaderboard</h3>
                   {lbStats.totalParticipants > 0 && (
@@ -330,7 +330,7 @@ const TestResult = ({ resolvedId } = {}) => {
               </div>
 
               {/* Section breakdown */}
-              <div className="space-y-4">
+              <div className="space-y-2 lg:space-y-4">
                 <h3 className="text-xl font-black font-outfit uppercase px-2">Section Performance</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
@@ -377,7 +377,7 @@ const TestResult = ({ resolvedId } = {}) => {
                       {isCorrect ? <CircleCheck className="text-primary-700 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-black dark:text-white w-8 h-8" />}
                     </div>
 
-                    <div className="p-3 lg:p-6 space-y-4">
+                    <div className="p-3 lg:p-6 space-y-2 lg:space-y-4">
                       {q.questionImage && (
                         <img src={q.questionImage} alt="" className="max-h-72 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                       )}

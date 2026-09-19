@@ -160,7 +160,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       <section className="space-y-6">
         <h2 className="text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase px-1">Select A Quest</h2>
 
-        <div className="space-y-4">
+        <div className="space-y-2 lg:space-y-4">
           {tests.map((test, idx) => {
             const isCompleted = test.userAttempt?.status === 'Completed';
             const isPro = (user?.subscriptionStatus || '').toUpperCase() === 'PRO' || user?.role === 'admin';
@@ -227,7 +227,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         </div>
 
         {tests.length === 0 && (
-          <div className="py-20 text-center space-y-4">
+          <div className="py-20 text-center space-y-2 lg:space-y-4">
             <ShieldAlert className="w-20 h-20 text-gray-300 mx-auto" />
             <h3 className="text-xl lg:text-2xl font-black text-gray-400 uppercase">No Quests Available</h3>
             <p className="text-gray-400 font-bold">Check back soon for new content!</p>

@@ -212,7 +212,7 @@ const ReelCreate = () => {
 
         <div className="py-6">
           {!type ? (
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <p className="mt-2 lg:mt-0 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-3">
                 {TYPES.map(t => (

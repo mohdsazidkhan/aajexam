@@ -75,7 +75,7 @@ const PrivacyPolicy = () => {
                   >
                      <ShieldCheck className="w-14 h-14 text-primary-700" />
                   </motion.div>
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                      <h1 className="text-xl lg:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
                         Privacy <span className="text-primary-700">Policy</span>
                      </h1>
@@ -242,7 +242,7 @@ const PrivacyPolicy = () => {
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">GET IN TOUCH</p>
                               </div>
                            </div>
-                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 lg:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
                               <p className="text-xl lg:text-2xl font-black text-primary-700 tracking-tight">support@mohdsazidkhan.com</p>
                            </div>

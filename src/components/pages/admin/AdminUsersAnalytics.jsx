@@ -122,7 +122,7 @@ const AdminUsersAnalytics = () => {
                                  { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', desc: 'Additional Costs', isCurrency: true },
                                  { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', desc: 'Overall Balance', isCurrency: true, isNet: true }
                              ].map((stat, i) => (
-                                <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm group hover:border-primary-500/30 transition-all">
+                                <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm group hover:border-primary-500/30 transition-all">
                                     <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><stat.icon className="w-5 h-5" /></div>
                                     <div className="flex items-baseline gap-1 mb-1">
                                         {stat.isCurrency && <IndianRupee className="w-3 h-3 text-slate-400 font-black" />}
@@ -166,7 +166,7 @@ const AdminUsersAnalytics = () => {
                              <div className="flex items-center justify-center py-32"><AdminDashboardSkeleton /></div>
                         ) : error ? (
                             <div className="text-center py-32">
-                                <div className="p-3 lg:p-8 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 inline-block text-black dark:text-white text-2xl lg:text-6xl">!</div>
+                                <div className="p-3 lg:p-8 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-6 inline-block text-black dark:text-white text-2xl lg:text-6xl">!</div>
                                  <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                             </div>
@@ -177,9 +177,9 @@ const AdminUsersAnalytics = () => {
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search or filters.</p>
                             </div>
                         ) : (
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4 lg:space-y-12">
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2 lg:space-y-4 lg:space-y-12">
                                 {viewMode === 'table' && (
-                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
+                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                                         <table className="w-full border-collapse">
                                             <thead>
                                                 <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -221,7 +221,7 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'grid' && (
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                                         {students.map((s, idx) => (
-                                            <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative flex flex-col group overflow-hidden">
+                                            <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative flex flex-col group overflow-hidden">
                                                 <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus ==='PRO'?'bg-primary-700':'bg-primary-700'}`} />
                                                 <div className="mb-6 mx-auto">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-sm group-hover:rotate-6 transition-all">{(s.name || 'U')[0]}</div>
@@ -247,7 +247,7 @@ const AdminUsersAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="space-y-3 lg:space-y-6">
                                         {students.map((s, idx) => (
-                                            <motion.div key={s._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
+                                            <motion.div key={s._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                                                 <div className="flex items-center gap-3 lg:gap-6">
                                                     <div className="w-14 h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-xl shadow-sm shrink-0 italic">{(s.name || 'U')[0]}</div>
                                                     <div>

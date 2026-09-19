@@ -116,7 +116,7 @@ export default function EditorialPolicy() {
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>
                         </div>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        <div className="space-y-2 lg:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
                                 We value feedback from our user community. If you encounter any errors, outdated information, or have suggestions for improvement, we encourage you to report them through our feedback system. Every report is reviewed by our editorial team within 48 hours.
                             </p>
@@ -129,7 +129,7 @@ export default function EditorialPolicy() {
                     {/* Corrections Policy */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Corrections and Updates Policy</h2>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        <div className="space-y-2 lg:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
                                 When errors are identified, we implement corrections immediately. For minor factual errors, corrections are made silently with internal documentation. For significant errors that may have affected user learning, we:
                             </p>
@@ -148,7 +148,7 @@ export default function EditorialPolicy() {
                     {/* Ethical Standards */}
                     <div className="bg-primary-50 dark:bg-primary-900/20 rounded-3xl p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
-                        <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        <div className="space-y-2 lg:space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
                                 AajExam is committed to maintaining the highest ethical standards in educational content creation:
                             </p>

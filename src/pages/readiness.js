@@ -116,7 +116,7 @@ const ReadinessPage = () => {
           )}
 
           {!readiness && !analyzing && (
-            <Card className="p-8 text-center space-y-4">
+            <Card className="p-8 text-center space-y-2 lg:space-y-4">
               <BarChart3 className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">Select an Exam</h2>
               <p className="text-sm text-slate-400">Choose your target exam to see your readiness score based on your quiz and test history.</p>

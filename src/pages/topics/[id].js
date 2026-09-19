@@ -116,7 +116,7 @@ export default function TopicDetail({
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-2 lg:space-y-4">
                 {faqs.map((f, i) => (
                   <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
                     <summary className="font-black text-slate-900 dark:text-white text-base lg:text-lg uppercase tracking-tight">{f.question}</summary>

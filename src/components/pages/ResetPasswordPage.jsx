@@ -78,7 +78,7 @@ const ResetPasswordPage = () => {
           <Card className="p-10 border-none shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
 
             {/* Header */}
-            <div className="text-center space-y-4">
+            <div className="text-center space-y-2 lg:space-y-4">
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
@@ -103,7 +103,7 @@ const ResetPasswordPage = () => {
                   <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     <h3 className="text-lg font-black font-outfit uppercase text-primary-700">Password Updated</h3>
                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
                       Your password has been reset. Redirecting to login...
@@ -160,7 +160,7 @@ const ResetPasswordPage = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     <Button
                       type="submit"
                       variant="primary"

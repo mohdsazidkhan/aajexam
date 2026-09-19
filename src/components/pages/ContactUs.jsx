@@ -85,7 +85,7 @@ const ContactUs = ({ contactInfo = {
                   <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                      <MessageSquare className="w-10 h-10" />
                   </motion.div>
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                      <h1 className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-700">Support</span></h1>
                      <p className="text-sm lg:text-base font-medium text-slate-600 dark:text-slate-400 mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
                   </div>
@@ -103,7 +103,7 @@ const ContactUs = ({ contactInfo = {
                            { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'primary' }
                         ].map((item, i) => (
                            <Card key={i} className="p-2 lg:p-4 flex items-center gap-6 lg:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] lg:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
-                              <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
+                              <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
                                  <item.icon className="w-5 h-5 lg:w-6 lg:h-6" />
                               </div>
                               <div className="min-w-0">
@@ -160,7 +160,7 @@ const ContactUs = ({ contactInfo = {
 
                         <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                              <div className="space-y-4">
+                              <div className="space-y-2 lg:space-y-4">
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Full Name</label>
                                  <input
                                     className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
@@ -168,7 +168,7 @@ const ContactUs = ({ contactInfo = {
                                     value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required
                                  />
                               </div>
-                              <div className="space-y-4">
+                              <div className="space-y-2 lg:space-y-4">
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Email Address</label>
                                  <input
                                     type="email"
@@ -179,7 +179,7 @@ const ContactUs = ({ contactInfo = {
                               </div>
                            </div>
 
-                           <div className="space-y-4">
+                           <div className="space-y-2 lg:space-y-4">
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Subject</label>
                               <input
                                  className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
@@ -188,7 +188,7 @@ const ContactUs = ({ contactInfo = {
                               />
                            </div>
 
-                           <div className="space-y-4">
+                           <div className="space-y-2 lg:space-y-4">
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Message</label>
                               <textarea
                                  rows="5"

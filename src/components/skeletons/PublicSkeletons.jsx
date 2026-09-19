@@ -30,7 +30,7 @@ const RowSkeleton = ({ badgeCount = 2 }) => (
 
 // ─── List page header (title + count + search bar) ───────────────────────────
 const ListHeaderSkeleton = () => (
-  <div className="space-y-4 mb-6">
+  <div className="space-y-2 lg:space-y-4 mb-6">
     <div className="flex items-center justify-between">
       <Sh className="h-7 w-28 rounded-lg lg:rounded-xl" />
       <Sh className="h-4 w-16 rounded-full" />
@@ -125,7 +125,7 @@ const QuizPreviewSkeleton = () => (
       <Sh className="h-12 w-full rounded-2xl" />
     </div>
     {/* Leaderboard */}
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 space-y-4">
+    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 space-y-2 lg:space-y-4">
       <Sh className="h-5 w-32 rounded-lg lg:rounded-xl" />
       {[1,2,3].map(i => <RowSkeleton key={i} badgeCount={1} />)}
     </div>
@@ -138,7 +138,7 @@ const BlogDetailSkeleton = () => (
     <Sh className="h-4 w-20 rounded-full" />
     {/* Hero image */}
     <Sh className="h-64 lg:h-96 w-full rounded-3xl" />
-    <div className="space-y-4">
+    <div className="space-y-2 lg:space-y-4">
       <Sh className="h-3 w-24 rounded-full" />
       <Sh className="h-8 w-5/6 rounded-lg lg:rounded-xl" />
       <Sh className="h-8 w-3/4 rounded-lg lg:rounded-xl" />
@@ -166,7 +166,7 @@ export const AuthFormSkeleton = () => (
     <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-5 animate-pulse">
       <Sh className="h-8 w-40 mx-auto rounded-lg lg:rounded-xl" />
       <Sh className="h-3 w-56 mx-auto rounded-lg" />
-      <div className="space-y-4 pt-4">
+      <div className="space-y-2 lg:space-y-4 pt-4">
         <Sh className="h-12 w-full rounded-2xl" />
         <Sh className="h-12 w-full rounded-2xl" />
         <Sh className="h-12 w-full rounded-full" />

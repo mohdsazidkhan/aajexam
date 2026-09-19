@@ -248,7 +248,7 @@ export default function MentorProfilePage() {
 
           {/* AMA Threads */}
           {mentor.amaThreads?.length > 0 ? (
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {mentor.amaThreads.map((thread, i) => (
                 <div key={i} className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl space-y-2">
                   <div>

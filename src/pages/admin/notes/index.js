@@ -71,7 +71,7 @@ const AdminNotes = () => {
                 <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Note' : 'Add New Note'}</h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
               </div>
-              <div className="p-5 space-y-4">
+              <div className="p-5 space-y-2 lg:space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Subject <span className="text-black dark:text-white">*</span></label>

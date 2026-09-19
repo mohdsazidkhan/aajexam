@@ -229,7 +229,7 @@ const AdminGovtExamPatterns = () => {
     </motion.div>
 
     {/* Filters */}
-    <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
+    <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 font-outfit">
         <div className="w-full lg:w-1/2 flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
           <Compass className="w-4 h-4 text-primary-700" />
@@ -262,7 +262,7 @@ const AdminGovtExamPatterns = () => {
       {loading ? (
         <div className="flex items-center justify-center py-24"><AdminTableSkeleton /></div>
       ) : patterns.length === 0 ? (
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
           <Boxes className="w-16 h-16 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
           <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Patterns Found</h3>
           <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Select an exam above or create a new pattern to get started.</p>
@@ -270,7 +270,7 @@ const AdminGovtExamPatterns = () => {
       ) : (
         <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           {viewMode === 'table' && (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -313,7 +313,7 @@ const AdminGovtExamPatterns = () => {
           {viewMode === 'grid' && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
               {patterns.map((p, idx) => (
-                <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit">
+                <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit">
                   <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-700 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
                   <div className="mb-4 lg:mb-8">
                     <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-1">Exam Pattern</div>
@@ -344,7 +344,7 @@ const AdminGovtExamPatterns = () => {
           {viewMode === 'list' && (
             <div className="space-y-3 lg:space-y-6">
               {patterns.map((p, idx) => (
-                <motion.div key={p._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm">
+                <motion.div key={p._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm">
                   <div className="flex items-center gap-3 lg:gap-6">
                     <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black italic shadow-sm text-xs">{p.title.substring(0, 3).toUpperCase()}</div>
                     <div>
@@ -388,22 +388,22 @@ const AdminGovtExamPatterns = () => {
             </div>
             <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
               <div className="w-full lg:w-2/5 p-3 lg:p-8 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
-                <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-8">
-                  <div className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-2 lg:space-y-4 lg:space-y-8">
+                  <div className="space-y-2 lg:space-y-4">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Pattern Title</label>
                     <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                   </div>
                   <div className="grid grid-cols-2 gap-3 lg:gap-6">
-                    <div className="space-y-4">
+                    <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Duration (Min)</label>
                       <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-black dark:border-white pl-3 block ml-2">Negative Marking</label>
                       <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-black/30 dark:focus:border-white/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                   </div>
-                  <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-4">
+                  <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-2 lg:space-y-4">
                     <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 flex justify-between items-center font-outfit">
                       <span className="text-[10px] font-black text-primary-700 uppercase tracking-widest">Total Marks</span>
                       <span className="text-2xl font-black text-primary-700 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
@@ -416,7 +416,7 @@ const AdminGovtExamPatterns = () => {
               </div>
               <div className="flex-1 p-3 lg:p-8 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-black/20">
                 <div className="max-w-2xl mx-auto space-y-10">
-                  <div className="space-y-4">
+                  <div className="space-y-2 lg:space-y-4">
                     <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-700" /> Sections ({formData.sections.length})</h3>
                     {formData.sections.map((sec, i) => (
                       <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-6 bg-white dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 flex items-center justify-between group">
@@ -431,7 +431,7 @@ const AdminGovtExamPatterns = () => {
                       </motion.div>
                     ))}
                   </div>
-                  <div className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-primary-500/20 relative font-outfit">
+                  <div className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20 relative font-outfit">
                     <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-700 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm">Add Section</div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 mt-4">
                       <div className="lg:col-span-2 space-y-2">

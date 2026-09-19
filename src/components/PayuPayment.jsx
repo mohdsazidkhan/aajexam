@@ -15,7 +15,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
   };
 
   return (
-    <div className="font-outfit space-y-4">
+    <div className="font-outfit space-y-2 lg:space-y-4">
       <button
         onClick={handlePayuPayment}
         disabled={loading}

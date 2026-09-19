@@ -195,7 +195,7 @@ const AdminExpenses = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group"
+                        className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group"
                     >
                         <div className="absolute top-0 left-0 w-full h-1 bg-primary-700"/>
                         <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
@@ -213,7 +213,7 @@ const AdminExpenses = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group"
+                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-primary-700" />
                             <div className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl w-fit mb-6 group-hover:rotate-12 transition-transform capitalize font-black text-xs">
@@ -342,7 +342,7 @@ const AdminExpenses = () => {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm w-fit mx-auto">
+                    <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm w-fit mx-auto">
                         <motion.button
                             whileHover={{ x: -2 }}
                             onClick={() => fetchExpenses(page - 1)}
@@ -380,7 +380,7 @@ const AdminExpenses = () => {
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className="relative bg-white dark:bg-slate-900 w-full max-w-xl max-h-[75vh] rounded-lg lg:rounded-xl lg:rounded-[3rem] shadow-sm overflow-hidden flex flex-col border-2 border-slate-100 dark:border-white/10"
+                                className="relative bg-white dark:bg-slate-900 w-full max-w-xl max-h-[75vh] rounded-lg lg:rounded-xl xl:rounded-[3rem] shadow-sm overflow-hidden flex flex-col border-2 border-slate-100 dark:border-white/10"
                             >
                                 <div className="bg-slate-900 p-4 lg:p-10 text-white relative overflow-hidden">
                                     <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-10">
@@ -395,8 +395,8 @@ const AdminExpenses = () => {
                                     </button>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-4 lg:space-y-8 overflow-y-auto">
-                                    <div className="space-y-4">
+                                <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-2 lg:space-y-4 lg:space-y-8 overflow-y-auto">
+                                    <div className="space-y-2 lg:space-y-4">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
                                         <div className="relative group/field">
                                             <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-700 transition-colors" />
@@ -412,7 +412,7 @@ const AdminExpenses = () => {
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-8">
-                                        <div className="space-y-4">
+                                        <div className="space-y-2 lg:space-y-4">
                                             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Amount</label>
                                             <div className="relative group/field">
                                                 <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-700 transition-colors" />
@@ -426,7 +426,7 @@ const AdminExpenses = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="space-y-4">
+                                        <div className="space-y-2 lg:space-y-4">
                                             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Date</label>
                                             <div className="relative group/field">
                                                 <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-700 transition-colors" />
@@ -441,7 +441,7 @@ const AdminExpenses = () => {
                                         </div>
                                     </div>
 
-                                    <div className="space-y-4">
+                                    <div className="space-y-2 lg:space-y-4">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Category</label>
                                         <select
                                             value={formData.category}
@@ -452,7 +452,7 @@ const AdminExpenses = () => {
                                         </select>
                                     </div>
 
-                                    <div className="space-y-4">
+                                    <div className="space-y-2 lg:space-y-4">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Description</label>
                                         <textarea
                                             value={formData.description}

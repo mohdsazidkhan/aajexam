@@ -96,7 +96,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
         )}
 
         {affair.questions?.length > 0 && (
-          <Card className="p-4 space-y-4">
+          <Card className="p-4 space-y-2 lg:space-y-4">
             <h3 className="text-sm font-black text-slate-900 dark:text-white">Practice Questions</h3>
             {affair.questions.map((q, i) => (
               <div key={i} className="space-y-2 pb-3 border-b border-slate-100 dark:border-slate-800 last:border-0">

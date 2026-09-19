@@ -129,7 +129,7 @@ const ExamHistoryPage = () => {
                                           <p className="text-[10px] font-bold text-gray-400">{attempt.examName || 'Standard Exam'} • {attempt.patternTitle}</p>
                                        </div>
 
-                                       <div className="space-y-4">
+                                       <div className="space-y-2 lg:space-y-4">
                                           <div className="flex justify-between items-end">
                                              <span className="text-[10px] font-black text-gray-400">Accuracy</span>
                                              <span className={`text-sm font-black text-${rank.color}-500`}>{attempt.accuracy?.toFixed(0)}%</span>

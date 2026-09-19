@@ -298,7 +298,7 @@ const AdminReelEdit = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
 
               {/* Status + Common Fields */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-2 lg:space-y-4">
                 <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -359,7 +359,7 @@ const AdminReelEdit = () => {
 
               {/* Question Fields */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
                   <h3 className="font-bold text-black dark:text-white">Question Details</h3>
                   <div>
                     <label className={labelClass}>Question Text *</label>
@@ -394,7 +394,7 @@ const AdminReelEdit = () => {
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-2 lg:space-y-4">
                   <h3 className="font-bold text-primary-700 dark:text-primary-400">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
@@ -420,7 +420,7 @@ const AdminReelEdit = () => {
 
               {/* Tip Fields */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
                   <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
                   <div>
                     <label className={labelClass}>Formula</label>
@@ -460,7 +460,7 @@ const AdminReelEdit = () => {
 
               {/* CA Fields */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
                   <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -509,7 +509,7 @@ const AdminReelEdit = () => {
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-2 lg:space-y-4">
                   <h3 className="font-bold text-primary-700 dark:text-primary-400">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
@@ -538,7 +538,7 @@ const AdminReelEdit = () => {
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-2 lg:space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio

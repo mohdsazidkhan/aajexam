@@ -95,7 +95,7 @@ const LoginPage = () => {
               </div>
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
                 Welcome back!
                 <br />
@@ -106,7 +106,7 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <div className="space-y-4 pt-8">
+            <div className="space-y-2 lg:space-y-4 pt-8">
               {[
                 { icon: CircleCheck, text: 'Continue where you left off' },
                 { icon: Brain, text: 'Check your progress and complete daily challenge' },
@@ -134,7 +134,7 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <button
                 onClick={() => googleLogin()}
                 className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 lg:mt-2"

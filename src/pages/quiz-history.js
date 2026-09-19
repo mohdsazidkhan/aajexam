@@ -83,7 +83,7 @@ const QuizHistoryPage = () => {
 
                {/* Results */}
                {attempts.length === 0 ? (
-                  <div className="py-16 text-center space-y-4">
+                  <div className="py-16 text-center space-y-2 lg:space-y-4">
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <BrainCircuit className="w-10 h-10 text-slate-300" />
                      </div>
@@ -100,7 +100,7 @@ const QuizHistoryPage = () => {
                         return (
                            <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="p-5 group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
-                                 <div className="space-y-4">
+                                 <div className="space-y-2 lg:space-y-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">
                                        <div className="p-2.5 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl">

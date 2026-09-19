@@ -32,7 +32,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 + 0.3 }}
-            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
+            className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
         >
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -140,7 +140,7 @@ const AdminUserAnalyticsDetail = () => {
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 shadow-sm overflow-hidden
+                                className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 shadow-sm overflow-hidden
                                         ${netEarnings >= 0 ?"bg-primary-700 border-primary-400/50":"bg-primary-700 border-black/50"}`}
                             >
                                 <div className="relative z-10 flex flex-col items-center">
@@ -188,13 +188,13 @@ const AdminUserAnalyticsDetail = () => {
                             </motion.button>
                         </motion.div>
                     ) : data && (
-                        <div className="space-y-4 lg:space-y-12">
+                        <div className="space-y-2 lg:space-y-4 lg:space-y-12">
                             {/* Financial Matrix */}
                             <motion.section
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="space-y-4 lg:space-y-8"
+                                className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="p-4 bg-primary-500/20 text-primary-700 rounded-2xl shadow-sm">
@@ -219,7 +219,7 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="space-y-4 lg:space-y-8"
+                                className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl shadow-sm">
@@ -242,7 +242,7 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="space-y-4 lg:space-y-8"
+                                className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl shadow-sm">
@@ -265,7 +265,7 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className="space-y-4 lg:space-y-8"
+                                className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl shadow-sm">
@@ -288,7 +288,7 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
-                                className="space-y-4 lg:space-y-8"
+                                className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl shadow-sm">

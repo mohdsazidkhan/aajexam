@@ -221,7 +221,7 @@ const SyllabusTrackerPage = () => {
 
             </motion.div>
           ) : !selectedExam ? (
-            <div className="py-20 text-center space-y-4">
+            <div className="py-20 text-center space-y-2 lg:space-y-4">
               <Layers className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
               <p className="text-sm font-bold text-content-muted">Select an exam above to view its syllabus tracker.</p>
             </div>

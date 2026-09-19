@@ -476,7 +476,7 @@ const LeaderboardPage = () => {
         {loading ? (
           <LeaderboardSkeleton />
         ) : data.length === 0 ? (
-          <div className="py-16 sm:py-20 text-center space-y-4">
+          <div className="py-16 sm:py-20 text-center space-y-2 lg:space-y-4">
             <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
             <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">No data yet for this period</h3>
             <p className="text-sm text-content-muted font-bold">Attempt quizzes to appear on the leaderboard!</p>

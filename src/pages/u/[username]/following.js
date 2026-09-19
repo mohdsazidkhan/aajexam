@@ -85,7 +85,7 @@ export default function FollowingListPage() {
               <p className="text-sm lg:text-lg font-black text-slate-400 uppercase tracking-tight">Not following anyone yet</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               {following.map((user) => (
                 <div
                   key={user._id}

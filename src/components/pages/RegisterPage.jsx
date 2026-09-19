@@ -142,7 +142,7 @@ const RegisterPageInner = () => {
               </div>
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">
                 Join the <span className="text-primary-400">community</span>.
               </h1>
@@ -151,7 +151,7 @@ const RegisterPageInner = () => {
               </p>
             </div>
 
-            <div className="space-y-4 pt-8">
+            <div className="space-y-2 lg:space-y-4 pt-8">
               {[
                 { icon: Trophy, text: 'Earn cash when friends you refer upgrade to PRO' },
                 { icon: Brain, text: 'Attempt 500+ Previous Year Papers free' },
@@ -181,7 +181,7 @@ const RegisterPageInner = () => {
             </div>
 
             {/* Google Sign-Up */}
-            <div className="space-y-4 mt-2">
+            <div className="space-y-2 lg:space-y-4 mt-2">
               <button
                 type="button"
                 onClick={() => googleSignup()}

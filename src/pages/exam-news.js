@@ -15,7 +15,7 @@ const Sh = ({ className = '' }) => (
 
 const NewsSkeleton = () => (
   <div className="space-y-6 lg:space-y-10 pb-10 font-outfit">
-    <Sh className="h-40 lg:h-52 w-full rounded-[2.5rem]" />
+    <Sh className="h-40 lg:h-52 w-full rounded-[2.5rem] mt-4 lg:mt-8" />
     <div className="flex gap-2 px-1">{[1,2,3,4,5].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}</div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
       {Array.from({ length: 9 }).map((_, i) => (
@@ -80,7 +80,7 @@ const ExamNewsPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Exam News', url: '/exam-news' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:p-8">
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-4 py-4 lg:p-8 mt-4 lg:mt-8">
         <div className="absolute inset-0 bg-white dark:bg-black" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -91,8 +91,8 @@ const ExamNewsPage = () => {
           <div className="w-full max-w-lg mt-2">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input type="text" placeholder="Search news..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none focus:ring-2 focus:ring-black/10 dark:ring-white/10" />
+              <input type="text" placeholder="Search news..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-black/10 dark:ring-white/10" />
             </div>
           </div>
         </div>
@@ -100,8 +100,8 @@ const ExamNewsPage = () => {
       </section>
 
       {/* ── Filters ── */}
-      <section className="space-y-4">
-        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
+      <section className="space-y-2 lg:space-y-4">
+        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-0 lg:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
             {typeFilters.map(f => (
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
@@ -163,7 +163,7 @@ const ExamNewsPage = () => {
           })}
 
           {news.length === 0 && !loading && (
-            <div className="col-span-full py-20 text-center space-y-4">
+            <div className="col-span-full py-20 text-center space-y-2 lg:space-y-4">
               <Megaphone className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No news found</h3>
               <button onClick={() => { setType('all'); setSearch(''); setPage(1); }}

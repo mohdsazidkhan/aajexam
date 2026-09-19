@@ -131,7 +131,7 @@ const RevisionPage = () => {
                   <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-700 hover:bg-primary-600 transition text-white rounded-lg lg:rounded-xl text-sm font-bold mt-2">Show Answer</button>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-2 lg:space-y-4">
                   <div className="space-y-3">
                     {currentItem.questionSnapshot?.options?.map((opt, i) => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
@@ -157,7 +157,7 @@ const RevisionPage = () => {
               )}
             </Card>
           ) : (
-            <Card className="p-8 text-center space-y-4">
+            <Card className="p-8 text-center space-y-2 lg:space-y-4">
               <Zap className="w-12 h-12 text-primary-700 mx-auto" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? 'All Caught Up!' : 'Koi item nahi'}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">

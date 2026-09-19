@@ -251,7 +251,7 @@ const AdminGovtExamTests = () => {
                   { label: 'PAID TESTS', val: testStats.paid, icon: Lock, color: 'primary' },
                   { label: 'AVG DURATION', val: `${testStats.avgDuration}m`, icon: Timer, color: 'primary' }
                ].map((stat, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group transition-all">
+                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group transition-all">
                      <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-sm`}><stat.icon className="w-6 h-6" /></div>
                      <div className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{stat.val}</div>
                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>
@@ -260,7 +260,7 @@ const AdminGovtExamTests = () => {
             </div>
 
             {/* Hierarchical Filters */}
-            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
+            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6 font-outfit text-[10px] font-black uppercase tracking-widest">
                   <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                      <Compass className="w-4 h-4 text-primary-700" />
@@ -291,7 +291,7 @@ const AdminGovtExamTests = () => {
                {loading ? (
                   <div className="flex items-center justify-center py-24"><AdminTableSkeleton /></div>
                ) : tests.length === 0 ? (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center">
                      <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
                      <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">No Tests Found</h3>
                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Select a pattern above to view its tests, or create a new test.</p>
@@ -299,7 +299,7 @@ const AdminGovtExamTests = () => {
                ) : (
                   <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                      {viewMode === 'table' && (
-                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
+                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                            <table className="w-full border-collapse">
                               <thead>
                                  <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -346,7 +346,7 @@ const AdminGovtExamTests = () => {
                      {viewMode === 'grid' && (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                            {tests.map((test, idx) => (
-                              <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit group overflow-hidden">
+                              <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit group overflow-hidden">
                                  <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-700" />
                                  <div className="flex justify-between items-start mb-4 lg:mb-8">
                                     <div className="p-4 bg-slate-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform"><FileText className="w-6 h-6 text-slate-400 group-hover:text-primary-700" /></div>
@@ -377,7 +377,7 @@ const AdminGovtExamTests = () => {
                      {viewMode === 'list' && (
                         <div className="space-y-3 lg:space-y-6">
                            {tests.map((test, idx) => (
-                              <motion.div key={test._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
+                              <motion.div key={test._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                                  <div className="flex items-center gap-3 lg:gap-6">
                                     <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-primary-700 group-hover:text-white transition-all"><FileText className="w-8 h-8" /></div>
                                     <div>
@@ -427,8 +427,8 @@ const AdminGovtExamTests = () => {
 
                         <div className="flex-1 overflow-y-auto p-3 lg:p-10 custom-scrollbar">
                            {uploadMode ? (
-                              <div className="max-w-4xl mx-auto space-y-4 lg:space-y-8">
-                                 <div className="p-3 lg:p-8 bg-primary-500/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-primary-500/20">
+                              <div className="max-w-4xl mx-auto space-y-2 lg:space-y-4 lg:space-y-8">
+                                 <div className="p-3 lg:p-8 bg-primary-500/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20">
                                     <div className="flex items-center gap-4 mb-6">
                                        <div className="p-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm text-primary-700"><Download className="w-6 h-6" /></div>
                                        <div>
@@ -436,7 +436,7 @@ const AdminGovtExamTests = () => {
                                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Paste your questions JSON below to import in bulk</p>
                                        </div>
                                     </div>
-                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none" />
+                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none" />
                                     <button onClick={handleBulkUpload} className="w-full mt-4 lg:mt-8 py-5 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                        <UploadCloud className="w-5 h-5" /> Import Questions
                                     </button>
@@ -477,7 +477,7 @@ const AdminGovtExamTests = () => {
                                           Questions ({formData.questions.length})
                                           <span className="text-primary-700 tabular-nums">{formData.questions.length} / 100</span>
                                        </h3>
-                                       <div className="space-y-4 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
+                                       <div className="space-y-2 lg:space-y-4 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
                                           <AnimatePresence mode="popLayout">
                                              {formData.questions.map((q, i) => (
                                                 <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, scale: 0.9 }} className="p-5 bg-white dark:bg-white/5 rounded-lg lg:rounded-[1.5rem] border-2 border-slate-50 flex items-start gap-4 group">
@@ -498,7 +498,7 @@ const AdminGovtExamTests = () => {
                                  </div>
 
                                  <div className="space-y-10">
-                                    <section className="rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/5 px-0 py-4 lg:p-8">
+                                    <section className="rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/5 px-0 py-4 lg:p-8">
                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 lg:mb-8 flex items-center gap-3">
                                           <Activity className="w-4 h-4 text-primary-700" /> Add a Question
                                        </h3>
