@@ -162,7 +162,7 @@ const Sidebar = () => {
   return (
     <div className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-4 scrollbar-premium relative z-10">
+      <nav className="flex-1 overflow-y-auto py-2 px-0 space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
@@ -173,12 +173,12 @@ const Sidebar = () => {
                 const active = isActiveRoute(item.path);
                 return (
                   <Link key={itemIdx} href={item.path} onClick={() => handleNavClick(item.key)}>
-                    <button className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg lg:rounded-xl transition-all duration-200 relative group overflow-hidden ${active
+                    <button className={`w-full flex items-center gap-3 px-3 py-2 transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
                       {active && (
-                        <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-700 shadow-aajexam-primary rounded-lg lg:rounded-xl" />
+                        <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-700 shadow-aajexam-primary" />
                       )}
                       <item.icon className="w-4 h-4 relative z-10 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                       <span className="text-[12px] lg:text-[14px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
