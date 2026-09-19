@@ -74,7 +74,7 @@ const MentorsPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {mentors.map((mentor, i) => (
-              <Card key={mentor._id || i} className="p-5 hover:shadow-xl transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
+              <Card key={mentor._id || i} className="p-5 hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
                 onClick={() => router.push(`/mentor/${mentor._id}`)}>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">

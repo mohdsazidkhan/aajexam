@@ -103,7 +103,7 @@ const FollowingList = ({ username: usernameProp }) => {
                 <div
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
-                  className="flex items-center gap-8 p-8 lg:p-10 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-200 dark:border-slate-800 shadow-2xl hover:-translate-y-2 transition-all cursor-pointer group active:translate-y-0 relative overflow-hidden"
+                  className="flex items-center gap-8 p-8 lg:p-10 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:-translate-y-2 transition-all cursor-pointer group active:translate-y-0 relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
 
@@ -112,10 +112,10 @@ const FollowingList = ({ username: usernameProp }) => {
                       <img
                         src={user.profilePicture}
                         alt={user.name}
-                        className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] object-cover border-2 border-white dark:border-slate-600 shadow-xl relative z-10 group-hover:scale-110 group-hover:-rotate-3 transition-transform"
+                        className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] object-cover border-2 border-white dark:border-slate-600 shadow-sm relative z-10 group-hover:scale-110 group-hover:-rotate-3 transition-transform"
                       />
                     ) : (
-                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] bg-primary-700 flex items-center justify-center text-white text-4xl font-black shadow-aajexam-secondary border-2 border-white dark:border-slate-600 relative z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] bg-primary-700 flex items-center justify-center text-white text-4xl font-black shadow-sm border-2 border-white dark:border-slate-600 relative z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform">
                         {user.name?.charAt(0)?.toUpperCase() || 'U'}
                       </div>
                     )}
@@ -130,7 +130,7 @@ const FollowingList = ({ username: usernameProp }) => {
                   </div>
 
                   <div className="hidden lg:block text-right">
-                    <div className="bg-slate-100 dark:bg-slate-800/50 px-8 py-5 rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 shadow-inner group-hover:border-primary-700 transition-colors">
+                    <div className="bg-slate-100 dark:bg-slate-800/50 px-8 py-5 rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 shadow-sm group-hover:border-primary-700 transition-colors">
                       <p className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
                         {user.followersCount || 0}
                       </p>
@@ -147,7 +147,7 @@ const FollowingList = ({ username: usernameProp }) => {
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="w-14 h-14 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-700 disabled:opacity-50 disabled:translate-y-0 active:translate-y-1 transition-all flex items-center justify-center"
+                className="w-14 h-14 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-700 disabled:opacity-50 disabled:translate-y-0 active:translate-y-1 transition-all flex items-center justify-center"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -161,7 +161,7 @@ const FollowingList = ({ username: usernameProp }) => {
               <button
                 onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
                 disabled={page === pagination.totalPages}
-                className="w-14 h-14 bg-primary-700 text-white rounded-2xl shadow-aajexam-primary border-2 border-white/20 active:translate-y-1 transition-all flex items-center justify-center disabled:opacity-50 disabled:shadow-none"
+                className="w-14 h-14 bg-primary-700 text-white rounded-2xl shadow-sm border-2 border-white/20 active:translate-y-1 transition-all flex items-center justify-center disabled:opacity-50 disabled:shadow-none"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

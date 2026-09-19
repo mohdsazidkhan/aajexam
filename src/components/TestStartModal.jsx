@@ -46,10 +46,10 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-center justify-center z-[9999] p-4 font-outfit">
-      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-2xl border-2 border-border-primary max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
+      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-aajexam-secondary border-2 border-white dark:border-slate-700">
+          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
             <FaSchool className="text-white text-xl lg:text-3xl" />
           </div>
 
@@ -58,7 +58,7 @@ const TestStartModal = ({
           </h2>
 
           {/* Test Info */}
-          <div className="bg-background-surface-secondary rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-border-primary/50 shadow-inner">
+          <div className="bg-background-surface-secondary rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
             <h3 className="text-content-primary text-sm lg:text-md mb-3 lg:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
             </h3>
 
@@ -159,7 +159,7 @@ const TestStartModal = ({
           )}
 
           {/* Test Rules */}
-          <div className="bg-background-surface-secondary rounded-[2rem] p-6 mb-8 border-2 border-border-primary/50 shadow-inner">
+          <div className="bg-background-surface-secondary rounded-[2rem] p-6 mb-8 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
             <h4 className="text-[10px] font-black text-primary-700 uppercase tracking-[0.2em] mb-4 text-center">
               Test Instructions
             </h4>
@@ -172,7 +172,7 @@ const TestStartModal = ({
                 pattern?.negativeMarking > 0 ? `Negative Marking: -${pattern.negativeMarking} Marks` : null
               ].filter(Boolean).map((rule, idx) => (
                 <li key={idx} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-primary-700 rounded-full shadow-aajexam" />
+                  <div className="w-1.5 h-1.5 bg-primary-700 rounded-full shadow-sm" />
                   <span className="leading-tight">{rule}</span>
                 </li>
               ))}
@@ -186,7 +186,7 @@ const TestStartModal = ({
                   type="checkbox"
                   checked={acceptedRules}
                   onChange={(e) => setAcceptedRules(e.target.checked)}
-                  className="w-10 h-10 border-2 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-700 checked:border-primary-700 transition-all cursor-pointer shadow-aajexam"
+                  className="w-10 h-10 border-2 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-700 checked:border-primary-700 transition-all cursor-pointer shadow-sm"
                 />
                 {acceptedRules && (
                   <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />
@@ -202,7 +202,7 @@ const TestStartModal = ({
           <div className="flex gap-4">
             <button
               onClick={onClose}
-              className="flex-1 px-6 py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-aajexam border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
+              className="flex-1 px-6 py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
             >
               Cancel
             </button>
@@ -210,7 +210,7 @@ const TestStartModal = ({
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
               className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
-                ? 'bg-primary-700 text-white border-white/20 shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'
+                ? 'bg-primary-700 text-white border-white/20 shadow-sm border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >

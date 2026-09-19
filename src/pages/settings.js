@@ -134,13 +134,13 @@ const SettingsPage = () => {
               </p>
             </div>
 
-            <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 p-1.5 bg-background-surface-secondary dark:bg-slate-800/50 rounded-2xl w-fit border border-border-primary/50 shadow-sm relative z-20 flex-shrink-0">
+            <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 p-1.5 bg-background-surface-secondary dark:bg-slate-800/50 rounded-2xl w-fit border border-slate-200 dark:border-slate-800/50 shadow-sm relative z-20 flex-shrink-0">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-3 lg:px-6 py-2.5 rounded-lg lg:rounded-xl text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
-                    ? 'bg-primary-700 text-white shadow-aajexam-primary scale-105'
+                    ? 'bg-primary-700 text-white shadow-sm scale-105'
                     : 'text-content-secondary hover:text-primary-700 hover:bg-slate-100 dark:hover:bg-slate-700/50'
                     }`}
                 >
@@ -162,13 +162,13 @@ const SettingsPage = () => {
               {activeTab === 'profile' && (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                   <div className="lg:col-span-8">
-                    <Card className="p-8 lg:p-10 space-y-8 rounded-[3rem] border-none shadow-xl bg-background-surface">
+                    <Card className="p-8 lg:p-10 space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                           <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Your Profile</h2>
                           <p className="text-sm font-bold text-content-secondary">Keep your details up to date.</p>
                         </div>
-                        <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-aajexam-primary">
+                        <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-sm">
                           <User className="w-6 h-6" />
                         </div>
                       </div>
@@ -273,7 +273,7 @@ const SettingsPage = () => {
                           </span>
                         </label>
 
-                        <Button fullWidth size="lg" className="py-5 text-sm font-black shadow-aajexam-primary" type="submit" disabled={saving}>
+                        <Button fullWidth size="lg" className="py-5 text-sm font-black shadow-sm" type="submit" disabled={saving}>
                           {saving ? 'Saving changes...' : 'Save profile changes'}
                         </Button>
                       </form>
@@ -297,13 +297,13 @@ const SettingsPage = () => {
               {activeTab === 'bank' && (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                   <div className="lg:col-span-8">
-                    <Card className="p-8 lg:p-10 space-y-8 rounded-[3rem] border-none shadow-xl bg-background-surface">
+                    <Card className="p-8 lg:p-10 space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                           <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Bank Details</h2>
                           <p className="text-sm font-bold text-content-secondary">Add your bank account to receive reward money.</p>
                         </div>
-                        <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-aajexam-primary">
+                        <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-sm">
                           <Building2 className="w-6 h-6" />
                         </div>
                       </div>
@@ -331,7 +331,7 @@ const SettingsPage = () => {
                           </div>
                         </div>
 
-                        <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black shadow-aajexam-primary" type="submit" disabled={saving}>
+                        <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black shadow-sm" type="submit" disabled={saving}>
                           {saving ? 'Saving details...' : 'Save bank details'}
                         </Button>
                       </form>
@@ -352,13 +352,13 @@ const SettingsPage = () => {
 
               {activeTab === 'security' && (
                 <div>
-                  <Card className="p-6 lg:p-12 rounded-[2rem] lg:rounded-[4rem] space-y-10 border-none shadow-2xl bg-background-surface overflow-hidden relative">
+                  <Card className="p-6 lg:p-12 rounded-[2rem] lg:rounded-[4rem] space-y-10 border-none shadow-sm bg-background-surface overflow-hidden relative">
                     <div className="flex items-center justify-between gap-4 relative z-10">
                       <div className="space-y-1">
                         <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
                         <p className="text-sm font-bold text-content-secondary">Use a strong password to keep your account safe.</p>
                       </div>
-                      <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-aajexam-accent">
+                      <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-sm">
                         <ShieldCheck className="w-6 h-6" />
                       </div>
                     </div>
@@ -391,7 +391,7 @@ const SettingsPage = () => {
                         ))}
                       </div>
 
-                      <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black shadow-aajexam-primary" type="submit" disabled={saving}>
+                      <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black shadow-sm" type="submit" disabled={saving}>
                         {saving ? 'Updating password...' : 'Update password'}
                       </Button>
                     </form>

@@ -54,7 +54,7 @@ const NudgeInner = ({ onClose }) => {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="fixed bottom-0 left-0 right-0 z-50 flex justify-center p-0 sm:p-4 pointer-events-none"
     >
-      <div className="pointer-events-auto w-full max-w-4xl relative bg-slate-900 text-white sm:rounded-3xl shadow-2xl shadow-primary-500/20 border-t sm:border-2 border-primary-500/30 overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-5 pr-12 md:pr-14">
+      <div className="pointer-events-auto w-full max-w-4xl relative bg-slate-900 text-white sm:rounded-3xl shadow-sm border-t sm:border-2 border-primary-500/30 overflow-hidden flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-5 pr-12 md:pr-14">
         {/* background glow */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
         
@@ -85,7 +85,7 @@ const NudgeInner = ({ onClose }) => {
         <button
            onClick={() => googleSignup()}
            disabled={isGoogleLoading}
-           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg lg:rounded-xl shadow-lg border-b-2 border-primary-700 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
+           className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg lg:rounded-xl shadow-sm border-b-2 border-primary-700 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
         >
            {isGoogleLoading ? (
                <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />

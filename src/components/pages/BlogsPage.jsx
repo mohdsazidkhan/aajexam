@@ -95,7 +95,7 @@ const BlogsPage = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`}
-          className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
+          className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
           <div className="w-full h-48 bg-center bg-cover"
             style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }} />
           <div className="p-4">
@@ -135,7 +135,7 @@ const BlogsPage = () => {
     <div className="space-y-4">
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`}
-          className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row">
+          className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row">
           <div className="md:w-64 w-full h-48 md:h-auto flex-shrink-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }} />
           <div className="p-5 flex-1">

@@ -66,12 +66,12 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
   return (
     <div className={`min-h-screen bg-background-page transition-colors duration-500 font-outfit`}>
       {showHeader && (
-        <header className="fixed top-0 left-0 right-0 z-[110] lg:hidden h-16 lg:h-20 bg-white/90 dark:bg-[#0A0F1E]/80 backdrop-blur-2xl border-b border-slate-200 dark:border-white/5 shadow-xl px-4 flex items-center justify-between overflow-hidden">
+        <header className="fixed top-0 left-0 right-0 z-[110] lg:hidden h-16 lg:h-20 bg-white/90 dark:bg-[#0A0F1E]/80 backdrop-blur-2xl border-b border-slate-200 dark:border-white/5 shadow-sm px-4 flex items-center justify-between overflow-hidden">
           {/* Decorative Pattern */}
           <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
 
           <div className="flex items-center gap-3 relative z-10 transition-transform active:scale-95">
-            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-700 p-0.5 shadow-aajexam-primary">
+            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-700 p-0.5 shadow-sm">
               <div className="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center text-white text-sm font-black italic">A</div>
             </Link>
             <div className="flex flex-col">
@@ -98,7 +98,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               <motion.button
                 whileTap={{ scale: 0.9, y: 1 }}
                 onClick={() => secureLogout(router)}
-                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-primary-700 border-b-2 border-primary-700 text-white shadow-lg shadow-black/20"
+                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-primary-700 border-b-2 border-primary-700 text-white shadow-sm"
               >
                 <LogOut className="w-4 h-4" />
               </motion.button>
@@ -109,7 +109,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               whileTap={{ scale: 0.9, y: 1 }}
               onClick={() => dispatch(toggleSidebar())}
               className={`w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl border-b-2 transition-all ${isOpen ? 'bg-primary-600 border-primary-800' : 'bg-primary-700 border-primary-700'
-                } text-white shadow-lg shadow-primary-500/20`}
+                } text-white shadow-sm`}
             >
               {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </motion.button>

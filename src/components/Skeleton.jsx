@@ -3,7 +3,7 @@
 const Skeleton = ({ className, width, height, borderRadius }) => {
     return (
         <div
-            className={`animate-pulse bg-background-surface-secondary border border-border-primary/50 ${className}`}
+            className={`animate-pulse bg-background-surface-secondary border border-slate-200 dark:border-slate-800/50 ${className}`}
             style={{
                 width,
                 height,

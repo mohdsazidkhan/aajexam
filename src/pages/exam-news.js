@@ -80,7 +80,7 @@ const ExamNewsPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Exam News', url: '/exam-news' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:p-8">
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:p-8">
         <div className="absolute inset-0 bg-white dark:bg-black" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -124,10 +124,10 @@ const ExamNewsPage = () => {
             return (
               <motion.div key={item._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                 <Card hoverable onClick={() => router.push(`/exam-news/${item.slug}`)}
-                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
+                  className="group p-5 flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 rounded-2xl ${cfg.color} flex items-center justify-center shrink-0 shadow-md relative`}>
+                      <div className={`w-12 h-12 rounded-2xl ${cfg.color} flex items-center justify-center shrink-0 shadow-sm relative`}>
                         <Icon className="w-6 h-6 text-white" />
                         {item.isPinned && <Pin className="w-3 h-3 text-black dark:text-white absolute -top-1 -right-1" />}
                       </div>

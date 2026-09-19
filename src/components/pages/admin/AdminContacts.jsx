@@ -139,7 +139,7 @@ export default function AdminContacts() {
             </div>
 
             {/* Filters and Controls */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 lg:gap-6 w-full lg:w-auto">
                  <div className="flex items-center gap-4">
                     <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
@@ -151,7 +151,7 @@ export default function AdminContacts() {
                     </div>
                  </div>
 
-                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner">
+                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm">
                   {[
                     { icon: TableIcon, id: 'table', label: 'TABLE' },
                     { icon: List, id: 'list', label: 'LIST' },
@@ -160,7 +160,7 @@ export default function AdminContacts() {
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <mode.icon className="w-4 h-4" />
                       {viewMode === mode.id && <span className="uppercase tracking-widest pr-2">{mode.label}</span>}
@@ -175,7 +175,7 @@ export default function AdminContacts() {
                    <select
                     value={itemsPerPage}
                     onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-                    className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                    className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
                    >
                      {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
                    </select>
@@ -198,9 +198,9 @@ export default function AdminContacts() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                >
-                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
@@ -214,7 +214,7 @@ export default function AdminContacts() {
                  className="space-y-4 lg:space-y-12"
                >
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
                     <table className="w-full">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
@@ -239,7 +239,7 @@ export default function AdminContacts() {
                               <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + i + 1}</span>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                               <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
+                               <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
                                  {contact.name?.[0].toUpperCase() || 'U'}
                                </div>
                             </td>
@@ -258,10 +258,10 @@ export default function AdminContacts() {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="flex justify-center gap-3">
-                                  <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-700 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-lg active:scale-95">
+                                  <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-700 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
                                      <Send className="w-4 h-4" />
                                   </button>
-                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all shadow-lg active:scale-95">
+                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all shadow-sm active:scale-95">
                                      <Trash2 className="w-4 h-4" />
                                   </button>
                                </div>
@@ -281,9 +281,9 @@ export default function AdminContacts() {
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.05 }}
-                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
                        >
-                          <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-lg">
+                          <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-lg">
                              {contact.name?.[0].toUpperCase() || 'U'}
                           </div>
                           
@@ -321,9 +321,9 @@ export default function AdminContacts() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
+                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
                       >
-                         <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-700 group-hover:text-white transition-all">
+                         <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 group-hover:text-white transition-all">
                             <User className="w-7 h-7" />
                          </div>
 
@@ -348,13 +348,13 @@ export default function AdminContacts() {
                          <div className="flex lg:flex-col gap-4">
                             <button
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-aajexam-primary hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all"
                             >
                                <Send className="w-5 h-5" /> Reply
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-aajexam-accent hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all"
                             >
                                <Trash2 className="w-5 h-5" /> Delete
                             </button>

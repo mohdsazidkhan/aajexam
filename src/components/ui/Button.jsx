@@ -21,8 +21,8 @@ const Button = ({
   // primary   -> brand green bg, white text (identical in light & dark)
   // secondary -> black bg / white text in light mode, white bg / black text in dark mode
   const variants = {
-    primary: 'bg-primary-700 shadow-aajexam-primary border-primary-700 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-black text-white border-slate-950 shadow-aajexam active:bg-slate-900 dark:bg-white dark:text-black dark:border-slate-200 dark:shadow-[0_4px_0_0_#cbd5e1] dark:active:bg-slate-100 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_0_0_rgba(0,0,0,0.08)]',
+    primary: 'bg-primary-700 shadow-sm border-primary-700 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    secondary: 'bg-black text-white border-slate-950 shadow-sm active:bg-slate-900 dark:bg-white dark:text-black dark:border-slate-200 dark:shadow-[0_4px_0_0_#cbd5e1] dark:active:bg-slate-100 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_0_0_rgba(0,0,0,0.08)]',
   };
 
   const sizes = {

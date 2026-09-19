@@ -42,8 +42,8 @@ const Input = ({
   };
 
   const variants = {
-    white: 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 shadow-sm focus-within:shadow-aajexam-primary',
-    glass: 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-slate-200 dark:border-slate-800 shadow-xl focus-within:bg-white/70 dark:focus-within:bg-slate-800/70',
+    white: 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 shadow-sm focus-within:shadow-sm',
+    glass: 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-slate-200 dark:border-slate-800 shadow-sm focus-within:bg-white/70 dark:focus-within:bg-slate-800/70',
     stealth: 'bg-slate-100 dark:bg-slate-800/30 border-transparent focus-within:bg-white dark:focus-within:bg-slate-800 focus-within:border-primary-500/20',
   };
 

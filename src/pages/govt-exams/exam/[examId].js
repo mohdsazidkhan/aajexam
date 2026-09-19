@@ -176,7 +176,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-primary-700 text-white border-none shadow-aajexam-primary overflow-hidden relative">
+      <Card className="bg-primary-700 text-white border-none shadow-sm overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
@@ -335,7 +335,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     if (!subject.slug) return setActiveTab('quizzes');
                     router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`);
                   }}
-                  className="group h-full border-2 border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
+                  className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">
@@ -374,7 +374,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     if (!topic.slug) return setActiveTab('quizzes');
                     router.push(topic.hasSeries && topic.subjectSlug ? `/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}` : `/topics/${topic.slug}`);
                   }}
-                  className="group h-full border-2 border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
+                  className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">
@@ -414,7 +414,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                    <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-700'}`}>
+                    <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
                       <div className="flex items-center gap-3">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700' : isPyqTab ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
                           {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -477,7 +477,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   <Card
                     hoverable
                     onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                    className="group h-full border-2 border-border-primary hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
+                    className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">

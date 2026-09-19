@@ -361,7 +361,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           ))}
         </div>
 
-        <div className="bg-white dark:bg-white/5 rounded-2xl shadow-md p-6 border border-slate-100 dark:border-white/10">
+        <div className="bg-white dark:bg-white/5 rounded-2xl shadow-sm p-6 border border-slate-100 dark:border-white/10">
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <div>
               <h2 className="text-xl font-bold flex items-center gap-2">
@@ -469,7 +469,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 3: Publish ---- */}
               {isDraft && campaign && (
                 <button onClick={publishNow} disabled={busyAction}
-                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-700 hover:bg-primary-800 text-white shadow-md disabled:opacity-50">
+                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-700 hover:bg-primary-800 text-white shadow-sm disabled:opacity-50">
                   🚀 Publish Now
                 </button>
               )}
@@ -483,7 +483,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {isPublished && (
                 <div className="space-y-3 border-t border-slate-100 dark:border-white/10 pt-4">
                   <button onClick={sendToAll} disabled={busyAction}
-                    className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-700 hover:bg-primary-600 text-white shadow-md disabled:opacity-50">
+                    className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-700 hover:bg-primary-600 text-white shadow-sm disabled:opacity-50">
                     <Send size={20} /> Send To All Users
                   </button>
 

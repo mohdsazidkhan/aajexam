@@ -60,10 +60,10 @@ const Avatar = ({ student, sizeClass }) => (
       alt={student?.name || 'Profile'}
       width={112}
       height={112}
-      className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
+      className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
     />
   ) : (
-    <div className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
+    <div className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
       {student?.name?.charAt(0)?.toUpperCase() || 'U'}
     </div>
   )
@@ -200,7 +200,7 @@ const ProfilePage = () => {
                 <h1 className="text-xl lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
                   {student?.name || 'Student'}
                 </h1>
-                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-700 text-white shadow-aajexam-accent':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-700 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
                   {isPro ? 'PRO' : 'FREE'}
                 </span>
                 {isPro && student?.subscriptionExpiry && (
@@ -231,7 +231,7 @@ const ProfilePage = () => {
                   {socialLinks.map(([key, url]) => {
                     const { icon: Icon, color } = SOCIAL_ICONS[key];
                     return (
-                      <a key={key} href={url} target="_blank" rel="noopener noreferrer" className={`p-2.5 lg:p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-border-primary ${color}`}>
+                      <a key={key} href={url} target="_blank" rel="noopener noreferrer" className={`p-2.5 lg:p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 ${color}`}>
                         <Icon className="w-4 h-4" />
                       </a>
                     );
@@ -256,7 +256,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Sub-tab navigation */}
-        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-1.5 bg-background-surface-secondary dark:bg-slate-800/50 rounded-2xl w-fit border border-border-primary/50 shadow-sm relative z-20 max-w-full">
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-1.5 bg-background-surface-secondary dark:bg-slate-800/50 rounded-2xl w-fit border border-slate-200 dark:border-slate-800/50 shadow-sm relative z-20 max-w-full">
           {[
             { id: 'profile', label: 'My Profile', icon: Award },
             { id: 'bank', label: 'Bank Details', icon: Wallet },
@@ -265,7 +265,7 @@ const ProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-700 text-white shadow-aajexam-primary scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-700 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
             >
               <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-700'}`} />
               {tab.label}
@@ -296,7 +296,7 @@ const ProfilePage = () => {
                   <ProgressBar progress={completion.percentage} variant="primary" height="md" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {completion.fields.map((field) => (
-                      <div key={field.field} className="flex items-center gap-3 p-3 rounded-xl border border-border-primary">
+                      <div key={field.field} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
                         <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${field.completed ? 'text-primary-700' : 'text-slate-300 dark:text-slate-600'}`} />
                         <span className={`text-sm font-semibold ${field.completed ? 'text-content-primary' : 'text-content-secondary'}`}>{field.name}</span>
                       </div>
@@ -322,7 +322,7 @@ const ProfilePage = () => {
                     { label: 'Tests attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
                     { label: 'Avg score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
                   ].map((item) => (
-                    <div key={item.label} className="rounded-[1.5rem] bg-background-surface-secondary border border-border-primary p-4 lg:p-5 text-center">
+                    <div key={item.label} className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 lg:p-5 text-center">
                       <p className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
                       <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{item.label}</p>
                     </div>
@@ -355,7 +355,7 @@ const ProfilePage = () => {
                   </div>
                   <div className="flex flex-wrap gap-3 lg:justify-end lg:flex-shrink-0">
                     {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
-                      <span key={index} className="px-4 py-2.5 bg-background-surface-secondary text-content-primary rounded-xl text-xs font-black uppercase tracking-wider border border-border-primary">
+                      <span key={index} className="px-4 py-2.5 bg-background-surface-secondary text-content-primary rounded-xl text-xs font-black uppercase tracking-wider border border-slate-200 dark:border-slate-800">
                         {badge}
                       </span>
                     ))}
@@ -371,7 +371,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {accountDetails.map((item) => (
-                    <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl border border-border-primary">
+                    <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
                       <div className="p-2 bg-background-surface-secondary rounded-lg shadow-sm text-content-secondary flex-shrink-0">
                         <item.icon className="w-4 h-4" />
                       </div>
@@ -392,7 +392,7 @@ const ProfilePage = () => {
                     <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-border-primary rounded-xl px-4 py-3 select-all text-content-primary">
+                    <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 select-all text-content-primary">
                       {student.referralCode}
                     </span>
                     <button onClick={copyReferralCode} className="p-3 bg-primary-700 hover:bg-primary-600 text-white rounded-xl transition-colors">
@@ -425,7 +425,7 @@ const ProfilePage = () => {
                 </div>
 
                 {bankDetails ? (
-                  <div className="p-4 lg:p-8 bg-background-surface-secondary text-content-primary rounded-[2rem] lg:rounded-[3rem] border border-border-primary relative z-10">
+                  <div className="p-4 lg:p-8 bg-background-surface-secondary text-content-primary rounded-[2rem] lg:rounded-[3rem] border border-slate-200 dark:border-slate-800 relative z-10">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-6">
                       <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-[1.5rem] flex items-center justify-center border border-primary-500/20 flex-shrink-0">
                         <Building2 className="w-8 h-8" />
@@ -442,7 +442,7 @@ const ProfilePage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-6 lg:p-12 border-2 border-dashed border-border-primary rounded-[2rem] lg:rounded-[3rem] text-center space-y-5 relative z-10">
+                  <div className="p-6 lg:p-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] lg:rounded-[3rem] text-center space-y-5 relative z-10">
                     <div className="w-20 h-20 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto opacity-70">
                       <CreditCard className="w-10 h-10 text-content-secondary" />
                     </div>
@@ -486,7 +486,7 @@ const ProfilePage = () => {
                     <button
                       key={item.label}
                       onClick={item.onClick}
-                      className="w-full flex items-center justify-between px-5 py-4 rounded-2xl border border-border-primary text-left hover:border-primary-500/30 transition-colors"
+                      className="w-full flex items-center justify-between px-5 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-left hover:border-primary-500/30 transition-colors"
                     >
                       <span className="text-sm font-semibold text-content-primary">{item.label}</span>
                       <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -503,7 +503,7 @@ const ProfilePage = () => {
                 <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
                   Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
                 </p>
-                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-primary-700 text-white shadow-aajexam-accent rounded-2xl">
+                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-primary-700 text-white shadow-sm rounded-2xl">
                   Log out
                 </Button>
               </Card>

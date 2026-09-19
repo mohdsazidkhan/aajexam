@@ -137,7 +137,7 @@ const RegisterPageInner = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-900 p-20 flex-col justify-center items-start relative overflow-hidden text-white">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }}>
-              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-aajexam-secondary w-fit">
+              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-sm w-fit">
                 <Rocket className="w-12 h-12" />
               </div>
             </motion.div>
@@ -172,7 +172,7 @@ const RegisterPageInner = () => {
 
         {/* Right panel — form */}
         <div className="flex-1 flex items-center justify-center overflow-y-auto py-4 lg:py-8">
-          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl space-y-6 rounded-[3rem]">
+          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-sm space-y-6 rounded-[3rem]">
             <div className="text-center space-y-3">
               <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Register</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
@@ -307,7 +307,7 @@ const RegisterPageInner = () => {
                 variant="primary"
                 fullWidth
                 size="lg"
-                className="py-5 rounded-2xl shadow-aajexam-primary"
+                className="py-5 rounded-2xl shadow-sm"
                 type="submit"
                 disabled={isLoading || passwordStrength < 60}
               >

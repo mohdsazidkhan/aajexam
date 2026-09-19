@@ -167,7 +167,7 @@ const AdminReels = () => {
                   key={tab.value}
                   onClick={() => { setStatusFilter(tab.value); setPage(1); }}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${statusFilter === tab.value
-                    ?'bg-primary-700 text-white shadow-lg shadow-black/20'
+                    ?'bg-primary-700 text-white shadow-sm'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700'
                     }`}
                 >
@@ -228,7 +228,7 @@ const AdminReels = () => {
                 </motion.div>
               ) : viewMode === 'table' ? (
                 /* Custom Desktop Table */
-                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="hidden lg:block overflow-hidden rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
+                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="hidden lg:block overflow-hidden rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-slate-50 dark:bg-slate-800/50 border-b-2 border-slate-100 dark:border-slate-800">
@@ -311,10 +311,10 @@ const AdminReels = () => {
                   {items.map((item, i) => {
                     const Icon = TYPE_ICONS[item.type] || HelpCircle;
                     return (
-                      <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-inner transition-all overflow-hidden">
+                      <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-sm transition-all overflow-hidden">
                         <div className="absolute top-0 right-0 w-16 h-16 bg-slate-500/5 rounded-bl-[2rem] -z-0" />
 
-                        <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-aajexam ${TYPE_COLORS[item.type]}`}>
+                        <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-sm ${TYPE_COLORS[item.type]}`}>
                           <Icon className="w-5 h-5" />
                         </div>
 

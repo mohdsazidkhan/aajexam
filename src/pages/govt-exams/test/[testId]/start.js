@@ -263,21 +263,21 @@ const TestStart = ({ resolvedId } = {}) => {
           <div className="flex-1 lg:flex-none" />
 
           {/* Center: Test Progress (Minimalist) */}
-          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-8 py-4 shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
+          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-8 py-4 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">
                 <span className="pr-4">{test?.title}</span>
                 <span className="shrink-0">{currentQIndex + 1} / {questions.length}</span>
               </div>
               <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} className="h-full bg-primary-700 shadow-glow-primary" />
+                <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} className="h-full bg-primary-700 shadow-sm" />
               </div>
             </div>
           </div>
 
           {/* Right: Timer & Tools */}
           <div className="flex items-center gap-3 pointer-events-auto">
-            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-2xl border-2 ${timeLeft < 300 ?'bg-primary-700 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-700 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
               <Clock className="w-5 h-5 text-current opacity-80" />
               <span className="font-mono text-xl lg:text-2xl font-black">{formatTime(timeLeft)}</span>
             </div>
@@ -286,12 +286,12 @@ const TestStart = ({ resolvedId } = {}) => {
               language={language}
               onToggle={toggleLanguage}
               translating={translatingQ}
-              className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-700 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
+              className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-700 rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
             />
 
             <button
               onClick={toggleFullscreen}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-700 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden lg:block"
+              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-700 rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden lg:block"
               title="Toggle Focus Mode"
             >
               {isFullscreen ? <Minimize className="w-6 h-6" /> : <Maximize className="w-6 h-6" />}
@@ -299,7 +299,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
+              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
               title="Exit Test"
             >
               <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
@@ -428,7 +428,7 @@ const TestStart = ({ resolvedId } = {}) => {
                       className={`
                           group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
-                          ? 'bg-primary-700 text-white border-primary-600 shadow-aajexam-primary'
+                          ? 'bg-primary-700 text-white border-primary-600 shadow-sm'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
                         `}
                     >
@@ -578,7 +578,7 @@ const TestStart = ({ resolvedId } = {}) => {
         {showSubmitModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 max-w-md w-full max-h-[75vh] overflow-y-auto shadow-2xl border-2 border-primary-500/20">
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 max-w-md w-full max-h-[75vh] overflow-y-auto shadow-sm border-2 border-primary-500/20">
               <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CircleAlert className="w-10 h-10" />
               </div>

@@ -20,12 +20,12 @@ const Card = ({
   glow = false
 }) => {
   const variants = {
-    white: 'bg-background-surface text-content-primary border-border-primary shadow-sm hover:shadow-md',
-    glass: 'glass border-white/20 dark:border-slate-800/20 shadow-2xl',
-    'glass-light': 'glass-light border-white/10 shadow-xl',
-    'glass-dark': 'glass-dark border-white/10 shadow-2xl text-white',
-    dark: 'bg-slate-950 border-slate-800 text-white shadow-2xl',
-    primary: 'bg-primary-700 border-primary-600 shadow-xl text-white',
+    white: 'bg-background-surface text-content-primary border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-sm',
+    glass: 'glass border-white/20 dark:border-slate-800/20 shadow-sm',
+    'glass-light': 'glass-light border-white/10 shadow-sm',
+    'glass-dark': 'glass-dark border-white/10 shadow-sm text-white',
+    dark: 'bg-slate-950 border-slate-800 text-white shadow-sm',
+    primary: 'bg-primary-700 border-primary-600 shadow-sm text-white',
     none: '',
   };
 

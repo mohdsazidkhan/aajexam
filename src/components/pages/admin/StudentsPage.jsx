@@ -411,7 +411,7 @@ const StudentsPage = () => {
                   variant="primary"
                   onClick={() => setShowCreateModal(true)}
                   icon={UserPlus}
-                  className="w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-aajexam-primary"
+                  className="w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm"
                 >
                   CREATE SUBSCRIPTION
                 </Button>
@@ -427,7 +427,7 @@ const StudentsPage = () => {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-xl transition-all hover:scale-[1.02]"
+                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
                 >
                   <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                     <stat.icon className="w-5 h-5" />
@@ -440,7 +440,7 @@ const StudentsPage = () => {
           </motion.div>
 
           {/* Search & Filter Controls */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl">
+          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
               <div className="flex-1 relative group w-full lg:max-w-2xl">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
@@ -449,12 +449,12 @@ const StudentsPage = () => {
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
                   placeholder="Search students by name or email..."
-                  className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                  className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto justify-center lg:justify-start">
+                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm w-full lg:w-auto justify-center lg:justify-start">
                   {[
                     { icon: TableIcon, id: 'table', label: 'Table' },
                     { icon: List, id: 'list', label: 'List' },
@@ -463,7 +463,7 @@ const StudentsPage = () => {
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
                       title={mode.label}
                     >
                       <mode.icon className="w-5 h-5" />
@@ -503,9 +503,9 @@ const StudentsPage = () => {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
               >
-                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
+                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                   <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Students Found</h3>
@@ -520,7 +520,7 @@ const StudentsPage = () => {
               >
                 {/* View Render Logic */}
                 {viewMode === "table" && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                     <table className="w-full min-w-[700px]">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
@@ -547,7 +547,7 @@ const StudentsPage = () => {
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-400 tabular-nums">{((currentPage - 1) * itemsPerPage) + i + 1}</td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-primary-700 rounded-2xl flex items-center justify-center text-white font-black shadow-lg group-hover:scale-110 transition-transform">
+                                <div className="w-12 h-12 bg-primary-700 rounded-2xl flex items-center justify-center text-white font-black shadow-sm group-hover:scale-110 transition-transform">
                                   {student.name?.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
@@ -604,9 +604,9 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
+                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
                       >
-                        <div className="w-20 h-20 bg-primary-700 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <div className="w-20 h-20 bg-primary-700 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
                         </div>
 
@@ -657,15 +657,15 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-2xl flex flex-col items-center text-center cursor-pointer overflow-hidden"
+                        className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
                         <div className="absolute top-0 left-0 w-full h-2 bg-primary-700" />
 
                         <div className="mt-4 mb-6 relative">
-                          <div className="w-24 h-24 bg-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
-                          <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
+                          <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-sm">
                             <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-black dark:text-white' : 'text-slate-300'}`} />
                           </div>
                         </div>
@@ -692,7 +692,7 @@ const StudentsPage = () => {
                           <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="flex-1">
                           <motion.button
                             whileHover={{ scale: 1.05 }}
-                            className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-xl"
+                            className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest shadow-sm"
                           >
                             VIEW PROFILE
                           </motion.button>
@@ -739,11 +739,11 @@ const StudentsPage = () => {
                 initial={{ opacity: 0, scale: 0.95, y: 40 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 40 }}
-                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-3xl overflow-hidden flex flex-col font-sans"
+                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col font-sans"
               >
                 <div className="p-4 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3 lg:gap-6">
-                    <div className="p-5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-[1.5rem] shadow-xl">
+                    <div className="p-5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-[1.5rem] shadow-sm">
                       <Zap className="w-8 h-8 fill-current" />
                     </div>
                     <div>
@@ -776,7 +776,7 @@ const StudentsPage = () => {
                           required
                           value={createFormData.email}
                           onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
-                          className="w-full pl-16 pr-8 py-3 lg:py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-inner"
+                          className="w-full pl-16 pr-8 py-3 lg:py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-sm"
                           placeholder="ENTER STUDENT EMAIL ADDRESS..."
                         />
                       </div>
@@ -792,7 +792,7 @@ const StudentsPage = () => {
                             key={tier.id}
                             whileHover={{ x: 10 }}
                             onClick={() => setCreateFormData({ ...createFormData, planId: tier.id })}
-                            className={`p-6 rounded-3xl border-2 cursor-pointer transition-all flex items-center justify-between group ${createFormData.planId === tier.id ? 'bg-primary-500/10 border-primary-500/30 shadow-xl' : 'bg-slate-50 dark:bg-white/5 border-transparent opacity-60 hover:opacity-100'}`}
+                            className={`p-6 rounded-3xl border-2 cursor-pointer transition-all flex items-center justify-between group ${createFormData.planId === tier.id ? 'bg-primary-500/10 border-primary-500/30 shadow-sm' : 'bg-slate-50 dark:bg-white/5 border-transparent opacity-60 hover:opacity-100'}`}
                           >
                             <div className="flex items-center gap-4">
                               <div className={`p-3 rounded-lg lg:rounded-xl bg-${tier.color}-500/10 text-${tier.color}-500`}>
@@ -829,7 +829,7 @@ const StudentsPage = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         disabled={createLoading}
-                        className="flex-1 py-5 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl shadow-primary-500/20 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                        className="flex-1 py-5 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-3 disabled:opacity-50"
                       >
                         {createLoading ? (
                           <RefreshCcw className="w-4 h-4 animate-spin" />

@@ -182,7 +182,7 @@ const StudentSidebar = () => {
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
                       {active && (
-                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-700 shadow-aajexam-primary" />
+                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-700 shadow-sm" />
                       )}
                       <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />

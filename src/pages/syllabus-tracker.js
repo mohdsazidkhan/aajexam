@@ -15,7 +15,7 @@ const SubjectAccordion = ({ subject }) => {
   const isAllDone = subject.completedTopics === subject.totalTopics && subject.totalTopics > 0;
 
   return (
-    <Card padded={false} className="overflow-hidden mb-4 border-2 border-border-primary hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all">
+    <Card padded={false} className="overflow-hidden mb-4 border-2 border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
@@ -45,7 +45,7 @@ const SubjectAccordion = ({ subject }) => {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t border-border-primary">
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t border-slate-200 dark:border-slate-800">
             <div className="p-2 sm:p-4 bg-slate-50/50 dark:bg-slate-900/20">
               {subject.topics.length === 0 ? (
                 <p className="text-sm text-content-muted text-center py-4 font-bold">No topics mapped yet.</p>
@@ -164,7 +164,7 @@ const SyllabusTrackerPage = () => {
               <select
                 value={selectedExam}
                 onChange={e => setSelectedExam(e.target.value)}
-                className="w-full appearance-none bg-background-surface border border-border-primary text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
+                className="w-full appearance-none bg-background-surface border border-slate-200 dark:border-slate-800 text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
               >
                 <option value="">Select Exam to Track</option>
                 {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -209,7 +209,7 @@ const SyllabusTrackerPage = () => {
               <div>
                 <h3 className="text-sm font-black text-content-primary uppercase mb-3 px-1">Subjects</h3>
                 {trackerData.syllabus.length === 0 ? (
-                  <div className="text-center py-10 bg-background-surface rounded-2xl border-2 border-dashed border-border-primary">
+                  <div className="text-center py-10 bg-background-surface rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800">
                     <p className="text-sm font-bold text-content-muted">No syllabus data found for this exam.</p>
                   </div>
                 ) : (

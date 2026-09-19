@@ -261,12 +261,12 @@ const AdminGovtExamResults = () => {
               </div>
 
               <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl shadow-slate-100/50 w-full lg:w-auto">
+                <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-sm w-full lg:w-auto">
                   {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }].map((mode) => (
                     <button
                       key={mode.id}
                       onClick={() => setViewMode(mode.id)}
-                      className={`p-3 rounded-full transition-all flex-1 lg:flex-none flex items-center justify-center ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-lg' : 'text-slate-400'}`}
+                      className={`p-3 rounded-full transition-all flex-1 lg:flex-none flex items-center justify-center ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400'}`}
                     >
                       <mode.icon className="w-5 h-5" />
                     </button>
@@ -275,7 +275,7 @@ const AdminGovtExamResults = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   onClick={handleExportCSV}
-                  className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center justify-center gap-3"
+                  className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-3"
                 >
                   <Download className="w-4 h-4" /> Export CSV
                 </motion.button>
@@ -284,30 +284,30 @@ const AdminGovtExamResults = () => {
           </motion.div>
 
           {/* Quick Filters */}
-          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
+          <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 text-[10px] uppercase font-black tracking-widest">
-              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                 <Compass className="w-4 h-4 text-primary-700" />
                 <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                   <option value="all">ALL CATEGORIES</option>
                   {categories.map(c => <option key={c._id} value={c._id}>{c.name.toUpperCase()}</option>)}
                 </select>
               </div>
-              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                 <Activity className="w-4 h-4 text-primary-700" />
                 <select value={selectedExam} onChange={(e) => handleExamChange(e.target.value)} disabled={selectedCategory === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedCategory === 'all' ? 'opacity-30' : ''}`}>
                   <option value="all">ALL EXAMS</option>
                   {exams.map(e => <option key={e._id} value={e._id}>{e.name.toUpperCase()}</option>)}
                 </select>
               </div>
-              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                 <Binary className="w-4 h-4 text-primary-700" />
                 <select value={selectedPattern} onChange={(e) => handlePatternChange(e.target.value)} disabled={selectedExam === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedExam === 'all' ? 'opacity-30' : ''}`}>
                   <option value="all">ALL PATTERNS</option>
                   {patterns.map(p => <option key={p._id} value={p._id}>{p.title.toUpperCase()}</option>)}
                 </select>
               </div>
-              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+              <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                 <FileText className="w-4 h-4 text-primary-700" />
                 <select value={selectedTest} onChange={(e) => setSelectedTest(e.target.value)} disabled={selectedPattern === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedPattern === 'all' ? 'opacity-30' : ''}`}>
                   <option value="all">ALL TESTS</option>
@@ -330,7 +330,7 @@ const AdminGovtExamResults = () => {
             ) : (
               <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -346,13 +346,13 @@ const AdminGovtExamResults = () => {
                         {attempts.map((a, idx) => (
                           <motion.tr key={a._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-primary-500/5 transition-all">
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ?'bg-primary-700 text-white shadow-lg':'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
+                              <div className={`w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ?'bg-primary-700 text-white shadow-sm':'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
                                 #{a.rank || '-'}
                               </div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full flex items-center justify-center font-black text-xs uppercase shadow-lg">{a.user?.name?.[0] || 'U'}</div>
+                                <div className="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full flex items-center justify-center font-black text-xs uppercase shadow-sm">{a.user?.name?.[0] || 'U'}</div>
                                 <div>
                                   <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1">{a.user?.name || 'N/A'}</div>
                                   <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest truncate max-w-[150px]">{a.user?.email || 'N/A'}</div>
@@ -373,7 +373,7 @@ const AdminGovtExamResults = () => {
                               {a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-white dark:bg-white/5 text-primary-700 rounded-lg lg:rounded-xl border border-slate-100 shadow-md hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
+                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-white dark:bg-white/5 text-primary-700 rounded-lg lg:rounded-xl border border-slate-100 shadow-sm hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
                             </td>
                           </motion.tr>
                         ))}
@@ -385,13 +385,13 @@ const AdminGovtExamResults = () => {
                 {viewMode === 'list' && (
                   <div className="space-y-3 lg:space-y-6">
                     {attempts.map((a, idx) => (
-                      <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
+                      <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                         <div className="flex items-center gap-3 lg:gap-6">
-                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-2xl ${a.rank <= 3 ?'bg-primary-700 text-white':'bg-slate-900 text-white dark:bg-white'}`}>#{a.rank ||'-'}</div>
+                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-sm ${a.rank <= 3 ?'bg-primary-700 text-white':'bg-slate-900 text-white dark:bg-white'}`}>#{a.rank ||'-'}</div>
                           <div>
                             <div className="flex items-center gap-3 mb-1">
                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{a.user?.name || 'User'}</h3>
-                              <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${a.accuracy >= 75 ? 'bg-primary-700 text-white' : 'bg-primary-600 text-white shadow-inner'}`}>{a.accuracy?.toFixed(1)}%</span>
+                              <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${a.accuracy >= 75 ? 'bg-primary-700 text-white' : 'bg-primary-600 text-white shadow-sm'}`}>{a.accuracy?.toFixed(1)}%</span>
                             </div>
                             <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                               <span>{a.practiceTest?.title || 'Practice Test'}</span>
@@ -404,7 +404,7 @@ const AdminGovtExamResults = () => {
                             <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{formatTime(a.totalTime)}</div>
                             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}</div>
                           </div>
-                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 lg:px-6 py-3 bg-primary-600 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-primary-600/20">View Details</motion.button>
+                          <motion.button onClick={() => handleViewDetails(a._id)} whileHover={{ scale: 1.05 }} className="px-3 lg:px-6 py-3 bg-primary-600 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">View Details</motion.button>
                         </div>
                       </motion.div>
                     ))}
@@ -419,11 +419,11 @@ const AdminGovtExamResults = () => {
             {showDetails && selectedAttempt && (
               <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowDetails(false)} className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-xl" />
-                <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-w-5xl bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[75vh]">
+                <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-w-5xl bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col max-h-[75vh]">
 
                   <div className="p-4 lg:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
                     <div className="flex items-center gap-3 lg:gap-6">
-                      <div className="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-primary-600/20"><Award className="w-8 h-8" /></div>
+                      <div className="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center shadow-sm"><Award className="w-8 h-8" /></div>
                       <div>
                         <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-primary-700">Details</span></h2>
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-3 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
@@ -457,7 +457,7 @@ const AdminGovtExamResults = () => {
                         {selectedAttempt.answers?.map((ans, i) => (
                           <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
-                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>{i + 1}</div>
+                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-sm ${ans.isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>{i + 1}</div>
                               <div>
                                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question not available'}</p>
                                 <div className="flex gap-4">
@@ -467,7 +467,7 @@ const AdminGovtExamResults = () => {
                               </div>
                             </div>
                             <div className="flex flex-col items-end gap-2 shrink-0">
-                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-primary-500/10 text-primary-700 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
+                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-sm ${ans.isCorrect ? 'bg-primary-500/10 text-primary-700 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
                                 {ans.isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
                                 {ans.isCorrect ? 'Correct' : 'Incorrect'}
                               </div>
@@ -478,7 +478,7 @@ const AdminGovtExamResults = () => {
                       </div>
                     </div>
 
-                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-2xl transition-all hover:translate-y-[-4px]">Close</button>
+                    <button onClick={() => setShowDetails(false)} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-black text-[10px] uppercase tracking-widest shadow-sm transition-all hover:translate-y-[-4px]">Close</button>
                   </div>
                 </motion.div>
               </div>

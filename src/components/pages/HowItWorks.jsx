@@ -89,7 +89,7 @@ const HowItWorks = () => {
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden px-0 py-4 lg:p-8">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-2 border-white/10 rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
@@ -113,7 +113,7 @@ const HowItWorks = () => {
                   >
                      {/* Step Marker */}
                      <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden lg:flex">
-                        <div className={`w-3 h-3 rounded-full bg-${step.color}-500 shadow-lg`} />
+                        <div className={`w-3 h-3 rounded-full bg-${step.color}-500 shadow-sm`} />
                      </div>
 
                      {/* Content Card */}
@@ -167,7 +167,7 @@ const HowItWorks = () => {
 
             {/* --- Skill-Based Callout --- */}
             <section>
-               <Card className="p-8 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden text-center lg:text-left">
+               <Card className="p-8 border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center lg:text-left">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-700 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
@@ -198,7 +198,7 @@ const HowItWorks = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
+               <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
@@ -207,7 +207,7 @@ const HowItWorks = () => {
                      <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
                      <Button
                         onClick={() => router.push('/')}
-                        className="bg-primary-700 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
+                        className="bg-primary-700 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
                      >
                         START NOW
                      </Button>

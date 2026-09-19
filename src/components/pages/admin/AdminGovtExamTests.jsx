@@ -215,7 +215,7 @@ const AdminGovtExamTests = () => {
                   </div>
 
                   <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                     <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-inner w-full lg:w-auto">
+                     <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm w-full lg:w-auto">
                         {[
                            { icon: TableIcon, id: 'table', label: 'Table' },
                            { icon: LayoutGrid, id: 'grid', label: 'Nodes' },
@@ -224,7 +224,7 @@ const AdminGovtExamTests = () => {
                            <button
                               key={mode.id}
                               onClick={() => setViewMode(mode.id)}
-                              className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                              className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
                            >
                               <mode.icon className="w-4 h-4" />
                               {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
@@ -235,7 +235,7 @@ const AdminGovtExamTests = () => {
                         whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                         onClick={handleCreate}
                         disabled={selectedPattern === 'all'}
-                        className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 ${selectedPattern === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-600 text-white shadow-primary-600/20'}`}
+                        className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3 ${selectedPattern === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-600 text-white shadow-sm'}`}
                      >
                         <Plus className="w-4 h-4" /> ADD TEST
                      </motion.button>
@@ -251,8 +251,8 @@ const AdminGovtExamTests = () => {
                   { label: 'PAID TESTS', val: testStats.paid, icon: Lock, color: 'primary' },
                   { label: 'AVG DURATION', val: `${testStats.avgDuration}m`, icon: Timer, color: 'primary' }
                ].map((stat, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl group transition-all">
-                     <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-inner`}><stat.icon className="w-6 h-6" /></div>
+                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group transition-all">
+                     <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-sm`}><stat.icon className="w-6 h-6" /></div>
                      <div className="text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{stat.val}</div>
                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>
                   </motion.div>
@@ -260,23 +260,23 @@ const AdminGovtExamTests = () => {
             </div>
 
             {/* Hierarchical Filters */}
-            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
+            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6 font-outfit text-[10px] font-black uppercase tracking-widest">
-                  <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+                  <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                      <Compass className="w-4 h-4 text-primary-700" />
                      <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                         <option value="all">ALL CATEGORIES</option>
                         {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
                      </select>
                   </div>
-                  <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+                  <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                      <Activity className="w-4 h-4 text-primary-700" />
                      <select value={selectedExam} onChange={(e) => handleExamChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                         <option value="all">ALL EXAMS</option>
                         {exams.map(exam => <option key={exam._id} value={exam._id}>{exam.name.toUpperCase()}</option>)}
                      </select>
                   </div>
-                  <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
+                  <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
                      <Binary className="w-4 h-4 text-primary-700" />
                      <select value={selectedPattern} onChange={(e) => handlePatternChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                         <option value="all">ALL PATTERNS</option>
@@ -299,7 +299,7 @@ const AdminGovtExamTests = () => {
                ) : (
                   <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                      {viewMode === 'table' && (
-                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                            <table className="w-full border-collapse">
                               <thead>
                                  <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -315,7 +315,7 @@ const AdminGovtExamTests = () => {
                                     <motion.tr key={test._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-slate-50/50 dark:hover:bg-white/5 transition-all">
                                        <td className="px-4 lg:px-8 py-3 lg:py-6">
                                           <div className="flex items-center gap-4">
-                                             <div className="p-3 bg-slate-100 dark:bg-white/10 rounded-lg lg:rounded-xl group-hover:bg-primary-500/10 group-hover:text-primary-700 transition-colors shadow-inner"><FileText className="w-5 h-5" /></div>
+                                             <div className="p-3 bg-slate-100 dark:bg-white/10 rounded-lg lg:rounded-xl group-hover:bg-primary-500/10 group-hover:text-primary-700 transition-colors shadow-sm"><FileText className="w-5 h-5" /></div>
                                              <div>
                                                 <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1">{test.title}</div>
                                                 <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">ID: {test._id.slice(-8)}</div>
@@ -332,7 +332,7 @@ const AdminGovtExamTests = () => {
                                        </td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                           <div className="flex justify-end gap-3">
-                                             <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(test)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl shadow-lg"><Edit3 className="w-4 h-4" /></motion.button>
+                                             <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(test)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl shadow-sm"><Edit3 className="w-4 h-4" /></motion.button>
                                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(test._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
                                           </div>
                                        </td>
@@ -346,7 +346,7 @@ const AdminGovtExamTests = () => {
                      {viewMode === 'grid' && (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                            {tests.map((test, idx) => (
-                              <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit group overflow-hidden">
+                              <motion.div key={test._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit group overflow-hidden">
                                  <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-700" />
                                  <div className="flex justify-between items-start mb-4 lg:mb-8">
                                     <div className="p-4 bg-slate-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform"><FileText className="w-6 h-6 text-slate-400 group-hover:text-primary-700" /></div>
@@ -366,7 +366,7 @@ const AdminGovtExamTests = () => {
                                     </div>
                                  </div>
                                  <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
-                                    <motion.button onClick={() => handleEdit(test)} className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Edit Test</motion.button>
+                                    <motion.button onClick={() => handleEdit(test)} className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Edit Test</motion.button>
                                     <motion.button onClick={() => handleDelete(test._id)} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-5 h-5" /></motion.button>
                                  </div>
                               </motion.div>
@@ -377,7 +377,7 @@ const AdminGovtExamTests = () => {
                      {viewMode === 'list' && (
                         <div className="space-y-3 lg:space-y-6">
                            {tests.map((test, idx) => (
-                              <motion.div key={test._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
+                              <motion.div key={test._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm group">
                                  <div className="flex items-center gap-3 lg:gap-6">
                                     <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-primary-700 group-hover:text-white transition-all"><FileText className="w-8 h-8" /></div>
                                     <div>
@@ -407,18 +407,18 @@ const AdminGovtExamTests = () => {
                {showModal && (
                   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-12">
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-[#0A0F1E]/80 backdrop-blur-xl" />
-                     <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-h-[75vh] bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-outfit">
+                     <motion.div initial={{ opacity: 0, scale: 0.9, y: 40 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 40 }} className="relative w-full max-h-[75vh] bg-white dark:bg-[#0D1225] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col font-outfit">
 
                         <div className="p-3 lg:p-10 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
                            <div className="flex items-center gap-4">
-                              <div className="p-3 bg-primary-600 text-white rounded-2xl shadow-lg shadow-primary-600/20"><Settings className="w-6 h-6" /></div>
+                              <div className="p-3 bg-primary-600 text-white rounded-2xl shadow-sm"><Settings className="w-6 h-6" /></div>
                               <div>
                                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{editingTest ? 'Edit' : 'Add'} <span className="text-primary-700">Test</span></h2>
                                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{editingTest ? `Editing: ${editingTest.title}` : 'Create a new practice test'}</p>
                               </div>
                            </div>
                            <div className="flex items-center gap-4">
-                              <button onClick={() => setUploadMode(!uploadMode)} className={`px-3 lg:px-6 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${uploadMode ? 'bg-primary-700 text-white border-primary-700 shadow-lg shadow-primary-500/20' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-transparent hover:border-primary-500/30'}`}>
+                              <button onClick={() => setUploadMode(!uploadMode)} className={`px-3 lg:px-6 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${uploadMode ? 'bg-primary-700 text-white border-primary-700 shadow-sm' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-transparent hover:border-primary-500/30'}`}>
                                  {uploadMode ? 'Manual Entry' : 'Bulk JSON Upload'}
                               </button>
                               <button onClick={() => setShowModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-lg lg:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
@@ -436,8 +436,8 @@ const AdminGovtExamTests = () => {
                                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Paste your questions JSON below to import in bulk</p>
                                        </div>
                                     </div>
-                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-mono text-xs outline-none shadow-inner resize-none" />
-                                    <button onClick={handleBulkUpload} className="w-full mt-4 lg:mt-8 py-5 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-xl flex items-center justify-center gap-3">
+                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none" />
+                                    <button onClick={handleBulkUpload} className="w-full mt-4 lg:mt-8 py-5 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                        <UploadCloud className="w-5 h-5" /> Import Questions
                                     </button>
                                  </div>
@@ -450,19 +450,19 @@ const AdminGovtExamTests = () => {
                                        <div className="space-y-3 lg:space-y-6">
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Test Title</label>
-                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner" />
+                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                                           </div>
                                           <div className="grid grid-cols-2 gap-3 lg:gap-6">
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Total Marks</label>
-                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-inner" />
+                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
                                              </div>
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Duration (Min)</label>
-                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-inner" />
+                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
                                              </div>
                                           </div>
-                                          <label className="flex items-center gap-4 p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 cursor-pointer transition-all hover:bg-white dark:hover:bg-white/10 group shadow-inner">
+                                          <label className="flex items-center gap-4 p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 cursor-pointer transition-all hover:bg-white dark:hover:bg-white/10 group shadow-sm">
                                              <input type="checkbox" checked={formData.isFree} onChange={(e) => setFormData({ ...formData, isFree: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-700 border-2 border-slate-300 transition-all cursor-pointer" />
                                              <div>
                                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest group-hover:text-primary-700 transition-colors leading-none mb-1">Free Access</div>
@@ -505,7 +505,7 @@ const AdminGovtExamTests = () => {
                                        <div className="space-y-3 lg:space-y-6">
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Question Statement</label>
-                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-6 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-inner resize-none" />
+                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-6 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
                                           </div>
                                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                              {currentQuestion.options.map((opt, idx) => (
@@ -526,31 +526,31 @@ const AdminGovtExamTests = () => {
                                           </div>
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Explanation (Optional)</label>
-                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-6 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-inner resize-none" />
+                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-6 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
                                           </div>
                                           <div className="grid grid-cols-2 gap-3 lg:gap-6">
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Section</label>
-                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner" />
+                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                                              </div>
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Difficulty</label>
-                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner">
+                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm">
                                                    <option value="easy">Easy</option>
                                                    <option value="medium">Medium</option>
                                                    <option value="hard">Hard</option>
                                                 </select>
                                              </div>
                                           </div>
-                                          <button type="button" onClick={handleAddQuestion} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl mt-4">
+                                          <button type="button" onClick={handleAddQuestion} className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 shadow-sm mt-4">
                                              <Plus className="w-5 h-5" /> Add Question
                                           </button>
                                        </div>
                                     </section>
 
                                     <div className="pt-10 flex gap-3 lg:gap-6">
-                                       <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-5 bg-slate-100 dark:bg-white/10 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-inner">Cancel</button>
-                                       <button type="submit" className="flex-[2] py-5 bg-primary-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-2xl shadow-primary-600/20 flex items-center justify-center gap-3">
+                                       <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-5 bg-slate-100 dark:bg-white/10 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-sm">Cancel</button>
+                                       <button type="submit" className="flex-[2] py-5 bg-primary-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                           <CheckCircle2 className="w-5 h-5" /> {editingTest ? 'Save Changes' : 'Create Test'}
                                        </button>
                                     </div>

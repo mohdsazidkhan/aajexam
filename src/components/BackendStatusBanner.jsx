@@ -52,7 +52,7 @@ const BackendStatusBanner = () => {
 
               {/* HUD Icon with Pulsing Effect */}
               <div className="relative flex-shrink-0">
-                <div className="w-16 h-16 rounded-[2rem] bg-black/10 dark:bg-white/10 flex items-center justify-center text-black dark:text-white border-2 border-black/20 dark:border-white/20 shadow-inner">
+                <div className="w-16 h-16 rounded-[2rem] bg-black/10 dark:bg-white/10 flex items-center justify-center text-black dark:text-white border-2 border-black/20 dark:border-white/20 shadow-sm">
                   <WifiOff className="w-8 h-8" />
                 </div>
                 <motion.div
@@ -82,7 +82,7 @@ const BackendStatusBanner = () => {
                 whileTap={{ y: 0, scale: 0.95 }}
                 onClick={checkBackendStatus}
                 disabled={isRefreshing}
-                className="flex-shrink-0 px-8 py-4 bg-primary-700 text-white rounded-2xl border-b-[6px] border-primary-700 shadow-aajexam-accent font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex-shrink-0 px-8 py-4 bg-primary-700 text-white rounded-2xl border-b-[6px] border-primary-700 shadow-sm font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <RefreshCcw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                 {isRefreshing ? 'LINKING...' : 'RE-LINK'}

@@ -19,7 +19,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       <button
         onClick={handlePayuPayment}
         disabled={loading}
-        className={`w-full py-6 px-10 rounded-[2rem] font-black text-sm text-white transition-all shadow-aajexam-primary border-2 border-white/20 active:translate-y-2 active:shadow-none border-primary-700 ${
+        className={`w-full py-6 px-10 rounded-[2rem] font-black text-sm text-white transition-all shadow-sm border-2 border-white/20 active:translate-y-2 active:shadow-none border-primary-700 ${
           loading
             ? 'bg-slate-400 border-slate-500 cursor-not-allowed shadow-none translate-y-2 opacity-80'
             : 'bg-primary-700 hover:bg-primary-600 hover:-translate-y-1'
@@ -52,7 +52,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       {paymentData?.txnid && (
         <div className="p-5 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center gap-3 text-primary-700">
-            <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center text-white shadow-aajexam-secondary">
+            <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center text-white shadow-sm">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>

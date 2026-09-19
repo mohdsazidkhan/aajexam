@@ -269,7 +269,7 @@ const UserAnalytics = () => {
             <div className="flex flex-wrap items-center gap-4">
               <button
                 onClick={handleExport}
-                className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-aajexam-primary hover:scale-105 transition-transform flex items-center gap-3"
+                className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-3"
               >
                 <Download className="w-4 h-4" /> Export CSV
               </button>
@@ -278,7 +278,7 @@ const UserAnalytics = () => {
         </motion.div>
 
         {/* Controller Bar */}
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
               <Filter className="w-5 h-5" />
@@ -313,7 +313,7 @@ const UserAnalytics = () => {
                 value={filters.level}
                 onChange={handleFilterChange}
                 placeholder="Filter by level..."
-                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
+                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
               />
             </div>
 
@@ -324,7 +324,7 @@ const UserAnalytics = () => {
                 value={filters.subscription}
                 onChange={handleFilterChange}
                 placeholder="Filter by plan..."
-                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-inner w-full lg:w-48 placeholder:text-slate-400"
+                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
               />
             </div>
           </div>
@@ -334,7 +334,7 @@ const UserAnalytics = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-2xl overflow-hidden"
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-sm overflow-hidden"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">

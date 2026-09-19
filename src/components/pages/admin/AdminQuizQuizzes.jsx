@@ -184,7 +184,7 @@ const AdminQuizQuizzes = () => {
       {/* Create/Edit Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-lg shadow-xl my-8">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-lg shadow-sm my-8">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Quiz</h2>
               <button onClick={() => setShowModal(false)}><X className="w-5 h-5 text-slate-400" /></button>
@@ -217,7 +217,7 @@ const AdminQuizQuizzes = () => {
       {/* Add Questions Modal */}
       {showAddQ && selectedQuiz && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-2xl shadow-xl my-8 max-h-[80vh] flex flex-col">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-2xl shadow-sm my-8 max-h-[80vh] flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">Add Questions to "{selectedQuiz.title}"</h2>
               <button onClick={() => setShowAddQ(false)}><X className="w-5 h-5 text-slate-400" /></button>

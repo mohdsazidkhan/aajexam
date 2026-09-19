@@ -340,7 +340,7 @@ const AttemptQuizPage = () => {
   if (showExitConfirm) {
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 dark:border-white">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full shadow-sm border border-slate-200 dark:border-slate-800 dark:border-white">
           <div className="text-center">
             <div className="w-14 h-14 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="w-7 h-7 text-white" />
@@ -442,7 +442,7 @@ const AttemptQuizPage = () => {
         <div className="pt-6 pb-8">
           {/* Result Card */}
           <div className="text-center mb-6">
-            <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
+            <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-sm">
               <div className="flex justify-center mb-4">
                 <div className="w-20 h-20 bg-primary-400 rounded-full flex items-center justify-center animate-pulse">
                   <Trophy className="w-10 h-10 text-white" />
@@ -479,7 +479,7 @@ const AttemptQuizPage = () => {
           </div>
 
           {/* Quiz Review */}
-          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-6">
+          <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm p-4 lg:p-8 border border-white/20 mb-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
                 <Brain className="w-5 h-5 text-white" />
@@ -571,7 +571,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleChallenge}
                 disabled={isGeneratingChallenge}
-                className="w-full px-6 py-4 bg-primary-700 hover:bg-black text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-primary-700 hover:bg-black text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-sm transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isGeneratingChallenge ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -601,7 +601,7 @@ const AttemptQuizPage = () => {
       <div className="pt-3 pb-32">
 
         {/* Quiz Header */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-3 mb-3">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm border border-white/20 p-3 mb-3">
           {/* 3-column layout on desktop: left=title | center=dots | right=controls */}
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
@@ -627,7 +627,7 @@ const AttemptQuizPage = () => {
                     setCurrentQuestionIndex(idx);
                   }}
                   className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                      ? 'bg-primary-700 text-white shadow-md scale-110'
+                      ? 'bg-primary-700 text-white shadow-sm scale-110'
                       : answers[idx] !== null
                         ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-300'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -690,7 +690,7 @@ const AttemptQuizPage = () => {
                   setCurrentQuestionIndex(idx);
                 }}
                 className={`w-7 h-7 shrink-0 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                    ? 'bg-primary-700 text-white shadow-md scale-110'
+                    ? 'bg-primary-700 text-white shadow-sm scale-110'
                     : answers[idx] !== null
                       ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-300'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -703,7 +703,7 @@ const AttemptQuizPage = () => {
         </div>
 
         {/* Question Card */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-3">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm p-4 lg:p-8 border border-white/20 mb-3">
           <div className="flex items-start gap-3 mb-5">
             <div className="w-8 h-8 bg-primary-700 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0">
               {currentQuestionIndex + 1}
@@ -735,7 +735,7 @@ const AttemptQuizPage = () => {
                   key={optIdx}
                   onClick={() => handleSelect(optIdx)}
                   className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition-all duration-200 ${isSelected
-                      ? 'border-primary-700 bg-primary-50 dark:bg-primary-900/30 shadow-md'
+                      ? 'border-primary-700 bg-primary-50 dark:bg-primary-900/30 shadow-sm'
                       : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
                     }`}
                 >
@@ -766,14 +766,14 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-primary-700 text-white shadow-md transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-primary-700 text-white shadow-sm transition-all disabled:opacity-50"
               >
                 {submitting ? 'Submitting...' : 'Submit Quiz'}
               </button>
             ) : (
               <button
                 onClick={handleNextQuestion}
-                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-primary-600 text-white shadow-md transition-all"
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-primary-600 text-white shadow-sm transition-all"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </button>

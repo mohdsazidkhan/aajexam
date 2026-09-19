@@ -45,7 +45,7 @@ class ErrorBoundary extends React.Component {
                 className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 lg:w-48 h-24 lg:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
               />
 
-              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-2xl mb-10 group overflow-hidden">
+              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-sm mb-10 group overflow-hidden">
                 <div className="absolute inset-0 bg-black/10 dark:bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <ShieldAlert className="w-16 h-16 text-black dark:text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
               </div>
@@ -59,7 +59,7 @@ class ErrorBoundary extends React.Component {
             </div>
 
             {/* Action Console Area */}
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 p-10 shadow-2xl space-y-8 relative overflow-hidden">
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 p-10 shadow-sm space-y-8 relative overflow-hidden">
               {/* Secondary Decorative Glow */}
               <div className="absolute -right-20 -bottom-20 w-40 h-40 bg-primary-500/5 rounded-full blur-[60px] pointer-events-none" />
 
@@ -68,7 +68,7 @@ class ErrorBoundary extends React.Component {
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ y: 0, scale: 0.98 }}
                   onClick={() => window.location.reload()}
-                  className="flex-1 px-8 py-5 bg-primary-700 text-white rounded-3xl border-b-[8px] border-primary-700 shadow-aajexam-accent font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
+                  className="flex-1 px-8 py-5 bg-primary-700 text-white rounded-3xl border-b-[8px] border-primary-700 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
                 >
                   <RefreshCcw className="w-5 h-5" /> Try Again
                 </motion.button>

@@ -155,7 +155,7 @@ export default function ReferralHistory() {
                 <select
                   value={filterType}
                   onChange={handleFilterChange}
-                  className="pl-14 pr-10 py-5 leading-none bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
+                  className="pl-14 pr-10 py-5 leading-none bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-sm"
                 >
                   <option value="all">All Reward Types</option>
                   <option value="plan99">Plan 99 Reward (₹33)</option>
@@ -175,15 +175,15 @@ export default function ReferralHistory() {
           {summary && (
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 mb-4">
               {[
-                { label:"TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color:"bg-primary-700 text-white shadow-black/20"},
-                { label:"PLAN 99", value: summary.plan99Rewards, icon: Award, color:"bg-primary-700 text-white shadow-black/20"}
+                { label:"TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color:"bg-primary-700 text-white shadow-sm"},
+                { label:"PLAN 99", value: summary.plan99Rewards, icon: Award, color:"bg-primary-700 text-white shadow-sm"}
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className={`${stat.color} rounded-lg lg:rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group`}
+                  className={`${stat.color} rounded-lg lg:rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between shadow-sm relative overflow-hidden group`}
                 >
                   <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:scale-110 transition-transform">
                     <stat.icon className="w-12 h-12" />
@@ -203,7 +203,7 @@ export default function ReferralHistory() {
               key="empty"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+              className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
             >
               <History className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
               <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS FOUND</h3>
@@ -214,7 +214,7 @@ export default function ReferralHistory() {
               key="content"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl"
+              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm"
             >
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -244,7 +244,7 @@ export default function ReferralHistory() {
                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                           <Link href={`/admin/user-referral-detail?userId=${tx.inviter?._id}`} className="group/link block">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover/link:bg-primary-600 transition-all uppercase">
+                              <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover/link:bg-primary-600 transition-all uppercase">
                                 {tx.inviter?.name?.[0]?.toUpperCase() || 'U'}
                               </div>
                               <div>

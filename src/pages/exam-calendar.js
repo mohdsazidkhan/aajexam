@@ -114,7 +114,7 @@ const DayPanel = ({ date, events, onClose }) => {
         className="mt-4"
       >
         <Card padded={false} className="overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border-primary">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-primary-700" />
               <span className="text-sm font-black text-content-primary">{dateLabel}</span>
@@ -210,7 +210,7 @@ const ExamCalendarPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:p-8">
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:p-8">
           <div className="absolute inset-0 bg-white dark:bg-black" />
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
@@ -253,7 +253,7 @@ const ExamCalendarPage = () => {
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Prev</span>
@@ -275,7 +275,7 @@ const ExamCalendarPage = () => {
 
           <button
             onClick={nextMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="w-4 h-4" />
@@ -285,7 +285,7 @@ const ExamCalendarPage = () => {
         {/* ── Calendar Grid ── */}
         <Card padded={false} className="overflow-hidden">
           {/* Day headers */}
-          <div className="grid grid-cols-7 border-b border-border-primary">
+          <div className="grid grid-cols-7 border-b border-slate-200 dark:border-slate-800">
             {DAYS.map(day => (
               <div key={day} className="py-2 text-center text-[10px] sm:text-[11px] font-black text-content-muted uppercase tracking-wide">
                 <span className="sm:hidden">{day.charAt(0)}</span>
@@ -298,7 +298,7 @@ const ExamCalendarPage = () => {
           <div className="grid grid-cols-7">
             {cells.map((cell, idx) => {
               if (!cell) {
-                return <div key={`empty-${idx}`} className="h-12 sm:h-16 border-b border-r border-border-primary/50 last:border-r-0 bg-background-surface/50" />;
+                return <div key={`empty-${idx}`} className="h-12 sm:h-16 border-b border-r border-slate-200 dark:border-slate-800/50 last:border-r-0 bg-background-surface/50" />;
               }
               const { day, dateStr, eventsForDay } = cell;
               const isToday = dateStr === todayStr;
@@ -312,7 +312,7 @@ const ExamCalendarPage = () => {
                   onClick={() => setSelectedDate(isSelected ? null : (hasEvents ? dateStr : null))}
                   disabled={!hasEvents}
                   className={`
-                    h-12 sm:h-16 border-b border-r border-border-primary/50 last:border-r-0
+                    h-12 sm:h-16 border-b border-r border-slate-200 dark:border-slate-800/50 last:border-r-0
                     flex flex-col items-center justify-start pt-1.5 sm:pt-2 px-0.5 sm:px-1
                     transition-all duration-150 relative group
                     ${hasEvents ? 'cursor-pointer hover:bg-primary-50 dark:hover:bg-primary-950/20' : 'cursor-default'}
@@ -323,7 +323,7 @@ const ExamCalendarPage = () => {
                   {/* Day number */}
                   <span className={`
                     w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full text-[11px] sm:text-xs font-black
-                    ${isToday ? 'bg-primary-700 text-white shadow-md' : 'text-content-primary'}
+                    ${isToday ? 'bg-primary-700 text-white shadow-sm' : 'text-content-primary'}
                     ${isWeekend && !isToday ? 'text-black dark:text-white dark:text-white' : ''}
                   `}>
                     {day}

@@ -220,7 +220,7 @@ const FAQ = () => {
                                     {category.questions.map((faq, qIndex) => (
                                         <div
                                             key={qIndex}
-                                            className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300"
+                                            className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
                                         >
                                             <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
                                                 <span className="text-primary-700 flex-shrink-0">Q:</span>

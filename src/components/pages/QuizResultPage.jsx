@@ -78,7 +78,7 @@ const QuizResultPage = () => {
 
         {/* Result Card */}
         <div className="text-center mb-6">
-          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
+          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-sm">
             <div className="flex justify-center mb-3">
               <div className="w-16 h-16 bg-primary-400 rounded-full flex items-center justify-center">
                 <Trophy className="w-8 h-8 text-white" />
@@ -116,7 +116,7 @@ const QuizResultPage = () => {
         </div>
 
         {/* Review */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-6">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm p-4 lg:p-8 border border-white/20 mb-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
               <Brain className="w-5 h-5 text-white" />

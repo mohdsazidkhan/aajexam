@@ -96,20 +96,20 @@ const ModernLandingPage = () => {
                   <motion.div
                      animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                     className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-aajexam-primary items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
+                     className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-sm items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
                   >
                      <Trophy className="w-8 h-8 text-primary-700" />
                   </motion.div>
                   <motion.div
                      animate={{ y: [15, -15, 15], rotate: [0, -10, 10, 0] }}
                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                     className="absolute hidden lg:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-800 dark:border-white/50 items-center justify-center"
+                     className="absolute hidden lg:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 dark:border-white/50 items-center justify-center"
                   >
                      <Star className="w-8 h-8 text-black dark:text-white" />
                   </motion.div>
 
                   <div
-                     className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-700 border-2 border-primary-500/10 shadow-xl"
+                     className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-700 border-2 border-primary-500/10 shadow-sm"
                   >
                      <Sparkles className="w-4 h-4 text-primary-700" />
                      Trusted by students across India
@@ -138,7 +138,7 @@ const ModernLandingPage = () => {
                         size="xl"
                         icon={ArrowRight}
                         iconPosition="right"
-                        className="w-full sm:w-auto shadow-aajexam-primary transform hover:-translate-y-1 transition-all duration-300 font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
+                        className="w-full sm:w-auto shadow-sm transform hover:-translate-y-1 transition-all duration-300 font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
                         onClick={() => router.push('/register')}
                      >
                         Start practicing now
@@ -230,7 +230,7 @@ const ModernLandingPage = () => {
                         { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-primary-700", bg: "bg-primary-50 dark:bg-primary-900/20" },
                         { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-700", bg: "bg-primary-50 dark:bg-primary-900/20" }
                      ].map((item, i) => (
-                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-aajexam border-2 border-slate-200 dark:border-slate-700">
+                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border-2 border-slate-200 dark:border-slate-700">
                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
                               <item.icon className={`w-8 h-8 ${item.color}`} />
                            </div>
@@ -335,7 +335,7 @@ const ModernLandingPage = () => {
                      whileHover={{ scale: 1.03 }}
                      whileTap={{ scale: 0.97 }}
                      onClick={() => router.push('/register')}
-                     className="w-full sm:w-auto px-10 py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-primary-500/30 transition-all text-sm"
+                     className="w-full sm:w-auto px-10 py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm"
                   >
                      Start Free PYQ Practice →
                   </motion.button>
@@ -359,9 +359,9 @@ const ModernLandingPage = () => {
                </div>
 
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 lg:min-h-[800px]">
-                  <Card className="lg:col-span-8 p-6 lg:p-16 bg-primary-600 border-none shadow-2xl text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] lg:rounded-[4rem]">
+                  <Card className="lg:col-span-8 p-6 lg:p-16 bg-primary-600 border-none shadow-sm text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] lg:rounded-[4rem]">
                      <div className="space-y-6 relative z-10 max-w-xl">
-                        <div className="p-4 lg:p-5 bg-white/20 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] w-fit shadow-xl border-2 border-white/20">
+                        <div className="p-4 lg:p-5 bg-white/20 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] w-fit shadow-sm border-2 border-white/20">
                            <Trophy className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl lg:text-5xl font-black font-outfit uppercase leading-[0.9]">See your progress</h3>
@@ -376,7 +376,7 @@ const ModernLandingPage = () => {
                      <div className="absolute top-0 right-0 w-full h-full bg-white/10 pointer-events-none" />
                   </Card>
 
-                  <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] lg:rounded-[4rem] shadow-xl">
+                  <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] lg:rounded-[4rem] shadow-sm">
                      <div className="space-y-4 lg:space-y-6">
                         <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Flame className="w-8 h-8 lg:w-10 lg:h-10" />
@@ -390,14 +390,14 @@ const ModernLandingPage = () => {
                               <motion.div
                                  initial={{ width: 0 }}
                                  whileInView={{ width: `${width}%` }}
-                                 className="h-full bg-primary-700 shadow-aajexam-secondary"
+                                 className="h-full bg-primary-700 shadow-sm"
                               />
                            </div>
                         ))}
                      </div>
                   </Card>
 
-                  <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] lg:rounded-[4rem] shadow-xl">
+                  <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] lg:rounded-[4rem] shadow-sm">
                      <div className="space-y-4 lg:space-y-6">
                         <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Zap className="w-8 h-8 lg:w-10 lg:h-10" />
@@ -418,15 +418,15 @@ const ModernLandingPage = () => {
                      </div>
                   </Card>
 
-                  <Card className="lg:col-span-8 p-5 lg:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-2xl flex flex-col lg:flex-row items-center gap-6 lg:gap-10 overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">
+                  <Card className="lg:col-span-8 p-5 lg:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col lg:flex-row items-center gap-6 lg:gap-10 overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">
                      <div className="flex-1 space-y-4 lg:space-y-6 relative z-10 text-center lg:text-left">
-                        <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-700 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-aajexam-primary border-2 border-primary-500/5 mx-auto lg:mx-0">
+                        <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-700 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto lg:mx-0">
                            <Medal className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
                         <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.</p>
                         <div className="pt-2 lg:pt-4">
-                           <Button variant="primary" size="lg" className="shadow-xl rounded-lg lg:rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
+                           <Button variant="primary" size="lg" className="shadow-sm rounded-lg lg:rounded-xl lg:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
                               Start referring
                            </Button>
                         </div>
@@ -454,7 +454,7 @@ const ModernLandingPage = () => {
                            { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
                            { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
                         ].map((item, index) => (
-                           <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-xl group hover:-translate-y-2 transition-all">
+                           <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm group hover:-translate-y-2 transition-all">
                               <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-700 mb-6 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
                                  <item.icon className="w-8 h-8" />
                               </div>
@@ -473,7 +473,7 @@ const ModernLandingPage = () => {
          </section>
 
          <section className="px-0 py-4 lg:p-8">
-            <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-2xl p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
+            <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-sm p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
                <div className="relative z-10 space-y-8">
                   <motion.h2
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
@@ -488,7 +488,7 @@ const ModernLandingPage = () => {
                         size="xl"
                         icon={ArrowRight}
                         iconPosition="right"
-                        className="w-full sm:w-auto shadow-aajexam-primary rounded-2xl px-16 font-outfit font-black text-sm tracking-[0.08em] py-8 transition-transform active:scale-95"
+                        className="w-full sm:w-auto shadow-sm rounded-2xl px-16 font-outfit font-black text-sm tracking-[0.08em] py-8 transition-transform active:scale-95"
                         onClick={() => router.push('/register')}
                      >
                         Join now for free

@@ -87,7 +87,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             <button 
               onClick={handleStartAdaptive}
               disabled={generatingAdaptive}
-              className="w-full sm:w-auto bg-white text-black dark:text-white hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg lg:rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto bg-white text-black dark:text-white hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg lg:rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {generatingAdaptive ? (
                 <><div className="w-4 h-4 border-2 border-black dark:border-white border-t-transparent rounded-full animate-spin" /> GENERATING...</>
@@ -120,7 +120,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             ) : flashcards.map((deck, idx) => (
               <motion.div key={deck._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/flashcards/${deck.slug || deck._id}`)}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700"
+                className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-sm transition-all border border-slate-200 dark:border-slate-700"
               >
                 <div className="absolute inset-0 bg-primary-700 opacity-90 group-hover:opacity-100 transition-opacity"/>
                 <div className="absolute inset-0 p-4 flex flex-col justify-between">

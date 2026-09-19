@@ -131,7 +131,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Profile Card - overlaps banner */}
           <div className="-mt-16 sm:-mt-20 relative z-10">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-5 lg:p-6">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-sm p-4 sm:p-5 lg:p-6">
               {/* Avatar + Info + Action */}
               <div className="flex items-start gap-3 sm:gap-4">
                 {/* Avatar */}
@@ -142,10 +142,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         alt={profile.name}
                         width={112}
                         height={112}
-                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg object-cover bg-slate-200 dark:bg-slate-700"
+                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700"
                       />
                     ) : (
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-lg flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
                       {profile.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -235,7 +235,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         <div className="space-y-4 pb-8">
           {/* Badges Section */}
           {profile.badges && profile.badges.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
                 Badges
@@ -255,7 +255,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Quiz Statistics Section */}
           {(profile.isPublicProfile || isOwnProfile) && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
                 Exam Statistics
@@ -285,7 +285,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Reels Grid — Instagram style */}
           {reels.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
                 <PlayCircle className="w-5 h-5" />
@@ -351,7 +351,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
           {/* Private Profile Message */}
           {!profile.isPublicProfile && !isOwnProfile && (
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-8 sm:p-10 border-2 border-slate-200 dark:border-slate-800 shadow-xl text-center">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-8 sm:p-10 border-2 border-slate-200 dark:border-slate-800 shadow-sm text-center">
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
                 🔒
               </div>

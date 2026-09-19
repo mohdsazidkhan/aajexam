@@ -262,7 +262,7 @@ const AdminReelCreate = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setType(t.value)}
-                    className={`p-6 rounded-2xl border-2 text-left transition-all hover:shadow-lg ${COLOR_MAP[t.color]}`}
+                    className={`p-6 rounded-2xl border-2 text-left transition-all hover:shadow-sm ${COLOR_MAP[t.color]}`}
                   >
                     <t.icon className="w-8 h-8 mb-3 opacity-80" />
                     <h3 className="font-bold text-slate-900 dark:text-white">{t.label}</h3>

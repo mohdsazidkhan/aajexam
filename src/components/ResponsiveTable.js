@@ -152,7 +152,7 @@ const ResponsiveTable = ({
           layout
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
-          className={`bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-800 p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-500 group ${onRowClick ? 'cursor-pointer hover:translate-x-2' : ''}`}
+          className={`bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[1.5rem] border-2 border-slate-100 dark:border-slate-800 p-5 lg:p-6 shadow-sm hover:shadow-sm transition-all duration-500 group ${onRowClick ? 'cursor-pointer hover:translate-x-2' : ''}`}
           onClick={() => onRowClick?.(row)}
         >
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -201,7 +201,7 @@ const ResponsiveTable = ({
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           whileHover={{ y: -10, scale: 1.02 }}
-          className={`relative bg-white dark:bg-slate-900 rounded-md lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 p-4 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group overflow-hidden ${onRowClick ? 'cursor-pointer' : ''}`}
+          className={`relative bg-white dark:bg-slate-900 rounded-md lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 p-4 lg:p-8 shadow-sm hover:shadow-sm transition-all duration-500 group overflow-hidden ${onRowClick ? 'cursor-pointer' : ''}`}
           onClick={() => onRowClick?.(row)}
         >
           {/* Card Decorations */}
@@ -210,7 +210,7 @@ const ResponsiveTable = ({
           <div className="relative z-10 space-y-8">
             {/* Hero Header */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-0.5 shadow-xl group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-0.5 shadow-sm group-hover:rotate-6 transition-transform duration-500">
                 <div className="w-full h-full bg-slate-900 rounded-lg lg:rounded-xl flex items-center justify-center text-white font-black text-2xl italic">
                   {(row.name || row[columns[0]?.key] || 'U')[0]}
                 </div>
@@ -311,7 +311,7 @@ const ResponsiveTable = ({
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center justify-center py-24 bg-slate-50/50 dark:bg-slate-800/10 rounded-[3rem] border-2 border-dashed border-slate-100 dark:border-slate-800/50"
           >
-            <div className="p-10 bg-white dark:bg-slate-800 rounded-[3rem] shadow-xl border-b-2 border-slate-100 dark:border-slate-700 mb-8">
+            <div className="p-10 bg-white dark:bg-slate-800 rounded-[3rem] shadow-sm border-b-2 border-slate-100 dark:border-slate-700 mb-8">
               <Layers className="w-16 h-16 text-slate-200 dark:text-slate-700" />
             </div>
             <p className="text-xs font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] font-outfit">{emptyMessage}</p>

@@ -19,7 +19,7 @@ const Sh = ({ className = '' }) => (
 const LeaderboardSkeleton = () => (
   <div className="space-y-3">
     {Array.from({ length: 8 }).map((_, i) => (
-      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-border-primary">
+      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-slate-200 dark:border-slate-800">
         <Sh className="w-8 h-8 rounded-full flex-shrink-0" />
         <Sh className="w-10 h-10 rounded-full flex-shrink-0" />
         <div className="flex-1 space-y-2">
@@ -177,7 +177,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
   const rankBadge = (
     <div className={`
       w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-      ${isTop3 ? `${rc.gradient} ${rc.numberText} shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
+      ${isTop3 ? `${rc.gradient} ${rc.numberText} shadow-sm` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
     `}>
       {entry.rank}
     </div>
@@ -214,7 +214,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600'
-            : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
+            : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
           }
         `}>
           {rankBadge}
@@ -238,7 +238,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600'
-            : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
+            : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
           }
         `}>
           <div className="flex items-center gap-3">
@@ -300,7 +300,7 @@ const MyRankCard = ({ entry, type }) => {
       animate={{ opacity: 1, y: 0 }}
       className="sticky bottom-4 z-30 px-1 mt-4"
     >
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-aajexam-primary">
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">
             #{entry.rank}
@@ -366,7 +366,7 @@ const LeaderboardPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero Banner ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20">
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20">
           <div className="absolute inset-0 bg-white dark:bg-black" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 dark:bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
@@ -375,11 +375,11 @@ const LeaderboardPage = () => {
 
             {/* Type Toggle */}
             <div className="flex justify-center mb-6">
-              <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-inner">
+              <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-sm">
                 <button
                   onClick={() => setType('quiz')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'quiz' ? 'bg-primary-700 text-white shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                    type === 'quiz' ? 'bg-primary-700 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <BrainCircuit className="w-4 h-4" /> Quizzes
@@ -387,7 +387,7 @@ const LeaderboardPage = () => {
                 <button
                   onClick={() => setType('exam')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'exam' ? 'bg-primary-700 text-white shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                    type === 'exam' ? 'bg-primary-700 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <FileText className="w-4 h-4" /> Exams
@@ -434,8 +434,8 @@ const LeaderboardPage = () => {
                 className={`
                   shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
                   ${isActive
-                    ? 'bg-primary-700 text-white border-primary-700 shadow-lg'
-                    : 'bg-background-surface text-content-muted border-border-primary hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
+                    ? 'bg-primary-700 text-white border-primary-700 shadow-sm'
+                    : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
                   }
                 `}
               >
@@ -449,7 +449,7 @@ const LeaderboardPage = () => {
             onClick={() => fetchLeaderboard(true)}
             disabled={refreshing || loading}
             title="Refresh"
-            className="shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+            className="shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
           >
             <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
           </button>
@@ -525,7 +525,7 @@ const LeaderboardPage = () => {
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                    className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -533,7 +533,7 @@ const LeaderboardPage = () => {
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                    className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>

@@ -117,7 +117,7 @@ const QuizResultDetail = () => {
 
         {/* Score Card */}
         <div className="text-center mb-6">
-          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
+          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-sm">
             <div className="flex justify-center mb-3">
               <div className="w-16 h-16 bg-primary-400 rounded-full flex items-center justify-center">
                 <Trophy className="w-8 h-8 text-white" />
@@ -155,7 +155,7 @@ const QuizResultDetail = () => {
         </div>
 
         {/* Question Review */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-6">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm p-4 lg:p-8 border border-white/20 mb-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
               <Brain className="w-5 h-5 text-white" />
@@ -242,7 +242,7 @@ const QuizResultDetail = () => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl shadow-xl p-4 lg:p-6 border border-white/20 mb-6">
+          <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl shadow-sm p-4 lg:p-6 border border-white/20 mb-6">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-black dark:text-white" />
               <h2 className="text-lg font-bold text-slate-800 dark:text-white">Leaderboard</h2>
@@ -270,7 +270,7 @@ const QuizResultDetail = () => {
           <button 
             onClick={handleChallenge} 
             disabled={isGeneratingChallenge}
-            className="w-full px-6 py-4 bg-primary-700 hover:bg-black text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full px-6 py-4 bg-primary-700 hover:bg-black text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-sm transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {isGeneratingChallenge ? (
               <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -59,7 +59,7 @@ const PublicNavbar = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
-          ? 'py-2.5 bg-white dark:bg-slate-900 backdrop-blur-2xl border-b-2 border-slate-100 dark:border-slate-800 shadow-xl'
+          ? 'py-2.5 bg-white dark:bg-slate-900 backdrop-blur-2xl border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
           : 'py-2 lg:py-4 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
           }`}
       >
@@ -88,7 +88,7 @@ const PublicNavbar = () => {
                     <Link title={link.title} key={link.href} href={link.href}>
                       <button className={`relative px-2.5 py-2 rounded-lg lg:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-700' : 'text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-400'}`}>
                         {isActive && (
-                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl shadow-lg border border-slate-200/50 dark:border-slate-700/50" />
+                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
                           {link.label}

@@ -66,7 +66,7 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* About */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
@@ -87,9 +87,9 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Expertise */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-slate-200 dark:border-slate-800">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
                                 <FaCode className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Technical Expertise</h2>
@@ -113,10 +113,10 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Vision & Mission */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
                                 <FaTrophy className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Vision & Mission</h2>
@@ -144,9 +144,9 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Achievements */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-slate-200 dark:border-slate-800">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Key Achievements</h2>
@@ -159,7 +159,7 @@ export default function AboutAuthor() {
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
-                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-aajexam border-b-2 border-black/20`}>
+                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm border-b-2 border-black/20`}>
                                         âœ“
                                     </div>
                                     <div>
@@ -172,7 +172,7 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Philosophy */}
-                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-slate-800 shadow-2xl relative overflow-hidden">
+                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-slate-800 shadow-sm relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
                         <h2 className="text-xl lg:text-4xl font-black text-white mb-8 uppercase tracking-tight relative z-10">Educational Philosophy</h2>
                         <div className="space-y-6 text-slate-400 text-md lg:text-xl font-bold leading-relaxed relative z-10">
@@ -186,7 +186,7 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Contact */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Connect with Sazid</h2>
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
@@ -219,7 +219,7 @@ export default function AboutAuthor() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-700 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-aajexam-primary">
+                        <div className="bg-primary-700 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-sm">
                             <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Join Thousands of Successful Students
                             </h2>
@@ -228,7 +228,7 @@ export default function AboutAuthor() {
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-700 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-xl active:translate-y-1 active:shadow-none"
+                                className="bg-white text-primary-700 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
                             >
                                 Get Started Now
                             </button>

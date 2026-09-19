@@ -62,7 +62,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');
 
   return (
-    <footer className="relative pt-10 lg:pt-16 pb-10 lg:pb-16 overflow-hidden dark: border-t border-border-primary/50 font-outfit">
+    <footer className="relative pt-10 lg:pt-16 pb-10 lg:pb-16 overflow-hidden dark: border-t border-slate-200 dark:border-slate-800/50 font-outfit">
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary-500/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -107,7 +107,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               {operationalLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-700 group-hover:border-primary-500/30 transition-all shadow-inner">
+                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-700 group-hover:border-primary-500/30 transition-all shadow-sm">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
@@ -126,7 +126,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               {legalLinksMap.map((link) => (
                 <li key={link.name}>
                   <Link href={link.path} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-700 group-hover:border-primary-500/30 transition-all shadow-inner">
+                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-700 group-hover:border-primary-500/30 transition-all shadow-sm">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
@@ -141,14 +141,14 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse"/>
               Support
             </h4>
-            <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-xl backdrop-blur-xl max-w-xs lg:max-w-none mx-auto sm:mx-0">
+            <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-sm backdrop-blur-xl max-w-xs lg:max-w-none mx-auto sm:mx-0">
               <div className="p-5 space-y-5">
                 <a
                   href={`mailto:${config.CONTACT.EMAIL}`}
                   aria-label="Send us an email"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white dark:group-hover/item:text-black transition-all shadow-aajexam-secondary">
+                  <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white dark:group-hover/item:text-black transition-all shadow-sm">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
@@ -166,7 +166,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label="Contact us on WhatsApp"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-primary-500/10 text-primary-700 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-700 group-hover/item:text-white transition-all shadow-aajexam-primary">
+                  <div className="w-11 h-11 bg-primary-500/10 text-primary-700 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-700 group-hover/item:text-white transition-all shadow-sm">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">

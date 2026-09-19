@@ -56,7 +56,7 @@ const ForgotPasswordPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md relative z-10"
         >
-          <Card className="p-10 border-none shadow-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
+          <Card className="p-10 border-none shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
 
             {/* Header */}
             <div className="text-center space-y-4">
@@ -124,7 +124,7 @@ const ForgotPasswordPage = () => {
                       variant="primary"
                       fullWidth
                       disabled={isLoading}
-                      className="py-6 rounded-2xl shadow-aajexam-primary"
+                      className="py-6 rounded-2xl shadow-sm"
                     >
                       {isLoading ? (
                         <span className="flex items-center gap-2">

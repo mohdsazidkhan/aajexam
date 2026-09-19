@@ -134,12 +134,12 @@ const TestResult = ({ resolvedId } = {}) => {
             animate={{ scale: 1, opacity: 1 }}
             className="absolute -top-12 -left-12 z-20 pointer-events-none"
           >
-            <Trophy className="w-20 lg:w-32 h-20 lg:h-32 text-black dark:text-white rotate-[-15deg] drop-shadow-2xl" />
+            <Trophy className="w-20 lg:w-32 h-20 lg:h-32 text-black dark:text-white rotate-[-15deg] drop-shadow-sm" />
           </motion.div>
         )}
 
         <Card className={`
-          relative overflow-hidden text-center py-8 px-5 lg:py-12 lg:px-8 border-none shadow-2xl
+          relative overflow-hidden text-center py-8 px-5 lg:py-12 lg:px-8 border-none shadow-sm
           ${isGreat ? 'bg-primary-700 text-white' : 'bg-white dark:bg-slate-800'}
         `}>
           <div className="relative z-10 space-y-6">
@@ -252,7 +252,7 @@ const TestResult = ({ resolvedId } = {}) => {
               onClick={() => setActiveTab(tab)}
               className={`
                  px-8 py-3 rounded-full font-black uppercase text-sm transition-all
-                 ${activeTab === tab ? 'bg-primary-700 text-white shadow-lg' : 'text-gray-400 hover:text-gray-600'}
+                 ${activeTab === tab ? 'bg-primary-700 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}
                `}
             >
               {tab}

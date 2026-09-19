@@ -20,7 +20,7 @@ const Sh = ({ className = '' }) => (
 const LeaderboardSkeleton = () => (
   <div className="space-y-3">
     {Array.from({ length: 8 }).map((_, i) => (
-      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-border-primary">
+      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-slate-200 dark:border-slate-800">
         <Sh className="w-8 h-8 rounded-full flex-shrink-0" />
         <Sh className="w-10 h-10 rounded-full flex-shrink-0" />
         <div className="flex-1 space-y-2">
@@ -37,7 +37,7 @@ const LeaderboardSkeleton = () => (
 const rankConfig = {
   1: { gradient: 'bg-primary-700', ringColor: 'ring-primary-700/10', textColor: 'text-white' },
   2: { gradient: 'bg-slate-400', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
-  3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-white' },
+  3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
@@ -64,6 +64,7 @@ const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
   const podiumGradient = { 1: 'bg-primary-700', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
+  const podiumTextColor = { 1: 'text-white', 2: 'text-white', 3: 'text-black dark:text-white' };
 
   return (
     <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
@@ -82,13 +83,13 @@ const Podium = ({ top3, currentUserId }) => {
             <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
             {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>}
             <div className="text-center max-w-[76px] sm:max-w-[96px]">
-              <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-black dark:text-white' : 'text-white'}`}>
+              <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
                 {entry.name || entry.username || 'User'}
               </p>
-              <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}% avg</p>
+              <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.avgPercentage}% avg</p>
             </div>
             <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
-              <span className="text-white font-black text-sm">#{entry.rank}</span>
+              <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
             </div>
           </motion.div>
         );
@@ -108,7 +109,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
   const rankBadge = (
     <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-      ${isTop3 ? `${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}`}>
+      ${isTop3 ? `${rc.gradient} text-white shadow-sm` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}`}>
       {entry.rank}
     </div>
   );
@@ -116,7 +117,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
   const identity = (
     <div className="min-w-0">
       <div className="flex items-center gap-1.5 flex-wrap">
-        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white dark:text-white' : 'text-content-primary'}`}>
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white' : 'text-content-primary'}`}>
           {entry.name || entry.username || 'Anonymous'}
         </p>
         {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
@@ -138,7 +139,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           {rankBadge}
           <div className="flex items-center gap-2.5 min-w-0">
             <Avatar entry={entry} size="md" />
@@ -157,7 +158,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           <div className="flex items-center gap-3">
             {rankBadge}
             <Avatar entry={entry} size="md" />
@@ -208,7 +209,7 @@ const MyRankCard = ({ entry }) => {
   if (!entry) return null;
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1 mt-4">
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-aajexam-primary">
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">#{entry.rank}</div>
           <Avatar entry={entry} size="md" />
@@ -298,18 +299,14 @@ const AllIndiaRankPage = () => {
           <div className="space-y-5 lg:space-y-8">
             
             {/* ── Hero Banner — gold-accented premium treatment, distinct from the free Leaderboard page ── */}
-            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/30 dark:border-white/30 dark:border-white/20">
-              <div className="absolute inset-0 bg-slate-900" />
-              <div className="absolute inset-0 bg-black/10 dark:bg-white/10" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 dark:bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none blur-2xl" />
+            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/30 dark:border-white/30 bg-white dark:bg-slate-900">
 
               <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
                 
                 {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 bg-black/20 dark:bg-white/20 border border-black/40 dark:border-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white dark:text-black text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
+                  className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
                 >
                   <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                     <Sparkles className="w-3.5 h-3.5 text-black dark:text-white" />
@@ -319,11 +316,11 @@ const AllIndiaRankPage = () => {
                 
                 <motion.h1
                   initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                  className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-tight"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
                 >
                   All India Rank
                 </motion.h1>
-                <p className="text-white/80 text-xs font-bold uppercase tracking-widest mt-1 mb-6">
+                <p className="text-black/70 dark:text-white/80 text-xs font-bold uppercase tracking-widest mt-1 mb-6">
                   {selectedExamId ? 'Exam Filtered Rankings' : 'Overall Platform Rankings'}
                 </p>
 
@@ -335,11 +332,11 @@ const AllIndiaRankPage = () => {
                   <select
                     value={selectedExamId}
                     onChange={(e) => setSelectedExamId(e.target.value)}
-                    className="w-full appearance-none bg-black/20 border border-white/20 text-white text-sm font-bold rounded-2xl py-2.5 pl-9 pr-10 outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 backdrop-blur-md cursor-pointer transition-all"
+                    className="w-full appearance-none bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/20 text-black dark:text-white text-sm font-bold rounded-2xl py-2.5 pl-9 pr-10 outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/50 focus:border-black/30 dark:focus:border-white/50 backdrop-blur-md cursor-pointer transition-all"
                   >
-                    <option value="" className="bg-slate-800 text-white">🌍 All Exams (Overall AIR)</option>
+                    <option value="" className="bg-white dark:bg-slate-800 text-black dark:text-white">🌍 All Exams (Overall AIR)</option>
                     {exams.map(e => (
-                      <option key={e._id} value={e._id} className="bg-slate-800 text-white">
+                      <option key={e._id} value={e._id} className="bg-white dark:bg-slate-800 text-black dark:text-white">
                         {e.name}
                       </option>
                     ))}
@@ -352,9 +349,9 @@ const AllIndiaRankPage = () => {
                 {/* Podium */}
                 {loading ? (
                   <div className="h-36 flex items-end justify-center gap-4 animate-pulse">
-                    <div className="w-16 h-24 bg-white/20 rounded-t-2xl" />
-                    <div className="w-16 h-32 bg-white/20 rounded-t-2xl" />
-                    <div className="w-16 h-20 bg-white/20 rounded-t-2xl" />
+                    <div className="w-16 h-24 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+                    <div className="w-16 h-32 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+                    <div className="w-16 h-20 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
                   </div>
                 ) : top3.length > 0 ? (
                   <Podium top3={top3} currentUserId={currentUserId} />
@@ -371,7 +368,7 @@ const AllIndiaRankPage = () => {
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title="Refresh Ranks"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">Refresh</span>
@@ -382,10 +379,10 @@ const AllIndiaRankPage = () => {
             {!loading && data.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                 {[
-                  { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white dark:text-white' },
-                  { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white dark:text-white' },
+                  { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white' },
+                  { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white' },
                   { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-700 dark:text-primary-400' },
-                  { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white dark:text-white' },
+                  { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
                 ].map((stat, i) => (
                   <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
                     <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
@@ -435,7 +432,7 @@ const AllIndiaRankPage = () => {
                       <button
                         onClick={() => setPage(p => Math.max(1, p - 1))}
                         disabled={page === 1}
-                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
                       >
                         <ChevronLeft className="w-4 h-4" />
                       </button>
@@ -443,7 +440,7 @@ const AllIndiaRankPage = () => {
                       <button
                         onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                         disabled={page === totalPages}
-                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
                       >
                         <ChevronRight className="w-4 h-4" />
                       </button>

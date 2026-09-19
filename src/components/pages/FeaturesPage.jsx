@@ -148,7 +148,7 @@ const FeaturesPage = () => {
 
         {/* --- Hero --- */}
         <section className="text-center space-y-3 lg:space-y-6 px-0 py-4 lg:p-8">
-          <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-aajexam-primary rotate-6">
+          <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-sm rotate-6">
             <Sparkles className="w-6 h-6 lg:w-9 lg:h-9" />
           </div>
           <div className="space-y-2 lg:space-y-4">
@@ -238,7 +238,7 @@ const FeaturesPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6">
             {FEATURE_GROUPS.map((group) => (
               <Card key={group.title} className="p-0 overflow-hidden border-2" padded={false}>
-                <div className="flex items-center gap-2 lg:gap-3 px-3 py-2.5 lg:px-6 lg:py-4 border-b-2 border-border-primary bg-white dark:bg-slate-900/40">
+                <div className="flex items-center gap-2 lg:gap-3 px-3 py-2.5 lg:px-6 lg:py-4 border-b-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
                   <div className={`p-2 lg:p-2.5 bg-${group.color}-500/10 text-${group.color}-500 rounded-lg lg:rounded-xl`}>
                     <group.icon className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                   </div>
@@ -254,7 +254,7 @@ const FeaturesPage = () => {
                   </thead>
                   <tbody>
                     {group.items.map((item, idx) => (
-                      <tr key={item.label} className={idx !== 0 ? 'border-t border-border-primary' : ''}>
+                      <tr key={item.label} className={idx !== 0 ? 'border-t border-slate-200 dark:border-slate-800' : ''}>
                         <td className="px-3 py-2 lg:px-6 lg:py-3 text-[11px] lg:text-xs font-bold text-slate-700 dark:text-slate-300">{item.label}</td>
                         <td className="text-center py-2 lg:py-3"><Cell value={item.free} /></td>
                         <td className="text-center py-2 lg:py-3"><Cell value={item.pro} /></td>
@@ -269,7 +269,7 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="px-0 py-4 lg:p-8">
-          <Card className="p-5 lg:p-16 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[2rem] lg:rounded-[4rem]">
+          <Card className="p-5 lg:p-16 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[2rem] lg:rounded-[4rem]">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
             <div className="relative z-10 space-y-4 lg:space-y-8">

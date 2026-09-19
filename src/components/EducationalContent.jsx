@@ -77,7 +77,7 @@ const EducationalContent = ({ content }) => {
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 bg-background-surface-secondary border-2 border-border-primary"
+                        className="inline-flex items-center gap-3 px-6 py-2 bg-background-surface-secondary border-2 border-slate-200 dark:border-slate-800"
                     >
                         <Zap className="w-4 h-4 text-primary-700 fill-current" />
                         <span className="text-[10px] font-black text-content-secondary uppercase tracking-[0.3em]">How It Works</span>
@@ -104,10 +104,10 @@ const EducationalContent = ({ content }) => {
                         <motion.div
                             key={i}
                             whileHover={{ y: -8 }}
-                            className="bg-background-surface p-10 rounded-[2.5rem] border-2 border-border-primary shadow-aajexam transition-all"
+                            className="bg-background-surface p-10 rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 shadow-sm transition-all"
                         >
                             <div className="flex items-start gap-6">
-                                <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-inner bg-slate-50 dark:bg-slate-800`}>
+                                <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-sm bg-slate-50 dark:bg-slate-800`}>
                                     <card.icon className={`w-8 h-8 text-${card.color}-500`} />
                                 </div>
                                 <div className="space-y-4">
@@ -141,7 +141,7 @@ const EducationalContent = ({ content }) => {
                                 key={index}
                                 variants={itemVariants}
                                 whileHover={{ scale: 1.05 }}
-                                className={`bg-background-surface border-2 border-border-primary bg-white dark:bg-slate-900 shadow-aajexam flex flex-col items-center text-center space-y-6 group`}
+                                className={`bg-background-surface border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col items-center text-center space-y-6 group`}
                             >
                                 <div className={`w-20 h-20 rounded-[2rem] ${feature.bg} flex items-center justify-center transition-transform group-hover:rotate-12`}>
                                     <feature.icon className={`w-10 h-10 ${feature.color}`} />
@@ -162,7 +162,7 @@ const EducationalContent = ({ content }) => {
                 {/* Final Directive */}
                 <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="relative p-12 bg-primary-600 rounded-[3rem] text-white border-b-2 border-primary-800 shadow-2xl overflow-hidden group cursor-pointer"
+                    className="relative p-12 bg-primary-600 rounded-[3rem] text-white border-b-2 border-primary-800 shadow-sm overflow-hidden group cursor-pointer"
                 >
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/20 transition-all" />
                     <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -172,7 +172,7 @@ const EducationalContent = ({ content }) => {
                                 Join 100,000+ aspirants practising for SSC, UPSC, Banking and Railway exams on AajExam. Free to start.
                             </p>
                         </div>
-                        <button className="px-10 py-5 bg-white text-primary-700 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-aajexam hover:translate-y-1 transition-all flex items-center gap-4">
+                        <button className="px-10 py-5 bg-white text-primary-700 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-sm hover:translate-y-1 transition-all flex items-center gap-4">
                             Get Started <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>

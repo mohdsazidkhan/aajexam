@@ -519,7 +519,7 @@ const SearchPage = () => {
 
                      {/* Recent searches — only while focused, before any query is typed */}
                      {isFocused && !query.trim() && recentSearches.length > 0 && (
-                        <div className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg lg:rounded-xl shadow-lg z-50 overflow-hidden">
+                        <div className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg lg:rounded-xl shadow-sm z-50 overflow-hidden">
                            {recentSearches.map((term, i) => (
                               <button
                                  key={i}

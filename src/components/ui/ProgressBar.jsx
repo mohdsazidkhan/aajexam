@@ -18,7 +18,7 @@ const ProgressBar = ({
   animate = true
 }) => {
   const variants = {
-    primary: 'bg-primary-700 shadow-aajexam-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+    primary: 'bg-primary-700 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
   };
 
   const heights = {
@@ -46,7 +46,7 @@ const ProgressBar = ({
         </div>
       )}
 
-      <div className={`w-full bg-background-surface-secondary overflow-hidden ${heights[height]} border-2 border-border-primary shadow-inner group relative`}>
+      <div className={`w-full bg-background-surface-secondary overflow-hidden ${heights[height]} border-2 border-slate-200 dark:border-slate-800 shadow-sm group relative`}>
         <motion.div
           initial={animate ? { width: 0 } : { width: `${progressValue}%` }}
           animate={{ width: `${progressValue}%` }}

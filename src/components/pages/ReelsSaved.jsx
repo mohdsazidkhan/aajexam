@@ -72,7 +72,7 @@ const ReelsSaved = () => {
               </div>
               <p className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">No saved reels yet</p>
               <p className="text-sm text-slate-400 dark:text-slate-500 mt-2 max-w-[200px] mx-auto">Bookmark interesting reels to revisit them anytime</p>
-              <Link href="/reels" className="inline-block mt-8 px-8 py-3 rounded-2xl bg-primary-600 text-white text-sm font-black uppercase tracking-widest hover:bg-primary-700 transition-all shadow-aajexam-primary active:scale-95">
+              <Link href="/reels" className="inline-block mt-8 px-8 py-3 rounded-2xl bg-primary-600 text-white text-sm font-black uppercase tracking-widest hover:bg-primary-700 transition-all shadow-sm active:scale-95">
                 Browse Reels
               </Link>
             </div>
@@ -86,7 +86,7 @@ const ReelsSaved = () => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-5 hover:shadow-xl transition-all group active:scale-[0.98]"
+                    className="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-5 hover:shadow-sm transition-all group active:scale-[0.98]"
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${TYPE_COLORS[reel.type]}`}>

@@ -90,7 +90,7 @@ const LoginPage = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-aajexam-primary w-fit text-white">
+              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-sm w-fit text-white">
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>
@@ -126,7 +126,7 @@ const LoginPage = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-center">
-          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl space-y-8 rounded-[3rem]">
+          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-sm space-y-8 rounded-[3rem]">
             <div className="text-center space-y-3">
               <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Welcome back</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
@@ -196,7 +196,7 @@ const LoginPage = () => {
                   </div>
                 </div>
 
-                <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-aajexam-primary" type="submit" disabled={isLoading}>
+                <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-sm" type="submit" disabled={isLoading}>
                   {isLoading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>

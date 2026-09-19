@@ -37,7 +37,7 @@ export default function ProgressBar({
 
     return (
         <div className={`w-full ${className} font-outfit`}>
-            <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden ${barHeight} shadow-inner border-2 border-slate-200 dark:border-slate-700`}>
+            <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden ${barHeight} shadow-sm border-2 border-slate-200 dark:border-slate-700`}>
                 <div
                     className={`${barHeight} ${barColor} rounded-full ${animate ? 'transition-all duration-700 cubic-bezier(0.34, 1.56, 0.64, 1)' : ''} border-r-4 border-white/20`}
                     style={{ width: `${clampedPct}%` }}

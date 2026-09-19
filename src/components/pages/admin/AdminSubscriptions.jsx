@@ -34,7 +34,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-xl overflow-hidden cursor-default"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -386,7 +386,7 @@ const AdminSubscriptions = () => {
 
   if (loading) {
     return (
-      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30">
+      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-sm p-6 border border-white/30">
         <div className="flex items-center justify-center py-12">
           <AdminTableSkeleton />
         </div>
@@ -403,7 +403,7 @@ const AdminSubscriptions = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
+          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-sm overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
             <Layers className="w-64 h-64 text-primary-700 -rotate-12" />
@@ -439,7 +439,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setViewMode(mode)}
-                      className={`p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-700 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <Icon className="w-4 h-4" />
                     </motion.button>
@@ -450,7 +450,7 @@ const AdminSubscriptions = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={exportToCSV}
-                  className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl shadow-xl shadow-primary-500/20 group/btn"
+                  className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl shadow-sm group/btn"
                 >
                   <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
                   <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
@@ -484,7 +484,7 @@ const AdminSubscriptions = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-xl"
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-sm"
         >
           <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
             <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
@@ -557,9 +557,9 @@ const AdminSubscriptions = () => {
               key="error"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
+              className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm"
             >
-              <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-black/20">
+              <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
@@ -570,7 +570,7 @@ const AdminSubscriptions = () => {
               key="empty"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl"
+              className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-sm"
             >
               <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
               <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
@@ -586,7 +586,7 @@ const AdminSubscriptions = () => {
             >
               {/* Table View */}
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
                   <div className="overflow-x-auto selection:bg-primary-500/30">
                     <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
                       <thead>
@@ -610,7 +610,7 @@ const AdminSubscriptions = () => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.03 }}
-                            className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
+                            className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-sm rounded-3xl"
                           >
                             <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                               <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((pagination.currentPage - 1) * filters.limit) + index + 1}</span>
@@ -625,7 +625,7 @@ const AdminSubscriptions = () => {
                             </td>
                             <td className="px-3 lg:px-6 py-3 lg:py-6">
                               <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                                <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
                                   <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
                                     {subscription.user?.name?.charAt(0) || 'U'}
                                   </div>
@@ -702,7 +702,7 @@ const AdminSubscriptions = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.05 }}
-                      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
+                      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden"
                     >
                       <div className="flex items-center justify-between mb-4 lg:mb-8">
                         <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
@@ -725,7 +725,7 @@ const AdminSubscriptions = () => {
 
                       <div className="space-y-3 lg:space-y-6">
                         <div className="flex items-center gap-3 lg:gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
-                          <div className="w-16 h-16 rounded-3xl bg-primary-700 p-[3px] shadow-xl">
+                          <div className="w-16 h-16 rounded-3xl bg-primary-700 p-[3px] shadow-sm">
                             <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                               {subscription.user?.name?.charAt(0) || 'U'}
                             </div>
@@ -771,10 +771,10 @@ const AdminSubscriptions = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                     >
                       <div className="flex items-center gap-3 lg:gap-6">
-                        <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-lg">
+                        <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-sm">
                           <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-700">
                             {subscription.user?.name?.charAt(0) || 'U'}
                           </div>
@@ -849,7 +849,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => handlePageChange(page)}
-                            className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-700 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
+                            className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
                           >
                             {page}
                           </motion.button>
@@ -888,7 +888,7 @@ const AdminSubscriptions = () => {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
+                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col"
               >
                 <div className="absolute top-0 right-0 p-3 lg:p-8">
                   <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
@@ -957,7 +957,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleExtendSubscription}
-                      className="flex-[2] py-5 bg-primary-700 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-primary-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="flex-[2] py-5 bg-primary-700 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-sm disabled:opacity-50 flex items-center justify-center gap-3"
                       disabled={extending}
                     >
                       {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}

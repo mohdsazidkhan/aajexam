@@ -40,7 +40,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Mission Statement */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
@@ -58,9 +58,9 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Content Creation Process */}
-                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-slate-200 dark:border-slate-800">
+                    <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
                                 <FaBook className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Creation Process</h2>
@@ -74,7 +74,7 @@ export default function EditorialPolicy() {
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
-                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-aajexam border-b-2 border-black/20`}>
+                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-sm border-b-2 border-black/20`}>
                                         {item.step}
                                     </div>
                                     <div>
@@ -87,7 +87,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Quality Standards */}
-                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-slate-800 shadow-2xl relative overflow-hidden text-center">
+                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 lg:p-12 mb-16 border-2 border-slate-800 shadow-sm relative overflow-hidden text-center">
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <h2 className="text-xl lg:text-4xl font-black text-white mb-12 uppercase tracking-tight relative z-10">Quality Standards</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
@@ -98,7 +98,7 @@ export default function EditorialPolicy() {
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
-                                    <div className="w-10 h-10 bg-primary-700 rounded-full flex items-center justify-center shadow-aajexam-secondary">
+                                    <div className="w-10 h-10 bg-primary-700 rounded-full flex items-center justify-center shadow-sm">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
                                     <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
@@ -109,7 +109,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* User Feedback */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
@@ -127,7 +127,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Corrections Policy */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
+                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Corrections and Updates Policy</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -175,7 +175,7 @@ export default function EditorialPolicy() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-700 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-aajexam-primary">
+                        <div className="bg-primary-700 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-sm">
                             <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Questions About Our Policy?
                             </h2>
@@ -184,7 +184,7 @@ export default function EditorialPolicy() {
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-700 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-xl active:translate-y-1 active:shadow-none"
+                                className="bg-white text-primary-700 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
                             >
                                 Back to Home
                             </button>

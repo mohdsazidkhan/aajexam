@@ -99,7 +99,7 @@ export default function FollowingListPage() {
                       className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100 dark:border-slate-800"
                     />
                   ) : (
-                    <div className="w-12 lg:w-16 h-12 lg:h-16 rounded-2xl bg-primary-700 flex items-center justify-center text-white text-md lg:text-xl font-black shadow-lg">
+                    <div className="w-12 lg:w-16 h-12 lg:h-16 rounded-2xl bg-primary-700 flex items-center justify-center text-white text-md lg:text-xl font-black shadow-sm">
                       {user.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -127,7 +127,7 @@ export default function FollowingListPage() {
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
+                className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
               >
                 Previous
               </button>
@@ -137,7 +137,7 @@ export default function FollowingListPage() {
               <button
                 onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
                 disabled={page === pagination.totalPages}
-                className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
+                className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
               >
                 Next
               </button>

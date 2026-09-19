@@ -262,7 +262,7 @@ const DashboardAnalytics = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-lg transition-all duration-200">
+          <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center">
                 <User className="w-5 h-5 text-primary-700" />
@@ -328,7 +328,7 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-md transition-all duration-200">
+          <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-sm transition-all duration-200">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
@@ -473,7 +473,7 @@ const DashboardAnalytics = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-xl hover:border-primary-600/30 transition-all hover:scale-[1.02]"
+                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-600/30 transition-all hover:scale-[1.02]"
                >
                  <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                    <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
@@ -493,7 +493,7 @@ const DashboardAnalytics = () => {
           {/* Tables */}
           <div className="grid grid-cols-1 gap-4">
             {/* Recent Activity */}
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg lg:rounded-xl p-3 lg:p-6 shadow-lg">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg lg:rounded-xl p-3 lg:p-6 shadow-sm">
               <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-primary-500/10 rounded-lg lg:rounded-xl flex items-center justify-center">

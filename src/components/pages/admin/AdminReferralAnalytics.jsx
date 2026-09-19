@@ -184,7 +184,7 @@ const AdminReferralAnalytics = () => {
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Track referral performance, user activity, and monthly growth trends.</p>
                             </div>
 
-                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
+                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-sm w-full lg:w-auto">
                                 {[
                                     { icon: TableIcon, id: 'table', label: 'Table' },
                                     { icon: List, id: 'list', label: 'List' },
@@ -193,7 +193,7 @@ const AdminReferralAnalytics = () => {
                                     <button
                                         key={mode.id}
                                         onClick={() => setViewMode(mode.id)}
-                                        className={`p-4 rounded-full transition-all flex items-center justify-center gap-2 flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-600'}`}
+                                        className={`p-4 rounded-full transition-all flex items-center justify-center gap-2 flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
                                     >
                                         <mode.icon className="w-4 h-4" />
                                         {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
@@ -205,17 +205,17 @@ const AdminReferralAnalytics = () => {
                         {/* Summary Visualization */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4">
                             {[
-                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-700", shadow: "shadow-primary-500/20" },
-                                { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-700", shadow: "shadow-primary-500/20" },
-                                { label:"TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color:"bg-primary-700", text:"text-white", shadow:"shadow-black/20"},
-                                { label:"THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color:"bg-primary-700", text:"text-white", shadow:"shadow-black/20"}
+                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-700", shadow: "shadow-sm" },
+                                { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-700", shadow: "shadow-sm" },
+                                { label:"TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color:"bg-primary-700", text:"text-white", shadow:"shadow-sm"},
+                                { label:"THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color:"bg-primary-700", text:"text-white", shadow:"shadow-sm"}
                             ].map((stat, i) => (
                                 <motion.div
                                     key={stat.label}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 ${stat.text || 'text-white'} shadow-2xl ${stat.shadow}`}
+                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl lg:rounded-[2.5rem] p-3 lg:p-8 ${stat.text || 'text-white'} shadow-sm ${stat.shadow}`}
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-20">
                                         <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2" />
@@ -229,7 +229,7 @@ const AdminReferralAnalytics = () => {
                         </div>
 
                         {/* Filters */}
-                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
+                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
                             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 flex-1 w-full lg:w-auto">
                                 <div className="relative group w-full lg:max-w-md">
                                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
@@ -238,7 +238,7 @@ const AdminReferralAnalytics = () => {
                                         placeholder="Search users..."
                                         value={searchTerm}
                                         onChange={handleSearch}
-                                        className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-inner placeholder:text-slate-400"
+                                        className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-sm placeholder:text-slate-400"
                                     />
                                 </div>
 
@@ -280,7 +280,7 @@ const AdminReferralAnalytics = () => {
                             <button
                                 onClick={exportToCSV}
                                 disabled={analytics.length === 0}
-                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] shadow-sm hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
                             >
                                 <Download className="w-5 h-5" /> Export CSV
                             </button>
@@ -294,7 +294,7 @@ const AdminReferralAnalytics = () => {
                                 key="empty"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                             >
                                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
@@ -316,13 +316,13 @@ const AdminReferralAnalytics = () => {
                                                 initial={{ opacity: 0, scale: 0.95 }}
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
                                             >
                                                 <div className="relative mb-4 lg:mb-8">
-                                                    <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-xl">
+                                                    <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-xl">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
                                                     </div>
-                                                    <div className="absolute -bottom-2 -right-2 bg-primary-700 text-white p-2 rounded-lg lg:rounded-xl shadow-lg border-2 border-white dark:border-[#060813]">
+                                                    <div className="absolute -bottom-2 -right-2 bg-primary-700 text-white p-2 rounded-lg lg:rounded-xl shadow-sm border-2 border-white dark:border-[#060813]">
                                                         <Award className="w-4 h-4" />
                                                     </div>
                                                 </div>
@@ -362,9 +362,9 @@ const AdminReferralAnalytics = () => {
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-10"
+                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-10"
                                             >
-                                                <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-xl group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-2xl">
+                                                <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-2xl">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                 </div>
 
@@ -402,7 +402,7 @@ const AdminReferralAnalytics = () => {
 
                                 {/* Table Visualization */}
                                 {viewMode === 'table' && (
-                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl">
+                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
                                         <table className="w-full">
                                             <thead>
                                                 <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
@@ -428,7 +428,7 @@ const AdminReferralAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                             <div className="flex items-center gap-4">
-                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-700 transition-all uppercase">
+                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
                                                                     {user.name?.[0]?.toUpperCase()}
                                                                 </div>
                                                                 <div>
@@ -466,19 +466,19 @@ const AdminReferralAnalytics = () => {
                                         <button
                                             onClick={() => handlePageChange(pagination.page - 1)}
                                             disabled={pagination.page === 1}
-                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-sm active:scale-90"
                                         >
                                             <ChevronLeft className="w-5 h-5" />
                                         </button>
 
-                                        <div className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] shadow-2xl italic tracking-tighter shadow-primary-500/40">
+                                        <div className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] shadow-sm italic tracking-tighter shadow-sm">
                                             Page {pagination.page} <span className="text-primary-200 mx-2">/</span> {pagination.totalPages}
                                         </div>
 
                                         <button
                                             onClick={() => handlePageChange(pagination.page + 1)}
                                             disabled={pagination.page === pagination.totalPages}
-                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-sm active:scale-90"
                                         >
                                             <ChevronRight className="w-5 h-5" />
                                         </button>

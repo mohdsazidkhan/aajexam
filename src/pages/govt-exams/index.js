@@ -129,7 +129,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       />
 
       {/* Hero */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:p-8">
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:p-8">
         <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-4 mx-auto text-center">
@@ -157,13 +157,13 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
       {/* Filters + Search */}
       <section className="space-y-4">
-        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-4 -mx-4 px-4 border-b border-border-primary/50">
+        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-4 -mx-4 px-4 border-b border-slate-200 dark:border-slate-800/50">
           <div className="flex items-center gap-3">
             <div className="flex gap-2 overflow-x-auto no-scrollbar">
               {filters.map(f => (
                 <button key={f.id} onClick={() => setActiveFilter(f.id)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
-                    activeFilter === f.id ? 'bg-primary-700 text-white border-primary-600' : 'bg-background-surface text-content-secondary border-border-primary'
+                    activeFilter === f.id ? 'bg-primary-700 text-white border-primary-600' : 'bg-background-surface text-content-secondary border-slate-200 dark:border-slate-800'
                   }`}>
                   <f.icon className="w-3.5 h-3.5" /> {f.label}
                 </button>
@@ -179,11 +179,11 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               <Card
                 hoverable
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                className="group p-5 flex flex-col gap-4 border-border-primary hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-lg"
+                className="group p-5 flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-sm">
                       <ShieldCheck className="w-6 h-6 text-white" />
                     </div>
                     <div>

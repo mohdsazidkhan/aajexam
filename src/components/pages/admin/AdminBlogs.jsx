@@ -313,7 +313,7 @@ const AdminBlogs = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => router.push('/admin/blogs/create')}
-                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
+                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3"
               >
                 <Plus className="w-4 h-4" /> NEW BLOG
               </motion.button>

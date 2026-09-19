@@ -72,7 +72,7 @@ const AdminNavbar = () => {
               className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-transparent lg:bg-primary-700 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-aajexam-primary lg:hover:scale-105'
+                  : 'bg-transparent lg:bg-primary-700 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-sm lg:hover:scale-105'
               }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <Menu className="w-5 h-5 lg:w-6 lg:h-6" />}
@@ -143,7 +143,7 @@ const AdminNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 lg:top-16 right-3 lg:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-2xl z-[170]"
+              className="fixed top-12 lg:top-16 right-3 lg:right-8 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-sm z-[170]"
             >
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50">

@@ -90,13 +90,13 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
   const canSave = isValid && (username === currentUsername || available === true);
 
   return (
-    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-2xl max-w-[500px] mx-auto font-outfit">
+    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
       <h3 className="m-0 mb-2 text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Set Your Username</h3>
       <p className="username-info m-0 mb-8 text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
         Choose a unique username that others can use to find and follow you.
       </p>
 
-      <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-700 shadow-inner">
+      <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-700 shadow-sm">
         <div className="username-prefix text-lg font-black text-slate-600 dark:text-slate-400 mr-2">@</div>
         <input
           type="text"
@@ -120,7 +120,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         )}
       </div>
 
-      <div className="username-rules my-6 p-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-inner">
+      <div className="username-rules my-6 p-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-sm">
         <ul className="list-none p-0 m-0 space-y-1">
           <li>Ã¢â‚¬Â¢ 3-20 characters</li>
           <li>Ã¢â‚¬Â¢ Letters, numbers, underscores</li>
@@ -142,7 +142,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       <button
         onClick={handleSave}
         disabled={!canSave || saving}
-        className="save-username-btn w-full p-5 bg-primary-700 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-aajexam-secondary disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
+        className="save-username-btn w-full p-5 bg-primary-700 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-sm disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
       >
         {saving ? 'Saving student...' : 'Save Student Identity'}
       </button>

@@ -47,7 +47,7 @@ const RefundPolicy = () => {
                   <motion.div
                      initial={{ y: 20, opacity: 0 }}
                      animate={{ y: 0, opacity: 1 }}
-                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-aajexam-secondary flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
+                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
                   >
                      <Banknote className="w-14 h-14 text-primary-700" />
                   </motion.div>
@@ -70,7 +70,7 @@ const RefundPolicy = () => {
 
                      {/* Introduction */}
                      <section id="intro" className="group mt-4">
-                        <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary border-none relative overflow-hidden text-center">
+                        <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-none relative overflow-hidden text-center">
                            <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-medium italic">
                               Thank you for using <strong>AajExam</strong>. Please read this policy before buying a plan. By paying for a plan, you agree to the rules below.
                            </p>
@@ -78,9 +78,9 @@ const RefundPolicy = () => {
                      </section>
 
                      {/* 1. General Policy */}
-                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary space-y-12 border-none ring-8 ring-black/10 dark:ring-white/10">
+                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm space-y-12 border-none ring-8 ring-black/10 dark:ring-white/10">
                         <div className="flex items-center gap-6">
-                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-sm border-2 border-black/10 dark:border-white/10">
                               <Ban className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">1. General Policy</h2>
@@ -108,7 +108,7 @@ const RefundPolicy = () => {
                      {/* 2. Subscriptions */}
                      <section id="subscriptions" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
+                           <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <CreditCard className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">2. Subscription Terms</h2>
@@ -135,11 +135,11 @@ const RefundPolicy = () => {
                      </section>
 
                      {/* 4. Refund Exceptions */}
-                     <section id="eligibility" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
+                     <section id="eligibility" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-sm">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-primary-500/20 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <CircleCheck className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white leading-none">4. Refund Exceptions</h2>
@@ -177,9 +177,9 @@ const RefundPolicy = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-10 border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
-                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
+                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />
                               </div>
                               <div className="space-y-1">
@@ -193,7 +193,7 @@ const RefundPolicy = () => {
                            </div>
                            <button
                               onClick={() => router.push('/home')}
-                              className="w-full bg-slate-900 dark:bg-slate-700 text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-xl active:scale-95 transition-all font-outfit"
+                              className="w-full bg-slate-900 dark:bg-slate-700 text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-sm active:scale-95 transition-all font-outfit"
                            >
                               BACK TO HOME
                            </button>

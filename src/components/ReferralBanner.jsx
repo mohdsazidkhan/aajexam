@@ -49,13 +49,13 @@ const ReferralBanner = ({ user }) => {
 
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
+    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
       {/* Decorative background */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none" />
 
       {/* Header */}
       <div className="text-center mb-10">
-        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-700 rounded-[2rem] flex items-center justify-center shadow-inner border-2 border-slate-100 dark:border-slate-600 mx-auto mb-6">
+        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-700 rounded-[2rem] flex items-center justify-center shadow-sm border-2 border-slate-100 dark:border-slate-600 mx-auto mb-6">
           <Target className="w-10 h-10 text-primary-700" />
         </div>
         <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
@@ -78,18 +78,18 @@ const ReferralBanner = ({ user }) => {
       </div>
 
       {/* Referral Code Section */}
-      <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700 shadow-xl">
+      <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700 shadow-sm">
         <div className="text-center">
           <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mb-6">
             Your Invitation Code
           </h4>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono font-black px-8 py-4 rounded-2xl tracking-[0.3em] border-2 border-slate-200 dark:border-slate-700 shadow-inner text-2xl select-all">
+            <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono font-black px-8 py-4 rounded-2xl tracking-[0.3em] border-2 border-slate-200 dark:border-slate-700 shadow-sm text-2xl select-all">
               {referralCode}
             </div>
             <button
-              className="px-8 py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-aajexam-primary transition-all active:translate-y-1 flex items-center gap-3"
+              className="px-8 py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all active:translate-y-1 flex items-center gap-3"
               onClick={copyReferralCode}
             >
               <Copy className="w-5 h-5" />
@@ -104,7 +104,7 @@ const ReferralBanner = ({ user }) => {
       <div className="space-y-4">
         <button
           onClick={() => setShowShareOptions(!showShareOptions)}
-          className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-aajexam-secondary transition-all active:translate-y-1 flex items-center justify-center gap-3"
+          className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-sm transition-all active:translate-y-1 flex items-center justify-center gap-3"
         >
           <Share2 className="w-5 h-5" />
           Share with Friends
@@ -114,28 +114,28 @@ const ReferralBanner = ({ user }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
             <button
               onClick={shareOnWhatsApp}
-              className="bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
             >
               <Smartphone className="w-5 h-5" />
               WhatsApp
             </button>
             <button
               onClick={shareOnTelegram}
-              className="bg-primary-700 hover:opacity-90 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-700 hover:opacity-90 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
             >
               <Send className="w-5 h-5" />
               Telegram
             </button>
             <button
               onClick={copyReferralMessage}
-              className="bg-primary-700 hover:bg-primary-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-700 hover:bg-primary-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
             >
               <Copy className="w-5 h-5" />
               Copy Text
             </button>
             <Link
               href="/profile"
-              className="bg-slate-700 hover:bg-slate-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3 w-full"
+              className="bg-slate-700 hover:bg-slate-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3 w-full"
             >
               <User className="w-5 h-5" />
               My Profile

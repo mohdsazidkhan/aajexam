@@ -84,7 +84,7 @@ export default function FlashcardDeck() {
             />
 
             {/* Mobile/Story Container */}
-            <div className="relative w-full h-full max-w-md bg-slate-900 shadow-2xl overflow-hidden sm:rounded-[2.5rem] sm:h-[85vh] sm:border-[8px] sm:border-slate-800">
+            <div className="relative w-full h-full max-w-md bg-slate-900 shadow-sm overflow-hidden sm:rounded-[2.5rem] sm:h-[85vh] sm:border-[8px] sm:border-slate-800">
                 
                 {/* Background Layer */}
                 <div className={`absolute inset-0 ${bgClass} transition-colors duration-500`} />
@@ -140,7 +140,7 @@ export default function FlashcardDeck() {
                             transition={{ duration: 0.2 }}
                             className="w-full text-center"
                         >
-                            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl">
+                            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-sm">
                                 {currentCard.image && (
                                     <img 
                                         src={currentCard.image} 

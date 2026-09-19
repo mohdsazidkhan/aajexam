@@ -102,14 +102,14 @@ export default function UserDetailsPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-              <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
+              <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-sm w-full lg:w-auto">
                 {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
-                  <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-700 text-white shadow-lg' : 'text-slate-400'}`}>
+                  <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400'}`}>
                     <mode.icon className="w-5 h-5 mx-auto" />
                   </button>
                 ))}
               </div>
-              <motion.button whileHover={{ scale: 1.05 }} className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-2xl flex items-center justify-center gap-3">
+              <motion.button whileHover={{ scale: 1.05 }} className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-3">
                 <DownloadCloud className="w-4 h-4" /> Export Students
               </motion.button>
             </div>
@@ -124,7 +124,7 @@ export default function UserDetailsPage() {
             { label: 'Avg. Activity', val: '84%', icon: Activity, color: 'primary' },
             { label: 'Verified Users', val: '92%', icon: UserCheck, color: 'primary' }
           ].map((s, i) => (
-            <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-lg group hover:border-primary-500/30 transition-all">
+            <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm group hover:border-primary-500/30 transition-all">
               <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><s.icon className="w-5 h-5" /></div>
               <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none mb-1">{s.val}</div>
               <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{s.label}</div>
@@ -133,7 +133,7 @@ export default function UserDetailsPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
           <div className="flex-1 relative group w-full lg:max-w-xl">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
             <input
@@ -141,7 +141,7 @@ export default function UserDetailsPage() {
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search by name, email, or username..."
-              className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-xl"
+              className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-sm"
             />
           </div>
           <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
@@ -164,7 +164,7 @@ export default function UserDetailsPage() {
               <div className="p-3 lg:p-8 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 border-2 border-dashed border-black/20 dark:border-white/20 inline-block"><MailWarning className="w-16 h-16 text-black dark:text-white" /></div>
               <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Problem</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
-              <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 lg:mt-8 px-4 lg:px-10 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Try Again</button>
+              <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 lg:mt-8 px-4 lg:px-10 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Try Again</button>
             </div>
           ) : userDetails.length === 0 ? (
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
@@ -175,7 +175,7 @@ export default function UserDetailsPage() {
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-2xl overflow-x-auto">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
@@ -192,7 +192,7 @@ export default function UserDetailsPage() {
                         <motion.tr key={u._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.02 }} className="group hover:bg-primary-500/5 transition-all">
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className="flex items-center gap-4">
-                              <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-sm uppercase shadow-lg animate-in">{u.name?.[0] || 'U'}</div>
+                              <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-sm uppercase shadow-sm animate-in">{u.name?.[0] || 'U'}</div>
                               <div>
                                 <Link href={`/u/${u.username}`} target="_blank" className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 hover:text-primary-700 transition-colors tracking-tight block">{u.name || 'Anonymous'}</Link>
                                 <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest italic hover:text-primary-700 transition-colors">{u.username ? `@${u.username}` : '@unknown'}</Link>
@@ -244,11 +244,11 @@ export default function UserDetailsPage() {
               {viewMode === 'grid' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                   {userDetails.map((u, i) => (
-                    <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl text-center group relative overflow-hidden flex flex-col font-outfit">
+                    <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm text-center group relative overflow-hidden flex flex-col font-outfit">
                       <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus ==='PRO'?'bg-primary-700':'bg-primary-700'}`} />
                       <div className="mb-6 mx-auto relative">
-                        <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
-                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-black dark:border-white shadow-xl"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}
+                        <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-sm group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
+                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-black dark:border-white shadow-sm"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}
                       </div>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-700 transition-colors block">{u.name || 'Anonymous'}</Link>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 lg:mb-8 hover:text-primary-700 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
@@ -269,7 +269,7 @@ export default function UserDetailsPage() {
                         <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
 
-                      <Link href={`/u/${u.username}`} target="_blank" className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-700 group-hover:text-white transition-all text-center block">View Full Profile</Link>
+                      <Link href={`/u/${u.username}`} target="_blank" className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-sm group-hover:bg-primary-700 group-hover:text-white transition-all text-center block">View Full Profile</Link>
                     </motion.div>
                   ))}
                 </div>
@@ -278,8 +278,8 @@ export default function UserDetailsPage() {
               {viewMode === 'list' && (
                 <div className="space-y-3 lg:space-y-6">
                   {userDetails.map((u, i) => (
-                    <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl flex flex-col md:flex-row md:items-center gap-3 lg:gap-8 group hover:border-primary-500/30 transition-all font-outfit">
-                      <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-xl shrink-0">{u.name?.[0] || 'U'}</div>
+                    <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm flex flex-col md:flex-row md:items-center gap-3 lg:gap-8 group hover:border-primary-500/30 transition-all font-outfit">
+                      <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-sm shrink-0">{u.name?.[0] || 'U'}</div>
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                           <div>
@@ -302,7 +302,7 @@ export default function UserDetailsPage() {
                           <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>
-                      <button className="p-6 bg-slate-100 dark:bg-white/5 text-primary-700 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-md"><ChevronRight className="w-6 h-6" /></button>
+                      <button className="p-6 bg-slate-100 dark:bg-white/5 text-primary-700 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"><ChevronRight className="w-6 h-6" /></button>
                     </motion.div>
                   ))}
                 </div>

@@ -85,7 +85,7 @@ const StreakPage = () => {
             {streak?.todayCompleted
               ? <><Shield className="w-10 h-10 text-primary-700 mx-auto mb-2" /><h2 className="text-lg font-black text-primary-700 dark:text-primary-300">Today&apos;s Challenge Complete!</h2></>
               : <><Flame className="w-10 h-10 text-black dark:text-white mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-black dark:text-white">Complete Today&apos;s Challenge to Keep Streak!</h2>
-                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/30">Go to Challenge</Link></>
+                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-sm">Go to Challenge</Link></>
             }
           </Card>
         </motion.div>

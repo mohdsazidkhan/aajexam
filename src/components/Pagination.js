@@ -97,7 +97,7 @@ const Pagination = ({
                  disabled={isDots}
                  className={`min-w-[44px] h-11 px-2 flex items-center justify-center rounded-2xl font-black font-outfit text-xs transition-all duration-300 border-b-2 ${
                    isCurrent
-                     ? 'bg-primary-700 border-primary-600 text-white shadow-aajexam-primary translate-y-0.5'
+                     ? 'bg-primary-700 border-primary-600 text-white shadow-sm translate-y-0.5'
                      : isDots
                        ? 'text-slate-600 dark:text-slate-400 bg-transparent border-transparent cursor-default'
                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm'

@@ -118,7 +118,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         </div>
 
         {/* Quiz Header Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 lg:p-8 shadow-xl mb-6 border border-slate-100 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 lg:p-8 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center mb-4">
             <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-primary-700 flex items-center justify-center mr-4 shrink-0">
               <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
@@ -173,7 +173,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           {/* Start Button */}
           <button
             onClick={handleStartQuiz}
-            className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
+            className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm ${
               isLocked
                 ?'bg-primary-700 text-white hover:bg-primary-700'
                 : 'bg-primary-600 text-white hover:bg-primary-700'
@@ -193,7 +193,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Quiz Stats */}
         {quiz.totalAttempts > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg mb-6 border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Users className="w-5 h-5 text-primary-700" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Quiz Statistics</h2>
@@ -213,7 +213,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Tags */}
         {quiz.tags?.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg mb-6 border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-3">
               <Tag className="w-5 h-5 text-slate-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Tags</h2>
@@ -230,7 +230,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-black dark:text-white" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Leaderboard</h2>

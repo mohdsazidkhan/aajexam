@@ -50,7 +50,7 @@ const ForgotPasswordPage = () => {
           <div className="absolute top-20 left-20 opacity-5 rotate-12 hidden lg:block"><ShieldQuestion className="w-64 h-64" /></div>
           <div className="absolute bottom-20 right-20 opacity-5 -rotate-12 hidden lg:block"><Lock className="w-64 h-64" /></div>
 
-          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl relative z-10 space-y-8">
+          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-sm relative z-10 space-y-8">
             <div className="text-center space-y-2">
               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <ShieldQuestion className="w-8 h-8" />

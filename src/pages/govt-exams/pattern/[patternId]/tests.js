@@ -182,7 +182,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <Card className={`group border-2 transition-all p-0 overflow-hidden shadow-md ${isLocked ? 'grayscale opacity-75' : 'hover:border-black dark:hover:border-white'}`}>
+                <Card className={`group border-2 transition-all p-0 overflow-hidden shadow-sm ${isLocked ? 'grayscale opacity-75' : 'hover:border-black dark:hover:border-white'}`}>
                   <div className="flex flex-col sm:flex-row items-center">
                     {/* Status Pillar */}
                     <div className={`w-full sm:w-16 h-2 sm:h-auto self-stretch ${isCompleted ? 'bg-primary-700' : 'bg-gray-200 dark:bg-slate-700'} transition-colors`} />

@@ -150,7 +150,7 @@ const AdminNotificationsPage = () => {
                     <select
                       value={limit}
                       onChange={(e) => handleLimitChange(e.target.value)}
-                      className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl outline-none"
+                      className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm outline-none"
                     >
                       {[10, 20, 50, 100].map((n) => (
                         <option key={n} value={n}>{n} per page</option>
@@ -159,7 +159,7 @@ const AdminNotificationsPage = () => {
                  </div>
                  <button
                     onClick={handleClearAll}
-                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all flex items-center gap-3 active:scale-95"
+                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:bg-black dark:hover:bg-white hover:text-white transition-all flex items-center gap-3 active:scale-95"
                  >
                    <Trash2 className="w-4 h-4" /> Clear All
                  </button>
@@ -174,9 +174,9 @@ const AdminNotificationsPage = () => {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                >
-                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
                    <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
                  <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Notifications</h3>
@@ -207,16 +207,16 @@ const AdminNotificationsPage = () => {
                          }
                          router.push(href);
                        }}
-                       className={`group relative rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-xl hover:scale-[1.02] flex flex-col ${n.isRead 
+                       className={`group relative rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col ${n.isRead 
                          ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
-                         : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-primary-500/20 active-signal'}`}
+                         : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-sm active-signal'}`}
                      >
                         {!n.isRead && (
                           <div className="absolute top-8 right-8 w-3 h-3 bg-primary-700 rounded-full animate-ping" />
                         )}
 
                         <div className="flex items-center gap-4 mb-6">
-                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-700 text-white shadow-aajexam-primary'} transition-colors`}>
+                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-700 text-white shadow-sm'} transition-colors`}>
                               {getIconByType(n.type)}
                            </div>
                            <div>
@@ -236,7 +236,7 @@ const AdminNotificationsPage = () => {
                            <div className="flex items-center gap-2 text-[9px] font-black text-slate-400 uppercase italic">
                               <Clock className="w-3 h-3" /> {formatTime(n.createdAt)}
                            </div>
-                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-inner">
+                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-sm">
                               <ArrowRight className="w-4 h-4" />
                            </div>
                         </div>
@@ -253,19 +253,19 @@ const AdminNotificationsPage = () => {
               <button
                 onClick={handlePrev}
                 disabled={page <= 1}
-                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-sm active:scale-90"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               
-              <div className="px-4 lg:px-8 py-4 bg-slate-900 text-white rounded-lg lg:rounded-[2rem] shadow-2xl italic tracking-tighter">
+              <div className="px-4 lg:px-8 py-4 bg-slate-900 text-white rounded-lg lg:rounded-[2rem] shadow-sm italic tracking-tighter">
                  Page {page} <span className="text-slate-500 ml-2">of</span> {totalPages}
               </div>
 
               <button
                 onClick={handleNext}
                 disabled={page >= totalPages}
-                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-sm active:scale-90"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

@@ -181,7 +181,7 @@ const AskQuestionPage = () => {
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <Link href="/community-questions">
-            <button className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-700 hover:text-primary-700 transition-colors">
+            <button className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-700 transition-colors">
               <ArrowLeft className="w-5 h-5" />
             </button>
           </Link>
@@ -207,7 +207,7 @@ const AskQuestionPage = () => {
             <select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
               required
             >
               <option value="">Select Exam</option>
@@ -229,7 +229,7 @@ const AskQuestionPage = () => {
               rows={4}
               maxLength={2000}
               required
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
             <p className="text-[10px] text-content-muted text-right mt-1">
               {form.question.length}/2000
@@ -239,17 +239,17 @@ const AskQuestionPage = () => {
             <div className="mt-3">
               {form.image ? (
                 <div className="relative inline-block">
-                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg lg:rounded-xl border-2 border-border-primary" />
+                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800" />
                   <button
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
-                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-700 text-white shadow-lg"
+                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-700 text-white shadow-sm"
                   >
                     <X className="w-3 h-3" />
                   </button>
                 </div>
               ) : (
-                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-border-primary text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-700 transition-colors">
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-700 transition-colors">
                   <ImageIcon className="w-4 h-4" />
                   {uploadingImage ? 'Uploading...' : 'Add Image (optional)'}
                   <input
@@ -287,7 +287,7 @@ const AskQuestionPage = () => {
                     value={opt.text}
                     onChange={(e) => handleOptionChange(i, 'text', e.target.value)}
                     placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                    className="flex-1 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
+                    className="flex-1 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
                   />
                   <button
                     type="button"
@@ -295,7 +295,7 @@ const AskQuestionPage = () => {
                     className={`p-2 rounded-lg lg:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
                         ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-700'
-                        : 'border-border-primary text-content-muted hover:border-primary-400'
+                        : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
                     }`}
                     title="Mark as correct answer"
                   >
@@ -305,7 +305,7 @@ const AskQuestionPage = () => {
                     <button
                       type="button"
                       onClick={() => removeOption(i)}
-                      className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
+                      className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -324,7 +324,7 @@ const AskQuestionPage = () => {
               placeholder="Add an explanation for the answer..."
               rows={3}
               maxLength={3000}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
           </Card>
 

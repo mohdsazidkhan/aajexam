@@ -26,10 +26,10 @@ const Loading = ({
   };
 
   const colorMap = {
-    primary: 'bg-primary-400 shadow-primary-500/20',
-    secondary: 'bg-primary-400 shadow-primary-500/20',
-    accent:'bg-primary-700 shadow-black/20',
-    gray: 'bg-slate-400 shadow-slate-500/20',
+    primary: 'bg-primary-400 shadow-sm',
+    secondary: 'bg-primary-400 shadow-sm',
+    accent:'bg-primary-700 shadow-sm',
+    gray: 'bg-slate-400 shadow-sm',
   };
 
   const selectedSize = sizeMap[size] || sizeMap.md;
@@ -61,13 +61,13 @@ const Loading = ({
           animate={{
             scale: [0.8, 1.1, 0.8],
             boxShadow: [
-              "0 0 0px var(--tw-shadow-color)",
-              "0 0 20px var(--tw-shadow-color)",
-              "0 0 0px var(--tw-shadow-color)"
+              "0 0 0px var(--tw-shadow-sm)",
+              "0 0 20px var(--tw-shadow-sm)",
+              "0 0 0px var(--tw-shadow-sm)"
             ]
           }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className={`relative ${selectedSize.dot} rounded-full ${selectedColor} z-10 shadow-lg`}
+          className={`relative ${selectedSize.dot} rounded-full ${selectedColor} z-10 shadow-sm`}
         />
 
         {/* Loading Message */}

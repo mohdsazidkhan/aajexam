@@ -62,7 +62,7 @@ const ExitIntentModalInner = ({ onClose }) => {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border-2 border-primary-500/20 overflow-hidden"
+        className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-primary-500/20 overflow-hidden"
       >
         <button
           onClick={onClose}
@@ -76,7 +76,7 @@ const ExitIntentModalInner = ({ onClose }) => {
           <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10">
-            <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl border-2 border-white dark:border-slate-800">
+            <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-800">
               <Gift className="w-10 h-10 text-primary-700" />
             </div>
 
@@ -101,7 +101,7 @@ const ExitIntentModalInner = ({ onClose }) => {
             <button
               onClick={() => googleSignup()}
               disabled={isGoogleLoading}
-              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-xl disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-sm disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
             >
               {isGoogleLoading ? (
                 <div className="w-5 h-5 border-2 border-slate-500 border-t-transparent rounded-full animate-spin" />

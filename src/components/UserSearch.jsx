@@ -71,7 +71,7 @@ const UserSearch = () => {
           {users.map((user) => (
             <div
               key={user._id}
-              className="user-result-item flex items-center gap-5 p-5 bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-xl cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
+              className="user-result-item flex items-center gap-5 p-5 bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer transition-all hover:-translate-y-1 active:translate-y-1 group"
               onClick={() => handleUserClick(user.username)}
             >
               <img
@@ -94,7 +94,7 @@ const UserSearch = () => {
               </div>
               <div className="user-result-stats flex items-center gap-6 flex-shrink-0">
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="bg-primary-700 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-aajexam-primary">
+                  <span className="bg-primary-700 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
                     STUDENT
                   </span>
                 </div>

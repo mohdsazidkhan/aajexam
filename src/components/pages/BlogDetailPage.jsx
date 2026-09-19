@@ -160,7 +160,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         <div className="mb-8">
           <img src={optimizedImage(blog.featuredImage) || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
             width={1200} height={630} fetchPriority="high" decoding="async"
-            className="w-full h-48 md:h-72 lg:h-96 object-cover rounded-2xl shadow-lg" />
+            className="w-full h-48 md:h-72 lg:h-96 object-cover rounded-2xl shadow-sm" />
         </div>
 
         {/* Content */}
@@ -261,7 +261,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedBlogs.filter(r => r._id !== blog._id).slice(0, 6).map((related) => (
                 <Link key={related._id} href={`/blog/${related.slug}`}
-                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden border border-gray-200 dark:border-gray-700">
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all overflow-hidden border border-gray-200 dark:border-gray-700">
                   <img src={optimizedImage(related.featuredImage, 480) || '/default_banner.png'} alt={related.title}
                     width={480} height={256} loading="lazy" decoding="async"
                     className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />

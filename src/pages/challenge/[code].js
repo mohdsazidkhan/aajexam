@@ -69,13 +69,13 @@ export default function ChallengePage() {
                 </button>
 
                 {/* Challenge Header Card */}
-                <div className="bg-primary-700 rounded-[2rem] p-8 text-center shadow-2xl relative overflow-hidden mb-8">
+                <div className="bg-primary-700 rounded-[2rem] p-8 text-center shadow-sm relative overflow-hidden mb-8">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-black opacity-10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4" />
                     
                     <div className="relative z-10 flex flex-col items-center">
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30 rotate-12 shadow-lg">
-                            <Swords className="w-10 h-10 text-white drop-shadow-md" />
+                        <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30 rotate-12 shadow-sm">
+                            <Swords className="w-10 h-10 text-white drop-shadow-sm" />
                         </div>
                         
                         <h1 className="text-white text-3xl font-black mb-2 uppercase tracking-wide">
@@ -93,7 +93,7 @@ export default function ChallengePage() {
                         {!challenge.hasPlayed ? (
                             <button 
                                 onClick={handleAcceptChallenge}
-                                className="w-full bg-white text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 font-black text-xl py-4 rounded-2xl shadow-xl transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                                className="w-full bg-white text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 font-black text-xl py-4 rounded-2xl shadow-sm transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                             >
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
@@ -107,7 +107,7 @@ export default function ChallengePage() {
 
                 {/* Private Leaderboard */}
                 {challenge.hasPlayed && (
-                    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-700">
+                    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 p-2 rounded-lg lg:rounded-xl">
                                 <Users className="w-6 h-6 text-black dark:text-white" />

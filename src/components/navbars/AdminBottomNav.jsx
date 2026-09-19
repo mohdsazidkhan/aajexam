@@ -61,7 +61,7 @@ const AdminBottomNav = () => {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-[130] max-h-[85%] overflow-y-auto rounded-t-3xl bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-2xl"
+              className="fixed bottom-0 left-0 right-0 z-[130] max-h-[85%] overflow-y-auto rounded-t-3xl bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-sm"
               style={{ scrollbarWidth: 'none' }}
             >
               <div className="flex justify-center pt-3 pb-2">
@@ -104,7 +104,7 @@ const AdminBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav aria-label="Admin navigation" className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t border-slate-200/50 dark:border-slate-800/50 flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
+      <nav aria-label="Admin navigation" className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
           // Center Plus button
           if (item.name === 'CREATE') {
@@ -115,7 +115,7 @@ const AdminBottomNav = () => {
                 onClick={() => setShowCreate(true)}
                 className="flex items-center justify-center mb-1 px-2"
               >
-                <div className="w-11 h-11 rounded-2xl bg-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30">
+                <div className="w-11 h-11 rounded-2xl bg-primary-700 flex items-center justify-center shadow-sm">
                   <Plus className="w-6 h-6 text-white" />
                 </div>
               </button>

@@ -123,7 +123,7 @@ export default function AdminBankDetails() {
   };
 
   const TableView = () => (
-    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
+    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
       <div className="overflow-x-auto selection:bg-primary-500/30">
         <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
           <thead>
@@ -139,11 +139,11 @@ export default function AdminBankDetails() {
             {bankDetails.map((detail, index) => (
               <tr
                 key={detail._id}
-                className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-xl rounded-3xl"
+                className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-sm rounded-3xl"
               >
                 <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                    <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
                       <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
                         {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
                       </div>
@@ -220,11 +220,11 @@ export default function AdminBankDetails() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
         >
           <div className="flex items-center justify-between mb-4 lg:mb-8">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
+              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
                 <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                   {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
                 </div>
@@ -245,7 +245,7 @@ export default function AdminBankDetails() {
           </div>
 
           <div className="space-y-3 lg:space-y-6">
-            <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-4 shadow-inner">
+            <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-4 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT HOLDER</span>
                 <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase">
@@ -315,10 +315,10 @@ export default function AdminBankDetails() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
+          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
         >
           <div className="flex items-center gap-3 lg:gap-6">
-            <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+            <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
               <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                 {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
               </div>
@@ -380,7 +380,7 @@ export default function AdminBankDetails() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-2xl relative overflow-hidden group"
+        className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-sm relative overflow-hidden group"
       >
         <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
           <University className="w-64 h-64 text-primary-700" />
@@ -415,7 +415,7 @@ export default function AdminBankDetails() {
       </motion.div>
 
       {/* Controls Bar */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
         <div className="lg:col-span-2">
           <div className="relative group/search">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
@@ -440,7 +440,7 @@ export default function AdminBankDetails() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode(mode)}
-              className={`flex-1 p-3 rounded-lg lg:rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-700 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`flex-1 p-3 rounded-lg lg:rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
             >
               <Icon className="w-4 h-4" />
             </motion.button>
@@ -470,15 +470,15 @@ export default function AdminBankDetails() {
           <AdminTableSkeleton />
         </div>
       ) : error ? (
-        <div className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
-          <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-black/20">
+        <div className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm">
+          <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
             <Zap className="w-10 h-10 text-white" />
           </div>
           <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>
           <p className="text-black dark:text-white font-bold uppercase text-sm tracking-widest">{error}</p>
         </div>
       ) : bankDetails.length === 0 ? (
-        <div className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl">
+        <div className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-sm">
           <University className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
           <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">No Bank Details Found</h3>
           <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">

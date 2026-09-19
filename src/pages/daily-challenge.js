@@ -199,7 +199,7 @@ const DailyChallengePage = () => {
         {attempted && attemptData && (
           <div className="space-y-6">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <Card className="p-6 text-center space-y-4 bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20 shadow-xl">
+              <Card className="p-6 text-center space-y-4 bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20 shadow-sm">
                 <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">

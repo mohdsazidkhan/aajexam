@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
                   <motion.div
                      initial={{ scale: 0.8, opacity: 0 }}
                      animate={{ scale: 1, opacity: 1 }}
-                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-aajexam-primary flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
+                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
                   >
                      <ShieldCheck className="w-14 h-14 text-primary-700" />
                   </motion.div>
@@ -94,9 +94,9 @@ const PrivacyPolicy = () => {
 
                      {/* Introduction */}
                      <section id="intro" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-primary border-none relative overflow-hidden mt-4">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
-                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
+                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Info className="w-8 h-8" />
                               </div>
                               <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Introduction</h2>
@@ -110,7 +110,7 @@ const PrivacyPolicy = () => {
                      {/* 1. Information Collection */}
                      <section id="collect" className="space-y-10">
                         <div className="flex items-center gap-6 px-4">
-                           <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
+                           <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <Database className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">1. Information We Collect</h2>
@@ -141,11 +141,11 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* 2. Use of Information */}
-                     <section id="use" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
+                     <section id="use" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-sm">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-primary-500/20 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <Eye className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white">2. How We Use Information</h2>
@@ -176,9 +176,9 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* 7. Cookies & AdSense */}
-                     <section id="cookies" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-12 border-none">
+                     <section id="cookies" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-sm space-y-12 border-none">
                         <div className="flex items-center gap-6">
-                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-sm border-2 border-black/10 dark:border-white/10">
                               <Cookie className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">7. Cookies & Advertisements</h2>
@@ -193,7 +193,7 @@ const PrivacyPolicy = () => {
                               <div className="p-4 lg:p-10 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
                                     <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h4>
-                                    <div className="px-4 py-1.5 bg-primary-700 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-aajexam-accent">GOOGLE ADSENSE</div>
+                                    <div className="px-4 py-1.5 bg-primary-700 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-sm">GOOGLE ADSENSE</div>
                                  </div>
                                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                                     <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing ads based on your interests</li>
@@ -220,8 +220,8 @@ const PrivacyPolicy = () => {
                            <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-loose">We use HTTPS, secure password hashing, and access controls to protect your data.</p>
                         </section>
 
-                        <section id="eligibility" className="bg-slate-900 p-4 lg:p-12 rounded-[3.5rem] shadow-xl border-none space-y-6 relative overflow-hidden">
-                           <div className="w-14 h-14 bg-black/20 dark:bg-white/20 text-black dark:text-white rounded-2xl flex items-center justify-center border border-black/20 dark:border-white/20 relative z-10 shadow-lg">
+                        <section id="eligibility" className="bg-slate-900 p-4 lg:p-12 rounded-[3.5rem] shadow-sm border-none space-y-6 relative overflow-hidden">
+                           <div className="w-14 h-14 bg-black/20 dark:bg-white/20 text-black dark:text-white rounded-2xl flex items-center justify-center border border-black/20 dark:border-white/20 relative z-10 shadow-sm">
                               <UserShield className="w-6 h-6" />
                            </div>
                            <h3 className="text-xl font-black uppercase tracking-tight text-white leading-none relative z-10">Age Limit</h3>
@@ -232,9 +232,9 @@ const PrivacyPolicy = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-10 border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
-                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
+                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />
                               </div>
                               <div className="space-y-1">
@@ -248,7 +248,7 @@ const PrivacyPolicy = () => {
                            </div>
                            <button
                               onClick={() => router.push('/home')}
-                              className="w-full bg-slate-900 dark:bg-slate-700 text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-xl active:scale-95 transition-all font-outfit"
+                              className="w-full bg-slate-900 dark:bg-slate-700 text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-sm active:scale-95 transition-all font-outfit"
                            >
                               BACK TO HOME
                            </button>

@@ -97,13 +97,13 @@ export default function ReferralHistory() {
 
                {/* Referral Link Card */}
                {user && (
-                  <Card className="max-w-xl mx-auto p-2 bg-background-surface/80 backdrop-blur-xl border-none shadow-2xl rounded-[2.5rem] mt-12">
+                  <Card className="max-w-xl mx-auto p-2 bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-[2.5rem] mt-12">
                      <div className="flex items-center gap-2 p-2">
                         <div className="flex-1 text-left min-w-0">
                            <p className="text-[8px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Your Invite Code</p>
                            <p className="text-sm font-bold font-mono tracking-wider truncate text-primary-700">{user.referralCode}</p>
                         </div>
-                        <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-aajexam-primary" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                        <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-sm" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-4 h-4 mx-auto" /> COPY LINK
                         </Button>
                      </div>
@@ -120,7 +120,7 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="p-5 lg:p-8 group hover:scale-[1.02] transition-transform border-b-2 border-border-primary hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
+                     <Card key={i} className="p-5 lg:p-8 group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
                         <div className="flex justify-between items-start mb-4 lg:mb-6">
                            <div className={`p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-2xl`}>
                               <s.icon className="w-6 h-6" />
@@ -196,15 +196,15 @@ export default function ReferralHistory() {
                         </Card>
                      ) : (
                         <div className="space-y-4">
-                           <Card className="overflow-hidden border-none shadow-xl bg-white dark:bg-slate-800/80 rounded-[3rem]">
+                           <Card className="overflow-hidden border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
                                     <thead className="bg-slate-50/50 dark:bg-slate-900/50">
                                        <tr>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Student</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Reward Type</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary">Reward</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-border-primary text-right">Status</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">Student</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">Reward Type</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">Reward</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 text-right">Status</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-border-primary">
@@ -247,7 +247,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       className={`w-10 h-10 rounded-lg lg:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-700 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
+                                       className={`w-10 h-10 rounded-lg lg:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-700 text-white shadow-sm' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
                                     >
                                        {i + 1}
                                     </button>
