@@ -9,7 +9,7 @@ import { Target, Zap, Activity } from 'lucide-react';
  */
 const ProgressBar = ({
   progress = 0,
-  variant = 'primary', // primary, secondary, emerald, amber, rose, indigo
+  variant = 'primary', // primary only (brand green)
   height = 'md', // sm, md, lg, xl
   className = '',
   label,
@@ -19,11 +19,6 @@ const ProgressBar = ({
 }) => {
   const variants = {
     primary: 'bg-primary-500 shadow-duo-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
-    secondary: 'bg-primary-500 shadow-duo-secondary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
-    emerald: 'bg-primary-500 shadow-duo-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
-    amber: 'bg-amber-500 shadow-duo-amber shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
-    rose: 'bg-rose-500 shadow-duo-rose shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
-    indigo: 'bg-indigo-500 shadow-duo-indigo shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
   };
 
   const heights = {
@@ -56,7 +51,7 @@ const ProgressBar = ({
           initial={animate ? { width: 0 } : { width: `${progressValue}%` }}
           animate={{ width: `${progressValue}%` }}
           transition={{ duration: 1.5, ease: [0.34, 1.56, 0.64, 1] }}
-          className={`h-full ${variants[variant]} relative rounded-inherit overflow-hidden`}
+          className={`h-full ${variants[variant] || variants.primary} relative rounded-inherit overflow-hidden`}
         >
           {/* Global Shimmer Utility */}
           <div className="absolute inset-0 shimmer opacity-30" />

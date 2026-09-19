@@ -208,7 +208,7 @@ const MyRankCard = ({ entry }) => {
   if (!entry) return null;
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1 mt-4">
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-duo-primary bg-blue-500 border-blue-600 dark:bg-blue-600 dark:border-blue-700">
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-duo-primary">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">#{entry.rank}</div>
           <Avatar entry={entry} size="md" />

@@ -55,7 +55,7 @@ const Input = ({
       {label && (
         <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-700 dark:text-slate-400 pl-4">
           {label}
-          {required && <span className="text-rose-500 ml-1 select-none">REQUIRED</span>}
+          {required && <span className="text-black dark:text-white ml-1 select-none">REQUIRED</span>}
         </label>
       )}
 
@@ -65,7 +65,7 @@ const Input = ({
           ${radii['2xl']} 
           ${variants[variant]} 
           ${isFocused ? 'scale-[1.01] -translate-y-1' : ''}
-          ${error ? 'border-rose-500/20 ring-4 ring-rose-500/5' : ''}
+          ${error ? 'border-black/30 dark:border-white/30 ring-4 ring-black/5 dark:ring-white/5' : ''}
           ${isFocused ? 'border-primary-500' : 'border-slate-200 dark:border-slate-800'}
           rounded-2xl border-2
         `}
@@ -108,7 +108,7 @@ const Input = ({
         </div>
 
         <div className="flex items-center gap-2 pr-1">
-          {error && <CircleAlert className="w-5 h-5 text-rose-500 animate-pulse" />}
+          {error && <CircleAlert className="w-5 h-5 text-black dark:text-white animate-pulse" />}
           {!error && value && isFocused && <CircleCheck className="w-5 h-5 text-primary-500" />}
 
           {RightIcon && (
@@ -133,11 +133,11 @@ const Input = ({
             className="flex items-center gap-2 px-4"
           >
             {error ? (
-              <CircleAlert className="w-3.5 h-3.5 text-rose-500" />
+              <CircleAlert className="w-3.5 h-3.5 text-black dark:text-white" />
             ) : (
               <Info className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             )}
-            <p className={`text-[10px] font-black uppercase tracking-widest ${error ? 'text-rose-500' : 'text-slate-600 dark:text-slate-400'}`}>
+            <p className={`text-[10px] font-black uppercase tracking-widest ${error ? 'text-black dark:text-white' : 'text-slate-600 dark:text-slate-400'}`}>
               {error || helperText}
             </p>
           </motion.div>

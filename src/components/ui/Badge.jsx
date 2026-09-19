@@ -9,22 +9,17 @@ import { motion } from 'framer-motion';
 const Badge = ({
   text,
   children,
-  variant = 'primary', // primary, secondary, emerald, amber, rose, indigo, stealth
+  variant = 'primary', // primary, stealth
   size = 'md', // sm, md, lg
   className = '',
   icon: Icon,
   pulse = false,
   ...props
 }) => {
+  // Brand system: primary (green) or stealth (neutral black/white via theme tokens)
   const variants = {
     primary: 'bg-primary-500 text-white shadow-duo-primary border-primary-600',
-    secondary: 'bg-primary-500 text-white shadow-duo-secondary border-primary-600',
-    emerald: 'bg-primary-500 text-white shadow-duo-primary border-primary-600',
-    amber: 'bg-amber-500 text-white shadow-duo-amber border-amber-600',
-    rose: 'bg-rose-500 text-white shadow-duo-rose border-rose-600',
-    indigo: 'bg-indigo-500 text-white shadow-duo-indigo border-indigo-600',
     stealth: 'bg-background-surface-secondary text-content-secondary border-border-primary shadow-sm',
-    glass: 'bg-white/20 backdrop-blur-xl text-white border-white/30 shadow-xl',
   };
 
   const sizes = {

@@ -17,16 +17,12 @@ const Button = ({
   icon: Icon,
   iconPosition = 'left'
 }) => {
+  // Brand system: exactly two variants, everywhere.
+  // primary   -> brand green bg, white text (identical in light & dark)
+  // secondary -> black bg / white text in light mode, white bg / black text in dark mode
   const variants = {
-    primary: 'bg-primary-700 shadow-duo-primary border-primary-800 text-white active:bg-primary-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-primary-700 shadow-duo-secondary border-primary-800 text-white active:bg-primary-800 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    emerald: 'bg-primary-500 shadow-duo-primary border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    amber: 'bg-amber-500 shadow-duo-amber border-amber-600 text-white active:bg-amber-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    rose: 'bg-rose-500 shadow-duo-rose border-rose-600 text-white active:bg-rose-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    ghost: 'bg-background-surface text-content-secondary border-border-primary hover:bg-background-surface-secondary !shadow-sm',
-    transparent: 'bg-transparent text-content-secondary hover:bg-background-surface-secondary/50 !shadow-none !border-none',
-    white: 'bg-white text-primary-600 border-b-[#E2E8F0] hover:bg-slate-50 shadow-sm',
-    none: '',
+    primary: 'bg-primary-500 shadow-duo-primary border-primary-700 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    secondary: 'bg-black text-white border-slate-950 shadow-duo active:bg-slate-900 dark:bg-white dark:text-black dark:border-slate-200 dark:shadow-[0_4px_0_0_#cbd5e1] dark:active:bg-slate-100 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_0_0_rgba(0,0,0,0.08)]',
   };
 
   const sizes = {
@@ -57,7 +53,7 @@ const Button = ({
       `}
     >
       {/* Premium Shimmer Overlay */}
-      {!disabled && (variant === 'primary' || variant === 'secondary' || variant === 'emerald') && (
+      {!disabled && (variant === 'primary' || variant === 'secondary') && (
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
       )}
 

@@ -12,7 +12,7 @@ const Card = ({
   padded = true,
   hoverable = false,
   onClick,
-  variant = 'white', // white, glass, glass-light, glass-dark, dark, primary, secondary
+  variant = 'white', // white, glass, glass-light, glass-dark, dark, primary
   radius = '3xl', // xl, 2xl, 3xl, 4xl, 5xl
   noShadow = false,
   noBorder = false,
@@ -26,10 +26,6 @@ const Card = ({
     'glass-dark': 'glass-dark border-white/10 shadow-2xl text-white',
     dark: 'bg-slate-950 border-slate-800 text-white shadow-2xl',
     primary: 'bg-primary-500 border-primary-600 shadow-duo-primary text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-primary-500 border-primary-600 shadow-duo-secondary text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    emerald: 'bg-primary-500 border-primary-600 shadow-duo-primary text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    amber: 'bg-amber-500 border-amber-600 shadow-duo-amber text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    rose: 'bg-rose-500 border-rose-600 shadow-duo-rose text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
     none: '',
   };
 

@@ -255,14 +255,13 @@ const MyAnalyticsPage = () => {
                               <SectionHeader icon={BarChart3} title="Subject Performance" subtitle="Based on your quiz attempts" />
                               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                  {quiz.subjectWise.map((s, idx) => {
-                                    const colors = ['primary', 'emerald', 'amber', 'rose', 'indigo'];
                                     return (
                                        <Card key={idx} className="p-5 border-border-primary space-y-3 rounded-3xl">
                                           <div className="flex justify-between items-center">
                                              <span className="font-black text-base">{s.name}</span>
                                              <span className="text-xs font-bold text-content-secondary">{s.attempts} attempts</span>
                                           </div>
-                                          <ProgressBar progress={s.avgAccuracy} variant={colors[idx % colors.length]} height="sm" showPercentage label="Accuracy" />
+                                          <ProgressBar progress={s.avgAccuracy} height="sm" showPercentage label="Accuracy" />
                                        </Card>
                                     );
                                  })}
@@ -316,7 +315,6 @@ const MyAnalyticsPage = () => {
                               <SectionHeader icon={BookOpen} title="Subject Wise Performance" />
                               <div className="space-y-3">
                                  {quiz.subjectWise.map((s, idx) => {
-                                    const colors = ['primary', 'emerald', 'amber', 'rose', 'indigo'];
                                     return (
                                        <Card key={idx} className="p-5 border-border-primary rounded-3xl">
                                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -329,7 +327,7 @@ const MyAnalyticsPage = () => {
                                                       <span>{s.attempts} attempts</span>
                                                    </div>
                                                 </div>
-                                                <ProgressBar progress={s.avgAccuracy} variant={colors[idx % colors.length]} height="sm" showPercentage label="Accuracy" />
+                                                <ProgressBar progress={s.avgAccuracy} height="sm" showPercentage label="Accuracy" />
                                              </div>
                                           </div>
                                        </Card>
@@ -455,14 +453,13 @@ const MyAnalyticsPage = () => {
                               <SectionHeader icon={BookOpen} title="Reel Subject Performance" subtitle="Question reels you answered" />
                               <div className="space-y-3">
                                  {reel.subjectWise.map((s, idx) => {
-                                    const colors = ['primary', 'emerald', 'amber', 'rose', 'indigo'];
                                     return (
                                        <Card key={idx} className="p-5 border-border-primary rounded-3xl">
                                           <div className="flex justify-between items-center mb-3">
                                              <span className="font-black text-base">{s.subject}</span>
                                              <span className="text-xs font-bold text-content-secondary">{s.correct}/{s.attempted} correct</span>
                                           </div>
-                                          <ProgressBar progress={s.accuracy} variant={colors[idx % colors.length]} height="sm" showPercentage label="Accuracy" />
+                                          <ProgressBar progress={s.accuracy} height="sm" showPercentage label="Accuracy" />
                                        </Card>
                                     );
                                  })}
