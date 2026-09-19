@@ -166,7 +166,7 @@ const StudentSidebar = () => {
     >
 
       {/* Navigation */}
-      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-2 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-0 space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
