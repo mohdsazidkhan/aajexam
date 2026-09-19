@@ -62,7 +62,7 @@ export default function FollowingListPage() {
 
   return (
     <MobileAppWrapper title={`Following - @${username}`}>
-      <div className="container mx-auto  min-h-screen font-outfit">
+      <div className="container mx-auto min-h-screen font-outfit">
         <Head>
           <title>Following - @{username} - AajExam Platform</title>
           <meta name="description" content={`View who @${username} is following on AajExam. Explore the profiles they follow and discover new users.`} />
@@ -90,7 +90,7 @@ export default function FollowingListPage() {
                 <div
                   key={user._id}
                   onClick={() => handleUserClick(user.username)}
-                  className="flex items-center gap-3 lg:gap-6 p-3 lg:p-6 bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem]  border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
+                  className="flex items-center gap-3 lg:gap-6 p-3 lg:p-6 bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500 transition-all cursor-pointer group shadow-sm active:translate-y-1 active:border-b-2"
                 >
                   {user.profilePicture ? (
                     <img

@@ -93,7 +93,7 @@ const BookmarksPage = () => {
 
    if (loading && reels.length === 0) return (
       <MobileAppWrapper title="Saved Bookmarks">
-         <div className="container mx-auto px-4 py-8"><GridSkeleton count={8} /></div>
+         <div className="py-8"><GridSkeleton count={8} /></div>
       </MobileAppWrapper>
    );
 

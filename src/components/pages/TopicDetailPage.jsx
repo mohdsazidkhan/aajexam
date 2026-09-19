@@ -66,7 +66,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+      <div className="py-0 lg:py-6">
         <button onClick={() => router.back()} className="flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}

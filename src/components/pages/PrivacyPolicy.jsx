@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
          <div className="min-h-screen font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16  border-b-2 border-slate-100 dark:border-slate-800 ">
+            <div className="relative overflow-hidden py-8 lg:py-16 border-b-2 border-slate-100 dark:border-slate-800">
                <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ scale: 0.8, opacity: 0 }}
@@ -87,40 +87,10 @@ const PrivacyPolicy = () => {
                {/* Background Grid Pattern */}
             </div>
 
-            <div className="container mx-auto max-w-7xl">
-               <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-
-                  {/* --- Sidebar Index --- */}
-                  <aside className="lg:col-span-4 hidden lg:block">
-                     <div className="sticky top-24 space-y-8">
-                        <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-2 border-slate-100 dark:border-slate-800">
-                           <h3 className="text-sm font-black uppercase tracking-[0.3em] text-primary-700 dark:text-primary-500 mb-8 px-2">Table of Contents</h3>
-                           <nav className="space-y-2">
-                              {sections.map((section) => (
-                                 <a
-                                    key={section.id}
-                                    href={`#${section.id}`}
-                                    className="flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-400 hover:text-primary-700 dark:text-primary-500 transition-all font-black text-[10px] uppercase tracking-widest group"
-                                 >
-                                    <section.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                    {section.title}
-                                 </a>
-                              ))}
-                           </nav>
-                        </div>
-
-                        <div className="bg-slate-900 text-white p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-l-[10px] border-primary-500 relative overflow-hidden">
-                           <ShieldCheck className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-white/5" />
-                           <div className="relative z-10 space-y-4">
-                              <p className="text-[10px] font-black uppercase tracking-widest text-primary-400">Data Protection</p>
-                              <p className="text-sm font-medium text-slate-400 leading-relaxed">We use strong protection to keep your personal data safe and private.</p>
-                           </div>
-                        </div>
-                     </div>
-                  </aside>
+            <div>
 
                   {/* --- Content Main --- */}
-                  <main className="lg:col-span-8 space-y-12">
+                  <main className="space-y-12">
 
                      {/* Introduction */}
                      <section id="intro" className="group">
@@ -171,7 +141,7 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* 2. Use of Information */}
-                     <section id="use" className="bg-slate-900 rounded-[2rem]  lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
+                     <section id="use" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
@@ -193,7 +163,7 @@ const PrivacyPolicy = () => {
                               </div>
                            ))}
 
-                           <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem]  lg:rounded-[3rem] border-l-8 border-primary-500 space-y-6">
+                           <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem] lg:rounded-[3rem] border-l-8 border-primary-500 space-y-6">
                               <div className="flex items-center gap-4 text-primary-500">
                                  <Zap className="w-6 h-6" />
                                  <h4 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h4>
@@ -296,7 +266,6 @@ const PrivacyPolicy = () => {
                      </div>
 
                   </main>
-               </div>
             </div>
 
          </div>

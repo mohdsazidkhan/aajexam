@@ -62,9 +62,7 @@ const Card = ({
         <div className="absolute inset-0 bg-white/5 pointer-events-none" />
       )}
 
-      <div className="relative z-10">
-        {children}
-      </div>
+      {children}
     </Container>
   );
 };

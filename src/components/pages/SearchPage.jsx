@@ -26,7 +26,6 @@ import {
    Hash,
    StickyNote,
    Globe,
-   Sparkle,
    History,
    User,
    Loader2 as LoaderIcon,
@@ -38,7 +37,6 @@ import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { isAuthenticated, getUser } from '../../lib/auth';
 import { ListSkeleton } from '../skeletons/PrivateSkeletons';
-import FeaturesPage from './FeaturesPage';
 
 const TABS = [
    { key: 'all', label: 'All', icon: Compass },
@@ -54,7 +52,6 @@ const TABS = [
    { key: 'currentAffair', label: 'Current Affairs', icon: Globe },
    { key: 'note', label: 'Notes', icon: StickyNote },
    { key: 'examNews', label: 'Exam News', icon: Newspaper },
-   { key: 'feature', label: 'Features', icon: Sparkle },
 ];
 
 const SECTION_META = {
@@ -239,7 +236,7 @@ const SearchPage = () => {
 
    const handleTabChange = (tabKey) => {
       setActiveTab(tabKey);
-      if (tabKey !== 'all' && tabKey !== 'feature' && !tabData[tabKey]) {
+      if (tabKey !== 'all' && !tabData[tabKey]) {
          fetchTabPage(query, tabKey, 1, false);
       }
    };
@@ -254,7 +251,7 @@ const SearchPage = () => {
 
    // Infinite scroll — observe sentinel at bottom of the active tab's list
    useEffect(() => {
-      if (activeTab === 'all' || activeTab === 'reel' || activeTab === 'feature') return undefined;
+      if (activeTab === 'all' || activeTab === 'reel') return undefined;
       const node = sentinelRef.current;
       if (!node) return undefined;
       const observer = new IntersectionObserver((entries) => {
@@ -306,7 +303,7 @@ const SearchPage = () => {
             const isFollowing = followMap[userId];
             const isThisLoading = followLoading === userId;
             return (
-               <div className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl transition-colors">
+               <div className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
                   <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
                      <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-black dark:bg-white p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
@@ -329,7 +326,7 @@ const SearchPage = () => {
          }
          case 'test':
             return (
-               <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -342,7 +339,7 @@ const SearchPage = () => {
          case 'examCategory':
          case 'pattern':
             return (
-               <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
@@ -353,7 +350,7 @@ const SearchPage = () => {
             );
          case 'quiz':
             return (
-               <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -371,7 +368,7 @@ const SearchPage = () => {
             );
          case 'subject':
             return (
-               <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -382,7 +379,7 @@ const SearchPage = () => {
             );
          case 'topic':
             return (
-               <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -393,7 +390,7 @@ const SearchPage = () => {
             );
          case 'hashtag':
             return (
-               <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
@@ -404,7 +401,7 @@ const SearchPage = () => {
             );
          case 'blog':
             return (
-               <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -415,7 +412,7 @@ const SearchPage = () => {
             );
          case 'note':
             return (
-               <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -426,7 +423,7 @@ const SearchPage = () => {
             );
          case 'examNews':
             return (
-               <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -437,7 +434,7 @@ const SearchPage = () => {
             );
          case 'currentAffair':
             return (
-               <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
+               <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -652,10 +649,6 @@ const SearchPage = () => {
                            </>
                         )}
                      </div>
-
-                  ) : activeTab === 'feature' ? (
-                     /* ══════ FEATURES TAB — the actual /features plan-comparison page ══════ */
-                     <FeaturesPage />
 
                   ) : (
                      /* ══════ OTHER TABS — Infinite-scroll List View ══════ */

@@ -78,7 +78,7 @@ const ContactUs = ({ contactInfo = {
    return (
       <MobileAppWrapper title="Contact Support">
          <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-500 selection:text-white font-outfit mt-0">
-            <div className="container mx-auto px-4 lg:px-10 py-10 lg:py-20 space-y-12 lg:space-y-20">
+            <div className="py-10 lg:py-20 space-y-12 lg:space-y-20">
 
                {/* --- Header Section --- */}
                <section className="text-center space-y-6 relative overflow-hidden">
@@ -232,7 +232,7 @@ const ContactUs = ({ contactInfo = {
                </div>
 
                {/* --- Feature Grid --- */}
-               <section className="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 lg:p-8">
+               <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {[
                      { title: 'Fast Reply', desc: 'We reply to your question within 24 hours on working days.', icon: Rocket, color: 'primary' },
                      { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'primary' },

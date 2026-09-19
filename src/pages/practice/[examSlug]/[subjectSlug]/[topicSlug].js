@@ -72,7 +72,7 @@ export default function TopicPractice({
       />
 
       <div className="min-h-screen pb-12 px-4 font-outfit">
-        <div className="container mx-auto px-0 lg:px-4 py-4 lg:py-6 space-y-8">
+        <div className="py-4 lg:py-6 space-y-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-500">Home</Link>
             <span className="text-slate-400">/</span>

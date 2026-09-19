@@ -331,7 +331,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
   return (
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
-      <div className="p-4 lg:p-8 max-w-6xl mx-auto">
+      <div className="p-4 lg:p-8">
         <div className="mb-6">
           <Link href="/admin/email-campaigns" className="text-sm text-black dark:text-white hover:underline inline-flex items-center gap-1 mb-2">
             ← All campaigns

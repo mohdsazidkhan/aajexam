@@ -312,8 +312,6 @@ const HomePage = () => {
 
    return (
       <div className="relative selection:bg-primary-500 selection:text-white font-outfit">
-         <div className="space-y-5 md:space-y-6 lg:space-y-8">
-
             {/* ── Stats ── */}
             <section className="p-4 lg:p-8">
                {streakCount > 0 && (
@@ -352,7 +350,7 @@ const HomePage = () => {
 
             {/* ── Quick Actions ── */}
             <section className="p-4 lg:p-8">
-               <div className="grid grid-cols-3 gap-2.5 md:gap-3 lg:gap-4">
+               <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3 lg:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
                      className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-primary-700"
@@ -361,6 +359,15 @@ const HomePage = () => {
                         <Zap className="w-7 h-7 text-white" />
                      </div>
                      <p className="text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Test</p>
+                  </button>
+                  <button
+                     onClick={() => router.push('/quizzes')}
+                     className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-black dark:border-white"
+                  >
+                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 dark:bg-black/10 flex items-center justify-center mb-2">
+                        <PlayCircle className="w-7 h-7 text-white dark:text-black" />
+                     </div>
+                     <p className="text-white dark:text-black text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Quiz</p>
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
@@ -375,10 +382,10 @@ const HomePage = () => {
                      onClick={() => router.push('/community-questions')}
                      className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-black dark:border-white"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
-                        <MessageSquare className="w-7 h-7 text-white" />
+                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 dark:bg-black/10 flex items-center justify-center mb-2">
+                        <MessageSquare className="w-7 h-7 text-white dark:text-black" />
                      </div>
-                     <p className="text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Community</p>
+                     <p className="text-white dark:text-black text-[10px] lg:text-xs font-black uppercase tracking-wider">Community</p>
                   </button>
                </div>
             </section>
@@ -539,7 +546,6 @@ const HomePage = () => {
                }
             </section>
 
-         </div>
       </div>
    );
 };

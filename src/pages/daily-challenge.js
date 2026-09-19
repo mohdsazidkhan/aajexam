@@ -87,7 +87,7 @@ const DailyChallengePage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><ChallengeSkeleton /></div>
+      <div className="py-4 lg:py-6"><ChallengeSkeleton /></div>
     </div>
   );
 
@@ -139,7 +139,7 @@ const DailyChallengePage = () => {
           { name: 'Daily Challenge', url: '/daily-challenge' }
         ])}
       />
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2">

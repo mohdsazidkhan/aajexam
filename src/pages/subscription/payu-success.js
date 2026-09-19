@@ -137,7 +137,7 @@ const PayuSuccess = () => {
     return (
       <MobileAppWrapper title="Verifying payment">
         <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
-        <div className="min-h-screen  flex items-center justify-center p-6">
+        <div className="min-h-screen flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
             <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-700 dark:text-primary-500 flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
@@ -163,7 +163,7 @@ const PayuSuccess = () => {
         description="Check the status of your recent payment and subscription."
         noIndex={true}
       />
-      <div className="min-h-screen  py-8 px-4">
+      <div className="min-h-screen py-8 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-8">
             <div className="text-center space-y-4">

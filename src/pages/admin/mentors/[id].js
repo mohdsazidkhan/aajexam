@@ -40,7 +40,7 @@ const AdminMentorDetail = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>{mentor.user?.name || 'Mentor'} - Admin</title></Head>
-        <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-4">
+        <div className="py-0 lg:py-6 space-y-4">
           <Link href="/admin/mentors" className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline w-fit">
             <ArrowLeft className="w-4 h-4" /> Back to Mentors
           </Link>

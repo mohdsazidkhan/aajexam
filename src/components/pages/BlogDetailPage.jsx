@@ -88,7 +88,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
   if (loading) {
     return (
       <div className="min-h-screen bg-background-page font-outfit">
-        <div className="container mx-auto px-4 lg:px-10 py-8"><DetailSkeleton /></div>
+        <div className="py-8"><DetailSkeleton /></div>
       </div>
     );
   }
@@ -96,7 +96,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
   if (error || !blog) {
     return (
       <div className="min-h-screen bg-background-page">
-        <div className="container mx-auto px-4 lg:px-10 py-8 text-gray-900 dark:text-white text-center">
+        <div className="py-8 text-gray-900 dark:text-white text-center">
           <div className="text-6xl mb-4">📝</div>
           <h1 className="text-2xl font-bold mb-2">Blog Not Found</h1>
           <p className="text-gray-600 dark:text-gray-300 mb-6">The blog you're looking for doesn't exist or has been removed.</p>

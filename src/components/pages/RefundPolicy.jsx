@@ -42,7 +42,7 @@ const RefundPolicy = () => {
          <div className="min-h-screen font-outfit pb-20 selection:bg-primary-500 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16  border-b-2 border-slate-100 dark:border-slate-800 ">
+            <div className="relative overflow-hidden py-8 lg:py-16 border-b-2 border-slate-100 dark:border-slate-800">
                <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ y: 20, opacity: 0 }}
@@ -63,45 +63,14 @@ const RefundPolicy = () => {
                {/* Background Grid Pattern */}
             </div>
 
-            <div className="container mx-auto max-w-7xl">
-               <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-
-                  {/* --- Sidebar Index --- */}
-                  <aside className="lg:col-span-4 hidden lg:block">
-                     <div className="sticky top-24 space-y-8">
-                        <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-2 border-slate-100 dark:border-slate-800">
-                           <h3 className="text-sm font-black uppercase tracking-[0.3em] text-primary-600 mb-8 px-2">Table of Contents</h3>
-                           <nav className="space-y-2">
-                              {sections.map((section) => (
-                                 <a
-                                    key={section.id}
-                                    href={`#${section.id}`}
-                                    className="flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-400 hover:text-primary-500 transition-all font-black text-[10px] uppercase tracking-widest group"
-                                 >
-                                    <section.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                    {section.title}
-                                 </a>
-                              ))}
-                           </nav>
-                        </div>
-
-                        <div className="bg-slate-900 text-white p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-xl border-l-[10px] border-primary-500 relative overflow-hidden">
-                           <ShieldCheck className="absolute -bottom-8 -right-8 w-20 lg:w-32 h-20 lg:h-32 text-white/5" />
-                           <div className="relative z-10 space-y-4">
-                              <p className="text-[10px] font-black uppercase tracking-widest text-primary-400">Payment Status</p>
-                              <h4 className="text-xl font-black uppercase tracking-tight">Account Activation</h4>
-                              <p className="text-sm font-medium text-slate-400 leading-relaxed">Subscriptions provide immediate access to all features. Therefore, refunds are only provided under specific conditions.</p>
-                           </div>
-                        </div>
-                     </div>
-                  </aside>
+            <div>
 
                   {/* --- Content Main --- */}
-                  <main className="lg:col-span-8 space-y-12">
+                  <main className="space-y-12">
 
                      {/* Introduction */}
                      <section id="intro" className="group mt-4">
-                        <div className="bg-white dark:bg-slate-800 p-4  lg:p-8 rounded-[2rem]  lg:rounded-[4rem] shadow-aajexam-secondary border-none relative overflow-hidden text-center">
+                        <div className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary border-none relative overflow-hidden text-center">
                            <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-medium italic">
                               Thank you for using <strong>AajExam</strong>. Please read this policy before buying a plan. By paying for a plan, you agree to the rules below.
                            </p>
@@ -109,7 +78,7 @@ const RefundPolicy = () => {
                      </section>
 
                      {/* 1. General Policy */}
-                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary space-y-12 border-none ring-8 ring-black/10/5 dark:ring-white/10/5">
+                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary space-y-12 border-none ring-8 ring-black/10 dark:ring-white/10">
                         <div className="flex items-center gap-6">
                            <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
                               <Ban className="w-8 h-8" />
@@ -166,7 +135,7 @@ const RefundPolicy = () => {
                      </section>
 
                      {/* 4. Refund Exceptions */}
-                     <section id="eligibility" className="bg-slate-900 rounded-[2rem]  lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
+                     <section id="eligibility" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-2xl">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
@@ -238,7 +207,6 @@ const RefundPolicy = () => {
                      </div>
 
                   </main>
-               </div>
             </div>
 
          </div>

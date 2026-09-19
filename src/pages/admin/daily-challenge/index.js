@@ -100,7 +100,7 @@ const AdminDailyChallenge = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Daily Challenges - Admin</title></Head>
-        <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+        <div className="py-0 lg:py-6">
           <div className='flex justify-between items-center mb-6'>
             <div className='flex flex-col'>
               <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 mb-2"><Target className="w-6 h-6 text-primary-500" /> Daily Challenges</h1>

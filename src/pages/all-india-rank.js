@@ -293,7 +293,7 @@ const AllIndiaRankPage = () => {
         noIndex={true}
       />
 
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="All India Rank (AIR) is a PRO feature. Upgrade to see where you stand globally and by exam!">
           <div className="space-y-5 lg:space-y-8">
             

@@ -62,7 +62,7 @@ const AboutUs = () => {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
          </Head>
 
-         <div className="container mx-auto px-4 lg:px-8 py-4 md:py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
+         <div className="py-4 md:py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">
@@ -91,7 +91,7 @@ const AboutUs = () => {
             </section>
 
             {/* --- Mission & Vision --- */}
-            <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-4 lg:p-8">
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                <Card className="p-10 space-y-8 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
                      <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-400 backdrop-blur-sm border border-primary-500/30">
@@ -125,7 +125,7 @@ const AboutUs = () => {
             </section>
 
             {/* --- Platform Features Grid --- */}
-            <section className="space-y-12 p-4 lg:p-8">
+            <section className="space-y-12">
                <div className="text-center space-y-2">
                   <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Our Features</h2>
                   <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Designed for your study success</p>
@@ -147,7 +147,7 @@ const AboutUs = () => {
             </section>
 
             {/* --- Trust & Commitment --- */}
-            <section className="p-4 lg:p-8">
+            <section>
                <Card className="p-10 border-none bg-slate-100 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-800">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                      <div className="lg:col-span-4 text-center lg:text-left space-y-6">
@@ -167,7 +167,7 @@ const AboutUs = () => {
             </section>
 
             {/* --- CTA --- */}
-            <section className="p-4 lg:p-8">
+            <section>
                <Card className="p-12 text-center bg-primary-500 border-none text-white shadow-aajexam-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>

@@ -242,7 +242,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
     return (
         <div className="min-h-screen pb-24">
-            <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+            <div className="py-4 lg:py-6 space-y-6">
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                         <button onClick={() => router.push('/admin/pyq')} className="p-2 rounded-lg lg:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"><ArrowLeft className="w-5 h-5" /></button>

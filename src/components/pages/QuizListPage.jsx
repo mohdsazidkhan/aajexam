@@ -179,7 +179,7 @@ const QuizListPage = () => {
                 </div>
 
                 {/* Stat chips */}
-                <div className="flex items-center flex-wrap gap-2 pt-1">
+                <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
                   <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                     <HelpCircle className="w-3 h-3" />
                     {quiz.totalQuestions || 0} Qs

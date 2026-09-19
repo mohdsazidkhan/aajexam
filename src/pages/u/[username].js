@@ -84,13 +84,13 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (loading) return (
     <div className="min-h-screen bg-background-page pb-20 font-outfit">
-      <div className="container mx-auto px-4 py-8"><ProfileSkeleton /></div>
+      <div className="py-8"><ProfileSkeleton /></div>
     </div>
   );
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center  px-4 font-outfit">
+      <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 font-outfit">
         <h2 className="text-lg lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Profile Not Found</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
@@ -107,7 +107,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   return (
     <MobileAppWrapper title={profile.name || 'Profile'}>
-      <div className="max-w-full mx-auto  min-h-screen font-outfit">
+      <div className="max-w-full mx-auto min-h-screen font-outfit">
         <Head>
           <title>{seo?.title || 'Profile - AajExam'}</title>
           {seo?.description && <meta name="description" content={seo.description} />}

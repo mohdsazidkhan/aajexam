@@ -29,7 +29,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
 
   if (loading) return (
     <div className="min-h-screen pb-24 font-outfit">
-      <div className="container mx-auto px-4 lg:px-10 py-8"><DetailSkeleton /></div>
+      <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
   if (!news) return null;
@@ -67,7 +67,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
           ])
         ]}
       />
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-4">
+      <div className="py-0 lg:py-6 space-y-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>

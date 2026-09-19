@@ -167,7 +167,7 @@ const AdminReels = () => {
                   key={tab.value}
                   onClick={() => { setStatusFilter(tab.value); setPage(1); }}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${statusFilter === tab.value
-                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg shadow-black/20/25 dark:shadow-white/10/25'
+                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg shadow-black/20 dark:shadow-white/10'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700'
                     }`}
                 >

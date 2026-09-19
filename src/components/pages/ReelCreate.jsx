@@ -19,7 +19,7 @@ const TYPES = [
   { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Quick fact or one-liner' },
   { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Shortcut or formula' },
   { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-primary-400 bg-primary-50 dark:bg-primary-950/30', desc: 'Community poll' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Community poll' },
 ];
 
 const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
@@ -202,20 +202,19 @@ const ReelCreate = () => {
   return (
     <MobileAppWrapper>
       <div className="min-h-screen">
-        <div className="sticky top-0 z-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
-          <div className="flex items-center gap-3 max-w-2xl mx-auto">
-          
+        <div className="sticky top-0 z-20 py-3">
+          <div className="flex items-center gap-3">
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Flame className="w-5 h-5 text-black dark:text-white" /> Create Reel
             </h1>
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto p-0 sm:p-6">
+        <div className="py-6">
           {!type ? (
             <div className="space-y-4">
               <p className="mt-2 lg:mt-0 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
-              <div className="grid grid-cols-2 lg:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-3">
                 {TYPES.map(t => (
                   <motion.button key={t.value} whileTap={{ scale: 0.97 }} onClick={() => setType(t.value)}
                     className={`p-2.5 lg:p-5 rounded-xl lg:rounded-2xl border-2 text-left transition-all ${t.color}`}>

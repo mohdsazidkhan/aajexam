@@ -249,7 +249,7 @@ const UserAnalytics = () => {
   }
 
   return (
-    <div className="min-h-screen  font-sans text-slate-900 dark:text-white pb-20">
+    <div className="min-h-screen font-sans text-slate-900 dark:text-white pb-20">
       {isMounted && <Sidebar />}
       <div className="transition-all duration-500 p-4 lg:p-8">
 

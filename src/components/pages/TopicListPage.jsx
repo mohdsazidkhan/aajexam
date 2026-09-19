@@ -99,7 +99,7 @@ const TopicListPage = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search topics..." value={search} onChange={e => setSearch(e.target.value)}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-black/10/30 dark:ring-white/10/30 border-none" />
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-black/10 dark:ring-white/10 border-none" />
             </div>
           </div>
         </div>
@@ -142,14 +142,14 @@ const TopicListPage = () => {
                   <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                 </div>
 
-                <div className="flex items-center gap-1.5 flex-wrap text-xs font-bold text-slate-500 dark:text-slate-400">
+                <div className="flex items-center gap-2 flex-wrap text-xs font-bold text-slate-500 dark:text-slate-400">
                   {topic.exams?.length > 0 && topic.exams.slice(0,2).map(e => (
                     <span key={e._id || e} className="text-[10px] font-bold text-slate-400 bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded-full">{e.name || e}</span>
                   ))}
                 </div>
 
                 {/* Stat chips */}
-                <div className="flex items-center flex-wrap gap-2 pt-1">
+                <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
                   <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {topic.quizCount || 0} Quizzes

@@ -81,7 +81,7 @@ const PublicNavbar = () => {
 
             {/* --- Desktop Navigation --- */}
             <div className="hidden lg:flex lg:flex-1 lg:justify-center">
-              <div className="flex items-center gap-1.5 bg-slate-100/60 dark:bg-slate-800/60 p-1 rounded-2xl border border-slate-200/40 dark:border-slate-700/30 backdrop-blur-md">
+              <div className="flex items-center gap-1.5 p-1">
                 {navLinks.map((link) => {
                   const isActive = router.pathname === link.href;
                   return (

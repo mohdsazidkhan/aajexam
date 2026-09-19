@@ -103,14 +103,14 @@ const StudyPlanPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><ListSkeleton rows={7} /></div>
+      <div className="py-4 lg:py-6"><ListSkeleton rows={7} /></div>
     </div>
   );
 
   return (
     <div className="min-h-screen pb-24">
       <Seo title="AI Study Planner – AajExam" description="Generate a personalised AI study plan for your government exam." noIndex={true} />
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="AI Study Planner is a PRO feature. Upgrade to get a personalized roadmap and master your exams!">
           <div className="flex items-center justify-between gap-3">
             <div className="space-y-1">

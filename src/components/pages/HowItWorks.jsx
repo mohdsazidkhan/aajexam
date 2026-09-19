@@ -40,19 +40,19 @@ const HowItWorks = () => {
       {
          id: 2,
          title: 'Pick a Plan',
-         desc: 'Choose a free or paid plan based on what you need. Your plan decides how many levels and quizzes you can use.',
+         desc: 'Choose a free or paid plan based on what you need. Your plan decides how many PYQ papers and mock tests you can unlock.',
          icon: CreditCard,
          color: 'primary',
          badge: 'Step 2',
          details: [
-            { label: 'Free Plan', val: 'Levels 0 to 9', icon: CircleCheck },
-            { label: 'Pro Plan', val: 'All Levels (0-10)', icon: Sparkles }
+            { label: 'Free Plan', val: 'Latest year PYQ + 1 free mock', icon: CircleCheck },
+            { label: 'Pro Plan', val: 'Every year PYQ + unlimited mocks', icon: Sparkles }
          ]
       },
       {
          id: 3,
          title: 'Take Practice Quizzes',
-         desc: 'Answer MCQ questions made by experts. Practice with daily, weekly, and monthly quizzes to get exam-ready.',
+         desc: 'Answer MCQ questions made by experts. Practice PYQ papers, topic-wise quizzes, subject tests and the Daily Challenge to get exam-ready.',
          icon: PlayCircle,
          color: 'primary',
          badge: 'Step 3'
@@ -60,7 +60,7 @@ const HowItWorks = () => {
       {
          id: 4,
          title: 'Track Your Progress',
-         desc: 'See how many questions you got right and how fast you answered. Check your results and improve in every subject.',
+         desc: 'See how many questions you got right and how fast you answered. Check your leaderboard rank, All India Rank and Exam Readiness Score to improve in every subject.',
          icon: TrendingUp,
          color: 'primary',
          badge: 'Step 4'
@@ -79,13 +79,13 @@ const HowItWorks = () => {
    const features = [
       { title: 'Only Your Knowledge Counts', desc: 'You win by knowing more, not by luck. Hard work and study is all that matters.', icon: ShieldCheck, color: 'primary' },
       { title: 'Earn With Referrals', desc: 'Invite friends and earn real cash rewards when they upgrade to PRO.', icon: Trophy, color: 'primary' },
-      { title: 'Get Better as You Study', desc: 'As your score improves, you unlock harder questions and new levels.', icon: Zap, color: 'primary' }
+      { title: 'Get Better as You Study', desc: 'PRO unlocks AI-powered adaptive practice that tunes question difficulty to your accuracy, so every quiz keeps pushing you.', icon: Zap, color: 'primary' }
    ];
 
    return (
       <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
 
-         <div className="container mx-auto max-w-5xl space-y-20 mt-4">
+         <div className="space-y-20 mt-4">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden p-4 lg:p-8">
@@ -166,9 +166,9 @@ const HowItWorks = () => {
             </section>
 
             {/* --- Skill-Based Callout --- */}
-            <section className="p-4 lg:p-8">
-               <Card className="p-0 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden text-center lg:text-left">
-                  <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 px-4">
+            <section>
+               <Card className="p-8 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden text-center lg:text-left">
+                  <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
                      </div>
@@ -182,7 +182,7 @@ const HowItWorks = () => {
             </section>
 
             {/* --- Features Grid --- */}
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 lg:p-8">
+            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                {features.map((f, i) => (
                   <Card key={i} className="p-8 group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                      <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
@@ -197,7 +197,7 @@ const HowItWorks = () => {
             </section>
 
             {/* --- CTA --- */}
-            <section className="p-4 lg:p-8">
+            <section>
                <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
@@ -207,7 +207,7 @@ const HowItWorks = () => {
                      <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
                      <Button
                         onClick={() => router.push('/')}
-                        className="bg-primary-500 mx-auto hover:bg-primary-600 text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-sm shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
+                        className="bg-primary-500 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
                      >
                         START NOW
                      </Button>

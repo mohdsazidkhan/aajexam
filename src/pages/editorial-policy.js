@@ -21,7 +21,7 @@ export default function EditorialPolicy() {
                 ])}
             />
 
-            <div className="min-h-screen ">
+            <div className="min-h-screen">
                 <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">

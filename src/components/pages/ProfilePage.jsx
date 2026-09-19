@@ -173,7 +173,7 @@ const ProfilePage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background-page font-outfit">
-        <div className="container mx-auto px-4 py-8 lg:py-12"><ProfileSkeleton /></div>
+        <div className="py-8 lg:py-12"><ProfileSkeleton /></div>
       </div>
     );
   }

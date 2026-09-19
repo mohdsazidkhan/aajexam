@@ -36,7 +36,7 @@ const ReadinessPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
+      <div className="py-4 lg:py-6"><DashboardSkeleton /></div>
     </div>
   );
 
@@ -45,7 +45,7 @@ const ReadinessPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">
           <div className="flex justify-between items-center flex-col lg:flex-row">
           <div className="space-y-1">

@@ -208,8 +208,8 @@ const AdminReferralAnalytics = () => {
                             {[
                                 { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
                                 { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
-                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", shadow: "shadow-black/20/20 dark:shadow-white/10/20" },
-                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", shadow: "shadow-black/20/20 dark:shadow-white/10/20" }
+                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", shadow: "shadow-black/20 dark:shadow-white/10" },
+                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", shadow: "shadow-black/20 dark:shadow-white/10" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={stat.label}
@@ -295,7 +295,7 @@ const AdminReferralAnalytics = () => {
                                 key="empty"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                             >
                                 <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
                                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>

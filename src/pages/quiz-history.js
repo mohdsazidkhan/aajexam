@@ -49,7 +49,7 @@ const QuizHistoryPage = () => {
 
    if (loading && attempts.length === 0) return (
       <div className="min-h-screen bg-background-page pb-20 font-outfit selection:bg-primary-500 selection:text-white">
-         <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
+         <div className="py-8"><ListSkeleton rows={6} /></div>
       </div>
    );
 

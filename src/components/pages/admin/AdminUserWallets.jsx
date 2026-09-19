@@ -94,7 +94,7 @@ const AdminUserWallets = () => {
   };
 
   const content = (
-    <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+    <div className="min-h-screen text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
       <div className="max-w-[1600px] mx-auto p-4 lg:p-12">
         {/* Header */}
         <motion.div
@@ -125,7 +125,7 @@ const AdminUserWallets = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={handleResetClaimableRewards}
                 disabled={resetting}
-                className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl shadow-xl shadow-black/20/20 dark:shadow-white/10/20 group/btn disabled:opacity-50"
+                className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl shadow-xl shadow-black/20 dark:shadow-white/10 group/btn disabled:opacity-50"
               >
                 <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : 'group-hover/btn:rotate-180 transition-transform'}`} />
                 <span className="text-[10px] font-black uppercase tracking-widest">{resetting ? 'RESETTING...' : 'RESET ALL REWARDS'}</span>

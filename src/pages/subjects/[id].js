@@ -67,7 +67,7 @@ export default function SubjectDetail({
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="container mx-auto px-0 lg:px-4 py-4 lg:py-6 relative space-y-8">
+        <div className="py-4 lg:py-6 relative space-y-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-500">Home</Link>

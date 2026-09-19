@@ -54,7 +54,7 @@ const QuizResultPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background-page pb-20 font-outfit">
-        <div className="container mx-auto px-4 py-8"><QuizResultSkeleton /></div>
+        <div className="py-8"><QuizResultSkeleton /></div>
       </div>
     );
   }
@@ -74,7 +74,7 @@ const QuizResultPage = () => {
 
   return (
     <div className="min-h-screen bg-background-page pb-24">
-      <div className="container mx-auto px-3 lg:px-10 pt-6 pb-8 max-w-4xl">
+      <div className="pt-6 pb-8 max-w-4xl">
 
         {/* Result Card */}
         <div className="text-center mb-6">

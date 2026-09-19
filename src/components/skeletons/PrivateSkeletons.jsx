@@ -116,7 +116,7 @@ export const SubscriptionSkeleton = () => (
       <Sh className="h-4 w-3/4 mx-auto rounded-lg" />
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {[1, 2, 3].map(i => (
         <div key={i} className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-6">
           <Sh className="h-6 w-32 rounded-lg" />

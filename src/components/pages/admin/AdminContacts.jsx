@@ -119,7 +119,7 @@ export default function AdminContacts() {
   }
 
   return (
-    <div className="min-h-screen  font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
         {isMounted && <Sidebar />}
         <div className="transition-all duration-500 p-4 lg:p-8">
 
@@ -199,7 +199,7 @@ export default function AdminContacts() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-10 lg:py-20  text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
+                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-inner"
                >
                  <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-4 lg:mb-8 shadow-xl">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />

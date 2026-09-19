@@ -144,7 +144,7 @@ const FeaturesPage = () => {
 
   return (
     <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
-      <div className="container mx-auto max-w-6xl space-y-10 lg:space-y-16 mt-2 lg:mt-4 px-1 lg:px-4">
+      <div className="space-y-10 lg:space-y-16 mt-2 lg:mt-4">
 
         {/* --- Hero --- */}
         <section className="text-center space-y-3 lg:space-y-6 p-4 lg:p-8">

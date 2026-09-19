@@ -35,7 +35,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
   const operationalLinks = [
     { name: 'Home', href: '/', icon: Compass },
-    { name: 'Govt Exams', href: '/govt-exams', icon: Layers },
+    { name: 'About Us', href: '/about', icon: Layers },
     { name: 'How It Works', href: '/how-it-works', icon: Info },
     { name: 'Contact Us', href: legalLinks.CONTACT, icon: MessageSquare },
   ];
@@ -148,7 +148,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label="Send us an email"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white transition-all shadow-aajexam-secondary">
+                  <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white dark:group-hover/item:text-black transition-all shadow-aajexam-secondary">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">

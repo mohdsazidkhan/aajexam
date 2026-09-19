@@ -132,7 +132,7 @@ const SyllabusTrackerPage = () => {
 
   if (loadingExams) return (
     <div className="min-h-screen pb-24 font-outfit">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><DashboardSkeleton /></div>
+      <div className="py-4 lg:py-6"><DashboardSkeleton /></div>
     </div>
   );
 
@@ -144,7 +144,7 @@ const SyllabusTrackerPage = () => {
         noIndex={true}
       />
 
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Syllabus Tracker is a PRO feature. Upgrade to auto-track your exam completion!">
 
           <div className="flex flex-col sm:flex-row justify-start sm:justify-between items-stretch sm:items-center gap-3">

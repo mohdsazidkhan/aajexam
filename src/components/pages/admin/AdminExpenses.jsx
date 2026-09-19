@@ -153,7 +153,7 @@ const AdminExpenses = () => {
     ];
 
     return (
-        <div className="min-h-screen  text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+        <div className="min-h-screen text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
             {userInfo?.role === 'admin' && <Sidebar />}
 
             <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">

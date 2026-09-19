@@ -83,7 +83,7 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title="Home">
-         <section className="relative overflow-hidden">
+         <section className="relative overflow-hidden -mx-2 lg:-mx-4">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-primary-500/20 blur-[120px] opacity-70" />
                <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/15 rounded-full blur-[100px] animate-pulse" />
@@ -278,8 +278,8 @@ const ModernLandingPage = () => {
             </div>
             <div className="container mx-auto px-4 lg:px-6 relative z-10">
                <div className="text-center space-y-4 mb-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-400 uppercase">
-                     <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-700 dark:text-primary-400 uppercase">
+                     <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
                      Last Year PYQ — Always Free
                   </div>
                   <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
@@ -293,46 +293,38 @@ const ModernLandingPage = () => {
                {/* Exam tiles */}
                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
                   {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam, idx) => {
-                     const colors = [
-                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                        { color: 'bg-primary-500/20', border: 'border-primary-500/20', text: 'text-primary-400' },
-                        { color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     ];
-                     const theme = colors[idx % colors.length];
+                     const theme = { color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' };
                      return (
                         <motion.div
                            key={exam._id}
                            whileHover={{ scale: 1.04, y: -4 }}
                            onClick={() => router.push('/pyq')}
-                           className={`cursor-pointer p-4 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
+                           className={`cursor-pointer p-4 lg:p-8 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
                         >
                            <span className={`text-sm lg:text-base font-black ${theme.text} mb-1`}>{exam.name}</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.pyqCount} PYQs</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.practiceTestCount} Practice Tests</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{exam.quizCount} Quizzes</span>
-                           <span className="text-[10px] font-black text-primary-400 bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                           <span className="text-[10px] font-black text-primary-700 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                         </motion.div>
                      );
                   }) : [
-                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'RRB GROUP D', papers: '18+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'SSC CPO', papers: '17+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
-                     { name: 'UPSC Prelims', papers: '14+', color: 'bg-primary-500/20', border: 'border-primary-500/20', text: 'text-primary-400' },
-                     { name: 'SSC GD Constable', papers: '25+', color: 'bg-black/20 dark:bg-white/20', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
+                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
+                     { name: 'RRB GROUP D', papers: '18+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
+                     { name: 'SSC CPO', papers: '17+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
+                     { name: 'UPSC Prelims', papers: '14+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
+                     { name: 'SSC GD Constable', papers: '25+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
                   ].map((exam) => (
                      <motion.div
                         key={exam.name}
                         whileHover={{ scale: 1.04, y: -4 }}
                         onClick={() => router.push('/pyq')}
-                        className={`cursor-pointer p-4 rounded-2xl ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
+                        className={`cursor-pointer p-4 lg:p-8 rounded-2xl ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
                      >
                         <span className={`text-sm lg:text-base font-black ${exam.text}`}>{exam.name}</span>
                         <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{exam.papers} papers</span>
-                        <span className="text-[10px] font-black text-primary-400 bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                        <span className="text-[10px] font-black text-primary-700 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                      </motion.div>
                   ))}
                </div>
@@ -349,7 +341,7 @@ const ModernLandingPage = () => {
                   </motion.button>
                   <button
                      onClick={() => router.push('/pyq')}
-                     className="w-full sm:w-auto px-8 py-4 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-slate-200 dark:border-white/10 transition-all text-sm"
+                     className="w-full sm:w-auto px-8 py-4 bg-black dark:bg-white hover:opacity-90 text-white dark:text-black font-black uppercase tracking-widest rounded-2xl border border-black dark:border-white transition-all text-sm"
                   >
                      Browse All PYQs
                   </button>
@@ -447,7 +439,7 @@ const ModernLandingPage = () => {
          <section className="overflow-hidden relative p-4 lg:p-8">
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="flex flex-col gap-10 lg:gap-20">
-                  <div className="space-y-8 lg:space-y-16 text-center max-w-6xl mx-auto w-full">
+                  <div className="space-y-8 lg:space-y-16 text-center w-full">
                      <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

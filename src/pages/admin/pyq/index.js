@@ -61,7 +61,7 @@ const AdminPYQ = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage PYQ Papers - Admin</title></Head>
-        <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+        <div className="py-4 lg:py-6 space-y-6">
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <div>
               <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-500" /> PYQ Papers</h1>

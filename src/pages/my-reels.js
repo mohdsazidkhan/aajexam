@@ -89,7 +89,7 @@ const MyReelsPage = () => {
 
    if (loading && reels.length === 0) return (
       <MobileAppWrapper title="My Reels">
-         <div className="container mx-auto px-4 py-8"><GridSkeleton count={8} /></div>
+         <div className="py-8"><GridSkeleton count={8} /></div>
       </MobileAppWrapper>
    );
 
@@ -98,7 +98,7 @@ const MyReelsPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
             <Seo title="My Reels - AajExam" noIndex={true} />
 
-            <div className="container mx-auto px-2 lg:px-4 py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
+            <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
                {/* Header */}
                <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
                   <div className="space-y-2 text-center lg:text-left">

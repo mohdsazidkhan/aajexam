@@ -187,7 +187,7 @@ const FAQ = () => {
                 ]}
             />
 
-            <div className="min-h-screen ">
+            <div className="min-h-screen">
                 <div className="container mx-auto mt-0">
                     {/* Hero Section */}
                     <div className="text-center mb-8 lg:mb-12">

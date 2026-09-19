@@ -64,7 +64,7 @@ const RevisionPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><RevisionSkeleton /></div>
+      <div className="py-4 lg:py-6"><RevisionSkeleton /></div>
     </div>
   );
 
@@ -73,7 +73,7 @@ const RevisionPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Seo title="Revision Queue – AajExam" description="Spaced-repetition revision queue for your AajExam practice." noIndex={true} />
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
           <div className="space-y-1">
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-6 h-6 text-primary-500" /> Revision Queue</h1>

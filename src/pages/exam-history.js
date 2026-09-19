@@ -63,7 +63,7 @@ const ExamHistoryPage = () => {
 
    if (loading && history.length === 0) return (
       <MobileAppWrapper title="Exam History">
-         <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
+         <div className="py-8"><ListSkeleton rows={6} /></div>
       </MobileAppWrapper>
    );
 
@@ -72,7 +72,7 @@ const ExamHistoryPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
             <Seo title="Exam History - AajExam" noIndex={true} />
 
-            <div className="container mx-auto px-0 lg:px-8 py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
+            <div className="py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
                <SubscriptionGuard message="Upgrade to PRO to view your complete exam history and detailed performance analytics across all mock tests.">
                   <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                      <div className="space-y-2 text-center lg:text-left">

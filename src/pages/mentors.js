@@ -33,7 +33,7 @@ const MentorsPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="container mx-auto px-4 py-4 lg:px-4 lg:py-6"><GridSkeleton count={8} /></div>
+      <div className="py-4 lg:py-6"><GridSkeleton count={8} /></div>
     </div>
   );
 
@@ -56,7 +56,7 @@ const MentorsPage = () => {
           { name: 'Mentors', url: '/mentors' }
         ])}
       />
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-6">
+      <div className="py-0 lg:py-6 space-y-6">
         <SubscriptionGuard message="Access to Mentors is a PRO feature. Connect with students who have successfully cleared exams to get personalized guidance!">
           <div className="flex items-start justify-between">
             <div className="space-y-1">

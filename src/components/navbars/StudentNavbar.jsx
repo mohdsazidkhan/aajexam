@@ -132,15 +132,15 @@ const StudentNavbar = () => {
                   title={isExpired ? 'PRO plan expired' : `${plan} plan`}
                   className="p-0.5 rounded-full"
                 >
-                  <div className="relative w-8 h-8 lg:w-11 lg:h-11">
+                  <div className="relative w-8 h-8 lg:w-10 lg:h-10">
 
                     {/* Floating Badge */}
                     <span
-                      className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[7px] lg:text-[8px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full text-white backdrop-blur-md shadow-lg border border-white/20 ${isExpired
-                        ? 'bg-slate-500'
+                      className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[7px] lg:text-[8px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full shadow-lg border border-green-500/20 ${isExpired
+                        ? 'bg-red-500 text-white'
                         : isPro
-                          ? 'bg-black dark:bg-white'
-                          : 'bg-primary-500'
+                          ? 'bg-primary-700 text-white'
+                          : 'bg-primary-500 text-white'
                       }`}
                     >
                       {plan}

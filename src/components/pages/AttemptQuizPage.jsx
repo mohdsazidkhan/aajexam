@@ -439,7 +439,7 @@ const AttemptQuizPage = () => {
           </div>
         )}
 
-        <div className="container mx-auto px-3 lg:px-10 pt-6 pb-8">
+        <div className="pt-6 pb-8">
           {/* Result Card */}
           <div className="text-center mb-6">
             <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
@@ -598,7 +598,7 @@ const AttemptQuizPage = () => {
   // ─── QUIZ IN PROGRESS ───
   return (
     <div className="min-h-screen bg-background-page overflow-x-hidden">
-      <div className="container mx-auto px-3 lg:px-10 pt-3 pb-32">
+      <div className="pt-3 pb-32">
 
         {/* Quiz Header */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-3 mb-3">

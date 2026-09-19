@@ -29,7 +29,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
 
   if (loading) return (
     <div className="min-h-screen pb-24 font-outfit">
-      <div className="container mx-auto px-4 lg:px-10 py-8"><DetailSkeleton /></div>
+      <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
   if (!affair) return null;
@@ -66,7 +66,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
           ])
         ]}
       />
-      <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
+      <div className="py-0 lg:py-6">
         <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         <div className="space-y-2">
