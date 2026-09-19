@@ -208,12 +208,12 @@ const QuizResultDetail = () => {
                       const isCorrectOpt = optIdx === correctIndex;
                       let optClass = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
                       if (isCorrectOpt) optClass = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400 dark:border-primary-600';
-                      if (isSelected && !isCorrect) optClass = 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-black dark:border-white dark:border-white';
+                      if (isSelected && !isCorrect) optClass = 'bg-red-50 dark:bg-red-900/30 border-red-400 dark:border-red-600';
 
                       return (
                         <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
                           {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-700 shrink-0" />}
-                          {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
+                          {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />}
                           {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
                           <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>
                         </div>

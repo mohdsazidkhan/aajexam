@@ -391,7 +391,7 @@ const TestResult = ({ resolvedId } = {}) => {
                             <div key={oIdx} className={`
                                   p-3 rounded-2xl flex items-center gap-3 border-2 text-sm
                                   ${isAnswer ? 'bg-primary-100 dark:bg-primary-900/20 border-primary-700 text-primary-700 dark:text-primary-400' :
-                                isSelected ? 'bg-black/10 dark:bg-white/10 border-black dark:border-white text-black dark:text-white' :
+                                isSelected ? 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600 text-red-700 dark:text-red-400' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>
                               <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
