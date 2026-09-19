@@ -158,7 +158,7 @@ const AdminBlogForm = () => {
     return (
       <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
         <Sidebar />
-        <div className="adminContent w-full mx-auto p-4">
+        <div className="adminContent w-full mx-auto">
           <div className="flex items-center justify-center h-64">
             <AdminFormSkeleton />
           </div>

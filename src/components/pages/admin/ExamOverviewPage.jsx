@@ -281,7 +281,7 @@ const ExamOverviewPage = () => {
   const { overallStats } = data;
 
   return (
-    <div className="w-full text-slate-900 dark:text-white font-outfit px-2 lg:px-0">
+    <div className="w-full text-slate-900 dark:text-white font-outfit">
 
       {/* Header */}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-4 my-2 lg:my-4">

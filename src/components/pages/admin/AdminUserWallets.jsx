@@ -95,7 +95,7 @@ const AdminUserWallets = () => {
 
   const content = (
     <div className="min-h-screen text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
-      <div className="max-w-[1600px] mx-auto p-4 lg:p-12">
+      <div>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

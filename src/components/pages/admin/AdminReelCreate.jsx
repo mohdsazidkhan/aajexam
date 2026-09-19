@@ -238,7 +238,7 @@ const AdminReelCreate = () => {
   return (
     <div className="flex min-h-screen">
         <main className="flex-1 transition-all duration-300">
-          <div className="p-0 lg:p-6 max-w-full mx-auto mt-4 lg:mt-2">
+          <div className="mt-4 lg:mt-2">
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">

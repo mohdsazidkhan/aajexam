@@ -49,7 +49,7 @@ const AdminReelAnalytics = () => {
     <div className="flex min-h-screen">
       <Sidebar />
       <main className="flex-1 transition-all duration-300 adminContent">
-          <div className="px-3 py-4 sm:p-6 max-w-7xl mx-auto">
+          <div>
 
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2 mb-5 sm:mb-6 uppercase tracking-tight">
               <BarChart3 className="w-6 h-6 sm:w-7 sm:h-7 text-black dark:text-white" /> Reel Analytics

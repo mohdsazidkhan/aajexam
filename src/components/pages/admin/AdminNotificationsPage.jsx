@@ -128,7 +128,7 @@ const AdminNotificationsPage = () => {
   return (
     <>
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
-        <div className="transition-all duration-500 p-4 lg:p-8">
+        <div className="adminContent w-full mx-auto">
 
           {/* Header Section */}
           <motion.div

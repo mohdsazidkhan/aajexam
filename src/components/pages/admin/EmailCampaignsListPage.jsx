@@ -171,11 +171,11 @@ const EmailCampaignsListPage = () => {
     </div>
   );
 
-  if (!isMounted) return <div className="p-4 lg:p-8"><AdminTableSkeleton /></div>;
+  if (!isMounted) return <div className="adminContent w-full mx-auto"><AdminTableSkeleton /></div>;
 
   return (
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
-      <div className="p-4 lg:p-8 max-w-7xl mx-auto">
+      <div className="adminContent w-full mx-auto">
 
           {/* --- Header: title + New Campaign at the right end --- */}
           <div className="flex flex-wrap items-start justify-between gap-3 mb-6">

@@ -389,7 +389,7 @@ const StudentsPage = () => {
       <Sidebar />
       <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
-        <div className="transition-all duration-500 p-4 lg:p-10">
+        <div className="transition-all duration-500">
           {/* Student Directory Overview */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}

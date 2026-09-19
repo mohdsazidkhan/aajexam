@@ -168,7 +168,7 @@ const AdminReferralAnalytics = () => {
         <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
             <Sidebar />
             <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-                <div className="transition-all duration-500 p-4 lg:p-8">
+                <div className="transition-all duration-500">
 
                     {/* Header Section */}
                     <motion.div
