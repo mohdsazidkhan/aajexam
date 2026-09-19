@@ -88,20 +88,20 @@ const AdminNavbar = () => {
 
           {/* Center — Logo on mobile */}
           <Link href="/admin/dashboard" className="lg:hidden absolute left-1/2 -translate-x-1/2">
-            <span className="text-lg font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
+            <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
               AAJ<span className="text-primary-700">EXAM</span>
             </span>
           </Link>
 
           {/* Right */}
-          <div className="flex items-center gap-1.5 lg:gap-4">
-            {/* Theme toggle — desktop only */}
+          <div className="flex items-center gap-3 lg:gap-4">
+            {/* Theme toggle */}
             <button
               onClick={toggleTheme}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="hidden lg:flex w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-700 transition-all"
+              className="flex w-9 h-9 lg:w-10 lg:h-10 rounded-lg lg:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-700 transition-all flex-shrink-0"
             >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {darkMode ? <Sun className="w-4 h-4 lg:w-5 lg:h-5" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5" />}
             </button>
 
             {/* Notification Badge — desktop only */}
@@ -147,7 +147,7 @@ const AdminNavbar = () => {
             >
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{user?.name || 'Admin'}</p>
+                <p className="text-[14px] font-bold text-slate-900 dark:text-white truncate">{user?.name || 'Admin'}</p>
                 <p className="text-[12px] text-slate-400 truncate">{user?.email || ''}</p>
               </div>
 

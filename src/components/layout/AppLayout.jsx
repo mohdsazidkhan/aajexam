@@ -182,7 +182,7 @@ const AppLayout = ({ children }) => {
             'pt-12 lg:pt-16 pb-10 lg:pb-0' :
             (isFullscreenPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-16')
           }`}>
-        <div className={`mx-auto transition-all duration-500 ${isFullscreenPage ? 'max-w-full px-0' : 'container px-2 lg:px-4'}`}>
+        <div className={`mx-auto transition-all duration-500 ${isFullscreenPage ? 'max-w-full px-0' : 'container px-4 lg:px-8'}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={router.pathname}

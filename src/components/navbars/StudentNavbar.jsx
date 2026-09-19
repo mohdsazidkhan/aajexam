@@ -86,7 +86,7 @@ const StudentNavbar = () => {
 
           {/* Center — Logo on mobile, logged-in user's name on desktop */}
           <Link href="/home" className="lg:hidden absolute left-1/2 -translate-x-1/2">
-            <span className="text-lg font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
+            <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
               AAJ<span className="text-primary-700">EXAM</span>
             </span>
           </Link>

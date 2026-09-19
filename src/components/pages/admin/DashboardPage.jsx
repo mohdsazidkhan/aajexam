@@ -206,14 +206,14 @@ const DashboardPage = () => {
           <Card key={idx} variant="white" className="border-2 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
             <div className="flex items-center justify-between relative z-10">
               <div>
-                <p className={`text-${item.color}-600 dark:text-${item.color}-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2`}>{item.label}</p>
+                <p className="text-primary-700 text-[10px] font-black uppercase tracking-[0.3em] mb-2">{item.label}</p>
                 <p className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none italic">{item.value}</p>
                 <p className="text-slate-500 text-[9px] font-black uppercase tracking-widest mt-6 flex items-center gap-2">
                   <CheckCircle className={`w-3.5 h-3.5 text-${item.color}-500`} /> {item.subtitle}
                 </p>
               </div>
-              <div className={`p-5 rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-inner`}>
-                <item.icon className="w-8 h-8 lg:w-10 lg:h-10" />
+              <div className={`p-2.5 lg:p-5 rounded-lg lg:rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-inner`}>
+                <item.icon className="w-5 h-5 lg:w-10 lg:h-10" />
               </div>
             </div>
             <div className={`absolute -bottom-6 -left-6 w-24 h-24 bg-${item.color}-500/5 rounded-full blur-3xl`} />
