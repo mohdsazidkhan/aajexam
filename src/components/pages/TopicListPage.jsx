@@ -87,14 +87,14 @@ const TopicListPage = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
-        <div className="absolute inset-0 bg-black dark:bg-white dark:bg-slate-900" />
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 p-4 lg:p-8">
+        <div className="absolute inset-0 bg-white dark:bg-black" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
+            className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 px-5 py-2 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-black/20 dark:border-white/30">
             <TrendingUp className="w-3.5 h-3.5" /> {topics.length} Topics Available
           </motion.div>
-          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Topics Hub</h1>
+          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-black dark:text-white tracking-tighter">Topics Hub</h1>
           <div className="w-full max-w-lg">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -103,7 +103,7 @@ const TopicListPage = () => {
             </div>
           </div>
         </div>
-        <Layers className="absolute -bottom-10 -right-10 w-80 h-80 text-white/10 rotate-12 pointer-events-none" />
+        <Layers className="absolute -bottom-10 -right-10 w-80 h-80 text-black/10 dark:text-white/10 rotate-12 pointer-events-none" />
       </section>
 
       {/* ── Filters ── */}

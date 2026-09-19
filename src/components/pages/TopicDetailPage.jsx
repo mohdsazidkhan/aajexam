@@ -122,16 +122,16 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                 <div className="absolute inset-0 bg-black dark:bg-white opacity-90 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 p-4 flex flex-col justify-between">
                   <div className="flex justify-between items-start">
-                    <span className="bg-black/20 backdrop-blur-sm text-white text-[10px] font-black uppercase px-2 py-1 rounded-md flex items-center gap-1">
+                    <span className="bg-black/20 dark:bg-white/20 backdrop-blur-sm text-white dark:text-black text-[10px] font-black uppercase px-2 py-1 rounded-md flex items-center gap-1">
                       <Sparkles className="w-3 h-3" /> REVISION
                     </span>
-                    <span className="bg-white text-black dark:text-white text-[10px] font-black px-2 py-1 rounded-md">
+                    <span className="bg-white dark:bg-black text-black dark:text-white text-[10px] font-black px-2 py-1 rounded-md">
                       {deck.cardCount} CARDS
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-white font-black text-lg leading-tight group-hover:scale-105 transition-transform origin-left">{deck.title}</h3>
-                    <p className="text-white/70 text-xs font-medium mt-1 line-clamp-2">{deck.description}</p>
+                    <h3 className="text-white dark:text-black font-black text-lg leading-tight group-hover:scale-105 transition-transform origin-left">{deck.title}</h3>
+                    <p className="text-white/70 dark:text-black/70 text-xs font-medium mt-1 line-clamp-2">{deck.description}</p>
                   </div>
                 </div>
               </motion.div>

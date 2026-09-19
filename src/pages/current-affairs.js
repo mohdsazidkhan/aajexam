@@ -101,14 +101,14 @@ const CurrentAffairsPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Current Affairs', url: '/current-affairs' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
-        <div className="absolute inset-0 bg-black dark:bg-white dark:bg-slate-900" />
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 p-4 lg:p-8">
+        <div className="absolute inset-0 bg-white dark:bg-black" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
+            className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 px-5 py-2 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-black/20 dark:border-white/30">
             <TrendingUp className="w-3.5 h-3.5" /> {affairs.length} Updates Available
           </motion.div>
-          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Current Affairs</h1>
+          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-black dark:text-white tracking-tighter">Current Affairs</h1>
           {/* Search + Date */}
           <div className="w-full max-w-2xl flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
@@ -129,13 +129,13 @@ const CurrentAffairsPage = () => {
             </div>
             {hasFilters && (
               <button onClick={() => { setSearch(''); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}
-                className="flex items-center gap-1 px-4 py-2.5 bg-white/20 text-white rounded-lg lg:rounded-xl text-xs font-black uppercase border border-white/30">
+                className="flex items-center gap-1 px-4 py-2.5 bg-black/10 dark:bg-white/20 text-black dark:text-white rounded-lg lg:rounded-xl text-xs font-black uppercase border border-black/20 dark:border-white/30">
                 <X className="w-3 h-3" /> Clear
               </button>
             )}
           </div>
         </div>
-        <Newspaper className="absolute -bottom-10 -right-10 w-80 h-80 text-white/10 rotate-12 pointer-events-none" />
+        <Newspaper className="absolute -bottom-10 -right-10 w-80 h-80 text-black/10 dark:text-white/10 rotate-12 pointer-events-none" />
       </section>
 
       {/* ── Filters ── */}

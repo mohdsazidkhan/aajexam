@@ -210,28 +210,28 @@ const ExamCalendarPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
-          <div className="absolute inset-0 bg-black dark:bg-white" />
-          <div className="absolute -top-8 -right-8 w-48 h-48 bg-white/5 rounded-full pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-white/5 rounded-full pointer-events-none" />
-          <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-white/10 pointer-events-none" />
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 p-4 lg:p-8">
+          <div className="absolute inset-0 bg-white dark:bg-black" />
+          <div className="absolute -top-8 -right-8 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
+          <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-black/10 dark:text-white/10 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 bg-white/20 border border-white/30 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-3"
+                className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/30 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
               >
                 <CalendarDays className="w-3.5 h-3.5" />
                 {totalEvents} events this month
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-tight"
+                className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
               >
                 Exam Calendar
               </motion.h1>
-              <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Important Dates at a Glance</p>
+              <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Important Dates at a Glance</p>
             </div>
 
             {/* Type legend */}
@@ -239,9 +239,9 @@ const ExamCalendarPage = () => {
               {['admit_card', 'result', 'vacancy', 'notification'].map(t => {
                 const cfg = getType(t);
                 return (
-                  <div key={t} className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/20 px-2.5 py-1 rounded-full">
+                  <div key={t} className="flex items-center gap-1.5 bg-black/10 dark:bg-white/15 backdrop-blur-sm border border-black/20 dark:border-white/20 px-2.5 py-1 rounded-full">
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
-                    <span className="text-[10px] font-black text-white uppercase">{cfg.label}</span>
+                    <span className="text-[10px] font-black text-black dark:text-white uppercase">{cfg.label}</span>
                   </div>
                 );
               })}

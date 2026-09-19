@@ -33,12 +33,12 @@ const NotesSkeleton = () => (
 
 // ─── Note type config ──────────────────────────────────────────────────────────
 const noteTypeConfig = {
-  notes:            { icon: BookOpen,   color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',    label: 'Notes' },
-  formulas:         { icon: Calculator, color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label: 'Formulas' },
-  shortcuts:        { icon: Zap,        color: 'bg-black dark:bg-white',   chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label: 'Shortcuts' },
-  important_points: { icon: Hash,       color: 'bg-black dark:bg-white',       chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',        label: 'Key Points' },
-  tables:           { icon: StickyNote, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',    label: 'Tables' },
-  mnemonics:        { icon: Sparkles,   color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',    label: 'Mnemonics' },
+  notes:            { icon: BookOpen,   color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',    label: 'Notes' },
+  formulas:         { icon: Calculator, color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label: 'Formulas' },
+  shortcuts:        { icon: Zap,        color: 'bg-black dark:bg-white',   chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label: 'Shortcuts' },
+  important_points: { icon: Hash,       color: 'bg-black dark:bg-white',       chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',        label: 'Key Points' },
+  tables:           { icon: StickyNote, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',    label: 'Tables' },
+  mnemonics:        { icon: Sparkles,   color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800',    label: 'Mnemonics' },
 };
 const defaultNoteType = { icon: StickyNote, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200', label: 'Note' };
 
@@ -82,14 +82,14 @@ const NotesPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Notes & Formulas', url: '/notes' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
-        <div className="absolute inset-0 bg-black dark:bg-white dark:bg-slate-900" />
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 p-4 lg:p-8">
+        <div className="absolute inset-0 bg-white dark:bg-black" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
+            className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 px-5 py-2 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-black/20 dark:border-white/30">
             <TrendingUp className="w-3.5 h-3.5" /> {notes.length} Notes Available
           </motion.div>
-          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Notes Hub</h1>
+          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-black dark:text-white tracking-tighter">Notes Hub</h1>
           <div className="w-full max-w-lg">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -98,7 +98,7 @@ const NotesPage = () => {
             </div>
           </div>
         </div>
-        <StickyNote className="absolute -bottom-10 -right-10 w-80 h-80 text-white/10 rotate-12 pointer-events-none" />
+        <StickyNote className="absolute -bottom-10 -right-10 w-80 h-80 text-black/10 dark:text-white/10 rotate-12 pointer-events-none" />
       </section>
 
       {/* ── Filters ── */}
@@ -130,7 +130,7 @@ const NotesPage = () => {
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-2xl ${cfg.color} flex items-center justify-center shrink-0 shadow-md`}>
-                        <Icon className="w-6 h-6 text-white" />
+                        <Icon className="w-6 h-6 text-white dark:text-black" />
                       </div>
                       <div>
                         <h3 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{note.title}</h3>

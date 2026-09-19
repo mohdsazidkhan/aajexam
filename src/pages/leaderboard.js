@@ -43,14 +43,16 @@ const PERIODS = [
 const rankConfig = {
   1: {
     gradient: 'bg-black dark:bg-white',
-    ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10',
-    textColor: 'text-black dark:text-white dark:text-white',
-    badgeBg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white',
+    numberText: 'text-white dark:text-black',
+    ringColor: 'ring-black/10 dark:ring-white/10',
+    textColor: 'text-black dark:text-white',
+    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
     pillBg: 'bg-black dark:bg-white text-white dark:text-black',
     icon: Crown,
   },
   2: {
     gradient: 'bg-slate-400',
+    numberText: 'text-white',
     ringColor: 'ring-slate-400 dark:ring-slate-500',
     textColor: 'text-slate-500 dark:text-slate-400',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300',
@@ -59,16 +61,26 @@ const rankConfig = {
   },
   3: {
     gradient: 'bg-slate-100 dark:bg-slate-800',
-    ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10',
-    textColor: 'text-black dark:text-white dark:text-white',
-    badgeBg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white',
-    pillBg: 'bg-slate-100 dark:bg-slate-800 text-white',
+    numberText: 'text-slate-900 dark:text-white',
+    ringColor: 'ring-black/10 dark:ring-white/10',
+    textColor: 'text-black dark:text-white',
+    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
+    pillBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
     icon: Medal,
   },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = ['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-500', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white'];
+const AVATAR_COLORS = [
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-primary-500', text: 'text-white' },
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+  { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
+];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const [imgFailed, setImgFailed] = useState(false);
@@ -80,6 +92,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
   };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
   const colorIdx = initial.charCodeAt(0) % AVATAR_COLORS.length;
+  const avatarStyle = AVATAR_COLORS[colorIdx];
   const rc = rankConfig[entry?.rank];
 
   const ringClass = ring && rc ? `ring-4 ${rc.ringColor} ring-offset-2 ring-offset-background-surface` : '';
@@ -92,7 +105,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
       className={`${sizes[size]} rounded-full object-cover flex-shrink-0 ${ringClass}`}
     />
   ) : (
-    <div className={`${sizes[size]} ${AVATAR_COLORS[colorIdx]} rounded-full flex items-center justify-center font-black text-white flex-shrink-0 ${ringClass}`}>
+    <div className={`${sizes[size]} ${avatarStyle.bg} rounded-full flex items-center justify-center font-black ${avatarStyle.text} flex-shrink-0 ${ringClass}`}>
       {initial}
     </div>
   );
@@ -107,6 +120,11 @@ const Podium = ({ top3, currentUserId }) => {
     1: 'bg-black dark:bg-white',
     2: 'bg-slate-400',
     3: 'bg-slate-100 dark:bg-slate-800',
+  };
+  const podiumTextColor = {
+    1: 'text-white dark:text-black',
+    2: 'text-white',
+    3: 'text-black dark:text-white',
   };
 
   return (
@@ -131,13 +149,13 @@ const Podium = ({ top3, currentUserId }) => {
               <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full">You</span>
             )}
             <div className="text-center max-w-[76px] sm:max-w-[96px]">
-              <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-black dark:text-white' : 'text-white'}`}>
+              <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
                 {entry.name || entry.username || 'User'}
               </p>
-              <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}%</p>
+              <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.avgPercentage}%</p>
             </div>
             <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
-              <span className="text-white font-black text-sm">#{entry.rank}</span>
+              <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
             </div>
           </motion.div>
         );
@@ -159,7 +177,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
   const rankBadge = (
     <div className={`
       w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-      ${isTop3 ? `${rc.gradient} text-white shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
+      ${isTop3 ? `${rc.gradient} ${rc.numberText} shadow-md` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
     `}>
       {entry.rank}
     </div>
@@ -168,7 +186,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
   const identity = (
     <div className="min-w-0">
       <div className="flex items-center gap-1.5 flex-wrap">
-        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white dark:text-white' : 'text-content-primary'}`}>
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white' : 'text-content-primary'}`}>
           {entry.name || entry.username || 'Anonymous'}
         </p>
         {isMe && (
@@ -348,21 +366,20 @@ const LeaderboardPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero Banner ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20 dark:border-white/30">
-          {/* Gradient works in both dark/light via dark: class on body (class-based dark mode) */}
-          <div className="absolute inset-0 bg-black dark:bg-white" />
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-black/20 dark:border-white/20">
+          <div className="absolute inset-0 bg-white dark:bg-black" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 dark:bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
           <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
-            
+
             {/* Type Toggle */}
             <div className="flex justify-center mb-6">
-              <div className="flex p-1 bg-white/20 backdrop-blur-md rounded-full border border-white/20 shadow-inner">
+              <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-inner">
                 <button
                   onClick={() => setType('quiz')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'quiz' ? 'bg-white text-black dark:text-white shadow-md' : 'text-white/80 hover:text-white'
+                    type === 'quiz' ? 'bg-black dark:bg-white text-white dark:text-black shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <BrainCircuit className="w-4 h-4" /> Quizzes
@@ -370,7 +387,7 @@ const LeaderboardPage = () => {
                 <button
                   onClick={() => setType('exam')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'exam' ? 'bg-white text-black dark:text-white shadow-md' : 'text-white/80 hover:text-white'
+                    type === 'exam' ? 'bg-black dark:bg-white text-white dark:text-black shadow-md' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <FileText className="w-4 h-4" /> Exams
@@ -380,24 +397,24 @@ const LeaderboardPage = () => {
 
             <motion.div
               initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 bg-white/15 border border-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-widest mb-3"
+              className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/15 border border-black/20 dark:border-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
             >
               <Trophy className="w-3.5 h-3.5 text-black dark:text-white" /> Hall of Fame
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-black dark:text-white tracking-tight"
             >
               Leaderboard
             </motion.h1>
-            <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Top {type === 'quiz' ? 'Quiz' : 'Exam'} Performers</p>
+            <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Top {type === 'quiz' ? 'Quiz' : 'Exam'} Performers</p>
 
             {/* Podium */}
             {loading ? (
               <div className="h-36 flex items-end justify-center gap-4 animate-pulse">
-                <div className="w-16 h-24 bg-white/20 rounded-t-2xl" />
-                <div className="w-16 h-32 bg-white/20 rounded-t-2xl" />
-                <div className="w-16 h-20 bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-24 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-32 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-20 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
               </div>
             ) : top3.length > 0 ? (
               <Podium top3={top3} currentUserId={currentUserId} />
@@ -443,9 +460,9 @@ const LeaderboardPage = () => {
         {!loading && data.length > 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
-              { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-black dark:text-white dark:text-white' },
+              { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-black dark:text-white' },
               { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-500 dark:text-primary-400' },
-              { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white dark:text-white' },
+              { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
             ].map((stat, i) => (
               <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
                 <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
