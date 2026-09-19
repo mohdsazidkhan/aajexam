@@ -88,7 +88,7 @@ const HowItWorks = () => {
          <div className="space-y-20 mt-4">
 
             {/* --- Hero Section --- */}
-            <section className="text-center space-y-6 relative overflow-hidden p-4 lg:p-8">
+            <section className="text-center space-y-6 relative overflow-hidden px-0 py-4 lg:p-8">
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-2 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>

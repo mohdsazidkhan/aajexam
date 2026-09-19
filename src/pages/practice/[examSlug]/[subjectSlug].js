@@ -117,7 +117,7 @@ export default function SubjectPractice({
           </header>
 
           {aboutText && (
-            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About {examName} {subjectName} previous year questions
               </h2>
@@ -133,7 +133,7 @@ export default function SubjectPractice({
             intro={`A sample of ${questions.length} questions from the full bank of ${totalQuestions}. Try each one before opening the solution — the remaining questions are in the timed practice sets below.`}
           />
 
-          <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+          <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">
               Keep going
             </h2>
@@ -157,7 +157,7 @@ export default function SubjectPractice({
           </section>
 
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>

@@ -97,7 +97,7 @@ export default function TopicDetail({
 
           {/* About — long-form intro server-side */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About {topicName}
               </h2>
@@ -112,7 +112,7 @@ export default function TopicDetail({
 
           {/* FAQ — server-rendered for SEO + schema */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
@@ -130,7 +130,7 @@ export default function TopicDetail({
           {/* Practice quizzes — server-rendered so quiz pages get real inbound
               links instead of existing only in the sitemap. */}
           {relatedQuizzes.length > 0 && (
-            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 {topicName} Practice Quizzes
               </h2>
@@ -146,7 +146,7 @@ export default function TopicDetail({
 
           {/* Sibling topics — internal linking */}
           {siblingTopics.length > 0 && (
-            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8">
+            <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 More {subjectName || 'Related'} Topics
               </h2>

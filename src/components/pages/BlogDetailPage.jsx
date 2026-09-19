@@ -208,7 +208,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         </div>
 
         {/* Next steps — contextual internal links */}
-        <section className="mb-8 rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 p-4 lg:p-8">
+        <section className="mb-8 rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 lg:p-8">
           <h2 className="text-lg lg:text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
             Prepare for {blog.exam?.name || 'this exam'} on AajExam
           </h2>

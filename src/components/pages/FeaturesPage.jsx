@@ -147,7 +147,7 @@ const FeaturesPage = () => {
       <div className="space-y-10 lg:space-y-16 mt-2 lg:mt-4">
 
         {/* --- Hero --- */}
-        <section className="text-center space-y-3 lg:space-y-6 p-4 lg:p-8">
+        <section className="text-center space-y-3 lg:space-y-6 px-0 py-4 lg:p-8">
           <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-aajexam-primary rotate-6">
             <Sparkles className="w-6 h-6 lg:w-9 lg:h-9" />
           </div>
@@ -268,7 +268,7 @@ const FeaturesPage = () => {
         </section>
 
         {/* --- CTA --- */}
-        <section className="p-4 lg:p-8">
+        <section className="px-0 py-4 lg:p-8">
           <Card className="p-5 lg:p-16 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[2rem] lg:rounded-[4rem]">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
