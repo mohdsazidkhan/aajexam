@@ -13,6 +13,18 @@ export const slugRedirect = (destination) => ({
     redirect: { destination, permanent: true }
 });
 
+// A slug that no longer resolves may have been renamed or merged into
+// another doc — both cases push the old slug onto the surviving doc's
+// `previousSlugs` array (see Subject/Topic model comments). Look it up and
+// return a 301 redirect to the doc's current canonical slug, or null when
+// there's no such history (a genuine 404).
+export async function previousSlugRedirect(Model, segment, canonicalPath) {
+    if (!segment) return null;
+    const doc = await Model.findOne({ previousSlugs: segment, isActive: { $ne: false } }).select('slug').lean();
+    if (!doc?.slug) return null;
+    return slugRedirect(canonicalPath(doc.slug));
+}
+
 // Convenience: given a Mongoose model + URL segment, return either the doc
 // (when it's a slug match) or a redirect target (when it's an ObjectId for
 // which the doc has a slug). Returns null when nothing matches.

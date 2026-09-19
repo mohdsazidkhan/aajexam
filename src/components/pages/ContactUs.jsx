@@ -102,7 +102,7 @@ const ContactUs = ({ contactInfo = {
                            { label: 'Office Address', val: contactInfo.address, icon: MapPin, color: 'primary' },
                            { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'primary' }
                         ].map((item, i) => (
-                           <Card key={i} className="p-6 lg:p-8 flex items-center gap-6 lg:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] lg:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
+                           <Card key={i} className="p-2 lg:p-4 flex items-center gap-6 lg:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] lg:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
                               <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
                                  <item.icon className="w-5 h-5 lg:w-6 lg:h-6" />
                               </div>
@@ -150,7 +150,7 @@ const ContactUs = ({ contactInfo = {
 
                   {/* --- Contact Form --- */}
                   <div className="lg:col-span-6">
-                     <Card className="p-6 lg:p-8 space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-2xl rounded-[3rem] lg:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
+                     <Card className="p-2 lg:p-4 space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-2xl rounded-[3rem] lg:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -ml-32 -mt-32" />
 
                         <div className="space-y-6 relative z-10">
@@ -238,7 +238,7 @@ const ContactUs = ({ contactInfo = {
                      { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'primary' },
                      { title: 'Helpful Team', desc: 'Our team knows the platform well and can solve your problem quickly.', icon: GraduationCap, color: 'primary' }
                   ].map((f, i) => (
-                     <Card key={i} className="p-6 lg:p-8 text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-xl transition-all group relative overflow-hidden">
+                     <Card key={i} className="p-2 lg:p-4 text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-xl transition-all group relative overflow-hidden">
                         <div className={`p-4 bg-${f.color === 'primary' ? 'primary' : f.color}-500/25 text-${f.color === 'primary' ? 'primary' : f.color}-500 rounded-2xl w-fit mx-auto border-2 border-transparent group-hover:border-current transition-all shadow-sm`}>
                            <f.icon className="w-6 h-6" />
                         </div>

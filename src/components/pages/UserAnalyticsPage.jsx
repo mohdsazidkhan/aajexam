@@ -481,7 +481,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         {/* Balance Card */}
-                        <Card className="bg-primary-500 text-white border-none shadow-aajexam-primary p-6 lg:p-8 rounded-[2rem] lg:rounded-[3rem]">
+                        <Card className="bg-primary-500 text-white border-none shadow-aajexam-primary p-2 lg:p-4 rounded-[2rem] lg:rounded-[3rem]">
                            <div className="flex justify-between items-start mb-6">
                               <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
                               <span className="text-xs font-black opacity-60 uppercase">Wallet Balance</span>

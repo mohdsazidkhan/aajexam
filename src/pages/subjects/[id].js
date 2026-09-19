@@ -204,7 +204,7 @@ export async function getServerSideProps({ params, res }) {
   const Subject = (await import('../../models/Subject')).default;
   const Topic = (await import('../../models/Topic')).default;
   const Quiz = (await import('../../models/Quiz')).default;
-  const { isObjectId, slugRedirect } = await import('../../lib/web/slugRouting');
+  const { isObjectId, slugRedirect, previousSlugRedirect } = await import('../../lib/web/slugRouting');
   const segment = params?.id;
   if (!segment) return { notFound: true };
 
@@ -224,7 +224,13 @@ export async function getServerSideProps({ params, res }) {
       .select('_id name slug description icon')
       .lean();
 
-    if (!subject) return { notFound: true };
+    if (!subject) {
+      // Renamed or merged into another subject — the old slug is preserved
+      // on the surviving doc's previousSlugs, so redirect instead of 404ing.
+      const redirect = await previousSlugRedirect(Subject, segment, (slug) => `/subjects/${slug}`);
+      if (redirect) return redirect;
+      return { notFound: true };
+    }
 
     // Topics under this subject
     const topicDocs = await Topic.find({ subject: subject._id, isActive: true, slug: { $exists: true, $ne: null } })

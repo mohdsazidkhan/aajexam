@@ -434,7 +434,7 @@ const TestResult = ({ resolvedId } = {}) => {
       {/* --- Share Result --- */}
       {mounted && result && (
         <section className="p-4 lg:p-8">
-          <Card className="p-6 lg:p-8 border-2 bg-primary-50 dark:bg-slate-800">
+          <Card className="p-2 lg:p-4 border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">

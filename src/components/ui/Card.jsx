@@ -50,7 +50,7 @@ const Card = ({
         ${variants[variant]} 
         ${radii[radius]}
         ${noBorder ? 'border-none' : 'border-2'}
-        ${padded ? 'p-4 lg:p-6' : ''}
+        ${padded ? 'p-2 lg:p-4' : ''}
         ${hoverable ? 'cursor-pointer group' : ''} 
         ${glow ? 'glow-border' : ''}
         transition-all duration-300 font-outfit relative overflow-hidden

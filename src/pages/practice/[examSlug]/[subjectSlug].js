@@ -300,7 +300,17 @@ export async function getStaticProps({ params }) {
 
   try {
     const series = await loadSeries(examSlug, subjectSlug);
-    if (!series) return { notFound: true, revalidate: 600 };
+    if (!series) {
+      // The subject may have been renamed or merged into another one — its
+      // old slug is preserved on the surviving doc's previousSlugs.
+      const dbConnect = (await import('../../../lib/db')).default;
+      const Subject = (await import('../../../models/Subject')).default;
+      const { previousSlugRedirect } = await import('../../../lib/web/slugRouting');
+      await dbConnect();
+      const redirect = await previousSlugRedirect(Subject, subjectSlug, (slug) => `/practice/${examSlug}/${slug}`);
+      if (redirect) return { ...redirect, revalidate: 600 };
+      return { notFound: true, revalidate: 600 };
+    }
 
     const { exam, subject, quizDocs } = series;
 

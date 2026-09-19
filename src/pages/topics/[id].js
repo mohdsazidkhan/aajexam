@@ -213,7 +213,7 @@ export async function getServerSideProps({ params, res }) {
   const dbConnect = (await import('../../lib/db')).default;
   const Topic = (await import('../../models/Topic')).default;
   const Quiz = (await import('../../models/Quiz')).default;
-  const { isObjectId, slugRedirect } = await import('../../lib/web/slugRouting');
+  const { isObjectId, slugRedirect, previousSlugRedirect } = await import('../../lib/web/slugRouting');
   const segment = params?.id;
   if (!segment) return { notFound: true };
 
@@ -234,7 +234,13 @@ export async function getServerSideProps({ params, res }) {
       .populate('subject', 'name slug')
       .lean();
 
-    if (!topic) return { notFound: true };
+    if (!topic) {
+      // Renamed or merged into another topic — the old slug is preserved
+      // on the surviving doc's previousSlugs, so redirect instead of 404ing.
+      const redirect = await previousSlugRedirect(Topic, segment, (slug) => `/topics/${slug}`);
+      if (redirect) return redirect;
+      return { notFound: true };
+    }
 
     // Related quizzes for this topic
     const relatedQuizDocs = await Quiz.find({ topic: topic._id, status: 'published', slug: { $exists: true, $ne: null } })

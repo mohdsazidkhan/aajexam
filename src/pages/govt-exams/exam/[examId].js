@@ -216,7 +216,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* About / SEO long-form intro — server-rendered for crawlers */}
       {aboutText && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+        <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <FileText className="w-5 h-5 text-primary-500" />
             About {examName}
@@ -229,7 +229,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Information — eligibility, age limit, selection process, salary */}
       {facts && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+        <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
             <Info className="w-5 h-5 text-primary-500" />
             {examName} Exam Information
@@ -260,7 +260,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Syllabus & Subjects */}
       {subjectAreas.length > 0 && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+        <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <ListChecks className="w-5 h-5 text-primary-500" />
             {examName} Syllabus &amp; Subjects
@@ -331,7 +331,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <motion.div key={subject._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card
                   hoverable
-                  onClick={() => router.push(`/practice/${exam.slug}/${subject.slug}`)}
+                  onClick={() => subject.slug ? router.push(`/practice/${exam.slug}/${subject.slug}`) : setActiveTab('quizzes')}
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
@@ -367,12 +367,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <motion.div key={topic._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card
                   hoverable
-                  onClick={() => router.push(`/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}`)}
+                  onClick={() => (topic.subjectSlug && topic.slug) ? router.push(`/practice/${exam.slug}/${topic.subjectSlug}/${topic.slug}`) : setActiveTab('quizzes')}
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-black dark:bg-white flex items-center justify-center shrink-0">
-                      <FolderOpen className="w-5 h-5 text-white" />
+                      <FolderOpen className="w-5 h-5 text-white dark:text-black" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-black text-content-primary uppercase truncate">{topic.name}</h3>
@@ -498,7 +498,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       )}
 
       {/* How to Prepare */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+      <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <GraduationCap className="w-5 h-5 text-primary-500" />
           How to Prepare for {examName}
@@ -516,7 +516,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* Related Searches */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+      <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <Search className="w-5 h-5 text-primary-500" />
           Related Searches
@@ -534,7 +534,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* FAQ — rendered visibly to match the FAQ structured data above */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800 p-6 lg:p-8">
+      <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <HelpCircle className="w-5 h-5 text-primary-500" />
           Frequently Asked Questions
@@ -551,7 +551,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-primary-500 text-white border-none p-6 lg:p-8">
+        <Card className="bg-primary-500 text-white border-none p-2 lg:p-4">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

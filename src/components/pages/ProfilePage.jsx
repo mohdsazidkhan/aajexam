@@ -344,7 +344,7 @@ const ProfilePage = () => {
               </Card>
 
               {/* Badges */}
-              <Card className="p-6 lg:p-8 space-y-6" radius="3xl">
+              <Card className="p-2 lg:p-4 space-y-6" radius="3xl">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
@@ -364,7 +364,7 @@ const ProfilePage = () => {
               </Card>
 
               {/* Account details */}
-              <Card className="p-6 lg:p-8 space-y-6" radius="3xl">
+              <Card className="p-2 lg:p-4 space-y-6" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-600" />
                   <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Account details</h3>
@@ -386,7 +386,7 @@ const ProfilePage = () => {
 
               {/* Referral code */}
               {student?.referralCode && (
-                <Card className="p-6 lg:p-8 space-y-4" radius="3xl">
+                <Card className="p-2 lg:p-4 space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-primary-500" />
                     <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
