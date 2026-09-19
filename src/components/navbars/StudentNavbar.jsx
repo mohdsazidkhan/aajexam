@@ -67,7 +67,7 @@ const StudentNavbar = () => {
               className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${showHamburger ? 'flex' : 'hidden lg:flex'
                 } ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-transparent lg:bg-primary-500 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-duo-primary lg:hover:scale-105'
+                  : 'bg-transparent lg:bg-primary-500 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-aajexam-primary lg:hover:scale-105'
                 }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <Menu className="w-5 h-5 lg:w-6 lg:h-6" />}
@@ -99,7 +99,7 @@ const StudentNavbar = () => {
           {/* Right */}
           <div className="flex items-center gap-1.5 lg:gap-4">
             {/* Wallet — desktop only in navbar */}
-            <div className="hidden lg:flex items-center gap-1 px-4 py-2 bg-amber-500/10 rounded-2xl border border-amber-500/20 text-amber-600 dark:text-amber-400">
+            <div className="hidden lg:flex items-center gap-1 px-4 py-2 bg-black/10 dark:bg-white/10 rounded-2xl border border-black/20 dark:border-white/20 text-black dark:text-white">
               <IndianRupee className="w-4 h-4" />
               <span className="text-sm font-black">{user.walletBalance || 0}</span>
             </div>
@@ -139,8 +139,8 @@ const StudentNavbar = () => {
                       className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[7px] lg:text-[8px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full text-white backdrop-blur-md shadow-lg border border-white/20 ${isExpired
                         ? 'bg-gradient-to-r from-slate-500 via-slate-600 to-slate-500'
                         : isPro
-                          ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500'
-                          : 'bg-gradient-to-r from-primary-500 via-primary-500 to-teal-500'
+                          ? 'bg-gradient-to-r from-black dark:from-white via-black dark:via-white to-black dark:to-white'
+                          : 'bg-gradient-to-r from-primary-500 via-primary-500 to-black dark:to-white'
                       }`}
                     >
                       {plan}
@@ -157,7 +157,7 @@ const StudentNavbar = () => {
                         />
                       ) : (
                         <div
-                          className={`w-full h-full border border-y-accent-orange rounded-full flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase`}
+                          className={`w-full h-full border border-y-black dark:border-y-white rounded-full flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase`}
                         >
                           {user.name?.charAt(0)}
                         </div>
@@ -190,10 +190,10 @@ const StudentNavbar = () => {
               </div>
 
               {/* Wallet — mobile only (in dropdown) */}
-              <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl bg-amber-50 dark:bg-amber-900/10 mb-1">
-                <Wallet className="w-4 h-4 text-amber-500" />
-                <span className="text-sm font-bold text-amber-700 dark:text-amber-400">Balance</span>
-                <span className="ml-auto text-sm font-black text-amber-600 dark:text-amber-400 flex items-center gap-0.5">
+              <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 dark:bg-white/10 mb-1">
+                <Wallet className="w-4 h-4 text-black dark:text-white" />
+                <span className="text-sm font-bold text-black dark:text-white">Balance</span>
+                <span className="ml-auto text-sm font-black text-black dark:text-white flex items-center gap-0.5">
                   <IndianRupee className="w-3 h-3" />{user.walletBalance || 0}
                 </span>
               </div>
@@ -222,7 +222,7 @@ const StudentNavbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all"
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 transition-all"
               >
                 <LogOut className="w-4 h-4" /> Log out
               </button>

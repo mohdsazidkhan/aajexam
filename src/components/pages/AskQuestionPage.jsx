@@ -196,7 +196,7 @@ const AskQuestionPage = () => {
         <form onSubmit={handleSubmit}>
           {/* Error */}
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg lg:rounded-xl bg-rose-50 dark:bg-rose-500/10 border-2 border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 text-sm font-semibold">
+            <div className="mb-4 px-4 py-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 dark:bg-white/10 border-2 border-slate-200 dark:border-slate-800 dark:border-white/20 text-black dark:text-white text-sm font-semibold">
               {error}
             </div>
           )}
@@ -243,7 +243,7 @@ const AskQuestionPage = () => {
                   <button
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
-                    className="absolute -top-2 -right-2 p-1 rounded-full bg-rose-500 text-white shadow-lg"
+                    className="absolute -top-2 -right-2 p-1 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg"
                   >
                     <X className="w-3 h-3" />
                   </button>
@@ -305,7 +305,7 @@ const AskQuestionPage = () => {
                     <button
                       type="button"
                       onClick={() => removeOption(i)}
-                      className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-rose-400 hover:text-rose-500 transition-colors"
+                      className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>

@@ -53,7 +53,7 @@ export default function SharedResult({ stats }) {
 
       <PublicNavbar />
 
-      <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950 py-12 px-4">
+      <main className="min-h-screen bg-gradient-to-br from-slate-100 dark:from-slate-800 via-white to-slate-100 dark:to-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-white py-12 px-4">
         <div className="max-w-4xl mx-auto space-y-10">
 
           <motion.div
@@ -61,13 +61,13 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-2xl bg-gradient-to-br from-primary-500 via-indigo-600 to-purple-600 text-white p-8 lg:p-12">
+            <Card className="relative overflow-hidden border-none shadow-2xl bg-gradient-to-br from-primary-500 via-black dark:via-white to-black dark:to-white text-white p-8 lg:p-12">
               <div className="absolute top-0 right-0 opacity-10">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
 
               <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-300 text-yellow-900 text-xs font-black uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white text-xs font-black uppercase tracking-widest">
                   <Crown className="w-4 h-4" />
                   {band}
                 </div>
@@ -83,7 +83,7 @@ export default function SharedResult({ stats }) {
 
                 {rank && total && (
                   <div className="flex flex-wrap items-baseline gap-3">
-                    <span className="text-5xl lg:text-7xl font-black tracking-tighter text-yellow-300">
+                    <span className="text-5xl lg:text-7xl font-black tracking-tighter text-black dark:text-white">
                       #{rank}
                     </span>
                     <span className="text-xl lg:text-2xl font-bold opacity-80">
@@ -94,7 +94,7 @@ export default function SharedResult({ stats }) {
 
                 {pctNum > 0 && (
                   <p className="text-lg lg:text-xl font-bold opacity-90">
-                    Beat <span className="text-yellow-300">{pctNum.toFixed(1)}%</span> of candidates on AajExam
+                    Beat <span className="text-black dark:text-white">{pctNum.toFixed(1)}%</span> of candidates on AajExam
                   </p>
                 )}
               </div>
@@ -103,10 +103,10 @@ export default function SharedResult({ stats }) {
 
           <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: 'text-yellow-500' },
+              { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: 'text-black dark:text-white' },
               { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: 'text-primary-500' },
               { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-primary-500' },
-              { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: 'text-purple-500' },
+              { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: 'text-black dark:text-white' },
             ].map((item, idx) => (
               <Card key={idx} className="flex flex-col items-center text-center p-6 gap-2 border-2">
                 <div className={`w-12 h-12 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
@@ -135,7 +135,7 @@ export default function SharedResult({ stats }) {
                 Take this test <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <Button
-                variant="ghost"
+                variant="secondary"
                 size="lg"
                 onClick={() => router.push('/register')}
                 className="px-10 py-5 text-lg border-2"

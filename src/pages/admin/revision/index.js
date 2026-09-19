@@ -61,7 +61,7 @@ const AdminRevisionPage = () => {
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.dueToday ?? 0}</div>
               </Card>
               <Card className="p-5 space-y-3">
-                <div className="flex items-center gap-2 text-amber-600"><ShieldCheck className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Total Active</span></div>
+                <div className="flex items-center gap-2 text-black dark:text-white"><ShieldCheck className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Total Active</span></div>
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.totalItems ?? 0}</div>
               </Card>
               <Card className="p-5 space-y-3">

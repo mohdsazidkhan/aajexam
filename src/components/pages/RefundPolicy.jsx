@@ -47,7 +47,7 @@ const RefundPolicy = () => {
                   <motion.div
                      initial={{ y: 20, opacity: 0 }}
                      animate={{ y: 0, opacity: 1 }}
-                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-duo-secondary flex items-center justify-center mx-auto border-4 border-slate-50 dark:border-slate-700"
+                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-aajexam-secondary flex items-center justify-center mx-auto border-4 border-slate-50 dark:border-slate-700"
                   >
                      <Banknote className="w-14 h-14 text-primary-500" />
                   </motion.div>
@@ -102,7 +102,7 @@ const RefundPolicy = () => {
 
                      {/* Introduction */}
                      <section id="intro" className="group mt-4">
-                        <div className="bg-white dark:bg-slate-800 p-4  lg:p-8 rounded-[2rem]  lg:rounded-[4rem] shadow-duo-secondary border-none relative overflow-hidden text-center">
+                        <div className="bg-white dark:bg-slate-800 p-4  lg:p-8 rounded-[2rem]  lg:rounded-[4rem] shadow-aajexam-secondary border-none relative overflow-hidden text-center">
                            <p className="text-md lg:text-lg leading-[2] text-slate-600 dark:text-slate-400 font-medium italic">
                               Thank you for using <strong>AajExam</strong>. Please read this policy before buying a plan. By paying for a plan, you agree to the rules below.
                            </p>
@@ -110,16 +110,16 @@ const RefundPolicy = () => {
                      </section>
 
                      {/* 1. General Policy */}
-                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-duo-secondary space-y-12 border-none ring-8 ring-rose-500/5">
+                     <section id="general" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary space-y-12 border-none ring-8 ring-black/10/5 dark:ring-white/10/5">
                         <div className="flex items-center gap-6">
-                           <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-rose-500/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
                               <Ban className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">1. General Policy</h2>
                         </div>
 
                         <div className="space-y-10 relative z-10">
-                           <div className="p-8 bg-rose-500/10 rounded-[3rem] border-2 border-rose-500/20 text-rose-600 dark:text-rose-400 text-center">
+                           <div className="p-8 bg-black/10 dark:bg-white/10 rounded-[3rem] border-2 border-black/20 dark:border-white/20 text-black dark:text-white text-center">
                               <p className="text-lg font-black uppercase tracking-widest leading-none">
                                  ALL SUBSCRIPTIONS ARE FINAL & NON-REFUNDABLE.
                               </p>
@@ -209,7 +209,7 @@ const RefundPolicy = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-duo-primary space-y-10 border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />

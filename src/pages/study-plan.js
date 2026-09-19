@@ -141,7 +141,7 @@ const StudyPlanPage = () => {
                     className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
                   {durationPreview && (
                     durationPreview.invalid
-                      ? <p className="text-[10px] font-bold text-red-500 mt-1">Date past me hai</p>
+                      ? <p className="text-[10px] font-bold text-black dark:text-white mt-1">Date past me hai</p>
                       : <p className="text-[10px] font-bold text-primary-500 mt-1">
                         <Calendar className="w-3 h-3 inline mr-0.5" />
                         {fmtDate(new Date())} → {fmtDate(form.examDate)} = <b>{durationPreview.days} din</b>
@@ -181,14 +181,14 @@ const StudyPlanPage = () => {
                     <span><Clock className="w-3 h-3 inline" /> {plan.dailyHours}h/day</span>
                     <span><Target className="w-3 h-3 inline" /> {plan.totalDays} days</span>
                     <span className={`px-2 py-0.5 rounded ${plan.status === 'active' ? 'bg-primary-50 text-primary-600' : 'bg-slate-100 text-slate-500'}`}>{plan.status}</span>
-                    <span className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded">{plan.generatedBy === 'ai' ? 'AI' : 'Template'}</span>
+                    <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">{plan.generatedBy === 'ai' ? 'AI' : 'Template'}</span>
                   </div>
                 </div>
                 <div className="flex gap-1">
                   <button onClick={() => togglePlanStatus(plan._id, plan.status)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
                     {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-500" />}
                   </button>
-                  <button onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4 text-red-400" /></button>
+                  <button onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                 </div>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">

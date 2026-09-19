@@ -199,8 +199,8 @@ const AdminExpenses = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl relative overflow-hidden group"
                     >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-red-500" />
-                        <div className="p-4 bg-red-500/10 text-red-500 rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-black dark:bg-white" />
+                        <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
                             <IndianRupee className="w-6 h-6" />
                         </div>
                         <div className="text-3xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-2">
@@ -308,7 +308,7 @@ const AdminExpenses = () => {
                                                         {expense.category}
                                                     </span>
                                                 </td>
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6 text-right tabular-nums font-black text-red-500 italic tracking-tighter text-lg">
+                                                <td className="px-3 lg:px-6 py-3 lg:py-6 text-right tabular-nums font-black text-black dark:text-white italic tracking-tighter text-lg">
                                                     {formatAmount(expense.amount)}
                                                 </td>
                                                 <td className="px-3 lg:px-6 py-3 lg:py-6">
@@ -327,7 +327,7 @@ const AdminExpenses = () => {
                                                         <motion.button
                                                             whileHover={{ scale: 1.1 }}
                                                             onClick={() => handleDelete(expense._id)}
-                                                            className="p-3 bg-red-500/10 text-red-500 rounded-lg lg:rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                                                            className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all shadow-sm"
                                                         >
                                                             <Trash2 className="w-4 h-4" />
                                                         </motion.button>

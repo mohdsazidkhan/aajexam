@@ -112,7 +112,7 @@ export default function ReferralDashboard() {
                   </div>
                   <div>
                     <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
-                    <div className="text-sm italic uppercase tracking-tighter italic">Search and Filter Users</div>
+                    <div className="text-sm italic uppercase tracking-tighter">Search and Filter Users</div>
                   </div>
                 </div>
               </div>

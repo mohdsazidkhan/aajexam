@@ -107,7 +107,7 @@ const AdminPYQ = () => {
                       <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-600 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>
                       {t.pyqShift && <span className="text-[10px] font-bold text-slate-400">{t.pyqShift}</span>}
                       {t.examPattern?.exam?.name && <span className="text-[10px] font-bold text-slate-400">· {t.examPattern.exam.name}</span>}
-                      <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-amber-50 text-amber-600 dark:bg-amber-900/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
+                      <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
                     </div>
                     <h3 className="text-sm font-black text-slate-900 dark:text-white truncate">{t.title}</h3>
                     <p className="text-[10px] text-slate-400">{t.questions?.length || 0} questions · {t.duration} min · {t.totalMarks} marks</p>
@@ -116,8 +116,8 @@ const AdminPYQ = () => {
                     <button onClick={() => router.push(`/admin/pyq/edit/${t._id}`)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition" title="Edit">
                       <Pencil className="w-4 h-4 text-slate-500" />
                     </button>
-                    <button onClick={() => handleDelete(t._id)} className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition" title="Delete">
-                      <Trash2 className="w-4 h-4 text-red-500" />
+                    <button onClick={() => handleDelete(t._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/20 rounded-lg transition" title="Delete">
+                      <Trash2 className="w-4 h-4 text-black dark:text-white" />
                     </button>
                   </div>
                 </Card>

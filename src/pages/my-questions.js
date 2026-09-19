@@ -29,8 +29,8 @@ import Pagination from '../components/Pagination';
 
 const STATUS_CONFIG = {
    approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
-   pending: { label: 'Pending', icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
-   rejected: { label: 'Rejected', icon: XCircle, color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20' },
+   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
 };
 
 const MyQuestionsPage = () => {
@@ -134,7 +134,7 @@ const MyQuestionsPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleDelete(q._id); }}
-                                          className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg lg:rounded-xl transition-colors"
+                                          className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors"
                                           title="Delete question"
                                        >
                                           <Trash2 className="w-4 h-4" />

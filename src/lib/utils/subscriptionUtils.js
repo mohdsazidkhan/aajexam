@@ -293,9 +293,9 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       if (daysLeft <= 0) {
         return {
           text: 'Expired',
-          textColor: currentTheme === 'dark' ? 'text-red-400' : 'text-primary-600',
-          bgColor: currentTheme === 'dark' ? 'bg-red-900/30' : 'bg-red-50',
-          borderColor: currentTheme === 'dark' ? 'border-red-700' : 'border-red-200',
+          textColor: currentTheme === 'dark' ? 'text-black dark:text-white' : 'text-primary-600',
+          bgColor: currentTheme === 'dark' ? 'bg-black/30 dark:bg-white/30' : 'bg-slate-100 dark:bg-slate-800',
+          borderColor: currentTheme === 'dark' ? 'border-black dark:border-white' : 'border-slate-200 dark:border-slate-800',
           icon: '⌛'
         };
       }
@@ -322,9 +322,9 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
     const status = user.subscription.status.charAt(0).toUpperCase() + user.subscription.status.slice(1);
     return {
       text: status,
-      textColor: currentTheme === 'dark' ? 'text-red-400' : 'text-primary-600',
-      bgColor: currentTheme === 'dark' ? 'bg-red-900/30' : 'bg-red-50',
-      borderColor: currentTheme === 'dark' ? 'border-red-700' : 'border-red-200',
+      textColor: currentTheme === 'dark' ? 'text-black dark:text-white' : 'text-primary-600',
+      bgColor: currentTheme === 'dark' ? 'bg-black/30 dark:bg-white/30' : 'bg-slate-100 dark:bg-slate-800',
+      borderColor: currentTheme === 'dark' ? 'border-black dark:border-white' : 'border-slate-200 dark:border-slate-800',
       icon: '❌'
     };
   } catch (error) {

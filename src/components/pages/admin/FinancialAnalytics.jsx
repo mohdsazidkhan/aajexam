@@ -66,7 +66,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
     primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
+    amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
   };
 
   return (
@@ -220,10 +220,10 @@ const FinancialAnalytics = () => {
                  <AdminDashboardSkeleton />
                </div>
             ) : error ? (
-              <div className="text-center py-32 bg-rose-500/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-rose-500/10">
-                <Zap className="w-16 h-16 text-rose-500 mx-auto mb-6" />
+              <div className="text-center py-32 bg-black/5 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-4 border-dashed border-black/10 dark:border-white/10">
+                <Zap className="w-16 h-16 text-black dark:text-white mx-auto mb-6" />
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
-                <p className="text-rose-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
+                <p className="text-black dark:text-white text-[10px] font-black uppercase tracking-widest">{error}</p>
               </div>
             ) : (
               <div className="space-y-4 lg:space-y-12">
@@ -285,7 +285,7 @@ const FinancialAnalytics = () => {
                           {topRevenuePlans.map((p, idx) => (
                             <motion.tr key={idx} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="group hover:bg-primary-500/5 transition-all">
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-amber-500 text-white shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
+                                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-xs ${idx === 0 ? 'bg-black dark:bg-white text-white dark:text-black shadow-xl rotate-6' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>{idx + 1}</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">

@@ -116,7 +116,7 @@ export default function QuizPreview({
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {subjectName && <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">{subjectName}</span>}
               {topicName && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{topicName}</span>}
-              {quiz?.difficulty && <span className="px-3 py-1 bg-amber-100 dark:bg-amber-900/30 rounded-full text-[10px] font-black text-amber-700 dark:text-amber-300 uppercase tracking-widest">{quiz.difficulty}</span>}
+              {quiz?.difficulty && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{quiz.difficulty}</span>}
             </div>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {quizTitle}

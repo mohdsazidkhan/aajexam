@@ -120,7 +120,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                             <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">PYQ {paper.pyqYear || ''}</span>
                             {paper.pyqShift && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{paper.pyqShift}</span>}
                             <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">{examName}</span>
-                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-amber-100 dark:bg-amber-900/30 rounded-full text-[10px] font-black text-amber-700 dark:text-amber-300 uppercase tracking-widest">Free</span>}
+                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">Free</span>}
                         </div>
 
                         <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
@@ -147,7 +147,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Minutes</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaCalendar className="text-xl text-orange-600 mx-auto mb-2" />
+                                <FaCalendar className="text-xl text-black dark:text-white mx-auto mb-2" />
                                 <div className="text-md font-black text-slate-900 dark:text-white">{paper.pyqYear || '—'}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Year</div>
                             </div>
@@ -155,7 +155,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                         <button
                             onClick={handleStart}
-                            className="w-full bg-primary-500 hover:bg-primary-600 text-white px-8 py-5 rounded-2xl transition-all font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center shadow-duo-primary border-b-8 border-primary-700 active:translate-y-1 active:border-b-0"
+                            className="w-full bg-primary-500 hover:bg-primary-600 text-white px-8 py-5 rounded-2xl transition-all font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center shadow-aajexam-primary border-b-8 border-primary-700 active:translate-y-1 active:border-b-0"
                         >
                             <FaPlay className="mr-3 text-xs" /> Start Free Mock Test
                         </button>
@@ -303,7 +303,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t-2 border-slate-200 dark:border-slate-800 p-4 flex gap-3 shadow-2xl">
                         <button
                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
-                            className="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg lg:rounded-xl text-xs shadow-duo-primary transition-all"
+                            className="flex-1 py-3 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg lg:rounded-xl text-xs shadow-aajexam-primary transition-all"
                         >
                             Attempt Free →
                         </button>

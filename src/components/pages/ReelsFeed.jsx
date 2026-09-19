@@ -18,20 +18,20 @@ import {
 
 // ──── Gradient config per subject ────
 const SUBJECT_GRADIENTS = {
-  'Quantitative': 'from-blue-900 via-blue-800 to-blue-600',
-  'Quant': 'from-blue-900 via-blue-800 to-blue-600',
-  'Reasoning': 'from-purple-900 via-purple-800 to-purple-600',
+  'Quantitative': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
+  'Quant': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
+  'Reasoning': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
   'English': 'from-primary-900 via-primary-800 to-primary-600',
-  'GK': 'from-orange-900 via-orange-800 to-orange-600',
+  'GK': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
   'General': 'from-slate-900 via-slate-800 to-slate-600',
 };
 
 const TYPE_GRADIENTS = {
-  'question': 'from-blue-900 via-blue-800 to-indigo-700',
-  'fact': 'from-purple-900 via-indigo-900 to-purple-700',
-  'tip': 'from-amber-900 via-amber-800 to-yellow-700',
-  'current_affairs': 'from-red-900 via-rose-800 to-red-700',
-  'poll': 'from-teal-900 via-primary-800 to-primary-700',
+  'question': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
+  'fact': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
+  'tip': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
+  'current_affairs': 'from-black dark:from-white via-black dark:via-white to-black dark:to-white',
+  'poll': 'from-black dark:from-white via-primary-800 to-primary-700',
 };
 
 const TYPE_ICONS = {
@@ -44,8 +44,8 @@ const TYPE_ICONS = {
 
 const DIFFICULTY_STYLES = {
   easy: 'bg-primary-500/20 text-primary-300 border-primary-500/30',
-  medium: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
-  hard: 'bg-red-500/20 text-red-300 border-red-500/30',
+  medium: 'bg-black/20 dark:bg-white/20 text-black dark:text-white border-black/30 dark:border-white/30',
+  hard: 'bg-black/20 dark:bg-white/20 text-black dark:text-white border-black/30 dark:border-white/30',
 };
 
 // ──── Clickable Tag ────
@@ -99,11 +99,11 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
       <div className="flex flex-col h-full px-4 sm:px-6 py-4 justify-center">
         {/* Subject & Topic tags — clickable */}
         <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
-          <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-blue-500/20 text-blue-300 border-blue-500/30 uppercase tracking-wide">
+          <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-black/20 dark:bg-white/20 text-black dark:text-white border-black/30 dark:border-white/30 uppercase tracking-wide">
             #{reel.subject}
           </ClickableTag>
           {reel.topic && (
-            <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-purple-500/20 text-purple-300 border-purple-500/30">
+            <ClickableTag text={reel.topic} onPress={onTagPress} className="px-2 py-0.5 rounded-md text-[9px] font-bold border bg-black/20 dark:bg-white/20 text-black dark:text-white border-black/30 dark:border-white/30">
               #{reel.topic}
             </ClickableTag>
           )}
@@ -127,7 +127,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
             if (i === result.correctAnswerIndex) {
               optionStyle = 'border-primary-400/60 bg-primary-500/20';
             } else if (i === selected && !result.isCorrect) {
-              optionStyle = 'border-red-400/60 bg-red-500/20';
+              optionStyle = 'border-black/60 dark:border-white/60 bg-black/20 dark:bg-white/20';
             } else {
               optionStyle = 'border-white/5 bg-white/[0.02] opacity-50';
             }
@@ -146,7 +146,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
                 ? 'border-primary-400 bg-primary-400 text-primary-900'
                 : answered && i === selected && !result?.isCorrect
-                  ? 'border-red-400 bg-red-400 text-red-900'
+                  ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
                   : i === selected ? 'border-white bg-white text-slate-900' : 'border-white/30 text-white/60'}`}>
                 {answered ? (i === result?.correctAnswerIndex ? '✓' : i === selected && !result?.isCorrect ? '✗' : String.fromCharCode(65 + i)) : String.fromCharCode(65 + i)}
               </span>
@@ -199,17 +199,17 @@ const FactReelCard = ({ reel, onTagPress }) => (
 const TipReelCard = ({ reel, onTagPress }) => (
   <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-4">
-      <Zap className="w-4 h-4 text-yellow-400" />
-      <span className="text-[10px] font-bold uppercase tracking-widest text-yellow-400/80">Quick Trick</span>
+      <Zap className="w-4 h-4 text-black dark:text-white" />
+      <span className="text-[10px] font-bold uppercase tracking-widest text-black/80 dark:text-white/80">Quick Trick</span>
       {reel.subject && <ClickableTag text={reel.subject} onPress={onTagPress} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-semibold text-white/60">#{reel.subject}</ClickableTag>}
     </div>
-    <div className="h-px bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent mb-5" />
+    <div className="h-px bg-gradient-to-r from-transparent via-black/30 dark:via-white/30 to-transparent mb-5" />
 
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
 
     {reel.formula && (
       <div className="p-2 sm:p-4 rounded-lg lg:rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
-        <p className="text-md sm:text-lg font-bold text-yellow-300">{reel.formula}</p>
+        <p className="text-md sm:text-lg font-bold text-black dark:text-white">{reel.formula}</p>
       </div>
     )}
 
@@ -221,14 +221,14 @@ const TipReelCard = ({ reel, onTagPress }) => (
 const CAReelCard = ({ reel, onTagPress }) => (
   <div className="flex flex-col h-full pl-4 pb-4 justify-center">
     <div className="flex items-center gap-2 mb-2">
-      <Newspaper className="w-4 h-4 text-red-400" />
-      <span className="text-[10px] font-bold uppercase tracking-widest text-red-400/80">Current Affairs</span>
+      <Newspaper className="w-4 h-4 text-black dark:text-white" />
+      <span className="text-[10px] font-bold uppercase tracking-widest text-black/80 dark:text-white/80">Current Affairs</span>
     </div>
     <div className="flex items-center gap-2 text-xs text-white/40 mb-2 ms:mb-4">
       <span>📅 {reel.caDate ? new Date(reel.caDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}</span>
-      {reel.caCategory && <ClickableTag text={reel.caCategory} onPress={onTagPress} className="text-xs text-red-400/60 hover:text-red-300">#{reel.caCategory}</ClickableTag>}
+      {reel.caCategory && <ClickableTag text={reel.caCategory} onPress={onTagPress} className="text-xs text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white">#{reel.caCategory}</ClickableTag>}
     </div>
-    {/* <div className="h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent mb-5" /> */}
+    {/* <div className="h-px bg-gradient-to-r from-transparent via-black/30 dark:via-white/30 to-transparent mb-5" /> */}
     <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-extrabold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
     {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-2 sm:mb-4">{reel.content}</p>}
@@ -365,7 +365,7 @@ const ActionBar = ({ reel, onLike, onBookmark, onShare, onExplanation, showExpla
 
       {showExplanationIcon && (
         <motion.button whileTap={{ scale: 1.2 }} onClick={onExplanation} aria-label="Show explanation" className="flex flex-col items-center p-2">
-          <Lightbulb className="w-7 h-7 text-yellow-400" />
+          <Lightbulb className="w-7 h-7 text-black dark:text-white" />
         </motion.button>
       )}
     </>
@@ -1097,7 +1097,7 @@ const ReelsFeed = () => {
                     {/* Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Lightbulb className="w-5 h-5 text-yellow-400" />
+                        <Lightbulb className="w-5 h-5 text-black dark:text-white" />
                         <span className="text-sm font-black text-white uppercase tracking-wider">
                           {currentReel.type === 'question' ? 'Explanation' : 'More Details'}
                         </span>
@@ -1117,11 +1117,11 @@ const ReelsFeed = () => {
                           </div>
                         )}
                         {currentReel.shortcutTrick && (
-                          <div className="p-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 space-y-1.5">
-                            <p className="text-[10px] font-bold text-yellow-400/80 uppercase tracking-widest flex items-center gap-1.5">
+                          <div className="p-3 rounded-2xl bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 space-y-1.5">
+                            <p className="text-[10px] font-bold text-black/80 dark:text-white/80 uppercase tracking-widest flex items-center gap-1.5">
                               <Zap className="w-3.5 h-3.5" /> Quick Trick
                             </p>
-                            <p className="text-[13px] text-yellow-100/90 leading-relaxed">{currentReel.shortcutTrick}</p>
+                            <p className="text-[13px] text-black/90 dark:text-white/90 leading-relaxed">{currentReel.shortcutTrick}</p>
                           </div>
                         )}
                         {currentReel.answeredCount > 0 && (
@@ -1169,7 +1169,7 @@ const ReelsFeed = () => {
                         )}
                         {currentReel.formula && (
                           <div className="p-3 rounded-2xl bg-white/10 border border-white/10 font-mono text-center">
-                            <p className="text-lg font-bold text-yellow-300">{currentReel.formula}</p>
+                            <p className="text-lg font-bold text-black dark:text-white">{currentReel.formula}</p>
                           </div>
                         )}
                         {currentReel.steps?.length > 0 && (
@@ -1177,18 +1177,18 @@ const ReelsFeed = () => {
                             <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Steps</p>
                             {currentReel.steps.map((step, i) => (
                               <div key={i} className="flex items-start gap-3">
-                                <span className="text-xs font-bold text-yellow-400/60 w-14 shrink-0">Step {i + 1}</span>
+                                <span className="text-xs font-bold text-black/60 dark:text-white/60 w-14 shrink-0">Step {i + 1}</span>
                                 <p className="text-[13px] text-white/80">{step}</p>
                               </div>
                             ))}
                           </div>
                         )}
                         {currentReel.shortcutTrick && (
-                          <div className="p-3 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 space-y-1.5">
-                            <p className="text-[10px] font-bold text-yellow-400/80 uppercase tracking-widest flex items-center gap-1.5">
+                          <div className="p-3 rounded-2xl bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 space-y-1.5">
+                            <p className="text-[10px] font-bold text-black/80 dark:text-white/80 uppercase tracking-widest flex items-center gap-1.5">
                               <Zap className="w-3.5 h-3.5" /> Quick Trick
                             </p>
-                            <p className="text-[13px] text-yellow-100/90 leading-relaxed">{currentReel.shortcutTrick}</p>
+                            <p className="text-[13px] text-black/90 dark:text-white/90 leading-relaxed">{currentReel.shortcutTrick}</p>
                           </div>
                         )}
                         {currentReel.tryYourself?.length > 0 && (
@@ -1219,8 +1219,8 @@ const ReelsFeed = () => {
                           </div>
                         )}
                         {currentReel.keyTakeaway && (
-                          <div className="p-3 rounded-2xl border-l-4 border-red-400/50 bg-red-500/10">
-                            <p className="text-[10px] font-bold text-red-400/60 uppercase tracking-widest mb-1">Key Takeaway</p>
+                          <div className="p-3 rounded-2xl border-l-4 border-black/50 dark:border-white/50 bg-black/10 dark:bg-white/10">
+                            <p className="text-[10px] font-bold text-black/60 dark:text-white/60 uppercase tracking-widest mb-1">Key Takeaway</p>
                             <p className="text-[13px] text-white/80 italic">"{currentReel.keyTakeaway}"</p>
                           </div>
                         )}
@@ -1300,10 +1300,10 @@ const ReelsFeed = () => {
                 </div>
                 <div className="space-y-2.5">
                   {[
-                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-blue-500 to-indigo-600', desc: 'MCQ with explanation' },
-                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-purple-500 to-pink-600', desc: 'Quick fact or one-liner' },
-                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-yellow-500 to-orange-600', desc: 'Shortcut or formula' },
-                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-red-500 to-rose-600', desc: 'Daily CA card' },
+                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'MCQ with explanation' },
+                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Quick fact or one-liner' },
+                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Shortcut or formula' },
+                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Daily CA card' },
                     { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-primary-500 to-primary-600', desc: 'Community poll' },
                   ].map((type) => (
                     <Link

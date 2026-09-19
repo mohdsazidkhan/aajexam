@@ -11,9 +11,9 @@ import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const STATUS_STYLES = {
   draft: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
-  published: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
-  active: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
-  paused: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  published: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
+  active: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
+  paused: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
   completed: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
 };
 const STATUS_LABEL = {
@@ -152,7 +152,7 @@ const EmailCampaignsListPage = () => {
         : 'Already sending or sent — open the campaign to delete it'}
       className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs ${
         canDelete(c)
-          ? 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/50'
+          ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/50'
           : 'bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 cursor-not-allowed'
       }`}
     >
@@ -194,7 +194,7 @@ const EmailCampaignsListPage = () => {
           </div>
 
           {sendingCampaign && (
-            <div className="mb-4 p-3 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300">
+            <div className="mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
               📤 &ldquo;{sendingCampaign.subject}&rdquo; is mid-send. Only one campaign can send at a time — finish it before starting another.
             </div>
           )}
@@ -262,13 +262,13 @@ const EmailCampaignsListPage = () => {
                       <td className="px-4 py-3"><StatusBadge status={c.status} /></td>
                       <td className="px-4 py-3"><Progress c={c} /></td>
                       <td className="px-4 py-3 text-primary-600 dark:text-primary-400 font-semibold">{c.sentCount || 0}</td>
-                      <td className="px-4 py-3 text-red-500 font-semibold">{c.failedCount || 0}</td>
+                      <td className="px-4 py-3 text-black dark:text-white font-semibold">{c.failedCount || 0}</td>
                       <td className="px-4 py-3 text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</td>
                       <td className="px-4 py-3">
                         <div className="flex justify-end gap-2">
                           <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-secondary-100 dark:bg-secondary-900/40 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-900/60">
+                          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
                             Open
                           </Link>
                         </div>
@@ -299,7 +299,7 @@ const EmailCampaignsListPage = () => {
                   <div className="flex gap-2">
                     <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                    <Link href={`/admin/email-campaigns/${c._id}`} className="px-3 py-1 rounded text-xs bg-secondary-100 dark:bg-secondary-900/40 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-900/60">
+                    <Link href={`/admin/email-campaigns/${c._id}`} className="px-3 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
                       Open
                     </Link>
                   </div>
@@ -324,15 +324,15 @@ const EmailCampaignsListPage = () => {
                     <Progress c={c} />
                     <div className="grid grid-cols-3 gap-1 text-center">
                       <div><div className="text-primary-600 dark:text-primary-400 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
-                      <div><div className="text-red-500 font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
-                      <div><div className="text-blue-600 dark:text-blue-400 font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
+                      <div><div className="text-black dark:text-white font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
+                      <div><div className="text-black dark:text-white font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
                     </div>
                     <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-white/10">
                       <span className="text-[10px] text-slate-400">{fmtDate(c.createdAt)}</span>
                       <div className="flex gap-2">
                         <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                        <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-secondary-100 dark:bg-secondary-900/40 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-900/60">
+                        <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
                           Open
                         </Link>
                       </div>

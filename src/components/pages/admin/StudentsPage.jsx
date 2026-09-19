@@ -207,7 +207,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div className="flex items-center">
           <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
-            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gradient-to-r from-red-500 to-primary-500 flex items-center justify-center">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gradient-to-r from-black dark:from-white to-primary-500 flex items-center justify-center">
               <span className="text-white font-medium text-sm sm:text-base">
                 {student.name?.charAt(0)?.toUpperCase() || 'U'}
               </span>
@@ -280,7 +280,7 @@ const StudentsPage = () => {
           )
         } else if (student.status === 'suspended') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white">
               {student.status || 'N/A'}
             </div>
           )
@@ -374,7 +374,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           handleDelete(student._id);
         }}
-        className="text-red-500 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1.5 sm:p-2 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+        className="text-black dark:text-white hover:text-black dark:hover:text-white p-1.5 sm:p-2 rounded-md hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/20 transition-colors"
         title="Remove student"
       >
         <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -412,7 +412,7 @@ const StudentsPage = () => {
                   variant="primary"
                   onClick={() => setShowCreateModal(true)}
                   icon={UserPlus}
-                  className="w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary"
+                  className="w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-aajexam-primary"
                 >
                   CREATE SUBSCRIPTION
                 </Button>
@@ -564,7 +564,7 @@ const StudentsPage = () => {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="space-y-1">
-                                <div className="text-[10px] font-black text-slate-700 dark:text-white flex items-center gap-2 leading-none mb-1"><Mail className="w-3 h-3 text-blue-500/50" /> {student.email}</div>
+                                <div className="text-[10px] font-black text-slate-700 dark:text-white flex items-center gap-2 leading-none mb-1"><Mail className="w-3 h-3 text-black/50 dark:text-white/50" /> {student.email}</div>
                                 <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 italic leading-none"><Phone className="w-3 h-3 text-primary-500/50" /> {student.phone || 'Not provided'}</div>
                               </div>
                             </td>
@@ -576,7 +576,7 @@ const StudentsPage = () => {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest w-fit border ${student.status === 'active' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' :
-                                student.status === 'suspended' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' :
+                                student.status === 'suspended' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
                                   'bg-slate-500/10 text-slate-500 border-slate-500/20'
                                 }`}>
                                 {student.status || 'Inactive'}
@@ -615,14 +615,14 @@ const StudentsPage = () => {
                           <div className="flex flex-wrap items-center gap-4">
                             <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-500 transition-colors">{student.name}</Link>
                             {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-500 transition-colors">@{student.username}</Link>}
-                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-500 ${student.subscriptionStatus === 'PRO' ? 'border-amber-500/20 bg-amber-500/10 text-amber-500' : ''}`}>
+                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-500 ${student.subscriptionStatus === 'PRO' ? 'border-black/20 dark:border-white/20 bg-black/10 dark:bg-white/10 text-black dark:text-white' : ''}`}>
                               {student.subscriptionStatus || 'FREE'}
                             </div>
                           </div>
 
                           <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                             <div className="flex items-center gap-2">
-                              <Mail className="w-4 h-4 text-blue-500/50" />
+                              <Mail className="w-4 h-4 text-black/50 dark:text-white/50" />
                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{student.email}</span>
                             </div>
                             <div className="flex items-center gap-2">
@@ -630,7 +630,7 @@ const StudentsPage = () => {
                               <span className="text-[10px] font-black text-primary-500 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <Crown className="w-4 h-4 text-amber-500/50" />
+                              <Crown className="w-4 h-4 text-black/50 dark:text-white/50" />
                               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Student</span>
                             </div>
                             <div className="flex items-center gap-2">
@@ -667,7 +667,7 @@ const StudentsPage = () => {
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-lg">
-                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-amber-500' : 'text-slate-300'}`} />
+                            <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-black dark:text-white' : 'text-slate-300'}`} />
                           </div>
                         </div>
 
@@ -760,7 +760,7 @@ const StudentsPage = () => {
                     whileHover={{ scale: 1.1, rotate: 90 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setShowCreateModal(false)}
-                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-rose-500 rounded-2xl transition-colors"
+                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-2xl transition-colors"
                   >
                     <X className="w-6 h-6" />
                   </motion.button>

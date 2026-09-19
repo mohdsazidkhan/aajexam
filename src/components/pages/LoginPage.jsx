@@ -90,7 +90,7 @@ const LoginPage = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-duo-primary w-fit text-white">
+              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-aajexam-primary w-fit text-white">
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>
@@ -196,7 +196,7 @@ const LoginPage = () => {
                   </div>
                 </div>
 
-                <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-duo-primary" type="submit" disabled={isLoading}>
+                <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-aajexam-primary" type="submit" disabled={isLoading}>
                   {isLoading ? 'Logging in...' : 'Login'}
                 </Button>
               </form>

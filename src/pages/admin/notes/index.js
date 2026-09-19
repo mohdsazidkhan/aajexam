@@ -51,7 +51,7 @@ const AdminNotes = () => {
 
   const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
-  const difficultyColor = (d) => d === 'advanced' ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400' : d === 'intermediate' ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
+  const difficultyColor = (d) => d === 'advanced' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : d === 'intermediate' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
 
   return (
     <AdminRoute>
@@ -74,7 +74,7 @@ const AdminNotes = () => {
               <div className="p-5 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Subject <span className="text-red-400">*</span></label>
+                    <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Subject <span className="text-black dark:text-white">*</span></label>
                     <select value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} className={inputClass}>
                       <option value="">Select Subject</option>
                       {subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
@@ -96,11 +96,11 @@ const AdminNotes = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Title <span className="text-red-400">*</span></label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Title <span className="text-black dark:text-white">*</span></label>
                   <input placeholder="Enter note title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className={inputClass} />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-red-400">*</span></label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-black dark:text-white">*</span></label>
                   <CustomEditor
                     value={form.content}
                     onChange={(content) => setForm({ ...form, content })}
@@ -178,8 +178,8 @@ const AdminNotes = () => {
                         </td>
                         <td className="px-4 py-3">
                           <div className="flex items-center justify-end gap-1">
-                            <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-blue-500" /></button>
-                            <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-red-500" /></button>
+                            <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                            <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                           </div>
                         </td>
                       </tr>
@@ -204,8 +204,8 @@ const AdminNotes = () => {
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700/50">
                     <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${difficultyColor(n.difficulty)}`}>{n.difficulty}</span>
                     <div className="flex items-center gap-1">
-                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-blue-500" /></button>
-                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-red-500" /></button>
+                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                     </div>
                   </div>
                 </Card>
@@ -226,8 +226,8 @@ const AdminNotes = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{n.title}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-blue-500" /></button>
-                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-red-500" /></button>
+                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                   </div>
                 </Card>
               ))}

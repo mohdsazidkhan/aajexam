@@ -17,9 +17,9 @@ import {
 const PAGE_LIMIT = 20;
 
 const RISK_STYLES = {
-  high: { chip: 'bg-rose-500/15 text-rose-500 border-rose-500/30', bar: 'bg-rose-500', label: 'HIGH' },
-  medium: { chip: 'bg-amber-500/15 text-amber-500 border-amber-500/30', bar: 'bg-amber-500', label: 'MEDIUM' },
-  low: { chip: 'bg-sky-500/15 text-sky-500 border-sky-500/30', bar: 'bg-sky-500', label: 'LOW' },
+  high: { chip: 'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30 dark:border-white/30', bar: 'bg-black dark:bg-white', label: 'HIGH' },
+  medium: { chip: 'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30 dark:border-white/30', bar: 'bg-black dark:bg-white', label: 'MEDIUM' },
+  low: { chip: 'bg-black/15 dark:bg-white/15 text-black dark:text-white border-black/30 dark:border-white/30', bar: 'bg-black dark:bg-white', label: 'LOW' },
 };
 
 const SIGNAL_LABELS = {
@@ -66,8 +66,8 @@ export default function ReferralFraudDashboard() {
 
   const stats = summary ? [
     { label: 'Flagged Referrers', value: summary.flaggedReferrers, icon: ShieldAlert, tone: 'text-primary-500 bg-primary-500/10' },
-    { label: 'High Risk', value: summary.highRisk, icon: AlertTriangle, tone: 'text-rose-500 bg-rose-500/10' },
-    { label: 'Medium Risk', value: summary.mediumRisk, icon: Fingerprint, tone: 'text-amber-500 bg-amber-500/10' },
+    { label: 'High Risk', value: summary.highRisk, icon: AlertTriangle, tone: 'text-black dark:text-white bg-black/10 dark:bg-white/10' },
+    { label: 'Medium Risk', value: summary.mediumRisk, icon: Fingerprint, tone: 'text-black dark:text-white bg-black/10 dark:bg-white/10' },
     { label: 'Reward At Risk', value: inr(summary.rewardAtRisk), icon: Banknote, tone: 'text-primary-500 bg-primary-500/10' },
   ] : [];
 
@@ -81,8 +81,8 @@ export default function ReferralFraudDashboard() {
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
             <div className="space-y-3 mb-5">
               <h1 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter leading-none italic flex items-center gap-3">
-                <ShieldAlert className="w-8 h-8 lg:w-10 lg:h-10 text-rose-500" />
-                REFERRAL <span className="text-rose-500">FRAUD</span>
+                <ShieldAlert className="w-8 h-8 lg:w-10 lg:h-10 text-black dark:text-white" />
+                REFERRAL <span className="text-black dark:text-white">FRAUD</span>
                 <span className="text-slate-300 dark:text-white/10 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
               </h1>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Graph &amp; behaviour signals over the referral network. No IP/device data is stored — detection is pattern-based.</p>
@@ -172,7 +172,7 @@ export default function ReferralFraudDashboard() {
                         <div className="flex-1 flex flex-wrap gap-2">
                           {u.signals.map((s) => (
                             <span key={s.key} title={s.detail}
-                              className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg bg-rose-500/10 text-rose-500 border border-rose-500/20">
+                              className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20">
                               {s.label}: <span className="normal-case font-bold opacity-80">{s.detail}</span>
                             </span>
                           ))}
@@ -216,10 +216,10 @@ export default function ReferralFraudDashboard() {
                                       </div>
                                       <div className="flex items-center gap-1.5 shrink-0">
                                         {['suspended', 'banned'].includes(r.status) && (
-                                          <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-500">{r.status}</span>
+                                          <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-black/15 dark:bg-white/15 text-black dark:text-white">{r.status}</span>
                                         )}
                                         {dormant && (
-                                          <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-500">dormant</span>
+                                          <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-black/15 dark:bg-white/15 text-black dark:text-white">dormant</span>
                                         )}
                                       </div>
                                     </div>

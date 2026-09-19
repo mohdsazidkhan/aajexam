@@ -107,7 +107,7 @@ const ResetPasswordPage = () => {
                     <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest px-2">Minimum 6 characters required for high-level security</p>
                   </div>
 
-                  <Button variant="secondary" fullWidth size="lg" className="py-5 text-sm font-black shadow-duo-secondary" type="submit" disabled={isLoading}>
+                  <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black" type="submit" disabled={isLoading}>
                     {isLoading ? 'UPDATING...' : 'UPDATE PASSWORD'}
                   </Button>
 

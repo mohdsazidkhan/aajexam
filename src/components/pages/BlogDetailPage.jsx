@@ -125,8 +125,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            {blog.isFeatured && <span className="flex items-center gap-1 text-yellow-500 text-sm font-bold"><Star className="w-4 h-4 fill-yellow-500" /> Featured</span>}
-            {blog.isPinned && <span className="flex items-center gap-1 text-blue-500 text-sm font-bold"><Pin className="w-4 h-4 fill-blue-500" /> Pinned</span>}
+            {blog.isFeatured && <span className="flex items-center gap-1 text-black dark:text-white text-sm font-bold"><Star className="w-4 h-4 fill-black dark:fill-white" /> Featured</span>}
+            {blog.isPinned && <span className="flex items-center gap-1 text-black dark:text-white text-sm font-bold"><Pin className="w-4 h-4 fill-black dark:fill-white" /> Pinned</span>}
             <span className="text-gray-500 dark:text-gray-400 text-sm">{formatDate(blog.publishedAt || blog.createdAt)}</span>
           </div>
 
@@ -174,9 +174,9 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           <div className="flex items-center gap-4">
             <button onClick={handleLike} disabled={liked}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm transition-colors ${liked
-                ? 'bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400'
-                : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-red-100 hover:text-red-700'}`}>
-              <Heart className={`w-4 h-4 ${liked ? 'fill-red-500' : ''}`} />
+                ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 dark:text-white'
+                : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-black dark:hover:text-white'}`}>
+              <Heart className={`w-4 h-4 ${liked ? 'fill-black dark:fill-white' : ''}`} />
               {liked ? 'Liked' : 'Like'}
             </button>
 
@@ -188,10 +188,10 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             ) : (
               <div className="flex items-center gap-3">
                 <a href={`https://wa.me/?text=${encodedText}%0A${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-primary-500 text-xl"><FaWhatsapp /></a>
-                <a href={`https://t.me/share/url?text=${encodeURIComponent(`${shareText}\n\n${pageUrl}`)}`} target="_blank" rel="noopener noreferrer" className="text-sky-500 text-xl"><FaTelegramPlane /></a>
-                <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-xl"><FaFacebook /></a>
-                <a href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-sky-400 text-xl"><FaTwitter /></a>
-                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-blue-700 text-xl"><FaLinkedin /></a>
+                <a href={`https://t.me/share/url?text=${encodeURIComponent(`${shareText}\n\n${pageUrl}`)}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaTelegramPlane /></a>
+                <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaFacebook /></a>
+                <a href={`https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaTwitter /></a>
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" className="text-black dark:text-white text-xl"><FaLinkedin /></a>
               </div>
             )}
           </div>

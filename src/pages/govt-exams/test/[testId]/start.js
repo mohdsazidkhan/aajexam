@@ -277,7 +277,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
           {/* Right: Timer & Tools */}
           <div className="flex items-center gap-3 pointer-events-auto">
-            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-2xl border-2 ${timeLeft < 300 ? 'bg-accent-red text-white border-white/20 animate-pulse' : 'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-2xl border-2 ${timeLeft < 300 ? 'bg-black dark:bg-white text-white dark:text-black border-white/20 animate-pulse' : 'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
               <Clock className="w-5 h-5 text-current opacity-80" />
               <span className="font-mono text-xl lg:text-2xl font-black">{formatTime(timeLeft)}</span>
             </div>
@@ -299,7 +299,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-accent-red rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
+              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
               title="Exit Test"
             >
               <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
@@ -327,8 +327,8 @@ const TestStart = ({ resolvedId } = {}) => {
                   <p className="text-[10px] font-black text-primary-500 uppercase">Answered</p>
                   <p className="text-2xl font-black">{answeredCount}</p>
                 </div>
-                <div className="bg-accent-orange/10 p-3 rounded-2xl border border-accent-orange/20">
-                  <p className="text-[10px] font-black text-accent-orange uppercase">Marked</p>
+                <div className="bg-black/10 dark:bg-white/10 p-3 rounded-2xl border border-black/20 dark:border-white/20">
+                  <p className="text-[10px] font-black text-black dark:text-white uppercase">Marked</p>
                   <p className="text-2xl font-black">{marked.size}</p>
                 </div>
               </div>
@@ -361,7 +361,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             className={`
                               h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-4
                               ${isCurrent ? 'bg-primary-500 text-white border-primary-700 -translate-y-1' :
-                                isMarked ? 'bg-accent-orange text-white border-[#d97706]' :
+                                isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
                             `}
@@ -406,8 +406,8 @@ const TestStart = ({ resolvedId } = {}) => {
               </div>
 
               {translatingQ && (
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 dark:bg-amber-900/30 rounded-full text-[11px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">
-                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[11px] font-black text-black dark:text-white uppercase tracking-widest">
+                  <span className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
                   Translating to हिंदी…
                 </div>
               )}
@@ -426,10 +426,9 @@ const TestStart = ({ resolvedId } = {}) => {
                       disabled={translatingQ}
                       onClick={() => handleAnswer(idx)}
                       className={`
-                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4 border-b-4 
-                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-4 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
+                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4 border-b-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-4 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
-                          ? 'bg-primary-500 text-white border-primary-600 shadow-duo-primary'
+                          ? 'bg-primary-500 text-white border-primary-600 shadow-aajexam-primary'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
                         `}
                     >
@@ -451,8 +450,8 @@ const TestStart = ({ resolvedId } = {}) => {
 
               <div className="flex items-center gap-4 pt-4">
                 <Button
-                  variant="ghost"
-                  className="flex-1 border-2 border-slate-200 dark:border-slate-700"
+                  variant="primary"
+                  className="flex-1"
                   onClick={() => {
                     const nextMarked = new Set(marked);
                     if (nextMarked.has(currentQ._id)) nextMarked.delete(currentQ._id);
@@ -460,11 +459,11 @@ const TestStart = ({ resolvedId } = {}) => {
                     setMarked(nextMarked);
                   }}
                 >
-                  <Flag className={`w-5 h-5 mr-2 ${marked.has(currentQ._id) ? 'fill-accent-orange text-accent-orange' : 'text-slate-400'}`} />
+                  <Flag className={`w-5 h-5 mr-2 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
                   {marked.has(currentQ._id) ? 'MARKED' : 'MARK FOR REVIEW'}
                 </Button>
                 <Button
-                  variant="ghost"
+                  variant="secondary"
                   className="flex-1 border-2 border-slate-200 dark:border-slate-700"
                   disabled={answers[currentQ._id] === undefined}
                   onClick={() => setAnswers(prev => {
@@ -485,7 +484,7 @@ const TestStart = ({ resolvedId } = {}) => {
       {/* --- Bottom Action Bar (Fixed) --- */}
       <footer className="h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 flex items-center justify-between z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
         <Button
-          variant="ghost"
+          variant="secondary"
           size="lg"
           disabled={currentQIndex === 0}
           onClick={() => setCurrentQIndex(prev => prev - 1)}
@@ -556,7 +555,7 @@ const TestStart = ({ resolvedId } = {}) => {
                               key={idx}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
                               className={`h-14 rounded-2xl font-black border-b-4 ${isCurrent ? 'bg-primary-500 text-white border-primary-700' :
-                                isMarked ? 'bg-accent-orange text-white border-[#d97706]' :
+                                isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
                             >
@@ -591,7 +590,7 @@ const TestStart = ({ resolvedId } = {}) => {
                 <Button variant="primary" fullWidth size="lg" className="py-6 text-xl" onClick={handleAutoSubmit} disabled={submitting}>
                   {submitting ? 'SUBMITTING...' : 'YES, I\'M DONE!'}
                 </Button>
-                <Button variant="ghost" fullWidth size="lg" className="border-2 border-slate-200 dark:border-slate-700" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>
+                <Button variant="secondary" fullWidth size="lg" className="border-2 border-slate-200 dark:border-slate-700" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>
               </div>
             </motion.div>
           </div>

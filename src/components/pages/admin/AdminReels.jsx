@@ -20,18 +20,18 @@ import ViewToggle from '../../ViewToggle';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const TYPE_COLORS = {
-  question: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
-  tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-  current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const STATUS_COLORS = {
   published: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
-  pending: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
+  pending: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   draft: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400',
-  rejected: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+  rejected: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   archived: 'bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500',
 };
 
@@ -143,7 +143,7 @@ const AdminReels = () => {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
               <div>
                 <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Flame className="w-7 h-7 text-orange-500" /> Reels Management
+                  <Flame className="w-7 h-7 text-black dark:text-white" /> Reels Management
                 </h1>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{totalReels} total reels</p>
               </div>
@@ -167,7 +167,7 @@ const AdminReels = () => {
                   key={tab.value}
                   onClick={() => { setStatusFilter(tab.value); setPage(1); }}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${statusFilter === tab.value
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25'
+                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg shadow-black/20/25 dark:shadow-white/10/25'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700'
                     }`}
                 >
@@ -257,8 +257,8 @@ const AdminReels = () => {
                                   </div>
                                   {item.audioFile && (
                                     <div className="flex items-center gap-1.5 mt-1.5">
-                                      <Music className="w-3 h-3 text-pink-500" />
-                                      <span className="text-[10px] font-semibold text-pink-500/80 truncate max-w-[180px]">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
+                                      <Music className="w-3 h-3 text-black dark:text-white" />
+                                      <span className="text-[10px] font-semibold text-black/80 dark:text-white/80 truncate max-w-[180px]">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
                                       {item.duration > 0 && (
                                         <span className="text-[10px] font-bold text-slate-400 flex items-center gap-0.5"><Timer className="w-3 h-3" />{item.duration}s</span>
                                       )}
@@ -292,7 +292,7 @@ const AdminReels = () => {
                             </td>
                             <td className="px-6 py-6 text-right">
                               <div className="flex items-center justify-end gap-2">
-                                <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-rose-50 dark:bg-rose-950/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
+                                <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
                                 <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
                                 {(item.status === 'pending' || item.status === 'rejected') && (
                                   <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-500 hover:bg-primary-500 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
@@ -314,7 +314,7 @@ const AdminReels = () => {
                       <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-inner transition-all overflow-hidden">
                         <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-slate-500/5 to-transparent rounded-bl-[2rem] -z-0" />
 
-                        <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-duo ${TYPE_COLORS[item.type]}`}>
+                        <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-aajexam ${TYPE_COLORS[item.type]}`}>
                           <Icon className="w-5 h-5" />
                         </div>
 
@@ -323,8 +323,8 @@ const AdminReels = () => {
                           <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{item.subject}</p>
                           {item.audioFile && (
                             <div className="flex items-center gap-1.5 mt-1.5">
-                              <Music className="w-3 h-3 text-pink-500 shrink-0" />
-                              <span className="text-[9px] font-semibold text-pink-500/80 truncate">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
+                              <Music className="w-3 h-3 text-black dark:text-white shrink-0" />
+                              <span className="text-[9px] font-semibold text-black/80 dark:text-white/80 truncate">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
                               {item.duration > 0 && (
                                 <span className="text-[9px] font-bold text-slate-400 shrink-0">{item.duration}s</span>
                               )}
@@ -336,10 +336,10 @@ const AdminReels = () => {
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                               <div className="flex items-center gap-1 text-[9px] font-black text-slate-400 uppercase"><Eye className="w-3 h-3" /> {item.viewsCount}</div>
-                              <div className="flex items-center gap-1 text-[9px] font-black text-rose-500/70 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
+                              <div className="flex items-center gap-1 text-[9px] font-black text-black/70 dark:text-white/70 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
                             </div>
                             <div className="flex items-center gap-1">
-                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all"><Trash2 className="w-3 h-3" /></button>
+                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-3 h-3" /></button>
                               <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500"><Edit3 className="w-3 h-3" /></Link>
                             </div>
                           </div>
@@ -352,7 +352,7 @@ const AdminReels = () => {
                         </div>
 
                         {/* Status Dot */}
-                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-primary-500' : item.status === 'pending' ? 'bg-amber-500' : 'bg-rose-500'}`} />
+                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-primary-500' : item.status === 'pending' ? 'bg-black dark:bg-white' : 'bg-black dark:bg-white'}`} />
                       </motion.div>
                     );
                   })}

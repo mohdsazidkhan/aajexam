@@ -58,18 +58,18 @@ const TABS = [
 ];
 
 const SECTION_META = {
-   exam: { label: 'Exams', icon: ShieldCheck, color: 'text-blue-500' },
+   exam: { label: 'Exams', icon: ShieldCheck, color: 'text-black dark:text-white' },
    test: { label: 'Practice Tests', icon: FileText, color: 'text-primary-500' },
    quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-primary-500' },
    reel: { label: 'Reels', icon: Play, color: 'text-slate-500 dark:text-slate-400' },
-   subject: { label: 'Subjects', icon: BookMarked, color: 'text-indigo-500' },
-   topic: { label: 'Topics', icon: Layers, color: 'text-cyan-500' },
-   blog: { label: 'Blogs', icon: BookOpen, color: 'text-purple-500' },
-   currentAffair: { label: 'Current Affairs', icon: Globe, color: 'text-fuchsia-500' },
-   note: { label: 'Notes', icon: StickyNote, color: 'text-amber-500' },
-   examNews: { label: 'Exam News', icon: Newspaper, color: 'text-sky-500' },
-   hashtag: { label: 'Hashtags', icon: Hash, color: 'text-rose-500' },
-   user: { label: 'Users', icon: User, color: 'text-orange-500' },
+   subject: { label: 'Subjects', icon: BookMarked, color: 'text-black dark:text-white' },
+   topic: { label: 'Topics', icon: Layers, color: 'text-black dark:text-white' },
+   blog: { label: 'Blogs', icon: BookOpen, color: 'text-black dark:text-white' },
+   currentAffair: { label: 'Current Affairs', icon: Globe, color: 'text-black dark:text-white' },
+   note: { label: 'Notes', icon: StickyNote, color: 'text-black dark:text-white' },
+   examNews: { label: 'Exam News', icon: Newspaper, color: 'text-black dark:text-white' },
+   hashtag: { label: 'Hashtags', icon: Hash, color: 'text-black dark:text-white' },
+   user: { label: 'Users', icon: User, color: 'text-black dark:text-white' },
 };
 
 // Hashtags/Users sit right before Reels in the 'All' tab's section order.
@@ -81,10 +81,10 @@ const EMPTY_SECTIONS = () => SECTION_ORDER.reduce((acc, key) => {
 }, {});
 
 const REEL_TYPE_CONFIG = {
-   question: { icon: HelpCircle, gradient: 'from-blue-600 to-indigo-700' },
-   fact: { icon: BookOpen, gradient: 'from-purple-600 to-pink-600' },
-   tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600' },
-   current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700' },
+   question: { icon: HelpCircle, gradient: 'from-black dark:from-white to-black dark:to-white' },
+   fact: { icon: BookOpen, gradient: 'from-black dark:from-white to-black dark:to-white' },
+   tip: { icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white' },
+   current_affairs: { icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white' },
    poll: { icon: BarChart3, gradient: 'from-primary-500 to-primary-700' },
 };
 
@@ -308,7 +308,7 @@ const SearchPage = () => {
             return (
                <div className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl transition-colors">
                   <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
-                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 p-[2px] shrink-0">
+                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gradient-to-br from-black dark:from-white to-black dark:to-white p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
                      <div className="min-w-0 flex-1">
@@ -343,7 +343,7 @@ const SearchPage = () => {
          case 'pattern':
             return (
                <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
                      <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
@@ -354,7 +354,7 @@ const SearchPage = () => {
          case 'quiz':
             return (
                <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">
@@ -372,7 +372,7 @@ const SearchPage = () => {
          case 'subject':
             return (
                <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
@@ -383,7 +383,7 @@ const SearchPage = () => {
          case 'topic':
             return (
                <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -394,7 +394,7 @@ const SearchPage = () => {
          case 'hashtag':
             return (
                <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
                      <p className="text-xs text-slate-400">{item.count} question{item.count !== 1 ? 's' : ''}</p>
@@ -405,7 +405,7 @@ const SearchPage = () => {
          case 'blog':
             return (
                <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
@@ -416,7 +416,7 @@ const SearchPage = () => {
          case 'note':
             return (
                <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
@@ -427,7 +427,7 @@ const SearchPage = () => {
          case 'examNews':
             return (
                <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
@@ -438,7 +438,7 @@ const SearchPage = () => {
          case 'currentAffair':
             return (
                <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-1 py-2.5 rounded-lg lg:rounded-xl cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-700 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white dark:text-black" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>

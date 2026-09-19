@@ -34,15 +34,15 @@ const CASkeleton = () => (
 
 // ─── Category icon / color map ─────────────────────────────────────────────────
 const catConfig = {
-  national:      { icon: Globe,    color: 'from-blue-500 to-blue-700',    chip: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border-blue-100 dark:border-blue-800/50' },
-  international: { icon: Globe,    color: 'from-violet-500 to-violet-700', chip: 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/30 border-violet-100 dark:border-violet-800/50' },
+  national:      { icon: Globe,    color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  international: { icon: Globe,    color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
   economy:       { icon: TrendingUp, color: 'from-primary-500 to-primary-700', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  sports:        { icon: Trophy,   color: 'from-orange-500 to-orange-700', chip: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 border-orange-100 dark:border-orange-800/50' },
-  science:       { icon: Sparkles, color: 'from-cyan-500 to-cyan-700',    chip: 'text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 border-cyan-100 dark:border-cyan-800/50' },
-  defence:       { icon: Sword,    color: 'from-red-500 to-red-700',      chip: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border-red-100 dark:border-red-800/50' },
+  sports:        { icon: Trophy,   color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  science:       { icon: Sparkles, color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  defence:       { icon: Sword,    color: 'from-black dark:from-white to-black dark:to-white',      chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
   environment:   { icon: Leaf,     color: 'from-primary-500 to-primary-700',  chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  awards:        { icon: Trophy,   color: 'from-amber-500 to-amber-700',  chip: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 border-amber-100 dark:border-amber-800/50' },
-  appointments:  { icon: Sparkles, color: 'from-pink-500 to-pink-700',    chip: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 border-pink-100 dark:border-pink-800/50' },
+  awards:        { icon: Trophy,   color: 'from-black dark:from-white to-black dark:to-white',  chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
+  appointments:  { icon: Sparkles, color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
 };
 const defaultCat = { icon: Newspaper, color: 'from-slate-400 to-slate-600', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' };
 
@@ -101,8 +101,8 @@ const CurrentAffairsPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Current Affairs', url: '/current-affairs' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-rose-600/20 dark:border-rose-900/30">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-500 via-pink-600 to-rose-500 dark:from-slate-900 dark:via-rose-900/40 dark:to-slate-900" />
+      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white dark:from-slate-900 dark:via-white/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -146,7 +146,7 @@ const CurrentAffairsPage = () => {
               <button key={f.id} onClick={() => { setCategory(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 active:translate-y-0.5 ${
                   category === f.id
-                    ? 'bg-rose-500 text-white border-rose-600'
+                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -157,14 +157,14 @@ const CurrentAffairsPage = () => {
 
         {/* Today highlight */}
         {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
-          <div className="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 rounded-2xl p-4 border border-rose-100 dark:border-rose-800/30">
-            <h2 className="text-sm font-black text-rose-700 dark:text-rose-300 mb-2 flex items-center gap-2">
+          <div className="bg-gradient-to-r from-slate-100 dark:from-slate-800 to-slate-100 dark:to-slate-800 dark:from-white/20 dark:to-white/20 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 dark:border-white/30">
+            <h2 className="text-sm font-black text-black dark:text-white mb-2 flex items-center gap-2">
               <Flame className="w-4 h-4" /> Today — {todayAffairs.total} Updates
             </h2>
             <div className="flex flex-wrap gap-2">
               {Object.entries(todayAffairs.grouped || {}).map(([cat, items]) => (
                 <button key={cat} onClick={() => setCategory(cat)}
-                  className="px-3 py-1 bg-white dark:bg-slate-800 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 capitalize hover:bg-rose-100 transition-colors">
+                  className="px-3 py-1 bg-white dark:bg-slate-800 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 capitalize hover:bg-slate-100 transition-colors">
                   {cat}: {items.length}
                 </button>
               ))}
@@ -180,7 +180,7 @@ const CurrentAffairsPage = () => {
             return (
               <motion.div key={affair._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                 <Card hoverable onClick={() => router.push(`/current-affairs/${affair.slug}`)}
-                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-rose-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
+                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cfg.color} flex items-center justify-center shrink-0 shadow-md`}>
@@ -193,7 +193,7 @@ const CurrentAffairsPage = () => {
                         </p>
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-rose-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                   </div>
 
                   {affair.keyPoints?.[0] && (
@@ -210,7 +210,7 @@ const CurrentAffairsPage = () => {
                       {affair.views || 0}
                     </div>
                     {affair.questions?.length > 0 && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-amber-100 dark:border-amber-800/50">
+                      <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                         <Tag className="w-3 h-3" />
                         {affair.questions.length} Qs
                       </div>
@@ -226,7 +226,7 @@ const CurrentAffairsPage = () => {
               <Newspaper className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No current affairs found</h3>
               <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); }}
-                className="px-6 py-2.5 bg-rose-500 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

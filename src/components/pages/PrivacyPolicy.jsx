@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
                   <motion.div
                      initial={{ scale: 0.8, opacity: 0 }}
                      animate={{ scale: 1, opacity: 1 }}
-                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-duo-primary flex items-center justify-center mx-auto border-4 border-slate-50 dark:border-slate-700"
+                     className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-aajexam-primary flex items-center justify-center mx-auto border-4 border-slate-50 dark:border-slate-700"
                   >
                      <ShieldCheck className="w-14 h-14 text-primary-700 dark:text-primary-500" />
                   </motion.div>
@@ -125,7 +125,7 @@ const PrivacyPolicy = () => {
 
                      {/* Introduction */}
                      <section id="intro" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-duo-primary border-none relative overflow-hidden mt-4">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-primary border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <Info className="w-8 h-8" />
@@ -207,16 +207,16 @@ const PrivacyPolicy = () => {
                      </section>
 
                      {/* 7. Cookies & AdSense */}
-                     <section id="cookies" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-duo-primary space-y-12 border-none">
+                     <section id="cookies" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-12 border-none">
                         <div className="flex items-center gap-6">
-                           <div className="w-16 h-16 bg-orange-500/10 text-orange-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-orange-500/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
                               <Cookie className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">7. Cookies & Advertisements</h2>
                         </div>
 
                         <div className="space-y-10">
-                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-4 border-orange-500/20 pl-6 px-4">
+                           <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic border-l-4 border-black/20 dark:border-white/20 pl-6 px-4">
                               We use essential cookies for keeping you logged in. AajExam also works with Google AdSense for showing advertisements.
                            </p>
 
@@ -224,13 +224,13 @@ const PrivacyPolicy = () => {
                               <div className="p-4 lg:p-10 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
                                     <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h4>
-                                    <div className="px-4 py-1.5 bg-orange-500 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-duo-orange">GOOGLE ADSENSE</div>
+                                    <div className="px-4 py-1.5 bg-black dark:bg-white text-white dark:text-black text-[9px] font-black uppercase tracking-widest rounded-full shadow-aajexam-accent">GOOGLE ADSENSE</div>
                                  </div>
                                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-orange-500" /> Showing ads based on your interests</li>
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-orange-500" /> Tracking how often you visit</li>
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-orange-500" /> Working with trusted partners</li>
-                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-orange-500" /> Showing personalized advertisements</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing ads based on your interests</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Tracking how often you visit</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Working with trusted partners</li>
+                                    <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing personalized advertisements</li>
                                  </ul>
                                  <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
                                     <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 dark:text-primary-500 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
@@ -244,7 +244,7 @@ const PrivacyPolicy = () => {
                      {/* Security & Age */}
                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                         <section id="security" className="bg-white dark:bg-slate-800 p-4 lg:p-12 rounded-[3.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-6">
-                           <div className="w-14 h-14 bg-rose-500/10 text-rose-500 rounded-2xl flex items-center justify-center border-2 border-rose-500/5">
+                           <div className="w-14 h-14 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center border-2 border-black/5 dark:border-white/5">
                               <Lock className="w-6 h-6" />
                            </div>
                            <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">Data Security</h3>
@@ -252,7 +252,7 @@ const PrivacyPolicy = () => {
                         </section>
 
                         <section id="eligibility" className="bg-slate-900 p-4 lg:p-12 rounded-[3.5rem] shadow-xl border-none space-y-6 relative overflow-hidden">
-                           <div className="w-14 h-14 bg-purple-500/20 text-purple-500 rounded-2xl flex items-center justify-center border border-purple-500/20 relative z-10 shadow-lg">
+                           <div className="w-14 h-14 bg-black/20 dark:bg-white/20 text-black dark:text-white rounded-2xl flex items-center justify-center border border-black/20 dark:border-white/20 relative z-10 shadow-lg">
                               <UserShield className="w-6 h-6" />
                            </div>
                            <h3 className="text-xl font-black uppercase tracking-tight text-white leading-none relative z-10">Age Limit</h3>
@@ -263,7 +263,7 @@ const PrivacyPolicy = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-duo-primary space-y-10 border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />

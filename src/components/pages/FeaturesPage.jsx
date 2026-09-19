@@ -136,7 +136,7 @@ const HIGHLIGHTS = [
 const Cell = ({ value }) => {
   if (value === true) return <CircleCheck className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mx-auto" />;
   if (value === false) return <X className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
-  return <span className="text-[9px] lg:text-[11px] font-black uppercase tracking-wide text-amber-600 dark:text-amber-400">{value}</span>;
+  return <span className="text-[9px] lg:text-[11px] font-black uppercase tracking-wide text-black dark:text-white">{value}</span>;
 };
 
 const FeaturesPage = () => {
@@ -148,7 +148,7 @@ const FeaturesPage = () => {
 
         {/* --- Hero --- */}
         <section className="text-center space-y-3 lg:space-y-6 pt-6 lg:pt-16">
-          <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-duo-primary rotate-6">
+          <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-aajexam-primary rotate-6">
             <Sparkles className="w-6 h-6 lg:w-9 lg:h-9" />
           </div>
           <div className="space-y-2 lg:space-y-4">
@@ -183,7 +183,7 @@ const FeaturesPage = () => {
               ))}
             </ul>
             <div className="pt-1 lg:pt-2">
-              <Button variant="ghost" size="sm" fullWidth onClick={() => router.push('/register')}>Get started free</Button>
+              <Button variant="primary" size="sm" fullWidth onClick={() => router.push('/register')}>Get started free</Button>
             </div>
           </Card>
 
@@ -279,7 +279,7 @@ const FeaturesPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 items-center justify-center">
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/subscription')}>Upgrade to PRO</Button>
-                <Button variant="ghost" size="md" fullWidth className="sm:w-fit !bg-white/5 !border-white/10 !text-white" onClick={() => router.push('/register')}>Start free</Button>
+                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-white/5 !border-white/10 !text-white" onClick={() => router.push('/register')}>Start free</Button>
               </div>
             </div>
           </Card>

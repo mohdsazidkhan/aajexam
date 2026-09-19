@@ -70,7 +70,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <button onClick={() => router.back()} className="flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
-        <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 text-white mb-5">
+        <div className="bg-gradient-to-br from-black dark:from-white to-black dark:to-white rounded-2xl p-6 text-white dark:text-black mb-5">
           <Layers className="w-8 h-8 mb-2" />
           <h1 className="text-xl lg:text-3xl font-black uppercase">{topic.name}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -84,12 +84,12 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             <button 
               onClick={handleStartAdaptive}
               disabled={generatingAdaptive}
-              className="w-full sm:w-auto bg-white text-cyan-600 hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg lg:rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto bg-white text-black dark:text-white hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg lg:rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {generatingAdaptive ? (
-                <><div className="w-4 h-4 border-2 border-cyan-600 border-t-transparent rounded-full animate-spin" /> GENERATING...</>
+                <><div className="w-4 h-4 border-2 border-black dark:border-white border-t-transparent rounded-full animate-spin" /> GENERATING...</>
               ) : (
-                <><BrainCircuit className="w-5 h-5" /> START ADAPTIVE PRACTICE <span className="text-[10px] bg-cyan-100 text-cyan-700 px-1.5 py-0.5 rounded-md ml-1">PRO</span></>
+                <><BrainCircuit className="w-5 h-5" /> START ADAPTIVE PRACTICE <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-md ml-1">PRO</span></>
               )}
             </button>
             <p className="text-[10px] font-bold text-white/80 mt-2 pl-1">Generates custom difficulty based on your past accuracy.</p>
@@ -100,7 +100,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         <div className="flex gap-2 mb-5 sticky top-16 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
           {tabs.map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-4 shrink-0 ${activeTab === tab.key ? 'bg-cyan-500 text-white border-cyan-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-4 shrink-0 ${activeTab === tab.key ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
               <tab.icon className="w-3.5 h-3.5" /> {tab.label} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{tab.count}</span>
             </button>
           ))}
@@ -119,13 +119,13 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                 onClick={() => router.push(`/flashcards/${deck.slug || deck._id}`)}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-700"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 opacity-90 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white to-black dark:to-white opacity-90 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 p-4 flex flex-col justify-between">
                   <div className="flex justify-between items-start">
                     <span className="bg-black/20 backdrop-blur-sm text-white text-[10px] font-black uppercase px-2 py-1 rounded-md flex items-center gap-1">
                       <Sparkles className="w-3 h-3" /> REVISION
                     </span>
-                    <span className="bg-white text-indigo-600 text-[10px] font-black px-2 py-1 rounded-md">
+                    <span className="bg-white text-black dark:text-white text-[10px] font-black px-2 py-1 rounded-md">
                       {deck.cardCount} CARDS
                     </span>
                   </div>
@@ -146,7 +146,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/quiz/${quiz.slug}`)}
                 className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-500 transition-all">
-                <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary-500 to-teal-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
                   <p className="text-xs text-slate-400">{quiz.subject?.name || ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
@@ -164,8 +164,8 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               const done = test.userAttempt?.status === 'Completed';
               return (
                 <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
-                  className={`flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border ${done ? 'border-cyan-200' : 'border-slate-200 dark:border-slate-700'}`}>
-                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-cyan-100 text-cyan-600' : 'bg-slate-100 text-slate-400'}`}>
+                  className={`flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border ${done ? 'border-slate-200 dark:border-slate-800' : 'border-slate-200 dark:border-slate-700'}`}>
+                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 text-slate-400'}`}>
                     {done ? <Trophy className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   </div>
                   <div className="flex-1 min-w-0">

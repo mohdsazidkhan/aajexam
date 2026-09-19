@@ -167,7 +167,7 @@ export default function UserDetailsPage() {
             <div className="flex items-center justify-center py-32"><AdminDetailSkeleton /></div>
           ) : error ? (
             <div className="text-center py-32">
-              <div className="p-3 lg:p-8 bg-rose-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-rose-500/20 inline-block"><MailWarning className="w-16 h-16 text-rose-500" /></div>
+              <div className="p-3 lg:p-8 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 border-4 border-dashed border-black/20 dark:border-white/20 inline-block"><MailWarning className="w-16 h-16 text-black dark:text-white" /></div>
               <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Connection Problem</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
               <button onClick={() => fetchUserDetails(page, limit, searchTerm)} className="mt-4 lg:mt-8 px-4 lg:px-10 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Try Again</button>
@@ -214,9 +214,9 @@ export default function UserDetailsPage() {
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className="flex gap-2">
                               {[
-                                { icon: Instagram, link: u.socialLinks?.instagram, color: 'text-pink-500' },
-                                { icon: Facebook, link: u.socialLinks?.facebook, color: 'text-blue-600' },
-                                { icon: Youtube, link: u.socialLinks?.youtube, color: 'text-red-500' }
+                                { icon: Instagram, link: u.socialLinks?.instagram, color: 'text-black dark:text-white' },
+                                { icon: Facebook, link: u.socialLinks?.facebook, color: 'text-black dark:text-white' },
+                                { icon: Youtube, link: u.socialLinks?.youtube, color: 'text-black dark:text-white' }
                               ].map((s, idx) => (
                                 s.link ? (
                                   <a key={idx} href={s.link} target="_blank" className={`p-2 bg-slate-50 dark:bg-white/5 rounded-lg hover:scale-110 transition-all ${s.color}`}><s.icon className="w-4 h-4" /></a>
@@ -236,7 +236,7 @@ export default function UserDetailsPage() {
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                             <div className="flex flex-col items-end gap-1">
-                              <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'FREE'}</div>
+                              <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'FREE'}</div>
                               <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest">Level {0}</div>
                             </div>
                           </td>
@@ -251,10 +251,10 @@ export default function UserDetailsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                   {userDetails.map((u, i) => (
                     <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl text-center group relative overflow-hidden flex flex-col font-outfit">
-                      <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus === 'PRO' ? 'bg-amber-400' : 'bg-primary-500'}`} />
+                      <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus === 'PRO' ? 'bg-black dark:bg-white' : 'bg-primary-500'}`} />
                       <div className="mb-6 mx-auto relative">
                         <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
-                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-amber-400 shadow-xl"><Crown className="w-4 h-4 text-amber-500" /></div>}
+                        {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-black dark:border-white shadow-xl"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}
                       </div>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-500 transition-colors block">{u.name || 'Anonymous'}</Link>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 lg:mb-8 hover:text-primary-500 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
@@ -270,7 +270,7 @@ export default function UserDetailsPage() {
                       </div>
 
                       <div className="space-y-4 mb-4 lg:mb-8">
-                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-blue-500/50" /> {u.email || 'N/A'}</div>
+                        <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
                         <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Phone className="w-4 text-primary-500/50" /> {u.phone || 'N/A'}</div>
                         <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
@@ -303,9 +303,9 @@ export default function UserDetailsPage() {
                           </div>
                         </div>
                         <div className="flex flex-wrap items-center gap-10 pt-4 border-t border-slate-100 dark:border-white/5">
-                          <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-blue-500/50" /> {u.email || 'No email'}</div>
+                          <div className="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase tracking-widest"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'No email'}</div>
                           <div className="flex items-center gap-2 text-[9px] font-black text-slate-400"><Calendar className="w-4 text-primary-500/50" /> {formatDate(u.createdAt)}</div>
-                          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
+                          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>
                       <button className="p-6 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-3xl hover:bg-primary-500 hover:text-white transition-all shadow-md"><ChevronRight className="w-6 h-6" /></button>

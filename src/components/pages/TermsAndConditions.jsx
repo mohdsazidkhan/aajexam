@@ -123,7 +123,7 @@ const TermsAndConditions = () => {
 
                      {/* 1. Acceptance of Terms */}
                      <section id="acceptance" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-duo-primary border-none relative overflow-hidden mt-4">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-primary border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <CircleCheck className="w-8 h-8" />
@@ -185,7 +185,7 @@ const TermsAndConditions = () => {
                               <h4 className="text-primary-500 font-black uppercase tracking-widest text-xs">Free Plan</h4>
                               <p className="text-sm font-medium text-slate-400">Access to Levels 0-9 for basic exam preparation.</p>
                            </div>
-                           <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-4 shadow-duo-primary group hover:scale-[1.02] transition-transform">
+                           <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-4 shadow-aajexam-primary group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
                                  <Zap className="w-4 h-4 text-primary-500" />
@@ -202,9 +202,9 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 4. Reward Programs */}
-                     <section id="rewards" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-duo-primary space-y-12 border-none">
+                     <section id="rewards" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-aajexam-primary space-y-12 border-none">
                         <div className="flex items-center gap-6">
-                           <div className="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-amber-500/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
                               <Gift className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">4. Reward Rules</h2>
@@ -215,16 +215,16 @@ const TermsAndConditions = () => {
                               <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h4>
                               <ul className="space-y-8">
                                  <li className="flex gap-6">
-                                    <div className="w-2.5 h-10 bg-amber-500 rounded-full shrink-0" />
+                                    <div className="w-2.5 h-10 bg-black dark:bg-white rounded-full shrink-0" />
                                     <div>
-                                       <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-1">Daily Challenges</p>
+                                       <p className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-1">Daily Challenges</p>
                                        <p className="text-xs font-medium text-slate-600 dark:text-slate-400 px-0">Earn rewards through daily, weekly, and monthly effort.</p>
                                     </div>
                                  </li>
                                  <li className="flex gap-6">
-                                    <div className="w-2.5 h-10 bg-amber-500 rounded-full shrink-0" />
+                                    <div className="w-2.5 h-10 bg-black dark:bg-white rounded-full shrink-0" />
                                     <div>
-                                       <p className="text-[10px] font-black text-amber-600 dark:text-amber-500 uppercase tracking-widest mb-1">Referral Bonus</p>
+                                       <p className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-1">Referral Bonus</p>
                                        <p className="text-xs font-medium text-slate-600 dark:text-slate-400 px-0">Earn bonuses for inviting your friends to join the platform.</p>
                                     </div>
                                  </li>
@@ -234,9 +234,9 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 5. Prohibited Activities */}
-                     <section id="prohibited" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-duo-secondary space-y-12 border-none ring-8 ring-rose-500/5">
+                     <section id="prohibited" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-aajexam-secondary space-y-12 border-none ring-8 ring-black/10/5 dark:ring-white/10/5">
                         <div className="flex items-center gap-6">
-                           <div className="w-16 h-16 bg-rose-500/10 text-rose-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-rose-500/10">
+                           <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-lg border-2 border-black/10 dark:border-white/10">
                               <Ban className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">5. Account Termination</h2>
@@ -247,14 +247,14 @@ const TermsAndConditions = () => {
                               'Scripted Automation', 'External Resource Collusion', 'Using Multiple Accounts', 'Referral Link Fraud', 'Pretending to be Someone Else', 'Abusive Behavior'
                            ].map((ban, i) => (
                               <div key={i} className="flex items-center gap-4 p-5 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 shadow-sm">
-                                 <TriangleAlert className="w-4 h-4 text-rose-500" />
+                                 <TriangleAlert className="w-4 h-4 text-black dark:text-white" />
                                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{ban}</span>
                               </div>
                            ))}
                         </div>
 
-                        <div className="p-10 bg-rose-500/10 rounded-[3rem] border-2 border-rose-500/20 text-rose-600 dark:text-rose-400 text-center">
-                           <p className="text-sm font-bold text-rose-600 dark:text-rose-400 leading-loose">
+                        <div className="p-10 bg-black/10 dark:bg-white/10 rounded-[3rem] border-2 border-black/20 dark:border-white/20 text-black dark:text-white text-center">
+                           <p className="text-sm font-bold text-black dark:text-white leading-loose">
                               Any violation of these rules will result in a permanent account ban.
                            </p>
                         </div>
@@ -263,7 +263,7 @@ const TermsAndConditions = () => {
                      {/* IP & Liability */}
                      <div className="grid grid-cols-1 gap-10">
                         <section id="intellectual" className="bg-white dark:bg-slate-800 p-4 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center gap-10">
-                           <div className="w-20 h-20 bg-indigo-500/10 text-indigo-500 rounded-[2rem] flex items-center justify-center shrink-0 shadow-inner border-2 border-indigo-500/5">
+                           <div className="w-20 h-20 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-[2rem] flex items-center justify-center shrink-0 shadow-inner border-2 border-black/5 dark:border-white/5">
                               <Lock className="w-10 h-10" />
                            </div>
                            <div className="space-y-3 text-center lg:text-left">
@@ -285,7 +285,7 @@ const TermsAndConditions = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-duo-secondary space-y-10 border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-aajexam-secondary space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center shadow-lg border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />

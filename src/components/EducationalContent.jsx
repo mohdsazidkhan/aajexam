@@ -53,8 +53,8 @@ const EducationalContent = ({ content }) => {
             icon: Trophy,
             title: "Sector Rewards",
             description: "Dominate the leaderboards and claim monthly recruitment bonuses.",
-            color: "text-amber-500",
-            bg: "bg-amber-50 dark:bg-amber-900/10"
+            color: "text-black dark:text-white",
+            bg: "bg-slate-100 dark:bg-slate-800 dark:bg-white/10"
         }
     ];
 
@@ -104,7 +104,7 @@ const EducationalContent = ({ content }) => {
                         <motion.div
                             key={i}
                             whileHover={{ y: -8 }}
-                            className="bg-background-surface p-10 rounded-[2.5rem] border-2 border-b-10 border-border-primary shadow-duo transition-all"
+                            className="bg-background-surface p-10 rounded-[2.5rem] border-2 border-b-10 border-border-primary shadow-aajexam transition-all"
                         >
                             <div className="flex items-start gap-6">
                                 <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-inner bg-slate-50 dark:bg-slate-950`}>
@@ -141,7 +141,7 @@ const EducationalContent = ({ content }) => {
                                 key={index}
                                 variants={itemVariants}
                                 whileHover={{ scale: 1.05 }}
-                                className={`bg-background-surface border-2 border-b-8 border-border-primary bg-white dark:bg-slate-900 shadow-duo flex flex-col items-center text-center space-y-6 group`}
+                                className={`bg-background-surface border-2 border-b-8 border-border-primary bg-white dark:bg-slate-900 shadow-aajexam flex flex-col items-center text-center space-y-6 group`}
                             >
                                 <div className={`w-20 h-20 rounded-[2rem] ${feature.bg} flex items-center justify-center transition-transform group-hover:rotate-12`}>
                                     <feature.icon className={`w-10 h-10 ${feature.color}`} />
@@ -172,7 +172,7 @@ const EducationalContent = ({ content }) => {
                                 Join 100,000+ aspirants practising for SSC, UPSC, Banking and Railway exams on AajExam. Free to start.
                             </p>
                         </div>
-                        <button className="px-10 py-5 bg-white text-primary-600 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-duo hover:translate-y-1 transition-all flex items-center gap-4">
+                        <button className="px-10 py-5 bg-white text-primary-600 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-aajexam hover:translate-y-1 transition-all flex items-center gap-4">
                             Get Started <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>

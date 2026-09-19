@@ -51,7 +51,7 @@ const AdminMentorDetail = () => {
               <div>
                 <h1 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
                   {mentor.user?.name || 'Unknown'}
-                  {mentor.isVerified && <Shield className="w-4 h-4 text-blue-500" />}
+                  {mentor.isVerified && <Shield className="w-4 h-4 text-black dark:text-white" />}
                 </h1>
                 <p className="text-xs text-slate-400">{mentor.user?.email}</p>
                 {mentor.user?.username && <p className="text-[10px] text-slate-400">@{mentor.user.username}</p>}
@@ -73,7 +73,7 @@ const AdminMentorDetail = () => {
                   <option value="rejected">Rejected</option>
                 </select>
                 {mentor.status === 'active' && !mentor.isVerified && (
-                  <button onClick={() => updateStatus('active', true)} className="px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-bold"><Shield className="w-3 h-3 inline mr-1" />Verify</button>
+                  <button onClick={() => updateStatus('active', true)} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg text-[10px] font-bold"><Shield className="w-3 h-3 inline mr-1" />Verify</button>
                 )}
               </div>
             </div>
@@ -85,7 +85,7 @@ const AdminMentorDetail = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
               <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
-                <Star className="w-4 h-4 text-amber-500 mx-auto mb-1" />
+                <Star className="w-4 h-4 text-black dark:text-white mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.rating?.toFixed(1) || '0.0'}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">{mentor.totalRatings || 0} Ratings</p>
               </div>
@@ -95,12 +95,12 @@ const AdminMentorDetail = () => {
                 <p className="text-[9px] text-slate-400 uppercase font-bold">Students Helped</p>
               </div>
               <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
-                <Clock className="w-4 h-4 text-teal-500 mx-auto mb-1" />
+                <Clock className="w-4 h-4 text-black dark:text-white mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.preparationMonths || 0}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">Prep Months</p>
               </div>
               <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
-                <MessageCircle className="w-4 h-4 text-pink-500 mx-auto mb-1" />
+                <MessageCircle className="w-4 h-4 text-black dark:text-white mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.amaThreads?.length || 0}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">AMA Threads</p>
               </div>
@@ -189,7 +189,7 @@ const AdminMentorDetail = () => {
                   {t.answer ? (
                     <p className="text-xs text-slate-600 dark:text-slate-300">A: {t.answer}</p>
                   ) : (
-                    <p className="text-[10px] text-yellow-600 font-bold">Not answered yet</p>
+                    <p className="text-[10px] text-black dark:text-white font-bold">Not answered yet</p>
                   )}
                 </div>
               ))}

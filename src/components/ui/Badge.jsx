@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * Badge - A friendly, Duolingo-inspired status indicator for the gamified learning experience.
+ * Badge - A friendly, AajExam-inspired status indicator for the gamified learning experience.
  */
 const Badge = ({
   text,
@@ -18,7 +18,7 @@ const Badge = ({
 }) => {
   // Brand system: primary (green) or stealth (neutral black/white via theme tokens)
   const variants = {
-    primary: 'bg-primary-500 text-white shadow-duo-primary border-primary-600',
+    primary: 'bg-primary-500 text-white shadow-aajexam-primary border-primary-600',
     stealth: 'bg-background-surface-secondary text-content-secondary border-border-primary shadow-sm',
   };
 

@@ -133,7 +133,7 @@ const MyAnalyticsPage = () => {
 
    if (error) return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 mt-0 lg:mt-16">
-         <XCircle className="w-16 h-16 text-red-400" />
+         <XCircle className="w-16 h-16 text-black dark:text-white" />
          <p className="text-lg font-black text-content-secondary">{error}</p>
          <Button variant="primary" onClick={() => window.location.reload()}>Retry</Button>
       </div>
@@ -152,7 +152,7 @@ const MyAnalyticsPage = () => {
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-gradient-to-br from-primary-500 to-indigo-600 text-white border-none shadow-duo-primary p-5 lg:p-8 overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
+               <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none shadow-aajexam-primary p-5 lg:p-8 overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-8">
                      <div className="space-y-2 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
@@ -204,17 +204,17 @@ const MyAnalyticsPage = () => {
                         {/* Quick Stats Grid */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                            <Card className="text-center p-4 border-border-primary rounded-[2rem]">
-                              <div className="p-3 bg-blue-50 dark:bg-slate-700/50 text-blue-500 rounded-2xl w-fit mx-auto mb-2"><Zap className="w-6 h-6" /></div>
+                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Zap className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{quiz?.totalAttempts || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Quizzes Done</p>
                            </Card>
                            <Card className="text-center p-4 border-border-primary rounded-[2rem]">
-                              <div className="p-3 bg-purple-50 dark:bg-slate-700/50 text-purple-500 rounded-2xl w-fit mx-auto mb-2"><GraduationCap className="w-6 h-6" /></div>
+                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><GraduationCap className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{exam?.totalAttempts || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Exams Done</p>
                            </Card>
                            <Card className="text-center p-4 border-border-primary rounded-[2rem]">
-                              <div className="p-3 bg-pink-50 dark:bg-slate-700/50 text-pink-500 rounded-2xl w-fit mx-auto mb-2"><Play className="w-6 h-6" /></div>
+                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Play className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{reel?.totalViewed || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Viewed</p>
                            </Card>
@@ -238,12 +238,12 @@ const MyAnalyticsPage = () => {
                               <p className="text-[10px] font-black text-content-secondary uppercase">Following</p>
                            </Card>
                            <Card className="text-center p-4 border-border-primary rounded-[2rem]">
-                              <div className="p-3 bg-amber-50 dark:bg-slate-700/50 text-amber-500 rounded-2xl w-fit mx-auto mb-2"><Wallet className="w-6 h-6" /></div>
+                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Wallet className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{wallet?.balance || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Wallet Balance</p>
                            </Card>
                            <Card className="text-center p-4 border-border-primary rounded-[2rem]">
-                              <div className="p-3 bg-orange-50 dark:bg-slate-700/50 text-orange-500 rounded-2xl w-fit mx-auto mb-2"><UserPlus className="w-6 h-6" /></div>
+                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><UserPlus className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{referral?.count || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Referrals</p>
                            </Card>
@@ -276,10 +276,10 @@ const MyAnalyticsPage = () => {
                      <>
                         {/* Overall Quiz Stats */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                           <StatMini icon={Zap} label="Total Quizzes" value={quiz?.totalAttempts || 0} color="text-blue-500" bg="bg-blue-50" />
+                           <StatMini icon={Zap} label="Total Quizzes" value={quiz?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Target} label="Avg Accuracy" value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-500" bg="bg-primary-50" />
-                           <StatMini icon={Trophy} label="Best Score" value={`${quiz?.bestScore || 0}%`} color="text-amber-500" bg="bg-amber-50" />
-                           <StatMini icon={Clock} label="Total Time" value={`${Math.round((quiz?.totalTime || 0) / 60)}m`} color="text-purple-500" bg="bg-purple-50" />
+                           <StatMini icon={Trophy} label="Best Score" value={`${quiz?.bestScore || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Clock} label="Total Time" value={`${Math.round((quiz?.totalTime || 0) / 60)}m`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
                         {/* Correct / Wrong / Skipped */}
@@ -294,8 +294,8 @@ const MyAnalyticsPage = () => {
                               </div>
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <XCircle className="w-5 h-5 text-red-500" />
-                                    <span className="text-2xl font-black font-outfit text-red-600">{quiz?.totalWrong || 0}</span>
+                                    <XCircle className="w-5 h-5 text-black dark:text-white" />
+                                    <span className="text-2xl font-black font-outfit text-black dark:text-white">{quiz?.totalWrong || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Wrong</p>
                               </div>
@@ -323,7 +323,7 @@ const MyAnalyticsPage = () => {
                                                    <span className="font-black text-base">{s.name}</span>
                                                    <div className="flex items-center gap-3 text-xs font-bold text-content-secondary">
                                                       <span className="text-primary-600">{s.totalCorrect} correct</span>
-                                                      <span className="text-red-500">{s.totalWrong} wrong</span>
+                                                      <span className="text-black dark:text-white">{s.totalWrong} wrong</span>
                                                       <span>{s.attempts} attempts</span>
                                                    </div>
                                                 </div>
@@ -351,7 +351,7 @@ const MyAnalyticsPage = () => {
                                           </div>
                                           <div className="flex items-center gap-3">
                                              <span className="text-primary-600 text-xs font-bold">{t.totalCorrect}  </span>
-                                             <span className="text-red-500 text-xs font-bold">{t.totalWrong}  </span>
+                                             <span className="text-black dark:text-white text-xs font-bold">{t.totalWrong}  </span>
                                              <span className="font-black text-sm text-primary-500">{t.avgAccuracy}%</span>
                                           </div>
                                        </div>
@@ -381,9 +381,9 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'exams' && (
                      <>
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
-                           <StatMini icon={GraduationCap} label="Total Exams" value={exam?.totalAttempts || 0} color="text-purple-500" bg="bg-purple-50" />
+                           <StatMini icon={GraduationCap} label="Total Exams" value={exam?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Target} label="Avg Accuracy" value={`${exam?.avgAccuracy || 0}%`} color="text-primary-500" bg="bg-primary-50" />
-                           <StatMini icon={Trophy} label="Best Accuracy" value={`${exam?.bestAccuracy || 0}%`} color="text-amber-500" bg="bg-amber-50" />
+                           <StatMini icon={Trophy} label="Best Accuracy" value={`${exam?.bestAccuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
                         <Card className="p-5 border-border-primary rounded-3xl">
@@ -397,8 +397,8 @@ const MyAnalyticsPage = () => {
                               </div>
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <XCircle className="w-5 h-5 text-red-500" />
-                                    <span className="text-2xl font-black font-outfit text-red-600">{exam?.totalWrong || 0}</span>
+                                    <XCircle className="w-5 h-5 text-black dark:text-white" />
+                                    <span className="text-2xl font-black font-outfit text-black dark:text-white">{exam?.totalWrong || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Wrong</p>
                               </div>
@@ -419,10 +419,10 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'reels' && (
                      <>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                           <StatMini icon={Eye} label="Reels Viewed" value={reel?.totalViewed || 0} color="text-blue-500" bg="bg-blue-50" />
+                           <StatMini icon={Eye} label="Reels Viewed" value={reel?.totalViewed || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={CheckCircle} label="Questions Answered" value={reel?.totalAnswered || 0} color="text-primary-500" bg="bg-primary-50" />
-                           <StatMini icon={Target} label="Reel Accuracy" value={`${reel?.accuracy || 0}%`} color="text-purple-500" bg="bg-purple-50" />
-                           <StatMini icon={Clock} label="Time Spent" value={`${Math.round((reel?.totalTimeSpent || 0) / 60)}m`} color="text-amber-500" bg="bg-amber-50" />
+                           <StatMini icon={Target} label="Reel Accuracy" value={`${reel?.accuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Clock} label="Time Spent" value={`${Math.round((reel?.totalTimeSpent || 0) / 60)}m`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
                         {/* Engagement Stats */}
@@ -430,12 +430,12 @@ const MyAnalyticsPage = () => {
                            <p className="font-black text-sm uppercase text-content-secondary mb-4">Engagement</p>
                            <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
-                                 <Heart className="w-5 h-5 text-red-500 mx-auto mb-1" />
+                                 <Heart className="w-5 h-5 text-black dark:text-white mx-auto mb-1" />
                                  <p className="text-xl font-black font-outfit">{reel?.totalLiked || 0}</p>
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">Liked</p>
                               </div>
                               <div>
-                                 <Bookmark className="w-5 h-5 text-blue-500 mx-auto mb-1" />
+                                 <Bookmark className="w-5 h-5 text-black dark:text-white mx-auto mb-1" />
                                  <p className="text-xl font-black font-outfit">{reel?.totalBookmarked || 0}</p>
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">Saved</p>
                               </div>
@@ -481,7 +481,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         {/* Balance Card */}
-                        <Card className="bg-gradient-to-br from-primary-500 to-indigo-600 text-white border-none shadow-duo-primary p-6 lg:p-8 rounded-[2rem] lg:rounded-[3rem]">
+                        <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none shadow-aajexam-primary p-6 lg:p-8 rounded-[2rem] lg:rounded-[3rem]">
                            <div className="flex justify-between items-start mb-6">
                               <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
                               <span className="text-xs font-black opacity-60 uppercase">Wallet Balance</span>
@@ -502,7 +502,7 @@ const MyAnalyticsPage = () => {
                               </div>
                            </Card>
                            <Card className="flex items-center gap-5 p-5 border-border-primary rounded-3xl">
-                              <div className="p-4 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-2xl"><TrendingDown className="w-7 h-7" /></div>
+                              <div className="p-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-2xl"><TrendingDown className="w-7 h-7" /></div>
                               <div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Total Spent</p>
                                  <p className="text-2xl font-black font-outfit">{wallet?.totalExpenses || 0}</p>
@@ -516,17 +516,17 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                               <Card className="p-5 border-border-primary flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg lg:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg lg:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Blog Earnings</span>
                                  </div>
-                                 <span className="font-black text-lg text-blue-600">{wallet?.blogEarnings || 0}</span>
+                                 <span className="font-black text-lg text-black dark:text-white">{wallet?.blogEarnings || 0}</span>
                               </Card>
                               <Card className="p-5 border-border-primary flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-lg lg:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg lg:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Referral Rewards</span>
                                  </div>
-                                 <span className="font-black text-lg text-orange-600">{wallet?.referralRewards || 0}</span>
+                                 <span className="font-black text-lg text-black dark:text-white">{wallet?.referralRewards || 0}</span>
                               </Card>
                            </div>
                         </div>

@@ -25,7 +25,7 @@ export default function EditorialPolicy() {
                 <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-black dark:to-white rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaShieldAlt className="text-white text-4xl" />
                         </div>
                         <h1 className="text-2xl lg:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
@@ -60,7 +60,7 @@ export default function EditorialPolicy() {
                     {/* Content Creation Process */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-4 border-primary-700">
                                 <FaBook className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Creation Process</h2>
@@ -70,11 +70,11 @@ export default function EditorialPolicy() {
                             {[
                                 { step: 1, title: 'Expert Development', desc: 'Questions created by subject matter experts with extensive experience in government exams.', color: 'bg-primary-500' },
                                 { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-primary-500' },
-                                { step: 3, title: 'Verification', desc: 'Factual information cross-verified with authoritative sources and government publications.', color: 'bg-purple-500' },
+                                { step: 3, title: 'Verification', desc: 'Factual information cross-verified with authoritative sources and government publications.', color: 'bg-black dark:bg-white' },
                                 { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
-                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-duo border-b-4 border-black/20`}>
+                                    <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-aajexam border-b-4 border-black/20`}>
                                         {item.step}
                                     </div>
                                     <div>
@@ -94,11 +94,11 @@ export default function EditorialPolicy() {
                             {[
                                 { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-500' },
                                 { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-primary-500' },
-                                { title: 'Clarity', desc: 'Unambiguous and easily understood', color: 'bg-purple-500' },
+                                { title: 'Clarity', desc: 'Unambiguous and easily understood', color: 'bg-black dark:bg-white' },
                                 { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
-                                    <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center shadow-duo-secondary">
+                                    <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center shadow-aajexam-secondary">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
                                     <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
@@ -111,7 +111,7 @@ export default function EditorialPolicy() {
                     {/* User Feedback */}
                     <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-2xl p-4 lg:p-8 mb-8">
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center">
+                            <div className="w-12 h-12 bg-gradient-to-r from-black dark:from-white to-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center">
                                 <FaHandshake className="text-white text-2xl" />
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">User Feedback Integration</h2>
@@ -146,7 +146,7 @@ export default function EditorialPolicy() {
                     </div>
 
                     {/* Ethical Standards */}
-                    <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 rounded-3xl p-4 lg:p-8 mb-8">
+                    <div className="bg-gradient-to-r from-primary-50 to-slate-100 dark:to-slate-800 dark:from-primary-900/20 dark:to-white/20 rounded-3xl p-4 lg:p-8 mb-8">
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Ethical Standards</h2>
                         <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -175,7 +175,7 @@ export default function EditorialPolicy() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-duo-primary">
+                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-aajexam-primary">
                             <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Questions About Our Policy?
                             </h2>

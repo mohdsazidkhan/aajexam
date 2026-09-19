@@ -49,7 +49,7 @@ const TestStartModal = ({
       <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-2xl border-2 border-b-8 border-border-primary max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-duo-secondary border-4 border-white dark:border-slate-700">
+          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-aajexam-secondary border-4 border-white dark:border-slate-700">
             <FaSchool className="text-white text-xl lg:text-3xl" />
           </div>
 
@@ -67,7 +67,7 @@ const TestStartModal = ({
               {test.isPYQ ? (
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <ProBadge size="sm" />
-                  <span className="text-[10px] font-black text-amber-600 uppercase tracking-widest">
+                  <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest">
                     {(test.isLastYear || test.isFree || (test.accessLevel || '').toUpperCase() === 'FREE') ? "FREE PAPER" : "PRO ONLY PAPERS"}
                   </span>
                 </div>
@@ -104,7 +104,7 @@ const TestStartModal = ({
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 bg-amber-50 dark:bg-amber-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-amber-600 shadow-sm">
+                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{pattern.totalMarks} Marks</span>
@@ -112,10 +112,10 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-red-50 dark:bg-red-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-red-600 shadow-sm">
+                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Info className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-black text-red-600 dark:text-red-400 uppercase tracking-widest text-center">
+                  <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
                     Negative Marking: -{pattern.negativeMarking} per wrong answer
                   </span>
                 </div>
@@ -172,7 +172,7 @@ const TestStartModal = ({
                 pattern?.negativeMarking > 0 ? `Negative Marking: -${pattern.negativeMarking} Marks` : null
               ].filter(Boolean).map((rule, idx) => (
                 <li key={idx} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-primary-500 rounded-full shadow-duo" />
+                  <div className="w-1.5 h-1.5 bg-primary-500 rounded-full shadow-aajexam" />
                   <span className="leading-tight">{rule}</span>
                 </li>
               ))}
@@ -186,7 +186,7 @@ const TestStartModal = ({
                   type="checkbox"
                   checked={acceptedRules}
                   onChange={(e) => setAcceptedRules(e.target.checked)}
-                  className="w-10 h-10 border-4 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-500 checked:border-primary-500 transition-all cursor-pointer shadow-duo"
+                  className="w-10 h-10 border-4 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-500 checked:border-primary-500 transition-all cursor-pointer shadow-aajexam"
                 />
                 {acceptedRules && (
                   <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />
@@ -202,7 +202,7 @@ const TestStartModal = ({
           <div className="flex gap-4">
             <button
               onClick={onClose}
-              className="flex-1 px-6 py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
+              className="flex-1 px-6 py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-aajexam border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
             >
               Cancel
             </button>
@@ -210,7 +210,7 @@ const TestStartModal = ({
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
               className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-4 ${acceptedRules
-                ? 'bg-primary-500 text-white border-white/20 shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'
+                ? 'bg-primary-500 text-white border-white/20 shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >

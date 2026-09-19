@@ -83,8 +83,8 @@ const RevisionPage = () => {
           {/* Stats */}
           {stats && (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-red-500">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Due Today</p></Card>
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-blue-500">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">This Week</p></Card>
+              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Due Today</p></Card>
+              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">This Week</p></Card>
               <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-primary-500">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Accuracy</p></Card>
               <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Items</p></Card>
             </div>
@@ -143,13 +143,13 @@ const RevisionPage = () => {
                     })}
                   </div>
                   {currentItem.questionSnapshot?.explanation && (
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg lg:rounded-xl text-xs leading-relaxed text-blue-700 dark:text-blue-300">{currentItem.questionSnapshot.explanation}</div>
+                    <div className="p-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg lg:rounded-xl text-xs leading-relaxed text-black dark:text-white">{currentItem.questionSnapshot.explanation}</div>
                   )}
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider text-center">How well did you know this?</p>
                     <div className="grid grid-cols-3 gap-3">
-                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-red-100 dark:hover:bg-red-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
-                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
+                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
+                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
                       <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
                     </div>
                   </div>

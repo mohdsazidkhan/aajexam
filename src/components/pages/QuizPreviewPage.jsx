@@ -85,11 +85,11 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
   }
 
   const difficultyColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/30' :
-    quiz.difficulty === 'hard' ? 'text-red-600 bg-red-50 dark:bg-red-900/30' :
-      'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/30';
+    quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30' :
+      'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-5 lg:py-12 px-4 pb-24">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-5 lg:py-12 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
 
         {/* Breadcrumb */}
@@ -120,7 +120,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         {/* Quiz Header Card */}
         <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 lg:p-8 shadow-xl mb-6 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center mb-4">
-            <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-primary-500 to-teal-700 flex items-center justify-center mr-4 shrink-0">
+            <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center mr-4 shrink-0">
               <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
             </div>
             <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
@@ -134,13 +134,13 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <div className="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg lg:rounded-xl p-3 text-center">
-              <HelpCircle className="w-6 h-6 text-indigo-600 dark:text-indigo-400 mx-auto mb-1" />
+            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl p-3 text-center">
+              <HelpCircle className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.questions?.length || 0}</div>
               <div className="text-xs text-slate-500">Questions</div>
             </div>
-            <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg lg:rounded-xl p-3 text-center">
-              <Clock className="w-6 h-6 text-blue-600 dark:text-blue-400 mx-auto mb-1" />
+            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl p-3 text-center">
+              <Clock className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.duration}</div>
               <div className="text-xs text-slate-500">Minutes</div>
             </div>
@@ -163,7 +163,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
                 +{quiz.marksPerQuestion} per correct
               </span>
               {quiz.negativeMarking > 0 && (
-                <span className="px-3 py-1.5 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg font-medium">
+                <span className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg font-medium">
                   -{quiz.negativeMarking} per wrong
                 </span>
               )}
@@ -175,8 +175,8 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
             onClick={handleStartQuiz}
             className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-lg ${
               isLocked
-                ? 'bg-gradient-to-r from-amber-500 to-amber-700 text-white hover:from-amber-600 hover:to-amber-800'
-                : 'bg-gradient-to-r from-primary-600 to-teal-600 text-white hover:from-primary-700 hover:to-teal-700'
+                ? 'bg-gradient-to-r from-black dark:from-white to-black dark:to-white text-white dark:text-black hover:from-black dark:from-white hover:to-black dark:to-white'
+                : 'bg-gradient-to-r from-primary-600 to-black dark:to-white text-white hover:from-primary-700 hover:to-black dark:to-white'
             }`}
           >
             {isLocked ? (
@@ -232,14 +232,14 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         {leaderboard.length > 0 && (
           <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-lg border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
-              <Trophy className="w-5 h-5 text-yellow-500" />
+              <Trophy className="w-5 h-5 text-black dark:text-white" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Leaderboard</h2>
             </div>
             <div className="space-y-2">
               {leaderboard.slice(0, 10).map((entry, i) => (
                 <div key={entry._id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-                    i === 0 ? 'bg-yellow-500' : i === 1 ? 'bg-slate-400' : i === 2 ? 'bg-amber-600' : 'bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                    i === 0 ? 'bg-black dark:bg-white' : i === 1 ? 'bg-slate-400' : i === 2 ? 'bg-black dark:bg-white' : 'bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
                   }`}>
                     {i + 1}
                   </div>

@@ -133,7 +133,7 @@ const AdminBlogs = () => {
   const getStatusBadge = (status) => {
     const cfg = {
       published: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300',
-      draft: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
+      draft: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
       archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
     };
     return (
@@ -170,10 +170,10 @@ const AdminBlogs = () => {
                     <div className="ml-3 max-w-xs">
                       <div className="text-sm font-medium text-gray-900 dark:text-white truncate" title={blog.title}>
                         {blog.title}
-                        {blog.isFeatured && <Star className="inline w-3 h-3 ml-1 text-yellow-500 fill-yellow-500" />}
-                        {blog.isPinned && <Pin className="inline w-3 h-3 ml-1 text-blue-500 fill-blue-500" />}
+                        {blog.isFeatured && <Star className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
+                        {blog.isPinned && <Pin className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
                       </div>
-                      <div className="text-xs text-blue-600 dark:text-blue-400 mt-0.5"><code>/blog/{blog.slug}</code></div>
+                      <div className="text-xs text-black dark:text-white mt-0.5"><code>/blog/{blog.slug}</code></div>
                     </div>
                   </div>
                 </td>
@@ -196,17 +196,17 @@ const AdminBlogs = () => {
                       <Edit3 className="w-4 h-4" />
                     </Link>
                     {blog.status === 'published' ? (
-                      <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 hover:text-orange-800 dark:text-orange-400 text-xs font-bold">Unpublish</button>
+                      <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white text-xs font-bold">Unpublish</button>
                     ) : (
                       <button onClick={() => handlePublish(blog._id)} className="text-primary-600 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
                     )}
                     <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured">
-                      <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-yellow-500 fill-yellow-500' : 'text-gray-400'}`} />
+                      <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
                     </button>
                     <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned">
-                      <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-blue-500 fill-blue-500' : 'text-gray-400'}`} />
+                      <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
                     </button>
-                    <button onClick={() => handleDelete(blog._id)} className="text-red-600 hover:text-red-800 dark:text-red-400">
+                    <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -237,17 +237,17 @@ const AdminBlogs = () => {
           <div className="mt-3 flex items-center gap-2">
             <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Edit</Link>
             {blog.status === 'published' ? (
-              <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 dark:text-orange-400 text-xs font-bold">Unpublish</button>
+              <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
             ) : (
               <button onClick={() => handlePublish(blog._id)} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Publish</button>
             )}
             <button onClick={() => handleToggleFeatured(blog._id)}>
-              <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-yellow-500 fill-yellow-500' : 'text-gray-400'}`} />
+              <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
             </button>
             <button onClick={() => handleTogglePinned(blog._id)}>
-              <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-blue-500 fill-blue-500' : 'text-gray-400'}`} />
+              <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
             </button>
-            <button onClick={() => handleDelete(blog._id)} className="text-red-600 dark:text-red-400">
+            <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white">
               <Trash2 className="w-4 h-4" />
             </button>
           </div>
@@ -265,8 +265,8 @@ const AdminBlogs = () => {
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white truncate">{blog.title}</h3>
               {getStatusBadge(blog.status)}
-              {blog.isFeatured && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />}
-              {blog.isPinned && <Pin className="w-3 h-3 text-blue-500 fill-blue-500" />}
+              {blog.isFeatured && <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
+              {blog.isPinned && <Pin className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
             </div>
             <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 flex gap-4">
               <span>{blog.exam?.name || 'N/A'}</span>
@@ -277,11 +277,11 @@ const AdminBlogs = () => {
             <div className="mt-2 flex items-center gap-3">
               <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Edit</Link>
               {blog.status === 'published' ? (
-                <button onClick={() => handleUnpublish(blog._id)} className="text-orange-600 dark:text-orange-400 text-xs font-bold">Unpublish</button>
+                <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
               ) : (
                 <button onClick={() => handlePublish(blog._id)} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Publish</button>
               )}
-              <button onClick={() => handleDelete(blog._id)} className="text-red-600 dark:text-red-400 text-xs font-bold">Delete</button>
+              <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white text-xs font-bold">Delete</button>
             </div>
           </div>
         </div>
@@ -411,8 +411,8 @@ const AdminBlogs = () => {
         )}
 
         {error && (
-          <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-            <p className="text-red-800 dark:text-red-200">{error}</p>
+          <div className="mt-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
+            <p className="text-black dark:text-white">{error}</p>
           </div>
         )}
       </div>

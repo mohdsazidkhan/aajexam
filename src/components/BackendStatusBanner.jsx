@@ -46,13 +46,13 @@ const BackendStatusBanner = () => {
         >
           <div className="relative group">
             {/* Glassmorphism Container */}
-            <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-4 border-rose-500/30 rounded-[2.5rem] p-6 shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex flex-col lg:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
+            <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-4 border-black/30 dark:border-white/30 rounded-[2.5rem] p-6 shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex flex-col lg:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
               {/* Background Tech Highlight */}
-              <div className="absolute -left-10 -top-10 w-40 h-40 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -left-10 -top-10 w-40 h-40 bg-black/5 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
               {/* HUD Icon with Pulsing Effect */}
               <div className="relative flex-shrink-0">
-                <div className="w-16 h-16 rounded-[2rem] bg-rose-500/10 flex items-center justify-center text-rose-500 border-2 border-rose-500/20 shadow-inner">
+                <div className="w-16 h-16 rounded-[2rem] bg-black/10 dark:bg-white/10 flex items-center justify-center text-black dark:text-white border-2 border-black/20 dark:border-white/20 shadow-inner">
                   <WifiOff className="w-8 h-8" />
                 </div>
                 <motion.div
@@ -61,14 +61,14 @@ const BackendStatusBanner = () => {
                     opacity: [1, 0, 1]
                   }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 rounded-full border-4 border-white dark:border-slate-900 shadow-sm"
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-black dark:bg-white rounded-full border-4 border-white dark:border-slate-900 shadow-sm"
                 />
               </div>
 
               {/* Information Block */}
               <div className="flex-1 text-center lg:text-left space-y-2">
                 <h3 className="text-base font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white flex items-center justify-center lg:justify-start gap-2.5">
-                  <AlertCircle className="w-5 h-5 text-rose-500" />
+                  <AlertCircle className="w-5 h-5 text-black dark:text-white" />
                   Station Uplink Interrupted
                 </h3>
                 <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] leading-relaxed">
@@ -76,13 +76,13 @@ const BackendStatusBanner = () => {
                 </p>
               </div>
 
-              {/* Action Button (Duolingo 3D Style) */}
+              {/* Action Button (AajExam 3D Style) */}
               <motion.button
                 whileHover={{ y: -3, scale: 1.05 }}
                 whileTap={{ y: 0, scale: 0.95 }}
                 onClick={checkBackendStatus}
                 disabled={isRefreshing}
-                className="flex-shrink-0 px-8 py-4 bg-rose-500 text-white rounded-2xl border-b-[6px] border-rose-700 shadow-duo-red font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex-shrink-0 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl border-b-[6px] border-black dark:border-white shadow-aajexam-accent font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <RefreshCcw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                 {isRefreshing ? 'LINKING...' : 'RE-LINK'}
@@ -90,7 +90,7 @@ const BackendStatusBanner = () => {
             </div>
 
             {/* Subtle Bottom Glow Line */}
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent blur-sm opacity-50" />
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-gradient-to-r from-transparent via-black dark:via-white to-transparent blur-sm opacity-50" />
           </div>
         </motion.div>
       )}

@@ -148,7 +148,7 @@ export default function AdminContacts() {
                     </div>
                     <div>
                       <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
-                      <div className="text-sm italic uppercase tracking-tighter italic">Message List</div>
+                      <div className="text-sm italic uppercase tracking-tighter">Message List</div>
                     </div>
                  </div>
 
@@ -262,7 +262,7 @@ export default function AdminContacts() {
                                   <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-500 hover:text-white transition-all shadow-lg active:scale-95">
                                      <Send className="w-4 h-4" />
                                   </button>
-                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-lg lg:rounded-xl hover:bg-rose-500 hover:text-white transition-all shadow-lg active:scale-95">
+                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all shadow-lg active:scale-95">
                                      <Trash2 className="w-4 h-4" />
                                   </button>
                                </div>
@@ -288,7 +288,7 @@ export default function AdminContacts() {
                              {contact.name?.[0].toUpperCase() || 'U'}
                           </div>
                           
-                          <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{contact.name || 'Unknown'}</h3>
+                          <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1">{contact.name || 'Unknown'}</h3>
                           <div className="text-[9px] font-black text-primary-500 uppercase tracking-widest mb-6 italic">{contact.email || 'No email'}</div>
                           
                           <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 w-full mb-4 lg:mb-8 relative">
@@ -304,7 +304,7 @@ export default function AdminContacts() {
                                 <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-500 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-500 hover:text-white transition-all active:scale-95">
                                    <Send className="w-4 h-4" />
                                 </button>
-                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-rose-500/10 text-rose-500 border-2 border-rose-500/20 rounded-lg lg:rounded-xl hover:bg-rose-500 hover:text-white transition-all active:scale-95">
+                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all active:scale-95">
                                    <Trash2 className="w-4 h-4" />
                                 </button>
                              </div>
@@ -330,7 +330,7 @@ export default function AdminContacts() {
 
                          <div className="flex-1 space-y-4">
                             <div className="flex flex-wrap items-center gap-4">
-                               <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{contact.name || 'Unknown'}</h3>
+                               <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{contact.name || 'Unknown'}</h3>
                                <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">{contact.email || 'No email'}</div>
                             </div>
                             <p className="text-[11px] lg:text-sm font-black uppercase tracking-widest leading-relaxed text-slate-500">{contact.message}</p>
@@ -349,13 +349,13 @@ export default function AdminContacts() {
                          <div className="flex lg:flex-col gap-4">
                             <button
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-aajexam-primary hover:scale-105 active:scale-95 transition-all"
                             >
                                <Send className="w-5 h-5" /> Reply
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-duo-rose hover:scale-105 active:scale-95 transition-all"
+                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-aajexam-accent hover:scale-105 active:scale-95 transition-all"
                             >
                                <Trash2 className="w-5 h-5" /> Delete
                             </button>

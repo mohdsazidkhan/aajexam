@@ -291,8 +291,8 @@ const CommunityQuestionsPage = () => {
                       onClick={() => handleLike(q._id)}
                       className={`flex items-center gap-1.5 text-xs font-bold transition-colors ${
                         isLikedByMe(q)
-                          ? 'text-rose-500'
-                          : 'text-content-muted hover:text-rose-500'
+                          ? 'text-black dark:text-white'
+                          : 'text-content-muted hover:text-black dark:hover:text-white'
                       }`}
                     >
                       <Heart className={`w-4 h-4 ${isLikedByMe(q) ? 'fill-current' : ''}`} />
@@ -313,7 +313,7 @@ const CommunityQuestionsPage = () => {
                     <button
                       onClick={() => handleDelete(q._id)}
                       disabled={deletingId === q._id}
-                      className="flex items-center gap-1 text-xs font-bold text-content-muted hover:text-rose-500 transition-colors disabled:opacity-50"
+                      className="flex items-center gap-1 text-xs font-bold text-content-muted hover:text-black dark:hover:text-white transition-colors disabled:opacity-50"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                       {deletingId === q._id ? 'Deleting...' : 'Delete'}
@@ -355,7 +355,7 @@ const CommunityQuestionsPage = () => {
               Login to post your own questions and like others!
             </p>
             <Link href="/login">
-              <Button variant="white" size="sm" className='mx-auto'>
+              <Button variant="secondary" size="sm" className='mx-auto'>
                 Login Now
               </Button>
             </Link>

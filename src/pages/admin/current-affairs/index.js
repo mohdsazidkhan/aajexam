@@ -78,11 +78,11 @@ const AdminCurrentAffairs = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Title <span className="text-red-400">*</span></label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Title <span className="text-black dark:text-white">*</span></label>
                   <input placeholder="Enter the headline" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className={inputClass} />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-red-400">*</span></label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-black dark:text-white">*</span></label>
                   <textarea placeholder="Write the full article content..." rows={5} value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} className={`${inputClass} resize-y`} />
                 </div>
                 <div>
@@ -150,8 +150,8 @@ const AdminCurrentAffairs = () => {
                         </td>
                         <td className="px-4 py-3">
                           <div className="flex items-center justify-end gap-1">
-                            <button onClick={() => handleEdit(a)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-blue-500" /></button>
-                            <button onClick={() => handleDelete(a._id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-red-500" /></button>
+                            <button onClick={() => handleEdit(a)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                            <button onClick={() => handleDelete(a._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                           </div>
                         </td>
                       </tr>
@@ -179,8 +179,8 @@ const AdminCurrentAffairs = () => {
                       {new Date(a.date).toLocaleDateString('en-IN')}
                     </div>
                     <div className="flex items-center gap-1">
-                      <button onClick={() => handleEdit(a)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-blue-500" /></button>
-                      <button onClick={() => handleDelete(a._id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-red-500" /></button>
+                      <button onClick={() => handleEdit(a)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleDelete(a._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                     </div>
                   </div>
                 </Card>
@@ -200,8 +200,8 @@ const AdminCurrentAffairs = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{a.title}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button onClick={() => handleEdit(a)} className="p-2 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-blue-500" /></button>
-                    <button onClick={() => handleDelete(a._id)} className="p-2 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-red-500" /></button>
+                    <button onClick={() => handleEdit(a)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(a._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                   </div>
                 </Card>
               ))}

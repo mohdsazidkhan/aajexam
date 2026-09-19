@@ -191,7 +191,7 @@ const FAQ = () => {
                 <div className="container mx-auto mt-0">
                     {/* Hero Section */}
                     <div className="text-center mb-8 lg:mb-12">
-                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-gradient-to-r from-primary-500 to-black dark:to-white rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaQuestionCircle className="text-white text-3xl" />
                         </div>
                         <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
@@ -208,7 +208,7 @@ const FAQ = () => {
                         return (
                             <div key={catIndex} className="mb-8 lg:mb-12">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-purple-500 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-black dark:to-white rounded-lg lg:rounded-xl flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
                                     <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -238,7 +238,7 @@ const FAQ = () => {
 
                     {/* Contact Section */}
                     <div className="text-center mt-12">
-                        <div className="bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-800 dark:to-purple-800 rounded-3xl p-4 lg:p-8">
+                        <div className="bg-gradient-to-r from-primary-100 to-slate-100 dark:to-slate-800 dark:from-primary-800 dark:to-white rounded-3xl p-4 lg:p-8">
                             <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Still Have Questions?
                             </h2>

@@ -96,16 +96,16 @@ const ModernLandingPage = () => {
                   <motion.div
                      animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                     className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-duo-primary items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
+                     className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-aajexam-primary items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
                   >
                      <Trophy className="w-8 h-8 text-primary-500" />
                   </motion.div>
                   <motion.div
                      animate={{ y: [15, -15, 15], rotate: [0, -10, 10, 0] }}
                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                     className="absolute hidden lg:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-duo border-2 border-secondary-100 dark:border-secondary-900/50 items-center justify-center"
+                     className="absolute hidden lg:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-800 dark:border-white/50 items-center justify-center"
                   >
-                     <Star className="w-8 h-8 text-secondary-500" />
+                     <Star className="w-8 h-8 text-black dark:text-white" />
                   </motion.div>
 
                   <div
@@ -138,17 +138,17 @@ const ModernLandingPage = () => {
                         size="xl"
                         icon={ArrowRight}
                         iconPosition="right"
-                        className="w-full sm:w-auto shadow-duo-primary transform hover:-translate-y-1 transition-all duration-300 font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
+                        className="w-full sm:w-auto shadow-aajexam-primary transform hover:-translate-y-1 transition-all duration-300 font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
                         onClick={() => router.push('/register')}
                      >
                         Start practicing now
                      </Button>
                      <Button
-                        variant="ghost"
+                        variant="secondary"
                         size="xl"
                         icon={Zap}
                         iconPosition="right"
-                        className="w-full sm:w-auto bg-white dark:bg-slate-800/30 border-2 border-slate-200 dark:border-white/5 shadow-sm font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
+                        className="w-full sm:w-auto font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
                         onClick={() => router.push('/govt-exams-preparation')}
                      >
                         Browse exams
@@ -165,7 +165,7 @@ const ModernLandingPage = () => {
                         <Flame className="w-5 h-5 text-primary-700 dark:text-primary-500" /> Thousands of questions
                      </div>
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <Trophy className="w-5 h-5 text-amber-500" /> Practice with topic-wise quizzes
+                        <Trophy className="w-5 h-5 text-black dark:text-white" /> Practice with topic-wise quizzes
                      </div>
                   </div>
                </div>
@@ -199,18 +199,18 @@ const ModernLandingPage = () => {
                         Registered Users (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-                        <span className="text-amber-600 dark:text-amber-400 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+                        <span className="text-black dark:text-white font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
                         Practice Test Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
-                        <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+                        <span className="text-black dark:text-white font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
                         PYQ's Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse"></span>
-                        <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white animate-pulse"></span>
+                        <span className="text-black dark:text-white font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
                         Quiz Attempts (Last 30 Days)
                      </div>
                   </div>
@@ -227,10 +227,10 @@ const ModernLandingPage = () => {
 
                      {[
                         { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
+                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-black dark:text-white", bg: "bg-slate-100 dark:bg-slate-800 dark:bg-white/20" },
                         { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" }
                      ].map((item, i) => (
-                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-duo border-2 border-slate-200 dark:border-slate-700">
+                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-aajexam border-2 border-slate-200 dark:border-slate-700">
                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
                               <item.icon className={`w-8 h-8 ${item.color}`} />
                            </div>
@@ -294,12 +294,12 @@ const ModernLandingPage = () => {
                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
                   {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam, idx) => {
                      const colors = [
-                        { color: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/20', text: 'text-blue-400' },
-                        { color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
-                        { color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
-                        { color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
+                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
                         { color: 'from-primary-500/20 to-primary-600/10', border: 'border-primary-500/20', text: 'text-primary-400' },
-                        { color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
+                        { color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
                      ];
                      const theme = colors[idx % colors.length];
                      return (
@@ -317,12 +317,12 @@ const ModernLandingPage = () => {
                         </motion.div>
                      );
                   }) : [
-                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'from-blue-500/20 to-blue-600/10', border: 'border-blue-500/20', text: 'text-blue-400' },
-                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'from-violet-500/20 to-violet-600/10', border: 'border-violet-500/20', text: 'text-violet-400' },
-                     { name: 'RRB GROUP D', papers: '18+', color: 'from-amber-500/20 to-amber-600/10', border: 'border-amber-500/20', text: 'text-amber-400' },
-                     { name: 'SSC CPO', papers: '17+', color: 'from-rose-500/20 to-rose-600/10', border: 'border-rose-500/20', text: 'text-rose-400' },
+                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'RRB GROUP D', papers: '18+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
+                     { name: 'SSC CPO', papers: '17+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
                      { name: 'UPSC Prelims', papers: '14+', color: 'from-primary-500/20 to-primary-600/10', border: 'border-primary-500/20', text: 'text-primary-400' },
-                     { name: 'SSC GD Constable', papers: '25+', color: 'from-cyan-500/20 to-cyan-600/10', border: 'border-cyan-500/20', text: 'text-cyan-400' },
+                     { name: 'SSC GD Constable', papers: '25+', color: 'from-black/20 dark:from-white/20 to-black/10 dark:to-white/10', border: 'border-black/20 dark:border-white/20', text: 'text-black dark:text-white dark:text-black' },
                   ].map((exam) => (
                      <motion.div
                         key={exam.name}
@@ -375,7 +375,7 @@ const ModernLandingPage = () => {
                         <h3 className="text-xl lg:text-5xl font-black font-outfit uppercase leading-[0.9]">See your progress</h3>
                         <p className="text-base lg:text-md lg:text-xl font-bold opacity-80 leading-relaxed">Know how well you are doing. Get a clear report after every exam and move up as you improve.</p>
                         <div className="pt-4 lg:pt-8">
-                           <Button variant="ghost" size="lg" className="bg-white text-primary-700 hover:bg-slate-100 rounded-[1.5rem] lg:rounded-[2rem] px-6 lg:px-8 font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
+                           <Button variant="secondary" size="lg" className="rounded-[1.5rem] lg:rounded-[2rem] px-6 lg:px-8 font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
                               Check your progress
                            </Button>
                         </div>
@@ -398,7 +398,7 @@ const ModernLandingPage = () => {
                               <motion.div
                                  initial={{ width: 0 }}
                                  whileInView={{ width: `${width}%` }}
-                                 className="h-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-duo-secondary"
+                                 className="h-full bg-gradient-to-r from-primary-500 to-primary-600 shadow-aajexam-secondary"
                               />
                            </div>
                         ))}
@@ -428,7 +428,7 @@ const ModernLandingPage = () => {
 
                   <Card className="lg:col-span-8 p-5 lg:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-2xl flex flex-col lg:flex-row items-center gap-6 lg:gap-10 overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">
                      <div className="flex-1 space-y-4 lg:space-y-6 relative z-10 text-center lg:text-left">
-                        <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-600 dark:text-primary-400 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-duo-primary border-2 border-primary-500/5 mx-auto lg:mx-0">
+                        <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-600 dark:text-primary-400 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-aajexam-primary border-2 border-primary-500/5 mx-auto lg:mx-0">
                            <Medal className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
@@ -496,7 +496,7 @@ const ModernLandingPage = () => {
                         size="xl"
                         icon={ArrowRight}
                         iconPosition="right"
-                        className="w-full sm:w-auto shadow-duo-primary rounded-2xl px-16 font-outfit font-black text-sm tracking-[0.08em] py-8 transition-transform active:scale-95"
+                        className="w-full sm:w-auto shadow-aajexam-primary rounded-2xl px-16 font-outfit font-black text-sm tracking-[0.08em] py-8 transition-transform active:scale-95"
                         onClick={() => router.push('/register')}
                      >
                         Join now for free

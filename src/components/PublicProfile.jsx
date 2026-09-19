@@ -93,7 +93,7 @@ const PublicProfile = ({ username }) => {
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
-          className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+          className="px-6 py-2 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-semibold rounded-lg transition-colors"
         >
           Go Back
         </button>
@@ -110,7 +110,7 @@ const PublicProfile = ({ username }) => {
         <div className="sticky top-0 z-50 flex items-center justify-between px-6 py-5 bg-white dark:bg-slate-900 border-b-4 border-slate-100 dark:border-slate-800 shadow-xl lg:hidden rounded-b-[2.5rem]">
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-3 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800 rounded-2xl shadow-duo border-2 border-slate-100 dark:border-slate-700 active:translate-y-1 transition-all"
+            className="flex items-center gap-3 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800 rounded-2xl shadow-aajexam border-2 border-slate-100 dark:border-slate-700 active:translate-y-1 transition-all"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -141,7 +141,7 @@ const PublicProfile = ({ username }) => {
                     alt={profile.name}
                     className="w-24 lg:w-48 h-24 lg:h-48 lg:w-56 lg:h-56 rounded-[3.2rem] border-[10px] border-white dark:border-slate-800 shadow-2xl object-cover relative z-10 transition-transform group-hover:scale-110"
                   />
-                  <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-duo-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
+                  <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-aajexam-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
                     <span className="text-xl font-black uppercase tracking-widest">{(profile.subscriptionStatus || 'FREE').toUpperCase() === 'PRO' ? 'PRO' : 'FREE'}</span>
                   </div>
                 </div>
@@ -149,7 +149,7 @@ const PublicProfile = ({ username }) => {
                 <div className="w-24 lg:w-48 h-24 lg:h-48 lg:w-56 lg:h-56 rounded-[3.2rem] border-[10px] border-white dark:border-slate-800 shadow-2xl flex items-center justify-center bg-primary-500 text-white text-7xl lg:text-9xl font-black uppercase tracking-tighter relative overflow-hidden group">
                   <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                   <span className="relative z-10">{profile.name?.charAt(0)?.toUpperCase() || 'U'}</span>
-                  <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-duo-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
+                  <div className="absolute -bottom-4 -right-4 bg-primary-500 text-white px-8 py-3 rounded-2xl shadow-aajexam-primary border-4 border-white dark:border-slate-800 z-20 rotate-3 animate-bounce-slow">
                     <span className="text-xl font-black uppercase tracking-widest">{(profile.subscriptionStatus || 'FREE').toUpperCase() === 'PRO' ? 'PRO' : 'FREE'}</span>
                   </div>
                 </div>
@@ -226,7 +226,7 @@ const PublicProfile = ({ username }) => {
           <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl p-10 mb-10 group">
             <h2 className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] mb-10">Ranking & Honors</h2>
             <div className="flex flex-col sm:flex-row items-center gap-12">
-              <div className="flex flex-col items-center justify-center p-10 bg-primary-500 rounded-[2.5rem] text-white min-w-[200px] shadow-duo-primary border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-0 transition-transform">
+              <div className="flex flex-col items-center justify-center p-10 bg-primary-500 rounded-[2.5rem] text-white min-w-[200px] shadow-aajexam-primary border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-0 transition-transform">
                 <span className="text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Phase</span>
                 <span className="text-6xl font-black my-1 uppercase tracking-tighter">{0}</span>
                 <span className="text-xs font-black uppercase tracking-[0.2em]">{'Student'}</span>
@@ -270,8 +270,8 @@ const PublicProfile = ({ username }) => {
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Strike Accuracy</span>
                 </div>
-                <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-purple-500 transition-all">
-                  <span className="text-5xl font-black text-purple-500 uppercase tracking-tighter group-hover:scale-110 transition-transform">
+                <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-black dark:hover:border-white transition-all">
+                  <span className="text-5xl font-black text-black dark:text-white uppercase tracking-tighter group-hover:scale-110 transition-transform">
                     {0}%
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Core Mean</span>
@@ -295,7 +295,7 @@ const PublicProfile = ({ username }) => {
               {/* Contribution Counts Summary */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                 {contributions.categories.total > 0 && (
-                  <div className="p-6 bg-primary-500 rounded-2xl text-center shadow-duo-secondary border-2 border-white dark:border-slate-800">
+                  <div className="p-6 bg-primary-500 rounded-2xl text-center shadow-aajexam-secondary border-2 border-white dark:border-slate-800">
                     <div className="text-xl lg:text-3xl font-black text-white">
                       {contributions.categories.total}
                     </div>
@@ -305,7 +305,7 @@ const PublicProfile = ({ username }) => {
                   </div>
                 )}
                 {contributions.subcategories.total > 0 && (
-                  <div className="p-6 bg-primary-500 rounded-2xl text-center shadow-duo-primary border-2 border-white dark:border-slate-800">
+                  <div className="p-6 bg-primary-500 rounded-2xl text-center shadow-aajexam-primary border-2 border-white dark:border-slate-800">
                     <div className="text-xl lg:text-3xl font-black text-white">
                       {contributions.subcategories.total}
                     </div>
@@ -315,7 +315,7 @@ const PublicProfile = ({ username }) => {
                   </div>
                 )}
                 {contributions.quizzes.total > 0 && (
-                  <div className="p-6 bg-purple-500 rounded-2xl text-center shadow-duo-purple border-2 border-white dark:border-slate-800">
+                  <div className="p-6 bg-black dark:bg-white rounded-2xl text-center shadow-aajexam-accent border-2 border-white dark:border-slate-800">
                     <div className="text-xl lg:text-3xl font-black text-white">
                       {contributions.quizzes.total}
                     </div>
@@ -325,7 +325,7 @@ const PublicProfile = ({ username }) => {
                   </div>
                 )}
                 {contributions.userQuestions?.total > 0 && (
-                  <div className="p-6 bg-slate-100 dark:bg-slate-700 rounded-2xl text-center shadow-duo border-2 border-white dark:border-slate-800">
+                  <div className="p-6 bg-slate-100 dark:bg-slate-700 rounded-2xl text-center shadow-aajexam border-2 border-white dark:border-slate-800">
                     <div className="text-xl lg:text-3xl font-black text-slate-800 dark:text-white">
                       {contributions.userQuestions.total}
                     </div>
@@ -391,20 +391,20 @@ const PublicProfile = ({ username }) => {
               {contributions.quizzes.total > 0 && (
                 <div className="mb-10">
                   <h3 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                    <span className="w-2 h-2 bg-black dark:bg-white rounded-full"></span>
                     Training Quizzes ({contributions.quizzes.total})
                   </h3>
                   <div className="space-y-4">
                     {contributions.quizzes.items.map((quiz) => (
-                      <div key={quiz._id} className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-[2rem] border-2 border-b-6 border-slate-100 dark:border-slate-700 hover:border-purple-500 hover:-translate-y-1 active:translate-y-0 transition-all group shadow-sm">
+                      <div key={quiz._id} className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-[2rem] border-2 border-b-6 border-slate-100 dark:border-slate-700 hover:border-black dark:hover:border-white hover:-translate-y-1 active:translate-y-0 transition-all group shadow-sm">
                         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                           <div className="flex-1">
-                            <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-purple-500 transition-colors">{quiz.title}</h4>
+                            <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-black dark:group-hover:text-white transition-colors">{quiz.title}</h4>
                             <div className="flex items-center gap-3 mt-3 flex-wrap">
                               {quiz.difficulty && (
                                 <span className={`text-[8px] font-black px-4 py-1.5 rounded-lg lg:rounded-xl uppercase tracking-widest border-2 ${quiz.difficulty === 'Easy' ? 'bg-primary-50 text-primary-500 border-primary-100' :
-                                  quiz.difficulty === 'Medium' ? 'bg-amber-50 text-amber-500 border-amber-100' :
-                                    'bg-red-50 text-red-500 border-red-100'
+                                  quiz.difficulty === 'Medium' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white border-slate-200 dark:border-slate-800' :
+                                    'bg-slate-100 dark:bg-slate-800 text-black dark:text-white border-slate-200 dark:border-slate-800'
                                   }`}>
                                   {quiz.difficulty}
                                 </span>
@@ -442,7 +442,7 @@ const PublicProfile = ({ username }) => {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {contributions.userQuestions.items.map((question) => (
                       <div key={question._id} className="p-8 bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-6 border-slate-100 dark:border-slate-700 shadow-xl hover:-translate-y-1 transition-all group">
-                        <div className="w-10 h-10 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-duo border-2 border-white dark:border-slate-700">
+                        <div className="w-10 h-10 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-aajexam border-2 border-white dark:border-slate-700">
                           <span className="text-lg">Ã°Å¸â€™Â¬</span>
                         </div>
                         <h4 className="text-md font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6 leading-tight group-hover:text-primary-700 dark:text-primary-500 transition-colors">{question.questionText}</h4>

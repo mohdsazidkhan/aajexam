@@ -108,7 +108,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
                     </span>
                   ))}
                 </div>
-                {q.explanation && <p className="text-[10px] text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded">{q.explanation}</p>}
+                {q.explanation && <p className="text-[10px] text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20 px-2 py-1 rounded">{q.explanation}</p>}
               </div>
             ))}
           </Card>

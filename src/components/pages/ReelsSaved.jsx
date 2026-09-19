@@ -13,10 +13,10 @@ import {
 
 const TYPE_ICONS = { question: HelpCircle, fact: BookOpen, tip: Zap, current_affairs: Newspaper, poll: BarChart3 };
 const TYPE_COLORS = {
-  question: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-  fact: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
-  tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-  current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  fact: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
@@ -59,7 +59,7 @@ const ReelsSaved = () => {
               <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
             </Link>
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Bookmark className="w-5 h-5 text-yellow-500" /> Saved Reels
+              <Bookmark className="w-5 h-5 text-black dark:text-white" /> Saved Reels
             </h1>
           </div>
         </div>
@@ -72,7 +72,7 @@ const ReelsSaved = () => {
               </div>
               <p className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">No saved reels yet</p>
               <p className="text-sm text-slate-400 dark:text-slate-500 mt-2 max-w-[200px] mx-auto">Bookmark interesting reels to revisit them anytime</p>
-              <Link href="/reels" className="inline-block mt-8 px-8 py-3 rounded-2xl bg-primary-600 text-white text-sm font-black uppercase tracking-widest hover:bg-primary-700 transition-all shadow-duo-primary active:scale-95">
+              <Link href="/reels" className="inline-block mt-8 px-8 py-3 rounded-2xl bg-primary-600 text-white text-sm font-black uppercase tracking-widest hover:bg-primary-700 transition-all shadow-aajexam-primary active:scale-95">
                 Browse Reels
               </Link>
             </div>
@@ -102,8 +102,8 @@ const ReelsSaved = () => {
                           )}
                           {reel.difficulty && (
                             <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${reel.difficulty === 'easy' ? 'border-primary-200 text-primary-600 dark:border-primary-900/30 dark:text-primary-400'
-                              : reel.difficulty === 'hard' ? 'border-red-200 text-red-600 dark:border-red-900/30 dark:text-red-400'
-                                : 'border-yellow-200 text-yellow-600 dark:border-yellow-900/30 dark:text-yellow-400'}`}>
+                              : reel.difficulty === 'hard' ? 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 dark:text-white'
+                                : 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 dark:text-white'}`}>
                               {reel.difficulty}
                             </span>
                           )}
@@ -122,7 +122,7 @@ const ReelsSaved = () => {
               {hasMore && (
                 <button
                   onClick={() => setPage(p => p + 1)}
-                  className="w-full py-3 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10 rounded-lg lg:rounded-xl"
+                  className="w-full py-3 text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl"
                 >
                   Load more
                 </button>

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Target, Zap, Activity } from 'lucide-react';
 
 /**
- * ProgressBar - A friendly, Duolingo-inspired progress bar for tracking learning milestones.
+ * ProgressBar - A friendly, AajExam-inspired progress bar for tracking learning milestones.
  */
 const ProgressBar = ({
   progress = 0,
@@ -18,7 +18,7 @@ const ProgressBar = ({
   animate = true
 }) => {
   const variants = {
-    primary: 'bg-primary-500 shadow-duo-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+    primary: 'bg-primary-500 shadow-aajexam-primary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
   };
 
   const heights = {

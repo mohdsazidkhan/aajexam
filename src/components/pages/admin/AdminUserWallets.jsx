@@ -125,7 +125,7 @@ const AdminUserWallets = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={handleResetClaimableRewards}
                 disabled={resetting}
-                className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-rose-500 text-white rounded-2xl shadow-xl shadow-rose-500/20 group/btn disabled:opacity-50"
+                className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl shadow-xl shadow-black/20/20 dark:shadow-white/10/20 group/btn disabled:opacity-50"
               >
                 <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : 'group-hover/btn:rotate-180 transition-transform'}`} />
                 <span className="text-[10px] font-black uppercase tracking-widest">{resetting ? 'RESETTING...' : 'RESET ALL REWARDS'}</span>
@@ -230,7 +230,7 @@ const AdminUserWallets = () => {
                                 <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
                                 <div className="flex items-center gap-2 mt-1">
                                   <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
-                                  {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-amber-500" />}
+                                  {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
                                 </div>
                               </div>
                             </div>
@@ -343,7 +343,7 @@ const AdminUserWallets = () => {
                         <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-2">
                           <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
-                          {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-amber-500" />}
+                          {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
                         </div>
                       </div>
                     </div>

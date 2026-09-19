@@ -94,7 +94,7 @@ const UserSearch = () => {
               </div>
               <div className="user-result-stats flex items-center gap-6 flex-shrink-0">
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="bg-primary-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-duo-primary">
+                  <span className="bg-primary-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-aajexam-primary">
                     STUDENT
                   </span>
                 </div>

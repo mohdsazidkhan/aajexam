@@ -163,10 +163,10 @@ const ResetPasswordPage = () => {
                   <div className="space-y-4">
                     <Button
                       type="submit"
-                      variant="secondary"
+                      variant="primary"
                       fullWidth
                       disabled={isLoading || !token}
-                      className="py-6 rounded-2xl text-xs font-black shadow-duo-secondary uppercase"
+                      className="py-6 rounded-2xl text-xs font-black uppercase"
                     >
                       {isLoading ? (
                         <span className="flex items-center gap-2">

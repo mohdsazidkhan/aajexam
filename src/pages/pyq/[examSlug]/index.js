@@ -102,7 +102,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                     {/* Hero */}
                     <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl mb-10 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
                         <div className="flex items-center mb-6 gap-4 flex-wrap">
-                            <div className="w-14 h-14 lg:w-16 lg:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center shadow-duo-primary border-2 border-white dark:border-slate-800 flex-shrink-0">
+                            <div className="w-14 h-14 lg:w-16 lg:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 border-white dark:border-slate-800 flex-shrink-0">
                                 <FaGraduationCap className="text-2xl lg:text-3xl text-primary-600 dark:text-primary-400" />
                             </div>
                             <div>
@@ -123,7 +123,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Papers</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
-                                <FaCalendar className="text-xl text-orange-600 mx-auto mb-2" />
+                                <FaCalendar className="text-xl text-black dark:text-white mx-auto mb-2" />
                                 <div className="text-2xl font-black text-slate-900 dark:text-white">{years.length}</div>
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Years Covered</div>
                             </div>
@@ -221,7 +221,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/10 rounded-full blur-2xl" />
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="space-y-1">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-400/10 border border-amber-400/20 rounded-full text-[10px] font-black text-amber-400 uppercase tracking-widest mb-2">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-2">
                                                 <Lock className="w-3 h-3" /> PRO Only
                                             </div>
                                             <h3 className="text-lg font-black font-outfit uppercase tracking-tight leading-tight">

@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 /**
  * Premium Critical Failure (ErrorBoundary) Component
  * Designed as a "System Breakdown" experience with high-quality HUD elements, 
- * glassmorphism, and Duolingo-inspired 3D buttons.
+ * glassmorphism, and AajExam-inspired 3D buttons.
  */
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0c1317] p-6 selection:bg-rose-500 selection:text-white transition-colors duration-500">
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0c1317] p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -42,12 +42,12 @@ class ErrorBoundary extends React.Component {
                   scale: [1, 1.2, 1]
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 lg:w-48 h-24 lg:h-48 bg-rose-500/10 blur-[90px] rounded-full pointer-events-none"
+                className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 lg:w-48 h-24 lg:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
               />
 
-              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-4 border-rose-500/20 shadow-2xl mb-10 group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <ShieldAlert className="w-16 h-16 text-rose-500 drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
+              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-4 border-black/20 dark:border-white/20 shadow-2xl mb-10 group overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-black/10 dark:from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <ShieldAlert className="w-16 h-16 text-black dark:text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
               </div>
 
               <h1 className="text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white mb-4 drop-shadow-sm">
@@ -68,7 +68,7 @@ class ErrorBoundary extends React.Component {
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ y: 0, scale: 0.98 }}
                   onClick={() => window.location.reload()}
-                  className="flex-1 px-8 py-5 bg-rose-500 text-white rounded-3xl border-b-[8px] border-rose-700 shadow-duo-red font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
+                  className="flex-1 px-8 py-5 bg-black dark:bg-white text-white dark:text-black rounded-3xl border-b-[8px] border-black dark:border-white shadow-aajexam-accent font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
                 >
                   <RefreshCcw className="w-5 h-5" /> Try Again
                 </motion.button>
@@ -95,12 +95,12 @@ class ErrorBoundary extends React.Component {
                     </div>
                   </summary>
                   <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
-                    <div className="flex items-center gap-2 mb-4 text-rose-400 border-b border-rose-900/30 pb-2">
+                    <div className="flex items-center gap-2 mb-4 text-black dark:text-white border-b border-black/30 dark:border-white/30 pb-2">
                       <AlertCircle className="w-4 h-4" /> <span>Error Info</span>
                     </div>
-                    <span className="text-rose-400/80"># Error:</span> {this.state.error?.toString()}
+                    <span className="text-black/80 dark:text-white/80"># Error:</span> {this.state.error?.toString()}
                     <br /><br />
-                    <span className="text-rose-400/80"># Component Stack:</span>
+                    <span className="text-black/80 dark:text-white/80"># Component Stack:</span>
                     <br />
                     <div className="mt-2 text-slate-600 dark:text-slate-400/80">
                       {this.state.errorInfo?.componentStack}

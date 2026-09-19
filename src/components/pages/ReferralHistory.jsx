@@ -103,7 +103,7 @@ export default function ReferralHistory() {
                            <p className="text-[8px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Your Invite Code</p>
                            <p className="text-sm font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
                         </div>
-                        <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-duo-primary" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                        <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-aajexam-primary" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-4 h-4 mx-auto" /> COPY LINK
                         </Button>
                      </div>

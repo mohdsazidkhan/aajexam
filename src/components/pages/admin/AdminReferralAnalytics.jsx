@@ -208,8 +208,8 @@ const AdminReferralAnalytics = () => {
                             {[
                                 { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
                                 { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
-                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-rose-500", shadow: "shadow-rose-500/20" },
-                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-amber-500", shadow: "shadow-amber-500/20" }
+                                { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", shadow: "shadow-black/20/20 dark:shadow-white/10/20" },
+                                { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", shadow: "shadow-black/20/20 dark:shadow-white/10/20" }
                             ].map((stat, i) => (
                                 <motion.div
                                     key={stat.label}
@@ -328,7 +328,7 @@ const AdminReferralAnalytics = () => {
                                                     </div>
                                                 </div>
 
-                                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1 uppercase">{user.name || 'Unknown'}</h3>
+                                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1">{user.name || 'Unknown'}</h3>
                                                 <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-4 lg:mb-8 italic">{user.email || 'No email'}</div>
 
                                                 <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
@@ -371,7 +371,7 @@ const AdminReferralAnalytics = () => {
 
                                                 <div className="flex-1 space-y-4">
                                                     <div className="flex flex-wrap items-center gap-4">
-                                                        <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors uppercase">{user.name || 'Unknown'}</h3>
+                                                        <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{user.name || 'Unknown'}</h3>
                                                         <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-primary-500/20 text-primary-500 bg-primary-500/5 italic">{user.referralCode}</div>
                                                     </div>
                                                     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

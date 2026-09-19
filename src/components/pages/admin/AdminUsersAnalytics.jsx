@@ -132,7 +132,7 @@ const AdminUsersAnalytics = () => {
                                     <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><stat.icon className="w-5 h-5" /></div>
                                     <div className="flex items-baseline gap-1 mb-1">
                                         {stat.isCurrency && <IndianRupee className="w-3 h-3 text-slate-400 font-black" />}
-                                        <div className={`text-xl font-black tabular-nums tracking-tighter italic ${stat.isNet ? (stat.val >= 0 ? 'text-primary-500' : 'text-rose-500') : 'text-slate-900 dark:text-white'}`}>
+                                        <div className={`text-xl font-black tabular-nums tracking-tighter italic ${stat.isNet ? (stat.val >= 0 ? 'text-primary-500' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
                                             {new Intl.NumberFormat('en-IN').format(stat.val)}
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@ const AdminUsersAnalytics = () => {
                              <div className="flex items-center justify-center py-32"><AdminDashboardSkeleton /></div>
                         ) : error ? (
                             <div className="text-center py-32">
-                                <div className="p-3 lg:p-8 bg-rose-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 inline-block text-rose-500 text-2xl lg:text-6xl">!</div>
+                                <div className="p-3 lg:p-8 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] mb-6 inline-block text-black dark:text-white text-2xl lg:text-6xl">!</div>
                                  <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase mb-2">Something went wrong</h3>
                                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">{error}</p>
                             </div>
@@ -205,12 +205,12 @@ const AdminUsersAnalytics = () => {
                                                             <div className="flex items-center gap-4">
                                                                 <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg">{(s.name || 'U')[0]}</div>
                                                                 <div>
-                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase tracking-tight">{s.name || 'Anonymous'}</div>
+                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-500 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
                                                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span></td>
+                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                                                             <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest italic">Student</span>
                                                             <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: '0%' }} /></div>
@@ -228,7 +228,7 @@ const AdminUsersAnalytics = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                                         {students.map((s, idx) => (
                                             <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative flex flex-col group overflow-hidden">
-                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'PRO' ? 'bg-amber-400' : 'bg-primary-500'}`} />
+                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'PRO' ? 'bg-black dark:bg-white' : 'bg-primary-500'}`} />
                                                 <div className="mb-6 mx-auto">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{(s.name || 'U')[0]}</div>
                                                 </div>
@@ -257,7 +257,7 @@ const AdminUsersAnalytics = () => {
                                                 <div className="flex items-center gap-3 lg:gap-6">
                                                     <div className="w-14 h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-xl shadow-xl shrink-0 italic">{(s.name || 'U')[0]}</div>
                                                     <div>
-                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{s.name || 'User'}</h3>
+                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors">{s.name || 'User'}</h3>
                                                         <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                                                             <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {s.email?.substring(0, 20)}...</span>
                                                             <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>Student</span>

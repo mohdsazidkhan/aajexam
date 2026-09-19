@@ -19,36 +19,17 @@ module.exports = {
           200: '#d9ffb8',
           300: '#bcff85',
           400: '#94f54d',
-          500: '#58cc02', // Duolingo Green
+          500: '#58cc02', // AajExam Green
           600: '#46a302',
           700: '#357a02',
           800: '#2a6102',
           900: '#235002',
           950: '#173601',
         },
-        secondary: {
-          50: '#f0faff',
-          100: '#e0f5ff',
-          200: '#baeaff',
-          300: '#7cd9ff',
-          400: '#35c5ff',
-          500: '#1cb0f6', // Duolingo Blue
-          600: '#0097e0',
-          700: '#007eb3',
-          800: '#006a94',
-          900: '#00587a',
-          950: '#003a52',
-        },
-        accent: {
-          orange: '#ffb020',
-          red: '#ff4b4b',
-          purple: '#ce82ff',
-          yellow: '#ffdc00',
-        },
         slate: {
           950: '#0F1720', // Even darker for specific surfaces
-          900: '#131f24', // Duolingo Dark Background (matches --bg-page in dark mode)
-          800: '#1c2d35', // Duolingo Dark Card (matches --bg-surface in dark mode)
+          900: '#131f24', // AajExam Dark Background (matches --bg-page in dark mode)
+          800: '#1c2d35', // AajExam Dark Card (matches --bg-surface in dark mode)
           700: '#344955', // (matches --border-primary in dark mode)
           600: '#455a64',
           500: '#64748b',
@@ -77,9 +58,9 @@ module.exports = {
       boxShadow: {
         'duo': '0 4px 0 0 rgba(0, 0, 0, 0.1)',
         'duo-primary': '0 4px 0 0 #46a302',
-        'duo-secondary': '0 4px 0 0 #0097e0',
-        'duo-accent': '0 4px 0 0 #e69e1c',
-        'duo-red': '0 4px 0 0 #d94141',
+        'duo-secondary': '0 4px 0 0 #000000',
+        'duo-accent': '0 4px 0 0 #000000',
+        'duo-red': '0 4px 0 0 #000000',
         'duo-inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       },
       animation: {
@@ -115,25 +96,11 @@ module.exports = {
   },
   plugins: [],
   safelist: [
-    // Light gradients
-    'from-green-100', 'via-blue-50', 'to-purple-100',
-    'from-pink-100', 'via-yellow-50', 'to-red-100',
-    'from-blue-100', 'via-indigo-50', 'to-cyan-100',
-    'from-yellow-100', 'via-orange-50', 'to-pink-100',
-    'from-purple-100', 'via-green-50', 'to-blue-100',
-    'from-teal-100', 'via-lime-50', 'to-green-100',
-    'from-red-100', 'via-pink-50', 'to-yellow-100',
-    'from-indigo-100', 'via-blue-50', 'to-purple-100',
-    'from-gray-100', 'via-gray-50', 'to-blue-100',
-    // Dark gradients
-    'dark:from-gray-900', 'dark:via-gray-800', 'dark:to-blue-900',
-    'dark:from-purple-900', 'dark:via-blue-900', 'dark:to-green-900',
-    'dark:from-blue-900', 'dark:via-indigo-900', 'dark:to-cyan-900',
-    'dark:from-pink-900', 'dark:via-yellow-900', 'dark:to-red-900',
-    'dark:from-green-900', 'dark:via-lime-900', 'dark:to-teal-900',
-    'dark:from-red-900', 'dark:via-pink-900', 'dark:to-yellow-900',
-    'dark:from-indigo-900', 'dark:via-blue-900', 'dark:to-purple-900',
-    'dark:from-gray-800', 'dark:via-gray-900', 'dark:to-blue-900',
+    // Brand gradients (green / black / white only)
+    'from-primary-100', 'via-slate-50', 'to-primary-100',
+    'from-slate-100', 'via-primary-50', 'to-slate-100',
+    'dark:from-primary-900', 'dark:via-slate-800', 'dark:to-primary-900',
+    'dark:from-slate-900', 'dark:via-primary-900', 'dark:to-slate-900',
     // Gradient direction classes
     'bg-gradient-to-br',
     'bg-gradient-to-r',

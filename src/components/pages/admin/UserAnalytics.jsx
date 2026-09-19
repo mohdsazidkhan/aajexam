@@ -276,7 +276,7 @@ const UserAnalytics = () => {
             <div className="flex flex-wrap items-center gap-4">
               <button
                 onClick={handleExport}
-                className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-duo-primary hover:scale-105 transition-transform flex items-center gap-3"
+                className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-aajexam-primary hover:scale-105 transition-transform flex items-center gap-3"
               >
                 <Download className="w-4 h-4" /> Export CSV
               </button>

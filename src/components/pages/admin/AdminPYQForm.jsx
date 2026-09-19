@@ -336,7 +336,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                     <div className="flex items-center justify-between">
                                         <span className="text-xs font-black text-primary-500">Q{qi + 1}</span>
                                         {form.questions.length > 1 && (
-                                            <button type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4 text-red-500" /></button>
+                                            <button type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                                         )}
                                     </div>
 
@@ -350,7 +350,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <div className="relative inline-block">
                                                 <img src={q.questionImage} alt="" className="h-20 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                                                 <button type="button" onClick={() => updateQuestion(qi, { questionImage: '' })}
-                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600">
+                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center hover:bg-black dark:hover:bg-white">
                                                     <X className="w-3 h-3" />
                                                 </button>
                                             </div>
@@ -378,8 +378,8 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                                     className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500"
                                                     placeholder={`Option ${String.fromCharCode(65 + oi)}`} />
                                                 {optImg ? (
-                                                    <button type="button" onClick={() => updateOptionImage(qi, oi, '')} className="p-1.5 hover:bg-red-50 rounded-lg" title="Remove image">
-                                                        <X className="w-3.5 h-3.5 text-red-400" />
+                                                    <button type="button" onClick={() => updateOptionImage(qi, oi, '')} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg" title="Remove image">
+                                                        <X className="w-3.5 h-3.5 text-black dark:text-white" />
                                                     </button>
                                                 ) : (
                                                     <label className="cursor-pointer p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" title="Upload option image">
@@ -389,7 +389,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                                     </label>
                                                 )}
                                                 {q.options.length > 2 && (
-                                                    <button type="button" onClick={() => removeOption(qi, oi)} className="p-1.5 hover:bg-red-50 rounded-lg"><Trash2 className="w-3.5 h-3.5 text-red-400" /></button>
+                                                    <button type="button" onClick={() => removeOption(qi, oi)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                                                 )}
                                             </div>
                                             {optImg && (

@@ -168,7 +168,7 @@ const DailyChallengePage = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-sm font-bold text-slate-500">Q {currentQ + 1}/{challenge.questions.length}</span>
-              <span className={`text-sm font-black flex items-center gap-1 ${timeLeft < 60 ? 'text-red-500' : 'text-slate-600 dark:text-slate-300'}`}>
+              <span className={`text-sm font-black flex items-center gap-1 ${timeLeft < 60 ? 'text-black dark:text-white' : 'text-slate-600 dark:text-slate-300'}`}>
                 <Clock className="w-4 h-4" /> {formatTime(timeLeft)}
               </span>
             </div>
@@ -211,7 +211,7 @@ const DailyChallengePage = () => {
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Accuracy</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-3xl font-black text-orange-500">{attemptData.correctCount}/{attemptData.correctCount + attemptData.wrongCount + attemptData.skippedCount}</p>
+                    <p className="text-3xl font-black text-black dark:text-white">{attemptData.correctCount}/{attemptData.correctCount + attemptData.wrongCount + attemptData.skippedCount}</p>
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Correct</p>
                   </div>
                 </div>
@@ -231,9 +231,9 @@ const DailyChallengePage = () => {
                     const isSkipped = !ans || ans.selectedOptionIndex === -1;
                     const isCorrect = ans?.isCorrect;
                     return (
-                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                         <div className="flex items-start gap-2 mb-2">
-                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-primary-500' : 'bg-red-500'}`}>{idx + 1}</div>
+                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-500 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>{idx + 1}</div>
                           <p className="text-sm font-medium text-slate-800 dark:text-white">{q.questionText}</p>
                         </div>
                         <div className="space-y-1 ml-8">
@@ -242,11 +242,11 @@ const DailyChallengePage = () => {
                             const isRight = oi === correctIdx;
                             let cls = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
                             if (isRight) cls = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400';
-                            if (isSel && !isCorrect) cls = 'bg-red-100 dark:bg-red-900/30 border-red-400';
+                            if (isSel && !isCorrect) cls = 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-black dark:border-white';
                             return (
                               <div key={oi} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${cls}`}>
                                 {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 shrink-0" />}
-                                {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />}
+                                {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                                 {!isRight && !isSel && <div className="w-3.5 h-3.5 shrink-0" />}
                                 <span className="text-slate-700 dark:text-slate-300">{opt.text || opt}</span>
                               </div>
@@ -254,8 +254,8 @@ const DailyChallengePage = () => {
                           })}
                         </div>
                         {q.explanation && (
-                          <div className="ml-8 mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                            <p className="text-[11px] text-blue-700 dark:text-blue-300"><span className="font-semibold">Explanation:</span> {q.explanation}</p>
+                          <div className="ml-8 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                            <p className="text-[11px] text-black dark:text-white"><span className="font-semibold">Explanation:</span> {q.explanation}</p>
                           </div>
                         )}
                         <div className="ml-8">
@@ -277,11 +277,11 @@ const DailyChallengePage = () => {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
                 <Card className="p-4 space-y-3 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
-                  <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><Trophy className="w-4 h-4 text-yellow-500" /> Today&apos;s Leaderboard</h3>
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><Trophy className="w-4 h-4 text-black dark:text-white" /> Today&apos;s Leaderboard</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                     {leaderboard.slice(0, 10).map((entry, i) => (
                       <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-2 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                        <span className={`text-sm font-black w-6 ${i < 3 ? 'text-yellow-500' : 'text-slate-400'}`}>#{i + 1}</span>
+                        <span className={`text-sm font-black w-6 ${i < 3 ? 'text-black dark:text-white' : 'text-slate-400'}`}>#{i + 1}</span>
                         <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
                         <span className="text-sm font-black text-primary-500">{entry.score}</span>
                         <span className="text-[10px] font-bold text-slate-400">{entry.accuracy}%</span>

@@ -74,9 +74,9 @@ const DashboardAnalytics = () => {
       'from-primary-500 to-primary-600': '#3b82f6, #4f46e5',
       'from-primary-500 to-primary-600': '#10b981, #059669',
       'from-primary-500 to-primary-600': '#eab308, #ea580c',
-      'from-primary-500 to-pink-600': '#8b5cf6, #db2777',
+      'from-primary-500 to-black dark:to-white': '#8b5cf6, #db2777',
       'from-primary-500 to-primary-600': '#6366f1, #2563eb',
-      'from-pink-500 to-rose-600': '#ec4899, #e11d48'
+      'from-black dark:from-white to-black dark:to-white': '#ec4899, #e11d48'
     };
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
   };
@@ -213,14 +213,14 @@ const DashboardAnalytics = () => {
                     <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
                       a.score >= 60 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
                         a.score >= 40 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
-                          'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
+                          'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'
                       }`}>
                       {a.score || 0}
                     </span>
                     <span className="text-xs text-slate-700 dark:text-gray-400 ml-1">
                       ({a.scorePercentage || 0}%)
                     </span>
-                    {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-amber-500" />}
+                    {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />}
                   </div>
                 </td>
                 <td className="py-4 px-4">
@@ -286,8 +286,8 @@ const DashboardAnalytics = () => {
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-amber-500/10 rounded-md flex items-center justify-center">
-                  <Trophy className="w-3.5 h-3.5 text-amber-500" />
+                <div className="w-6 h-6 bg-black/10 dark:bg-white/10 rounded-md flex items-center justify-center">
+                  <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
                 </div>
                 <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`}>
                   {a.score || 0} Scored
@@ -354,19 +354,19 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-primary-100 dark:from-primary-900/30 dark:to-primary-900/30 rounded-md flex items-center justify-center">
-                    <Trophy className="w-3.5 h-3.5 text-amber-500" />
+                    <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
                   </div>
                   <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600 dark:text-primary-400' :
                     a.score >= 60 ? 'text-primary-700 dark:text-primary-500 dark:text-primary-400' :
                       a.score >= 40 ? 'text-primary-700 dark:text-primary-500 dark:text-primary-400' :
-                        'text-primary-700 dark:text-primary-500 dark:text-red-400'
+                        'text-primary-700 dark:text-primary-500 dark:text-white'
                     }`}>
                     {a.score || 0}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-pink-100 dark:from-primary-900/30 dark:to-pink-900/30 rounded-md flex items-center justify-center">
+                  <div className="w-6 h-6 bg-gradient-to-r from-primary-100 to-slate-100 dark:to-slate-800 dark:from-primary-900/30 dark:to-white/30 rounded-md flex items-center justify-center">
                     <Calendar className="w-3.5 h-3.5 text-primary-500" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
@@ -399,8 +399,8 @@ const DashboardAnalytics = () => {
   if (loading) return <AdminDashboardSkeleton />;
 
   if (error) return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-red-700">
-      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-red-100 border border-red-400 px-4 py-3 rounded">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-black dark:text-white">
+      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-3 rounded">
         {error}
       </div>
       </div>
@@ -448,7 +448,7 @@ const DashboardAnalytics = () => {
                  label: 'TOTAL REVENUE',
                  icon: <Wallet />,
                  value: `₹${data.overview?.totalRevenue}`,
-                 gradient: 'text-amber-600 bg-amber-600/10 border-amber-600/20'
+                 gradient: 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20'
                },
                {
                  label: 'Active Users',
@@ -460,13 +460,13 @@ const DashboardAnalytics = () => {
                  label: 'Total Attempts',
                  icon: <Clock />,
                  value: data.overview?.totalAttempts,
-                 gradient: 'text-rose-600 bg-rose-600/10 border-rose-600/20'
+                 gradient: 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20'
                },
                {
                  label: 'Subscriptions',
                  icon: <Star />,
                  value: data.overview?.totalSubscriptions,
-                 gradient: 'text-blue-600 bg-blue-600/10 border-blue-600/20'
+                 gradient: 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20'
                },
              ].map((stat, i) => (
                <motion.div

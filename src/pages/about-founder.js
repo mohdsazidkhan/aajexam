@@ -51,7 +51,7 @@ export default function AboutAuthor() {
                 <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-24 h-24 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-24 h-24 bg-gradient-to-r from-primary-500 to-black dark:to-white rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaUserGraduate className="text-white text-5xl" />
                         </div>
                         <h1 className="text-2xl lg:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
@@ -89,7 +89,7 @@ export default function AboutAuthor() {
                     {/* Expertise */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-12 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-4 border-primary-700">
                                 <FaCode className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Technical Expertise</h2>
@@ -98,7 +98,7 @@ export default function AboutAuthor() {
                             {[
                                 { title: 'Full-Stack Development', desc: 'Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.', color: 'bg-primary-500' },
                                 { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-primary-500' },
-                                { title: 'System Architecture', desc: 'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color: 'bg-purple-500' },
+                                { title: 'System Architecture', desc: 'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color: 'bg-black dark:bg-white' },
                                 { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
@@ -116,7 +116,7 @@ export default function AboutAuthor() {
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-4 border-primary-700">
                                 <FaTrophy className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Vision & Mission</h2>
@@ -146,7 +146,7 @@ export default function AboutAuthor() {
                     {/* Achievements */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-duo border-b-4 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-4 border-primary-700">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Key Achievements</h2>
@@ -155,11 +155,11 @@ export default function AboutAuthor() {
                             {[
                                 { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-500' },
                                 { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-primary-500' },
-                                { title: 'Content Curation', desc: 'Curated thousands of exam questions across multiple subjects.', color: 'bg-purple-500' },
+                                { title: 'Content Curation', desc: 'Curated thousands of exam questions across multiple subjects.', color: 'bg-black dark:bg-white' },
                                 { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-500' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
-                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-duo border-b-4 border-black/20`}>
+                                    <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-aajexam border-b-4 border-black/20`}>
                                         âœ“
                                     </div>
                                     <div>
@@ -191,7 +191,7 @@ export default function AboutAuthor() {
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
                                 href="mailto:support@mohdsazidkhan.com"
-                                className="flex items-center gap-3 bg-indigo-500 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-indigo-600 transition-all"
+                                className="flex items-center gap-3 bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white transition-all"
                             >
                                 <FaEnvelope className="text-xl" />
                                 <span>Email</span>
@@ -219,7 +219,7 @@ export default function AboutAuthor() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-duo-primary">
+                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-aajexam-primary">
                             <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Join Thousands of Successful Students
                             </h2>

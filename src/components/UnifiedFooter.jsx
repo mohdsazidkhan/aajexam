@@ -137,8 +137,8 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-blue-700 dark:text-blue-500 uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+            <h4 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse" />
               Support
             </h4>
             <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-xl backdrop-blur-xl max-w-xs lg:max-w-none mx-auto sm:mx-0">
@@ -148,11 +148,11 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label="Send us an email"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center group-hover/item:bg-blue-500 group-hover/item:text-white transition-all shadow-duo-secondary">
+                  <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white transition-all shadow-aajexam-secondary">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-blue-500 transition-colors">Email support</p>
+                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Email support</p>
                     <p className="text-xs font-bold text-content-secondary break-all line-clamp-1">{config.CONTACT.EMAIL}</p>
                   </div>
                 </a>
@@ -166,7 +166,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label="Contact us on WhatsApp"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-primary-500/10 text-primary-500 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-500 group-hover/item:text-white transition-all shadow-duo-primary">
+                  <div className="w-11 h-11 bg-primary-500/10 text-primary-500 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-500 group-hover/item:text-white transition-all shadow-aajexam-primary">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
@@ -182,7 +182,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">System status</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Zap className="w-3 h-3 text-amber-500" />
+                  <Zap className="w-3 h-3 text-black dark:text-white" />
                   <span className="text-[11px] font-black text-primary-700 dark:text-primary-500 tracking-[0.08em]">Stable</span>
                 </div>
               </div>
@@ -208,7 +208,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="flex items-center gap-2 text-sm font-black text-content-secondary tracking-[0.04em]">
-            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500/20" />
+            <Heart className="w-3.5 h-3.5 text-black dark:text-white fill-black/20 dark:fill-white/20" />
             Built for students
           </div>
         </div>

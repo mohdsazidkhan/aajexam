@@ -95,7 +95,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
-          className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+          className="px-6 py-2 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-semibold rounded-lg transition-colors"
         >
           Go Back
         </button>
@@ -276,7 +276,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Best</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-orange-600">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-black dark:text-white">
                     {0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Average</span>
@@ -297,10 +297,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
                 {reels.map((reel) => {
                   const typeConfig = {
-                    question: { icon: FileText, gradient: 'from-blue-600 to-indigo-700', label: 'Question' },
-                    fact: { icon: Lightbulb, gradient: 'from-purple-600 to-pink-600', label: 'Fact' },
-                    tip: { icon: Zap, gradient: 'from-yellow-500 to-orange-600', label: 'Tip' },
-                    current_affairs: { icon: Newspaper, gradient: 'from-red-500 to-rose-700', label: 'Current Affairs' },
+                    question: { icon: FileText, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Question' },
+                    fact: { icon: Lightbulb, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Fact' },
+                    tip: { icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Tip' },
+                    current_affairs: { icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white', label: 'Current Affairs' },
                     poll: { icon: BarChart3, gradient: 'from-primary-500 to-primary-700', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;

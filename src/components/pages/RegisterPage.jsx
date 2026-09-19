@@ -127,7 +127,7 @@ const RegisterPageInner = () => {
   };
 
   const passwordStrengthLabel = passwordStrength < 40 ? 'Weak' : passwordStrength < 80 ? 'Good' : 'Strong';
-  const passwordStrengthColor = passwordStrength < 40 ? 'text-red-500' : passwordStrength < 80 ? 'text-amber-500' : 'text-primary-500';
+  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-500';
   const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'primary-500';
 
   return (
@@ -137,7 +137,7 @@ const RegisterPageInner = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-900 p-20 flex-col justify-center items-start relative overflow-hidden text-white">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }}>
-              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-duo-secondary w-fit">
+              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-aajexam-secondary w-fit">
                 <Rocket className="w-12 h-12" />
               </div>
             </motion.div>
@@ -307,7 +307,7 @@ const RegisterPageInner = () => {
                 variant="primary"
                 fullWidth
                 size="lg"
-                className="py-5 rounded-2xl shadow-duo-primary"
+                className="py-5 rounded-2xl shadow-aajexam-primary"
                 type="submit"
                 disabled={isLoading || passwordStrength < 60}
               >

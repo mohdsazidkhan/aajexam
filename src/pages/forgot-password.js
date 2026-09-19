@@ -70,7 +70,7 @@ const ForgotPasswordPage = () => {
                     <p className="text-sm font-bold text-gray-500">Check your inbox for instructions to reset your password.</p>
                   </div>
                   <Link href="/login" className="block">
-                    <Button variant="ghost" fullWidth>BACK TO LOGIN</Button>
+                    <Button variant="primary" fullWidth>BACK TO LOGIN</Button>
                   </Link>
                 </motion.div>
               ) : (

@@ -33,12 +33,12 @@ const NotesSkeleton = () => (
 
 // ─── Note type config ──────────────────────────────────────────────────────────
 const noteTypeConfig = {
-  notes:            { icon: BookOpen,   color: 'from-blue-500 to-blue-700',    chip: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border-blue-100',    label: 'Notes' },
-  formulas:         { icon: Calculator, color: 'from-violet-500 to-violet-700', chip: 'text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/30 border-violet-100', label: 'Formulas' },
-  shortcuts:        { icon: Zap,        color: 'from-amber-500 to-amber-700',   chip: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 border-amber-100', label: 'Shortcuts' },
-  important_points: { icon: Hash,       color: 'from-red-500 to-red-700',       chip: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border-red-100',        label: 'Key Points' },
-  tables:           { icon: StickyNote, color: 'from-teal-500 to-teal-700',    chip: 'text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 border-teal-100',    label: 'Tables' },
-  mnemonics:        { icon: Sparkles,   color: 'from-pink-500 to-pink-700',    chip: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 border-pink-100',    label: 'Mnemonics' },
+  notes:            { icon: BookOpen,   color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',    label: 'Notes' },
+  formulas:         { icon: Calculator, color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label: 'Formulas' },
+  shortcuts:        { icon: Zap,        color: 'from-black dark:from-white to-black dark:to-white',   chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label: 'Shortcuts' },
+  important_points: { icon: Hash,       color: 'from-black dark:from-white to-black dark:to-white',       chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',        label: 'Key Points' },
+  tables:           { icon: StickyNote, color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',    label: 'Tables' },
+  mnemonics:        { icon: Sparkles,   color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800',    label: 'Mnemonics' },
 };
 const defaultNoteType = { icon: StickyNote, color: 'from-slate-400 to-slate-600', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200', label: 'Note' };
 
@@ -82,8 +82,8 @@ const NotesPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Notes & Formulas', url: '/notes' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-violet-600/20 dark:border-violet-900/30">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-500 via-purple-600 to-violet-500 dark:from-slate-900 dark:via-violet-900/40 dark:to-slate-900" />
+      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white dark:from-slate-900 dark:via-white/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -109,7 +109,7 @@ const NotesPage = () => {
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 active:translate-y-0.5 ${
                   type === f.id
-                    ? 'bg-violet-500 text-white border-violet-600'
+                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -126,7 +126,7 @@ const NotesPage = () => {
             return (
               <motion.div key={note._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                 <Card hoverable onClick={() => router.push(`/notes/${note.slug}`)}
-                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-violet-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
+                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cfg.color} flex items-center justify-center shrink-0 shadow-md`}>
@@ -141,7 +141,7 @@ const NotesPage = () => {
                         )}
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-violet-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                   </div>
 
                   {/* Stat chips */}
@@ -154,7 +154,7 @@ const NotesPage = () => {
                       <Eye className="w-3 h-3" />
                       {note.views || 0}
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-amber-100 dark:border-amber-800/50">
+                    <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                       <Bookmark className="w-3 h-3" />
                       {note.bookmarks || 0}
                     </div>
@@ -169,7 +169,7 @@ const NotesPage = () => {
               <StickyNote className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No notes found</h3>
               <button onClick={() => { setType('all'); setSearch(''); }}
-                className="px-6 py-2.5 bg-violet-500 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

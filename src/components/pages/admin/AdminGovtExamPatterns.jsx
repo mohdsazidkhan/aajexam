@@ -296,7 +296,7 @@ const AdminGovtExamPatterns = () => {
                           <Clock className="w-4 h-4 text-primary-500" /> {p.duration} Min
                         </div>
                       </td>
-                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-rose-500 font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} per wrong answer</td>
+                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-black dark:text-white font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} per wrong answer</td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
                         <span className="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
                       </td>
@@ -306,7 +306,7 @@ const AdminGovtExamPatterns = () => {
                             <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
                           </Link>
                           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(p)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl"><Edit3 className="w-4 h-4" /></motion.button>
-                          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-rose-500/10 text-rose-500 rounded-lg lg:rounded-xl border border-rose-500/20"><Trash2 className="w-4 h-4" /></motion.button>
+                          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
                         </div>
                       </td>
                     </motion.tr>
@@ -340,7 +340,7 @@ const AdminGovtExamPatterns = () => {
                       <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-lg">Manage Tests</motion.button>
                     </Link>
                     <motion.button onClick={() => handleEdit(p)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
-                    <motion.button onClick={() => handleDelete(p._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-rose-500"><Trash2 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleDelete(p._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
               ))}
@@ -366,7 +366,7 @@ const AdminGovtExamPatterns = () => {
                       <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-500 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">View Tests</motion.button>
                     </Link>
                     <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
-                    <motion.button onClick={() => handleDelete(p._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-rose-500"><Trash2 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleDelete(p._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
               ))}
@@ -390,7 +390,7 @@ const AdminGovtExamPatterns = () => {
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
                 </div>
               </div>
-              <button onClick={() => setShowModal(false)} className="p-3 rounded-lg lg:rounded-xl hover:bg-rose-500/10 hover:text-rose-500 transition-colors"><X className="w-6 h-6" /></button>
+              <button onClick={() => setShowModal(false)} className="p-3 rounded-lg lg:rounded-xl hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
               <div className="w-full lg:w-2/5 p-3 lg:p-8 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
@@ -405,8 +405,8 @@ const AdminGovtExamPatterns = () => {
                       <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                     <div className="space-y-4">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-rose-500 pl-3 block ml-2">Negative Marking</label>
-                      <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-rose-500/30 rounded-2xl text-xs font-black outline-none" />
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-black dark:border-white pl-3 block ml-2">Negative Marking</label>
+                      <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-black/30 dark:focus:border-white/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-4">
@@ -433,7 +433,7 @@ const AdminGovtExamPatterns = () => {
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{sec.totalQuestions} Qs x {sec.marksPerQuestion} pts | Neg: -{sec.negativePerQuestion}</p>
                           </div>
                         </div>
-                        <button onClick={() => handleRemoveSection(i)} className="p-3 bg-rose-500/10 text-rose-500 rounded-lg lg:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"><Trash2 className="w-4 h-4" /></button>
+                        <button onClick={() => handleRemoveSection(i)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"><Trash2 className="w-4 h-4" /></button>
                       </motion.div>
                     ))}
                   </div>

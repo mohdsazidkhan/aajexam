@@ -170,13 +170,13 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Back */}
       <section className="flex items-center justify-end">
-        <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">
+        <Button variant="primary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" /> GO BACK
         </Button>
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-gradient-to-br from-primary-500 to-indigo-600 text-white border-none shadow-duo-primary overflow-hidden relative">
+      <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none shadow-aajexam-primary overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
@@ -234,7 +234,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             <Info className="w-5 h-5 text-primary-500" />
             {examName} Exam Information
           </h2>
-          <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 mb-4 uppercase tracking-wide">
+          <p className="text-[11px] font-bold text-black dark:text-white mb-4 uppercase tracking-wide">
             Sourced {EXAM_FACTS_SOURCED_DATE} — verify against the official notification before relying on this to apply
           </p>
           <dl className="grid sm:grid-cols-2 gap-4 text-sm">
@@ -335,7 +335,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-indigo-600 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0">
                       <BookOpen className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -371,7 +371,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-black dark:from-white to-black dark:to-white flex items-center justify-center shrink-0">
                       <FolderOpen className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -410,7 +410,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                     <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-border-primary hover:border-primary-500'}`}>
                       <div className="flex items-center gap-3">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : isPyqTab ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : isPyqTab ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
                           {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -425,7 +425,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                           <p className="text-xs font-bold text-content-muted truncate">{test.examPattern.title}</p>
                         )}
                         {pyqMeta && (
-                          <p className="text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase">
+                          <p className="text-[10px] font-black text-black dark:text-white uppercase">
                             {[test.pyqExamName, test.pyqYear, test.pyqShift].filter(Boolean).join(' · ')}
                           </p>
                         )}
@@ -465,7 +465,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             </div>
           ) : (
             quizzes.map((quiz, idx) => {
-              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-red-600 bg-red-50' : 'text-yellow-600 bg-yellow-50';
+              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
               return (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                   <Card
@@ -474,7 +474,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     className="group h-full border-2 border-border-primary hover:border-primary-500 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-teal-600 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0">
                         <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -551,7 +551,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-gradient-to-br from-primary-500 to-teal-600 text-white border-none p-6 lg:p-8">
+        <Card className="bg-gradient-to-br from-primary-500 to-black dark:to-white text-white border-none p-6 lg:p-8">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

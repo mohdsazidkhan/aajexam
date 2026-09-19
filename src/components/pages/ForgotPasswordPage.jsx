@@ -90,7 +90,7 @@ const ForgotPasswordPage = () => {
                       We have sent a reset link to your email. Please check your inbox.
                     </p>
                   </div>
-                  <Button variant="ghost" fullWidth onClick={() => setSuccess(false)} className="rounded-2xl py-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <Button variant="primary" fullWidth onClick={() => setSuccess(false)} className="rounded-2xl py-4">
                     Try another email
                   </Button>
                 </motion.div>
@@ -124,7 +124,7 @@ const ForgotPasswordPage = () => {
                       variant="primary"
                       fullWidth
                       disabled={isLoading}
-                      className="py-6 rounded-2xl shadow-duo-primary"
+                      className="py-6 rounded-2xl shadow-aajexam-primary"
                     >
                       {isLoading ? (
                         <span className="flex items-center gap-2">

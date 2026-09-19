@@ -13,13 +13,13 @@ import Seo from '../components/Seo';
 
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell, color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400', dot: 'bg-blue-500', label: 'Notification', border: 'border-blue-200 dark:border-blue-800/50' },
+  notification: { icon: Bell, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Notification', border: 'border-slate-200 dark:border-slate-800' },
   admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400', dot: 'bg-primary-500', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
-  result:       { icon: BarChart2, color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400', dot: 'bg-orange-500', label: 'Result', border: 'border-orange-200 dark:border-orange-800/50' },
-  answer_key:   { icon: Key, color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400', dot: 'bg-purple-500', label: 'Answer Key', border: 'border-purple-200 dark:border-purple-800/50' },
-  vacancy:      { icon: Users, color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400', dot: 'bg-pink-500', label: 'Vacancy', border: 'border-pink-200 dark:border-pink-800/50' },
-  date_change:  { icon: AlertTriangle, color: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400', dot: 'bg-red-500', label: 'Date Change', border: 'border-red-200 dark:border-red-800/50' },
-  syllabus:     { icon: Megaphone, color: 'bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400', dot: 'bg-teal-500', label: 'Syllabus', border: 'border-teal-200 dark:border-teal-800/50' },
+  result:       { icon: BarChart2, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Result', border: 'border-slate-200 dark:border-slate-800' },
+  answer_key:   { icon: Key, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Answer Key', border: 'border-slate-200 dark:border-slate-800' },
+  vacancy:      { icon: Users, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Vacancy', border: 'border-slate-200 dark:border-slate-800' },
+  date_change:  { icon: AlertTriangle, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Date Change', border: 'border-slate-200 dark:border-slate-800' },
+  syllabus:     { icon: Megaphone, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Syllabus', border: 'border-slate-200 dark:border-slate-800' },
   other:        { icon: Megaphone, color: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400', dot: 'bg-slate-400', label: 'Other', border: 'border-slate-200 dark:border-slate-700' },
 };
 const getType = (t) => typeConfig[t] || typeConfig.other;
@@ -210,8 +210,8 @@ const ExamCalendarPage = () => {
       <div className="space-y-5 lg:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] p-6 sm:p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-teal-600/20 dark:border-teal-900/30">
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-primary-600 to-cyan-600 dark:from-teal-900 dark:via-primary-900/70 dark:to-slate-900" />
+        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] p-6 sm:p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30">
+          <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-primary-600 to-black dark:to-white dark:via-primary-900/70 dark:to-slate-900" />
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-white/5 rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-white/5 rounded-full pointer-events-none" />
           <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-white/10 pointer-events-none" />
@@ -324,7 +324,7 @@ const ExamCalendarPage = () => {
                   <span className={`
                     w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full text-[11px] sm:text-xs font-black
                     ${isToday ? 'bg-primary-500 text-white shadow-md' : 'text-content-primary'}
-                    ${isWeekend && !isToday ? 'text-rose-500 dark:text-rose-400' : ''}
+                    ${isWeekend && !isToday ? 'text-black dark:text-white dark:text-white' : ''}
                   `}>
                     {day}
                   </span>
@@ -406,7 +406,7 @@ const ExamCalendarPage = () => {
             <h3 className="text-lg font-black text-content-muted uppercase">No events this month</h3>
             <p className="text-sm text-content-muted font-bold">Check back later or navigate to another month.</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-teal-500 hover:bg-teal-600 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
+              <button className="px-6 py-2.5 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase mt-2 transition-colors">
                 View Exam News
               </button>
             </Link>

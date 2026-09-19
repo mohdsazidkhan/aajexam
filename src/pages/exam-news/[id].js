@@ -70,7 +70,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
       <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6 space-y-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 rounded text-[9px] font-black text-blue-600 uppercase">{news.type?.replace('_', ' ')}</span>
+            <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>
             {news.exam?.name && <span className="text-[10px] font-bold text-slate-400">{news.exam.name}</span>}
             <span className="text-[10px] text-slate-400"><Eye className="w-3 h-3 inline" /> {news.views}</span>
           </div>
@@ -78,12 +78,12 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
         </div>
 
         {news.importantDates?.length > 0 && (
-          <Card className="p-4 space-y-2 bg-amber-50 dark:bg-amber-900/20">
-            <h3 className="text-sm font-black text-amber-700">Important Dates</h3>
+          <Card className="p-4 space-y-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20">
+            <h3 className="text-sm font-black text-black dark:text-white">Important Dates</h3>
             {news.importantDates.map((d, i) => (
               <div key={i} className="flex justify-between text-xs">
                 <span className="font-bold text-slate-600">{d.label}</span>
-                <span className="font-black text-amber-700">{new Date(d.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                <span className="font-black text-black dark:text-white">{new Date(d.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
               </div>
             ))}
           </Card>

@@ -178,7 +178,7 @@ const Sidebar = () => {
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
                       {active && (
-                        <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-500 shadow-duo-primary rounded-lg lg:rounded-xl" />
+                        <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-500 shadow-aajexam-primary rounded-lg lg:rounded-xl" />
                       )}
                       <item.icon className="w-4 h-4 relative z-10 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
                       <span className="text-[11px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
@@ -198,7 +198,7 @@ const Sidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-lg lg:rounded-xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold tracking-wide hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-colors flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white text-[11px] font-bold tracking-wide hover:bg-slate-100 dark:hover:bg-white/20 transition-colors flex items-center justify-center gap-2 group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>

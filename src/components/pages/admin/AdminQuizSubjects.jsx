@@ -81,10 +81,10 @@ const AdminQuizSubjects = () => {
                 <tr key={sub._id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{sub.name}</td>
                   <td className="px-4 py-3 text-slate-500">{sub.order}</td>
-                  <td className="px-4 py-3"><span className={`text-xs font-bold px-2 py-1 rounded-full ${sub.isActive ? 'bg-primary-100 text-primary-700' : 'bg-red-100 text-red-700'}`}>{sub.isActive ? 'Active' : 'Inactive'}</span></td>
+                  <td className="px-4 py-3"><span className={`text-xs font-bold px-2 py-1 rounded-full ${sub.isActive ? 'bg-primary-100 text-primary-700' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{sub.isActive ? 'Active' : 'Inactive'}</span></td>
                   <td className="px-4 py-3 text-right">
                     <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-500 hover:bg-primary-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
-                    <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                    <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                   </td>
                 </tr>
               ))}

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 /**
  * Premium Search and Filter Component
- * Features a Bento-style UI, interactive focus states, and Duolingo-inspired 3D buttons.
+ * Features a Bento-style UI, interactive focus states, and AajExam-inspired 3D buttons.
  */
 const SearchFilter = ({
   searchTerm,
@@ -68,7 +68,7 @@ const SearchFilter = ({
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 onClick={onClearFilters}
-                className="flex items-center gap-2 px-6 py-4 bg-rose-50 dark:bg-rose-950/20 text-rose-500 rounded-2xl border-b-4 border-rose-200 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-950/40 transition-all duration-300 group shadow-sm hover:shadow-md"
+                className="flex items-center gap-2 px-6 py-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white rounded-2xl border-b-4 border-slate-200 dark:border-slate-800 dark:border-white/50 hover:bg-slate-100 dark:hover:bg-white/40 transition-all duration-300 group shadow-sm hover:shadow-md"
               >
                 <X className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Clear Filters</span>

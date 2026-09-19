@@ -68,8 +68,8 @@ const GovtExamCard = ({ item, onClick }) => (
       onClick={onClick}
       className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center">
-         <GraduationCap className="w-6 h-6 text-red-500" />
+      <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+         <GraduationCap className="w-6 h-6 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {item.name}
@@ -86,8 +86,8 @@ const QuizCard = ({ item, onClick }) => (
       onClick={onClick}
       className="min-w-[160px] lg:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
    >
-      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-violet-500/10 flex items-center justify-center">
-         <Brain className="w-5 h-5 text-violet-500" />
+      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+         <Brain className="w-5 h-5 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {item.title || item.name}
@@ -106,8 +106,8 @@ const SubjectCard = ({ item, onClick }) => (
       onClick={onClick}
       className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center">
-         <BookOpen className="w-6 h-6 text-sky-500" />
+      <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+         <BookOpen className="w-6 h-6 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {item.name}
@@ -126,8 +126,8 @@ const TopicCard = ({ item, onClick }) => (
       onClick={onClick}
       className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 border-b-[5px] cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-amber-500/10 flex items-center justify-center">
-         <Layers className="w-5 h-5 text-amber-500" />
+      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+         <Layers className="w-5 h-5 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {item.name}
@@ -140,10 +140,10 @@ const TopicCard = ({ item, onClick }) => (
 
 // ─── Reel Card ───
 const REEL_TYPE_CONFIG = {
-   question: { icon: HelpCircle, color: 'text-blue-700', bg: 'bg-blue-500/10', label: 'Question' },
-   fact: { icon: BookOpen, color: 'text-violet-600', bg: 'bg-violet-500/10', label: 'Fact' },
-   tip: { icon: Lightbulb, color: 'text-amber-600', bg: 'bg-amber-500/10', label: 'Tip' },
-   current_affairs: { icon: Newspaper, color: 'text-rose-600', bg: 'bg-rose-500/10', label: 'Current Affairs' },
+   question: { icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Question' },
+   fact: { icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Fact' },
+   tip: { icon: Lightbulb, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Tip' },
+   current_affairs: { icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Current Affairs' },
    poll: { icon: BarChart3, color: 'text-primary-600', bg: 'bg-primary-500/10', label: 'Poll' },
 };
 
@@ -318,9 +318,9 @@ const HomePage = () => {
             <section className="px-0 lg:px-4 pt-2 lg:pt-4">
                {streakCount > 0 && (
                   <div className="flex items-center justify-end mb-3 lg:mb-6">
-                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-orange-500/10 rounded-lg lg:rounded-xl">
-                        <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
-                        <span className="text-xs font-black text-orange-600 dark:text-orange-400">{streakCount}</span>
+                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl">
+                        <Flame className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />
+                        <span className="text-xs font-black text-black dark:text-white">{streakCount}</span>
                      </div>
                   </div>
                )}
@@ -338,12 +338,12 @@ const HomePage = () => {
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-blue-500 mb-1.5" />
+                     <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-purple-500 mb-1.5" />
+                     <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
                   </div>
@@ -373,7 +373,7 @@ const HomePage = () => {
                   </button>
                   <button
                      onClick={() => router.push('/community-questions')}
-                     className="bg-sky-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-sky-700"
+                     className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-4 border-black dark:border-white"
                   >
                      <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
                         <MessageSquare className="w-7 h-7 text-white" />
@@ -388,8 +388,8 @@ const HomePage = () => {
                <SectionHeader
                   title="Govt. Exams"
                   icon={GraduationCap}
-                  iconColor="text-red-500"
-                  iconBg="bg-red-500/10"
+                  iconColor="text-black dark:text-white"
+                  iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/govt-exams')}
                />
                {sectionsLoading.exams ? <SectionSkeleton /> :
@@ -414,8 +414,8 @@ const HomePage = () => {
                <SectionHeader
                   title="Quizzes"
                   icon={Brain}
-                  iconColor="text-violet-500"
-                  iconBg="bg-violet-500/10"
+                  iconColor="text-black dark:text-white"
+                  iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/quizzes')}
                />
                {sectionsLoading.quizzes ? <SectionSkeleton /> :
@@ -440,8 +440,8 @@ const HomePage = () => {
                <SectionHeader
                   title="Subjects"
                   icon={BookOpen}
-                  iconColor="text-sky-500"
-                  iconBg="bg-sky-500/10"
+                  iconColor="text-black dark:text-white"
+                  iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/subjects')}
                />
                {sectionsLoading.subjects ? <SectionSkeleton /> :
@@ -466,8 +466,8 @@ const HomePage = () => {
                <SectionHeader
                   title="Topics"
                   icon={Layers}
-                  iconColor="text-amber-500"
-                  iconBg="bg-amber-500/10"
+                  iconColor="text-black dark:text-white"
+                  iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/topics')}
                />
                {sectionsLoading.topics ? <SectionSkeleton /> :
@@ -492,8 +492,8 @@ const HomePage = () => {
                <SectionHeader
                   title="Reels"
                   icon={PlayCircle}
-                  iconColor="text-pink-500"
-                  iconBg="bg-pink-500/10"
+                  iconColor="text-black dark:text-white"
+                  iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/reels')}
                />
                {sectionsLoading.reels ? <SectionSkeleton /> :
@@ -518,8 +518,8 @@ const HomePage = () => {
                <SectionHeader
                   title="Blogs"
                   icon={FileText}
-                  iconColor="text-orange-500"
-                  iconBg="bg-orange-500/10"
+                  iconColor="text-black dark:text-white"
+                  iconBg="bg-black/10 dark:bg-white/10"
                   onViewAll={() => router.push('/blog')}
                />
                {sectionsLoading.blogs ? <SectionSkeleton /> :

@@ -112,7 +112,7 @@ const QuizHistoryPage = () => {
                                           </div>
                                        )}
                                        {!isCompleted && (
-                                          <span className="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-2 py-1 rounded-lg">In Progress</span>
+                                          <span className="text-[10px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">In Progress</span>
                                        )}
                                     </div>
 

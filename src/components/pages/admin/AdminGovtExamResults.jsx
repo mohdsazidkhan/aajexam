@@ -347,7 +347,7 @@ const AdminGovtExamResults = () => {
                         {attempts.map((a, idx) => (
                           <motion.tr key={a._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.02 }} className="group hover:bg-primary-500/5 transition-all">
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-amber-500 text-white shadow-lg' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
+                              <div className={`w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white flex items-center justify-center font-black italic text-sm ${a.rank <= 3 ? 'bg-black dark:bg-white text-white dark:text-black shadow-lg' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
                                 #{a.rank || '-'}
                               </div>
                             </td>
@@ -365,7 +365,7 @@ const AdminGovtExamResults = () => {
                               <div className="text-[9px] font-black text-primary-600 uppercase tracking-widest leading-none mt-1">{a.practiceTest?.title?.substring(0, 20) || 'Test'}...</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase inline-flex items-center gap-2 ${a.accuracy >= 80 ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : a.accuracy >= 60 ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
+                              <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase inline-flex items-center gap-2 ${a.accuracy >= 80 ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : a.accuracy >= 60 ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
                                 {a.accuracy?.toFixed(1) || 0}% Acc
                               </div>
                               <div className="text-[9px] font-black text-slate-400 uppercase mt-1 ml-1 flex items-center gap-1"><Clock className="w-3 h-3" /> {formatTime(a.totalTime)}</div>
@@ -388,7 +388,7 @@ const AdminGovtExamResults = () => {
                     {attempts.map((a, idx) => (
                       <motion.div key={a._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-xl group">
                         <div className="flex items-center gap-3 lg:gap-6">
-                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-2xl ${a.rank <= 3 ? 'bg-amber-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>#{a.rank || '-'}</div>
+                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center font-black italic shadow-2xl ${a.rank <= 3 ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>#{a.rank || '-'}</div>
                           <div>
                             <div className="flex items-center gap-3 mb-1">
                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{a.user?.name || 'User'}</h3>
@@ -396,7 +396,7 @@ const AdminGovtExamResults = () => {
                             </div>
                             <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                               <span>{a.practiceTest?.title || 'Practice Test'}</span>
-                              <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-amber-500" /> {a.score}/{a.practiceTest?.totalMarks || 0} pts</span>
+                              <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-black dark:text-white" /> {a.score}/{a.practiceTest?.totalMarks || 0} pts</span>
                             </div>
                           </div>
                         </div>
@@ -430,7 +430,7 @@ const AdminGovtExamResults = () => {
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-3 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
                       </div>
                     </div>
-                    <button onClick={() => setShowDetails(false)} className="p-4 bg-white dark:bg-white/5 rounded-2xl text-slate-400 hover:text-rose-500 transition-colors shadow-sm"><X className="w-6 h-6" /></button>
+                    <button onClick={() => setShowDetails(false)} className="p-4 bg-white dark:bg-white/5 rounded-2xl text-slate-400 hover:text-black dark:hover:text-white transition-colors shadow-sm"><X className="w-6 h-6" /></button>
                   </div>
 
                   <div className="flex-1 overflow-y-auto p-4 lg:p-10 custom-scrollbar space-y-4 lg:space-y-12">
@@ -458,7 +458,7 @@ const AdminGovtExamResults = () => {
                         {selectedAttempt.answers?.map((ans, i) => (
                           <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
-                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-primary-500 text-white' : 'bg-rose-500 text-white'}`}>{i + 1}</div>
+                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-primary-500 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>{i + 1}</div>
                               <div>
                                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question not available'}</p>
                                 <div className="flex gap-4">
@@ -468,7 +468,7 @@ const AdminGovtExamResults = () => {
                               </div>
                             </div>
                             <div className="flex flex-col items-end gap-2 shrink-0">
-                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border border-rose-500/20'}`}>
+                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
                                 {ans.isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
                                 {ans.isCorrect ? 'Correct' : 'Incorrect'}
                               </div>

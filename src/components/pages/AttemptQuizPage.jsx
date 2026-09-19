@@ -21,8 +21,8 @@ const fmtSec = (sec) => {
 const speedBadge = (sec) => {
   if (!sec || sec <= 0) return null;
   if (sec <= 20) return { label: 'Fast', icon: <Zap className="w-3 h-3" />, cls: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400' };
-  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' };
-  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' };
+  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
+  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
 };
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
@@ -34,8 +34,8 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard.length === 0) {
     return (
       <div className="text-center py-4 mb-4">
-        <div className="bg-gradient-to-r from-yellow-50 to-primary-50 dark:from-yellow-900/20 dark:to-primary-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-primary-700">
-          <Trophy className="w-10 h-10 text-yellow-500 mx-auto mb-3" />
+        <div className="bg-gradient-to-r from-slate-100 dark:from-slate-800 to-primary-50 dark:from-white/20 dark:to-primary-900/20 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 dark:border-primary-700">
+          <Trophy className="w-10 h-10 text-black dark:text-white mx-auto mb-3" />
           <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-1">No Leaderboard Yet</h3>
           <p className="text-sm text-slate-500 dark:text-slate-400">Be the first to complete this quiz!</p>
         </div>
@@ -46,7 +46,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   return (
     <div className="mt-6">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg lg:rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-gradient-to-r from-black dark:from-white to-black dark:to-white rounded-lg lg:rounded-xl flex items-center justify-center">
           <Trophy className="w-5 h-5 text-white" />
         </div>
         <h3 className="text-lg font-bold text-slate-800 dark:text-white">Leaderboard</h3>
@@ -57,10 +57,10 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
         {leaderboard.map((entry, index) => {
           const isCurrentUser = entry.user?._id === currentUser?.id;
           return (
-            <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl ${isCurrentUser ? 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-300 dark:border-yellow-700' : 'bg-white/60 dark:bg-slate-700/60'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${index === 0 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' :
+            <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl ${isCurrentUser ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white' : 'bg-white/60 dark:bg-slate-700/60'}`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-black text-sm font-bold shrink-0 ${index === 0 ? 'bg-gradient-to-r from-black dark:from-white to-black dark:to-white' :
                   index === 1 ? 'bg-gradient-to-r from-slate-400 to-slate-500' :
-                    index === 2 ? 'bg-gradient-to-r from-amber-600 to-yellow-600' :
+                    index === 2 ? 'bg-gradient-to-r from-black dark:from-white to-black dark:to-white' :
                       'bg-slate-300 dark:bg-slate-600'
                 }`}>
                 {index === 0 ? <Crown className="w-4 h-4" /> : index + 1}
@@ -68,7 +68,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-slate-800 dark:text-white truncate">
                   {entry.user?.name || 'Anonymous'}
-                  {isCurrentUser && <span className="text-xs text-yellow-600 dark:text-yellow-400 ml-1">(You)</span>}
+                  {isCurrentUser && <span className="text-xs text-black dark:text-white ml-1">(You)</span>}
                 </p>
               </div>
               <span className="text-sm font-bold text-slate-800 dark:text-white">{Math.round(entry.percentage || 0)}%</span>
@@ -340,23 +340,23 @@ const AttemptQuizPage = () => {
   if (showExitConfirm) {
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl border border-red-200 dark:border-red-700">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 dark:border-white">
           <div className="text-center">
-            <div className="w-14 h-14 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 bg-gradient-to-r from-black dark:from-white to-black dark:to-white rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="w-7 h-7 text-white" />
             </div>
             <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-3">Exit Quiz?</h2>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
               Question {currentQuestionIndex + 1} of {quiz?.questions?.length || 0}. Exiting will submit your quiz with current answers.
             </p>
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-3 mb-5">
-              <p className="text-xs text-yellow-800 dark:text-yellow-200">This action cannot be undone.</p>
+            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-lg p-3 mb-5">
+              <p className="text-xs text-black dark:text-white">This action cannot be undone.</p>
             </div>
             <div className="flex gap-3">
               <button onClick={() => handleExitConfirm(false)} className="flex-1 px-4 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg lg:rounded-xl font-medium transition-colors">
                 Continue Quiz
               </button>
-              <button onClick={() => handleExitConfirm(true)} className="flex-1 px-4 py-2.5 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white rounded-lg lg:rounded-xl font-medium transition-colors">
+              <button onClick={() => handleExitConfirm(true)} className="flex-1 px-4 py-2.5 bg-gradient-to-r from-black dark:from-white to-black dark:to-white hover:from-black hover:to-black text-white dark:text-black rounded-lg lg:rounded-xl font-medium transition-colors">
                 Exit & Submit
               </button>
             </div>
@@ -374,7 +374,7 @@ const AttemptQuizPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="text-center">
-          <XCircle className="w-12 h-12 text-red-400 mx-auto mb-3" />
+          <XCircle className="w-12 h-12 text-black dark:text-white mx-auto mb-3" />
           <p className="text-slate-700 dark:text-slate-300 font-semibold">No questions available for this quiz.</p>
           <button onClick={() => router.push('/')} className="mt-4 text-primary-600 hover:underline text-sm">Go Home</button>
         </div>
@@ -427,13 +427,13 @@ const AttemptQuizPage = () => {
   // ─── SUBMITTED: Result View ───
   if (submitted && result) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden pb-24">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden pb-24">
         {/* Confetti */}
         {showConfetti && (
           <div className="fixed inset-0 pointer-events-none z-50">
             {[...Array(40)].map((_, i) => (
               <div key={i} className="absolute animate-bounce" style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s`, animationDuration: `${1 + Math.random() * 2}s` }}>
-                <div className={`w-2 h-2 rounded-full ${['bg-yellow-400', 'bg-red-400', 'bg-blue-400', 'bg-primary-400', 'bg-purple-400'][Math.floor(Math.random() * 5)]}`} />
+                <div className={`w-2 h-2 rounded-full ${['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-400', 'bg-black dark:bg-white'][Math.floor(Math.random() * 5)]}`} />
               </div>
             ))}
           </div>
@@ -442,7 +442,7 @@ const AttemptQuizPage = () => {
         <div className="container mx-auto px-3 lg:px-10 pt-6 pb-8">
           {/* Result Card */}
           <div className="text-center mb-6">
-            <div className="bg-gradient-to-r from-primary-50 via-blue-50 to-primary-50 dark:from-primary-900/30 dark:via-blue-900/30 dark:to-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
+            <div className="bg-gradient-to-r from-primary-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-primary-900/30 dark:via-white/30 dark:to-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-700 shadow-xl">
               <div className="flex justify-center mb-4">
                 <div className="w-20 h-20 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full flex items-center justify-center animate-pulse">
                   <Trophy className="w-10 h-10 text-white" />
@@ -456,21 +456,21 @@ const AttemptQuizPage = () => {
                   <div className="text-xs text-slate-500">Correct</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
-                  <div className="text-xl font-bold text-red-600 dark:text-red-400">{result.wrongCount}</div>
+                  <div className="text-xl font-bold text-black dark:text-white">{result.wrongCount}</div>
                   <div className="text-xs text-slate-500">Wrong</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
-                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{Math.round(result.percentage || 0)}%</div>
+                  <div className="text-xl font-bold text-black dark:text-white">{Math.round(result.percentage || 0)}%</div>
                   <div className="text-xs text-slate-500">Score</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
-                  <div className="text-xl font-bold text-yellow-600 dark:text-yellow-400">{Math.round(result.accuracy || 0)}%</div>
+                  <div className="text-xl font-bold text-black dark:text-white">{Math.round(result.accuracy || 0)}%</div>
                   <div className="text-xs text-slate-500">Accuracy</div>
                 </div>
               </div>
 
               {result.rank && (
-                <div className="bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 text-yellow-800 dark:text-yellow-200 px-4 py-2 rounded-lg lg:rounded-xl mb-3 inline-flex items-center gap-2">
+                <div className="bg-gradient-to-r from-slate-100 dark:from-slate-800 to-slate-100 dark:to-slate-800 dark:from-white/30 dark:to-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl mb-3 inline-flex items-center gap-2">
                   <Crown className="w-4 h-4" />
                   <span className="font-semibold text-sm">Rank #{result.rank} · Top {Math.round(result.percentile || 0)}%</span>
                 </div>
@@ -481,7 +481,7 @@ const AttemptQuizPage = () => {
           {/* Quiz Review */}
           <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg lg:rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-black dark:from-white to-black dark:to-white rounded-lg lg:rounded-xl flex items-center justify-center">
                 <Brain className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-lg font-bold text-slate-800 dark:text-white">Quiz Review</h2>
@@ -500,10 +500,10 @@ const AttemptQuizPage = () => {
                 const badge = speedBadge(secTaken);
 
                 return (
-                  <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                  <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                     {/* Question header */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400' : isCorrect ? 'bg-primary-500' : 'bg-red-500'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-500 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>
                         {index + 1}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -530,12 +530,12 @@ const AttemptQuizPage = () => {
                         const isCorrectOpt = optIdx === correctIndex;
                         let optClass = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
                         if (isCorrectOpt) optClass = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400 dark:border-primary-600';
-                        if (isSelected && !isCorrect) optClass = 'bg-red-100 dark:bg-red-900/30 border-red-400 dark:border-red-600';
+                        if (isSelected && !isCorrect) optClass = 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-black dark:border-white dark:border-white';
 
                         return (
                           <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
                             {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
-                            {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 shrink-0" />}
+                            {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
                             {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
                             <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>
                           </div>
@@ -544,8 +544,8 @@ const AttemptQuizPage = () => {
                     </div>
 
                     {question.explanation && (
-                      <div className="ml-11 mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <p className="text-xs text-blue-700 dark:text-blue-300"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
+                      <div className="ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                        <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                       </div>
                     )}
 
@@ -571,7 +571,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleChallenge}
                 disabled={isGeneratingChallenge}
-                className="w-full px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-gradient-to-r from-black dark:from-white to-black dark:to-white hover:from-black hover:to-black text-white dark:text-black rounded-2xl font-black text-lg uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isGeneratingChallenge ? (
                   <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
@@ -585,7 +585,7 @@ const AttemptQuizPage = () => {
               <button onClick={handleBack} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
                 <ArrowLeft className="w-4 h-4" /> Go Back
               </button>
-              <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-teal-600 hover:from-primary-700 hover:to-teal-700 text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+              <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-black dark:to-white hover:from-primary-700 hover:to-black text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
                 <Home className="w-4 h-4" /> Home
               </button>
             </div>
@@ -597,7 +597,7 @@ const AttemptQuizPage = () => {
 
   // ─── QUIZ IN PROGRESS ───
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden">
       <div className="container mx-auto px-3 lg:px-10 pt-3 pb-32">
 
         {/* Quiz Header */}
@@ -606,7 +606,7 @@ const AttemptQuizPage = () => {
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
             <div className="flex items-center gap-2 flex-1 min-w-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-teal-600 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-black dark:to-white rounded-lg lg:rounded-xl flex items-center justify-center shrink-0">
                 <BrainCircuit className="w-4 h-4 text-white" />
               </div>
               <div className="min-w-0">
@@ -648,7 +648,7 @@ const AttemptQuizPage = () => {
                 className="flex items-center justify-center gap-1.5 min-w-[52px] px-3 py-1.5 rounded-lg lg:rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               />
               {/* Timer */}
-              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg lg:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300 animate-pulse' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'}`}>
+              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg lg:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
                 <Clock className="w-4 h-4" />
                 {formatTime(timeLeft)}
               </div>
@@ -665,7 +665,7 @@ const AttemptQuizPage = () => {
 
           {/* Progress bar */}
           <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
-            <div className="bg-gradient-to-r from-primary-500 to-teal-500 h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+            <div className="bg-gradient-to-r from-primary-500 to-black dark:to-white h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
           <div className="flex justify-between mt-1">
             <span className="text-[10px] text-slate-400">Q {currentQuestionIndex + 1}/{quiz.questions.length}</span>
@@ -714,8 +714,8 @@ const AttemptQuizPage = () => {
           </div>
 
           {translating && (
-            <p className="text-[11px] font-bold text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+            <p className="text-[11px] font-bold text-black dark:text-white mb-3 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse" />
               हिंदी में अनुवाद हो रहा है… (अभी अंग्रेज़ी दिख रही है)
             </p>
           )}
@@ -766,14 +766,14 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md transition-all disabled:opacity-50"
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-gradient-to-r from-black dark:from-white to-black dark:to-white text-white dark:text-black shadow-md transition-all disabled:opacity-50"
               >
                 {submitting ? 'Submitting...' : 'Submit Quiz'}
               </button>
             ) : (
               <button
                 onClick={handleNextQuestion}
-                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-gradient-to-r from-primary-600 to-teal-600 text-white shadow-md transition-all"
+                className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg lg:rounded-xl font-bold text-sm bg-gradient-to-r from-primary-600 to-black dark:to-white text-white shadow-md transition-all"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </button>

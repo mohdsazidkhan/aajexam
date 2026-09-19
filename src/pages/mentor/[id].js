@@ -150,7 +150,7 @@ export default function MentorProfilePage() {
               </div>
               {mentor.user?.bio && <p className="text-sm text-slate-500 mb-3">{mentor.user.bio}</p>}
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500">
-                <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" /> {mentor.rating?.toFixed(1) || '0.0'} ({mentor.totalRatings || 0})</span>
+                <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 text-black dark:text-white fill-black dark:fill-white" /> {mentor.rating?.toFixed(1) || '0.0'} ({mentor.totalRatings || 0})</span>
                 <span className="flex items-center gap-1"><MessageCircle className="w-3.5 h-3.5" /> {mentor.helpedStudents || 0} helped</span>
                 {mentor.preparationMonths > 0 && <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {mentor.preparationMonths} months prep</span>}
               </div>
@@ -188,7 +188,7 @@ export default function MentorProfilePage() {
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
           <Card className="p-5">
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-blue-500" /> Daily Routine</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-black dark:text-white" /> Daily Routine</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
         )}
@@ -210,10 +210,10 @@ export default function MentorProfilePage() {
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
           <Card className="p-5">
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><BookOpen className="w-4 h-4 text-orange-500" /> Recommended Books</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><BookOpen className="w-4 h-4 text-black dark:text-white" /> Recommended Books</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
-                <span key={i} className="px-3 py-1.5 bg-orange-50 dark:bg-orange-900/20 rounded-lg text-xs font-bold text-orange-700 dark:text-orange-400">{book}</span>
+                <span key={i} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg text-xs font-bold text-black dark:text-white">{book}</span>
               ))}
             </div>
           </Card>

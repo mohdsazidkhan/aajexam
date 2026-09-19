@@ -130,14 +130,14 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       />
 
       <section className="flex items-center justify-end">
-        <Button variant="ghost" size="sm" onClick={() => router.back()} className="font-black">
+        <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
           GO BACK
         </Button>
       </section>
 
       {/* --- Pattern Quest Card --- */}
-      <Card className="bg-gradient-to-br from-accent-purple to-indigo-600 text-white border-none shadow-[0_4px_0_0_#b366ff] overflow-hidden relative">
+      <Card className="bg-gradient-to-br from-black dark:from-white to-black dark:to-white text-white dark:text-black border-none shadow-[0_4px_0_0_#b366ff] overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <Zap className="w-4 h-4" />
@@ -182,7 +182,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
               >
-                <Card className={`group border-2 transition-all p-0 overflow-hidden shadow-md ${isLocked ? 'grayscale opacity-75' : 'hover:border-accent-purple'}`}>
+                <Card className={`group border-2 transition-all p-0 overflow-hidden shadow-md ${isLocked ? 'grayscale opacity-75' : 'hover:border-black dark:hover:border-white'}`}>
                   <div className="flex flex-col sm:flex-row items-center">
                     {/* Status Pillar */}
                     <div className={`w-full sm:w-16 h-2 sm:h-auto self-stretch ${isCompleted ? 'bg-primary-500' : 'bg-gray-200 dark:bg-slate-700'} transition-colors`} />
@@ -204,16 +204,16 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
                       <div className="flex gap-2">
                         {isCompleted && (
-                          <Button variant="ghost" size="sm" onClick={() => handleViewResult(test)} className="!rounded-full px-4 border-2">
+                          <Button variant="secondary" size="sm" onClick={() => handleViewResult(test)} className="!rounded-full px-4 border-2">
                             RESULTS <Eye className="w-4 h-4 ml-1" />
                           </Button>
                         )}
                         <Button
-                          variant={isCompleted ? "ghost" : "primary"}
+                          variant="primary"
                           size="md"
                           disabled={isLocked}
                           onClick={() => handleStartTest(test)}
-                          className={`min-w-[120px] ${isCompleted ? 'text-primary-600 border-2 border-primary-500' : ''}`}
+                          className="min-w-[120px]"
                         >
                           {isCompleted ? 'RETAKE' : 'START'}
                         </Button>
@@ -237,9 +237,9 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-8">
-            <Button variant="ghost" disabled={page === 1} onClick={() => setPage(page - 1)}>Prev</Button>
+            <Button variant="secondary" disabled={page === 1} onClick={() => setPage(page - 1)}>Prev</Button>
             <span className="font-black text-gray-400">PAGE {page} OF {totalPages}</span>
-            <Button variant="ghost" disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</Button>
+            <Button variant="primary" disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</Button>
           </div>
         )}
       </section>

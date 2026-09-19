@@ -89,7 +89,7 @@ const HowItWorks = () => {
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden pt-10 lg:pt-20">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-duo-primary border-4 border-white/10 rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-4 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
@@ -207,7 +207,7 @@ const HowItWorks = () => {
                      <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
                      <Button
                         onClick={() => router.push('/')}
-                        className="bg-primary-500 mx-auto hover:bg-primary-600 text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-sm shadow-duo-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
+                        className="bg-primary-500 mx-auto hover:bg-primary-600 text-white px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-sm shadow-aajexam-primary border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
                      >
                         START NOW
                      </Button>

@@ -47,10 +47,10 @@ const formatCurrency = (value) => `Rs.${Number(value || 0).toLocaleString('en-IN
 const OBJECT_ID_RE = /^[a-f0-9]{24}$/i;
 
 const SOCIAL_ICONS = {
-  instagram: { icon: Instagram, color: 'text-pink-500' },
-  facebook: { icon: Facebook, color: 'text-blue-600' },
-  x: { icon: Twitter, color: 'text-sky-500' },
-  youtube: { icon: Youtube, color: 'text-red-500' },
+  instagram: { icon: Instagram, color: 'text-black dark:text-white' },
+  facebook: { icon: Facebook, color: 'text-black dark:text-white' },
+  x: { icon: Twitter, color: 'text-black dark:text-white' },
+  youtube: { icon: Youtube, color: 'text-black dark:text-white' },
 };
 
 const Avatar = ({ student, sizeClass }) => (
@@ -147,11 +147,11 @@ const ProfilePage = () => {
 
   const statTiles = useMemo(
     () => [
-      { label: 'Day streak', value: streak?.currentStreak ?? 0, icon: Flame, tone: 'bg-orange-500/10 text-orange-500' },
+      { label: 'Day streak', value: streak?.currentStreak ?? 0, icon: Flame, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
       { label: 'Followers', value: student?.followersCount || 0, icon: Users, tone: 'bg-primary-500/10 text-primary-700 dark:text-primary-500' },
-      { label: 'Following', value: student?.followingCount || 0, icon: UserCheck, tone: 'bg-indigo-500/10 text-indigo-500' },
-      { label: 'Profile views', value: student?.profileViews || 0, icon: Eye, tone: 'bg-purple-500/10 text-purple-500' },
-      { label: 'Referrals', value: student?.referralCount || 0, icon: Sparkles, tone: 'bg-blue-500/10 text-blue-500' },
+      { label: 'Following', value: student?.followingCount || 0, icon: UserCheck, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
+      { label: 'Profile views', value: student?.profileViews || 0, icon: Eye, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
+      { label: 'Referrals', value: student?.referralCount || 0, icon: Sparkles, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
       { label: 'Wallet balance', value: formatCurrency(student?.walletBalance || 0), icon: Wallet, tone: 'bg-primary-500/10 text-primary-500' },
     ],
     [streak, student]
@@ -200,7 +200,7 @@ const ProfilePage = () => {
                 <h1 className="text-xl lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
                   {student?.name || 'Student'}
                 </h1>
-                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ? 'bg-amber-500 text-white shadow-duo-amber' : 'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ? 'bg-black dark:bg-white text-white dark:text-black shadow-aajexam-accent' : 'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
                   {isPro ? 'PRO' : 'FREE'}
                 </span>
                 {isPro && student?.subscriptionExpiry && (
@@ -265,7 +265,7 @@ const ProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-500 text-white shadow-duo-primary scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-500 text-white shadow-aajexam-primary scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
             >
               <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-500'}`} />
               {tab.label}
@@ -436,7 +436,7 @@ const ProfilePage = () => {
                           {bankDetails.accountHolderName || 'Account holder'} · Account ending {bankDetails.accountNumber?.slice(-4) || '----'}
                         </p>
                       </div>
-                      <Button variant="ghost" className="px-6 py-3 rounded-lg lg:rounded-xl text-sm font-semibold" onClick={() => router.push('/settings')}>
+                      <Button variant="primary" className="px-6 py-3 rounded-lg lg:rounded-xl text-sm font-semibold" onClick={() => router.push('/settings')}>
                         Update
                       </Button>
                     </div>
@@ -452,7 +452,7 @@ const ProfilePage = () => {
                         Add your bank details to receive rewards without delays.
                       </p>
                     </div>
-                    <Button variant="secondary" className="px-10 py-4 rounded-2xl text-sm font-black shadow-duo-secondary" onClick={() => router.push('/settings')}>
+                    <Button variant="primary" className="px-10 py-4 rounded-2xl text-sm font-black" onClick={() => router.push('/settings')}>
                       Add bank details
                     </Button>
                   </div>
@@ -503,7 +503,7 @@ const ProfilePage = () => {
                 <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
                   Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
                 </p>
-                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-red-500 text-white shadow-duo-red rounded-2xl">
+                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-black dark:bg-white text-white dark:text-black shadow-aajexam-accent rounded-2xl">
                   Log out
                 </Button>
               </Card>

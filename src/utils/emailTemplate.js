@@ -4,7 +4,7 @@
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 const BRAND_NAME = 'AajExam';
-// Duolingo green — the app's primary-500, used everywhere in the admin UI.
+// AajExam green — the app's primary-500, used everywhere in the admin UI.
 const BRAND_COLOR = '#58cc02';   // primary-500
 const BRAND_ACCENT = '#46a302';  // primary-600 (subtle gradient end)
 const LOGO_URL = `${SITE_URL}/logo.png`;

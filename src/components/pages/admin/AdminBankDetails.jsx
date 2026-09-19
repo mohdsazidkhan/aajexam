@@ -103,7 +103,7 @@ export default function AdminBankDetails() {
     const configs = {
       free: "text-slate-500 bg-slate-500/10 border-slate-500/20",
       basic: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-      premium: "text-rose-500 bg-rose-500/10 border-rose-500/20",
+      premium: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
       pro: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     };
 
@@ -187,7 +187,7 @@ export default function AdminBankDetails() {
                   <div className="flex flex-wrap gap-2">
                     {detail.user?.subscriptionStatus && (
                       <div className="flex items-center">
-                        <Crown className="w-3 h-3 mr-1.5 text-amber-500" />
+                        <Crown className="w-3 h-3 mr-1.5 text-black dark:text-white" />
                         {getSubscriptionBadge(detail.user.subscriptionStatus)}
                       </div>
                     )}
@@ -470,12 +470,12 @@ export default function AdminBankDetails() {
           <AdminTableSkeleton />
         </div>
       ) : error ? (
-        <div className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
-          <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
+        <div className="bg-black/10 dark:bg-white/10 border-4 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl">
+          <div className="w-20 h-20 bg-black dark:bg-white rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-black/20/30 dark:shadow-white/10/30">
             <Zap className="w-10 h-10 text-white" />
           </div>
           <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>
-          <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
+          <p className="text-black dark:text-white font-bold uppercase text-sm tracking-widest">{error}</p>
         </div>
       ) : bankDetails.length === 0 ? (
         <div className="bg-slate-100 dark:bg-white/5 border-4 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-2xl">

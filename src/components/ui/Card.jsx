@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * Card - A friendly, Duolingo-inspired 3D card container for the gamified learning experience.
+ * Card - A friendly, AajExam-inspired 3D card container for the gamified learning experience.
  */
 const Card = ({
   children,
@@ -25,7 +25,7 @@ const Card = ({
     'glass-light': 'glass-light border-white/10 shadow-xl',
     'glass-dark': 'glass-dark border-white/10 shadow-2xl text-white',
     dark: 'bg-slate-950 border-slate-800 text-white shadow-2xl',
-    primary: 'bg-primary-500 border-primary-600 shadow-duo-primary text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    primary: 'bg-primary-500 border-primary-600 shadow-xl text-white',
     none: '',
   };
 
@@ -49,8 +49,7 @@ const Card = ({
       className={`
         ${variants[variant]} 
         ${radii[radius]}
-        ${noBorder ? 'border-none' : 'border-2'} 
-        ${depth && !noBorder && variant !== 'glass' && !variant.includes('glass-') ? 'border-b-8' : ''}
+        ${noBorder ? 'border-none' : 'border-2'}
         ${padded ? 'p-4 lg:p-6' : ''}
         ${hoverable ? 'cursor-pointer group' : ''} 
         ${glow ? 'glow-border' : ''}

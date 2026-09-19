@@ -30,24 +30,11 @@
     --border-primary: #e2e8f0;
     --border-secondary: #cbd5e1;
 
-    --primary-glow: conic-gradient(
-      from 180deg at 50% 50%,
-      #58cc0244 0deg,
-      #1cb0f644 55deg,
-      #ce82ff44 120deg,
-      #ffb02044 160deg,
-      transparent 360deg
-    );
-    --primary-glow: radial-gradient(
-      circle at center,
-      rgba(28, 176, 246, 0.15) 0%,
-      transparent 70%
-    );
     --navbar-height: 5rem;
   }
 
   .dark {
-    /* Central Theme Tokens - Dark Mode (Duolingo Inspired) */
+    /* Central Theme Tokens - Dark Mode (AajExam Inspired) */
     --bg-page: #0F1720; /* Slate 950 for deeper black */
     --bg-surface: #131f24; /* Slate 900 for dark mode background */
     --bg-surface-secondary: #1c2d35; /* Slate 800 for cards */
@@ -157,7 +144,7 @@
     content: '';
     position: absolute;
     inset: -1px;
-    background: linear-gradient(45deg, #58cc02, #1cb0f6, #ce82ff, #58cc02);
+    background: linear-gradient(45deg, #58cc02, #ffffff, #000000, #58cc02);
     background-size: 400%;
     z-index: -1;
     filter: blur(8px);
@@ -228,7 +215,7 @@
   transition: opacity 300ms, transform 300ms;
 }
 
-/* Duolingo Button Animation */
+/* AajExam Button Animation */
 .btn-press:active {
   transform: translateY(2px);
   box-shadow: none !important;

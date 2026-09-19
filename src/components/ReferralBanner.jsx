@@ -89,7 +89,7 @@ const ReferralBanner = ({ user }) => {
               {referralCode}
             </div>
             <button
-              className="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-duo-primary transition-all active:translate-y-1 flex items-center gap-3"
+              className="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-aajexam-primary transition-all active:translate-y-1 flex items-center gap-3"
               onClick={copyReferralCode}
             >
               <Copy className="w-5 h-5" />
@@ -104,7 +104,7 @@ const ReferralBanner = ({ user }) => {
       <div className="space-y-4">
         <button
           onClick={() => setShowShareOptions(!showShareOptions)}
-          className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-duo-secondary transition-all active:translate-y-1 flex items-center justify-center gap-3"
+          className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-aajexam-secondary transition-all active:translate-y-1 flex items-center justify-center gap-3"
         >
           <Share2 className="w-5 h-5" />
           Share with Friends
@@ -114,21 +114,21 @@ const ReferralBanner = ({ user }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
             <button
               onClick={shareOnWhatsApp}
-              className="bg-[#25D366] hover:bg-[#128C7E] text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
             >
               <Smartphone className="w-5 h-5" />
               WhatsApp
             </button>
             <button
               onClick={shareOnTelegram}
-              className="bg-[#0088cc] hover:bg-[#0077b5] text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-black dark:bg-white hover:opacity-90 text-white dark:text-black font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
             >
               <Send className="w-5 h-5" />
               Telegram
             </button>
             <button
               onClick={copyReferralMessage}
-              className="bg-purple-500 hover:bg-purple-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
             >
               <Copy className="w-5 h-5" />
               Copy Text
@@ -147,7 +147,7 @@ const ReferralBanner = ({ user }) => {
       {/* Footer Info */}
       <div className="mt-8 text-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-700">
         <p className="text-slate-700 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed flex items-center justify-center gap-2">
-          <Lightbulb className="w-4 h-4 text-amber-500 flex-shrink-0" />
+          <Lightbulb className="w-4 h-4 text-black dark:text-white flex-shrink-0" />
           TIP: Share on WhatsApp & Telegram to get rewards faster!
         </p>
       </div>

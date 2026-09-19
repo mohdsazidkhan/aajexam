@@ -15,13 +15,13 @@ const SubjectAccordion = ({ subject }) => {
   const isAllDone = subject.completedTopics === subject.totalTopics && subject.totalTopics > 0;
 
   return (
-    <Card padded={false} className="overflow-hidden mb-4 border-2 border-border-primary border-b-4 hover:border-violet-300 dark:hover:border-violet-700 transition-all">
+    <Card padded={false} className="overflow-hidden mb-4 border-2 border-border-primary border-b-4 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400'}`}>
+          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -36,7 +36,7 @@ const SubjectAccordion = ({ subject }) => {
           <div className="hidden sm:flex items-center justify-center relative w-10 h-10">
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
               <path className="text-slate-200 dark:text-slate-700" strokeWidth="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path className={`${isAllDone ? 'text-primary-500' : 'text-violet-500'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path className={`${isAllDone ? 'text-primary-500' : 'text-black dark:text-white'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
             </svg>
           </div>
           {isOpen ? <ChevronUp className="w-5 h-5 text-content-muted" /> : <ChevronDown className="w-5 h-5 text-content-muted" />}
@@ -66,7 +66,7 @@ const SubjectAccordion = ({ subject }) => {
 
                       {!topic.isCompleted && (
                         <Link href={`/quizzes?topic=${topic.slug}`}>
-                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 text-[10px] font-black uppercase hover:bg-violet-200 dark:hover:bg-violet-900/50 transition-colors">
+                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white text-[10px] font-black uppercase hover:bg-slate-100 dark:hover:bg-white/50 transition-colors">
                             <PlayCircle className="w-3 h-3" /> Practice
                           </button>
                         </Link>
@@ -151,7 +151,7 @@ const SyllabusTrackerPage = () => {
 
             <div className="space-y-1">
               <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-content-primary flex items-center gap-2">
-                <Layers className="w-6 h-6 text-violet-500" /> Syllabus Tracker
+                <Layers className="w-6 h-6 text-black dark:text-white" /> Syllabus Tracker
               </h1>
               <p className="text-sm font-bold text-content-muted">Auto-tracks topics as you complete quizzes!</p>
             </div>
@@ -164,7 +164,7 @@ const SyllabusTrackerPage = () => {
               <select
                 value={selectedExam}
                 onChange={e => setSelectedExam(e.target.value)}
-                className="w-full appearance-none bg-background-surface border border-border-primary text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 cursor-pointer"
+                className="w-full appearance-none bg-background-surface border border-border-primary text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
               >
                 <option value="">Select Exam to Track</option>
                 {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -177,16 +177,16 @@ const SyllabusTrackerPage = () => {
 
           {/* ── Data View ── */}
           {selectedExam && loadingData ? (
-            <div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-violet-500/30 border-t-violet-500 rounded-full animate-spin" /></div>
+            <div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-black/30 dark:border-white/30 border-t-primary-500 rounded-full animate-spin" /></div>
           ) : selectedExam && trackerData ? (
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
 
               {/* Progress Header */}
-              <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-8 border-violet-500">
+              <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-8 border-black dark:border-white">
                 <div className="relative w-32 h-32 flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path className="text-slate-100 dark:text-slate-800" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path className="text-violet-500" strokeWidth="3.5" strokeDasharray={`${trackerData.overallProgress}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path className="text-black dark:text-white" strokeWidth="3.5" strokeDasharray={`${trackerData.overallProgress}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-3xl font-black text-content-primary">{trackerData.overallProgress}%</span>

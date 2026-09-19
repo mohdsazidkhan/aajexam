@@ -6,7 +6,7 @@ import { X, ShieldAlert } from 'lucide-react';
 import Button from './Button';
 
 /**
- * Modal - A friendly, Duolingo-inspired 3D modal overlay for the gamified learning experience.
+ * Modal - A friendly, AajExam-inspired 3D modal overlay for the gamified learning experience.
  */
 const Modal = ({
   isOpen,
@@ -106,11 +106,9 @@ const Modal = ({
             animate="visible"
             exit="exit"
             className={`
-              relative bg-white dark:bg-slate-900 
-              ${sizes[size]} 
+              relative bg-white dark:bg-slate-900              ${sizes[size]} 
               ${size === 'fullscreen' ? 'rounded-none' : 'rounded-[3rem] lg:rounded-[4.5rem]'} 
-              border-2 border-slate-200 dark:border-slate-800 
-              ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-2xl shadow-primary-500/10'} 
+              border-2 border-slate-200 dark:border-slate-800              ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-2xl shadow-primary-500/10'} 
               transition-all duration-300 font-outfit overflow-hidden
               ${className}
             `}
@@ -134,7 +132,7 @@ const Modal = ({
 
                 {showCloseButton && (
                   <Button
-                    variant="ghost"
+                    variant="secondary"
                     size="sm"
                     onClick={onClose}
                     className="!p-3 border-b-4 hover:border-b-2 hover:translate-y-0.5"

@@ -261,8 +261,8 @@ const AdminGovtExams = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.category?.name || 'Uncategorized'}</td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6">
                         <div className="flex justify-center">
-                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-rose-500'}`} />
+                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-black dark:bg-white'}`} />
                             {exam.isActive ? 'Online' : 'Offline'}
                           </div>
                         </div>
@@ -277,7 +277,7 @@ const AdminGovtExams = () => {
                           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(exam)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
                             <Edit3 className="w-4 h-4" />
                           </motion.button>
-                          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(exam._id)} className="p-3 bg-rose-500/10 text-rose-500 rounded-lg lg:rounded-xl border border-rose-500/20">
+                          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(exam._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20">
                             <Trash2 className="w-4 h-4" />
                           </motion.button>
                         </div>
@@ -294,7 +294,7 @@ const AdminGovtExams = () => {
               {filteredExams.map((exam, idx) => (
                 <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit">
                   <div className="absolute top-6 right-6">
-                    <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-rose-500/10 text-rose-500 border-rose-500/20'}`}>
+                    <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
                       {exam.isActive ? 'LIVE STATUS' : 'INACTIVE'}
                     </div>
                   </div>
@@ -319,7 +319,7 @@ const AdminGovtExams = () => {
                       <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-primary-600/10">Patterns</motion.button>
                     </Link>
                     <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
-                    <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-rose-500 transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
               ))}
@@ -337,7 +337,7 @@ const AdminGovtExams = () => {
                       <div className="flex items-center gap-4">
                         <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{exam.category?.name}</div>
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-rose-500'}`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-black dark:bg-white'}`} />
                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
                         </div>
                       </div>
@@ -349,7 +349,7 @@ const AdminGovtExams = () => {
                     </Link>
                     <div className="w-px h-10 bg-slate-100 dark:bg-white/10 mx-2" />
                     <motion.button onClick={() => handleEdit(exam)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
-                    <motion.button onClick={() => handleDelete(exam._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-rose-500"><Trash2 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleDelete(exam._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
               ))}
@@ -375,7 +375,7 @@ const AdminGovtExams = () => {
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
                 </div>
               </div>
-              <button onClick={() => setShowModal(false)} className="p-3 rounded-lg lg:rounded-xl hover:bg-rose-500/10 hover:text-rose-500 transition-colors"><X className="w-6 h-6" /></button>
+              <button onClick={() => setShowModal(false)} className="p-3 rounded-lg lg:rounded-xl hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <form onSubmit={handleSubmit} className="p-3 lg:p-8 overflow-y-auto custom-scrollbar">
               <div className="space-y-4 lg:space-y-8">

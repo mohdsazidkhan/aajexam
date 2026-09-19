@@ -333,7 +333,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
       <div className="p-4 lg:p-8 max-w-6xl mx-auto">
         <div className="mb-6">
-          <Link href="/admin/email-campaigns" className="text-sm text-secondary-600 dark:text-secondary-400 hover:underline inline-flex items-center gap-1 mb-2">
+          <Link href="/admin/email-campaigns" className="text-sm text-black dark:text-white hover:underline inline-flex items-center gap-1 mb-2">
             ← All campaigns
           </Link>
           <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
@@ -382,7 +382,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Editor --- */}
             <div className="space-y-4">
               {!canEditFields && (
-                <div className="p-3 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300">
+                <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
                   {isPublished
                     ? 'Published — fields are locked. Use "Back to Draft" to edit.'
                     : isCompleted
@@ -469,12 +469,12 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 3: Publish ---- */}
               {isDraft && campaign && (
                 <button onClick={publishNow} disabled={busyAction}
-                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-secondary-500 hover:bg-secondary-600 text-white shadow-md disabled:opacity-50">
+                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black shadow-md disabled:opacity-50">
                   🚀 Publish Now
                 </button>
               )}
               {isDraft && campaign && !campaign.testSentAt && (
-                <p className="text-xs text-center text-amber-600 dark:text-amber-400 -mt-2">
+                <p className="text-xs text-center text-black dark:text-white -mt-2">
                   Tip: send yourself a test before publishing.
                 </p>
               )}
@@ -526,18 +526,18 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                           <div className="text-[10px] text-slate-500 uppercase">Sent</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-red-500 dark:text-red-400 font-bold">{campaign.failedCount}</div>
+                          <div className="text-black dark:text-white font-bold">{campaign.failedCount}</div>
                           <div className="text-[10px] text-slate-500 uppercase">Failed</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-secondary-500 font-bold">{Math.max(0, campaign.totalTargeted - campaign.processed)}</div>
+                          <div className="text-black dark:text-white font-bold">{Math.max(0, campaign.totalTargeted - campaign.processed)}</div>
                           <div className="text-[10px] text-slate-500 uppercase">Left</div>
                         </div>
                       </div>
 
                       <div className="flex flex-wrap gap-2 mt-3">
                         {isSendingPhase && isRunning && (
-                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-amber-500 hover:bg-amber-600 text-white">Pause</button>
+                          <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black">Pause</button>
                         )}
                         {isSendingPhase && !isRunning && (
                           <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-500 hover:bg-primary-600 text-white disabled:opacity-50">
@@ -547,7 +547,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                       </div>
 
                       {campaign.remainingToday <= 0 && !isCompleted && (
-                        <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">Daily limit reached. Continue tomorrow after the quota resets.</p>
+                        <p className="text-xs text-black dark:text-white mt-2">Daily limit reached. Continue tomorrow after the quota resets.</p>
                       )}
                     </>
                   )}
@@ -578,9 +578,9 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                           <div className="flex items-center justify-between mb-2">
                             <p className="text-xs text-slate-600 dark:text-slate-300">
                               Sent to <strong className="text-primary-600 dark:text-primary-400">{recipients.counts.sent}</strong>
-                              {recipients.counts.failed > 0 && (<> · failed <strong className="text-red-500">{recipients.counts.failed}</strong></>)}
+                              {recipients.counts.failed > 0 && (<> · failed <strong className="text-black dark:text-white">{recipients.counts.failed}</strong></>)}
                             </p>
-                            <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-secondary-600 dark:text-secondary-400 hover:underline disabled:opacity-50">Refresh</button>
+                            <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-black dark:text-white hover:underline disabled:opacity-50">Refresh</button>
                           </div>
 
                           {recipients.recipients.length === 0 ? (
@@ -596,7 +596,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                                   <span className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-semibold ${
                                     r.status === 'sent'
                                       ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
-                                      : 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300'
+                                      : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white'
                                   }`} title={r.error || ''}>{r.status}</span>
                                 </div>
                               ))}

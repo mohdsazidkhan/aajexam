@@ -43,9 +43,9 @@ const AdminExamNews = () => {
 
   const typeColor = (t) => {
     if (t === 'result' || t === 'answer_key') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
-    if (t === 'admit_card') return 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400';
+    if (t === 'admit_card') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
     if (t === 'vacancy') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
-    if (t === 'date_change') return 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400';
+    if (t === 'date_change') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
     return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
   };
 
@@ -85,11 +85,11 @@ const AdminExamNews = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Title <span className="text-red-400">*</span></label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Title <span className="text-black dark:text-white">*</span></label>
                   <input placeholder="Enter the headline" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className={inputClass} />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-red-400">*</span></label>
+                  <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Content <span className="text-black dark:text-white">*</span></label>
                   <textarea placeholder="Write the full content..." rows={4} value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} className={`${inputClass} resize-y`} />
                 </div>
                 <div>
@@ -148,7 +148,7 @@ const AdminExamNews = () => {
                       <tr key={n._id || i} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
                         <td className="px-4 py-3 max-w-xs">
                           <div className="flex items-center gap-2">
-                            {n.isPinned && <Pin className="w-3.5 h-3.5 text-red-500 shrink-0" />}
+                            {n.isPinned && <Pin className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                             <div className="min-w-0">
                               <p className="font-bold text-slate-900 dark:text-white truncate">{n.title}</p>
                               {n.tags?.length > 0 && <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 truncate">{n.tags.join(', ')}</p>}
@@ -166,8 +166,8 @@ const AdminExamNews = () => {
                         <td className="px-4 py-3">
                           <div className="flex items-center justify-end gap-1">
                             {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-500" /></a>}
-                            <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-blue-500" /></button>
-                            <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-red-500" /></button>
+                            <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                            <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                           </div>
                         </td>
                       </tr>
@@ -185,7 +185,7 @@ const AdminExamNews = () => {
                     <div className="flex items-center justify-between mb-2">
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${typeColor(n.type)}`}>{n.type?.replace('_', ' ')}</span>
                       <div className="flex items-center gap-2">
-                        {n.isPinned && <Pin className="w-3 h-3 text-red-500" />}
+                        {n.isPinned && <Pin className="w-3 h-3 text-black dark:text-white" />}
                         <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Eye className="w-3 h-3" /> {n.views || 0}</span>
                       </div>
                     </div>
@@ -200,8 +200,8 @@ const AdminExamNews = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-500" /></a>}
-                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-blue-500" /></button>
-                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-red-500" /></button>
+                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                     </div>
                   </div>
                 </Card>
@@ -212,7 +212,7 @@ const AdminExamNews = () => {
             <div className="space-y-2">
               {news.map((n, i) => (
                 <Card key={n._id || i} className="!p-4 flex items-center gap-4">
-                  {n.isPinned && <Pin className="w-4 h-4 text-red-500 flex-shrink-0" />}
+                  {n.isPinned && <Pin className="w-4 h-4 text-black dark:text-white flex-shrink-0" />}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${typeColor(n.type)}`}>{n.type?.replace('_', ' ')}</span>
@@ -224,8 +224,8 @@ const AdminExamNews = () => {
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="Official Link"><ExternalLink className="w-4 h-4 text-primary-500" /></a>}
-                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-blue-500" /></button>
-                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-red-500" /></button>
+                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                   </div>
                 </Card>
               ))}

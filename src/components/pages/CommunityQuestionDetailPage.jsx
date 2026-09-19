@@ -80,7 +80,7 @@ export default function CommunityQuestionDetailPage() {
         <Card className="p-5 lg:p-6 space-y-4">
           {/* Author + exam */}
           <div className="flex items-center gap-2 text-xs">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-400 to-indigo-500 text-white text-xs font-bold flex items-center justify-center">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-400 to-black dark:to-white text-white text-xs font-bold flex items-center justify-center">
               {(question.author?.name || '?').charAt(0).toUpperCase()}
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || 'User'}</span>
@@ -119,7 +119,7 @@ export default function CommunityQuestionDetailPage() {
                 let cls = 'border-slate-200 dark:border-slate-700 hover:border-primary-300 bg-white dark:bg-slate-800';
                 if (attempted) {
                   if (isRight) cls = 'border-primary-400 bg-primary-50 dark:bg-primary-900/20';
-                  else if (isSel) cls = 'border-red-400 bg-red-50 dark:bg-red-900/20';
+                  else if (isSel) cls = 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20';
                 } else if (isSel) {
                   cls = 'border-primary-500 bg-primary-50 dark:bg-primary-900/20';
                 }
@@ -130,12 +130,12 @@ export default function CommunityQuestionDetailPage() {
                     onClick={() => setSelectedOption(i)}
                     className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition text-sm ${cls} disabled:cursor-default`}
                   >
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-primary-500 text-white' : attempted && isSel ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-primary-500 text-white' : attempted && isSel ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
                       {String.fromCharCode(65 + i)}
                     </div>
                     <span className="flex-1 text-slate-800 dark:text-slate-200">{opt.text}</span>
                     {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-primary-600 shrink-0" />}
-                    {attempted && isSel && !isRight && <XCircle className="w-4 h-4 text-red-600 shrink-0" />}
+                    {attempted && isSel && !isRight && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
                   </button>
                 );
               })}
@@ -155,11 +155,11 @@ export default function CommunityQuestionDetailPage() {
           {/* Explanation — gated until attempted (for MCQ) */}
           {question.explanation && (
             canRevealAnswer ? (
-              <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
-                <p className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase mb-1 flex items-center gap-1">
+              <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg border-l-4 border-black dark:border-white">
+                <p className="text-xs font-bold text-black dark:text-white uppercase mb-1 flex items-center gap-1">
                   <Lightbulb className="w-3 h-3" /> Explanation
                 </p>
-                <p className="text-sm text-blue-800 dark:text-blue-200 whitespace-pre-wrap">{question.explanation}</p>
+                <p className="text-sm text-black dark:text-white whitespace-pre-wrap">{question.explanation}</p>
               </div>
             ) : (
               <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-dashed border-slate-300 dark:border-slate-600 text-center">
@@ -172,7 +172,7 @@ export default function CommunityQuestionDetailPage() {
 
           {/* Meta bar */}
           <div className="flex items-center gap-4 pt-3 border-t border-slate-100 dark:border-slate-700 text-xs text-slate-500">
-            <button onClick={toggleLike} className={`flex items-center gap-1 hover:text-red-500 transition ${liked ? 'text-red-500 font-bold' : ''}`}>
+            <button onClick={toggleLike} className={`flex items-center gap-1 hover:text-black dark:hover:text-white transition ${liked ? 'text-black dark:text-white font-bold' : ''}`}>
               <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} /> {likes}
             </button>
             <span className="flex items-center gap-1"><Eye className="w-4 h-4" /> {question.views || 0}</span>

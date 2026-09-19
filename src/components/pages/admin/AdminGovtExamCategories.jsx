@@ -186,7 +186,7 @@ const AdminGovtExamCategories = () => {
               </div>
               <button
                 onClick={handleCreate}
-                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
+                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-primary-600 text-white rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest shadow-aajexam-primary flex items-center justify-center gap-3 hover:scale-105 active:scale-95 transition-all outline-none"
               >
                 <Plus className="w-5 h-5" /> ADD CATEGORY
               </button>
@@ -261,7 +261,7 @@ const AdminGovtExamCategories = () => {
                               <button onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-primary-500 hover:border-primary-500/30 transition-all shadow-inner">
                                 <Edit className="w-4 h-4" />
                               </button>
-                              <button onClick={() => handleDelete(category._id)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-rose-500 hover:border-rose-500/30 transition-all shadow-inner">
+                              <button onClick={() => handleDelete(category._id)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all shadow-inner">
                                 <Trash2 className="w-4 h-4" />
                               </button>
                             </div>
@@ -306,7 +306,7 @@ const AdminGovtExamCategories = () => {
                         <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                           <Edit className="w-6 h-6" />
                         </button>
-                        <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-rose-500 hover:border-rose-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                        <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-4 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                           <Trash2 className="w-6 h-6" />
                         </button>
                       </div>
@@ -330,7 +330,7 @@ const AdminGovtExamCategories = () => {
                         {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
                       </div>
 
-                      <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2 uppercase">{category.name}</h3>
+                      <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2">{category.name}</h3>
                       <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-4 lg:mb-8 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>
                         {category.type?.toUpperCase()}
                       </div>
@@ -339,7 +339,7 @@ const AdminGovtExamCategories = () => {
 
                       <div className="w-full flex gap-3 mt-auto">
                         <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-500 hover:border-primary-500/30 transition-all">EDIT</button>
-                        <button onClick={() => handleDelete(category._id)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-rose-500 hover:border-rose-500/30 transition-all">DELETE</button>
+                        <button onClick={() => handleDelete(category._id)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">DELETE</button>
                       </div>
                     </motion.div>
                   ))}
@@ -373,7 +373,7 @@ const AdminGovtExamCategories = () => {
                       {editingCategory ? "UPDATE CATEGORY" : "NEW CATEGORY"}
                     </h2>
                   </div>
-                  <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-rose-500 transition-colors">
+                  <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-black dark:hover:text-white transition-colors">
                     <XCircle className="w-8 h-8" />
                   </button>
                 </div>
@@ -428,7 +428,7 @@ const AdminGovtExamCategories = () => {
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 p-6 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-duo-primary hover:scale-105 active:scale-95 transition-all outline-none"
+                      className="flex-1 p-6 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest shadow-aajexam-primary hover:scale-105 active:scale-95 transition-all outline-none"
                     >
                       {editingCategory ? "SAVE CHANGES" : "CREATE CATEGORY"}
                     </button>

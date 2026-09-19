@@ -110,7 +110,7 @@ export default function UserReferralDetail() {
 
     const getRewardTypeColor = (type) => {
         const colors = {
-            'plan99': 'text-amber-500 bg-amber-500/10 border-amber-500/20',
+            'plan99': 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20',
         };
         return colors[type] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
     };
@@ -298,7 +298,7 @@ export default function UserReferralDetail() {
                                                             {tx.invitee.name?.[0].toUpperCase() || 'U'}
                                                         </div>
                                                         <div>
-                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors uppercase">{tx.invitee.name}</div>
+                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors">{tx.invitee.name}</div>
                                                             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.invitee.email}</div>
                                                         </div>
                                                     </div>

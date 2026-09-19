@@ -21,10 +21,10 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const REEL_TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-blue-500 to-indigo-600', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-purple-500 to-pink-600', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-yellow-500 to-orange-600', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-red-500 to-rose-600', desc: 'Daily CA card' },
+  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'from-black dark:from-white to-black dark:to-white', desc: 'Daily CA card' },
   { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'from-primary-500 to-primary-600', desc: 'Community poll' },
 ];
 

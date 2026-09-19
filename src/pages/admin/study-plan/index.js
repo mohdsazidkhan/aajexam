@@ -44,7 +44,7 @@ const AdminStudyPlanPage = () => {
           <div className="flex items-center justify-between gap-4">
             <div>
               <h1 className="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-3">
-                <CalendarDays className="w-7 h-7 text-sky-500" /> Study Planner
+                <CalendarDays className="w-7 h-7 text-black dark:text-white" /> Study Planner
               </h1>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
                 Admin view for study plan generation and active plan tracking.

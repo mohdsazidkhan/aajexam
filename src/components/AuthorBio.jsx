@@ -7,7 +7,7 @@ const AuthorBio = () => {
             <div className="absolute top-0 right-0 w-24 lg:w-48 h-24 lg:h-48 bg-primary-500/5 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors" />
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 relative z-10">
-                <div className="w-20 h-20 rounded-2xl bg-primary-500 shrink-0 flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-duo-primary border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform">
+                <div className="w-20 h-20 rounded-2xl bg-primary-500 shrink-0 flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-aajexam-primary border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform">
                     S
                 </div>
 

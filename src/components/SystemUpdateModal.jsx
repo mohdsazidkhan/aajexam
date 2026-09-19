@@ -32,7 +32,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border-2 border-b-8 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* HEADER */}
-        <div className="bg-primary-500 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-duo-primary border-b-4 border-white/20">
+        <div className="bg-primary-500 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-aajexam-primary border-b-4 border-white/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-xl transform -rotate-6">
@@ -56,11 +56,11 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         <div className="p-4 lg:p-10 space-y-8">
 
           {/* PLATFORM UPDATE */}
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-300 dark:border-blue-700 rounded-2xl p-6">
-            <h3 className="text-sm lg:text-lg font-black text-blue-800 dark:text-blue-200 mb-2 flex items-center uppercase tracking-tight">
-              <FaShieldAlt className="text-blue-600 mr-2" /> Platform Update
+          <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-2xl p-6">
+            <h3 className="text-sm lg:text-lg font-black text-black dark:text-white mb-2 flex items-center uppercase tracking-tight">
+              <FaShieldAlt className="text-black dark:text-white mr-2" /> Platform Update
             </h3>
-            <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">
+            <p className="text-sm text-black dark:text-white font-medium">
               AajExam is now <span className="font-black">100% dedicated to Government Exam Preparation!</span> We've streamlined the platform to focus entirely on helping you crack your dream exam.
             </p>
           </div>
@@ -103,7 +103,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* DATA SAFE NOTICE */}
-          <div className="bg-primary-500 text-white rounded-[2rem] p-6 shadow-duo-secondary border-2 border-white dark:border-slate-700">
+          <div className="bg-primary-500 text-white rounded-[2rem] p-6 shadow-aajexam-secondary border-2 border-white dark:border-slate-700">
             <h3 className="text-sm lg:text-lg font-black mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="mr-3" /> Your Data is Safe
             </h3>
@@ -123,7 +123,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 href="https://play.google.com/store/apps/details?id=com.aajexam.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-2xl hover:bg-gray-800 transition-all shadow-duo active:translate-y-1 font-black uppercase text-xs tracking-widest"
+                className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-2xl hover:bg-gray-800 transition-all shadow-aajexam active:translate-y-1 font-black uppercase text-xs tracking-widest"
               >
                 <FaGraduationCap className="mr-3" />
                 AajExam App (Exams)
@@ -150,7 +150,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </p>
             <button
               onClick={handleClose}
-              className="bg-primary-500 text-white px-12 py-5 rounded-[1.5rem] text-xs font-black uppercase tracking-widest transition-all active:translate-y-1 shadow-duo-primary"
+              className="bg-primary-500 text-white px-12 py-5 rounded-[1.5rem] text-xs font-black uppercase tracking-widest transition-all active:translate-y-1 shadow-aajexam-primary"
             >
               Start Preparing!
             </button>

@@ -132,7 +132,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
           ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 border border-primary-300 dark:border-primary-700'
           : available === false
-            ? 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-400 border border-red-300 dark:border-red-700'
+            ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white dark:text-white border border-slate-200 dark:border-slate-800 dark:border-white'
             : 'bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 border border-primary-300 dark:border-primary-700'
           }`}>
           {message}
@@ -142,7 +142,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       <button
         onClick={handleSave}
         disabled={!canSave || saving}
-        className="save-username-btn w-full p-5 bg-primary-500 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-duo-secondary disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
+        className="save-username-btn w-full p-5 bg-primary-500 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-aajexam-secondary disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
       >
         {saving ? 'Saving student...' : 'Save Student Identity'}
       </button>

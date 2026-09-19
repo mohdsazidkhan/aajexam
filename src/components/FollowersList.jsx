@@ -89,8 +89,8 @@ const FollowersList = ({ username: usernameProp }) => {
           {loading ? (
             <ListSkeleton rows={8} />
           ) : error ? (
-            <div className="text-center py-24 bg-rose-100 dark:bg-rose-900/20 rounded-[2.5rem] border-2 border-rose-200/50 dark:border-rose-900/30">
-              <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest">{error}</p>
+            <div className="text-center py-24 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-[2.5rem] border-2 border-slate-200/50 dark:border-slate-800/50 dark:border-white/30">
+              <p className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{error}</p>
             </div>
           ) : followers.length === 0 ? (
             <div className="text-center py-32 bg-slate-100 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-dashed border-slate-200/50 dark:border-slate-700/30">
@@ -115,7 +115,7 @@ const FollowersList = ({ username: usernameProp }) => {
                         className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] object-cover border-4 border-white dark:border-slate-600 shadow-xl relative z-10 group-hover:scale-110 group-hover:-rotate-3 transition-transform"
                       />
                     ) : (
-                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] bg-primary-500 flex items-center justify-center text-white text-4xl font-black shadow-duo-primary border-4 border-white dark:border-slate-600 relative z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] bg-primary-500 flex items-center justify-center text-white text-4xl font-black shadow-aajexam-primary border-4 border-white dark:border-slate-600 relative z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform">
                         {user.name?.charAt(0)?.toUpperCase() || 'U'}
                       </div>
                     )}
@@ -147,7 +147,7 @@ const FollowersList = ({ username: usernameProp }) => {
               <button
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="w-14 h-14 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-2xl shadow-duo border-2 border-slate-200 dark:border-slate-700 disabled:opacity-50 disabled:translate-y-0 active:translate-y-1 transition-all flex items-center justify-center"
+                className="w-14 h-14 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-700 disabled:opacity-50 disabled:translate-y-0 active:translate-y-1 transition-all flex items-center justify-center"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -161,7 +161,7 @@ const FollowersList = ({ username: usernameProp }) => {
               <button
                 onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
                 disabled={page === pagination.totalPages}
-                className="w-14 h-14 bg-primary-500 text-white rounded-2xl shadow-duo-primary border-2 border-white/20 active:translate-y-1 transition-all flex items-center justify-center disabled:opacity-50 disabled:shadow-none"
+                className="w-14 h-14 bg-primary-500 text-white rounded-2xl shadow-aajexam-primary border-2 border-white/20 active:translate-y-1 transition-all flex items-center justify-center disabled:opacity-50 disabled:shadow-none"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

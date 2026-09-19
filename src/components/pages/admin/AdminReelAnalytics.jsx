@@ -52,7 +52,7 @@ const AdminReelAnalytics = () => {
           <div className="px-3 py-4 sm:p-6 max-w-7xl mx-auto">
 
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2 mb-5 sm:mb-6 uppercase tracking-tight">
-              <BarChart3 className="w-6 h-6 sm:w-7 sm:h-7 text-blue-500" /> Reel Analytics
+              <BarChart3 className="w-6 h-6 sm:w-7 sm:h-7 text-black dark:text-white" /> Reel Analytics
             </h1>
 
             {loading ? <AdminDashboardSkeleton /> : data ? (
@@ -60,11 +60,11 @@ const AdminReelAnalytics = () => {
 
                 {/* Overview Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-                  <StatCard icon={Flame} label="Total Reels" value={data.overview.totalReels} delay={0} color="bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400" />
+                  <StatCard icon={Flame} label="Total Reels" value={data.overview.totalReels} delay={0} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
                   <StatCard icon={CheckCircle2} label="Published" value={data.overview.publishedReels} delay={0.05} color="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400" />
-                  <StatCard icon={TrendingUp} label="Pending" value={data.overview.pendingReels} delay={0.1} color="bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400" />
-                  <StatCard icon={Eye} label="Total Views" value={data.overview.totalViews} delay={0.15} color="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400" />
-                  <StatCard icon={Heart} label="Total Likes" value={data.overview.totalLikes} delay={0.2} color="bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400" />
+                  <StatCard icon={TrendingUp} label="Pending" value={data.overview.pendingReels} delay={0.1} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
+                  <StatCard icon={Eye} label="Total Views" value={data.overview.totalViews} delay={0.15} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
+                  <StatCard icon={Heart} label="Total Likes" value={data.overview.totalLikes} delay={0.2} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
                   <StatCard icon={MessageCircle} label="Total Answers" value={data.overview.totalAnswers} delay={0.25} color="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400" />
                 </div>
 
@@ -119,8 +119,8 @@ const AdminReelAnalytics = () => {
                           </p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider capitalize">{reel.type} &middot; {reel.subject}</span>
-                            <span className="flex items-center gap-1 text-[10px] font-bold text-rose-400"><Heart className="w-3 h-3" /> {reel.likesCount}</span>
-                            <span className="flex items-center gap-1 text-[10px] font-bold text-blue-400"><Eye className="w-3 h-3" /> {reel.viewsCount}</span>
+                            <span className="flex items-center gap-1 text-[10px] font-bold text-black dark:text-white"><Heart className="w-3 h-3" /> {reel.likesCount}</span>
+                            <span className="flex items-center gap-1 text-[10px] font-bold text-black dark:text-white"><Eye className="w-3 h-3" /> {reel.viewsCount}</span>
                           </div>
                         </div>
                       </div>

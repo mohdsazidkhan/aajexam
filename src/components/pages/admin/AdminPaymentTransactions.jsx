@@ -180,9 +180,9 @@ const AdminPaymentTransactions = () => {
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
       case 'completed': case 'success': return 'bg-primary-500/10 text-primary-500 border-primary-500/20';
-      case 'failed': case 'failure': return 'bg-rose-500/10 text-rose-500 border-rose-500/20';
+      case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
       case 'pending': case 'created': case 'authorized': return 'bg-primary-500/10 text-primary-500 border-primary-500/20';
-      case 'refunded': return 'bg-amber-500/10 text-amber-500 border-amber-500/20';
+      case 'refunded': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
       default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
     }
   };
@@ -339,9 +339,9 @@ const AdminPaymentTransactions = () => {
         {/* Main Content Area */}
         <AnimatePresence mode="wait">
           {error ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-rose-500/10 border-2 border-rose-500/20 p-3 lg:p-8 rounded-3xl text-center">
-              <AlertTriangle className="w-12 h-12 text-rose-500 mx-auto mb-4" />
-              <div className="text-rose-500 font-black uppercase tracking-widest">{error}</div>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 lg:p-8 rounded-3xl text-center">
+              <AlertTriangle className="w-12 h-12 text-black dark:text-white mx-auto mb-4" />
+              <div className="text-black dark:text-white font-black uppercase tracking-widest">{error}</div>
             </motion.div>
           ) : transactions.length === 0 ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-4 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-2xl">
@@ -455,7 +455,7 @@ const AdminPaymentTransactions = () => {
                       <div className="flex flex-wrap items-center gap-3 lg:gap-8">
                         <div className="text-right">
                           <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Plan</div>
-                          <div className="text-sm font-black text-primary-500 uppercase tracking-widest tracking-widest">{t.planId || 'N/A'}</div>
+                          <div className="text-sm font-black text-primary-500 uppercase tracking-widest">{t.planId || 'N/A'}</div>
                         </div>
                         <div className="text-right min-w-[120px]">
                           <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Amount Paid</div>

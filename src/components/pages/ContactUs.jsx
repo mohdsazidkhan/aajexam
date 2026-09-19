@@ -82,7 +82,7 @@ const ContactUs = ({ contactInfo = {
 
                {/* --- Header Section --- */}
                <section className="text-center space-y-6 relative overflow-hidden">
-                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-duo-primary border-4 border-white/10 rotate-12">
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-4 border-white/10 rotate-12">
                      <MessageSquare className="w-10 h-10" />
                   </motion.div>
                   <div className="space-y-4">
@@ -134,7 +134,7 @@ const ContactUs = ({ contactInfo = {
                      </Card>
 
                      {/* Support Info */}
-                     <Card className="p-8 border-none bg-gradient-to-br from-primary-500 via-indigo-600 to-primary-600 text-white shadow-duo-secondary rounded-[3rem] overflow-hidden group relative">
+                     <Card className="p-8 border-none bg-gradient-to-br from-primary-500 via-black dark:via-white to-primary-600 text-white shadow-aajexam-secondary rounded-[3rem] overflow-hidden group relative">
                         <div className="flex items-center gap-5 relative z-10">
                            <div className="w-14 h-14 bg-white/20 rounded-2xl backdrop-blur-md border-2 border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-lg">
                               <Headset className="w-8 h-8" />
@@ -206,7 +206,7 @@ const ContactUs = ({ contactInfo = {
                                  </motion.div>
                               )}
                               {status === 'error' && (
-                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-500/25 text-red-500 rounded-2xl border-2 border-red-500/20 flex items-center gap-3">
+                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-black/25 dark:bg-white/25 text-black dark:text-white rounded-2xl border-2 border-black/20 dark:border-white/20 flex items-center gap-3">
                                     <CircleAlert className="w-5 h-5" />
                                     <span className="text-xs font-black uppercase tracking-widest">Error sending message. Please try again.</span>
                                  </motion.div>
@@ -216,7 +216,7 @@ const ContactUs = ({ contactInfo = {
                            <Button
                               variant="primary"
                               fullWidth
-                              className="bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base lg:text-lg shadow-duo-primary border-b-[8px] active:border-b-0 border-primary-700 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
+                              className="bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base lg:text-lg shadow-aajexam-primary border-b-[8px] active:border-b-0 border-primary-700 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
                               type="submit"
                               disabled={loading}
                            >

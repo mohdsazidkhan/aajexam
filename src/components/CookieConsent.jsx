@@ -37,7 +37,7 @@ const CookieConsent = () => {
             <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
                 {/* Icon & Message */}
                 <div className="flex items-center gap-6 text-center lg:text-left">
-                    <div className="w-12 h-12 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center flex-shrink-0 shadow-duo-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform hidden sm:flex">
+                    <div className="w-12 h-12 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center flex-shrink-0 shadow-aajexam-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform hidden sm:flex">
                         <FaCookie className="text-white text-xl" />
                     </div>
                     <div className="flex-1">
@@ -64,7 +64,7 @@ const CookieConsent = () => {
                     </button>
                     <button
                         onClick={handleAccept}
-                        className="flex-[2] lg:flex-none px-6 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black uppercase tracking-[0.1em] text-[10px] shadow-duo-primary hover:bg-primary-800 transition-all active:translate-y-1 active:shadow-none border-b-4 border-primary-900"
+                        className="flex-[2] lg:flex-none px-6 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black uppercase tracking-[0.1em] text-[10px] shadow-aajexam-primary hover:bg-primary-800 transition-all active:translate-y-1 active:shadow-none border-b-4 border-primary-900"
                     >
                         Accept
                     </button>

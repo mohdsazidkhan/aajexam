@@ -86,7 +86,7 @@ const MentorsPage = () => {
                       {mentor.isVerified && <span className="text-[9px] font-bold text-primary-500 flex items-center gap-1"><Shield className="w-3 h-3" /> Verified</span>}
                     </div>
                     <div className="flex items-center gap-1">
-                      <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                      <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />
                       <span className="text-xs font-black text-slate-600">{mentor.rating?.toFixed(1) || '0.0'}</span>
                     </div>
                   </div>

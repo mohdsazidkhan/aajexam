@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 /**
  * Premium Gamified Loading Component
- * Features HUD-style animations, glassmorphism, and Duolingo-inspired aesthetics.
+ * Features HUD-style animations, glassmorphism, and AajExam-inspired aesthetics.
  * 
  * @param {Object} props
  * @param {string} props.size - Size: 'sm', 'md', 'lg' (default: 'md')
@@ -28,7 +28,7 @@ const Loading = ({
   const colorMap = {
     primary: 'from-primary-400 to-primary-600 shadow-primary-500/20',
     secondary: 'from-primary-400 to-primary-600 shadow-primary-500/20',
-    accent: 'from-accent-purple to-accent-red shadow-accent-purple/20',
+    accent: 'from-black dark:from-white to-black dark:to-white shadow-black/20/20 dark:shadow-white/10/20',
     gray: 'from-slate-400 to-slate-600 shadow-slate-500/20',
   };
 

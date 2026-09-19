@@ -119,7 +119,7 @@ const AdminQuizQuizzes = () => {
     } catch (e) { toast.error("Failed"); }
   };
 
-  const statusColor = (s) => s === 'published' ? 'bg-primary-100 text-primary-700' : s === 'archived' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700';
+  const statusColor = (s) => s === 'published' ? 'bg-primary-100 text-primary-700' : s === 'archived' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white';
 
   if (!isMounted) return null;
 
@@ -128,7 +128,7 @@ const AdminQuizQuizzes = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BrainCircuit className="w-6 h-6 text-primary-500" /> Quizzes</h1>
         <div className="flex gap-2">
-          <button onClick={async () => { if (!confirm('Generate 1 quiz (5 questions) for every topic? This may take a minute.')) return; setLoading(true); try { const res = await API.seedQuizzes(); if (res?.success) { toast.success(`${res.stats.quizzesCreated} quizzes, ${res.stats.questionsCreated} questions created!`); fetchQuizzes(); } else toast.error(res?.message || 'Failed'); } catch (e) { toast.error('Failed'); } finally { setLoading(false); } }} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-amber-600"><Database className="w-4 h-4" /> Seed Quizzes</button>
+          <button onClick={async () => { if (!confirm('Generate 1 quiz (5 questions) for every topic? This may take a minute.')) return; setLoading(true); try { const res = await API.seedQuizzes(); if (res?.success) { toast.success(`${res.stats.quizzesCreated} quizzes, ${res.stats.questionsCreated} questions created!`); fetchQuizzes(); } else toast.error(res?.message || 'Failed'); } catch (e) { toast.error('Failed'); } finally { setLoading(false); } }} className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-black dark:hover:bg-white"><Database className="w-4 h-4" /> Seed Quizzes</button>
           <button onClick={openCreate} className="flex items-center gap-2 bg-primary-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Create Quiz</button>
         </div>
       </div>
@@ -161,10 +161,10 @@ const AdminQuizQuizzes = () => {
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg"><Plus className="w-4 h-4" /></button>
+                  <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
                   <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-500 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
                   <button onClick={() => openEdit(q)} className="p-1.5 text-primary-500 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
             </div>

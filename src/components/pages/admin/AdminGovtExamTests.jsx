@@ -334,7 +334,7 @@ const AdminGovtExamTests = () => {
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                           <div className="flex justify-end gap-3">
                                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(test)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl shadow-lg"><Edit3 className="w-4 h-4" /></motion.button>
-                                             <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(test._id)} className="p-3 bg-rose-500/10 text-rose-500 rounded-lg lg:rounded-xl border border-rose-500/20"><Trash2 className="w-4 h-4" /></motion.button>
+                                             <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(test._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
                                           </div>
                                        </td>
                                     </motion.tr>
@@ -368,7 +368,7 @@ const AdminGovtExamTests = () => {
                                  </div>
                                  <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
                                     <motion.button onClick={() => handleEdit(test)} className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Edit Test</motion.button>
-                                    <motion.button onClick={() => handleDelete(test._id)} className="p-4 bg-rose-500/10 text-rose-500 rounded-lg lg:rounded-xl hover:bg-rose-500 hover:text-white transition-all"><Trash2 className="w-5 h-5" /></motion.button>
+                                    <motion.button onClick={() => handleDelete(test._id)} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-5 h-5" /></motion.button>
                                  </div>
                               </motion.div>
                            ))}
@@ -392,7 +392,7 @@ const AdminGovtExamTests = () => {
                                  <div className="flex items-center gap-4">
                                     <div className={`px-4 py-2 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase ${test.isFree ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{test.isFree ? 'Free' : 'Premium'}</div>
                                     <motion.button onClick={() => handleEdit(test)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
-                                    <motion.button onClick={() => handleDelete(test._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-rose-500 transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
+                                    <motion.button onClick={() => handleDelete(test._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
                                  </div>
                               </motion.div>
                            ))}
@@ -422,7 +422,7 @@ const AdminGovtExamTests = () => {
                               <button onClick={() => setUploadMode(!uploadMode)} className={`px-3 lg:px-6 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${uploadMode ? 'bg-primary-500 text-white border-primary-500 shadow-lg shadow-primary-500/20' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-transparent hover:border-primary-500/30'}`}>
                                  {uploadMode ? 'Manual Entry' : 'Bulk JSON Upload'}
                               </button>
-                              <button onClick={() => setShowModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-rose-500 rounded-lg lg:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
+                              <button onClick={() => setShowModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-lg lg:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
                            </div>
                         </div>
 
@@ -490,7 +490,7 @@ const AdminGovtExamTests = () => {
                                                          <span className="text-[8px] font-black text-white px-2 py-0.5 bg-slate-900 rounded-md uppercase tracking-tighter">Ans: {q.correctAnswerIndex + 1}</span>
                                                       </div>
                                                    </div>
-                                                   <button type="button" onClick={() => handleRemoveQuestion(i)} className="p-3 text-slate-300 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg lg:rounded-xl transition-all opacity-0 group-hover:opacity-100"><Trash2 className="w-5 h-5" /></button>
+                                                   <button type="button" onClick={() => handleRemoveQuestion(i)} className="p-3 text-slate-300 hover:text-black dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-all opacity-0 group-hover:opacity-100"><Trash2 className="w-5 h-5" /></button>
                                                 </motion.div>
                                              ))}
                                           </AnimatePresence>

@@ -24,9 +24,9 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
     primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
     emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    rose: "text-rose-500 bg-rose-500/10 border-rose-500/20",
+    rose: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
     purple: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    amber: "text-amber-500 bg-amber-500/10 border-amber-500/20",
+    amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
   };
 
   return (
@@ -311,7 +311,7 @@ const AdminSubscriptions = () => {
 
   const getPlanIcon = (planName) => {
     switch (planName?.toUpperCase()) {
-      case 'PRO': return <Crown className="w-4 h-4 text-amber-500" />;
+      case 'PRO': return <Crown className="w-4 h-4 text-black dark:text-white" />;
       case 'FREE': return <Rocket className="w-4 h-4 text-slate-400" />;
       default: return <Rocket className="w-4 h-4 text-slate-400" />;
     }
@@ -319,7 +319,7 @@ const AdminSubscriptions = () => {
 
   const getPlanColor = (planName) => {
     switch (planName?.toUpperCase()) {
-      case 'PRO': return "text-amber-500 bg-amber-500/10 border-amber-500/20";
+      case 'PRO': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
       case 'FREE': return "text-slate-500 bg-slate-500/10 border-slate-500/20";
       default: return "text-slate-500 bg-slate-500/10 border-slate-500/20";
     }
@@ -328,8 +328,8 @@ const AdminSubscriptions = () => {
   const getStatusIcon = (status) => {
     switch (status) {
       case 'active': return <CheckCircle className="w-4 h-4 text-primary-500" />;
-      case 'expired': return <Clock className="w-4 h-4 text-amber-500" />;
-      case 'inactive': return <XCircle className="w-4 h-4 text-rose-500" />;
+      case 'expired': return <Clock className="w-4 h-4 text-black dark:text-white" />;
+      case 'inactive': return <XCircle className="w-4 h-4 text-black dark:text-white" />;
       case 'cancelled': return <AlertTriangle className="w-4 h-4 text-slate-400" />;
       default: return <Activity className="w-4 h-4 text-slate-400" />;
     }
@@ -338,8 +338,8 @@ const AdminSubscriptions = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'active': return "text-primary-500 bg-primary-500/10 border-primary-500/20";
-      case 'expired': return "text-amber-500 bg-amber-500/10 border-amber-500/20";
-      case 'inactive': return "text-rose-500 bg-rose-500/10 border-rose-500/20";
+      case 'expired': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
+      case 'inactive': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
       default: return "text-slate-500 bg-slate-500/10 border-slate-500/20";
     }
   };
@@ -498,7 +498,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.plan}
                 onChange={(e) => handleFilterChange('plan', e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value="all">All Plans</option>
                 {filterOptions.plans.map(plan => (
@@ -509,7 +509,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.status}
                 onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value="all">All Statuses</option>
                 {filterOptions.statuses.slice(1).map(status => (
@@ -520,7 +520,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.year}
                 onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value="">All Years</option>
                 {filterOptions.years.map(year => (
@@ -531,7 +531,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.month}
                 onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value={0}>All Months</option>
                 {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -544,7 +544,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.limit}
                 onChange={(e) => handlePageSizeChange(e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer outline-none"
+                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
               </select>
@@ -559,13 +559,13 @@ const AdminSubscriptions = () => {
               key="error"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-rose-500/10 border-4 border-rose-500/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
+              className="bg-black/10 dark:bg-white/10 border-4 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-2xl"
             >
-              <div className="w-20 h-20 bg-rose-500 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-rose-500/30">
+              <div className="w-20 h-20 bg-black dark:bg-white rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-lg shadow-black/20/30 dark:shadow-white/10/30">
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
-              <p className="text-rose-500 font-bold uppercase text-sm tracking-widest">{error}</p>
+              <p className="text-black dark:text-white font-bold uppercase text-sm tracking-widest">{error}</p>
             </motion.div>
           ) : subscriptions.length === 0 ? (
             <motion.div
@@ -657,7 +657,7 @@ const AdminSubscriptions = () => {
                                   <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                                  <div className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white" />
                                   <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'No Expiry'}</span>
                                 </div>
                               </div>
@@ -941,7 +941,7 @@ const AdminSubscriptions = () => {
                   </div>
 
                   {error && (
-                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-8 p-4 bg-rose-500/10 border-2 border-rose-500/20 rounded-2xl text-[10px] font-black text-rose-500 uppercase tracking-widest text-center">
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-8 p-4 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
                       {error}
                     </motion.div>
                   )}

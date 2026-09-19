@@ -33,17 +33,17 @@ import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 
 const TYPE_CONFIG = {
-   question: { label: 'Question', icon: HelpCircle, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
-   fact: { label: 'Fact', icon: BookOpen, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20' },
-   tip: { label: 'Tip', icon: Zap, color: 'text-amber-500', bg: 'bg-amber-50 dark:bg-amber-900/20' },
-   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-900/20' },
-   poll: { label: 'Poll', icon: BarChart3, color: 'text-teal-500', bg: 'bg-teal-50 dark:bg-teal-900/20' },
+   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
 };
 
 const STATUS_CONFIG = {
    published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
-   pending: { label: 'Pending', icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-900/20' },
-   rejected: { label: 'Rejected', icon: XCircle, color: 'text-red-600', bg: 'bg-red-50 dark:bg-red-900/20' },
+   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
    draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-gray-50 dark:bg-gray-900/20' },
    archived: { label: 'Archived', icon: Clock, color: 'text-gray-400', bg: 'bg-gray-50 dark:bg-gray-900/20' },
 };
@@ -162,17 +162,17 @@ const MyReelsPage = () => {
                                     {/* Subject & Topic */}
                                     <div className="flex flex-wrap items-center gap-1.5">
                                        {reel.subject && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-blue-50 dark:bg-blue-900/20 text-blue-600 uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white uppercase">
                                              #{reel.subject}
                                           </span>
                                        )}
                                        {reel.topic && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-purple-50 dark:bg-purple-900/20 text-purple-600">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white">
                                              #{reel.topic}
                                           </span>
                                        )}
                                        {reel.difficulty && (
-                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-red-600 bg-red-50 dark:bg-red-900/20' : 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20'}`}>
+                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20'}`}>
                                              {reel.difficulty}
                                           </span>
                                        )}
@@ -183,7 +183,7 @@ const MyReelsPage = () => {
 
                                     {/* Rejected reason */}
                                     {reel.status === 'rejected' && reel.adminNotes && (
-                                       <p className="text-[11px] font-bold text-red-500 bg-red-50 dark:bg-red-900/10 p-2 rounded-lg lg:rounded-xl">
+                                       <p className="text-[11px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/10 p-2 rounded-lg lg:rounded-xl">
                                           Reason: {reel.adminNotes}
                                        </p>
                                     )}

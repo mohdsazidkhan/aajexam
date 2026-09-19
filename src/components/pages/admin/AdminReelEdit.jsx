@@ -21,14 +21,14 @@ const TYPE_LABELS = {
 };
 
 const TYPE_COLORS = {
-  question: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
-  tip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-  current_affairs: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const AdminReelEdit = () => {
@@ -286,7 +286,7 @@ const AdminReelEdit = () => {
               </button>
               <div className="flex-1">
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Flame className="w-6 h-6 text-orange-500" /> Edit Reel
+                  <Flame className="w-6 h-6 text-black dark:text-white" /> Edit Reel
                 </h1>
                 <p className="text-sm text-slate-500 dark:text-slate-400">ID: {reelId}</p>
               </div>
@@ -359,8 +359,8 @@ const AdminReelEdit = () => {
 
               {/* Question Fields */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-blue-200 dark:border-blue-800 p-5 space-y-4">
-                  <h3 className="font-bold text-blue-700 dark:text-blue-400">Question Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-4">
+                  <h3 className="font-bold text-black dark:text-white">Question Details</h3>
                   <div>
                     <label className={labelClass}>Question Text *</label>
                     <textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required />
@@ -409,19 +409,19 @@ const AdminReelEdit = () => {
                           onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }}
                           className={`flex-1 ${inputClass}`} />
                         <button type="button" onClick={() => { if (keyPoints.length > 1) setKeyPoints(keyPoints.filter((_, j) => j !== i)); }}
-                          className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])}
-                      className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
+                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add point</button>
                   </div>
                 </div>
               )}
 
               {/* Tip Fields */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-amber-200 dark:border-amber-800 p-5 space-y-4">
-                  <h3 className="font-bold text-amber-700 dark:text-amber-400">Trick / Shortcut Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-4">
+                  <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
                   <div>
                     <label className={labelClass}>Formula</label>
                     <input type="text" value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} />
@@ -435,11 +435,11 @@ const AdminReelEdit = () => {
                           onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }}
                           className={`flex-1 ${inputClass}`} />
                         <button type="button" onClick={() => { if (steps.length > 1) setSteps(steps.filter((_, j) => j !== i)); }}
-                          className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setSteps([...steps, ''])}
-                      className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add step</button>
+                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add step</button>
                   </div>
                   <div>
                     <label className={labelClass}>Try Yourself Examples</label>
@@ -449,19 +449,19 @@ const AdminReelEdit = () => {
                           onChange={e => { const n = [...tryYourself]; n[i] = e.target.value; setTryYourself(n); }}
                           className={`flex-1 ${inputClass}`} />
                         <button type="button" onClick={() => { if (tryYourself.length > 1) setTryYourself(tryYourself.filter((_, j) => j !== i)); }}
-                          className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setTryYourself([...tryYourself, ''])}
-                      className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
+                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add example</button>
                   </div>
                 </div>
               )}
 
               {/* CA Fields */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-red-200 dark:border-red-800 p-5 space-y-4">
-                  <h3 className="font-bold text-red-700 dark:text-red-400">Current Affairs Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-4">
+                  <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className={labelClass}>Date</label>
@@ -494,11 +494,11 @@ const AdminReelEdit = () => {
                           onChange={e => { const n = [...tableData]; n[i] = { ...n[i], value: e.target.value }; setTableData(n); }}
                           placeholder="Value" className={`flex-1 ${inputClass}`} />
                         <button type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }}
-                          className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                          className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
                     <button type="button" onClick={() => setTableData([...tableData, { key: '', value: '' }])}
-                      className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add row</button>
+                      className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add row</button>
                   </div>
                   <div>
                     <label className={labelClass}>Key Takeaway</label>
@@ -525,27 +525,27 @@ const AdminReelEdit = () => {
                           placeholder={`Option ${i + 1}`} className={`flex-1 ${inputClass}`} />
                         {pollOptions.length > 2 && (
                           <button type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}
-                            className="p-1 text-red-400 hover:text-red-600"><Trash2 className="w-4 h-4" /></button>
+                            className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         )}
                       </div>
                     ))}
                     {pollOptions.length < 6 && (
                       <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])}
-                        className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
+                        className="text-xs text-black dark:text-white flex items-center gap-1 hover:underline"><Plus className="w-3 h-3" /> Add option</button>
                     )}
                   </div>
                 </div>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-5 space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <Music className="w-5 h-5 text-pink-500" /> Add Audio
+                    <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
                   </h3>
                   {audioFile && (
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
-                      className="text-xs font-bold text-red-500 hover:underline">Remove</button>
+                      className="text-xs font-bold text-black dark:text-white hover:underline">Remove</button>
                   )}
                 </div>
 
@@ -561,16 +561,16 @@ const AdminReelEdit = () => {
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
                       className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                        ? 'bg-pink-50 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-700'
+                        ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                     >
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ? 'bg-pink-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-pink-600 dark:text-pink-400' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white dark:text-white' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
                         <div className="flex items-center gap-2">
                           <p className="text-[11px] text-slate-400 truncate">{a.artist}</p>
                           {a.audioDuration && (
@@ -579,7 +579,7 @@ const AdminReelEdit = () => {
                         </div>
                       </div>
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-black dark:bg-white flex items-center justify-center shrink-0">
                           <span className="text-white text-[10px] font-bold">✓</span>
                         </div>
                       )}
@@ -594,11 +594,11 @@ const AdminReelEdit = () => {
                 {audioPlaying && (
                   <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
                       <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
                     </div>
                     <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-pink-500" />}
+                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-black dark:text-white" />}
                     </button>
                   </div>
                 )}

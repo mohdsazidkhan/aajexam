@@ -100,8 +100,8 @@ const BlogsPage = () => {
             style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }} />
           <div className="p-4">
             <div className="flex items-center gap-2 mb-2">
-              {blog.isFeatured && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
-              {blog.isPinned && <Pin className="w-4 h-4 text-blue-500 fill-blue-500" />}
+              {blog.isFeatured && <Star className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
+              {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
               <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
             </div>
             <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
@@ -140,8 +140,8 @@ const BlogsPage = () => {
             style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }} />
           <div className="p-5 flex-1">
             <div className="flex items-center gap-2 mb-2">
-              {blog.isFeatured && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
-              {blog.isPinned && <Pin className="w-4 h-4 text-blue-500 fill-blue-500" />}
+              {blog.isFeatured && <Star className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
+              {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
               <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
               {blog.exam && (
                 <span className="ml-auto bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-xs px-2 py-1 rounded-full font-medium">
@@ -254,8 +254,8 @@ const BlogsPage = () => {
         )}
 
         {error && (
-          <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-            <p className="text-red-800 dark:text-red-200">{error}</p>
+          <div className="mt-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
+            <p className="text-black dark:text-white">{error}</p>
           </div>
         )}
       </div>

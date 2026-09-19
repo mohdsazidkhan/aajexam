@@ -112,7 +112,7 @@ export default function ReferralHistory() {
 
   const getRewardTypeColor = (type) => {
     const colors = {
-      'plan99': 'text-rose-500 bg-rose-500/10 border-rose-500/20',
+      'plan99': 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20',
     };
     return colors[type] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
   };
@@ -177,7 +177,7 @@ export default function ReferralHistory() {
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 mb-4">
               {[
                 { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
-                { label: "PLAN 99", value: summary.plan99Rewards, icon: Award, color: "bg-rose-500 text-white shadow-rose-500/20" }
+                { label: "PLAN 99", value: summary.plan99Rewards, icon: Award, color: "bg-black dark:bg-white text-white dark:text-black shadow-black/20/20 dark:shadow-white/10/20" }
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

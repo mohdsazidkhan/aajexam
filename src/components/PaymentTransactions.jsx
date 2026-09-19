@@ -114,7 +114,7 @@ const PaymentTransactions = () => {
         return <FaCheckCircle className="text-primary-500" />;
       case 'failed':
       case 'failure':
-        return <FaTimesCircle className="text-red-500" />;
+        return <FaTimesCircle className="text-black dark:text-white" />;
       case 'created':
       case 'authorized':
         return <FaClock className="text-primary-700 dark:text-primary-500" />;
@@ -132,7 +132,7 @@ const PaymentTransactions = () => {
         return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
       case 'failed':
       case 'failure':
-        return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300';
+        return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white';
       case 'created':
       case 'authorized':
         return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
@@ -163,7 +163,7 @@ const PaymentTransactions = () => {
 
   const getTypeColor = (type, source) => {
     if (type === 'credit') return 'text-primary-600 dark:text-primary-400';
-    if (type === 'debit') return 'text-primary-700 dark:text-primary-500 dark:text-red-400';
+    if (type === 'debit') return 'text-primary-700 dark:text-primary-500 dark:text-white';
     if (source === 'payment_order') return 'text-primary-700 dark:text-primary-500 dark:text-primary-400';
     return 'text-gray-600 dark:text-gray-400';
   };
@@ -206,7 +206,7 @@ const PaymentTransactions = () => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[2.5rem] shadow-2xl border-2 border-b-4 lg:border-b-8 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit">
       {/* Header */}
-      <div className="bg-primary-500 p-4 lg:p-8 text-white shadow-duo-primary border-b-4 lg:border-b-8 border-white/20 relative overflow-hidden group">
+      <div className="bg-primary-500 p-4 lg:p-8 text-white shadow-aajexam-primary border-b-4 lg:border-b-8 border-white/20 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 lg:gap-8 relative z-10">
           <div>
@@ -237,7 +237,7 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-duo-primary border-2 lg:border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-4 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -250,7 +250,7 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-duo-primary border-2 lg:border-4 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-4 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
                   <FaReceipt className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -263,7 +263,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-duo-secondary border-2 lg:border-4 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-secondary border-2 lg:border-4 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -338,7 +338,7 @@ const PaymentTransactions = () => {
           <div className="flex justify-end">
             <button
               onClick={clearFilters}
-              className="px-5 lg:px-8 py-2 lg:py-3 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest shadow-duo border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
+              className="px-5 lg:px-8 py-2 lg:py-3 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest shadow-aajexam border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
             >
               Clear All
             </button>
@@ -350,14 +350,14 @@ const PaymentTransactions = () => {
       <div className="p-3 lg:p-12">
         {error ? (
           <div className="text-center py-10 lg:py-20">
-            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-red-100 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-duo border-2 border-white">
-              <FaExclamationTriangle className="text-red-500 text-base lg:text-2xl" />
+            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-aajexam border-2 border-white">
+              <FaExclamationTriangle className="text-black dark:text-white text-base lg:text-2xl" />
             </div>
             <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{error}</p>
           </div>
         ) : filteredTransactions.length === 0 ? (
           <div className="text-center py-10 lg:py-20">
-            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-duo border-2 border-white">
+            <div className="w-12 h-12 lg:w-16 lg:h-16 bg-slate-100 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 lg:mb-6 shadow-aajexam border-2 border-white">
               <FaReceipt className="text-slate-600 dark:text-slate-400 text-base lg:text-2xl" />
             </div>
             <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">No records found</p>
@@ -381,7 +381,7 @@ const PaymentTransactions = () => {
                       </div>
 
                       <div className="flex items-center gap-2.5 lg:gap-4 mb-2 lg:mb-4">
-                        <div className="w-7 h-7 lg:w-10 lg:h-10 bg-slate-100 dark:bg-slate-700 rounded-lg lg:rounded-xl flex items-center justify-center shadow-duo border-1 border-white/50 flex-shrink-0">
+                        <div className="w-7 h-7 lg:w-10 lg:h-10 bg-slate-100 dark:bg-slate-700 rounded-lg lg:rounded-xl flex items-center justify-center shadow-aajexam border-1 border-white/50 flex-shrink-0">
                           {getSourceIcon(transaction.source)}
                         </div>
                         <p className="text-[10px] lg:text-xs font-black text-slate-800 dark:text-white uppercase tracking-widest">{transaction.paymentDesc || transaction.description}</p>
@@ -407,7 +407,7 @@ const PaymentTransactions = () => {
 
                     <button
                       onClick={() => toggleTransactionDetails(transaction.id)}
-                      className="self-end lg:self-auto p-2.5 lg:p-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-duo border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
+                      className="self-end lg:self-auto p-2.5 lg:p-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
                     >
                       {expandedTransaction === transaction.id ? <FaEyeSlash /> : <FaEye />}
                     </button>
@@ -475,7 +475,7 @@ const PaymentTransactions = () => {
               <button
                 onClick={() => handlePageChange(pagination.currentPage - 1)}
                 disabled={!pagination.hasPrev}
-                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-duo border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
+                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
               >
                 <FaChevronLeft className="text-xs lg:text-sm" />
               </button>
@@ -488,8 +488,8 @@ const PaymentTransactions = () => {
                       key={page}
                       onClick={() => handlePageChange(page)}
                       className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-all ${page === pagination.currentPage
-                        ? 'bg-primary-500 text-white shadow-duo-primary border-2 border-white'
-                        : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shadow-duo border-2 border-slate-200 dark:border-slate-600 active:translate-y-1'
+                        ? 'bg-primary-500 text-white shadow-aajexam-primary border-2 border-white'
+                        : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shadow-aajexam border-2 border-slate-200 dark:border-slate-600 active:translate-y-1'
                         }`}
                     >
                       {page}
@@ -501,7 +501,7 @@ const PaymentTransactions = () => {
               <button
                 onClick={() => handlePageChange(pagination.currentPage + 1)}
                 disabled={!pagination.hasNext}
-                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-duo border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
+                className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg lg:rounded-xl lg:rounded-2xl shadow-aajexam border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
               >
                 <FaChevronRight className="text-xs lg:text-sm" />
               </button>

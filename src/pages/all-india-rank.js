@@ -35,13 +35,13 @@ const LeaderboardSkeleton = () => (
 
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
-  1: { gradient: 'from-yellow-400 to-amber-500', ringColor: 'ring-yellow-400 dark:ring-yellow-500', textColor: 'text-yellow-600 dark:text-yellow-400' },
+  1: { gradient: 'from-black dark:from-white to-black dark:to-white', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black' },
   2: { gradient: 'from-slate-300 to-slate-500', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
-  3: { gradient: 'from-orange-300 to-amber-500', ringColor: 'ring-orange-400 dark:ring-orange-500', textColor: 'text-orange-600 dark:text-orange-400' },
+  3: { gradient: 'from-slate-100 dark:from-slate-800 to-black dark:to-white', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white dark:text-white' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = ['bg-violet-500', 'bg-blue-500', 'bg-primary-500', 'bg-rose-500', 'bg-amber-500', 'bg-pink-500', 'bg-cyan-500', 'bg-indigo-500'];
+const AVATAR_COLORS = ['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-500', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
@@ -63,7 +63,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
-  const podiumGradient = { 1: 'from-yellow-400 to-amber-500', 2: 'from-slate-300 to-slate-400', 3: 'from-orange-300 to-amber-400' };
+  const podiumGradient = { 1: 'from-black dark:from-white to-black dark:to-white', 2: 'from-slate-300 to-slate-400', 3: 'from-slate-100 dark:from-slate-800 to-black dark:to-white' };
 
   return (
     <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
@@ -78,11 +78,11 @@ const Podium = ({ top3, currentUserId }) => {
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
             className={`flex flex-col items-center gap-1.5 ${isFirst ? 'scale-105 sm:scale-110 -mb-1' : ''}`}
           >
-            {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 animate-bounce" />}
+            {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
             <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
-            {isMe && <span className="text-[9px] font-black uppercase bg-indigo-500 text-white px-1.5 py-0.5 rounded-full">You</span>}
+            {isMe && <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full">You</span>}
             <div className="text-center max-w-[76px] sm:max-w-[96px]">
-              <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-blue-300' : 'text-white'}`}>
+              <p className={`text-[11px] sm:text-xs font-black leading-tight break-words ${isMe ? 'text-black dark:text-white' : 'text-white'}`}>
                 {entry.name || entry.username || 'User'}
               </p>
               <p className="text-[10px] font-bold text-white/60">{entry.avgPercentage}% avg</p>
@@ -116,11 +116,11 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
   const identity = (
     <div className="min-w-0">
       <div className="flex items-center gap-1.5 flex-wrap">
-        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-blue-600 dark:text-blue-400' : 'text-content-primary'}`}>
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white dark:text-white' : 'text-content-primary'}`}>
           {entry.name || entry.username || 'Anonymous'}
         </p>
-        {isMe && <span className="text-[9px] font-black uppercase bg-blue-500 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
-        {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
+        {isMe && <span className="text-[9px] font-black uppercase bg-black dark:bg-white text-white dark:text-black px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
+        {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
         {entry.username && <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>}
@@ -138,7 +138,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
-          ${isMe ? 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 border-b-blue-400 dark:border-b-blue-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           {rankBadge}
           <div className="flex items-center gap-2.5 min-w-0">
             <Avatar entry={entry} size="md" />
@@ -157,14 +157,14 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 border-b-4 transition-all group cursor-pointer
-          ${isMe ? 'border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 border-b-blue-400 dark:border-b-blue-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-border-primary bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           <div className="flex items-center gap-3">
             {rankBadge}
             <Avatar entry={entry} size="md" />
             <div className="flex-1 min-w-0">
               {identity}
               {entry.currentStreak > 0 && (
-                <span className="text-[10px] font-bold text-orange-500 dark:text-orange-400 flex items-center gap-1 mt-0.5">
+                <span className="text-[10px] font-bold text-black dark:text-white flex items-center gap-1 mt-0.5">
                   <Flame className="w-3 h-3" />{entry.currentStreak} day streak
                 </span>
               )}
@@ -208,7 +208,7 @@ const MyRankCard = ({ entry }) => {
   if (!entry) return null;
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="sticky bottom-4 z-30 px-1 mt-4">
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-duo-primary">
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-aajexam-primary">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">#{entry.rank}</div>
           <Avatar entry={entry} size="md" />
@@ -298,21 +298,21 @@ const AllIndiaRankPage = () => {
           <div className="space-y-5 lg:space-y-8">
             
             {/* ── Hero Banner — gold-accented premium treatment, distinct from the free Leaderboard page ── */}
-            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-amber-500/30 dark:border-amber-500/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" />
-              <div className="absolute inset-0 bg-gradient-to-t from-amber-500/10 via-transparent to-transparent" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none blur-2xl" />
+            <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-black/30 dark:border-white/30 dark:border-white/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black dark:via-white to-slate-900" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 dark:from-white/10 via-transparent to-transparent" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 dark:bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none blur-2xl" />
 
               <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
                 
                 {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 via-yellow-400/20 to-amber-500/20 border border-amber-400/40 backdrop-blur-md px-4 py-1.5 rounded-full text-amber-200 text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-black/20 dark:from-white/20 via-black/20 dark:via-white/20 to-black/20 dark:to-white/20 border border-black/40 dark:border-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white dark:text-black text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
                 >
                   <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
-                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                    <Sparkles className="w-3.5 h-3.5 text-black dark:text-white" />
                   </motion.span>
                   PRO Exclusive
                 </motion.div>
@@ -330,7 +330,7 @@ const AllIndiaRankPage = () => {
                 {/* Exam Filter Dropdown */}
                 <div className="max-w-xs mx-auto mb-6 relative">
                   <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                    <Target className="w-4 h-4 text-blue-200" />
+                    <Target className="w-4 h-4 text-black dark:text-white" />
                   </div>
                   <select
                     value={selectedExamId}
@@ -345,7 +345,7 @@ const AllIndiaRankPage = () => {
                     ))}
                   </select>
                   <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                    <ChevronDown className="w-4 h-4 text-blue-200" />
+                    <ChevronDown className="w-4 h-4 text-black dark:text-white" />
                   </div>
                 </div>
 
@@ -371,7 +371,7 @@ const AllIndiaRankPage = () => {
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title="Refresh Ranks"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-muted hover:border-blue-300 dark:hover:border-blue-700 transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg lg:rounded-xl font-black text-[10px] uppercase border-2 border-b-4 border-border-primary bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">Refresh</span>
@@ -382,10 +382,10 @@ const AllIndiaRankPage = () => {
             {!loading && data.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                 {[
-                  { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-blue-500 dark:text-blue-400' },
-                  { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-amber-500 dark:text-amber-400' },
+                  { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white dark:text-white' },
+                  { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white dark:text-white' },
                   { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-500 dark:text-primary-400' },
-                  { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-orange-500 dark:text-orange-400' },
+                  { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white dark:text-white' },
                 ].map((stat, i) => (
                   <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
                     <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
@@ -406,7 +406,7 @@ const AllIndiaRankPage = () => {
                 <p className="text-sm text-content-muted font-bold">No test attempts match the current filter.</p>
                 <button 
                   onClick={() => setSelectedExamId('')}
-                  className="px-6 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors"
+                  className="px-6 py-2.5 bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase mt-2 transition-colors"
                 >
                   View All Exams
                 </button>
@@ -435,7 +435,7 @@ const AllIndiaRankPage = () => {
                       <button
                         onClick={() => setPage(p => Math.max(1, p - 1))}
                         disabled={page === 1}
-                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-blue-300 dark:hover:border-blue-700 transition-all"
+                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
                       >
                         <ChevronLeft className="w-4 h-4" />
                       </button>
@@ -443,7 +443,7 @@ const AllIndiaRankPage = () => {
                       <button
                         onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                         disabled={page === totalPages}
-                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-blue-300 dark:hover:border-blue-700 transition-all"
+                        className="w-9 h-9 rounded-full border-2 border-border-primary bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
                       >
                         <ChevronRight className="w-4 h-4" />
                       </button>

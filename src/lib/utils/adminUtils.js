@@ -86,7 +86,7 @@ export const getAdminRoleDisplayName = (role) => {
 export const getAdminRoleColor = (role) => {
   switch (role) {
     case ADMIN_ROLES.SUPER_ADMIN:
-      return 'text-primary-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20';
+      return 'text-primary-600 bg-slate-100 dark:bg-slate-800 dark:text-white dark:bg-white/20';
     case ADMIN_ROLES.ADMIN:
       return 'text-primary-600 bg-primary-100 dark:text-primary-400 dark:bg-primary-900/20';
     case ADMIN_ROLES.MODERATOR:

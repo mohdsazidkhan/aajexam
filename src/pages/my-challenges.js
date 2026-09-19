@@ -55,7 +55,7 @@ const MyChallengesPage = () => {
    };
 
    if (loading && challenges.length === 0) return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-indigo-500 selection:text-white">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
          <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
       </div>
    );
@@ -99,10 +99,10 @@ const MyChallengesPage = () => {
                            <motion.div key={challenge._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="p-0 overflow-hidden group hover:shadow-xl transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
                                  {/* Challenge Header */}
-                                 <div className="p-5 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-b border-indigo-100 dark:border-indigo-800/30">
+                                 <div className="p-5 bg-gradient-to-br from-slate-100 dark:from-slate-800 to-slate-100 dark:to-slate-800 dark:from-white/20 dark:to-white/20 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
                                     <div className="flex justify-between items-start mb-4">
                                        <div>
-                                          <div className="text-[10px] font-black uppercase tracking-wider text-indigo-500 mb-1 flex items-center gap-1">
+                                          <div className="text-[10px] font-black uppercase tracking-wider text-black dark:text-white mb-1 flex items-center gap-1">
                                              <Swords className="w-3 h-3" /> Challenge Code: {challenge.code}
                                           </div>
                                           <h3 className="text-lg font-bold text-slate-800 dark:text-white line-clamp-1">{quiz.title || 'Unknown Quiz'}</h3>
@@ -111,7 +111,7 @@ const MyChallengesPage = () => {
                                        
                                        <button 
                                           onClick={() => handleCopy(challenge.code)}
-                                          className="p-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 transition-colors shadow-sm"
+                                          className="p-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 hover:text-black dark:hover:text-white hover:border-slate-200 dark:border-slate-800 transition-colors shadow-sm"
                                           title="Copy Invite Link"
                                        >
                                           {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-500" /> : <Copy className="w-4 h-4" />}
@@ -121,7 +121,7 @@ const MyChallengesPage = () => {
                                     <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-lg lg:rounded-xl">
                                        <div className="flex-1">
                                           <div className="text-[10px] font-bold text-slate-400 uppercase">Your Score</div>
-                                          <div className="text-lg font-black text-indigo-600 dark:text-indigo-400">{Math.round(hostPercentage)}%</div>
+                                          <div className="text-lg font-black text-black dark:text-white">{Math.round(hostPercentage)}%</div>
                                        </div>
                                        <div className="w-px h-8 bg-slate-200 dark:bg-slate-700"></div>
                                        <div className="flex-1 text-right">
@@ -146,7 +146,7 @@ const MyChallengesPage = () => {
                                           {challenge.challengers.slice(0, 3).map((ch, i) => (
                                              <div key={i} className={`flex items-center justify-between p-2.5 rounded-lg border ${
                                                 (ch.attempt?.percentage || 0) > hostPercentage 
-                                                   ? 'bg-red-50 dark:bg-red-900/10 border-red-100 dark:border-red-900/30' 
+                                                   ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 border-slate-200 dark:border-slate-800 dark:border-white/30' 
                                                    : 'bg-primary-50 dark:bg-primary-900/10 border-primary-100 dark:border-primary-900/30'
                                              }`}>
                                                 <div className="flex items-center gap-2">
@@ -155,14 +155,14 @@ const MyChallengesPage = () => {
                                                    </div>
                                                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{ch.user?.name || 'Unknown'}</span>
                                                 </div>
-                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-red-600 dark:text-red-400' : 'text-primary-600 dark:text-primary-400'}`}>
+                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-black dark:text-white dark:text-white' : 'text-primary-600 dark:text-primary-400'}`}>
                                                    {Math.round(ch.attempt?.percentage || 0)}%
                                                 </div>
                                              </div>
                                           ))}
                                           {challengersCount > 3 && (
                                              <div className="text-center pt-2">
-                                                <span className="text-xs font-bold text-indigo-500 hover:underline cursor-pointer">+ {challengersCount - 3} more opponents</span>
+                                                <span className="text-xs font-bold text-black dark:text-white hover:underline cursor-pointer">+ {challengersCount - 3} more opponents</span>
                                              </div>
                                           )}
                                        </div>

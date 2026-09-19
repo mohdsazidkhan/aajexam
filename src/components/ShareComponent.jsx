@@ -52,7 +52,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
         {isMobile && navigator.share ? (
           <button
             onClick={handleNativeShare}
-            className="px-8 py-4 bg-primary-500 text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-duo-primary flex items-center gap-3 active:translate-y-1 transition-all"
+            className="px-8 py-4 bg-primary-500 text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-aajexam-primary flex items-center gap-3 active:translate-y-1 transition-all"
           >
             <FaShare className="text-sm" />
             Share With Friends
@@ -72,7 +72,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-duo transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800"
+                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-aajexam transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800"
                   style={{ color: social.color }}
                   title={social.label}
                 >
@@ -82,7 +82,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
                 <button
                   key={idx}
                   onClick={social.onClick}
-                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-duo transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800"
+                  className="w-12 h-12 flex items-center justify-center rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-aajexam transition-all hover:-translate-y-1 active:translate-y-0.5 bg-white dark:bg-slate-800"
                   style={{ color: social.color }}
                   title={social.label}
                 >

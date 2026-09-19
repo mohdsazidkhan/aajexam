@@ -105,8 +105,8 @@ const AdminQuizQuestions = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><HelpCircle className="w-6 h-6 text-amber-500" /> Questions</h1>
-        <button onClick={openCreate} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-amber-600"><Plus className="w-4 h-4" /> Add Question</button>
+        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><HelpCircle className="w-6 h-6 text-black dark:text-white" /> Questions</h1>
+        <button onClick={openCreate} className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-black dark:hover:bg-white"><Plus className="w-4 h-4" /> Add Question</button>
       </div>
 
       {/* Filters */}
@@ -146,13 +146,13 @@ const AdminQuizQuestions = () => {
                   <div className="flex flex-wrap gap-2 mt-2">
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">{q.exam?.name}</span>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary-100 text-primary-600">{q.subject?.name}</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-600">{q.topic?.name}</span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-primary-100 text-primary-600' : q.difficulty === 'hard' ? 'bg-red-100 text-red-600' : 'bg-yellow-100 text-yellow-600'}`}>{q.difficulty}</span>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">{q.topic?.name}</span>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-primary-100 text-primary-600' : q.difficulty === 'hard' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{q.difficulty}</span>
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button onClick={() => openEdit(q)} className="p-1.5 text-amber-500 hover:bg-amber-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                  <button onClick={() => openEdit(q)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
             </div>
@@ -211,7 +211,7 @@ const AdminQuizQuestions = () => {
                 </select>
                 <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs" />
               </div>
-              <button type="submit" className="w-full bg-amber-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-amber-600">{editing ? 'Update' : 'Create'}</button>
+              <button type="submit" className="w-full bg-black dark:bg-white text-white dark:text-black py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-black dark:hover:bg-white">{editing ? 'Update' : 'Create'}</button>
             </form>
           </div>
         </div>

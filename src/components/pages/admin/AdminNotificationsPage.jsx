@@ -139,7 +139,7 @@ const AdminNotificationsPage = () => {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-4">
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  NOTIFI<span className="text-rose-500">CATIONS</span>
+                  NOTIFI<span className="text-black dark:text-white">CATIONS</span>
                 </h1>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View and manage system notifications and user activity alerts.</p>
               </div>
@@ -159,7 +159,7 @@ const AdminNotificationsPage = () => {
                  </div>
                  <button
                     onClick={handleClearAll}
-                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-rose-500 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-rose-500 hover:text-white transition-all flex items-center gap-3 active:scale-95"
+                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-4 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all flex items-center gap-3 active:scale-95"
                  >
                    <Trash2 className="w-4 h-4" /> Clear All
                  </button>
@@ -216,7 +216,7 @@ const AdminNotificationsPage = () => {
                         )}
 
                         <div className="flex items-center gap-4 mb-6">
-                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-500 text-white shadow-duo-primary'} transition-colors`}>
+                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-500 text-white shadow-aajexam-primary'} transition-colors`}>
                               {getIconByType(n.type)}
                            </div>
                            <div>

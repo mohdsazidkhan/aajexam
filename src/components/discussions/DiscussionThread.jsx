@@ -31,7 +31,7 @@ const RoleBadge = ({ role }) => {
     </span>
   );
   if (role === 'admin') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
       <Shield className="w-2.5 h-2.5" /> ADMIN
     </span>
   );
@@ -86,7 +86,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
   return (
     <div className={`${isReply ? 'ml-6 pl-3 border-l-2 border-slate-200 dark:border-slate-700' : ''} py-2`}>
       <div className="flex items-start gap-2">
-        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-400 to-indigo-500 text-white text-xs font-bold flex items-center justify-center shrink-0">
+        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-400 to-black dark:to-white text-white text-xs font-bold flex items-center justify-center shrink-0">
           {(item.author?.name || '?').charAt(0).toUpperCase()}
         </div>
         <div className="flex-1 min-w-0">
@@ -102,12 +102,12 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
             )}
             <RoleBadge role={item.authorRole} />
             {item.isPinned && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
                 <Pin className="w-2.5 h-2.5" /> PINNED
               </span>
             )}
             {item.isAlternateSolution && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
                 <Lightbulb className="w-2.5 h-2.5" /> ALT SOLUTION
               </span>
             )}
@@ -131,7 +131,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
             </button>
             <button
               onClick={() => handleVote('down')}
-              className={`flex items-center gap-1 hover:text-red-600 transition ${myVote === 'down' ? 'text-red-600 font-bold' : 'text-slate-500'}`}
+              className={`flex items-center gap-1 hover:text-black dark:hover:text-white transition ${myVote === 'down' ? 'text-black dark:text-white font-bold' : 'text-slate-500'}`}
             >
               <ThumbsDown className="w-3.5 h-3.5" /> {downvotes > 0 ? downvotes : ''}
             </button>
@@ -141,12 +141,12 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
               </button>
             )}
             {!isOwner && (
-              <button onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-red-500 transition">
+              <button onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
                 <Flag className="w-3.5 h-3.5" />
               </button>
             )}
             {isOwner && (
-              <button onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-red-500 transition">
+              <button onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             )}

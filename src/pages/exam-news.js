@@ -33,12 +33,12 @@ const NewsSkeleton = () => (
 
 // ─── Type config ───────────────────────────────────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell,         color: 'from-blue-500 to-blue-700',    chip: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 border-blue-100 dark:border-blue-800/50',       label: 'Notification' },
+  notification: { icon: Bell,         color: 'from-black dark:from-white to-black dark:to-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',       label: 'Notification' },
   admit_card:   { icon: CreditCard,   color: 'from-primary-500 to-primary-700', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
-  result:       { icon: BarChart2,    color: 'from-orange-500 to-orange-700', chip: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 border-orange-100 dark:border-orange-800/50', label: 'Result' },
-  answer_key:   { icon: Key,          color: 'from-purple-500 to-purple-700', chip: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 border-purple-100 dark:border-purple-800/50', label: 'Answer Key' },
-  vacancy:      { icon: Users,        color: 'from-pink-500 to-pink-700',     chip: 'text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 border-pink-100 dark:border-pink-800/50',     label: 'Vacancy' },
-  date_change:  { icon: AlertTriangle, color: 'from-red-500 to-red-700',     chip: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 border-red-100 dark:border-red-800/50',           label: 'Date Change' },
+  result:       { icon: BarChart2,    color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Result' },
+  answer_key:   { icon: Key,          color: 'from-black dark:from-white to-black dark:to-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Answer Key' },
+  vacancy:      { icon: Users,        color: 'from-black dark:from-white to-black dark:to-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',     label: 'Vacancy' },
+  date_change:  { icon: AlertTriangle, color: 'from-black dark:from-white to-black dark:to-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',           label: 'Date Change' },
 };
 const defaultType = { icon: Megaphone, color: 'from-slate-400 to-slate-600', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
 
@@ -80,8 +80,8 @@ const ExamNewsPage = () => {
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Exam News', url: '/exam-news' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-amber-600/20 dark:border-amber-900/30">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500 via-orange-600 to-amber-500 dark:from-slate-900 dark:via-amber-900/40 dark:to-slate-900" />
+      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white dark:from-slate-900 dark:via-white/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -92,7 +92,7 @@ const ExamNewsPage = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search news..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none focus:ring-2 focus:ring-amber-500/30" />
+                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border-none focus:ring-2 focus:ring-black/10/30 dark:ring-white/10/30" />
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ const ExamNewsPage = () => {
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-4 active:translate-y-0.5 ${
                   type === f.id
-                    ? 'bg-amber-500 text-white border-amber-600'
+                    ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -124,19 +124,19 @@ const ExamNewsPage = () => {
             return (
               <motion.div key={item._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                 <Card hoverable onClick={() => router.push(`/exam-news/${item.slug}`)}
-                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-amber-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
+                  className="group p-5 flex flex-col gap-4 border-border-primary hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cfg.color} flex items-center justify-center shrink-0 shadow-md relative`}>
                         <Icon className="w-6 h-6 text-white" />
-                        {item.isPinned && <Pin className="w-3 h-3 text-red-400 absolute -top-1 -right-1" />}
+                        {item.isPinned && <Pin className="w-3 h-3 text-black dark:text-white absolute -top-1 -right-1" />}
                       </div>
                       <div>
                         <h3 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{item.title}</h3>
                         {item.exam?.name && <p className="text-[10px] font-bold text-content-muted uppercase mt-0.5">{item.exam.name}</p>}
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-amber-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                   </div>
 
                   {item.importantDates?.length > 0 && (
@@ -152,7 +152,7 @@ const ExamNewsPage = () => {
                       {cfg.label}
                     </div>
                     {item.isPinned && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-black text-red-600 dark:text-red-400 uppercase bg-red-50 dark:bg-red-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-red-100 dark:border-red-800/50">
+                      <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                         <Pin className="w-3 h-3" /> Pinned
                       </div>
                     )}
@@ -167,7 +167,7 @@ const ExamNewsPage = () => {
               <Megaphone className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No news found</h3>
               <button onClick={() => { setType('all'); setSearch(''); setPage(1); }}
-                className="px-6 py-2.5 bg-amber-500 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

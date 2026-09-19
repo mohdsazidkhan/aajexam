@@ -44,7 +44,7 @@ const AdminStreakPage = () => {
           <div className="flex items-center justify-between gap-4">
             <div>
               <h1 className="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-3">
-                <Flame className="w-7 h-7 text-orange-500" /> Streak Dashboard
+                <Flame className="w-7 h-7 text-black dark:text-white" /> Streak Dashboard
               </h1>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
                 Review top streak performers and tuning data for streak-based engagement.
@@ -66,7 +66,7 @@ const AdminStreakPage = () => {
                     <div>
                       <div className="text-xs uppercase tracking-[0.2em] text-slate-400">#{idx + 1}</div>
                       <h2 className="text-lg font-black text-slate-900 dark:text-white">{entry.user?.name || entry.user?.username || 'Unknown'}</h2>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">Current streak: <span className="font-bold text-orange-500">{entry.currentStreak}</span></p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">Current streak: <span className="font-bold text-black dark:text-white">{entry.currentStreak}</span></p>
                     </div>
                     <div className="flex items-center gap-6 text-sm text-slate-600 dark:text-slate-300">
                       <div><span className="font-black text-slate-900 dark:text-white">{entry.totalActiveDays}</span> active days</div>

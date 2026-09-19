@@ -22,18 +22,18 @@ const PLAN_THEMES = {
   primary: {
     card: 'border-primary-500/30 shadow-2xl',
     iconWrap: 'bg-primary-500/10 text-primary-600',
-    badge: 'bg-primary-500 text-white shadow-duo-primary',
+    badge: 'bg-primary-500 text-white shadow-aajexam-primary',
     check: 'text-primary-600',
     button: 'primary',
-    buttonClass: 'shadow-duo-primary',
+    buttonClass: 'shadow-aajexam-primary',
   },
   secondary: {
     card: 'border-primary-500/20',
     iconWrap: 'bg-primary-500/10 text-primary-600',
     badge: 'bg-primary-500/10 text-primary-600',
     check: 'text-primary-600',
-    button: 'ghost',
-    buttonClass: 'border-2 border-border-primary',
+    button: 'secondary',
+    buttonClass: '',
   },
 };
 
@@ -143,11 +143,11 @@ const SubscriptionPage = () => {
                   const isBuying = buyingPlan === proPlan.key;
                   return (
                     <Button
-                      variant="secondary"
+                      variant="primary"
                       size="sm"
                       disabled={isBuying}
                       fullWidth
-                      className="lg:w-auto bg-white text-slate-900 border-none rounded-2xl px-6 py-3 lg:px-8 lg:py-4"
+                      className="lg:w-auto rounded-2xl px-6 py-3 lg:px-8 lg:py-4"
                       onClick={() => handleBuy(proPlan)}
                     >
                       {isBuying ? (

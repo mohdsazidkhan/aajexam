@@ -83,8 +83,8 @@ const NotificationsPage = () => {
     switch (type) {
       case 'test_completed': return <Target className="w-5 h-5 text-primary-500" />;
       case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-500" />;
-      case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-red-500" />;
-      default: return <Info className="w-5 h-5 text-blue-500" />;
+      case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-black dark:text-white" />;
+      default: return <Info className="w-5 h-5 text-black dark:text-white" />;
     }
   };
 
@@ -105,8 +105,8 @@ const NotificationsPage = () => {
           </div>
 
           <div className="flex gap-2">
-            {unreadCount > 0 && <Button variant="ghost" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>MARK ALL READ</Button>}
-            {notifications.length > 0 && <Button variant="ghost" size="sm" className="text-[10px] font-black tracking-widest text-red-500 hover:text-red-600" onClick={clearAll}>CLEAR ALL</Button>}
+            {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>MARK ALL READ</Button>}
+            {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-black tracking-widest" onClick={clearAll}>CLEAR ALL</Button>}
           </div>
         </div>
 
@@ -149,7 +149,7 @@ const NotificationsPage = () => {
 
                     <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0">
                       {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-500 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-red-500 hover:bg-red-500/10 rounded-lg lg:rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

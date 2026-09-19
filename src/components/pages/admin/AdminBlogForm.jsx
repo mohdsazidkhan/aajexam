@@ -203,7 +203,7 @@ const AdminBlogForm = () => {
                 {formData.title && (
                   <div className="mt-2 p-2 bg-gray-50 dark:bg-gray-700 rounded-md">
                     <p className="text-xs text-gray-600 dark:text-gray-400">
-                      <strong>URL Slug:</strong> <code className="text-blue-600 dark:text-blue-400">/blog/{generateSlug(formData.title)}</code>
+                      <strong>URL Slug:</strong> <code className="text-black dark:text-white">/blog/{generateSlug(formData.title)}</code>
                     </p>
                   </div>
                 )}
@@ -315,8 +315,8 @@ const AdminBlogForm = () => {
 
           {/* Error */}
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-              <p className="text-red-800 dark:text-red-200">{error}</p>
+            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
+              <p className="text-black dark:text-white">{error}</p>
             </div>
           )}
 

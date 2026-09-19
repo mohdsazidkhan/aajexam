@@ -31,17 +31,17 @@ import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 
 const TYPE_CONFIG = {
-   question: { label: 'Question', icon: HelpCircle, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
-   fact: { label: 'Fact', icon: BookOpen, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-900/20' },
-   tip: { label: 'Tip', icon: Zap, color: 'text-amber-500', bg: 'bg-amber-50 dark:bg-amber-900/20' },
-   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-900/20' },
-   poll: { label: 'Poll', icon: BarChart3, color: 'text-teal-500', bg: 'bg-teal-50 dark:bg-teal-900/20' },
+   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
 };
 
 const DIFFICULTY_STYLES = {
    easy: 'text-primary-600 bg-primary-50 dark:bg-primary-900/20',
-   medium: 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20',
-   hard: 'text-red-600 bg-red-50 dark:bg-red-900/20',
+   medium: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20',
+   hard: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20',
 };
 
 const BookmarksPage = () => {
@@ -157,12 +157,12 @@ const BookmarksPage = () => {
                                     {/* Subject & Topic */}
                                     <div className="flex flex-wrap items-center gap-1.5">
                                        {reel.subject && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-blue-50 dark:bg-blue-900/20 text-blue-600 uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white uppercase">
                                              #{reel.subject}
                                           </span>
                                        )}
                                        {reel.topic && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-purple-50 dark:bg-purple-900/20 text-purple-600">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white">
                                              #{reel.topic}
                                           </span>
                                        )}
@@ -172,7 +172,7 @@ const BookmarksPage = () => {
                                     <div className="space-y-1">
                                        <p className="font-black text-sm lg:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
                                        {reel.type === 'question' && reel.userInteraction?.answered && (
-                                          <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-primary-600' : 'text-red-500'}`}>
+                                          <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-primary-600' : 'text-black dark:text-white'}`}>
                                              {reel.userInteraction.isCorrect ? <CheckCircle className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
                                              {reel.userInteraction.isCorrect ? 'Answered correctly' : 'Answered incorrectly'}
                                           </div>

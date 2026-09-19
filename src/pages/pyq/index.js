@@ -297,7 +297,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary-500/10 rounded-full blur-2xl" />
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="space-y-1">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-400/10 border border-amber-400/20 rounded-full text-[10px] font-black text-amber-400 uppercase tracking-widest mb-2">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest mb-2">
                                                 <Lock className="w-3 h-3" /> PRO Only
                                             </div>
                                             <h3 className="text-lg font-black font-outfit uppercase tracking-tight leading-tight">

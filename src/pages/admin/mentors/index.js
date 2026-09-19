@@ -11,9 +11,9 @@ import AdminRoute from '../../../components/AdminRoute';
 
 const statusColor = (s) => {
   if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
-  if (s === 'pending') return 'bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400';
-  if (s === 'suspended') return 'bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400';
-  return 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400';
+  if (s === 'pending') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
+  if (s === 'suspended') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
+  return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
 };
 
 const StatusSelect = ({ mentor, onChange }) => (
@@ -118,7 +118,7 @@ const AdminMentors = () => {
                             <div className="min-w-0">
                               <p className="font-bold text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors truncate flex items-center gap-1.5">
                                 {m.user?.name || 'Unknown'}
-                                {m.isVerified && <Shield className="w-3.5 h-3.5 text-blue-500 shrink-0" />}
+                                {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                               </p>
                               <p className="text-[10px] text-slate-400 dark:text-slate-500 truncate">{m.user?.email}</p>
                             </div>
@@ -128,7 +128,7 @@ const AdminMentors = () => {
                           {m.examsCleared?.length ? `${m.examsCleared[0].examName} (${m.examsCleared[0].year})${m.examsCleared.length > 1 ? ` +${m.examsCleared.length - 1}` : ''}` : '—'}
                         </td>
                         <td className="px-4 py-3 text-center">
-                          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1"><Star className="w-3 h-3 text-amber-500" />{m.rating?.toFixed(1) || '0.0'}</span>
+                          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1"><Star className="w-3 h-3 text-black dark:text-white" />{m.rating?.toFixed(1) || '0.0'}</span>
                         </td>
                         <td className="px-4 py-3">
                           <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide whitespace-nowrap ${statusColor(m.status)}`}>{m.status}</span>
@@ -137,7 +137,7 @@ const AdminMentors = () => {
                           <div className="flex items-center justify-end gap-2">
                             <StatusSelect mentor={m} onChange={updateStatus} />
                             {m.status === 'active' && !m.isVerified && (
-                              <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-blue-500" /></button>
+                              <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                             )}
                             <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-500" /></Link>
                           </div>
@@ -156,12 +156,12 @@ const AdminMentors = () => {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${statusColor(m.status)}`}>{m.status}</span>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Star className="w-3 h-3 text-amber-500" /> {m.rating?.toFixed(1) || '0.0'}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Star className="w-3 h-3 text-black dark:text-white" /> {m.rating?.toFixed(1) || '0.0'}</span>
                     </div>
                     <Link href={`/admin/mentors/${m._id}`} className="group">
                       <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors flex items-center gap-1.5">
                         {m.user?.name || 'Unknown'}
-                        {m.isVerified && <Shield className="w-3.5 h-3.5 text-blue-500 shrink-0" />}
+                        {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                       </h3>
                     </Link>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{m.user?.email}</p>
@@ -178,7 +178,7 @@ const AdminMentors = () => {
                     <StatusSelect mentor={m} onChange={updateStatus} />
                     <div className="flex items-center gap-1">
                       {m.status === 'active' && !m.isVerified && (
-                        <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-blue-500" /></button>
+                        <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                       )}
                       <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-500" /></Link>
                     </div>
@@ -194,13 +194,13 @@ const AdminMentors = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${statusColor(m.status)}`}>{m.status}</span>
-                      <span className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Star className="w-3 h-3 text-amber-500" /> {m.rating?.toFixed(1) || '0.0'}</span>
+                      <span className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Star className="w-3 h-3 text-black dark:text-white" /> {m.rating?.toFixed(1) || '0.0'}</span>
                       {m.examsCleared?.length > 0 && <span className="text-[11px] text-slate-400 dark:text-slate-500">{m.examsCleared[0].examName} ({m.examsCleared[0].year})</span>}
                     </div>
                     <Link href={`/admin/mentors/${m._id}`} className="group">
                       <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors truncate flex items-center gap-1.5">
                         {m.user?.name || 'Unknown'}
-                        {m.isVerified && <Shield className="w-3.5 h-3.5 text-blue-500 shrink-0" />}
+                        {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                       </h3>
                     </Link>
                     <p className="text-[11px] text-slate-400 dark:text-slate-500 truncate">{m.user?.email}</p>
@@ -208,7 +208,7 @@ const AdminMentors = () => {
                   <div className="flex items-center gap-2 shrink-0">
                     <StatusSelect mentor={m} onChange={updateStatus} />
                     {m.status === 'active' && !m.isVerified && (
-                      <button onClick={() => verify(m._id)} className="p-2 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg lg:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-blue-500" /></button>
+                      <button onClick={() => verify(m._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-black dark:text-white" /></button>
                     )}
                     <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-500" /></Link>
                   </div>

@@ -124,7 +124,7 @@ const DashboardPage = () => {
     },
     {
       title: 'CONTENT LIBRARY',
-      accent: 'text-rose-600',
+      accent: 'text-black dark:text-white',
       cards: [
         { title: 'Reels', count: stats.reels || 0, link: '/admin/reels', icon: Film, subtitle: `${stats.publishedReels || 0} published` },
         { title: 'Study Notes', count: stats.studyNotes || 0, link: '/admin/notes', icon: StickyNote, subtitle: 'Total uploaded' },
@@ -167,7 +167,7 @@ const DashboardPage = () => {
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
             <div className="text-2xl lg:text-6xl mb-4">⚠️</div>
-            <div className="text-lg text-primary-700 dark:text-red-400">{error}</div>
+            <div className="text-lg text-primary-700 dark:text-white">{error}</div>
           </div>
         </div>
       </div>

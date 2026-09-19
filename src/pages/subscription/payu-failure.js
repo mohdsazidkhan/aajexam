@@ -114,7 +114,7 @@ const PayuFailure = () => {
         <Seo title="Checking Payment Status - AajExam" description="We are checking your failed payment attempt." noIndex={true} />
         <div className="min-h-screen  flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
-            <div className="w-20 h-20 rounded-[2rem] bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 rounded-[2rem] bg-black/10 dark:bg-white/10 text-black dark:text-white flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">
@@ -140,7 +140,7 @@ const PayuFailure = () => {
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-8">
             <div className="text-center space-y-4">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white">
                 <CircleAlert className="w-12 h-12" />
               </div>
               <div className="space-y-2">

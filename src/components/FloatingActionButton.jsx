@@ -51,7 +51,7 @@ const FloatingActionButton = () => {
       <div className="fab-container font-outfit">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="fab-button shadow-duo-primary border-4 border-white dark:border-slate-800"
+          className="fab-button shadow-aajexam-primary border-4 border-white dark:border-slate-800"
           aria-label="Create Quiz or Question"
         >
           <FaPlus className="text-xl" />

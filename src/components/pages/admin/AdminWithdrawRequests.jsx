@@ -126,8 +126,8 @@ const AdminWithdrawRequests = () => {
               <span className="font-mono text-[10px]">{req.upi}</span>
             </div>
           ) : req.bankDetail ? (
-            <div className="p-2 bg-blue-500/5 rounded-lg border border-blue-500/10 space-y-0.5">
-              <div className="flex items-center gap-2 font-black text-blue-500"><Landmark className="w-3 h-3" /> {req.bankDetail.bankName}</div>
+            <div className="p-2 bg-black/5 dark:bg-white/5 rounded-lg border border-black/10 dark:border-white/10 space-y-0.5">
+              <div className="flex items-center gap-2 font-black text-black dark:text-white"><Landmark className="w-3 h-3" /> {req.bankDetail.bankName}</div>
               <div className="font-mono text-[10px] text-slate-600 dark:text-slate-300">{req.bankDetail.accountNumber}</div>
               <div className="font-mono text-[8px] opacity-70">IFSC: {req.bankDetail.ifscCode}</div>
             </div>
@@ -138,9 +138,9 @@ const AdminWithdrawRequests = () => {
     {
       key: 'status', header: 'Status', render: (_, req) => (
         <div className="space-y-3">
-          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' :
+          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
               req.status === 'approved' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' :
-                req.status === 'rejected' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' :
+                req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
                   'bg-primary-500/10 text-primary-500 border-primary-500/20'
             }`}>
             {req.status === 'pending' && <Clock className="w-3 h-3" />}
@@ -152,7 +152,7 @@ const AdminWithdrawRequests = () => {
           {req.status === 'pending' && (
             <div className="flex gap-2">
               <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-500 text-white rounded-lg shadow-lg"><CheckCircle2 className="w-4 h-4" /></motion.button>
-              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-rose-500 text-white rounded-lg shadow-lg"><XCircle className="w-4 h-4" /></motion.button>
+              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-black dark:bg-white text-white dark:text-black rounded-lg shadow-lg"><XCircle className="w-4 h-4" /></motion.button>
             </div>
           )}
           {req.status === 'approved' && (
@@ -255,7 +255,7 @@ const AdminWithdrawRequests = () => {
                             <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} wallet</div>
                           </div>
                         </div>
-                        <div className={`px-3 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' : req.status === 'rejected' ? 'bg-rose-500/10 text-rose-500 border-rose-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
+                        <div className={`px-3 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                       </div>
 
                       <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border-2 border-slate-100 dark:border-white/5">
@@ -266,7 +266,7 @@ const AdminWithdrawRequests = () => {
                             <div className="flex items-center gap-3"><Smartphone className="w-4 h-4 text-primary-500" /><span className="text-xs font-black font-mono text-slate-600 dark:text-slate-300">{req.upi}</span></div>
                           ) : req.bankDetail ? (
                             <div className="space-y-1">
-                              <div className="flex items-center gap-3 text-[10px] font-black text-blue-500"><Landmark className="w-4 h-4" /> {req.bankDetail.bankName}</div>
+                              <div className="flex items-center gap-3 text-[10px] font-black text-black dark:text-white"><Landmark className="w-4 h-4" /> {req.bankDetail.bankName}</div>
                               <div className="text-xs font-black font-mono text-slate-600 dark:text-slate-300 pl-7">{req.bankDetail.accountNumber}</div>
                             </div>
                           ) : <span className="text-[10px] italic opacity-40">No payment details provided</span>}
@@ -277,7 +277,7 @@ const AdminWithdrawRequests = () => {
                         {req.status === 'pending' ? (
                           <>
                             <motion.button onClick={() => updateStatus(req._id, 'approved')} whileHover={{ scale: 1.02 }} className="flex-1 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2"><CheckCircle2 className="w-4 h-4" /> Approve</motion.button>
-                            <motion.button onClick={() => updateStatus(req._id, 'rejected')} whileHover={{ scale: 1.02 }} className="p-4 bg-rose-500/10 text-rose-500 rounded-2xl border border-rose-500/20 hover:bg-rose-500 hover:text-white transition-all"><XCircle className="w-5 h-5" /></motion.button>
+                            <motion.button onClick={() => updateStatus(req._id, 'rejected')} whileHover={{ scale: 1.02 }} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white transition-all"><XCircle className="w-5 h-5" /></motion.button>
                           </>
                         ) : req.status === 'approved' ? (
                           <motion.button onClick={() => updateStatus(req._id, 'paid')} whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2"><CreditCard className="w-4 h-4" /> Mark as Paid</motion.button>

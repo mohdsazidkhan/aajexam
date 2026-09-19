@@ -183,7 +183,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-indigo-600 flex items-center justify-center shrink-0 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-black dark:to-white flex items-center justify-center shrink-0 shadow-md">
                       <ShieldCheck className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -197,8 +197,8 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                 {/* Category Badge */}
                 <div className="flex items-center gap-1.5">
                   {exam.category?.type === 'Central'
-                    ? <Building className="w-3 h-3 text-blue-500" />
-                    : <MapPin className="w-3 h-3 text-orange-500" />
+                    ? <Building className="w-3 h-3 text-black dark:text-white" />
+                    : <MapPin className="w-3 h-3 text-black dark:text-white" />
                   }
                   <span className="text-xs font-bold text-content-secondary">{exam.category?.name || 'General'}</span>
                   <span className="text-[10px] font-bold text-content-muted px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full">{exam.category?.type || ''}</span>
@@ -210,7 +210,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                     <FileText className="w-3 h-3" />
                     {exam.practiceTestCount || 0} Tests
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-amber-100 dark:border-amber-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                     <History className="w-3 h-3" />
                     {exam.pyqCount || 0} PYQs
                   </div>

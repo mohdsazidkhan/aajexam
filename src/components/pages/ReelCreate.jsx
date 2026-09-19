@@ -15,14 +15,14 @@ import {
 } from 'lucide-react';
 
 const TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-blue-400 bg-blue-50 dark:bg-blue-950/30', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-purple-400 bg-purple-50 dark:bg-purple-950/30', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-amber-400 bg-amber-50 dark:bg-amber-950/30', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-red-400 bg-red-50 dark:bg-red-950/30', desc: 'Daily CA card' },
+  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Daily CA card' },
   { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-primary-400 bg-primary-50 dark:bg-primary-950/30', desc: 'Community poll' },
 ];
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const ReelCreate = () => {
@@ -173,7 +173,7 @@ const ReelCreate = () => {
         <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">Login required to create reels</p>
-            <Link href="/login" className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-blue-600 text-white text-sm font-semibold">Login</Link>
+            <Link href="/login" className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-black dark:bg-white text-white dark:text-black text-sm font-semibold">Login</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -206,7 +206,7 @@ const ReelCreate = () => {
           <div className="flex items-center gap-3 max-w-2xl mx-auto">
           
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Flame className="w-5 h-5 text-orange-500" /> Create Reel
+              <Flame className="w-5 h-5 text-black dark:text-white" /> Create Reel
             </h1>
           </div>
         </div>
@@ -268,7 +268,7 @@ const ReelCreate = () => {
 
               {/* Question */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-blue-200 dark:border-blue-800 p-4 space-y-3">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
                   <div><label className={labelClass}>Question *</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
                   <div className="space-y-2">
                     {options.map((o, i) => (
@@ -288,7 +288,7 @@ const ReelCreate = () => {
 
               {/* Fact */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-purple-200 dark:border-purple-800 p-4 space-y-3">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
                   <div><label className={labelClass}>Highlight Text</label><input value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>Content</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -296,17 +296,17 @@ const ReelCreate = () => {
                     {keyPoints.map((kp, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={kp} onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }} className={`flex-1 ${inputClass}`} />
-                        {keyPoints.length > 1 && <button type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-red-400" /></button>}
+                        {keyPoints.length > 1 && <button type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
-                    <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-blue-600 flex items-center gap-1"><Plus className="w-3 h-3" /> Add</button>
+                    <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> Add</button>
                   </div>
                 </div>
               )}
 
               {/* Tip */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-amber-200 dark:border-amber-800 p-4 space-y-3">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
                   <div><label className={labelClass}>Formula</label><input value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>Content</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -315,10 +315,10 @@ const ReelCreate = () => {
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <span className="text-xs text-slate-400 w-10">Step {i + 1}</span>
                         <input value={s} onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }} className={`flex-1 ${inputClass}`} />
-                        {steps.length > 1 && <button type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-red-400" /></button>}
+                        {steps.length > 1 && <button type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
-                    <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-blue-600 flex items-center gap-1"><Plus className="w-3 h-3" /> Add</button>
+                    <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> Add</button>
                   </div>
                 </div>
               )}
@@ -331,31 +331,31 @@ const ReelCreate = () => {
                     {pollOptions.map((o, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={o.text} onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }} placeholder={`Option ${i + 1}`} className={`flex-1 ${inputClass}`} required={i < 2} />
-                        {pollOptions.length > 2 && <button type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-red-400" /></button>}
+                        {pollOptions.length > 2 && <button type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
-                    {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-blue-600 flex items-center gap-1"><Plus className="w-3 h-3" /> Add option</button>}
+                    {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> Add option</button>}
                   </div>
                 </div>
               )}
 
               {/* CA */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-red-200 dark:border-red-800 p-4 space-y-3">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
                   <div><label className={labelClass}>Title *</label><input value={title} onChange={e => setTitle(e.target.value)} className={inputClass} required /></div>
                   <div><label className={labelClass}>Content *</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
                 </div>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-pink-200 dark:border-pink-800/40 p-4 space-y-3">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                    <Music className="w-4 h-4 text-pink-500" /> Add Audio
+                    <Music className="w-4 h-4 text-black dark:text-white" /> Add Audio
                   </h3>
                   {audioFile && (
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
-                      className="text-[10px] font-bold text-red-500 uppercase tracking-wider">Remove</button>
+                      className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider">Remove</button>
                   )}
                 </div>
 
@@ -371,18 +371,18 @@ const ReelCreate = () => {
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
                       className={`flex items-center gap-3 p-2.5 rounded-lg lg:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                        ? 'bg-pink-50 dark:bg-pink-950/30 border border-pink-300 dark:border-pink-700'
+                        ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                     >
                       {/* Play/Pause */}
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ? 'bg-pink-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       {/* Info */}
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-pink-600 dark:text-pink-400' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white dark:text-white' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
                         <div className="flex items-center gap-2">
                           <p className="text-[10px] text-slate-400 truncate">{a.artist}</p>
                           {a.audioDuration && (
@@ -392,7 +392,7 @@ const ReelCreate = () => {
                       </div>
                       {/* Selected check */}
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-pink-500 flex items-center justify-center shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-black dark:bg-white flex items-center justify-center shrink-0">
                           <span className="text-white text-[10px] font-bold">✓</span>
                         </div>
                       )}
@@ -407,11 +407,11 @@ const ReelCreate = () => {
                 {audioPlaying && (
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
                       <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
                     </div>
                     <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-pink-500" />}
+                      {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-black dark:text-white" />}
                     </button>
                   </div>
                 )}

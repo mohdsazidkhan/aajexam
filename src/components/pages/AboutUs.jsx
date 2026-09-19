@@ -62,11 +62,11 @@ const AboutUs = () => {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
          </Head>
 
-         <div className="container mx-auto px-4 lg:px-8 py-4 md:py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0 mt-0">
+         <div className="container mx-auto px-4 lg:px-8 py-4 md:py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-duo-primary rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary rotate-12">
                   <Sparkles className="text-white w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
@@ -117,7 +117,7 @@ const AboutUs = () => {
                      <p className="text-slate-700 dark:text-slate-400 font-bold leading-relaxed">We use simple and effective ways to help you study. Our platform is built to boost your score in SSC, UPSC, Banking, and Railway exams.</p>
                   </div>
                   <div className="space-y-2">
-                     <div className="p-3 bg-blue-500/10 text-blue-500 w-fit rounded-lg lg:rounded-xl"><Target className="w-5 h-5" /></div>
+                     <div className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white w-fit rounded-lg lg:rounded-xl"><Target className="w-5 h-5" /></div>
                      <h4 className="font-black uppercase text-sm">All Subjects Covered</h4>
                      <p className="text-xs font-medium text-slate-600 dark:text-slate-400">We cover Maths, English, and General Knowledge for all major government exams.</p>
                   </div>
@@ -168,11 +168,11 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section className="pt-20">
-               <Card className="p-12 text-center bg-gradient-to-r from-primary-500 to-primary-500 border-none text-white shadow-duo-primary relative overflow-hidden">
+               <Card className="p-12 text-center bg-gradient-to-r from-primary-500 to-primary-500 border-none text-white shadow-aajexam-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>
-                     <Button onClick={() => router.push('/')} variant="white" size="lg" className="mx-auto px-12 py-6 text-sm font-black text-primary-700 dark:text-primary-500 shadow-xl">START LEARNING FOR FREE</Button>
+                     <Button onClick={() => router.push('/')} variant="secondary" size="lg" className="mx-auto px-12 py-6 text-sm font-black">START LEARNING FOR FREE</Button>
                   </div>
                   <Sparkles className="absolute top-10 left-10 w-24 h-24 text-white/10" />
                   <ShieldCheck className="absolute bottom-10 right-10 w-20 lg:w-32 h-20 lg:h-32 text-white/10" />
