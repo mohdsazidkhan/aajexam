@@ -115,7 +115,7 @@ const FollowingList = ({ username: usernameProp }) => {
                         className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] object-cover border-2 border-white dark:border-slate-600 shadow-xl relative z-10 group-hover:scale-110 group-hover:-rotate-3 transition-transform"
                       />
                     ) : (
-                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] bg-primary-500 flex items-center justify-center text-white text-4xl font-black shadow-aajexam-secondary border-2 border-white dark:border-slate-600 relative z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                      <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-[2.5rem] bg-primary-700 flex items-center justify-center text-white text-4xl font-black shadow-aajexam-secondary border-2 border-white dark:border-slate-600 relative z-10 group-hover:scale-110 group-hover:rotate-3 transition-transform">
                         {user.name?.charAt(0)?.toUpperCase() || 'U'}
                       </div>
                     )}
@@ -123,14 +123,14 @@ const FollowingList = ({ username: usernameProp }) => {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-700 dark:text-primary-500 transition-colors leading-tight truncate">{user.name}</h3>
+                    <h3 className="text-lg lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-700 transition-colors leading-tight truncate">{user.name}</h3>
                     {user.username && (
                       <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mt-1">@{user.username}</p>
                     )}
                   </div>
 
                   <div className="hidden lg:block text-right">
-                    <div className="bg-slate-100 dark:bg-slate-800/50 px-8 py-5 rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 shadow-inner group-hover:border-primary-500 transition-colors">
+                    <div className="bg-slate-100 dark:bg-slate-800/50 px-8 py-5 rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 shadow-inner group-hover:border-primary-700 transition-colors">
                       <p className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
                         {user.followersCount || 0}
                       </p>
@@ -161,7 +161,7 @@ const FollowingList = ({ username: usernameProp }) => {
               <button
                 onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
                 disabled={page === pagination.totalPages}
-                className="w-14 h-14 bg-primary-500 text-white rounded-2xl shadow-aajexam-primary border-2 border-white/20 active:translate-y-1 transition-all flex items-center justify-center disabled:opacity-50 disabled:shadow-none"
+                className="w-14 h-14 bg-primary-700 text-white rounded-2xl shadow-aajexam-primary border-2 border-white/20 active:translate-y-1 transition-all flex items-center justify-center disabled:opacity-50 disabled:shadow-none"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

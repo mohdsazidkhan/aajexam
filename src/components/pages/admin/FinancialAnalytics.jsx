@@ -63,9 +63,9 @@ function exportCSV(data, filename) {
 
 function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
   const colors = {
-    primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+    primary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+    secondary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+    emerald: "text-primary-700 bg-primary-500/10 border-primary-500/20",
     amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
   };
 
@@ -83,7 +83,7 @@ function FinancialMetric({ icon: Icon, label, value, sub, color = "primary", i =
         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{label}</div>
       </div>
       <div className="space-y-1">
-        <div className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-500 transition-colors italic">
+        <div className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-700 transition-colors italic">
           {value}
         </div>
         {sub !== undefined && (
@@ -191,16 +191,16 @@ const FinancialAnalytics = () => {
                       <option value="current-year">Annual</option>
                     </select>
                   </div>
-                   <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
+                   <motion.button onClick={handleExport} whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-3">
                      <DownloadCloud className="w-4 h-4" /> Export CSV
                    </motion.button>
                 </div>
               </div>
 
               <div className="flex flex-col items-center lg:items-end p-4 lg:p-10 bg-primary-500/5 dark:bg-primary-500/10 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-primary-500/20 relative overflow-hidden group">
-               <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
+               <span className="text-[10px] font-black text-primary-700 uppercase tracking-[0.3em] mb-4">Total Revenue Generated</span>
                <div className="flex items-center gap-3 shrink-0">
-                 <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-primary-500" />
+                 <IndianRupee className="w-8 h-8 lg:w-16 lg:h-16 stroke-[3] text-primary-700" />
                  <span className="text-4xl lg:text-7xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">{(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}</span>
                </div>
                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-500/10 blur-[80px] group-hover:scale-150 transition-transform duration-500" />
@@ -235,7 +235,7 @@ const FinancialAnalytics = () => {
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Subscription Tiers</h3>
-                       <PieChart className="w-5 h-5 text-primary-500 opacity-30" />
+                       <PieChart className="w-5 h-5 text-primary-700 opacity-30" />
                     </div>
                     <div className="h-80">
                       <Pie data={{ labels: planLabels, datasets: [{ data: planCounts, backgroundColor: ['#6366F1','#8B5CF6','#10B981','#F59E0B','#EF4444'], borderWidth: 0 }] }} options={pieOptions} />
@@ -245,7 +245,7 @@ const FinancialAnalytics = () => {
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative">
                     <div className="flex items-center justify-between mb-4 lg:mb-8">
                        <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Revenue Over Time</h3>
-                       <BarChart3 className="w-5 h-5 text-primary-500 opacity-30" />
+                       <BarChart3 className="w-5 h-5 text-primary-700 opacity-30" />
                     </div>
                     <div className="h-80">
                        <Line data={{ labels: revenueTrendLabels, datasets: [{ label: 'Revenue', data: revenueTrendData, borderColor: '#58cc02', backgroundColor: 'rgba(88,204,2,0.1)', fill: true, tension: 0.4 }] }} options={chartOptions} />
@@ -257,7 +257,7 @@ const FinancialAnalytics = () => {
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl overflow-hidden">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-4">
-                       <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl"><Activity className="w-6 h-6" /></div>
+                       <div className="p-3 bg-primary-500/10 text-primary-700 rounded-2xl"><Activity className="w-6 h-6" /></div>
                        <div>
                         <h3 className="text-[14px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] leading-none mb-1">Plan Performance Breakdown</h3>
                         <span className="text-[9px] font-black text-slate-400 tracking-widest uppercase italic">Revenue breakdown by subscription plan</span>
@@ -283,9 +283,9 @@ const FinancialAnalytics = () => {
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6">
                                   <div className="flex items-center gap-4">
-                                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg ${idx === 0 ? 'bg-primary-500 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
+                                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg ${idx === 0 ? 'bg-primary-700 text-white' : 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'}`}>{p.planName?.[0] || 'P'}</div>
                                      <div>
-                                        <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter group-hover:text-primary-500 transition-colors">{p.planName || p._id || 'Unknown'}</div>
+                                        <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter group-hover:text-primary-700 transition-colors">{p.planName || p._id || 'Unknown'}</div>
                                         <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">Subscription Plan</div>
                                      </div>
                                   </div>
@@ -295,7 +295,7 @@ const FinancialAnalytics = () => {
                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Subscribers</div>
                                </td>
                                <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                  <div className="text-2xl font-black text-primary-500 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
+                                  <div className="text-2xl font-black text-primary-700 tabular-nums italic tracking-tighter">₹{p.totalRevenue?.toLocaleString('en-IN') || 0}</div>
                                   <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Revenue</div>
                                </td>
                             </motion.tr>

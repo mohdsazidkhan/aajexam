@@ -77,19 +77,19 @@ const ExitIntentModalInner = ({ onClose }) => {
 
           <div className="relative z-10">
             <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl border-2 border-white dark:border-slate-800">
-              <Gift className="w-10 h-10 text-primary-600" />
+              <Gift className="w-10 h-10 text-primary-700" />
             </div>
 
             <h2 className="text-2xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
               Wait! Don't Leave Empty Handed.
             </h2>
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              Sign up in 10 seconds to unlock a <span className="text-primary-500 font-black">Free Premium Mock Test</span> and personalized progress tracking.
+              Sign up in 10 seconds to unlock a <span className="text-primary-700 font-black">Free Premium Mock Test</span> and personalized progress tracking.
             </p>
 
             <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
+                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-700 shrink-0"><BookOpen className="w-4 h-4" /></div>
                 Free Latest PYQ PDF & Tests
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">

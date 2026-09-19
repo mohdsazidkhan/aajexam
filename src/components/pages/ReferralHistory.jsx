@@ -81,17 +81,17 @@ export default function ReferralHistory() {
    };
 
    return (
-      <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white">
 
          <div className="container mx-auto mt-0 space-y-4 lg:space-y-8">
 
             {/* --- Header Section --- */}
             <section className="relative text-center space-y-4 lg:space-y-8 px-0 py-4 lg:p-8">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10">
                   <Users className="w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
-                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">History</span></h1>
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-700">History</span></h1>
                   <p className="text-sm font-bold text-content-secondary uppercase tracking-[0.3em] max-w-2xl mx-auto">Share your link with friends. When they buy the PRO plan (first time), you earn ₹33.</p>
                </div>
 
@@ -101,7 +101,7 @@ export default function ReferralHistory() {
                      <div className="flex items-center gap-2 p-2">
                         <div className="flex-1 text-left min-w-0">
                            <p className="text-[8px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Your Invite Code</p>
-                           <p className="text-sm font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
+                           <p className="text-sm font-bold font-mono tracking-wider truncate text-primary-700">{user.referralCode}</p>
                         </div>
                         <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-aajexam-primary" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                            <Copy className="w-4 h-4 mx-auto" /> COPY LINK
@@ -140,7 +140,7 @@ export default function ReferralHistory() {
                {/* Left Sidebar: Breakdown */}
                <div className="lg:col-span-1 space-y-8">
                   <div className="space-y-2">
-                     <h2 className="text-xl font-black font-outfit uppercase tracking-tight">How You <span className="text-primary-600">Earned</span></h2>
+                     <h2 className="text-xl font-black font-outfit uppercase tracking-tight">How You <span className="text-primary-700">Earned</span></h2>
                      <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">See which type of referral gave you how much money</p>
                   </div>
 
@@ -172,7 +172,7 @@ export default function ReferralHistory() {
                <div className="lg:col-span-2 space-y-8">
                   <div className="flex items-center justify-between">
                      <div className="space-y-2">
-                        <h2 className="text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">Logs</span></h2>
+                        <h2 className="text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-700">Logs</span></h2>
                         <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">Students who signed up using your referral link</p>
                      </div>
                      <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700">
@@ -227,7 +227,7 @@ export default function ReferralHistory() {
                                                 </span>
                                              </td>
                                              <td className="px-8 py-6">
-                                                <p className="text-sm font-black text-primary-500 uppercase">+₹{tx.amount}</p>
+                                                <p className="text-sm font-black text-primary-700 uppercase">+₹{tx.amount}</p>
                                              </td>
                                              <td className="px-8 py-6 text-right">
                                                 <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Balance</p>
@@ -247,7 +247,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       className={`w-10 h-10 rounded-lg lg:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-500 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
+                                       className={`w-10 h-10 rounded-lg lg:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-700 text-white shadow-lg' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
                                     >
                                        {i + 1}
                                     </button>

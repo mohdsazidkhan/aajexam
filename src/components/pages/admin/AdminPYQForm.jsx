@@ -247,10 +247,10 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <div className="flex items-center gap-3">
                         <button onClick={() => router.push('/admin/pyq')} className="p-2 rounded-lg lg:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"><ArrowLeft className="w-5 h-5" /></button>
                         <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
-                            <FileText className="w-6 h-6 text-primary-500" /> {mode === 'edit' ? 'Edit PYQ' : 'New PYQ Paper'}
+                            <FileText className="w-6 h-6 text-primary-700" /> {mode === 'edit' ? 'Edit PYQ' : 'New PYQ Paper'}
                         </h1>
                     </div>
-                    <button onClick={handleSubmit} disabled={saving} className="px-5 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+                    <button onClick={handleSubmit} disabled={saving} className="px-5 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                         <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save'}
                     </button>
                 </div>
@@ -264,31 +264,31 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Title *</label>
                                 <input type="text" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500"
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700"
                                     placeholder="e.g., SSC CGL 2023 Tier 1 - Morning Shift" />
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">PYQ Exam Name</label>
                                 <input type="text" value={form.pyqExamName} onChange={e => setForm({ ...form, pyqExamName: e.target.value })}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500"
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700"
                                     placeholder="e.g., SSC CGL Tier 1" />
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Year *</label>
                                 <input type="number" min="2000" max="2100" value={form.pyqYear} onChange={e => setForm({ ...form, pyqYear: e.target.value })}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500" />
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700" />
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Shift</label>
                                 <select value={form.pyqShift} onChange={e => setForm({ ...form, pyqShift: e.target.value })}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500">
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700">
                                     {SHIFTS.map(s => <option key={s} value={s}>{s || '— none —'}</option>)}
                                 </select>
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Exam *</label>
                                 <select value={selectedExam} onChange={e => { setSelectedExam(e.target.value); setForm(f => ({ ...f, examPattern: '' })); }}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500">
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700">
                                     <option value="">Select Exam</option>
                                     {exams.map(x => <option key={x._id} value={x._id}>{x.name}</option>)}
                                 </select>
@@ -296,7 +296,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Pattern *</label>
                                 <select value={form.examPattern} onChange={e => onPatternChange(e.target.value)} disabled={!patterns.length}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500 disabled:opacity-50">
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700 disabled:opacity-50">
                                     <option value="">{patterns.length ? 'Select Pattern' : 'Select exam first'}</option>
                                     {patterns.map(p => <option key={p._id} value={p._id}>{p.title}</option>)}
                                 </select>
@@ -304,18 +304,18 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Duration (min) *</label>
                                 <input type="number" min="1" value={form.duration} onChange={e => setForm({ ...form, duration: e.target.value })}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500" />
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700" />
                             </div>
                             <div>
                                 <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Total Marks *</label>
                                 <input type="number" min="0" value={form.totalMarks} onChange={e => setForm({ ...form, totalMarks: e.target.value })}
-                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500" />
+                                    className="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700" />
                             </div>
                         </div>
 
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })}
-                                className="w-5 h-5 rounded text-primary-500 border-slate-300" />
+                                className="w-5 h-5 rounded text-primary-700 border-slate-300" />
                             <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Free for all students</span>
                             <span className="text-xs text-slate-400">({form.isFree ? 'anyone can attempt' : 'pro only'})</span>
                         </label>
@@ -325,7 +325,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <Card className="p-5 lg:p-6 space-y-5">
                         <div className="flex items-center justify-between">
                             <h2 className="text-sm font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">Questions ({form.questions.length})</h2>
-                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-primary-500 text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
+                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-primary-700 text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
                                 <Plus className="w-3 h-3" /> Add Question
                             </button>
                         </div>
@@ -334,14 +334,14 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             {form.questions.map((q, qi) => (
                                 <div key={qi} className="p-4 border-2 border-slate-100 dark:border-slate-800 rounded-lg lg:rounded-xl space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-black text-primary-500">Q{qi + 1}</span>
+                                        <span className="text-xs font-black text-primary-700">Q{qi + 1}</span>
                                         {form.questions.length > 1 && (
                                             <button type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                                         )}
                                     </div>
 
                                     <textarea value={q.questionText} onChange={e => updateQuestion(qi, { questionText: e.target.value })} rows={2}
-                                        className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-500"
+                                        className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none focus:border-primary-700"
                                         placeholder="Question text..." />
 
                                     {/* Question image */}
@@ -371,11 +371,11 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <div key={oi} className="space-y-1.5">
                                             <div className="flex items-center gap-2">
                                                 <button type="button" onClick={() => updateQuestion(qi, { correctAnswerIndex: oi })}
-                                                    className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-primary-500 border-primary-500 text-white' : 'border-slate-300 text-slate-400'}`}>
+                                                    className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-primary-700 border-primary-700 text-white' : 'border-slate-300 text-slate-400'}`}>
                                                     {String.fromCharCode(65 + oi)}
                                                 </button>
                                                 <input type="text" value={opt} onChange={e => updateOption(qi, oi, e.target.value)}
-                                                    className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500"
+                                                    className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-700"
                                                     placeholder={`Option ${String.fromCharCode(65 + oi)}`} />
                                                 {optImg ? (
                                                     <button type="button" onClick={() => updateOptionImage(qi, oi, '')} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg" title="Remove image">
@@ -399,7 +399,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             );
                                         })}
                                         {q.options.length < 6 && (
-                                            <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-500 hover:underline">+ Add option</button>
+                                            <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-700 hover:underline">+ Add option</button>
                                         )}
                                     </div>
 
@@ -408,20 +408,20 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Section *</label>
                                             {sectionOptions.length > 0 ? (
                                                 <select value={q.section} onChange={e => updateQuestion(qi, { section: e.target.value })}
-                                                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500">
+                                                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-700">
                                                     <option value="">Select section</option>
                                                     {sectionOptions.map(s => <option key={s} value={s}>{s}</option>)}
                                                 </select>
                                             ) : (
                                                 <input type="text" value={q.section} onChange={e => updateQuestion(qi, { section: e.target.value })}
-                                                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500"
+                                                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-700"
                                                     placeholder="e.g., General Awareness" />
                                             )}
                                         </div>
                                         <div>
                                             <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Difficulty</label>
                                             <select value={q.difficulty} onChange={e => updateQuestion(qi, { difficulty: e.target.value })}
-                                                className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500">
+                                                className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-700">
                                                 {DIFFICULTIES.map(d => <option key={d} value={d}>{d}</option>)}
                                             </select>
                                         </div>
@@ -430,7 +430,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                     <div>
                                         <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Explanation</label>
                                         <textarea value={q.explanation} onChange={e => updateQuestion(qi, { explanation: e.target.value })} rows={2}
-                                            className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-500"
+                                            className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-700"
                                             placeholder="Why is this the correct answer?" />
                                     </div>
                                 </div>
@@ -440,7 +440,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
                     <div className="flex justify-end gap-3">
                         <button type="button" onClick={() => router.push('/admin/pyq')} className="px-5 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg lg:rounded-xl text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-600 transition">Cancel</button>
-                        <button type="submit" disabled={saving} className="px-6 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+                        <button type="submit" disabled={saving} className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                             <Save className="w-4 h-4" /> {saving ? 'Saving...' : (mode === 'edit' ? 'Update PYQ' : 'Create PYQ')}
                         </button>
                     </div>

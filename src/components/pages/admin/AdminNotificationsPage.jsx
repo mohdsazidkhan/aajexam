@@ -212,20 +212,20 @@ const AdminNotificationsPage = () => {
                          : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-primary-500/20 active-signal'}`}
                      >
                         {!n.isRead && (
-                          <div className="absolute top-8 right-8 w-3 h-3 bg-primary-500 rounded-full animate-ping" />
+                          <div className="absolute top-8 right-8 w-3 h-3 bg-primary-700 rounded-full animate-ping" />
                         )}
 
                         <div className="flex items-center gap-4 mb-6">
-                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-500 text-white shadow-aajexam-primary'} transition-colors`}>
+                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-700 text-white shadow-aajexam-primary'} transition-colors`}>
                               {getIconByType(n.type)}
                            </div>
                            <div>
-                              <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
+                              <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
                               <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{formatDate(n.createdAt)}</div>
                            </div>
                         </div>
 
-                        <h3 className={`text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors ${n.isRead ? 'text-slate-900 dark:text-white' : 'text-primary-600 dark:text-primary-400'}`}>
+                        <h3 className={`text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors ${n.isRead ? 'text-slate-900 dark:text-white' : 'text-primary-700'}`}>
                            {n.title}
                         </h3>
                         <p className={`text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-3 ${n.isRead ? 'text-slate-400' : 'text-slate-600 dark:text-slate-300'}`}>
@@ -236,7 +236,7 @@ const AdminNotificationsPage = () => {
                            <div className="flex items-center gap-2 text-[9px] font-black text-slate-400 uppercase italic">
                               <Clock className="w-3 h-3" /> {formatTime(n.createdAt)}
                            </div>
-                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-500 group-hover:text-white transition-all shadow-inner">
+                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-inner">
                               <ArrowRight className="w-4 h-4" />
                            </div>
                         </div>
@@ -253,7 +253,7 @@ const AdminNotificationsPage = () => {
               <button
                 onClick={handlePrev}
                 disabled={page <= 1}
-                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -265,7 +265,7 @@ const AdminNotificationsPage = () => {
               <button
                 onClick={handleNext}
                 disabled={page >= totalPages}
-                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

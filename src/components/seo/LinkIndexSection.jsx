@@ -36,7 +36,7 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
             {group.heading && (
               <h3 className="text-sm lg:text-base font-black text-slate-900 dark:text-white mb-4 uppercase tracking-widest">
                 {group.href
-                  ? <Link href={group.href} className="hover:text-primary-600 dark:hover:text-primary-400">{group.heading}</Link>
+                  ? <Link href={group.href} className="hover:text-primary-700 dark:hover:text-primary-400">{group.heading}</Link>
                   : group.heading}
               </h3>
             )}

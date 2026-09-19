@@ -74,7 +74,7 @@ const rankConfig = {
 const AVATAR_COLORS = [
   { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
   { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
-  { bg: 'bg-primary-500', text: 'text-white' },
+  { bg: 'bg-primary-700', text: 'text-white' },
   { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
   { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
   { bg: 'bg-black dark:bg-white', text: 'text-white dark:text-black' },
@@ -230,7 +230,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
           <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
           <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
-          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
         </div>
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
@@ -252,7 +252,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
                 </span>
               )}
             </div>
-            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
 
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
@@ -461,7 +461,7 @@ const LeaderboardPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
               { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-black dark:text-white' },
-              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-500 dark:text-primary-400' },
+              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-700 dark:text-primary-400' },
               { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
             ].map((stat, i) => (
               <Card key={i} padded={false} className="p-3 sm:p-4 text-center">

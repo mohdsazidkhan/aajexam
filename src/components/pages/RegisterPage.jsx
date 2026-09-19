@@ -127,7 +127,7 @@ const RegisterPageInner = () => {
   };
 
   const passwordStrengthLabel = passwordStrength < 40 ? 'Weak' : passwordStrength < 80 ? 'Good' : 'Strong';
-  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-500';
+  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-700';
   const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'primary-500';
 
   return (
@@ -137,7 +137,7 @@ const RegisterPageInner = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-900 p-20 flex-col justify-center items-start relative overflow-hidden text-white">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }}>
-              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-aajexam-secondary w-fit">
+              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-aajexam-secondary w-fit">
                 <Rocket className="w-12 h-12" />
               </div>
             </motion.div>
@@ -215,7 +215,7 @@ const RegisterPageInner = () => {
                   <input
                     type="text"
                     required
-                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder="Enter your full name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -231,7 +231,7 @@ const RegisterPageInner = () => {
                     <input
                       type="email"
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -246,7 +246,7 @@ const RegisterPageInner = () => {
                     <input
                       type="number"
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder="10 digits"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -262,7 +262,7 @@ const RegisterPageInner = () => {
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
-                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder="Create a password"
                     value={password}
                     onChange={handlePasswordChange}
@@ -292,10 +292,10 @@ const RegisterPageInner = () => {
               <div className="space-y-2">
                 <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Referral code (optional)</label>
                 <div className="relative group">
-                  <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-500 transition-colors" />
+                  <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-700 transition-colors" />
                   <input
                     type="text"
-                    className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 rounded-2xl outline-none focus:border-primary-500 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 rounded-2xl outline-none focus:border-primary-700 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
                     placeholder="Referral code"
                     value={referralCode}
                     onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
@@ -318,7 +318,7 @@ const RegisterPageInner = () => {
             <div className="text-center pt-2">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Already have an account?{' '}
-                <Link href="/login" className="text-primary-700 dark:text-primary-500 hover:underline font-black">
+                <Link href="/login" className="text-primary-700 hover:underline font-black">
                   LOGIN
                 </Link>
               </p>

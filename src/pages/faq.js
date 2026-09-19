@@ -191,10 +191,10 @@ const FAQ = () => {
                 <div className="container mx-auto mt-0">
                     {/* Hero Section */}
                     <div className="text-center mb-8 lg:mb-12">
-                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaQuestionCircle className="text-white text-3xl" />
                         </div>
-                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
+                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold text-primary-700 mb-4">
                             Frequently Asked Questions
                         </h1>
                         <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -208,7 +208,7 @@ const FAQ = () => {
                         return (
                             <div key={catIndex} className="mb-8 lg:mb-12">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
                                     <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
@@ -223,11 +223,11 @@ const FAQ = () => {
                                             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-xl transition-all duration-300"
                                         >
                                             <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
-                                                <span className="text-primary-500 flex-shrink-0">Q:</span>
+                                                <span className="text-primary-700 flex-shrink-0">Q:</span>
                                                 <span>{faq.q}</span>
                                             </h3>
                                             <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
-                                                <span className="text-primary-500 font-semibold">A:</span> {faq.a}
+                                                <span className="text-primary-700 font-semibold">A:</span> {faq.a}
                                             </p>
                                         </div>
                                     ))}

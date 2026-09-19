@@ -65,10 +65,10 @@ export default function ReferralFraudDashboard() {
   const inr = (n) => `₹${Number(n || 0).toLocaleString('en-IN')}`;
 
   const stats = summary ? [
-    { label: 'Flagged Referrers', value: summary.flaggedReferrers, icon: ShieldAlert, tone: 'text-primary-500 bg-primary-500/10' },
+    { label: 'Flagged Referrers', value: summary.flaggedReferrers, icon: ShieldAlert, tone: 'text-primary-700 bg-primary-500/10' },
     { label: 'High Risk', value: summary.highRisk, icon: AlertTriangle, tone: 'text-black dark:text-white bg-black/10 dark:bg-white/10' },
     { label: 'Medium Risk', value: summary.mediumRisk, icon: Fingerprint, tone: 'text-black dark:text-white bg-black/10 dark:bg-white/10' },
-    { label: 'Reward At Risk', value: inr(summary.rewardAtRisk), icon: Banknote, tone: 'text-primary-500 bg-primary-500/10' },
+    { label: 'Reward At Risk', value: inr(summary.rewardAtRisk), icon: Banknote, tone: 'text-primary-700 bg-primary-500/10' },
   ] : [];
 
   return (
@@ -114,11 +114,11 @@ export default function ReferralFraudDashboard() {
             {/* Filters */}
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-3xl border-2 border-slate-100 dark:border-white/10 p-4 lg:p-6 mb-4 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl"><Filter className="w-4 h-4" /></div>
+                <div className="p-2.5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl"><Filter className="w-4 h-4" /></div>
                 {['all', 'high', 'medium', 'low'].map(r => (
                   <button key={r} onClick={() => { setRisk(r); setPage(1); }}
                     className={`text-[9px] font-black uppercase tracking-widest px-3 py-2 rounded-lg lg:rounded-xl border transition-all ${risk === r
-                      ? 'bg-primary-500 text-white border-primary-500'
+                      ? 'bg-primary-700 text-white border-primary-700'
                       : 'bg-slate-100 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-500'}`}>
                     {r}
                   </button>
@@ -138,7 +138,7 @@ export default function ReferralFraudDashboard() {
             <AdminTableSkeleton />
           ) : rows.length === 0 ? (
             <div className="min-h-[30vh] flex flex-col items-center justify-center text-center">
-              <ShieldCheck className="w-14 h-14 text-primary-500 mb-4" />
+              <ShieldCheck className="w-14 h-14 text-primary-700 mb-4" />
               <div className="text-lg font-black uppercase tracking-tight">No suspicious referrers</div>
               <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">Nothing matched the current filter.</div>
             </div>
@@ -185,7 +185,7 @@ export default function ReferralFraudDashboard() {
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">invites</div>
                           </div>
                           <div className="text-center">
-                            <div className="text-lg font-black text-primary-500">{inr(u.referralEarnings)}</div>
+                            <div className="text-lg font-black text-primary-700">{inr(u.referralEarnings)}</div>
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">earned</div>
                           </div>
                           <button onClick={() => setExpanded(open ? null : u._id)}

@@ -37,17 +37,17 @@ const CookieConsent = () => {
             <div className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
                 {/* Icon & Message */}
                 <div className="flex items-center gap-6 text-center lg:text-left">
-                    <div className="w-12 h-12 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center flex-shrink-0 shadow-aajexam-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform hidden sm:flex">
+                    <div className="w-12 h-12 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center flex-shrink-0 shadow-aajexam-primary border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform hidden sm:flex">
                         <FaCookie className="text-white text-xl" />
                     </div>
                     <div className="flex-1">
                         <h3 className="text-sm lg:text-md font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tighter">
-                            We use <span className="text-primary-700 dark:text-primary-500">cookies</span>
+                            We use <span className="text-primary-700">cookies</span>
                         </h3>
                         <p className="text-[10px] lg:text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide leading-tight">
                             Cookies help us remember your login and personalise your experience.
                             See our {' '}
-                            <Link href="/privacy" className="text-primary-700 dark:text-primary-500 hover:underline transition-colors font-black">
+                            <Link href="/privacy" className="text-primary-700 hover:underline transition-colors font-black">
                                 Privacy Policy
                             </Link>
                         </p>

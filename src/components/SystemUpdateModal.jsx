@@ -32,11 +32,11 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border-2 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* HEADER */}
-        <div className="bg-primary-500 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-aajexam-primary border-b-2 border-white/20">
+        <div className="bg-primary-700 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-aajexam-primary border-b-2 border-white/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-xl transform -rotate-6">
-                <FaGraduationCap className="text-3xl text-primary-700 dark:text-primary-500" />
+                <FaGraduationCap className="text-3xl text-primary-700" />
               </div>
               <div>
                 <h2 className="text-xl lg:text-2xl font-black uppercase tracking-tighter">AajExam — Exam Focused!</h2>
@@ -75,35 +75,35 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 <span className="text-xl">📝</span>
                 <div>
                   <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Real Exam Patterns</p>
-                  <p className="text-xs text-primary-600 dark:text-primary-400">SSC, UPSC, Banking, Railway & more</p>
+                  <p className="text-xs text-primary-700">SSC, UPSC, Banking, Railway & more</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📊</span>
                 <div>
                   <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Full-Length Mock Tests</p>
-                  <p className="text-xs text-primary-600 dark:text-primary-400">With section-wise analysis</p>
+                  <p className="text-xs text-primary-700">With section-wise analysis</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">🏆</span>
                 <div>
                   <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Test Leaderboards</p>
-                  <p className="text-xs text-primary-600 dark:text-primary-400">Compare your rank with others</p>
+                  <p className="text-xs text-primary-700">Compare your rank with others</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📈</span>
                 <div>
                   <p className="font-bold text-primary-800 dark:text-primary-200 text-sm">Detailed Analytics</p>
-                  <p className="text-xs text-primary-600 dark:text-primary-400">Track accuracy, speed & progress</p>
+                  <p className="text-xs text-primary-700">Track accuracy, speed & progress</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* DATA SAFE NOTICE */}
-          <div className="bg-primary-500 text-white rounded-[2rem] p-6 shadow-aajexam-secondary border-2 border-white dark:border-slate-700">
+          <div className="bg-primary-700 text-white rounded-[2rem] p-6 shadow-aajexam-secondary border-2 border-white dark:border-slate-700">
             <h3 className="text-sm lg:text-lg font-black mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="mr-3" /> Your Data is Safe
             </h3>
@@ -150,7 +150,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
             </p>
             <button
               onClick={handleClose}
-              className="bg-primary-500 text-white px-12 py-5 rounded-[1.5rem] text-xs font-black uppercase tracking-widest transition-all active:translate-y-1 shadow-aajexam-primary"
+              className="bg-primary-700 text-white px-12 py-5 rounded-[1.5rem] text-xs font-black uppercase tracking-widest transition-all active:translate-y-1 shadow-aajexam-primary"
             >
               Start Preparing!
             </button>

@@ -182,11 +182,11 @@ const StudentSidebar = () => {
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                       }`}>
                       {active && (
-                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-500 shadow-aajexam-primary rounded-lg lg:rounded-xl" />
+                        <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-primary-700 shadow-aajexam-primary rounded-lg lg:rounded-xl" />
                       )}
                       <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
-                        <span className="text-[11px] font-bold tracking-wide uppercase">{item.label}</span>
+                        <span className="text-[12px] lg:text-[14px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
                       {item.isPro && (
                         <ProBadge size="xs" className="relative z-10" />

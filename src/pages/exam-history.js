@@ -69,7 +69,7 @@ const ExamHistoryPage = () => {
 
    return (
       <MobileAppWrapper title="Exam History">
-         <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
             <Seo title="Exam History - AajExam" noIndex={true} />
 
             <div className="py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
@@ -82,16 +82,16 @@ const ExamHistoryPage = () => {
 
                      <div className="flex flex-wrap gap-4 justify-center">
                         <div className="relative group">
-                           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-500 transition-colors" />
+                           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-700 transition-colors" />
                            <input
-                              className="pl-12 pr-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-bold outline-none focus:border-primary-500"
+                              className="pl-12 pr-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
                               placeholder="Search tests..."
                               value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
                               onKeyDown={(e) => e.key === 'Enter' && fetchHistory()}
                            />
                         </div>
                         <select
-                           className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-500"
+                           className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                            value={filter} onChange={e => setFilter(e.target.value)}
                         >
                            <option value="">All</option>
@@ -116,7 +116,7 @@ const ExamHistoryPage = () => {
                                  <Card className="p-6 group cursor-pointer hover:shadow-2xl transition-all duration-500 border-2" onClick={() => router.push(`/govt-exams/test/${attempt.practiceTest}/result?attempt=${attempt._id}`)}>
                                     <div className="space-y-6">
                                        <div className="flex justify-between items-start">
-                                          <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                                          <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl group-hover:bg-primary-700 group-hover:text-white transition-colors">
                                              <GraduationCap className="w-6 h-6" />
                                           </div>
                                           <div className={`w-10 h-10 rounded-full border-2 border-${rank.color}-500/20 flex items-center justify-center text-${rank.color}-500 font-black font-outfit text-xl shadow-sm`}>
@@ -144,7 +144,7 @@ const ExamHistoryPage = () => {
                                           </div>
                                           <div className="space-y-1">
                                              <span className="text-[8px] font-black text-gray-400">Rank</span>
-                                             <p className="text-sm font-black text-primary-500">#{attempt.rank || 'N/A'}</p>
+                                             <p className="text-sm font-black text-primary-700">#{attempt.rank || 'N/A'}</p>
                                           </div>
                                        </div>
 

@@ -26,7 +26,7 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
   return (
     <div className="min-h-screen pb-24">
       <div className="py-0 lg:py-6">
-        <button onClick={() => router.back()} className="hidden lg:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
+        <button onClick={() => router.back()} className="hidden lg:flex items-center gap-1 text-sm text-primary-700 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
         <div className="bg-black dark:bg-white rounded-2xl p-6 text-white dark:text-black mb-5">
@@ -43,13 +43,13 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
           {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No quizzes yet</p></div> : quizzes.map((quiz, idx) => (
             <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
               onClick={() => router.push(`/quiz/${quiz.slug}`)}
-              className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-500 transition-all">
-              <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-500 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+              className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-700 transition-all">
+              <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
                 <p className="text-xs text-slate-400">{quiz.topic?.name || ''}{quiz.applicableExams?.length ? ` · ${quiz.applicableExams.map(e => e.name).join(', ')}` : ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
               </div>
-              <span className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-2 rounded-lg uppercase">Start</span>
+              <span className="text-[10px] font-black text-primary-700 bg-primary-50 px-3 py-2 rounded-lg uppercase">Start</span>
             </motion.div>
           ))}
         </div>

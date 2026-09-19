@@ -34,7 +34,7 @@ const NewsSkeleton = () => (
 // ─── Type config ───────────────────────────────────────────────────────────────
 const typeConfig = {
   notification: { icon: Bell,         color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',       label: 'Notification' },
-  admit_card:   { icon: CreditCard,   color: 'bg-primary-500', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
+  admit_card:   { icon: CreditCard,   color: 'bg-primary-700', chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
   result:       { icon: BarChart2,    color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Result' },
   answer_key:   { icon: Key,          color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50', label: 'Answer Key' },
   vacancy:      { icon: Users,        color: 'bg-black dark:bg-white',     chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50',     label: 'Vacancy' },

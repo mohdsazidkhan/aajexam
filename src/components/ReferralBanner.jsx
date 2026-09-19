@@ -56,10 +56,10 @@ const ReferralBanner = ({ user }) => {
       {/* Header */}
       <div className="text-center mb-10">
         <div className="w-20 h-20 bg-slate-50 dark:bg-slate-700 rounded-[2rem] flex items-center justify-center shadow-inner border-2 border-slate-100 dark:border-slate-600 mx-auto mb-6">
-          <Target className="w-10 h-10 text-primary-500" />
+          <Target className="w-10 h-10 text-primary-700" />
         </div>
         <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
-          Invite <span className="text-primary-700 dark:text-primary-500">& Earn!</span>
+          Invite <span className="text-primary-700">& Earn!</span>
         </h3>
         <p className="text-slate-700 dark:text-gray-400 text-sm font-bold uppercase tracking-widest">
           Share with friends and unlock rewards
@@ -68,7 +68,7 @@ const ReferralBanner = ({ user }) => {
 
       <div className="bg-white dark:bg-slate-900/50 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700">
         <div className="text-center">
-          <div className="text-5xl font-black text-primary-700 dark:text-primary-500 mb-1">
+          <div className="text-5xl font-black text-primary-700 mb-1">
             {referralCount}
           </div>
           <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">
@@ -89,7 +89,7 @@ const ReferralBanner = ({ user }) => {
               {referralCode}
             </div>
             <button
-              className="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-aajexam-primary transition-all active:translate-y-1 flex items-center gap-3"
+              className="px-8 py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-aajexam-primary transition-all active:translate-y-1 flex items-center gap-3"
               onClick={copyReferralCode}
             >
               <Copy className="w-5 h-5" />
@@ -104,7 +104,7 @@ const ReferralBanner = ({ user }) => {
       <div className="space-y-4">
         <button
           onClick={() => setShowShareOptions(!showShareOptions)}
-          className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-aajexam-secondary transition-all active:translate-y-1 flex items-center justify-center gap-3"
+          className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-aajexam-secondary transition-all active:translate-y-1 flex items-center justify-center gap-3"
         >
           <Share2 className="w-5 h-5" />
           Share with Friends
@@ -114,7 +114,7 @@ const ReferralBanner = ({ user }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
             <button
               onClick={shareOnWhatsApp}
-              className="bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+              className="bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3"
             >
               <Smartphone className="w-5 h-5" />
               WhatsApp

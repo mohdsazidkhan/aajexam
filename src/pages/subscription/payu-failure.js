@@ -175,7 +175,7 @@ const PayuFailure = () => {
                   'Contact support if you were charged but the plan was not activated.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-primary-500 shrink-0" />
+                    <span className="mt-2 h-2 w-2 rounded-full bg-primary-700 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -185,7 +185,7 @@ const PayuFailure = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 onClick={() => router.push('/subscription')}
-                className="w-full bg-primary-500 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-lg flex items-center justify-center gap-3"
+                className="w-full bg-primary-700 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-lg flex items-center justify-center gap-3"
               >
                 <RefreshCcw className="w-5 h-5" />
                 Try again

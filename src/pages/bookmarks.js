@@ -39,7 +39,7 @@ const TYPE_CONFIG = {
 };
 
 const DIFFICULTY_STYLES = {
-   easy: 'text-primary-600 bg-primary-50 dark:bg-primary-900/20',
+   easy: 'text-primary-700 bg-primary-50 dark:bg-primary-900/20',
    medium: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20',
    hard: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20',
 };
@@ -99,7 +99,7 @@ const BookmarksPage = () => {
 
    return (
       <MobileAppWrapper title="Bookmarks">
-         <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
             <Seo title="Bookmarks - AajExam" noIndex={true} />
 
             <div className="container mx-auto py-2 lg:py-4 space-y-3 lg:space-y-4 mt-0">
@@ -147,7 +147,7 @@ const BookmarksPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleUnbookmark(reel._id); }}
-                                          className="p-1.5 text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"
+                                          className="p-1.5 text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"
                                           title="Remove bookmark"
                                        >
                                           <BookmarkCheck className="w-5 h-5" />
@@ -172,7 +172,7 @@ const BookmarksPage = () => {
                                     <div className="space-y-1">
                                        <p className="font-black text-sm lg:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
                                        {reel.type === 'question' && reel.userInteraction?.answered && (
-                                          <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-primary-600' : 'text-black dark:text-white'}`}>
+                                          <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-primary-700' : 'text-black dark:text-white'}`}>
                                              {reel.userInteraction.isCorrect ? <CheckCircle className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
                                              {reel.userInteraction.isCorrect ? 'Answered correctly' : 'Answered incorrectly'}
                                           </div>

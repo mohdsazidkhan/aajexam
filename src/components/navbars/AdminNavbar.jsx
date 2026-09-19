@@ -72,7 +72,7 @@ const AdminNavbar = () => {
               className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${
                 isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-transparent lg:bg-primary-500 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-aajexam-primary lg:hover:scale-105'
+                  : 'bg-transparent lg:bg-primary-700 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-aajexam-primary lg:hover:scale-105'
               }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <Menu className="w-5 h-5 lg:w-6 lg:h-6" />}
@@ -81,7 +81,7 @@ const AdminNavbar = () => {
             {/* Logo — desktop only */}
             <Link href="/admin/dashboard" className="hidden lg:flex items-center">
               <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-600">EXAM</span>
+                AAJ<span className="text-primary-700">EXAM</span>
               </span>
             </Link>
           </div>
@@ -89,7 +89,7 @@ const AdminNavbar = () => {
           {/* Center — Logo on mobile */}
           <Link href="/admin/dashboard" className="lg:hidden absolute left-1/2 -translate-x-1/2">
             <span className="text-lg font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-              AAJ<span className="text-primary-600">EXAM</span>
+              AAJ<span className="text-primary-700">EXAM</span>
             </span>
           </Link>
 
@@ -99,14 +99,14 @@ const AdminNavbar = () => {
             <button
               onClick={toggleTheme}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="hidden lg:flex w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-500 transition-all"
+              className="hidden lg:flex w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-700 transition-all"
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
             {/* Notification Badge — desktop only */}
             <Link href="/admin/notifications" className="relative hidden lg:block">
-              <button className="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary-500/10 hover:text-primary-500 transition-all border border-slate-200/50 dark:border-white/5">
+              <button className="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary-500/10 hover:text-primary-700 transition-all border border-slate-200/50 dark:border-white/5">
                 <Bell className="w-5 h-5" />
                 {notifCount > 0 && (
                   <span className="absolute -top-1 -right-1 w-5 h-5 bg-black dark:bg-white text-white dark:text-black text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-950 animate-pulse">
@@ -123,7 +123,7 @@ const AdminNavbar = () => {
               aria-expanded={showProfileMenu}
               className="p-0.5 rounded-full"
             >
-              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-primary-500 p-[2px]">
+              <div className="w-8 h-8 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-primary-700 p-[2px]">
                 <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xs font-black uppercase">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
@@ -148,12 +148,12 @@ const AdminNavbar = () => {
               {/* User info */}
               <div className="px-3 py-2.5 mb-1 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50">
                 <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{user?.name || 'Admin'}</p>
-                <p className="text-[10px] text-slate-400 truncate">{user?.email || ''}</p>
+                <p className="text-[12px] text-slate-400 truncate">{user?.email || ''}</p>
               </div>
 
               {/* Admin badge — mobile */}
               <div className="lg:hidden flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-900/10 mb-1">
-                <ShieldCheck className="w-4 h-4 text-primary-500" />
+                <ShieldCheck className="w-4 h-4 text-primary-700" />
                 <span className="text-sm font-bold text-primary-700 dark:text-primary-400">Admin Panel</span>
               </div>
 

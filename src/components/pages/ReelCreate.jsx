@@ -229,10 +229,10 @@ const ReelCreate = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-black bg-primary-500 text-white uppercase tracking-widest">{type === 'current_affairs' ? 'CA' : type}</span>
+                  <span className="px-3 py-1 rounded-full text-[10px] font-black bg-primary-700 text-white uppercase tracking-widest">{type === 'current_affairs' ? 'CA' : type}</span>
                   <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">New Reel</p>
                 </div>
-                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 hover:text-primary-700 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">Change Type</button>
+                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-700 hover:text-primary-700 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">Change Type</button>
               </div>
 
               {/* Common */}
@@ -273,7 +273,7 @@ const ReelCreate = () => {
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-500 bg-primary-500 text-white' : 'border-slate-300 text-slate-400'}`}>
+                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-700 bg-primary-700 text-white' : 'border-slate-300 text-slate-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
@@ -383,7 +383,7 @@ const ReelCreate = () => {
                       <div className="flex-1 min-w-0">
                         <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white dark:text-white' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
                         <div className="flex items-center gap-2">
-                          <p className="text-[10px] text-slate-400 truncate">{a.artist}</p>
+                          <p className="text-[12px] text-slate-400 truncate">{a.artist}</p>
                           {a.audioDuration && (
                             <span className="text-[10px] font-medium text-slate-400 tabular-nums">{formatAudioDuration(a.audioDuration)}</span>
                           )}

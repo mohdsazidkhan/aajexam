@@ -104,7 +104,7 @@ const BlogsPage = () => {
               {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
               <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
             </div>
-            <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
+            <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
               {blog.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
@@ -116,7 +116,7 @@ const BlogsPage = () => {
                 <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
                 <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {blog.readingTime || 5} min</span>
               </div>
-              <span className="text-primary-600 dark:text-primary-400 text-xs font-bold">Read More</span>
+              <span className="text-primary-700 text-xs font-bold">Read More</span>
             </div>
             {blog.exam && (
               <div className="mt-3">
@@ -149,7 +149,7 @@ const BlogsPage = () => {
                 </span>
               )}
             </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors mb-2">
               {blog.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">{truncateText(blog.excerpt || blog.content, 200)}</p>
@@ -159,7 +159,7 @@ const BlogsPage = () => {
                 <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
                 <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {blog.readingTime || 5} min read</span>
               </div>
-              <span className="text-primary-600 dark:text-primary-400 text-xs font-bold">Read More</span>
+              <span className="text-primary-700 text-xs font-bold">Read More</span>
             </div>
           </div>
         </Link>
@@ -187,11 +187,11 @@ const BlogsPage = () => {
             {/* View Toggle */}
             <div className="flex items-center gap-2">
               <button onClick={() => setViewMode('grid')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'grid' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'grid' ? 'bg-primary-700 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
                 Grid
               </button>
               <button onClick={() => setViewMode('list')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'list' ? 'bg-primary-500 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'list' ? 'bg-primary-700 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
                 List
               </button>
             </div>
@@ -208,7 +208,7 @@ const BlogsPage = () => {
             {/* Featured Toggle */}
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="featured" checked={filters.featured} onChange={handleFilterChange}
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
+                className="h-4 w-4 text-primary-700 focus:ring-primary-500 border-gray-300 rounded" />
               <span className="text-xs font-bold text-gray-600 dark:text-gray-300">Featured</span>
             </label>
 
@@ -216,7 +216,7 @@ const BlogsPage = () => {
             <form onSubmit={handleSearch} className="relative">
               <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search blogs..."
                 className="w-full lg:w-64 px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white" />
-              <button type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-500 text-white rounded-r-lg">
+              <button type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-700 text-white rounded-r-lg">
                 <Search className="w-4 h-4" />
               </button>
             </form>

@@ -145,9 +145,9 @@ const AdminQuizQuestions = () => {
                   </div>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">{q.exam?.name}</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary-100 text-primary-600">{q.subject?.name}</span>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary-100 text-primary-700">{q.subject?.name}</span>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">{q.topic?.name}</span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-primary-100 text-primary-600' : q.difficulty === 'hard' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{q.difficulty}</span>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${q.difficulty === 'easy' ? 'bg-primary-100 text-primary-700' : q.difficulty === 'hard' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{q.difficulty}</span>
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">

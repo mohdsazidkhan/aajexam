@@ -90,7 +90,7 @@ const DashboardPage = () => {
   const sections = [
     {
       title: 'USERS & ENGAGEMENT',
-      accent: 'text-primary-600',
+      accent: 'text-primary-700',
       cards: [
         { title: 'Total Students', count: stats.students || 0, link: '/admin/students', icon: Users, subtitle: `${stats.newStudentsThisMonth || 0} new this month` },
         { title: 'New Today', count: stats.newStudentsToday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups today' },
@@ -103,7 +103,7 @@ const DashboardPage = () => {
     },
     {
       title: 'EXAMS & PRACTICE TESTS',
-      accent: 'text-primary-600',
+      accent: 'text-primary-700',
       cards: [
         { title: 'Exam Categories', count: stats.examCategories || 0, link: '/admin/govt-exams', icon: Layers, subtitle: 'Central & State' },
         { title: 'Exams', count: stats.exams || 0, link: '/admin/govt-exams/exams', icon: BookOpen, subtitle: `${stats.activeExams || 0} active` },
@@ -114,7 +114,7 @@ const DashboardPage = () => {
     },
     {
       title: 'QUIZ BANK',
-      accent: 'text-primary-600',
+      accent: 'text-primary-700',
       cards: [
         { title: 'Quizzes', count: stats.quizzes || 0, link: '/admin/quiz/quizzes', icon: Sparkles, subtitle: `${stats.publishedQuizzes || 0} published` },
         { title: 'Questions', count: stats.questions || 0, link: '/admin/quiz/questions', icon: HelpCircle, subtitle: `${stats.activeQuestions || 0} active` },
@@ -136,7 +136,7 @@ const DashboardPage = () => {
     },
     {
       title: 'FINANCE & PAYOUTS',
-      accent: 'text-primary-600',
+      accent: 'text-primary-700',
       cards: [
         { title: 'Total Revenue', count: formatINR(stats.totalRevenue), link: '/admin/payment-transactions', icon: Banknote, subtitle: 'Lifetime' },
         { title: 'Revenue Today', count: formatINR(stats.revenueToday), link: '/admin/payment-transactions', icon: TrendingUp, subtitle: formatINR(stats.revenueThisMonth) + ' this month' },
@@ -183,7 +183,7 @@ const DashboardPage = () => {
         className="mb-6"
       >
         <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
-          ADMIN <span className="text-primary-600">DASHBOARD</span>
+          ADMIN <span className="text-primary-700">DASHBOARD</span>
         </h1>
         <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-2xl leading-relaxed">
           Your complete overview of platform activity, revenue, and content at a glance.
@@ -252,16 +252,16 @@ const DashboardPage = () => {
                 >
                   <div className="p-3 lg:p-5 flex flex-col h-full relative">
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-2xl bg-primary-500/10 text-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
+                      <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-2xl bg-primary-500/10 text-primary-700 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
                         <card.icon className="w-5 h-5 lg:w-7 lg:h-7" />
                       </div>
-                      <div className="text-md lg:text-2xl font-black tracking-tighter text-primary-600 dark:text-primary-400 tabular-nums italic">
+                      <div className="text-md lg:text-2xl font-black tracking-tighter text-primary-700 tabular-nums italic">
                         {card.count}
                       </div>
                     </div>
                     <div className="mt-auto">
                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'METRIC'}</p>
-                      <h2 className="text-sm lg:text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors leading-none">
+                      <h2 className="text-sm lg:text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors leading-none">
                         {card.title}
                       </h2>
                     </div>
@@ -283,13 +283,13 @@ const DashboardPage = () => {
         className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] p-0 lg:p-4 shadow-2xl border-none relative overflow-hidden"
       >
         <div className="flex items-center gap-3 lg:gap-6 mb-4 px-0 lg:px-6">
-          <div className="w-14 h-14 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-600 shadow-xl border border-primary-500/20">
+          <div className="w-14 h-14 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-700 shadow-xl border border-primary-500/20">
             <Zap className="w-7 h-7 fill-current" />
           </div>
           <div>
-            <span className="text-[10px] font-black text-primary-600 uppercase tracking-[0.4em] mb-1 block">SHORTCUTS</span>
+            <span className="text-[10px] font-black text-primary-700 uppercase tracking-[0.4em] mb-1 block">SHORTCUTS</span>
             <h2 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-              QUICK <span className="text-primary-600">LINKS</span>
+              QUICK <span className="text-primary-700">LINKS</span>
             </h2>
           </div>
         </div>
@@ -318,14 +318,14 @@ const DashboardPage = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Link href={action.href} className="flex items-center p-3 lg:p-6 rounded-lg lg:rounded-xl lg:rounded-[2rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-2 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-xl group h-full">
-                <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-lg lg:rounded-[1.25rem] flex items-center justify-center mr-5 shadow-inner group-hover:rotate-6 transition-transform shrink-0">
+                <div className="w-14 h-14 bg-primary-100 text-primary-700 rounded-lg lg:rounded-[1.25rem] flex items-center justify-center mr-5 shadow-inner group-hover:rotate-6 transition-transform shrink-0">
                   <action.icon className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="font-black uppercase text-[10px] tracking-[0.2em] text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors leading-none mb-2">{action.label}</h3>
+                  <h3 className="font-black uppercase text-[10px] tracking-[0.2em] text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors leading-none mb-2">{action.label}</h3>
                   <p className="text-[9px] font-bold uppercase text-slate-400 dark:text-slate-500 leading-relaxed">{action.desc}</p>
                 </div>
-                <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-primary-600 group-hover:translate-x-2 transition-all" />
+                <ChevronRight className="w-4 h-4 ml-auto text-slate-300 group-hover:text-primary-700 group-hover:translate-x-2 transition-all" />
               </Link>
             </motion.div>
           ))}

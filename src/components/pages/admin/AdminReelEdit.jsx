@@ -371,7 +371,7 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-3">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
                           className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
-                            ? 'border-primary-500 bg-primary-500 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}>
+                            ? 'border-primary-700 bg-primary-700 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input type="text" value={opt}
@@ -379,7 +379,7 @@ const AdminReelEdit = () => {
                           placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
                       </div>
                     ))}
-                    <p className="text-xs text-primary-600 dark:text-primary-400">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                    <p className="text-xs text-primary-700">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                   </div>
                   <div>
                     <label className={labelClass}>Explanation</label>

@@ -49,9 +49,9 @@ const AdminNotes = () => {
 
   if (loading) return <AdminTableSkeleton />;
 
-  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
+  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
-  const difficultyColor = (d) => d === 'advanced' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : d === 'intermediate' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
+  const difficultyColor = (d) => d === 'advanced' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : d === 'intermediate' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-700';
 
   return (
     <AdminRoute>
@@ -59,8 +59,8 @@ const AdminNotes = () => {
         <Head><title>Manage Notes - Admin</title></Head>
         <div className="py-0 lg:py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><StickyNote className="w-6 h-6 text-primary-500" /> Notes & Formulas</h1>
-            <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-500 text-white'}`}>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><StickyNote className="w-6 h-6 text-primary-700" /> Notes & Formulas</h1>
+            <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-700 text-white'}`}>
               {showForm ? <><Trash2 className="w-3 h-3" /> Cancel</> : <><Plus className="w-3 h-3" /> Add Note</>}
             </button>
           </div>
@@ -115,7 +115,7 @@ const AdminNotes = () => {
                 </div>
               </div>
               <div className="p-5 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3">
-                <button onClick={handleSave} className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+                <button onClick={handleSave} className="px-6 py-2.5 bg-primary-700 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
                 <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg lg:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
               </div>
             </Card>
@@ -131,7 +131,7 @@ const AdminNotes = () => {
                 { mode: 'grid', icon: LayoutGrid, label: 'Grid' },
               ].map(({ mode, icon: Icon, label }) => (
                 <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-600 dark:text-primary-400' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
+                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
                   <Icon className="w-4 h-4" />
                 </button>
               ))}
@@ -167,7 +167,7 @@ const AdminNotes = () => {
                           {n.tags?.length > 0 && <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 truncate">{n.tags.join(', ')}</p>}
                         </td>
                         <td className="px-4 py-3">
-                          <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-wide whitespace-nowrap">{n.noteType?.replace('_', ' ')}</span>
+                          <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-700 uppercase tracking-wide whitespace-nowrap">{n.noteType?.replace('_', ' ')}</span>
                         </td>
                         <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">{n.subject?.name || '—'}</td>
                         <td className="px-4 py-3">
@@ -195,7 +195,7 @@ const AdminNotes = () => {
                 <Card key={n._id || i} className="!p-4 flex flex-col justify-between gap-3">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-wide">{n.noteType?.replace('_', ' ')}</span>
+                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-700 uppercase tracking-wide">{n.noteType?.replace('_', ' ')}</span>
                       <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Eye className="w-3 h-3" /> {n.views || 0}</span>
                     </div>
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">{n.title}</h3>
@@ -218,7 +218,7 @@ const AdminNotes = () => {
                 <Card key={n._id || i} className="!p-4 flex items-center gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-wide">{n.noteType?.replace('_', ' ')}</span>
+                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-700 uppercase tracking-wide">{n.noteType?.replace('_', ' ')}</span>
                       <span className="text-[11px] text-slate-400 dark:text-slate-500">{n.subject?.name}</span>
                       <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${difficultyColor(n.difficulty)}`}>{n.difficulty}</span>
                       <span className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Eye className="w-3 h-3" /> {n.views || 0}</span>
@@ -253,7 +253,7 @@ const AdminNotes = () => {
                     <span key={`dot-${i}`} className="px-1 text-slate-400 text-xs">...</span>
                   ) : (
                     <button key={p} onClick={() => setPage(p)}
-                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-700 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                       {p}
                     </button>
                   )

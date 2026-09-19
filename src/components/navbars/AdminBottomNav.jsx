@@ -22,10 +22,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const REEL_TYPES = [
   { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-black dark:bg-white', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-500', desc: 'Quick fact or one-liner' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-700', desc: 'Quick fact or one-liner' },
   { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-black dark:bg-white', desc: 'Shortcut or formula' },
   { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-black dark:bg-white', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-500', desc: 'Community poll' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-700', desc: 'Community poll' },
 ];
 
 const AdminBottomNav = () => {
@@ -115,7 +115,7 @@ const AdminBottomNav = () => {
                 onClick={() => setShowCreate(true)}
                 className="flex items-center justify-center mb-1 px-2"
               >
-                <div className="w-11 h-11 rounded-2xl bg-primary-500 flex items-center justify-center shadow-lg shadow-primary-500/30">
+                <div className="w-11 h-11 rounded-2xl bg-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30">
                   <Plus className="w-6 h-6 text-white" />
                 </div>
               </button>

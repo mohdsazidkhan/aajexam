@@ -50,7 +50,7 @@ function Error({ statusCode }) {
           <div className="flex flex-col gap-4">
             <button
               onClick={handleGoHome}
-              className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+              className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
               Go to Home
             </button>
@@ -64,7 +64,7 @@ function Error({ statusCode }) {
               {statusCode !== 404 && (
                 <button
                   onClick={() => window.location.reload()}
-                  className="flex-1 bg-primary-500 hover:bg-primary-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-aajexam border-b-2 border-primary-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
+                  className="flex-1 bg-primary-700 hover:bg-primary-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-aajexam border-b-2 border-primary-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
                 >
                   Try Again
                 </button>

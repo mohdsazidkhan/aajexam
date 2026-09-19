@@ -101,7 +101,7 @@ const AdminWithdrawRequests = () => {
     {
       key: 'user', header: 'Student', render: (_, req) => (
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary-500/10 text-primary-500 rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
+          <div className="w-10 h-10 bg-primary-500/10 text-primary-700 rounded-full flex items-center justify-center font-black text-xs uppercase">{req.userId?.name?.[0] || 'U'}</div>
           <div>
             <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1">{req.userId?.name || 'N/A'}</div>
             <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">{req.userId?.email || 'N/A'}</div>
@@ -112,7 +112,7 @@ const AdminWithdrawRequests = () => {
     {
       key: 'amount', header: 'Amount', render: (_, req) => (
         <div className="flex flex-col">
-          <span className="text-lg font-black text-primary-600 dark:text-primary-500 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
+          <span className="text-lg font-black text-primary-700 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
         </div>
       )
@@ -122,7 +122,7 @@ const AdminWithdrawRequests = () => {
         <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest space-y-1">
           {req.upi ? (
             <div className="flex items-center gap-2 p-2 bg-primary-500/5 rounded-lg border border-primary-500/10">
-              <Smartphone className="w-3 h-3 text-primary-500" />
+              <Smartphone className="w-3 h-3 text-primary-700" />
               <span className="font-mono text-[10px]">{req.upi}</span>
             </div>
           ) : req.bankDetail ? (
@@ -139,9 +139,9 @@ const AdminWithdrawRequests = () => {
       key: 'status', header: 'Status', render: (_, req) => (
         <div className="space-y-3">
           <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-              req.status === 'approved' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' :
+              req.status === 'approved' ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' :
                 req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-                  'bg-primary-500/10 text-primary-500 border-primary-500/20'
+                  'bg-primary-500/10 text-primary-700 border-primary-500/20'
             }`}>
             {req.status === 'pending' && <Clock className="w-3 h-3" />}
             {req.status === 'approved' && <CheckCircle2 className="w-3 h-3" />}
@@ -151,7 +151,7 @@ const AdminWithdrawRequests = () => {
           </div>
           {req.status === 'pending' && (
             <div className="flex gap-2">
-              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-500 text-white rounded-lg shadow-lg"><CheckCircle2 className="w-4 h-4" /></motion.button>
+              <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-700 text-white rounded-lg shadow-lg"><CheckCircle2 className="w-4 h-4" /></motion.button>
               <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-black dark:bg-white text-white dark:text-black rounded-lg shadow-lg"><XCircle className="w-4 h-4" /></motion.button>
             </div>
           )}
@@ -205,13 +205,13 @@ const AdminWithdrawRequests = () => {
               key={opt.value}
               onClick={() => { setStatus(opt.value); setPage(1); }}
               className={`w-full lg:w-auto px-4 lg:px-8 py-5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 transition-all flex items-center gap-4 relative group overflow-hidden ${status === opt.value
-                  ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-500 shadow-2xl'
+                  ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-700 shadow-2xl'
                   : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-primary-500/30'
                 }`}
             >
-              <opt.icon className={`w-5 h-5 ${status === opt.value ? 'text-primary-600 dark:text-white' : 'text-slate-400 group-hover:text-primary-600'}`} />
+              <opt.icon className={`w-5 h-5 ${status === opt.value ? 'text-primary-700 dark:text-white' : 'text-slate-400 group-hover:text-primary-700'}`} />
               <div className="text-left">
-                <div className={`text-[10px] font-black uppercase tracking-widest leading-none mb-1 ${status === opt.value ? 'text-primary-600 dark:text-white' : 'text-slate-400'}`}>{opt.label}</div>
+                <div className={`text-[10px] font-black uppercase tracking-widest leading-none mb-1 ${status === opt.value ? 'text-primary-700 dark:text-white' : 'text-slate-400'}`}>{opt.label}</div>
                 <div className={`text-xs font-black italic tracking-tighter leading-none ${status === opt.value ? 'text-slate-900 dark:text-white' : 'text-slate-300'}`}>
                   {allItems.filter(i => opt.value === 'all' ? true : i.status === opt.value).length} requests
                 </div>
@@ -240,7 +240,7 @@ const AdminWithdrawRequests = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                   {items.map((req, idx) => (
                     <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
-                      <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
+                      <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-700" />
                       <div className="flex justify-between items-start mb-4 lg:mb-8">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-black italic shadow-lg text-xs">{req.userId?.name?.[0] || 'U'}</div>
@@ -249,15 +249,15 @@ const AdminWithdrawRequests = () => {
                             <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} wallet</div>
                           </div>
                         </div>
-                        <div className={`px-3 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
+                        <div className={`px-3 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-700 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                       </div>
 
                       <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border-2 border-slate-100 dark:border-white/5">
                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Withdrawal Amount</div>
-                        <div className="text-3xl font-black text-primary-600 dark:text-primary-500 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
+                        <div className="text-3xl font-black text-primary-700 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
                         <div className="pt-4 border-t-2 border-slate-100 dark:border-white/5">
                           {req.upi ? (
-                            <div className="flex items-center gap-3"><Smartphone className="w-4 h-4 text-primary-500" /><span className="text-xs font-black font-mono text-slate-600 dark:text-slate-300">{req.upi}</span></div>
+                            <div className="flex items-center gap-3"><Smartphone className="w-4 h-4 text-primary-700" /><span className="text-xs font-black font-mono text-slate-600 dark:text-slate-300">{req.upi}</span></div>
                           ) : req.bankDetail ? (
                             <div className="space-y-1">
                               <div className="flex items-center gap-3 text-[10px] font-black text-black dark:text-white"><Landmark className="w-4 h-4" /> {req.bankDetail.bankName}</div>
@@ -270,7 +270,7 @@ const AdminWithdrawRequests = () => {
                       <div className="flex gap-3 mt-auto">
                         {req.status === 'pending' ? (
                           <>
-                            <motion.button onClick={() => updateStatus(req._id, 'approved')} whileHover={{ scale: 1.02 }} className="flex-1 py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2"><CheckCircle2 className="w-4 h-4" /> Approve</motion.button>
+                            <motion.button onClick={() => updateStatus(req._id, 'approved')} whileHover={{ scale: 1.02 }} className="flex-1 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl flex items-center justify-center gap-2"><CheckCircle2 className="w-4 h-4" /> Approve</motion.button>
                             <motion.button onClick={() => updateStatus(req._id, 'rejected')} whileHover={{ scale: 1.02 }} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white transition-all"><XCircle className="w-5 h-5" /></motion.button>
                           </>
                         ) : req.status === 'approved' ? (

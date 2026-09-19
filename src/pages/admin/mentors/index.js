@@ -10,7 +10,7 @@ import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons
 import AdminRoute from '../../../components/AdminRoute';
 
 const statusColor = (s) => {
-  if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
+  if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-700';
   if (s === 'pending') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
   if (s === 'suspended') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
   return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
@@ -20,7 +20,7 @@ const StatusSelect = ({ mentor, onChange }) => (
   <select
     value={mentor.status}
     onChange={e => onChange(mentor._id, e.target.value, e.target.value === 'active' ? true : undefined)}
-    className="px-2 py-1.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg text-[11px] font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500"
+    className="px-2 py-1.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg text-[11px] font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-700"
   >
     <option value="pending">Pending</option>
     <option value="active">Active</option>
@@ -64,8 +64,8 @@ const AdminMentors = () => {
         <Head><title>Manage Mentors - Admin</title></Head>
         <div className="py-0 lg:py-6 space-y-4 lg:space-y-6">
           <div className="flex items-center justify-between flex-wrap gap-3">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-500" /> Mentors</h1>
-            <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500">
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-700" /> Mentors</h1>
+            <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-700">
               <option value="">All</option>
               <option value="pending">Pending</option>
               <option value="active">Active</option>
@@ -84,7 +84,7 @@ const AdminMentors = () => {
                 { mode: 'grid', icon: LayoutGrid, label: 'Grid' },
               ].map(({ mode, icon: Icon, label }) => (
                 <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-600 dark:text-primary-400' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
+                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
                   <Icon className="w-4 h-4" />
                 </button>
               ))}
@@ -116,7 +116,7 @@ const AdminMentors = () => {
                         <td className="px-4 py-3 max-w-xs">
                           <Link href={`/admin/mentors/${m._id}`} className="flex items-center gap-2 group">
                             <div className="min-w-0">
-                              <p className="font-bold text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors truncate flex items-center gap-1.5">
+                              <p className="font-bold text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors truncate flex items-center gap-1.5">
                                 {m.user?.name || 'Unknown'}
                                 {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                               </p>
@@ -139,7 +139,7 @@ const AdminMentors = () => {
                             {m.status === 'active' && !m.isVerified && (
                               <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                             )}
-                            <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-500" /></Link>
+                            <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-700" /></Link>
                           </div>
                         </td>
                       </tr>
@@ -159,7 +159,7 @@ const AdminMentors = () => {
                       <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Star className="w-3 h-3 text-black dark:text-white" /> {m.rating?.toFixed(1) || '0.0'}</span>
                     </div>
                     <Link href={`/admin/mentors/${m._id}`} className="group">
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors flex items-center gap-1.5">
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors flex items-center gap-1.5">
                         {m.user?.name || 'Unknown'}
                         {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                       </h3>
@@ -180,7 +180,7 @@ const AdminMentors = () => {
                       {m.status === 'active' && !m.isVerified && (
                         <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                       )}
-                      <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-500" /></Link>
+                      <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-700" /></Link>
                     </div>
                   </div>
                 </Card>
@@ -198,7 +198,7 @@ const AdminMentors = () => {
                       {m.examsCleared?.length > 0 && <span className="text-[11px] text-slate-400 dark:text-slate-500">{m.examsCleared[0].examName} ({m.examsCleared[0].year})</span>}
                     </div>
                     <Link href={`/admin/mentors/${m._id}`} className="group">
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors truncate flex items-center gap-1.5">
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors truncate flex items-center gap-1.5">
                         {m.user?.name || 'Unknown'}
                         {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                       </h3>
@@ -210,7 +210,7 @@ const AdminMentors = () => {
                     {m.status === 'active' && !m.isVerified && (
                       <button onClick={() => verify(m._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-black dark:text-white" /></button>
                     )}
-                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-500" /></Link>
+                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-700" /></Link>
                   </div>
                 </Card>
               ))}
@@ -236,7 +236,7 @@ const AdminMentors = () => {
                     <span key={`dot-${i}`} className="px-1 text-slate-400 text-xs">...</span>
                   ) : (
                     <button key={p} onClick={() => setPage(p)}
-                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-700 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                       {p}
                     </button>
                   )

@@ -32,7 +32,7 @@ const PublicBottomNav = () => {
           <Link key={item.path} href={item.path} className="flex-1">
             <div className={`
               flex flex-col items-center justify-center py-3 rounded-2xl transition-all relative
-              ${isActive ? 'text-primary-700 dark:text-primary-500' : 'text-slate-600 dark:text-slate-400'}
+              ${isActive ? 'text-primary-700' : 'text-slate-600 dark:text-slate-400'}
             `}>
               <item.icon className={`w-6 h-6 mb-1 ${isActive ? 'scale-110' : ''}`} />
               <span className="text-[11px] font-black uppercase tracking-[0.1em]">{item.name}</span>

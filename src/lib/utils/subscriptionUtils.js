@@ -254,7 +254,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
     if (typeof window === 'undefined') {
       return {
         text: getSubscriptionText(subscriptionStatus),
-        textColor: 'text-primary-600',
+        textColor: 'text-primary-700',
         bgColor: 'bg-primary-50',
         borderColor: 'border-primary-200',
       };
@@ -266,7 +266,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
     if (!userInfo) {
       return {
         text: getSubscriptionText(subscriptionStatus),
-        textColor: currentTheme === 'dark' ? 'text-primary-300' : 'text-primary-600',
+        textColor: currentTheme === 'dark' ? 'text-primary-300' : 'text-primary-700',
         bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
         borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
       };
@@ -278,7 +278,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
     if (!user.subscription || subStatus === 'FREE') {
       return {
         text: getSubscriptionText(subscriptionStatus),
-        textColor: currentTheme === 'dark' ? 'text-primary-300' : 'text-primary-600',
+        textColor: currentTheme === 'dark' ? 'text-primary-300' : 'text-primary-700',
         bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
         borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
         icon: '🆓'
@@ -293,7 +293,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       if (daysLeft <= 0) {
         return {
           text: 'Expired',
-          textColor: currentTheme === 'dark' ? 'text-black dark:text-white' : 'text-primary-600',
+          textColor: currentTheme === 'dark' ? 'text-black dark:text-white' : 'text-primary-700',
           bgColor: currentTheme === 'dark' ? 'bg-black/30 dark:bg-white/30' : 'bg-slate-100 dark:bg-slate-800',
           borderColor: currentTheme === 'dark' ? 'border-black dark:border-white' : 'border-slate-200 dark:border-slate-800',
           icon: '⌛'
@@ -303,7 +303,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
       if (daysLeft <= 7) {
         return {
           text: `Expires in ${daysLeft} days`,
-          textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-600',
+          textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-700',
           bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
           borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
           icon: '⚠️'
@@ -312,7 +312,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
 
       return {
         text: 'Active',
-        textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-600',
+        textColor: currentTheme === 'dark' ? 'text-primary-400' : 'text-primary-700',
         bgColor: currentTheme === 'dark' ? 'bg-primary-900/30' : 'bg-primary-50',
         borderColor: currentTheme === 'dark' ? 'border-primary-700' : 'border-primary-200',
         icon: '✅'
@@ -322,7 +322,7 @@ export const getSubscriptionStatusTextWithTheme = (subscriptionStatus = null) =>
     const status = user.subscription.status.charAt(0).toUpperCase() + user.subscription.status.slice(1);
     return {
       text: status,
-      textColor: currentTheme === 'dark' ? 'text-black dark:text-white' : 'text-primary-600',
+      textColor: currentTheme === 'dark' ? 'text-black dark:text-white' : 'text-primary-700',
       bgColor: currentTheme === 'dark' ? 'bg-black/30 dark:bg-white/30' : 'bg-slate-100 dark:bg-slate-800',
       borderColor: currentTheme === 'dark' ? 'border-black dark:border-white' : 'border-slate-200 dark:border-slate-800',
       icon: '❌'

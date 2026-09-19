@@ -41,7 +41,7 @@ const AdminMentorDetail = () => {
       <div className="min-h-screen pb-24">
         <Head><title>{mentor.user?.name || 'Mentor'} - Admin</title></Head>
         <div className="py-0 lg:py-6 space-y-4">
-          <Link href="/admin/mentors" className="text-sm font-bold text-primary-500 flex items-center gap-1 hover:underline w-fit">
+          <Link href="/admin/mentors" className="text-sm font-bold text-primary-700 flex items-center gap-1 hover:underline w-fit">
             <ArrowLeft className="w-4 h-4" /> Back to Mentors
           </Link>
 
@@ -90,7 +90,7 @@ const AdminMentorDetail = () => {
                 <p className="text-[9px] text-slate-400 uppercase font-bold">{mentor.totalRatings || 0} Ratings</p>
               </div>
               <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
-                <Users className="w-4 h-4 text-primary-500 mx-auto mb-1" />
+                <Users className="w-4 h-4 text-primary-700 mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.helpedStudents || 0}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">Students Helped</p>
               </div>
@@ -110,7 +110,7 @@ const AdminMentorDetail = () => {
           {/* Exams Cleared */}
           {mentor.examsCleared?.length > 0 && (
             <Card className="p-5 space-y-2">
-              <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><Award className="w-4 h-4 text-primary-500" /> Exams Cleared</h2>
+              <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><Award className="w-4 h-4 text-primary-700" /> Exams Cleared</h2>
               <div className="space-y-2">
                 {mentor.examsCleared.map((e, i) => (
                   <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800 text-xs">
@@ -130,7 +130,7 @@ const AdminMentorDetail = () => {
               <h2 className="text-sm font-black text-slate-900 dark:text-white">Specialization</h2>
               <div className="flex flex-wrap gap-1.5">
                 {mentor.specialization.map((s, i) => (
-                  <span key={i} className="px-2.5 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full text-[10px] font-bold">{s}</span>
+                  <span key={i} className="px-2.5 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-700 rounded-full text-[10px] font-bold">{s}</span>
                 ))}
               </div>
             </Card>
@@ -157,7 +157,7 @@ const AdminMentorDetail = () => {
               <ul className="space-y-1.5">
                 {mentor.tips.map((t, i) => (
                   <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex gap-2">
-                    <span className="text-primary-500 font-black">•</span> {t}
+                    <span className="text-primary-700 font-black">•</span> {t}
                   </li>
                 ))}
               </ul>
@@ -167,11 +167,11 @@ const AdminMentorDetail = () => {
           {/* Books Recommended */}
           {mentor.booksRecommended?.length > 0 && (
             <Card className="p-5 space-y-2">
-              <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-primary-500" /> Books Recommended</h2>
+              <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-primary-700" /> Books Recommended</h2>
               <ul className="space-y-1.5">
                 {mentor.booksRecommended.map((b, i) => (
                   <li key={i} className="text-xs text-slate-600 dark:text-slate-300 flex gap-2">
-                    <span className="text-primary-500 font-black">•</span> {b}
+                    <span className="text-primary-700 font-black">•</span> {b}
                   </li>
                 ))}
               </ul>
@@ -181,7 +181,7 @@ const AdminMentorDetail = () => {
           {/* AMA Threads */}
           {mentor.amaThreads?.length > 0 && (
             <Card className="p-5 space-y-3">
-              <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><MessageCircle className="w-4 h-4 text-primary-500" /> AMA Threads</h2>
+              <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><MessageCircle className="w-4 h-4 text-primary-700" /> AMA Threads</h2>
               {mentor.amaThreads.map((t, i) => (
                 <div key={i} className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 space-y-1.5">
                   <p className="text-xs font-bold text-slate-800 dark:text-slate-100">Q: {t.question}</p>

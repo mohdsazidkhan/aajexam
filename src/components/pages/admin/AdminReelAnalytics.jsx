@@ -61,11 +61,11 @@ const AdminReelAnalytics = () => {
                 {/* Overview Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                   <StatCard icon={Flame} label="Total Reels" value={data.overview.totalReels} delay={0} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
-                  <StatCard icon={CheckCircle2} label="Published" value={data.overview.publishedReels} delay={0.05} color="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400" />
+                  <StatCard icon={CheckCircle2} label="Published" value={data.overview.publishedReels} delay={0.05} color="bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400" />
                   <StatCard icon={TrendingUp} label="Pending" value={data.overview.pendingReels} delay={0.1} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
                   <StatCard icon={Eye} label="Total Views" value={data.overview.totalViews} delay={0.15} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
                   <StatCard icon={Heart} label="Total Likes" value={data.overview.totalLikes} delay={0.2} color="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white" />
-                  <StatCard icon={MessageCircle} label="Total Answers" value={data.overview.totalAnswers} delay={0.25} color="bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400" />
+                  <StatCard icon={MessageCircle} label="Total Answers" value={data.overview.totalAnswers} delay={0.25} color="bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400" />
                 </div>
 
                 {/* Type Breakdown */}

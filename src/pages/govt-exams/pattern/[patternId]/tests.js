@@ -185,17 +185,17 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                 <Card className={`group border-2 transition-all p-0 overflow-hidden shadow-md ${isLocked ? 'grayscale opacity-75' : 'hover:border-black dark:hover:border-white'}`}>
                   <div className="flex flex-col sm:flex-row items-center">
                     {/* Status Pillar */}
-                    <div className={`w-full sm:w-16 h-2 sm:h-auto self-stretch ${isCompleted ? 'bg-primary-500' : 'bg-gray-200 dark:bg-slate-700'} transition-colors`} />
+                    <div className={`w-full sm:w-16 h-2 sm:h-auto self-stretch ${isCompleted ? 'bg-primary-700' : 'bg-gray-200 dark:bg-slate-700'} transition-colors`} />
 
                     <div className="flex-1 p-5 flex flex-col sm:flex-row items-center gap-6">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 text-primary-600' : 'bg-gray-100 text-gray-400'} transition-colors`}>
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 text-primary-700' : 'bg-gray-100 text-gray-400'} transition-colors`}>
                         {isCompleted ? <Award className="w-9 h-9" /> : <Play className="w-8 h-8" />}
                       </div>
 
                       <div className="flex-1 text-center sm:text-left space-y-1">
                         <div className="flex items-center justify-center sm:justify-start gap-2">
                           <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase line-clamp-1">{test.title}</h3>
-                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-500" />}
+                          {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-700" />}
                         </div>
                         <p className="text-xs font-bold text-gray-400 uppercase">
                           {test.questionCount || 0} Questions • {test.totalMarks || 100} Marks

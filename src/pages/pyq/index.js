@@ -107,7 +107,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                 <div className="py-4 lg:py-8 space-y-8 relative">
                     {/* Header / breadcrumb */}
                     <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
-                        <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-500">Home</Link>
+                        <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Home</Link>
                         <span className="text-slate-400">/</span>
                         <span className="text-slate-600 dark:text-slate-400">Previous Year Papers</span>
                     </nav>
@@ -116,9 +116,9 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
                             <div className="space-y-2">
-                                <span className="block text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest">PYQ Library</span>
+                                <span className="block text-[10px] font-black text-primary-700 uppercase tracking-widest">PYQ Library</span>
                                 <h1 className="text-2xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase flex items-center gap-3">
-                                    <FileText className="w-7 h-7 lg:w-10 lg:h-10 text-primary-500" />
+                                    <FileText className="w-7 h-7 lg:w-10 lg:h-10 text-primary-700" />
                                     Previous Year Papers
                                 </h1>
                                 <p className="text-sm lg:text-lg font-bold text-slate-500 dark:text-slate-400 max-w-2xl">
@@ -150,7 +150,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     {examsWithPYQ.length > 0 && (
                         <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight flex items-center">
-                                <FaGraduationCap className="text-primary-600 mr-3" /> Browse PYQs by Exam
+                                <FaGraduationCap className="text-primary-700 mr-3" /> Browse PYQs by Exam
                             </h2>
                             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-6">
                                 Pick an exam to view its complete PYQ archive year-wise and shift-wise.
@@ -164,7 +164,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     return (
                                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 lg:p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
                                         <div className="relative z-10">
-                                            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{e.name}</div>
+                                            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition mb-1 leading-tight">{e.name}</div>
                                             <div className="text-[10px] font-bold text-slate-500 flex items-center justify-between mb-3">
                                                 <span>{e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'}</span>
                                                 <FaArrowRight className="text-[10px] opacity-0 group-hover:opacity-100 transition" />
@@ -173,14 +173,14 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             {/* Progress Bar UI */}
                                             <div className="space-y-1.5 mt-auto">
                                                 <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
-                                                    <span className={completed > 0 ? 'text-primary-500' : 'text-slate-400'}>
+                                                    <span className={completed > 0 ? 'text-primary-700' : 'text-slate-400'}>
                                                         {completed > 0 ? 'In Progress' : 'Start Now'}
                                                     </span>
                                                     <span className="text-slate-500">{completed}/{total}</span>
                                                 </div>
                                                 <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                                                     <div 
-                                                        className="h-full bg-primary-500 rounded-full transition-all duration-1000 ease-out" 
+                                                        className="h-full bg-primary-700 rounded-full transition-all duration-1000 ease-out" 
                                                         style={{ width: `${pct}%` }} 
                                                     />
                                                 </div>
@@ -195,7 +195,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     {/* Long-form intro */}
                     <section className="rounded-[3rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:p-8">
                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
-                            <FaBookOpen className="text-primary-600 mr-3" /> Why Solve PYQs?
+                            <FaBookOpen className="text-primary-700 mr-3" /> Why Solve PYQs?
                         </h2>
                         <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base lg:text-lg whitespace-pre-line">
                             {intro}
@@ -228,7 +228,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     return (
                                         <Card
                                             key={test._id || i}
-                                            className="p-5 hover:shadow-xl transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500"
+                                            className="p-5 hover:shadow-xl transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
                                             onClick={() => {
                                                 if (hasAccess) router.push(linkHref);
                                                 else setProModalTest(test);
@@ -237,8 +237,8 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             <div className="space-y-3">
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
-                                                        <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{test.pyqYear || 'PYQ'}</span>
-                                                        {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">LATEST</span>}
+                                                        <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-700">{test.pyqYear || 'PYQ'}</span>
+                                                        {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-700">LATEST</span>}
                                                     </div>
                                                     {test.pyqShift && <span className="text-[10px] font-bold text-slate-400">{test.pyqShift}</span>}
                                                 </div>
@@ -256,9 +256,9 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                                             {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[10px] font-black text-primary-500 uppercase tracking-wider">Free Access</span>
+                                                        <span className="text-[10px] font-black text-primary-700 uppercase tracking-wider">Free Access</span>
                                                     )}
-                                                    <div className="flex items-center gap-1 text-[10px] font-black text-primary-500">
+                                                    <div className="flex items-center gap-1 text-[10px] font-black text-primary-700">
                                                         {hasAccess ? 'Practice Now' : 'Unlock with PRO'} <ChevronRight className="w-3 h-3" />
                                                     </div>
                                                 </div>
@@ -319,7 +319,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 {/* Body */}
                                 <div className="p-6 space-y-5">
                                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        This paper is part of the <span className="text-primary-600 dark:text-primary-400 font-black">AajExam PRO</span> plan. Upgrade to attempt all older PYQ shifts with full analytics.
+                                        This paper is part of the <span className="text-primary-700 font-black">AajExam PRO</span> plan. Upgrade to attempt all older PYQ shifts with full analytics.
                                     </p>
 
                                     {/* What you unlock */}
@@ -342,7 +342,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     <div className="flex flex-col gap-3 pt-1">
                                         <button
                                             onClick={() => router.push('/subscription')}
-                                            className="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-lg shadow-primary-500/20 border-b-2 border-primary-700 active:translate-y-0.5 transition-all"
+                                            className="w-full py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-lg shadow-primary-500/20 border-b-2 border-primary-700 active:translate-y-0.5 transition-all"
                                         >
                                             Get PRO — Unlock All PYQs →
                                         </button>

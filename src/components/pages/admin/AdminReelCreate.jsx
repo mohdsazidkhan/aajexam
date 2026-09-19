@@ -21,10 +21,10 @@ const TYPES = [
 
 const COLOR_MAP = {
   blue: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30',
-  purple: 'border-primary-500 bg-primary-50 dark:bg-primary-900/30',
+  purple: 'border-primary-700 bg-primary-50 dark:bg-primary-900/30',
   amber: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30',
   red: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30',
-  green: 'border-primary-500 bg-primary-50 dark:bg-primary-950/30',
+  green: 'border-primary-700 bg-primary-50 dark:bg-primary-950/30',
 };
 
 const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
@@ -353,7 +353,7 @@ const AdminReelCreate = () => {
                             type="button"
                             onClick={() => setCorrectAnswerIndex(i)}
                             className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
-                              ? 'border-primary-500 bg-primary-500 text-white'
+                              ? 'border-primary-700 bg-primary-700 text-white'
                               : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}
                           >
                             {String.fromCharCode(65 + i)}
@@ -368,7 +368,7 @@ const AdminReelCreate = () => {
                           />
                         </div>
                       ))}
-                      <p className="text-xs text-primary-600 dark:text-primary-400">Click letter to mark correct answer. Currently: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                      <p className="text-xs text-primary-700">Click letter to mark correct answer. Currently: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                     </div>
                     <div>
                       <label className={labelClass}>Explanation</label>

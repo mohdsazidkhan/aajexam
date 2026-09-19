@@ -253,7 +253,7 @@ const AdminGovtExamResults = () => {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
               <div className="space-y-2">
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  EXAM <span className="text-primary-600">RESULTS</span>
+                  EXAM <span className="text-primary-700">RESULTS</span>
                 </h1>
                 <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
                   View student exam results and performance.
@@ -287,28 +287,28 @@ const AdminGovtExamResults = () => {
           <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 text-[10px] uppercase font-black tracking-widest">
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                <Compass className="w-4 h-4 text-primary-600" />
+                <Compass className="w-4 h-4 text-primary-700" />
                 <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer">
                   <option value="all">ALL CATEGORIES</option>
                   {categories.map(c => <option key={c._id} value={c._id}>{c.name.toUpperCase()}</option>)}
                 </select>
               </div>
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                <Activity className="w-4 h-4 text-primary-600" />
+                <Activity className="w-4 h-4 text-primary-700" />
                 <select value={selectedExam} onChange={(e) => handleExamChange(e.target.value)} disabled={selectedCategory === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedCategory === 'all' ? 'opacity-30' : ''}`}>
                   <option value="all">ALL EXAMS</option>
                   {exams.map(e => <option key={e._id} value={e._id}>{e.name.toUpperCase()}</option>)}
                 </select>
               </div>
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                <Binary className="w-4 h-4 text-primary-600" />
+                <Binary className="w-4 h-4 text-primary-700" />
                 <select value={selectedPattern} onChange={(e) => handlePatternChange(e.target.value)} disabled={selectedExam === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedExam === 'all' ? 'opacity-30' : ''}`}>
                   <option value="all">ALL PATTERNS</option>
                   {patterns.map(p => <option key={p._id} value={p._id}>{p.title.toUpperCase()}</option>)}
                 </select>
               </div>
               <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5">
-                <FileText className="w-4 h-4 text-primary-600" />
+                <FileText className="w-4 h-4 text-primary-700" />
                 <select value={selectedTest} onChange={(e) => setSelectedTest(e.target.value)} disabled={selectedPattern === 'all'} className={`bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer ${selectedPattern === 'all' ? 'opacity-30' : ''}`}>
                   <option value="all">ALL TESTS</option>
                   {tests.map(t => <option key={t._id} value={t._id}>{t.title.toUpperCase()}</option>)}
@@ -361,10 +361,10 @@ const AdminGovtExamResults = () => {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                               <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{a.score || 0} / {a.practiceTest?.totalMarks || a.totalMarks || 0}</div>
-                              <div className="text-[9px] font-black text-primary-600 uppercase tracking-widest leading-none mt-1">{a.practiceTest?.title?.substring(0, 20) || 'Test'}...</div>
+                              <div className="text-[9px] font-black text-primary-700 uppercase tracking-widest leading-none mt-1">{a.practiceTest?.title?.substring(0, 20) || 'Test'}...</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase inline-flex items-center gap-2 ${a.accuracy >= 80 ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : a.accuracy >= 60 ? 'bg-primary-500/10 text-primary-600 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
+                              <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase inline-flex items-center gap-2 ${a.accuracy >= 80 ? 'bg-primary-500/10 text-primary-700 border border-primary-500/20' : a.accuracy >= 60 ? 'bg-primary-500/10 text-primary-700 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
                                 {a.accuracy?.toFixed(1) || 0}% Acc
                               </div>
                               <div className="text-[9px] font-black text-slate-400 uppercase mt-1 ml-1 flex items-center gap-1"><Clock className="w-3 h-3" /> {formatTime(a.totalTime)}</div>
@@ -373,7 +373,7 @@ const AdminGovtExamResults = () => {
                               {a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : 'N/A'}
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-white dark:bg-white/5 text-primary-600 rounded-lg lg:rounded-xl border border-slate-100 shadow-md hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
+                              <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleViewDetails(a._id)} className="p-3 bg-white dark:bg-white/5 text-primary-700 rounded-lg lg:rounded-xl border border-slate-100 shadow-md hover:bg-primary-600 hover:text-white transition-all"><Eye className="w-4 h-4" /></motion.button>
                             </td>
                           </motion.tr>
                         ))}
@@ -391,7 +391,7 @@ const AdminGovtExamResults = () => {
                           <div>
                             <div className="flex items-center gap-3 mb-1">
                               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{a.user?.name || 'User'}</h3>
-                              <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${a.accuracy >= 75 ? 'bg-primary-500 text-white' : 'bg-primary-600 text-white shadow-inner'}`}>{a.accuracy?.toFixed(1)}%</span>
+                              <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase ${a.accuracy >= 75 ? 'bg-primary-700 text-white' : 'bg-primary-600 text-white shadow-inner'}`}>{a.accuracy?.toFixed(1)}%</span>
                             </div>
                             <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                               <span>{a.practiceTest?.title || 'Practice Test'}</span>
@@ -425,7 +425,7 @@ const AdminGovtExamResults = () => {
                     <div className="flex items-center gap-3 lg:gap-6">
                       <div className="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-primary-600/20"><Award className="w-8 h-8" /></div>
                       <div>
-                        <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-primary-600">Details</span></h2>
+                        <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">Attempt <span className="text-primary-700">Details</span></h2>
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-3 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
                       </div>
                     </div>
@@ -450,14 +450,14 @@ const AdminGovtExamResults = () => {
 
                     <div className="space-y-4 lg:space-y-8">
                       <div className="flex items-center gap-4 mb-4">
-                        <Binary className="w-5 h-5 text-primary-500" />
+                        <Binary className="w-5 h-5 text-primary-700" />
                         <h3 className="text-[12px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Questions & Answers</h3>
                       </div>
                       <div className="space-y-3 lg:space-y-6">
                         {selectedAttempt.answers?.map((ans, i) => (
                           <div key={i} className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-8 group">
                             <div className="flex items-start gap-3 lg:gap-8">
-                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-primary-500 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>{i + 1}</div>
+                              <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center font-black text-sm italic shadow-md ${ans.isCorrect ? 'bg-primary-700 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>{i + 1}</div>
                               <div>
                                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-3">{ans.question?.questionText || 'Question not available'}</p>
                                 <div className="flex gap-4">
@@ -467,7 +467,7 @@ const AdminGovtExamResults = () => {
                               </div>
                             </div>
                             <div className="flex flex-col items-end gap-2 shrink-0">
-                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
+                              <div className={`px-4 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase flex items-center gap-2 shadow-inner ${ans.isCorrect ? 'bg-primary-500/10 text-primary-700 border border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border border-black/20 dark:border-white/20'}`}>
                                 {ans.isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
                                 {ans.isCorrect ? 'Correct' : 'Incorrect'}
                               </div>

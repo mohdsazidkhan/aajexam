@@ -55,7 +55,7 @@ const AboutUs = () => {
    ];
 
    return (
-      <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white">
          <Head>
             <title>About Us - Our Mission | AajExam</title>
             <link rel="canonical" href={canonicalUrl} />
@@ -66,11 +66,11 @@ const AboutUs = () => {
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary rotate-12">
                   <Sparkles className="text-white w-10 h-10" />
                </motion.div>
                <div className="space-y-4">
-                  <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-700 dark:text-primary-500">Us</span></h1>
+                  <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-700">Us</span></h1>
                   <p className="text-lg md:text-xl lg:text-2xl font-medium text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">Practice daily. Learn more. Get the job you always wanted.</p>
                </div>
 
@@ -102,7 +102,7 @@ const AboutUs = () => {
                      <div className="space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
                            <div key={i} className="flex items-center gap-3">
-                              <div className="w-5 h-5 bg-primary-500 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
+                              <div className="w-5 h-5 bg-primary-700 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
                               <span className="text-sm font-black uppercase tracking-widest text-slate-300">{pill}</span>
                            </div>
                         ))}
@@ -138,7 +138,7 @@ const AboutUs = () => {
                            <f.icon className="w-6 h-6" />
                         </div>
                         <div className="space-y-2">
-                           <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-700 dark:text-primary-500 transition-colors">{f.title}</h4>
+                           <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-700 transition-colors">{f.title}</h4>
                            <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">{f.desc}</p>
                         </div>
                      </Card>
@@ -152,7 +152,7 @@ const AboutUs = () => {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                      <div className="lg:col-span-4 text-center lg:text-left space-y-6">
                         <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto lg:mx-0 shadow-sm">
-                           <Building2 className="w-10 h-10 text-primary-700 dark:text-primary-500" />
+                           <Building2 className="w-10 h-10 text-primary-700" />
                         </div>
                         <div className="space-y-2">
                            <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Officially Registered</h3>
@@ -168,7 +168,7 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card className="p-12 text-center bg-primary-500 border-none text-white shadow-aajexam-primary relative overflow-hidden">
+               <Card className="p-12 text-center bg-primary-700 border-none text-white shadow-aajexam-primary relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>

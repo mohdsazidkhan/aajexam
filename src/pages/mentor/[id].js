@@ -112,7 +112,7 @@ export default function MentorProfilePage() {
       <div className="text-center">
         <Users className="w-12 h-12 text-slate-300 mx-auto mb-4" />
         <p className="text-lg font-bold text-slate-500">Mentor not found</p>
-        <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-600">Back to Mentors</button>
+        <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-700">Back to Mentors</button>
       </div>
     </div>
   );
@@ -140,13 +140,13 @@ export default function MentorProfilePage() {
         {/* Profile Header */}
         <Card className="p-6">
           <div className="flex items-start gap-4">
-            <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center text-primary-600 font-black text-2xl shrink-0">
+            <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center text-primary-700 font-black text-2xl shrink-0">
               {mentor.user?.name?.charAt(0) || 'M'}
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-xl font-black text-slate-900 dark:text-white">{mentor.user?.name || 'Mentor'}</h1>
-                {mentor.isVerified && <Shield className="w-4 h-4 text-primary-500" />}
+                {mentor.isVerified && <Shield className="w-4 h-4 text-primary-700" />}
               </div>
               {mentor.user?.bio && <p className="text-sm text-slate-500 mb-3">{mentor.user.bio}</p>}
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500">
@@ -161,7 +161,7 @@ export default function MentorProfilePage() {
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
           <Card className="p-5">
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-primary-500" /> Exams Cleared</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-primary-700" /> Exams Cleared</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
                 <div key={i} className="flex items-center justify-between p-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg lg:rounded-xl">
@@ -200,7 +200,7 @@ export default function MentorProfilePage() {
             <ul className="space-y-2">
               {mentor.tips.map((tip, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                  <ChevronRight className="w-4 h-4 text-primary-500 shrink-0 mt-0.5" /> {tip}
+                  <ChevronRight className="w-4 h-4 text-primary-700 shrink-0 mt-0.5" /> {tip}
                 </li>
               ))}
             </ul>
@@ -233,7 +233,7 @@ export default function MentorProfilePage() {
 
         {/* AMA Section */}
         <Card className="p-5">
-          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2"><MessageCircle className="w-4 h-4 text-primary-500" /> Ask Me Anything</h2>
+          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2"><MessageCircle className="w-4 h-4 text-primary-700" /> Ask Me Anything</h2>
 
           {/* Ask Question */}
           <div className="flex gap-2 mb-5">
@@ -241,7 +241,7 @@ export default function MentorProfilePage() {
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
               className="flex-1 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700" />
             <button onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
-              className="px-4 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
+              className="px-4 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
               <Send className="w-4 h-4" />
             </button>
           </div>
@@ -252,12 +252,12 @@ export default function MentorProfilePage() {
               {mentor.amaThreads.map((thread, i) => (
                 <div key={i} className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl space-y-2">
                   <div>
-                    {thread.askedBy && <Link href={`/u/${thread.askedBy.username || thread.askedBy.name}`} className="text-[10px] font-black text-primary-600 dark:text-primary-400 mr-1.5 hover:underline">@{thread.askedBy.username || thread.askedBy.name}</Link>}
+                    {thread.askedBy && <Link href={`/u/${thread.askedBy.username || thread.askedBy.name}`} className="text-[10px] font-black text-primary-700 mr-1.5 hover:underline">@{thread.askedBy.username || thread.askedBy.name}</Link>}
                     <span className="text-sm font-bold text-slate-900 dark:text-white">{thread.question}</span>
                   </div>
                   {thread.answer ? (
-                    <div className="pl-3 border-l-2 border-primary-500">
-                      <Link href={`/u/${mentor.user?.username || mentor.user?.name}`} className="text-[10px] font-black text-primary-600 dark:text-primary-400 mr-1.5 hover:underline">@{mentor.user?.username || mentor.user?.name}</Link>
+                    <div className="pl-3 border-l-2 border-primary-700">
+                      <Link href={`/u/${mentor.user?.username || mentor.user?.name}`} className="text-[10px] font-black text-primary-700 mr-1.5 hover:underline">@{mentor.user?.username || mentor.user?.name}</Link>
                       <span className="text-sm text-slate-600 dark:text-slate-400">{thread.answer}</span>
                     </div>
                   ) : isOwner ? (
@@ -267,7 +267,7 @@ export default function MentorProfilePage() {
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
                           className="flex-1 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-200 dark:border-slate-700" />
                         <button onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
-                          className="px-3 py-2 bg-primary-500 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
+                          className="px-3 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
                           <Send className="w-4 h-4" />
                         </button>
                         <button onClick={() => { setAnsweringId(null); setAnswerText(''); }}
@@ -277,7 +277,7 @@ export default function MentorProfilePage() {
                       </div>
                     ) : (
                       <button onClick={() => { setAnsweringId(thread._id); setAnswerText(''); }}
-                        className="text-xs font-bold text-primary-600 hover:text-primary-700">
+                        className="text-xs font-bold text-primary-700 hover:text-primary-700">
                         Write an answer
                       </button>
                     )
@@ -285,7 +285,7 @@ export default function MentorProfilePage() {
                     <p className="text-xs text-slate-400 italic">Awaiting answer...</p>
                   )}
                   <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
-                    <button onClick={() => handleUpvote(thread._id)} className="flex items-center gap-1 hover:text-primary-500">
+                    <button onClick={() => handleUpvote(thread._id)} className="flex items-center gap-1 hover:text-primary-700">
                       <ThumbsUp className="w-3 h-3" /> {thread.upvotes || 0}
                     </button>
                     {thread.askedAt && <span>{new Date(thread.askedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>}

@@ -21,11 +21,11 @@ import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 // â€”â€”â€”â€”â€” Stats Card â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
   const colors = {
-    primary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    secondary: "text-primary-500 bg-primary-500/10 border-primary-500/20",
-    emerald: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+    primary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+    secondary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+    emerald: "text-primary-700 bg-primary-500/10 border-primary-500/20",
     rose: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-    purple: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+    purple: "text-primary-700 bg-primary-500/10 border-primary-500/20",
     amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
   };
 
@@ -43,7 +43,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</div>
       </div>
       <div className="space-y-1">
-        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-500 transition-colors">
+        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-700 transition-colors">
           {value}
         </div>
         {sub !== undefined && (
@@ -327,7 +327,7 @@ const AdminSubscriptions = () => {
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'active': return <CheckCircle className="w-4 h-4 text-primary-500" />;
+      case 'active': return <CheckCircle className="w-4 h-4 text-primary-700" />;
       case 'expired': return <Clock className="w-4 h-4 text-black dark:text-white" />;
       case 'inactive': return <XCircle className="w-4 h-4 text-black dark:text-white" />;
       case 'cancelled': return <AlertTriangle className="w-4 h-4 text-slate-400" />;
@@ -337,7 +337,7 @@ const AdminSubscriptions = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'active': return "text-primary-500 bg-primary-500/10 border-primary-500/20";
+      case 'active': return "text-primary-700 bg-primary-500/10 border-primary-500/20";
       case 'expired': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
       case 'inactive': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
       default: return "text-slate-500 bg-slate-500/10 border-slate-500/20";
@@ -378,7 +378,7 @@ const AdminSubscriptions = () => {
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <div className="p-1.5 bg-slate-100 dark:bg-white/5 rounded-lg opacity-40"><ArrowUp className="w-3 h-3" /></div>;
     return (
-      <div className="p-1.5 bg-primary-500/20 text-primary-500 rounded-lg">
+      <div className="p-1.5 bg-primary-500/20 text-primary-700 rounded-lg">
         {sortOrder === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
       </div>
     );
@@ -406,19 +406,19 @@ const AdminSubscriptions = () => {
           className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Layers className="w-64 h-64 text-primary-500 -rotate-12" />
+            <Layers className="w-64 h-64 text-primary-700 -rotate-12" />
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                MANAGE <span className="text-primary-600">SUBSCRIPTIONS</span>
+                MANAGE <span className="text-primary-700">SUBSCRIPTIONS</span>
               </h1>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
 
               <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 <div className="relative group/search w-full lg:w-auto">
-                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
+                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
                   <input
                     type="text"
                     placeholder="Search by name, email, or plan..."
@@ -439,7 +439,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setViewMode(mode)}
-                      className={`p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                      className={`p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-700 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                       <Icon className="w-4 h-4" />
                     </motion.button>
@@ -450,7 +450,7 @@ const AdminSubscriptions = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={exportToCSV}
-                  className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-2xl shadow-xl shadow-primary-500/20 group/btn"
+                  className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl shadow-xl shadow-primary-500/20 group/btn"
                 >
                   <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
                   <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
@@ -460,7 +460,7 @@ const AdminSubscriptions = () => {
 
             <div className="flex flex-col items-end gap-2 text-right">
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ALL-TIME REVENUE</span>
-              <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-600 tabular-nums tracking-tighter">
+              <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-700 tabular-nums tracking-tighter">
                 <IndianRupee className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
                 {(summary.totalRevenue || 0).toLocaleString('en-IN')}
               </div>
@@ -488,7 +488,7 @@ const AdminSubscriptions = () => {
         >
           <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
             <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-              <Filter className="w-4 h-4 text-primary-500" />
+              <Filter className="w-4 h-4 text-primary-700" />
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">FILTERS</span>
             </div>
 
@@ -593,7 +593,7 @@ const AdminSubscriptions = () => {
                         <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
                           <th className="px-3 lg:px-6 py-4">#</th>
                           <th className="px-3 lg:px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
-                            <div className="flex items-center gap-2 group-hover:text-primary-500 transition-colors">DATE <SortIcon field="createdAt" /></div>
+                            <div className="flex items-center gap-2 group-hover:text-primary-700 transition-colors">DATE <SortIcon field="createdAt" /></div>
                           </th>
                           <th className="px-3 lg:px-6 py-4">STUDENT</th>
                           <th className="px-3 lg:px-6 py-4">PLAN</th>
@@ -625,13 +625,13 @@ const AdminSubscriptions = () => {
                             </td>
                             <td className="px-3 lg:px-6 py-3 lg:py-6">
                               <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-2xl bg-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
-                                  <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
+                                <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                                  <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
                                     {subscription.user?.name?.charAt(0) || 'U'}
                                   </div>
                                 </div>
                                 <div className="flex flex-col">
-                                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</span>
+                                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</span>
                                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1 line-clamp-1">{subscription.user?.email || 'N/A'}</span>
                                 </div>
                               </div>
@@ -651,7 +651,7 @@ const AdminSubscriptions = () => {
                             <td className="px-3 lg:px-6 py-3 lg:py-6">
                               <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
                                 <div className="flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
+                                  <div className="w-1.5 h-1.5 rounded-full bg-primary-700" />
                                   <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -671,7 +671,7 @@ const AdminSubscriptions = () => {
                                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
                                   whileTap={{ scale: 0.9 }}
                                   onClick={() => toggleSubscriptionDetails(subscription._id)}
-                                  className="p-3 text-primary-500 rounded-lg lg:rounded-xl"
+                                  className="p-3 text-primary-700 rounded-lg lg:rounded-xl"
                                 >
                                   {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </motion.button>
@@ -679,7 +679,7 @@ const AdminSubscriptions = () => {
                                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
                                   whileTap={{ scale: 0.9 }}
                                   onClick={() => openExtendModal(subscription)}
-                                  className="p-3 text-primary-500 rounded-lg lg:rounded-xl"
+                                  className="p-3 text-primary-700 rounded-lg lg:rounded-xl"
                                 >
                                   <Plus className="w-4 h-4" />
                                 </motion.button>
@@ -713,7 +713,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => openExtendModal(subscription)}
-                            className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl border-2 border-primary-500/20"
+                            className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl border-2 border-primary-500/20"
                           >
                             <Plus className="w-4 h-4" />
                           </motion.button>
@@ -725,8 +725,8 @@ const AdminSubscriptions = () => {
 
                       <div className="space-y-3 lg:space-y-6">
                         <div className="flex items-center gap-3 lg:gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
-                          <div className="w-16 h-16 rounded-3xl bg-primary-500 p-[3px] shadow-xl">
-                            <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
+                          <div className="w-16 h-16 rounded-3xl bg-primary-700 p-[3px] shadow-xl">
+                            <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                               {subscription.user?.name?.charAt(0) || 'U'}
                             </div>
                           </div>
@@ -750,7 +750,7 @@ const AdminSubscriptions = () => {
                         <div className="pt-4 flex items-center justify-between">
                           <div className="flex flex-col">
                             <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SUBSCRIPTION ID</span>
-                            <span className="text-[10px] font-black text-primary-500 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
+                            <span className="text-[10px] font-black text-primary-700 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
                           </div>
                           <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">
                             {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
@@ -774,13 +774,13 @@ const AdminSubscriptions = () => {
                       className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                     >
                       <div className="flex items-center gap-3 lg:gap-6">
-                        <div className="w-12 h-12 rounded-2xl bg-primary-500 p-[2px] shadow-lg">
-                          <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-500">
+                        <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-lg">
+                          <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-700">
                             {subscription.user?.name?.charAt(0) || 'U'}
                           </div>
                         </div>
                         <div className="flex flex-col">
-                          <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
+                          <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
                         </div>
                       </div>
@@ -807,7 +807,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => openExtendModal(subscription)}
-                            className="p-4 bg-primary-500/10 text-primary-500 rounded-2xl border-2 border-primary-500/20"
+                            className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl border-2 border-primary-500/20"
                           >
                             <Plus className="w-5 h-5" />
                           </motion.button>
@@ -849,7 +849,7 @@ const AdminSubscriptions = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() => handlePageChange(page)}
-                            className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
+                            className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-700 text-white shadow-lg shadow-primary-500/30' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
                           >
                             {page}
                           </motion.button>
@@ -898,7 +898,7 @@ const AdminSubscriptions = () => {
 
                 <div className="p-4 lg:p-12 overflow-y-auto">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-4 bg-primary-500/20 text-primary-500 rounded-3xl">
+                    <div className="p-4 bg-primary-500/20 text-primary-700 rounded-3xl">
                       <Layers className="w-8 h-8" />
                     </div>
                     <div className="flex flex-col">
@@ -957,7 +957,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleExtendSubscription}
-                      className="flex-[2] py-5 bg-primary-500 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-primary-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="flex-[2] py-5 bg-primary-700 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-xl shadow-primary-500/20 disabled:opacity-50 flex items-center justify-center gap-3"
                       disabled={extending}
                     >
                       {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}

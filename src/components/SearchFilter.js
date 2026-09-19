@@ -27,7 +27,7 @@ const SearchFilter = ({
         {/* Search Input Area */}
         <div className="relative flex-1 w-full group">
           <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10">
-            <Search className="text-slate-600 dark:text-slate-400 group-focus-within:text-primary-700 dark:text-primary-500 transition-colors duration-300 w-5 h-5" />
+            <Search className="text-slate-600 dark:text-slate-400 group-focus-within:text-primary-700 transition-colors duration-300 w-5 h-5" />
           </div>
           <input
             type="text"

@@ -125,8 +125,8 @@ const ResponsiveTable = ({
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                         className={`p-2.5 rounded-lg lg:rounded-xl transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
-                          action.variant === 'success' ? 'text-primary-500 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
-                            'text-primary-700 dark:text-primary-500 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
+                          action.variant === 'success' ? 'text-primary-700 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
+                            'text-primary-700 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
                         title={action.label}
                       >
@@ -177,8 +177,8 @@ const ResponsiveTable = ({
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                     className={`p-3.5 lg:p-3 rounded-lg lg:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 hover:bg-slate-100 dark:bg-slate-800' :
-                      action.variant === 'success' ? 'bg-primary-50 text-primary-500 dark:bg-primary-950/40 hover:bg-primary-100' :
-                        'bg-primary-50 text-primary-700 dark:text-primary-500 dark:bg-primary-950/40 hover:bg-primary-100'
+                      action.variant === 'success' ? 'bg-primary-50 text-primary-700 dark:bg-primary-950/40 hover:bg-primary-100' :
+                        'bg-primary-50 text-primary-700 dark:bg-primary-950/40 hover:bg-primary-100'
                       }`}
                   >
                     {action.icon}
@@ -210,7 +210,7 @@ const ResponsiveTable = ({
           <div className="relative z-10 space-y-8">
             {/* Hero Header */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-500 p-0.5 shadow-xl group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-0.5 shadow-xl group-hover:rotate-6 transition-transform duration-500">
                 <div className="w-full h-full bg-slate-900 rounded-lg lg:rounded-xl flex items-center justify-center text-white font-black text-2xl italic">
                   {(row.name || row[columns[0]?.key] || 'U')[0]}
                 </div>
@@ -220,8 +220,8 @@ const ResponsiveTable = ({
                   {row.name || row[columns[0]?.key] || 'Unknown Object'}
                 </h3>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <Activity className="w-3 h-3 text-primary-500" />
-                  <span className="text-[9px] font-black text-primary-500 uppercase tracking-widest">{row.status || 'Active'}</span>
+                  <Activity className="w-3 h-3 text-primary-700" />
+                  <span className="text-[9px] font-black text-primary-700 uppercase tracking-widest">{row.status || 'Active'}</span>
                 </div>
               </div>
             </div>
@@ -250,7 +250,7 @@ const ResponsiveTable = ({
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                     className={`p-4 lg:p-3 rounded-lg lg:rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
-                      'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:text-primary-500 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
+                      'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
                       }`}
                   >
                     {action.icon}
@@ -289,7 +289,7 @@ const ResponsiveTable = ({
               <select
                 value={itemsPerPageState}
                 onChange={handleItemsPerPageChange}
-                className="bg-transparent text-xs font-black text-slate-900 dark:text-white outline-none cursor-pointer focus:text-primary-700 dark:text-primary-500 transition-colors font-outfit"
+                className="bg-transparent text-xs font-black text-slate-900 dark:text-white outline-none cursor-pointer focus:text-primary-700 transition-colors font-outfit"
               >
                 {[5, 10, 20, 50].map(v => <option key={v} value={v} className="bg-slate-900">{v}</option>)}
               </select>

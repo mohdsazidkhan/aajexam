@@ -90,7 +90,7 @@ const LoginPage = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-primary-500 rounded-[2.5rem] shadow-aajexam-primary w-fit text-white">
+              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-aajexam-primary w-fit text-white">
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>
@@ -114,7 +114,7 @@ const LoginPage = () => {
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
                   <div className="p-2 bg-primary-500/10 rounded-lg lg:rounded-xl">
-                    <item.icon className="w-5 h-5 text-primary-700 dark:text-primary-500" />
+                    <item.icon className="w-5 h-5 text-primary-700" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
                 </div>
@@ -157,11 +157,11 @@ const LoginPage = () => {
                     Email or phone
                   </label>
                   <div className="relative group">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-500 transition-colors" />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-700 transition-colors" />
                     <input
                       type="text"
                       required
-                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                       placeholder="you@example.com"
                       value={identifier}
                       onChange={(e) => setIdentifier(e.target.value)}
@@ -172,16 +172,16 @@ const LoginPage = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between items-end px-1">
                     <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">Password</label>
-                    <Link href="/forgot-password" className="text-xs font-black text-primary-700 dark:text-primary-500 hover:underline">
+                    <Link href="/forgot-password" className="text-xs font-black text-primary-700 hover:underline">
                       Forgot password?
                     </Link>
                   </div>
                   <div className="relative group">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-500 transition-colors" />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-700 transition-colors" />
                     <input
                       type={showPassword ? 'text' : 'password'}
                       required
-                      className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                       placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -205,7 +205,7 @@ const LoginPage = () => {
             <div className="text-center pt-4">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Don&apos;t have an account?{' '}
-                <Link href="/register" className="text-primary-700 dark:text-primary-500 hover:underline font-black">
+                <Link href="/register" className="text-primary-700 hover:underline font-black">
                   REGISTER
                 </Link>
               </p>

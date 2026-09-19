@@ -59,9 +59,9 @@ const AdminQuizSubjects = () => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BookMarked className="w-6 h-6 text-primary-500" /> Subjects</h1>
+        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BookMarked className="w-6 h-6 text-primary-700" /> Subjects</h1>
         <div className="flex gap-2">
-          <button onClick={openCreate} className="flex items-center gap-2 bg-primary-500 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Add Subject</button>
+          <button onClick={openCreate} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Add Subject</button>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ const AdminQuizSubjects = () => {
                   <td className="px-4 py-3 text-slate-500">{sub.order}</td>
                   <td className="px-4 py-3"><span className={`text-xs font-bold px-2 py-1 rounded-full ${sub.isActive ? 'bg-primary-100 text-primary-700' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{sub.isActive ? 'Active' : 'Inactive'}</span></td>
                   <td className="px-4 py-3 text-right">
-                    <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-500 hover:bg-primary-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
+                    <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
                     <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                   </td>
                 </tr>
@@ -105,7 +105,7 @@ const AdminQuizSubjects = () => {
               <input required placeholder="Subject Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
               <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
               <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-primary-500 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create'}</button>
+              <button type="submit" className="w-full bg-primary-700 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create'}</button>
             </form>
           </div>
         </div>

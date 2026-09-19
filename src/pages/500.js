@@ -50,7 +50,7 @@ export default function Custom500() {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => window.location.reload()}
-              className="w-full bg-primary-500 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+              className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-aajexam-primary border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
               Try Again
             </button>
@@ -74,7 +74,7 @@ export default function Custom500() {
             <p>If the problem persists, please contact our support team.</p>
             <button
               onClick={() => router.push('/contact')}
-              className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 mt-2"
+              className="text-primary-700 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 mt-2"
             >
               Contact Support
             </button>

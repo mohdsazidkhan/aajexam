@@ -179,9 +179,9 @@ const AdminPaymentTransactions = () => {
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
-      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-500 border-primary-500/20';
+      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-700 border-primary-500/20';
       case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
-      case 'pending': case 'created': case 'authorized': return 'bg-primary-500/10 text-primary-500 border-primary-500/20';
+      case 'pending': case 'created': case 'authorized': return 'bg-primary-500/10 text-primary-700 border-primary-500/20';
       case 'refunded': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
       default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
     }
@@ -210,7 +210,7 @@ const AdminPaymentTransactions = () => {
 
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />;
-    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-500" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-500" />;
+    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-700" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-700" />;
   };
 
   if (loading && transactions.length === 0) {
@@ -248,7 +248,7 @@ const AdminPaymentTransactions = () => {
                   <button
                     key={mode.id}
                     onClick={() => setViewMode(mode.id)}
-                    className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                    className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                   >
                     <mode.icon className="w-4 h-4" />
                     {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
@@ -258,7 +258,7 @@ const AdminPaymentTransactions = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={exportToCSV}
-                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3"
+                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3"
               >
                 <Download className="w-4 h-4" /> Export CSV
               </motion.button>
@@ -296,7 +296,7 @@ const AdminPaymentTransactions = () => {
         <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8">
             <div className="flex-1 relative group w-full">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
               <input
                 type="text"
                 placeholder="Search by order ID or username..."
@@ -314,7 +314,7 @@ const AdminPaymentTransactions = () => {
                 { icon: PieChart, val: filters.plan, options: [{ l: 'All Plans', v: 'all' }, ...filterOptions.plans.map(p => ({ l: p, v: p }))], key: 'plan' }
               ].map((f, i) => (
                 <div key={i} className="w-full lg:w-auto flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
-                  <f.icon className="w-4 h-4 text-primary-500" />
+                  <f.icon className="w-4 h-4 text-primary-700" />
                   <select
                     value={f.val}
                     onChange={(e) => handleFilterChange(f.key, e.target.value === 'all' ? 'all' : (f.key === 'year' || f.key === 'month' ? parseInt(e.target.value) : e.target.value))}
@@ -351,10 +351,10 @@ const AdminPaymentTransactions = () => {
                     <thead>
                       <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
                         <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
-                        <th onClick={() => handleSort('createdAt')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-primary-500 transition-colors">
+                        <th onClick={() => handleSort('createdAt')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-primary-700 transition-colors">
                           <div className="flex items-center gap-2">Date <SortIcon field="createdAt" /></div>
                         </th>
-                        <th onClick={() => handleSort('user.name')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-primary-500 transition-colors">
+                        <th onClick={() => handleSort('user.name')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-primary-700 transition-colors">
                           <div className="flex items-center gap-2">User <SortIcon field="user.name" /></div>
                         </th>
                         <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Plan</th>
@@ -376,7 +376,7 @@ const AdminPaymentTransactions = () => {
                             <div className="text-[9px] font-bold text-slate-400 uppercase truncate max-w-[200px]">{t.user?.email || 'N/A'}</div>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
-                            <span className="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
+                            <span className="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right tabular-nums font-black text-slate-900 dark:text-white">{formatCurrency(t.amount)}</td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
@@ -403,7 +403,7 @@ const AdminPaymentTransactions = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
                   {transactions.map((t, idx) => (
                     <motion.div key={t._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl flex flex-col font-outfit relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-500" />
+                      <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-700" />
                       <div className="flex justify-between items-start mb-4 lg:mb-8">
                         <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
@@ -423,7 +423,7 @@ const AdminPaymentTransactions = () => {
                             <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Amount</div>
                             <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatCurrency(t.amount)}</div>
                           </div>
-                          <div className="p-4 bg-primary-500/10 rounded-2xl text-primary-500 font-black text-xs uppercase tracking-widest">{t.planId || 'N/A'}</div>
+                          <div className="p-4 bg-primary-500/10 rounded-2xl text-primary-700 font-black text-xs uppercase tracking-widest">{t.planId || 'N/A'}</div>
                         </div>
                       </div>
                       <div className="mt-4 lg:mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between text-[9px] font-black text-slate-400 uppercase">
@@ -449,7 +449,7 @@ const AdminPaymentTransactions = () => {
                       <div className="flex flex-wrap items-center gap-3 lg:gap-8">
                         <div className="text-right">
                           <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Plan</div>
-                          <div className="text-sm font-black text-primary-500 uppercase tracking-widest">{t.planId || 'N/A'}</div>
+                          <div className="text-sm font-black text-primary-700 uppercase tracking-widest">{t.planId || 'N/A'}</div>
                         </div>
                         <div className="text-right min-w-[120px]">
                           <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Amount Paid</div>
@@ -484,7 +484,7 @@ const AdminPaymentTransactions = () => {
                   <button
                     key={pageNum}
                     onClick={() => handlePageChange(pageNum)}
-                    className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === pageNum ? 'bg-primary-500 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-600'}`}
+                    className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === pageNum ? 'bg-primary-700 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-600'}`}
                   >
                     {pageNum.toString().padStart(2, '0')}
                   </button>

@@ -145,7 +145,7 @@ const AppLayout = ({ children }) => {
   }
 
   return (
-    <div className="min-h-screen bg-background-page transition-colors duration-500 font-nunito selection:bg-primary-500 selection:text-white">
+    <div className="min-h-screen bg-background-page transition-colors duration-500 font-nunito selection:bg-primary-700 selection:text-white">
 
       {/* --- Top Navbar --- */}
       {showAppNav && (

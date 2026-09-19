@@ -179,7 +179,7 @@ const AdminReferralAnalytics = () => {
                         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                             <div className="space-y-2">
                                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                    REFERRAL <span className="text-primary-500">ANALYTICS</span>
+                                    REFERRAL <span className="text-primary-700">ANALYTICS</span>
                                 </h1>
                                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Track referral performance, user activity, and monthly growth trends.</p>
                             </div>
@@ -205,8 +205,8 @@ const AdminReferralAnalytics = () => {
                         {/* Summary Visualization */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4">
                             {[
-                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
-                                { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-500", shadow: "shadow-primary-500/20" },
+                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-700", shadow: "shadow-primary-500/20" },
+                                { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-700", shadow: "shadow-primary-500/20" },
                                 { label: "TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color: "bg-black dark:bg-white", text: "text-white dark:text-black", shadow: "shadow-black/20 dark:shadow-white/10" },
                                 { label: "THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color: "bg-black dark:bg-white", text: "text-white dark:text-black", shadow: "shadow-black/20 dark:shadow-white/10" }
                             ].map((stat, i) => (
@@ -232,7 +232,7 @@ const AdminReferralAnalytics = () => {
                         <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
                             <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 flex-1 w-full lg:w-auto">
                                 <div className="relative group w-full lg:max-w-md">
-                                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
+                                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
                                     <input
                                         type="text"
                                         placeholder="Search users..."
@@ -280,7 +280,7 @@ const AdminReferralAnalytics = () => {
                             <button
                                 onClick={exportToCSV}
                                 disabled={analytics.length === 0}
-                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-600 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-700 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] shadow-xl hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
                             >
                                 <Download className="w-5 h-5" /> Export CSV
                             </button>
@@ -319,32 +319,32 @@ const AdminReferralAnalytics = () => {
                                                 className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center overflow-hidden"
                                             >
                                                 <div className="relative mb-4 lg:mb-8">
-                                                    <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-xl">
+                                                    <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-2 border-slate-100 dark:border-white/10 shadow-lg group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-xl">
                                                         {user.name?.[0]?.toUpperCase() || 'U'}
                                                     </div>
-                                                    <div className="absolute -bottom-2 -right-2 bg-primary-500 text-white p-2 rounded-lg lg:rounded-xl shadow-lg border-2 border-white dark:border-[#060813]">
+                                                    <div className="absolute -bottom-2 -right-2 bg-primary-700 text-white p-2 rounded-lg lg:rounded-xl shadow-lg border-2 border-white dark:border-[#060813]">
                                                         <Award className="w-4 h-4" />
                                                     </div>
                                                 </div>
 
                                                 <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1">{user.name || 'Unknown'}</h3>
-                                                <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-4 lg:mb-8 italic">{user.email || 'No email'}</div>
+                                                <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-4 lg:mb-8 italic">{user.email || 'No email'}</div>
 
                                                 <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
                                                     <div className="p-5 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
                                                         <div className="text-slate-400 mb-2">Total Referrals</div>
-                                                        <div className="text-xl italic text-primary-500 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-xl italic text-primary-700 tabular-nums">{user.totalReferrals}</div>
                                                     </div>
                                                     <div className="p-5 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
                                                         <div className="text-slate-400 mb-2">Monthly Growth</div>
-                                                        <div className="text-xl italic text-primary-500 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-xl italic text-primary-700 tabular-nums">{user.monthlyReferrals}</div>
                                                     </div>
                                                 </div>
 
                                                 <div className="w-full flex items-center justify-between pt-8 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
                                                     <div className="flex items-center gap-2">
-                                                        <ShieldCheck className="w-4 h-4 text-primary-500" />
-                                                        <span className="text-[10px] font-black uppercase text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors">{user.referralCode}</span>
+                                                        <ShieldCheck className="w-4 h-4 text-primary-700" />
+                                                        <span className="text-[10px] font-black uppercase text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors">{user.referralCode}</span>
                                                     </div>
                                                     <span className="text-[9px] font-black uppercase text-slate-400 italic">Joined: {new Date(user.createdAt).getFullYear()}</span>
                                                 </div>
@@ -364,14 +364,14 @@ const AdminReferralAnalytics = () => {
                                                 transition={{ delay: i * 0.05 }}
                                                 className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row lg:items-center gap-10"
                                             >
-                                                <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-xl group-hover:scale-110 group-hover:bg-primary-500 transition-all uppercase font-black text-2xl">
+                                                <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-xl group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-2xl">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                 </div>
 
                                                 <div className="flex-1 space-y-4">
                                                     <div className="flex flex-wrap items-center gap-4">
-                                                        <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-500 transition-colors">{user.name || 'Unknown'}</h3>
-                                                        <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-primary-500/20 text-primary-500 bg-primary-500/5 italic">{user.referralCode}</div>
+                                                        <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-700 transition-colors">{user.name || 'Unknown'}</h3>
+                                                        <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-primary-500/20 text-primary-700 bg-primary-500/5 italic">{user.referralCode}</div>
                                                     </div>
                                                     <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                                                         <div className="flex items-center gap-2">
@@ -388,11 +388,11 @@ const AdminReferralAnalytics = () => {
                                                 <div className="flex gap-4">
                                                     <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
                                                         <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL REFERRALS</div>
-                                                        <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-2xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.totalReferrals}</div>
                                                     </div>
                                                     <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
                                                         <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">MONTHLY GROWTH</div>
-                                                        <div className="text-2xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-2xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.monthlyReferrals}</div>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -428,7 +428,7 @@ const AdminReferralAnalytics = () => {
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                                                             <div className="flex items-center gap-4">
-                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-500 transition-all uppercase">
+                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-lg group-hover:bg-primary-700 transition-all uppercase">
                                                                     {user.name?.[0]?.toUpperCase()}
                                                                 </div>
                                                                 <div>
@@ -438,16 +438,16 @@ const AdminReferralAnalytics = () => {
                                                             </div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-500 italic">
+                                                            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-700 italic">
                                                                 <Hash className="w-3 h-3" /> {user.referralCode}
                                                             </div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                            <div className="text-xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.totalReferrals}</div>
+                                                            <div className="text-xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.totalReferrals}</div>
                                                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">All Time</div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                            <div className="text-xl font-black italic tracking-tighter text-primary-500 tabular-nums">{user.monthlyReferrals}</div>
+                                                            <div className="text-xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.monthlyReferrals}</div>
                                                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">{selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1].toUpperCase()}</div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-[10px] text-slate-400 uppercase tracking-widest tabular-nums">
@@ -466,7 +466,7 @@ const AdminReferralAnalytics = () => {
                                         <button
                                             onClick={() => handlePageChange(pagination.page - 1)}
                                             disabled={pagination.page === 1}
-                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
                                         >
                                             <ChevronLeft className="w-5 h-5" />
                                         </button>
@@ -478,7 +478,7 @@ const AdminReferralAnalytics = () => {
                                         <button
                                             onClick={() => handlePageChange(pagination.page + 1)}
                                             disabled={pagination.page === pagination.totalPages}
-                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-500 disabled:opacity-20 transition-all shadow-xl active:scale-90"
+                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-xl active:scale-90"
                                         >
                                             <ChevronRight className="w-5 h-5" />
                                         </button>

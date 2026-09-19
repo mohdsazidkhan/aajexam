@@ -167,7 +167,7 @@ const AskQuestionPage = () => {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
         <Card className="text-center max-w-md w-full" radius="2xl">
-          <CheckCircle className="w-16 h-16 text-primary-500 mx-auto mb-4" />
+          <CheckCircle className="w-16 h-16 text-primary-700 mx-auto mb-4" />
           <h2 className="text-xl font-black text-content-primary uppercase mb-2">Question Posted!</h2>
           <p className="text-sm text-content-muted">Redirecting to community questions...</p>
         </Card>
@@ -181,7 +181,7 @@ const AskQuestionPage = () => {
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <Link href="/community-questions">
-            <button className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 transition-colors">
+            <button className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-700 hover:text-primary-700 transition-colors">
               <ArrowLeft className="w-5 h-5" />
             </button>
           </Link>
@@ -207,7 +207,7 @@ const AskQuestionPage = () => {
             <select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
               required
             >
               <option value="">Select Exam</option>
@@ -229,7 +229,7 @@ const AskQuestionPage = () => {
               rows={4}
               maxLength={2000}
               required
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
             <p className="text-[10px] text-content-muted text-right mt-1">
               {form.question.length}/2000
@@ -249,7 +249,7 @@ const AskQuestionPage = () => {
                   </button>
                 </div>
               ) : (
-                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-border-primary text-content-muted text-xs font-bold cursor-pointer hover:border-primary-500 hover:text-primary-500 transition-colors">
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-border-primary text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-700 transition-colors">
                   <ImageIcon className="w-4 h-4" />
                   {uploadingImage ? 'Uploading...' : 'Add Image (optional)'}
                   <input
@@ -272,7 +272,7 @@ const AskQuestionPage = () => {
                 <button
                   type="button"
                   onClick={addOption}
-                  className="flex items-center gap-1 text-xs font-bold text-primary-500 hover:text-primary-600 transition-colors"
+                  className="flex items-center gap-1 text-xs font-bold text-primary-700 hover:text-primary-700 transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" /> Add
                 </button>
@@ -287,14 +287,14 @@ const AskQuestionPage = () => {
                     value={opt.text}
                     onChange={(e) => handleOptionChange(i, 'text', e.target.value)}
                     placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                    className="flex-1 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors"
+                    className="flex-1 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
                     className={`p-2 rounded-lg lg:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
-                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
+                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-700'
                         : 'border-border-primary text-content-muted hover:border-primary-400'
                     }`}
                     title="Mark as correct answer"
@@ -324,7 +324,7 @@ const AskQuestionPage = () => {
               placeholder="Add an explanation for the answer..."
               rows={3}
               maxLength={3000}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-500 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
           </Card>
 

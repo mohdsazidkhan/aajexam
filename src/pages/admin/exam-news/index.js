@@ -39,14 +39,14 @@ const AdminExamNews = () => {
 
   if (loading) return <AdminTableSkeleton />;
 
-  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
+  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
   const typeColor = (t) => {
-    if (t === 'result' || t === 'answer_key') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
+    if (t === 'result' || t === 'answer_key') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-700';
     if (t === 'admit_card') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
-    if (t === 'vacancy') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
+    if (t === 'vacancy') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-700';
     if (t === 'date_change') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
-    return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400';
+    return 'bg-primary-50 dark:bg-primary-500/10 text-primary-700';
   };
 
   return (
@@ -55,8 +55,8 @@ const AdminExamNews = () => {
         <Head><title>Manage Exam News - Admin</title></Head>
         <div className="py-0 lg:py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Megaphone className="w-6 h-6 text-primary-500" /> Exam News</h1>
-            <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-500 text-white'}`}>
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Megaphone className="w-6 h-6 text-primary-700" /> Exam News</h1>
+            <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-700 text-white'}`}>
               {showForm ? <><Trash2 className="w-3 h-3" /> Cancel</> : <><Plus className="w-3 h-3" /> Add New</>}
             </button>
           </div>
@@ -99,7 +99,7 @@ const AdminExamNews = () => {
                 <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300 font-bold cursor-pointer"><input type="checkbox" checked={form.isPinned} onChange={e => setForm({ ...form, isPinned: e.target.checked })} className="rounded" /> Pin to top</label>
               </div>
               <div className="p-5 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3">
-                <button onClick={handleSave} className="px-6 py-2.5 bg-primary-500 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+                <button onClick={handleSave} className="px-6 py-2.5 bg-primary-700 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
                 <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg lg:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
               </div>
             </Card>
@@ -115,7 +115,7 @@ const AdminExamNews = () => {
                 { mode: 'grid', icon: LayoutGrid, label: 'Grid' },
               ].map(({ mode, icon: Icon, label }) => (
                 <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-600 dark:text-primary-400' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
+                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
                   <Icon className="w-4 h-4" />
                 </button>
               ))}
@@ -165,7 +165,7 @@ const AdminExamNews = () => {
                         </td>
                         <td className="px-4 py-3">
                           <div className="flex items-center justify-end gap-1">
-                            {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-500" /></a>}
+                            {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-700" /></a>}
                             <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                             <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                           </div>
@@ -199,7 +199,7 @@ const AdminExamNews = () => {
                       {new Date(n.createdAt).toLocaleDateString('en-IN')}
                     </div>
                     <div className="flex items-center gap-1">
-                      {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-500" /></a>}
+                      {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-700" /></a>}
                       <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                       <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                     </div>
@@ -223,7 +223,7 @@ const AdminExamNews = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{n.title}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="Official Link"><ExternalLink className="w-4 h-4 text-primary-500" /></a>}
+                    {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="Official Link"><ExternalLink className="w-4 h-4 text-primary-700" /></a>}
                     <button onClick={() => handleEdit(n)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
                     <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                   </div>
@@ -251,7 +251,7 @@ const AdminExamNews = () => {
                     <span key={`dot-${i}`} className="px-1 text-slate-400 text-xs">...</span>
                   ) : (
                     <button key={p} onClick={() => setPage(p)}
-                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-500 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-700 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                       {p}
                     </button>
                   )

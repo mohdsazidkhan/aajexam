@@ -25,10 +25,10 @@ export default function EditorialPolicy() {
                 <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-20 h-20 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaShieldAlt className="text-white text-4xl" />
                         </div>
-                        <h1 className="text-2xl lg:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
+                        <h1 className="text-2xl lg:text-5xl font-bold text-primary-700 mb-4">
                             Editorial Policy
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -44,7 +44,7 @@ export default function EditorialPolicy() {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
-                            <div className="w-2 h-10 bg-primary-500 rounded-full" />
+                            <div className="w-2 h-10 bg-primary-700 rounded-full" />
                             Our Mission
                         </h2>
                         <div className="space-y-6 text-slate-600 dark:text-slate-400 text-md lg:text-xl font-bold leading-relaxed">
@@ -60,7 +60,7 @@ export default function EditorialPolicy() {
                     {/* Content Creation Process */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-2xl mb-16 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-500 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-aajexam border-b-2 border-primary-700">
                                 <FaBook className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Creation Process</h2>
@@ -68,10 +68,10 @@ export default function EditorialPolicy() {
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
                             {[
-                                { step: 1, title: 'Expert Development', desc: 'Questions created by subject matter experts with extensive experience in government exams.', color: 'bg-primary-500' },
-                                { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-primary-500' },
+                                { step: 1, title: 'Expert Development', desc: 'Questions created by subject matter experts with extensive experience in government exams.', color: 'bg-primary-700' },
+                                { step: 2, title: 'Multi-Level Review', desc: 'Every piece of content undergoes rigorous review by independent subject experts.', color: 'bg-primary-700' },
                                 { step: 3, title: 'Verification', desc: 'Factual information cross-verified with authoritative sources and government publications.', color: 'bg-black dark:bg-white' },
-                                { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-500' }
+                                { step: 4, title: 'Regular Updates', desc: 'Continuous monitoring and updating of syllabus changes and current affairs.', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex gap-6 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
                                     <div className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 text-white font-black text-2xl shadow-aajexam border-b-2 border-black/20`}>
@@ -92,13 +92,13 @@ export default function EditorialPolicy() {
                         <h2 className="text-xl lg:text-4xl font-black text-white mb-12 uppercase tracking-tight relative z-10">Quality Standards</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                             {[
-                                { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-500' },
-                                { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-primary-500' },
+                                { title: 'Accuracy', desc: 'Zero tolerance for misinformation', color: 'bg-primary-700' },
+                                { title: 'Relevance', desc: 'Aligned with current exam patterns', color: 'bg-primary-700' },
                                 { title: 'Clarity', desc: 'Unambiguous and easily understood', color: 'bg-black dark:bg-white' },
-                                { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-500' }
+                                { title: 'Calibration', desc: 'Appropriately calibrated difficulty', color: 'bg-primary-700' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] flex flex-col items-center gap-4">
-                                    <div className="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center shadow-aajexam-secondary">
+                                    <div className="w-10 h-10 bg-primary-700 rounded-full flex items-center justify-center shadow-aajexam-secondary">
                                         <FaCheckCircle className="text-white text-lg" />
                                     </div>
                                     <h3 className="text-lg font-black text-white uppercase tracking-tight mb-1">{item.title}</h3>
@@ -154,19 +154,19 @@ export default function EditorialPolicy() {
                             </p>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-700 mt-1 flex-shrink-0" />
                                     <span><strong>No Plagiarism:</strong> All content is original or properly attributed. We do not copy questions from other sources without proper licensing.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-700 mt-1 flex-shrink-0" />
                                     <span><strong>Transparency:</strong> We clearly disclose our content creation process, review mechanisms, and update schedules.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-700 mt-1 flex-shrink-0" />
                                     <span><strong>No Misleading Claims:</strong> We do not make false promises about exam success or guaranteed results. Our platform provides practice and preparation tools, but success depends on individual effort.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <FaCheckCircle className="text-primary-500 mt-1 flex-shrink-0" />
+                                    <FaCheckCircle className="text-primary-700 mt-1 flex-shrink-0" />
                                     <span><strong>Respect for Intellectual Property:</strong> We respect copyright laws and obtain proper permissions for any third-party content used on our platform.</span>
                                 </li>
                             </ul>
@@ -175,7 +175,7 @@ export default function EditorialPolicy() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-500 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-aajexam-primary">
+                        <div className="bg-primary-700 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-aajexam-primary">
                             <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Questions About Our Policy?
                             </h2>
@@ -184,7 +184,7 @@ export default function EditorialPolicy() {
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-600 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-xl active:translate-y-1 active:shadow-none"
+                                className="bg-white text-primary-700 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-xl active:translate-y-1 active:shadow-none"
                             >
                                 Back to Home
                             </button>

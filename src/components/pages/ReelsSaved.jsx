@@ -101,7 +101,7 @@ const ReelsSaved = () => {
                             <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">{reel.subject}</span>
                           )}
                           {reel.difficulty && (
-                            <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${reel.difficulty === 'easy' ? 'border-primary-200 text-primary-600 dark:border-primary-900/30 dark:text-primary-400'
+                            <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${reel.difficulty === 'easy' ? 'border-primary-200 text-primary-700 dark:border-primary-900/30 dark:text-primary-400'
                               : reel.difficulty === 'hard' ? 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 dark:text-white'
                                 : 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 dark:text-white'}`}>
                               {reel.difficulty}

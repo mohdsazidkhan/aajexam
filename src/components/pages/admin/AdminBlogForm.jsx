@@ -180,7 +180,7 @@ const AdminBlogForm = () => {
             </button>
             <div>
               <h1 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter leading-none italic">
-                {isEdit ? 'EDIT' : 'CREATE'} <span className="text-primary-600">BLOG</span>
+                {isEdit ? 'EDIT' : 'CREATE'} <span className="text-primary-700">BLOG</span>
               </h1>
               <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
                 {isEdit ? 'Update your blog post' : 'Write and publish a new blog post'}
@@ -302,12 +302,12 @@ const AdminBlogForm = () => {
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isFeatured" checked={formData.isFeatured} onChange={handleChange}
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
+                  className="h-4 w-4 text-primary-700 focus:ring-primary-500 border-gray-300 rounded" />
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Featured Blog</label>
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isPinned" checked={formData.isPinned} onChange={handleChange}
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
+                  className="h-4 w-4 text-primary-700 focus:ring-primary-500 border-gray-300 rounded" />
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Pinned Blog</label>
               </div>
             </div>
@@ -328,7 +328,7 @@ const AdminBlogForm = () => {
             </button>
             <motion.button type="submit" disabled={loading}
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              className="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white rounded-lg font-bold text-sm flex items-center gap-2 disabled:opacity-50 shadow-lg shadow-primary-500/20">
+              className="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-bold text-sm flex items-center gap-2 disabled:opacity-50 shadow-lg shadow-primary-500/20">
               <Save className="w-4 h-4" />
               {loading ? 'Saving...' : isEdit ? 'Update Blog' : 'Create Blog'}
             </motion.button>

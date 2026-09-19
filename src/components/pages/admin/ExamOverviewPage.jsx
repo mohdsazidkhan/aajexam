@@ -157,7 +157,7 @@ const ExamDetails = ({ exam }) => (
         <div className="flex flex-col border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-white/10 pt-2 sm:pt-0 sm:pl-3">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Question Bank</span>
-            <a href="/admin/quiz/questions" className="text-[10px] text-primary-600 hover:underline font-bold flex items-center gap-0.5">Manage <ChevronRight className="w-2.5 h-2.5" /></a>
+            <a href="/admin/quiz/questions" className="text-[10px] text-primary-700 hover:underline font-bold flex items-center gap-0.5">Manage <ChevronRight className="w-2.5 h-2.5" /></a>
           </div>
           <span className="text-sm font-bold text-black dark:text-white mt-0.5">{formatNumber(exam.counts.qBankQuestions)} Qs</span>
           <span className="text-[10px] text-slate-500">Standalone Quiz Bank</span>
@@ -174,7 +174,7 @@ const ExamDetails = ({ exam }) => (
             <div key={b._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 dark:bg-white/10 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex flex-col justify-center">
               <span className="truncate font-medium mb-1" title={b.title}>{b.title}</span>
               <div className="flex items-center justify-between">
-                <span className={`text-[9px] font-bold uppercase ${b.status === 'published' ? 'text-primary-600' : 'text-black dark:text-white'}`}>{b.status}</span>
+                <span className={`text-[9px] font-bold uppercase ${b.status === 'published' ? 'text-primary-700' : 'text-black dark:text-white'}`}>{b.status}</span>
                 <span className="text-slate-400 text-[9px]">{b.views || 0} views</span>
               </div>
             </div>
@@ -286,7 +286,7 @@ const ExamOverviewPage = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-4 my-2 lg:my-4">
         <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-2 lg:mb-0 uppercase leading-none">
-          Exam <span className="text-primary-600">Overview</span>
+          Exam <span className="text-primary-700">Overview</span>
         </h1>
         <button
           onClick={fetchData}
@@ -322,7 +322,7 @@ const ExamOverviewPage = () => {
               placeholder="Search exams, subjects, topics..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:border-primary-500"
+              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:border-primary-700"
             />
           </div>
           <div className="flex items-center gap-3 w-full md:w-auto">
@@ -392,7 +392,7 @@ const ExamOverviewPage = () => {
                             {exam.category?.name || '-'}
                           </td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.patterns}</td>
-                          <td className="p-4 text-center font-semibold text-primary-600 dark:text-primary-400">{exam.counts.subjects}</td>
+                          <td className="p-4 text-center font-semibold text-primary-700">{exam.counts.subjects}</td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.topics}</td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.quizzes}</td>
                           <td className="p-4 text-center font-semibold text-black dark:text-white">{exam.counts.pyqs}</td>
@@ -420,7 +420,7 @@ const ExamOverviewPage = () => {
                           <td className="p-4 text-center">
                             <button
                               onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)}
-                              className="p-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
+                              className="p-2 text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
                               data-tip="Manage Patterns"
                             >
                               <Eye className="w-4 h-4" />
@@ -459,7 +459,7 @@ const ExamOverviewPage = () => {
                   <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 flex items-center justify-center shrink-0">
                           <GraduationCap className="w-5 h-5" />
                         </div>
                         <div>
@@ -482,7 +482,7 @@ const ExamOverviewPage = () => {
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Sub</div>
-                          <div className="text-sm font-bold text-primary-600">{exam.counts.subjects}</div>
+                          <div className="text-sm font-bold text-primary-700">{exam.counts.subjects}</div>
                         </div>
                         <div className="text-center px-3 border-r border-slate-200 dark:border-white/10 shrink-0">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Top</div>
@@ -508,7 +508,7 @@ const ExamOverviewPage = () => {
                           {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
                           {isExpanded ? 'Hide' : 'Details'}
                         </button>
-                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="px-3 py-1.5 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 rounded-lg transition-colors flex items-center gap-1">
+                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="px-3 py-1.5 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-700 rounded-lg transition-colors flex items-center gap-1">
                           <Eye className="w-3 h-3" /> Manage
                         </button>
                       </div>
@@ -557,7 +557,7 @@ const ExamOverviewPage = () => {
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Subjects</div>
-                          <div className="text-lg font-bold text-primary-600 leading-none">{exam.counts.subjects}</div>
+                          <div className="text-lg font-bold text-primary-700 leading-none">{exam.counts.subjects}</div>
                         </div>
                         <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-2 text-center border border-slate-100 dark:border-white/5">
                           <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Topics</div>
@@ -591,7 +591,7 @@ const ExamOverviewPage = () => {
                           {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
                           {isExpanded ? 'Hide' : 'Details'}
                         </button>
-                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="flex-1 py-2 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-600 rounded-lg transition-colors flex items-center justify-center gap-1">
+                        <button onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)} className="flex-1 py-2 text-xs font-bold bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 text-primary-700 rounded-lg transition-colors flex items-center justify-center gap-1">
                           <Eye className="w-3 h-3" /> Manage
                         </button>
                       </div>

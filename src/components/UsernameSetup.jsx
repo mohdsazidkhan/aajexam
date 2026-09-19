@@ -96,7 +96,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         Choose a unique username that others can use to find and follow you.
       </p>
 
-      <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-500 shadow-inner">
+      <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-700 shadow-inner">
         <div className="username-prefix text-lg font-black text-slate-600 dark:text-slate-400 mr-2">@</div>
         <input
           type="text"
@@ -105,7 +105,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           placeholder="username"
           maxLength={20}
           className={`username-input flex-1 border-none outline-none text-base font-black bg-transparent text-slate-900 dark:text-white placeholder:text-slate-300 ${username && username !== currentUsername
-            ? (available === true ? 'text-primary-600' : available === false ? 'text-primary-700 dark:text-primary-500' : '')
+            ? (available === true ? 'text-primary-700' : available === false ? 'text-primary-700' : '')
             : ''
             }`}
         />
@@ -113,10 +113,10 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€œ</span>
+          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-700">Ã¢Å“â€œ</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-700 dark:text-primary-500">Ã¢Å“â€”</span>
+          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-700">Ã¢Å“â€”</span>
         )}
       </div>
 
@@ -142,7 +142,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       <button
         onClick={handleSave}
         disabled={!canSave || saving}
-        className="save-username-btn w-full p-5 bg-primary-500 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-aajexam-secondary disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
+        className="save-username-btn w-full p-5 bg-primary-700 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-aajexam-secondary disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
       >
         {saving ? 'Saving student...' : 'Save Student Identity'}
       </button>

@@ -144,7 +144,7 @@ export default function ReferralHistory() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                REFERRAL <span className="text-primary-500">HISTORY</span>
+                REFERRAL <span className="text-primary-700">HISTORY</span>
               </h1>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View all referral reward transactions and payouts.</p>
             </div>
@@ -248,7 +248,7 @@ export default function ReferralHistory() {
                                 {tx.inviter?.name?.[0]?.toUpperCase() || 'U'}
                               </div>
                               <div>
-                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-primary-500 transition-colors flex items-center gap-2">
+                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-primary-700 transition-colors flex items-center gap-2">
                                   {tx.inviter?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                                 </div>
                                 <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.inviter?.email || 'No email'}</div>
@@ -259,7 +259,7 @@ export default function ReferralHistory() {
                         <td className="px-4 lg:px-8 py-3 lg:py-6">
                           {tx.invitee ? (
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs border border-primary-500/20">
+                              <div className="w-10 h-10 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs border border-primary-500/20">
                                 <User className="w-5 h-5" />
                               </div>
                               <div>
@@ -278,7 +278,7 @@ export default function ReferralHistory() {
                           </div>
                         </td>
                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                          <div className="text-xl font-black italic tracking-tighter text-primary-500 tabular-nums">+₹{tx.amount}</div>
+                          <div className="text-xl font-black italic tracking-tighter text-primary-700 tabular-nums">+₹{tx.amount}</div>
                           <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">Reward Earned</div>
                         </td>
                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-lg italic text-slate-900 dark:text-white tabular-nums">

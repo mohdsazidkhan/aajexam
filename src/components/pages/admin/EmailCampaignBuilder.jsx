@@ -337,7 +337,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             ← All campaigns
           </Link>
           <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
-            <Mail className="text-primary-500" /> {campaignIdProp ? 'Edit Campaign' : 'New Campaign'}
+            <Mail className="text-primary-700" /> {campaignIdProp ? 'Edit Campaign' : 'New Campaign'}
           </h1>
           <p className="text-slate-600 dark:text-slate-400 mt-2">
             Save a draft → send a test → publish → then send to all users.
@@ -350,7 +350,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             <React.Fragment key={s.key}>
               <div className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap ${
                 i < activeStep ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
-                  : i === activeStep ? 'bg-primary-500 text-white'
+                  : i === activeStep ? 'bg-primary-700 text-white'
                   : 'bg-slate-100 text-slate-400 dark:bg-white/5 dark:text-slate-500'
               }`}>
                 {i + 1}. {s.label}
@@ -365,7 +365,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           <div className="mb-4 flex flex-wrap items-start justify-between gap-2">
             <div>
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <PenSquare className="text-primary-500" /> Custom Email Template
+                <PenSquare className="text-primary-700" /> Custom Email Template
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 The platform logo &amp; footer are added automatically.
@@ -405,8 +405,8 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="flex items-center justify-between mb-1">
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Content *</label>
                   <div className="flex rounded-lg overflow-hidden border border-slate-300 dark:border-white/10 text-xs">
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
-                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('simple')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'simple' ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>Simple</button>
+                    <button type="button" disabled={!canEditFields} onClick={() => setMode('html')} className={`px-3 py-1 disabled:opacity-50 ${mode === 'html' ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'}`}>HTML</button>
                   </div>
                 </div>
                 <textarea
@@ -451,7 +451,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                 <div className="border-t border-slate-100 dark:border-white/10 pt-4">
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Send Test Email
-                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-600 dark:text-primary-400">✓ sent to {campaign.testSentTo}</span>}
+                    {campaign.testSentAt && <span className="ml-2 text-[10px] text-primary-700">✓ sent to {campaign.testSentTo}</span>}
                   </label>
                   <div className="flex gap-2">
                     <input type="email" placeholder="admin@example.com" value={testEmail} onChange={(e) => setTestEmail(e.target.value)} className={inputClass} />
@@ -483,7 +483,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {isPublished && (
                 <div className="space-y-3 border-t border-slate-100 dark:border-white/10 pt-4">
                   <button onClick={sendToAll} disabled={busyAction}
-                    className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-500 hover:bg-primary-600 text-white shadow-md disabled:opacity-50">
+                    className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-primary-700 hover:bg-primary-600 text-white shadow-md disabled:opacity-50">
                     <Send size={20} /> Send To All Users
                   </button>
 
@@ -513,7 +513,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                   {(isSendingPhase || isCompleted) && (
                     <>
                       <div className="w-full bg-slate-200 dark:bg-white/10 rounded-full h-3 overflow-hidden">
-                        <div className="bg-primary-500 h-3 transition-all duration-500" style={{ width: `${pct}%` }} />
+                        <div className="bg-primary-700 h-3 transition-all duration-500" style={{ width: `${pct}%` }} />
                       </div>
                       <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-1">
                         <span>{campaign.processed} / {campaign.totalTargeted} processed ({pct}%)</span>
@@ -522,7 +522,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
 
                       <div className="grid grid-cols-3 gap-2 mt-3 text-center text-sm">
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
-                          <div className="text-primary-600 dark:text-primary-400 font-bold">{campaign.sentCount}</div>
+                          <div className="text-primary-700 font-bold">{campaign.sentCount}</div>
                           <div className="text-[10px] text-slate-500 uppercase">Sent</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white dark:bg-white/5">
@@ -540,7 +540,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                           <button onClick={pauseDriver} className="flex-1 py-2 px-3 rounded-lg text-sm bg-black dark:bg-white hover:bg-black dark:hover:bg-white text-white dark:text-black">Pause</button>
                         )}
                         {isSendingPhase && !isRunning && (
-                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-500 hover:bg-primary-600 text-white disabled:opacity-50">
+                          <button onClick={continueDriver} disabled={busyAction} className="flex-1 py-2 px-3 rounded-lg text-sm bg-primary-700 hover:bg-primary-600 text-white disabled:opacity-50">
                             {campaign.remainingToday > 0 ? 'Continue Sending' : 'Continue (quota resets tomorrow)'}
                           </button>
                         )}
@@ -577,7 +577,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                         <>
                           <div className="flex items-center justify-between mb-2">
                             <p className="text-xs text-slate-600 dark:text-slate-300">
-                              Sent to <strong className="text-primary-600 dark:text-primary-400">{recipients.counts.sent}</strong>
+                              Sent to <strong className="text-primary-700">{recipients.counts.sent}</strong>
                               {recipients.counts.failed > 0 && (<> · failed <strong className="text-black dark:text-white">{recipients.counts.failed}</strong></>)}
                             </p>
                             <button onClick={() => loadRecipients(recipPage)} disabled={loadingRecipients} className="text-[10px] text-black dark:text-white hover:underline disabled:opacity-50">Refresh</button>

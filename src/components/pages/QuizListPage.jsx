@@ -48,7 +48,7 @@ const QuizListSkeleton = () => (
 
 // ─── Difficulty color map ──────────────────────────────────────────────────────
 const diffChip = (d) => {
-  if (d === 'easy') return 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50';
+  if (d === 'easy') return 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50';
   if (d === 'hard') return 'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50';
   return 'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50';
 };
@@ -116,7 +116,7 @@ const QuizListPage = () => {
 
       {/* ── Hero ── */}
       <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:p-8">
-        <div className="absolute inset-0 bg-primary-500 dark:bg-slate-900" />
+        <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -142,7 +142,7 @@ const QuizListPage = () => {
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-primary-500 text-white border-primary-600'
+                    ? 'bg-primary-700 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -156,10 +156,10 @@ const QuizListPage = () => {
           {filtered.map((quiz, idx) => (
             <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
               <Card hoverable onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                className="group p-5 flex flex-col gap-4 border-border-primary hover:border-primary-500 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
+                className="group p-5 flex flex-col gap-4 border-border-primary hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-lg">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-500 flex items-center justify-center shrink-0 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-md">
                       <BrainCircuit className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -167,7 +167,7 @@ const QuizListPage = () => {
                       {quiz.subject?.name && <p className="text-[10px] font-bold text-content-muted uppercase">{quiz.subject.name}</p>}
                     </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-500 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-700 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                 </div>
 
                 {/* Topic / access badge */}
@@ -204,7 +204,7 @@ const QuizListPage = () => {
               <BrainCircuit className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No quizzes found</h3>
               <button onClick={() => { setActiveFilter('all'); setSearch(''); }}
-                className="px-6 py-2.5 bg-primary-500 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

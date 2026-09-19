@@ -14,7 +14,7 @@ import Seo from '../components/Seo';
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
   notification: { icon: Bell, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Notification', border: 'border-slate-200 dark:border-slate-800' },
-  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400', dot: 'bg-primary-500', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
+  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-700', dot: 'bg-primary-700', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
   result:       { icon: BarChart2, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Result', border: 'border-slate-200 dark:border-slate-800' },
   answer_key:   { icon: Key, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Answer Key', border: 'border-slate-200 dark:border-slate-800' },
   vacancy:      { icon: Users, color: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot: 'bg-black dark:bg-white', label: 'Vacancy', border: 'border-slate-200 dark:border-slate-800' },
@@ -94,7 +94,7 @@ const EventCard = ({ event, compact = false }) => {
             </span>
           </div>
         </div>
-        <ChevronRight className="w-4 h-4 text-border-secondary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
+        <ChevronRight className="w-4 h-4 text-border-secondary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
       </motion.div>
     </Link>
   );
@@ -116,9 +116,9 @@ const DayPanel = ({ date, events, onClose }) => {
         <Card padded={false} className="overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-border-primary">
             <div className="flex items-center gap-2">
-              <CalendarDays className="w-4 h-4 text-primary-500" />
+              <CalendarDays className="w-4 h-4 text-primary-700" />
               <span className="text-sm font-black text-content-primary">{dateLabel}</span>
-              <span className="text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-900/30 text-primary-700 px-2 py-0.5 rounded-full">
                 {events.length} event{events.length > 1 ? 's' : ''}
               </span>
             </div>
@@ -266,7 +266,7 @@ const ExamCalendarPage = () => {
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
               <button
                 onClick={goToday}
-                className="text-[10px] font-black text-primary-500 hover:text-primary-600 uppercase tracking-wide mt-0.5"
+                className="text-[10px] font-black text-primary-700 hover:text-primary-700 uppercase tracking-wide mt-0.5"
               >
                 Back to Today
               </button>
@@ -323,7 +323,7 @@ const ExamCalendarPage = () => {
                   {/* Day number */}
                   <span className={`
                     w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full text-[11px] sm:text-xs font-black
-                    ${isToday ? 'bg-primary-500 text-white shadow-md' : 'text-content-primary'}
+                    ${isToday ? 'bg-primary-700 text-white shadow-md' : 'text-content-primary'}
                     ${isWeekend && !isToday ? 'text-black dark:text-white dark:text-white' : ''}
                   `}>
                     {day}
@@ -361,11 +361,11 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary-500" />
+                <Clock className="w-4 h-4 text-primary-700" />
                 <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
                   Upcoming (Next 30 Days)
                 </h2>
-                <span className="text-[10px] font-black bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-black bg-primary-100 dark:bg-primary-900/30 text-primary-700 px-2 py-0.5 rounded-full">
                   {upcoming.length}
                 </span>
               </div>

@@ -94,7 +94,7 @@ function AnswerItem({
         <div className="flex flex-col items-center gap-0.5 shrink-0">
           <button
             onClick={() => handleVote('up')}
-            className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-600' : 'text-slate-400'}`}
+            className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-700' : 'text-slate-400'}`}
           >
             <ThumbsUp className="w-4 h-4" />
           </button>
@@ -114,7 +114,7 @@ function AnswerItem({
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || 'User'}</span>
             {item.author?.username && (
-              <Link href={`/u/${item.author.username}`} className="text-[11px] font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+              <Link href={`/u/${item.author.username}`} className="text-[11px] font-semibold text-primary-700 hover:underline">
                 @{item.author.username}
               </Link>
             )}
@@ -137,14 +137,14 @@ function AnswerItem({
 
           <div className="mt-2 flex items-center gap-4 text-xs">
             {!isReply && (
-              <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-slate-500 hover:text-primary-600 transition">
+              <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-slate-500 hover:text-primary-700 transition">
                 <CornerDownRight className="w-3.5 h-3.5" /> Reply{item.replyCount ? ` (${item.replyCount})` : ''}
               </button>
             )}
             {canAccept && !isReply && (
               <button
                 onClick={() => onAccept(item._id)}
-                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 font-bold' : 'text-slate-400 hover:text-primary-600'}`}
+                className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-700 font-bold' : 'text-slate-400 hover:text-primary-700'}`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 {item.isAcceptedAnswer ? 'Accepted' : 'Accept'}
@@ -171,7 +171,7 @@ function AnswerItem({
                 placeholder="Write a reply…"
                 className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
-              <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-500 text-white rounded-lg hover:bg-primary-600">
+              <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-700 text-white rounded-lg hover:bg-primary-600">
                 Post
               </button>
             </div>
@@ -283,7 +283,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
               <button
                 key={s}
                 onClick={() => { setSort(s); load(s); }}
-                className={`px-2.5 py-1 rounded uppercase tracking-wider ${sort === s ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}
+                className={`px-2.5 py-1 rounded uppercase tracking-wider ${sort === s ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}
               >
                 {s === 'top' ? 'Top' : 'Newest'}
               </button>
@@ -305,7 +305,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
             <button
               disabled={submitting || newAnswer.trim().length < 2}
               onClick={submitNew}
-              className="px-4 py-2 text-xs font-bold bg-primary-500 text-white rounded-lg hover:bg-primary-600 disabled:opacity-50"
+              className="px-4 py-2 text-xs font-bold bg-primary-700 text-white rounded-lg hover:bg-primary-600 disabled:opacity-50"
             >
               {submitting ? 'Posting…' : 'Post Answer'}
             </button>
@@ -314,7 +314,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
       ) : (
         <div className="mb-4 p-3 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-center">
           <p className="text-sm text-slate-500">
-            <Link href="/login" className="text-primary-600 font-bold hover:underline">Login</Link> to post an answer
+            <Link href="/login" className="text-primary-700 font-bold hover:underline">Login</Link> to post an answer
           </p>
         </div>
       )}

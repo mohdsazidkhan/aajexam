@@ -376,7 +376,7 @@ const AttemptQuizPage = () => {
         <div className="text-center">
           <XCircle className="w-12 h-12 text-black dark:text-white mx-auto mb-3" />
           <p className="text-slate-700 dark:text-slate-300 font-semibold">No questions available for this quiz.</p>
-          <button onClick={() => router.push('/')} className="mt-4 text-primary-600 hover:underline text-sm">Go Home</button>
+          <button onClick={() => router.push('/')} className="mt-4 text-primary-700 hover:underline text-sm">Go Home</button>
         </div>
       </div>
     );
@@ -452,7 +452,7 @@ const AttemptQuizPage = () => {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
-                  <div className="text-xl font-bold text-primary-600 dark:text-primary-400">{result.correctCount}</div>
+                  <div className="text-xl font-bold text-primary-700">{result.correctCount}</div>
                   <div className="text-xs text-slate-500">Correct</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
@@ -503,7 +503,7 @@ const AttemptQuizPage = () => {
                   <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                     {/* Question header */}
                     <div className="flex items-start gap-3 mb-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-500 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-700 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>
                         {index + 1}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -534,7 +534,7 @@ const AttemptQuizPage = () => {
 
                         return (
                           <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
-                            {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
+                            {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-700 shrink-0" />}
                             {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
                             {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
                             <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>
@@ -606,7 +606,7 @@ const AttemptQuizPage = () => {
           <div className="flex items-center mb-2">
             {/* Left: Logo + Title */}
             <div className="flex items-center gap-2 flex-1 min-w-0">
-              <div className="w-8 h-8 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 bg-primary-700 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0">
                 <BrainCircuit className="w-4 h-4 text-white" />
               </div>
               <div className="min-w-0">
@@ -627,7 +627,7 @@ const AttemptQuizPage = () => {
                     setCurrentQuestionIndex(idx);
                   }}
                   className={`w-7 h-7 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                      ? 'bg-primary-500 text-white shadow-md scale-110'
+                      ? 'bg-primary-700 text-white shadow-md scale-110'
                       : answers[idx] !== null
                         ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-300'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -665,7 +665,7 @@ const AttemptQuizPage = () => {
 
           {/* Progress bar */}
           <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
-            <div className="bg-primary-500 h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+            <div className="bg-primary-700 h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
           <div className="flex justify-between mt-1">
             <span className="text-[10px] text-slate-400">Q {currentQuestionIndex + 1}/{quiz.questions.length}</span>
@@ -690,7 +690,7 @@ const AttemptQuizPage = () => {
                   setCurrentQuestionIndex(idx);
                 }}
                 className={`w-7 h-7 shrink-0 rounded-lg text-[10px] font-bold transition-all ${idx === currentQuestionIndex
-                    ? 'bg-primary-500 text-white shadow-md scale-110'
+                    ? 'bg-primary-700 text-white shadow-md scale-110'
                     : answers[idx] !== null
                       ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-300'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -705,7 +705,7 @@ const AttemptQuizPage = () => {
         {/* Question Card */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 lg:p-8 border border-white/20 mb-3">
           <div className="flex items-start gap-3 mb-5">
-            <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0">
+            <div className="w-8 h-8 bg-primary-700 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0">
               {currentQuestionIndex + 1}
             </div>
             <p className="text-base lg:text-lg font-semibold text-slate-800 dark:text-white leading-relaxed">
@@ -735,11 +735,11 @@ const AttemptQuizPage = () => {
                   key={optIdx}
                   onClick={() => handleSelect(optIdx)}
                   className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition-all duration-200 ${isSelected
-                      ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30 shadow-md'
+                      ? 'border-primary-700 bg-primary-50 dark:bg-primary-900/30 shadow-md'
                       : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
                     }`}
                 >
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${isSelected ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
                     }`}>
                     {String.fromCharCode(65 + optIdx)}
                   </div>

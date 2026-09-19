@@ -41,7 +41,7 @@ const TYPE_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
+   published: { label: 'Published', icon: CheckCircle, color: 'text-primary-700', bg: 'bg-primary-50 dark:bg-primary-900/20' },
    pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
    rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
    draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20' },
@@ -95,7 +95,7 @@ const MyReelsPage = () => {
 
    return (
       <MobileAppWrapper title="My Reels">
-         <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
+         <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
             <Seo title="My Reels - AajExam" noIndex={true} />
 
             <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
@@ -110,7 +110,7 @@ const MyReelsPage = () => {
 
                   <div className="flex flex-wrap gap-3 justify-center items-center">
                      <select
-                        className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-500"
+                        className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">All Status</option>
@@ -172,7 +172,7 @@ const MyReelsPage = () => {
                                           </span>
                                        )}
                                        {reel.difficulty && (
-                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20'}`}>
+                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-700 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20'}`}>
                                              {reel.difficulty}
                                           </span>
                                        )}

@@ -127,7 +127,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Profile Header */}
         <div className="mb-6">
           {/* Banner */}
-          <div className="h-32 sm:h-40 lg:h-48 bg-primary-500 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
+          <div className="h-32 sm:h-40 lg:h-48 bg-primary-700 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
 
           {/* Profile Card - overlaps banner */}
           <div className="-mt-16 sm:-mt-20 relative z-10">
@@ -155,7 +155,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <div className="flex-1 min-w-0 pt-1">
                   <h1 className="text-base sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight">{profile.name}</h1>
                   {profile.username && (
-                    <p className="text-xs sm:text-sm font-bold text-primary-600 dark:text-primary-400">
+                    <p className="text-xs sm:text-sm font-bold text-primary-700">
                       @{profile.username}
                     </p>
                   )}
@@ -208,14 +208,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/followers`)}
                 >
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
+                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors">{profile.followersCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Followers</span>
                 </div>
                 <div
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/following`)}
                 >
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
+                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors">{profile.followingCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Following</span>
                 </div>
                 <div>
@@ -237,7 +237,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {profile.badges && profile.badges.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
                 Badges
               </h2>
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -257,18 +257,18 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {(profile.isPublicProfile || isOwnProfile) && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
                 Exam Statistics
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-700">
                     {0}
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-700">
                     {0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Best</span>
@@ -287,7 +287,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {reels.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-500 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
                 <PlayCircle className="w-5 h-5" />
                 Reels
                 <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
@@ -299,7 +299,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     fact: { icon: Lightbulb, gradient: 'bg-black dark:bg-white', label: 'Fact' },
                     tip: { icon: Zap, gradient: 'bg-black dark:bg-white', label: 'Tip' },
                     current_affairs: { icon: Newspaper, gradient: 'bg-black dark:bg-white', label: 'Current Affairs' },
-                    poll: { icon: BarChart3, gradient: 'bg-primary-500', label: 'Poll' },
+                    poll: { icon: BarChart3, gradient: 'bg-primary-700', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;
                   const Icon = config.icon;
@@ -341,7 +341,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <button
                   onClick={() => fetchReels(reelsPage + 1)}
                   disabled={reelsLoading}
-                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 dark:text-primary-400 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-700 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                 >
                   {reelsLoading ? 'Loading...' : 'Load More Reels'}
                 </button>

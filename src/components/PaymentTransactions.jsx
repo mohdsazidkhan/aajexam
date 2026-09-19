@@ -111,15 +111,15 @@ const PaymentTransactions = () => {
     switch (status) {
       case 'paid':
       case 'success':
-        return <FaCheckCircle className="text-primary-500" />;
+        return <FaCheckCircle className="text-primary-700" />;
       case 'failed':
       case 'failure':
         return <FaTimesCircle className="text-black dark:text-white" />;
       case 'created':
       case 'authorized':
-        return <FaClock className="text-primary-700 dark:text-primary-500" />;
+        return <FaClock className="text-primary-700" />;
       case 'refunded':
-        return <FaExclamationTriangle className="text-primary-700 dark:text-primary-500" />;
+        return <FaExclamationTriangle className="text-primary-700" />;
       default:
         return <FaExclamationTriangle className="text-slate-700 dark:text-gray-400" />;
     }
@@ -146,9 +146,9 @@ const PaymentTransactions = () => {
   const getSourceIcon = (source) => {
     switch (source) {
       case 'payment_order':
-        return <FaCreditCard className="text-primary-700 dark:text-primary-500" />;
+        return <FaCreditCard className="text-primary-700" />;
       default:
-        return <FaCreditCard className="text-primary-700 dark:text-primary-500" />;
+        return <FaCreditCard className="text-primary-700" />;
     }
   };
 
@@ -162,9 +162,9 @@ const PaymentTransactions = () => {
   };
 
   const getTypeColor = (type, source) => {
-    if (type === 'credit') return 'text-primary-600 dark:text-primary-400';
-    if (type === 'debit') return 'text-primary-700 dark:text-primary-500 dark:text-white';
-    if (source === 'payment_order') return 'text-primary-700 dark:text-primary-500 dark:text-primary-400';
+    if (type === 'credit') return 'text-primary-700';
+    if (type === 'debit') return 'text-primary-700 dark:text-white';
+    if (source === 'payment_order') return 'text-primary-700 dark:text-primary-400';
     return 'text-gray-600 dark:text-gray-400';
   };
 
@@ -206,7 +206,7 @@ const PaymentTransactions = () => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[2.5rem] shadow-2xl border-2 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit">
       {/* Header */}
-      <div className="bg-primary-500 p-4 lg:p-8 text-white shadow-aajexam-primary border-b-2 lg:border-b-2 border-white/20 relative overflow-hidden group">
+      <div className="bg-primary-700 p-4 lg:p-8 text-white shadow-aajexam-primary border-b-2 lg:border-b-2 border-white/20 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 lg:gap-8 relative z-10">
           <div>
@@ -233,11 +233,11 @@ const PaymentTransactions = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Total Investment</p>
-                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-500 transition-colors">
+                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-700 transition-colors">
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -246,11 +246,11 @@ const PaymentTransactions = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Total Transactions</p>
-                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-700 dark:text-primary-500 transition-colors">
+                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-700 transition-colors">
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-2 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-primary border-2 lg:border-2 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
                   <FaReceipt className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -259,11 +259,11 @@ const PaymentTransactions = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 lg:mb-3">Successful Clear</p>
-                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-700 dark:text-primary-500 transition-colors">
+                  <p className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-700 transition-colors">
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-secondary border-2 lg:border-2 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
+                <div className="w-10 h-10 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-lg lg:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-aajexam-secondary border-2 lg:border-2 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-sm lg:text-3xl" />
                 </div>
               </div>
@@ -284,7 +284,7 @@ const PaymentTransactions = () => {
                 placeholder="Search history..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 lg:pl-12 pr-3 lg:pr-4 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 outline-none transition-all"
+                className="w-full pl-9 lg:pl-12 pr-3 lg:pr-4 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
               />
             </div>
 
@@ -292,7 +292,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value={1}>January</option>
               <option value={2}>February</option>
@@ -312,7 +312,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -323,7 +323,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl lg:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="paid">Paid</option>
@@ -374,7 +374,7 @@ const PaymentTransactions = () => {
                         <div className={`text-base lg:text-3xl font-black tracking-tighter ${getTypeColor(transaction.type, transaction.source)}`}>
                           {formatCurrency(transaction.amount)}
                         </div>
-                        <div className={`px-2.5 lg:px-4 py-1 lg:py-1.5 rounded-lg lg:rounded-xl text-[7px] lg:text-[8px] font-black uppercase tracking-widest border-2 flex items-center gap-1.5 lg:gap-2 ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
+                        <div className={`px-2.5 lg:px-4 py-1 lg:py-1.5 rounded-lg lg:rounded-xl text-[10px] lg:text-[12px] font-black uppercase tracking-widest border-2 flex items-center gap-1.5 lg:gap-2 ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
                           {getStatusIcon(transaction.paymentStatus || transaction.status)}
                           {transaction.paymentStatus || transaction.status}
                         </div>
@@ -421,7 +421,7 @@ const PaymentTransactions = () => {
                       {/* Payment Details */}
                       <div className="bg-white dark:bg-slate-800 p-3 lg:p-6 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-inner">
                         <h4 className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 lg:mb-6 flex items-center gap-2 lg:gap-3">
-                          <FaCreditCard className="text-primary-700 dark:text-primary-500" />
+                          <FaCreditCard className="text-primary-700" />
                           Payment Details
                         </h4>
                         <div className="space-y-2 lg:space-y-4">
@@ -443,7 +443,7 @@ const PaymentTransactions = () => {
                       {/* Info Details */}
                       <div className="bg-white dark:bg-slate-800 p-3 lg:p-6 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-inner">
                         <h4 className="text-[9px] lg:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 lg:mb-6 flex items-center gap-2 lg:gap-3">
-                          <FaReceipt className="text-primary-700 dark:text-primary-500" />
+                          <FaReceipt className="text-primary-700" />
                           Transaction Details
                         </h4>
                         <div className="space-y-2 lg:space-y-4">
@@ -488,7 +488,7 @@ const PaymentTransactions = () => {
                       key={page}
                       onClick={() => handlePageChange(page)}
                       className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl lg:rounded-2xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest transition-all ${page === pagination.currentPage
-                        ? 'bg-primary-500 text-white shadow-aajexam-primary border-2 border-white'
+                        ? 'bg-primary-700 text-white shadow-aajexam-primary border-2 border-white'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shadow-aajexam border-2 border-slate-200 dark:border-slate-600 active:translate-y-1'
                         }`}
                     >

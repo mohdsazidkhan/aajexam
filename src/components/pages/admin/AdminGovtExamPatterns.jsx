@@ -209,7 +209,7 @@ const AdminGovtExamPatterns = () => {
               <button
                 key={mode.id}
                 onClick={() => setViewMode(mode.id)}
-                className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <mode.icon className="w-4 h-4" />
                 {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
@@ -220,7 +220,7 @@ const AdminGovtExamPatterns = () => {
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             onClick={handleCreate}
             disabled={selectedExam === 'all'}
-            className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-500 text-white'}`}
+            className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-700 text-white'}`}
           >
             <Plus className="w-4 h-4" /> New Pattern
           </motion.button>
@@ -232,7 +232,7 @@ const AdminGovtExamPatterns = () => {
     <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 font-outfit">
         <div className="w-full lg:w-1/2 flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
-          <Compass className="w-4 h-4 text-primary-500" />
+          <Compass className="w-4 h-4 text-primary-700" />
           <select
             value={selectedCategory}
             onChange={(e) => handleCategoryChange(e.target.value)}
@@ -244,7 +244,7 @@ const AdminGovtExamPatterns = () => {
         </div>
 
         <div className="w-full lg:w-1/2 flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5 text-[10px] uppercase font-black">
-          <LayoutGrid className="w-4 h-4 text-primary-500" />
+          <LayoutGrid className="w-4 h-4 text-primary-700" />
           <select
             value={selectedExam}
             onChange={(e) => handleExamChange(e.target.value)}
@@ -287,17 +287,17 @@ const AdminGovtExamPatterns = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight">{p.title}</td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6">
                         <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
-                          <Clock className="w-4 h-4 text-primary-500" /> {p.duration} Min
+                          <Clock className="w-4 h-4 text-primary-700" /> {p.duration} Min
                         </div>
                       </td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-black dark:text-white font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} per wrong answer</td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                        <span className="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
+                        <span className="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
                       </td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                         <div className="flex justify-end gap-3">
                           <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
-                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
+                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
                           </Link>
                           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(p)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl"><Edit3 className="w-4 h-4" /></motion.button>
                           <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
@@ -314,9 +314,9 @@ const AdminGovtExamPatterns = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
               {patterns.map((p, idx) => (
                 <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit">
-                  <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-500 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
+                  <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-700 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
                   <div className="mb-4 lg:mb-8">
-                    <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest mb-1">Exam Pattern</div>
+                    <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-1">Exam Pattern</div>
                     <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{p.title}</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-4 mb-4 lg:mb-8">
@@ -331,9 +331,9 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
                     <Link href={`/admin/govt-exams/tests?patternId=${p._id}`} className="flex-1">
-                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-lg">Manage Tests</motion.button>
+                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-lg">Manage Tests</motion.button>
                     </Link>
-                    <motion.button onClick={() => handleEdit(p)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(p)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(p._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
@@ -357,9 +357,9 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
-                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-500 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">View Tests</motion.button>
+                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">View Tests</motion.button>
                     </Link>
-                    <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(p._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
@@ -378,9 +378,9 @@ const AdminGovtExamPatterns = () => {
           <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-5xl bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[75vh]">
             <div className="p-3 lg:p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary-500 text-white rounded-2xl shadow-lg"><Binary className="w-6 h-6" /></div>
+                <div className="p-3 bg-primary-700 text-white rounded-2xl shadow-lg"><Binary className="w-6 h-6" /></div>
                 <div>
-                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-500">Pattern</span></h2>
+                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-700">Pattern</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
                 </div>
               </div>
@@ -390,12 +390,12 @@ const AdminGovtExamPatterns = () => {
               <div className="w-full lg:w-2/5 p-3 lg:p-8 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
                 <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-8">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-500 pl-3 block ml-2">Pattern Title</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Pattern Title</label>
                     <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner" />
                   </div>
                   <div className="grid grid-cols-2 gap-3 lg:gap-6">
                     <div className="space-y-4">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-500 pl-3 block ml-2">Duration (Min)</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Duration (Min)</label>
                       <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                     <div className="space-y-4">
@@ -405,10 +405,10 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-4">
                     <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 flex justify-between items-center font-outfit">
-                      <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Total Marks</span>
-                      <span className="text-2xl font-black text-primary-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
+                      <span className="text-[10px] font-black text-primary-700 uppercase tracking-widest">Total Marks</span>
+                      <span className="text-2xl font-black text-primary-700 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
                     </div>
-                    <button type="submit" className="w-full py-5 bg-primary-500 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-xl flex items-center justify-center gap-3">
+                    <button type="submit" className="w-full py-5 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-xl flex items-center justify-center gap-3">
                       <CheckCircle2 className="w-5 h-5" /> {editingPattern ? 'Update Pattern' : 'Create Pattern'}
                     </button>
                   </div>
@@ -417,7 +417,7 @@ const AdminGovtExamPatterns = () => {
               <div className="flex-1 p-3 lg:p-8 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-black/20">
                 <div className="max-w-2xl mx-auto space-y-10">
                   <div className="space-y-4">
-                    <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-500" /> Sections ({formData.sections.length})</h3>
+                    <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-700" /> Sections ({formData.sections.length})</h3>
                     {formData.sections.map((sec, i) => (
                       <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-6 bg-white dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 flex items-center justify-between group">
                         <div className="flex items-center gap-3 lg:gap-6">
@@ -432,7 +432,7 @@ const AdminGovtExamPatterns = () => {
                     ))}
                   </div>
                   <div className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-dashed border-primary-500/20 relative font-outfit">
-                    <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-500 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">Add Section</div>
+                    <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-700 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg">Add Section</div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 mt-4">
                       <div className="lg:col-span-2 space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Section Name</label>

@@ -82,12 +82,12 @@ const ResetPasswordPage = () => {
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="w-20 h-20 bg-primary-500/10 text-primary-700 dark:text-primary-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
+                className="w-20 h-20 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
               >
                 <RefreshCw className="w-10 h-10" />
               </motion.div>
               <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
-                New <span className="text-primary-700 dark:text-primary-500">Password</span>
+                New <span className="text-primary-700">Password</span>
               </h2>
               <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none px-4">Please enter your new password below.</p>
             </div>
@@ -100,11 +100,11 @@ const ResetPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-8"
                 >
-                  <div className="w-16 h-16 bg-primary-500/10 text-primary-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-4">
-                    <h3 className="text-lg font-black font-outfit uppercase text-primary-600">Password Updated</h3>
+                    <h3 className="text-lg font-black font-outfit uppercase text-primary-700">Password Updated</h3>
                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
                       Your password has been reset. Redirecting to login...
                     </p>
@@ -113,7 +113,7 @@ const ResetPasswordPage = () => {
                         initial={{ width: 0 }}
                         animate={{ width: '100%' }}
                         transition={{ duration: 2 }}
-                        className="h-full bg-primary-500"
+                        className="h-full bg-primary-700"
                       />
                     </div>
                   </div>
@@ -128,8 +128,8 @@ const ResetPasswordPage = () => {
                 >
                   {!token && (
                     <div className="p-4 bg-primary-500/10 border border-primary-500/20 rounded-2xl flex items-center gap-4">
-                      <ShieldAlert className="w-6 h-6 text-primary-700 dark:text-primary-500 flex-shrink-0" />
-                      <p className="text-[10px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-widest leading-tight">
+                      <ShieldAlert className="w-6 h-6 text-primary-700 flex-shrink-0" />
+                      <p className="text-[10px] font-black text-primary-700 uppercase tracking-widest leading-tight">
                         Warning: Reset token not found. Please request a new link.
                       </p>
                     </div>
@@ -138,10 +138,10 @@ const ResetPasswordPage = () => {
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-[0.2em] ml-2">New Password</label>
                     <div className="relative group">
-                      <Lock className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 dark:text-primary-500 transition-colors" />
+                      <Lock className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 transition-colors" />
                       <input
                         type={showPassword ? 'text' : 'password'}
-                        className="w-full bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 pl-16 pr-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
+                        className="w-full bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 pl-16 pr-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
                         placeholder="Minimum 6 characters..."
                         value={newPassword}
                         onChange={e => setNewPassword(e.target.value)}
@@ -180,7 +180,7 @@ const ResetPasswordPage = () => {
                       )}
                     </Button>
 
-                    <Link href="/login" className="flex items-center justify-center gap-2 text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest hover:text-primary-700 dark:text-primary-500 transition-colors font-outfit">
+                    <Link href="/login" className="flex items-center justify-center gap-2 text-[10px] font-black text-slate-600 dark:text-gray-400 uppercase tracking-widest hover:text-primary-700 transition-colors font-outfit">
                       <ArrowLeft className="w-3 h-3" /> BACK TO LOGIN
                     </Link>
                   </div>

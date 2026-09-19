@@ -163,7 +163,7 @@ const EmailCampaignsListPage = () => {
   const Progress = ({ c }) => (
     <div className="min-w-[120px]">
       <div className="w-full bg-slate-200 dark:bg-white/10 rounded-full h-1.5 overflow-hidden">
-        <div className="bg-primary-500 h-1.5" style={{ width: `${pctOf(c)}%` }} />
+        <div className="bg-primary-700 h-1.5" style={{ width: `${pctOf(c)}%` }} />
       </div>
       <div className="text-[10px] text-slate-500 mt-1">
         {(c.sentCount || 0) + (c.failedCount || 0)} / {c.totalTargeted || 0} ({pctOf(c)}%)
@@ -181,14 +181,14 @@ const EmailCampaignsListPage = () => {
           <div className="flex flex-wrap items-start justify-between gap-3 mb-6">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-                <Mail className="text-primary-500" /> Email Campaigns
+                <Mail className="text-primary-700" /> Email Campaigns
               </h1>
               <p className="text-slate-600 dark:text-slate-400 mt-2">
                 All campaigns you have created. Preview is available once a campaign has been sent to all users.
               </p>
             </div>
             <Link href="/admin/email-campaigns/new"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-500 hover:bg-primary-600 text-white shadow-md">
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-700 hover:bg-primary-600 text-white shadow-md">
               <Plus size={20} /> New Campaign
             </Link>
           </div>
@@ -205,7 +205,7 @@ const EmailCampaignsListPage = () => {
               {FILTERS.map((f) => (
                 <button key={f} onClick={() => { setFilter(f); setPage(1); }}
                   className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
-                    filter === f ? 'bg-primary-500 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
+                    filter === f ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
                   }`}>
                   {f === 'completed' ? 'Sent to all' : f}
                 </button>
@@ -215,7 +215,7 @@ const EmailCampaignsListPage = () => {
               {VIEWS.map((v) => (
                 <button key={v.key} onClick={() => changeView(v.key)} title={v.label}
                   className={`px-3 py-1.5 flex items-center gap-1 text-xs ${
-                    view === v.key ? 'bg-primary-500 text-white' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10'
+                    view === v.key ? 'bg-primary-700 text-white' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10'
                   }`}>
                   <v.icon size={14} /> <span className="hidden sm:inline">{v.label}</span>
                 </button>
@@ -231,7 +231,7 @@ const EmailCampaignsListPage = () => {
               <p className="text-slate-500 dark:text-slate-400 mb-4">
                 {filter === 'all' ? 'No campaigns yet.' : `No ${filter} campaigns.`}
               </p>
-              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-500 hover:bg-primary-600 text-white text-sm">
+              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-700 hover:bg-primary-600 text-white text-sm">
                 <Plus size={16} /> Create your first campaign
               </Link>
             </div>
@@ -254,14 +254,14 @@ const EmailCampaignsListPage = () => {
                   {campaigns.map((c) => (
                     <tr key={c._id} className="border-t border-slate-100 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-gray-900/30">
                       <td className="px-4 py-3">
-                        <Link href={`/admin/email-campaigns/${c._id}`} className="font-medium text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+                        <Link href={`/admin/email-campaigns/${c._id}`} className="font-medium text-slate-800 dark:text-white hover:text-primary-700 dark:hover:text-primary-400">
                           {c.subject}
                         </Link>
                         <div className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</div>
                       </td>
                       <td className="px-4 py-3"><StatusBadge status={c.status} /></td>
                       <td className="px-4 py-3"><Progress c={c} /></td>
-                      <td className="px-4 py-3 text-primary-600 dark:text-primary-400 font-semibold">{c.sentCount || 0}</td>
+                      <td className="px-4 py-3 text-primary-700 font-semibold">{c.sentCount || 0}</td>
                       <td className="px-4 py-3 text-black dark:text-white font-semibold">{c.failedCount || 0}</td>
                       <td className="px-4 py-3 text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</td>
                       <td className="px-4 py-3">
@@ -285,7 +285,7 @@ const EmailCampaignsListPage = () => {
                 <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-wrap items-center gap-4">
                   <div className="flex-1 min-w-[200px]">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+                      <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-700 dark:hover:text-primary-400">
                         {c.subject}
                       </Link>
                       <StatusBadge status={c.status} />
@@ -315,7 +315,7 @@ const EmailCampaignsListPage = () => {
                     <StatusBadge status={c.status} />
                     <span className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</span>
                   </div>
-                  <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 line-clamp-2 mb-1">
+                  <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-700 dark:hover:text-primary-400 line-clamp-2 mb-1">
                     {c.subject}
                   </Link>
                   {c.heading && <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">{c.heading}</p>}
@@ -323,7 +323,7 @@ const EmailCampaignsListPage = () => {
                   <div className="mt-auto space-y-3">
                     <Progress c={c} />
                     <div className="grid grid-cols-3 gap-1 text-center">
-                      <div><div className="text-primary-600 dark:text-primary-400 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
+                      <div><div className="text-primary-700 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
                       <div><div className="text-black dark:text-white font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
                       <div><div className="text-black dark:text-white font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
                     </div>

@@ -64,7 +64,7 @@ const AdminPYQ = () => {
         <div className="py-4 lg:py-6 space-y-6">
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <div>
-              <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-500" /> PYQ Papers</h1>
+              <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><FileText className="w-6 h-6 text-primary-700" /> PYQ Papers</h1>
               <p className="text-xs text-slate-400 font-bold mt-0.5">Manage previous-year question papers across all exams</p>
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
@@ -82,7 +82,7 @@ const AdminPYQ = () => {
                   ))}
                 </select>
               </div>
-              <button onClick={() => router.push('/admin/pyq/create')} className="px-4 py-2.5 bg-primary-500 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition flex items-center gap-2 flex-shrink-0">
+              <button onClick={() => router.push('/admin/pyq/create')} className="px-4 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition flex items-center gap-2 flex-shrink-0">
                 <Plus className="w-4 h-4" /> New PYQ
               </button>
             </div>
@@ -104,10 +104,10 @@ const AdminPYQ = () => {
                 <Card key={t._id || i} className="p-4 lg:p-5 flex items-center gap-4">
                   <div className="flex-1 min-w-0 space-y-1.5">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-600 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>
+                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-700 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>
                       {t.pyqShift && <span className="text-[10px] font-bold text-slate-400">{t.pyqShift}</span>}
                       {t.examPattern?.exam?.name && <span className="text-[10px] font-bold text-slate-400">· {t.examPattern.exam.name}</span>}
-                      <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
+                      <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
                     </div>
                     <h3 className="text-sm font-black text-slate-900 dark:text-white truncate">{t.title}</h3>
                     <p className="text-[10px] text-slate-400">{t.questions?.length || 0} questions · {t.duration} min · {t.totalMarks} marks</p>

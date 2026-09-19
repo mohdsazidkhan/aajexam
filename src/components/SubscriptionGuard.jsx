@@ -50,7 +50,7 @@ const SubscriptionGuard = ({
         )}
 
         <div className="mt-4 text-sm text-slate-700 dark:text-gray-400">
-          <p>Already have a subscription? <Link href="/subscription" className="text-primary-700 dark:text-primary-500 hover:underline">Check your status</Link></p>
+          <p>Already have a subscription? <Link href="/subscription" className="text-primary-700 hover:underline">Check your status</Link></p>
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ const ForgotPasswordPage = () => {
   return (
     <MobileAppWrapper showHeader={true} title="Account Recovery">
       <Seo title="Forgot Password – AajExam" description="Reset your AajExam password securely." noIndex={true} canonical="/forgot-password" />
-      <div className="h-auto lg:min-h-screen bg-background-page flex flex-col selection:bg-primary-500 selection:text-white">
+      <div className="h-auto lg:min-h-screen bg-background-page flex flex-col selection:bg-primary-700 selection:text-white">
         <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
           {/* --- Background Decorative Icons --- */}
           <div className="absolute top-20 left-20 opacity-5 rotate-12 hidden lg:block"><ShieldQuestion className="w-64 h-64" /></div>
@@ -52,7 +52,7 @@ const ForgotPasswordPage = () => {
 
           <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-2xl relative z-10 space-y-8">
             <div className="text-center space-y-2">
-              <div className="w-16 h-16 bg-primary-500/10 text-primary-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <ShieldQuestion className="w-8 h-8" />
               </div>
               <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Forgot Password</h1>
@@ -62,7 +62,7 @@ const ForgotPasswordPage = () => {
             <AnimatePresence mode="wait">
               {success ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-10 text-center space-y-6">
-                  <div className="w-20 h-20 bg-primary-500/10 text-primary-500 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-20 h-20 bg-primary-500/10 text-primary-700 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-10 h-10" />
                   </div>
                   <div className="space-y-2">
@@ -85,7 +85,7 @@ const ForgotPasswordPage = () => {
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" />
                       <input
                         type="email" required
-                        className="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/50 font-bold outline-none focus:border-primary-500 transition-all"
+                        className="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/50 font-bold outline-none focus:border-primary-700 transition-all"
                         placeholder="Enter your registered email"
                         value={email} onChange={e => setEmail(e.target.value)}
                       />
@@ -97,7 +97,7 @@ const ForgotPasswordPage = () => {
                   </Button>
 
                   <div className="text-center pt-2">
-                    <Link href="/login" className="text-xs font-black text-primary-500 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
+                    <Link href="/login" className="text-xs font-black text-primary-700 flex items-center justify-center gap-2 hover:translate-x-[-4px] transition-transform">
                       <ArrowLeft className="w-4 h-4" /> BACK TO LOGIN
                     </Link>
                   </div>

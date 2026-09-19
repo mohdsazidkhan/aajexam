@@ -61,7 +61,7 @@ const Pagination = ({
       {/* Visual Info Display */}
       {showInfo && (
         <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit">
-           Result: <span className="text-slate-900 dark:text-white px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-700 dark:text-primary-500 font-black">{totalItems}</span>
+           Result: <span className="text-slate-900 dark:text-white px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-700 font-black">{totalItems}</span>
         </div>
       )}
 
@@ -97,7 +97,7 @@ const Pagination = ({
                  disabled={isDots}
                  className={`min-w-[44px] h-11 px-2 flex items-center justify-center rounded-2xl font-black font-outfit text-xs transition-all duration-300 border-b-2 ${
                    isCurrent
-                     ? 'bg-primary-500 border-primary-600 text-white shadow-aajexam-primary translate-y-0.5'
+                     ? 'bg-primary-700 border-primary-600 text-white shadow-aajexam-primary translate-y-0.5'
                      : isDots
                        ? 'text-slate-600 dark:text-slate-400 bg-transparent border-transparent cursor-default'
                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-750 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm'

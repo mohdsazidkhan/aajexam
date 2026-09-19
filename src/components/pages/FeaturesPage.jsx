@@ -134,7 +134,7 @@ const HIGHLIGHTS = [
 ];
 
 const Cell = ({ value }) => {
-  if (value === true) return <CircleCheck className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mx-auto" />;
+  if (value === true) return <CircleCheck className="w-4 h-4 lg:w-5 lg:h-5 text-primary-700 mx-auto" />;
   if (value === false) return <X className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
   return <span className="text-[9px] lg:text-[11px] font-black uppercase tracking-wide text-black dark:text-white">{value}</span>;
 };
@@ -143,17 +143,17 @@ const FeaturesPage = () => {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white">
+    <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white">
       <div className="space-y-10 lg:space-y-16 mt-2 lg:mt-4">
 
         {/* --- Hero --- */}
         <section className="text-center space-y-3 lg:space-y-6 px-0 py-4 lg:p-8">
-          <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-500 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-aajexam-primary rotate-6">
+          <div className="w-14 h-14 lg:w-20 lg:h-20 bg-primary-700 text-white rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto shadow-aajexam-primary rotate-6">
             <Sparkles className="w-6 h-6 lg:w-9 lg:h-9" />
           </div>
           <div className="space-y-2 lg:space-y-4">
             <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight lg:tracking-tighter text-slate-900 dark:text-white">
-              Everything on <span className="text-primary-700 dark:text-primary-500">AajExam</span>
+              Everything on <span className="text-primary-700">AajExam</span>
             </h1>
             <p className="text-xs lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.08em] lg:tracking-[0.2em] max-w-2xl mx-auto px-2">
               One platform for govt. exam prep — see exactly what&apos;s Free and what unlocks with PRO
@@ -177,7 +177,7 @@ const FeaturesPage = () => {
             <ul className="space-y-1.5 lg:space-y-2.5">
               {FREE_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs lg:text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <CircleCheck className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-primary-500 mt-0.5 flex-shrink-0" />
+                  <CircleCheck className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-primary-700 mt-0.5 flex-shrink-0" />
                   {f}
                 </li>
               ))}
@@ -190,7 +190,7 @@ const FeaturesPage = () => {
           <Card className="p-4 lg:p-10 space-y-3 lg:space-y-6 border-2 border-primary-500/40 relative overflow-hidden">
             <Crown className="absolute -bottom-8 -right-8 w-40 h-40 text-primary-500/5" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 lg:p-4 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl lg:rounded-2xl">
+              <div className="p-2.5 lg:p-4 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl lg:rounded-2xl">
                 <Crown className="w-5 h-5 lg:w-7 lg:h-7" />
               </div>
               <ProBadge size="sm" />
@@ -202,7 +202,7 @@ const FeaturesPage = () => {
             <ul className="space-y-1.5 lg:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs lg:text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <CircleCheck className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-primary-600 mt-0.5 flex-shrink-0" />
+                  <CircleCheck className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-primary-700 mt-0.5 flex-shrink-0" />
                   {f}
                 </li>
               ))}

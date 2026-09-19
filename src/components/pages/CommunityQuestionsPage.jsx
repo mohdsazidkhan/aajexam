@@ -158,7 +158,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.exam}
               onChange={(e) => handleFilterChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
               <option value="">All Exams</option>
               {exams.map(exam => (
@@ -171,7 +171,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.sort}
               onChange={(e) => handleFilterChange('sort', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-500 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-border-primary bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
               <option value="latest">Latest First</option>
               <option value="popular">Most Popular</option>
@@ -194,7 +194,7 @@ const CommunityQuestionsPage = () => {
         ) : error ? (
           <Card className="text-center py-2 lg:py-4">
             <p className="text-content-muted text-sm">{error}</p>
-            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-500 text-sm font-bold hover:underline">
+            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-700 text-sm font-bold hover:underline">
               Try Again
             </button>
           </Card>
@@ -225,12 +225,12 @@ const CommunityQuestionsPage = () => {
                         className="w-8 h-8 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white text-xs font-black">
+                      <div className="w-8 h-8 rounded-full bg-primary-700 flex items-center justify-center text-white text-xs font-black">
                         {(q.author?.name || 'U').charAt(0).toUpperCase()}
                       </div>
                     )}
                     <div>
-                      <Link href={`/profile/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-500 transition-colors">
+                      <Link href={`/profile/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-700 transition-colors">
                         {q.author?.name || 'Anonymous'}
                       </Link>
                       <div className="flex items-center gap-2 text-[10px] text-content-muted">
@@ -240,7 +240,7 @@ const CommunityQuestionsPage = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-600 dark:text-primary-400 text-[10px] font-bold uppercase">
+                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-700 text-[10px] font-bold uppercase">
                       {q.exam?.name || q.exam?.code || 'Exam'}
                     </span>
                   </div>
@@ -281,7 +281,7 @@ const CommunityQuestionsPage = () => {
                   <span className="text-xs font-bold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
                     Attempt & See Explanation
                   </span>
-                  <ArrowRight className="w-4 h-4 text-primary-600 dark:text-primary-400 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-primary-700 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
 
                 {/* Actions */}
@@ -298,7 +298,7 @@ const CommunityQuestionsPage = () => {
                       <Heart className={`w-4 h-4 ${isLikedByMe(q) ? 'fill-current' : ''}`} />
                       {q.likes || 0}
                     </button>
-                    <Link href={`/community-questions/${q._id}`} className="flex items-center gap-1.5 text-xs font-bold text-content-muted hover:text-primary-500 transition-colors">
+                    <Link href={`/community-questions/${q._id}`} className="flex items-center gap-1.5 text-xs font-bold text-content-muted hover:text-primary-700 transition-colors">
                       <MessageCircle className="w-4 h-4" />
                       {q.answerCount || 0}
                     </Link>
@@ -331,7 +331,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
-              className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-700 hover:text-primary-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -341,7 +341,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= pagination.totalPages}
-              className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-500 hover:text-primary-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg lg:rounded-xl border-2 border-border-primary text-content-muted hover:border-primary-700 hover:text-primary-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

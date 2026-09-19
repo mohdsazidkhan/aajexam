@@ -36,11 +36,11 @@ const CASkeleton = () => (
 const catConfig = {
   national:      { icon: Globe,    color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
   international: { icon: Globe,    color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
-  economy:       { icon: TrendingUp, color: 'bg-primary-500', chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
+  economy:       { icon: TrendingUp, color: 'bg-primary-700', chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
   sports:        { icon: Trophy,   color: 'bg-black dark:bg-white', chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
   science:       { icon: Sparkles, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
   defence:       { icon: Sword,    color: 'bg-black dark:bg-white',      chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
-  environment:   { icon: Leaf,     color: 'bg-primary-500',  chip: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
+  environment:   { icon: Leaf,     color: 'bg-primary-700',  chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
   awards:        { icon: Trophy,   color: 'bg-black dark:bg-white',  chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
   appointments:  { icon: Sparkles, color: 'bg-black dark:bg-white',    chip: 'text-black dark:text-white dark:text-black dark:text-white dark:text-black bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800 dark:border-white/50' },
 };

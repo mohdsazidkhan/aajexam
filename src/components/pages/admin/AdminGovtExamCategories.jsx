@@ -161,7 +161,7 @@ const AdminGovtExamCategories = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                GOVT <span className="text-primary-500">EXAMS</span> <span className="text-slate-300 dark:text-white ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
+                GOVT <span className="text-primary-700">EXAMS</span> <span className="text-slate-300 dark:text-white ml-2 italic tracking-widest text-2xl lg:text-4xl">CATEGORIES</span>
               </h1>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Organize government exams by category and jurisdiction.</p>
             </div>
@@ -243,8 +243,8 @@ const AdminGovtExamCategories = () => {
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className={`px-4 py-1 rounded-full text-[8px] font-black inline-flex items-center gap-2 border ${category.type === "Central"
-                              ? "bg-primary-500/10 text-primary-500 border-primary-500/20 shadow-primary-500/10"
-                              : "bg-primary-500/10 text-primary-500 border-primary-500/20 shadow-primary-500/10"}`}>
+                              ? "bg-primary-500/10 text-primary-700 border-primary-500/20 shadow-primary-500/10"
+                              : "bg-primary-500/10 text-primary-700 border-primary-500/20 shadow-primary-500/10"}`}>
                               {category.type === "Central" ? <Globe className="w-3 h-3" /> : <Map className="w-3 h-3" />}
                               {category.type?.toUpperCase()}
                             </div>
@@ -257,7 +257,7 @@ const AdminGovtExamCategories = () => {
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className="flex justify-center gap-3">
-                              <button onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-primary-500 hover:border-primary-500/30 transition-all shadow-inner">
+                              <button onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-primary-700 hover:border-primary-500/30 transition-all shadow-inner">
                                 <Edit className="w-4 h-4" />
                               </button>
                               <button onClick={() => handleDelete(category._id)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all shadow-inner">
@@ -283,14 +283,14 @@ const AdminGovtExamCategories = () => {
                       transition={{ delay: i * 0.05 }}
                       className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col lg:flex-row items-center gap-3 lg:gap-8"
                     >
-                      <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20' : 'bg-primary-500 border-primary-200 text-white shadow-primary-500/20'}`}>
+                      <div className={`w-20 h-20 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 shadow-xl transition-all group-hover:scale-110 ${category.type === 'Central' ? 'bg-primary-700 border-primary-200 text-white shadow-primary-500/20' : 'bg-primary-700 border-primary-200 text-white shadow-primary-500/20'}`}>
                         {category.type === 'Central' ? <Globe className="w-10 h-10" /> : <Map className="w-10 h-10" />}
                       </div>
 
                       <div className="flex-1 text-center lg:text-left space-y-2">
                         <div className="flex flex-col lg:flex-row items-center gap-4">
                           <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">{category.name}</h3>
-                          <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-500 border-primary-100 dark:border-primary-800' : 'bg-primary-50 dark:bg-primary-900/20 text-primary-500 border-primary-100 dark:border-primary-800'}`}>
+                          <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${category.type === 'Central' ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 border-primary-100 dark:border-primary-800' : 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 border-primary-100 dark:border-primary-800'}`}>
                             {category.type?.toUpperCase()}
                           </div>
                         </div>
@@ -302,7 +302,7 @@ const AdminGovtExamCategories = () => {
                       </div>
 
                       <div className="flex gap-4">
-                        <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-primary-500 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
+                        <button onClick={() => handleEdit(category)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-primary-700 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
                           <Edit className="w-6 h-6" />
                         </button>
                         <button onClick={() => handleDelete(category._id)} className="p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg lg:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-xl">
@@ -325,19 +325,19 @@ const AdminGovtExamCategories = () => {
                       transition={{ delay: i * 0.05 }}
                       className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-xl flex flex-col items-center text-center"
                     >
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-2 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-500 border-primary-200 text-white' : 'bg-primary-500 border-primary-200 text-white'}`}>
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 border-2 shadow-lg group-hover:scale-110 transition-all ${category.type === 'Central' ? 'bg-primary-700 border-primary-200 text-white' : 'bg-primary-700 border-primary-200 text-white'}`}>
                         {category.type === 'Central' ? <Globe className="w-8 h-8" /> : <Map className="w-8 h-8" />}
                       </div>
 
                       <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-2">{category.name}</h3>
-                      <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-4 lg:mb-8 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-primary-500/10 text-primary-500 border-primary-500/20'}`}>
+                      <div className={`px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border mb-4 lg:mb-8 ${category.type === 'Central' ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-primary-500/10 text-primary-700 border-primary-500/20'}`}>
                         {category.type?.toUpperCase()}
                       </div>
 
                       <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-4 lg:mb-10 line-clamp-3">{category.description || 'No description'}</p>
 
                       <div className="w-full flex gap-3 mt-auto">
-                        <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-500 hover:border-primary-500/30 transition-all">EDIT</button>
+                        <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-700 hover:border-primary-500/30 transition-all">EDIT</button>
                         <button onClick={() => handleDelete(category._id)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">DELETE</button>
                       </div>
                     </motion.div>
@@ -365,7 +365,7 @@ const AdminGovtExamCategories = () => {
               >
                 <div className="p-4 lg:p-10 border-b-2 border-slate-50 dark:border-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary-500/10 text-primary-500 rounded-2xl">
+                    <div className="p-3 bg-primary-500/10 text-primary-700 rounded-2xl">
                       <Settings className="w-6 h-6" />
                     </div>
                     <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
@@ -384,7 +384,7 @@ const AdminGovtExamCategories = () => {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                      className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-inner"
                       placeholder="Category name..."
                       required
                     />
@@ -396,7 +396,7 @@ const AdminGovtExamCategories = () => {
                       <select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
+                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-inner appearance-none cursor-pointer"
                         required
                       >
                         <option value="Central">CENTRAL</option>
@@ -412,7 +412,7 @@ const AdminGovtExamCategories = () => {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows="4"
-                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500 transition-all font-outfit dark:text-white shadow-inner"
+                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-inner"
                       placeholder="Enter description..."
                     />
                   </div>

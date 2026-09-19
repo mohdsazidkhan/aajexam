@@ -122,7 +122,7 @@ export const getInitials = (name) => {
 
 export const getRandomColor = () => {
   const colors = [
-    'bg-black dark:bg-white', 'bg-primary-500', 'bg-primary-500', 'bg-primary-500',
+    'bg-black dark:bg-white', 'bg-primary-700', 'bg-primary-700', 'bg-primary-700',
     'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white'
   ]
   return colors[Math.floor(Math.random() * colors.length)]

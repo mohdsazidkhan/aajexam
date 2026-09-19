@@ -72,7 +72,7 @@ export default function CommunityQuestionDetailPage() {
     <div className="min-h-screen pb-24">
       <div className="container mx-auto py-6 space-y-5">
         {/* Back */}
-        <button onClick={() => router.push('/community-questions')} className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-primary-600">
+        <button onClick={() => router.push('/community-questions')} className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-primary-700">
           <ArrowLeft className="w-4 h-4" /> All questions
         </button>
 
@@ -85,7 +85,7 @@ export default function CommunityQuestionDetailPage() {
             </div>
             <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || 'User'}</span>
             {question.author?.username && (
-              <Link href={`/u/${question.author.username}`} className="text-primary-600 dark:text-primary-400 font-semibold hover:underline">
+              <Link href={`/u/${question.author.username}`} className="text-primary-700 font-semibold hover:underline">
                 @{question.author.username}
               </Link>
             )}
@@ -121,7 +121,7 @@ export default function CommunityQuestionDetailPage() {
                   if (isRight) cls = 'border-primary-400 bg-primary-50 dark:bg-primary-900/20';
                   else if (isSel) cls = 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20';
                 } else if (isSel) {
-                  cls = 'border-primary-500 bg-primary-50 dark:bg-primary-900/20';
+                  cls = 'border-primary-700 bg-primary-50 dark:bg-primary-900/20';
                 }
                 return (
                   <button
@@ -130,11 +130,11 @@ export default function CommunityQuestionDetailPage() {
                     onClick={() => setSelectedOption(i)}
                     className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg lg:rounded-xl border-2 transition text-sm ${cls} disabled:cursor-default`}
                   >
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-primary-500 text-white' : attempted && isSel ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${attempted && isRight ? 'bg-primary-700 text-white' : attempted && isSel ? 'bg-black dark:bg-white text-white dark:text-black' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>
                       {String.fromCharCode(65 + i)}
                     </div>
                     <span className="flex-1 text-slate-800 dark:text-slate-200">{opt.text}</span>
-                    {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-primary-600 shrink-0" />}
+                    {attempted && isRight && <CheckCircle2 className="w-4 h-4 text-primary-700 shrink-0" />}
                     {attempted && isSel && !isRight && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
                   </button>
                 );
@@ -144,7 +144,7 @@ export default function CommunityQuestionDetailPage() {
                 <button
                   disabled={selectedOption === null}
                   onClick={() => setAttempted(true)}
-                  className="w-full px-4 py-2.5 mt-1 bg-primary-500 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-2.5 mt-1 bg-primary-700 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Submit Answer
                 </button>

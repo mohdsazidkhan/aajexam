@@ -44,7 +44,7 @@ const AdminRevisionPage = () => {
           <div className="flex items-center justify-between gap-4">
             <div>
               <h1 className="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-3">
-                <RotateCcw className="w-7 h-7 text-primary-500" /> Revision Queue
+                <RotateCcw className="w-7 h-7 text-primary-700" /> Revision Queue
               </h1>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
                 Monitor revision queue health and review scheduling metrics.
@@ -57,7 +57,7 @@ const AdminRevisionPage = () => {
           ) : (
             <div className="grid gap-4 md:grid-cols-3">
               <Card className="p-5 space-y-3">
-                <div className="flex items-center gap-2 text-primary-600"><Clock className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Due Today</span></div>
+                <div className="flex items-center gap-2 text-primary-700"><Clock className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Due Today</span></div>
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.dueToday ?? 0}</div>
               </Card>
               <Card className="p-5 space-y-3">
@@ -65,7 +65,7 @@ const AdminRevisionPage = () => {
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.totalItems ?? 0}</div>
               </Card>
               <Card className="p-5 space-y-3">
-                <div className="flex items-center gap-2 text-primary-600"><CheckCircle className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Mastered</span></div>
+                <div className="flex items-center gap-2 text-primary-700"><CheckCircle className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Mastered</span></div>
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.mastered ?? 0}</div>
               </Card>
             </div>

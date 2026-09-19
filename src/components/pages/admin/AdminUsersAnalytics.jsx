@@ -107,7 +107,7 @@ const AdminUsersAnalytics = () => {
                                  <motion.button whileHover={{ scale: 1.05 }} onClick={() => router.push('/admin/expenses')} className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center justify-center gap-3">
                                      <Wallet className="w-4 h-4" /> Expenses
                                  </motion.button>
-                                <motion.button whileHover={{ scale: 1.05 }} onClick={exportCSV} className="w-full lg:w-auto p-4 bg-white dark:bg-white/5 text-primary-500 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center">
+                                <motion.button whileHover={{ scale: 1.05 }} onClick={exportCSV} className="w-full lg:w-auto p-4 bg-white dark:bg-white/5 text-primary-700 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center">
                                     <DownloadCloud className="w-6 h-6" />
                                 </motion.button>
                             </div>
@@ -126,7 +126,7 @@ const AdminUsersAnalytics = () => {
                                     <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><stat.icon className="w-5 h-5" /></div>
                                     <div className="flex items-baseline gap-1 mb-1">
                                         {stat.isCurrency && <IndianRupee className="w-3 h-3 text-slate-400 font-black" />}
-                                        <div className={`text-xl font-black tabular-nums tracking-tighter italic ${stat.isNet ? (stat.val >= 0 ? 'text-primary-500' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
+                                        <div className={`text-xl font-black tabular-nums tracking-tighter italic ${stat.isNet ? (stat.val >= 0 ? 'text-primary-700' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
                                             {new Intl.NumberFormat('en-IN').format(stat.val)}
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@ const AdminUsersAnalytics = () => {
                     {/* Controls */}
                     <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 lg:p-8 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 font-outfit">
                          <div className="flex-1 relative group w-full lg:max-w-xl">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
+                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
                              <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase outline-none transition-all shadow-xl" />
                          </div>
                          <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
@@ -153,7 +153,7 @@ const AdminUsersAnalytics = () => {
                             </div>
                             <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-xl w-full lg:w-auto">
                                 {[{ icon: TableIcon, id: 'table' }, { icon: List, id: 'list' }, { icon: LayoutGrid, id: 'grid' }].map((mode) => (
-                                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-500 text-white shadow-lg' : 'text-slate-400'}`}>
+                                    <button key={mode.id} onClick={() => setViewMode(mode.id)} className={`p-3 rounded-full transition-all flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-700 text-white shadow-lg' : 'text-slate-400'}`}>
                                         <mode.icon className="w-5 h-5 mx-auto" />
                                     </button>
                                 ))}
@@ -199,18 +199,18 @@ const AdminUsersAnalytics = () => {
                                                             <div className="flex items-center gap-4">
                                                                 <div className="w-12 h-12 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg">{(s.name || 'U')[0]}</div>
                                                                 <div>
-                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-500 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
+                                                                    <div className="text-sm font-black text-slate-900 dark:text-white uppercase leading-none mb-1 group-hover:text-primary-700 transition-colors tracking-tight">{s.name || 'Anonymous'}</div>
                                                                     <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate max-w-[150px]">{s.email || 'N/A'}</div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center"><span className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase tracking-widest inline-block ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{s.subscriptionStatus || 'FREE'}</span></td>
                                                         <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <span className="text-[10px] font-black text-primary-500 uppercase tracking-widest italic">Student</span>
-                                                            <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-500" style={{ width: '0%' }} /></div>
+                                                            <span className="text-[10px] font-black text-primary-700 uppercase tracking-widest italic">Student</span>
+                                                            <div className="w-16 h-1 bg-slate-100 dark:bg-white/10 rounded-full mx-auto"><div className="h-full bg-primary-700" style={{ width: '0%' }} /></div>
                                                         </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-primary-500 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right"><motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-xl hover:bg-primary-500 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button></td>
+                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-primary-700 tabular-nums italic text-sm">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</td>
+                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right"><motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-xl hover:bg-primary-700 hover:text-white transition-colors"><ArrowRight className="w-5 h-5" /></motion.button></td>
                                                     </motion.tr>
                                                 ))}
                                             </tbody>
@@ -222,7 +222,7 @@ const AdminUsersAnalytics = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                                         {students.map((s, idx) => (
                                             <motion.div key={s._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative flex flex-col group overflow-hidden">
-                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'PRO' ? 'bg-black dark:bg-white' : 'bg-primary-500'}`} />
+                                                <div className={`absolute top-0 left-0 w-full h-1.5 ${s.subscriptionStatus === 'PRO' ? 'bg-black dark:bg-white' : 'bg-primary-700'}`} />
                                                 <div className="mb-6 mx-auto">
                                                     <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-2xl group-hover:rotate-6 transition-all">{(s.name || 'U')[0]}</div>
                                                 </div>
@@ -231,14 +231,14 @@ const AdminUsersAnalytics = () => {
                                                 <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
                                                     <div className="flex justify-between items-center mb-4">
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Earnings</div>
-                                                        <div className="text-md font-black text-primary-500 tabular-nums italic">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                                                        <div className="text-md font-black text-primary-700 tabular-nums italic">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                     </div>
                                                     <div className="flex justify-between items-center">
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Status</div>
-                                                        <span className="text-primary-500 text-sm italic tracking-tighter">Student</span>
+                                                        <span className="text-primary-700 text-sm italic tracking-tighter">Student</span>
                                                     </div>
                                                 </div>
-                                                <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-500 group-hover:text-white transition-all">View Details</button>
+                                                <button onClick={() => goToUser(s._id)} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-xl group-hover:bg-primary-700 group-hover:text-white transition-all">View Details</button>
                                             </motion.div>
                                         ))}
                                     </div>
@@ -251,19 +251,19 @@ const AdminUsersAnalytics = () => {
                                                 <div className="flex items-center gap-3 lg:gap-6">
                                                     <div className="w-14 h-14 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-xl shadow-xl shrink-0 italic">{(s.name || 'U')[0]}</div>
                                                     <div>
-                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors">{s.name || 'User'}</h3>
+                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-700 transition-colors">{s.name || 'User'}</h3>
                                                         <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                                                             <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {s.email?.substring(0, 20)}...</span>
-                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-500`}>Student</span>
+                                                            <span className={`px-2 py-0.5 rounded-lg text-[8px] font-black border border-primary-500/20 text-primary-700`}>Student</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-3 lg:gap-8 border-t md:border-t-0 pt-4 md:pt-0">
                                                     <div className="text-right">
-                                                        <div className="text-2xl font-black text-primary-500 tabular-nums italic tracking-tighter">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
+                                                        <div className="text-2xl font-black text-primary-700 tabular-nums italic tracking-tighter">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Total Earnings</div>
                                                     </div>
-                                                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-100 dark:bg-white/5 text-primary-500 rounded-2xl shadow-sm"><ArrowUpRight className="w-5 h-5" /></motion.button>
+                                                    <motion.button onClick={() => goToUser(s._id)} whileHover={{ scale: 1.1 }} className="p-4 bg-slate-100 dark:bg-white/5 text-primary-700 rounded-2xl shadow-sm"><ArrowUpRight className="w-5 h-5" /></motion.button>
                                                 </div>
                                             </motion.div>
                                         ))}
@@ -278,7 +278,7 @@ const AdminUsersAnalytics = () => {
                                                 let p = i + 1;
                                                 if (totalPages > 5 && page > 3) p = Math.min(page - 2 + i, totalPages - 4 + i);
                                                 return (
-                                                    <button key={p} onClick={() => fetchStudents(p)} className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${p === page ? 'bg-primary-500 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}>{p < 10 ? `0${p}` : p}</button>
+                                                    <button key={p} onClick={() => fetchStudents(p)} className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${p === page ? 'bg-primary-700 text-white shadow-xl scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}>{p < 10 ? `0${p}` : p}</button>
                                                 );
                                             })}
                                         </div>

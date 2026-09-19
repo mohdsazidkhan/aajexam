@@ -192,13 +192,13 @@ const AdminBlogs = () => {
                 </td>
                 <td className="px-4 py-3 text-sm">
                   <div className="flex items-center gap-2">
-                    <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 hover:text-primary-800 dark:text-primary-400">
+                    <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-700 hover:text-primary-800 dark:text-primary-400">
                       <Edit3 className="w-4 h-4" />
                     </Link>
                     {blog.status === 'published' ? (
                       <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white text-xs font-bold">Unpublish</button>
                     ) : (
-                      <button onClick={() => handlePublish(blog._id)} className="text-primary-600 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
+                      <button onClick={() => handlePublish(blog._id)} className="text-primary-700 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
                     )}
                     <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured">
                       <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
@@ -235,11 +235,11 @@ const AdminBlogs = () => {
           </div>
           <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">{formatDate(blog.createdAt)}</div>
           <div className="mt-3 flex items-center gap-2">
-            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Edit</Link>
+            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-700 text-xs font-bold">Edit</Link>
             {blog.status === 'published' ? (
               <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
             ) : (
-              <button onClick={() => handlePublish(blog._id)} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Publish</button>
+              <button onClick={() => handlePublish(blog._id)} className="text-primary-700 text-xs font-bold">Publish</button>
             )}
             <button onClick={() => handleToggleFeatured(blog._id)}>
               <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
@@ -275,11 +275,11 @@ const AdminBlogs = () => {
               <span>{formatDate(blog.createdAt)}</span>
             </div>
             <div className="mt-2 flex items-center gap-3">
-              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Edit</Link>
+              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-700 text-xs font-bold">Edit</Link>
               {blog.status === 'published' ? (
                 <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
               ) : (
-                <button onClick={() => handlePublish(blog._id)} className="text-primary-600 dark:text-primary-400 text-xs font-bold">Publish</button>
+                <button onClick={() => handlePublish(blog._id)} className="text-primary-700 text-xs font-bold">Publish</button>
               )}
               <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white text-xs font-bold">Delete</button>
             </div>
@@ -302,7 +302,7 @@ const AdminBlogs = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                BLOG <span className="text-primary-600">POSTS</span>
+                BLOG <span className="text-primary-700">POSTS</span>
               </h1>
               <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                 Create and manage blog posts for exam preparation.
@@ -313,7 +313,7 @@ const AdminBlogs = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => router.push('/admin/blogs/create')}
-                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
+                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
               >
                 <Plus className="w-4 h-4" /> NEW BLOG
               </motion.button>

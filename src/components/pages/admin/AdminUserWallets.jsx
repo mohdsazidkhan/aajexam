@@ -103,13 +103,13 @@ const AdminUserWallets = () => {
           className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-2xl overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Wallet className="w-64 h-64 text-primary-500 -rotate-12" />
+            <Wallet className="w-64 h-64 text-primary-700 -rotate-12" />
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                STUDENT <span className="text-primary-600">WALLETS</span>
+                STUDENT <span className="text-primary-700">WALLETS</span>
               </h1>
 
               <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
@@ -135,7 +135,7 @@ const AdminUserWallets = () => {
         {/* Search + Controls */}
         <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4">
           <div className="relative group/search w-full lg:w-96">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
             <input
               type="text"
               value={searchTerm}
@@ -158,7 +158,7 @@ const AdminUserWallets = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode(mode.id)}
-                  className={`flex-1 lg:flex-none p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-primary-500 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                  className={`flex-1 lg:flex-none p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-primary-700 shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <mode.icon className="w-4 h-4 mx-auto" />
                 </motion.button>
@@ -219,15 +219,15 @@ const AdminUserWallets = () => {
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6">
                             <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 rounded-2xl bg-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
-                                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
+                              <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
                                   {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                                 </div>
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
+                                <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
                                 <div className="flex items-center gap-2 mt-1">
-                                  <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+                                  <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-700 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
                                   {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
                                 </div>
                               </div>
@@ -238,7 +238,7 @@ const AdminUserWallets = () => {
                             <div className="flex items-center gap-2"><Phone className="w-3 h-3" /> {row.user?.phone || row.phone || '-'}</div>
                           </td>
                           <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
-                            <div className="text-sm font-black text-primary-600 dark:text-primary-500 tabular-nums italic tracking-tighter">
+                            <div className="text-sm font-black text-primary-700 tabular-nums italic tracking-tighter">
                               {formatAmount(row.amount || row.walletBalance)}
                             </div>
                           </td>
@@ -252,8 +252,8 @@ const AdminUserWallets = () => {
                                 <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{row.questionCounts?.total || 0}</span>
                               </div>
                               <div className="flex flex-col">
-                                <span className="text-[8px] font-black text-primary-500 uppercase">APPROVED</span>
-                                <span className="text-xs font-black text-primary-500 tabular-nums">{row.questionCounts?.approved || 0}</span>
+                                <span className="text-[8px] font-black text-primary-700 uppercase">APPROVED</span>
+                                <span className="text-xs font-black text-primary-700 tabular-nums">{row.questionCounts?.approved || 0}</span>
                               </div>
                             </div>
                           </td>
@@ -281,13 +281,13 @@ const AdminUserWallets = () => {
                     className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
                   >
                     <div className="flex items-center gap-3 lg:gap-6">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-500 p-[2px] shadow-lg">
-                        <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-500">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-lg">
+                        <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-700">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                         </div>
                       </div>
                       <div className="flex flex-col">
-                        <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">{row.user?.name || row.name || 'Unknown'}</h4>
+                        <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-3 mt-1">
                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{row.user?.email || row.email || 'N/A'}</span>
                           <span className="w-1 h-1 rounded-full bg-slate-300" />
@@ -306,7 +306,7 @@ const AdminUserWallets = () => {
                       <div className="w-[2px] h-8 bg-slate-100 dark:bg-white/5 hidden lg:block" />
                       <div className="flex flex-col items-end">
                         <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">BALANCE</span>
-                        <div className="text-xl font-black text-primary-600 dark:text-primary-500 italic tracking-tighter tabular-nums">
+                        <div className="text-xl font-black text-primary-700 italic tracking-tighter tabular-nums">
                           {formatAmount(row.amount || row.walletBalance)}
                         </div>
                       </div>
@@ -328,19 +328,19 @@ const AdminUserWallets = () => {
                     className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl hover:border-primary-500/30 transition-all overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <Wallet className="w-24 h-24 text-primary-500 -rotate-12" />
+                      <Wallet className="w-24 h-24 text-primary-700 -rotate-12" />
                     </div>
 
                     <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-8 pb-6 border-b-2 border-slate-50 dark:border-white/5">
-                      <div className="w-16 h-16 rounded-3xl bg-primary-500 p-[3px] shadow-xl">
-                        <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
+                      <div className="w-16 h-16 rounded-3xl bg-primary-700 p-[3px] shadow-xl">
+                        <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                           {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                         </div>
                       </div>
                       <div className="flex flex-col">
                         <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{row.user?.name || row.name || 'Unknown'}</h4>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-500 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-700 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
                           {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
                         </div>
                       </div>
@@ -359,7 +359,7 @@ const AdminUserWallets = () => {
 
                     <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border-2 border-slate-100 dark:border-white/5">
                       <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 block">BALANCE</span>
-                      <div className="text-3xl font-black text-primary-600 dark:text-primary-500 italic tracking-tighter leading-none">{formatAmount(row.amount || row.walletBalance)}</div>
+                      <div className="text-3xl font-black text-primary-700 italic tracking-tighter leading-none">{formatAmount(row.amount || row.walletBalance)}</div>
                     </div>
                   </motion.div>
                 ))}

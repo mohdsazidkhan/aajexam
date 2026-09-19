@@ -47,8 +47,8 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
          onClick={onViewAll}
          className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-primary-500/10 hover:bg-primary-500/20 transition-colors"
       >
-         <span className="text-xs font-extrabold text-primary-600 dark:text-primary-400">View All</span>
-         <ChevronRight className="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" />
+         <span className="text-xs font-extrabold text-black dark:text-white">View All</span>
+         <ChevronRight className="w-3.5 h-3.5 text-black dark:text-white" />
       </button>
    </div>
 );
@@ -144,7 +144,7 @@ const REEL_TYPE_CONFIG = {
    fact: { icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Fact' },
    tip: { icon: Lightbulb, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Tip' },
    current_affairs: { icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Current Affairs' },
-   poll: { icon: BarChart3, color: 'text-primary-600', bg: 'bg-primary-500/10', label: 'Poll' },
+   poll: { icon: BarChart3, color: 'text-primary-700', bg: 'bg-primary-500/10', label: 'Poll' },
 };
 
 // ─── Blog Card ───
@@ -311,7 +311,7 @@ const HomePage = () => {
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-500 selection:text-white font-outfit">
+      <div className="relative selection:bg-primary-700 selection:text-white font-outfit">
             {/* ── Stats ── */}
             <section className="px-0 py-4 lg:p-8">
                {streakCount > 0 && (
@@ -326,12 +326,12 @@ const HomePage = () => {
                {/* Quick Stats */}
                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mb-1.5" />
+                     <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-700 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-primary-500 mb-1.5" />
+                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-primary-700 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{averageMockScore}%</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
                   </div>
@@ -353,39 +353,39 @@ const HomePage = () => {
                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3 lg:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-primary-700"
+                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
-                        <Zap className="w-7 h-7 text-white" />
+                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
+                        <Zap className="w-7 h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Test</p>
+                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Test</p>
                   </button>
                   <button
                      onClick={() => router.push('/quizzes')}
-                     className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-black dark:border-white"
+                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 dark:bg-black/10 flex items-center justify-center mb-2">
-                        <PlayCircle className="w-7 h-7 text-white dark:text-black" />
+                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
+                        <PlayCircle className="w-7 h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-white dark:text-black text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Quiz</p>
+                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Quiz</p>
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
-                     className="bg-primary-500 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-primary-700"
+                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 flex items-center justify-center mb-2">
-                        <FileText className="w-7 h-7 text-white" />
+                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
+                        <FileText className="w-7 h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Blog</p>
+                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Blog</p>
                   </button>
                   <button
                      onClick={() => router.push('/community-questions')}
-                     className="bg-black dark:bg-white rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-black dark:border-white"
+                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-white/20 dark:bg-black/10 flex items-center justify-center mb-2">
-                        <MessageSquare className="w-7 h-7 text-white dark:text-black" />
+                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
+                        <MessageSquare className="w-7 h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-white dark:text-black text-[10px] lg:text-xs font-black uppercase tracking-wider">Community</p>
+                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Community</p>
                   </button>
                </div>
             </section>

@@ -61,7 +61,7 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-2xl bg-primary-500 text-white p-8 lg:p-12">
+            <Card className="relative overflow-hidden border-none shadow-2xl bg-primary-700 text-white p-8 lg:p-12">
               <div className="absolute top-0 right-0 opacity-10">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
@@ -104,8 +104,8 @@ export default function SharedResult({ stats }) {
           <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: 'text-black dark:text-white' },
-              { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: 'text-primary-500' },
-              { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-primary-500' },
+              { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: 'text-primary-700' },
+              { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-primary-700' },
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: 'text-black dark:text-white' },
             ].map((item, idx) => (
               <Card key={idx} className="flex flex-col items-center text-center p-6 gap-2 border-2">

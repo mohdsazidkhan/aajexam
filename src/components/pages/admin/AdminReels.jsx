@@ -180,20 +180,20 @@ const AdminReels = () => {
             <div className="flex flex-col lg:flex-row gap-4 mb-8">
               <div className="flex-1 flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1 group">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-500 transition-colors" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
                   <input
                     type="text"
                     placeholder="Search reels by content or author..."
                     value={searchTerm}
                     onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-                    className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-sm font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 transition-all outline-none shadow-sm"
+                    className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-sm font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-700 transition-all outline-none shadow-sm"
                   />
                 </div>
                 <div className="flex gap-2">
                   <select
                     value={typeFilter}
                     onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
-                    className="pl-4 pr-10 py-3 rounded-[1.2rem] bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-500 outline-none appearance-none shadow-sm cursor-pointer"
+                    className="pl-4 pr-10 py-3 rounded-[1.2rem] bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-700 outline-none appearance-none shadow-sm cursor-pointer"
                   >
                     <option value="">All Types</option>
                     <option value="question">Question</option>
@@ -250,7 +250,7 @@ const AdminReels = () => {
                                   <Icon className="w-6 h-6" />
                                 </div>
                                 <div className="min-w-0">
-                                  <p className="font-black text-content-primary tracking-tight line-clamp-1 group-hover:text-primary-600 transition-colors uppercase italic">{getPreviewText(item)}</p>
+                                  <p className="font-black text-content-primary tracking-tight line-clamp-1 group-hover:text-primary-700 transition-colors uppercase italic">{getPreviewText(item)}</p>
                                   <div className="flex items-center gap-2 mt-1">
                                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
                                     <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
@@ -295,7 +295,7 @@ const AdminReels = () => {
                                 <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
                                 <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
                                 {(item.status === 'pending' || item.status === 'rejected') && (
-                                  <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-500 hover:bg-primary-500 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
+                                  <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 hover:bg-primary-700 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
                                 )}
                               </div>
                             </td>
@@ -345,14 +345,14 @@ const AdminReels = () => {
                           </div>
                           
                           {(item.status === 'pending' || item.status === 'rejected') && (
-                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[9px] font-black uppercase tracking-widest hover:bg-primary-500 hover:text-white transition-all flex items-center justify-center gap-1.5">
+                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 text-[9px] font-black uppercase tracking-widest hover:bg-primary-700 hover:text-white transition-all flex items-center justify-center gap-1.5">
                               <CheckCircle2 className="w-3 h-3" /> Approve & Live
                             </button>
                           )}
                         </div>
 
                         {/* Status Dot */}
-                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-primary-500' : item.status === 'pending' ? 'bg-black dark:bg-white' : 'bg-black dark:bg-white'}`} />
+                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status === 'published' ? 'bg-primary-700' : item.status === 'pending' ? 'bg-black dark:bg-white' : 'bg-black dark:bg-white'}`} />
                       </motion.div>
                     );
                   })}

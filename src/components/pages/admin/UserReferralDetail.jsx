@@ -155,16 +155,16 @@ export default function UserReferralDetail() {
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                         <div className="space-y-2">
                             <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                REFERRAL <span className="text-primary-500">DETAIL</span>
+                                REFERRAL <span className="text-primary-700">DETAIL</span>
                             </h1>
                             <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
-                                <div className="w-12 h-12 bg-primary-500 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
+                                <div className="w-12 h-12 bg-primary-700 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
                                     {user?.name?.[0].toUpperCase()}
                                 </div>
                                 <div>
                                     <div className="text-[10px] font-black uppercase tracking-widest leading-none mb-1">{user?.name}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic">{user?.email}</div>
-                                    <div className="text-[8px] font-black text-primary-500 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
+                                    <div className="text-[8px] font-black text-primary-700 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@ export default function UserReferralDetail() {
                                 onClick={() => router.push('/admin/referral-history')}
                                 className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-transform flex items-center gap-2"
                             >
-                                <ArrowLeft className="w-4 h-4 text-primary-500" /> Back to History
+                                <ArrowLeft className="w-4 h-4 text-primary-700" /> Back to History
                             </button>
                         </div>
                     </div>
@@ -213,7 +213,7 @@ export default function UserReferralDetail() {
                             </div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
                             <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">₹{tier.amount.toLocaleString()}</div>
-                            <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
+                            <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
                         </div>
                     ))}
                 </div>
@@ -221,7 +221,7 @@ export default function UserReferralDetail() {
                 {/* Table Controller */}
                 <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
+                        <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
                             <Zap className="w-5 h-5" />
                         </div>
                         <div>
@@ -297,7 +297,7 @@ export default function UserReferralDetail() {
                                                             {tx.invitee.name?.[0].toUpperCase() || 'U'}
                                                         </div>
                                                         <div>
-                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-500 transition-colors">{tx.invitee.name}</div>
+                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-700 transition-colors">{tx.invitee.name}</div>
                                                             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.invitee.email}</div>
                                                         </div>
                                                     </div>
@@ -311,7 +311,7 @@ export default function UserReferralDetail() {
                                                 </div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                <div className="text-sm font-black text-primary-500 tabular-nums italic">+₹{tx.amount}</div>
+                                                <div className="text-sm font-black text-primary-700 tabular-nums italic">+₹{tx.amount}</div>
                                             </td>
                                             <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                                                 <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>

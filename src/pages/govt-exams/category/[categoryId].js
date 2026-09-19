@@ -140,14 +140,14 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
             >
               <div
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-500 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
+                className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl hover:border-primary-700 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
               >
-                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-500 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-aajexam-secondary border-b-2 border-primary-700">
+                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-700 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-aajexam-secondary border-b-2 border-primary-700">
                   {exam.code?.[0] || 'E'}
                 </div>
 
                 <div className="flex-1 space-y-2">
-                  <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-700 transition-colors">
                     {exam.name}
                   </h3>
                   <div className="flex items-center gap-6">
@@ -162,7 +162,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                   </div>
                 </div>
 
-                <div className="w-8 lg:w-12 h-8 lg:h-12 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-primary-500 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-aajexam border-2 border-slate-100 dark:border-slate-800">
+                <div className="w-8 lg:w-12 h-8 lg:h-12 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-aajexam border-2 border-slate-100 dark:border-slate-800">
                   <ChevronRight className="w-6 h-6" />
                 </div>
               </div>

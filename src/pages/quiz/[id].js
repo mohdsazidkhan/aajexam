@@ -92,19 +92,19 @@ export default function QuizPreview({
         <div className="py-4 lg:py-6 relative space-y-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-500">Home</Link>
+            <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Home</Link>
             <span className="text-slate-400">/</span>
-            <Link href="/quizzes" className="text-primary-700 dark:text-primary-400 hover:text-primary-500">Quizzes</Link>
+            <Link href="/quizzes" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Quizzes</Link>
             {subjectName && quiz?.subject?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/subjects/${quiz.subject.slug}`} className="text-primary-700 dark:text-primary-400 hover:text-primary-500">{subjectName}</Link>
+                <Link href={`/subjects/${quiz.subject.slug}`} className="text-primary-700 dark:text-primary-400 hover:text-primary-700">{subjectName}</Link>
               </>
             )}
             {topicName && quiz?.topic?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/topics/${quiz.topic.slug}`} className="text-primary-700 dark:text-primary-400 hover:text-primary-500">{topicName}</Link>
+                <Link href={`/topics/${quiz.topic.slug}`} className="text-primary-700 dark:text-primary-400 hover:text-primary-700">{topicName}</Link>
               </>
             )}
             <span className="text-slate-400">/</span>
@@ -138,7 +138,7 @@ export default function QuizPreview({
                 </div>
               )}
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-lg font-black text-primary-600">FREE</div>
+                <div className="text-lg font-black text-primary-700">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function QuizPreview({
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {relatedQuizzes.map((q) => (
                   <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{q.title}</div>
+                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition leading-tight">{q.title}</div>
                   </Link>
                 ))}
               </div>

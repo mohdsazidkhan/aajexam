@@ -145,7 +145,7 @@ const AdminGovtExams = () => {
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
         <div className="space-y-2">
           <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-            GOVT <span className="text-primary-600">EXAMS</span>
+            GOVT <span className="text-primary-700">EXAMS</span>
           </h1>
           <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
             Create and manage government exam content.
@@ -162,7 +162,7 @@ const AdminGovtExams = () => {
               <button
                 key={mode.id}
                 onClick={() => setViewMode(mode.id)}
-                className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-600 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-xl' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <mode.icon className="w-4 h-4" />
                 {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
@@ -172,7 +172,7 @@ const AdminGovtExams = () => {
           <motion.button
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             onClick={handleCreate}
-            className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
+            className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-primary-500/20 flex items-center justify-center gap-3"
           >
             <Plus className="w-4 h-4" /> ADD EXAM
           </motion.button>
@@ -202,7 +202,7 @@ const AdminGovtExams = () => {
     <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-2xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8">
         <div className="flex-1 relative group w-full">
-          <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
+          <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
           <input
             type="text"
             placeholder="Search by exam name or code..."
@@ -213,7 +213,7 @@ const AdminGovtExams = () => {
         </div>
 
         <div className="flex items-center gap-4 px-3 lg:px-6 py-4 bg-white dark:bg-white/10 rounded-2xl shadow-inner border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto lg:min-w-[280px]">
-          <Layers className="w-4 h-4 text-primary-600" />
+          <Layers className="w-4 h-4 text-primary-700" />
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -260,8 +260,8 @@ const AdminGovtExams = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.category?.name || 'Uncategorized'}</td>
                       <td className="px-4 lg:px-8 py-3 lg:py-6">
                         <div className="flex justify-center">
-                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-black dark:bg-white'}`} />
+                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${exam.isActive ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-700 animate-pulse' : 'bg-black dark:bg-white'}`} />
                             {exam.isActive ? 'Online' : 'Offline'}
                           </div>
                         </div>
@@ -269,7 +269,7 @@ const AdminGovtExams = () => {
                       <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                         <div className="flex justify-end gap-3">
                           <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl border border-primary-500/20">
+                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl border border-primary-500/20">
                               <Zap className="w-4 h-4" />
                             </motion.button>
                           </Link>
@@ -293,7 +293,7 @@ const AdminGovtExams = () => {
               {filteredExams.map((exam, idx) => (
                 <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-2xl relative font-outfit">
                   <div className="absolute top-6 right-6">
-                    <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-500 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+                    <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
                       {exam.isActive ? 'LIVE STATUS' : 'INACTIVE'}
                     </div>
                   </div>
@@ -302,7 +302,7 @@ const AdminGovtExams = () => {
                       <Building2 className="w-8 h-8" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{exam.code}</div>
+                      <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-1">{exam.code}</div>
                       <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{exam.name}</h3>
                     </div>
                   </div>
@@ -317,7 +317,7 @@ const AdminGovtExams = () => {
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`} className="flex-1">
                       <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-primary-600/10">Patterns</motion.button>
                     </Link>
-                    <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(exam)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(exam._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
@@ -334,9 +334,9 @@ const AdminGovtExams = () => {
                     <div>
                       <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1">{exam.name}</h3>
                       <div className="flex items-center gap-4">
-                        <div className="text-[10px] font-black text-primary-500 uppercase tracking-widest">{exam.category?.name}</div>
+                        <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest">{exam.category?.name}</div>
                         <div className="flex items-center gap-2">
-                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-500 animate-pulse' : 'bg-black dark:bg-white'}`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${exam.isActive ? 'bg-primary-700 animate-pulse' : 'bg-black dark:bg-white'}`} />
                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{exam.isActive ? 'Active' : 'Offline'}</span>
                         </div>
                       </div>
@@ -344,10 +344,10 @@ const AdminGovtExams = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Link href={`/admin/govt-exams/patterns?examId=${exam._id}`}>
-                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-500 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">Manage Patterns</motion.button>
+                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg">Manage Patterns</motion.button>
                     </Link>
                     <div className="w-px h-10 bg-slate-100 dark:bg-white/10 mx-2" />
-                    <motion.button onClick={() => handleEdit(exam)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-500"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(exam)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(exam._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
@@ -366,11 +366,11 @@ const AdminGovtExams = () => {
           <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-2xl bg-white dark:bg-[#0A0F1E] rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col max-h-[75vh]">
             <div className="p-3 lg:p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary-500 text-white rounded-2xl shadow-lg">
+                <div className="p-3 bg-primary-700 text-white rounded-2xl shadow-lg">
                   <Settings className="w-6 h-6" />
                 </div>
                 <div>
-                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-500">Exam</span></h2>
+                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingExam ? 'Edit' : 'Add'} <span className="text-primary-700">Exam</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingExam ? `Editing: ${editingExam.name}` : 'Create a new exam'}</p>
                 </div>
               </div>
@@ -379,7 +379,7 @@ const AdminGovtExams = () => {
             <form onSubmit={handleSubmit} className="p-3 lg:p-8 overflow-y-auto custom-scrollbar">
               <div className="space-y-4 lg:space-y-8">
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Category</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-700 pl-3">Category</label>
                   <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
                     <option value="">Select Category...</option>
                     {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name.toUpperCase()}</option>)}
@@ -387,36 +387,36 @@ const AdminGovtExams = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-3 lg:gap-6">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Exam Code</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-700 pl-3">Exam Code</label>
                     <input type="text" value={formData.code} onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })} placeholder="E.G. SSC" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner" />
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Full Name</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-700 pl-3">Full Name</label>
                     <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Exam Name" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-inner" />
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Overview (Description)</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-700 pl-3">Overview (Description)</label>
                   <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} placeholder="Exam Details" rows="4" className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none shadow-inner resize-none" />
                 </div>
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-500 pl-3">Logo URL</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 block border-l-4 border-primary-700 pl-3">Logo URL</label>
                   <input type="text" value={formData.logo} onChange={(e) => setFormData({ ...formData, logo: e.target.value })} placeholder="https://..." className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-inner" />
                 </div>
                 <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-between border-2 border-slate-100 dark:border-white/5">
                   <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-lg lg:rounded-xl ${formData.isActive ? 'bg-primary-500/10 text-primary-500' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
+                    <div className={`p-3 rounded-lg lg:rounded-xl ${formData.isActive ? 'bg-primary-500/10 text-primary-700' : 'bg-slate-200'}`}><Zap className="w-5 h-5" /></div>
                     <div>
                       <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Active Status</p>
                       <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em]">{formData.isActive ? 'Published & Active' : 'Hidden from Students'}</p>
                     </div>
                   </div>
-                  <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-500 border-2 border-slate-300 cursor-pointer" />
+                  <input type="checkbox" checked={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-700 border-2 border-slate-300 cursor-pointer" />
                 </div>
               </div>
               <div className="flex gap-4 pt-8">
                 <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest">Cancel</button>
-                <button type="submit" className="flex-[2] py-5 bg-primary-500 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl flex items-center justify-center gap-3">
+                <button type="submit" className="flex-[2] py-5 bg-primary-700 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl flex items-center justify-center gap-3">
                   <CheckCircle2 className="w-5 h-5" /> {editingExam ? 'Save Changes' : 'Register Exam'}
                 </button>
               </div>

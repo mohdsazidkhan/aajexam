@@ -95,7 +95,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
 
         {news.officialLink && (
           <a href={news.officialLink} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-bold text-primary-500 hover:underline">
+            className="flex items-center gap-2 text-sm font-bold text-primary-700 hover:underline">
             <ExternalLink className="w-4 h-4" /> Official Website
           </a>
         )}

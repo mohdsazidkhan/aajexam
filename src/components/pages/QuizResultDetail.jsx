@@ -128,7 +128,7 @@ const QuizResultDetail = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
-                <div className="text-xl font-bold text-primary-600 dark:text-primary-400">{attempt.correctCount}</div>
+                <div className="text-xl font-bold text-primary-700">{attempt.correctCount}</div>
                 <div className="text-xs text-slate-500">Correct</div>
               </div>
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
@@ -178,7 +178,7 @@ const QuizResultDetail = () => {
                 <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                   {/* Question header: number + time badge + text */}
                   <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-500 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-primary-700 text-white' : 'bg-black dark:bg-white text-white dark:text-black'}`}>
                       {index + 1}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -212,7 +212,7 @@ const QuizResultDetail = () => {
 
                       return (
                         <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
-                          {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
+                          {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-700 shrink-0" />}
                           {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-black dark:text-white shrink-0" />}
                           {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
                           <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>

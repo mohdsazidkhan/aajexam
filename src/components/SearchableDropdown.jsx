@@ -69,7 +69,7 @@ const SearchableDropdown = ({
   return (
     <div className="relative w-full" ref={dropdownRef}>
       <div
-        className={`flex items-center justify-between w-full px-4 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/20 focus-within:border-primary-500 focus-within:bg-primary-500/5 transition-all cursor-text ${className}`}
+        className={`flex items-center justify-between w-full px-4 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/20 focus-within:border-primary-700 focus-within:bg-primary-500/5 transition-all cursor-text ${className}`}
         onClick={!isOpen ? handleOpen : undefined}
       >
         <input

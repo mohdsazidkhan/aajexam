@@ -102,9 +102,9 @@ export default function AdminBankDetails() {
   const getSubscriptionBadge = (status) => {
     const configs = {
       free: "text-slate-500 bg-slate-500/10 border-slate-500/20",
-      basic: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+      basic: "text-primary-700 bg-primary-500/10 border-primary-500/20",
       premium: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-      pro: "text-primary-500 bg-primary-500/10 border-primary-500/20",
+      pro: "text-primary-700 bg-primary-500/10 border-primary-500/20",
     };
 
     return (
@@ -116,7 +116,7 @@ export default function AdminBankDetails() {
 
   const getLevelBadge = (level) => {
     return (
-      <span className="px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest bg-primary-500/10 text-primary-500 border-2 border-primary-500/20">
+      <span className="px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest bg-primary-500/10 text-primary-700 border-2 border-primary-500/20">
         Level {level}
       </span>
     );
@@ -143,13 +143,13 @@ export default function AdminBankDetails() {
               >
                 <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-2xl bg-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
-                      <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-500">
+                    <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+                      <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
                         {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">
+                      <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">
                         {detail.user?.name || "N/A"}
                       </div>
                       <div className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
@@ -162,7 +162,7 @@ export default function AdminBankDetails() {
                 <td className="px-3 lg:px-6 py-3 lg:py-6">
                   <div className="space-y-1">
                     <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                      <User className="w-3.5 h-3.5 mr-2 text-primary-500" />
+                      <User className="w-3.5 h-3.5 mr-2 text-primary-700" />
                       {detail.accountHolderName}
                     </div>
                     <div className="flex items-center text-[10px] font-bold text-slate-400 tabular-nums">
@@ -174,7 +174,7 @@ export default function AdminBankDetails() {
                 <td className="px-3 lg:px-6 py-3 lg:py-6">
                   <div className="space-y-1">
                     <div className="flex items-center text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">
-                      <University className="w-3.5 h-3.5 mr-2 text-primary-500" />
+                      <University className="w-3.5 h-3.5 mr-2 text-primary-700" />
                       {detail.bankName}
                     </div>
                     <div className="flex items-center text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">
@@ -193,7 +193,7 @@ export default function AdminBankDetails() {
                     )}
                     {detail.user?.currentLevel !== undefined && (
                       <div className="flex items-center">
-                        <UserCheck className="w-3 h-3 mr-1.5 text-primary-500" />
+                        <UserCheck className="w-3 h-3 mr-1.5 text-primary-700" />
                         {getLevelBadge(detail.user.currentLevel)}
                       </div>
                     )}
@@ -224,13 +224,13 @@ export default function AdminBankDetails() {
         >
           <div className="flex items-center justify-between mb-4 lg:mb-8">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-500 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
-                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
+              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-xl group-hover:rotate-6 transition-transform">
+                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                   {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">
+                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">
                   {detail.user?.name || "N/A"}
                 </h3>
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1">
@@ -263,7 +263,7 @@ export default function AdminBankDetails() {
             <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <University className="w-4 h-4 text-primary-500" />
+                  <University className="w-4 h-4 text-primary-700" />
                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">BANK NAME</span>
                 </div>
                 <div className="text-xs font-black text-slate-900 dark:text-white uppercase text-right">
@@ -272,7 +272,7 @@ export default function AdminBankDetails() {
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-primary-500/10">
                 <div className="flex items-center gap-2">
-                  <Key className="w-4 h-4 text-primary-500" />
+                  <Key className="w-4 h-4 text-primary-700" />
                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">IFSC CODE</span>
                 </div>
                 <div className="text-xs font-black text-slate-900 dark:text-white uppercase tabular-nums">
@@ -281,7 +281,7 @@ export default function AdminBankDetails() {
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-primary-500/10">
                 <div className="flex items-center gap-2">
-                  <Building className="w-4 h-4 text-primary-500" />
+                  <Building className="w-4 h-4 text-primary-700" />
                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">BRANCH</span>
                 </div>
                 <div className="text-xs font-black text-slate-900 dark:text-white uppercase text-right">
@@ -318,13 +318,13 @@ export default function AdminBankDetails() {
           className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-xl hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
         >
           <div className="flex items-center gap-3 lg:gap-6">
-            <div className="w-14 h-14 rounded-2xl bg-primary-500 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
-              <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-500">
+            <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-lg group-hover:rotate-6 transition-transform">
+              <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
                 {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-500 transition-colors">
+              <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">
                 {detail.user?.name || "N/A"}
               </h3>
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1">
@@ -339,7 +339,7 @@ export default function AdminBankDetails() {
 
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:mx-8">
             <div className="px-3 lg:px-6 py-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/5 flex gap-4 items-center">
-              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
+              <div className="p-2.5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
                 <CreditCard className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
@@ -350,7 +350,7 @@ export default function AdminBankDetails() {
             </div>
 
             <div className="px-3 lg:px-6 py-4 bg-primary-500/5 rounded-2xl border-2 border-primary-500/10 flex gap-4 items-center">
-              <div className="p-2.5 bg-primary-500/10 text-primary-500 rounded-lg lg:rounded-xl">
+              <div className="p-2.5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
                 <University className="w-4 h-4" />
               </div>
               <div className="flex flex-col">
@@ -383,20 +383,20 @@ export default function AdminBankDetails() {
         className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-2xl relative overflow-hidden group"
       >
         <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
-          <University className="w-64 h-64 text-primary-500" />
+          <University className="w-64 h-64 text-primary-700" />
         </div>
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
           <div className="space-y-3 lg:space-y-6">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary-500/20 text-primary-500 rounded-2xl">
+              <div className="p-3 bg-primary-500/20 text-primary-700 rounded-2xl">
                 <University className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-black text-primary-500 uppercase tracking-[0.4em]">ADMIN / BANK DETAILS</span>
+              <span className="text-[10px] font-black text-primary-700 uppercase tracking-[0.4em]">ADMIN / BANK DETAILS</span>
             </div>
 
             <h1 className="text-3xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-              BANK <span className="text-primary-500">DETAILS</span>
+              BANK <span className="text-primary-700">DETAILS</span>
             </h1>
 
             <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
@@ -406,7 +406,7 @@ export default function AdminBankDetails() {
 
           <div className="flex flex-col items-end gap-2 text-right">
             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL ENTRIES</span>
-            <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-500 tabular-nums italic tracking-tighter">
+            <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-700 tabular-nums italic tracking-tighter">
               <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
               {pagination.total || 0}
             </div>
@@ -418,7 +418,7 @@ export default function AdminBankDetails() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl">
         <div className="lg:col-span-2">
           <div className="relative group/search">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-500 transition-colors" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
             <input
               type="text"
               placeholder="Search by name, email, or bank details..."
@@ -440,7 +440,7 @@ export default function AdminBankDetails() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setViewMode(mode)}
-              className={`flex-1 p-3 rounded-lg lg:rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
+              className={`flex-1 p-3 rounded-lg lg:rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-700 text-white shadow-xl shadow-primary-500/20' : 'text-slate-400 hover:text-slate-600'}`}
             >
               <Icon className="w-4 h-4" />
             </motion.button>

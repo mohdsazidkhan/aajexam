@@ -41,7 +41,7 @@ const rankConfig = {
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = ['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-500', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white'];
+const AVATAR_COLORS = ['bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-primary-700', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white', 'bg-black dark:bg-white'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
@@ -152,7 +152,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
           <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
           <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
           <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
-          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
         </div>
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
@@ -169,7 +169,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
                 </span>
               )}
             </div>
-            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
             <div>
@@ -384,7 +384,7 @@ const AllIndiaRankPage = () => {
                 {[
                   { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white dark:text-white' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white dark:text-white' },
-                  { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-500 dark:text-primary-400' },
+                  { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-700 dark:text-primary-400' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white dark:text-white' },
                 ].map((stat, i) => (
                   <Card key={i} padded={false} className="p-3 sm:p-4 text-center">

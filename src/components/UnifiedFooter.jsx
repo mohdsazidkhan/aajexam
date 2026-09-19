@@ -71,9 +71,9 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="lg:col-span-1 space-y-8">
             <div className="space-y-4">
               <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
-                AAJ<span className="text-primary-700 dark:text-primary-500 text-glow-primary">EXAM</span>
+                AAJ<span className="text-primary-700 text-glow-primary">EXAM</span>
               </h2>
-              <div className="h-1 w-12 bg-primary-500 rounded-full" />
+              <div className="h-1 w-12 bg-primary-700 rounded-full" />
             </div>
 
             <p className="text-sm font-bold text-content-secondary leading-relaxed max-w-xs">
@@ -90,7 +90,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow us on ${social.icon.name || 'social media'}`}
-                  className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl lg:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-600 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
+                  className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl lg:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-700 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
@@ -99,15 +99,15 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-primary-700 dark:text-primary-500 uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+            <h4 className="text-xs font-black text-primary-700 uppercase tracking-[0.25em] flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse" />
               Explore
             </h4>
             <ul className="grid grid-cols-1 gap-4">
               {operationalLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-500 group-hover:border-primary-500/30 transition-all shadow-inner">
+                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-700 group-hover:border-primary-500/30 transition-all shadow-inner">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
@@ -118,15 +118,15 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-primary-700 dark:text-primary-500 uppercase tracking-[0.25em] flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+            <h4 className="text-xs font-black text-primary-700 uppercase tracking-[0.25em] flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse" />
               Legal
             </h4>
             <ul className="grid grid-cols-1 gap-4">
               {legalLinksMap.map((link) => (
                 <li key={link.name}>
                   <Link href={link.path} className="group flex items-center gap-4 text-sm font-black text-content-secondary tracking-[0.04em] hover:text-slate-900 dark:hover:text-white transition-all">
-                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-500 group-hover:border-primary-500/30 transition-all shadow-inner">
+                    <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-background-surface-secondary border border-border-primary flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-700 group-hover:border-primary-500/30 transition-all shadow-inner">
                       <link.icon className="w-4 h-4" />
                     </div>
                     <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
@@ -166,11 +166,11 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   aria-label="Contact us on WhatsApp"
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 bg-primary-500/10 text-primary-500 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-500 group-hover/item:text-white transition-all shadow-aajexam-primary">
+                  <div className="w-11 h-11 bg-primary-500/10 text-primary-700 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-700 group-hover/item:text-white transition-all shadow-aajexam-primary">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-primary-500 transition-colors">WhatsApp</p>
+                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-primary-700 transition-colors">WhatsApp</p>
                     <p className="text-xs font-bold text-content-secondary">{config.CONTACT.PHONE}</p>
                   </div>
                 </a>
@@ -178,12 +178,12 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
               <div className="px-5 py-3 bg-slate-50 dark:bg-white/5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
                   <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">System status</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-black dark:text-white" />
-                  <span className="text-[11px] font-black text-primary-700 dark:text-primary-500 tracking-[0.08em]">Stable</span>
+                  <span className="text-[11px] font-black text-primary-700 tracking-[0.08em]">Stable</span>
                 </div>
               </div>
             </Card>
@@ -195,14 +195,14 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
             <span>&copy; {new Date().getFullYear()} {config.APP_NAME}</span>
             <div className="hidden lg:block h-4 w-px bg-slate-300 dark:bg-slate-700" />
             <div className="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse" />
               <span>Version {config.APP_VERSION}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 text-sm font-black text-content-secondary tracking-[0.04em]">
             Built by
-            <a href={config.APP_DEVELOPER_URL} target="_blank" rel="noreferrer" className="text-content-primary hover:text-primary-500 transition-all border-b border-slate-300 dark:border-white/10 hover:border-primary-500/50 pb-0.5">
+            <a href={config.APP_DEVELOPER_URL} target="_blank" rel="noreferrer" className="text-content-primary hover:text-primary-700 transition-all border-b border-slate-300 dark:border-white/10 hover:border-primary-500/50 pb-0.5">
               {config.APP_AUTHOR}
             </a>
           </div>

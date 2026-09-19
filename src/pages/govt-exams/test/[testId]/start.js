@@ -270,7 +270,7 @@ const TestStart = ({ resolvedId } = {}) => {
                 <span className="shrink-0">{currentQIndex + 1} / {questions.length}</span>
               </div>
               <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} className="h-full bg-primary-500 shadow-glow-primary" />
+                <motion.div initial={{ width: 0 }} animate={{ width: `${progressPercent}%` }} className="h-full bg-primary-700 shadow-glow-primary" />
               </div>
             </div>
           </div>
@@ -286,12 +286,12 @@ const TestStart = ({ resolvedId } = {}) => {
               language={language}
               onToggle={toggleLanguage}
               translating={translatingQ}
-              className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-500 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
+              className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-700 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
             />
 
             <button
               onClick={toggleFullscreen}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-500 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden lg:block"
+              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-700 rounded-[1.5rem] shadow-2xl border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden lg:block"
               title="Toggle Focus Mode"
             >
               {isFullscreen ? <Minimize className="w-6 h-6" /> : <Maximize className="w-6 h-6" />}
@@ -324,7 +324,7 @@ const TestStart = ({ resolvedId } = {}) => {
               <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest sr-only">Stats Overview</h3>
               <div className="grid grid-cols-2 gap-2">
                 <div className="bg-primary-500/10 p-3 rounded-2xl border border-primary-500/20">
-                  <p className="text-[10px] font-black text-primary-500 uppercase">Answered</p>
+                  <p className="text-[10px] font-black text-primary-700 uppercase">Answered</p>
                   <p className="text-2xl font-black">{answeredCount}</p>
                 </div>
                 <div className="bg-black/10 dark:bg-white/10 p-3 rounded-2xl border border-black/20 dark:border-white/20">
@@ -345,7 +345,7 @@ const TestStart = ({ resolvedId } = {}) => {
                       <span className="text-[10px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest truncate">
                         {secName}
                       </span>
-                      <span className="text-[10px] font-black text-primary-500 shrink-0">
+                      <span className="text-[10px] font-black text-primary-700 shrink-0">
                         {answeredInSec}/{group.length}
                       </span>
                     </div>
@@ -360,9 +360,9 @@ const TestStart = ({ resolvedId } = {}) => {
                             onClick={() => setCurrentQIndex(idx)}
                             className={`
                               h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-2
-                              ${isCurrent ? 'bg-primary-500 text-white border-primary-700 -translate-y-1' :
+                              ${isCurrent ? 'bg-primary-700 text-white border-primary-700 -translate-y-1' :
                                 isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
-                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
+                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}
                             `}
                           >
@@ -396,7 +396,7 @@ const TestStart = ({ resolvedId } = {}) => {
               className="mx-auto space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 dark:text-primary-400 uppercase shrink-0">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-700 uppercase shrink-0">
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
@@ -428,7 +428,7 @@ const TestStart = ({ resolvedId } = {}) => {
                       className={`
                           group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
-                          ? 'bg-primary-500 text-white border-primary-600 shadow-aajexam-primary'
+                          ? 'bg-primary-700 text-white border-primary-600 shadow-aajexam-primary'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
                         `}
                     >
@@ -505,7 +505,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <Button
               variant="primary"
               size="lg"
-              className="bg-primary-500 hover:bg-primary-600 px-12"
+              className="bg-primary-700 hover:bg-primary-600 px-12"
               onClick={() => setShowSubmitModal(true)}
             >
               FINISH TEST <Send className="w-6 h-6 ml-2" />
@@ -541,7 +541,7 @@ const TestStart = ({ resolvedId } = {}) => {
                         <span className="text-xs font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest truncate">
                           {secName}
                         </span>
-                        <span className="text-[11px] font-black text-primary-500 shrink-0">
+                        <span className="text-[11px] font-black text-primary-700 shrink-0">
                           {answeredInSec}/{group.length}
                         </span>
                       </div>
@@ -554,9 +554,9 @@ const TestStart = ({ resolvedId } = {}) => {
                             <button
                               key={idx}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
-                              className={`h-14 rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-500 text-white border-primary-700' :
+                              className={`h-14 rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-700 text-white border-primary-700' :
                                 isMarked ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white' :
-                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-800' :
+                                  isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 border-primary-200 dark:border-primary-800' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
                             >
                               {idx + 1}
@@ -579,12 +579,12 @@ const TestStart = ({ resolvedId } = {}) => {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />
             <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 max-w-md w-full max-h-[75vh] overflow-y-auto shadow-2xl border-2 border-primary-500/20">
-              <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CircleAlert className="w-10 h-10" />
               </div>
               <h2 className="text-xl lg:text-2xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
               <p className="text-center text-slate-500 mb-8 font-bold leading-relaxed px-4">
-                You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
+                You&apos;ve answered <span className="text-primary-700">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
               <div className="space-y-3">
                 <Button variant="primary" fullWidth size="lg" className="py-6 text-xl" onClick={handleAutoSubmit} disabled={submitting}>

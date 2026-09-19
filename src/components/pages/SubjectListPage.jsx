@@ -147,7 +147,7 @@ const SubjectListPage = () => {
 
                 {/* Stat chips */}
                 <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 dark:text-primary-400 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-700 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {sub.quizCount || 0} Quizzes
                   </div>
