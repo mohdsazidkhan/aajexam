@@ -234,7 +234,7 @@ const DailyChallengePage = () => {
                       <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                         <div className="flex items-start gap-2 mb-2">
                           <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>{idx + 1}</div>
-                          <p className="text-sm font-medium text-slate-800 dark:text-white">{q.questionText}</p>
+                          <p className="text-sm font-bold text-slate-800 dark:text-white">{q.questionText}</p>
                         </div>
                         <div className="space-y-1 ml-8">
                           {q.options?.map((opt, oi) => {

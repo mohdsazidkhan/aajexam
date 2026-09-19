@@ -21,6 +21,15 @@ const formatTime = (sec) => {
   return `${s}s`;
 };
 
+// Score-based feedback shown above the result card
+const getScoreMessage = (pct) => {
+  if (pct >= 90) return { text: 'Outstanding! 🏆', cls: 'text-primary-700' };
+  if (pct >= 75) return { text: 'Great Job! 🎉', cls: 'text-primary-700' };
+  if (pct >= 50) return { text: 'Good Effort! 👍', cls: 'text-blue-600 dark:text-blue-400' };
+  if (pct >= 35) return { text: 'Keep Practicing! 💪', cls: 'text-amber-600 dark:text-amber-400' };
+  return { text: 'Needs Improvement 📚', cls: 'text-red-600 dark:text-red-400' };
+};
+
 // Speed badge config
 const getSpeedBadge = (sec, totalQ) => {
   if (!sec || !totalQ) return null;
@@ -71,6 +80,7 @@ const QuizResultDetail = () => {
   if (!attempt) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Result not found</p></div>;
 
   const quiz = attempt.quiz;
+  const totalTimeTakenSec = attempt.answers?.reduce((sum, a) => sum + (a.timeTaken || 0), 0) || 0;
 
   const handleChallenge = async () => {
     const isPro = user?.subscriptionStatus?.toUpperCase() === 'PRO' || user?.role === 'admin';
@@ -123,10 +133,14 @@ const QuizResultDetail = () => {
                 <Trophy className="w-8 h-8 text-white" />
               </div>
             </div>
+            {/* Score-based feedback */}
+            <p className={`text-xl lg:text-2xl font-black mb-1 ${getScoreMessage(attempt.percentage || 0).cls}`}>
+              {getScoreMessage(attempt.percentage || 0).text}
+            </p>
             {quiz && <h2 className="text-lg lg:text-xl font-bold text-slate-800 dark:text-white mb-1">{quiz.title || 'Quiz'}</h2>}
             {quiz?.subject && <p className="text-sm text-slate-500 mb-4">{quiz.applicableExams?.map(e => e.name).join(', ') || ''}{quiz.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}</p>}
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-primary-700">{attempt.correctCount}</div>
                 <div className="text-xs text-slate-500">Correct</div>
@@ -142,6 +156,14 @@ const QuizResultDetail = () => {
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{Math.round(attempt.accuracy || 0)}%</div>
                 <div className="text-xs text-slate-500">Accuracy</div>
+              </div>
+              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
+                <div className="text-xl font-bold text-black dark:text-white">{quiz?.duration ? `${quiz.duration}m` : '—'}</div>
+                <div className="text-xs text-slate-500">Quiz Total Time</div>
+              </div>
+              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
+                <div className="text-xl font-bold text-black dark:text-white">{formatTime(totalTimeTakenSec) || '0s'}</div>
+                <div className="text-xs text-slate-500">Total Time Taken</div>
               </div>
             </div>
 
@@ -182,13 +204,13 @@ const QuizResultDetail = () => {
                       {index + 1}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-800 dark:text-white">{question.questionText}</p>
+                      <p className="text-sm font-bold text-slate-800 dark:text-white">{question.questionText}</p>
                       {/* ⏱ Time-per-question badge */}
                       {timeLabel && (
                         <div className="flex items-center gap-2 mt-1.5">
                           <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${speedBadge?.cls || 'bg-slate-100 text-slate-500'}`}>
                             <Clock className="w-3 h-3" />
-                            {timeLabel}
+                            Time Taken: {timeLabel}
                           </span>
                           {speedBadge && (
                             <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${speedBadge.cls}`}>
@@ -202,7 +224,7 @@ const QuizResultDetail = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-1.5 ml-11">
+                  <div className="space-y-1.5 ml-0 lg:ml-11">
                     {question.options?.map((opt, optIdx) => {
                       const isSelected = ans.selectedOptionIndex === optIdx;
                       const isCorrectOpt = optIdx === correctIndex;
@@ -222,12 +244,12 @@ const QuizResultDetail = () => {
                   </div>
 
                   {question.explanation && (
-                    <div className="ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                    <div className="ml-0 lg:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
                       <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                     </div>
                   )}
 
-                  <div className="ml-11">
+                  <div className="ml-0 lg:ml-11">
                     <DiscussionThread
                       questionId={question._id}
                       sourceType="quiz"

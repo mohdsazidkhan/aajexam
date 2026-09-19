@@ -141,7 +141,7 @@ const QuizResultPage = () => {
                       {index + 1}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-800 dark:text-white">{question.questionText}</p>
+                      <p className="text-sm font-bold text-slate-800 dark:text-white">{question.questionText}</p>
                       {timeLabel && (
                         <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
                           <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${badge?.cls || 'bg-slate-100 text-slate-500'}`}>
