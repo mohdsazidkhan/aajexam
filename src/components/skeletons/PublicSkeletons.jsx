@@ -93,7 +93,7 @@ export const ExamCardSkeleton = () => (
 
 // ─── Quiz detail/preview skeleton ─────────────────────────────────────────────
 const QuizPreviewSkeleton = () => (
-  <div className="max-w-4xl mx-auto py-5 lg:py-12 px-4 pb-24 space-y-6 animate-pulse">
+  <div className="container mx-auto py-5 lg:py-12 pb-24 space-y-6 animate-pulse">
     {/* Breadcrumb */}
     <div className="flex gap-2">
       <Sh className="h-4 w-12 rounded-full" />
@@ -134,7 +134,7 @@ const QuizPreviewSkeleton = () => (
 
 // ─── Blog detail skeleton ──────────────────────────────────────────────────────
 const BlogDetailSkeleton = () => (
-  <div className="max-w-4xl mx-auto px-4 py-6 lg:py-12 pb-24 space-y-6 animate-pulse">
+  <div className="container mx-auto py-6 lg:py-12 pb-24 space-y-6 animate-pulse">
     <Sh className="h-4 w-20 rounded-full" />
     {/* Hero image */}
     <Sh className="h-64 lg:h-96 w-full rounded-3xl" />

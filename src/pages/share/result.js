@@ -54,7 +54,7 @@ export default function SharedResult({ stats }) {
       <PublicNavbar />
 
       <main className="min-h-screen bg-background-page py-12 px-4">
-        <div className="max-w-4xl mx-auto space-y-10">
+        <div className="container mx-auto space-y-10">
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}

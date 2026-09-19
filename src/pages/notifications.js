@@ -95,7 +95,7 @@ const NotificationsPage = () => {
       <div className="min-h-screen animate-fade-in selection:bg-primary-500 selection:text-white mt-0">
       <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
-      <div className="py-12 max-w-4xl space-y-10 mt-0">
+      <div className="container mx-auto py-12 space-y-10 mt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center lg:text-left">
             <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center lg:justify-start">

@@ -123,7 +123,7 @@ const TestResult = ({ resolvedId } = {}) => {
   const beatPct = percentile > 0 ? percentile.toFixed(1) : '0';
 
   return (
-    <div className="space-y-6 lg:space-y-10 animate-fade-in pb-24 max-w-5xl mx-auto">
+    <div className="container mx-auto space-y-6 lg:space-y-10 animate-fade-in pb-24">
       <Seo title={`Result – ${result?.testTitle || 'Test'} | AajExam`} description="Your AajExam practice test result." noIndex={true} />
 
       {/* --- Celebration Hero --- */}

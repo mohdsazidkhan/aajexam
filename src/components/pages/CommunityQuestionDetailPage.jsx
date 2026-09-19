@@ -57,7 +57,7 @@ export default function CommunityQuestionDetailPage() {
     } finally { setLiking(false); }
   };
 
-  if (loading) return <div className="max-w-4xl mx-auto px-4 py-6"><QAThreadSkeleton /></div>;
+  if (loading) return <div className="container mx-auto py-6"><QAThreadSkeleton /></div>;
   if (!question) return (
     <div className="min-h-screen flex items-center justify-center">
       <p className="text-slate-500">Question not found</p>

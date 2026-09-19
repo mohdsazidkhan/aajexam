@@ -74,7 +74,7 @@ const QuizResultPage = () => {
 
   return (
     <div className="min-h-screen bg-background-page pb-24">
-      <div className="pt-6 pb-8 max-w-4xl">
+      <div className="container mx-auto pt-6 pb-8">
 
         {/* Result Card */}
         <div className="text-center mb-6">

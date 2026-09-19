@@ -89,8 +89,8 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
       'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30';
 
   return (
-    <div className="min-h-screen bg-background-page py-5 lg:py-12 px-4 pb-24">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background-page py-5 lg:py-12 pb-24">
+      <div className="container mx-auto">
 
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm">
