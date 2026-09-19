@@ -383,12 +383,13 @@ const AdminUserWallets = () => {
           </>
         )}
       </div>
+    </div>
   );
 
-  return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-          {content}
-        </div>
-      </div>
+  return (
+    <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      {content}
+    </div>
   );
 };
 

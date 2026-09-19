@@ -568,7 +568,7 @@ const SearchPage = () => {
             <div className="py-3 lg:py-6">
 
                   {loading ? (
-                     <div className="px-4"><ListSkeleton rows={6} /></div>
+                     <div className="px-3 lg:px-8"><ListSkeleton rows={6} /></div>
                   ) : activeTab === 'all' ? (
                      /* ══════ ALL TAB — Sectioned Layout ══════ */
                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
@@ -598,7 +598,7 @@ const SearchPage = () => {
                            }
 
                            return (
-                              <div key={key} className="px-4">
+                              <div key={key} className="px-3 lg:px-8">
                                  <div className="flex items-center gap-1.5 mb-2">
                                     <Icon className={`w-4 h-4 ${meta.color}`} />
                                     <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{meta.label}</h3>

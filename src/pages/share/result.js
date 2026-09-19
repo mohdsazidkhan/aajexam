@@ -53,7 +53,7 @@ export default function SharedResult({ stats }) {
 
       <PublicNavbar />
 
-      <main className="min-h-screen bg-background-page py-12 px-4">
+      <main className="min-h-screen bg-background-page py-12">
         <div className="container mx-auto space-y-10">
 
           <motion.div

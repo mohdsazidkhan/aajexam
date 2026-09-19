@@ -115,7 +115,7 @@ const SettingsPage = () => {
   if (loading) {
     return (
       <MobileAppWrapper title="Account Settings">
-        <div className="container mx-auto mt-4 px-4 py-8"><ProfileSkeleton /></div>
+        <div className="container mx-auto mt-4 py-8"><ProfileSkeleton /></div>
       </MobileAppWrapper>
     );
   }
@@ -126,7 +126,7 @@ const SettingsPage = () => {
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
         <div className="container mx-auto mt-4 space-y-6 lg:space-y-12">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-6 px-4 lg:px-0">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-6">
             <div className="space-y-4">
               <h1 className="text-3xl lg:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
               <p className="text-sm lg:text-base font-bold text-content-secondary max-w-xl">

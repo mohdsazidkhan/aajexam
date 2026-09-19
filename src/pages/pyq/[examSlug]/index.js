@@ -85,7 +85,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                 schemas={schemas}
             />
 
-            <div className="py-4 lg:py-8 min-h-screen px-4 font-outfit relative overflow-hidden">
+            <div className="py-4 lg:py-8 min-h-screen font-outfit relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 

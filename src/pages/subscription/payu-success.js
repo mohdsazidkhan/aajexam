@@ -163,7 +163,7 @@ const PayuSuccess = () => {
         description="Check the status of your recent payment and subscription."
         noIndex={true}
       />
-      <div className="min-h-screen py-8 px-4">
+      <div className="min-h-screen py-8">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-8">
             <div className="text-center space-y-4">

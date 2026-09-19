@@ -74,7 +74,7 @@ export default function SubjectPractice({
         schemas={schemas}
       />
 
-      <div className="min-h-screen pb-12 px-4 font-outfit">
+      <div className="min-h-screen pb-12 font-outfit">
         <div className="py-4 lg:py-6 space-y-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-500">Home</Link>

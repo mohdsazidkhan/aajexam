@@ -70,7 +70,7 @@ export default function CommunityQuestionDetailPage() {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="mx-auto px-4 py-6 space-y-5">
+      <div className="container mx-auto py-6 space-y-5">
         {/* Back */}
         <button onClick={() => router.push('/community-questions')} className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-primary-600">
           <ArrowLeft className="w-4 h-4" /> All questions

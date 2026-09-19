@@ -83,7 +83,7 @@ const FollowingList = ({ username: usernameProp }) => {
 
   return (
     <>
-      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-background-page min-h-screen font-outfit">
+      <div className="container mx-auto py-0 lg:py-4 bg-background-page min-h-screen font-outfit">
         {/* Content */}
         <div >
           {loading ? (

@@ -64,7 +64,7 @@ export default function TopicDetail({
         schemas={schemas}
       />
 
-      <div className="min-h-screen pb-12 px-4 font-outfit relative overflow-hidden">
+      <div className="min-h-screen pb-12 font-outfit relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 

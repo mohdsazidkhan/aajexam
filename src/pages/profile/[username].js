@@ -6,7 +6,7 @@ import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 
 const PublicProfile = dynamic(() => import('../../components/PublicProfile'), {
   ssr: false,
-  loading: () => <div className="min-h-screen bg-background-page py-6 px-4"><ProfileSkeleton /></div>
+  loading: () => <div className="min-h-screen bg-background-page py-6"><ProfileSkeleton /></div>
 });
 
 export default function PublicProfilePage({ username, profile, seo }) {
