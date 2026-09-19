@@ -69,7 +69,7 @@ const EducationalContent = ({ content }) => {
     };
 
     return (
-        <section className="font-outfit overflow-hidden py-24 px-4  dark:">
+        <section className="font-outfit overflow-hidden py-24 px-4 dark:">
             <div className="mx-auto space-y-24">
 
                 {/* Header Section */}
@@ -97,9 +97,9 @@ const EducationalContent = ({ content }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                     {[
                         { title: "Why AajExam", content: data.platformPurpose, icon: Target, color: "primary" },
-                        { title: "Who It's For", content: data.targetAudience, icon: Users, color: "secondary" },
-                        { title: "What You Get", content: data.educationalBenefits, icon: Sparkles, color: "emerald" },
-                        { title: "How You Learn", content: data.learningMethodology, icon: ShieldCheck, color: "purple" }
+                        { title: "Who It's For", content: data.targetAudience, icon: Users, color: "primary" },
+                        { title: "What You Get", content: data.educationalBenefits, icon: Sparkles, color: "primary" },
+                        { title: "How You Learn", content: data.learningMethodology, icon: ShieldCheck, color: "primary" }
                     ].map((card, i) => (
                         <motion.div
                             key={i}
@@ -107,7 +107,7 @@ const EducationalContent = ({ content }) => {
                             className="bg-background-surface p-10 rounded-[2.5rem] border-2 border-b-10 border-border-primary shadow-aajexam transition-all"
                         >
                             <div className="flex items-start gap-6">
-                                <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-inner bg-slate-50 dark:bg-slate-950`}>
+                                <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-inner bg-slate-50 dark:bg-slate-800`}>
                                     <card.icon className={`w-8 h-8 text-${card.color}-500`} />
                                 </div>
                                 <div className="space-y-4">

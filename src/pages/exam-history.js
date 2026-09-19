@@ -56,8 +56,8 @@ const ExamHistoryPage = () => {
 
    const getRankBadge = (acc) => {
       if (acc >= 90) return { label: 'S', color: 'primary' };
-      if (acc >= 75) return { label: 'A', color: 'secondary' };
-      if (acc >= 50) return { label: 'B', color: 'blue' };
+      if (acc >= 75) return { label: 'A', color: 'primary' };
+      if (acc >= 50) return { label: 'B', color: 'primary' };
       return { label: 'C', color: 'slate' };
    };
 

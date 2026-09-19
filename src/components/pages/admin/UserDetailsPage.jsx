@@ -125,10 +125,10 @@ export default function UserDetailsPage() {
         {/* Stats Bar */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4">
           {[
-            { label: 'Total Users', val: pagination.total || 0, icon: Users, color: 'blue' },
-            { label: 'Pro Members', val: userDetails.filter(u => u.subscriptionStatus === 'PRO').length, icon: Crown, color: 'amber' },
-            { label: 'Avg. Activity', val: '84%', icon: Activity, color: 'emerald' },
-            { label: 'Verified Users', val: '92%', icon: UserCheck, color: 'indigo' }
+            { label: 'Total Users', val: pagination.total || 0, icon: Users, color: 'primary' },
+            { label: 'Pro Members', val: userDetails.filter(u => u.subscriptionStatus === 'PRO').length, icon: Crown, color: 'primary' },
+            { label: 'Avg. Activity', val: '84%', icon: Activity, color: 'primary' },
+            { label: 'Verified Users', val: '92%', icon: UserCheck, color: 'primary' }
           ].map((s, i) => (
             <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-lg group hover:border-primary-500/30 transition-all">
               <div className={`p-4 bg-${s.color}-500/10 text-${s.color}-500 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform`}><s.icon className="w-5 h-5" /></div>

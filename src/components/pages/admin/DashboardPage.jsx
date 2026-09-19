@@ -198,10 +198,10 @@ const DashboardPage = () => {
         className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-8"
       >
         {[
-          { label: 'TOTAL REVENUE', value: formatINR(stats.totalRevenue), subtitle: `${formatINR(stats.revenueThisMonth)} this month`, icon: Banknote, color: 'emerald' },
-          { label: 'TOTAL STUDENTS', value: (stats.students || 0).toLocaleString('en-IN'), subtitle: `${stats.activeUsersToday || 0} active today`, icon: Users, color: 'indigo' },
-          { label: 'ACTIVE PRO', value: (stats.activeProUsers || 0).toLocaleString('en-IN'), subtitle: `${stats.activeSubscriptions || 0} active subscriptions`, icon: Crown, color: 'purple' },
-          { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts`, icon: Sparkles, color: 'rose' },
+          { label: 'TOTAL REVENUE', value: formatINR(stats.totalRevenue), subtitle: `${formatINR(stats.revenueThisMonth)} this month`, icon: Banknote, color: 'primary' },
+          { label: 'TOTAL STUDENTS', value: (stats.students || 0).toLocaleString('en-IN'), subtitle: `${stats.activeUsersToday || 0} active today`, icon: Users, color: 'primary' },
+          { label: 'ACTIVE PRO', value: (stats.activeProUsers || 0).toLocaleString('en-IN'), subtitle: `${stats.activeSubscriptions || 0} active subscriptions`, icon: Crown, color: 'primary' },
+          { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts`, icon: Sparkles, color: 'primary' },
         ].map((item, idx) => (
           <Card key={idx} variant="white" className="border-4 border-slate-100 dark:border-white/5 shadow-2xl bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
             <div className="flex items-center justify-between relative z-10">

@@ -27,12 +27,12 @@ const RefundPolicy = () => {
    const router = useRouter();
 
    const sections = [
-      { id: 'general', title: '1. General Policy', icon: Ban, color: 'rose' },
-      { id: 'subscriptions', title: '2. Subscriptions', icon: CreditCard, color: 'secondary' },
-      { id: 'payments', title: '3. Payments & Invoicing', icon: Banknote, color: 'emerald' },
-      { id: 'eligibility', title: '4. Refund Exceptions', icon: CircleCheck, color: 'teal' },
-      { id: 'rewards', title: '5. Rewards Policy', icon: Gift, color: 'amber' },
-      { id: 'chargebacks', title: '6. Chargebacks', icon: TriangleAlert, color: 'orange' },
+      { id: 'general', title: '1. General Policy', icon: Ban, color: 'primary' },
+      { id: 'subscriptions', title: '2. Subscriptions', icon: CreditCard, color: 'primary' },
+      { id: 'payments', title: '3. Payments & Invoicing', icon: Banknote, color: 'primary' },
+      { id: 'eligibility', title: '4. Refund Exceptions', icon: CircleCheck, color: 'primary' },
+      { id: 'rewards', title: '5. Rewards Policy', icon: Gift, color: 'primary' },
+      { id: 'chargebacks', title: '6. Chargebacks', icon: TriangleAlert, color: 'primary' },
       { id: 'responsible', title: '7. Responsible Use', icon: ShieldCheck, color: 'primary' },
       { id: 'contact', title: '8. Contact Information', icon: Mail, color: 'primary' }
    ];
@@ -125,11 +125,11 @@ const RefundPolicy = () => {
                               </p>
                            </div>
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                              <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
+                              <div className="p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">No Refund Condition</h4>
                                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Access to the platform is provided regardless of your test performance or leaderboard rank.</p>
                               </div>
-                              <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
+                              <div className="p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-4">
                                  <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Content Access</h4>
                                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Subscription fees cover access to study materials and practice tests, not guaranteed rewards.</p>
                               </div>
@@ -148,10 +148,10 @@ const RefundPolicy = () => {
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                            {[
-                              { title: 'Plan Access', body: 'Provides access to all exam preparation features for your plan.', icon: Zap, color: 'secondary' },
-                              { title: 'Plan Duration', body: 'Prepaid plans remain active until the expiration date.', icon: Clock, color: 'emerald' },
+                              { title: 'Plan Access', body: 'Provides access to all exam preparation features for your plan.', icon: Zap, color: 'primary' },
+                              { title: 'Plan Duration', body: 'Prepaid plans remain active until the expiration date.', icon: Clock, color: 'primary' },
                               { title: 'Auto-Renewal', body: 'Your plan will automatically renew unless you cancel it.', icon: CircleCheck, color: 'primary' },
-                              { title: 'Plan Upgrades', body: 'New pricing applies immediately when you upgrade your plan.', icon: ShieldCheck, color: 'indigo' }
+                              { title: 'Plan Upgrades', body: 'New pricing applies immediately when you upgrade your plan.', icon: ShieldCheck, color: 'primary' }
                            ].map((item, i) => (
                               <div key={i} className="flex gap-6 group">
                                  <div className={`w-12 h-12 bg-${item.color === 'primary' ? 'primary' : item.color}-500/10 rounded-2xl flex items-center justify-center shrink-0 border-2 border-${item.color === 'primary' ? 'primary' : item.color}-500/5 group-hover:scale-110 transition-transform shadow-sm`}>
@@ -219,7 +219,7 @@ const RefundPolicy = () => {
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">PAYMENT SUPPORT</p>
                               </div>
                            </div>
-                           <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
                               <p className="text-xl lg:text-2xl font-black text-primary-700 dark:text-primary-500 tracking-tight">support@mohdsazidkhan.com</p>
                            </div>

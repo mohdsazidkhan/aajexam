@@ -53,7 +53,7 @@ export default function SharedResult({ stats }) {
 
       <PublicNavbar />
 
-      <main className="min-h-screen bg-gradient-to-br from-slate-100 dark:from-slate-800 via-white to-slate-100 dark:to-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-white py-12 px-4">
+      <main className="min-h-screen bg-white dark:bg-slate-900 py-12 px-4">
         <div className="max-w-4xl mx-auto space-y-10">
 
           <motion.div

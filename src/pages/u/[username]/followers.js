@@ -80,7 +80,7 @@ export default function FollowersListPage() {
           {loading ? (
             <ListSkeleton rows={8} />
           ) : followers.length === 0 ? (
-            <div className="text-center py-20 bg-slate-50 dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+            <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
               <div className="text-4xl mb-4">👥</div>
               <p className="text-sm lg:text-lg font-black text-slate-400 uppercase tracking-tight">No followers yet</p>
             </div>

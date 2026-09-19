@@ -73,7 +73,7 @@ const AdminQuizSubjects = () => {
       {loading ? <AdminTableSkeleton /> : (
         <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           <table className="w-full text-sm">
-            <thead className="bg-slate-50 dark:bg-slate-900">
+            <thead className="bg-white dark:bg-slate-900">
               <tr><th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Name</th><th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Order</th><th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Status</th><th className="px-4 py-3 text-right font-bold text-slate-500 uppercase text-xs">Actions</th></tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-700">

@@ -42,7 +42,7 @@ export default function HalalDisclaimer() {
                                 We at AajExam are committed to ensuring that our platform aligns with the ethical and spiritual guidelines of Islamic Shariah, offering educational quizzes in a way that is Halal, transparent, and fair.
                             </p>
 
-                            <section className="bg-slate-50 dark:bg-slate-800/50 p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800">
+                            <section className="p-4 lg:p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800">
                                 <h2 className="text-md md:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
                                     <div className="w-2 h-10 bg-primary-500 rounded-full" />
                                     Why AajExam is Halal

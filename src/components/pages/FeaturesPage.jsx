@@ -52,7 +52,7 @@ const FEATURE_GROUPS = [
   {
     title: 'Quizzes & topic practice',
     icon: BrainCircuit,
-    color: 'blue',
+    color: 'primary',
     items: [
       { label: 'Topic-wise practice quizzes', free: true, pro: true },
       { label: 'Subject tests', free: '2 per day', pro: 'Unlimited' },
@@ -62,7 +62,7 @@ const FEATURE_GROUPS = [
   {
     title: 'Daily habit',
     icon: Flame,
-    color: 'amber',
+    color: 'primary',
     items: [
       { label: 'Daily Challenge + streak', free: true, pro: true },
       { label: 'Streak freeze (protect your streak)', free: false, pro: '2 per week' },
@@ -73,7 +73,7 @@ const FEATURE_GROUPS = [
   {
     title: 'Progress & analytics',
     icon: TrendingUp,
-    color: 'secondary',
+    color: 'primary',
     items: [
       { label: 'Basic score card after each test', free: true, pro: true },
       { label: 'Leaderboard & rank', free: true, pro: true },
@@ -86,7 +86,7 @@ const FEATURE_GROUPS = [
   {
     title: 'Study tools',
     icon: StickyNote,
-    color: 'blue',
+    color: 'primary',
     items: [
       { label: 'Notes & formulas', free: true, pro: true },
       { label: 'Flashcards', free: true, pro: true },
@@ -109,7 +109,7 @@ const FEATURE_GROUPS = [
   {
     title: 'Refer & earn',
     icon: Gift,
-    color: 'amber',
+    color: 'primary',
     items: [
       { label: 'Referral code & invite tracking', free: true, pro: true },
       { label: 'Cash reward when a friend buys PRO', free: true, pro: true },
@@ -119,7 +119,7 @@ const FEATURE_GROUPS = [
   {
     title: 'Experience',
     icon: ShieldCheck,
-    color: 'secondary',
+    color: 'primary',
     items: [
       { label: 'Ad-free practice', free: false, pro: true },
       { label: 'PRO badge on profile & leaderboard', free: false, pro: true },
@@ -129,8 +129,8 @@ const FEATURE_GROUPS = [
 
 const HIGHLIGHTS = [
   { icon: FileText, title: 'Every PYQ, every year', desc: 'Free unlocks the latest year for each exam pattern. PRO unlocks every previous year paper ever published.', color: 'primary' },
-  { icon: Target, title: 'Know your readiness', desc: 'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.', color: 'blue' },
-  { icon: CalendarDays, title: 'A plan, not just quizzes', desc: 'AI Study Planner, Revision Queue and Syllabus Tracker keep PRO learners on a structured path to exam day.', color: 'amber' },
+  { icon: Target, title: 'Know your readiness', desc: 'PRO turns your attempts into a real Exam Readiness Score, section-wise analytics and full attempt history.', color: 'primary' },
+  { icon: CalendarDays, title: 'A plan, not just quizzes', desc: 'AI Study Planner, Revision Queue and Syllabus Tracker keep PRO learners on a structured path to exam day.', color: 'primary' },
 ];
 
 const Cell = ({ value }) => {
@@ -238,7 +238,7 @@ const FeaturesPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6">
             {FEATURE_GROUPS.map((group) => (
               <Card key={group.title} className="p-0 overflow-hidden border-2" padded={false}>
-                <div className="flex items-center gap-2 lg:gap-3 px-3 py-2.5 lg:px-6 lg:py-4 border-b-2 border-border-primary bg-slate-50 dark:bg-slate-900/40">
+                <div className="flex items-center gap-2 lg:gap-3 px-3 py-2.5 lg:px-6 lg:py-4 border-b-2 border-border-primary bg-white dark:bg-slate-900/40">
                   <div className={`p-2 lg:p-2.5 bg-${group.color}-500/10 text-${group.color}-500 rounded-lg lg:rounded-xl`}>
                     <group.icon className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                   </div>

@@ -115,10 +115,10 @@ export default function ReferralHistory() {
             {user && (
                <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                   {[
-                     { label: 'Money You Earned', val: `₹${(user.referralRewards?.reduce((s, r) => s + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
+                     { label: 'Money You Earned', val: `₹${(user.referralRewards?.reduce((s, r) => s + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'primary' },
                      { label: 'Friends Referred', val: user.referralCount || 0, icon: UserPlus, color: 'primary' },
-                     { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'secondary' },
-                     { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'amber' }
+                     { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
+                     { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
                      <Card key={i} className="p-5 lg:p-8 group hover:scale-[1.02] transition-transform border-b-4 border-border-primary hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
                         <div className="flex justify-between items-start mb-4 lg:mb-6">
@@ -146,7 +146,7 @@ export default function ReferralHistory() {
 
                   <div className="space-y-4">
                      {[
-                        { label: 'Friend Buys ₹99 Plan', type: 'plan99', color: 'emerald' }
+                        { label: 'Friend Buys ₹99 Plan', type: 'plan99', color: 'primary' }
                      ].map((b, i) => {
                         const amount = user?.referralRewards?.filter(r => r.type === b.type).reduce((s, r) => s + (r.amount || 0), 0) || 0;
                         const count = user?.referralRewards?.filter(r => r.type === b.type).length || 0;

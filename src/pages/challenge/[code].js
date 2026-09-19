@@ -40,7 +40,7 @@ export default function ChallengePage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-24 font-outfit">
+            <div className="min-h-screen bg-white dark:bg-slate-900 pb-24 font-outfit">
                 <div className="max-w-xl mx-auto px-4 py-8 animate-pulse">
                     <div className="h-5 w-32 bg-slate-200 dark:bg-slate-800 rounded-full mb-6" />
                     <div className="bg-slate-200 dark:bg-slate-800 rounded-[2rem] p-8 flex flex-col items-center gap-4">
@@ -60,7 +60,7 @@ export default function ChallengePage() {
     const hostScore = leaderboard.find(l => l.isHost);
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-24 font-outfit">
+        <div className="min-h-screen bg-white dark:bg-slate-900 pb-24 font-outfit">
             <Seo title="Quiz Challenge!" description="You've been challenged to beat a quiz score." />
 
             <div className="max-w-xl mx-auto px-4 py-8">

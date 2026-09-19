@@ -209,7 +209,7 @@ const TestStart = ({ resolvedId } = {}) => {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center space-y-4">
+    <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col items-center justify-center space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
       <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
     </div>

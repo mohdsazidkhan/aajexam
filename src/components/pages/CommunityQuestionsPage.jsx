@@ -254,7 +254,7 @@ const CommunityQuestionsPage = () => {
                 {/* Image */}
                 {q.image && (
                   <div className="mb-3 rounded-lg lg:rounded-xl overflow-hidden border-2 border-border-primary">
-                    <img src={q.image} alt="Question" className="w-full max-h-80 object-contain bg-slate-50 dark:bg-slate-900" />
+                    <img src={q.image} alt="Question" className="w-full max-h-80 object-contain bg-white dark:bg-slate-900" />
                   </div>
                 )}
 

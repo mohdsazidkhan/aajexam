@@ -421,10 +421,10 @@ const StudentsPage = () => {
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
               {[
-                { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'blue' },
-                { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'emerald' },
-                { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'PRO').length || 0, icon: Crown, color: 'amber' },
-                { label: 'New Signups', value: students.length || 0, icon: Star, color: 'indigo' }
+                { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'primary' },
+                { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'primary' },
+                { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'PRO').length || 0, icon: Crown, color: 'primary' },
+                { label: 'New Signups', value: students.length || 0, icon: Star, color: 'primary' }
               ].map((stat, i) => (
                 <div
                   key={stat.label}
@@ -787,7 +787,7 @@ const StudentsPage = () => {
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Choose a Plan</label>
                       <div className="grid grid-cols-1 gap-4">
                         {[
-                          { id: 'PRO', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'amber' }
+                          { id: 'PRO', label: 'Pro Plan', price: '₹99', icon: Crown, color: 'primary' }
                         ].map((tier) => (
                           <motion.div
                             key={tier.id}

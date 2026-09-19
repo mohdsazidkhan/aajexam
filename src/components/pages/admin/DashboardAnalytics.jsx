@@ -399,7 +399,7 @@ const DashboardAnalytics = () => {
   if (loading) return <AdminDashboardSkeleton />;
 
   if (error) return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-black dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-slate-900 p-6 text-black dark:text-white">
       <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-3 rounded">
         {error}
       </div>
@@ -407,7 +407,7 @@ const DashboardAnalytics = () => {
   );
 
   if (!data) return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
+    <div className="min-h-screen bg-white dark:bg-slate-900 p-6 text-center text-slate-700 dark:text-gray-400 dark:text-gray-300">
       No data available
     </div>
   );

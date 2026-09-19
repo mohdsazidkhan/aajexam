@@ -96,7 +96,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         Choose a unique username that others can use to find and follow you.
       </p>
 
-      <div className="username-input-group flex items-center border-2 border-b-4 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-slate-50 dark:bg-slate-900 transition-all relative focus-within:border-primary-500 shadow-inner">
+      <div className="username-input-group flex items-center border-2 border-b-4 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-500 shadow-inner">
         <div className="username-prefix text-lg font-black text-slate-600 dark:text-slate-400 mr-2">@</div>
         <input
           type="text"
@@ -120,7 +120,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         )}
       </div>
 
-      <div className="username-rules my-6 p-5 bg-slate-50 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-inner">
+      <div className="username-rules my-6 p-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-inner">
         <ul className="list-none p-0 m-0 space-y-1">
           <li>Ã¢â‚¬Â¢ 3-20 characters</li>
           <li>Ã¢â‚¬Â¢ Letters, numbers, underscores</li>

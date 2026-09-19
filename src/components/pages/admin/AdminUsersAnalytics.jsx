@@ -122,10 +122,10 @@ const AdminUsersAnalytics = () => {
                         {/* Summary Metrics */}
                         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
                             {[
-                                 { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'blue', desc: 'Active Learners' },
-                                 { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'emerald', desc: 'From Subscriptions', isCurrency: true },
-                                 { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'rose', desc: 'Paid to Users', isCurrency: true },
-                                 { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'amber', desc: 'Additional Costs', isCurrency: true },
+                                 { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'primary', desc: 'Active Learners' },
+                                 { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'primary', desc: 'From Subscriptions', isCurrency: true },
+                                 { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'primary', desc: 'Paid to Users', isCurrency: true },
+                                 { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', desc: 'Additional Costs', isCurrency: true },
                                  { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', desc: 'Overall Balance', isCurrency: true, isNet: true }
                              ].map((stat, i) => (
                                 <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-xl group hover:border-primary-500/30 transition-all">

@@ -299,7 +299,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
             onChange={e => setNewAnswer(e.target.value)}
             placeholder="Write your answer…"
             rows={3}
-            className="w-full text-sm px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
+            className="w-full text-sm px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
           />
           <div className="mt-2 flex justify-end">
             <button

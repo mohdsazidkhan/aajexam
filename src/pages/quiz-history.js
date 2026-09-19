@@ -42,13 +42,13 @@ const QuizHistoryPage = () => {
 
    const getRankBadge = (acc) => {
       if (acc >= 90) return { label: 'S', color: 'primary' };
-      if (acc >= 75) return { label: 'A', color: 'emerald' };
-      if (acc >= 50) return { label: 'B', color: 'blue' };
+      if (acc >= 75) return { label: 'A', color: 'primary' };
+      if (acc >= 50) return { label: 'B', color: 'primary' };
       return { label: 'C', color: 'slate' };
    };
 
    if (loading && attempts.length === 0) return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit selection:bg-primary-500 selection:text-white">
          <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
       </div>
    );

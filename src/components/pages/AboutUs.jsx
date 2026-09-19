@@ -41,17 +41,17 @@ const AboutUs = () => {
 
    const stats = [
       { label: 'QUIZZES', value: '2,000+', icon: Scroll, color: 'primary' },
-      { label: 'EXAMS', value: '20+', icon: Zap, color: 'secondary' },
-      { label: 'STUDENTS', value: '1,000+', icon: Users, color: 'blue' }
+      { label: 'EXAMS', value: '20+', icon: Zap, color: 'primary' },
+      { label: 'STUDENTS', value: '1,000+', icon: Users, color: 'primary' }
    ];
 
    const features = [
       { title: 'Study at Your Own Pace', desc: 'You decide how fast or slow you want to study. No pressure.', icon: Lightbulb, color: 'primary' },
-      { title: 'See Your Progress', desc: 'Track how many questions you got right and how fast you answer.', icon: TrendingUp, color: 'secondary' },
-      { title: 'Questions by Experts', desc: 'All questions are made by top teachers and subject experts in India.', icon: GraduationCap, color: 'blue' },
+      { title: 'See Your Progress', desc: 'Track how many questions you got right and how fast you answer.', icon: TrendingUp, color: 'primary' },
+      { title: 'Questions by Experts', desc: 'All questions are made by top teachers and subject experts in India.', icon: GraduationCap, color: 'primary' },
       { title: 'One App, Many Exams', desc: 'Prepare for UPSC, SSC, Banking, and Railways - all in one place.', icon: Target, color: 'primary' },
-      { title: 'Unlimited Practice', desc: 'Practice as many tests as you want with full step-by-step answers.', icon: Star, color: 'secondary' },
-      { title: 'Refer & Earn', desc: 'Invite your friends to AajExam and earn cash rewards when they upgrade to PRO.', icon: Trophy, color: 'blue' }
+      { title: 'Unlimited Practice', desc: 'Practice as many tests as you want with full step-by-step answers.', icon: Star, color: 'primary' },
+      { title: 'Refer & Earn', desc: 'Invite your friends to AajExam and earn cash rewards when they upgrade to PRO.', icon: Trophy, color: 'primary' }
    ];
 
    return (

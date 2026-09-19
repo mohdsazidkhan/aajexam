@@ -59,7 +59,7 @@ const AdminNavbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-16 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/50 flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-16 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
         <div className="w-full mx-auto px-4 flex items-center justify-between">
 
           {/* Left */}

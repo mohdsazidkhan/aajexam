@@ -3,7 +3,7 @@ import { FaGraduationCap, FaChartLine, FaTrophy, FaBook, FaCheckCircle, FaRocket
 
 const PracticeTestsEducational = ({ levels }) => {
     return (
-        <section className="practice-tests-educational bg-white dark:bg-slate-900 py-20 px-4 font-outfit">
+        <section className="practice-tests-educational py-20 px-4 font-outfit">
             <div className="container mx-auto max-w-6xl">
                 {/* Main Heading with Icon */}
                 <div className="text-center mb-20 animate-bounce-in">
@@ -69,7 +69,7 @@ const PracticeTestsEducational = ({ levels }) => {
                     </div>
 
                     {/* Exam Coverage */}
-                    <div className="group bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] p-10 lg:p-14 shadow-xl border-4 border-b-[12px] border-slate-100 dark:border-slate-800 transition-all hover:-translate-y-2 relative overflow-hidden">
+                    <div className="group bg-white dark:bg-slate-900/50 rounded-[2.5rem] p-10 lg:p-14 shadow-xl border-4 border-b-[12px] border-slate-100 dark:border-slate-800 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-24 lg:w-48 h-24 lg:h-48 bg-primary-500/5 rounded-full blur-3xl -ml-24 -mb-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
                             <div className="bg-primary-500 p-8 rounded-[2rem] shadow-aajexam-primary border-4 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
@@ -104,13 +104,13 @@ const PracticeTestsEducational = ({ levels }) => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10">
                         {[
                             { title: "Practise Daily", text: "Attempt at least one test daily to build consistency and momentum.", color: "primary" },
-                            { title: "Review Mistakes", text: "Analyze every attempt to understand concepts better.", color: "secondary" },
-                            { title: "Accuracy First", text: "Prioritize accuracy over speed initially.", color: "green" },
-                            { title: "Watch Progress", text: "Use analytics to identify weak spots.", color: "purple" },
+                            { title: "Review Mistakes", text: "Analyze every attempt to understand concepts better.", color: "primary" },
+                            { title: "Accuracy First", text: "Prioritize accuracy over speed initially.", color: "primary" },
+                            { title: "Watch Progress", text: "Use analytics to identify weak spots.", color: "primary" },
                             { title: "Social Learning", text: "Compete on leaderboards to stay motivated.", color: "slate" },
                             { title: "Recharge", text: "Take scheduled breaks to maintain focus.", color: "primary" },
                         ].map((tip, idx) => (
-                            <div key={idx} className="bg-slate-50 dark:bg-slate-900 p-4 lg:p-8 rounded-[2.5rem] border-4 border-b-[8px] border-slate-100 dark:border-slate-800 shadow-xl transition-all hover:-translate-y-2 group/tip active:translate-y-0 active:border-b-4">
+                            <div key={idx} className="bg-white dark:bg-slate-900 p-4 lg:p-8 rounded-[2.5rem] border-4 border-b-[8px] border-slate-100 dark:border-slate-800 shadow-xl transition-all hover:-translate-y-2 group/tip active:translate-y-0 active:border-b-4">
                                 <h3 className={`inline-flex px-5 py-2 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-widest text-white mb-6 shadow-aajexam-${tip.color} bg-${tip.color}-500 transform -rotate-2 group-hover/tip:rotate-0 transition-transform`}>
                                     {tip.title}
                                 </h3>

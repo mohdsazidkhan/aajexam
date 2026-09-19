@@ -138,7 +138,7 @@ const PayuSuccess = () => {
       <MobileAppWrapper title="Verifying payment">
         <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
         <div className="min-h-screen  flex items-center justify-center p-6">
-          <div className="max-w-md w-full text-center bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
+          <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5">
             <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-700 dark:text-primary-500 flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
@@ -181,7 +181,7 @@ const PayuSuccess = () => {
             </div>
 
             {success && detailRows.length > 0 && (
-              <div className="rounded-[2.5rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 lg:p-8 space-y-4">
+              <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8 space-y-4">
                 <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Transaction details</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (

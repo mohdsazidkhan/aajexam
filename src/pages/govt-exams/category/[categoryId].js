@@ -171,7 +171,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
         </div>
 
         {exams.length === 0 && (
-          <div className="py-24 text-center space-y-6 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+          <div className="py-24 text-center space-y-6 bg-white dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
             <div className="w-20 h-20 bg-slate-200 dark:bg-slate-800 rounded-3xl flex items-center justify-center mx-auto text-slate-400">
               <Info className="w-10 h-10" />
             </div>

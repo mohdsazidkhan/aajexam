@@ -145,11 +145,11 @@ const AdminExpenses = () => {
     const formatAmount = (n) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(n || 0);
 
     const expenseCategories = [
-        { id: 'ads', label: 'Advertising', color: 'indigo' },
+        { id: 'ads', label: 'Advertising', color: 'primary' },
         { id: 'server', label: 'Hosting & Servers', color: 'slate' },
-        { id: 'maintenance', label: 'Maintenance', color: 'amber' },
-        { id: 'marketing', label: 'Marketing', color: 'emerald' },
-        { id: 'other', label: 'Other', color: 'rose' }
+        { id: 'maintenance', label: 'Maintenance', color: 'primary' },
+        { id: 'marketing', label: 'Marketing', color: 'primary' },
+        { id: 'other', label: 'Other', color: 'primary' }
     ];
 
     return (

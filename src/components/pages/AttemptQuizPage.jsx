@@ -372,7 +372,7 @@ const AttemptQuizPage = () => {
 
   if (!quiz || !quiz.questions?.length) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
         <div className="text-center">
           <XCircle className="w-12 h-12 text-black dark:text-white mx-auto mb-3" />
           <p className="text-slate-700 dark:text-slate-300 font-semibold">No questions available for this quiz.</p>
@@ -427,7 +427,7 @@ const AttemptQuizPage = () => {
   // ─── SUBMITTED: Result View ───
   if (submitted && result) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden pb-24">
+      <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden pb-24">
         {/* Confetti */}
         {showConfetti && (
           <div className="fixed inset-0 pointer-events-none z-50">
@@ -597,7 +597,7 @@ const AttemptQuizPage = () => {
 
   // ─── QUIZ IN PROGRESS ───
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
       <div className="container mx-auto px-3 lg:px-10 pt-3 pb-32">
 
         {/* Quiz Header */}

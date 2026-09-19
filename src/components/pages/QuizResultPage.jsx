@@ -53,7 +53,7 @@ const QuizResultPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-20 font-outfit">
+      <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit">
         <div className="container mx-auto px-4 py-8"><QuizResultSkeleton /></div>
       </div>
     );
@@ -61,7 +61,7 @@ const QuizResultPage = () => {
 
   if (!attempt) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
         <div className="text-center">
           <h1 className="text-xl font-bold text-slate-800 dark:text-white mb-3">Result Not Found</h1>
           <button onClick={() => router.push('/')} className="text-primary-600 hover:underline text-sm">Go Home</button>
@@ -73,7 +73,7 @@ const QuizResultPage = () => {
   const quiz = attempt.quiz;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 pb-24">
+    <div className="min-h-screen bg-white dark:bg-slate-900 pb-24">
       <div className="container mx-auto px-3 lg:px-10 pt-6 pb-8 max-w-4xl">
 
         {/* Result Card */}

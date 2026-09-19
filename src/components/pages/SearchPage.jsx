@@ -479,7 +479,7 @@ const SearchPage = () => {
    const hasAnySectionResults = SECTION_ORDER.some(key => (sections[key]?.items || []).length > 0);
 
    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 selection:bg-primary-500 selection:text-white">
+      <div className="min-h-screen bg-white dark:bg-slate-900 selection:bg-primary-500 selection:text-white">
          <Head>
             <title>Search | AajExam</title>
          </Head>

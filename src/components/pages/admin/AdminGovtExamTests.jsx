@@ -247,10 +247,10 @@ const AdminGovtExamTests = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 font-outfit">
                {[
-                  { label: 'TOTAL TESTS', val: testStats.total, icon: FileText, color: 'indigo' },
-                  { label: 'FREE TESTS', val: testStats.free, icon: Zap, color: 'emerald' },
-                  { label: 'PAID TESTS', val: testStats.paid, icon: Lock, color: 'amber' },
-                  { label: 'AVG DURATION', val: `${testStats.avgDuration}m`, icon: Timer, color: 'rose' }
+                  { label: 'TOTAL TESTS', val: testStats.total, icon: FileText, color: 'primary' },
+                  { label: 'FREE TESTS', val: testStats.free, icon: Zap, color: 'primary' },
+                  { label: 'PAID TESTS', val: testStats.paid, icon: Lock, color: 'primary' },
+                  { label: 'AVG DURATION', val: `${testStats.avgDuration}m`, icon: Timer, color: 'primary' }
                ].map((stat, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl group transition-all">
                      <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-inner`}><stat.icon className="w-6 h-6" /></div>
@@ -499,7 +499,7 @@ const AdminGovtExamTests = () => {
                                  </div>
 
                                  <div className="space-y-10">
-                                    <section className="p-3 lg:p-8 bg-slate-50/50 dark:bg-white/5 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/5">
+                                    <section className="p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/5">
                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 lg:mb-8 flex items-center gap-3">
                                           <Activity className="w-4 h-4 text-primary-600" /> Add a Question
                                        </h3>

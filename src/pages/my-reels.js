@@ -44,8 +44,8 @@ const STATUS_CONFIG = {
    published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
    pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
    rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-gray-50 dark:bg-gray-900/20' },
-   archived: { label: 'Archived', icon: Clock, color: 'text-gray-400', bg: 'bg-gray-50 dark:bg-gray-900/20' },
+   draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20' },
+   archived: { label: 'Archived', icon: Clock, color: 'text-gray-400', bg: 'bg-white dark:bg-slate-900/20' },
 };
 
 const MyReelsPage = () => {

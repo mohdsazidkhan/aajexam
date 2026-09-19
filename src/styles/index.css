@@ -21,13 +21,13 @@
     --font-primary: var(--font-lato), Lato, 'Noto Sans', sans-serif;
 
     /* Central Theme Tokens - Light Mode */
-    --bg-page: #f8fafc;
+    --bg-page: #ffffff; /* bg-white */
     --bg-surface: #ffffff;
     --bg-surface-secondary: #f1f5f9;
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #94a3b8;
-    --border-primary: #e2e8f0;
+    --border-primary: #f1f5f9; /* border-slate-100 — single section-separator border */
     --border-secondary: #cbd5e1;
 
     --navbar-height: 5rem;
@@ -35,13 +35,13 @@
 
   .dark {
     /* Central Theme Tokens - Dark Mode (AajExam Inspired) */
-    --bg-page: #0F1720; /* Slate 950 for deeper black */
+    --bg-page: #131f24; /* bg-slate-900 */
     --bg-surface: #131f24; /* Slate 900 for dark mode background */
     --bg-surface-secondary: #1c2d35; /* Slate 800 for cards */
     --text-primary: #f8fafc; /* Slate 50 for text */
     --text-secondary: #94a3b8; /* Slate 400 for secondary text */
     --text-muted: #64748b; /* Slate 500 for muted text */
-    --border-primary: #344955; /* Slate 700 */
+    --border-primary: #1c2d35; /* border-slate-800 — single section-separator border */
     --border-secondary: #455a64; /* Slate 600 */
   }
 

@@ -40,7 +40,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
         </span>
       </button>
 
-      <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5 text-sm text-slate-600 dark:text-slate-400">
+      <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 text-sm text-slate-600 dark:text-slate-400">
         <div className="flex items-start gap-3">
           <ShieldCheck className="w-5 h-5 shrink-0 text-primary-700 dark:text-primary-500 mt-0.5" />
           <p className="font-medium">
@@ -50,7 +50,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       </div>
 
       {paymentData?.txnid && (
-        <div className="p-5 bg-slate-50 dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="p-5 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center gap-3 text-primary-700 dark:text-primary-500">
             <div className="w-10 h-10 bg-primary-500 rounded-lg lg:rounded-xl flex items-center justify-center text-white shadow-aajexam-secondary">
               <CheckCircle2 className="w-5 h-5" />

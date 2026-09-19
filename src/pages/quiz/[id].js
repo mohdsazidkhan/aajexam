@@ -146,7 +146,7 @@ export default function QuizPreview({
 
           {/* About — long-form intro */}
           {aboutText && (
-            <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+            <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About This Quiz
               </h2>
@@ -157,7 +157,7 @@ export default function QuizPreview({
           )}
 
           {seriesHref && (
-            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 bg-primary-50/60 dark:bg-primary-900/10 p-5">
+            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 p-5">
               <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
                 This is one set from a larger bank.{' '}
                 <Link href={seriesHref.href} className="text-primary-700 dark:text-primary-400 underline">
@@ -180,7 +180,7 @@ export default function QuizPreview({
 
           {/* FAQ */}
           {faqs.length > 0 && (
-            <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+            <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
@@ -197,7 +197,7 @@ export default function QuizPreview({
 
           {/* Related quizzes */}
           {relatedQuizzes.length > 0 && (
-            <section className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+            <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Related {topicName || subjectName || ''} Quizzes
               </h2>

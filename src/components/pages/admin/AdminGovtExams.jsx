@@ -184,10 +184,10 @@ const AdminGovtExams = () => {
     {/* Stats Bar */}
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4">
       {[
-        { label: 'TOTAL EXAMS', val: exams.length, icon: Building2, color: 'indigo' },
-        { label: 'ACTIVE EXAMS', val: exams.filter(e => e.isActive).length, icon: Zap, color: 'emerald' },
-        { label: 'CATEGORIES', val: categories.length, icon: Layers, color: 'amber' },
-        { label: 'COMPLETION RATE', val: 'OPTIMAL', icon: Activity, color: 'rose' }
+        { label: 'TOTAL EXAMS', val: exams.length, icon: Building2, color: 'primary' },
+        { label: 'ACTIVE EXAMS', val: exams.filter(e => e.isActive).length, icon: Zap, color: 'primary' },
+        { label: 'CATEGORIES', val: categories.length, icon: Layers, color: 'primary' },
+        { label: 'COMPLETION RATE', val: 'OPTIMAL', icon: Activity, color: 'primary' }
       ].map((stat, i) => (
         <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] border-4 border-slate-100 dark:border-white/10 shadow-2xl group transition-all">
           <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-600 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform shadow-inner`}>

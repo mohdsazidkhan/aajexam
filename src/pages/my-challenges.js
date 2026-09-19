@@ -55,7 +55,7 @@ const MyChallengesPage = () => {
    };
 
    if (loading && challenges.length === 0) return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 pb-20 font-outfit selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
+      <div className="min-h-screen bg-white dark:bg-slate-900 pb-20 font-outfit selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
          <div className="container mx-auto px-4 py-8"><ListSkeleton rows={6} /></div>
       </div>
    );

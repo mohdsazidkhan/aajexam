@@ -80,7 +80,7 @@ const PublicProfile = ({ username }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-6 px-4">
+      <div className="min-h-screen bg-white dark:bg-slate-900 py-6 px-4">
         <ProfileSkeleton />
       </div>
     );
@@ -88,7 +88,7 @@ const PublicProfile = ({ username }) => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50 dark:bg-gray-900 px-4">
+      <div className="flex flex-col items-center justify-center min-h-screen text-center bg-white dark:bg-slate-900 px-4">
         <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-4">Profile Not Found</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
@@ -105,7 +105,7 @@ const PublicProfile = ({ username }) => {
 
   return (
     <>
-      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-white dark:bg-slate-900 min-h-screen">
         {/* Top Navigation Bar */}
         <div className="sticky top-0 z-50 flex items-center justify-between px-6 py-5 bg-white dark:bg-slate-900 border-b-4 border-slate-100 dark:border-slate-800 shadow-xl lg:hidden rounded-b-[2.5rem]">
           <button
@@ -122,7 +122,7 @@ const PublicProfile = ({ username }) => {
         </div>
 
         <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-2xl overflow-hidden mb-8 relative mt-6 lg:mt-0">
-          <div className="h-64 bg-slate-50 dark:bg-slate-900 flex items-center justify-center border-b-8 border-slate-100 dark:border-slate-800 relative">
+          <div className="h-64 bg-white dark:bg-slate-900 flex items-center justify-center border-b-8 border-slate-100 dark:border-slate-800 relative">
             {/* Decorative background profile pattern */}
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#3b82f6 3px, transparent 3px)', backgroundSize: '48px 48px' }}></div>
             <div className="absolute bottom-6 right-10 opacity-20 hidden lg:block">
@@ -199,20 +199,20 @@ const PublicProfile = ({ username }) => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 lg:gap-10 max-w-3xl mx-auto lg:mx-0">
               <div
-                className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 cursor-pointer hover:-translate-y-2 transition-all active:translate-y-0 active:border-b-4 group shadow-2xl"
+                className="flex flex-col items-center p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 cursor-pointer hover:-translate-y-2 transition-all active:translate-y-0 active:border-b-4 group shadow-2xl"
                 onClick={() => router.push(`/u/${username}/followers`)}
               >
                 <span className="text-4xl font-black text-slate-900 dark:text-white group-hover:text-primary-700 dark:text-primary-500 transition-colors tracking-tighter">{profile.followersCount || 0}</span>
                 <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-3">Agents</span>
               </div>
               <div
-                className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 cursor-pointer hover:-translate-y-2 transition-all active:translate-y-0 active:border-b-4 group shadow-2xl"
+                className="flex flex-col items-center p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 cursor-pointer hover:-translate-y-2 transition-all active:translate-y-0 active:border-b-4 group shadow-2xl"
                 onClick={() => router.push(`/u/${username}/following`)}
               >
                 <span className="text-4xl font-black text-slate-900 dark:text-white group-hover:text-primary-700 dark:text-primary-500 transition-colors tracking-tighter">{profile.followingCount || 0}</span>
                 <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-3">Rivals</span>
               </div>
-              <div className="flex flex-col items-center p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl">
+              <div className="flex flex-col items-center p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl">
                 <span className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">{profile.profileViews || 0}</span>
                 <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-3">Intel Views</span>
               </div>
@@ -237,7 +237,7 @@ const PublicProfile = ({ username }) => {
                     {profile.badges.map((badge, index) => (
                       <div
                         key={index}
-                        className="px-8 py-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border-4 border-slate-100 dark:border-slate-700 flex items-center gap-4 group/badge hover:border-primary-500 transition-all shadow-xl hover:-translate-y-1"
+                        className="px-8 py-4 bg-white dark:bg-slate-900 rounded-2xl border-4 border-slate-100 dark:border-slate-700 flex items-center gap-4 group/badge hover:border-primary-500 transition-all shadow-xl hover:-translate-y-1"
                       >
                         <span className="text-2xl group-hover/badge:scale-125 transition-transform">Ã°Å¸Ââ€ </span>
                         <span className="text-[10px] font-black text-slate-700 dark:text-white uppercase tracking-widest">{badge}</span>
@@ -245,7 +245,7 @@ const PublicProfile = ({ username }) => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center sm:text-left p-4 lg:p-8 bg-slate-50 dark:bg-slate-900 rounded-[2rem] border-2 border-dashed border-slate-200 dark:border-slate-700">
+                  <div className="text-center sm:text-left p-4 lg:p-8 bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-dashed border-slate-200 dark:border-slate-700">
                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">No badges yet. Complete practice tests and quizzes to earn badges.</p>
                   </div>
                 )}
@@ -258,19 +258,19 @@ const PublicProfile = ({ username }) => {
             <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] border-4 border-b-[12px] border-slate-100 dark:border-slate-700 shadow-2xl p-10 mb-10">
               <h2 className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] mb-10">Performance Analytics</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-primary-500 transition-all">
+                <div className="flex flex-col items-center p-4 lg:p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-primary-500 transition-all">
                   <span className="text-5xl font-black text-primary-700 dark:text-primary-500 uppercase tracking-tighter group-hover:scale-110 transition-transform">
                     {0}
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Ops Completed</span>
                 </div>
-                <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-primary-500 transition-all">
+                <div className="flex flex-col items-center p-4 lg:p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-primary-500 transition-all">
                   <span className="text-5xl font-black text-primary-700 dark:text-primary-500 uppercase tracking-tighter group-hover:scale-110 transition-transform">
                     {0}%
                   </span>
                   <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mt-4 text-center">Strike Accuracy</span>
                 </div>
-                <div className="flex flex-col items-center p-4 lg:p-10 bg-slate-50 dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-black dark:hover:border-white transition-all">
+                <div className="flex flex-col items-center p-4 lg:p-10 bg-white dark:bg-slate-900 rounded-[2.5rem] border-4 border-slate-100 dark:border-slate-700 shadow-inner group hover:border-black dark:hover:border-white transition-all">
                   <span className="text-5xl font-black text-black dark:text-white uppercase tracking-tighter group-hover:scale-110 transition-transform">
                     {0}%
                   </span>
@@ -345,7 +345,7 @@ const PublicProfile = ({ username }) => {
                   </h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {contributions.categories.items.map((cat) => (
-                      <div key={cat._id} className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-700 hover:border-primary-500 transition-all group shadow-sm">
+                      <div key={cat._id} className="p-6 bg-white dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-700 hover:border-primary-500 transition-all group shadow-sm">
                         <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 dark:text-primary-500 transition-colors">{cat.name}</h4>
                         {cat.description && (
                           <p className="text-xs font-bold text-slate-700 dark:text-slate-400 mt-2 line-clamp-2">{cat.description}</p>
@@ -371,7 +371,7 @@ const PublicProfile = ({ username }) => {
                   </h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {contributions.subcategories.items.map((subcat) => (
-                      <div key={subcat._id} className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-700 hover:border-primary-500 transition-all group shadow-sm">
+                      <div key={subcat._id} className="p-6 bg-white dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-700 hover:border-primary-500 transition-all group shadow-sm">
                         <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 dark:text-primary-500 transition-colors">{subcat.name}</h4>
                         {subcat.category && (
                           <p className="text-[8px] font-black text-primary-700 dark:text-primary-500 uppercase tracking-widest mt-1">
@@ -396,7 +396,7 @@ const PublicProfile = ({ username }) => {
                   </h3>
                   <div className="space-y-4">
                     {contributions.quizzes.items.map((quiz) => (
-                      <div key={quiz._id} className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-[2rem] border-2 border-b-6 border-slate-100 dark:border-slate-700 hover:border-black dark:hover:border-white hover:-translate-y-1 active:translate-y-0 transition-all group shadow-sm">
+                      <div key={quiz._id} className="p-6 bg-white dark:bg-slate-900/50 rounded-[2rem] border-2 border-b-6 border-slate-100 dark:border-slate-700 hover:border-black dark:hover:border-white hover:-translate-y-1 active:translate-y-0 transition-all group shadow-sm">
                         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                           <div className="flex-1">
                             <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-black dark:group-hover:text-white transition-colors">{quiz.title}</h4>
@@ -442,7 +442,7 @@ const PublicProfile = ({ username }) => {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {contributions.userQuestions.items.map((question) => (
                       <div key={question._id} className="p-8 bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-6 border-slate-100 dark:border-slate-700 shadow-xl hover:-translate-y-1 transition-all group">
-                        <div className="w-10 h-10 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-aajexam border-2 border-white dark:border-slate-700">
+                        <div className="w-10 h-10 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-aajexam border-2 border-white dark:border-slate-700">
                           <span className="text-lg">Ã°Å¸â€™Â¬</span>
                         </div>
                         <h4 className="text-md font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6 leading-tight group-hover:text-primary-700 dark:text-primary-500 transition-colors">{question.questionText}</h4>
@@ -452,7 +452,7 @@ const PublicProfile = ({ username }) => {
                           {question.options.map((option, idx) => (
                             <div
                               key={idx}
-                              className="px-6 py-4 rounded-2xl border-2 bg-slate-50 dark:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest flex items-center gap-4 group-hover:border-slate-200 transition-all"
+                              className="px-6 py-4 rounded-2xl border-2 bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest flex items-center gap-4 group-hover:border-slate-200 transition-all"
                             >
                               <span className="w-8 h-8 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center border-2 border-slate-100 dark:border-slate-700 text-slate-600 dark:text-slate-400">{String.fromCharCode(65 + idx)}</span>
                               <span className="flex-1">{option}</span>
@@ -483,7 +483,7 @@ const PublicProfile = ({ username }) => {
           {/* Private Profile Message */}
           {!profile.isPublicProfile && !isOwnProfile && (
             <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-b-8 border-slate-100 dark:border-slate-700 shadow-xl p-12 text-center">
-              <div className="w-20 h-20 bg-slate-50 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner border-2 border-slate-100 dark:border-slate-800">
+              <div className="w-20 h-20 bg-white dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner border-2 border-slate-100 dark:border-slate-800">
                 <span className="text-4xl text-slate-300">Ã°Å¸â€â€™</span>
               </div>
               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">Private Profile</h3>

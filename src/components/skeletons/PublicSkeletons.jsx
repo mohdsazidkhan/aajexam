@@ -162,7 +162,7 @@ const BlogDetailSkeleton = () => (
 
 // ─── Auth form skeleton (login / register) ────────────────────────────────────
 export const AuthFormSkeleton = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-950 px-4">
+  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 px-4">
     <div className="w-full max-w-md bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 p-8 space-y-5 animate-pulse">
       <Sh className="h-8 w-40 mx-auto rounded-lg lg:rounded-xl" />
       <Sh className="h-3 w-56 mx-auto rounded-lg" />

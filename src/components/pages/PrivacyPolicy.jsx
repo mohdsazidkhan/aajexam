@@ -41,14 +41,14 @@ const PrivacyPolicy = () => {
 
    const sections = [
       { id: 'intro', title: 'Introduction', icon: Info, color: 'primary' },
-      { id: 'collect', title: '1. Information We Collect', icon: Database, color: 'secondary' },
-      { id: 'use', title: '2. How We Use Information', icon: Eye, color: 'emerald' },
-      { id: 'sharing', title: '3. Sharing Information', icon: UserShield, color: 'amber' },
-      { id: 'security', title: '4. Data Security', icon: Lock, color: 'rose' },
-      { id: 'retention', title: '5. Data Retention', icon: Clock, color: 'indigo' },
-      { id: 'rights', title: '6. Your Rights', icon: CircleCheck, color: 'teal' },
-      { id: 'cookies', title: '7. Cookies & Advertisements', icon: Cookie, color: 'orange' },
-      { id: 'eligibility', title: '8. Age Limit', icon: UserShield, color: 'purple' },
+      { id: 'collect', title: '1. Information We Collect', icon: Database, color: 'primary' },
+      { id: 'use', title: '2. How We Use Information', icon: Eye, color: 'primary' },
+      { id: 'sharing', title: '3. Sharing Information', icon: UserShield, color: 'primary' },
+      { id: 'security', title: '4. Data Security', icon: Lock, color: 'primary' },
+      { id: 'retention', title: '5. Data Retention', icon: Clock, color: 'primary' },
+      { id: 'rights', title: '6. Your Rights', icon: CircleCheck, color: 'primary' },
+      { id: 'cookies', title: '7. Cookies & Advertisements', icon: Cookie, color: 'primary' },
+      { id: 'eligibility', title: '8. Age Limit', icon: UserShield, color: 'primary' },
       { id: 'contact', title: '10. Contact Us', icon: Mail, color: 'primary' }
    ];
 
@@ -149,12 +149,12 @@ const PrivacyPolicy = () => {
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                            {[
-                              { title: 'Account Data', body: 'Name, email, phone number, password, and referral code.', icon: UserShield, color: 'secondary' },
-                              { title: 'Learning Progress', body: 'Your levels, badges, ranking, and quiz results.', icon: BookOpen, color: 'emerald' },
+                              { title: 'Account Data', body: 'Name, email, phone number, password, and referral code.', icon: UserShield, color: 'primary' },
+                              { title: 'Learning Progress', body: 'Your levels, badges, ranking, and quiz results.', icon: BookOpen, color: 'primary' },
                               { title: 'Quiz History', body: 'Your quiz attempts, scores, and time taken.', icon: Zap, color: 'primary' },
-                              { title: 'Rewards History', body: 'History of your earned and claimed rewards.', icon: Gift, color: 'amber' },
-                              { title: 'Payment Details', body: 'Encrypted bank details for processing reward withdrawals.', icon: CreditCard, color: 'rose' },
-                              { title: 'Device Information', body: 'Your IP address, browser, and device details.', icon: Smartphone, color: 'indigo' }
+                              { title: 'Rewards History', body: 'History of your earned and claimed rewards.', icon: Gift, color: 'primary' },
+                              { title: 'Payment Details', body: 'Encrypted bank details for processing reward withdrawals.', icon: CreditCard, color: 'primary' },
+                              { title: 'Device Information', body: 'Your IP address, browser, and device details.', icon: Smartphone, color: 'primary' }
                            ].map((item, i) => (
                               <div key={i} className="bg-white dark:bg-slate-800 p-4 lg:p-8 rounded-[1rem] lg:rounded-[3rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all group">
                                  <div className="flex items-start gap-6">
@@ -221,7 +221,7 @@ const PrivacyPolicy = () => {
                            </p>
 
                            <div className="grid grid-cols-1 gap-6">
-                              <div className="p-4 lg:p-10 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                              <div className="p-4 lg:p-10 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
                                     <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h4>
                                     <div className="px-4 py-1.5 bg-black dark:bg-white text-white dark:text-black text-[9px] font-black uppercase tracking-widest rounded-full shadow-aajexam-accent">GOOGLE ADSENSE</div>
@@ -273,7 +273,7 @@ const PrivacyPolicy = () => {
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">GET IN TOUCH</p>
                               </div>
                            </div>
-                           <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
                               <p className="text-xl lg:text-2xl font-black text-primary-700 dark:text-primary-500 tracking-tight">support@mohdsazidkhan.com</p>
                            </div>

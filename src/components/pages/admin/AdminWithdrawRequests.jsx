@@ -84,11 +84,11 @@ const AdminWithdrawRequests = () => {
   };
 
   const statusOptions = [
-    { value: 'all', label: 'All Requests', icon: Layers, color: 'indigo' },
-    { value: 'pending', label: 'Pending', icon: Clock, color: 'amber' },
-    { value: 'approved', label: 'Approved', icon: CheckCircle2, color: 'emerald' },
-    { value: 'rejected', label: 'Rejected', icon: XCircle, color: 'rose' },
-    { value: 'paid', label: 'Paid', icon: CreditCard, color: 'indigo' }
+    { value: 'all', label: 'All Requests', icon: Layers, color: 'primary' },
+    { value: 'pending', label: 'Pending', icon: Clock, color: 'primary' },
+    { value: 'approved', label: 'Approved', icon: CheckCircle2, color: 'primary' },
+    { value: 'rejected', label: 'Rejected', icon: XCircle, color: 'primary' },
+    { value: 'paid', label: 'Paid', icon: CreditCard, color: 'primary' }
   ];
 
   const formatCurrency = (amt) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(amt);

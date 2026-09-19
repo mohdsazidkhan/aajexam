@@ -66,7 +66,7 @@ const ReferralBanner = ({ user }) => {
         </p>
       </div>
 
-      <div className="bg-slate-50 dark:bg-slate-900/50 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-900/50 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700">
         <div className="text-center">
           <div className="text-5xl font-black text-primary-700 dark:text-primary-500 mb-1">
             {referralCount}
@@ -85,7 +85,7 @@ const ReferralBanner = ({ user }) => {
           </h4>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white font-mono font-black px-8 py-4 rounded-2xl tracking-[0.3em] border-2 border-slate-200 dark:border-slate-700 shadow-inner text-2xl select-all">
+            <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono font-black px-8 py-4 rounded-2xl tracking-[0.3em] border-2 border-slate-200 dark:border-slate-700 shadow-inner text-2xl select-all">
               {referralCode}
             </div>
             <button
@@ -145,7 +145,7 @@ const ReferralBanner = ({ user }) => {
       </div>
 
       {/* Footer Info */}
-      <div className="mt-8 text-center bg-slate-50 dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-700">
+      <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-700">
         <p className="text-slate-700 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed flex items-center justify-center gap-2">
           <Lightbulb className="w-4 h-4 text-black dark:text-white flex-shrink-0" />
           TIP: Share on WhatsApp & Telegram to get rewards faster!

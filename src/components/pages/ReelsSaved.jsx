@@ -51,7 +51,7 @@ const ReelsSaved = () => {
 
   return (
     <MobileAppWrapper>
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+      <div className="min-h-screen bg-white dark:bg-slate-900">
         {/* Header */}
         <div className="sticky top-0 z-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div className="flex items-center gap-3 max-w-2xl mx-auto">

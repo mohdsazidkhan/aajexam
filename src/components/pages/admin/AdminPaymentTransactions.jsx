@@ -275,10 +275,10 @@ const AdminPaymentTransactions = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4">
           {[
-            { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, color: 'emerald', isCurrency: true },
-            { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, color: 'indigo', isCurrency: true },
-            { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: ReceiptText, color: 'purple' },
-            { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users, color: 'rose' }
+            { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, color: 'primary', isCurrency: true },
+            { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, color: 'primary', isCurrency: true },
+            { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: ReceiptText, color: 'primary' },
+            { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users, color: 'primary' }
           ].map((stat, i) => (
             <motion.div
               key={stat.label}

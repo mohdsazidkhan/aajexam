@@ -140,7 +140,7 @@ export const SubscriptionSkeleton = () => (
 );
 
 export const QuizAttemptSkeleton = () => (
-  <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-outfit">
+  <div className="min-h-screen bg-white dark:bg-slate-900 font-outfit">
     {/* Top bar: progress + timer */}
     <div className="bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-700 p-4 flex items-center justify-between gap-4">
       <Sh className="h-3 w-24 rounded-full" />

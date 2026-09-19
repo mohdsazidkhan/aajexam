@@ -77,7 +77,7 @@ const ContactUs = ({ contactInfo = {
 
    return (
       <MobileAppWrapper title="Contact Support">
-         <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/50 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit mt-0">
+         <div className="min-h-screen bg-white dark:bg-slate-900 animate-fade-in selection:bg-primary-500 selection:text-white font-outfit mt-0">
             <div className="container mx-auto px-4 lg:px-10 py-10 lg:py-20 space-y-12 lg:space-y-20">
 
                {/* --- Header Section --- */}
@@ -98,9 +98,9 @@ const ContactUs = ({ contactInfo = {
                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {[
                            { label: 'Email Support', val: contactInfo.email, icon: Mail, color: 'primary' },
-                           { label: 'Phone Number', val: contactInfo.phone, icon: Phone, color: 'secondary' },
-                           { label: 'Office Address', val: contactInfo.address, icon: MapPin, color: 'blue' },
-                           { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'orange' }
+                           { label: 'Phone Number', val: contactInfo.phone, icon: Phone, color: 'primary' },
+                           { label: 'Office Address', val: contactInfo.address, icon: MapPin, color: 'primary' },
+                           { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'primary' }
                         ].map((item, i) => (
                            <Card key={i} className="p-6 lg:p-8 flex items-center gap-6 lg:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] lg:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
                               <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg lg:rounded-xl lg:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
@@ -115,7 +115,7 @@ const ContactUs = ({ contactInfo = {
                      </div>
 
                      {/* Social Links */}
-                     <Card className="p-8 space-y-6 bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 overflow-hidden relative rounded-[3rem] shadow-sm">
+                     <Card className="p-8 space-y-6 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 overflow-hidden relative rounded-[3rem] shadow-sm">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="relative z-10 space-y-6">
                            <div className="space-y-1">
@@ -163,7 +163,7 @@ const ContactUs = ({ contactInfo = {
                               <div className="space-y-4">
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Full Name</label>
                                  <input
-                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                     placeholder="e.g. John Doe"
                                     value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required
                                  />
@@ -172,7 +172,7 @@ const ContactUs = ({ contactInfo = {
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Email Address</label>
                                  <input
                                     type="email"
-                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                     placeholder="john@example.com"
                                     value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} required
                                  />
@@ -182,7 +182,7 @@ const ContactUs = ({ contactInfo = {
                            <div className="space-y-4">
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Subject</label>
                               <input
-                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                  placeholder="How can we help?"
                                  value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} required
                               />
@@ -192,7 +192,7 @@ const ContactUs = ({ contactInfo = {
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Message</label>
                               <textarea
                                  rows="5"
-                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                  placeholder="Type your message here..."
                                  value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} required
                               />
@@ -235,8 +235,8 @@ const ContactUs = ({ contactInfo = {
                <section className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10">
                   {[
                      { title: 'Fast Reply', desc: 'We reply to your question within 24 hours on working days.', icon: Rocket, color: 'primary' },
-                     { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'secondary' },
-                     { title: 'Helpful Team', desc: 'Our team knows the platform well and can solve your problem quickly.', icon: GraduationCap, color: 'blue' }
+                     { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'primary' },
+                     { title: 'Helpful Team', desc: 'Our team knows the platform well and can solve your problem quickly.', icon: GraduationCap, color: 'primary' }
                   ].map((f, i) => (
                      <Card key={i} className="p-6 lg:p-8 text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-xl transition-all group relative overflow-hidden">
                         <div className={`p-4 bg-${f.color === 'primary' ? 'primary' : f.color}-500/25 text-${f.color === 'primary' ? 'primary' : f.color}-500 rounded-2xl w-fit mx-auto border-2 border-transparent group-hover:border-current transition-all shadow-sm`}>

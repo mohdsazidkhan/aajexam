@@ -52,7 +52,7 @@ const LandingPageSkeleton = () => {
                 </div>
 
                 {/* Stats Grid Skeleton */}
-                <div className="mt-16 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-10 border-4 border-b-[12px] border-slate-100 dark:border-slate-800 shadow-xl">
+                <div className="mt-16 bg-white dark:bg-slate-900/50 rounded-[3rem] p-10 border-4 border-b-[12px] border-slate-100 dark:border-slate-800 shadow-xl">
                     <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-cols-6 gap-8">
                         {[...Array(6)].map((_, i) => (
                             <div key={i} className="flex flex-col items-center gap-4">
@@ -79,7 +79,7 @@ const LandingPageSkeleton = () => {
                     {/* Reward Cards */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
                         {[1, 2, 3, 4].map((i) => (
-                            <div key={i} className="h-64 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900/50 border-4 border-slate-100 dark:border-slate-800 p-8 shadow-xl">
+                            <div key={i} className="h-64 rounded-[2.5rem] bg-white dark:bg-slate-900/50 border-4 border-slate-100 dark:border-slate-800 p-8 shadow-xl">
                                 <Skeleton width="50%" height="2rem" className="mb-6 rounded-lg lg:rounded-xl" />
                                 <Skeleton width="100%" height="1rem" className="mb-4 rounded-lg" />
                                 <Skeleton width="80%" height="1rem" className="mb-8 rounded-lg" />

@@ -227,7 +227,7 @@ const PaymentTransactions = () => {
 
       {/* Summary Cards */}
       {summary && (
-        <div className="p-3 lg:p-14 bg-slate-50 dark:bg-slate-900/50">
+        <div className="p-3 lg:p-14 bg-white dark:bg-slate-900/50">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-8">
             <div className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-[2.5rem] p-4 lg:p-10 border-2 lg:border-4 border-b-4 lg:border-b-[12px] border-slate-100 dark:border-slate-700 shadow-lg lg:shadow-2xl transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
@@ -274,7 +274,7 @@ const PaymentTransactions = () => {
 
       {/* Filters */}
       {showFilters && (
-        <div className="p-3 lg:p-12 bg-slate-50 dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-slate-800">
+        <div className="p-3 lg:p-12 bg-white dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-slate-800">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-8">
             {/* Search */}
             <div className="relative">

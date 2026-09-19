@@ -183,10 +183,10 @@ export default function UserReferralDetail() {
                     {/* Metric Overview */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                         {[
-                            { label: 'Total Earnings', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'emerald' },
-                            { label: 'People Referred', value: user?.referralCount || 0, icon: Users, color: 'indigo' },
-                            { label: 'Total Rewards', value: user?.referralRewards?.length || 0, icon: Award, color: 'amber' },
-                            { label: 'Referred By', value: user?.referredBy || 'Direct Signup', icon: Zap, color: 'rose' }
+                            { label: 'Total Earnings', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'primary' },
+                            { label: 'People Referred', value: user?.referralCount || 0, icon: Users, color: 'primary' },
+                            { label: 'Total Rewards', value: user?.referralRewards?.length || 0, icon: Award, color: 'primary' },
+                            { label: 'Referred By', value: user?.referredBy || 'Direct Signup', icon: Zap, color: 'primary' }
                         ].map((stat, i) => (
                             <div
                                 key={stat.label}

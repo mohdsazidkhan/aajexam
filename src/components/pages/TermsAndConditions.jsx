@@ -39,14 +39,14 @@ const TermsAndConditions = () => {
 
    const sections = [
       { id: 'acceptance', title: '1. Acceptance of Terms', icon: CircleCheck, color: 'primary' },
-      { id: 'eligibility', title: '2. User Eligibility', icon: UserCheck, color: 'secondary' },
-      { id: 'subscription', title: '3. Subscription & Payments', icon: Users, color: 'emerald' },
-      { id: 'rewards', title: '4. Reward Programs', icon: Gift, color: 'amber' },
-      { id: 'prohibited', title: '5. Prohibited Activities', icon: Ban, color: 'rose' },
-      { id: 'intellectual', title: '6. Intellectual Property', icon: Lock, color: 'indigo' },
+      { id: 'eligibility', title: '2. User Eligibility', icon: UserCheck, color: 'primary' },
+      { id: 'subscription', title: '3. Subscription & Payments', icon: Users, color: 'primary' },
+      { id: 'rewards', title: '4. Reward Programs', icon: Gift, color: 'primary' },
+      { id: 'prohibited', title: '5. Prohibited Activities', icon: Ban, color: 'primary' },
+      { id: 'intellectual', title: '6. Intellectual Property', icon: Lock, color: 'primary' },
       { id: 'liability', title: '7. Limitation of Liability', icon: Gavel, color: 'slate' },
-      { id: 'modifications', title: '8. Modifications', icon: TriangleAlert, color: 'orange' },
-      { id: 'governing', title: '9. Governing Law', icon: Scale, color: 'blue' },
+      { id: 'modifications', title: '8. Modifications', icon: TriangleAlert, color: 'primary' },
+      { id: 'governing', title: '9. Governing Law', icon: Scale, color: 'primary' },
       { id: 'contact', title: '10. Contact Information', icon: Mail, color: 'primary' }
    ];
 
@@ -157,7 +157,7 @@ const TermsAndConditions = () => {
                               { title: 'Correct Information', body: 'You agree that all information provided during registration is 100% accurate.', icon: Info }
                            ].map((item, i) => (
                               <div key={i} className="flex gap-8 group">
-                                 <div className="w-12 h-12 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                                 <div className="w-12 h-12 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                                     <item.icon className="w-6 h-6 text-slate-500 dark:text-slate-400 group-hover:text-primary-700" />
                                  </div>
                                  <div className="space-y-2">
@@ -211,7 +211,7 @@ const TermsAndConditions = () => {
                         </div>
 
                         <div className="space-y-10">
-                           <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                               <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h4>
                               <ul className="space-y-8">
                                  <li className="flex gap-6">
@@ -246,7 +246,7 @@ const TermsAndConditions = () => {
                            {[
                               'Scripted Automation', 'External Resource Collusion', 'Using Multiple Accounts', 'Referral Link Fraud', 'Pretending to be Someone Else', 'Abusive Behavior'
                            ].map((ban, i) => (
-                              <div key={i} className="flex items-center gap-4 p-5 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                              <div key={i} className="flex items-center gap-4 p-5 bg-white dark:bg-slate-900/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <TriangleAlert className="w-4 h-4 text-black dark:text-white" />
                                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{ban}</span>
                               </div>
@@ -295,7 +295,7 @@ const TermsAndConditions = () => {
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">LEGAL AND SUPPORT</p>
                               </div>
                            </div>
-                           <div className="p-4 lg:p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
                               <p className="text-xl lg:text-2xl font-black text-primary-700 dark:text-primary-500 tracking-tight">support@mohdsazidkhan.com</p>
                            </div>

@@ -75,7 +75,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
   if (!quiz) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">Quiz Not Found</h1>
           <Link href="/search" className="text-primary-600 hover:text-primary-700">← Back to Search</Link>
@@ -89,7 +89,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
       'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 dark:via-slate-800 to-primary-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-5 lg:py-12 px-4 pb-24">
+    <div className="min-h-screen bg-white dark:bg-slate-900 py-5 lg:py-12 px-4 pb-24">
       <div className="max-w-4xl mx-auto">
 
         {/* Breadcrumb */}

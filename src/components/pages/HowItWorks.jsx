@@ -42,7 +42,7 @@ const HowItWorks = () => {
          title: 'Pick a Plan',
          desc: 'Choose a free or paid plan based on what you need. Your plan decides how many levels and quizzes you can use.',
          icon: CreditCard,
-         color: 'secondary',
+         color: 'primary',
          badge: 'Step 2',
          details: [
             { label: 'Free Plan', val: 'Levels 0 to 9', icon: CircleCheck },
@@ -54,7 +54,7 @@ const HowItWorks = () => {
          title: 'Take Practice Quizzes',
          desc: 'Answer MCQ questions made by experts. Practice with daily, weekly, and monthly quizzes to get exam-ready.',
          icon: PlayCircle,
-         color: 'blue',
+         color: 'primary',
          badge: 'Step 3'
       },
       {
@@ -62,7 +62,7 @@ const HowItWorks = () => {
          title: 'Track Your Progress',
          desc: 'See how many questions you got right and how fast you answered. Check your results and improve in every subject.',
          icon: TrendingUp,
-         color: 'secondary',
+         color: 'primary',
          badge: 'Step 4'
       },
       {
@@ -78,8 +78,8 @@ const HowItWorks = () => {
 
    const features = [
       { title: 'Only Your Knowledge Counts', desc: 'You win by knowing more, not by luck. Hard work and study is all that matters.', icon: ShieldCheck, color: 'primary' },
-      { title: 'Earn With Referrals', desc: 'Invite friends and earn real cash rewards when they upgrade to PRO.', icon: Trophy, color: 'secondary' },
-      { title: 'Get Better as You Study', desc: 'As your score improves, you unlock harder questions and new levels.', icon: Zap, color: 'blue' }
+      { title: 'Earn With Referrals', desc: 'Invite friends and earn real cash rewards when they upgrade to PRO.', icon: Trophy, color: 'primary' },
+      { title: 'Get Better as You Study', desc: 'As your score improves, you unlock harder questions and new levels.', icon: Zap, color: 'primary' }
    ];
 
    return (

@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#0c1317] p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
+        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

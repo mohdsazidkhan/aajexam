@@ -173,7 +173,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section className="bg-slate-100 dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 py-3 overflow-hidden relative flex">
+         <section className="border-y border-slate-200 dark:border-slate-700 py-3 overflow-hidden relative flex">
             <style>{`
                @keyframes marquee {
                   0% { transform: translateX(0); }
@@ -219,7 +219,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── 3-Step How It Works ── */}
-         <section className="py-12 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800">
+         <section className="py-12 border-t-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 lg:px-8">
                <div className="max-w-4xl mx-auto">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -227,7 +227,7 @@ const ModernLandingPage = () => {
 
                      {[
                         { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-black dark:text-white", bg: "bg-slate-100 dark:bg-slate-800 dark:bg-white/20" },
+                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" },
                         { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-500", bg: "bg-primary-50 dark:bg-primary-900/20" }
                      ].map((item, i) => (
                         <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-aajexam border-2 border-slate-200 dark:border-slate-700">
@@ -248,7 +248,7 @@ const ModernLandingPage = () => {
          </section>
 
 
-         <section className="py-8 lg:py-20 bg-white dark:bg-slate-900 border-y-2 border-slate-100 dark:border-slate-800">
+         <section className="py-8 lg:py-20 border-y-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 lg:px-6">
                <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
                   {[
@@ -272,7 +272,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="py-10 lg:py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden">
+         <section className="py-10 lg:py-20 from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary-500/10 via-transparent to-transparent blur-[80px] opacity-60" />
             </div>
@@ -358,7 +358,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Features Section ── */}
-         <section id="features" className="py-10 lg:py-32 bg-white dark:bg-slate-900">
+         <section id="features" className="py-10 lg:py-32 border-t-2 border-b-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-3 lg:px-6 space-y-10 lg:space-y-20">
                <div className="text-center space-y-6 max-w-3xl mx-auto">
                   <h2 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">Study Smart. <br /> Pass Your Exam.</h2>
@@ -444,7 +444,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="py-10 lg:py-32 bg-white dark:bg-slate-900 overflow-hidden relative">
+         <section className="py-10 lg:py-32 overflow-hidden relative">
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="flex flex-col gap-10 lg:gap-20">
                   <div className="space-y-8 lg:space-y-16 text-center max-w-6xl mx-auto w-full">

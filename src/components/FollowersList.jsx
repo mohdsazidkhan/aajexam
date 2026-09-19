@@ -153,7 +153,7 @@ const FollowersList = ({ username: usernameProp }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
               </button>
-              <div className="px-8 py-3 bg-slate-50 dark:bg-slate-900 rounded-full border-2 border-slate-100 dark:border-slate-800">
+              <div className="px-8 py-3 bg-white dark:bg-slate-900 rounded-full border-2 border-slate-100 dark:border-slate-800">
                 <span className="text-[10px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest">
                   PHASE {page} OF {pagination.totalPages}
                 </span>

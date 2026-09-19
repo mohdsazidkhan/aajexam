@@ -437,9 +437,9 @@ const AdminGovtExamResults = () => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-8">
                       {[
                         { label: 'Score', val: selectedAttempt.score, icon: Target, color: 'primary' },
-                        { label: 'Accuracy', val: `${selectedAttempt.accuracy?.toFixed(1)}%`, icon: TrendingUp, color: 'emerald' },
-                        { label: 'Time Spent', val: formatTime(selectedAttempt.totalTime), icon: Clock, color: 'blue' },
-                        { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'amber' }
+                        { label: 'Accuracy', val: `${selectedAttempt.accuracy?.toFixed(1)}%`, icon: TrendingUp, color: 'primary' },
+                        { label: 'Time Spent', val: formatTime(selectedAttempt.totalTime), icon: Clock, color: 'primary' },
+                        { label: 'Rank', val: `#${selectedAttempt.rank || '-'}`, icon: Trophy, color: 'primary' }
                       ].map((s, i) => (
                         <div key={i} className="bg-slate-50 dark:bg-white/5 p-6 rounded-3xl border-2 border-slate-100 dark:border-white/5">
                           <div className={`p-3 bg-${s.color}-500/10 text-${s.color}-500 rounded-lg lg:rounded-xl w-fit mb-3`}><s.icon className="w-4 h-4" /></div>

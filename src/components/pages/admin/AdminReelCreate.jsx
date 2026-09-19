@@ -12,11 +12,11 @@ import {
 } from 'lucide-react';
 
 const TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, color: 'blue', desc: 'MCQ with explanation & tricks' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'purple', desc: 'Quick facts & one-liners' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'amber', desc: 'Shortcuts & formulas' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'red', desc: 'Daily CA with key points' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'green', desc: 'Community polls & opinions' },
+  { value: 'question', label: 'Question', icon: HelpCircle, color: 'primary', desc: 'MCQ with explanation & tricks' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'primary', desc: 'Quick facts & one-liners' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'primary', desc: 'Shortcuts & formulas' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'primary', desc: 'Daily CA with key points' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'primary', desc: 'Community polls & opinions' },
 ];
 
 const COLOR_MAP = {

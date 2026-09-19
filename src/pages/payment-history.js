@@ -72,8 +72,8 @@ const PaymentHistoryPage = () => {
          case 'authorized': return { label: 'Authorized', icon: CheckCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
          case 'failed': return { label: 'Failed', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
          case 'refunded': return { label: 'Refunded', icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
-         case 'created': return { label: 'Pending', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-gray-50 dark:bg-gray-900/20', border: 'border-gray-200 dark:border-gray-800' };
-         default: return { label: status || 'Unknown', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-gray-50 dark:bg-gray-900/20', border: 'border-gray-200 dark:border-gray-800' };
+         case 'created': return { label: 'Pending', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
+         default: return { label: status || 'Unknown', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
       }
    };
 

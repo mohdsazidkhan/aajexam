@@ -161,7 +161,7 @@ const StudentSidebar = () => {
 
   return (
     <div
-      className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-white/5 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+      className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
         }`}
     >
 
