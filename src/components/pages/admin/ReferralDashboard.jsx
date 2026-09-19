@@ -122,7 +122,7 @@ export default function ReferralDashboard() {
                   searchTerm={searchTerm}
                   onSearchChange={handleSearch}
                   placeholder="Search users..."
-                  className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2 w-full lg:w-96"
+                  className="w-full lg:w-96"
                 />
               </div>
             </div>

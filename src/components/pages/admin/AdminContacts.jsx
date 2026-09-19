@@ -186,7 +186,7 @@ export default function AdminContacts() {
                   searchTerm={searchTerm}
                   onSearchChange={handleSearch}
                   placeholder="Search..."
-                  className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2"
+                  className="w-full lg:w-64"
                 />
               </div>
             </div>

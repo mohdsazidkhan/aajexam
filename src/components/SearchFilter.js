@@ -11,17 +11,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 const SearchFilter = ({
   searchTerm,
   onSearchChange,
+  onSearch,
   filters = {},
   onFilterChange,
   onClearFilters,
   filterOptions = {},
-  placeholder = "Search..."
+  placeholder = "Search...",
+  className = ""
 }) => {
   const hasActiveFilters = Object.values(filters).some(value => value && value !== '');
+  const handleChange = onSearchChange || onSearch;
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 p-4 mb-8 transition-all duration-300">
-      <div className="flex flex-col lg:flex-row items-center gap-4">
+    <div className={`flex flex-col lg:flex-row items-center gap-4 ${className}`}>
         {/* Search Input Area */}
         <div className="relative flex-1 w-full group">
           <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10">
@@ -30,7 +32,7 @@ const SearchFilter = ({
           <input
             type="text"
             value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
+            onChange={(e) => handleChange?.(e.target.value)}
             placeholder={placeholder}
             className="w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-slate-800/40 border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-xl focus:shadow-primary-500/5"
           />
@@ -77,7 +79,6 @@ const SearchFilter = ({
           </AnimatePresence>
         </div>
       </div>
-    </div>
   );
 };
 

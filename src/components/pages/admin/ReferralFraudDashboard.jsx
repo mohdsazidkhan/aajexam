@@ -128,7 +128,7 @@ export default function ReferralFraudDashboard() {
                 searchTerm={searchTerm}
                 onSearchChange={(v) => { setSearchTerm(v); setPage(1); }}
                 placeholder="Search name / email / code..."
-                className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl py-2 w-full lg:w-80"
+                className="w-full lg:w-80"
               />
             </div>
           </motion.div>

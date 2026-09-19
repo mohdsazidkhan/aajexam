@@ -151,12 +151,12 @@ export default function ReferralHistory() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="relative">
+              <div className="relative flex items-center">
                 <Filter className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <select
                   value={filterType}
                   onChange={handleFilterChange}
-                  className="pl-14 pr-10 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
+                  className="pl-14 pr-10 py-5 leading-none bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-xl"
                 >
                   <option value="all">All Reward Types</option>
                   <option value="plan99">Plan 99 Reward (₹33)</option>
@@ -167,7 +167,7 @@ export default function ReferralHistory() {
                 searchTerm={searchTerm}
                 onSearchChange={handleSearch}
                 placeholder="Search..."
-                className="bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl lg:rounded-[2.5rem] py-2 shadow-xl"
+                className="w-full lg:w-64"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function ReferralHistory() {
           {summary && (
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 mb-4">
               {[
-                { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-slate-900 dark:bg-white/10 text-white" },
+                { label: "TOTAL REWARDS", value: summary.totalRewards, icon: DollarSign, color: "bg-black dark:bg-white text-white dark:text-black shadow-black/20 dark:shadow-white/10" },
                 { label: "PLAN 99", value: summary.plan99Rewards, icon: Award, color: "bg-black dark:bg-white text-white dark:text-black shadow-black/20 dark:shadow-white/10" }
               ].map((stat, i) => (
                 <motion.div
