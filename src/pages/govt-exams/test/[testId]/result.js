@@ -389,8 +389,8 @@ const TestResult = ({ resolvedId } = {}) => {
 
                           return (
                             <div key={oIdx} className={`
-                                  p-3 rounded-2xl flex items-start gap-3 border-2 text-sm
-                                  ${isAnswer ? 'bg-primary-100 border-primary-700 text-primary-700' :
+                                  p-3 rounded-2xl flex items-center gap-3 border-2 text-sm
+                                  ${isAnswer ? 'bg-primary-100 dark:bg-primary-900/20 border-primary-700 text-primary-700 dark:text-primary-400' :
                                 isSelected ? 'bg-black/10 dark:bg-white/10 border-black dark:border-white text-black dark:text-white' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>

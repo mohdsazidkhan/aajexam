@@ -19,10 +19,10 @@ const Button = ({
 }) => {
   // Brand system: exactly two variants, everywhere.
   // primary   -> brand green bg, white text (identical in light & dark)
-  // secondary -> black bg / white text in light mode, white bg / black text in dark mode
+  // secondary -> white bg / black border+text in light mode, dark bg / white border+text in dark mode (never white bg in dark mode)
   const variants = {
     primary: 'bg-primary-700 shadow-sm border-primary-700 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-black text-white border-slate-950 shadow-sm active:bg-slate-900 dark:bg-white dark:text-black dark:border-slate-200 dark:shadow-[0_4px_0_0_#cbd5e1] dark:active:bg-slate-100 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_0_0_rgba(0,0,0,0.08)]',
+    secondary: 'bg-white border-2 border-black text-black shadow-sm active:bg-slate-100 dark:bg-slate-800 dark:border-white dark:text-white dark:active:bg-slate-700 shadow-[inset_0_1px_0_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]',
   };
 
   const sizes = {
