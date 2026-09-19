@@ -18,7 +18,7 @@ export default function QuestionList({ questions = [], title = 'Questions with s
   if (questions.length === 0) return null;
 
   return (
-    <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
       <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
         {title}
       </h2>

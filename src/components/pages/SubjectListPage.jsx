@@ -84,7 +84,7 @@ const SubjectListPage = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30">
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-black/20 dark:border-white/20 dark:border-white/30 p-4 lg:p-8">
         <div className="absolute inset-0 bg-gradient-to-br from-black dark:from-white via-black dark:via-white to-black dark:to-white dark:from-slate-900 dark:via-white/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}

@@ -88,7 +88,7 @@ const HowItWorks = () => {
          <div className="container mx-auto max-w-5xl space-y-20 mt-4">
 
             {/* --- Hero Section --- */}
-            <section className="text-center space-y-6 relative overflow-hidden pt-10 lg:pt-20">
+            <section className="text-center space-y-6 relative overflow-hidden p-4 lg:p-8">
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-aajexam-primary border-4 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
@@ -166,7 +166,7 @@ const HowItWorks = () => {
             </section>
 
             {/* --- Skill-Based Callout --- */}
-            <section className="pt-0">
+            <section className="p-4 lg:p-8">
                <Card className="p-0 border-none bg-slate-900 text-white shadow-2xl relative overflow-hidden text-center lg:text-left">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 px-4">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-700 dark:text-primary-500 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
@@ -182,7 +182,7 @@ const HowItWorks = () => {
             </section>
 
             {/* --- Features Grid --- */}
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-10">
+            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 lg:p-8">
                {features.map((f, i) => (
                   <Card key={i} className="p-8 group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                      <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
@@ -197,7 +197,7 @@ const HowItWorks = () => {
             </section>
 
             {/* --- CTA --- */}
-            <section className="pb-10">
+            <section className="p-4 lg:p-8">
                <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-4 border-slate-800 text-white shadow-2xl relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />

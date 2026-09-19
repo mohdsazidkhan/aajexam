@@ -173,7 +173,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section className="border-y border-slate-200 dark:border-slate-700 py-3 overflow-hidden relative flex">
+         <section className="border-y border-slate-200 dark:border-slate-700 overflow-hidden relative flex p-4 lg:p-8">
             <style>{`
                @keyframes marquee {
                   0% { transform: translateX(0); }
@@ -219,7 +219,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── 3-Step How It Works ── */}
-         <section className="py-12 border-t-2 border-slate-100 dark:border-slate-800">
+         <section className="border-t-2 border-slate-100 dark:border-slate-800 p-4 lg:p-8">
             <div className="container mx-auto px-4 lg:px-8">
                <div className="max-w-4xl mx-auto">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -248,7 +248,7 @@ const ModernLandingPage = () => {
          </section>
 
 
-         <section className="py-8 lg:py-20 border-y-2 border-slate-100 dark:border-slate-800">
+         <section className="border-y-2 border-slate-100 dark:border-slate-800 p-4 lg:p-8">
             <div className="container mx-auto px-4 lg:px-6">
                <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
                   {[
@@ -272,7 +272,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── PYQ Section ── */}
-         <section className="py-10 lg:py-20 from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden">
+         <section className="from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden p-4 lg:p-8">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-primary-500/10 via-transparent to-transparent blur-[80px] opacity-60" />
             </div>
@@ -444,7 +444,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="py-10 lg:py-32 overflow-hidden relative">
+         <section className="overflow-hidden relative p-4 lg:p-8">
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
                <div className="flex flex-col gap-10 lg:gap-20">
                   <div className="space-y-8 lg:space-y-16 text-center max-w-6xl mx-auto w-full">
@@ -480,7 +480,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="pb-20 lg:pb-40 px-6">
+         <section className="p-4 lg:p-8">
             <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-2xl p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
                <div className="relative z-10 space-y-8">
                   <motion.h2

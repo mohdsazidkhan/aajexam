@@ -25,7 +25,7 @@ const HomePageSkeleton = () => (
   <div className="space-y-5 md:space-y-6 lg:space-y-8 font-outfit">
 
     {/* ── Stats ── */}
-    <section className="px-0 lg:px-4 pt-2 lg:pt-4">
+    <section className="p-4 lg:p-8">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
         {[1, 2, 3, 4].map(i => (
           <div key={i} className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800 space-y-2">
@@ -38,7 +38,7 @@ const HomePageSkeleton = () => (
     </section>
 
     {/* ── Quick Actions ── */}
-    <section className="px-0 lg:px-4">
+    <section className="p-4 lg:p-8">
       <div className="grid grid-cols-3 gap-2.5 md:gap-3 lg:gap-4">
         {[1, 2, 3].map(i => (
           <div key={i} className="rounded-2xl lg:rounded-3xl p-4 lg:p-6 bg-slate-100 dark:bg-slate-800 flex flex-col items-center gap-2">

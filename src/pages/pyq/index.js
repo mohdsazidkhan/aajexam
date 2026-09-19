@@ -148,7 +148,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                     {/* Browse by exam — high-value internal linking for SEO */}
                     {examsWithPYQ.length > 0 && (
-                        <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                        <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight flex items-center">
                                 <FaGraduationCap className="text-primary-600 mr-3" /> Browse PYQs by Exam
                             </h2>
@@ -193,7 +193,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     )}
 
                     {/* Long-form intro */}
-                    <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> Why Solve PYQs?
                         </h2>
@@ -203,7 +203,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     </section>
 
                     {/* Latest / filtered list */}
-                    <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                         <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
                             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
                                 {filterExam || filterYear ? 'Filtered Papers' : 'Latest PYQ Papers'}
@@ -359,7 +359,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     )}
 
                     {/* FAQ */}
-                    <section className="rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800">
+                    <section className="rounded-[3rem] shadow-2xl border-2 border-b-[10px] border-slate-200 dark:border-slate-800 p-4 lg:p-8">
                         <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                             Frequently Asked Questions
                         </h2>

@@ -3,7 +3,7 @@ import { FaGraduationCap, FaChartLine, FaTrophy, FaBook, FaCheckCircle, FaRocket
 
 const PracticeTestsEducational = ({ levels }) => {
     return (
-        <section className="practice-tests-educational py-20 px-4 font-outfit">
+        <section className="practice-tests-educational font-outfit p-4 lg:p-8">
             <div className="container mx-auto max-w-6xl">
                 {/* Main Heading with Icon */}
                 <div className="text-center mb-20 animate-bounce-in">

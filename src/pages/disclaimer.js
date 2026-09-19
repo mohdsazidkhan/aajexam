@@ -64,7 +64,7 @@ export default function Disclaimer() {
                                 </section>
                             ))}
 
-                            <section className="p-8 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
+                            <section className="rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 lg:p-8">
                                 <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">External Links Disclaimer</h2>
                                 <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
                                     Our platform may contain links to external websites that are not provided or maintained by or in any way affiliated with AajExam. Please note that AajExam does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.

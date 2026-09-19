@@ -433,7 +433,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
       {/* --- Share Result --- */}
       {mounted && result && (
-        <section className="pt-4">
+        <section className="p-4 lg:p-8">
           <Card className="p-6 lg:p-8 border-2 bg-gradient-to-br from-primary-50 to-slate-100 dark:to-slate-800 dark:from-slate-800 dark:to-white/40">
             <div className="text-center space-y-2 mb-4">
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
@@ -466,7 +466,7 @@ const TestResult = ({ resolvedId } = {}) => {
       )}
 
       {/* --- Action Bar --- */}
-      <section className="flex flex-col lg:flex-row justify-center items-center gap-4 pt-8">
+      <section className="flex flex-col lg:flex-row justify-center items-center gap-4 p-4 lg:p-8">
         <Button
           variant="primary"
           size="lg"

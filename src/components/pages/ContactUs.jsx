@@ -232,7 +232,7 @@ const ContactUs = ({ contactInfo = {
                </div>
 
                {/* --- Feature Grid --- */}
-               <section className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10">
+               <section className="grid grid-cols-1 md:grid-cols-3 gap-8 p-4 lg:p-8">
                   {[
                      { title: 'Fast Reply', desc: 'We reply to your question within 24 hours on working days.', icon: Rocket, color: 'primary' },
                      { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'primary' },

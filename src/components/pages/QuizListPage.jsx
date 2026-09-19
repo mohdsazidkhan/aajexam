@@ -115,7 +115,7 @@ const QuizListPage = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] p-8 lg:p-12 overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30">
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-b-8 border-primary-600/20 dark:border-primary-900/30 p-4 lg:p-8">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-black dark:via-white to-primary-500 dark:from-slate-900 dark:via-primary-900/40 dark:to-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}

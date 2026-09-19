@@ -473,7 +473,7 @@ const AdminGovtExamTests = () => {
                                        </div>
                                     </section>
 
-                                    <section className="space-y-3 lg:space-y-6 pt-10 border-t-2 border-slate-50">
+                                    <section className="space-y-3 lg:space-y-6 border-t-2 border-slate-50 p-4 lg:p-8">
                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-l-4 border-primary-500 pl-3 block mb-4 lg:mb-8 flex justify-between items-center">
                                           Questions ({formData.questions.length})
                                           <span className="text-primary-500 tabular-nums">{formData.questions.length} / 100</span>
@@ -499,7 +499,7 @@ const AdminGovtExamTests = () => {
                                  </div>
 
                                  <div className="space-y-10">
-                                    <section className="p-3 lg:p-8 rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/5">
+                                    <section className="rounded-lg lg:rounded-xl lg:rounded-[3rem] border-2 border-slate-100 dark:border-white/5 p-4 lg:p-8">
                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 lg:mb-8 flex items-center gap-3">
                                           <Activity className="w-4 h-4 text-primary-600" /> Add a Question
                                        </h3>
