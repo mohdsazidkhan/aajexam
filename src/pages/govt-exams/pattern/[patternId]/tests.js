@@ -129,7 +129,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         ])}
       />
 
-      <section className="flex items-center justify-end">
+      <section className="hidden lg:flex items-center justify-end">
         <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
           GO BACK

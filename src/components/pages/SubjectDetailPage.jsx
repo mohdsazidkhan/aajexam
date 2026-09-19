@@ -26,7 +26,7 @@ const SubjectDetailPage = ({ resolvedId, initialSubject } = {}) => {
   return (
     <div className="min-h-screen pb-24">
       <div className="py-0 lg:py-6">
-        <button onClick={() => router.back()} className="flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
+        <button onClick={() => router.back()} className="hidden lg:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
         <div className="bg-black dark:bg-white rounded-2xl p-6 text-white dark:text-black mb-5">

@@ -169,7 +169,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       />
 
       {/* Back */}
-      <section className="flex items-center justify-end">
+      <section className="hidden lg:flex items-center justify-end">
         <Button variant="primary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" /> GO BACK
         </Button>
@@ -267,27 +267,27 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {subjects.length > 0 ? subjects.map((subject) => (
-              <div key={subject._id} className="flex items-center justify-between gap-3 p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={subject._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                 <span className="text-sm font-bold text-content-primary">{subject.name}</span>
                 {subject.slug ? (
                   <button
                     onClick={() => router.push(`/practice/${exam.slug}/${subject.slug}`)}
-                    className="text-[10px] font-black text-primary-600 uppercase whitespace-nowrap"
+                    className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                   >
                     Practice {subject.name} Questions →
                   </button>
                 ) : (
-                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 uppercase whitespace-nowrap">
+                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
                     Practice Questions →
                   </button>
                 )}
               </div>
             )) : subjectAreas.map((subject) => (
-              <div key={subject} className="flex items-center justify-between gap-3 p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+              <div key={subject} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
                   onClick={() => setActiveTab('quizzes')}
-                  className="text-[10px] font-black text-primary-600 uppercase whitespace-nowrap"
+                  className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                 >
                   Practice {subject} Questions →
                 </button>
@@ -298,12 +298,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       )}
 
       {/* Tabs */}
-      <div className="flex gap-2 sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800/50">
+      <div className="flex gap-2 overflow-x-auto no-scrollbar sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-3 -mx-4 px-4 border-b border-slate-100 dark:border-slate-800/50">
         {tabs.map(tab => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 shrink-0 ${
               activeTab === tab.key
                 ? 'bg-primary-500 text-white border-primary-600'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700'
