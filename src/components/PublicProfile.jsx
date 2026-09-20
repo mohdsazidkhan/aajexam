@@ -38,7 +38,7 @@ const PublicProfile = ({ username }) => {
       );
 
       if (response.data.success) {
-        setProfile(response.data.user);
+        setProfile({ ...response.data.user, ...response.data.stats });
         setIsFollowing(response.data.isFollowing);
         setIsOwnProfile(response.data.isOwnProfile);
       }
@@ -221,15 +221,24 @@ const PublicProfile = ({ username }) => {
 
         {/* Content Sections */}
         <div className="space-y-5 pb-8">
-          {/* Level & Badges Section */}
+          {/* Rank & Badges Section */}
           <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm p-10 mb-10 group">
             <h2 className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] mb-10">Ranking & Honors</h2>
-            <div className="flex flex-col sm:flex-row items-center gap-12">
-              <div className="flex flex-col items-center justify-center p-10 bg-primary-700 rounded-[2.5rem] text-white min-w-[200px] shadow-sm border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-0 transition-transform">
-                <span className="text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Phase</span>
-                <span className="text-6xl font-black my-1 uppercase tracking-tighter">{0}</span>
-                <span className="text-xs font-black uppercase tracking-[0.2em]">{'Student'}</span>
+
+            <div className="grid grid-cols-2 gap-4 lg:gap-8 mb-12">
+              <div className="flex flex-col items-center justify-center p-6 lg:p-10 bg-primary-700 rounded-[2.5rem] text-white shadow-sm border-2 border-white dark:border-slate-700">
+                <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Exam AIR</span>
+                <span className="text-3xl lg:text-6xl font-black my-1 uppercase tracking-tighter">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
+                <span className="text-[9px] lg:text-xs font-black uppercase tracking-[0.2em] text-center">{profile.examAIR ? `of ${profile.examAIR.total}` : 'No exams yet'}</span>
               </div>
+              <div className="flex flex-col items-center justify-center p-6 lg:p-10 bg-slate-900 dark:bg-white rounded-[2.5rem] text-white dark:text-slate-900 shadow-sm border-2 border-white dark:border-slate-700">
+                <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">Quiz AIR</span>
+                <span className="text-3xl lg:text-6xl font-black my-1 uppercase tracking-tighter">{profile.quizAIR ? `#${profile.quizAIR.rank}` : '—'}</span>
+                <span className="text-[9px] lg:text-xs font-black uppercase tracking-[0.2em] text-center">{profile.quizAIR ? `of ${profile.quizAIR.total}` : 'No quizzes yet'}</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-12">
               <div className="flex-1">
                 {profile.badges && profile.badges.length > 0 ? (
                   <div className="flex flex-wrap justify-center sm:justify-start gap-6">

@@ -4,6 +4,7 @@ import Follow from '@/models/Follow';
 import Reel from '@/models/Reel';
 import { protect } from '@/middleware/auth';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import { getExamAIR, getQuizAIR } from '@/lib/utils/rankUtils';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,10 +21,12 @@ export async function GET(req, { params }) {
             await User.findByIdAndUpdate(user._id, { $inc: { profileViews: 1 }, lastProfileView: new Date() });
         }
 
-        const [followersCount, followingCount, reelsCount] = await Promise.all([
+        const [followersCount, followingCount, reelsCount, examAIR, quizAIR] = await Promise.all([
             Follow.countDocuments({ following: user._id, status: 'active' }),
             Follow.countDocuments({ follower: user._id, status: 'active' }),
-            Reel.countDocuments({ createdBy: user._id, status: 'published' })
+            Reel.countDocuments({ createdBy: user._id, status: 'published' }),
+            getExamAIR(user._id),
+            getQuizAIR(user._id)
         ]);
 
         let isFollowing = false;
@@ -51,7 +54,7 @@ export async function GET(req, { params }) {
             },
             isFollowing: !!isFollowing,
             isOwnProfile,
-            stats: {}
+            stats: { examAIR, quizAIR }
         });
     } catch (error) {
         return errorResponse(error);

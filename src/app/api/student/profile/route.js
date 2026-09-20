@@ -4,6 +4,7 @@ import User from '@/models/User';
 import BankDetail from '@/models/BankDetail';
 import Subscription from '@/models/Subscription';
 import { protect } from '@/middleware/auth';
+import { getExamAIR, getQuizAIR } from '@/lib/utils/rankUtils';
 
 export async function GET(req) {
     try {
@@ -29,9 +30,11 @@ export async function GET(req) {
         // User needs to stay a hydrated Mongoose doc (uses the
         // getProfileCompletionDetails() instance method below); bank details
         // are an independent read, so fetch both concurrently.
-        const [user, bankDetail] = await Promise.all([
+        const [user, bankDetail, examAIR, quizAIR] = await Promise.all([
             User.findById(userId).select('-password').populate('currentSubscription'),
-            BankDetail.findOne({ user: userId }).lean()
+            BankDetail.findOne({ user: userId }).lean(),
+            getExamAIR(userId),
+            getQuizAIR(userId)
         ]);
         if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
@@ -50,7 +53,9 @@ export async function GET(req) {
                 // Add unified wallet fields
                 availableBalance: isPro ? walletBalance : 0,
                 lockedBalance: !isPro ? walletBalance : 0,
-                isPro
+                isPro,
+                examAIR,
+                quizAIR
             }
         });
 
