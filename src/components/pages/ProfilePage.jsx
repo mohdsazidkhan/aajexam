@@ -223,9 +223,16 @@ const ProfilePage = () => {
           </div>
 
             <div className="flex flex-col items-start lg:items-end gap-2 lg:gap-3 lg:flex-shrink-0">
-              <Button variant="primary" size="sm" icon={Settings} className="rounded-xl text-xs font-black" onClick={() => router.push('/settings')}>
-                Account settings
-              </Button>
+              <div className="flex items-center gap-2">
+                {student?.username && (
+                  <Button variant="secondary" size="sm" icon={Eye} className="rounded-xl text-xs font-black" onClick={() => window.open(`/u/${student.username}`, '_blank')}>
+                    Public profile
+                  </Button>
+                )}
+                <Button variant="primary" size="sm" icon={Settings} className="rounded-xl text-xs font-black" onClick={() => router.push('/settings')}>
+                  Account settings
+                </Button>
+              </div>
               {student?.bio && <p className="text-xs lg:text-sm font-medium text-content-secondary leading-relaxed lg:text-right">{student.bio}</p>}
               {socialLinks.length > 0 && (
                 <div className="flex flex-wrap items-center gap-2 lg:gap-3">
