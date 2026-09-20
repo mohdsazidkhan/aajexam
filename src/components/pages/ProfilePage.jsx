@@ -193,8 +193,8 @@ const ProfilePage = () => {
         {/* Hero — single full-width card, responsive from mobile to desktop */}
         <Card className="p-5 lg:p-10 space-y-6" radius="3xl">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
-          <div className="flex flex-col sm:flex-row items-start gap-4 lg:gap-8">
-            <Avatar student={student} sizeClass="w-20 h-20 lg:w-28 lg:h-28 text-2xl lg:text-5xl" />
+          <div className="flex flex-row items-start gap-4 lg:gap-8">
+            <Avatar student={student} sizeClass="w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 text-lg sm:text-2xl lg:text-5xl" />
 
             <div className="flex-1 min-w-0 space-y-3 lg:space-y-4">
               <div className="flex flex-wrap items-center gap-2 lg:gap-3">
