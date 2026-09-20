@@ -84,7 +84,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (loading) return (
     <div className="min-h-screen bg-background-page pb-20 font-outfit">
-      <div className="py-8"><ProfileSkeleton /></div>
+      <div className="py-4 lg:py-8"><ProfileSkeleton /></div>
     </div>
   );
 
@@ -285,19 +285,19 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-700">
-                    {0}
+                    {profile.performanceMetrics?.examStats?.mockTestsAttempted || 0}
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-700">
-                    {0}%
+                    {profile.performanceMetrics?.examStats?.overallReadiness || 0}%
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Best</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Readiness</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-black dark:text-white">
-                    {0}%
+                    {profile.performanceMetrics?.examStats?.averageMockScore || 0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Average</span>
                 </div>

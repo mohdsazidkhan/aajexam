@@ -50,7 +50,8 @@ export async function GET(req, { params }) {
                 reelsCount,
                 profileViews: user.profileViews || 0,
                 isPublicProfile: user.isPublicProfile,
-                createdAt: user.createdAt
+                createdAt: user.createdAt,
+                performanceMetrics: user.performanceMetrics
             },
             isFollowing: !!isFollowing,
             isOwnProfile,
