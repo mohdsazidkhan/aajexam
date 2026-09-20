@@ -115,7 +115,7 @@ const ModernLandingPage = () => {
                      Trusted by students across India
                   </div>
 
-                  <div className="space-y-2 lg:space-y-4 lg:space-y-6">
+                  <div className="space-y-2 lg:space-y-4">
                      <h1
                         className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] text-slate-900 dark:text-white"
                      >
@@ -377,7 +377,7 @@ const ModernLandingPage = () => {
                   </Card>
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] lg:rounded-[4rem] shadow-sm">
-                     <div className="space-y-2 lg:space-y-4 lg:space-y-6">
+                     <div className="space-y-2 lg:space-y-4">
                         <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Flame className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>
@@ -398,7 +398,7 @@ const ModernLandingPage = () => {
                   </Card>
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] lg:rounded-[4rem] shadow-sm">
-                     <div className="space-y-2 lg:space-y-4 lg:space-y-6">
+                     <div className="space-y-2 lg:space-y-4">
                         <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Zap className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>

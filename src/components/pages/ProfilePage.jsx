@@ -188,7 +188,7 @@ const ProfilePage = () => {
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto space-y-2 lg:space-y-4 lg:space-y-6 mt-4 mb-4 lg:mb-4">
+      <div className="container mx-auto space-y-2 lg:space-y-4 mt-4 mb-4 lg:mb-4">
 
         {/* Hero — single full-width card, responsive from mobile to desktop */}
         <Card className="p-5 lg:p-10 space-y-6" radius="3xl">
@@ -198,7 +198,7 @@ const ProfilePage = () => {
 
             <div className="flex-1 min-w-0 space-y-3 lg:space-y-4">
               <div className="flex flex-wrap items-center gap-2 lg:gap-3">
-                <h1 className="text-xl lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
+                <h1 className="text-md lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
                   {student?.name || 'Student'}
                 </h1>
                 <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-700 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
