@@ -31,7 +31,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
       setLoading(true);
       const res = await API.request(`/api/users/profile/${encodeURIComponent(username)}`);
       if (res?.success) {
-        setProfile(res.user);
+        setProfile({ ...res.user, ...res.stats });
         setIsFollowing(!!res.isFollowing);
         setIsOwnProfile(!!res.isOwnProfile);
       } else {
@@ -233,6 +233,28 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
         {/* Content Sections */}
         <div className="space-y-2 lg:space-y-4 pb-8">
+          {/* All India Rank */}
+          {(profile.isPublicProfile || isOwnProfile) && (
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
+              <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
+                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
+                All India Rank
+              </h2>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-700 rounded-lg lg:rounded-xl sm:rounded-2xl text-white">
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1 text-center">{profile.examAIR ? `of ${profile.examAIR.total}` : 'No exams yet'}</span>
+                </div>
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">Quiz AIR</span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{profile.quizAIR ? `#${profile.quizAIR.rank}` : '—'}</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 text-center">{profile.quizAIR ? `of ${profile.quizAIR.total}` : 'No quizzes yet'}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Badges Section */}
           {profile.badges && profile.badges.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
