@@ -177,11 +177,12 @@ export async function POST(req) {
         user.subscriptionExpiry = freeSubscription.endDate;
         await user.save();
 
-        const subscriptionDuration = isAdmin ? 'lifetime' : '1 month';
-        const levelAccess = isAdmin ? 'all levels (0-10)' : 'levels 0-3';
+        const subscriptionDuration = isAdmin
+            ? 'lifetime'
+            : `until ${freeSubscription.endDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}`;
         await WalletTransaction.create({
             user: user._id, type: 'credit', amount: 0, balance: 0,
-            category: 'subscription_payment', description: `FREE ${subscriptionDuration} subscription - ${levelAccess} access`
+            category: 'subscription_payment', description: `FREE PRO subscription (${subscriptionDuration})`
         });
 
         const successMessage = isAdmin

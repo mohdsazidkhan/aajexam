@@ -151,14 +151,14 @@ const TermsAndConditions = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
                            <div className="p-8 bg-white/5 rounded-[2.5rem] border-2 border-white/10 space-y-2 lg:space-y-4">
                               <h4 className="text-primary-700 font-black uppercase tracking-widest text-xs">Free Plan</h4>
-                              <p className="text-sm font-medium text-slate-400">Access to Levels 0-9 for basic exam preparation.</p>
+                              <p className="text-sm font-medium text-slate-400">Unlimited topic-wise practice, 2 subject tests/day, first full mock test free, and latest-year PYQs for every exam.</p>
                            </div>
                            <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-2 lg:space-y-4 shadow-sm group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
                                  <Zap className="w-4 h-4 text-primary-700" />
                               </div>
-                              <p className="text-sm font-medium text-slate-200">Complete access to all levels, advanced features, and premium study materials.</p>
+                              <p className="text-sm font-medium text-slate-200">Unlimited subject tests & mock exams, every PYQ for every exam and year, AI Study Planner, Exam Readiness Score, and an ad-free experience.</p>
                            </div>
                         </div>
 
