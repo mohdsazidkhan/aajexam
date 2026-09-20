@@ -222,14 +222,14 @@ const ProfilePage = () => {
             </div>
           </div>
 
-            <div className="flex flex-col items-start lg:items-end gap-2 lg:gap-3 lg:flex-shrink-0">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col items-start lg:items-end gap-2 lg:gap-3 lg:flex-shrink-0 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
                 {student?.username && (
-                  <Button variant="secondary" size="sm" icon={Eye} className="rounded-xl text-xs font-black" onClick={() => window.open(`/u/${student.username}`, '_blank')}>
+                  <Button variant="secondary" size="sm" icon={Eye} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => window.open(`/u/${student.username}`, '_blank')}>
                     Public profile
                   </Button>
                 )}
-                <Button variant="primary" size="sm" icon={Settings} className="rounded-xl text-xs font-black" onClick={() => router.push('/settings')}>
+                <Button variant="primary" size="sm" icon={Settings} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/settings')}>
                   Account settings
                 </Button>
               </div>
