@@ -11,6 +11,7 @@ const PROMO_FEATURES = [
   'Unlimited Practice Tests',
   'All Previous Year Papers (PYQs)',
   'Full-Length Mock Tests',
+  'All Quizzes, Subjects & Topics',
   'Certificates',
 ];
 
@@ -67,36 +68,39 @@ const WelcomePromoModalInner = ({ onClose }) => {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-primary-500/20 overflow-hidden"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-primary-500/20"
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition"
+          className="absolute top-3 right-3 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
-        <div className="p-8 text-center relative overflow-hidden">
+        <div className="p-5 sm:p-6 text-center relative overflow-hidden">
           <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10">
-            <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-800">
-              <Gift className="w-10 h-10 text-primary-700" />
+            <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm border-2 border-white dark:border-slate-800">
+              <Gift className="w-6 h-6 text-primary-700" />
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
+            <h2 className="text-lg lg:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
               PRO Access is FREE for Everyone!
             </h2>
-            <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              Sign up free and unlock everything — <span className="text-primary-700 font-black">free until 31 December 2026</span>. No payment, no card.
+            <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2 max-w-sm mx-auto">
+              Sign up free and unlock everything. No payment, no card.
+            </p>
+            <p className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight text-primary-700 mb-4">
+              Free Till 31 Dec 2026
             </p>
 
-            <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
+            <div className="space-y-1.5 mb-4 text-left max-w-sm mx-auto">
               {PROMO_FEATURES.map((feature) => (
-                <div key={feature} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-700 shrink-0">
-                    <CheckCircle2 className="w-4 h-4" />
+                <div key={feature} className="flex items-center gap-2.5 text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <div className="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-700 shrink-0">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
                   {feature}
                 </div>
@@ -106,7 +110,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
             <button
               onClick={() => googleSignup()}
               disabled={isGoogleLoading}
-              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-sm disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
+              className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-sm disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
             >
               {isGoogleLoading ? (
                 <div className="w-5 h-5 border-2 border-slate-500 border-t-transparent rounded-full animate-spin" />
@@ -120,7 +124,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
               )}
               {isGoogleLoading ? 'Signing in...' : 'Get PRO Free Now'}
             </button>
-            <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">Offer valid till 31 Dec 2026</p>
+            <p className="mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-widest">Offer valid till 31 Dec 2026</p>
           </div>
         </div>
       </motion.div>
