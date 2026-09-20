@@ -4,6 +4,7 @@ import QuizAttempt from '@/models/QuizAttempt';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import UserStreak from '@/models/UserStreak';
 import mongoose from 'mongoose';
+import { protect } from '@/middleware/auth';
 
 // GET /api/leaderboard?type=quiz|exam&period=all-time|weekly|monthly&limit=50
 export async function GET(req) {
@@ -13,6 +14,9 @@ export async function GET(req) {
         const type = searchParams.get('type') || 'quiz'; // 'quiz' or 'exam'
         const period = searchParams.get('period') || 'all-time';
         const limit = Math.min(parseInt(searchParams.get('limit')) || 50, 100);
+
+        const auth = await protect(req);
+        const currentUserId = auth.authenticated ? auth.user._id.toString() : null;
 
         // Build date filter based on period
         let dateFilter = {};
@@ -84,7 +88,6 @@ export async function GET(req) {
             {
                 $sort: { avgAccuracy: -1, avgPercentage: -1, totalQuizzes: -1 }
             },
-            { $limit: limit },
             // Join User data
             {
                 $lookup: {
@@ -132,13 +135,18 @@ export async function GET(req) {
             }
         ]);
 
-        // Add rank numbers
+        // Add rank numbers — computed across the full ranked pool so a user
+        // outside the displayed top `limit` still gets their real rank.
         const ranked = leaderboard.map((entry, idx) => ({
             rank: idx + 1,
             ...entry,
         }));
 
-        return NextResponse.json({ success: true, data: ranked, period, type });
+        const myEntry = currentUserId
+            ? ranked.find((e) => String(e.userId) === currentUserId) || null
+            : null;
+
+        return NextResponse.json({ success: true, data: ranked.slice(0, limit), period, type, myEntry });
     } catch (error) {
         console.error('Leaderboard API error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

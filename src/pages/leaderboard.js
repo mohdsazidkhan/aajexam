@@ -324,6 +324,7 @@ const LeaderboardPage = () => {
   const [type, setType] = useState('quiz'); // 'quiz' or 'exam'
   const [period, setPeriod] = useState('all-time');
   const [data, setData] = useState([]);
+  const [myEntry, setMyEntry] = useState(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [page, setPage] = useState(1);
@@ -336,7 +337,10 @@ const LeaderboardPage = () => {
       if (isRefresh) setRefreshing(true);
       else setLoading(true);
       const res = await API.request(`/api/leaderboard?type=${type}&period=${period}&limit=50`);
-      if (res?.success) setData(res.data || []);
+      if (res?.success) {
+        setData(res.data || []);
+        setMyEntry(res.myEntry || null);
+      }
     } catch (e) {
       console.error('Leaderboard fetch error:', e);
     } finally {
@@ -352,7 +356,6 @@ const LeaderboardPage = () => {
   const rest = data.slice(3);
   const totalPages = Math.max(1, Math.ceil(rest.length / ROWS_PER_PAGE));
   const pagedRest = rest.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
-  const myEntry = data.find(e => String(e.userId) === String(currentUserId));
 
   return (
     <div className="min-h-screen pb-32 font-outfit">
