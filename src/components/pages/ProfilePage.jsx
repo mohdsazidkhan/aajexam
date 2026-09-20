@@ -174,7 +174,7 @@ const ProfilePage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background-page font-outfit">
-        <div className="py-8 lg:py-12"><ProfileSkeleton /></div>
+        <div className="py-4 lg:py-12"><ProfileSkeleton /></div>
       </div>
     );
   }
