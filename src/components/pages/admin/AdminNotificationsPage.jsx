@@ -159,7 +159,7 @@ const AdminNotificationsPage = () => {
                  </div>
                  <button
                     onClick={handleClearAll}
-                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:bg-black dark:hover:bg-white hover:text-white transition-all flex items-center gap-3 active:scale-95"
+                    className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all flex items-center gap-3 active:scale-95"
                  >
                    <Trash2 className="w-4 h-4" /> Clear All
                  </button>

@@ -271,7 +271,7 @@ const AdminWithdrawRequests = () => {
                         {req.status === 'pending' ? (
                           <>
                             <motion.button onClick={() => updateStatus(req._id, 'approved')} whileHover={{ scale: 1.02 }} className="flex-1 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2"><CheckCircle2 className="w-4 h-4" /> Approve</motion.button>
-                            <motion.button onClick={() => updateStatus(req._id, 'rejected')} whileHover={{ scale: 1.02 }} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white transition-all"><XCircle className="w-5 h-5" /></motion.button>
+                            <motion.button onClick={() => updateStatus(req._id, 'rejected')} whileHover={{ scale: 1.02 }} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl border border-black/20 dark:border-white/20 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><XCircle className="w-5 h-5" /></motion.button>
                           </>
                         ) : req.status === 'approved' ? (
                           <motion.button onClick={() => updateStatus(req._id, 'paid')} whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2"><CreditCard className="w-4 h-4" /> Mark as Paid</motion.button>

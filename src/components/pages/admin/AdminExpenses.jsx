@@ -325,7 +325,7 @@ const AdminExpenses = () => {
                                                         <motion.button
                                                             whileHover={{ scale: 1.1 }}
                                                             onClick={() => handleDelete(expense._id)}
-                                                            className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all shadow-sm"
+                                                            className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm"
                                                         >
                                                             <Trash2 className="w-4 h-4" />
                                                         </motion.button>

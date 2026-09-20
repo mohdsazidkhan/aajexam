@@ -261,7 +261,7 @@ export default function AdminContacts() {
                                   <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-700 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
                                      <Send className="w-4 h-4" />
                                   </button>
-                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all shadow-sm active:scale-95">
+                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
                                      <Trash2 className="w-4 h-4" />
                                   </button>
                                </div>
@@ -303,7 +303,7 @@ export default function AdminContacts() {
                                 <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-700 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all active:scale-95">
                                    <Send className="w-4 h-4" />
                                 </button>
-                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all active:scale-95">
+                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-95">
                                    <Trash2 className="w-4 h-4" />
                                 </button>
                              </div>

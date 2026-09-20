@@ -367,7 +367,7 @@ const AdminGovtExamTests = () => {
                                  </div>
                                  <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
                                     <motion.button onClick={() => handleEdit(test)} className="flex-1 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Edit Test</motion.button>
-                                    <motion.button onClick={() => handleDelete(test._id)} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-5 h-5" /></motion.button>
+                                    <motion.button onClick={() => handleDelete(test._id)} className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-5 h-5" /></motion.button>
                                  </div>
                               </motion.div>
                            ))}

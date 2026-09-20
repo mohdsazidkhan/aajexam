@@ -292,7 +292,7 @@ const AdminReels = () => {
                             </td>
                             <td className="px-6 py-6 text-right">
                               <div className="flex items-center justify-end gap-2">
-                                <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
+                                <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-4 h-4" /></button>
                                 <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
                                 {(item.status === 'pending' || item.status === 'rejected') && (
                                   <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 hover:bg-primary-700 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
@@ -339,7 +339,7 @@ const AdminReels = () => {
                               <div className="flex items-center gap-1 text-[9px] font-black text-black/70 dark:text-white/70 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
                             </div>
                             <div className="flex items-center gap-1">
-                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white transition-all"><Trash2 className="w-3 h-3" /></button>
+                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-3 h-3" /></button>
                               <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500"><Edit3 className="w-3 h-3" /></Link>
                             </div>
                           </div>
