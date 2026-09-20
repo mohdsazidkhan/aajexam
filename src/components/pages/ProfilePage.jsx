@@ -252,12 +252,17 @@ const ProfilePage = () => {
 
         {/* All India Rank */}
         <Card className="p-6 lg:p-10 space-y-6" radius="3xl">
-          <div className="flex items-center gap-4">
-            <Trophy className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
-            <div>
-              <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">All India Rank</h2>
-              <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <Trophy className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
+              <div>
+                <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">All India Rank</h2>
+                <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
+              </div>
             </div>
+            <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="rounded-xl text-xs font-black" onClick={() => router.push('/leaderboard')}>
+              View leaderboard
+            </Button>
           </div>
           <div className="grid grid-cols-2 gap-3 lg:gap-6">
             <div className="rounded-[1.5rem] bg-primary-700 text-white p-4 lg:p-6 text-center">
