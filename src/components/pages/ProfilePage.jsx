@@ -260,7 +260,7 @@ const ProfilePage = () => {
                 <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
               </div>
             </div>
-            <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="rounded-xl text-xs font-black" onClick={() => router.push('/leaderboard')}>
+            <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/leaderboard')}>
               View leaderboard
             </Button>
           </div>
