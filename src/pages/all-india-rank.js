@@ -74,24 +74,25 @@ const Podium = ({ top3, currentUserId }) => {
         const isFirst = entry.rank === 1;
 
         return (
-          <motion.div
-            key={entry.rank}
-            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
-            className={`flex flex-col items-center gap-1.5 ${isFirst ? 'scale-105 sm:scale-110 -mb-1' : ''}`}
-          >
-            {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
-            <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
-            {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>}
-            <div className="text-center max-w-[76px] sm:max-w-[96px]">
-              <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
-                {entry.name || entry.username || 'User'}
-              </p>
-              <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.avgPercentage}% avg</p>
-            </div>
-            <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
-              <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
-            </div>
-          </motion.div>
+          <Link href={entry.username ? `/u/${entry.username}` : '#'} key={entry.rank}>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
+              className={`flex flex-col items-center gap-1.5 ${isFirst ? 'scale-105 sm:scale-110 -mb-1' : ''}`}
+            >
+              {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
+              <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
+              {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>}
+              <div className="text-center max-w-[76px] sm:max-w-[96px]">
+                <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
+                  {entry.name || entry.username || 'User'}
+                </p>
+                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.avgPercentage}% avg</p>
+              </div>
+              <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
+                <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
+              </div>
+            </motion.div>
+          </Link>
         );
       })}
     </div>

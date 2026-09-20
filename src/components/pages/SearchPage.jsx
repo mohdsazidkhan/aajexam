@@ -304,7 +304,7 @@ const SearchPage = () => {
             const isThisLoading = followLoading === userId;
             return (
                <div className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
-                  <div onClick={() => item.username && router.push(`/u/${item.username}`)} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
+                  <Link href={item.username ? `/u/${item.username}` : '#'} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
                      <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-primary-700 p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
@@ -312,7 +312,7 @@ const SearchPage = () => {
                         <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.username || item.name}</p>
                         <p className="text-xs text-slate-400 truncate">{item.name} {item.followersCount ? `· ${formatCount(item.followersCount)} followers` : ''}</p>
                      </div>
-                  </div>
+                  </Link>
                   {isSelf ? (
                      <span className="shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-400 dark:text-slate-500">You</span>
                   ) : isAuthenticated() && userId && (
