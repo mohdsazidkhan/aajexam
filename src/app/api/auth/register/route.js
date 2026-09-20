@@ -39,12 +39,18 @@ async function generateUniqueUsername(email) {
     return username;
 }
 
+// Free-PRO-for-everyone promo — new signups get PRO through this date instead
+// of the usual 7-day trial. Remove this block once the promo ends.
+const PROMO_END_DATE = new Date('2026-12-31T23:59:59.999Z');
+
 const createFreeSubscription = async (userId, isAdmin = false) => {
     try {
         const startDate = new Date();
         let endDate = new Date();
         if (isAdmin) {
             endDate.setFullYear(2099);
+        } else if (startDate < PROMO_END_DATE) {
+            endDate = new Date(PROMO_END_DATE);
         } else {
             // 7-Day PRO Trial
             endDate.setDate(endDate.getDate() + 7);
@@ -189,13 +195,20 @@ export async function POST(req) {
 
         // Send Welcome Email
         if (!isAdmin) {
+            const isPromoActive = new Date() < PROMO_END_DATE;
+            const proBannerTitle = isPromoActive
+                ? '🎁 Your FREE PRO Access is Active!'
+                : '🎁 Your 7-Day PRO Trial is Active!';
+            const proBannerBody = isPromoActive
+                ? `We've unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for free until ${PROMO_END_DATE.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}. Make the most of it!`
+                : 'We\'ve automatically unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for the next 7 days for free. Make the most of it!';
             const welcomeHtml = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
                 <h2 style="color: #4F46E5;">Welcome to AajExam, ${user.name}! 🎉</h2>
                 <p>We are thrilled to have you on board. Your journey to cracking your dream exam starts today.</p>
                 <div style="background-color: #FEF3C7; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                    <h3 style="margin-top: 0; color: #D97706;">🎁 Your 7-Day PRO Trial is Active!</h3>
-                    <p style="margin-bottom: 0;">We've automatically unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for the next 7 days for free. Make the most of it!</p>
+                    <h3 style="margin-top: 0; color: #D97706;">${proBannerTitle}</h3>
+                    <p style="margin-bottom: 0;">${proBannerBody}</p>
                 </div>
                 <p>Log in now to track your daily streak and analyze your test performance.</p>
                 <p>Best of luck,<br><strong>The AajExam Team</strong></p>
@@ -203,7 +216,9 @@ export async function POST(req) {
             `;
             sendBrevoEmail({
                 to: user.email,
-                subject: 'Welcome to AajExam! Your 7-Day PRO Trial is inside 🎁',
+                subject: isPromoActive
+                    ? 'Welcome to AajExam! Your FREE PRO Access is inside 🎁'
+                    : 'Welcome to AajExam! Your 7-Day PRO Trial is inside 🎁',
                 html: welcomeHtml
             }).catch(err => console.error('Failed to send welcome email:', err));
         }

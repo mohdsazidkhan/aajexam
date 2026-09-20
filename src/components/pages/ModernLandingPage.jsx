@@ -419,14 +419,14 @@ const ModernLandingPage = () => {
                   </Card>
 
                   <Card className="lg:col-span-8 p-5 lg:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col lg:flex-row items-center gap-6 lg:gap-10 overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">
-                     <div className="flex-1 space-y-2 lg:space-y-4 lg:space-y-6 relative z-10 text-center lg:text-left">
+                     <div className="flex-1 space-y-2 lg:space-y-4 relative z-10 text-center lg:text-left">
                         <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-700 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto lg:mx-0">
                            <Medal className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
                         <p className="text-base lg:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 lg:px-0">Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.</p>
                         <div className="pt-2 lg:pt-4">
-                           <Button variant="primary" size="lg" className="shadow-sm rounded-lg lg:rounded-xl xl:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/register')}>
+                           <Button variant="primary" size="lg" className="w-full lg:w-auto shadow-sm rounded-lg lg:rounded-xl xl:rounded-2xl px-8 lg:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 lg:py-6" onClick={() => router.push('/login')}>
                               Start referring
                            </Button>
                         </div>

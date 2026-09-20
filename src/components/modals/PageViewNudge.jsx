@@ -111,6 +111,7 @@ const PageViewNudge = () => {
       // Don't show if they already dismissed it this session
       if (sessionStorage.getItem('pageViewNudgeDismissed')) return;
       if (sessionStorage.getItem('exitIntentShown')) return; // Avoid conflicting modals
+      if (sessionStorage.getItem('welcomePromoShown')) return; // Avoid conflicting modals
 
       // Increment page view count
       const currentViews = parseInt(localStorage.getItem('guestPageViews') || '0', 10);
@@ -130,7 +131,10 @@ const PageViewNudge = () => {
     if (!sessionStorage.getItem('pageViewNudgeDismissed') && !sessionStorage.getItem('exitIntentShown')) {
       const views = parseInt(localStorage.getItem('guestPageViews') || '0', 10);
       if (views >= 3) {
-        setTimeout(() => setShow(true), 3000);
+        setTimeout(() => {
+          if (sessionStorage.getItem('welcomePromoShown')) return; // Avoid conflicting modals
+          setShow(true);
+        }, 3000);
       }
     }
 

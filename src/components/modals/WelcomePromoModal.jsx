@@ -3,11 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
-import { Gift, X, BookOpen, Target } from 'lucide-react';
+import { Gift, X, CheckCircle2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 
-const ExitIntentModalInner = ({ onClose }) => {
+const PROMO_FEATURES = [
+  'Unlimited Practice Tests',
+  'All Previous Year Papers (PYQs)',
+  'Full-Length Mock Tests',
+  'Certificates',
+];
+
+const WelcomePromoModalInner = ({ onClose }) => {
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -30,7 +37,7 @@ const ExitIntentModalInner = ({ onClose }) => {
           localStorage.setItem('userInfo', JSON.stringify(authRes.user));
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
-          toast.success('Welcome to AajExam! 🎉 Your free mock test is unlocked.');
+          toast.success('Welcome to AajExam! 🎉 Your free PRO access is unlocked.');
           onClose();
           router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
         }
@@ -48,7 +55,6 @@ const ExitIntentModalInner = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -57,7 +63,6 @@ const ExitIntentModalInner = ({ onClose }) => {
         onClick={onClose}
       />
 
-      {/* Modal */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -81,21 +86,21 @@ const ExitIntentModalInner = ({ onClose }) => {
             </div>
 
             <h2 className="text-2xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
-              Wait! Don't Leave Empty Handed.
+              PRO Access is FREE for Everyone!
             </h2>
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              Sign up in 10 seconds to unlock a <span className="text-primary-700 font-black">Free Premium Mock Test</span> and personalized progress tracking.
+              Sign up free and unlock everything — <span className="text-primary-700 font-black">free until 31 December 2026</span>. No payment, no card.
             </p>
 
             <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
-              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-700 shrink-0"><BookOpen className="w-4 h-4" /></div>
-                Free Latest PYQ PDF & Tests
-              </div>
-              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 dark:bg-white/30 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                Personalized Weakness Analysis
-              </div>
+              {PROMO_FEATURES.map((feature) => (
+                <div key={feature} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
+                  <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-700 shrink-0">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  {feature}
+                </div>
+              ))}
             </div>
 
             <button
@@ -113,9 +118,9 @@ const ExitIntentModalInner = ({ onClose }) => {
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
               )}
-              {isGoogleLoading ? 'Signing in...' : 'Claim Free Account'}
+              {isGoogleLoading ? 'Signing in...' : 'Get PRO Free Now'}
             </button>
-            <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">Takes only 10 seconds</p>
+            <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">Offer valid till 31 Dec 2026</p>
           </div>
         </div>
       </motion.div>
@@ -123,43 +128,24 @@ const ExitIntentModalInner = ({ onClose }) => {
   );
 };
 
-const ExitIntentModal = () => {
+const WelcomePromoModal = () => {
   const [show, setShow] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check auth from local storage (app standard)
     const token = localStorage.getItem('token');
-    if (token) {
-      setIsAuthenticated(true);
-      return;
-    }
+    if (token) return; // Authenticated users don't see this
 
-    // Has it been shown already in this session?
-    const hasShown = sessionStorage.getItem('exitIntentShown');
-    if (hasShown) return;
-    // Avoid stacking on top of the welcome promo modal
-    if (sessionStorage.getItem('welcomePromoShown')) return;
-
-    const handleMouseLeave = (e) => {
-      // Trigger if mouse leaves top of viewport (y <= 0)
-      if (e.clientY <= 0) {
-        setShow(true);
-        sessionStorage.setItem('exitIntentShown', 'true');
-        document.removeEventListener('mouseleave', handleMouseLeave);
-      }
-    };
-
-    // Small delay before arming it, so it doesn't trigger immediately on load
+    // Intentionally no "already shown" check — this modal is scoped to the
+    // landing page only, and should reappear on every visit/refresh.
     const timer = setTimeout(() => {
-      document.addEventListener('mouseleave', handleMouseLeave);
-    }, 2000);
+      setShow(true);
+      sessionStorage.setItem('welcomePromoShown', 'true');
+    }, 1200);
 
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, [isAuthenticated]);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleClose = () => setShow(false);
 
   if (!show) return null;
 
@@ -167,7 +153,7 @@ const ExitIntentModal = () => {
   if (!googleClientId || googleClientId === 'your_google_client_id_here') {
     return (
       <AnimatePresence>
-        <ExitIntentModalInner onClose={() => setShow(false)} />
+        <WelcomePromoModalInner onClose={handleClose} />
       </AnimatePresence>
     );
   }
@@ -175,10 +161,10 @@ const ExitIntentModal = () => {
   return (
     <AnimatePresence>
       <GoogleOAuthProvider clientId={googleClientId}>
-        <ExitIntentModalInner onClose={() => setShow(false)} />
+        <WelcomePromoModalInner onClose={handleClose} />
       </GoogleOAuthProvider>
     </AnimatePresence>
   );
 };
 
-export default ExitIntentModal;
+export default WelcomePromoModal;

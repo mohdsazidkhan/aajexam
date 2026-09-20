@@ -34,6 +34,10 @@ const PageViewNudge = dynamic(() => import('../components/modals/PageViewNudge')
   ssr: false,
 });
 
+const WelcomePromoModal = dynamic(() => import('../components/modals/WelcomePromoModal'), {
+  ssr: false,
+});
+
 // Global styles for mobile optimization
 const globalStyles = `
   /* Mobile Viewport and Touch Scrolling Fixes */
@@ -133,6 +137,7 @@ function AppContent({ Component, pageProps }) {
         </div>
         <UnifiedFooter />
         <PublicBottomNav />
+        <WelcomePromoModal />
         <ExitIntentModal />
         <PageViewNudge />
       </main>
