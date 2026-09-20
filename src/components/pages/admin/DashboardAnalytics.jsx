@@ -81,22 +81,8 @@ const DashboardAnalytics = () => {
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
   };
 
-  const levelLabels = data?.levelDistribution?.map(l => `Level ${l._id}`) || [];
-  const levelCounts = data?.levelDistribution?.map(l => l.count) || [];
-
   const subscriptionLabels = data?.subscriptionDistribution?.map(s => s._id) || [];
   const subscriptionCounts = data?.subscriptionDistribution?.map(s => s.count) || [];
-
-  const levelBarData = {
-    labels: levelLabels,
-    datasets: [{
-      label: 'Users',
-      data: levelCounts,
-      backgroundColor: 'rgba(59, 130, 246, 0.7)',
-      borderColor: 'rgba(59, 130, 246, 1)',
-      borderWidth: 1,
-    }],
-  };
 
   const subscriptionPieData = {
     labels: subscriptionLabels,

@@ -221,7 +221,6 @@ export default function UserDetailsPage() {
                           </td>
                           <td className="px-4 lg:px-8 py-3 lg:py-6">
                             <div className="text-center">
-                              <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">Level {0}</div>
                               <div className="text-[8px] font-black text-slate-400 uppercase">{'Student'}</div>
                             </div>
                           </td>
@@ -231,7 +230,6 @@ export default function UserDetailsPage() {
                           <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
                             <div className="flex flex-col items-end gap-1">
                               <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-500/10 text-slate-500 border-slate-500/20'}`}>{u.subscriptionStatus || 'FREE'}</div>
-                              <div className="text-[9px] font-black text-primary-700 uppercase tracking-widest">Level {0}</div>
                             </div>
                           </td>
                         </motion.tr>
@@ -252,16 +250,6 @@ export default function UserDetailsPage() {
                       </div>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-700 transition-colors block">{u.name || 'Anonymous'}</Link>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4 lg:mb-8 hover:text-primary-700 transition-colors block">{u.username ? `@${u.username}` : '@unknown'}</Link>
-
-                      <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border border-slate-100 dark:border-white/10">
-                        <div className="flex justify-between items-end gap-3 text-center">
-                          <div className="flex-1">
-                            <div className="text-sm font-black text-slate-900 dark:text-white">Level {0}</div>
-                            <div className="h-1 w-full rounded-full bg-primary-700 my-1 opacity-50" />
-                            <div className="text-[8px] font-black text-slate-400 uppercase">{'Student'}</div>
-                          </div>
-                        </div>
-                      </div>
 
                       <div className="space-y-2 lg:space-y-4 mb-4 lg:mb-8">
                         <div className="flex items-center gap-3 text-[10px] font-black text-slate-500 uppercase truncate bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg lg:rounded-xl border border-slate-100 dark:border-white/5"><Mail className="w-4 text-black/50 dark:text-white/50" /> {u.email || 'N/A'}</div>
@@ -286,13 +274,6 @@ export default function UserDetailsPage() {
                             <Link href={`/u/${u.username}`} target="_blank" className="text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 hover:text-primary-700 transition-colors block">{u.name || 'Anonymous'}</Link>
                             <div className="flex items-center gap-3">
                               <Link href={`/u/${u.username}`} target="_blank" className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-primary-700 transition-colors">@{u.username || 'unknown'}</Link>
-                              <span className={`px-3 py-0.5 rounded-lg text-[8px] font-black uppercase border border-primary-500/20 text-primary-700`}>Level {0}</span>
-                            </div>
-                          </div>
-                          <div className="flex gap-3 lg:gap-8">
-                            <div className="text-center">
-                              <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums">Level {0}</div>
-                              <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{'Student'}</div>
                             </div>
                           </div>
                         </div>

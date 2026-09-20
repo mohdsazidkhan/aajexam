@@ -97,7 +97,6 @@ const UserAnalytics = () => {
     if (!data?.topPerformers?.length) return;
     const rows = data.topPerformers.map(u => ({
       Name: u.name || 'Unknown',
-      Level: 0,
       'High Score Quizzes': 0,
       Subscription: u.subscriptionStatus || 'free'
     }));
@@ -115,25 +114,10 @@ const UserAnalytics = () => {
     }
   };
 
-  const levelLabels = data?.levelDistribution?.map(l => `Level ${l._id}`) || [];
-  const levelCounts = data?.levelDistribution?.map(l => l.count) || [];
   const subscriptionLabels = data?.subscriptionStats?.map(s => s._id?.toUpperCase()) || [];
   const subscriptionCounts = data?.subscriptionStats?.map(s => s.count) || [];
   const userGrowthLabels = data?.userGrowth?.map(g => `${g._id.year}-${g._id.month}-${g._id.day}`) || [];
   const userGrowthCounts = data?.userGrowth?.map(g => g.count) || [];
-
-  const levelBarData = {
-    labels: levelLabels,
-    datasets: [{
-      label: 'Users',
-      data: levelCounts,
-      backgroundColor: 'rgba(79, 70, 229, 0.7)',
-      borderColor: 'rgba(79, 70, 229, 1)',
-      borderWidth: 2,
-      borderRadius: 12,
-      hoverBackgroundColor: 'rgba(79, 70, 229, 0.9)',
-    }]
-  };
 
   const subscriptionPieData = {
     labels: subscriptionLabels,

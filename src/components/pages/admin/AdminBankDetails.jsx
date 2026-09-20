@@ -9,7 +9,7 @@ import { isMobile } from "react-device-detect";
 import API from '../../../lib/api';
 import {
   User, Mail, Calendar, University, Phone, CreditCard,
-  Building, Key, Crown, UserCheck, Search, Filter,
+  Building, Key, Crown, Search, Filter,
   Table as TableIcon, LayoutGrid, List, ChevronRight,
   TrendingUp, Activity, Hash, Info, Zap, Settings, ArrowRight
 } from "lucide-react";
@@ -114,14 +114,6 @@ export default function AdminBankDetails() {
     );
   };
 
-  const getLevelBadge = (level) => {
-    return (
-      <span className="px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest bg-primary-500/10 text-primary-700 border-2 border-primary-500/20">
-        Level {level}
-      </span>
-    );
-  };
-
   const TableView = () => (
     <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
       <div className="overflow-x-auto selection:bg-primary-500/30">
@@ -191,12 +183,6 @@ export default function AdminBankDetails() {
                         {getSubscriptionBadge(detail.user.subscriptionStatus)}
                       </div>
                     )}
-                    {detail.user?.currentLevel !== undefined && (
-                      <div className="flex items-center">
-                        <UserCheck className="w-3 h-3 mr-1.5 text-primary-700" />
-                        {getLevelBadge(detail.user.currentLevel)}
-                      </div>
-                    )}
                   </div>
                 </td>
                 <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
@@ -240,7 +226,6 @@ export default function AdminBankDetails() {
             </div>
             <div className="flex flex-col items-end gap-2">
               {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
-              {detail.user?.currentLevel !== undefined && getLevelBadge(detail.user.currentLevel)}
             </div>
           </div>
 
@@ -332,7 +317,6 @@ export default function AdminBankDetails() {
               </p>
               <div className="flex gap-2 mt-2">
                 {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
-                {detail.user?.currentLevel !== undefined && getLevelBadge(detail.user.currentLevel)}
               </div>
             </div>
           </div>
