@@ -495,8 +495,6 @@ const ModernLandingPage = () => {
                      </Button>
                   </div>
                </div>
-               <Sparkles className="absolute -top-20 -left-20 w-96 h-96 opacity-10 animate-pulse text-primary-700" />
-               <Zap className="absolute -bottom-20 -right-20 w-96 h-96 opacity-10 rotate-12 text-primary-700" />
             </Card>
          </section>
       </MobileAppWrapper>
