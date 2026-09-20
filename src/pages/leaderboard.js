@@ -296,9 +296,9 @@ const MyRankCard = ({ entry, type }) => {
   if (!entry) return null;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="sticky bottom-4 z-30 px-1 mt-4"
+      className="px-1"
     >
       <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-sm">
         <div className="flex items-center gap-3">
@@ -422,6 +422,9 @@ const LeaderboardPage = () => {
           </div>
         </section>
 
+        {/* ── My Rank ── */}
+        {!loading && myEntry && <MyRankCard entry={myEntry} type={type} />}
+
         {/* ── Period Tabs ── */}
         <div className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
           {PERIODS.map(p => {
@@ -544,8 +547,6 @@ const LeaderboardPage = () => {
         )}
       </div>
 
-      {/* ── My Rank — sticky bottom ── */}
-      {!loading && myEntry && <MyRankCard entry={myEntry} type={type} />}
     </div>
   );
 };
