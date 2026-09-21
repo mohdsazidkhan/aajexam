@@ -130,7 +130,7 @@ const SubscriptionPage = () => {
                         ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
                         : `Expired on ${new Date(subscription.expiryDate).toLocaleDateString()} — renew to regain PRO access.`
                       : (subscription.planName || '').toUpperCase() === 'FREE'
-                        ? 'Upgrade to PRO to unlock all practice tests and detailed analytics.'
+                        ? 'PRO is free for everyone till 31 Dec 2026 — refresh this page to see it applied.'
                         : 'Pick a plan below to unlock all exam practice tests.'}
                   </p>
                 </div>
@@ -171,7 +171,7 @@ const SubscriptionPage = () => {
           <div className="text-center space-y-2 lg:space-y-4 max-w-3xl mx-auto px-2">
             <h2 className="text-lg lg:text-5xl font-black font-outfit tracking-tight">Choose your exam prep plan</h2>
             <p className="text-xs lg:text-lg font-medium text-content-secondary">
-              Practice FREE tests on the FREE plan, or upgrade to PRO for full access to all practice tests, mock exams, and detailed performance reports.
+              🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.
             </p>
             <Link href="/features" className="inline-block text-xs lg:text-sm font-bold text-primary-700 hover:text-primary-700 underline underline-offset-4">
               See the full feature comparison

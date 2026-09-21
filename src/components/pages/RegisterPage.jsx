@@ -11,7 +11,6 @@ import {
   Lock,
   Eye,
   EyeOff,
-  Trophy,
   Brain,
   Rocket,
   ShieldCheck,
@@ -143,17 +142,20 @@ const RegisterPageInner = () => {
             </motion.div>
 
             <div className="space-y-2 lg:space-y-4">
+              <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-full">
+                🎁 Register now — Get PRO Free till 31 Dec 2026
+              </span>
               <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">
                 Join the <span className="text-primary-400">community</span>.
               </h1>
               <p className="text-xl font-bold text-slate-300 max-w-md leading-relaxed">
-                Join thousands of students who study every day, improve their scores, and earn cash by referring friends.
+                Join thousands of students who study every day, improve their scores, and unlock PRO for free.
               </p>
             </div>
 
             <div className="space-y-2 lg:space-y-4 pt-8">
               {[
-                { icon: Trophy, text: 'Earn cash when friends you refer upgrade to PRO' },
+                { icon: Rocket, text: 'Get full PRO access free — no payment, no card' },
                 { icon: Brain, text: 'Attempt 500+ Previous Year Papers free' },
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (

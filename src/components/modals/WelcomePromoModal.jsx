@@ -87,13 +87,13 @@ const WelcomePromoModalInner = ({ onClose }) => {
             </div>
 
             <h2 className="text-lg lg:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
-              PRO Access is FREE for Everyone!
+              Sabke Liye PRO Ab FREE Hai!
             </h2>
             <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2 max-w-sm mx-auto">
-              Sign up free and unlock everything. No payment, no card.
+              Pehle se Register hain? Aapko PRO already FREE mil chuka hai, bas Login karein. Naye Hain? Sign Up karein aur turant PRO FREE paayein.
             </p>
             <p className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight text-primary-700 mb-4">
-              Free Till 31 Dec 2026
+              31 Dec 2026 Tak FREE
             </p>
 
             <div className="space-y-1.5 mb-4 text-left max-w-sm mx-auto">
@@ -124,7 +124,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
               )}
               {isGoogleLoading ? 'Signing in...' : 'Get PRO Free Now'}
             </button>
-            <p className="mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-widest">Offer valid till 31 Dec 2026</p>
+            <p className="mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-widest">Offer 31 Dec 2026 Tak Valid Hai</p>
           </div>
         </div>
       </motion.div>
