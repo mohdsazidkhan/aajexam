@@ -15,11 +15,11 @@ import {
 } from 'lucide-react';
 
 const TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Community poll' },
 ];
 
 const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
@@ -216,7 +216,7 @@ const ReelCreate = () => {
               <p className="mt-2 lg:mt-0 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {TYPES.map(t => (
-                  <motion.button key={t.value} whileTap={{ scale: 0.97 }} onClick={() => setType(t.value)}
+                  <motion.button key={t.value} onClick={() => setType(t.value)}
                     className={`p-2.5 lg:p-5 rounded-xl lg:rounded-2xl border-2 text-left transition-all ${t.color}`}>
                     <t.icon className="w-8 h-8 mb-3 opacity-70" />
                     <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{t.label}</h3>
