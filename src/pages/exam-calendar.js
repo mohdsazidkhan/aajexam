@@ -81,7 +81,7 @@ const EventCard = ({ event, compact = false }) => {
         <div className="flex-1 min-w-0">
           <p className="text-sm font-black text-content-primary leading-tight line-clamp-2">{event.label}</p>
           {(event.examName || event.examNewsTitle) && (
-            <p className="text-base font-black text-content-primary mt-0.5 truncate">
+            <p className="text-base font-black text-content-primary mt-0.5">
               {event.examName || event.examNewsTitle}
             </p>
           )}
