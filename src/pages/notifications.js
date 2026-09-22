@@ -110,7 +110,7 @@ const NotificationsPage = () => {
           </div>
         </div>
 
-        <Card className="p-2 lg:p-4 overflow-hidden">
+        <Card className="overflow-hidden">
           <AnimatePresence mode="popLayout">
             {notifications.length === 0 ? (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">

@@ -232,7 +232,7 @@ const TestResult = ({ resolvedId } = {}) => {
             color: 'text-black dark:text-white'
           }
         ].map((item, idx) => (
-          <Card key={idx} className="flex flex-col items-center text-center p-6 gap-1.5 border-2 hover:border-primary-700 transition-colors">
+          <Card key={idx} className="flex flex-col items-center text-center gap-1.5 border-2 hover:border-primary-700 transition-colors">
             <div className={`w-14 h-14 shrink-0 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
               <item.icon className="w-6 h-6 lg:w-7 lg:h-7" />
             </div>
@@ -279,7 +279,7 @@ const TestResult = ({ resolvedId } = {}) => {
                     </span>
                   )}
                 </div>
-                <Card className="p-0 overflow-hidden border-2">
+                <Card padded={false} className="overflow-hidden border-2">
                   <table className="w-full">
                     <thead className="bg-gray-50 dark:bg-slate-800/50 text-xs font-black uppercase text-gray-400 border-b">
                       <tr>
@@ -334,7 +334,7 @@ const TestResult = ({ resolvedId } = {}) => {
                 <h3 className="text-xl font-black font-outfit uppercase px-2">Section Performance</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
-                    <Card key={idx} className="p-4 border-2">
+                    <Card key={idx} className="border-2">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
                         <span className="font-black text-primary-700">{stats.score} pts</span>
@@ -434,7 +434,7 @@ const TestResult = ({ resolvedId } = {}) => {
       {/* --- Share Result --- */}
       {mounted && result && (
         <section className="px-0 py-4 lg:py-8">
-          <Card className="p-2 lg:p-4 border-2 bg-primary-50 dark:bg-slate-800">
+          <Card className="border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
               <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">

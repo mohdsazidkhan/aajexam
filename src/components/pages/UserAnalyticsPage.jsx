@@ -152,7 +152,7 @@ const MyAnalyticsPage = () => {
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-primary-700 text-white border-none shadow-sm p-5 lg:p-8 overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
+               <Card className="bg-primary-700 text-white border-none shadow-sm overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-8">
                      <div className="space-y-2 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
@@ -203,22 +203,22 @@ const MyAnalyticsPage = () => {
                      <>
                         {/* Quick Stats Grid */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Zap className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{quiz?.totalAttempts || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Quizzes Done</p>
                            </Card>
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><GraduationCap className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{exam?.totalAttempts || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Exams Done</p>
                            </Card>
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Play className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{reel?.totalViewed || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Viewed</p>
                            </Card>
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl w-fit mx-auto mb-2"><FileText className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{data?.myReels?.totalPosted || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Posted</p>
@@ -227,22 +227,22 @@ const MyAnalyticsPage = () => {
 
                         {/* Social + Wallet Row */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl w-fit mx-auto mb-2"><Users className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{followersCount || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Followers</p>
                            </Card>
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl w-fit mx-auto mb-2"><Target className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{followingCount || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Following</p>
                            </Card>
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Wallet className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{wallet?.balance || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Wallet Balance</p>
                            </Card>
-                           <Card className="text-center p-4 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><UserPlus className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{referral?.count || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Referrals</p>
@@ -256,7 +256,7 @@ const MyAnalyticsPage = () => {
                               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                  {quiz.subjectWise.map((s, idx) => {
                                     return (
-                                       <Card key={idx} className="p-5 border-slate-200 dark:border-slate-800 space-y-3 rounded-3xl">
+                                       <Card key={idx} className="border-slate-200 dark:border-slate-800 space-y-3 rounded-3xl">
                                           <div className="flex justify-between items-center">
                                              <span className="font-black text-base">{s.name}</span>
                                              <span className="text-xs font-bold text-content-secondary">{s.attempts} attempts</span>
@@ -283,7 +283,7 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Correct / Wrong / Skipped */}
-                        <Card className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                        <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
                            <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
@@ -316,7 +316,7 @@ const MyAnalyticsPage = () => {
                               <div className="space-y-3">
                                  {quiz.subjectWise.map((s, idx) => {
                                     return (
-                                       <Card key={idx} className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                                       <Card key={idx} className="border-slate-200 dark:border-slate-800 rounded-3xl">
                                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                              <div className="flex-1 space-y-3">
                                                 <div className="flex justify-between items-center">
@@ -343,7 +343,7 @@ const MyAnalyticsPage = () => {
                               <SectionHeader icon={Target} title="Topic Wise Performance" subtitle="Top topics by attempts" />
                               <div className="space-y-2">
                                  {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((t, idx) => (
-                                    <Card key={idx} className="p-4 border-slate-200 dark:border-slate-800 rounded-2xl">
+                                    <Card key={idx} className="border-slate-200 dark:border-slate-800 rounded-2xl">
                                        <div className="flex items-center justify-between">
                                           <div>
                                              <p className="font-black text-sm">{t.name}</p>
@@ -368,7 +368,7 @@ const MyAnalyticsPage = () => {
                         )}
 
                         {quiz?.totalAttempts === 0 && (
-                           <Card className="p-8 text-center border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-3xl">
                               <Zap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">No quiz attempts yet</p>
                               <p className="text-xs text-content-secondary mt-1">Start practicing to see your performance here!</p>
@@ -386,7 +386,7 @@ const MyAnalyticsPage = () => {
                            <StatMini icon={Trophy} label="Best Accuracy" value={`${exam?.bestAccuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
-                        <Card className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                        <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
                            <div className="grid grid-cols-2 gap-4 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
@@ -406,7 +406,7 @@ const MyAnalyticsPage = () => {
                         </Card>
 
                         {exam?.totalAttempts === 0 && (
-                           <Card className="p-8 text-center border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-3xl">
                               <GraduationCap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">No exam attempts yet</p>
                               <p className="text-xs text-content-secondary mt-1">Attempt practice tests to track your exam performance!</p>
@@ -426,7 +426,7 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Engagement Stats */}
-                        <Card className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                        <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
                            <p className="font-black text-sm uppercase text-content-secondary mb-4">Engagement</p>
                            <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
@@ -454,7 +454,7 @@ const MyAnalyticsPage = () => {
                               <div className="space-y-3">
                                  {reel.subjectWise.map((s, idx) => {
                                     return (
-                                       <Card key={idx} className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                                       <Card key={idx} className="border-slate-200 dark:border-slate-800 rounded-3xl">
                                           <div className="flex justify-between items-center mb-3">
                                              <span className="font-black text-base">{s.subject}</span>
                                              <span className="text-xs font-bold text-content-secondary">{s.correct}/{s.attempted} correct</span>
@@ -468,7 +468,7 @@ const MyAnalyticsPage = () => {
                         )}
 
                         {reel?.totalViewed === 0 && (
-                           <Card className="p-8 text-center border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-3xl">
                               <Play className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">No reel activity yet</p>
                               <p className="text-xs text-content-secondary mt-1">Start watching reels to learn on the go!</p>
@@ -481,7 +481,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         {/* Balance Card */}
-                        <Card className="bg-primary-700 text-white border-none shadow-sm p-2 lg:p-4 rounded-[2rem] lg:rounded-[3rem]">
+                        <Card className="bg-primary-700 text-white border-none shadow-sm rounded-[2rem] lg:rounded-[3rem]">
                            <div className="flex justify-between items-start mb-6">
                               <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
                               <span className="text-xs font-black opacity-60 uppercase">Wallet Balance</span>
@@ -494,14 +494,14 @@ const MyAnalyticsPage = () => {
 
                         {/* Earned / Spent */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                           <Card className="flex items-center gap-5 p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
                               <div className="p-4 bg-primary-100 dark:bg-primary-900/30 text-primary-700 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
                               <div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Total Earned</p>
                                  <p className="text-2xl font-black font-outfit">{wallet?.totalEarnings || 0}</p>
                               </div>
                            </Card>
-                           <Card className="flex items-center gap-5 p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
                               <div className="p-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-2xl"><TrendingDown className="w-7 h-7" /></div>
                               <div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Total Spent</p>
@@ -514,14 +514,14 @@ const MyAnalyticsPage = () => {
                         <div className="space-y-2 lg:space-y-4">
                            <SectionHeader icon={Coins} title="Earnings Breakdown" />
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-                              <Card className="p-5 border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
+                              <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
                                     <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg lg:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Blog Earnings</span>
                                  </div>
                                  <span className="font-black text-lg text-black dark:text-white">{wallet?.blogEarnings || 0}</span>
                               </Card>
-                              <Card className="p-5 border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
+                              <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
                                     <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg lg:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Referral Rewards</span>
@@ -534,7 +534,7 @@ const MyAnalyticsPage = () => {
                         {/* Referral Section */}
                         <div className="space-y-2 lg:space-y-4">
                            <SectionHeader icon={UserPlus} title="Referral" subtitle={`${referral?.count || 0} people joined using your code`} />
-                           <Card className="p-5 border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
                               <div className="flex flex-col sm:flex-row items-center gap-4">
                                  <div className="flex-1 w-full">
                                     <p className="text-xs font-bold text-content-secondary mb-2">Your Referral Code</p>

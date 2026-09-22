@@ -57,22 +57,22 @@ const StreakPage = () => {
 
         {/* Streak Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="p-4 text-center space-y-1">
+          <Card className="text-center space-y-1">
             <Flame className="w-8 h-8 text-black dark:text-white mx-auto" />
             <p className="text-3xl font-black text-black dark:text-white">{streak?.currentStreak || 0}</p>
             <p className="text-[10px] font-bold text-slate-400 uppercase">Current Streak</p>
           </Card>
-          <Card className="p-4 text-center space-y-1">
+          <Card className="text-center space-y-1">
             <Trophy className="w-8 h-8 text-black dark:text-white mx-auto" />
             <p className="text-3xl font-black text-black dark:text-white">{streak?.longestStreak || 0}</p>
             <p className="text-[10px] font-bold text-slate-400 uppercase">Longest Streak</p>
           </Card>
-          <Card className="p-4 text-center space-y-1">
+          <Card className="text-center space-y-1">
             <Calendar className="w-8 h-8 text-primary-700 mx-auto" />
             <p className="text-3xl font-black text-primary-700">{streak?.totalActiveDays || 0}</p>
             <p className="text-[10px] font-bold text-slate-400 uppercase">Active Days</p>
           </Card>
-          <Card className="p-4 text-center space-y-1">
+          <Card className="text-center space-y-1">
             <Snowflake className="w-8 h-8 text-black dark:text-white mx-auto" />
             <p className="text-3xl font-black text-black dark:text-white">{streak?.freezesAvailable || 0}</p>
             <p className="text-[10px] font-bold text-slate-400 uppercase">Freezes Left</p>
@@ -92,7 +92,7 @@ const StreakPage = () => {
 
         {/* Freeze Button */}
         {!streak?.todayCompleted && streak?.freezesAvailable > 0 && (
-          <Card className="p-4 flex items-center justify-between">
+          <Card className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-black text-slate-900 dark:text-white">Use Streak Freeze</h3>
               <p className="text-[10px] text-slate-400">Skip today without breaking streak (Pro only)</p>
@@ -106,7 +106,7 @@ const StreakPage = () => {
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-            <Card className="p-5 lg:p-6 space-y-2 lg:space-y-4 relative overflow-hidden">
+            <Card className="space-y-2 lg:space-y-4 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
               <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-primary-700" /> Streak Leaderboard</h3>
               <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>

@@ -97,7 +97,7 @@ export default function ReferralHistory() {
 
                {/* Referral Link Card */}
                {user && (
-                  <Card className="max-w-xl mx-auto p-2 bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-[2.5rem] mt-12">
+                  <Card className="max-w-xl mx-auto bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-[2.5rem] mt-12">
                      <div className="flex items-center gap-2 p-2">
                         <div className="flex-1 text-left min-w-0">
                            <p className="text-[8px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Your Invite Code</p>
@@ -120,7 +120,7 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="p-5 lg:p-8 group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
+                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
                         <div className="flex justify-between items-start mb-4 lg:mb-6">
                            <div className={`p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-2xl`}>
                               <s.icon className="w-6 h-6" />
@@ -151,7 +151,7 @@ export default function ReferralHistory() {
                         const amount = user?.referralRewards?.filter(r => r.type === b.type).reduce((s, r) => s + (r.amount || 0), 0) || 0;
                         const count = user?.referralRewards?.filter(r => r.type === b.type).length || 0;
                         return (
-                           <Card key={i} className="p-6 relative overflow-hidden group rounded-2xl">
+                           <Card key={i} className="relative overflow-hidden group rounded-2xl">
                               <div className="flex justify-between items-center relative z-10">
                                  <div className="space-y-1">
                                     <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{b.label}</p>

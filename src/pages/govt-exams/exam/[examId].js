@@ -216,7 +216,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* About / SEO long-form intro — server-rendered for crawlers */}
       {aboutText && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
+        <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <FileText className="w-5 h-5 text-primary-700" />
             About {examName}
@@ -229,7 +229,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Exam Information — eligibility, age limit, selection process, salary */}
       {facts && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
+        <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
             <Info className="w-5 h-5 text-primary-700" />
             {examName} Exam Information
@@ -260,7 +260,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Syllabus & Subjects */}
       {subjectAreas.length > 0 && (
-        <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
+        <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <ListChecks className="w-5 h-5 text-primary-700" />
             {examName} Syllabus &amp; Subjects
@@ -504,7 +504,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       )}
 
       {/* How to Prepare */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
+      <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <GraduationCap className="w-5 h-5 text-primary-700" />
           How to Prepare for {examName}
@@ -522,7 +522,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* Related Searches */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
+      <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <Search className="w-5 h-5 text-primary-700" />
           Related Searches
@@ -540,7 +540,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </Card>
 
       {/* FAQ — rendered visibly to match the FAQ structured data above */}
-      <Card className="border-2 border-slate-100 dark:border-slate-800 p-2 lg:p-4">
+      <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <HelpCircle className="w-5 h-5 text-primary-700" />
           Frequently Asked Questions
@@ -557,7 +557,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-primary-700 text-white border-none p-2 lg:p-4">
+        <Card className="bg-primary-700 text-white border-none">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

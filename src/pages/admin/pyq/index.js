@@ -101,7 +101,7 @@ const AdminPYQ = () => {
                 const maxYear = examId ? maxYearByExam[examId] : null;
                 const isFree = maxYear != null && Number(t.pyqYear) === Number(maxYear);
                 return (
-                <Card key={t._id || i} className="p-4 lg:p-5 flex items-center gap-4">
+                <Card key={t._id || i} className="flex items-center gap-4">
                   <div className="flex-1 min-w-0 space-y-1.5">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-700 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>

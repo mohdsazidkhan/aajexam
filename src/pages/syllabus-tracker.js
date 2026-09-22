@@ -16,7 +16,7 @@ const Sh = ({ className = '' }) => (
 
 const TrackerSkeleton = () => (
   <div className="space-y-6">
-    <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-2 border-black dark:border-white">
+    <Card className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-2 border-black dark:border-white">
       <Sh className="w-32 h-32 rounded-full flex-shrink-0" />
       <div className="flex-1 w-full space-y-3 text-center md:text-left">
         <Sh className="h-6 w-40 mx-auto md:mx-0" />
@@ -215,7 +215,7 @@ const SyllabusTrackerPage = () => {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
 
               {/* Progress Header */}
-              <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-2 border-black dark:border-white">
+              <Card className="flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-2 border-black dark:border-white">
                 <div className="relative w-32 h-32 flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path className="text-slate-100 dark:text-slate-800" strokeWidth="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />

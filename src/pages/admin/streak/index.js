@@ -57,12 +57,12 @@ const AdminStreakPage = () => {
           ) : (
             <div className="grid gap-4">
               {leaderboard.length === 0 ? (
-                <Card className="p-6 text-center text-slate-500 dark:text-slate-400">
+                <Card className="text-center text-slate-500 dark:text-slate-400">
                   No streak data available yet.
                 </Card>
               ) : (
                 leaderboard.map((entry, idx) => (
-                  <Card key={entry._id || idx} className="p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <Card key={entry._id || idx} className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                       <div className="text-xs uppercase tracking-[0.2em] text-slate-400">#{idx + 1}</div>
                       <h2 className="text-lg font-black text-slate-900 dark:text-white">{entry.user?.name || entry.user?.username || 'Unknown'}</h2>

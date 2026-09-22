@@ -151,7 +151,7 @@ const DailyChallengePage = () => {
 
         {/* Not started yet */}
         {!started && !attempted && (
-          <Card className="p-8 text-center space-y-6">
+          <Card className="text-center space-y-6">
             <div className="w-24 h-24 bg-primary-50 dark:bg-primary-900/30 rounded-3xl flex items-center justify-center mx-auto">
               <Zap className="w-12 h-12 text-primary-700" />
             </div>
@@ -172,7 +172,7 @@ const DailyChallengePage = () => {
                 <Clock className="w-4 h-4" /> {formatTime(timeLeft)}
               </span>
             </div>
-            <Card className="p-5 lg:p-6 space-y-2 lg:space-y-4">
+            <Card className="space-y-2 lg:space-y-4">
               <h3 className="text-base lg:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{challenge.questions[currentQ].questionText}</h3>
               <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
@@ -199,7 +199,7 @@ const DailyChallengePage = () => {
         {attempted && attemptData && (
           <div className="space-y-6">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <Card className="p-6 text-center space-y-2 lg:space-y-4 bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20 shadow-sm">
+              <Card className="text-center space-y-2 lg:space-y-4 bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20 shadow-sm">
                 <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
@@ -220,7 +220,7 @@ const DailyChallengePage = () => {
 
             {/* Per-question review + discussion */}
             {challenge?.questions?.length > 0 && (
-              <Card className="p-4 lg:p-5 space-y-2 lg:space-y-4">
+              <Card className="space-y-2 lg:space-y-4">
                 <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
                   <Target className="w-4 h-4 text-primary-700" /> Question Review & Discussion
                 </h3>
@@ -275,7 +275,7 @@ const DailyChallengePage = () => {
             {/* Leaderboard */}
             {leaderboard.length > 0 && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-                <Card className="p-4 space-y-3 relative overflow-hidden">
+                <Card className="space-y-3 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
                   <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><Trophy className="w-4 h-4 text-black dark:text-white" /> Today&apos;s Leaderboard</h3>
                   <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>

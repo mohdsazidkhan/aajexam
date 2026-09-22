@@ -123,7 +123,7 @@ const MyQuestionsPage = () => {
 
                         return (
                            <motion.div key={q._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="p-5 group hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full cursor-pointer"
+                              <Card className="group hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full cursor-pointer"
                                  onClick={() => router.push(`/community-questions/${q._id}`)}>
                                  <div className="space-y-2 lg:space-y-4 flex-1">
                                     {/* Top: Status + Delete */}

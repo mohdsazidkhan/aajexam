@@ -78,12 +78,12 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
           <h1 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white">{affair.title}</h1>
         </div>
 
-        <Card className="p-6">
+        <Card className="">
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{affair.content}</p>
         </Card>
 
         {affair.keyPoints?.length > 0 && (
-          <Card className="p-4 space-y-2">
+          <Card className="space-y-2">
             <h3 className="text-sm font-black text-slate-900 dark:text-white">Key Points</h3>
             <ul className="space-y-1">
               {affair.keyPoints.map((kp, i) => (
@@ -96,7 +96,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
         )}
 
         {affair.questions?.length > 0 && (
-          <Card className="p-4 space-y-2 lg:space-y-4">
+          <Card className="space-y-2 lg:space-y-4">
             <h3 className="text-sm font-black text-slate-900 dark:text-white">Practice Questions</h3>
             {affair.questions.map((q, i) => (
               <div key={i} className="space-y-2 pb-3 border-b border-slate-100 dark:border-slate-800 last:border-0">

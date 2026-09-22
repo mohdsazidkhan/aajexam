@@ -56,15 +56,15 @@ const AdminRevisionPage = () => {
             <AdminTableSkeleton />
           ) : (
             <div className="grid gap-4 md:grid-cols-3">
-              <Card className="p-5 space-y-3">
+              <Card className="space-y-3">
                 <div className="flex items-center gap-2 text-primary-700"><Clock className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Due Today</span></div>
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.dueToday ?? 0}</div>
               </Card>
-              <Card className="p-5 space-y-3">
+              <Card className="space-y-3">
                 <div className="flex items-center gap-2 text-black dark:text-white"><ShieldCheck className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Total Active</span></div>
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.totalItems ?? 0}</div>
               </Card>
-              <Card className="p-5 space-y-3">
+              <Card className="space-y-3">
                 <div className="flex items-center gap-2 text-primary-700"><CheckCircle className="w-5 h-5" /> <span className="text-xs uppercase tracking-[0.2em] font-black">Mastered</span></div>
                 <div className="text-3xl font-black text-slate-900 dark:text-white">{stats?.mastered ?? 0}</div>
               </Card>

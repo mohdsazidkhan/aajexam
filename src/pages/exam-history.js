@@ -113,7 +113,7 @@ const ExamHistoryPage = () => {
                            const rank = getRankBadge(attempt.accuracy || 0);
                            return (
                               <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                                 <Card className="p-6 group cursor-pointer hover:shadow-sm transition-all duration-500 border-2" onClick={() => router.push(`/govt-exams/test/${attempt.practiceTest}/result?attempt=${attempt._id}`)}>
+                                 <Card className="group cursor-pointer hover:shadow-sm transition-all duration-500 border-2" onClick={() => router.push(`/govt-exams/test/${attempt.practiceTest}/result?attempt=${attempt._id}`)}>
                                     <div className="space-y-6">
                                        <div className="flex justify-between items-start">
                                           <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl group-hover:bg-primary-700 group-hover:text-white transition-colors">

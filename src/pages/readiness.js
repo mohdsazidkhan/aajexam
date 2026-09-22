@@ -81,15 +81,15 @@ const ReadinessPage = () => {
 
               {/* Stats */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <Card className="p-4 text-center space-y-1"><p className="text-xl font-black text-slate-700 dark:text-white">{readiness.totalAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Attempts</p></Card>
-                <Card className="p-4 text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgQuizScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Avg Quiz</p></Card>
-                <Card className="p-4 text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgTestScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Avg Test</p></Card>
-                <Card className="p-4 text-center space-y-1"><p className="text-xl font-black text-slate-600 dark:text-slate-300">{readiness.totalQuizAttempts + readiness.totalTestAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Tests Done</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-black text-slate-700 dark:text-white">{readiness.totalAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Attempts</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgQuizScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Avg Quiz</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgTestScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Avg Test</p></Card>
+                <Card className="text-center space-y-1"><p className="text-xl font-black text-slate-600 dark:text-slate-300">{readiness.totalQuizAttempts + readiness.totalTestAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Tests Done</p></Card>
               </div>
 
               {/* Weak Subjects */}
               {readiness.weakSubjects?.length > 0 && (
-                <Card className="p-4 lg:p-5 space-y-3">
+                <Card className="space-y-3">
                   <h3 className="text-sm font-black text-black dark:text-white flex items-center gap-1"><AlertTriangle className="w-4 h-4" /> Weak Subjects (Below 50%)</h3>
                   {readiness.weakSubjects.map((s, i) => (
                     <div key={i} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 dark:bg-white/10 rounded-lg">
@@ -102,7 +102,7 @@ const ReadinessPage = () => {
 
               {/* Strong Subjects */}
               {readiness.strongSubjects?.length > 0 && (
-                <Card className="p-4 lg:p-5 space-y-3">
+                <Card className="space-y-3">
                   <h3 className="text-sm font-black text-primary-700 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> Strong Subjects (Above 70%)</h3>
                   {readiness.strongSubjects.map((s, i) => (
                     <div key={i} className="flex items-center justify-between px-3 py-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
@@ -116,7 +116,7 @@ const ReadinessPage = () => {
           )}
 
           {!readiness && !analyzing && (
-            <Card className="p-8 text-center space-y-2 lg:space-y-4">
+            <Card className="text-center space-y-2 lg:space-y-4">
               <BarChart3 className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">Select an Exam</h2>
               <p className="text-sm text-slate-400">Choose your target exam to see your readiness score based on your quiz and test history.</p>

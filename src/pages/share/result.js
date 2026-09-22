@@ -108,7 +108,7 @@ export default function SharedResult({ stats }) {
               { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-primary-700' },
               { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: 'text-black dark:text-white' },
             ].map((item, idx) => (
-              <Card key={idx} className="flex flex-col items-center text-center p-6 gap-2 border-2">
+              <Card key={idx} className="flex flex-col items-center text-center gap-2 border-2">
                 <div className={`w-12 h-12 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
                   <item.icon className="w-6 h-6" />
                 </div>

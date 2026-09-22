@@ -281,7 +281,7 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="lg:col-span-4 space-y-6">
-                    <Card className="p-6 bg-slate-900 border-none text-white rounded-[2.5rem] space-y-2 lg:space-y-4">
+                    <Card className="bg-slate-900 border-none text-white rounded-[2.5rem] space-y-2 lg:space-y-4">
                       <div className="flex items-center gap-3">
                         <Info className="w-5 h-5 text-primary-400" />
                         <h3 className="font-outfit font-black tracking-tight text-lg">Why this matters</h3>
@@ -339,7 +339,7 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="lg:col-span-4 space-y-6">
-                    <Card className="p-6 rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 lg:space-y-4">
+                    <Card className="rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 lg:space-y-4">
                       <CreditCard className="w-10 h-10 mx-auto text-primary-700" />
                       <h3 className="font-outfit font-black tracking-tight text-lg">Secure handling</h3>
                       <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">

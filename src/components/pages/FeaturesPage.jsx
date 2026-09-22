@@ -216,7 +216,7 @@ const FeaturesPage = () => {
         {/* --- Highlights --- */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {HIGHLIGHTS.map((h, i) => (
-            <Card key={i} className="p-4 lg:p-8 group space-y-2.5 lg:space-y-5 border-2 hover:border-primary-500/50 transition-all duration-300">
+            <Card key={i} className="group space-y-2.5 lg:space-y-5 border-2 hover:border-primary-500/50 transition-all duration-300">
               <div className={`p-2.5 lg:p-4 bg-${h.color}-500/10 text-${h.color}-500 rounded-lg lg:rounded-xl xl:rounded-2xl group-hover:scale-110 transition-transform w-fit shadow-sm`}>
                 <h.icon className="w-4 h-4 lg:w-6 lg:h-6" />
               </div>

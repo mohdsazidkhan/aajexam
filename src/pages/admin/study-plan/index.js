@@ -57,12 +57,12 @@ const AdminStudyPlanPage = () => {
           ) : (
             <div className="space-y-2 lg:space-y-4">
               {plans.length === 0 ? (
-                <Card className="p-6 text-center text-slate-500 dark:text-slate-400">
+                <Card className="text-center text-slate-500 dark:text-slate-400">
                   No study plans available. Study planner admin controls can be added here once backend support is present.
                 </Card>
               ) : (
                 plans.map((plan) => (
-                  <Card key={plan._id} className="p-6">
+                  <Card key={plan._id} className="">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
                         <div className="text-sm text-slate-400 uppercase tracking-[0.2em]">{plan.exam?.name || 'Unknown Exam'}</div>

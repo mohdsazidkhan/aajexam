@@ -77,7 +77,7 @@ export default function CommunityQuestionDetailPage() {
         </button>
 
         {/* Question card */}
-        <Card className="p-5 lg:p-6 space-y-2 lg:space-y-4">
+        <Card className="space-y-2 lg:space-y-4">
           {/* Author + exam */}
           <div className="flex items-center gap-2 text-xs">
             <div className="w-7 h-7 rounded-full bg-primary-400 text-white text-xs font-bold flex items-center justify-center">
@@ -181,7 +181,7 @@ export default function CommunityQuestionDetailPage() {
         </Card>
 
         {/* Answers */}
-        <Card className="p-5 lg:p-6">
+        <Card className="">
           <AnswerThread
             questionId={question._id}
             questionAuthorId={question.author?._id}

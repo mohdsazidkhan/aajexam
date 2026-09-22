@@ -46,7 +46,7 @@ const AdminMentorDetail = () => {
           </Link>
 
           {/* Header */}
-          <Card className="p-5 space-y-3">
+          <Card className="space-y-3">
             <div className="flex items-start justify-between flex-wrap gap-3">
               <div>
                 <h1 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
@@ -109,7 +109,7 @@ const AdminMentorDetail = () => {
 
           {/* Exams Cleared */}
           {mentor.examsCleared?.length > 0 && (
-            <Card className="p-5 space-y-2">
+            <Card className="space-y-2">
               <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><Award className="w-4 h-4 text-primary-700" /> Exams Cleared</h2>
               <div className="space-y-2">
                 {mentor.examsCleared.map((e, i) => (
@@ -126,7 +126,7 @@ const AdminMentorDetail = () => {
 
           {/* Specialization */}
           {mentor.specialization?.length > 0 && (
-            <Card className="p-5 space-y-2">
+            <Card className="space-y-2">
               <h2 className="text-sm font-black text-slate-900 dark:text-white">Specialization</h2>
               <div className="flex flex-wrap gap-1.5">
                 {mentor.specialization.map((s, i) => (
@@ -137,14 +137,14 @@ const AdminMentorDetail = () => {
           )}
 
           {/* Strategy */}
-          <Card className="p-5 space-y-2">
+          <Card className="space-y-2">
             <h2 className="text-sm font-black text-slate-900 dark:text-white">Preparation Strategy</h2>
             <p className="text-xs text-slate-600 dark:text-slate-300 whitespace-pre-line leading-relaxed">{mentor.strategy}</p>
           </Card>
 
           {/* Daily Routine */}
           {mentor.dailyRoutine && (
-            <Card className="p-5 space-y-2">
+            <Card className="space-y-2">
               <h2 className="text-sm font-black text-slate-900 dark:text-white">Daily Routine</h2>
               <p className="text-xs text-slate-600 dark:text-slate-300 whitespace-pre-line leading-relaxed">{mentor.dailyRoutine}</p>
             </Card>
@@ -152,7 +152,7 @@ const AdminMentorDetail = () => {
 
           {/* Tips */}
           {mentor.tips?.length > 0 && (
-            <Card className="p-5 space-y-2">
+            <Card className="space-y-2">
               <h2 className="text-sm font-black text-slate-900 dark:text-white">Tips</h2>
               <ul className="space-y-1.5">
                 {mentor.tips.map((t, i) => (
@@ -166,7 +166,7 @@ const AdminMentorDetail = () => {
 
           {/* Books Recommended */}
           {mentor.booksRecommended?.length > 0 && (
-            <Card className="p-5 space-y-2">
+            <Card className="space-y-2">
               <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-primary-700" /> Books Recommended</h2>
               <ul className="space-y-1.5">
                 {mentor.booksRecommended.map((b, i) => (
@@ -180,7 +180,7 @@ const AdminMentorDetail = () => {
 
           {/* AMA Threads */}
           {mentor.amaThreads?.length > 0 && (
-            <Card className="p-5 space-y-3">
+            <Card className="space-y-3">
               <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><MessageCircle className="w-4 h-4 text-primary-700" /> AMA Threads</h2>
               {mentor.amaThreads.map((t, i) => (
                 <div key={i} className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 space-y-1.5">

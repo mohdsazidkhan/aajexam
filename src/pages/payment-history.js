@@ -162,7 +162,7 @@ const PaymentHistoryPage = () => {
                         const StatusIcon = statusConfig.icon;
                         return (
                            <motion.div key={txn.id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="p-5 group hover:shadow-sm transition-all duration-500 border-2">
+                              <Card className="group hover:shadow-sm transition-all duration-500 border-2">
                                  <div className="space-y-5">
                                     {/* Top Row: Icon + Status */}
                                     <div className="flex justify-between items-start">

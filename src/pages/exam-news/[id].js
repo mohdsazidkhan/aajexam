@@ -78,7 +78,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
         </div>
 
         {news.importantDates?.length > 0 && (
-          <Card className="p-4 space-y-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20">
+          <Card className="space-y-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20">
             <h3 className="text-sm font-black text-black dark:text-white">Important Dates</h3>
             {news.importantDates.map((d, i) => (
               <div key={i} className="flex justify-between text-xs">
@@ -89,7 +89,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
           </Card>
         )}
 
-        <Card className="p-6">
+        <Card className="">
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">{news.content}</p>
         </Card>
 

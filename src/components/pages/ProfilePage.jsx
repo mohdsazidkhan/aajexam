@@ -281,7 +281,7 @@ const ProfilePage = () => {
         {/* Stats row — full width, theme-aware tiles */}
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
           {statTiles.map((item) => (
-            <Card key={item.label} className="p-3 lg:p-5 text-center space-y-2" radius="2xl">
+            <Card key={item.label} className="text-center space-y-2" radius="2xl">
               <div className={`w-9 h-9 lg:w-11 lg:h-11 mx-auto rounded-xl lg:rounded-2xl flex items-center justify-center ${item.tone}`}>
                 <item.icon className="w-4 h-4 lg:w-5 lg:h-5" />
               </div>
@@ -380,7 +380,7 @@ const ProfilePage = () => {
               </Card>
 
               {/* Badges */}
-              <Card className="p-2 lg:p-4 space-y-6" radius="3xl">
+              <Card className="space-y-6" radius="3xl">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
@@ -400,7 +400,7 @@ const ProfilePage = () => {
               </Card>
 
               {/* Account details */}
-              <Card className="p-2 lg:p-4 space-y-6" radius="3xl">
+              <Card className="space-y-6" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-700" />
                   <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Account details</h3>
@@ -422,7 +422,7 @@ const ProfilePage = () => {
 
               {/* Referral code */}
               {student?.referralCode && (
-                <Card className="p-2 lg:p-4 space-y-2 lg:space-y-4" radius="3xl">
+                <Card className="space-y-2 lg:space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-primary-700" />
                     <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
@@ -508,7 +508,7 @@ const ProfilePage = () => {
               transition={{ duration: 0.3 }}
               className="space-y-6"
             >
-              <Card className="p-8 space-y-6" radius="3xl">
+              <Card className="space-y-6" radius="3xl">
                 <div className="space-y-1">
                   <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Quick actions</h2>
                   <p className="text-sm font-medium text-content-secondary pb-1">Jump to the places you are most likely to need next.</p>
@@ -531,7 +531,7 @@ const ProfilePage = () => {
                 </div>
               </Card>
 
-              <Card className="p-8 space-y-2 lg:space-y-4" radius="3xl">
+              <Card className="space-y-2 lg:space-y-4" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-700" />
                   <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Account safety</h2>

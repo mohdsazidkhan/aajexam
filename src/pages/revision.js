@@ -83,10 +83,10 @@ const RevisionPage = () => {
           {/* Stats */}
           {stats && (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Due Today</p></Card>
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">This Week</p></Card>
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-primary-700">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Accuracy</p></Card>
-              <Card className="p-4 text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Items</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Due Today</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">This Week</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-primary-700">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Accuracy</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Items</p></Card>
             </div>
           )}
 
@@ -109,7 +109,7 @@ const RevisionPage = () => {
 
           {/* Review Card */}
           {currentItem ? (
-            <Card className="p-5 lg:p-6 space-y-5">
+            <Card className="space-y-5">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] font-bold text-slate-400">Card {currentIdx + 1} of {dueItems.length}</span>
                 <span className="text-[10px] font-bold text-slate-400">Reviews: {currentItem.totalReviews || 0}</span>
@@ -157,7 +157,7 @@ const RevisionPage = () => {
               )}
             </Card>
           ) : (
-            <Card className="p-8 text-center space-y-2 lg:space-y-4">
+            <Card className="text-center space-y-2 lg:space-y-4">
               <Zap className="w-12 h-12 text-primary-700 mx-auto" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? 'All Caught Up!' : 'Koi item nahi'}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">

@@ -118,7 +118,7 @@ const HowItWorks = () => {
 
                      {/* Content Card */}
                      <div className="w-full lg:w-[45%]">
-                        <Card className="p-8 space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
+                        <Card className="space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
                            <div className="flex items-center justify-between">
                               <div className={`p-4 bg-${step.color}-500/10 text-${step.color}-500 rounded-2xl group-hover:scale-110 transition-transform shadow-sm`}>
                                  <step.icon className="w-6 h-6" />
@@ -167,7 +167,7 @@ const HowItWorks = () => {
 
             {/* --- Skill-Based Callout --- */}
             <section>
-               <Card className="p-8 border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center lg:text-left">
+               <Card className="border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center lg:text-left">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-700 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
@@ -184,7 +184,7 @@ const HowItWorks = () => {
             {/* --- Features Grid --- */}
             <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                {features.map((f, i) => (
-                  <Card key={i} className="p-8 group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
+                  <Card key={i} className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                      <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
                         <f.icon className="w-6 h-6" />
                      </div>

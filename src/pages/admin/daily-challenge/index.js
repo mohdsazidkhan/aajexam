@@ -154,7 +154,7 @@ const AdminDailyChallenge = () => {
         </div>
         <div className="space-y-2">
           {challenges.map((c, i) => (
-            <Card key={c._id || i} className="p-4 flex items-center gap-4">
+            <Card key={c._id || i} className="flex items-center gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <Calendar className="w-3 h-3 text-slate-400" />
@@ -169,7 +169,7 @@ const AdminDailyChallenge = () => {
           ))}
         </div>
 
-        {challenges.length === 0 && <Card className="p-8 text-center"><p className="text-slate-400 font-bold">No challenges created yet</p></Card>}
+        {challenges.length === 0 && <Card className="text-center"><p className="text-slate-400 font-bold">No challenges created yet</p></Card>}
 
         {totalPages > 1 && (
           <div className="flex justify-center gap-4">

@@ -118,7 +118,7 @@ const NoteDetailPage = () => {
           </button>
         </div>
 
-        <Card className="p-2 lg:p-4">
+        <Card className="">
           <div className="prose prose-sm dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: note.content }} />
         </Card>
 

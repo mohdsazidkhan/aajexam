@@ -99,7 +99,7 @@ const QuizHistoryPage = () => {
 
                         return (
                            <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="p-5 group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
+                              <Card className="group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
                                  <div className="space-y-2 lg:space-y-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">

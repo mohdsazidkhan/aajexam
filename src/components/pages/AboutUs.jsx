@@ -77,7 +77,7 @@ const AboutUs = () => {
                {/* Stats Ribbon */}
                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
                   {stats.map((stat, i) => (
-                     <Card key={i} className="p-6 flex items-center justify-center gap-6 border-2 border-slate-100 dark:border-slate-800">
+                     <Card key={i} className="flex items-center justify-center gap-6 border-2 border-slate-100 dark:border-slate-800">
                         <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl`}>
                            <stat.icon className="w-6 h-6" />
                         </div>
@@ -133,7 +133,7 @@ const AboutUs = () => {
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {features.map((f, i) => (
-                     <Card key={i} hoverable className="p-8 group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
+                     <Card key={i} hoverable className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                         <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
                            <f.icon className="w-6 h-6" />
                         </div>

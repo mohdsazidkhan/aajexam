@@ -124,7 +124,7 @@ const StudyPlanPage = () => {
 
           {/* Create Form */}
           {showForm && (
-            <Card className="p-5 lg:p-6 space-y-5">
+            <Card className="space-y-5">
               <h2 className="text-sm font-black text-slate-900 dark:text-white">Generate Study Plan</h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
@@ -173,7 +173,7 @@ const StudyPlanPage = () => {
 
           {/* Plans List */}
           {!activePlan && plans.map((plan, i) => (
-            <Card key={plan._id || i} className="p-5 space-y-3">
+            <Card key={plan._id || i} className="space-y-3">
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="text-sm font-black text-slate-900 dark:text-white">{plan.exam?.name || 'Study Plan'}</h3>
@@ -225,7 +225,7 @@ const StudyPlanPage = () => {
               </div>
 
               {viewMode === 'weekly' && activePlan.weeklySchedule?.map((week, wi) => (
-                <Card key={wi} className="p-4 lg:p-5 space-y-3">
+                <Card key={wi} className="space-y-3">
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">Week {week.week}</h3>
                     {week.startDate && (
@@ -254,7 +254,7 @@ const StudyPlanPage = () => {
 
               {viewMode === 'calendar' && (
                 (activePlan.dailyTasks?.length > 0 ? activePlan.dailyTasks : []).map((d, di) => (
-                  <Card key={di} className="p-4 lg:p-5 space-y-2">
+                  <Card key={di} className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-primary-700" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white">{dayName(d.date)}, {fmtDate(d.date)}</h3>
@@ -280,7 +280,7 @@ const StudyPlanPage = () => {
           )}
 
           {plans.length === 0 && !showForm && (
-            <Card className="p-8 text-center space-y-2 lg:space-y-4">
+            <Card className="text-center space-y-2 lg:space-y-4">
               <CalendarDays className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">No Study Plans Yet</h2>
               <p className="text-sm text-slate-400">Create your first AI-powered study plan!</p>
