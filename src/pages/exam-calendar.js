@@ -24,7 +24,6 @@ const typeConfig = {
 };
 const getType = (t) => typeConfig[t] || typeConfig.other;
 
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
@@ -34,8 +33,8 @@ const Sh = ({ className = '' }) => (
 const CalendarSkeleton = () => (
   <div className="space-y-2 lg:space-y-4">
     <Sh className="h-48 lg:h-52 w-full rounded-[2.5rem]" />
-    <div className="grid grid-cols-7 gap-1">
-      {Array.from({ length: 35 }).map((_, i) => <Sh key={i} className="h-12 sm:h-14 rounded-lg lg:rounded-xl" />)}
+    <div className="flex gap-2">
+      {Array.from({ length: 10 }).map((_, i) => <Sh key={i} className="shrink-0 w-14 sm:w-16 h-20 sm:h-24 rounded-2xl" />)}
     </div>
   </div>
 );
@@ -176,10 +175,6 @@ const ExamCalendarPage = () => {
   useEffect(() => {
     if (loading) return;
     todayChipRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-  }, [loading, month, year]);
-
-  useEffect(() => {
-    if (!loading) todayChipRef.current?.scrollIntoView({ inline: 'center', block: 'nearest' });
   }, [loading, month, year]);
 
   // Navigate month
@@ -326,12 +321,12 @@ const ExamCalendarPage = () => {
                 <span className={`text-base sm:text-lg font-black ${isToday ? 'text-white' : 'text-content-primary'}`}>
                   {day}
                 </span>
-                <div className="flex items-center gap-0.5 h-1.5">
-                  {hasEvents && eventsForDay.slice(0, 3).map((ev, i) => (
-                    <EventDot key={i} event={ev} />
-                  ))}
-                  {eventsForDay.length > 3 && (
-                    <span className={`text-[7px] font-black ${isToday ? 'text-white/70' : 'text-content-muted'}`}>+{eventsForDay.length - 3}</span>
+                <div className="flex items-center gap-1 h-1.5">
+                  {hasEvents && (
+                    <>
+                      <EventDot event={eventsForDay[0]} />
+                      <span className={`text-[8px] font-black ${isToday ? 'text-white/80' : 'text-content-muted'}`}>{eventsForDay.length}</span>
+                    </>
                   )}
                 </div>
               </button>
