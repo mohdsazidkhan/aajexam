@@ -177,15 +177,15 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               <Card
                 hoverable
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                className="group p-5 flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm"
+                className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-sm">
-                      <ShieldCheck className="w-6 h-6 text-white" />
+                    <div className="w-8 lg:w-12 h-8 lg:h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-sm">
+                      <ShieldCheck className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-black text-content-primary uppercase tracking-tight">{exam.name}</h3>
+                      <h3 className="text-md font-black text-content-primary uppercase tracking-tight">{exam.name}</h3>
                       {exam.code && <p className="text-[10px] font-bold text-content-muted uppercase">{exam.code}</p>}
                     </div>
                   </div>

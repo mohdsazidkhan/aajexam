@@ -180,7 +180,7 @@ const CurrentAffairsPage = () => {
             return (
               <motion.div key={affair._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                 <Card hoverable onClick={() => router.push(`/current-affairs/${affair.slug}`)}
-                  className="group p-5 flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
+                  className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-2xl ${cfg.color} flex items-center justify-center shrink-0 shadow-sm`}>
