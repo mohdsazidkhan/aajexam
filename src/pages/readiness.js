@@ -47,20 +47,20 @@ const ReadinessPage = () => {
       <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
       <div className="py-4 lg:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">
-          <div className="flex justify-between items-center flex-col lg:flex-row">
-          <div className="space-y-1">
-            <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Target className="w-6 h-6 text-primary-700" /> Exam Readiness</h1>
+          <div className="flex justify-between items-center flex-col lg:flex-row gap-4">
+          <div className="space-y-1 text-center lg:text-left">
+            <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center lg:justify-start gap-2"><Target className="w-6 h-6 text-primary-700" /> Exam Readiness</h1>
             <p className="text-sm font-bold text-slate-400">How prepared are you?</p>
           </div>
 
-          <div className="gap-5">
+          <div className="flex flex-col lg:flex-row gap-3 lg:gap-5 w-full lg:w-auto">
             <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
-              className="flex-1 px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
+              className="w-full lg:flex-1 px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
               <option value="">Select Exam</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </select>
             <button onClick={analyzeReadiness} disabled={!selectedExam || analyzing}
-              className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              className="w-full lg:w-auto px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? 'Analyzing...' : 'Analyze'}
             </button>
           </div>
