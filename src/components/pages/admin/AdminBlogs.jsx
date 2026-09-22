@@ -382,9 +382,7 @@ const AdminBlogs = () => {
 
         {/* Content */}
         {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <AdminTableSkeleton />
-          </div>
+          <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : blogs.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-lg font-medium text-gray-500 dark:text-gray-400">No blogs found</p>

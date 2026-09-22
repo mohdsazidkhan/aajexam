@@ -496,7 +496,7 @@ const StudentsPage = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <AdminTableSkeleton />
+                <AdminTableSkeleton showHeader={false} showFilters={false} />
               </motion.div>
             ) : students.length === 0 ? (
               <motion.div

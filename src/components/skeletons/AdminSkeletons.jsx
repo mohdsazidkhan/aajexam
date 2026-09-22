@@ -7,20 +7,24 @@ const Sh = ({ className = '' }) => (
 
 // Generic admin table page: filter/search bar + data table.
 // Used for the bulk of admin list pages (students, referrals, quizzes, blogs, pyq, etc.)
-export const AdminTableSkeleton = ({ rows = 8, columns = 6 }) => (
+export const AdminTableSkeleton = ({ rows = 8, columns = 6, showHeader = true, showFilters = true }) => (
   <div className="space-y-6 font-outfit w-full">
     {/* Header */}
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <Sh className="h-7 w-56 rounded-lg lg:rounded-xl" />
-      <Sh className="h-10 w-36 rounded-2xl" />
-    </div>
+    {showHeader && (
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <Sh className="h-7 w-56 rounded-lg lg:rounded-xl" />
+        <Sh className="h-10 w-36 rounded-2xl" />
+      </div>
+    )}
 
     {/* Filter bar */}
-    <div className="flex flex-col lg:flex-row gap-3">
-      <Sh className="h-12 flex-1 rounded-2xl" />
-      <Sh className="h-12 w-full lg:w-40 rounded-2xl" />
-      <Sh className="h-12 w-full lg:w-40 rounded-2xl" />
-    </div>
+    {showFilters && (
+      <div className="flex flex-col lg:flex-row gap-3">
+        <Sh className="h-12 flex-1 rounded-2xl" />
+        <Sh className="h-12 w-full lg:w-40 rounded-2xl" />
+        <Sh className="h-12 w-full lg:w-40 rounded-2xl" />
+      </div>
+    )}
 
     {/* Table */}
     <div className="bg-white dark:bg-white/5 rounded-[2rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden">

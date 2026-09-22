@@ -18,7 +18,7 @@ const AdminCurrentAffairs = () => {
   const [form, setForm] = useState({ date: new Date().toISOString().split('T')[0], category: 'national', title: '', content: '', keyPoints: '', tags: '' });
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [viewMode, setViewMode] = useState('table'); // table, grid, list
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table'); // table, grid, list
 
   const fetchData = async () => {
     try { setLoading(true); const res = await API.request(`/api/admin/current-affairs?page=${page}&limit=20`); if (res?.success) { setAffairs(res.data || []); setTotalPages(res.pagination?.totalPages || 1); } } catch (e) { } finally { setLoading(false); }
@@ -46,7 +46,7 @@ const AdminCurrentAffairs = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage Current Affairs - Admin</title></Head>
-        <div className="py-0 lg:py-6">
+        <div className="py-4 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Newspaper className="w-6 h-6 text-primary-700" /> Current Affairs</h1>
             <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-700 text-white'}`}>

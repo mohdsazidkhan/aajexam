@@ -264,7 +264,7 @@ const AdminExpenses = () => {
                 {/* List Table */}
                 <AnimatePresence mode="wait">
                     {loading ? (
-                        <div className="p-32 flex justify-center"><AdminTableSkeleton /></div>
+                        <div className="p-32 flex justify-center"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>
                     ) : expenses.length === 0 ? (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-sm">
                             <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

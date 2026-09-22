@@ -180,7 +180,7 @@ const AdminUserWallets = () => {
 
         {loading ? (
           <div className="flex items-center justify-center h-96">
-            <AdminTableSkeleton />
+            <AdminTableSkeleton showHeader={false} showFilters={false} />
           </div>
         ) : items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-96 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm">

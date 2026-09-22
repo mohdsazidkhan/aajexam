@@ -223,7 +223,7 @@ const AdminWithdrawRequests = () => {
         {/* Table / List */}
         <AnimatePresence mode="wait">
           {loading ? (
-            <div className="flex items-center justify-center py-32"><AdminTableSkeleton /></div>
+            <div className="flex items-center justify-center py-32"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>
           ) : items.length === 0 ? (
             <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
               <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

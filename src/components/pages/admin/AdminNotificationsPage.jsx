@@ -155,7 +155,7 @@ const AdminNotificationsPage = () => {
   if (loading && items.length === 0) {
     return (
       <div className="min-h-screen p-3 lg:p-8">
-        <AdminTableSkeleton />
+        <AdminTableSkeleton showHeader={false} showFilters={false} />
       </div>
     );
   }

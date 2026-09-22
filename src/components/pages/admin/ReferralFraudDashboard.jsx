@@ -135,7 +135,7 @@ export default function ReferralFraudDashboard() {
 
           {/* Loading */}
           {loading && rows.length === 0 ? (
-            <AdminTableSkeleton />
+            <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : rows.length === 0 ? (
             <div className="min-h-[30vh] flex flex-col items-center justify-center text-center">
               <ShieldCheck className="w-14 h-14 text-primary-700 mb-4" />

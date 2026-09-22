@@ -20,7 +20,7 @@ const AdminNotes = () => {
   const [form, setForm] = useState({ title: '', content: '', subject: '', noteType: 'notes', difficulty: 'intermediate', tags: '' });
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
 
   const fetchData = async () => {
     try {
@@ -57,7 +57,7 @@ const AdminNotes = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage Notes - Admin</title></Head>
-        <div className="py-0 lg:py-6">
+        <div className="py-4 lg:py-6">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><StickyNote className="w-6 h-6 text-primary-700" /> Notes & Formulas</h1>
             <button onClick={() => { setShowForm(!showForm); if (showForm) setEditId(null); }} className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors ${showForm ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300' : 'bg-primary-700 text-white'}`}>

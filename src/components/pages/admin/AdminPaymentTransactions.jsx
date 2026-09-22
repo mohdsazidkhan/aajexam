@@ -215,7 +215,7 @@ const AdminPaymentTransactions = () => {
 
   if (loading && transactions.length === 0) {
     return (<div className="adminContent w-full flex items-center justify-center">
-      <AdminTableSkeleton />
+      <AdminTableSkeleton showHeader={false} showFilters={false} />
     </div>
     );
   }

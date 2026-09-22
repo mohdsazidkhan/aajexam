@@ -122,7 +122,7 @@ export default function ReferralHistory() {
       <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
         <Sidebar />
         <div className="adminContent w-full mx-auto">
-          <AdminTableSkeleton />
+          <AdminTableSkeleton showHeader={false} showFilters={false} />
         </div>
       </div>
     );

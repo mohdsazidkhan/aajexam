@@ -129,7 +129,7 @@ const AdminQuizQuestions = () => {
         </div>
       </div>
 
-      {loading ? <AdminTableSkeleton /> : (
+      {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
         <div className="space-y-3">
           {questions.map((q, idx) => (
             <div key={q._id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 p-4">

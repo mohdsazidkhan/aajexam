@@ -388,7 +388,7 @@ const AdminSubscriptions = () => {
     return (
       <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-sm p-6 border border-white/30">
         <div className="flex items-center justify-center py-12">
-          <AdminTableSkeleton />
+          <AdminTableSkeleton showHeader={false} showFilters={false} />
         </div>
       </div>
     );

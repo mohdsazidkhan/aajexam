@@ -105,15 +105,19 @@ function AppContent({ Component, pageProps }) {
     return () => router.events.off('routeChangeComplete', handleRouteChange);
   }, [router.events, router.asPath]);
 
-  const { isAuthenticated, isClient } = useAuthStatus();
+  const { isAuthenticated, isClient, authChecked } = useAuthStatus();
 
   const renderContent = () => {
-    // Until the client has mounted and checked auth state, render a minimal
-    // layout-agnostic shell. This shell must NOT include any semantic wrapper
-    // elements like <footer> or <nav> inside <main> that differ from what the
-    // client will render after hydration — otherwise React throws a hydration
-    // mismatch error.
-    if (!isClient) {
+    // Until the client has mounted AND finished checking auth state, render a
+    // minimal layout-agnostic shell. Gating on authChecked (not just isClient)
+    // avoids briefly rendering the logged-out tree shape for a logged-in user
+    // between hydration and the auth check resolving — that extra tree-shape
+    // swap was remounting the page component and double-firing its data
+    // fetches. This shell must NOT include any semantic wrapper elements like
+    // <footer> or <nav> inside <main> that differ from what the client will
+    // render after hydration — otherwise React throws a hydration mismatch
+    // error.
+    if (!isClient || !authChecked) {
       return (
         <div id="main-content" className="min-h-screen">
           {Component && <Component {...pageProps} />}

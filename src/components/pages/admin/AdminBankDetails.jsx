@@ -451,7 +451,7 @@ export default function AdminBankDetails() {
       {/* Content */}
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <AdminTableSkeleton />
+          <AdminTableSkeleton showHeader={false} showFilters={false} />
         </div>
       ) : error ? (
         <div className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm">

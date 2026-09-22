@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { useSSR } from "../../../hooks/useSSR";
-import { Edit3, Trash2, Plus, Search, X, BrainCircuit, Eye, Globe, GlobeLock, ChevronLeft, ChevronRight, Database } from "lucide-react";
+import { Edit3, Trash2, Plus, Search, X, BrainCircuit, Eye, Globe, GlobeLock, ChevronLeft, ChevronRight, Table as TableIcon, LayoutGrid, List } from "lucide-react";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
 
 const AdminQuizQuizzes = () => {
@@ -25,6 +25,7 @@ const AdminQuizQuizzes = () => {
   const [qFilters, setQFilters] = useState({ subject: "", topic: "" });
   const [availableQuestions, setAvailableQuestions] = useState([]);
   const [selectedQIds, setSelectedQIds] = useState([]);
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
 
   useEffect(() => { fetchDropdowns(); }, []);
   useEffect(() => { fetchQuizzes(); }, [page, filters.exam, filters.subject, filters.status]);
@@ -128,7 +129,6 @@ const AdminQuizQuizzes = () => {
       <div className="flex justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BrainCircuit className="w-6 h-6 text-primary-700" /> Quizzes</h1>
         <div className="flex gap-2">
-          <button onClick={async () => { if (!confirm('Generate 1 quiz (5 questions) for every topic? This may take a minute.')) return; setLoading(true); try { const res = await API.seedQuizzes(); if (res?.success) { toast.success(`${res.stats.quizzesCreated} quizzes, ${res.stats.questionsCreated} questions created!`); fetchQuizzes(); } else toast.error(res?.message ||'Failed'); } catch (e) { toast.error('Failed'); } finally { setLoading(false); } }} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-800"><Database className="w-4 h-4"/> Seed Quizzes</button>
           <button onClick={openCreate} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Create Quiz</button>
         </div>
       </div>
@@ -143,33 +143,110 @@ const AdminQuizQuizzes = () => {
         <select value={filters.status} onChange={e => { setFilters({ ...filters, status: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Status</option><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option>
         </select>
+        <div className="flex items-center bg-slate-100 dark:bg-white/5 p-1 rounded-lg lg:rounded-xl border border-slate-200 dark:border-white/10">
+          {[
+            { icon: TableIcon, id: 'table', label: 'Table' },
+            { icon: LayoutGrid, id: 'grid', label: 'Grid' },
+            { icon: List, id: 'list', label: 'List' }
+          ].map((mode) => (
+            <button
+              key={mode.id}
+              onClick={() => setViewMode(mode.id)}
+              className={`p-2 rounded-lg transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+            >
+              <mode.icon className="w-4 h-4" />
+              {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {loading ? <AdminTableSkeleton /> : (
+      {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
         <div className="space-y-3">
-          {quizzes.map(q => (
-            <div key={q._id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 p-4">
-              <div className="flex justify-between items-start gap-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase">{q.title}</h3>
+          {viewMode === 'table' ? (
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="bg-white dark:bg-slate-900">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Title</th>
+                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Exam / Subject</th>
+                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Duration</th>
+                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Questions</th>
+                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Status</th>
+                    <th className="px-4 py-3 text-right font-bold text-slate-500 uppercase text-xs">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+                  {quizzes.map(q => (
+                    <tr key={q._id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                      <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{q.title}</td>
+                      <td className="px-4 py-3 text-slate-500">{q.applicableExams?.map(e => e.name).join(', ') || '—'}{q.subject?.name ? ` · ${q.subject.name}` : ''}{q.topic?.name ? ` · ${q.topic.name}` : ''}</td>
+                      <td className="px-4 py-3 text-slate-500">{q.duration}min</td>
+                      <td className="px-4 py-3 text-slate-500">{q.questions?.length || 0}</td>
+                      <td className="px-4 py-3"><span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span></td>
+                      <td className="px-4 py-3 text-right">
+                        <div className="flex justify-end gap-1">
+                          <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
+                          <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+                          <button onClick={() => openEdit(q)} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                          <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                  {quizzes.length === 0 && <tr><td colSpan="6" className="px-4 py-8 text-center text-slate-400">No quizzes found</td></tr>}
+                </tbody>
+              </table>
+            </div>
+          ) : viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {quizzes.map(q => (
+                <div key={q._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5" /></div>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span>
                   </div>
-                  <p className="text-xs text-slate-400 mb-2">{q.applicableExams?.map(e => e.name).join(', ') || '—'} · {q.subject?.name}{q.topic?.name ? ` · ${q.topic.name}` : ''} · {q.duration}min · {q.totalMarks} marks · {q.questions?.length || 0} Q</p>
-                  <div className="flex flex-wrap gap-1">
-                    {q.tags?.map((tag, i) => <span key={i} className="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded-full text-slate-500">#{tag}</span>)}
+                  <div>
+                    <h3 className="font-bold text-slate-900 dark:text-white uppercase text-sm">{q.title}</h3>
+                    <p className="text-xs text-slate-400 mt-1">{q.subject?.name}{q.topic?.name ? ` · ${q.topic.name}` : ''} · {q.duration}min · {q.questions?.length || 0} Q</p>
+                  </div>
+                  <div className="flex gap-1 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
+                    <button onClick={() => openAddQuestions(q)} title="Add Questions" className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Plus className="w-4 h-4" /></button>
+                    <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="flex-1 flex items-center justify-center py-2 text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+                    <button onClick={() => openEdit(q)} className="flex-1 flex items-center justify-center py-2 text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                    <button onClick={() => handleDelete(q._id)} className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
-                <div className="flex gap-1 shrink-0">
-                  <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
-                  <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                  <button onClick={() => openEdit(q)} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
-                </div>
-              </div>
+              ))}
+              {quizzes.length === 0 && <div className="col-span-full py-12 text-center text-slate-400">No quizzes found</div>}
             </div>
-          ))}
-          {quizzes.length === 0 && <div className="py-12 text-center text-slate-400">No quizzes found</div>}
+          ) : (
+            <>
+              {quizzes.map(q => (
+                <div key={q._id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 p-4">
+                  <div className="flex justify-between items-start gap-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase">{q.title}</h3>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span>
+                      </div>
+                      <p className="text-xs text-slate-400 mb-2">{q.applicableExams?.map(e => e.name).join(', ') || '—'} · {q.subject?.name}{q.topic?.name ? ` · ${q.topic.name}` : ''} · {q.duration}min · {q.totalMarks} marks · {q.questions?.length || 0} Q</p>
+                      <div className="flex flex-wrap gap-1">
+                        {q.tags?.map((tag, i) => <span key={i} className="text-[10px] px-2 py-0.5 bg-slate-100 dark:bg-slate-700 rounded-full text-slate-500">#{tag}</span>)}
+                      </div>
+                    </div>
+                    <div className="flex gap-1 shrink-0">
+                      <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
+                      <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+                      <button onClick={() => openEdit(q)} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                      <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {quizzes.length === 0 && <div className="py-12 text-center text-slate-400">No quizzes found</div>}
+            </>
+          )}
 
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-4 pt-4">

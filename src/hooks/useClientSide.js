@@ -57,6 +57,7 @@ export const useLocalStorage = (key, defaultValue = null) => {
  */
 export const useAuthStatus = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
   const [user, setUser] = useState(null);
   const isClient = useClientSide();
 
@@ -65,9 +66,9 @@ export const useAuthStatus = () => {
       const checkAuthStatus = () => {
         const token = localStorage.getItem('token');
         const userInfo = localStorage.getItem('userInfo');
-        
+
         setIsAuthenticated(!!token);
-        
+
         if (userInfo) {
           try {
             setUser(JSON.parse(userInfo));
@@ -77,6 +78,8 @@ export const useAuthStatus = () => {
         } else {
           setUser(null);
         }
+
+        setAuthChecked(true);
       };
 
       // Check auth status immediately (wrapped in transition to avoid hydration interruption)
@@ -106,5 +109,5 @@ export const useAuthStatus = () => {
     }
   }, [isClient]);
 
-  return { isAuthenticated, user, isClient };
+  return { isAuthenticated, user, isClient, authChecked };
 };

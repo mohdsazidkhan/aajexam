@@ -215,7 +215,7 @@ const AdminReels = () => {
             <AnimatePresence mode="wait">
               {loading ? (
                 <div key="loading" className="py-20 flex flex-col items-center gap-4">
-                  <AdminTableSkeleton />
+                  <AdminTableSkeleton showHeader={false} showFilters={false} />
                   <p className="text-xs font-black text-slate-400 uppercase tracking-widest animate-pulse">Syncing Archive...</p>
                 </div>
               ) : items.length === 0 ? (

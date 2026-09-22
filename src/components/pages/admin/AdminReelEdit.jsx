@@ -268,7 +268,7 @@ const AdminReelEdit = () => {
     return (
       <div className="flex min-h-screen">
           <main className="flex-1 transition-all duration-300">
-            <div className="flex items-center justify-center min-h-screen"><AdminTableSkeleton /></div>
+            <div className="flex items-center justify-center min-h-screen"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>
           </main>
         </div>
     );

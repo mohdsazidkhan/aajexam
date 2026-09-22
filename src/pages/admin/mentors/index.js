@@ -35,7 +35,7 @@ const AdminMentors = () => {
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
 
   const fetchData = async () => {
     try {
@@ -62,7 +62,7 @@ const AdminMentors = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>Manage Mentors - Admin</title></Head>
-        <div className="py-0 lg:py-6 space-y-2 lg:space-y-4">
+        <div className="py-4 lg:py-6 space-y-2 lg:space-y-4">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-700" /> Mentors</h1>
             <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700">
