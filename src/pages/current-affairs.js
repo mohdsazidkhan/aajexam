@@ -94,7 +94,7 @@ const CurrentAffairsPage = () => {
   if (loading && affairs.length === 0) return <CASkeleton />;
 
   return (
-    <div className="space-y-6 lg:space-y-10 animate-fade-in bg-transparent font-outfit pb-10">
+    <div className="space-y-3 lg:space-y-6 animate-fade-in bg-transparent font-outfit pb-4 lg:pb-8">
       <Seo title="Daily Current Affairs – Free GA & GK for Government Exams | AajExam"
         description="Daily current affairs for SSC, UPSC, Banking, Railway and State PSC exams."
         canonical="/current-affairs"

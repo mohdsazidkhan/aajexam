@@ -76,7 +76,7 @@ const SubjectListPage = () => {
   if (loading) return <SubjectListSkeleton />;
 
   return (
-    <div className="space-y-6 lg:space-y-10 animate-fade-in bg-transparent font-outfit pb-10">
+    <div className="space-y-3 lg:space-y-6 animate-fade-in bg-transparent font-outfit pb-4 lg:pb-8">
       <Seo
         title="Subjects – Reasoning, Maths, English, GA & GK Practice | AajExam"
         description="Browse subject-wise practice on AajExam for SSC, UPSC, Banking and Railway exams."

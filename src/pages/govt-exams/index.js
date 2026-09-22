@@ -105,7 +105,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
   }
 
   return (
-    <div className="space-y-6 lg:space-y-10 animate-fade-in bg-transparent font-outfit pb-10">
+    <div className="space-y-3 lg:space-y-6 animate-fade-in bg-transparent font-outfit pb-4 lg:pb-8">
       <Seo
         title={seo?.title || 'Government Exam Preparation Hub – Free Practice Tests, PYQs & Quizzes | AajExam'}
         description={seoDescription}

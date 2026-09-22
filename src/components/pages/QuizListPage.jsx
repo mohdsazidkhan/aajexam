@@ -107,7 +107,7 @@ const QuizListPage = () => {
   if (loading && page === 1) return <QuizListSkeleton />;
 
   return (
-    <div className="space-y-6 lg:space-y-10 animate-fade-in bg-transparent font-outfit pb-10">
+    <div className="space-y-3 lg:space-y-6 animate-fade-in bg-transparent font-outfit pb-4 lg:pb-8">
       <Seo
         title="Free Quizzes – Topic-wise Government Exam Practice | AajExam"
         description="Practise 1000+ topic-wise free quizzes for SSC, UPSC, Banking and Railway exams."

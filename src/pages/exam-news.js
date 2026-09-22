@@ -73,7 +73,7 @@ const ExamNewsPage = () => {
   if (loading && news.length === 0) return <NewsSkeleton />;
 
   return (
-    <div className="space-y-6 lg:space-y-10 animate-fade-in bg-transparent font-outfit pb-10">
+    <div className="space-y-3 lg:space-y-6 animate-fade-in bg-transparent font-outfit pb-4 lg:pb-8">
       <Seo title="Exam News & Job Alerts – Notifications, Admit Cards, Results | AajExam"
         description="Stay updated with the latest government exam notifications, admit cards, results, answer keys and vacancies."
         canonical="/exam-news"
