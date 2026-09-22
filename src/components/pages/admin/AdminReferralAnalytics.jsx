@@ -433,7 +433,7 @@ const AdminReferralAnalytics = () => {
                                                                 </div>
                                                                 <div>
                                                                     <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{user.name}</div>
-                                                                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{user.email}</div>
+                                                                    <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{user.email}</div>
                                                                 </div>
                                                             </div>
                                                         </td>

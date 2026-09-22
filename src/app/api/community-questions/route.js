@@ -2,6 +2,7 @@ import { protect } from '@/middleware/auth';
 import dbConnect from '@/lib/db';
 import CommunityQuestion from '@/models/CommunityQuestion';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import { createNotification } from '@/utils/notifications';
 
 // GET /api/community-questions - List all approved questions with filters
 export async function GET(req) {
@@ -71,6 +72,16 @@ export async function POST(req) {
     const populated = await CommunityQuestion.findById(newQuestion._id)
       .populate('author', 'name username profilePicture')
       .populate('exam', 'name code');
+
+    try {
+      await createNotification({
+        userId: auth.user._id,
+        type: 'question',
+        title: 'New community question posted',
+        description: `${auth.user.name || 'A user'} posted a new community question`,
+        meta: { userId: auth.user._id, questionId: newQuestion._id }
+      });
+    } catch (e) { console.error('Notification Error:', e); }
 
     return successResponse({ question: populated }, 'Question posted successfully', 201);
   } catch (error) {

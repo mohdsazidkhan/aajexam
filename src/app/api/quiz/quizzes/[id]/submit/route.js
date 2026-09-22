@@ -9,6 +9,7 @@ import User from '@/models/User';
 import QuizChallenge from '@/models/QuizChallenge';
 import { protect } from '@/middleware/auth';
 import { addManyWrongAnswersToRevision, snapshotFromQuestionDoc } from '@/utils/revision';
+import { createNotification } from '@/utils/notifications';
 
 // POST - submit quiz attempt
 export async function POST(req, { params }) {
@@ -107,6 +108,16 @@ export async function POST(req, { params }) {
         if (wrongRevisionItems.length) {
             addManyWrongAnswersToRevision(wrongRevisionItems).catch(() => {});
         }
+
+        try {
+            await createNotification({
+                userId: auth.user._id,
+                type: 'quiz_attempt',
+                title: 'Quiz attempt submitted',
+                description: `A user submitted a quiz attempt: "${quiz.title}"`,
+                meta: { userId: auth.user._id, quizId: quiz._id, attemptId: attempt._id }
+            });
+        } catch (e) { console.error('Notification Error:', e); }
 
         // Update aggregate user performance (Readiness / Avg Score / Tests on Home)
         try {

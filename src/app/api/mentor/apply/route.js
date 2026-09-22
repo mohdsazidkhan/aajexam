@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import MentorProfile from '@/models/MentorProfile';
 import { protect } from '@/middleware/auth';
+import { createNotification } from '@/utils/notifications';
 
 // POST - Apply to become a mentor
 export async function POST(req) {
@@ -28,6 +29,16 @@ export async function POST(req) {
             specialization: body.specialization || [],
             status: 'pending'
         });
+
+        try {
+            await createNotification({
+                userId: auth.user._id,
+                type: 'mentor',
+                title: 'New mentor application',
+                description: `${auth.user.name || 'A user'} applied to become a mentor`,
+                meta: { userId: auth.user._id, mentorProfileId: profile._id }
+            });
+        } catch (e) { console.error('Notification Error:', e); }
 
         return NextResponse.json({ success: true, data: profile }, { status: 201 });
     } catch (error) {

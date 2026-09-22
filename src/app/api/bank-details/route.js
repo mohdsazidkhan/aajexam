@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import BankDetail from '@/models/BankDetail';
 import { protect } from '@/middleware/auth';
+import { createNotification } from '@/utils/notifications';
 
 export async function POST(req) {
     try {
@@ -22,6 +23,15 @@ export async function POST(req) {
             await bankDetail.save();
         } else {
             bankDetail = await BankDetail.create({ user: auth.user.id, accountHolderName, accountNumber, bankName, ifscCode, branchName, upiId });
+            try {
+                await createNotification({
+                    userId: auth.user.id,
+                    type: 'bank',
+                    title: 'New bank details added',
+                    description: `${auth.user.name || 'A user'} added their bank details`,
+                    meta: { userId: auth.user.id, bankDetailId: bankDetail._id }
+                });
+            } catch (e) { console.error('Notification Error:', e); }
         }
 
         return NextResponse.json({ success: true, bankDetail });

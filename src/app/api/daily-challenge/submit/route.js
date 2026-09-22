@@ -5,6 +5,7 @@ import DailyChallengeAttempt from '@/models/DailyChallengeAttempt';
 import UserStreak from '@/models/UserStreak';
 import { protect } from '@/middleware/auth';
 import { addManyWrongAnswersToRevision, snapshotFromDailyChallengeQuestion } from '@/utils/revision';
+import { createNotification } from '@/utils/notifications';
 
 // POST - Submit daily challenge
 export async function POST(req) {
@@ -137,6 +138,16 @@ export async function POST(req) {
         }
 
         await streak.save();
+
+        try {
+            await createNotification({
+                userId: auth.user._id,
+                type: 'daily_challenge',
+                title: 'Daily challenge completed',
+                description: `${auth.user.name || 'A user'} completed today's daily challenge`,
+                meta: { userId: auth.user._id, challengeId, attemptId: attempt._id }
+            });
+        } catch (e) { console.error('Notification Error:', e); }
 
         return NextResponse.json({
             success: true,

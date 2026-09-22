@@ -294,16 +294,16 @@ const AdminGovtExams = () => {
                 <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit">
                   <div className="absolute top-6 right-6">
                     <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[8px] font-black uppercase tracking-widest ${exam.isActive ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
-                      {exam.isActive ? 'LIVE STATUS' : 'INACTIVE'}
+                      {exam.isActive ? 'LIVE' : 'INACTIVE'}
                     </div>
                   </div>
                   <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-8 group">
-                    <div className="p-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl shadow-sm transition-transform group-hover:rotate-6">
-                      <Building2 className="w-8 h-8" />
+                    <div className="p-3 lg:p-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-2xl shadow-sm transition-transform group-hover:rotate-6 shrink-0">
+                      <Building2 className="w-4 h-4 lg:w-8 lg:h-8" />
                     </div>
-                    <div>
+                    <div className="min-w-0 pr-16 lg:pr-0">
                       <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-1">{exam.code}</div>
-                      <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{exam.name}</h3>
+                      <h3 className="text-base lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight">{exam.name}</h3>
                     </div>
                   </div>
                   <div className="space-y-2 lg:space-y-4 mb-4 lg:mb-8">

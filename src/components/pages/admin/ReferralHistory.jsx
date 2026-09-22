@@ -251,7 +251,7 @@ export default function ReferralHistory() {
                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1 group-hover/link:text-primary-700 transition-colors flex items-center gap-2">
                                   {tx.inviter?.name || 'Unknown'} <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                                 </div>
-                                <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.inviter?.email || 'No email'}</div>
+                                <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{tx.inviter?.email || 'No email'}</div>
                               </div>
                             </div>
                           </Link>
@@ -264,7 +264,7 @@ export default function ReferralHistory() {
                               </div>
                               <div>
                                 <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{tx.invitee.name || 'Unknown'}</div>
-                                <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{tx.invitee.email || 'No email'}</div>
+                                <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{tx.invitee.email || 'No email'}</div>
                               </div>
                             </div>
                           ) : (

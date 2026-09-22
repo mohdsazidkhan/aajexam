@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Reel from '@/models/Reel';
 import { protect } from '@/middleware/auth';
+import { createNotification } from '@/utils/notifications';
 
 export async function POST(req) {
 	try {
@@ -73,6 +74,18 @@ export async function POST(req) {
 			creatorRole: isAdmin ? 'admin' : 'user',
 			status: isAdmin ? 'published' : 'pending'
 		});
+
+		if (!isAdmin) {
+			try {
+				await createNotification({
+					userId: auth.user._id,
+					type: 'reel',
+					title: 'New reel submitted for approval',
+					description: `${auth.user.name || 'A user'} submitted a new reel: "${reel.title || reel.questionText || reel.type}"`,
+					meta: { userId: auth.user._id, reelId: reel._id }
+				});
+			} catch (e) { console.error('Notification Error:', e); }
+		}
 
 		return NextResponse.json({
 			success: true,

@@ -11,7 +11,6 @@ import {
   Trash2,
   Filter,
   ArrowRight,
-  Clock,
   ChevronLeft,
   ChevronRight,
   MessageSquare,
@@ -25,7 +24,17 @@ import {
   HelpCircle,
   FileText,
   CreditCard,
-  Target
+  Target,
+  RotateCcw,
+  Flame,
+  Calendar,
+  Newspaper,
+  Globe,
+  ClipboardList,
+  UserCheck,
+  Clock,
+  ThumbsUp,
+  Film
 } from 'lucide-react';
 
 const AdminNotificationsPage = () => {
@@ -36,6 +45,7 @@ const AdminNotificationsPage = () => {
   const [limit, setLimit] = useState(20);
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
+  const [typeCounts, setTypeCounts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
@@ -50,22 +60,46 @@ const AdminNotificationsPage = () => {
     exam_attempt: '/admin/govt-exams/results',
     blog: '/admin/user-blogs',
     referral_registration: '/admin/referral-history',
-    competition_reset: '/admin/competition-resets'
+    competition_reset: '/admin/competition-resets',
+    mentor: '/admin/mentors',
+    daily_challenge: '/admin/daily-challenge',
+    reel: '/admin/reels'
   };
 
-  const getIconByType = (type) => {
+  const getIconByType = (type, className = 'w-4 h-4') => {
     switch (type) {
-      case 'question': return <MessageSquare className="w-4 h-4" />;
-      case 'quiz': return <Trophy className="w-4 h-4" />;
-      case 'withdraw': return <Wallet className="w-4 h-4" />;
-      case 'contact': return <HelpCircle className="w-4 h-4" />;
-      case 'bank': return <CreditCard className="w-4 h-4" />;
-      case 'subscription': return <Star className="w-4 h-4" />;
-      case 'registration': return <User className="w-4 h-4" />;
-      case 'blog': return <FileText className="w-4 h-4" />;
-      case 'referral_registration': return <Zap className="w-4 h-4" />;
-      default: return <Bell className="w-4 h-4" />;
+      case 'question': return <MessageSquare className={className} />;
+      case 'quiz': return <Trophy className={className} />;
+      case 'quiz_attempt': return <Trophy className={className} />;
+      case 'exam_attempt': return <Target className={className} />;
+      case 'withdraw': return <Wallet className={className} />;
+      case 'contact': return <HelpCircle className={className} />;
+      case 'bank': return <CreditCard className={className} />;
+      case 'subscription': return <Star className={className} />;
+      case 'registration': return <User className={className} />;
+      case 'blog': return <FileText className={className} />;
+      case 'referral_registration': return <Zap className={className} />;
+      case 'competition_reset': return <RotateCcw className={className} />;
+      case 'streak': return <Flame className={className} />;
+      case 'daily_challenge': return <Calendar className={className} />;
+      case 'exam_news': return <Newspaper className={className} />;
+      case 'current_affairs': return <Globe className={className} />;
+      case 'study_plan': return <ClipboardList className={className} />;
+      case 'mentor': return <UserCheck className={className} />;
+      case 'revision_reminder': return <Clock className={className} />;
+      case 'discussion_reply': return <MessageSquare className={className} />;
+      case 'discussion_upvote': return <ThumbsUp className={className} />;
+      case 'reel': return <Film className={className} />;
+      default: return <Bell className={className} />;
     }
+  };
+
+  const getLabelByType = (type) => {
+    if (!type) return 'Other';
+    return type
+      .split('_')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
   };
 
   const fetchPage = useCallback(async (p = 1, perPage = limit) => {
@@ -78,6 +112,7 @@ const AdminNotificationsPage = () => {
       setPage(pg.page || p);
       setTotalPages(pg.totalPages || 1);
       setTotal(pg.total || data.length || 0);
+      setTypeCounts(Array.isArray(res?.typeCounts) ? res.typeCounts : []);
     } catch (e) {
       // ignore
     } finally {
@@ -139,7 +174,7 @@ const AdminNotificationsPage = () => {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
               <div className="space-y-2">
                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  NOTIFI<span className="text-black dark:text-white">CATIONS</span>
+                  NOTIFI<span className="text-black dark:text-white">CATIONS</span> <span className="text-primary-700">({total})</span>
                 </h1>
                 <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View and manage system notifications and user activity alerts.</p>
               </div>
@@ -165,6 +200,30 @@ const AdminNotificationsPage = () => {
                  </button>
               </div>
             </div>
+
+            {typeCounts.filter((tc) => tc.count > 0).length > 0 && (
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+                {typeCounts.filter((tc) => tc.count > 0).map((tc) => (
+                  <div
+                    key={tc.type}
+                    className="group relative overflow-hidden flex items-center gap-3 px-4 lg:px-5 py-4 bg-white/80 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all"
+                  >
+                    <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-primary-700 text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
+                      {getIconByType(tc.type, 'w-3.5 h-3.5 lg:w-5 lg:h-5')}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[9px] lg:text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-tight truncate">
+                        {getLabelByType(tc.type)}
+                      </p>
+                      <p className="text-2xl lg:text-3xl font-black font-outfit text-slate-900 dark:text-white leading-none mt-1">
+                        {tc.count}
+                      </p>
+                    </div>
+                    <div className="absolute -right-4 -bottom-4 w-16 h-16 rounded-full bg-primary-700/5 dark:bg-primary-500/10 pointer-events-none" />
+                  </div>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           {/* Notification List */}
@@ -211,35 +270,30 @@ const AdminNotificationsPage = () => {
                          ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
                          : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-sm active-signal'}`}
                      >
-                        {!n.isRead && (
-                          <div className="absolute top-8 right-8 w-3 h-3 bg-primary-700 rounded-full animate-ping" />
-                        )}
-
-                        <div className="flex items-center gap-4 mb-6">
-                           <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-700 text-white shadow-sm'} transition-colors`}>
-                              {getIconByType(n.type)}
+                        <div className="flex items-center justify-between gap-4 mb-4 lg:mb-6">
+                           <div className="flex items-center gap-4 min-w-0">
+                              <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-700 text-white shadow-sm'} transition-colors`}>
+                                 {getIconByType(n.type)}
+                              </div>
+                              <div>
+                                 <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
+                                 <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{formatDate(n.createdAt)} &middot; {formatTime(n.createdAt)}</div>
+                              </div>
                            </div>
-                           <div>
-                              <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
-                              <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{formatDate(n.createdAt)}</div>
+                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-sm shrink-0">
+                              <ArrowRight className="w-4 h-4" />
                            </div>
                         </div>
 
-                        <h3 className={`text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors ${n.isRead ? 'text-slate-900 dark:text-white' : 'text-primary-700'}`}>
+                        <h3 className={`flex items-center justify-between gap-2 text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors ${n.isRead ? 'text-slate-900 dark:text-white' : 'text-primary-700'}`}>
                            {n.title}
+                           {!n.isRead && (
+                             <span className="w-2.5 h-2.5 bg-primary-700 rounded-full animate-ping shrink-0" />
+                           )}
                         </h3>
                         <p className={`text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-3 ${n.isRead ? 'text-slate-400' : 'text-slate-600 dark:text-slate-300'}`}>
                            {n.description}
                         </p>
-
-                        <div className="mt-auto pt-8 flex items-center justify-between border-t-2 border-slate-50 dark:border-white/5">
-                           <div className="flex items-center gap-2 text-[9px] font-black text-slate-400 uppercase italic">
-                              <Clock className="w-3 h-3" /> {formatTime(n.createdAt)}
-                           </div>
-                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-sm">
-                              <ArrowRight className="w-4 h-4" />
-                           </div>
-                        </div>
                      </motion.div>
                    );
                  })}

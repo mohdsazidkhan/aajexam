@@ -245,7 +245,7 @@ export default function AdminContacts() {
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
-                               <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
+                               <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
                             </td>
                             <td className="px-4 lg:px-8 py-3 lg:py-6">
                                <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-2 text-slate-500 max-w-sm">{contact.message}</p>

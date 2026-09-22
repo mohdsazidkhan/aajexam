@@ -16,17 +16,24 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
 
-        const [notifications, total] = await Promise.all([
+        const [notifications, total, typeCountsAgg] = await Promise.all([
             Notification.find({})
                 .sort({ createdAt: -1 })
                 .skip(skip)
                 .limit(limit)
                 .lean(),
-            Notification.countDocuments({})
+            Notification.countDocuments({}),
+            Notification.aggregate([
+                { $group: { _id: '$type', count: { $sum: 1 } } },
+                { $sort: { count: -1 } }
+            ])
         ]);
+
+        const typeCounts = typeCountsAgg.map((t) => ({ type: t._id, count: t.count }));
 
         return NextResponse.json({
             notifications,
+            typeCounts,
             pagination: { page, limit, total, totalPages: Math.ceil(total / limit) }
         });
     } catch (error) {

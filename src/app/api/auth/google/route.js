@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import WalletTransaction from '@/models/WalletTransaction';
-import { sendBrevoEmail } from '@/utils/email';
+import { sendBrevoEmail, sendNewRegistrationAlert } from '@/utils/email';
 import { enforceRateLimit } from '@/lib/rateLimit';
 
 async function getUniqueReferralCode() {
@@ -118,6 +118,8 @@ export async function POST(req) {
                 userId: user._id, type: 'registration', title: 'New user registered',
                 description: `${user.name} (${user.email}) via Google`, meta: { userId: user._id, provider: 'google' }
             });
+
+            sendNewRegistrationAlert({ user, provider: 'google' }).catch(() => {});
 
             // Send Welcome Email
             const welcomeHtml = `

@@ -319,7 +319,7 @@ const AdminGovtExamPatterns = () => {
                     <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-1">Exam Pattern</div>
                     <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{p.title}</h3>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 mb-4 lg:mb-8">
+                  <div className="grid grid-cols-2 gap-4 mb-0 lg:mb-8">
                     <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100">
                       <p className="text-[8px] font-black text-slate-400 uppercase mb-1">Duration</p>
                       <p className="text-sm font-black text-slate-900 dark:text-white">{p.duration} MIN</p>

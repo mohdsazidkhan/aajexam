@@ -41,4 +41,57 @@ const sendBrevoEmail = async ({ to, subject, html, sender }) => {
     }
 };
 
-module.exports = { sendBrevoEmail };
+const sendNewRegistrationAlert = async ({ user, provider = 'email', referrerName = null }) => {
+    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@mohdsazidkhan.com';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
+    const registeredAt = new Date().toLocaleString('en-IN', {
+        day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true
+    });
+
+    const rows = [
+        ['Name', user.name || '—'],
+        ['Email', user.email || '—'],
+        ['Phone', user.phone || '—'],
+        ['Username', user.username ? `@${user.username}` : '—'],
+        ['Signup Method', provider === 'google' ? 'Google' : 'Email & Password'],
+        ['Referred By', referrerName || '—'],
+        ['Registered At', registeredAt],
+    ].map(([label, value]) => `
+        <tr>
+            <td style="padding:10px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #f1f5f9;white-space:nowrap;">${label}</td>
+            <td style="padding:10px 16px;font-size:14px;font-weight:600;color:#131f24;border-bottom:1px solid #f1f5f9;">${value}</td>
+        </tr>
+    `).join('');
+
+    const html = `
+    <div style="font-family:Arial, sans-serif;max-width:600px;margin:0 auto;background:#f7fff0;padding:24px;">
+        <div style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(53,122,2,0.08);">
+            <div style="background:linear-gradient(135deg,#58cc02,#357a02);padding:28px 24px;text-align:center;">
+                <p style="margin:0;font-size:22px;font-weight:900;letter-spacing:-0.02em;color:#ffffff;">AAJ<span style="color:#0F1720;">EXAM</span></p>
+                <p style="margin:8px 0 0;font-size:16px;font-weight:800;color:#ffffff;">🎉 New User Registered</p>
+            </div>
+            <div style="padding:24px;">
+                <p style="margin:0 0 16px;font-size:14px;color:#334155;">A new student just joined AajExam. Here are the details:</p>
+                <table style="width:100%;border-collapse:collapse;border:1px solid #f1f5f9;border-radius:12px;overflow:hidden;">
+                    ${rows}
+                </table>
+                <div style="text-align:center;margin-top:24px;">
+                    <a href="${siteUrl}/admin/students" style="display:inline-block;background:#357a02;color:#ffffff;text-decoration:none;font-weight:800;font-size:13px;padding:12px 28px;border-radius:999px;">View in Admin Panel</a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:16px;">This is an automated notification from AajExam.</p>
+    </div>
+    `;
+
+    return sendBrevoEmail({
+        to: contactEmail,
+        subject: `🎉 New Registration: ${user.name || user.email}`,
+        html
+    }).catch((err) => {
+        console.error('Failed to send new-registration admin alert email:', err);
+        return false;
+    });
+};
+
+module.exports = { sendBrevoEmail, sendNewRegistrationAlert };

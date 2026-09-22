@@ -284,7 +284,7 @@ const ExamOverviewPage = () => {
     <div className="w-full text-slate-900 dark:text-white font-outfit">
 
       {/* Header */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-4 my-2 lg:my-4">
+      <div className="flex items-center justify-between gap-4 my-2 lg:my-4">
         <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-2 lg:mb-0 uppercase leading-none">
           Exam <span className="text-primary-700">Overview</span>
         </h1>

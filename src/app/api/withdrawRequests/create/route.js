@@ -4,6 +4,7 @@ import UserWallet from '@/models/UserWallet';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect, proOnly } from '@/middleware/auth';
 import { enforceRateLimit } from '@/lib/rateLimit';
+import { createNotification } from '@/utils/notifications';
 
 const MIN_WITHDRAW_AMOUNT = parseInt(process.env.MIN_WITHDRAW_AMOUNT || '1000', 10);
 
@@ -62,6 +63,16 @@ export async function POST(req) {
         // Deduct from balance (optional, usually done on approval, but aajexam-backend doesn't seem to deduct here)
         // wallet.balance -= amount;
         // await wallet.save();
+
+        try {
+            await createNotification({
+                userId,
+                type: 'withdraw',
+                title: 'New withdrawal request',
+                description: `${auth.user.name || 'A user'} requested a withdrawal of ₹${amount}`,
+                meta: { userId, withdrawRequestId: reqDoc._id, amount }
+            });
+        } catch (e) { console.error('Notification Error:', e); }
 
         return NextResponse.json({ success: true, data: reqDoc, message: 'Withdrawal request submitted successfully' }, { status: 201 });
     } catch (error) {

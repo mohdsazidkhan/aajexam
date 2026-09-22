@@ -8,7 +8,7 @@ import UserWallet from '@/models/UserWallet';
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
-import { sendBrevoEmail } from '@/utils/email';
+import { sendBrevoEmail, sendNewRegistrationAlert } from '@/utils/email';
 import { enforceRateLimit } from '@/lib/rateLimit';
 
 async function getUniqueReferralCode() {
@@ -156,9 +156,11 @@ export async function POST(req) {
         }
 
         // Referral logic
+        let referrerName = null;
         if (referredBy) {
             const referrer = await User.findOne({ referralCode: referredBy });
             if (referrer) {
+                referrerName = referrer.name;
                 await User.findByIdAndUpdate(referrer._id, { $inc: { referralCount: 1 } });
                 createNotification({
                     userId: null,
@@ -193,6 +195,10 @@ export async function POST(req) {
             userId: user._id, type: 'registration', title: 'New user registered',
             description: `${user.name} (${user.email})`, meta: { userId: user._id }
         });
+
+        if (!isAdmin) {
+            sendNewRegistrationAlert({ user, provider: 'email', referrerName }).catch(() => {});
+        }
 
         // Send Welcome Email
         if (!isAdmin) {

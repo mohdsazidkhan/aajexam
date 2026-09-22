@@ -282,7 +282,7 @@ const DashboardPage = () => {
         transition={{ delay: 0.3 }}
         className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] p-0 lg:p-4 shadow-sm border-none relative overflow-hidden"
       >
-        <div className="flex items-center gap-3 lg:gap-6 mb-4 px-0 lg:px-6">
+        <div className="flex items-center gap-3 lg:gap-6 mb-2 lg:mb-4 py-2 px-3 lg:px-6 lg:py-4">
           <div className="w-14 h-14 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-700 shadow-sm border border-primary-500/20">
             <Zap className="w-7 h-7 fill-current" />
           </div>

@@ -39,7 +39,6 @@ const AdminGovtExamTests = () => {
       title: "",
       totalMarks: 100,
       duration: 60,
-      isFree: false,
       questions: []
    });
 
@@ -56,8 +55,8 @@ const AdminGovtExamTests = () => {
 
    const testStats = {
       total: tests.length,
-      free: tests.filter(t => t.isFree).length,
-      paid: tests.filter(t => !t.isFree).length,
+      free: tests.filter(t => t.accessLevel === 'FREE').length,
+      paid: tests.filter(t => t.accessLevel !== 'FREE').length,
       avgDuration: tests.length ? Math.round(tests.reduce((acc, curr) => acc + (curr.duration || 0), 0) / tests.length) : 0
    };
 
@@ -133,7 +132,6 @@ const AdminGovtExamTests = () => {
          title: "",
          totalMarks: 100,
          duration: 60,
-         isFree: false,
          questions: []
       });
       setShowModal(true);
@@ -148,7 +146,6 @@ const AdminGovtExamTests = () => {
          title: test.title,
          totalMarks: test.totalMarks,
          duration: test.duration,
-         isFree: test.isFree,
          questions: test.questions || []
       });
       setShowModal(true);
@@ -325,9 +322,9 @@ const AdminGovtExamTests = () => {
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">{test.questions?.length || 0} Questions</td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">{test.duration} Min</td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 w-fit ${test.isFree ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-primary-500/10 text-primary-700 border-primary-500/20'}`}>
-                                             {test.isFree ? <Zap className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
-                                             {test.isFree ? 'Public' : 'Premium'}
+                                          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 w-fit ${test.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+                                             {test.accessLevel === 'FREE' ? <Zap className="w-3 h-3" /> : <Lock className="w-3 h-3" />}
+                                             {test.accessLevel === 'FREE' ? 'Free' : 'PRO'}
                                           </div>
                                        </td>
                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
@@ -350,12 +347,12 @@ const AdminGovtExamTests = () => {
                                  <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-700" />
                                  <div className="flex justify-between items-start mb-4 lg:mb-8">
                                     <div className="p-4 bg-slate-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform"><FileText className="w-6 h-6 text-slate-400 group-hover:text-primary-700" /></div>
-                                    <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase tracking-widest border-2 ${test.isFree ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-primary-500/10 text-primary-700 border-primary-500/20'}`}>
-                                       {test.isFree ? 'FREE' : 'PREMIUM'}
+                                    <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase tracking-widest border-2 ${test.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>
+                                       {test.accessLevel === 'FREE' ? 'FREE' : 'PRO'}
                                     </div>
                                  </div>
-                                 <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-4 lg:mb-8 line-clamp-2 min-h-[3rem]">{test.title}</h3>
-                                 <div className="grid grid-cols-2 gap-4 mb-4 lg:mb-8">
+                                 <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-0 lg:mb-8 line-clamp-2 min-h-[3rem]">{test.title}</h3>
+                                 <div className="grid grid-cols-2 gap-4 mb-0 lg:mb-8">
                                     <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
                                        <span className="text-[8px] font-black text-slate-400 uppercase mb-1">Questions</span>
                                        <span className="text-sm font-black text-slate-900 dark:text-white">{test.questions?.length || 0} Qs</span>
@@ -389,7 +386,7 @@ const AdminGovtExamTests = () => {
                                     </div>
                                  </div>
                                  <div className="flex items-center gap-4">
-                                    <div className={`px-4 py-2 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase ${test.isFree ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-primary-500/10 text-primary-700 border-primary-500/20'}`}>{test.isFree ? 'Free' : 'Premium'}</div>
+                                    <div className={`px-4 py-2 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase ${test.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20'}`}>{test.accessLevel === 'FREE' ? 'Free' : 'PRO'}</div>
                                     <motion.button onClick={() => handleEdit(test)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700 transition-colors"><Edit3 className="w-5 h-5" /></motion.button>
                                     <motion.button onClick={() => handleDelete(test._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white transition-colors"><Trash2 className="w-5 h-5" /></motion.button>
                                  </div>
@@ -462,13 +459,15 @@ const AdminGovtExamTests = () => {
                                                 <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
                                              </div>
                                           </div>
-                                          <label className="flex items-center gap-4 p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 cursor-pointer transition-all hover:bg-white dark:hover:bg-white/10 group shadow-sm">
-                                             <input type="checkbox" checked={formData.isFree} onChange={(e) => setFormData({ ...formData, isFree: e.target.checked })} className="w-6 h-6 rounded-lg text-primary-700 border-2 border-slate-300 transition-all cursor-pointer" />
-                                             <div>
-                                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest group-hover:text-primary-700 transition-colors leading-none mb-1">Free Access</div>
-                                                <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest leading-none">{formData.isFree ? 'This test is free for all students' : 'Students need a subscription to access'}</div>
+                                          <div className="flex items-center gap-4 p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
+                                             <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest shrink-0 ${editingTest?.accessLevel === 'FREE' ? 'bg-primary-500/10 text-primary-700' : 'bg-black/10 dark:bg-white/10 text-black dark:text-white'}`}>
+                                                {editingTest ? (editingTest.accessLevel === 'FREE' ? 'Free' : 'PRO') : 'Auto'}
                                              </div>
-                                          </label>
+                                             <div>
+                                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">Access Level</div>
+                                                <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest leading-none">Auto-managed: the latest-year PYQ test per pattern is Free, the rest are PRO</div>
+                                             </div>
+                                          </div>
                                        </div>
                                     </section>
 
