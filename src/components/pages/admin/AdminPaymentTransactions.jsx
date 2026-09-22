@@ -181,7 +181,7 @@ const AdminPaymentTransactions = () => {
     switch (status?.toLowerCase()) {
       case 'completed': case 'success': return 'bg-primary-500/10 text-primary-700 border-primary-500/20';
       case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
-      case 'pending': case 'created': case 'authorized': return 'bg-primary-500/10 text-primary-700 border-primary-500/20';
+      case 'pending': case 'created': case 'authorized': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
       case 'refunded': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
       default: return 'bg-slate-500/10 text-slate-500 border-slate-500/20';
     }

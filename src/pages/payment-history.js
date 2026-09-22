@@ -68,11 +68,10 @@ const PaymentHistoryPage = () => {
 
    const getStatusConfig = (status) => {
       switch (status) {
-         case 'paid': return { label: 'Paid', icon: CheckCircle, color: 'text-primary-700', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-800' };
-         case 'authorized': return { label: 'Authorized', icon: CheckCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
+         case 'success': return { label: 'Success', icon: CheckCircle, color: 'text-primary-700', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-800' };
+         case 'pending': return { label: 'Pending', icon: AlertCircle, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800' };
          case 'failed': return { label: 'Failed', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
          case 'refunded': return { label: 'Refunded', icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
-         case 'created': return { label: 'Pending', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
          default: return { label: status || 'Unknown', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
       }
    };
@@ -106,8 +105,8 @@ const PaymentHistoryPage = () => {
 
             <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
                {/* Header */}
-               <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                  <div className="space-y-2 text-center lg:text-left">
+               <div className="flex items-center justify-between gap-6">
+                  <div className="space-y-2">
                      <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Payment History</h1>
                      <p className="text-sm font-bold text-gray-400">
                         {totalCount > 0 ? `${totalCount} payment${totalCount > 1 ? 's' : ''} found` : 'All your payment transactions'}
