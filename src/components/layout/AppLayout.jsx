@@ -75,15 +75,11 @@ const AppLayout = ({ children }) => {
     }
   }, [isReelsPage]);
 
-  // ── Search: hide header on mobile, show on desktop, keep bottom nav ──
+  // ── Search: top navbar + bottom nav on all breakpoints ──
   if (isSearchPage) {
     return (
       <div className="min-h-screen bg-background-page font-nunito">
-        {showAppNav && !isUserAdmin && (
-          <div className="hidden lg:block">
-            <StudentNavbar />
-          </div>
-        )}
+        {showAppNav && !isUserAdmin && <StudentNavbar />}
         <AnimatePresence>
           {showAppNav && isSidebarOpen && !isDesktop && (
             <motion.div
@@ -102,7 +98,7 @@ const AppLayout = ({ children }) => {
             width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
             transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
           }}
-          className="lg:pt-16"
+          className="pt-12 lg:pt-16"
         >
           {children}
         </div>
