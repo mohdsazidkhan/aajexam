@@ -34,7 +34,7 @@ const ContactUs = ({ contactInfo = {
    email: config.CONTACT.EMAIL,
    phone: config.CONTACT.PHONE,
    address: 'Badarpur, Delhi, India',
-   businessHours: 'Mon - Fri: 9:00 AM - 9:00 PM'
+   businessHours: '24/7'
 } }) => {
    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
    const [status, setStatus] = useState(null);

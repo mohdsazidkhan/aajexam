@@ -55,7 +55,7 @@ export async function getStaticProps() {
         email: config.CONTACT.EMAIL,
         phone: config.CONTACT.PHONE,
         address: 'Badarpur, Delhi, India',
-        businessHours: 'Mon - Fri: 9:00 AM - 9:00 PM'
+        businessHours: '24/7'
       }
     },
     revalidate: 86400
