@@ -7,7 +7,7 @@ export async function GET(req, { params }) {
         await dbConnect();
         const { examId } = await params;
         const { searchParams } = new URL(req.url);
-        const limit = parseInt(searchParams.get('limit')) || 12;
+        const limit = parseInt(searchParams.get('limit')) || 20;
         const page = parseInt(searchParams.get('page')) || 1;
         const skip = (page - 1) * limit;
 

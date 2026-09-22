@@ -10,7 +10,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const examId = searchParams.get('examId');
-        const limit = Math.min(parseInt(searchParams.get('limit')) || 50, 100);
+        const limit = Math.min(parseInt(searchParams.get('limit')) || 20, 100);
 
         // Stages shared between the leaderboard pipeline and the total-attempts
         // count below, so both respect the same "Completed" + optional examId filter.

@@ -15,7 +15,7 @@ export async function GET(req, { params }) {
 
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page') || '1');
-        const limit = parseInt(searchParams.get('limit') || '12');
+        const limit = parseInt(searchParams.get('limit') || '20');
         const skip = (page - 1) * limit;
 
         const filter = { createdBy: user._id, status: 'published' };

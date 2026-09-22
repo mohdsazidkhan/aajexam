@@ -12,8 +12,8 @@ export async function GET(req) {
 
         await dbConnect();
         const { searchParams } = new URL(req.url);
-        const page = parseInt(searchParams.get('page'));
-        const limit = parseInt(searchParams.get('limit'));
+        const page = parseInt(searchParams.get('page')) || 1;
+        const limit = parseInt(searchParams.get('limit')) || 20;
         const search = searchParams.get('search');
 
         let query = { role: 'student' };

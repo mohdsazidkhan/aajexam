@@ -27,7 +27,7 @@ export async function GET(req) {
         }
 
         const { searchParams } = new URL(req.url);
-        const limit = parseInt(searchParams.get('limit')) || 50;
+        const limit = parseInt(searchParams.get('limit')) || 20;
         const status = searchParams.get('status') || 'active';
         const source = searchParams.get('source');
         const includeAll = searchParams.get('all') === 'true';

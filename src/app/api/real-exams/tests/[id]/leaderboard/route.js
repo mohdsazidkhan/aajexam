@@ -8,7 +8,7 @@ export async function GET(req, { params }) {
         await dbConnect();
         const { id: testId } = await params;
         const { searchParams } = new URL(req.url);
-        const limit = parseInt(searchParams.get('limit')) || 10;
+        const limit = parseInt(searchParams.get('limit')) || 20;
 
         const filter = { practiceTest: new mongoose.Types.ObjectId(testId), status: 'Completed' };
 

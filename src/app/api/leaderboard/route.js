@@ -13,7 +13,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const type = searchParams.get('type') || 'quiz'; // 'quiz' or 'exam'
         const period = searchParams.get('period') || 'all-time';
-        const limit = Math.min(parseInt(searchParams.get('limit')) || 50, 100);
+        const limit = Math.min(parseInt(searchParams.get('limit')) || 20, 100);
 
         const auth = await protect(req);
         const currentUserId = auth.authenticated ? auth.user._id.toString() : null;

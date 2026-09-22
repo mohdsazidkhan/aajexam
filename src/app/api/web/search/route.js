@@ -21,7 +21,7 @@ import { protect } from '@/middleware/auth';
 // the legacy combined endpoint keep using /api/search untouched.
 export const dynamic = 'force-dynamic';
 
-const DEFAULT_LIMIT = 24;
+const DEFAULT_LIMIT = 20;
 const PREVIEW_LIMIT = 6;
 const MERGE_FETCH_CAP = 500;
 
