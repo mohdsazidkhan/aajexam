@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Zap, Activity } from 'lucide-react';
 
 /**
  * ProgressBar - A friendly, AajExam-inspired progress bar for tracking learning milestones.

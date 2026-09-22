@@ -64,8 +64,8 @@ const QuizHistoryPage = () => {
          <div className="container mx-auto py-4 lg:py-8 space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view your detailed quiz attempt history and performance insights.">
                {/* Header */}
-               <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                  <div className="space-y-1 text-center lg:text-left">
+               <div className="flex items-center justify-between gap-6">
+                  <div className="space-y-1">
                      <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Quiz History</h1>
                      <p className="text-sm font-bold text-slate-400">All quizzes you have attempted</p>
                   </div>
@@ -132,7 +132,7 @@ const QuizHistoryPage = () => {
                                                 <span className="text-[10px] font-black text-slate-400">Accuracy</span>
                                                 <span className="text-sm font-black text-primary-700">{Math.round(attempt.accuracy || 0)}%</span>
                                              </div>
-                                             <ProgressBar progress={attempt.accuracy || 0} color="emerald-500" height="h-1.5" />
+                                             <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" />
                                           </div>
 
                                           <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">

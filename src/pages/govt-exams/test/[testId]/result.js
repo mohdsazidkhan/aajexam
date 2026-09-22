@@ -102,8 +102,8 @@ const TestResult = ({ resolvedId } = {}) => {
   };
 
   if (loading) return (
-    <div className="space-y-8 animate-fade-in py-10">
-      <Skeleton height="300px" borderRadius="2.5rem" />
+    <div className="space-y-4 lg:space-y-8 animate-fade-in py-4 lg:py-8">
+      <Skeleton height="300px" borderRadius="1rem" />
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map(i => <Skeleton key={i} height="120px" borderRadius="1.5rem" />)}
       </div>
@@ -194,7 +194,7 @@ const TestResult = ({ resolvedId } = {}) => {
           </div>
 
           {/* Animated Background Elements */}
-          <div className="absolute top-0 right-0 p-8 opacity-10">
+          <div className="absolute top-0 right-0 p-8 opacity-5">
             <Target className="w-64 h-64 rotate-12" />
           </div>
         </Card>
