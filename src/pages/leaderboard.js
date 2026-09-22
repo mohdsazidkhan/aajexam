@@ -399,6 +399,39 @@ const LeaderboardPage = () => {
               </div>
             </div>
 
+            {/* ── Period Tabs ── */}
+            <div className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar mb-6">
+              {PERIODS.map(p => {
+                const Icon = p.icon;
+                const isActive = period === p.id;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setPeriod(p.id)}
+                    className={`
+                      shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
+                      ${isActive
+                        ? 'bg-primary-700 text-white border-primary-700 shadow-sm'
+                        : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
+                      }
+                    `}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{p.label}</span>
+                  </button>
+                );
+              })}
+              {/* Refresh button */}
+              <button
+                onClick={() => fetchLeaderboard(true)}
+                disabled={refreshing || loading}
+                title="Refresh"
+                className="shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+              >
+                <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+              </button>
+            </div>
+
             <motion.div
               initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
               className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/15 border border-black/20 dark:border-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
@@ -428,39 +461,6 @@ const LeaderboardPage = () => {
 
         {/* ── My Rank ── */}
         {!loading && myEntry && <MyRankCard entry={myEntry} type={type} />}
-
-        {/* ── Period Tabs ── */}
-        <div className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
-          {PERIODS.map(p => {
-            const Icon = p.icon;
-            const isActive = period === p.id;
-            return (
-              <button
-                key={p.id}
-                onClick={() => setPeriod(p.id)}
-                className={`
-                  shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
-                  ${isActive
-                    ? 'bg-primary-700 text-white border-primary-700 shadow-sm'
-                    : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
-                  }
-                `}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{p.label}</span>
-              </button>
-            );
-          })}
-          {/* Refresh button */}
-          <button
-            onClick={() => fetchLeaderboard(true)}
-            disabled={refreshing || loading}
-            title="Refresh"
-            className="shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
-          >
-            <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
-          </button>
-        </div>
 
         {/* ── Quick Stats ── */}
         {!loading && data.length > 0 && (
