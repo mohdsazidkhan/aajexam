@@ -110,7 +110,7 @@ const CurrentAffairsPage = () => {
           </motion.div>
           <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Current Affairs</h1>
           {/* Search + Date */}
-          <div className="w-full max-w-2xl flex flex-col sm:flex-row gap-3">
+          <div className="w-full max-w-lg px-2 lg:px-0">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search current affairs..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
