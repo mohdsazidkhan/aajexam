@@ -146,7 +146,7 @@ const MyAnalyticsPage = () => {
    const totalActivity = (quiz?.totalAttempts || 0) + (exam?.totalAttempts || 0) + (reel?.totalAnswered || 0);
 
    return (
-      <div className="space-y-6 lg:space-y-8 animate-fade-in mt-0 pb-4">
+      <div className="space-y-3 lg:space-y-6 animate-fade-in mt-4 pb-4">
          <Head><title>My Analytics - AajExam</title></Head>
 
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
