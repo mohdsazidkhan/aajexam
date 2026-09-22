@@ -103,8 +103,8 @@ const AdminQuizQuestions = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div className="space-y-6 pt-4 lg:pt-6">
+      <div className="flex justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><HelpCircle className="w-6 h-6 text-black dark:text-white" /> Questions</h1>
         <button onClick={openCreate} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-800"><Plus className="w-4 h-4"/> Add Question</button>
       </div>

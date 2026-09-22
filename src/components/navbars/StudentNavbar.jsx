@@ -136,7 +136,7 @@ const StudentNavbar = () => {
 
                     {/* Floating Badge */}
                     <span
-                      className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[10px] lg:text-[12px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full shadow-sm border border-green-500/20 ${isExpired
+                      className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[11px] lg:text-[13px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full shadow-sm border border-green-500/20 ${isExpired
                         ? 'bg-red-500 text-white'
                         : isPro
                           ? 'bg-primary-700 text-white'

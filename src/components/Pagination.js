@@ -57,7 +57,7 @@ const Pagination = ({
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-6 px-6 py-8 bg-white dark:bg-slate-900 border-t-4 border-slate-100 dark:border-slate-800 rounded-b-[2rem] shadow-sm transition-colors duration-300">
+    <div className="sticky bottom-0 z-20 flex flex-col sm:flex-row items-center justify-between gap-6 px-6 py-8 bg-white dark:bg-slate-900 border-t-4 border-slate-100 dark:border-slate-800 rounded-b-[2rem] shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
       {/* Visual Info Display */}
       {showInfo && (
         <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit">

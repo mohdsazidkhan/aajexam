@@ -124,8 +124,8 @@ const AdminQuizQuizzes = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div className="space-y-6 pt-4 lg:pt-6">
+      <div className="flex justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BrainCircuit className="w-6 h-6 text-primary-700" /> Quizzes</h1>
         <div className="flex gap-2">
           <button onClick={async () => { if (!confirm('Generate 1 quiz (5 questions) for every topic? This may take a minute.')) return; setLoading(true); try { const res = await API.seedQuizzes(); if (res?.success) { toast.success(`${res.stats.quizzesCreated} quizzes, ${res.stats.questionsCreated} questions created!`); fetchQuizzes(); } else toast.error(res?.message ||'Failed'); } catch (e) { toast.error('Failed'); } finally { setLoading(false); } }} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-800"><Database className="w-4 h-4"/> Seed Quizzes</button>

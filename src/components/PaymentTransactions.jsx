@@ -376,7 +376,7 @@ const PaymentTransactions = () => {
                         <div className={`text-base lg:text-3xl font-black tracking-tighter ${getTypeColor(transaction.type, transaction.source)}`}>
                           {formatCurrency(transaction.amount)}
                         </div>
-                        <div className={`px-2.5 lg:px-4 py-1 lg:py-1.5 rounded-lg lg:rounded-xl text-[10px] lg:text-[12px] font-black uppercase tracking-widest border-2 flex items-center gap-1.5 lg:gap-2 ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
+                        <div className={`px-2.5 lg:px-4 py-1 lg:py-1.5 rounded-lg lg:rounded-xl text-[11px] lg:text-[13px] font-black uppercase tracking-widest border-2 flex items-center gap-1.5 lg:gap-2 ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
                           {getStatusIcon(transaction.paymentStatus || transaction.status)}
                           {transaction.paymentStatus || transaction.status}
                         </div>

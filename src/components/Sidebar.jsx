@@ -181,7 +181,7 @@ const Sidebar = () => {
                         <motion.div layoutId="admin-nav-active" className="absolute inset-0 bg-primary-700 shadow-sm" />
                       )}
                       <item.icon className="w-4 h-4 relative z-10 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
-                      <span className="text-[12px] lg:text-[14px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
+                      <span className="text-[11px] lg:text-[13px] font-bold tracking-wide relative z-10 uppercase">{item.label}</span>
                       {item.isPro && (
                         <ProBadge size="xs" className="relative z-10 ml-auto" />
                       )}
