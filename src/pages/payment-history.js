@@ -103,7 +103,7 @@ const PaymentHistoryPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
             <Seo title="Payment History - AajExam" noIndex={true} />
 
-            <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
+            <div className="py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6 lg:space-y-4 mt-0">
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
                   <div className="space-y-2">

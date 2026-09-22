@@ -23,7 +23,7 @@ const ViewToggle = ({ currentView, onViewChange, views = ['table', 'list', 'grid
           <button
             key={view}
             onClick={() => onViewChange(view)}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-2xl text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all duration-300 ${isActive
+            className={`flex items-center gap-2 px-3 sm:px-6 py-2 sm:py-2.5 rounded-2xl text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all duration-300 ${isActive
                 ? 'bg-white dark:bg-slate-800 text-primary-700 shadow-sm border-b-2 border-slate-100 dark:border-slate-700'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
               }`}

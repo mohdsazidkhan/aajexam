@@ -215,7 +215,7 @@ const AdminPaymentTransactions = () => {
 
   if (loading && transactions.length === 0) {
     return (<div className="adminContent w-full flex items-center justify-center">
-      <AdminTableSkeleton showHeader={false} showFilters={false} />
+      <AdminTableSkeleton />
     </div>
     );
   }
@@ -427,7 +427,7 @@ const AdminPaymentTransactions = () => {
                         </div>
                       </div>
                       <div className="mt-4 lg:mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between text-[9px] font-black text-slate-400 uppercase">
-                        <div className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" />{formatDate(t.createdAt)}</div>
+                        <div className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" />{formatDateTime(t.createdAt)}</div>
                         <div className="flex items-center gap-2"><Wallet className="w-3.5 h-3.5" />{t.paymentMethod || 'Online Payment'}</div>
                       </div>
                     </motion.div>

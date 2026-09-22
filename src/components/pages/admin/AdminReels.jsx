@@ -189,11 +189,11 @@ const AdminReels = () => {
                     className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-sm font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-700 transition-all outline-none shadow-sm"
                   />
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <select
                     value={typeFilter}
                     onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
-                    className="pl-4 pr-10 py-3 rounded-[1.2rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-700 outline-none appearance-none shadow-sm cursor-pointer"
+                    className="w-full sm:w-auto pl-4 pr-10 py-3 rounded-[1.2rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-700 outline-none appearance-none shadow-sm cursor-pointer"
                   >
                     <option value="">All Types</option>
                     <option value="question">Question</option>
@@ -203,9 +203,8 @@ const AdminReels = () => {
                     <option value="poll">Poll</option>
                   </select>
 
-                  {/* View Toggle - Only Visible on Desktop or when manual switch needed */}
-                  <div className="hidden lg:block">
-                    <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'grid']} />
+                  <div className="flex justify-center sm:justify-start">
+                    <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
                   </div>
                 </div>
               </div>
@@ -228,7 +227,7 @@ const AdminReels = () => {
                 </motion.div>
               ) : viewMode === 'table' ? (
                 /* Custom Desktop Table */
-                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="hidden lg:block overflow-hidden rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="overflow-x-auto rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-slate-50 dark:bg-slate-800/50 border-b-2 border-slate-100 dark:border-slate-800">
@@ -305,7 +304,7 @@ const AdminReels = () => {
                     </tbody>
                   </table>
                 </motion.div>
-              ) : (
+              ) : viewMode === 'grid' ? (
                 /* Custom Mobile Grid - 2 COLUMNS AS REQUESTED */
                 <motion.div key="grid" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {items.map((item, i) => {
@@ -353,6 +352,39 @@ const AdminReels = () => {
 
                         {/* Status Dot */}
                         <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status ==='published'?'bg-primary-700': item.status ==='pending'?'bg-primary-700':'bg-primary-700'}`} />
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              ) : (
+                /* List View - full-width single-column rows */
+                <motion.div key="list" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-3">
+                  {items.map((item, i) => {
+                    const Icon = TYPE_ICONS[item.type] || HelpCircle;
+                    return (
+                      <motion.div key={item._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.03 }} className="flex items-center gap-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-4 shadow-sm">
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${TYPE_COLORS[item.type]}`}>
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-black text-content-primary tracking-tight truncate uppercase italic">{getPreviewText(item)}</p>
+                          <div className="flex items-center gap-2 mt-1 flex-wrap">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
+                            <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
+                            <div className="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase"><Eye className="w-3 h-3" /> {item.viewsCount}</div>
+                            <div className="flex items-center gap-1 text-[10px] font-black text-black/70 dark:text-white/70 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
+                          </div>
+                        </div>
+                        <span className={`shrink-0 px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-2 ${STATUS_COLORS[item.status]}`}>
+                          {item.status}
+                        </span>
+                        <div className="flex items-center gap-2 shrink-0">
+                          {(item.status === 'pending' || item.status === 'rejected') && (
+                            <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 hover:bg-primary-700 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
+                          )}
+                          <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
+                          <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-4 h-4" /></button>
+                        </div>
                       </motion.div>
                     );
                   })}

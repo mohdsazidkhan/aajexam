@@ -370,7 +370,7 @@ export default function AdminBankDetails() {
           <University className="w-64 h-64 text-primary-700" />
         </div>
 
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
           <div className="space-y-3 lg:space-y-6">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-primary-500/20 text-primary-700 rounded-2xl">
@@ -450,9 +450,7 @@ export default function AdminBankDetails() {
 
       {/* Content */}
       {loading ? (
-        <div className="flex items-center justify-center h-64">
-          <AdminTableSkeleton showHeader={false} showFilters={false} />
-        </div>
+        <AdminTableSkeleton showHeader={false} showFilters={false} />
       ) : error ? (
         <div className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm">
           <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">

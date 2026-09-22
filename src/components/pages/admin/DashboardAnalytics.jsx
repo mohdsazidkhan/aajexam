@@ -399,8 +399,8 @@ const DashboardAnalytics = () => {
   );
 
   return (
-     <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-primary-500/30">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit">
+     <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-primary-500/30 pb-24">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6">
            <div className="mb-4">
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-2">

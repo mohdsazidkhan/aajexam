@@ -167,7 +167,7 @@ const AdminExpenses = () => {
                         <Receipt className="w-64 h-64 text-primary-700 -rotate-12" />
                     </div>
 
-                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
                         <div className="space-y-2">
                             <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                                 PLATFORM <span className="text-primary-700">EXPENSES</span>
@@ -182,7 +182,7 @@ const AdminExpenses = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => handleOpenModal()}
-                            className="flex items-center gap-4 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] shadow-sm group/btn"
+                            className="w-full lg:w-auto flex items-center justify-center gap-4 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] shadow-sm group/btn"
                         >
                             <PlusCircle className="w-5 h-5 group-hover/btn:rotate-90 transition-transform" />
                             <span className="text-[10px] font-black uppercase tracking-[0.2em]">ADD NEW EXPENSE</span>
@@ -264,7 +264,7 @@ const AdminExpenses = () => {
                 {/* List Table */}
                 <AnimatePresence mode="wait">
                     {loading ? (
-                        <div className="p-32 flex justify-center"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>
+                        <AdminTableSkeleton showHeader={false} showFilters={false} />
                     ) : expenses.length === 0 ? (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center shadow-sm">
                             <PieChart className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />

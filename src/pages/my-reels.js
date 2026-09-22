@@ -97,7 +97,7 @@ const MyReelsPage = () => {
       <MobileAppWrapper title="My Reels">
          <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
             <Seo title="My Reels - AajExam" noIndex={true} />
-            <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
+            <div className="py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6 lg:space-y-4 mt-0">
                {/* Header */}
                <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-6">
                   <div className="flex gap-4 justify-between items-center">

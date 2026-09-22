@@ -135,7 +135,7 @@ export default function MentorProfilePage() {
           { name: mentor.user?.name || 'Mentor', url: `/mentor/${id}` }
         ])}
       />
-      <div className="container mx-auto py-4 lg:py-8 space-y-6">
+      <div className="container mx-auto py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6">
 
         {/* Profile Header */}
         <Card>

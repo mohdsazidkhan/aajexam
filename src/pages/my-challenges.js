@@ -68,7 +68,7 @@ const MyChallengesPage = () => {
             <meta name="robots" content="noindex,nofollow" />
          </Head>
 
-         <div className="container mx-auto py-4 lg:py-8 space-y-6">
+         <div className="container mx-auto py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view and track your multiplayer challenges.">
                {/* Header */}
                <div className="flex flex-col lg:flex-row items-center justify-between gap-6">

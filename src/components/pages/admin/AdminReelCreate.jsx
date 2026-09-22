@@ -242,10 +242,7 @@ const AdminReelCreate = () => {
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <button onClick={() => router.back()} className="p-2 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
-                <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-              </button>
-              <div>
+             <div>
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   <Flame className="w-6 h-6 text-black dark:text-white" /> Create Reel
                 </h1>
@@ -255,18 +252,18 @@ const AdminReelCreate = () => {
 
             {/* Type Selection */}
             {!type ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {TYPES.map((t) => (
                   <motion.button
                     key={t.value}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setType(t.value)}
-                    className={`p-6 rounded-2xl border-2 text-left transition-all hover:shadow-sm ${COLOR_MAP[t.color]}`}
+                    className={`p-4 sm:p-6 rounded-2xl border-2 text-left transition-all hover:shadow-sm ${COLOR_MAP[t.color]}`}
                   >
-                    <t.icon className="w-8 h-8 mb-3 opacity-80" />
-                    <h3 className="font-bold text-slate-900 dark:text-white">{t.label}</h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{t.desc}</p>
+                    <t.icon className="w-6 h-6 sm:w-8 sm:h-8 mb-2 sm:mb-3 opacity-80" />
+                    <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">{t.label}</h3>
+                    <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">{t.desc}</p>
                   </motion.button>
                 ))}
               </div>

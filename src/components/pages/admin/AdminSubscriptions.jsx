@@ -409,7 +409,7 @@ const AdminSubscriptions = () => {
             <Layers className="w-64 h-64 text-primary-700 -rotate-12" />
           </div>
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
                 MANAGE <span className="text-primary-700">SUBSCRIPTIONS</span>
@@ -829,43 +829,45 @@ const AdminSubscriptions = () => {
                     Showing {((pagination.currentPage - 1) * pagination.limit) + 1} to {Math.min(pagination.currentPage * pagination.limit, pagination.total)} of {pagination.total} subscriptions
                   </div>
 
-                  <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5">
-                    <motion.button
-                      whileHover={{ scale: 1.1, x: -3 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handlePageChange(pagination.currentPage - 1)}
-                      disabled={pagination.currentPage === 1}
-                      className="p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </motion.button>
+                  <div className="max-w-full overflow-x-auto">
+                    <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5 w-max">
+                      <motion.button
+                        whileHover={{ scale: 1.1, x: -3 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => handlePageChange(pagination.currentPage - 1)}
+                        disabled={pagination.currentPage === 1}
+                        className="shrink-0 p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </motion.button>
 
-                    <div className="flex items-center px-4 gap-4">
-                      {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                        const page = i + 1;
-                        return (
-                          <motion.button
-                            key={page}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => handlePageChange(page)}
-                            className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
-                          >
-                            {page}
-                          </motion.button>
-                        );
-                      })}
+                      <div className="flex items-center px-4 gap-4">
+                        {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
+                          const page = i + 1;
+                          return (
+                            <motion.button
+                              key={page}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                              onClick={() => handlePageChange(page)}
+                              className={`shrink-0 w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
+                            >
+                              {page}
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+
+                      <motion.button
+                        whileHover={{ scale: 1.1, x: 3 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => handlePageChange(pagination.currentPage + 1)}
+                        disabled={pagination.currentPage === pagination.totalPages}
+                        className="shrink-0 p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </motion.button>
                     </div>
-
-                    <motion.button
-                      whileHover={{ scale: 1.1, x: 3 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handlePageChange(pagination.currentPage + 1)}
-                      disabled={pagination.currentPage === pagination.totalPages}
-                      className="p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </motion.button>
                   </div>
                 </motion.div>
               )}

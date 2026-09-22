@@ -105,7 +105,7 @@ const AdminUserAnalyticsDetail = () => {
                         <PieChart className="w-64 h-64 text-primary-700 -rotate-12" />
                     </div>
 
-                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
                         <div className="space-y-3 lg:space-y-6">
                             <div className="flex items-center gap-4">
                                 <motion.button

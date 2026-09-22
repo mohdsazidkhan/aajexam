@@ -61,7 +61,7 @@ const QuizHistoryPage = () => {
             <meta name="robots" content="noindex,nofollow" />
          </Head>
 
-         <div className="container mx-auto py-4 lg:py-8 space-y-6">
+         <div className="container mx-auto py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view your detailed quiz attempt history and performance insights.">
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
