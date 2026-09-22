@@ -464,7 +464,7 @@ const TestStart = ({ resolvedId } = {}) => {
                 </Button>
                 <Button
                   variant="secondary"
-                  className="flex-1 border-2 border-slate-200 dark:border-slate-700"
+                  className="flex-1"
                   disabled={answers[currentQ._id] === undefined}
                   onClick={() => setAnswers(prev => {
                     const next = { ...prev };
@@ -488,7 +488,7 @@ const TestStart = ({ resolvedId } = {}) => {
           size="lg"
           disabled={currentQIndex === 0}
           onClick={() => setCurrentQIndex(prev => prev - 1)}
-          className="font-black border-2 border-slate-200 dark:border-slate-800"
+          className="font-black"
         >
           <ChevronLeft className="w-6 h-6 mr-2" /> PREVIOUS
         </Button>
@@ -590,7 +590,7 @@ const TestStart = ({ resolvedId } = {}) => {
                 <Button variant="primary" fullWidth size="lg" className="py-6 text-xl" onClick={handleAutoSubmit} disabled={submitting}>
                   {submitting ? 'SUBMITTING...' : 'YES, I\'M DONE!'}
                 </Button>
-                <Button variant="secondary" fullWidth size="lg" className="border-2 border-slate-200 dark:border-slate-700" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>
+                <Button variant="secondary" fullWidth size="lg" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>
               </div>
             </motion.div>
           </div>

@@ -481,7 +481,7 @@ const TestResult = ({ resolvedId } = {}) => {
           size="lg"
           fullWidth
           onClick={() => router.push('/govt-exams')}
-          className="lg:w-auto px-12 py-6 text-xl border-2"
+          className="lg:w-auto px-12 py-6 text-xl"
         >
           <Home className="w-6 h-6 mr-2" /> BACK TO TESTS
         </Button>

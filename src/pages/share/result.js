@@ -138,7 +138,7 @@ export default function SharedResult({ stats }) {
                 variant="secondary"
                 size="lg"
                 onClick={() => router.push('/register')}
-                className="px-10 py-5 text-lg border-2"
+                className="px-10 py-5 text-lg"
               >
                 Sign up free
               </Button>

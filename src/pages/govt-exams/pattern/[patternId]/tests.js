@@ -204,7 +204,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
                       <div className="flex gap-2">
                         {isCompleted && (
-                          <Button variant="secondary" size="sm" onClick={() => handleViewResult(test)} className="!rounded-full px-4 border-2">
+                          <Button variant="secondary" size="sm" onClick={() => handleViewResult(test)} className="!rounded-full px-4">
                             RESULTS <Eye className="w-4 h-4 ml-1" />
                           </Button>
                         )}
