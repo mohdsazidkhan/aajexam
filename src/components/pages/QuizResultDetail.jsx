@@ -73,7 +73,7 @@ const QuizResultDetail = () => {
   }, [attemptId]);
 
   if (loading) return (
-    <div className="min-h-screen pb-24 font-outfit">
+    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
       <div className="container mx-auto py-6"><QuizResultSkeleton /></div>
     </div>
   );

@@ -164,13 +164,13 @@ const SyllabusTrackerPage = () => {
   }, [selectedExam]);
 
   if (loadingExams) return (
-    <div className="min-h-screen pb-24 font-outfit">
+    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
       <div className="py-4 lg:py-6"><DashboardSkeleton /></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen pb-24 font-outfit">
+    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
       <Seo
         title="Syllabus Tracker (PRO) | AajExam"
         description="Auto-track your exam syllabus completion based on quizzes you practice."

@@ -58,7 +58,7 @@ const NoteDetailPage = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen pb-24 font-outfit">
+    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
       <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
