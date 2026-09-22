@@ -196,9 +196,7 @@ const AdminGovtExamCategories = () => {
         {/* Results Visuzalization */}
         <AnimatePresence mode="wait">
           {loading && categories.length === 0 ? (
-            <div className="flex justify-center py-10 lg:py-20">
-              <AdminTableSkeleton showHeader={false} showFilters={false} />
-            </div>
+            <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : categories.length === 0 ? (
             <motion.div
               key="empty"
