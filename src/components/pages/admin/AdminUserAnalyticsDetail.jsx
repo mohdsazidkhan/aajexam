@@ -299,7 +299,7 @@ const AdminUserAnalyticsDetail = () => {
                                         <p className="text-[8px] font-bold text-slate-400 uppercase tracking-widest">Questions, categories, quizzes, and blogs created</p>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-2 lg:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-6">
+                                <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6">
                                     <MetricCard i={0} color="purple" icon={HelpCircle} label="Questions" value={questionsPostedCount.toLocaleString('en-IN')} sub="Questions posted" />
                                     <MetricCard i={1} color="rose" icon={Folder} label="Categories" value={categoriesCreatedCount.toLocaleString('en-IN')} sub="Categories created" />
                                     <MetricCard i={2} color="emerald" icon={Layers} label="Subcategories" value={subcategoriesCreatedCount.toLocaleString('en-IN')} sub="Subcategories created" />

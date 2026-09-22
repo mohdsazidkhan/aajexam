@@ -2,13 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import API from '../../lib/api';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { isAuthenticated } from '../../lib/utils/authUtils';
 import {
-  ArrowLeft,
   Send,
   Plus,
   Trash2,
@@ -180,11 +178,6 @@ const AskQuestionPage = () => {
       <div className="mx-auto py-4 lg:py-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
-          <Link href="/community-questions">
-            <button className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-700 transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          </Link>
           <div>
             <h1 className="text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight">
               Post a Question

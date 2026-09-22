@@ -92,7 +92,7 @@ const MyQuestionsPage = () => {
             <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
                {/* Header */}
                <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                  <div className="space-y-2 text-center lg:text-left">
+                  <div className="flex justify-between items-center gap-4">
                      <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">My Q&A</h1>
                      <p className="text-sm font-bold text-gray-400">
                         {total > 0 ? `${total} question${total > 1 ? 's' : ''} posted` : 'Questions you have posted'}

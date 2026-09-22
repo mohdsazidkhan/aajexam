@@ -144,7 +144,7 @@ const CommunityQuestionsPage = () => {
     <div className="min-h-screen bg-background-primary">
       <div className="mx-auto py-2 lg:py-4">
         {/* Header */}
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
           <div>
             <h1 className="text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight">
               Community Questions
