@@ -210,11 +210,11 @@ const ReelCreate = () => {
           </div>
         </div>
 
-        <div className="py-6">
+        <div className="py-0 lg:py-6">
           {!type ? (
             <div className="space-y-2 lg:space-y-4">
               <p className="mt-2 lg:mt-0 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {TYPES.map(t => (
                   <motion.button key={t.value} whileTap={{ scale: 0.97 }} onClick={() => setType(t.value)}
                     className={`p-2.5 lg:p-5 rounded-xl lg:rounded-2xl border-2 text-left transition-all ${t.color}`}>
