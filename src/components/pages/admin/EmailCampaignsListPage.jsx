@@ -225,7 +225,7 @@ const EmailCampaignsListPage = () => {
 
           {/* --- Content --- */}
           {loading ? (
-            <AdminTableSkeleton />
+            <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : campaigns.length === 0 ? (
             <div className="p-10 text-center bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
               <p className="text-slate-500 dark:text-slate-400 mb-4">
