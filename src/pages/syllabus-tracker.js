@@ -9,6 +9,39 @@ import SubscriptionGuard from '../components/SubscriptionGuard';
 import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// --- Tracker Skeleton (matches the loaded data view) ---
+const Sh = ({ className = '' }) => (
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
+);
+
+const TrackerSkeleton = () => (
+  <div className="space-y-6">
+    <Card className="p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10 border-b-2 border-black dark:border-white">
+      <Sh className="w-32 h-32 rounded-full flex-shrink-0" />
+      <div className="flex-1 w-full space-y-3 text-center md:text-left">
+        <Sh className="h-6 w-40 mx-auto md:mx-0" />
+        <Sh className="h-4 w-full max-w-xs mx-auto md:mx-0" />
+      </div>
+    </Card>
+
+    <div className="space-y-3">
+      <Sh className="h-4 w-24" />
+      {[1, 2, 3, 4].map(i => (
+        <div key={i} className="flex items-center justify-between p-4 sm:p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-800 mb-4">
+          <div className="flex items-center gap-4">
+            <Sh className="w-12 h-12 rounded-2xl flex-shrink-0" />
+            <div className="space-y-2">
+              <Sh className="h-4 w-32" />
+              <Sh className="h-3 w-24" />
+            </div>
+          </div>
+          <Sh className="w-10 h-10 rounded-full hidden sm:block" />
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 // --- Subject Accordion Item ---
 const SubjectAccordion = ({ subject }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -177,7 +210,7 @@ const SyllabusTrackerPage = () => {
 
           {/* ── Data View ── */}
           {selectedExam && loadingData ? (
-            <div className="py-20 flex justify-center"><div className="w-8 h-8 border-2 border-black/30 dark:border-white/30 border-t-primary-500 rounded-full animate-spin" /></div>
+            <TrackerSkeleton />
           ) : selectedExam && trackerData ? (
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
 
