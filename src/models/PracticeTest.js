@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-import { attachSlugHook } from '../lib/utils/slug';
+import { attachSlugHook, slugify } from '../lib/utils/slug';
+import ExamPattern from './ExamPattern';
+import Exam from './Exam';
 
 const practiceTestSchema = new mongoose.Schema({
     examPattern: { type: mongoose.Schema.Types.ObjectId, ref: 'ExamPattern', required: true },
@@ -33,6 +35,47 @@ practiceTestSchema.index({ publishedAt: -1 });
 practiceTestSchema.index({ isPYQ: 1, pyqYear: -1 });
 practiceTestSchema.index({ isPYQ: 1, examPattern: 1, pyqYear: -1 });
 practiceTestSchema.index({ slug: 1 }, { unique: true, sparse: true });
+
+// Auto-number new, non-PYQ practice test slugs sequentially per exam:
+// "<exam-slug>-practice-test-<n>", where n continues the highest number
+// already used across every pattern of that exam -- regardless of what
+// the admin-entered title says or where the test was created from.
+// PYQs, edits, and callers that set `slug` explicitly are untouched and
+// fall through to the generic title-based hook below.
+practiceTestSchema.pre('save', async function autoNumberSlug(next) {
+    try {
+        if (!this.isNew || this.isPYQ || this.slug) return next();
+
+        const pattern = await ExamPattern.findById(this.examPattern).select('exam').lean();
+        if (!pattern?.exam) return next();
+        const exam = await Exam.findById(pattern.exam).select('slug name').lean();
+        const examBase = exam?.slug || slugify(exam?.name || '');
+        if (!examBase) return next();
+
+        const base = `${examBase}-practice-test`;
+        const siblingPatterns = await ExamPattern.find({ exam: pattern.exam }).select('_id').lean();
+        const patternIds = siblingPatterns.map((p) => p._id);
+
+        const existing = await this.constructor.find({
+            examPattern: { $in: patternIds },
+            isPYQ: { $ne: true },
+            slug: new RegExp(`^${base}(-\\d+)?$`)
+        }).select('slug').lean();
+
+        let maxNum = 0;
+        const numberedRe = new RegExp(`^${base}-(\\d+)$`);
+        for (const doc of existing) {
+            const m = doc.slug?.match(numberedRe);
+            if (m) maxNum = Math.max(maxNum, parseInt(m[1], 10));
+            else if (doc.slug === base) maxNum = Math.max(maxNum, 1);
+        }
+
+        this.slug = `${base}-${maxNum + 1}`;
+        next();
+    } catch (err) {
+        next(err);
+    }
+});
 
 attachSlugHook(practiceTestSchema, { sourceField: 'title' });
 
