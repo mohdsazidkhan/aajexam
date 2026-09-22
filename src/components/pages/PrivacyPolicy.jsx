@@ -28,6 +28,7 @@ import { motion } from 'framer-motion';
 import MobileAppWrapper from '../MobileAppWrapper';
 import UnifiedFooter from '../UnifiedFooter';
 import AuthorBio from '../AuthorBio';
+import config from '../../lib/config/appConfig';
 import { generateBreadcrumbSchema } from '../../utils/schema';
 import { getCanonicalUrl } from '../../utils/seo';
 
@@ -244,7 +245,7 @@ const PrivacyPolicy = () => {
                            </div>
                            <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 lg:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl lg:text-2xl font-black text-primary-700 tracking-tight">support@mohdsazidkhan.com</p>
+                              <p className="text-xl lg:text-2xl font-black text-primary-700 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
                               onClick={() => router.push('/home')}

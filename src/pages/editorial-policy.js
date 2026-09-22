@@ -4,6 +4,7 @@ import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import config from '../lib/config/appConfig';
 
 export default function EditorialPolicy() {
     const router = useRouter();
@@ -180,7 +181,7 @@ export default function EditorialPolicy() {
                                 Questions About Our Policy?
                             </h2>
                             <p className="text-md md:text-xl lg:text-2xl font-bold mb-10 text-white/90 uppercase tracking-widest text-xs">
-                                Contact our editorial team at: <strong>support@mohdsazidkhan.com</strong>
+                                Contact our editorial team at: <strong>{config.CONTACT.EMAIL}</strong>
                             </p>
                             <button
                                 onClick={() => router.push('/')}

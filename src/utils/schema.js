@@ -5,6 +5,7 @@
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 const SITE_NAME = 'AajExam';
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@mohdsazidkhan.com';
 
 /**
  * Organization Schema - Use on homepage
@@ -37,7 +38,7 @@ export const generateOrganizationSchema = () => {
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "Customer Support",
-            "email": "support@mohdsazidkhan.com",
+            "email": CONTACT_EMAIL,
             "availableLanguage": ["English", "Hindi"]
         }
     };

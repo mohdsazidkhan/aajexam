@@ -1,6 +1,7 @@
 import ContactUs from '../components/pages/ContactUs';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import config from '../lib/config/appConfig';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
@@ -9,7 +10,7 @@ const ContactPage = ({ contactInfo }) => {
     <>
       <Seo
         title="Contact AajExam – Support, Feedback & Partnerships"
-        description="Get in touch with the AajExam team for support with practice tests, PYQs, subscriptions or refer & earn. Email support@mohdsazidkhan.com or call +91 7678 13 1912."
+        description={`Get in touch with the AajExam team for support with practice tests, PYQs, subscriptions or refer & earn. Email ${config.CONTACT.EMAIL} or call ${config.CONTACT.PHONE}.`}
         canonical="/contact"
         keywords={[
           'contact AajExam',
@@ -31,8 +32,8 @@ const ContactPage = ({ contactInfo }) => {
             "mainEntity": {
               "@type": "Organization",
               "name": "AajExam",
-              "email": "support@mohdsazidkhan.com",
-              "telephone": "+917678131912",
+              "email": config.CONTACT.EMAIL,
+              "telephone": `+${config.CONTACT.PHONE.replace(/\D/g, '')}`,
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Delhi",
@@ -51,8 +52,8 @@ export async function getStaticProps() {
   return {
     props: {
       contactInfo: {
-        email: 'support@mohdsazidkhan.com',
-        phone: '+91 7678 13 1912',
+        email: config.CONTACT.EMAIL,
+        phone: config.CONTACT.PHONE,
         address: 'Badarpur, Delhi, India',
         businessHours: 'Mon - Fri: 9:00 AM - 9:00 PM'
       }

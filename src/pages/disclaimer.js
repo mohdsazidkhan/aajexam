@@ -4,6 +4,7 @@ import UnifiedFooter from '../components/UnifiedFooter';
 import { FaExclamationTriangle, FaInfoCircle, FaShieldAlt } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import config from '../lib/config/appConfig';
 
 export default function Disclaimer() {
     return (
@@ -82,7 +83,7 @@ export default function Disclaimer() {
                                 <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">Contact Us</h2>
                                 <p className="text-slate-500 dark:text-slate-400 font-bold mb-8">
                                     If you have any questions regarding this disclaimer, please contact us at:<br />
-                                    <strong className="text-primary-700 block mt-2 text-xl">support@mohdsazidkhan.com</strong>
+                                    <strong className="text-primary-700 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
                                 </p>
                                 <button
                                     onClick={() => (window.location.href = '/')}

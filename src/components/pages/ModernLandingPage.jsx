@@ -220,7 +220,7 @@ const ModernLandingPage = () => {
 
          {/* ── 3-Step How It Works ── */}
          <section className="border-t-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
-            <div className="container mx-auto px-4 lg:px-8">
+            <div className="container mx-auto px-0 lg:px-8">
                <div className="max-w-4xl mx-auto">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
                      <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
@@ -249,7 +249,7 @@ const ModernLandingPage = () => {
 
 
          <section className="border-y-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
-            <div className="container mx-auto px-4 lg:px-6">
+            <div className="container mx-auto px-0 lg:px-8">
                <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
                   {[
                      { label: 'Students', val: stats.activeStudents, icon: Users, color: 'text-primary-700' },

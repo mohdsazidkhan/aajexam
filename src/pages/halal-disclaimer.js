@@ -95,7 +95,7 @@ export default function HalalDisclaimer() {
                                 <div className="space-y-6">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
                                         For Shariah-related inquiries:<br />
-                                        <strong className="text-primary-700 text-sm">{config.SUPPORT_EMAIL || 'support@mohdsazidkhan.com'}</strong>
+                                        <strong className="text-primary-700 text-sm">{config.CONTACT.EMAIL}</strong>
                                     </p>
                                     <button
                                         onClick={() => (window.location.href = '/')}

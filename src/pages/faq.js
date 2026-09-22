@@ -4,6 +4,7 @@ import MobileAppWrapper from '../components/MobileAppWrapper';
 import AuthorBio from '../components/AuthorBio';
 import Seo from '../components/Seo';
 import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
+import config from '../lib/config/appConfig';
 
 const FAQ = () => {
     const router = useRouter();
@@ -103,7 +104,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'Can I delete my account?',
-                    a: 'Yes. You can request account deletion by contacting our support team at support@mohdsazidkhan.com. Note that some data may be retained for legal compliance and fraud prevention as outlined in our Privacy Policy.'
+                    a: `Yes. You can request account deletion by contacting our support team at ${config.CONTACT.EMAIL}. Note that some data may be retained for legal compliance and fraud prevention as outlined in our Privacy Policy.`
                 },
                 {
                     q: 'How do I reset my password?',
@@ -147,11 +148,11 @@ const FAQ = () => {
                 },
                 {
                     q: 'I\'m experiencing technical issues. What should I do?',
-                    a: 'First, try clearing your browser cache and cookies, or try a different browser. If issues persist, contact our support team at support@mohdsazidkhan.com with details about the problem, your device, and browser information.'
+                    a: `First, try clearing your browser cache and cookies, or try a different browser. If issues persist, contact our support team at ${config.CONTACT.EMAIL} with details about the problem, your device, and browser information.`
                 },
                 {
                     q: 'How do I report a test error or incorrect answer?',
-                    a: 'If you encounter an error in a test question or believe an answer is incorrect, please report it through the feedback option available after test completion, or email us at support@mohdsazidkhan.com with the test name and question details.'
+                    a: `If you encounter an error in a test question or believe an answer is incorrect, please report it through the feedback option available after test completion, or email us at ${config.CONTACT.EMAIL} with the test name and question details.`
                 }
             ]
         }

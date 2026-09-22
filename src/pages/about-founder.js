@@ -4,6 +4,7 @@ import MobileAppWrapper from '../components/MobileAppWrapper';
 import UnifiedFooter from '../components/UnifiedFooter';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import config from '../lib/config/appConfig';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
@@ -190,7 +191,7 @@ export default function AboutAuthor() {
                         <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white mb-6">Connect with Sazid</h2>
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
-                                href="mailto:support@mohdsazidkhan.com"
+                                href={`mailto:${config.CONTACT.EMAIL}`}
                                 className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
                             >
                                 <FaEnvelope className="text-xl" />

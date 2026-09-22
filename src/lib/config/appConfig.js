@@ -78,7 +78,7 @@ const config = {
   // Contact Information
   CONTACT: {
     EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@mohdsazidkhan.com',
-    PHONE: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91-7678131912',
+    PHONE: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91-8860131912',
     ADDRESS: process.env.NEXT_PUBLIC_CONTACT_ADDRESS || 'Delhi, India',
     WEBSITE: process.env.NEXT_PUBLIC_WEBSITE_URL || 'https://aajexam.com'
   },

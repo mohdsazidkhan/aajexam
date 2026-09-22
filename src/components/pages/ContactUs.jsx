@@ -28,10 +28,11 @@ import { FaPinterest } from 'react-icons/fa';
 import MobileAppWrapper from '../MobileAppWrapper';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import config from '../../lib/config/appConfig';
 
 const ContactUs = ({ contactInfo = {
-   email: 'support@mohdsazidkhan.com',
-   phone: '+91 7678 13 1912',
+   email: config.CONTACT.EMAIL,
+   phone: config.CONTACT.PHONE,
    address: 'Badarpur, Delhi, India',
    businessHours: 'Mon - Fri: 9:00 AM - 9:00 PM'
 } }) => {
