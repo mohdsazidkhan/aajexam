@@ -102,7 +102,7 @@ const EventCard = ({ event, compact = false }) => {
 // ─── Day Detail Panel ─────────────────────────────────────────────────────────
 const DayPanel = ({ date, events, onClose }) => {
   if (!date || !events?.length) return null;
-  const dateLabel = new Date(date).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const dateLabel = new Date(date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 
   return (
     <AnimatePresence>
