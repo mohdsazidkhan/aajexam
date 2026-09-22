@@ -56,7 +56,7 @@ const MentorsPage = () => {
           { name: 'Mentors', url: '/mentors' }
         ])}
       />
-      <div className="py-0 lg:py-6 space-y-6">
+      <div className="py-4 lg:py-6 space-y-3 lg:space-y-6">
         <SubscriptionGuard message="Access to Mentors is a PRO feature. Connect with students who have successfully cleared exams to get personalized guidance!">
           <div className="flex items-start justify-between">
             <div className="space-y-1">

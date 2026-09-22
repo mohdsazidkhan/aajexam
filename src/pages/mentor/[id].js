@@ -252,12 +252,12 @@ export default function MentorProfilePage() {
               {mentor.amaThreads.map((thread, i) => (
                 <div key={i} className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl space-y-2">
                   <div>
-                    {thread.askedBy && <Link href={`/u/${thread.askedBy.username || thread.askedBy.name}`} className="text-[10px] font-black text-primary-700 mr-1.5 hover:underline">@{thread.askedBy.username || thread.askedBy.name}</Link>}
+                    {thread.askedBy && <Link href={`/u/${thread.askedBy.username || thread.askedBy.name}`} className="flex text-[10px] font-black text-primary-700 mr-1.5 hover:underline">@{thread.askedBy.username || thread.askedBy.name}</Link>}
                     <span className="text-sm font-bold text-slate-900 dark:text-white">{thread.question}</span>
                   </div>
                   {thread.answer ? (
                     <div className="pl-3 border-l-2 border-primary-700">
-                      <Link href={`/u/${mentor.user?.username || mentor.user?.name}`} className="text-[10px] font-black text-primary-700 mr-1.5 hover:underline">@{mentor.user?.username || mentor.user?.name}</Link>
+                      <Link href={`/u/${mentor.user?.username || mentor.user?.name}`} className="flex text-[10px] font-black text-primary-700 mr-1.5 hover:underline">@{mentor.user?.username || mentor.user?.name}</Link>
                       <span className="text-sm text-slate-600 dark:text-slate-400">{thread.answer}</span>
                     </div>
                   ) : isOwner ? (
