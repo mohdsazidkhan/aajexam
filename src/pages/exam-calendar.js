@@ -151,6 +151,7 @@ const ExamCalendarPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [showUpcoming, setShowUpcoming] = useState(true);
+  const todayChipRef = React.useRef(null);
 
   const fetchCalendar = useCallback(async () => {
     try {
@@ -170,6 +171,16 @@ const ExamCalendarPage = () => {
   }, [month, year]);
 
   useEffect(() => { fetchCalendar(); }, [fetchCalendar]);
+
+  // Scroll the today chip into view whenever the visible month changes
+  useEffect(() => {
+    if (loading) return;
+    todayChipRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }, [loading, month, year]);
+
+  useEffect(() => {
+    if (!loading) todayChipRef.current?.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }, [loading, month, year]);
 
   // Navigate month
   const prevMonth = () => {
@@ -216,7 +227,7 @@ const ExamCalendarPage = () => {
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
           <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-black/10 dark:text-white/10 pointer-events-none" />
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="relative p-2 lg:p-4 z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -235,11 +246,11 @@ const ExamCalendarPage = () => {
             </div>
 
             {/* Type legend */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex gap-2 overflow-x-auto no-scrollbar">
               {['admit_card', 'result', 'vacancy', 'notification'].map(t => {
                 const cfg = getType(t);
                 return (
-                  <div key={t} className="flex items-center gap-1.5 bg-black/10 dark:bg-white/15 backdrop-blur-sm border border-black/20 dark:border-white/20 px-2.5 py-1 rounded-full">
+                  <div key={t} className="flex items-center gap-1.5 bg-black/10 dark:bg-white/15 backdrop-blur-sm border border-black/20 dark:border-white/20 px-2.5 py-1 rounded-full shrink-0 whitespace-nowrap">
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
                     <span className="text-[10px] font-black text-black dark:text-white uppercase">{cfg.label}</span>
                   </div>
@@ -282,69 +293,51 @@ const ExamCalendarPage = () => {
           </button>
         </div>
 
-        {/* ── Calendar Grid ── */}
-        <Card padded={false} className="overflow-hidden">
-          {/* Day headers */}
-          <div className="grid grid-cols-7 border-b border-slate-200 dark:border-slate-800">
-            {DAYS.map(day => (
-              <div key={day} className="py-2 text-center text-[10px] sm:text-[11px] font-black text-content-muted uppercase tracking-wide">
-                <span className="sm:hidden">{day.charAt(0)}</span>
-                <span className="hidden sm:inline">{day}</span>
-              </div>
-            ))}
-          </div>
+        {/* ── Calendar Strip (single scrollable row) ── */}
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 lg:mx-0 lg:px-0">
+          {cells.filter(Boolean).map(cell => {
+            const { day, dateStr, eventsForDay } = cell;
+            const isToday = dateStr === todayStr;
+            const isSelected = dateStr === selectedDate;
+            const hasEvents = eventsForDay.length > 0;
+            const dayName = new Date(year, month - 1, day).toLocaleDateString('en-IN', { weekday: 'short' });
 
-          {/* Date cells */}
-          <div className="grid grid-cols-7">
-            {cells.map((cell, idx) => {
-              if (!cell) {
-                return <div key={`empty-${idx}`} className="h-12 sm:h-16 border-b border-r border-slate-200 dark:border-slate-800/50 last:border-r-0 bg-background-surface/50" />;
-              }
-              const { day, dateStr, eventsForDay } = cell;
-              const isToday = dateStr === todayStr;
-              const isSelected = dateStr === selectedDate;
-              const hasEvents = eventsForDay.length > 0;
-              const isWeekend = (idx % 7 === 0 || idx % 7 === 6);
-
-              return (
-                <button
-                  key={dateStr}
-                  onClick={() => setSelectedDate(isSelected ? null : (hasEvents ? dateStr : null))}
-                  disabled={!hasEvents}
-                  className={`
-                    h-12 sm:h-16 border-b border-r border-slate-200 dark:border-slate-800/50 last:border-r-0
-                    flex flex-col items-center justify-start pt-1.5 sm:pt-2 px-0.5 sm:px-1
-                    transition-all duration-150 relative group
-                    ${hasEvents ? 'cursor-pointer hover:bg-primary-50 dark:hover:bg-primary-950/20' : 'cursor-default'}
-                    ${isSelected ? 'bg-primary-50 dark:bg-primary-950/30 ring-2 ring-inset ring-primary-400 dark:ring-primary-600' : ''}
-                    ${isWeekend && !isToday && !isSelected ? 'bg-slate-50/50 dark:bg-slate-900/30' : ''}
-                  `}
-                >
-                  {/* Day number */}
-                  <span className={`
-                    w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center rounded-full text-[11px] sm:text-xs font-black
-                    ${isToday ? 'bg-primary-700 text-white shadow-sm' : 'text-content-primary'}
-                    ${isWeekend && !isToday ? 'text-black dark:text-white dark:text-white' : ''}
-                  `}>
-                    {day}
-                  </span>
-
-                  {/* Event dots */}
-                  {hasEvents && (
-                    <div className="flex items-center gap-0.5 flex-wrap justify-center mt-1 max-w-full px-0.5">
-                      {eventsForDay.slice(0, 3).map((ev, i) => (
-                        <EventDot key={i} event={ev} />
-                      ))}
-                      {eventsForDay.length > 3 && (
-                        <span className="text-[8px] font-black text-content-muted">+{eventsForDay.length - 3}</span>
-                      )}
-                    </div>
+            return (
+              <button
+                key={dateStr}
+                ref={isToday ? todayChipRef : null}
+                onClick={() => setSelectedDate(isSelected ? null : (hasEvents ? dateStr : null))}
+                disabled={!hasEvents}
+                className={`
+                  shrink-0 w-14 sm:w-16 py-2.5 sm:py-3 rounded-2xl border-2
+                  flex flex-col items-center justify-center gap-1
+                  transition-all duration-150
+                  ${hasEvents ? 'cursor-pointer' : 'cursor-default opacity-60'}
+                  ${isToday
+                    ? 'bg-primary-700 border-primary-700'
+                    : isSelected
+                      ? 'bg-primary-50 dark:bg-primary-950/30 border-primary-400 dark:border-primary-600'
+                      : 'bg-background-surface border-slate-200 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700'}
+                `}
+              >
+                <span className={`text-[9px] font-black uppercase tracking-wide ${isToday ? 'text-white/80' : 'text-content-muted'}`}>
+                  {dayName}
+                </span>
+                <span className={`text-base sm:text-lg font-black ${isToday ? 'text-white' : 'text-content-primary'}`}>
+                  {day}
+                </span>
+                <div className="flex items-center gap-0.5 h-1.5">
+                  {hasEvents && eventsForDay.slice(0, 3).map((ev, i) => (
+                    <EventDot key={i} event={ev} />
+                  ))}
+                  {eventsForDay.length > 3 && (
+                    <span className={`text-[7px] font-black ${isToday ? 'text-white/70' : 'text-content-muted'}`}>+{eventsForDay.length - 3}</span>
                   )}
-                </button>
-              );
-            })}
-          </div>
-        </Card>
+                </div>
+              </button>
+            );
+          })}
+        </div>
 
         {/* ── Selected Day Events ── */}
         <DayPanel
