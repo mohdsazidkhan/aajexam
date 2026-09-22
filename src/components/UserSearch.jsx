@@ -53,7 +53,7 @@ const UserSearch = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search students by name or username..."
-          className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-slate-200 dark:border-slate-800 rounded-2xl outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:white focus:border-primary-700 shadow-sm"
+          className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-slate-300 dark:border-slate-700 rounded-2xl outline-none transition-all bg-slate-50 dark:bg-black text-slate-900 dark:white focus:border-primary-700 shadow-sm"
         />
         {loading && (
           <span className="search-spinner absolute right-5 top-1/2 -translate-y-1/2 w-6 h-6 border-2 border-slate-100 dark:border-slate-700 border-t-primary-500 rounded-full animate-spin"></span>

@@ -175,7 +175,7 @@ export default function AdminContacts() {
                    <select
                     value={itemsPerPage}
                     onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-                    className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
+                    className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
                    >
                      {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
                    </select>

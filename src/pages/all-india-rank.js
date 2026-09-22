@@ -333,7 +333,7 @@ const AllIndiaRankPage = () => {
                   <select
                     value={selectedExamId}
                     onChange={(e) => setSelectedExamId(e.target.value)}
-                    className="w-full appearance-none bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/20 text-black dark:text-white text-sm font-bold rounded-2xl py-2.5 pl-9 pr-10 outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/50 focus:border-black/30 dark:focus:border-white/50 backdrop-blur-md cursor-pointer transition-all"
+                    className="w-full appearance-none bg-black/10 dark:bg-black border border-black/20 dark:border-slate-700 text-black dark:text-white text-sm font-bold rounded-2xl py-2.5 pl-9 pr-10 outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/50 focus:border-black/30 dark:focus:border-white/50 backdrop-blur-md cursor-pointer transition-all"
                   >
                     <option value="" className="bg-white dark:bg-slate-800 text-black dark:text-white">🌍 All Exams (Overall AIR)</option>
                     {exams.map(e => (

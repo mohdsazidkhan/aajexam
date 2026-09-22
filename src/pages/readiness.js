@@ -93,7 +93,7 @@ const ReadinessPage = () => {
 
           <div className="flex flex-col lg:flex-row gap-3 lg:gap-5 w-full lg:w-auto">
             <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
-              className="w-full lg:flex-1 px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
+              className="w-full lg:flex-1 px-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
               <option value="">Select Exam</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </select>

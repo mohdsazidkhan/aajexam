@@ -108,16 +108,16 @@ const AdminDailyChallenge = () => {
             </div>
             <div className="p-2 space-y-3">
               <div className="flex items-center gap-3 flex-wrap">
-                <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
+                <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
                   <option value={new Date().getFullYear()}>{new Date().getFullYear()}</option>
                   <option value={new Date().getFullYear() + 1}>{new Date().getFullYear() + 1}</option>
                 </select>
-                <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
+                <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
                   {Array.from({ length: 12 }).map((_, i) => (
                     <option key={i} value={i}>{new Date(2000, i, 1).toLocaleString('default', { month: 'long' })}</option>
                   ))}
                 </select>
-                <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-white dark:bg-slate-800 outline-none">
+                <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
                   <option value={5}>5 Questions / Day</option>
                   <option value={10}>10 Questions / Day</option>
                   <option value={15}>15 Questions / Day</option>

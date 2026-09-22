@@ -197,7 +197,7 @@ const SyllabusTrackerPage = () => {
               <select
                 value={selectedExam}
                 onChange={e => setSelectedExam(e.target.value)}
-                className="w-full appearance-none bg-background-surface border border-slate-200 dark:border-slate-800 text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
+                className="w-full appearance-none bg-background-surface border border-slate-300 dark:border-slate-700 text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
               >
                 <option value="">Select Exam to Track</option>
                 {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}

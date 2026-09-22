@@ -117,7 +117,7 @@ const PaymentHistoryPage = () => {
                   <div className="flex flex-wrap gap-3 justify-center items-center">
                      {filterOptions.months?.length > 0 && (
                         <select
-                           className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
+                           className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                            value={filterMonth} onChange={e => { setFilterMonth(e.target.value); setCurrentPage(1); }}
                         >
                            <option value="">All Months</option>
@@ -128,7 +128,7 @@ const PaymentHistoryPage = () => {
                      )}
                      {filterOptions.years?.length > 0 && (
                         <select
-                           className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
+                           className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                            value={filterYear} onChange={e => { setFilterYear(e.target.value); setCurrentPage(1); }}
                         >
                            <option value="">All Years</option>

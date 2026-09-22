@@ -134,13 +134,13 @@ const AdminQuizQuizzes = () => {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <select value={filters.exam} onChange={e => { setFilters({ ...filters, exam: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+        <select value={filters.exam} onChange={e => { setFilters({ ...filters, exam: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Exams</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
         </select>
-        <select value={filters.subject} onChange={e => { setFilters({ ...filters, subject: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+        <select value={filters.subject} onChange={e => { setFilters({ ...filters, subject: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Subjects</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
         </select>
-        <select value={filters.status} onChange={e => { setFilters({ ...filters, status: e.target.value }); setPage(1); }} className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+        <select value={filters.status} onChange={e => { setFilters({ ...filters, status: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
           <option value="">All Status</option><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option>
         </select>
       </div>
@@ -190,24 +190,24 @@ const AdminQuizQuizzes = () => {
               <button onClick={() => setShowModal(false)}><X className="w-5 h-5 text-slate-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-3">
-              <input required placeholder="Quiz Title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
-              <textarea placeholder="Description" rows={2} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
+              <input required placeholder="Quiz Title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+              <textarea placeholder="Description" rows={2} value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
               <div className="grid grid-cols-3 gap-2">
-                <select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="">Exam</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}</select>
-                <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="">Subject</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}</select>
-                <select value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="">Topic (opt)</option>{topics.filter(t => !form.subject || (t.subject?._id || t.subject) === form.subject).map(t => <option key={t._id} value={t._id}>{t.name}</option>)}</select>
+                <select required value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value, subject: "", topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs"><option value="">Exam</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}</select>
+                <select required value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value, topic: "" })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs"><option value="">Subject</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}</select>
+                <select value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs"><option value="">Topic (opt)</option>{topics.filter(t => !form.subject || (t.subject?._id || t.subject) === form.subject).map(t => <option key={t._id} value={t._id}>{t.name}</option>)}</select>
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <input required type="number" placeholder="Duration (min)" value={form.duration} onChange={e => setForm({ ...form, duration: parseInt(e.target.value) || 0 })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs" />
-                <input type="number" placeholder="Marks/Q" value={form.marksPerQuestion} onChange={e => setForm({ ...form, marksPerQuestion: parseFloat(e.target.value) || 0 })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs" />
-                <input type="number" step="0.01" placeholder="Neg marking" value={form.negativeMarking} onChange={e => setForm({ ...form, negativeMarking: parseFloat(e.target.value) || 0 })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs" />
+                <input required type="number" placeholder="Duration (min)" value={form.duration} onChange={e => setForm({ ...form, duration: parseInt(e.target.value) || 0 })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs" />
+                <input type="number" placeholder="Marks/Q" value={form.marksPerQuestion} onChange={e => setForm({ ...form, marksPerQuestion: parseFloat(e.target.value) || 0 })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs" />
+                <input type="number" step="0.01" placeholder="Neg marking" value={form.negativeMarking} onChange={e => setForm({ ...form, negativeMarking: parseFloat(e.target.value) || 0 })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs" />
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option><option value="mixed">Mixed</option></select>
-                <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-xs"><option value="topic_practice">Topic Practice</option><option value="subject_test">Subject Test</option><option value="full_mock">Full Mock</option></select>
+                <select value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs"><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option><option value="mixed">Mixed</option></select>
+                <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} className="px-2 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs"><option value="topic_practice">Topic Practice</option><option value="subject_test">Subject Test</option><option value="full_mock">Full Mock</option></select>
                 <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })} className="accent-primary-500" /> Free</label>
               </div>
-              <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg lg:rounded-xl text-sm" />
+              <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
               <button type="submit" className="w-full bg-primary-700 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create as Draft'}</button>
             </form>
           </div>

@@ -158,7 +158,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.exam}
               onChange={(e) => handleFilterChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
               <option value="">All Exams</option>
               {exams.map(exam => (
@@ -171,7 +171,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.sort}
               onChange={(e) => handleFilterChange('sort', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
               <option value="latest">Latest First</option>
               <option value="popular">Most Popular</option>

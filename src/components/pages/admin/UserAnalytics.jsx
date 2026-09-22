@@ -280,7 +280,7 @@ const UserAnalytics = () => {
                 name="period"
                 value={filters.period}
                 onChange={handleFilterChange}
-                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
               >
                 <option value="week">Past 7 Days</option>
                 <option value="month">Past 30 Days</option>
@@ -297,7 +297,7 @@ const UserAnalytics = () => {
                 value={filters.level}
                 onChange={handleFilterChange}
                 placeholder="Filter by level..."
-                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
+                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
               />
             </div>
 
@@ -308,7 +308,7 @@ const UserAnalytics = () => {
                 value={filters.subscription}
                 onChange={handleFilterChange}
                 placeholder="Filter by plan..."
-                className="pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
+                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
               />
             </div>
           </div>

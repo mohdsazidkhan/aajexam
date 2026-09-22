@@ -150,7 +150,7 @@ const AdminNotificationsPage = () => {
                     <select
                       value={limit}
                       onChange={(e) => handleLimitChange(e.target.value)}
-                      className="px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm outline-none"
+                      className="px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm outline-none"
                     >
                       {[10, 20, 50, 100].map((n) => (
                         <option key={n} value={n}>{n} per page</option>

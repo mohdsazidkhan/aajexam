@@ -436,7 +436,7 @@ const AdminGovtExamTests = () => {
                                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Paste your questions JSON below to import in bulk</p>
                                        </div>
                                     </div>
-                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 lg:p-8 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none" />
+                                    <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} placeholder='{ "questions": [...] }' rows="15" className="w-full p-3 lg:p-8 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] font-mono text-xs outline-none shadow-sm resize-none" />
                                     <button onClick={handleBulkUpload} className="w-full mt-4 lg:mt-8 py-5 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3">
                                        <UploadCloud className="w-5 h-5" /> Import Questions
                                     </button>
@@ -450,16 +450,16 @@ const AdminGovtExamTests = () => {
                                        <div className="space-y-3 lg:space-y-6">
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Test Title</label>
-                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                                             <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="Test Name" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                                           </div>
                                           <div className="grid grid-cols-2 gap-3 lg:gap-6">
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Total Marks</label>
-                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
+                                                <input type="number" value={formData.totalMarks} onChange={(e) => setFormData({ ...formData, totalMarks: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
                                              </div>
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Duration (Min)</label>
-                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
+                                                <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none shadow-sm" />
                                              </div>
                                           </div>
                                           <label className="flex items-center gap-4 p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 cursor-pointer transition-all hover:bg-white dark:hover:bg-white/10 group shadow-sm">
@@ -505,7 +505,7 @@ const AdminGovtExamTests = () => {
                                        <div className="space-y-3 lg:space-y-6">
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Question Statement</label>
-                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-6 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
+                                             <textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })} placeholder="Enter question text..." rows="3" className="w-full p-6 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
                                           </div>
                                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                              {currentQuestion.options.map((opt, idx) => (
@@ -519,23 +519,23 @@ const AdminGovtExamTests = () => {
                                                          const newOps = [...currentQuestion.options];
                                                          newOps[idx] = e.target.value;
                                                          setCurrentQuestion({ ...currentQuestion, options: newOps });
-                                                      }} placeholder={`Choice ${idx + 1}`} className="w-full pl-14 pr-4 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-[11px] font-bold outline-none transition-all" />
+                                                      }} placeholder={`Choice ${idx + 1}`} className="w-full pl-14 pr-4 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-[11px] font-bold outline-none transition-all" />
                                                    </div>
                                                 </div>
                                              ))}
                                           </div>
                                           <div className="space-y-2">
                                              <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Explanation (Optional)</label>
-                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-6 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
+                                             <textarea value={currentQuestion.explanation} onChange={(e) => setCurrentQuestion({ ...currentQuestion, explanation: e.target.value })} placeholder="Optional: Correct answer logic..." rows="2" className="w-full p-6 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-bold outline-none shadow-sm resize-none" />
                                           </div>
                                           <div className="grid grid-cols-2 gap-3 lg:gap-6">
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Section</label>
-                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                                                <input type="text" value={currentQuestion.section} onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })} placeholder="E.G. REASONING" className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                                              </div>
                                              <div className="space-y-2">
                                                 <label className="text-[9px] font-black text-slate-400 uppercase ml-4">Difficulty</label>
-                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm">
+                                                <select value={currentQuestion.difficulty} onChange={(e) => setCurrentQuestion({ ...currentQuestion, difficulty: e.target.value })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm">
                                                    <option value="easy">Easy</option>
                                                    <option value="medium">Medium</option>
                                                    <option value="hard">Hard</option>

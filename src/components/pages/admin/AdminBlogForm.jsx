@@ -198,7 +198,7 @@ const AdminBlogForm = () => {
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Title *</label>
                 <input type="text" name="title" value={formData.title} onChange={handleChange} required
-                  className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                   placeholder="Enter blog title" />
                 {formData.title && (
                   <div className="mt-2 p-2 bg-gray-50 dark:bg-gray-700 rounded-md">
@@ -225,7 +225,7 @@ const AdminBlogForm = () => {
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Excerpt</label>
                 <textarea name="excerpt" value={formData.excerpt} onChange={handleChange} rows={3}
-                  className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                   placeholder="Brief description of the blog" />
               </div>
 
@@ -234,7 +234,7 @@ const AdminBlogForm = () => {
                 <div>
                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam *</label>
                   <select name="exam" value={formData.exam} onChange={handleChange} required
-                    className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
+                    className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
                     <option value="">Select an exam</option>
                     {exams.map(exam => (
                       <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
@@ -244,7 +244,7 @@ const AdminBlogForm = () => {
                 <div>
                   <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Tags</label>
                   <input type="text" name="tags" value={formData.tags} onChange={handleChange}
-                    className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                    className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                     placeholder="Tags separated by commas" />
                 </div>
               </div>
@@ -261,26 +261,26 @@ const AdminBlogForm = () => {
                   className="w-full text-sm text-gray-900 dark:text-gray-200" />
                 <p className="text-xs text-gray-500 mt-1">Optional: You can also paste a hosted image URL below.</p>
                 <input type="url" name="featuredImage" value={formData.featuredImage} onChange={handleChange}
-                  className="mt-2 w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  className="mt-2 w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                   placeholder="https://example.com/image.jpg" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Image Alt Text</label>
                 <input type="text" name="featuredImageAlt" value={formData.featuredImageAlt} onChange={handleChange}
-                  className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                   placeholder="Describe the image for accessibility" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Meta Title</label>
                 <input type="text" name="metaTitle" value={formData.metaTitle} onChange={handleChange} maxLength={60}
-                  className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                   placeholder="SEO title (max 60 characters)" />
                 <p className="text-xs text-gray-500 mt-1">{formData.metaTitle.length}/60 characters</p>
               </div>
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Meta Description</label>
                 <textarea name="metaDescription" value={formData.metaDescription} onChange={handleChange} maxLength={160} rows={3}
-                  className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white"
                   placeholder="SEO description (max 160 characters)" />
                 <p className="text-xs text-gray-500 mt-1">{formData.metaDescription.length}/160 characters</p>
               </div>
@@ -294,7 +294,7 @@ const AdminBlogForm = () => {
               <div>
                 <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
                 <select name="status" value={formData.status} onChange={handleChange}
-                  className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:text-white">
+                  className="w-full px-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
                   <option value="archived">Archived</option>

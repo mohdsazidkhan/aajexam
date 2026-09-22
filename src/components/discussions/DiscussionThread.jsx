@@ -159,7 +159,7 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
                 onChange={e => setReplyText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && submitReply()}
                 placeholder="Write a reply…"
-                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-700 text-white rounded-lg hover:bg-primary-600">
                 Post
@@ -308,7 +308,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
                 onChange={e => setNewComment(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && !submitting && submitNew()}
                 placeholder="Share your approach, shortcut, or doubt…"
-                className="flex-1 text-sm px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-1 text-sm px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button
                 disabled={submitting || newComment.trim().length < 2}

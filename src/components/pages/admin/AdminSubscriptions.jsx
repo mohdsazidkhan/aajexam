@@ -424,7 +424,7 @@ const AdminSubscriptions = () => {
                     placeholder="Search by name, email, or plan..."
                     value={filters.search}
                     onChange={(e) => handleFilterChange('search', e.target.value)}
-                    className="pl-14 pr-8 py-4 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all w-full lg:w-80"
+                    className="pl-14 pr-8 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all w-full lg:w-80"
                   />
                 </div>
 
@@ -496,7 +496,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.plan}
                 onChange={(e) => handleFilterChange('plan', e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value="all">All Plans</option>
                 {filterOptions.plans.map(plan => (
@@ -507,7 +507,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.status}
                 onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value="all">All Statuses</option>
                 {filterOptions.statuses.slice(1).map(status => (
@@ -518,7 +518,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.year}
                 onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value="">All Years</option>
                 {filterOptions.years.map(year => (
@@ -529,7 +529,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.month}
                 onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 <option value={0}>All Months</option>
                 {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -542,7 +542,7 @@ const AdminSubscriptions = () => {
               <select
                 value={filters.limit}
                 onChange={(e) => handlePageSizeChange(e.target.value)}
-                className="w-full lg:w-auto bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
+                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
               >
                 {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
               </select>
@@ -913,7 +913,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={extendForm.plan}
                         onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="free">Free</option>
                         <option value="basic">Basic</option>
@@ -926,7 +926,7 @@ const AdminSubscriptions = () => {
                       <select
                         value={extendForm.duration}
                         onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                        className="w-full bg-white dark:bg-white/10 border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="1 month">1 Month</option>
                         <option value="2 months">2 Months</option>

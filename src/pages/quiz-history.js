@@ -71,7 +71,7 @@ const QuizHistoryPage = () => {
                   </div>
                   <div className="flex gap-3">
                      <select
-                        className="px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
+                        className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">All</option>

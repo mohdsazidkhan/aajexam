@@ -114,16 +114,16 @@ const CurrentAffairsPage = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search current affairs..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
-                className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
+                className="w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
             </div>
             <div className="relative flex gap-2 mt-2 lg:mt-0">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
               <select value={selectedMonth} onChange={e => { setSelectedMonth(Number(e.target.value)); setPage(1); }}
-                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                className="bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
                 {MONTH_NAMES.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
               </select>
               <select value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setPage(1); }}
-                className="bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                className="bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
                 {YEAR_OPTIONS.map(y => <option key={y} value={y}>{y}</option>)}
               </select>
             </div>

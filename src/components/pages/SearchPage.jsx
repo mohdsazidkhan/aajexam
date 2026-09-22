@@ -501,7 +501,7 @@ const SearchPage = () => {
                      <input
                         ref={inputRef}
                         type="text"
-                        className="w-full bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl py-2 lg:py-3 pl-9 pr-8 text-sm lg:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
+                        className="w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2 lg:py-3 pl-9 pr-8 text-sm lg:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
                         placeholder="Search"
                         value={query}
                         onFocus={() => setIsFocused(true)}

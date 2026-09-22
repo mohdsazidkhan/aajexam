@@ -65,7 +65,7 @@ const AdminMentorDetail = () => {
                 <select
                   value={mentor.status}
                   onChange={e => updateStatus(e.target.value, e.target.value === 'active' ? true : undefined)}
-                  className="px-2 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold bg-white dark:bg-slate-800 outline-none"
+                  className="px-2 py-1.5 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-bold bg-slate-50 dark:bg-black outline-none"
                 >
                   <option value="pending">Pending</option>
                   <option value="active">Active</option>

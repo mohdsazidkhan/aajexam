@@ -74,7 +74,7 @@ const AdminPYQ = () => {
                 <select
                   value={selectedExamId}
                   onChange={handleExamChange}
-                  className="pl-8 pr-3 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition min-w-[160px]"
+                  className="pl-8 pr-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition min-w-[160px]"
                 >
                   <option value="">All Exams</option>
                   {exams.map(exam => (

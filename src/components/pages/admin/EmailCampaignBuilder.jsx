@@ -321,7 +321,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     if (next && !recipients) loadRecipients(1);
   };
 
-  const inputClass = "w-full px-3 py-2 border border-slate-300 dark:border-white/10 rounded-lg bg-white dark:bg-white/5 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed";
+  const inputClass = "w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed";
   const pct = campaign && campaign.totalTargeted
     ? Math.min(100, Math.round((campaign.processed / campaign.totalTargeted) * 100))
     : 0;

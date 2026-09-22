@@ -84,14 +84,14 @@ const ExamHistoryPage = () => {
                         <div className="relative group">
                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-700 transition-colors" />
                            <input
-                              className="pl-12 pr-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
+                              className="pl-12 pr-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
                               placeholder="Search tests..."
                               value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
                               onKeyDown={(e) => e.key === 'Enter' && fetchHistory()}
                            />
                         </div>
                         <select
-                           className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
+                           className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                            value={filter} onChange={e => setFilter(e.target.value)}
                         >
                            <option value="">All</option>

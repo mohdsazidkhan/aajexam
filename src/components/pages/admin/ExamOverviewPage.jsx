@@ -322,14 +322,14 @@ const ExamOverviewPage = () => {
               placeholder="Search exams, subjects, topics..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:border-primary-700"
+              className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:border-primary-700"
             />
           </div>
           <div className="flex items-center gap-3 w-full md:w-auto">
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="flex-1 md:flex-none md:w-48 px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-lg text-sm focus:outline-none"
+              className="flex-1 md:flex-none md:w-48 px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none"
             >
               <option value="ALL">All Categories</option>
               {uniqueCategories.map(cat => <option key={cat} value={cat}>{cat}</option>)}

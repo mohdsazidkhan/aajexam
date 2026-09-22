@@ -448,7 +448,6 @@ html, body {
 .dark input[type="number"],
 .dark textarea,
 .dark select {
-  background-color: var(--bg-tertiary);
   border-color: var(--border-primary);
   color: var(--text-primary);
 }

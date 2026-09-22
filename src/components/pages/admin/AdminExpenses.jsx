@@ -236,7 +236,7 @@ const AdminExpenses = () => {
                             value={search}
                             onChange={e => setSearch(e.target.value)}
                             placeholder="SEARCH BY TITLE..."
-                            className="w-full pl-14 pr-8 py-5 bg-white/80 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all shadow-sm"
+                            className="w-full pl-14 pr-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all shadow-sm"
                         />
                     </form>
 
@@ -406,7 +406,7 @@ const AdminExpenses = () => {
                                                 value={formData.title}
                                                 onChange={e => setFormData({ ...formData, title: e.target.value })}
                                                 placeholder="TITLE E.G. META ADS - AUG 2024"
-                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
                                             />
                                         </div>
                                     </div>
@@ -422,7 +422,7 @@ const AdminExpenses = () => {
                                                     value={formData.amount}
                                                     onChange={e => setFormData({ ...formData, amount: e.target.value })}
                                                     placeholder="0.00"
-                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
+                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all tabular-nums"
                                                 />
                                             </div>
                                         </div>
@@ -435,7 +435,7 @@ const AdminExpenses = () => {
                                                     type="date"
                                                     value={formData.date}
                                                     onChange={e => setFormData({ ...formData, date: e.target.value })}
-                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
+                                                    className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all"
                                                 />
                                             </div>
                                         </div>
@@ -446,7 +446,7 @@ const AdminExpenses = () => {
                                         <select
                                             value={formData.category}
                                             onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                            className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
+                                            className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all cursor-pointer shadow-sm"
                                         >
                                             {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                                         </select>
@@ -458,7 +458,7 @@ const AdminExpenses = () => {
                                             value={formData.description}
                                             onChange={e => setFormData({ ...formData, description: e.target.value })}
                                             rows="3"
-                                            className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
+                                            className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/20 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase tracking-widest outline-none transition-all resize-none"
                                             placeholder="ADD A NOTE ABOUT THIS EXPENSE..."
                                         />
                                     </div>

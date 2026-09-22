@@ -198,7 +198,7 @@ const BlogsPage = () => {
 
             {/* Exam Filter */}
             <select name="exam" value={filters.exam} onChange={handleFilterChange}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white">
+              className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
               <option value="">All Exams</option>
               {exams.map(exam => (
                 <option key={exam._id} value={exam._id}>{exam.name}</option>
@@ -215,7 +215,7 @@ const BlogsPage = () => {
             {/* Search */}
             <form onSubmit={handleSearch} className="relative">
               <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search blogs..."
-                className="w-full lg:w-64 px-4 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white" />
+                className="w-full lg:w-64 px-4 py-2 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
               <button type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-700 text-white rounded-r-lg">
                 <Search className="w-4 h-4" />
               </button>

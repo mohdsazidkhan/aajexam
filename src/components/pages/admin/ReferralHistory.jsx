@@ -155,7 +155,7 @@ export default function ReferralHistory() {
                 <select
                   value={filterType}
                   onChange={handleFilterChange}
-                  className="pl-14 pr-10 py-5 leading-none bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-sm"
+                  className="pl-14 pr-10 py-5 leading-none bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit shadow-sm"
                 >
                   <option value="all">All Reward Types</option>
                   <option value="plan99">Plan 99 Reward (₹33)</option>

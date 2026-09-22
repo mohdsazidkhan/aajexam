@@ -181,7 +181,7 @@ const FinancialAnalytics = () => {
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="relative group min-w-[200px]">
                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                    <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full pl-12 pr-10 py-4 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
+                    <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full pl-12 pr-10 py-4 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer">
                       <option value="today">Today</option>
                       <option value="yesterday">Yesterday</option>
                       <option value="last-7-days">Past 7 Days</option>

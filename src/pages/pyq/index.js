@@ -129,7 +129,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterExam}
                                     onChange={onExamChange}
-                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
+                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">All Exams</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -137,7 +137,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterYear}
                                     onChange={onYearChange}
-                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
+                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">All Years</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}

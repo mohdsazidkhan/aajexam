@@ -391,16 +391,16 @@ const AdminGovtExamPatterns = () => {
                 <form onSubmit={handleSubmit} className="space-y-2 lg:space-y-4 lg:space-y-8">
                   <div className="space-y-2 lg:space-y-4">
                     <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Pattern Title</label>
-                    <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
+                    <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                   </div>
                   <div className="grid grid-cols-2 gap-3 lg:gap-6">
                     <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Duration (Min)</label>
-                      <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
+                      <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                     <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-black dark:border-white pl-3 block ml-2">Negative Marking</label>
-                      <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-white/5 border-2 border-transparent focus:border-black/30 dark:focus:border-white/30 rounded-2xl text-xs font-black outline-none" />
+                      <input type="number" step="0.01" value={formData.negativeMarking} onChange={(e) => setFormData({ ...formData, negativeMarking: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-black/30 dark:focus:border-white/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-2 lg:space-y-4">
@@ -436,23 +436,23 @@ const AdminGovtExamPatterns = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 mt-4">
                       <div className="lg:col-span-2 space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Section Name</label>
-                        <input type="text" value={newSection.name} onChange={(e) => setNewSection({ ...newSection, name: e.target.value })} placeholder="E.G. QUANTITATIVE APTITUDE" className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black uppercase outline-none focus:border-primary-500/30" />
+                        <input type="text" value={newSection.name} onChange={(e) => setNewSection({ ...newSection, name: e.target.value })} placeholder="E.G. QUANTITATIVE APTITUDE" className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black uppercase outline-none focus:border-primary-500/30" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Total Questions</label>
-                        <input type="number" value={newSection.totalQuestions} onChange={(e) => setNewSection({ ...newSection, totalQuestions: parseInt(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="number" value={newSection.totalQuestions} onChange={(e) => setNewSection({ ...newSection, totalQuestions: parseInt(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Marks / Question</label>
-                        <input type="number" value={newSection.marksPerQuestion} onChange={(e) => setNewSection({ ...newSection, marksPerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="number" value={newSection.marksPerQuestion} onChange={(e) => setNewSection({ ...newSection, marksPerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Negative / Question</label>
-                        <input type="number" step="0.01" value={newSection.negativePerQuestion} onChange={(e) => setNewSection({ ...newSection, negativePerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="number" step="0.01" value={newSection.negativePerQuestion} onChange={(e) => setNewSection({ ...newSection, negativePerQuestion: parseFloat(e.target.value) || 0 })} className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Time (Optional Min)</label>
-                        <input type="text" value={newSection.sectionDuration} onChange={(e) => setNewSection({ ...newSection, sectionDuration: e.target.value })} placeholder="30" className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 rounded-2xl text-[11px] font-black outline-none" />
+                        <input type="text" value={newSection.sectionDuration} onChange={(e) => setNewSection({ ...newSection, sectionDuration: e.target.value })} placeholder="30" className="w-full px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border border-slate-300 rounded-2xl text-[11px] font-black outline-none" />
                       </div>
                     </div>
                     <button type="button" onClick={handleAddSection} className="w-full mt-4 lg:mt-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3">

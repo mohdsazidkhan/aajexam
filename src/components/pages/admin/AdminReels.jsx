@@ -186,14 +186,14 @@ const AdminReels = () => {
                     placeholder="Search reels by content or author..."
                     value={searchTerm}
                     onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-                    className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-sm font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-700 transition-all outline-none shadow-sm"
+                    className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-sm font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-700 transition-all outline-none shadow-sm"
                   />
                 </div>
                 <div className="flex gap-2">
                   <select
                     value={typeFilter}
                     onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
-                    className="pl-4 pr-10 py-3 rounded-[1.2rem] bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-700 outline-none appearance-none shadow-sm cursor-pointer"
+                    className="pl-4 pr-10 py-3 rounded-[1.2rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-700 outline-none appearance-none shadow-sm cursor-pointer"
                   >
                     <option value="">All Types</option>
                     <option value="question">Question</option>

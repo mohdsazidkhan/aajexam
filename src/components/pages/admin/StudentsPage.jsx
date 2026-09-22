@@ -347,7 +347,7 @@ const StudentsPage = () => {
       <select
         value={student.subscriptionStatus || 'FREE'}
         onChange={(e) => handleStatusChange(student._id, { subscriptionStatus: e.target.value })}
-        className="text-xs border border-gray-300 dark:border-gray-600 rounded px-2 py-1 bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+        className="text-xs border border-slate-300 dark:border-slate-700 rounded px-2 py-1 bg-slate-50 dark:bg-black text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
         title="Change subscription plan"
       >
         <option value="FREE">FREE</option>
@@ -449,7 +449,7 @@ const StudentsPage = () => {
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
                   placeholder="Search students by name or email..."
-                  className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
+                  className="w-full pl-14 pr-8 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
                 />
               </div>
 
@@ -477,7 +477,7 @@ const StudentsPage = () => {
                   <select
                     value={itemsPerPage}
                     onChange={handleItemsPerPageChange}
-                    className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all"
+                    className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all"
                   >
                     {[10, 20, 50, 100, 500].map(n => <option key={n} value={n}>{n} per page</option>)}
                   </select>
@@ -776,7 +776,7 @@ const StudentsPage = () => {
                           required
                           value={createFormData.email}
                           onChange={(e) => setCreateFormData({ ...createFormData, email: e.target.value })}
-                          className="w-full pl-16 pr-8 py-3 lg:py-6 bg-slate-100 dark:bg-white/5 border-2 border-transparent focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-sm"
+                          className="w-full pl-16 pr-8 py-3 lg:py-6 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-3xl text-sm font-black uppercase tracking-widest outline-none transition-all shadow-sm"
                           placeholder="ENTER STUDENT EMAIL ADDRESS..."
                         />
                       </div>

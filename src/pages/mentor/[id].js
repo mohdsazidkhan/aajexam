@@ -239,7 +239,7 @@ export default function MentorProfilePage() {
           <div className="flex gap-2 mb-5">
             <input type="text" placeholder="Ask a question..." value={question} onChange={e => setQuestion(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
-              className="flex-1 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700" />
+              className="flex-1 bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-700" />
             <button onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
               className="px-4 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
               <Send className="w-4 h-4" />
@@ -265,7 +265,7 @@ export default function MentorProfilePage() {
                       <div className="flex gap-2">
                         <input type="text" placeholder="Write your answer..." value={answerText} onChange={e => setAnswerText(e.target.value)}
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
-                          className="flex-1 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-200 dark:border-slate-700" />
+                          className="flex-1 bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-300 dark:border-slate-700" />
                         <button onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
                           className="px-3 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
                           <Send className="w-4 h-4" />

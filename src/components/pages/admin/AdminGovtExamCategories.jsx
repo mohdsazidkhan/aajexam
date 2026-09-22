@@ -384,7 +384,7 @@ const AdminGovtExamCategories = () => {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
+                      className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
                       placeholder="Category name..."
                       required
                     />
@@ -396,7 +396,7 @@ const AdminGovtExamCategories = () => {
                       <select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm appearance-none cursor-pointer"
+                        className="w-full px-4 lg:px-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-[2rem] text-sm font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm appearance-none cursor-pointer"
                         required
                       >
                         <option value="Central">CENTRAL</option>
@@ -412,7 +412,7 @@ const AdminGovtExamCategories = () => {
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       rows="4"
-                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
+                      className="w-full px-4 lg:px-8 py-3 lg:py-6 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-700 transition-all font-outfit dark:text-white shadow-sm"
                       placeholder="Enter description..."
                     />
                   </div>

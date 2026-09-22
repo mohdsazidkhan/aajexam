@@ -164,7 +164,7 @@ const ContactUs = ({ contactInfo = {
                               <div className="space-y-2 lg:space-y-4">
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Full Name</label>
                                  <input
-                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                     placeholder="e.g. John Doe"
                                     value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required
                                  />
@@ -173,7 +173,7 @@ const ContactUs = ({ contactInfo = {
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Email Address</label>
                                  <input
                                     type="email"
-                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                     placeholder="john@example.com"
                                     value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} required
                                  />
@@ -183,7 +183,7 @@ const ContactUs = ({ contactInfo = {
                            <div className="space-y-2 lg:space-y-4">
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Subject</label>
                               <input
-                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                  placeholder="How can we help?"
                                  value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} required
                               />
@@ -193,7 +193,7 @@ const ContactUs = ({ contactInfo = {
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Message</label>
                               <textarea
                                  rows="5"
-                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
                                  placeholder="Type your message here..."
                                  value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} required
                               />

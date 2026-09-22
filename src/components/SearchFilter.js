@@ -34,7 +34,7 @@ const SearchFilter = ({
             value={searchTerm}
             onChange={(e) => handleChange?.(e.target.value)}
             placeholder={placeholder}
-            className="w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-slate-800/40 border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-sm focus:shadow-sm"
+            className="w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-sm focus:shadow-sm"
           />
         </div>
 
@@ -45,7 +45,7 @@ const SearchFilter = ({
               <select
                 value={filters[key] || ''}
                 onChange={(e) => onFilterChange(key, e.target.value)}
-                className="w-full appearance-none pl-5 pr-12 py-4 bg-slate-50 dark:bg-slate-800/40 border-2 border-transparent hover:border-slate-200 dark:hover:border-slate-700 rounded-2xl outline-none text-[10px] font-black uppercase tracking-[0.1em] text-slate-600 dark:text-slate-400 cursor-pointer transition-all duration-300 focus:border-primary-500/30"
+                className="w-full appearance-none pl-5 pr-12 py-4 bg-slate-50 dark:bg-black border-2 border-transparent hover:border-slate-200 dark:hover:border-slate-700 rounded-2xl outline-none text-[10px] font-black uppercase tracking-[0.1em] text-slate-600 dark:text-slate-400 cursor-pointer transition-all duration-300 focus:border-primary-500/30"
               >
                 <option value="">{options.label || key}</option>
                 {options.options.map((option) => (

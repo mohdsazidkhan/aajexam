@@ -14,7 +14,7 @@ import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 import { ProfileSkeleton } from '../components/skeletons/PrivateSkeletons';
 
-const FIELD_CLASSNAME = 'w-full px-4 py-4 rounded-2xl border-2 border-slate-100 dark:border-slate-800 dark:bg-slate-800/20 font-bold outline-none focus:border-primary-700 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
+const FIELD_CLASSNAME = 'w-full px-4 py-4 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold outline-none focus:border-primary-700 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
 
 const SOCIAL_FIELDS = [
   { key: 'instagram', label: 'Instagram', icon: Instagram, placeholder: 'https://instagram.com/username' },

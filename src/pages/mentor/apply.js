@@ -56,7 +56,7 @@ export default function MentorApply() {
     }
   };
 
-  const inputClass = "w-full bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-200 dark:border-slate-700";
+  const inputClass = "w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-700";
   const labelClass = "text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1.5 block";
 
   return (

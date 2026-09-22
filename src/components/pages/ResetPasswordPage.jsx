@@ -141,7 +141,7 @@ const ResetPasswordPage = () => {
                       <Lock className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 transition-colors" />
                       <input
                         type={showPassword ? 'text' : 'password'}
-                        className="w-full bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 pl-16 pr-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
+                        className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-2xl p-6 pl-16 pr-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
                         placeholder="Minimum 6 characters..."
                         value={newPassword}
                         onChange={e => setNewPassword(e.target.value)}

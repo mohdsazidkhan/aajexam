@@ -238,7 +238,7 @@ const AdminReferralAnalytics = () => {
                                         placeholder="Search users..."
                                         value={searchTerm}
                                         onChange={handleSearch}
-                                        className="w-full pl-14 pr-8 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-sm placeholder:text-slate-400"
+                                        className="w-full pl-14 pr-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-sm placeholder:text-slate-400"
                                     />
                                 </div>
 
@@ -248,7 +248,7 @@ const AdminReferralAnalytics = () => {
                                         <select
                                             value={selectedYear}
                                             onChange={handleYearChange}
-                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                                         >
                                             <option value="all">All Years</option>
                                             {availableYears.map(year => (
@@ -263,7 +263,7 @@ const AdminReferralAnalytics = () => {
                                         <select
                                             value={selectedMonth}
                                             onChange={handleMonthChange}
-                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                                         >
                                             <option value="all">All Months</option>
                                             {months.map((month, index) => (

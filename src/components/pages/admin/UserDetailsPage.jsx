@@ -141,7 +141,7 @@ export default function UserDetailsPage() {
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search by name, email, or username..."
-              className="w-full pl-14 pr-6 py-5 bg-white dark:bg-white/5 border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-sm"
+              className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-sm"
             />
           </div>
           <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
@@ -149,7 +149,7 @@ export default function UserDetailsPage() {
             <select value={itemsPerPage} onChange={(e) => {
               const l = Number(e.target.value);
               setItemsPerPage(l); setLimit(l); setPage(1);
-            }} className="w-full lg:w-auto px-3 lg:px-6 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer hover:border-primary-500/30 transition-all">
+            }} className="w-full lg:w-auto px-3 lg:px-6 py-4 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase outline-none cursor-pointer hover:border-primary-500/30 transition-all">
               {[10, 25, 50, 100].map(n => <option key={n} value={n}>{n} rows</option>)}
             </select>
           </div>

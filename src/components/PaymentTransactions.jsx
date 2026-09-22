@@ -286,7 +286,7 @@ const PaymentTransactions = () => {
                 placeholder="Search history..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 lg:pl-12 pr-3 lg:pr-4 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
+                className="w-full pl-9 lg:pl-12 pr-3 lg:pr-4 py-2.5 lg:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
               />
             </div>
 
@@ -294,7 +294,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value={1}>January</option>
               <option value={2}>February</option>
@@ -314,7 +314,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -325,7 +325,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-100 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-white dark:bg-slate-800 text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 lg:px-6 py-2.5 lg:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="paid">Paid</option>

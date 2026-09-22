@@ -217,7 +217,7 @@ const RegisterPageInner = () => {
                   <input
                     type="text"
                     required
-                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder="Enter your full name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -233,7 +233,7 @@ const RegisterPageInner = () => {
                     <input
                       type="email"
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -248,7 +248,7 @@ const RegisterPageInner = () => {
                     <input
                       type="number"
                       required
-                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
+                      className="w-full pl-10 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold text-sm placeholder:font-bold placeholder:text-slate-300"
                       placeholder="10 digits"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -264,7 +264,7 @@ const RegisterPageInner = () => {
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
-                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
                     placeholder="Create a password"
                     value={password}
                     onChange={handlePasswordChange}
@@ -297,7 +297,7 @@ const RegisterPageInner = () => {
                   <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-700 transition-colors" />
                   <input
                     type="text"
-                    className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 rounded-2xl outline-none focus:border-primary-700 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
+                    className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black rounded-2xl outline-none focus:border-primary-700 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
                     placeholder="Referral code"
                     value={referralCode}
                     onChange={(e) => setReferralCode(e.target.value.toUpperCase())}

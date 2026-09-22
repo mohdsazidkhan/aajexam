@@ -130,7 +130,7 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Target Exam *</label>
                   <select value={form.examId} onChange={e => setForm({ ...form, examId: e.target.value })}
-                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
                     <option value="">Select Exam</option>
                     {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
                   </select>
@@ -138,7 +138,7 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Exam Date *</label>
                   <input type="date" value={form.examDate} min={todayStr} onChange={e => setForm({ ...form, examDate: e.target.value })}
-                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
                   {durationPreview && (
                     durationPreview.invalid
                       ? <p className="text-[10px] font-bold text-black dark:text-white mt-1">Date past me hai</p>
@@ -152,17 +152,17 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Daily Hours *</label>
                   <input type="number" min="1" max="16" value={form.dailyHours} onChange={e => setForm({ ...form, dailyHours: e.target.value })}
-                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Weak Subjects (comma separated)</label>
                   <input type="text" placeholder="Maths, English" value={form.weakSubjects} onChange={e => setForm({ ...form, weakSubjects: e.target.value })}
-                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Strong Subjects (comma separated)</label>
                   <input type="text" placeholder="GK, Reasoning" value={form.strongSubjects} onChange={e => setForm({ ...form, strongSubjects: e.target.value })}
-                    className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
                 </div>
               </div>
               <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
