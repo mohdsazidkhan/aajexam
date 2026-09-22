@@ -78,7 +78,7 @@ export default function SubjectDetail({
           </nav>
 
           {/* Hero — server-rendered */}
-          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <span className="block text-[10px] font-black text-primary-700 uppercase tracking-widest mb-2">Subject</span>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {subjectName}
@@ -105,7 +105,7 @@ export default function SubjectDetail({
 
           {/* About — long-form intro */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About {subjectName}
               </h2>
@@ -117,7 +117,7 @@ export default function SubjectDetail({
 
           {/* Topics under this subject */}
           {topics.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Topics in {subjectName}
               </h2>
@@ -136,7 +136,7 @@ export default function SubjectDetail({
 
           {/* FAQ */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>

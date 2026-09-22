@@ -112,7 +112,7 @@ export default function QuizPreview({
           </nav>
 
           {/* Hero — server-rendered */}
-          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {subjectName && <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-700 dark:text-primary-300 uppercase tracking-widest">{subjectName}</span>}
               {topicName && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{topicName}</span>}
@@ -146,7 +146,7 @@ export default function QuizPreview({
 
           {/* About — long-form intro */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About This Quiz
               </h2>
@@ -180,7 +180,7 @@ export default function QuizPreview({
 
           {/* FAQ */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
@@ -197,7 +197,7 @@ export default function QuizPreview({
 
           {/* Related quizzes */}
           {relatedQuizzes.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Related {topicName || subjectName || ''} Quizzes
               </h2>

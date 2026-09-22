@@ -20,7 +20,7 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
   if (usable.length === 0) return null;
 
   return (
-    <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+    <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
       <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
         {title}
       </h2>

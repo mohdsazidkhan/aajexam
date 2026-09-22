@@ -89,7 +89,7 @@ export default function TopicPractice({
             <span className="text-slate-600 dark:text-slate-400">{topicName}</span>
           </nav>
 
-          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <span className="block text-[10px] font-black text-primary-700 uppercase tracking-widest mb-2">
               {examName} · {subjectName}
             </span>
@@ -116,7 +116,7 @@ export default function TopicPractice({
           </header>
 
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About {examName} {topicName}
               </h2>
@@ -141,7 +141,7 @@ export default function TopicPractice({
             />
           )}
 
-          <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+          <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
             <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">
               Keep going
             </h2>
@@ -163,7 +163,7 @@ export default function TopicPractice({
           </section>
 
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
               <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
