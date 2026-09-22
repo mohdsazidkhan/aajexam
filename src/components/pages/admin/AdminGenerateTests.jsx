@@ -354,7 +354,7 @@ const AdminGenerateTests = () => {
   // ── When pattern selected, go step 3
   const handlePatternSelect = (pattern) => {
     setSelectedPattern(pattern);
-    setTestTitle(`${selectedExam.name} — ${pattern.title} - ${Date.now()}`);
+    setTestTitle(`${selectedExam.name} — ${pattern.title}`);
     setGenerationDone(false);
     setAllSectionResults([]);
     setStep(3);
