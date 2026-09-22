@@ -104,7 +104,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="py-4 lg:py-8 space-y-8 relative">
+                <div className="py-4 lg:py-8 space-y-4 lg:space-y-8 relative">
                     {/* Header / breadcrumb */}
                     <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
                         <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Home</Link>
@@ -113,7 +113,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     </nav>
 
                     {/* Hero */}
-                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
                             <div className="space-y-2">
                                 <span className="block text-[10px] font-black text-primary-700 uppercase tracking-widest">PYQ Library</span>
@@ -125,11 +125,11 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     {totalPYQs} verified PYQ {totalPYQs === 1 ? 'paper' : 'papers'} across {examsWithPYQ.length} {examsWithPYQ.length === 1 ? 'exam' : 'exams'} — practise with real questions, real timing, and detailed solutions.
                                 </p>
                             </div>
-                            <div className="flex gap-2 flex-wrap">
+                            <div className="flex gap-2">
                                 <select
                                     value={filterExam}
                                     onChange={onExamChange}
-                                    className="px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none"
+                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">All Exams</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -137,7 +137,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterYear}
                                     onChange={onYearChange}
-                                    className="px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none"
+                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">All Years</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
