@@ -9,8 +9,9 @@ import { Target, Zap, Activity } from 'lucide-react';
  */
 const ProgressBar = ({
   progress = 0,
-  variant = 'primary', // primary only (brand green)
-  height = 'md', // sm, md, lg, xl
+  variant = 'primary', // primary only (brand green), overridden by `color` when passed
+  color, // Tailwind color token, e.g. "emerald-500", "white", "red-500" -> rendered as bg-{color}
+  height = 'md', // sm, md, lg, xl, or a raw Tailwind height class (e.g. "h-2")
   className = '',
   label,
   icon: Icon,
@@ -20,6 +21,9 @@ const ProgressBar = ({
   const variants = {
     primary: 'bg-primary-700 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
   };
+  const fillClass = color
+    ? `bg-${color} shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]`
+    : (variants[variant] || variants.primary);
 
   const heights = {
     sm: 'h-3 rounded-full',
@@ -46,12 +50,12 @@ const ProgressBar = ({
         </div>
       )}
 
-      <div className={`w-full bg-background-surface-secondary overflow-hidden ${heights[height]} border-2 border-slate-200 dark:border-slate-800 shadow-sm group relative`}>
+      <div className={`w-full bg-background-surface-secondary overflow-hidden ${heights[height] || `${height} rounded-full`} border-2 border-slate-200 dark:border-slate-800 shadow-sm group relative`}>
         <motion.div
           initial={animate ? { width: 0 } : { width: `${progressValue}%` }}
           animate={{ width: `${progressValue}%` }}
           transition={{ duration: 1.5, ease: [0.34, 1.56, 0.64, 1] }}
-          className={`h-full ${variants[variant] || variants.primary} relative rounded-inherit overflow-hidden`}
+          className={`h-full ${fillClass} relative rounded-inherit overflow-hidden`}
         >
           {/* Global Shimmer Utility */}
           <div className="absolute inset-0 shimmer opacity-30" />

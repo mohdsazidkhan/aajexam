@@ -132,7 +132,7 @@ const QuizHistoryPage = () => {
                                                 <span className="text-[10px] font-black text-slate-400">Accuracy</span>
                                                 <span className="text-sm font-black text-primary-700">{Math.round(attempt.accuracy || 0)}%</span>
                                              </div>
-                                             <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" />
+                                             <ProgressBar progress={attempt.accuracy || 0} color="emerald-500" height="h-1.5" />
                                           </div>
 
                                           <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
