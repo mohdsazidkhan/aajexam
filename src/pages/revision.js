@@ -29,7 +29,7 @@ const RevisionPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const url = activeTab === 'all' ? '/api/revision?limit=50' : `/api/revision?limit=50&source=${activeTab}`;
+        const url = activeTab === 'all' ? '/api/revision?limit=20' : `/api/revision?limit=20&source=${activeTab}`;
         const [queueRes, statsRes] = await Promise.all([
           API.request(url).catch(() => null),
           API.request('/api/revision/stats').catch(() => null)
