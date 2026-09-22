@@ -6,7 +6,7 @@ import UserStreak from '@/models/UserStreak';
 import mongoose from 'mongoose';
 import { protect } from '@/middleware/auth';
 
-// GET /api/leaderboard?type=quiz|exam&period=all-time|weekly|monthly&limit=50
+// GET /api/leaderboard?type=quiz|exam&period=all-time|weekly|monthly&limit=20
 export async function GET(req) {
     try {
         await dbConnect();

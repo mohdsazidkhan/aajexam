@@ -262,7 +262,7 @@ const AllIndiaRankPage = () => {
     try {
       if (isRefresh) setRefreshing(true);
       else setLoading(true);
-      const url = `/api/air?limit=50${selectedExamId ? `&examId=${selectedExamId}` : ''}`;
+      const url = `/api/air?limit=20${selectedExamId ? `&examId=${selectedExamId}` : ''}`;
       const res = await API.request(url);
       if (res?.success) {
         setData(res.data || []);

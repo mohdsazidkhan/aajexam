@@ -215,7 +215,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
   const load = useCallback(async (nextSort = sort) => {
     setLoading(true);
     try {
-      const res = await API.getCommunityAnswers(questionId, { sort: nextSort, limit: 50 });
+      const res = await API.getCommunityAnswers(questionId, { sort: nextSort, limit: 20 });
       if (res?.success) {
         setItems(res.answers || []);
         setTotal(res.pagination?.total || 0);

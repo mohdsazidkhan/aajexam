@@ -207,7 +207,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
     if (!questionId) return;
     setLoading(true);
     try {
-      const res = await API.getDiscussions({ questionId, sort: nextSort, limit: 50, page: 1 });
+      const res = await API.getDiscussions({ questionId, sort: nextSort, limit: 20, page: 1 });
       if (res?.success) {
         setItems(res.discussions || []);
         setTotal(res.pagination?.total || 0);
@@ -224,7 +224,7 @@ export default function DiscussionThread({ questionId, sourceType, sourceId, def
     if (page >= totalPages) return;
     setLoadingMore(true);
     try {
-      const res = await API.getDiscussions({ questionId, sort, limit: 50, page: page + 1 });
+      const res = await API.getDiscussions({ questionId, sort, limit: 20, page: page + 1 });
       if (res?.success) {
         setItems(prev => [...prev, ...(res.discussions || [])]);
         setPage(page + 1);

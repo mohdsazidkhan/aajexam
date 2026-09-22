@@ -304,7 +304,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     setLoadingRecipients(true);
     try {
       const data = await API.request(
-        `/api/admin/email-campaign/recipients?campaignId=${campaign.campaignId}&page=${page}&limit=50`
+        `/api/admin/email-campaign/recipients?campaignId=${campaign.campaignId}&page=${page}&limit=20`
       );
       setRecipients(data);
       setRecipPage(page);

@@ -4,7 +4,7 @@ import UserTestAttempt from '@/models/UserTestAttempt';
 import User from '@/models/User';
 import mongoose from 'mongoose';
 
-// GET /api/air?examId=optional&limit=50
+// GET /api/air?examId=optional&limit=20
 export async function GET(req) {
     try {
         await dbConnect();

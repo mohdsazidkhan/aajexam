@@ -3,7 +3,7 @@ import dbConnect from '@/lib/db';
 import EmailCampaignRecipient from '@/models/EmailCampaignRecipient';
 import { protect, admin } from '@/middleware/auth';
 
-// GET /api/admin/email-campaign/recipients?campaignId=...&page=1&limit=50&status=sent|failed
+// GET /api/admin/email-campaign/recipients?campaignId=...&page=1&limit=20&status=sent|failed
 // Lists exactly which users a campaign has been sent to.
 export async function GET(req) {
   try {

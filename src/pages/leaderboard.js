@@ -337,7 +337,7 @@ const LeaderboardPage = () => {
     try {
       if (isRefresh) setRefreshing(true);
       else setLoading(true);
-      const res = await API.request(`/api/leaderboard?type=${type}&period=${period}&limit=50`);
+      const res = await API.request(`/api/leaderboard?type=${type}&period=${period}&limit=20`);
       if (res?.success) {
         setData(res.data || []);
         setMyEntry(res.myEntry || null);
