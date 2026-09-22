@@ -97,18 +97,17 @@ const MyReelsPage = () => {
       <MobileAppWrapper title="My Reels">
          <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
             <Seo title="My Reels - AajExam" noIndex={true} />
-
             <div className="py-4 lg:py-8 space-y-6 lg:space-y-4 mt-0">
                {/* Header */}
-               <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                  <div className="space-y-2 text-center lg:text-left">
+               <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-6">
+                  <div className="flex gap-4 justify-between items-center">
                      <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">My Reels</h1>
                      <p className="text-sm font-bold text-gray-400">
-                        {total > 0 ? `${total} reel${total > 1 ? 's' : ''} created` : 'Reels you have created'}
+                        {total > 0 ? `${total} reel${total > 1 ? 's' : ''} created` : 'Not created'}
                      </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-3 justify-center items-center">
+                  <div className="flex gap-3 justify-between items-center">
                      <select
                         className="px-4 py-3 bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}

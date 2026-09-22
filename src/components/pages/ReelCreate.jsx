@@ -203,17 +203,17 @@ const ReelCreate = () => {
     <MobileAppWrapper>
       <div className="min-h-screen">
         <div className="sticky top-0 z-20 py-3">
-          <div className="flex items-center gap-3">
+          <div className="flex justify-between items-center gap-3">
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Flame className="w-5 h-5 text-black dark:text-white" /> Create Reel
             </h1>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Choose Card Type</p>
           </div>
         </div>
 
         <div className="py-0 lg:py-6">
           {!type ? (
             <div className="space-y-2 lg:space-y-4">
-              <p className="mt-2 lg:mt-0 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Choose Card Type</p>
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {TYPES.map(t => (
                   <motion.button key={t.value} onClick={() => setType(t.value)}
