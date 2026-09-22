@@ -117,7 +117,8 @@ const PaymentTransactions = () => {
         return <FaTimesCircle className="text-black dark:text-white" />;
       case 'created':
       case 'authorized':
-        return <FaClock className="text-primary-700" />;
+      case 'pending':
+        return <FaClock className="text-amber-600 dark:text-amber-400" />;
       case 'refunded':
         return <FaExclamationTriangle className="text-primary-700" />;
       default:
@@ -135,7 +136,8 @@ const PaymentTransactions = () => {
         return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white';
       case 'created':
       case 'authorized':
-        return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
+      case 'pending':
+        return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
       case 'refunded':
         return 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300';
       default:
@@ -453,7 +455,7 @@ const PaymentTransactions = () => {
                           </div>
                           <div className="flex justify-between items-center text-[9px] lg:text-[10px] uppercase font-black tracking-widest">
                             <span className="text-slate-600 dark:text-slate-400">Order ID</span>
-                            <span className="text-slate-800 dark:text-white font-mono">{transaction.orderId?.slice(0, 8)}...</span>
+                            <span className="text-slate-800 dark:text-white font-mono break-all text-right">{transaction.orderId}</span>
                           </div>
                         </div>
                       </div>

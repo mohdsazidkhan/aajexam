@@ -19,10 +19,10 @@ const Button = ({
 }) => {
   // Brand system: exactly two variants, everywhere.
   // primary   -> brand green bg, white text (identical in light & dark)
-  // secondary -> white bg / black border+text in light mode, dark bg / white border+text in dark mode (never white bg in dark mode)
+  // secondary -> white bg / black text with light gray border in light mode, dark bg / white border+text in dark mode (never white bg in dark mode)
   const variants = {
     primary: 'bg-primary-700 shadow-sm border-primary-700 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
-    secondary: 'bg-white border-2 border-white text-black active:bg-slate-100 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:active:bg-slate-700',
+    secondary: 'bg-white border-2 border-slate-200 text-black active:bg-slate-100 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:active:bg-slate-700',
   };
 
   const sizes = {
@@ -47,7 +47,8 @@ const Button = ({
         ${sizes[size]}
         ${fullWidth ? 'w-full' : 'w-fit'}
         ${disabled ? 'opacity-40 grayscale cursor-not-allowed !shadow-none !border-none' : ''}
-        relative border-b-[6px] transition-all duration-150 flex items-center justify-center gap-3 active:border-b-0
+        relative transition-all duration-150 flex items-center justify-center gap-3
+        ${variant === 'secondary' ? 'border-b-2' : 'border-b-[6px] active:border-b-0'}
         group cursor-pointer font-outfit overflow-hidden
         ${className}
       `}

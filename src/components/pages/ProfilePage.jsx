@@ -183,7 +183,7 @@ const ProfilePage = () => {
   const completion = student?.profileCompletion;
 
   return (
-    <div className="min-h-screen animate-fade-in pb-24 selection:bg-primary-700 selection:text-white">
+    <div className="min-h-screen animate-fade-in pb-8 lg:pb-12 selection:bg-primary-700 selection:text-white">
       <Head>
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
@@ -211,13 +211,15 @@ const ProfilePage = () => {
                 )}
               </div>
 
-              <p className="text-sm lg:text-base font-semibold text-content-secondary">@{student?.username || 'guest'}</p>
+              <div className="flex items-center gap-2 flex-wrap">
+                <p className="text-sm lg:text-base font-semibold text-content-secondary">@{student?.username || 'guest'}</p>
 
-              {student?.city && (
-                <p className="flex items-center gap-1.5 text-xs lg:text-sm font-medium text-content-secondary">
-                  <MapPin className="w-3.5 h-3.5 lg:w-4 lg:h-4" /> {student.city}
-                </p>
-              )}
+                {student?.city && (
+                  <p className="flex items-center gap-1.5 text-xs lg:text-sm font-medium text-content-secondary">
+                    <MapPin className="w-3.5 h-3.5 lg:w-4 lg:h-4" /> {student.city}
+                  </p>
+                )}
+              </div>
 
             </div>
           </div>

@@ -115,7 +115,7 @@ const SettingsPage = () => {
   if (loading) {
     return (
       <MobileAppWrapper title="Account Settings">
-        <div className="container mx-auto mt-4 py-8"><ProfileSkeleton /></div>
+        <div className="container mx-auto mt-4 py-0 lg:py-8"><ProfileSkeleton /></div>
       </MobileAppWrapper>
     );
   }
@@ -162,7 +162,7 @@ const SettingsPage = () => {
               {activeTab === 'profile' && (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                   <div className="lg:col-span-8">
-                    <Card className="p-8 lg:p-10 space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
+                    <div className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                           <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Your Profile</h2>
@@ -277,7 +277,7 @@ const SettingsPage = () => {
                           {saving ? 'Saving changes...' : 'Save profile changes'}
                         </Button>
                       </form>
-                    </Card>
+                    </div>
                   </div>
 
                   <div className="lg:col-span-4 space-y-6">
@@ -297,7 +297,7 @@ const SettingsPage = () => {
               {activeTab === 'bank' && (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                   <div className="lg:col-span-8">
-                    <Card className="p-8 lg:p-10 space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
+                    <div padded={false} className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
                           <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Bank Details</h2>
@@ -335,7 +335,7 @@ const SettingsPage = () => {
                           {saving ? 'Saving details...' : 'Save bank details'}
                         </Button>
                       </form>
-                    </Card>
+                    </div>
                   </div>
 
                   <div className="lg:col-span-4 space-y-6">
@@ -352,7 +352,7 @@ const SettingsPage = () => {
 
               {activeTab === 'security' && (
                 <div>
-                  <Card className="p-6 lg:p-12 rounded-[2rem] lg:rounded-[4rem] space-y-10 border-none shadow-sm bg-background-surface overflow-hidden relative">
+                  <div className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                     <div className="flex items-center justify-between gap-4 relative z-10">
                       <div className="space-y-1">
                         <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
@@ -395,7 +395,7 @@ const SettingsPage = () => {
                         {saving ? 'Updating password...' : 'Update password'}
                       </Button>
                     </form>
-                  </Card>
+                  </div>
                 </div>
               )}
             </motion.div>
