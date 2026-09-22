@@ -160,7 +160,7 @@ export default function MentorProfilePage() {
 
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
-          <Card className="p-5">
+          <Card>
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-primary-700" /> Exams Cleared</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
@@ -179,7 +179,7 @@ export default function MentorProfilePage() {
 
         {/* Strategy */}
         {mentor.strategy && (
-          <Card className="p-5">
+          <Card>
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">Preparation Strategy</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.strategy}</p>
           </Card>
@@ -187,7 +187,7 @@ export default function MentorProfilePage() {
 
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
-          <Card className="p-5">
+          <Card>
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-black dark:text-white" /> Daily Routine</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
@@ -195,7 +195,7 @@ export default function MentorProfilePage() {
 
         {/* Tips */}
         {mentor.tips?.length > 0 && (
-          <Card className="p-5">
+          <Card>
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">Tips for Students</h2>
             <ul className="space-y-2">
               {mentor.tips.map((tip, i) => (
@@ -209,7 +209,7 @@ export default function MentorProfilePage() {
 
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
-          <Card className="p-5">
+          <Card>
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><BookOpen className="w-4 h-4 text-black dark:text-white" /> Recommended Books</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
@@ -221,7 +221,7 @@ export default function MentorProfilePage() {
 
         {/* Specialization */}
         {mentor.specialization?.length > 0 && (
-          <Card className="p-5">
+          <Card>
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">Specialization</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.specialization.map((spec, i) => (
@@ -232,7 +232,7 @@ export default function MentorProfilePage() {
         )}
 
         {/* AMA Section */}
-        <Card className="p-5">
+        <Card>
           <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2"><MessageCircle className="w-4 h-4 text-primary-700" /> Ask Me Anything</h2>
 
           {/* Ask Question */}
