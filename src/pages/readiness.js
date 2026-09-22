@@ -8,6 +8,43 @@ import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
 import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 
+// --- Readiness Skeleton (matches the loaded result view) ---
+const Sh = ({ className = '' }) => (
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
+);
+
+const ReadinessSkeleton = () => (
+  <div className="space-y-5">
+    <Card className="p-8 text-center space-y-3">
+      <Sh className="h-14 w-32 mx-auto" />
+      <Sh className="h-3 w-40 mx-auto" />
+      <Sh className="h-3 w-28 mx-auto" />
+      <Sh className="h-3 w-full max-w-sm mx-auto" />
+    </Card>
+
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      {[1, 2, 3, 4].map(i => (
+        <Card key={i} className="text-center space-y-2">
+          <Sh className="h-6 w-12 mx-auto" />
+          <Sh className="h-2.5 w-20 mx-auto" />
+        </Card>
+      ))}
+    </div>
+
+    {[1, 2].map(i => (
+      <Card key={i} className="space-y-3">
+        <Sh className="h-4 w-40" />
+        {[1, 2, 3].map(j => (
+          <div key={j} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
+            <Sh className="h-3 w-28 bg-white/60 dark:bg-slate-700" />
+            <Sh className="h-3 w-8 bg-white/60 dark:bg-slate-700" />
+          </div>
+        ))}
+      </Card>
+    ))}
+  </div>
+);
+
 const ReadinessPage = () => {
   const [exams, setExams] = useState([]);
   const [selectedExam, setSelectedExam] = useState('');
@@ -28,6 +65,7 @@ const ReadinessPage = () => {
   const analyzeReadiness = async () => {
     if (!selectedExam) return;
     setAnalyzing(true);
+    setReadiness(null);
     try {
       const res = await API.request(`/api/readiness/${selectedExam}`);
       if (res?.success) setReadiness(res.data);
@@ -114,6 +152,8 @@ const ReadinessPage = () => {
               )}
             </div>
           )}
+
+          {analyzing && !readiness && <ReadinessSkeleton />}
 
           {!readiness && !analyzing && (
             <Card className="text-center space-y-2 lg:space-y-4">
