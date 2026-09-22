@@ -32,13 +32,13 @@ const MentorsPage = () => {
   }, [search, page]);
 
   if (loading) return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-8 lg:pb-16">
       <div className="py-4 lg:py-6"><GridSkeleton count={8} /></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-8 lg:pb-16">
       <Seo
         title="Mentors – Connect with Government Exam Toppers | AajExam"
         description="Connect with verified mentors who have cracked SSC, UPSC, Banking, Railway and State PSC exams. Get personalised study plans, doubt-clearing and exam strategy guidance on AajExam Pro."
@@ -74,7 +74,7 @@ const MentorsPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {mentors.map((mentor, i) => (
-              <Card key={mentor._id || i} className="p-5 hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
+              <Card key={mentor._id || i} className="hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
                 onClick={() => router.push(`/mentor/${mentor._id}`)}>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">

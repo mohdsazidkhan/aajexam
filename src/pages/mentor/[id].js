@@ -138,7 +138,7 @@ export default function MentorProfilePage() {
       <div className="container mx-auto py-4 lg:py-8 space-y-6">
 
         {/* Profile Header */}
-        <Card className="p-6">
+        <Card>
           <div className="flex items-start gap-4">
             <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center text-primary-700 font-black text-2xl shrink-0">
               {mentor.user?.name?.charAt(0) || 'M'}
