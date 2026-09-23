@@ -165,7 +165,7 @@ const AskQuestionPage = () => {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
         <Card className="text-center max-w-md w-full" radius="2xl">
-          <CheckCircle className="w-16 h-16 text-primary-700 mx-auto mb-4" />
+          <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
           <h2 className="text-xl font-black text-content-primary uppercase mb-2">Question Posted!</h2>
           <p className="text-sm text-content-muted">Redirecting to community questions...</p>
         </Card>
@@ -236,13 +236,13 @@ const AskQuestionPage = () => {
                   <button
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
-                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-700 text-white shadow-sm"
+                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-600 text-white shadow-sm"
                   >
                     <X className="w-3 h-3" />
                   </button>
                 </div>
               ) : (
-                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-700 transition-colors">
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
                   <ImageIcon className="w-4 h-4" />
                   {uploadingImage ? 'Uploading...' : 'Add Image (optional)'}
                   <input
@@ -265,7 +265,7 @@ const AskQuestionPage = () => {
                 <button
                   type="button"
                   onClick={addOption}
-                  className="flex items-center gap-1 text-xs font-bold text-primary-700 hover:text-primary-700 transition-colors"
+                  className="flex items-center gap-1 text-xs font-bold text-primary-600 hover:text-primary-600 transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" /> Add
                 </button>
@@ -287,7 +287,7 @@ const AskQuestionPage = () => {
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
                     className={`p-2 rounded-lg lg:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
-                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-700'
+                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
                         : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
                     }`}
                     title="Mark as correct answer"

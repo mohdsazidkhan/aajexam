@@ -28,7 +28,7 @@ const Loading = ({
   const colorMap = {
     primary: 'bg-primary-400 shadow-sm',
     secondary: 'bg-primary-400 shadow-sm',
-    accent:'bg-primary-700 shadow-sm',
+    accent:'bg-primary-600 shadow-sm',
     gray: 'bg-slate-400 shadow-sm',
   };
 

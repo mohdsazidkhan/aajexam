@@ -56,12 +56,12 @@ export default function GovtExamsPreparation({ initialData }) {
 
                 <div className="py-0 lg:py-6">
                     <div className="text-center mb-4 lg:mb-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-white dark:border-slate-800 mb-3 lg:mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-600 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-white dark:border-slate-800 mb-3 lg:mb-6">
                             <FaQuestionCircle className="w-4 h-4" />
                             <span>{pagination.totalExams || 0} Exams Available</span>
                         </div>
                         <h1 className="text-xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
-                            Government Exams <span className="text-primary-700">Preparation</span>
+                            Government Exams <span className="text-primary-600">Preparation</span>
                         </h1>
                         <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
                             Master your competitive exams with our structured quiz modules and real-time performance tracking.
@@ -85,10 +85,10 @@ export default function GovtExamsPreparation({ initialData }) {
                                                     {exam.logo ? (
                                                         <img src={exam.logo} alt={exam.name} className="w-full h-full object-cover" />
                                                     ) : (
-                                                        <FaGraduationCap className="text-primary-700 text-2xl" />
+                                                        <FaGraduationCap className="text-primary-600 text-2xl" />
                                                     )}
                                                 </div>
-                                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight group-hover:text-primary-700 transition-colors">
+                                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight group-hover:text-primary-600 transition-colors">
                                                     {exam.name}
                                                 </h3>
                                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 line-clamp-3 leading-relaxed">
@@ -97,7 +97,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                             </div>
                                             <button
                                                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                                                className="w-full bg-primary-700 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-sm border-b-2 border-primary-700 active:translate-y-1 active:border-b-0"
+                                                className="w-full bg-primary-600 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0"
                                             >
                                                 Start Practice <FaChartLine className="ml-2" />
                                             </button>
@@ -136,7 +136,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                                     key={pageNum}
                                                     onClick={() => handlePageChange(pageNum)}
                                                     className={`w-12 h-12 rounded-2xl font-black transition-all shadow-sm border-2 ${isActive
-                                                        ? 'bg-primary-700 border-primary-700 text-white active:translate-y-1 active:border-b-0'
+                                                        ? 'bg-primary-600 border-primary-600 text-white active:translate-y-1 active:border-b-0'
                                                         : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 active:translate-y-1 active:border-b-0'
                                                         }`}
                                                 >
@@ -170,7 +170,7 @@ export default function GovtExamsPreparation({ initialData }) {
                         </p>
                         <button
                             onClick={() => router.push('/govt-exams')}
-                            className="bg-primary-700 hover:bg-primary-600 text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all relative z-10"
+                            className="bg-primary-600 hover:bg-primary-600 text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all relative z-10"
                         >
                             Get Started Now
                         </button>

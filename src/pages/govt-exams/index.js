@@ -130,7 +130,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
       {/* Hero */}
       <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:py-8">
-        <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
+        <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -161,7 +161,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-primary-700 text-white border-primary-600'
+                    ? 'bg-primary-600 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -181,7 +181,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 lg:w-12 h-8 lg:h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-sm">
+                    <div className="w-8 lg:w-12 h-8 lg:h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
                       <ShieldCheck className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                     </div>
                     <div>
@@ -189,7 +189,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                       {exam.code && <p className="text-[10px] font-bold text-content-muted uppercase">{exam.code}</p>}
                     </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-700 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary-600 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
                 </div>
 
                 {/* Category Badge */}
@@ -204,7 +204,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
                 {/* Counts */}
                 <div className="flex items-center flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-700 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <FileText className="w-3 h-3" />
                     {exam.practiceTestCount || 0} Tests
                   </div>
@@ -212,7 +212,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                     <History className="w-3 h-3" />
                     {exam.pyqCount || 0} PYQs
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-700 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {exam.quizCount || 0} Quizzes
                   </div>

@@ -22,10 +22,10 @@ const TYPE_LABELS = {
 
 const TYPE_COLORS = {
   question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
+  fact: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
   tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
+  poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
@@ -371,7 +371,7 @@ const AdminReelEdit = () => {
                       <div key={i} className="flex items-center gap-3">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
                           className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${correctAnswerIndex === i
-                            ? 'border-primary-700 bg-primary-700 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}>
+                            ? 'border-primary-600 bg-primary-600 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400 hover:border-primary-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input type="text" value={opt}
@@ -379,7 +379,7 @@ const AdminReelEdit = () => {
                           placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
                       </div>
                     ))}
-                    <p className="text-xs text-primary-700">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
+                    <p className="text-xs text-primary-600">Correct: {String.fromCharCode(65 + correctAnswerIndex)}</p>
                   </div>
                   <div>
                     <label className={labelClass}>Explanation</label>
@@ -394,8 +394,8 @@ const AdminReelEdit = () => {
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-2 lg:space-y-4">
-                  <h3 className="font-bold text-primary-700 dark:text-primary-400">Fact Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 lg:space-y-4">
+                  <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
                     <input type="text" value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} />
@@ -509,8 +509,8 @@ const AdminReelEdit = () => {
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-5 space-y-2 lg:space-y-4">
-                  <h3 className="font-bold text-primary-700 dark:text-primary-400">Poll Details</h3>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 lg:space-y-4">
+                  <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
                     <input type="text" value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} />
@@ -566,7 +566,7 @@ const AdminReelEdit = () => {
                     >
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ?'bg-primary-700 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'bg-primary-600 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       <div className="flex-1 min-w-0">
@@ -579,7 +579,7 @@ const AdminReelEdit = () => {
                         </div>
                       </div>
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center shrink-0">
                           <span className="text-white text-[10px] font-bold">✓</span>
                         </div>
                       )}
@@ -594,7 +594,7 @@ const AdminReelEdit = () => {
                 {audioPlaying && (
                   <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-primary-700 animate-pulse"/>
+                      <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
                       <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
                     </div>
                     <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">

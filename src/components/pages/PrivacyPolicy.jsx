@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
             />
          </Head>
 
-         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-700 selection:text-white mt-0">
+         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-600 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
             <div className="relative overflow-hidden py-8 lg:py-16 border-b-2 border-slate-100 dark:border-slate-800">
@@ -74,11 +74,11 @@ const PrivacyPolicy = () => {
                      animate={{ scale: 1, opacity: 1 }}
                      className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
                   >
-                     <ShieldCheck className="w-14 h-14 text-primary-700" />
+                     <ShieldCheck className="w-14 h-14 text-primary-600" />
                   </motion.div>
                   <div className="space-y-2 lg:space-y-4">
                      <h1 className="text-xl lg:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
-                        Privacy <span className="text-primary-700">Policy</span>
+                        Privacy <span className="text-primary-600">Policy</span>
                      </h1>
                      <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] max-w-2xl mx-auto px-6">
                         HOW WE PROTECT YOUR DATA AND PRIVACY
@@ -97,7 +97,7 @@ const PrivacyPolicy = () => {
                      <section id="intro" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
-                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Info className="w-8 h-8" />
                               </div>
                               <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">Introduction</h2>
@@ -111,7 +111,7 @@ const PrivacyPolicy = () => {
                      {/* 1. Information Collection */}
                      <section id="collect" className="space-y-10">
                         <div className="flex items-center gap-6 px-4">
-                           <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                           <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <Database className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">1. Information We Collect</h2>
@@ -146,7 +146,7 @@ const PrivacyPolicy = () => {
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-primary-500/20 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <Eye className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white">2. How We Use Information</h2>
@@ -164,8 +164,8 @@ const PrivacyPolicy = () => {
                               </div>
                            ))}
 
-                           <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem] lg:rounded-[3rem] border-l-8 border-primary-700 space-y-6">
-                              <div className="flex items-center gap-4 text-primary-700">
+                           <div className="ml-0 lg:ml-8 p-4 lg:p-10 bg-white/5 rounded-[1rem] lg:rounded-[3rem] border-l-8 border-primary-600 space-y-6">
+                              <div className="flex items-center gap-4 text-primary-600">
                                  <Zap className="w-6 h-6" />
                                  <h4 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h4>
                               </div>
@@ -194,7 +194,7 @@ const PrivacyPolicy = () => {
                               <div className="p-4 lg:p-10 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
                                     <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h4>
-                                    <div className="px-4 py-1.5 bg-primary-700 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-sm">GOOGLE ADSENSE</div>
+                                    <div className="px-4 py-1.5 bg-primary-600 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-sm">GOOGLE ADSENSE</div>
                                  </div>
                                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                                     <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing ads based on your interests</li>
@@ -203,8 +203,8 @@ const PrivacyPolicy = () => {
                                     <li className="flex gap-4"><CircleCheck className="w-4 h-4 text-black dark:text-white" /> Showing personalized advertisements</li>
                                  </ul>
                                  <div className="pt-6 border-t-2 border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
-                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
-                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-700 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
+                                    <a href="https://www.google.com/settings/ads" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Opt-out Google Ads</a>
+                                    <a href="http://www.aboutads.info/choices/" target="_blank" className="px-6 py-3 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest text-primary-600 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/20 transition-all font-outfit">Ad Choices</a>
                                  </div>
                               </div>
                            </div>
@@ -235,7 +235,7 @@ const PrivacyPolicy = () => {
                      <section id="contact" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
-                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />
                               </div>
                               <div className="space-y-1">
@@ -245,7 +245,7 @@ const PrivacyPolicy = () => {
                            </div>
                            <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 lg:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl lg:text-2xl font-black text-primary-700 tracking-tight">{config.CONTACT.EMAIL}</p>
+                              <p className="text-xl lg:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
                               onClick={() => router.push('/home')}

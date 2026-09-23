@@ -67,11 +67,11 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
         ]}
       />
       <div className="py-0 lg:py-6">
-        <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-700 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
+        <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-700 uppercase">{affair.category}</span>
+            <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{affair.category}</span>
             <span className="text-[10px] text-slate-400 flex items-center gap-1"><Calendar className="w-3 h-3" />{new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span className="text-[10px] text-slate-400 flex items-center gap-1"><Eye className="w-3 h-3" />{affair.views}</span>
           </div>
@@ -88,7 +88,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
             <ul className="space-y-1">
               {affair.keyPoints.map((kp, i) => (
                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                  <span className="text-primary-700 font-black mt-0.5">&#8226;</span> {kp}
+                  <span className="text-primary-600 font-black mt-0.5">&#8226;</span> {kp}
                 </li>
               ))}
             </ul>
@@ -103,7 +103,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
                 <p className="text-xs font-bold text-slate-700 dark:text-slate-300">Q{i + 1}. {q.questionText}</p>
                 <div className="grid grid-cols-2 gap-1">
                   {q.options?.map((opt, j) => (
-                    <span key={j} className={`text-[10px] px-2 py-1 rounded ${opt.isCorrect ? 'bg-primary-50 text-primary-700 font-bold' : 'text-slate-500'}`}>
+                    <span key={j} className={`text-[10px] px-2 py-1 rounded ${opt.isCorrect ? 'bg-primary-50 text-primary-600 font-bold' : 'text-slate-500'}`}>
                       {String.fromCharCode(65 + j)}. {opt.text}
                     </span>
                   ))}

@@ -30,7 +30,7 @@ export default function Disclaimer() {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <div className="text-center mb-12">
-                            <div className="w-20 h-20 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                            <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                                 <FaExclamationTriangle className="text-white text-3xl" />
                             </div>
                             <h1 className="text-2xl lg:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Disclaimer</h1>
@@ -41,13 +41,13 @@ export default function Disclaimer() {
                             {[
                                 {
                                     icon: FaInfoCircle,
-                                    color: 'bg-primary-700',
+                                    color: 'bg-primary-600',
                                     title: 'General Information',
                                     content: 'The information provided by AajExam ("we," "us," or "our") on our website and mobile application is for general educational purposes only. All information on the platform is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.'
                                 },
                                 {
                                     icon: FaShieldAlt,
-                                    color: 'bg-primary-700',
+                                    color: 'bg-primary-600',
                                     title: 'Educational Nature',
                                     content: 'AajExam is an educational platform designed to help users prepare for government competitive exams. While our quizzes are based on historical exam patterns and expert research, they do not guarantee success in any official examination. Your performance on AajExam is an indicator of practice levels and should not be taken as a final prediction of official exam results.'
                                 }
@@ -83,11 +83,11 @@ export default function Disclaimer() {
                                 <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">Contact Us</h2>
                                 <p className="text-slate-500 dark:text-slate-400 font-bold mb-8">
                                     If you have any questions regarding this disclaimer, please contact us at:<br />
-                                    <strong className="text-primary-700 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
+                                    <strong className="text-primary-600 block mt-2 text-xl">{config.CONTACT.EMAIL}</strong>
                                 </p>
                                 <button
                                     onClick={() => (window.location.href = '/')}
-                                    className="bg-primary-700 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-sm border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 transition-all"
+                                    className="bg-primary-600 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 transition-all"
                                 >
                                     Back to Home
                                 </button>

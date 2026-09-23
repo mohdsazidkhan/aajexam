@@ -88,7 +88,7 @@ const TopicListPage = () => {
 
       {/* ── Hero ── */}
       <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:py-8">
-        <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
+        <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -114,7 +114,7 @@ const TopicListPage = () => {
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-primary-700 text-white border-primary-600'
+                    ? 'bg-primary-600 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -131,7 +131,7 @@ const TopicListPage = () => {
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0 shadow-sm">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
                       <Layers className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -150,7 +150,7 @@ const TopicListPage = () => {
 
                 {/* Stat chips */}
                 <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-700 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {topic.quizCount || 0} Quizzes
                   </div>
@@ -168,7 +168,7 @@ const TopicListPage = () => {
               <Layers className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No topics found</h3>
               <button onClick={() => { setActiveFilter('all'); setSearch(''); }}
-                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

@@ -34,7 +34,7 @@ export default function QuestionList({ questions = [], title = 'Questions with s
           return (
             <li key={q._id || qi} className="rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-5">
               <h3 className="text-base lg:text-lg font-black text-slate-900 dark:text-white leading-snug mb-1">
-                <span className="text-primary-700 mr-2">Q{qi + 1}.</span>
+                <span className="text-primary-600 mr-2">Q{qi + 1}.</span>
                 {q.questionText}
               </h3>
 
@@ -55,10 +55,10 @@ export default function QuestionList({ questions = [], title = 'Questions with s
 
               {correctIndex > -1 && (
                 <details className="mt-3 group">
-                  <summary className="cursor-pointer text-xs font-black uppercase tracking-widest text-primary-700 dark:text-primary-400">
+                  <summary className="cursor-pointer text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400">
                     Show answer
                   </summary>
-                  <p className="mt-2 text-sm font-bold text-primary-700 dark:text-primary-400">
+                  <p className="mt-2 text-sm font-bold text-primary-600 dark:text-primary-400">
                     Answer: {LABELS[correctIndex] || correctIndex + 1}. {q.options[correctIndex]?.text}
                   </p>
                   {q.explanation && (

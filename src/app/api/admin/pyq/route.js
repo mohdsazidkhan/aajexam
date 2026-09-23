@@ -16,9 +16,11 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
         const examId = searchParams.get('examId') || null;
+        const search = searchParams.get('search');
 
         // Build filter: if examId provided, find patterns for that exam first
         let baseMatch = { isPYQ: true };
+        if (search) baseMatch.title = { $regex: search, $options: 'i' };
         if (examId) {
             const ExamPattern = (await import('@/models/ExamPattern')).default;
             const patterns = await ExamPattern.find({ exam: examId }).select('_id').lean();

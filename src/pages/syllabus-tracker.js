@@ -54,7 +54,7 @@ const SubjectAccordion = ({ subject }) => {
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
+          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -69,7 +69,7 @@ const SubjectAccordion = ({ subject }) => {
           <div className="hidden sm:flex items-center justify-center relative w-10 h-10">
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
               <path className="text-slate-200 dark:text-slate-700" strokeWidth="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path className={`${isAllDone ? 'text-primary-700' : 'text-black dark:text-white'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path className={`${isAllDone ? 'text-primary-600' : 'text-black dark:text-white'}`} strokeWidth="3" strokeDasharray={`${subject.totalTopics ? (subject.completedTopics / subject.totalTopics) * 100 : 0}, 100`} stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
             </svg>
           </div>
           {isOpen ? <ChevronUp className="w-5 h-5 text-content-muted" /> : <ChevronDown className="w-5 h-5 text-content-muted" />}
@@ -88,11 +88,11 @@ const SubjectAccordion = ({ subject }) => {
                     <div key={topic._id} className="flex items-center justify-between p-3 rounded-lg lg:rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors">
                       <div className="flex items-center gap-3">
                         {topic.isCompleted ? (
-                          <CheckCircle2 className="w-5 h-5 text-primary-700 flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
                         ) : (
                           <Circle className="w-5 h-5 text-slate-300 dark:text-slate-600 flex-shrink-0" />
                         )}
-                        <span className={`text-sm font-bold ${topic.isCompleted ? 'text-primary-700 dark:text-primary-400 line-through decoration-primary-300 dark:decoration-primary-700/50' : 'text-content-primary'}`}>
+                        <span className={`text-sm font-bold ${topic.isCompleted ? 'text-primary-600 dark:text-primary-400 line-through decoration-primary-300 dark:decoration-primary-700/50' : 'text-content-primary'}`}>
                           {topic.name}
                         </span>
                       </div>
@@ -228,10 +228,10 @@ const SyllabusTrackerPage = () => {
                 <div className="text-center md:text-left flex-1">
                   <h2 className="text-xl sm:text-2xl font-black text-content-primary mb-1">Overall Progress</h2>
                   <p className="text-sm font-bold text-content-muted">
-                    You have mastered <strong className="text-primary-700">{trackerData.completedTopics}</strong> out of <strong>{trackerData.totalTopics}</strong> topics for this exam.
+                    You have mastered <strong className="text-primary-600">{trackerData.completedTopics}</strong> out of <strong>{trackerData.totalTopics}</strong> topics for this exam.
                   </p>
                   {trackerData.overallProgress === 100 && (
-                    <div className="mt-3 inline-flex items-center gap-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 px-3 py-1.5 rounded-lg text-xs font-black uppercase">
+                    <div className="mt-3 inline-flex items-center gap-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-3 py-1.5 rounded-lg text-xs font-black uppercase">
                       <CheckCircle2 className="w-4 h-4" /> Syllabus Completed!
                     </div>
                   )}

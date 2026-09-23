@@ -74,23 +74,23 @@ export default function TopicPractice({
       <div className="min-h-screen pb-12 font-outfit">
         <div className="py-4 lg:py-6 space-y-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Home</Link>
+            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
             <span className="text-slate-400">/</span>
-            <Link href="/govt-exams" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Government Exams</Link>
+            <Link href="/govt-exams" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Government Exams</Link>
             {exam?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/govt-exams/exam/${exam.slug}`} className="text-primary-700 dark:text-primary-400 hover:text-primary-700">{examName}</Link>
+                <Link href={`/govt-exams/exam/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{examName}</Link>
               </>
             )}
             <span className="text-slate-400">/</span>
-            <Link href={subjectUrl} className="text-primary-700 dark:text-primary-400 hover:text-primary-700">{subjectName}</Link>
+            <Link href={subjectUrl} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{subjectName}</Link>
             <span className="text-slate-400">/</span>
             <span className="text-slate-600 dark:text-slate-400">{topicName}</span>
           </nav>
 
           <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
-            <span className="block text-[10px] font-black text-primary-700 uppercase tracking-widest mb-2">
+            <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">
               {examName} · {subjectName}
             </span>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
@@ -109,7 +109,7 @@ export default function TopicPractice({
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Practice sets</div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-lg font-black text-primary-700">FREE</div>
+                <div className="text-lg font-black text-primary-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
             </div>
@@ -152,11 +152,11 @@ export default function TopicPractice({
                 </Link>
               )}
               {hasPyq && exam?.slug && (
-                <Link href={`/pyq/${exam.slug}`} className="bg-white dark:bg-slate-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+                <Link href={`/pyq/${exam.slug}`} className="bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                   Full {examName} question papers
                 </Link>
               )}
-              <Link href={subjectUrl} className="bg-white dark:bg-slate-800 text-primary-700 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-800 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              <Link href={subjectUrl} className="bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                 All {examName} {subjectName} practice
               </Link>
             </div>

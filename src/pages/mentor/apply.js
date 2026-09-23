@@ -69,7 +69,7 @@ export default function MentorApply() {
       <div className="max-w-2xl mx-auto py-4 lg:py-8 px-4">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center">
-            <Users className="w-5 h-5 text-primary-700" />
+            <Users className="w-5 h-5 text-primary-600" />
           </div>
           <div>
             <h1 className="text-xl font-black text-slate-900 dark:text-white uppercase">Become a Mentor</h1>
@@ -94,7 +94,7 @@ export default function MentorApply() {
                 </div>
               ))}
             </div>
-            <button type="button" onClick={addExam} className="mt-2 flex items-center gap-1 text-xs font-bold text-primary-700 hover:text-primary-700">
+            <button type="button" onClick={addExam} className="mt-2 flex items-center gap-1 text-xs font-bold text-primary-600 hover:text-primary-600">
               <Plus className="w-3 h-3" /> Add another exam
             </button>
           </div>
@@ -126,7 +126,7 @@ export default function MentorApply() {
                 {form.tips.length > 1 && <button type="button" onClick={() => removeField('tips', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-700"><Plus className="w-3 h-3" /> Add tip</button>
+            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> Add tip</button>
           </div>
 
           {/* Books */}
@@ -138,7 +138,7 @@ export default function MentorApply() {
                 {form.booksRecommended.length > 1 && <button type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-700"><Plus className="w-3 h-3" /> Add book</button>
+            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> Add book</button>
           </div>
 
           {/* Specialization */}
@@ -150,12 +150,12 @@ export default function MentorApply() {
                 {form.specialization.length > 1 && <button type="button" onClick={() => removeField('specialization', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-700"><Plus className="w-3 h-3" /> Add specialization</button>
+            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> Add specialization</button>
           </div>
 
           {/* Submit */}
           <button type="submit" disabled={loading}
-            className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black py-3 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
+            className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-3 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
             <Send className="w-4 h-4" /> {loading ? 'Submitting...' : 'Submit Application'}
           </button>
         </form>

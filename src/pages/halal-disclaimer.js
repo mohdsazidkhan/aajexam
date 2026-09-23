@@ -30,7 +30,7 @@ export default function HalalDisclaimer() {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <div className="text-center mb-12">
-                            <div className="w-20 h-20 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                            <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                                 <FaMosque className="text-white text-3xl" />
                             </div>
                             <h1 className="text-2xl lg:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter leading-tight">Halal Disclaimer</h1>
@@ -44,7 +44,7 @@ export default function HalalDisclaimer() {
 
                             <section className="rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
                                 <h2 className="text-md md:text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
-                                    <div className="w-2 h-10 bg-primary-700 rounded-full" />
+                                    <div className="w-2 h-10 bg-primary-600 rounded-full" />
                                     Why AajExam is Halal
                                 </h2>
 
@@ -73,7 +73,7 @@ export default function HalalDisclaimer() {
                                     ].map((item, idx) => (
                                         <div key={idx} className="relative pl-8 border-l-4 border-primary-500/20">
                                             <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-2">
-                                                <FaCheckCircle className="text-primary-700 text-lg flex-shrink-0" />
+                                                <FaCheckCircle className="text-primary-600 text-lg flex-shrink-0" />
                                                 {item.title}
                                             </h3>
                                             {item.evidence && (
@@ -95,11 +95,11 @@ export default function HalalDisclaimer() {
                                 <div className="space-y-6">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
                                         For Shariah-related inquiries:<br />
-                                        <strong className="text-primary-700 text-sm">{config.CONTACT.EMAIL}</strong>
+                                        <strong className="text-primary-600 text-sm">{config.CONTACT.EMAIL}</strong>
                                     </p>
                                     <button
                                         onClick={() => (window.location.href = '/')}
-                                        className="bg-primary-700 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-sm border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 transition-all"
+                                        className="bg-primary-600 hover:bg-primary-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 transition-all"
                                     >
                                         Back to Home
                                     </button>

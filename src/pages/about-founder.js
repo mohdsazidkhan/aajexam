@@ -52,10 +52,10 @@ export default function AboutAuthor() {
                 <div className="container mx-auto">
                     {/* Hero */}
                     <div className="text-center mb-12">
-                        <div className="w-24 h-24 bg-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div className="w-24 h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaUserGraduate className="text-white text-5xl" />
                         </div>
-                        <h1 className="text-2xl lg:text-5xl font-bold text-primary-700 mb-4">
+                        <h1 className="text-2xl lg:text-5xl font-bold text-primary-600 mb-4">
                             Mohd Sazid Khan
                         </h1>
                         <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
@@ -71,7 +71,7 @@ export default function AboutAuthor() {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
                         <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
-                            <div className="w-2 h-10 bg-primary-700 rounded-full" />
+                            <div className="w-2 h-10 bg-primary-600 rounded-full" />
                             About the Founder
                         </h2>
                         <div className="space-y-6 text-slate-600 dark:text-slate-400 text-md lg:text-xl font-bold leading-relaxed">
@@ -90,17 +90,17 @@ export default function AboutAuthor() {
                     {/* Expertise */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-12 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
                                 <FaCode className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Technical Expertise</h2>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {[
-                                { title: 'Full-Stack Development', desc: 'Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.', color: 'bg-primary-700' },
-                                { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-primary-700' },
-                                { title:'System Architecture', desc:'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color:'bg-primary-700'},
-                                { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-700' }
+                                { title: 'Full-Stack Development', desc: 'Expert in modern web technologies including React, Next.js, Node.js, Express, and MongoDB. Specializes in building scalable, high-performance web applications.', color: 'bg-primary-600' },
+                                { title: 'EdTech Strategy', desc: 'Deep understanding of learning management systems, gamification, and user engagement strategies in educational platforms.', color: 'bg-primary-600' },
+                                { title:'System Architecture', desc:'Experienced in designing and implementing robust, secure, and scalable system architectures for educational platforms.', color:'bg-primary-600'},
+                                { title: 'Data Analytics', desc: 'Proficient in implementing analytics systems to track user progress, identify learning patterns, and optimize outcomes.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] p-4 mlgp-8 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 transition-all">
                                     <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight flex items-center gap-3">
@@ -117,7 +117,7 @@ export default function AboutAuthor() {
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
                                 <FaTrophy className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Vision & Mission</h2>
@@ -125,7 +125,7 @@ export default function AboutAuthor() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
                             <div>
                                 <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-                                    <div className="w-2 h-6 bg-primary-700 rounded-full" />
+                                    <div className="w-2 h-6 bg-primary-600 rounded-full" />
                                     Vision
                                 </h3>
                                 <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
@@ -134,7 +134,7 @@ export default function AboutAuthor() {
                             </div>
                             <div>
                                 <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-                                    <div className="w-2 h-6 bg-primary-700 rounded-full" />
+                                    <div className="w-2 h-6 bg-primary-600 rounded-full" />
                                     Mission
                                 </h3>
                                 <p className="text-slate-600 dark:text-slate-400 text-lg font-bold leading-relaxed">
@@ -147,17 +147,17 @@ export default function AboutAuthor() {
                     {/* Achievements */}
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-4 md:p-8 lg:p-12 shadow-sm mb-16 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-4 mb-10">
-                            <div className="w-14 h-14 bg-primary-700 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-700">
+                            <div className="w-14 h-14 bg-primary-600 rounded-[1.5rem] flex items-center justify-center shadow-sm border-b-2 border-primary-600">
                                 <FaChalkboardTeacher className="text-white text-2xl" />
                             </div>
                             <h2 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Key Achievements</h2>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {[
-                                { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-700' },
-                                { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-primary-700' },
-                                { title:'Content Curation', desc:'Curated thousands of exam questions across multiple subjects.', color:'bg-primary-700'},
-                                { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-700' }
+                                { title: 'UDYAM Registration', desc: 'Successfully registered AajExam as a formal UDYAM enterprise.', color: 'bg-primary-600' },
+                                { title: 'Platform Development', desc: 'Designed and developed the entire AajExam platform from scratch.', color: 'bg-primary-600' },
+                                { title:'Content Curation', desc:'Curated thousands of exam questions across multiple subjects.', color:'bg-primary-600'},
+                                { title: 'User Growth', desc: 'Onboarded thousands of students across India.', color: 'bg-primary-600' }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
                                     <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm border-b-2 border-black/20`}>
@@ -192,7 +192,7 @@ export default function AboutAuthor() {
                         <div className="flex flex-wrap gap-4 justify-center">
                             <a
                                 href={`mailto:${config.CONTACT.EMAIL}`}
-                                className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
+                                className="flex items-center gap-3 bg-primary-600 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
                             >
                                 <FaEnvelope className="text-xl" />
                                 <span>Email</span>
@@ -201,7 +201,7 @@ export default function AboutAuthor() {
                                 href="https://www.linkedin.com/in/mohd-sazid-khan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-primary-700 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
+                                className="flex items-center gap-3 bg-primary-600 text-white px-6 py-3 rounded-lg lg:rounded-xl hover:bg-primary-800 transition-all"
                             >
                                 <FaLinkedin className="text-xl" />
                                 <span>LinkedIn</span>
@@ -220,7 +220,7 @@ export default function AboutAuthor() {
 
                     {/* CTA */}
                     <div className="text-center mt-16">
-                        <div className="bg-primary-700 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-700 shadow-sm">
+                        <div className="bg-primary-600 rounded-[3rem] p-4 md:p-8 lg:p-12 border-b-[12px] border-primary-600 shadow-sm">
                             <h2 className="text-2xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
                                 Join Thousands of Successful Students
                             </h2>
@@ -229,7 +229,7 @@ export default function AboutAuthor() {
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="bg-white text-primary-700 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
+                                className="bg-white text-primary-600 px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-slate-50 transition-all shadow-sm active:translate-y-1 active:shadow-none"
                             >
                                 Get Started Now
                             </button>

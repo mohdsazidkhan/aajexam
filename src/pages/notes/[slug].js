@@ -97,12 +97,12 @@ const NoteDetailPage = () => {
         ]}
       />
       <div className="py-0 lg:py-6">
-        <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-700 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Notes</button>
+        <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Notes</button>
 
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-700 uppercase">{note.noteType?.replace('_', ' ')}</span>
+              <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{note.noteType?.replace('_', ' ')}</span>
               {note.subject?.name && <span className="text-[10px] font-bold text-slate-400">{note.subject.name}</span>}
               {note.topic?.name && <span className="text-[10px] font-bold text-slate-400">/ {note.topic.name}</span>}
             </div>
@@ -113,7 +113,7 @@ const NoteDetailPage = () => {
               {note.contributor?.name && <span>By {note.contributor.name}</span>}
             </div>
           </div>
-          <button onClick={toggleBookmark} className={`p-2 rounded-lg lg:rounded-xl transition-colors ${bookmarked ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
+          <button onClick={toggleBookmark} className={`p-2 rounded-lg lg:rounded-xl transition-colors ${bookmarked ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
             <Bookmark className="w-5 h-5" fill={bookmarked ? 'currentColor' : 'none'} />
           </button>
         </div>

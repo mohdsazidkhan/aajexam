@@ -32,21 +32,21 @@ const EducationalContent = ({ content }) => {
             icon: Rocket,
             title: "Exam Preparation",
             description: "Structured preparation path for SSC, UPSC, Banking & Railway exams.",
-            color: "text-primary-700",
+            color: "text-primary-600",
             bg: "bg-primary-50 dark:bg-primary-900/10"
         },
         {
             icon: BookOpen,
             title: "Knowledge Codex",
             description: "Full syllabus infiltration for SSC, UPSC, Banking, and Railways.",
-            color: "text-primary-700",
+            color: "text-primary-600",
             bg: "bg-primary-50 dark:bg-primary-900/10"
         },
         {
             icon: TrendingUp,
             title: "Data Analytics",
             description: "Live performance Stats and precision accuracy mapping.",
-            color: "text-primary-700",
+            color: "text-primary-600",
             bg: "bg-primary-50 dark:bg-primary-900/10"
         },
         {
@@ -79,13 +79,13 @@ const EducationalContent = ({ content }) => {
                         animate={{ scale: 1 }}
                         className="inline-flex items-center gap-3 px-6 py-2 bg-background-surface-secondary border-2 border-slate-200 dark:border-slate-800"
                     >
-                        <Zap className="w-4 h-4 text-primary-700 fill-current" />
+                        <Zap className="w-4 h-4 text-primary-600 fill-current" />
                         <span className="text-[10px] font-black text-content-secondary uppercase tracking-[0.3em]">How It Works</span>
                     </motion.div>
 
                     <div className="space-y-2">
                         <h1 className="text-xl lg:text-5xl font-black text-content-primary uppercase tracking-tighter leading-none">
-                            Why Aspirants Choose <span className="text-primary-700">AajExam</span>
+                            Why Aspirants Choose <span className="text-primary-600">AajExam</span>
                         </h1>
                         <p className="text-sm lg:text-xl font-bold text-content-secondary dark:text-slate-500 max-w-2xl mx-auto uppercase tracking-widest">
                             Structured preparation for SSC, UPSC, Banking, Railway and State PSC exams
@@ -111,7 +111,7 @@ const EducationalContent = ({ content }) => {
                                     <card.icon className={`w-8 h-8 text-${card.color}-500`} />
                                 </div>
                                 <div className="space-y-2 lg:space-y-4">
-                                    <h3 className="text-md md:text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight group-hover:text-primary-700 transition-colors">
+                                    <h3 className="text-md md:text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight group-hover:text-primary-600 transition-colors">
                                         {card.title}
                                     </h3>
                                     <p className="text-sm font-medium text-content-secondary dark:text-slate-400 leading-relaxed">
@@ -162,7 +162,7 @@ const EducationalContent = ({ content }) => {
                 {/* Final Directive */}
                 <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="relative p-12 bg-primary-600 rounded-[3rem] text-white border-b-2 border-primary-800 shadow-sm overflow-hidden group cursor-pointer"
+                    className="relative p-12 bg-primary-600 rounded-[3rem] text-white border-b-2 border-primary-600 shadow-sm overflow-hidden group cursor-pointer"
                 >
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/20 transition-all" />
                     <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -172,7 +172,7 @@ const EducationalContent = ({ content }) => {
                                 Join 100,000+ aspirants practising for SSC, UPSC, Banking and Railway exams on AajExam. Free to start.
                             </p>
                         </div>
-                        <button className="px-10 py-5 bg-white text-primary-700 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-sm hover:translate-y-1 transition-all flex items-center gap-4">
+                        <button className="px-10 py-5 bg-white text-primary-600 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-sm hover:translate-y-1 transition-all flex items-center gap-4">
                             Get Started <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>

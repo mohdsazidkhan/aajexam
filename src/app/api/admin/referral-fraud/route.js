@@ -150,7 +150,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const page = Math.max(1, parseInt(searchParams.get('page')) || 1);
-        const limit = Math.min(100, parseInt(searchParams.get('limit')) || 20);
+        const limit = Math.min(250, parseInt(searchParams.get('limit')) || 25);
         const riskFilter = searchParams.get('risk') || 'all'; // all | high | medium | low
         const search = (searchParams.get('search') || '').trim();
 

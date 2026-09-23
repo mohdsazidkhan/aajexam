@@ -122,7 +122,7 @@ const SettingsPage = () => {
 
   return (
     <MobileAppWrapper title="Account Settings">
-      <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
         <div className="container mx-auto mt-4 space-y-6 lg:space-y-12">
@@ -140,11 +140,11 @@ const SettingsPage = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-3 lg:px-6 py-2.5 rounded-lg lg:rounded-xl text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
-                    ? 'bg-primary-700 text-white shadow-sm scale-105'
-                    : 'text-content-secondary hover:text-primary-700 hover:bg-slate-100 dark:hover:bg-slate-700/50'
+                    ? 'bg-primary-600 text-white shadow-sm scale-105'
+                    : 'text-content-secondary hover:text-primary-600 hover:bg-slate-100 dark:hover:bg-slate-700/50'
                     }`}
                 >
-                  <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-white' : 'text-primary-700'}`} />
+                  <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
                   {tab.label}
                 </button>
               ))}
@@ -168,7 +168,7 @@ const SettingsPage = () => {
                           <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Your Profile</h2>
                           <p className="text-sm font-bold text-content-secondary">Keep your details up to date.</p>
                         </div>
-                        <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-sm">
+                        <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
                           <User className="w-6 h-6" />
                         </div>
                       </div>
@@ -209,7 +209,7 @@ const SettingsPage = () => {
                             <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1 flex items-center gap-2">
                               Target exam
                               {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
-                                <span className="px-2 py-0.5 rounded-full bg-primary-500/10 text-primary-700 text-[9px] font-black uppercase tracking-wider">Selected</span>
+                                <span className="px-2 py-0.5 rounded-full bg-primary-500/10 text-primary-600 text-[9px] font-black uppercase tracking-wider">Selected</span>
                               )}
                             </label>
                             <div className="relative">
@@ -268,7 +268,7 @@ const SettingsPage = () => {
                             onChange={(event) => setProfile({ ...profile, isPublicProfile: event.target.checked })}
                           />
                           <span className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                            <Globe className="w-4 h-4 text-primary-700" />
+                            <Globe className="w-4 h-4 text-primary-600" />
                             Make my profile public (visible at /u/{profile.username || 'username'})
                           </span>
                         </label>
@@ -303,7 +303,7 @@ const SettingsPage = () => {
                           <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Bank Details</h2>
                           <p className="text-sm font-bold text-content-secondary">Add your bank account to receive reward money.</p>
                         </div>
-                        <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-sm">
+                        <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
                           <Building2 className="w-6 h-6" />
                         </div>
                       </div>
@@ -340,7 +340,7 @@ const SettingsPage = () => {
 
                   <div className="lg:col-span-4 space-y-6">
                     <Card className="rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 lg:space-y-4">
-                      <CreditCard className="w-10 h-10 mx-auto text-primary-700" />
+                      <CreditCard className="w-10 h-10 mx-auto text-primary-600" />
                       <h3 className="font-outfit font-black tracking-tight text-lg">Secure handling</h3>
                       <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
                         Your bank details are only used to send your reward money. They are kept safe.
@@ -358,7 +358,7 @@ const SettingsPage = () => {
                         <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
                         <p className="text-sm font-bold text-content-secondary">Use a strong password to keep your account safe.</p>
                       </div>
-                      <div className="p-4 bg-primary-700 text-white rounded-3xl shadow-sm">
+                      <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
                         <ShieldCheck className="w-6 h-6" />
                       </div>
                     </div>

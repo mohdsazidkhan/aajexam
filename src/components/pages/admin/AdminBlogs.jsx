@@ -5,6 +5,7 @@ import Link from 'next/link';
 import API from '../../../lib/api';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
+import ResponsiveTable from '../../ResponsiveTable';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-toastify';
@@ -12,6 +13,7 @@ import { Plus, Eye, Heart, Pin, Star, Trash2, Edit3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 const AdminBlogs = () => {
   const { isMounted, router } = useSSR();
@@ -28,7 +30,7 @@ const AdminBlogs = () => {
     isPinned: ''
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [viewMode, setViewMode] = useState(() => {
     try {
       if (typeof window !== 'undefined' && window.innerWidth < 768) return 'grid';
@@ -70,6 +72,11 @@ const AdminBlogs = () => {
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters(prev => ({ ...prev, [name]: value }));
+    setCurrentPage(1);
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
     setCurrentPage(1);
   };
 
@@ -132,7 +139,7 @@ const AdminBlogs = () => {
 
   const getStatusBadge = (status) => {
     const cfg = {
-      published: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300',
+      published: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300',
       draft: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
       archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
     };
@@ -143,84 +150,88 @@ const AdminBlogs = () => {
     );
   };
 
+  const blogTableColumns = [
+    {
+      key: 'blog', header: 'Blog', render: (_, blog) => (
+        <div className="flex items-center">
+          <img className="h-10 w-10 rounded-lg object-cover" src={blog.featuredImage || '/default_banner.png'} alt={blog.title} />
+          <div className="ml-3 max-w-xs">
+            <div className="text-sm font-medium text-gray-900 dark:text-white truncate" title={blog.title}>
+              {blog.title}
+              {blog.isFeatured && <Star className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
+              {blog.isPinned && <Pin className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
+            </div>
+            <div className="text-xs text-black dark:text-white mt-0.5 max-w-[220px] truncate" title={`/blog/${blog.slug}`}><code>/blog/{blog.slug}</code></div>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'exam', header: 'Exam', render: (_, blog) => blog.exam?.name || 'N/A'
+    },
+    {
+      key: 'status', header: 'Status', render: (_, blog) => getStatusBadge(blog.status)
+    },
+    {
+      key: 'stats', header: 'Stats', render: (_, blog) => (
+        <div className="flex items-center gap-3">
+          <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
+          <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
+        </div>
+      )
+    },
+    {
+      key: 'date', header: 'Date', render: (_, blog) => formatDate(blog.createdAt)
+    },
+    {
+      key: 'actions', header: 'Actions', render: (_, blog) => (
+        <div className="flex items-center gap-2">
+          <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 hover:text-primary-800 dark:text-primary-400">
+            <Edit3 className="w-4 h-4" />
+          </Link>
+          {blog.status === 'published' ? (
+            <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white text-xs font-bold">Unpublish</button>
+          ) : (
+            <button onClick={() => handlePublish(blog._id)} className="text-primary-600 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
+          )}
+          <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured">
+            <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
+          </button>
+          <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned">
+            <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
+          </button>
+          <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white">
+            <Trash2 className="w-4 h-4" />
+          </button>
+        </div>
+      )
+    }
+  ];
+
   const renderTableView = () => (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-700">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">S.No.</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Blog</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Exam</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Status</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Stats</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Date</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-            {blogs.map((blog, idx) => (
-              <tr key={blog._id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
-                  {((currentPage - 1) * itemsPerPage) + idx + 1}
-                </td>
-                <td className="px-4 py-3">
-                  <div className="flex items-center">
-                    <img className="h-10 w-10 rounded-lg object-cover" src={blog.featuredImage || '/default_banner.png'} alt={blog.title} />
-                    <div className="ml-3 max-w-xs">
-                      <div className="text-sm font-medium text-gray-900 dark:text-white truncate" title={blog.title}>
-                        {blog.title}
-                        {blog.isFeatured && <Star className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
-                        {blog.isPinned && <Pin className="inline w-3 h-3 ml-1 text-black dark:text-white fill-black dark:fill-white" />}
-                      </div>
-                      <div className="text-xs text-black dark:text-white mt-0.5"><code>/blog/{blog.slug}</code></div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                  {blog.exam?.name || 'N/A'}
-                </td>
-                <td className="px-4 py-3">{getStatusBadge(blog.status)}</td>
-                <td className="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
-                    <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-sm text-gray-500 dark:text-gray-300">
-                  {formatDate(blog.createdAt)}
-                </td>
-                <td className="px-4 py-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-700 hover:text-primary-800 dark:text-primary-400">
-                      <Edit3 className="w-4 h-4" />
-                    </Link>
-                    {blog.status === 'published' ? (
-                      <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white text-xs font-bold">Unpublish</button>
-                    ) : (
-                      <button onClick={() => handlePublish(blog._id)} className="text-primary-700 hover:text-primary-800 dark:text-primary-400 text-xs font-bold">Publish</button>
-                    )}
-                    <button onClick={() => handleToggleFeatured(blog._id)} title="Toggle Featured">
-                      <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
-                    </button>
-                    <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned">
-                      <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
-                    </button>
-                    <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden flex-1 min-h-0 flex flex-col">
+      <ResponsiveTable
+        data={blogs}
+        columns={blogTableColumns}
+        viewModes={['table']}
+        defaultView="table"
+        showPagination={false}
+        showViewToggle={false}
+        fillHeight
+      />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={pagination.totalPages || 1}
+        onPageChange={(page) => setCurrentPage(page)}
+        totalItems={pagination.total || 0}
+        itemsPerPage={itemsPerPage}
+        onItemsPerPageChange={handleItemsPerPageChange}
+      />
     </div>
   );
 
   const renderGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {blogs.map((blog) => (
         <div key={blog._id} className="bg-white dark:bg-gray-800 rounded-lg lg:rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
           <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-full h-40 rounded-lg object-cover mb-3" />
@@ -235,11 +246,11 @@ const AdminBlogs = () => {
           </div>
           <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">{formatDate(blog.createdAt)}</div>
           <div className="mt-3 flex items-center gap-2">
-            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-700 text-xs font-bold">Edit</Link>
+            <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 text-xs font-bold">Edit</Link>
             {blog.status === 'published' ? (
               <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
             ) : (
-              <button onClick={() => handlePublish(blog._id)} className="text-primary-700 text-xs font-bold">Publish</button>
+              <button onClick={() => handlePublish(blog._id)} className="text-primary-600 text-xs font-bold">Publish</button>
             )}
             <button onClick={() => handleToggleFeatured(blog._id)}>
               <Star className={`w-4 h-4 ${blog.isFeatured ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
@@ -257,7 +268,7 @@ const AdminBlogs = () => {
   );
 
   const renderListView = () => (
-    <div className="space-y-3">
+    <div className="flex-1 min-h-0 overflow-auto space-y-3">
       {blogs.map((blog) => (
         <div key={blog._id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm flex items-start gap-4">
           <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
@@ -268,6 +279,7 @@ const AdminBlogs = () => {
               {blog.isFeatured && <Star className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
               {blog.isPinned && <Pin className="w-3 h-3 text-black dark:text-white fill-black dark:fill-white" />}
             </div>
+            <div className="mt-0.5 text-xs text-black dark:text-white break-all"><code>/blog/{blog.slug}</code></div>
             <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 flex gap-4">
               <span>{blog.exam?.name || 'N/A'}</span>
               <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
@@ -275,11 +287,11 @@ const AdminBlogs = () => {
               <span>{formatDate(blog.createdAt)}</span>
             </div>
             <div className="mt-2 flex items-center gap-3">
-              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-700 text-xs font-bold">Edit</Link>
+              <Link href={`/admin/blogs/${blog._id}/edit`} className="text-primary-600 text-xs font-bold">Edit</Link>
               {blog.status === 'published' ? (
                 <button onClick={() => handleUnpublish(blog._id)} className="text-black dark:text-white text-xs font-bold">Unpublish</button>
               ) : (
-                <button onClick={() => handlePublish(blog._id)} className="text-primary-700 text-xs font-bold">Publish</button>
+                <button onClick={() => handlePublish(blog._id)} className="text-primary-600 text-xs font-bold">Publish</button>
               )}
               <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white text-xs font-bold">Delete</button>
             </div>
@@ -292,28 +304,25 @@ const AdminBlogs = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
 
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 shrink-0">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
             <div className="space-y-2">
               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                BLOG <span className="text-primary-700">POSTS</span>
+                <span className="text-primary-600">BLOG</span>
               </h1>
-              <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                Create and manage blog posts for exam preparation.
-              </p>
             </div>
             <div className="flex flex-col lg:flex-row items-center gap-3">
               <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               <motion.button
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => router.push('/admin/blogs/create')}
-                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3"
+                className="w-full lg:w-auto px-4 lg:px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
               >
                 <Plus className="w-4 h-4" /> NEW BLOG
               </motion.button>
@@ -322,8 +331,8 @@ const AdminBlogs = () => {
         </motion.div>
 
         {/* Filters */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4 shadow-sm border border-gray-200 dark:border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4 shadow-sm border border-gray-200 dark:border-gray-700 shrink-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
             <div>
               <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Search</label>
               <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
@@ -367,20 +376,11 @@ const AdminBlogs = () => {
                 <option value="false">Not Pinned</option>
               </select>
             </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Per Page</label>
-              <select value={itemsPerPage} onChange={(e) => { setItemsPerPage(Number(e.target.value)); setCurrentPage(1); }}
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-                <option value={10}>10</option>
-                <option value={20}>20</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
-            </div>
           </div>
         </div>
 
         {/* Content */}
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : blogs.length === 0 ? (
@@ -388,31 +388,33 @@ const AdminBlogs = () => {
             <p className="text-lg font-medium text-gray-500 dark:text-gray-400">No blogs found</p>
           </div>
         ) : (
-          <>
+          <div className="flex-1 min-h-0 flex flex-col">
             {viewMode === 'table' && renderTableView()}
             {viewMode === 'list' && renderListView()}
             {viewMode === 'grid' && renderGridView()}
-          </>
+          </div>
         )}
 
-        {/* Pagination */}
-        {pagination.totalPages > 1 && (
-          <div className="mt-6">
+        {/* External Pagination (list/grid views only — table view attaches its own below the table) */}
+        {!loading && blogs.length > 0 && viewMode !== 'table' && (
+          <div className="shrink-0 mt-6 flex justify-center">
             <Pagination
               currentPage={currentPage}
-              totalPages={pagination.totalPages}
+              totalPages={pagination.totalPages || 1}
               onPageChange={(page) => setCurrentPage(page)}
-              totalItems={pagination.total}
+              totalItems={pagination.total || 0}
               itemsPerPage={itemsPerPage}
+              onItemsPerPageChange={handleItemsPerPageChange}
             />
           </div>
         )}
 
         {error && (
-          <div className="mt-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
+          <div className="shrink-0 mt-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
             <p className="text-black dark:text-white">{error}</p>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

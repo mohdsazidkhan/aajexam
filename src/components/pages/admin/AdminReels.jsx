@@ -5,7 +5,6 @@ import API from '../../../lib/api';
 import { toast } from "react-toastify";
 import { getCurrentUser } from "../../../utils/authUtils";
 import Pagination from '../../Pagination';
-import Button from '../../ui/Button';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,19 +15,21 @@ import {
   PieChart, HelpCircle, Info, FileText, ChevronRight, User as UserIcon,
   Music, Timer
 } from 'lucide-react';
-import ViewToggle from '../../ViewToggle';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import ResponsiveTable from '../../ResponsiveTable';
+import Sidebar from '../../Sidebar';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 const TYPE_COLORS = {
   question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  fact: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
+  fact: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
   tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  poll: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
+  poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const STATUS_COLORS = {
-  published: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-400',
+  published: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
   pending: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
   draft: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400',
   rejected: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
@@ -44,25 +45,10 @@ const AdminReels = () => {
   const [typeFilter, setTypeFilter] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [statusCounts, setStatusCounts] = useState({});
-  const [itemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [actionLoading, setActionLoading] = useState(null);
-  const [viewMode, setViewMode] = useState('table');
-  const pathname = usePathname();
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
   const router = useRouter();
-
-  // Screen size detection for default view
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1024) {
-        setViewMode('grid');
-      } else {
-        setViewMode('table');
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -134,278 +120,243 @@ const AdminReels = () => {
     poll: PieChart
   };
 
-  return (
-    <div className="flex min-h-screen">
-        <main className="flex-1 transition-all duration-300">
-          <div className="mt-4 lg:mt-2">
-
-            {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-              <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Flame className="w-7 h-7 text-black dark:text-white" /> Reels Management
-                </h1>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{totalReels} total reels</p>
-              </div>
-              <Link href="/admin/reels/create">
-                <Button className="flex items-center gap-2">
-                  <Plus className="w-4 h-4" /> Create Reel
-                </Button>
-              </Link>
+  const columns = [
+    {
+      key: 'reelInfo', header: 'Reel Info', render: (_, item) => {
+        const Icon = TYPE_ICONS[item.type] || HelpCircle;
+        return (
+          <div className="flex items-center gap-3">
+            <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${TYPE_COLORS[item.type]}`}>
+              <Icon className="w-4.5 h-4.5" />
             </div>
+            <div>
+              <p className="font-bold text-slate-900 dark:text-white">{getPreviewText(item)}</p>
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
+                <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
+              </div>
+              {item.audioFile && (
+                <div className="flex items-center gap-1.5 mt-1">
+                  <Music className="w-3 h-3 text-black dark:text-white" />
+                  <span className="text-[10px] font-semibold text-black/80 dark:text-white/80">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
+                  {item.duration > 0 && (
+                    <span className="text-[10px] font-bold text-slate-400 flex items-center gap-0.5"><Timer className="w-3 h-3" />{item.duration}s</span>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      }
+    },
+    {
+      key: 'category', header: 'Category', render: (_, item) => (
+        <div className="flex flex-col gap-0.5">
+          <p className="text-xs font-black text-slate-700 dark:text-slate-200 uppercase">{item.subject || 'General'}</p>
+          <p className="text-[10px] font-bold text-primary-500/80 uppercase">{item.examType || 'Universal'}</p>
+        </div>
+      )
+    },
+    {
+      key: 'metrics', header: 'Metrics', align: 'center', render: (_, item) => (
+        <div className="flex items-center justify-center gap-4">
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-black text-slate-700 dark:text-slate-200">{item.viewsCount}</span>
+            <span className="text-[9px] font-black text-slate-400 uppercase">Views</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-black text-slate-700 dark:text-slate-200">{item.likesCount}</span>
+            <span className="text-[9px] font-black text-slate-400 uppercase">Likes</span>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'status', header: 'Status', align: 'center', render: (_, item) => (
+        <span className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] ${STATUS_COLORS[item.status]}`}>
+          {item.status}
+        </span>
+      )
+    },
+    {
+      key: 'actions', header: 'Actions', align: 'right', render: (_, item) => (
+        <div className="flex items-center justify-end gap-1.5">
+          {(item.status === 'pending' || item.status === 'rejected') && (
+            <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 hover:bg-primary-700 hover:text-white transition-all" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
+          )}
+          <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
+          <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
+        </div>
+      )
+    }
+  ];
 
-            {/* Status Tabs */}
-            <div className="flex flex-wrap gap-2 mb-4">
+  return (
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Flame className="w-6 h-6 text-black dark:text-white shrink-0" /> Reels <span className="text-slate-400 dark:text-slate-500">({totalReels})</span></h1>
+
+          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search reels by content or author..."
+                value={searchTerm}
+                onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+              />
+            </div>
+            <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm max-w-full lg:max-w-[180px] truncate">
+              <option value="">All Status ({totalReels})</option>
+              <option value="published">Published ({statusCounts.published || 0})</option>
+              <option value="pending">Pending ({statusCounts.pending || 0})</option>
+              <option value="draft">Draft ({statusCounts.draft || 0})</option>
+              <option value="rejected">Rejected ({statusCounts.rejected || 0})</option>
+            </select>
+            <select value={typeFilter} onChange={e => { setTypeFilter(e.target.value); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm max-w-full lg:max-w-[180px] truncate">
+              <option value="">All Types</option>
+              <option value="question">Question</option>
+              <option value="fact">Fact</option>
+              <option value="tip">Tip/Trick</option>
+              <option value="current_affairs">Current Affairs</option>
+              <option value="poll">Poll</option>
+            </select>
+            <div className="flex items-center gap-1">
               {[
-                { label: 'All', value: '', count: totalReels },
-                { label: 'Published', value: 'published', count: statusCounts.published || 0 },
-                { label: 'Pending', value: 'pending', count: statusCounts.pending || 0 },
-                { label: 'Draft', value: 'draft', count: statusCounts.draft || 0 },
-                { label: 'Rejected', value: 'rejected', count: statusCounts.rejected || 0 },
-              ].map(tab => (
+                { icon: TableIcon, id: 'table', label: 'Table View' },
+                { icon: List, id: 'list', label: 'List View' },
+                { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
+              ].map((mode) => (
                 <button
-                  key={tab.value}
-                  onClick={() => { setStatusFilter(tab.value); setPage(1); }}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${statusFilter === tab.value
-                    ?'bg-primary-700 text-white shadow-sm'
-                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700'
-                    }`}
+                  key={mode.id}
+                  onClick={() => setViewMode(mode.id)}
+                  title={mode.label}
+                  className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
                 >
-                  {tab.label} ({tab.count})
+                  <mode.icon className="w-4 h-4" />
                 </button>
               ))}
             </div>
+            <Link href="/admin/reels/create" className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0">
+              <Plus className="w-4 h-4" /> Create Reel
+            </Link>
+          </div>
+        </div>
 
-            {/* Filters Row */}
-            <div className="flex flex-col lg:flex-row gap-4 mb-8">
-              <div className="flex-1 flex flex-col sm:flex-row gap-3">
-                <div className="relative flex-1 group">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
-                  <input
-                    type="text"
-                    placeholder="Search reels by content or author..."
-                    value={searchTerm}
-                    onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-                    className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-sm font-medium focus:ring-4 focus:ring-primary-500/10 focus:border-primary-700 transition-all outline-none shadow-sm"
-                  />
-                </div>
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <select
-                    value={typeFilter}
-                    onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
-                    className="w-full sm:w-auto pl-4 pr-10 py-3 rounded-[1.2rem] bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 focus:border-primary-700 outline-none appearance-none shadow-sm cursor-pointer"
-                  >
-                    <option value="">All Types</option>
-                    <option value="question">Question</option>
-                    <option value="fact">Fact</option>
-                    <option value="tip">Tip/Trick</option>
-                    <option value="current_affairs">Current Affairs</option>
-                    <option value="poll">Poll</option>
-                  </select>
-
-                  <div className="flex justify-center sm:justify-start">
-                    <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
+        <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
+            <>
+              <div className="flex-1 min-h-0 overflow-hidden">
+                {items.length === 0 ? (
+                  <div className="py-20 text-center">
+                    <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+                      <Flame className="w-10 h-10 text-slate-300" />
+                    </div>
+                    <p className="text-lg font-black text-slate-500 uppercase">No reels found</p>
+                    <p className="text-sm text-slate-400 mt-2">Try adjusting your filters or search terms</p>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Reels Content Layer */}
-            <AnimatePresence mode="wait">
-              {loading ? (
-                <div key="loading" className="py-20 flex flex-col items-center gap-4">
-                  <AdminTableSkeleton showHeader={false} showFilters={false} />
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest animate-pulse">Syncing Archive...</p>
-                </div>
-              ) : items.length === 0 ? (
-                <motion.div key="empty" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="py-20 text-center">
-                  <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2.5rem] flex items-center justify-center mx-auto mb-6">
-                    <Flame className="w-10 h-10 text-slate-300" />
+                ) : viewMode === 'table' ? (
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                    <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No reels found" fillHeight />
                   </div>
-                  <p className="text-xl font-black text-content-primary uppercase tracking-tight">No reels found</p>
-                  <p className="text-sm text-content-secondary mt-2">Try adjusting your filters or search terms</p>
-                </motion.div>
-              ) : viewMode === 'table' ? (
-                /* Custom Desktop Table */
-                <motion.div key="table" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="overflow-x-auto rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-slate-50 dark:bg-slate-800/50 border-b-2 border-slate-100 dark:border-slate-800">
-                        <th className="px-6 py-5 text-left text-[10px] font-black text-slate-500 uppercase tracking-widest">Reel Info</th>
-                        <th className="px-6 py-5 text-left text-[10px] font-black text-slate-500 uppercase tracking-widest">Category</th>
-                        <th className="px-6 py-5 text-left text-[10px] font-black text-slate-500 uppercase tracking-widest">Metrics</th>
-                        <th className="px-6 py-5 text-left text-[10px] font-black text-slate-500 uppercase tracking-widest">Status</th>
-                        <th className="px-6 py-5 text-right text-[10px] font-black text-slate-500 uppercase tracking-widest">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y-2 divide-slate-50 dark:divide-slate-800/30">
-                      {items.map((item, i) => {
-                        const Icon = TYPE_ICONS[item.type] || HelpCircle;
-                        return (
-                          <motion.tr key={item._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.03 }} className="group hover:bg-slate-50/80 dark:hover:bg-primary-500/5 transition-all">
-                            <td className="px-6 py-6">
-                              <div className="flex items-center gap-4">
-                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${TYPE_COLORS[item.type]}`}>
-                                  <Icon className="w-6 h-6" />
-                                </div>
-                                <div className="min-w-0">
-                                  <p className="font-black text-content-primary tracking-tight line-clamp-1 group-hover:text-primary-700 transition-colors uppercase italic">{getPreviewText(item)}</p>
-                                  <div className="flex items-center gap-2 mt-1">
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
-                                    <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
-                                  </div>
-                                  {item.audioFile && (
-                                    <div className="flex items-center gap-1.5 mt-1.5">
-                                      <Music className="w-3 h-3 text-black dark:text-white" />
-                                      <span className="text-[10px] font-semibold text-black/80 dark:text-white/80 truncate max-w-[180px]">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
-                                      {item.duration > 0 && (
-                                        <span className="text-[10px] font-bold text-slate-400 flex items-center gap-0.5"><Timer className="w-3 h-3" />{item.duration}s</span>
-                                      )}
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-6 py-6">
-                              <div className="flex flex-col gap-1">
-                                <p className="text-xs font-black text-content-primary tracking-wide uppercase">{item.subject || 'General'}</p>
-                                <p className="text-[10px] font-bold text-primary-500/80 tracking-widest uppercase">{item.examType || 'Universal'}</p>
-                              </div>
-                            </td>
-                            <td className="px-6 py-6">
-                              <div className="flex items-center gap-4">
-                                <div className="flex flex-col">
-                                  <span className="text-xs font-black text-content-primary">{item.viewsCount}</span>
-                                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Views</span>
-                                </div>
-                                <div className="flex flex-col">
-                                  <span className="text-xs font-black text-content-primary">{item.likesCount}</span>
-                                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Likes</span>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-6 py-6 font-medium">
-                              <span className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-2 ${STATUS_COLORS[item.status]}`}>
-                                {item.status}
-                              </span>
-                            </td>
-                            <td className="px-6 py-6 text-right">
-                              <div className="flex items-center justify-end gap-2">
-                                <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-4 h-4" /></button>
-                                <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
-                                {(item.status === 'pending' || item.status === 'rejected') && (
-                                  <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 hover:bg-primary-700 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
+                ) : viewMode === 'grid' ? (
+                  <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                    {items.map((item) => {
+                      const Icon = TYPE_ICONS[item.type] || HelpCircle;
+                      return (
+                        <div key={item._id} className="relative bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                          <div className="flex items-start justify-between gap-2">
+                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${TYPE_COLORS[item.type]}`}>
+                              <Icon className="w-5 h-5" />
+                            </div>
+                            <span className={`px-2 py-0.5 rounded-lg text-[9px] font-black uppercase tracking-wide ${STATUS_COLORS[item.status]}`}>{item.status}</span>
+                          </div>
+                          <div>
+                            <p className="text-xs font-black text-slate-900 dark:text-white leading-snug">{getPreviewText(item)}</p>
+                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{item.subject}</p>
+                            {item.audioFile && (
+                              <div className="flex items-center gap-1.5 mt-1.5">
+                                <Music className="w-3 h-3 text-black dark:text-white shrink-0" />
+                                <span className="text-[9px] font-semibold text-black/80 dark:text-white/80 truncate">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
+                                {item.duration > 0 && (
+                                  <span className="text-[9px] font-bold text-slate-400 shrink-0">{item.duration}s</span>
                                 )}
                               </div>
-                            </td>
-                          </motion.tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </motion.div>
-              ) : viewMode === 'grid' ? (
-                /* Custom Mobile Grid - 2 COLUMNS AS REQUESTED */
-                <motion.div key="grid" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {items.map((item, i) => {
-                    const Icon = TYPE_ICONS[item.type] || HelpCircle;
-                    return (
-                      <motion.div key={item._id} whileTap={{ scale: 0.98 }} className="relative bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 p-4 flex flex-col h-full shadow-sm active:shadow-sm transition-all overflow-hidden">
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-slate-500/5 rounded-bl-[2rem] -z-0" />
-
-                        <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center mb-3 shadow-sm ${TYPE_COLORS[item.type]}`}>
-                          <Icon className="w-5 h-5" />
-                        </div>
-
-                        <div className="flex-1 min-w-0 mb-3">
-                          <p className="text-[11px] font-black text-content-primary line-clamp-3 uppercase italic leading-tight mb-1">{getPreviewText(item)}</p>
-                          <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{item.subject}</p>
-                          {item.audioFile && (
-                            <div className="flex items-center gap-1.5 mt-1.5">
-                              <Music className="w-3 h-3 text-black dark:text-white shrink-0" />
-                              <span className="text-[9px] font-semibold text-black/80 dark:text-white/80 truncate">{item.audioFile.replace(/\.(mp3|wav|ogg)$/, '').split('-').slice(0, -1).join(' ')}</span>
-                              {item.duration > 0 && (
-                                <span className="text-[9px] font-bold text-slate-400 shrink-0">{item.duration}s</span>
-                              )}
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="flex flex-col gap-2 mt-auto pt-3 border-t border-slate-100 dark:border-slate-800/50">
-                          <div className="flex items-center justify-between">
+                            )}
+                          </div>
+                          <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700">
                             <div className="flex items-center gap-2">
-                              <div className="flex items-center gap-1 text-[9px] font-black text-slate-400 uppercase"><Eye className="w-3 h-3" /> {item.viewsCount}</div>
-                              <div className="flex items-center gap-1 text-[9px] font-black text-black/70 dark:text-white/70 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
+                              <div className="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase"><Eye className="w-3 h-3" /> {item.viewsCount}</div>
+                              <div className="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
                             </div>
                             <div className="flex items-center gap-1">
-                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-3 h-3" /></button>
-                              <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500"><Edit3 className="w-3 h-3" /></Link>
+                              {(item.status === 'pending' || item.status === 'rejected') && (
+                                <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
+                              )}
+                              <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
+                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
                             </div>
                           </div>
-                          
-                          {(item.status === 'pending' || item.status === 'rejected') && (
-                            <button onClick={() => handleStatusChange(item._id, 'published')} className="w-full py-1.5 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 text-[9px] font-black uppercase tracking-widest hover:bg-primary-700 hover:text-white transition-all flex items-center justify-center gap-1.5">
-                              <CheckCircle2 className="w-3 h-3" /> Approve & Live
-                            </button>
-                          )}
                         </div>
-
-                        {/* Status Dot */}
-                        <div className={`absolute top-4 right-4 w-2 h-2 rounded-full ${item.status ==='published'?'bg-primary-700': item.status ==='pending'?'bg-primary-700':'bg-primary-700'}`} />
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
-              ) : (
-                /* List View - full-width single-column rows */
-                <motion.div key="list" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-3">
-                  {items.map((item, i) => {
-                    const Icon = TYPE_ICONS[item.type] || HelpCircle;
-                    return (
-                      <motion.div key={item._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.03 }} className="flex items-center gap-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-4 shadow-sm">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${TYPE_COLORS[item.type]}`}>
-                          <Icon className="w-6 h-6" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="font-black text-content-primary tracking-tight truncate uppercase italic">{getPreviewText(item)}</p>
-                          <div className="flex items-center gap-2 mt-1 flex-wrap">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
-                            <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
-                            <div className="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase"><Eye className="w-3 h-3" /> {item.viewsCount}</div>
-                            <div className="flex items-center gap-1 text-[10px] font-black text-black/70 dark:text-white/70 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="h-full overflow-auto space-y-3">
+                    {items.map((item) => {
+                      const Icon = TYPE_ICONS[item.type] || HelpCircle;
+                      return (
+                        <div key={item._id} className="flex items-center gap-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4">
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${TYPE_COLORS[item.type]}`}>
+                            <Icon className="w-5 h-5" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-bold text-slate-900 dark:text-white truncate">{getPreviewText(item)}</p>
+                            <div className="flex items-center gap-2 mt-1 flex-wrap">
+                              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">{item.type}</span>
+                              <span className="text-[10px] font-bold text-slate-400">by {item.createdBy?.name || 'Ghost'}</span>
+                              <div className="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase"><Eye className="w-3 h-3" /> {item.viewsCount}</div>
+                              <div className="flex items-center gap-1 text-[10px] font-black text-slate-400 uppercase"><Heart className="w-3 h-3" /> {item.likesCount}</div>
+                            </div>
+                          </div>
+                          <span className={`shrink-0 px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-[0.1em] ${STATUS_COLORS[item.status]}`}>
+                            {item.status}
+                          </span>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            {(item.status === 'pending' || item.status === 'rejected') && (
+                              <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
+                            )}
+                            <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
+                            <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
                           </div>
                         </div>
-                        <span className={`shrink-0 px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-[0.1em] border-b-2 ${STATUS_COLORS[item.status]}`}>
-                          {item.status}
-                        </span>
-                        <div className="flex items-center gap-2 shrink-0">
-                          {(item.status === 'pending' || item.status === 'rejected') && (
-                            <button onClick={() => handleStatusChange(item._id, 'published')} className="p-3 rounded-2xl bg-primary-50 dark:bg-primary-950/30 text-primary-700 hover:bg-primary-700 hover:text-white transition-all"><CheckCircle2 className="w-4 h-4" /></button>
-                          )}
-                          <Link href={`/admin/reels/edit/${item._id}`} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><Edit3 className="w-4 h-4" /></Link>
-                          <button onClick={() => handleDelete(item._id)} className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"><Trash2 className="w-4 h-4" /></button>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-
-            {/* Pagination */}
-            {total > itemsPerPage && (
-              <div className="mt-6">
-                <Pagination
-                  currentPage={page}
-                  totalPages={Math.ceil(total / itemsPerPage)}
-                  onPageChange={setPage}
-                />
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </main>
+
+              {total > 0 && (
+                <div className="shrink-0">
+                  <Pagination
+                    currentPage={page}
+                    totalPages={Math.ceil(total / itemsPerPage) || 1}
+                    onPageChange={setPage}
+                    totalItems={total}
+                    itemsPerPage={itemsPerPage}
+                    onItemsPerPageChange={(n) => { setItemsPerPage(n); setPage(1); }}
+                  />
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
+    </div>
   );
 };
 

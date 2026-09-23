@@ -35,13 +35,13 @@ const LeaderboardSkeleton = () => (
 
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
-  1: { gradient: 'bg-primary-700', ringColor: 'ring-primary-700/10', textColor: 'text-white' },
+  1: { gradient: 'bg-primary-600', ringColor: 'ring-primary-700/10', textColor: 'text-white' },
   2: { gradient: 'bg-slate-400', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
   3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = ['bg-primary-700', 'bg-blue-600', 'bg-rose-600', 'bg-amber-600', 'bg-violet-600', 'bg-cyan-600', 'bg-orange-600', 'bg-emerald-600'];
+const AVATAR_COLORS = ['bg-primary-600', 'bg-blue-600', 'bg-rose-600', 'bg-amber-600', 'bg-violet-600', 'bg-cyan-600', 'bg-orange-600', 'bg-emerald-600'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
@@ -63,7 +63,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
-  const podiumGradient = { 1: 'bg-primary-700', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
+  const podiumGradient = { 1: 'bg-primary-600', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
   const podiumTextColor = { 1: 'text-white', 2: 'text-white', 3: 'text-black dark:text-white' };
 
   return (
@@ -81,7 +81,7 @@ const Podium = ({ top3, currentUserId }) => {
             >
               {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
               <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
-              {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>}
+              {isMe && <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">You</span>}
               <div className="text-center max-w-[76px] sm:max-w-[96px]">
                 <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
                   {entry.name || entry.username || 'User'}
@@ -121,7 +121,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
         <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white' : 'text-content-primary'}`}>
           {entry.name || entry.username || 'Anonymous'}
         </p>
-        {isMe && <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
+        {isMe && <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
         {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -154,7 +154,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
           <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
           <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
           <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
-          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
         </div>
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
@@ -171,7 +171,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
                 </span>
               )}
             </div>
-            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
             <div>
@@ -382,7 +382,7 @@ const AllIndiaRankPage = () => {
                 {[
                   { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white' },
-                  { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-700 dark:text-primary-400' },
+                  { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-600 dark:text-primary-400' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
                 ].map((stat, i) => (
                   <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
@@ -404,7 +404,7 @@ const AllIndiaRankPage = () => {
                 <p className="text-sm text-content-muted font-bold">No test attempts match the current filter.</p>
                 <button 
                   onClick={() => setSelectedExamId('')}
-                  className="px-6 py-2.5 bg-primary-700 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors"
+                  className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors"
                 >
                   View All Exams
                 </button>

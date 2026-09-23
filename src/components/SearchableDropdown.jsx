@@ -104,7 +104,7 @@ const SearchableDropdown = ({
               {options.map((option, idx) => (
                 <li
                   key={idx}
-                  className={`px-4 py-2.5 text-sm font-semibold cursor-pointer transition-colors ${value === option ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
+                  className={`px-4 py-2.5 text-sm font-semibold cursor-pointer transition-colors ${value === option ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
                   onClick={() => handleSelect(option)}
                 >
                   {option}

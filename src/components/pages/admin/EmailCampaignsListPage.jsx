@@ -7,14 +7,16 @@ import Link from 'next/link';
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { buildEmailHtml, personalize } from '../../../utils/emailTemplate';
+import ResponsiveTable from '../../ResponsiveTable';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pagination';
 
 const STATUS_STYLES = {
   draft: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
   published: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
   active: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
   paused: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
-  completed: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300'
+  completed: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300'
 };
 const STATUS_LABEL = {
   draft: '📝 Draft', published: '✅ Published', active: '📤 Sending',
@@ -56,6 +58,7 @@ const EmailCampaignsListPage = () => {
   const [view, setView] = useState('table');
   const [filter, setFilter] = useState('all');
   const [page, setPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [deletingId, setDeletingId] = useState(null);
 
   // Remember the admin's preferred view between visits.
@@ -68,10 +71,10 @@ const EmailCampaignsListPage = () => {
     if (typeof window !== 'undefined') localStorage.setItem('emailCampaignsView', v);
   };
 
-  const load = useCallback(async (p = 1, f = 'all') => {
+  const load = useCallback(async (p = 1, f = 'all', l = DEFAULT_PAGE_SIZE) => {
     setLoading(true);
     try {
-      const data = await API.request(`/api/admin/email-campaign?page=${p}&limit=20&status=${f}`);
+      const data = await API.request(`/api/admin/email-campaign?page=${p}&limit=${l}&status=${f}`);
       setCampaigns(data.campaigns || []);
       setPagination(data.pagination || null);
       setSendingCampaign(data.sendingCampaign || null);
@@ -82,7 +85,7 @@ const EmailCampaignsListPage = () => {
     }
   }, []);
 
-  useEffect(() => { load(page, filter); }, [load, page, filter]);
+  useEffect(() => { load(page, filter, itemsPerPage); }, [load, page, filter, itemsPerPage]);
 
   // Render the saved campaign exactly as it went out, in a new tab.
   const preview = (c) => {
@@ -114,7 +117,7 @@ const EmailCampaignsListPage = () => {
       toast.success('Campaign deleted.');
       // Stay on this page unless it was the last row on it.
       const isLastOnPage = campaigns.length === 1 && page > 1;
-      if (isLastOnPage) setPage((p) => p - 1); else load(page, filter);
+      if (isLastOnPage) setPage((p) => p - 1); else load(page, filter, itemsPerPage);
     } catch (e) {
       toast.error(e?.message || 'Failed to delete campaign');
     } finally {
@@ -163,7 +166,7 @@ const EmailCampaignsListPage = () => {
   const Progress = ({ c }) => (
     <div className="min-w-[120px]">
       <div className="w-full bg-slate-200 dark:bg-white/10 rounded-full h-1.5 overflow-hidden">
-        <div className="bg-primary-700 h-1.5" style={{ width: `${pctOf(c)}%` }} />
+        <div className="bg-primary-600 h-1.5" style={{ width: `${pctOf(c)}%` }} />
       </div>
       <div className="text-[10px] text-slate-500 mt-1">
         {(c.sentCount || 0) + (c.failedCount || 0)} / {c.totalTargeted || 0} ({pctOf(c)}%)
@@ -171,41 +174,72 @@ const EmailCampaignsListPage = () => {
     </div>
   );
 
+  const campaignColumns = [
+    {
+      key: 'subject',
+      header: 'Subject',
+      render: (_, c) => (
+        <>
+          <Link href={`/admin/email-campaigns/${c._id}`} className="font-medium text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
+            {c.subject}
+          </Link>
+          <div className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</div>
+        </>
+      )
+    },
+    { key: 'status', header: 'Status', render: (_, c) => <StatusBadge status={c.status} /> },
+    { key: 'progress', header: 'Progress', render: (_, c) => <Progress c={c} /> },
+    { key: 'sentCount', header: 'Sent', render: (_, c) => <span className="text-primary-600 font-semibold">{c.sentCount || 0}</span> },
+    { key: 'failedCount', header: 'Failed', render: (_, c) => <span className="text-black dark:text-white font-semibold">{c.failedCount || 0}</span> },
+    { key: 'createdAt', header: 'Created', render: (_, c) => <span className="text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</span> },
+    {
+      key: 'actions',
+      header: 'Actions',
+      align: 'right',
+      render: (_, c) => (
+        <div className="flex justify-end gap-2">
+          <PreviewBtn c={c} />
+          <DeleteBtn c={c} />
+          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+            Open
+          </Link>
+        </div>
+      )
+    }
+  ];
+
   if (!isMounted) return <div className="adminContent w-full mx-auto"><AdminTableSkeleton /></div>;
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
-      <div className="adminContent w-full mx-auto">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+      <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col overflow-hidden">
 
           {/* --- Header: title + New Campaign at the right end --- */}
-          <div className="flex flex-wrap items-start justify-between gap-3 mb-6">
+          <div className="flex flex-wrap items-start justify-between gap-3 mb-6 shrink-0">
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-                <Mail className="text-primary-700" /> Email Campaigns
+                <Mail className="text-primary-600" /> Email Campaigns
               </h1>
-              <p className="text-slate-600 dark:text-slate-400 mt-2">
-                All campaigns you have created. Preview is available once a campaign has been sent to all users.
-              </p>
             </div>
             <Link href="/admin/email-campaigns/new"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-700 hover:bg-primary-600 text-white shadow-sm">
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-600 hover:bg-primary-600 text-white shadow-sm">
               <Plus size={20} /> New Campaign
             </Link>
           </div>
 
           {sendingCampaign && (
-            <div className="mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
+            <div className="shrink-0 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
               📤 &ldquo;{sendingCampaign.subject}&rdquo; is mid-send. Only one campaign can send at a time — finish it before starting another.
             </div>
           )}
 
           {/* --- Filters + view switcher --- */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4 shrink-0">
             <div className="flex flex-wrap gap-1">
               {FILTERS.map((f) => (
                 <button key={f} onClick={() => { setFilter(f); setPage(1); }}
                   className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
-                    filter === f ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
+                    filter === f ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
                   }`}>
                   {f === 'completed' ? 'Sent to all' : f}
                 </button>
@@ -215,7 +249,7 @@ const EmailCampaignsListPage = () => {
               {VIEWS.map((v) => (
                 <button key={v.key} onClick={() => changeView(v.key)} title={v.label}
                   className={`px-3 py-1.5 flex items-center gap-1 text-xs ${
-                    view === v.key ? 'bg-primary-700 text-white' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10'
+                    view === v.key ? 'bg-primary-600 text-white' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10'
                   }`}>
                   <v.icon size={14} /> <span className="hidden sm:inline">{v.label}</span>
                 </button>
@@ -224,6 +258,7 @@ const EmailCampaignsListPage = () => {
           </div>
 
           {/* --- Content --- */}
+          <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : campaigns.length === 0 ? (
@@ -231,61 +266,31 @@ const EmailCampaignsListPage = () => {
               <p className="text-slate-500 dark:text-slate-400 mb-4">
                 {filter === 'all' ? 'No campaigns yet.' : `No ${filter} campaigns.`}
               </p>
-              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-700 hover:bg-primary-600 text-white text-sm">
+              <Link href="/admin/email-campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 hover:bg-primary-600 text-white text-sm">
                 <Plus size={16} /> Create your first campaign
               </Link>
             </div>
           ) : view === 'table' ? (
             /* ---------- TABLE ---------- */
-            <div className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 overflow-x-auto">
-              <table className="w-full text-sm min-w-[720px]">
-                <thead className="bg-slate-50 dark:bg-white/5 text-left">
-                  <tr className="text-xs uppercase text-slate-500 dark:text-slate-400">
-                    <th className="px-4 py-3">Subject</th>
-                    <th className="px-4 py-3">Status</th>
-                    <th className="px-4 py-3">Progress</th>
-                    <th className="px-4 py-3">Sent</th>
-                    <th className="px-4 py-3">Failed</th>
-                    <th className="px-4 py-3">Created</th>
-                    <th className="px-4 py-3 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {campaigns.map((c) => (
-                    <tr key={c._id} className="border-t border-slate-100 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-gray-900/30">
-                      <td className="px-4 py-3">
-                        <Link href={`/admin/email-campaigns/${c._id}`} className="font-medium text-slate-800 dark:text-white hover:text-primary-700 dark:hover:text-primary-400">
-                          {c.subject}
-                        </Link>
-                        <div className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</div>
-                      </td>
-                      <td className="px-4 py-3"><StatusBadge status={c.status} /></td>
-                      <td className="px-4 py-3"><Progress c={c} /></td>
-                      <td className="px-4 py-3 text-primary-700 font-semibold">{c.sentCount || 0}</td>
-                      <td className="px-4 py-3 text-black dark:text-white font-semibold">{c.failedCount || 0}</td>
-                      <td className="px-4 py-3 text-slate-500 text-xs whitespace-nowrap">{fmtDate(c.createdAt)}</td>
-                      <td className="px-4 py-3">
-                        <div className="flex justify-end gap-2">
-                          <PreviewBtn c={c} />
-                          <DeleteBtn c={c} />
-                          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
-                            Open
-                          </Link>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 overflow-hidden flex-1 min-h-0 flex flex-col">
+              <ResponsiveTable
+                data={campaigns}
+                columns={campaignColumns}
+                viewModes={['table']}
+                defaultView={'table'}
+                showPagination={false}
+                showViewToggle={false}
+                fillHeight
+              />
             </div>
           ) : view === 'list' ? (
             /* ---------- LIST ---------- */
-            <div className="space-y-2">
+            <div className="flex-1 min-h-0 overflow-auto space-y-2">
               {campaigns.map((c) => (
                 <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-wrap items-center gap-4">
                   <div className="flex-1 min-w-[200px]">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-700 dark:hover:text-primary-400">
+                      <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
                         {c.subject}
                       </Link>
                       <StatusBadge status={c.status} />
@@ -308,14 +313,14 @@ const EmailCampaignsListPage = () => {
             </div>
           ) : (
             /* ---------- GRID ---------- */
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
               {campaigns.map((c) => (
                 <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-col">
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <StatusBadge status={c.status} />
                     <span className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</span>
                   </div>
-                  <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-700 dark:hover:text-primary-400 line-clamp-2 mb-1">
+                  <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 line-clamp-2 mb-1">
                     {c.subject}
                   </Link>
                   {c.heading && <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">{c.heading}</p>}
@@ -323,7 +328,7 @@ const EmailCampaignsListPage = () => {
                   <div className="mt-auto space-y-3">
                     <Progress c={c} />
                     <div className="grid grid-cols-3 gap-1 text-center">
-                      <div><div className="text-primary-700 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
+                      <div><div className="text-primary-600 font-bold text-sm">{c.sentCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Sent</div></div>
                       <div><div className="text-black dark:text-white font-bold text-sm">{c.failedCount || 0}</div><div className="text-[9px] text-slate-500 uppercase">Failed</div></div>
                       <div><div className="text-black dark:text-white font-bold text-sm">{c.totalTargeted || 0}</div><div className="text-[9px] text-slate-500 uppercase">Total</div></div>
                     </div>
@@ -342,15 +347,27 @@ const EmailCampaignsListPage = () => {
               ))}
             </div>
           )}
+          </div>
 
           {/* --- Pagination --- */}
-          {pagination && pagination.totalPages > 1 && (
-            <div className="flex items-center justify-between mt-4 text-sm">
-              <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1 || loading}
-                className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Prev</button>
-              <span className="text-slate-500">Page {pagination.page} / {pagination.totalPages} · {pagination.total} campaigns</span>
-              <button onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))} disabled={page >= pagination.totalPages || loading}
-                className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Next</button>
+          {pagination && pagination.total > 0 && (
+            <div className="shrink-0 flex flex-wrap items-center justify-between gap-3 mt-4 text-sm">
+              {pagination.totalPages > 1 && (
+                <>
+                  <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1 || loading}
+                    className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Prev</button>
+                  <span className="text-slate-500">Page {pagination.page} / {pagination.totalPages} · {pagination.total} campaigns</span>
+                  <button onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))} disabled={page >= pagination.totalPages || loading}
+                    className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Next</button>
+                </>
+              )}
+              <select
+                value={itemsPerPage}
+                onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
+                className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10"
+              >
+                {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v}>{v} per page</option>)}
+              </select>
             </div>
           )}
       </div>

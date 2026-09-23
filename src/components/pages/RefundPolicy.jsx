@@ -39,7 +39,7 @@ const RefundPolicy = () => {
 
    return (
       <MobileAppWrapper title="Refund Policy">
-         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-700 selection:text-white mt-0">
+         <div className="min-h-screen font-outfit pb-20 selection:bg-primary-600 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
             <div className="relative overflow-hidden py-8 lg:py-16 border-b-2 border-slate-100 dark:border-slate-800">
@@ -49,11 +49,11 @@ const RefundPolicy = () => {
                      animate={{ y: 0, opacity: 1 }}
                      className="w-28 h-28 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm flex items-center justify-center mx-auto border-2 border-slate-50 dark:border-slate-700"
                   >
-                     <Banknote className="w-14 h-14 text-primary-700" />
+                     <Banknote className="w-14 h-14 text-primary-600" />
                   </motion.div>
                   <div className="space-y-2 lg:space-y-4">
                      <h1 className="text-xl lg:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
-                        Refund <span className="text-primary-700">Policy</span>
+                        Refund <span className="text-primary-600">Policy</span>
                      </h1>
                      <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] max-w-2xl mx-auto px-6">
                         SUBSCRIPTION TERMS AND REFUND CONDITIONS
@@ -108,7 +108,7 @@ const RefundPolicy = () => {
                      {/* 2. Subscriptions */}
                      <section id="subscriptions" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                           <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <CreditCard className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">2. Subscription Terms</h2>
@@ -139,7 +139,7 @@ const RefundPolicy = () => {
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
-                           <div className="w-16 h-16 bg-primary-500/20 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
+                           <div className="w-16 h-16 bg-primary-500/20 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <CircleCheck className="w-8 h-8" />
                            </div>
                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white leading-none">4. Refund Exceptions</h2>
@@ -152,14 +152,14 @@ const RefundPolicy = () => {
 
                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                               <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-2 lg:space-y-4 hover:border-primary-500/30 transition-all">
-                                 <div className="flex items-center gap-4 text-primary-700">
+                                 <div className="flex items-center gap-4 text-primary-600">
                                     <TriangleAlert className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Double Payment</h4>
                                  </div>
                                  <p className="text-xs font-medium text-slate-400 leading-relaxed">When you are accidentally charged twice for the same plan.</p>
                               </div>
                               <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-2 lg:space-y-4 hover:border-primary-500/30 transition-all">
-                                 <div className="flex items-center gap-4 text-primary-700">
+                                 <div className="flex items-center gap-4 text-primary-600">
                                     <Zap className="w-5 h-5" />
                                     <h4 className="text-xs font-black uppercase tracking-widest">Activation Failure</h4>
                                  </div>
@@ -167,7 +167,7 @@ const RefundPolicy = () => {
                               </div>
                            </div>
 
-                           <div className="p-10 bg-primary-500/10 rounded-[3rem] border-l-8 border-primary-700">
+                           <div className="p-10 bg-primary-500/10 rounded-[3rem] border-l-8 border-primary-600">
                               <p className="text-sm font-medium text-slate-400 leading-relaxed">
                                  <strong>REQUEST:</strong> Contact us within 7 days of payment. If approved, your refund will go back to the account you paid from within a few banking days.
                               </p>
@@ -179,7 +179,7 @@ const RefundPolicy = () => {
                      <section id="contact" className="group">
                         <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
-                              <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
+                              <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />
                               </div>
                               <div className="space-y-1">
@@ -189,7 +189,7 @@ const RefundPolicy = () => {
                            </div>
                            <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 lg:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl lg:text-2xl font-black text-primary-700 tracking-tight">{config.CONTACT.EMAIL}</p>
+                              <p className="text-xl lg:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
                               onClick={() => router.push('/home')}

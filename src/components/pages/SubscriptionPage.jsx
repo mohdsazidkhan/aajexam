@@ -21,17 +21,17 @@ import { launchPayuCheckout } from '../../lib/utils/payu';
 const PLAN_THEMES = {
   primary: {
     card: 'border-primary-500/30 shadow-sm',
-    iconWrap: 'bg-primary-500/10 text-primary-700',
-    badge: 'bg-primary-700 text-white shadow-sm',
-    check: 'text-primary-700',
+    iconWrap: 'bg-primary-500/10 text-primary-600',
+    badge: 'bg-primary-600 text-white shadow-sm',
+    check: 'text-primary-600',
     button: 'primary',
     buttonClass: 'shadow-sm',
   },
   secondary: {
     card: 'border-primary-500/20',
-    iconWrap: 'bg-primary-500/10 text-primary-700',
-    badge: 'bg-primary-500/10 text-primary-700',
-    check: 'text-primary-700',
+    iconWrap: 'bg-primary-500/10 text-primary-600',
+    badge: 'bg-primary-500/10 text-primary-600',
+    check: 'text-primary-600',
     button: 'secondary',
     buttonClass: '',
   },
@@ -113,7 +113,7 @@ const SubscriptionPage = () => {
 
       <div className="space-y-2 lg:space-y-4 lg:space-y-8 animate-fade-in mx-auto mt-2 lg:mt-4">
         {subscription && (
-          <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-primary-700' : 'bg-slate-950 shadow-sm'}`}>
+          <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-primary-600' : 'bg-slate-950 shadow-sm'}`}>
             <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-8">
               <div className="flex items-start gap-3 lg:gap-6">
                 <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -173,7 +173,7 @@ const SubscriptionPage = () => {
             <p className="text-xs lg:text-lg font-medium text-content-secondary">
               🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.
             </p>
-            <Link href="/features" className="inline-block text-xs lg:text-sm font-bold text-primary-700 hover:text-primary-700 underline underline-offset-4">
+            <Link href="/features" className="inline-block text-xs lg:text-sm font-bold text-primary-600 hover:text-primary-600 underline underline-offset-4">
               See the full feature comparison
             </Link>
           </div>
@@ -224,7 +224,7 @@ const SubscriptionPage = () => {
 
                   <div className="pt-5 lg:pt-10 relative z-10">
                     {isCurrent ? (
-                      <div className="flex items-center justify-center gap-2 text-primary-700 font-semibold text-xs lg:text-sm bg-primary-500/5 py-3 lg:py-4 rounded-2xl w-full border-2 border-primary-500/20">
+                      <div className="flex items-center justify-center gap-2 text-primary-600 font-semibold text-xs lg:text-sm bg-primary-500/5 py-3 lg:py-4 rounded-2xl w-full border-2 border-primary-500/20">
                         <CircleCheck className="w-4 h-4" />
                         Current plan
                       </div>

@@ -63,12 +63,12 @@ const ForgotPasswordPage = () => {
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="w-20 h-20 bg-primary-500/10 text-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
+                className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-primary-500/10"
               >
                 <Key className="w-10 h-10" />
               </motion.div>
               <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
-                Reset <span className="text-primary-700">Password</span>
+                Reset <span className="text-primary-600">Password</span>
               </h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em] px-4">Enter your email and we will send you a link to reset your password.</p>
             </div>
@@ -81,11 +81,11 @@ const ForgotPasswordPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center space-y-6"
                 >
-                  <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-black font-outfit uppercase text-primary-700">Email sent</h3>
+                    <h3 className="text-xl font-black font-outfit uppercase text-primary-600">Email sent</h3>
                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em] leading-relaxed">
                       We have sent a reset link to your email. Please check your inbox.
                     </p>
@@ -105,7 +105,7 @@ const ForgotPasswordPage = () => {
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-600 dark:text-gray-400 tracking-[0.08em] ml-2">Email address</label>
                     <div className="relative group">
-                      <Mail className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-700 transition-colors" />
+                      <Mail className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-600 transition-colors" />
                       <input
                         type="email"
                         className="w-full bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-2xl p-6 pl-16 text-sm font-bold placeholder:text-slate-300 outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:font-bold"
@@ -138,7 +138,7 @@ const ForgotPasswordPage = () => {
                       )}
                     </Button>
 
-                    <Link href="/login" className="flex items-center justify-center gap-2 text-sm font-black text-slate-600 dark:text-gray-400 tracking-[0.04em] hover:text-primary-700 transition-colors font-outfit">
+                    <Link href="/login" className="flex items-center justify-center gap-2 text-sm font-black text-slate-600 dark:text-gray-400 tracking-[0.04em] hover:text-primary-600 transition-colors font-outfit">
                       <ArrowLeft className="w-3 h-3" /> Back to login
                     </Link>
                   </div>
@@ -146,7 +146,7 @@ const ForgotPasswordPage = () => {
               )}
             </AnimatePresence>
 
-            <Sparkles className="absolute -bottom-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-700 dark:text-primary-500/5 pointer-events-none" />
+            <Sparkles className="absolute -bottom-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-600 dark:text-primary-500/5 pointer-events-none" />
           </Card>
         </motion.div>
       </div>    </MobileAppWrapper>

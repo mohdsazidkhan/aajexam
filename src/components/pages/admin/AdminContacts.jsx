@@ -6,35 +6,28 @@ import Link from 'next/link';
 import { toast } from 'react-toastify';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
-import SearchFilter from '../../SearchFilter';
+import ResponsiveTable from '../../ResponsiveTable';
 import { isMobile } from 'react-device-detect';
 import {
   User,
   Mail,
   Calendar,
   Trash2,
-  Filter,
-  ArrowRight,
   Clock,
-  ChevronLeft,
-  ChevronRight,
-  Search,
   LayoutGrid,
   List,
   Table as TableIcon,
   MessageSquare,
   Send,
-  MoreVertical,
-  ShieldCheck,
-  ShieldAlert
+  ShieldCheck
 } from 'lucide-react';
 import useDebounce from '../../../hooks/useDebounce';
 import API from '../../../lib/api';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
-import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
 export default function AdminContacts() {
@@ -45,7 +38,7 @@ export default function AdminContacts() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [pagination, setPagination] = useState({});
   const debouncedSearch = useDebounce(searchTerm, 1000);
 
@@ -53,7 +46,7 @@ export default function AdminContacts() {
     fetchContacts(page, itemsPerPage, debouncedSearch);
   }, [debouncedSearch, page, itemsPerPage]);
 
-  const fetchContacts = async (currentpage = 1, limit = 10, search = '') => {
+  const fetchContacts = async (currentpage = 1, limit = DEFAULT_PAGE_SIZE, search = '') => {
     setLoading(true);
     setError(null);
     try {
@@ -98,6 +91,11 @@ export default function AdminContacts() {
     setPage(newPage);
   };
 
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setPage(1);
+  };
+
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const d = new Date(dateString);
@@ -110,6 +108,51 @@ export default function AdminContacts() {
   };
 
 
+  const contactTableColumns = [
+    {
+      key: 'user', header: 'USER', align: 'center', render: (_, contact) => (
+        <div className="flex justify-center">
+          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
+            {contact.name?.[0].toUpperCase() || 'U'}
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'email', header: 'EMAIL', render: (_, contact) => (
+        <>
+          <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
+          <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
+        </>
+      )
+    },
+    {
+      key: 'message', header: 'MESSAGE', render: (_, contact) => (
+        <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-2 text-slate-500 max-w-sm">{contact.message}</p>
+      )
+    },
+    {
+      key: 'date', header: 'DATE', align: 'right', render: (_, contact) => (
+        <div className="flex flex-col items-end">
+          <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(contact.createdAt)}</div>
+          <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(contact.createdAt)}</div>
+        </div>
+      )
+    },
+    {
+      key: 'actions', header: 'ACTIONS', align: 'center', render: (_, contact) => (
+        <div className="flex justify-center gap-3">
+          <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-600 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
+            <Send className="w-4 h-4" />
+          </button>
+          <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
+            <Trash2 className="w-4 h-4" />
+          </button>
+        </div>
+      )
+    }
+  ];
+
   if (loading && contacts.length === 0) {
     return (
       <div className="min-h-screen p-3 lg:p-8">
@@ -119,79 +162,46 @@ export default function AdminContacts() {
   }
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         {isMounted && <Sidebar />}
-        <div className="adminContent w-full mx-auto">
+        <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col overflow-hidden">
 
           {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-4"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-              <div className="space-y-2">
-                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  CONTACT <span className="text-primary-700">MESSAGES</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
-                </h1>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">View and manage messages submitted through the contact form.</p>
-              </div>
-            </div>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Mail className="w-6 h-6 text-primary-600 shrink-0" /> Contact Requests <span className="text-slate-400 dark:text-slate-500">({pagination.total || 0})</span></h1>
 
-            {/* Filters and Controls */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 lg:gap-6 w-full lg:w-auto">
-                 <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
-                      <Filter className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
-                      <div className="text-sm italic uppercase tracking-tighter">Message List</div>
-                    </div>
-                 </div>
-
-                 <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm">
-                  {[
-                    { icon: TableIcon, id: 'table', label: 'TABLE' },
-                    { icon: List, id: 'list', label: 'LIST' },
-                    { icon: LayoutGrid, id: 'grid', label: 'GRID' }
-                  ].map((mode) => (
-                    <button
-                      key={mode.id}
-                      onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                    >
-                      <mode.icon className="w-4 h-4" />
-                      {viewMode === mode.id && <span className="uppercase tracking-widest pr-2">{mode.label}</span>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                <div className="flex items-center gap-3 w-full lg:w-auto">
-                   <span className="text-slate-400">Show:</span>
-                   <select
-                    value={itemsPerPage}
-                    onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-                    className="w-full lg:w-auto px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
-                   >
-                     {[10, 20, 50, 100, 500].map(v => <option key={v} value={v}>{v}</option>)}
-                   </select>
-                </div>
-
-                <SearchFilter
-                  searchTerm={searchTerm}
-                  onSearchChange={handleSearch}
-                  placeholder="Search..."
-                  className="w-full lg:w-64"
+            <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+              <div className="relative col-span-2 sm:w-64">
+                <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  placeholder="Search messages..."
+                  className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
                 />
               </div>
+              <div className="flex items-center gap-1">
+                {[
+                  { icon: TableIcon, id: 'table', label: 'Table View' },
+                  { icon: List, id: 'list', label: 'List View' },
+                  { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
+                ].map((mode) => (
+                  <button
+                    key={mode.id}
+                    onClick={() => setViewMode(mode.id)}
+                    title={mode.label}
+                    className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+                  >
+                    <mode.icon className="w-4 h-4" />
+                  </button>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Results */}
+          <div className="flex-1 min-h-0 overflow-hidden">
           <AnimatePresence mode="wait">
              {contacts.length === 0 ? (
                <motion.div
@@ -211,100 +221,62 @@ export default function AdminContacts() {
                  key="content"
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
-                 className="space-y-2 lg:space-y-4 lg:space-y-12"
+                 className="h-full flex flex-col"
                >
                 {viewMode === 'table' && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-24">USER</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">EMAIL</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">MESSAGE</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">DATE</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">ACTIONS</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                        {contacts.map((contact, i) => (
-                          <motion.tr
-                            key={contact._id || i}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            className="group hover:bg-primary-500/5 transition-all"
-                          >
-                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                              <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + i + 1}</span>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                               <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
-                                 {contact.name?.[0].toUpperCase() || 'U'}
-                               </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                               <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
-                               <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                               <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-2 text-slate-500 max-w-sm">{contact.message}</p>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                              <div className="flex flex-col items-end">
-                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums">{formatDate(contact.createdAt)}</div>
-                                <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(contact.createdAt)}</div>
-                              </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                               <div className="flex justify-center gap-3">
-                                  <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-700 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
-                                     <Send className="w-4 h-4" />
-                                  </button>
-                                  <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
-                                     <Trash2 className="w-4 h-4" />
-                                  </button>
-                               </div>
-                            </td>
-                          </motion.tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex-1 min-h-0 flex flex-col">
+                    <ResponsiveTable
+                      data={contacts}
+                      columns={contactTableColumns}
+                      viewModes={['table']}
+                      defaultView="table"
+                      showPagination={false}
+                      showViewToggle={false}
+                      fillHeight
+                    />
+                    <Pagination
+                      currentPage={page}
+                      totalPages={pagination.totalPages || 1}
+                      onPageChange={handlePageChange}
+                      totalItems={pagination.total || 0}
+                      itemsPerPage={itemsPerPage}
+                      onItemsPerPageChange={handleItemsPerPageChange}
+                    />
                   </div>
                 )}
 
                 {viewMode === 'grid' && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
+                  <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 items-start">
                      {contacts.map((contact, i) => (
                        <motion.div
                          key={contact._id || i}
                          initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.05 }}
-                         className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
+                         className="group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col items-center text-center"
                        >
-                          <div className="w-16 h-16 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[1.5rem] flex items-center justify-center mb-6 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-lg">
+                          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center mb-3 uppercase font-black text-sm">
                              {contact.name?.[0].toUpperCase() || 'U'}
                           </div>
-                          
-                          <h3 className="text-md font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1">{contact.name || 'Unknown'}</h3>
-                          <div className="text-[9px] font-black text-primary-700 uppercase tracking-widest mb-6 italic">{contact.email || 'No email'}</div>
-                          
-                          <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 w-full mb-4 lg:mb-8 relative">
-                             <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed text-slate-400 line-clamp-4">{contact.message}</p>
+
+                          <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-tight mb-0.5">{contact.name || 'Unknown'}</h3>
+                          <div className="text-[10px] font-bold text-primary-600 mb-3">{contact.email || 'No email'}</div>
+
+                          <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 w-full mb-3">
+                             <p className="text-[10px] font-medium leading-relaxed text-slate-500 dark:text-slate-400 line-clamp-3">{contact.message}</p>
                           </div>
 
-                          <div className="w-full flex items-center justify-between pt-6 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
-                             <div className="flex items-center gap-2">
+                          <div className="w-full flex items-center justify-between pt-3 border-t border-slate-100 dark:border-white/5 mt-auto">
+                             <div className="flex items-center gap-1.5">
                                 <Clock className="w-3 h-3 text-slate-400" />
-                                <span className="text-[9px] font-black uppercase text-slate-400">{formatDate(contact.createdAt)}</span>
+                                <span className="text-[10px] font-bold text-slate-400">{formatDate(contact.createdAt)}</span>
                              </div>
-                             <div className="flex gap-2">
-                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-700 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all active:scale-95">
-                                   <Send className="w-4 h-4" />
+                             <div className="flex gap-1">
+                                <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-1.5 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg hover:bg-primary-700 hover:text-white transition-all" title="Reply">
+                                   <Send className="w-3.5 h-3.5" />
                                 </button>
-                                <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all active:scale-95">
-                                   <Trash2 className="w-4 h-4" />
+                                <button onClick={() => handleDelete(contact._id)} className="p-1.5 bg-slate-100 dark:bg-slate-700 text-black dark:text-white rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete">
+                                   <Trash2 className="w-3.5 h-3.5" />
                                 </button>
                              </div>
                           </div>
@@ -314,49 +286,49 @@ export default function AdminContacts() {
                 )}
 
                 {viewMode === 'list' && (
-                  <div className="grid grid-cols-1 gap-3 lg:gap-6">
+                  <div className="flex-1 min-h-0 overflow-auto flex flex-col gap-3">
                     {contacts.map((contact, i) => (
                       <motion.div
                         key={contact._id || i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8"
+                        className="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4"
                       >
-                         <div className="w-16 h-16 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-lg lg:rounded-[1.5rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 group-hover:text-white transition-all">
-                            <User className="w-7 h-7" />
+                         <div className="w-10 h-10 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-700 group-hover:text-white transition-all">
+                            <User className="w-5 h-5" />
                          </div>
 
-                         <div className="flex-1 space-y-2 lg:space-y-4">
-                            <div className="flex flex-wrap items-center gap-4">
-                               <h3 className="text-md lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-700 transition-colors">{contact.name || 'Unknown'}</h3>
-                               <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-slate-100 dark:border-white/10">{contact.email || 'No email'}</div>
-                            </div>
-                            <p className="text-[11px] lg:text-sm font-black uppercase tracking-widest leading-relaxed text-slate-500">{contact.message}</p>
-                            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                               <div className="flex items-center gap-2">
-                                  <Calendar className="w-4 h-4 text-primary-500/50" />
-                                  <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest italic">{formatDate(contact.createdAt)} @ {formatTime(contact.createdAt)}</span>
+                         <div className="flex-1 space-y-1.5">
+                            <div className="flex flex-wrap items-center gap-2">
+                               <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{contact.name || 'Unknown'}</h3>
+                               <span className="px-2 py-0.5 rounded-lg text-[10px] font-bold text-slate-400 border border-slate-100 dark:border-white/10">{contact.email || 'No email'}</span>
+                               <div className="flex items-center gap-1.5">
+                                  <Calendar className="w-3.5 h-3.5 text-primary-500/60" />
+                                  <span className="text-[10px] font-bold text-slate-400">{formatDate(contact.createdAt)} @ {formatTime(contact.createdAt)}</span>
                                </div>
-                               <div className="flex items-center gap-2">
-                                  <ShieldCheck className="w-4 h-4 text-primary-500/50" />
-                                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Verified</span>
+                               <div className="flex items-center gap-1.5">
+                                  <ShieldCheck className="w-3.5 h-3.5 text-primary-500/60" />
+                                  <span className="text-[10px] font-bold text-slate-400">Verified</span>
                                </div>
                             </div>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{contact.message}</p>
                          </div>
 
-                         <div className="flex lg:flex-col gap-4">
+                         <div className="flex items-center gap-1.5 shrink-0">
                             <button
                                onClick={() => window.open(`mailto:${contact.email}`, '_blank')}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all"
+                               className="p-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg hover:bg-primary-700 hover:text-white transition-all"
+                               title="Reply"
                             >
-                               <Send className="w-5 h-5" /> Reply
+                               <Send className="w-4 h-4" />
                             </button>
                             <button
                                onClick={() => handleDelete(contact._id)}
-                               className="flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm hover:scale-105 active:scale-95 transition-all"
+                               className="p-2 bg-slate-100 dark:bg-slate-700 text-black dark:text-white rounded-lg hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"
+                               title="Delete"
                             >
-                               <Trash2 className="w-5 h-5" /> Delete
+                               <Trash2 className="w-4 h-4" />
                             </button>
                          </div>
                       </motion.div>
@@ -364,21 +336,23 @@ export default function AdminContacts() {
                   </div>
                 )}
 
-                {/* Pagination */}
-                {pagination.totalPages > 1 && (
-                  <div className="flex justify-center pt-16">
+                {/* External Pagination (list/grid views only — table view attaches its own below the grid) */}
+                {viewMode !== 'table' && (
+                  <div className="shrink-0 flex justify-center">
                     <Pagination
                       currentPage={page}
-                      totalPages={pagination.totalPages}
+                      totalPages={pagination.totalPages || 1}
                       onPageChange={handlePageChange}
-                      totalItems={pagination.total}
+                      totalItems={pagination.total || 0}
                       itemsPerPage={itemsPerPage}
+                      onItemsPerPageChange={handleItemsPerPageChange}
                     />
                   </div>
                 )}
                </motion.div>
              )}
           </AnimatePresence>
+          </div>
         </div>
       </div>
   );

@@ -126,7 +126,7 @@ const RegisterPageInner = () => {
   };
 
   const passwordStrengthLabel = passwordStrength < 40 ? 'Weak' : passwordStrength < 80 ? 'Good' : 'Strong';
-  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-700';
+  const passwordStrengthColor = passwordStrength < 40 ? 'text-black dark:text-white' : passwordStrength < 80 ? 'text-black dark:text-white' : 'text-primary-600';
   const passwordBarColor = passwordStrength < 40 ? 'red-500' : passwordStrength < 80 ? 'amber-500' : 'primary-500';
 
   return (
@@ -136,7 +136,7 @@ const RegisterPageInner = () => {
         <div className="hidden lg:flex w-1/2 bg-slate-900 p-20 flex-col justify-center items-start relative overflow-hidden text-white">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }}>
-              <div className="p-5 bg-primary-700 rounded-[2.5rem] shadow-sm w-fit">
+              <div className="p-5 bg-primary-600 rounded-[2.5rem] shadow-sm w-fit">
                 <Rocket className="w-12 h-12" />
               </div>
             </motion.div>
@@ -294,7 +294,7 @@ const RegisterPageInner = () => {
               <div className="space-y-2">
                 <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">Referral code (optional)</label>
                 <div className="relative group">
-                  <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-700 dark:group-focus-within:text-primary-700 transition-colors" />
+                  <Hash className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300 group-focus-within:text-primary-600 dark:group-focus-within:text-primary-600 transition-colors" />
                   <input
                     type="text"
                     className="w-full pl-11 pr-4 py-4 border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black rounded-2xl outline-none focus:border-primary-700 focus:border-solid transition-all font-black tracking-[0.08em] text-sm placeholder:font-bold placeholder:text-slate-300"
@@ -320,7 +320,7 @@ const RegisterPageInner = () => {
             <div className="text-center pt-2">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Already have an account?{' '}
-                <Link href="/login" className="text-primary-700 hover:underline font-black">
+                <Link href="/login" className="text-primary-600 hover:underline font-black">
                   LOGIN
                 </Link>
               </p>

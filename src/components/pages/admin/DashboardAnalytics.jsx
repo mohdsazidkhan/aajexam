@@ -32,6 +32,7 @@ import { isMobile } from 'react-device-detect';
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
+import ResponsiveTable from '../../ResponsiveTable';
 import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 
 
@@ -71,12 +72,12 @@ const DashboardAnalytics = () => {
   // Helper function to convert Tailwind gradient classes to CSS colors
   const getGradientColors = (gradientClass) => {
     const gradientMap = {
-      'bg-primary-700': '#3b82f6, #4f46e5',
-      'bg-primary-700': '#10b981, #059669',
-      'bg-primary-700': '#eab308, #ea580c',
-      'bg-primary-700': '#8b5cf6, #db2777',
-      'bg-primary-700': '#6366f1, #2563eb',
-'bg-primary-700':'#ec4899, #e11d48'
+      'bg-primary-600': '#3b82f6, #4f46e5',
+      'bg-primary-600': '#10b981, #059669',
+      'bg-primary-600': '#eab308, #ea580c',
+      'bg-primary-600': '#8b5cf6, #db2777',
+      'bg-primary-600': '#6366f1, #2563eb',
+'bg-primary-600':'#ec4899, #e11d48'
     };
     return gradientMap[gradientClass] || '#3b82f6, #4f46e5';
   };
@@ -141,107 +142,109 @@ const DashboardAnalytics = () => {
     : [];
 
   // Recent Activity View Components
-  const RecentActivityTableView = () => (
-    <div className="overflow-x-auto">
-      <table className="w-[1200px] lg:w-full">
-        <thead>
-          <tr className="border-b-2 border-primary-200 dark:border-primary-700">
-            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4 text-primary-700" />
-                User
-              </div>
-            </th>
-            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-primary-700" />
-                Quiz
-              </div>
-            </th>
-            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
-              <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-primary-700" />
-                Score
-              </div>
-            </th>
-            <th className="text-left py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-sm uppercase tracking-wider">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-primary-700" />
-                Attempt Date
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {recentActivities.length > 0 ? (
-            recentActivities.map((a, i) => (
-              <tr
-                key={i}
-                className="border-b border-gray-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 group"
-              >
-                <td className="py-4 px-4">
-                  <div className="flex items-center gap-3">
-                    <span className="font-semibold text-gray-900 dark:text-white">
-                      {a.user?.name || 'Unknown'}
-                    </span>
-                  </div>
-                </td>
-                <td className="py-4 px-4">
-                  <span className="text-gray-600 dark:text-gray-300 font-medium">
-                    {a.quiz?.title ?
-                      (a.quiz.title.length > 20 ? `${a.quiz.title.substring(0, 20)}...` : a.quiz.title)
-                      : 'Unknown Quiz'
-                    }
-                  </span>
-                </td>
-                <td className="py-4 px-4">
-                  <div className="flex items-center gap-2">
-                    <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
-                      a.score >= 60 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
-                        a.score >= 40 ? 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300' :
-                          'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'
-                      }`}>
-                      {a.score || 0}
-                    </span>
-                    <span className="text-xs text-slate-700 dark:text-gray-400 ml-1">
-                      ({a.scorePercentage || 0}%)
-                    </span>
-                    {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />}
-                  </div>
-                </td>
-                <td className="py-4 px-4">
-                  <div className="text-sm text-gray-600 dark:text-gray-300">
-                    <div className="font-medium text-gray-900 dark:text-white">
-                      {(() => {
-                        const date = new Date(a.attemptedAt);
-                        const day = date.getDate().toString().padStart(2, '0');
-                        const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-                        const month = monthNames[date.getMonth()];
-                        const year = date.getFullYear();
-                        return `${day}-${month}-${year}`;
-                      })()}
-                    </div>
-                    <div className="text-xs text-slate-700 dark:text-gray-400">
-                      {new Date(a.attemptedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
-                    </div>
-                  </div>
-                </td>
+  const recentActivityColumns = [
+    {
+      key: 'user',
+      header: (
+        <div className="flex items-center gap-2">
+          <User className="w-4 h-4 text-primary-600" />
+          User
+        </div>
+      ),
+      render: (_, a) => (
+        <div className="flex items-center gap-3">
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {a.user?.name || 'Unknown'}
+          </span>
+        </div>
+      )
+    },
+    {
+      key: 'quiz',
+      header: (
+        <div className="flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-primary-600" />
+          Quiz
+        </div>
+      ),
+      render: (_, a) => (
+        <span className="text-gray-600 dark:text-gray-300 font-medium">
+          {a.quiz?.title ?
+            (a.quiz.title.length > 20 ? `${a.quiz.title.substring(0, 20)}...` : a.quiz.title)
+            : 'Unknown Quiz'
+          }
+        </span>
+      )
+    },
+    {
+      key: 'score',
+      header: (
+        <div className="flex items-center gap-2">
+          <Trophy className="w-4 h-4 text-primary-600" />
+          Score
+        </div>
+      ),
+      render: (_, a) => (
+        <div className="flex items-center gap-2">
+          <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
+            a.score >= 60 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
+              a.score >= 40 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
+                'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'
+            }`}>
+            {a.score || 0}
+          </span>
+          <span className="text-xs text-slate-700 dark:text-gray-400 ml-1">
+            ({a.scorePercentage || 0}%)
+          </span>
+          {a.score >= 80 && <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />}
+        </div>
+      )
+    },
+    {
+      key: 'attemptedAt',
+      header: (
+        <div className="flex items-center gap-2">
+          <Calendar className="w-4 h-4 text-primary-600" />
+          Attempt Date
+        </div>
+      ),
+      render: (_, a) => (
+        <div className="text-sm text-gray-600 dark:text-gray-300">
+          <div className="font-medium text-gray-900 dark:text-white">
+            {(() => {
+              const date = new Date(a.attemptedAt);
+              const day = date.getDate().toString().padStart(2, '0');
+              const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+              const month = monthNames[date.getMonth()];
+              const year = date.getFullYear();
+              return `${day}-${month}-${year}`;
+            })()}
+          </div>
+          <div className="text-xs text-slate-700 dark:text-gray-400">
+            {new Date(a.attemptedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
+          </div>
+        </div>
+      )
+    }
+  ];
 
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="4" className="text-center py-12 text-slate-400">
-                <div className="flex flex-col items-center gap-2">
-                  <FileText className="w-8 h-8 opacity-20" />
-                  <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
-                </div>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+  const RecentActivityTableView = () => (
+    recentActivities.length > 0 ? (
+      <ResponsiveTable
+        data={recentActivities}
+        columns={recentActivityColumns}
+        viewModes={['table']}
+        defaultView={'table'}
+        showViewToggle={false}
+      />
+    ) : (
+      <div className="text-center py-12 text-slate-400">
+        <div className="flex flex-col items-center gap-2">
+          <FileText className="w-8 h-8 opacity-20" />
+          <span className="text-sm font-medium uppercase tracking-widest">No recent activity</span>
+        </div>
+      </div>
+    )
   );
 
   const RecentActivityCardView = () => (
@@ -251,7 +254,7 @@ const DashboardAnalytics = () => {
           <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center">
-                <User className="w-5 h-5 text-primary-700" />
+                <User className="w-5 h-5 text-primary-600" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
@@ -264,7 +267,7 @@ const DashboardAnalytics = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
-                  <BookOpen className="w-3.5 h-3.5 text-primary-700" />
+                  <BookOpen className="w-3.5 h-3.5 text-primary-600" />
                 </div>
                 <span className="text-sm text-gray-700 dark:text-gray-300 font-medium limit-text-1">
                   {a.quiz?.title || 'Unknown Quiz'}
@@ -275,14 +278,14 @@ const DashboardAnalytics = () => {
                 <div className="w-6 h-6 bg-black/10 dark:bg-white/10 rounded-md flex items-center justify-center">
                   <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
                 </div>
-                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-700' : 'text-slate-700 dark:text-slate-300'}`}>
+                <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`}>
                   {a.score || 0} Scored
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 bg-primary-500/10 rounded-md flex items-center justify-center">
-                  <Calendar className="w-3.5 h-3.5 text-primary-700" />
+                  <Calendar className="w-3.5 h-3.5 text-primary-600" />
                 </div>
                 <span className="text-xs text-gray-600 dark:text-gray-400">
                   Attempted: {(() => {
@@ -314,11 +317,11 @@ const DashboardAnalytics = () => {
     <div className="space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
-          <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-700 rounded-lg p-4 hover:shadow-sm transition-all duration-200">
+          <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-600 rounded-lg p-4 hover:shadow-sm transition-all duration-200">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary-700" />
+                  <User className="w-5 h-5 text-primary-600" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -331,7 +334,7 @@ const DashboardAnalytics = () => {
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <BookOpen className="w-3.5 h-3.5 text-primary-700" />
+                    <BookOpen className="w-3.5 h-3.5 text-primary-600" />
                   </div>
                   <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">
                     {a.quiz?.title || 'Unknown Quiz'}
@@ -342,10 +345,10 @@ const DashboardAnalytics = () => {
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
                     <Trophy className="w-3.5 h-3.5 text-black dark:text-white" />
                   </div>
-                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-700' :
-                    a.score >= 60 ? 'text-primary-700 dark:text-primary-400' :
-                      a.score >= 40 ? 'text-primary-700 dark:text-primary-400' :
-                        'text-primary-700 dark:text-white'
+                  <span className={`text-sm font-semibold ${a.score >= 80 ? 'text-primary-600' :
+                    a.score >= 60 ? 'text-primary-600 dark:text-primary-400' :
+                      a.score >= 40 ? 'text-primary-600 dark:text-primary-400' :
+                        'text-primary-600 dark:text-white'
                     }`}>
                     {a.score || 0}
                   </span>
@@ -353,7 +356,7 @@ const DashboardAnalytics = () => {
 
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
-                    <Calendar className="w-3.5 h-3.5 text-primary-700" />
+                    <Calendar className="w-3.5 h-3.5 text-primary-600" />
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400">
                     Attempted: {(() => {
@@ -405,11 +408,8 @@ const DashboardAnalytics = () => {
              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
                <div className="space-y-2">
                  <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                   Analytics <span className="text-primary-700">Overview</span>
+                   <span className="text-primary-600">General</span>
                  </h1>
-                 <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none">
-                   Monitor platform performance metrics and trends.
-                 </p>
                </div>
              </div>
            </div>
@@ -421,13 +421,13 @@ const DashboardAnalytics = () => {
                  label: 'Total Users',
                  icon: <Users />,
                  value: data.overview?.totalUsers,
-                 gradient: 'text-primary-700 bg-primary-600/10 border-primary-600/20'
+                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
                },
                {
                  label: 'Total Quizzes',
                  icon: <BarChart3 />,
                  value: data.overview?.totalQuizzes,
-                 gradient: 'text-primary-700 bg-primary-600/10 border-primary-600/20'
+                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
                },
                {
                  label: 'TOTAL REVENUE',
@@ -439,7 +439,7 @@ const DashboardAnalytics = () => {
                  label: 'Active Users',
                  icon: <Trophy />,
                  value: data.overview?.activeUsers,
-                 gradient: 'text-primary-700 bg-primary-600/10 border-primary-600/20'
+                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
                },
                {
                  label: 'Total Attempts',
@@ -467,7 +467,7 @@ const DashboardAnalytics = () => {
                    </div>
                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
                  </div>
-                 <div className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none group-hover:text-primary-700 transition-colors">
+                 <div className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none group-hover:text-primary-600 transition-colors">
                    {stat.value?.toLocaleString() || 0}
                  </div>
                  <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-primary-500/5 rounded-full blur-2xl group-hover:bg-primary-500/10 transition-all" />
@@ -483,7 +483,7 @@ const DashboardAnalytics = () => {
               <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-primary-500/10 rounded-lg lg:rounded-xl flex items-center justify-center">
-                    <BarChart3 className="w-6 h-6 text-primary-700" />
+                    <BarChart3 className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
                     <h3 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Recent Activity</h3>

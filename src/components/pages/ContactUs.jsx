@@ -78,16 +78,16 @@ const ContactUs = ({ contactInfo = {
 
    return (
       <MobileAppWrapper title="Contact Support">
-         <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-700 selection:text-white font-outfit mt-0">
+         <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-600 selection:text-white font-outfit mt-0">
             <div className="py-10 lg:py-20 space-y-12 lg:space-y-20">
 
                {/* --- Header Section --- */}
                <section className="text-center space-y-6 relative overflow-hidden">
-                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                      <MessageSquare className="w-10 h-10" />
                   </motion.div>
                   <div className="space-y-2 lg:space-y-4">
-                     <h1 className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-700">Support</span></h1>
+                     <h1 className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-600">Support</span></h1>
                      <p className="text-sm lg:text-base font-medium text-slate-600 dark:text-slate-400 mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
                   </div>
                </section>
@@ -120,7 +120,7 @@ const ContactUs = ({ contactInfo = {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="relative z-10 space-y-6">
                            <div className="space-y-1">
-                              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-700">Follow Us</h4>
+                              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">Follow Us</h4>
                               <p className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Find Us on Social Media</p>
                            </div>
                            <div className="flex flex-wrap gap-4">
@@ -135,7 +135,7 @@ const ContactUs = ({ contactInfo = {
                      </Card>
 
                      {/* Support Info */}
-                     <Card className="border-none bg-primary-700 text-white shadow-sm rounded-[3rem] overflow-hidden group relative">
+                     <Card className="border-none bg-primary-600 text-white shadow-sm rounded-[3rem] overflow-hidden group relative">
                         <div className="flex items-center gap-5 relative z-10">
                            <div className="w-14 h-14 bg-white/20 rounded-2xl backdrop-blur-md border-2 border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-sm">
                               <Headset className="w-8 h-8" />
@@ -201,7 +201,7 @@ const ContactUs = ({ contactInfo = {
 
                            <AnimatePresence>
                               {status === 'success' && (
-                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-primary-500/25 text-primary-700 rounded-2xl border-2 border-primary-500/20 flex items-center gap-3">
+                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-primary-500/25 text-primary-600 rounded-2xl border-2 border-primary-500/20 flex items-center gap-3">
                                     <CircleCheck className="w-5 h-5" />
                                     <span className="text-xs font-black uppercase tracking-widest">Message Sent Successfully!</span>
                                  </motion.div>
@@ -217,7 +217,7 @@ const ContactUs = ({ contactInfo = {
                            <Button
                               variant="primary"
                               fullWidth
-                              className="bg-primary-700 hover:bg-primary-600 active:bg-primary-700 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base lg:text-lg shadow-sm border-b-[8px] active:border-b-0 border-primary-700 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
+                              className="bg-primary-600 hover:bg-primary-600 active:bg-primary-600 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base lg:text-lg shadow-sm border-b-[8px] active:border-b-0 border-primary-600 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
                               type="submit"
                               disabled={loading}
                            >

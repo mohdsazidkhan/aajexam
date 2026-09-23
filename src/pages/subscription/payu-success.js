@@ -139,7 +139,7 @@ const PayuSuccess = () => {
         <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
         <div className="min-h-screen flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
-            <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-700 flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-600 flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">
@@ -167,7 +167,7 @@ const PayuSuccess = () => {
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
             <div className="text-center space-y-2 lg:space-y-4">
-              <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto ${success ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white'}`}>
+              <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto ${success ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white'}`}>
                 {success ? <CheckCircle2 className="w-12 h-12" /> : <CircleAlert className="w-12 h-12" />}
               </div>
               <div className="space-y-2">
@@ -216,7 +216,7 @@ const PayuSuccess = () => {
                 <>
                   <button
                     onClick={() => router.push('/subscription')}
-                    className="w-full bg-primary-700 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm"
+                    className="w-full bg-primary-600 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm"
                   >
                     Try payment again
                   </button>

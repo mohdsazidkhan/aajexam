@@ -69,7 +69,7 @@ const ExamHistoryPage = () => {
 
    return (
       <MobileAppWrapper title="Exam History">
-         <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
+         <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Exam History - AajExam" noIndex={true} />
 
             <div className="py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
@@ -82,7 +82,7 @@ const ExamHistoryPage = () => {
 
                      <div className="flex flex-wrap gap-4 justify-center">
                         <div className="relative group">
-                           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-700 transition-colors" />
+                           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-600 transition-colors" />
                            <input
                               className="pl-12 pr-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-bold outline-none focus:border-primary-700"
                               placeholder="Search tests..."
@@ -144,7 +144,7 @@ const ExamHistoryPage = () => {
                                           </div>
                                           <div className="space-y-1">
                                              <span className="text-[8px] font-black text-gray-400">Rank</span>
-                                             <p className="text-sm font-black text-primary-700">#{attempt.rank || 'N/A'}</p>
+                                             <p className="text-sm font-black text-primary-600">#{attempt.rank || 'N/A'}</p>
                                           </div>
                                        </div>
 

@@ -140,7 +140,7 @@ export async function POST(req, { params }) {
                     type: 'exam_attempt',
                     title: 'New govt exam test submitted',
                     description: `A user submitted a govt exam test: "${test.title}"`,
-                    meta: { userId: auth.user.id, testId, attemptId: attempt._id, examId: test.examPattern?.exam }
+                    meta: { userId: auth.user.id, testId, attemptId: attempt._id, examId: test.examPattern?.exam?._id }
                 });
             } catch (e) { console.error('Notification Error:', e); }
         })();

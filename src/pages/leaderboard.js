@@ -42,12 +42,12 @@ const PERIODS = [
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
   1: {
-    gradient: 'bg-primary-700',
+    gradient: 'bg-primary-600',
     numberText: 'text-white',
     ringColor: 'ring-primary-700/10',
-    textColor: 'text-primary-700',
+    textColor: 'text-primary-600',
     badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
-    pillBg: 'bg-primary-700 text-white',
+    pillBg: 'bg-primary-600 text-white',
     icon: Crown,
   },
   2: {
@@ -72,7 +72,7 @@ const rankConfig = {
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
 const AVATAR_COLORS = [
-  { bg: 'bg-primary-700', text: 'text-white' },
+  { bg: 'bg-primary-600', text: 'text-white' },
   { bg: 'bg-blue-600', text: 'text-white' },
   { bg: 'bg-rose-600', text: 'text-white' },
   { bg: 'bg-amber-600', text: 'text-white' },
@@ -117,7 +117,7 @@ const Podium = ({ top3, currentUserId }) => {
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
   const podiumGradient = {
-    1: 'bg-primary-700',
+    1: 'bg-primary-600',
     2: 'bg-slate-400',
     3: 'bg-slate-100 dark:bg-slate-800',
   };
@@ -146,7 +146,7 @@ const Podium = ({ top3, currentUserId }) => {
               {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
               <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
               {isMe && (
-                <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full">You</span>
+                <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">You</span>
               )}
               <div className="text-center max-w-[76px] sm:max-w-[96px]">
                 <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
@@ -191,7 +191,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           {entry.name || entry.username || 'Anonymous'}
         </p>
         {isMe && (
-          <span className="text-[9px] font-black uppercase bg-primary-700 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
+          <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
         )}
         {entry.subscriptionStatus === 'PRO' && (
           <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
@@ -231,7 +231,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
           <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
           <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
-          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
         </div>
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
@@ -253,7 +253,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
                 </span>
               )}
             </div>
-            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
 
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
@@ -383,7 +383,7 @@ const LeaderboardPage = () => {
                 <button
                   onClick={() => setType('quiz')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'quiz' ? 'bg-primary-700 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                    type === 'quiz' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <BrainCircuit className="w-4 h-4" /> Quizzes
@@ -391,7 +391,7 @@ const LeaderboardPage = () => {
                 <button
                   onClick={() => setType('exam')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'exam' ? 'bg-primary-700 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                    type === 'exam' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   <FileText className="w-4 h-4" /> Exams
@@ -412,7 +412,7 @@ const LeaderboardPage = () => {
                       className={`
                         shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
                         ${isActive
-                          ? 'bg-primary-700 text-white border-primary-700 shadow-sm'
+                          ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
                           : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
                         }
                       `}
@@ -469,7 +469,7 @@ const LeaderboardPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
               { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-black dark:text-white' },
-              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-700 dark:text-primary-400' },
+              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-600 dark:text-primary-400' },
               { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
             ].map((stat, i) => (
               <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
@@ -490,7 +490,7 @@ const LeaderboardPage = () => {
             <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">No data yet for this period</h3>
             <p className="text-sm text-content-muted font-bold">Attempt quizzes to appear on the leaderboard!</p>
             <Link href="/quizzes">
-              <button className="px-6 py-2.5 bg-primary-700 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
+              <button className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
                 Start a Quiz
               </button>
             </Link>

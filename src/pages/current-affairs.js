@@ -34,15 +34,15 @@ const CASkeleton = () => (
 
 // ─── Category icon / color map ─────────────────────────────────────────────────
 const catConfig = {
-  national: { icon: Globe, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  international: { icon: Globe, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  economy:       { icon: TrendingUp, color: 'bg-primary-700', chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  sports: { icon: Trophy, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  science: { icon: Sparkles, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  defence: { icon: Sword, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  environment:   { icon: Leaf,     color: 'bg-primary-700',  chip: 'text-primary-700 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  awards: { icon: Trophy, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  appointments: { icon: Sparkles, color:'bg-primary-700', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  national: { icon: Globe, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  international: { icon: Globe, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  economy:       { icon: TrendingUp, color: 'bg-primary-600', chip: 'text-primary-600 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
+  sports: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  science: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  defence: { icon: Sword, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  environment:   { icon: Leaf,     color: 'bg-primary-600',  chip: 'text-primary-600 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
+  awards: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  appointments: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
 };
 const defaultCat = { icon: Newspaper, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' };
 
@@ -102,7 +102,7 @@ const CurrentAffairsPage = () => {
 
       {/* ── Hero ── */}
       <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:py-8">
-        <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
+        <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -146,7 +146,7 @@ const CurrentAffairsPage = () => {
               <button key={f.id} onClick={() => { setCategory(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   category === f.id
-                    ? 'bg-primary-700 text-white border-primary-600'
+                    ? 'bg-primary-600 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -226,7 +226,7 @@ const CurrentAffairsPage = () => {
               <Newspaper className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No current affairs found</h3>
               <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); }}
-                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

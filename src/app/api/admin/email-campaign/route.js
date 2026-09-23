@@ -31,7 +31,7 @@ export async function GET(req) {
     }
 
     const page = Math.max(1, parseInt(searchParams.get('page'), 10) || 1);
-    const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit'), 10) || 20));
+    const limit = Math.min(250, Math.max(1, parseInt(searchParams.get('limit'), 10) || 25));
     const status = searchParams.get('status');
 
     const query = {};

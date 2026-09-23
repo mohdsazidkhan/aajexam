@@ -22,7 +22,7 @@ export async function GET(req) {
         if (search) query.$or = [{ 'user.name': { $regex: search, $options: 'i' } }, { 'user.email': { $regex: search, $options: 'i' } }];
 
         const [attempts, total] = await Promise.all([
-            UserTestAttempt.find(query).populate('user', 'name email').populate('practiceTest', 'title').sort({ submittedAt: -1 }).skip(skip).limit(limit).lean(),
+            UserTestAttempt.find(query).populate('user', 'name email').populate('practiceTest', 'title totalMarks').sort({ submittedAt: -1 }).skip(skip).limit(limit).lean(),
             UserTestAttempt.countDocuments(query)
         ]);
 

@@ -68,8 +68,8 @@ const StreakPage = () => {
             <p className="text-[10px] font-bold text-slate-400 uppercase">Longest Streak</p>
           </Card>
           <Card className="text-center space-y-1">
-            <Calendar className="w-8 h-8 text-primary-700 mx-auto" />
-            <p className="text-3xl font-black text-primary-700">{streak?.totalActiveDays || 0}</p>
+            <Calendar className="w-8 h-8 text-primary-600 mx-auto" />
+            <p className="text-3xl font-black text-primary-600">{streak?.totalActiveDays || 0}</p>
             <p className="text-[10px] font-bold text-slate-400 uppercase">Active Days</p>
           </Card>
           <Card className="text-center space-y-1">
@@ -83,9 +83,9 @@ const StreakPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
           <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 ring-4 ring-black/10 dark:ring-white/10'}`}>
             {streak?.todayCompleted
-              ? <><Shield className="w-10 h-10 text-primary-700 mx-auto mb-2" /><h2 className="text-lg font-black text-primary-700 dark:text-primary-300">Today&apos;s Challenge Complete!</h2></>
+              ? <><Shield className="w-10 h-10 text-primary-600 mx-auto mb-2" /><h2 className="text-lg font-black text-primary-600 dark:text-primary-300">Today&apos;s Challenge Complete!</h2></>
               : <><Flame className="w-10 h-10 text-black dark:text-white mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-black dark:text-white">Complete Today&apos;s Challenge to Keep Streak!</h2>
-                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-sm">Go to Challenge</Link></>
+                <Link href="/daily-challenge" className="inline-block mt-3 px-6 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition-colors shadow-sm">Go to Challenge</Link></>
             }
           </Card>
         </motion.div>
@@ -97,7 +97,7 @@ const StreakPage = () => {
               <h3 className="text-sm font-black text-slate-900 dark:text-white">Use Streak Freeze</h3>
               <p className="text-[10px] text-slate-400">Skip today without breaking streak (Pro only)</p>
             </div>
-            <button onClick={useFreeze} className="px-4 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            <button onClick={useFreeze} className="px-4 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
               <Snowflake className="w-3 h-3 inline mr-1" /> Use Freeze
             </button>
           </Card>
@@ -108,7 +108,7 @@ const StreakPage = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
             <Card className="space-y-2 lg:space-y-4 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none" />
-              <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-primary-700" /> Streak Leaderboard</h3>
+              <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-primary-600" /> Streak Leaderboard</h3>
               <motion.div className="space-y-2 relative z-10" initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}>
                 {leaderboard.map((entry, i) => (
                   <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">

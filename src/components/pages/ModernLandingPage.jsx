@@ -98,7 +98,7 @@ const ModernLandingPage = () => {
                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                      className="absolute hidden lg:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-sm items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
                   >
-                     <Trophy className="w-8 h-8 text-primary-700" />
+                     <Trophy className="w-8 h-8 text-primary-600" />
                   </motion.div>
                   <motion.div
                      animate={{ y: [15, -15, 15], rotate: [0, -10, 10, 0] }}
@@ -109,9 +109,9 @@ const ModernLandingPage = () => {
                   </motion.div>
 
                   <div
-                     className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-700 border-2 border-primary-500/10 shadow-sm"
+                     className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-600 border-2 border-primary-500/10 shadow-sm"
                   >
-                     <Sparkles className="w-4 h-4 text-primary-700" />
+                     <Sparkles className="w-4 h-4 text-primary-600" />
                      Trusted by students across India
                   </div>
 
@@ -119,8 +119,8 @@ const ModernLandingPage = () => {
                      <h1
                         className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] text-slate-900 dark:text-white"
                      >
-                        Practice for <span className="text-primary-700">Exams</span>
-                        <p className="text-primary-700">You Study. You Win.</p>
+                        Practice for <span className="text-primary-600">Exams</span>
+                        <p className="text-primary-600">You Study. You Win.</p>
                      </h1>
 
                      <p
@@ -159,10 +159,10 @@ const ModernLandingPage = () => {
                      className="flex flex-wrap items-center justify-center gap-x-6 lg:gap-x-12 gap-y-4 pt-4 lg:pt-6 border-t-2 border-slate-200/50 dark:border-slate-800/50"
                   >
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <ShieldCheck className="w-5 h-5 text-primary-700" /> Questions by experts
+                        <ShieldCheck className="w-5 h-5 text-primary-600" /> Questions by experts
                      </div>
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <Flame className="w-5 h-5 text-primary-700" /> Thousands of questions
+                        <Flame className="w-5 h-5 text-primary-600" /> Thousands of questions
                      </div>
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
                         <Trophy className="w-5 h-5 text-black dark:text-white" /> Practice with topic-wise quizzes
@@ -194,22 +194,22 @@ const ModernLandingPage = () => {
                {[0, 1].map((iteration) => (
                   <div key={iteration} className="flex items-center gap-12 pr-12">
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
-                        <span className="text-primary-700 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
+                        <span className="text-primary-600 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
                         Registered Users (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
                         Practice Test Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
                         PYQ's Attempts (Last 30 Days)
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
-                        <span className="w-2.5 h-2.5 rounded-full bg-primary-700 animate-pulse"></span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
                         Quiz Attempts (Last 30 Days)
                      </div>
@@ -226,9 +226,9 @@ const ModernLandingPage = () => {
                      <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
 
                      {[
-                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-700", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-primary-700", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                        { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-700", bg: "bg-primary-50 dark:bg-primary-900/20" }
+                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" }
                      ].map((item, i) => (
                         <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border-2 border-slate-200 dark:border-slate-700">
                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
@@ -252,12 +252,12 @@ const ModernLandingPage = () => {
             <div className="container mx-auto px-0 lg:px-8">
                <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-8">
                   {[
-                     { label: 'Students', val: stats.activeStudents, icon: Users, color: 'text-primary-700' },
-                     { label: 'Exams', val: stats.totalExams, icon: Target, color: 'text-primary-700' },
-                     { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2, color: 'text-primary-700' },
-                     { label: 'Subjects', val: stats.totalSubjects, icon: BookOpen, color: 'text-primary-700' },
-                     { label: 'Topics', val: stats.totalTopics, icon: Layers, color: 'text-primary-700' },
-                     { label: 'Questions', val: stats.totalQuestions, icon: Brain, color: 'text-primary-700' }
+                     { label: 'Students', val: stats.activeStudents, icon: Users, color: 'text-primary-600' },
+                     { label: 'Exams', val: stats.totalExams, icon: Target, color: 'text-primary-600' },
+                     { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2, color: 'text-primary-600' },
+                     { label: 'Subjects', val: stats.totalSubjects, icon: BookOpen, color: 'text-primary-600' },
+                     { label: 'Topics', val: stats.totalTopics, icon: Layers, color: 'text-primary-600' },
+                     { label: 'Questions', val: stats.totalQuestions, icon: Brain, color: 'text-primary-600' }
                   ].map((stat, index) => (
                      <div key={index} className="flex flex-col items-center text-center group">
                         <div className={`p-3 lg:p-4 rounded-2xl lg:rounded-3xl bg-slate-50 dark:bg-slate-800 mb-3 lg:mb-4 group-hover:scale-110 transition-transform ${stat.color} border-2 border-transparent group-hover:border-current/10`}>
@@ -278,12 +278,12 @@ const ModernLandingPage = () => {
             </div>
             <div className="container mx-auto px-4 lg:px-6 relative z-10">
                <div className="text-center space-y-2 lg:space-y-4 mb-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-700 dark:text-primary-400 uppercase">
-                     <span className="w-2 h-2 rounded-full bg-primary-700 animate-pulse" />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-600 dark:text-primary-400 uppercase">
+                     <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
                      Last Year PYQ — Always Free
                   </div>
                   <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-                     Practice with <span className="text-primary-700">Real Papers</span>
+                     Practice with <span className="text-primary-600">Real Papers</span>
                   </h2>
                   <p className="text-base lg:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                      500+ Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.
@@ -305,7 +305,7 @@ const ModernLandingPage = () => {
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.pyqCount} PYQs</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.practiceTestCount} Practice Tests</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{exam.quizCount} Quizzes</span>
-                           <span className="text-[10px] font-black text-primary-700 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                           <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                         </motion.div>
                      );
                   }) : [
@@ -324,7 +324,7 @@ const ModernLandingPage = () => {
                      >
                         <span className={`text-sm lg:text-base font-black ${exam.text}`}>{exam.name}</span>
                         <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{exam.papers} papers</span>
-                        <span className="text-[10px] font-black text-primary-700 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
                      </motion.div>
                   ))}
                </div>
@@ -335,13 +335,13 @@ const ModernLandingPage = () => {
                      whileHover={{ scale: 1.03 }}
                      whileTap={{ scale: 0.97 }}
                      onClick={() => router.push('/register')}
-                     className="w-full sm:w-auto px-10 py-4 bg-primary-700 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm"
+                     className="w-full sm:w-auto px-10 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm"
                   >
                      Start Free PYQ Practice →
                   </motion.button>
                   <button
                      onClick={() => router.push('/pyq')}
-                     className="w-full sm:w-auto px-8 py-4 bg-primary-700 hover:opacity-90 text-white font-black uppercase tracking-widest rounded-2xl border border-primary-700 transition-all text-sm"
+                     className="w-full sm:w-auto px-8 py-4 bg-primary-600 hover:opacity-90 text-white font-black uppercase tracking-widest rounded-2xl border border-primary-600 transition-all text-sm"
                   >
                      Browse All PYQs
                   </button>
@@ -378,7 +378,7 @@ const ModernLandingPage = () => {
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] lg:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 lg:space-y-4">
-                        <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
+                        <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-600 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Flame className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>
                         <h3 className="text-xl lg:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">Practice every day</h3>
@@ -390,7 +390,7 @@ const ModernLandingPage = () => {
                               <motion.div
                                  initial={{ width: 0 }}
                                  whileInView={{ width: `${width}%` }}
-                                 className="h-full bg-primary-700 shadow-sm"
+                                 className="h-full bg-primary-600 shadow-sm"
                               />
                            </div>
                         ))}
@@ -399,7 +399,7 @@ const ModernLandingPage = () => {
 
                   <Card className="lg:col-span-4 p-5 lg:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] lg:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 lg:space-y-4">
-                        <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-700 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
+                        <div className="p-3 lg:p-4 bg-primary-500/10 text-primary-600 rounded-2xl lg:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Zap className="w-8 h-8 lg:w-10 lg:h-10" />
                         </div>
                         <h3 className="text-xl lg:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">See your test results</h3>
@@ -420,7 +420,7 @@ const ModernLandingPage = () => {
 
                   <Card className="lg:col-span-8 p-5 lg:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col lg:flex-row items-center gap-6 lg:gap-10 overflow-hidden group rounded-[2rem] lg:rounded-[4rem]">
                      <div className="flex-1 space-y-2 lg:space-y-4 relative z-10 text-center lg:text-left">
-                        <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-700 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto lg:mx-0">
+                        <div className="p-3 lg:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-600 rounded-2xl lg:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto lg:mx-0">
                            <Medal className="w-10 h-10 lg:w-12 lg:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
@@ -445,7 +445,7 @@ const ModernLandingPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="text-3xl lg:text-9xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-[0.8] mb-8 lg:mb-12"
                      >
-                        Study with <br /><span className="text-primary-700">Confidence.</span>
+                        Study with <br /><span className="text-primary-600">Confidence.</span>
                      </motion.h2>
 
                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -455,7 +455,7 @@ const ModernLandingPage = () => {
                            { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
                         ].map((item, index) => (
                            <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm group hover:-translate-y-2 transition-all">
-                              <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-700 mb-6 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
+                              <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
                                  <item.icon className="w-8 h-8" />
                               </div>
                               <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{item.title}</h3>
@@ -479,7 +479,7 @@ const ModernLandingPage = () => {
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
                      className="text-2xl lg:text-4xl lg:text-9xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
                   >
-                     Your Dream Job <br /><span className="text-primary-700">Is Waiting.</span>
+                     Your Dream Job <br /><span className="text-primary-600">Is Waiting.</span>
                   </motion.h2>
                   <p className="text-md md:text-xl lg:text-2xl font-bold text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed tracking-[0.04em] px-4">Start today. Join AajExam, practice every day, and get the government job you want.</p>
                   <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6">

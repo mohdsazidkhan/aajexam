@@ -67,7 +67,7 @@ const StudentNavbar = () => {
               className={`w-9 h-9 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center transition-all active:scale-95 ${showHamburger ? 'flex' : 'hidden lg:flex'
                 } ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                  : 'bg-transparent lg:bg-primary-700 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-sm lg:hover:scale-105'
+                  : 'bg-transparent lg:bg-primary-600 text-slate-700 dark:text-slate-300 lg:text-white lg:shadow-sm lg:hover:scale-105'
                 }`}
             >
               {isSidebarOpen ? <X className="w-5 h-5 lg:w-6 lg:h-6" /> : <Menu className="w-5 h-5 lg:w-6 lg:h-6" />}
@@ -76,7 +76,7 @@ const StudentNavbar = () => {
             {/* Logo — desktop only (left-aligned) */}
             <Link href="/home" className="hidden lg:flex flex-col leading-none">
               <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-700">EXAM</span>
+                AAJ<span className="text-primary-600">EXAM</span>
               </span>
               <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
                 Prepare Your Exam Today
@@ -87,12 +87,12 @@ const StudentNavbar = () => {
           {/* Center — Logo on mobile, logged-in user's name on desktop */}
           <Link href="/home" className="lg:hidden absolute left-1/2 -translate-x-1/2">
             <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-              AAJ<span className="text-primary-700">EXAM</span>
+              AAJ<span className="text-primary-600">EXAM</span>
             </span>
           </Link>
           <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
             <span className="uppercase text-lg font-black text-slate-700 dark:text-slate-300 truncate max-w-xs">
-              Welcome back, <span className="text-primary-700">{user.name}</span>
+              Welcome back, <span className="text-primary-600">{user.name}</span>
             </span>
           </div>
 
@@ -108,7 +108,7 @@ const StudentNavbar = () => {
             <button
               onClick={toggleTheme}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="flex w-9 h-9 lg:w-10 lg:h-10 rounded-lg lg:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-700 transition-all flex-shrink-0"
+              className="flex w-9 h-9 lg:w-10 lg:h-10 rounded-lg lg:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
             >
               {darkMode ? <Sun className="w-4 h-4 lg:w-5 lg:h-5" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5" />}
             </button>
@@ -139,8 +139,8 @@ const StudentNavbar = () => {
                       className={`absolute -bottom-2 -left-3 -right-3 lg:-left-4 lg:-right-4 z-20 text-center whitespace-nowrap text-[11px] lg:text-[13px] font-black uppercase tracking-wide px-1 py-[2px] rounded-full shadow-sm border border-green-500/20 ${isExpired
                         ? 'bg-red-500 text-white'
                         : isPro
-                          ? 'bg-primary-700 text-white'
-                          : 'bg-primary-700 text-white'
+                          ? 'bg-primary-600 text-white'
+                          : 'bg-primary-600 text-white'
                       }`}
                     >
                       {plan}

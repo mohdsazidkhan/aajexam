@@ -144,9 +144,9 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
             >
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
-                ? 'border-primary-400 bg-primary-400 text-primary-900'
+                ? 'border-primary-400 bg-primary-400 text-primary-600'
                 : answered && i === selected && !result?.isCorrect
-                  ?'border-primary-700 bg-primary-700 text-white'
+                  ?'border-primary-600 bg-primary-600 text-white'
                   : i === selected ? 'border-white bg-white text-slate-900' : 'border-white/30 text-white/60'}`}>
                 {answered ? (i === result?.correctAnswerIndex ? '✓' : i === selected && !result?.isCorrect ? '✗' : String.fromCharCode(65 + i)) : String.fromCharCode(65 + i)}
               </span>
@@ -351,7 +351,7 @@ const ActionBar = ({ reel, onLike, onBookmark, onShare, onExplanation, showExpla
   return (
     <>
       <motion.button whileTap={{ scale: 1.2 }} onClick={handleLike} aria-label={liked ? 'Unlike' : 'Like'} className="flex flex-col items-center gap-0.5 p-2">
-        <Heart className={`w-7 h-7 transition-all ${liked ? 'fill-primary-500 text-primary-700' : 'text-white'}`} />
+        <Heart className={`w-7 h-7 transition-all ${liked ? 'fill-primary-600 text-primary-600' : 'text-white'}`} />
         <span className="text-[11px] font-semibold text-white">{likeCount || ''}</span>
       </motion.button>
 
@@ -924,7 +924,7 @@ const ReelsFeed = () => {
               {/* Profile avatar + follow */}
               <div className="relative">
                 <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}>
-                  <div className="w-9 h-9 rounded-full bg-primary-700 p-[2px]">
+                  <div className="w-9 h-9 rounded-full bg-primary-600 p-[2px]">
                     <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-xs font-black uppercase">
                       {(currentReel.createdBy?.username || 'A').charAt(0)}
                     </div>
@@ -937,7 +937,7 @@ const ReelsFeed = () => {
                     className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-black ${
                       followMap[currentReel.createdBy._id]
                         ? 'bg-white text-gray-500'
-                        : 'bg-primary-700 text-white'
+                        : 'bg-primary-600 text-white'
                     }`}
                   >
                     {followLoading === currentReel.createdBy._id ? '·' : followMap[currentReel.createdBy._id] ? '✓' : '+'}
@@ -981,7 +981,7 @@ const ReelsFeed = () => {
                 {/* Creator row */}
                 <div className="flex items-center gap-2 mb-2">
                   <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`} className="shrink-0">
-                    <div className="w-8 h-8 rounded-full bg-primary-700 p-[1.5px]">
+                    <div className="w-8 h-8 rounded-full bg-primary-600 p-[1.5px]">
                       <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-white text-[10px] font-black uppercase">
                         {(currentReel.createdBy?.username || 'A').charAt(0)}
                       </div>
@@ -1127,7 +1127,7 @@ const ReelsFeed = () => {
                         {currentReel.answeredCount > 0 && (
                           <div className="flex items-center gap-3 pt-2 border-t border-white/5">
                             <span className="text-[11px] text-white/40">👥 {currentReel.answeredCount} attempted</span>
-                            <span className="text-[11px] text-primary-700 font-bold">{Math.round((currentReel.correctCount / currentReel.answeredCount) * 100)}% correct</span>
+                            <span className="text-[11px] text-primary-600 font-bold">{Math.round((currentReel.correctCount / currentReel.answeredCount) * 100)}% correct</span>
                           </div>
                         )}
                         {!currentReel.explanation && !currentReel.shortcutTrick && (
@@ -1300,11 +1300,11 @@ const ReelsFeed = () => {
                 </div>
                 <div className="space-y-2.5">
                   {[
-                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-700', desc: 'MCQ with explanation' },
-                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-700', desc: 'Quick fact or one-liner' },
-                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-700', desc: 'Shortcut or formula' },
-                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-700', desc: 'Daily CA card' },
-                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-700', desc: 'Community poll' },
+                    { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-600', desc: 'MCQ with explanation' },
+                    { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-600', desc: 'Quick fact or one-liner' },
+                    { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-600', desc: 'Shortcut or formula' },
+                    { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-600', desc: 'Daily CA card' },
+                    { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-600', desc: 'Community poll' },
                   ].map((type) => (
                     <Link
                       key={type.value}

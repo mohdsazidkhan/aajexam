@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Users, UserPlus, Search, Filter, LayoutGrid, List, Table as TableIcon,
-  Shield, Zap, Award, Mail, Phone, Calendar, MoreVertical, Trash2, Edit3,
-  CheckCircle2, XCircle, Info, ExternalLink, CreditCard, Wallet, Crown, Star,
-  TrendingUp, Activity, Box, Settings, ArrowRight, ChevronRight, Download,
+  Shield, Zap, Award, Mail, Calendar, MoreVertical, Trash2, Edit3,
+  CheckCircle2, XCircle, Info, ExternalLink, CreditCard, Wallet, Crown,
+  TrendingUp, Settings, ArrowRight, Download,
   MailWarning, UserCheck, UserMinus, RefreshCcw, Plus, X
 } from "lucide-react";
 
@@ -22,9 +22,9 @@ import SearchFilter from '../../SearchFilter';
 import { isMobile } from 'react-device-detect';
 import useDebounce from "../../../hooks/useDebounce";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
-import Button from '../../ui/Button';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
+import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pagination';
 
 
 const StudentsPage = () => {
@@ -33,7 +33,7 @@ const StudentsPage = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [pagination, setPagination] = useState({});
   const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
   const [filters, setFilters] = useState({
@@ -129,8 +129,7 @@ const StudentsPage = () => {
     setCurrentPage(page);
   };
 
-  const handleItemsPerPageChange = (e) => {
-    const newItemsPerPage = parseInt(e.target.value);
+  const handleItemsPerPageChange = (newItemsPerPage) => {
     setItemsPerPage(newItemsPerPage);
     setCurrentPage(1);
   };
@@ -170,7 +169,7 @@ const StudentsPage = () => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       FREE: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',
-      PRO: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200'
+      PRO: 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200'
     };
     return statusConfig[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
   };
@@ -207,7 +206,7 @@ const StudentsPage = () => {
       render: (_, student) => (
         <div className="flex items-center">
           <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10">
-            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-primary-700 flex items-center justify-center">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-primary-600 flex items-center justify-center">
               <span className="text-white font-medium text-sm sm:text-base">
                 {student.name?.charAt(0)?.toUpperCase() || 'U'}
               </span>
@@ -230,7 +229,7 @@ const StudentsPage = () => {
       key: 'walletBalance',
       header: 'Wallet Balance',
       render: (_, student) => (
-        <div className="text-sm font-semibold text-primary-700 dark:text-primary-400">
+        <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
           {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(student.walletBalance || 0)}
         </div>
       )
@@ -263,7 +262,7 @@ const StudentsPage = () => {
       key: 'referralCode',
       header: 'Referral Code',
       render: (_, student) => (
-        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
+        <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200">
           {student.referralCode || 'N/A'}
         </div>
       )
@@ -274,7 +273,7 @@ const StudentsPage = () => {
       render: (_, student) => {
         if (student.status === 'active') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200">
               {student.status || 'N/A'}
             </div>
           )
@@ -293,7 +292,7 @@ const StudentsPage = () => {
         }
         else if (student.status === 'inactive') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200">
               {student.status || 'N/A'}
             </div>
           )
@@ -362,7 +361,7 @@ const StudentsPage = () => {
           // Edit student: navigate to details page
           router.push(`/admin/students/${student._id}`);
         }}
-        className="text-primary-700 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
         title="View student details"
       >
         <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -385,218 +384,73 @@ const StudentsPage = () => {
 
 
   return (
-    <div className="min-h-screen font-sans text-slate-900 dark:text-white pb-20">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
-        <div className="transition-all duration-500">
-          {/* Student Directory Overview */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-4"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-              <div className="space-y-2">
-                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  STUDENT <span className="text-primary-700">DIRECTORY</span>
-                </h1>
-                <p className="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none">
-                  Browse and manage all registered student accounts.
-                </p>
-              </div>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Users className="w-6 h-6 text-primary-600 shrink-0" /> Students <span className="text-slate-400 dark:text-slate-500">({pagination?.total || 0})</span></h1>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                <Button
-                  variant="primary"
-                  onClick={() => setShowCreateModal(true)}
-                  icon={UserPlus}
-                  className="w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm"
-                >
-                  CREATE SUBSCRIPTION
-                </Button>
-              </div>
+          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => handleSearch(e.target.value)}
+                placeholder="Search students by name or email..."
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+              />
             </div>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+            <div className="flex items-center gap-1">
               {[
-                { label: 'Total Students', value: pagination?.total || 0, icon: Users, color: 'primary' },
-                { label: 'Active Students', value: students.filter(s => s.status === 'active').length || 0, icon: Activity, color: 'primary' },
-                { label: 'Pro Subscribers', value: students.filter(s => s.subscriptionStatus === 'PRO').length || 0, icon: Crown, color: 'primary' },
-                { label: 'New Signups', value: students.length || 0, icon: Star, color: 'primary' }
-              ].map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
+                { icon: TableIcon, id: 'table', label: 'Table View' },
+                { icon: List, id: 'list', label: 'List View' },
+                { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
+              ].map((mode) => (
+                <button
+                  key={mode.id}
+                  onClick={() => setViewMode(mode.id)}
+                  className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+                  title={mode.label}
                 >
-                  <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
-                    <stat.icon className="w-5 h-5" />
-                  </div>
-                  <div className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tabular-nums mb-2 tracking-tighter italic leading-none">{stat.value}</div>
-                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>
-                </div>
+                  <mode.icon className="w-4 h-4" />
+                </button>
               ))}
             </div>
-          </motion.div>
-
-          {/* Search & Filter Controls */}
-          <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
-              <div className="flex-1 relative group w-full lg:max-w-2xl">
-                <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => handleSearch(e.target.value)}
-                  placeholder="Search students by name or email..."
-                  className="w-full pl-14 pr-8 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm w-full lg:w-auto justify-center lg:justify-start">
-                  {[
-                    { icon: TableIcon, id: 'table', label: 'Table' },
-                    { icon: List, id: 'list', label: 'List' },
-                    { icon: LayoutGrid, id: 'grid', label: 'Grid' }
-                  ].map((mode) => (
-                    <button
-                      key={mode.id}
-                      onClick={() => setViewMode(mode.id)}
-                      className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                      title={mode.label}
-                    >
-                      <mode.icon className="w-5 h-5" />
-                      {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest pr-2">{mode.label}</span>}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="relative group w-full lg:w-auto">
-                  <Box className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <select
-                    value={itemsPerPage}
-                    onChange={handleItemsPerPageChange}
-                    className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all"
-                  >
-                    {[10, 20, 50, 100, 500].map(n => <option key={n} value={n}>{n} per page</option>)}
-                  </select>
-                  <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
-                </div>
-              </div>
-            </div>
+            <button
+              onClick={() => setShowCreateModal(true)}
+              className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0"
+            >
+              <UserPlus className="w-4 h-4" /> New PRO
+            </button>
           </div>
+        </div>
 
-          {/* Data Grid Interface */}
-          <AnimatePresence mode="wait">
-            {loading ? (
-              <motion.div
-                key="loading"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                <AdminTableSkeleton showHeader={false} showFilters={false} />
-              </motion.div>
-            ) : students.length === 0 ? (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
-              >
-                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
-                  <Users className="w-16 h-16 text-slate-300 dark:text-slate-600" />
-                </div>
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Students Found</h3>
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No students have registered yet.</p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="content"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="space-y-2 lg:space-y-4 lg:space-y-12"
-              >
+        <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          {loading ? (
+            <AdminTableSkeleton showHeader={false} showFilters={false} />
+          ) : students.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
+                <Users className="w-10 h-10 text-slate-300" />
+              </div>
+              <h3 className="text-lg font-black text-slate-500 uppercase">No Students Found</h3>
+              <p className="text-sm text-slate-400 mt-2">No students have registered yet.</p>
+            </div>
+          ) : (
+            <>
+              <div className="flex-1 min-h-0 overflow-hidden">
                 {/* View Render Logic */}
                 {viewMode === "table" && (
-                  <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
-                    <table className="w-full min-w-[700px]">
-                      <thead>
-                        <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Student</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Wallet Balance</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Level</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Account Status</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Joined</th>
-                          <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                        {students.map((student, i) => (
-                          <motion.tr
-                            key={student._id}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.05 }}
-                            onClick={() => router.push(`/admin/students/${student._id}`)}
-                            className="group hover:bg-slate-50/80 dark:hover:bg-white/5 transition-all cursor-pointer"
-                          >
-                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-xs font-bold text-slate-400 tabular-nums">{((currentPage - 1) * itemsPerPage) + i + 1}</td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-primary-700 rounded-2xl flex items-center justify-center text-white font-black shadow-sm group-hover:scale-110 transition-transform">
-                                  {student.name?.charAt(0).toUpperCase()}
-                                </div>
-                                <div>
-                                  <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 hover:text-primary-700 transition-colors block">{student.name}</Link>
-                                  <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[9px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary-700 transition-colors">@{student.username || student._id.slice(-6).toUpperCase()}</Link>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="text-sm font-black text-primary-700 tabular-nums">
-                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(student.walletBalance || 0)}
-                              </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="space-y-1">
-                                <div className="text-[10px] font-black text-slate-700 dark:text-white flex items-center gap-2 leading-none mb-1"><Mail className="w-3 h-3 text-black/50 dark:text-white/50" /> {student.email}</div>
-                                <div className="text-[9px] font-bold text-slate-400 flex items-center gap-2 italic leading-none"><Phone className="w-3 h-3 text-primary-500/50" /> {student.phone || 'Not provided'}</div>
-                              </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="flex flex-col">
-                                <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Student</div>
-                                <div className="text-[8px] font-bold text-primary-700 uppercase tracking-[0.2em]">{'Active'}</div>
-                              </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest w-fit border ${student.status === 'active' ? 'bg-primary-500/10 text-primary-700 border-primary-500/20' :
-                                student.status === 'suspended' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
-                                  'bg-slate-500/10 text-slate-500 border-slate-500/20'
-                                }`}>
-                                {student.status || 'Inactive'}
-                              </div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                              <div className="text-[9px] font-bold text-slate-400 whitespace-nowrap">{formatDate(student.createdAt)}</div>
-                            </td>
-                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                              {renderStudentActions(student)}
-                            </td>
-                          </motion.tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                    <ResponsiveTable data={students} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} onRowClick={(student) => router.push(`/admin/students/${student._id}`)} fillHeight />
                   </div>
                 )}
 
                 {/* List View */}
                 {viewMode === "list" && (
-                  <div className="grid grid-cols-1 gap-3 lg:gap-6">
+                  <div className="h-full overflow-auto grid grid-cols-1 gap-3">
                     {students.map((student, i) => (
                       <motion.div
                         key={student._id}
@@ -604,17 +458,17 @@ const StudentsPage = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
                         onClick={() => router.push(`/admin/students/${student._id}`)}
-                        className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8 cursor-pointer"
+                        className="group relative bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 cursor-pointer"
                       >
-                        <div className="w-20 h-20 bg-primary-700 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                        <div className="w-20 h-20 bg-primary-600 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
                         </div>
 
                         <div className="flex-1 space-y-2 lg:space-y-4">
                           <div className="flex flex-wrap items-center gap-4">
-                            <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-700 transition-colors">{student.name}</Link>
-                            {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-700 transition-colors">@{student.username}</Link>}
-                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-700 ${student.subscriptionStatus === 'PRO' ? 'border-black/20 dark:border-white/20 bg-black/10 dark:bg-white/10 text-black dark:text-white' : ''}`}>
+                            <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none hover:text-primary-600 transition-colors">{student.name}</Link>
+                            {student.username && <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-bold text-slate-400 hover:text-primary-600 transition-colors">@{student.username}</Link>}
+                            <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border border-primary-500/20 bg-primary-500/10 text-primary-600 ${student.subscriptionStatus === 'PRO' ? 'border-black/20 dark:border-white/20 bg-black/10 dark:bg-white/10 text-black dark:text-white' : ''}`}>
                               {student.subscriptionStatus || 'FREE'}
                             </div>
                           </div>
@@ -626,7 +480,7 @@ const StudentsPage = () => {
                             </div>
                             <div className="flex items-center gap-2">
                               <Wallet className="w-4 h-4 text-primary-500/50" />
-                              <span className="text-[10px] font-black text-primary-700 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
+                              <span className="text-[10px] font-black text-primary-600 tabular-nums uppercase tracking-widest">₹{new Intl.NumberFormat('en-IN').format(student.walletBalance || 0)}</span>
                             </div>
                             <div className="flex items-center gap-2">
                               <Crown className="w-4 h-4 text-black/50 dark:text-white/50" />
@@ -649,7 +503,7 @@ const StudentsPage = () => {
 
                 {/* Grid View */}
                 {viewMode === "grid" && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
+                  <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                     {students.map((student, i) => (
                       <motion.div
                         key={student._id}
@@ -659,10 +513,10 @@ const StudentsPage = () => {
                         onClick={() => router.push(`/admin/students/${student._id}`)}
                         className="group relative bg-[#0D1225]/5 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center cursor-pointer overflow-hidden"
                       >
-                        <div className="absolute top-0 left-0 w-full h-2 bg-primary-700" />
+                        <div className="absolute top-0 left-0 w-full h-2 bg-primary-600" />
 
                         <div className="mt-4 mb-6 relative">
-                          <div className="w-24 h-24 bg-primary-700 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                          <div className="w-24 h-24 bg-primary-600 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-sm">
@@ -670,17 +524,17 @@ const StudentsPage = () => {
                           </div>
                         </div>
 
-                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1 hover:text-primary-700 transition-colors block">{student.name}</Link>
-                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 hover:text-primary-700 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
+                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 limit-text-1 hover:text-primary-600 transition-colors block">{student.name}</Link>
+                        <Link href={`/u/${student.username}`} target="_blank" onClick={e => e.stopPropagation()} className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 hover:text-primary-600 transition-colors block">{student.username ? `@${student.username}` : 'No username set'}</Link>
 
                         <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-8">
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Level</div>
-                            <div className="text-sm font-black text-primary-700 tabular-nums tracking-tighter">{0}</div>
+                            <div className="text-sm font-black text-primary-600 tabular-nums tracking-tighter">{0}</div>
                           </div>
                           <div className="p-4 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10">
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Balance</div>
-                            <div className="text-sm font-black text-primary-700 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
+                            <div className="text-sm font-black text-primary-600 tabular-nums tracking-tighter">₹{student.walletBalance || 0}</div>
                           </div>
                         </div>
                         <div className="w-full p-3 bg-white/50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 mb-4 flex items-center gap-2">
@@ -706,27 +560,28 @@ const StudentsPage = () => {
                   </div>
                 )}
 
-                {/* External Pagination */}
-                {pagination.totalPages > 1 && (
-                  <div className="flex justify-center pt-12">
-                    <Pagination
-                      currentPage={currentPage}
-                      totalPages={pagination.totalPages}
-                      onPageChange={handlePageChange}
-                      totalItems={pagination.total}
-                      itemsPerPage={itemsPerPage}
-                    />
-                  </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
+              </div>
+
+              {pagination.total > 0 && (
+                <div className="shrink-0">
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={pagination.totalPages || 1}
+                    onPageChange={handlePageChange}
+                    totalItems={pagination.total || 0}
+                    itemsPerPage={itemsPerPage}
+                    onItemsPerPageChange={handleItemsPerPageChange}
+                  />
+                </div>
+              )}
+            </>
+          )}
         </div>
 
         {/* Create Subscription Modal */}
         <AnimatePresence>
           {showCreateModal && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 lg:p-12">
+            <div className="fixed inset-0 z-[100]">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -736,22 +591,23 @@ const StudentsPage = () => {
               />
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 40 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 40 }}
-                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[4rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col font-sans"
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                exit={{ y: '100%' }}
+                transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
+                className="absolute top-16 right-0 bottom-0 left-0 lg:left-64 bg-white dark:bg-[#0A0F1E] lg:rounded-l-[3rem] border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col font-sans"
               >
                 <div className="p-4 lg:p-14 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <div className="flex items-center gap-3 lg:gap-6">
-                    <div className="p-5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-[1.5rem] shadow-sm">
+                    <div className="p-5 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-[1.5rem] shadow-sm">
                       <Zap className="w-8 h-8 fill-current" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-[10px] font-black text-primary-700 uppercase tracking-[0.4em]">Subscription</span>
+                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-[0.4em]">Subscription</span>
                       </div>
                       <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
-                        CREATE <span className="text-primary-700">SUBSCRIPTION</span>
+                        CREATE <span className="text-primary-600">SUBSCRIPTION</span>
                       </h2>
                     </div>
                   </div>
@@ -765,12 +621,12 @@ const StudentsPage = () => {
                   </motion.button>
                 </div>
 
-                <div className="p-4 lg:p-10 overflow-y-auto">
+                <div className="flex-1 p-4 lg:p-10 overflow-y-auto">
                   <form onSubmit={handleCreateSubscription} className="space-y-2 lg:space-y-4 lg:space-y-8">
                     <div className="space-y-2 lg:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4 italic">Student Email</label>
                       <div className="relative group">
-                        <Mail className="absolute left-8 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
+                        <Mail className="absolute left-8 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
                         <input
                           type="email"
                           required

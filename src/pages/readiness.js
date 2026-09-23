@@ -87,7 +87,7 @@ const ReadinessPage = () => {
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">
           <div className="flex justify-between items-center flex-col lg:flex-row gap-4">
           <div className="space-y-1 text-center lg:text-left">
-            <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center lg:justify-start gap-2"><Target className="w-6 h-6 text-primary-700" /> Exam Readiness</h1>
+            <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center lg:justify-start gap-2"><Target className="w-6 h-6 text-primary-600" /> Exam Readiness</h1>
             <p className="text-sm font-bold text-slate-400">How prepared are you?</p>
           </div>
 
@@ -98,7 +98,7 @@ const ReadinessPage = () => {
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </select>
             <button onClick={analyzeReadiness} disabled={!selectedExam || analyzing}
-              className="w-full lg:w-auto px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              className="w-full lg:w-auto px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? 'Analyzing...' : 'Analyze'}
             </button>
           </div>
@@ -111,8 +111,8 @@ const ReadinessPage = () => {
                 <p className={`text-6xl font-black text-${readinessColor(readiness.readiness)}-500`}>{readiness.readiness}%</p>
                 <p className="text-sm font-bold text-slate-500">Exam Readiness Score</p>
                 <div className="flex items-center justify-center gap-1 mt-2">
-                  {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-primary-700" /> : <TrendingDown className="w-4 h-4 text-black dark:text-white" />}
-                  <span className={`text-xs font-bold ${readiness.trend > 0 ? 'text-primary-700' : 'text-black dark:text-white'}`}>{readiness.trend > 0 ? '+' : ''}{readiness.trend}% trend</span>
+                  {readiness.trend > 0 ? <TrendingUp className="w-4 h-4 text-primary-600" /> : <TrendingDown className="w-4 h-4 text-black dark:text-white" />}
+                  <span className={`text-xs font-bold ${readiness.trend > 0 ? 'text-primary-600' : 'text-black dark:text-white'}`}>{readiness.trend > 0 ? '+' : ''}{readiness.trend}% trend</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-3">{readiness.recommendation}</p>
               </Card>
@@ -141,11 +141,11 @@ const ReadinessPage = () => {
               {/* Strong Subjects */}
               {readiness.strongSubjects?.length > 0 && (
                 <Card className="space-y-3">
-                  <h3 className="text-sm font-black text-primary-700 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> Strong Subjects (Above 70%)</h3>
+                  <h3 className="text-sm font-black text-primary-600 flex items-center gap-1"><CheckCircle className="w-4 h-4" /> Strong Subjects (Above 70%)</h3>
                   {readiness.strongSubjects.map((s, i) => (
                     <div key={i} className="flex items-center justify-between px-3 py-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
                       <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{s.subject}</span>
-                      <span className="text-xs font-black text-primary-700">{s.accuracy}%</span>
+                      <span className="text-xs font-black text-primary-600">{s.accuracy}%</span>
                     </div>
                   ))}
                 </Card>

@@ -140,7 +140,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
         <Card className={`
           relative overflow-hidden text-center py-8 px-5 lg:py-12 lg:px-8 border-none shadow-sm
-          ${isGreat ? 'bg-primary-700 text-white' : 'bg-white dark:bg-slate-800'}
+          ${isGreat ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800'}
         `}>
           <div className="relative z-10 space-y-6">
             <motion.div
@@ -215,7 +215,7 @@ const TestResult = ({ resolvedId } = {}) => {
             value: result?.percentile != null ? `${percentile.toFixed(1)}` : 'N/A',
             sub: result?.percentile != null ? `Beat ${beatPct}%` : null,
             icon: TrendingUp,
-            color: 'text-primary-700'
+            color: 'text-primary-600'
           },
           {
             label: 'Top Score',
@@ -252,7 +252,7 @@ const TestResult = ({ resolvedId } = {}) => {
               onClick={() => setActiveTab(tab)}
               className={`
                  px-8 py-3 rounded-full font-black uppercase text-sm transition-all
-                 ${activeTab === tab ? 'bg-primary-700 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}
+                 ${activeTab === tab ? 'bg-primary-600 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}
                `}
             >
               {tab}
@@ -296,11 +296,11 @@ const TestResult = ({ resolvedId } = {}) => {
                           <tr key={idx} className={`border-b dark:border-slate-700 last:border-0 ${isUser ? 'bg-primary-500/10' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ?'bg-primary-700 text-white':'bg-gray-100 dark:bg-slate-700'}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ?'bg-primary-600 text-white':'bg-gray-100 dark:bg-slate-700'}`}>
                                   {displayRank === 1 ? <Crown className="w-4 h-4" /> : displayRank}
                                 </div>
                                 <span className="font-bold text-sm">{entry.user?.name || 'Anonymous Player'}</span>
-                                {isUser && <span className="text-[10px] bg-primary-700 text-white px-2 py-0.5 rounded-full font-black uppercase">YOU</span>}
+                                {isUser && <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">YOU</span>}
                               </div>
                             </td>
                             <td className="px-6 py-4 text-center font-black">{entry.score}</td>
@@ -313,15 +313,15 @@ const TestResult = ({ resolvedId } = {}) => {
                         <tr className="border-t-2 border-primary-500/30 bg-primary-500/10">
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs bg-primary-700 text-white">
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs bg-primary-600 text-white">
                                 {result.rank}
                               </div>
                               <span className="font-bold text-sm">{user?.name || 'You'}</span>
-                              <span className="text-[10px] bg-primary-700 text-white px-2 py-0.5 rounded-full font-black uppercase">YOUR POSITION</span>
+                              <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">YOUR POSITION</span>
                             </div>
                           </td>
                           <td className="px-6 py-4 text-center font-black">{result.score}</td>
-                          <td className="px-6 py-4 text-right font-bold text-primary-700">#{result.rank}</td>
+                          <td className="px-6 py-4 text-right font-bold text-primary-600">#{result.rank}</td>
                         </tr>
                       )}
                     </tbody>
@@ -337,11 +337,11 @@ const TestResult = ({ resolvedId } = {}) => {
                     <Card key={idx} className="border-2">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
-                        <span className="font-black text-primary-700">{stats.score} pts</span>
+                        <span className="font-black text-primary-600">{stats.score} pts</span>
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
-                        <div className="bg-primary-700 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
-                        <div className="bg-primary-700 h-full flex-1"/>
+                        <div className="bg-primary-600 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
+                        <div className="bg-primary-600 h-full flex-1"/>
                       </div>
                       <div className="flex justify-between text-[10px] font-black mt-2 text-gray-400 uppercase">
                         <span>{stats.correct} Correct</span>
@@ -369,12 +369,12 @@ const TestResult = ({ resolvedId } = {}) => {
                   <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-black/20 dark:border-white/20'}`}>
                     <div className={`p-3 lg:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-black/5 dark:bg-white/5'}`}>
                       <div className="space-y-1">
-                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-700' : isSkipped ? 'text-gray-400' : 'text-black dark:text-white'}`}>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-black dark:text-white'}`}>
                           {isCorrect ? 'PERFECT' : isSkipped ? 'SKIPPED' : 'INCORRECT'}
                         </span>
                         <h4 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h4>
                       </div>
-                      {isCorrect ? <CircleCheck className="text-primary-700 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-black dark:text-white w-8 h-8" />}
+                      {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-black dark:text-white w-8 h-8" />}
                     </div>
 
                     <div className="p-3 lg:p-6 space-y-2 lg:space-y-4">
@@ -390,11 +390,11 @@ const TestResult = ({ resolvedId } = {}) => {
                           return (
                             <div key={oIdx} className={`
                                   p-3 rounded-2xl flex items-center gap-3 border-2 text-sm
-                                  ${isAnswer ? 'bg-primary-100 dark:bg-primary-900/20 border-primary-700 text-primary-700 dark:text-primary-400' :
+                                  ${isAnswer ? 'bg-primary-100 dark:bg-primary-900/20 border-primary-600 text-primary-600 dark:text-primary-400' :
                                 isSelected ? 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600 text-red-700 dark:text-red-400' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>
-                              <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-700 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
+                              <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
                                 {String.fromCharCode(65 + oIdx)}
                               </div>
                               <div className="flex-1 flex flex-col gap-2">
@@ -407,8 +407,8 @@ const TestResult = ({ resolvedId } = {}) => {
                       </div>
 
                       {(q.explanation || q.explanationImage) && (
-                        <div className="p-4 bg-primary-100/50 dark:bg-primary-900/10 rounded-2xl border-l-4 border-primary-700">
-                          <p className="text-xs font-black text-primary-700 uppercase mb-1">Explanation</p>
+                        <div className="p-4 bg-primary-100/50 dark:bg-primary-900/10 rounded-2xl border-l-4 border-primary-600">
+                          <p className="text-xs font-black text-primary-600 uppercase mb-1">Explanation</p>
                           {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
                           {q.explanationImage && (
                             // eslint-disable-next-line @next/next/no-img-element

@@ -99,15 +99,15 @@ export default function FollowersListPage() {
                       className="w-16 h-16 rounded-2xl object-cover border-2 border-slate-100 dark:border-slate-800"
                     />
                   ) : (
-                    <div className="w-12 lg:w-16 h-12 lg:h-16 rounded-2xl bg-primary-700 flex items-center justify-center text-white text-md lg:text-xl font-black shadow-sm">
+                    <div className="w-12 lg:w-16 h-12 lg:h-16 rounded-2xl bg-primary-600 flex items-center justify-center text-white text-md lg:text-xl font-black shadow-sm">
                       {user.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
 
                   <div className="flex-1">
-                    <h3 className="text-md lg:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">{user.name}</h3>
+                    <h3 className="text-md lg:text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{user.name}</h3>
                     {user.username && (
-                      <p className="text-xs font-black tracking-widest text-primary-700 mt-1">@{user.username}</p>
+                      <p className="text-xs font-black tracking-widest text-primary-600 mt-1">@{user.username}</p>
                     )}
                   </div>
 

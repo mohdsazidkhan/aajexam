@@ -49,12 +49,12 @@ const TestStartModal = ({
       <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-700 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
+          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
             <FaSchool className="text-white text-xl lg:text-3xl" />
           </div>
 
           <h2 className="text-md md:text-xl lg:text-2xl font-black text-content-primary mb-3 lg:mb-6 uppercase tracking-tighter">
-            Exam <span className="text-primary-700">Practice</span>
+            Exam <span className="text-primary-600">Practice</span>
           </h2>
 
           {/* Test Info */}
@@ -85,19 +85,19 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-700 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{categoryName}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-700 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{examTitle}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-700 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{durationText}</span>
@@ -121,10 +121,10 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-700 shadow-sm">
+                  <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-black text-primary-700 uppercase tracking-widest text-center">
+                  <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest text-center">
                     No Negative Marking
                   </span>
                 </div>
@@ -149,7 +149,7 @@ const TestStartModal = ({
                       {section.name}
                     </p>
                     <div className="flex gap-4 text-[9px] font-black text-content-secondary uppercase tracking-[0.1em]">
-                      <span className="flex items-center gap-1"><Zap className="w-3 h-3 text-primary-700" /> {section.totalQuestions} Questions</span>
+                      <span className="flex items-center gap-1"><Zap className="w-3 h-3 text-primary-600" /> {section.totalQuestions} Questions</span>
                       <span className="flex items-center gap-1 opacity-50"><Trophy className="w-3 h-3" /> {section.marksPerQuestion * section.totalQuestions} Mks</span>
                     </div>
                   </div>
@@ -160,7 +160,7 @@ const TestStartModal = ({
 
           {/* Test Rules */}
           <div className="bg-background-surface-secondary rounded-[2rem] p-6 mb-8 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
-            <h4 className="text-[10px] font-black text-primary-700 uppercase tracking-[0.2em] mb-4 text-center">
+            <h4 className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-4 text-center">
               Test Instructions
             </h4>
             <ul className="text-[10px] font-black text-content-secondary dark:text-slate-500 uppercase tracking-widest space-y-3 text-left">
@@ -172,7 +172,7 @@ const TestStartModal = ({
                 pattern?.negativeMarking > 0 ? `Negative Marking: -${pattern.negativeMarking} Marks` : null
               ].filter(Boolean).map((rule, idx) => (
                 <li key={idx} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-primary-700 rounded-full shadow-sm" />
+                  <div className="w-1.5 h-1.5 bg-primary-600 rounded-full shadow-sm" />
                   <span className="leading-tight">{rule}</span>
                 </li>
               ))}
@@ -186,7 +186,7 @@ const TestStartModal = ({
                   type="checkbox"
                   checked={acceptedRules}
                   onChange={(e) => setAcceptedRules(e.target.checked)}
-                  className="w-10 h-10 border-2 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-700 checked:border-primary-700 transition-all cursor-pointer shadow-sm"
+                  className="w-10 h-10 border-2 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-600 checked:border-primary-600 transition-all cursor-pointer shadow-sm"
                 />
                 {acceptedRules && (
                   <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />
@@ -210,7 +210,7 @@ const TestStartModal = ({
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
               className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
-                ? 'bg-primary-700 text-white border-white/20 shadow-sm border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0'
+                ? 'bg-primary-600 text-white border-white/20 shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >

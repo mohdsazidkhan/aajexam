@@ -95,7 +95,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
-          className="px-6 py-2 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-lg transition-colors"
+          className="px-6 py-2 bg-primary-600 hover:bg-primary-800 text-white font-semibold rounded-lg transition-colors"
         >
           Go Back
         </button>
@@ -127,7 +127,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Profile Header */}
         <div className="mb-6">
           {/* Banner */}
-          <div className="h-32 sm:h-40 lg:h-48 bg-primary-700 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
+          <div className="h-32 sm:h-40 lg:h-48 bg-primary-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
 
           {/* Profile Card - overlaps banner */}
           <div className="-mt-16 sm:-mt-20 relative z-10">
@@ -155,7 +155,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <div className="flex-1 min-w-0 pt-1">
                   <h1 className="text-base sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight">{profile.name}</h1>
                   {profile.username && (
-                    <p className="text-xs sm:text-sm font-bold text-primary-700">
+                    <p className="text-xs sm:text-sm font-bold text-primary-600">
                       @{profile.username}
                     </p>
                   )}
@@ -195,7 +195,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     </span>
                   )}
                   {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
-                    <span className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 rounded-lg text-[10px] sm:text-xs font-bold border border-primary-100 dark:border-primary-900/40">
+                    <span className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-lg text-[10px] sm:text-xs font-bold border border-primary-100 dark:border-primary-900/40">
                       🎯 Preparing for {profile.primaryTargetExam}
                     </span>
                   )}
@@ -208,14 +208,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/followers`)}
                 >
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors">{profile.followersCount || 0}</span>
+                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Followers</span>
                 </div>
                 <div
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/following`)}
                 >
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors">{profile.followingCount || 0}</span>
+                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Following</span>
                 </div>
                 <div>
@@ -237,11 +237,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {(profile.isPublicProfile || isOwnProfile) && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 All India Rank
               </h2>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-700 rounded-lg lg:rounded-xl sm:rounded-2xl text-white">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-600 rounded-lg lg:rounded-xl sm:rounded-2xl text-white">
                   <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</span>
                   <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1 text-center">{profile.examAIR ? `of ${profile.examAIR.total}` : 'No exams yet'}</span>
@@ -259,7 +259,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {profile.badges && profile.badges.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 Badges
               </h2>
               <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -279,18 +279,18 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {(profile.isPublicProfile || isOwnProfile) && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 Exam Statistics
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-700">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
                     {profile.performanceMetrics?.examStats?.mockTestsAttempted || 0}
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-700">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
                     {profile.performanceMetrics?.examStats?.overallReadiness || 0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Readiness</span>
@@ -309,7 +309,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {reels.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
-                <div className="w-1.5 h-6 bg-primary-700 rounded-full" />
+                <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 <PlayCircle className="w-5 h-5" />
                 Reels
                 <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
@@ -317,11 +317,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
                 {reels.map((reel) => {
                   const typeConfig = {
-                    question: { icon: FileText, gradient: 'bg-primary-700', label: 'Question' },
-                    fact: { icon: Lightbulb, gradient: 'bg-primary-700', label: 'Fact' },
-                    tip: { icon: Zap, gradient: 'bg-primary-700', label: 'Tip' },
-                    current_affairs: { icon: Newspaper, gradient: 'bg-primary-700', label: 'Current Affairs' },
-                    poll: { icon: BarChart3, gradient: 'bg-primary-700', label: 'Poll' },
+                    question: { icon: FileText, gradient: 'bg-primary-600', label: 'Question' },
+                    fact: { icon: Lightbulb, gradient: 'bg-primary-600', label: 'Fact' },
+                    tip: { icon: Zap, gradient: 'bg-primary-600', label: 'Tip' },
+                    current_affairs: { icon: Newspaper, gradient: 'bg-primary-600', label: 'Current Affairs' },
+                    poll: { icon: BarChart3, gradient: 'bg-primary-600', label: 'Poll' },
                   };
                   const config = typeConfig[reel.type] || typeConfig.question;
                   const Icon = config.icon;
@@ -363,7 +363,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <button
                   onClick={() => fetchReels(reelsPage + 1)}
                   disabled={reelsLoading}
-                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-700 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                 >
                   {reelsLoading ? 'Loading...' : 'Load More Reels'}
                 </button>

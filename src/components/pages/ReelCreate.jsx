@@ -173,7 +173,7 @@ const ReelCreate = () => {
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">Login required to create reels</p>
-            <Link href="/login"className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-primary-700 text-white text-sm font-semibold">Login</Link>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-primary-600 text-white text-sm font-semibold">Login</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -229,10 +229,10 @@ const ReelCreate = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-black bg-primary-700 text-white uppercase tracking-widest">{type === 'current_affairs' ? 'CA' : type}</span>
+                  <span className="px-3 py-1 rounded-full text-[10px] font-black bg-primary-600 text-white uppercase tracking-widest">{type === 'current_affairs' ? 'CA' : type}</span>
                   <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">New Reel</p>
                 </div>
-                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-700 hover:text-primary-700 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">Change Type</button>
+                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">Change Type</button>
               </div>
 
               {/* Common */}
@@ -273,7 +273,7 @@ const ReelCreate = () => {
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-700 bg-primary-700 text-white' : 'border-slate-300 text-slate-400'}`}>
+                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-600 bg-primary-600 text-white' : 'border-slate-300 text-slate-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
@@ -324,7 +324,7 @@ const ReelCreate = () => {
 
               {/* Poll */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-800 p-4 space-y-3">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-3">
                   <div><label className={labelClass}>Poll Question *</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
                   <div>
                     {pollOptions.map((o, i) => (
@@ -376,7 +376,7 @@ const ReelCreate = () => {
                       {/* Play/Pause */}
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ?'bg-primary-700 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'bg-primary-600 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       {/* Info */}
@@ -391,7 +391,7 @@ const ReelCreate = () => {
                       </div>
                       {/* Selected check */}
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-primary-700 flex items-center justify-center shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center shrink-0">
                           <span className="text-white text-[10px] font-bold">✓</span>
                         </div>
                       )}
@@ -406,7 +406,7 @@ const ReelCreate = () => {
                 {audioPlaying && (
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-primary-700 animate-pulse"/>
+                      <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
                       <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
                     </div>
                     <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">

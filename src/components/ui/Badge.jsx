@@ -18,7 +18,7 @@ const Badge = ({
 }) => {
   // Brand system: primary (green) or stealth (neutral black/white via theme tokens)
   const variants = {
-    primary: 'bg-primary-700 text-white shadow-sm border-primary-600',
+    primary: 'bg-primary-600 text-white shadow-sm border-primary-600',
     stealth: 'bg-background-surface-secondary text-content-secondary border-slate-200 dark:border-slate-800 shadow-sm',
   };
 

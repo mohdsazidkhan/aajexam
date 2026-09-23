@@ -56,8 +56,8 @@ const TABS = [
 
 const SECTION_META = {
    exam: { label: 'Exams', icon: ShieldCheck, color: 'text-black dark:text-white' },
-   test: { label: 'Practice Tests', icon: FileText, color: 'text-primary-700' },
-   quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-primary-700' },
+   test: { label: 'Practice Tests', icon: FileText, color: 'text-primary-600' },
+   quiz: { label: 'Quizzes', icon: BrainCircuit, color: 'text-primary-600' },
    reel: { label: 'Reels', icon: Play, color: 'text-slate-500 dark:text-slate-400' },
    subject: { label: 'Subjects', icon: BookMarked, color: 'text-black dark:text-white' },
    topic: { label: 'Topics', icon: Layers, color: 'text-black dark:text-white' },
@@ -78,11 +78,11 @@ const EMPTY_SECTIONS = () => SECTION_ORDER.reduce((acc, key) => {
 }, {});
 
 const REEL_TYPE_CONFIG = {
-   question: { icon: HelpCircle, gradient: 'bg-primary-700' },
-   fact: { icon: BookOpen, gradient: 'bg-primary-700' },
-   tip: { icon: Zap, gradient: 'bg-primary-700' },
-   current_affairs: { icon: Newspaper, gradient: 'bg-primary-700' },
-   poll: { icon: BarChart3, gradient: 'bg-primary-700' },
+   question: { icon: HelpCircle, gradient: 'bg-primary-600' },
+   fact: { icon: BookOpen, gradient: 'bg-primary-600' },
+   tip: { icon: Zap, gradient: 'bg-primary-600' },
+   current_affairs: { icon: Newspaper, gradient: 'bg-primary-600' },
+   poll: { icon: BarChart3, gradient: 'bg-primary-600' },
 };
 
 const formatCount = (n) => {
@@ -305,7 +305,7 @@ const SearchPage = () => {
             return (
                <div className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
                   <Link href={item.username ? `/u/${item.username}` : '#'} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
-                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-primary-700 p-[2px] shrink-0">
+                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-primary-600 p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
                      <div className="min-w-0 flex-1">
@@ -317,7 +317,7 @@ const SearchPage = () => {
                      <span className="shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-400 dark:text-slate-500">You</span>
                   ) : isAuthenticated() && userId && (
                      <button onClick={(e) => { e.stopPropagation(); handleFollowToggle(userId); }} disabled={isThisLoading}
-                        className={`shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${isFollowing ? 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700' : 'bg-primary-700 text-white hover:bg-primary-600'} disabled:opacity-50`}>
+                        className={`shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${isFollowing ? 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700' : 'bg-primary-600 text-white hover:bg-primary-600'} disabled:opacity-50`}>
                         {isThisLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : isFollowing ? 'Following' : 'Follow'}
                      </button>
                   )}
@@ -327,12 +327,12 @@ const SearchPage = () => {
          case 'test':
             return (
                <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">{item.duration} min · {item.totalMarks} marks</p>
                   </div>
-                  <span className="text-[10px] font-bold text-primary-700 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg shrink-0">START</span>
+                  <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg shrink-0">START</span>
                </div>
             );
          case 'exam':
@@ -340,7 +340,7 @@ const SearchPage = () => {
          case 'pattern':
             return (
                <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
                      <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
@@ -351,7 +351,7 @@ const SearchPage = () => {
          case 'quiz':
             return (
                <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">
@@ -359,7 +359,7 @@ const SearchPage = () => {
                      </p>
                   </div>
                   <div className="flex flex-col items-end gap-0.5 shrink-0">
-                     <span className="text-[10px] font-bold text-primary-700 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">START</span>
+                     <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">START</span>
                      {item.totalAttempts > 0 && (
                         <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
                      )}
@@ -369,7 +369,7 @@ const SearchPage = () => {
          case 'subject':
             return (
                <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
@@ -380,7 +380,7 @@ const SearchPage = () => {
          case 'topic':
             return (
                <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -391,7 +391,7 @@ const SearchPage = () => {
          case 'hashtag':
             return (
                <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
                      <p className="text-xs text-slate-400">{item.count} question{item.count !== 1 ? 's' : ''}</p>
@@ -402,7 +402,7 @@ const SearchPage = () => {
          case 'blog':
             return (
                <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
@@ -413,7 +413,7 @@ const SearchPage = () => {
          case 'note':
             return (
                <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
@@ -424,7 +424,7 @@ const SearchPage = () => {
          case 'examNews':
             return (
                <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
@@ -435,7 +435,7 @@ const SearchPage = () => {
          case 'currentAffair':
             return (
                <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>
@@ -476,7 +476,7 @@ const SearchPage = () => {
    const hasAnySectionResults = SECTION_ORDER.some(key => (sections[key]?.items || []).length > 0);
 
    return (
-      <div className="min-h-screen bg-background-page selection:bg-primary-700 selection:text-white">
+      <div className="min-h-screen bg-background-page selection:bg-primary-600 selection:text-white">
          <Head>
             <title>Search | AajExam</title>
          </Head>
@@ -535,7 +535,7 @@ const SearchPage = () => {
                      )}
                   </div>
                   {(isFocused || query) && (
-                     <button type="submit" disabled={loading || !query.trim()} className="text-sm font-bold text-primary-700 shrink-0 disabled:opacity-40">
+                     <button type="submit" disabled={loading || !query.trim()} className="text-sm font-bold text-primary-600 shrink-0 disabled:opacity-40">
                         Search
                      </button>
                   )}
@@ -588,7 +588,7 @@ const SearchPage = () => {
                                           <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                                           <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{meta.label}</h3>
                                        </div>
-                                       <button onClick={() => handleTabChange('reel')} className="text-[11px] font-bold text-primary-700">See all</button>
+                                       <button onClick={() => handleTabChange('reel')} className="text-[11px] font-bold text-primary-600">See all</button>
                                     </div>
                                     <div className="flex overflow-x-auto no-scrollbar gap-1.5 px-4 pb-1">
                                        {section.items.map(reel => renderReelCard(reel, 'small'))}
@@ -607,7 +607,7 @@ const SearchPage = () => {
                                     {section.items.map((item, idx) => <ResultRow item={item} key={item._id || item.tag || idx} />)}
                                  </div>
                                  {section.hasMore && (
-                                    <button onClick={() => handleTabChange(key)} className="text-[11px] font-bold text-primary-700 px-1 py-2">See all {meta.label.toLowerCase()} →</button>
+                                    <button onClick={() => handleTabChange(key)} className="text-[11px] font-bold text-primary-600 px-1 py-2">See all {meta.label.toLowerCase()} →</button>
                                  )}
                               </div>
                            );
@@ -641,7 +641,7 @@ const SearchPage = () => {
                               </div>
                               {currentTabData.hasMore && (
                                  <div className="flex justify-center py-4">
-                                    <button onClick={loadMore} disabled={loadingMore} className="text-xs font-bold text-primary-700 flex items-center gap-1.5 disabled:opacity-50">
+                                    <button onClick={loadMore} disabled={loadingMore} className="text-xs font-bold text-primary-600 flex items-center gap-1.5 disabled:opacity-50">
                                        {loadingMore && <LoaderIcon className="w-3.5 h-3.5 animate-spin" />} Load more
                                     </button>
                                  </div>

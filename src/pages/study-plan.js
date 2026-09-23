@@ -114,10 +114,10 @@ const StudyPlanPage = () => {
         <SubscriptionGuard message="AI Study Planner is a PRO feature. Upgrade to get a personalized roadmap and master your exams!">
           <div className="flex items-center justify-between gap-3">
             <div className="space-y-1">
-              <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-700" /> Study Planner</h1>
+              <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-600" /> Study Planner</h1>
               <p className="text-sm font-bold text-slate-400 flex items-center gap-1"><Sparkles className="w-3 h-3" /> AI-powered personalized plans</p>
             </div>
-            <button onClick={() => setShowForm(!showForm)} className="px-4 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-600 transition flex-shrink-0">
+            <button onClick={() => setShowForm(!showForm)} className="px-4 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-600 transition flex-shrink-0">
               <Plus className="w-3 h-3 inline mr-1" /> New Plan
             </button>
           </div>
@@ -142,7 +142,7 @@ const StudyPlanPage = () => {
                   {durationPreview && (
                     durationPreview.invalid
                       ? <p className="text-[10px] font-bold text-black dark:text-white mt-1">Date past me hai</p>
-                      : <p className="text-[10px] font-bold text-primary-700 mt-1">
+                      : <p className="text-[10px] font-bold text-primary-600 mt-1">
                         <Calendar className="w-3 h-3 inline mr-0.5" />
                         {fmtDate(new Date())} → {fmtDate(form.examDate)} = <b>{durationPreview.days} din</b>
                         {' '}({durationPreview.weeks} hafte{durationPreview.extra ? ` + ${durationPreview.extra} din` : ''})
@@ -165,7 +165,7 @@ const StudyPlanPage = () => {
                     className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
                 </div>
               </div>
-              <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
                 {generating ? <><Sparkles className="w-4 h-4 inline mr-1 animate-spin" /> Generating...</> : <><Sparkles className="w-4 h-4 inline mr-1" /> Generate Plan</>}
               </button>
             </Card>
@@ -180,32 +180,32 @@ const StudyPlanPage = () => {
                   <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold mt-1">
                     <span><Clock className="w-3 h-3 inline" /> {plan.dailyHours}h/day</span>
                     <span><Target className="w-3 h-3 inline" /> {plan.totalDays} days</span>
-                    <span className={`px-2 py-0.5 rounded ${plan.status === 'active' ? 'bg-primary-50 text-primary-700' : 'bg-slate-100 text-slate-500'}`}>{plan.status}</span>
+                    <span className={`px-2 py-0.5 rounded ${plan.status === 'active' ? 'bg-primary-50 text-primary-600' : 'bg-slate-100 text-slate-500'}`}>{plan.status}</span>
                     <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">{plan.generatedBy === 'ai' ? 'AI' : 'Template'}</span>
                   </div>
                 </div>
                 <div className="flex gap-1">
                   <button onClick={() => togglePlanStatus(plan._id, plan.status)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                    {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-700" />}
+                    {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-600" />}
                   </button>
                   <button onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                 </div>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
-                <div className="bg-primary-700 h-2 rounded-full transition-all" style={{ width: `${plan.completionPercentage || 0}%` }} />
+                <div className="bg-primary-600 h-2 rounded-full transition-all" style={{ width: `${plan.completionPercentage || 0}%` }} />
               </div>
               <div className="flex justify-between text-[10px] font-bold text-slate-400">
                 <span>{plan.completionPercentage || 0}% complete</span>
                 <span>Exam: {new Date(plan.examDate).toLocaleDateString('en-IN')}</span>
               </div>
-              <button onClick={() => setActivePlan(plan)} className="text-[10px] font-black text-primary-700 hover:underline">View Full Plan</button>
+              <button onClick={() => setActivePlan(plan)} className="text-[10px] font-black text-primary-600 hover:underline">View Full Plan</button>
             </Card>
           ))}
 
           {/* Active Plan Detail */}
           {activePlan && (
             <div className="space-y-5">
-              <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-700 hover:underline">Back to Plans</button>
+              <button onClick={() => setActivePlan(null)} className="text-sm font-bold text-primary-600 hover:underline">Back to Plans</button>
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
                   <h2 className="text-lg font-black text-slate-900 dark:text-white">{activePlan.exam?.name}</h2>
@@ -215,10 +215,10 @@ const StudyPlanPage = () => {
                   </p>
                 </div>
                 <div className="inline-flex rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
-                  <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-700 shadow-sm' : 'text-slate-500'}`}>
+                  <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-600 shadow-sm' : 'text-slate-500'}`}>
                     <LayoutGrid className="w-3 h-3" /> Weekly
                   </button>
-                  <button onClick={() => setViewMode('calendar')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'calendar' ? 'bg-white dark:bg-slate-700 text-primary-700 shadow-sm' : 'text-slate-500'}`}>
+                  <button onClick={() => setViewMode('calendar')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'calendar' ? 'bg-white dark:bg-slate-700 text-primary-600 shadow-sm' : 'text-slate-500'}`}>
                     <Calendar className="w-3 h-3" /> Calendar
                   </button>
                 </div>
@@ -229,7 +229,7 @@ const StudyPlanPage = () => {
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider">Week {week.week}</h3>
                     {week.startDate && (
-                      <span className="text-[10px] font-black text-primary-700 bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/20 px-2 py-0.5 rounded-full">
                         {fmtShort(week.startDate)} → {fmtShort(week.endDate)}
                       </span>
                     )}
@@ -237,7 +237,7 @@ const StudyPlanPage = () => {
                   {week.tasks?.map((task, ti) => (
                     <div key={ti} className={`flex items-center gap-3 px-3 py-3 rounded-lg ${task.isCompleted ? 'bg-primary-50 dark:bg-primary-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
                       <button onClick={() => completeTask(activePlan._id, wi, ti)}
-                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${task.isCompleted ? 'border-primary-700 bg-primary-700' : 'border-slate-300'}`}>
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${task.isCompleted ? 'border-primary-600 bg-primary-600' : 'border-slate-300'}`}>
                         {task.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}
                       </button>
                       <div className="flex-1">
@@ -256,12 +256,12 @@ const StudyPlanPage = () => {
                 (activePlan.dailyTasks?.length > 0 ? activePlan.dailyTasks : []).map((d, di) => (
                   <Card key={di} className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-primary-700" />
+                      <Calendar className="w-4 h-4 text-primary-600" />
                       <h3 className="text-xs font-black text-slate-900 dark:text-white">{dayName(d.date)}, {fmtDate(d.date)}</h3>
                     </div>
                     {d.tasks?.map((t, ti) => (
                       <div key={ti} className={`flex items-center gap-3 px-3 py-2 rounded-lg ${t.isCompleted ? 'bg-primary-50 dark:bg-primary-900/10' : 'bg-slate-50 dark:bg-slate-800/50'}`}>
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${t.isCompleted ? 'border-primary-700 bg-primary-700' : 'border-slate-300'}`}>
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${t.isCompleted ? 'border-primary-600 bg-primary-600' : 'border-slate-300'}`}>
                           {t.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}
                         </div>
                         <div className="flex-1">
@@ -284,7 +284,7 @@ const StudyPlanPage = () => {
               <CalendarDays className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">No Study Plans Yet</h2>
               <p className="text-sm text-slate-400">Create your first AI-powered study plan!</p>
-              <button onClick={() => setShowForm(true)} className="px-6 py-2 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold">Create Plan</button>
+              <button onClick={() => setShowForm(true)} className="px-6 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold">Create Plan</button>
             </Card>
           )}
         </SubscriptionGuard>

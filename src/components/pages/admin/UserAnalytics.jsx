@@ -16,18 +16,14 @@ import {
 } from 'chart.js';
 
 import {
-  Filter,
   Download,
   BarChart3,
   LineChart,
   PieChart as PieChartIcon,
   ArrowLeft,
   Zap,
-  ChevronRight,
   Search,
-  Calendar,
-  Layers,
-  ShieldCheck
+  Calendar
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -237,80 +233,33 @@ const UserAnalytics = () => {
       <div className="adminContent w-full mx-auto">
 
         {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-4"
-        >
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-            <div className="space-y-2">
-              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                User <span className="text-primary-700">Analytics</span>
-              </h1>
-              <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest max-w-xl leading-relaxed">User growth and subscription trends at a glance.</p>
-            </div>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0">
+            User <span className="text-primary-600">Stats</span>
+          </h1>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <button
-                onClick={handleExport}
-                className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-3"
-              >
-                <Download className="w-4 h-4" /> Export CSV
-              </button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Controller Bar */}
-        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
-              <Filter className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Filters</div>
-              <div className="text-sm font-black italic uppercase tracking-tighter">Filter Options</div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="relative group">
-              <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:col-span-1">
+              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
               <select
                 name="period"
                 value={filters.period}
                 onChange={handleFilterChange}
-                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                className="w-full pl-9 pr-8 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm appearance-none cursor-pointer"
               >
                 <option value="week">Past 7 Days</option>
                 <option value="month">Past 30 Days</option>
                 <option value="quarter">Past 90 Days</option>
                 <option value="year">Full Year</option>
               </select>
-              <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
             </div>
 
-            <div className="relative">
-              <Layers className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                name="level"
-                value={filters.level}
-                onChange={handleFilterChange}
-                placeholder="Filter by level..."
-                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
-              />
-            </div>
-
-            <div className="relative">
-              <ShieldCheck className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                name="subscription"
-                value={filters.subscription}
-                onChange={handleFilterChange}
-                placeholder="Filter by plan..."
-                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none transition-all shadow-sm w-full lg:w-48 placeholder:text-slate-400"
-              />
-            </div>
+            <button
+              onClick={handleExport}
+              className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0"
+            >
+              <Download className="w-4 h-4" /> Export CSV
+            </button>
           </div>
         </div>
 
@@ -322,7 +271,7 @@ const UserAnalytics = () => {
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
+              <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl">
                 <LineChart className="w-5 h-5" />
               </div>
               <div>

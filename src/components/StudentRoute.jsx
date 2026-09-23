@@ -47,7 +47,7 @@ export default function StudentRoute({ children }) {
           </p>
           <button
             onClick={() => router.push('/home')}
-            className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+            className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
           >
             Go to Home
           </button>

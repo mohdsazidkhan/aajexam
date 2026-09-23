@@ -599,12 +599,9 @@ const AdminGenerateTests = () => {
                 <Sparkles size={18} color="#fff" />
               </div>
               <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: '#f1f5f9' }}>
-                AI Test Generator
+                Generate Tests
               </h1>
             </div>
-            <p style={{ margin: 0, fontSize: 13, color: '#64748b' }}>
-              Generate section-wise practice test questions using local Ollama AI
-            </p>
           </div>
           {step > 1 && (
             <button onClick={handleReset} style={{

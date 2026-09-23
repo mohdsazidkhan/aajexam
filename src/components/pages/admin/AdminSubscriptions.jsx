@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Activity, CheckCircle, Clock, CreditCard, Download, Filter,
-  IndianRupee, Layers, LayoutDashboard, LineChart, PieChart,
-  TrendingUp, Users, Wallet, Zap, Cpu, Search, Plus, X,
-  Eye, EyeOff, ChevronLeft, ChevronRight, Crown, Star, Gem,
+  Activity, CheckCircle, Clock, Download,
+  Layers,
+  TrendingUp, Users, Zap, Cpu, Search, Plus, X,
+  Eye, EyeOff, Crown,
   Rocket, Table, LayoutGrid, List, Calendar, ArrowUp, ArrowDown,
   AlertTriangle, XCircle
 } from 'lucide-react';
@@ -15,17 +15,20 @@ import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
+import ResponsiveTable from '../../ResponsiveTable';
+import Pagination from '../../Pagination';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
 // â€”â€”â€”â€”â€” Stats Card â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
   const colors = {
-    primary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
-    secondary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
-    emerald: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+    primary: "text-primary-600 bg-primary-500/10 border-primary-500/20",
+    secondary: "text-primary-600 bg-primary-500/10 border-primary-500/20",
+    emerald: "text-primary-600 bg-primary-500/10 border-primary-500/20",
     rose: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-    purple: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+    purple: "text-primary-600 bg-primary-500/10 border-primary-500/20",
     amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
   };
 
@@ -43,7 +46,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</div>
       </div>
       <div className="space-y-1">
-        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-700 transition-colors">
+        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-600 transition-colors">
           {value}
         </div>
         {sub !== undefined && (
@@ -70,13 +73,13 @@ const AdminSubscriptions = () => {
     month: '0', // Default to no month filter
     search: '',
     page: 1,
-    limit: 20
+    limit: DEFAULT_PAGE_SIZE
   });
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
     total: 0,
-    limit: 20,
+    limit: DEFAULT_PAGE_SIZE,
     hasNext: false,
     hasPrev: false
   });
@@ -131,7 +134,7 @@ const AdminSubscriptions = () => {
           currentPage: 1,
           totalPages: 1,
           total: 0,
-          limit: 20,
+          limit: DEFAULT_PAGE_SIZE,
           hasNext: false,
           hasPrev: false
         });
@@ -327,7 +330,7 @@ const AdminSubscriptions = () => {
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'active': return <CheckCircle className="w-4 h-4 text-primary-700" />;
+      case 'active': return <CheckCircle className="w-4 h-4 text-primary-600" />;
       case 'expired': return <Clock className="w-4 h-4 text-black dark:text-white" />;
       case 'inactive': return <XCircle className="w-4 h-4 text-black dark:text-white" />;
       case 'cancelled': return <AlertTriangle className="w-4 h-4 text-slate-400" />;
@@ -337,7 +340,7 @@ const AdminSubscriptions = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'active': return "text-primary-700 bg-primary-500/10 border-primary-500/20";
+      case 'active': return "text-primary-600 bg-primary-500/10 border-primary-500/20";
       case 'expired': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
       case 'inactive': return "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20";
       default: return "text-slate-500 bg-slate-500/10 border-slate-500/20";
@@ -378,177 +381,214 @@ const AdminSubscriptions = () => {
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <div className="p-1.5 bg-slate-100 dark:bg-white/5 rounded-lg opacity-40"><ArrowUp className="w-3 h-3" /></div>;
     return (
-      <div className="p-1.5 bg-primary-500/20 text-primary-700 rounded-lg">
+      <div className="p-1.5 bg-primary-500/20 text-primary-600 rounded-lg">
         {sortOrder === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
       </div>
     );
   };
 
-  if (loading) {
+  const subscriptionColumns = [
+    {
+      key: 'createdAt',
+      header: (
+        <div className="flex items-center gap-2 hover:text-primary-600 transition-colors cursor-pointer" onClick={() => handleSort('createdAt')}>
+          DATE <SortIcon field="createdAt" />
+        </div>
+      ),
+      render: (_, subscription) => (
+        <div className="flex flex-col">
+          <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">
+            {formatDate(subscription.createdAt || subscription.created_at || subscription.startDate)}
+          </span>
+          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">ID: {subscription._id?.slice(-6).toUpperCase()}</span>
+        </div>
+      )
+    },
+    {
+      key: 'user',
+      header: 'Student',
+      render: (_, subscription) => (
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
+            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600">
+              {subscription.user?.name?.charAt(0) || 'U'}
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</span>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1 line-clamp-1">{subscription.user?.email || 'N/A'}</span>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'planName',
+      header: 'Plan',
+      render: (_, subscription) => (
+        <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
+          {getPlanIcon(subscription.planName)}
+          {subscription.planName || 'FREE'}
+        </div>
+      )
+    },
+    {
+      key: 'status',
+      header: 'Status',
+      render: (_, subscription) => (
+        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
+          {getStatusIcon(subscription.status)}
+          {subscription.status || 'UNKNOWN'}
+        </div>
+      )
+    },
+    {
+      key: 'validPeriod',
+      header: 'Valid Period',
+      render: (_, subscription) => (
+        <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
+            <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary-600" />
+            <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'No Expiry'}</span>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'amount',
+      header: 'Amount',
+      render: (_, subscription) => (
+        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic text-right">
+          {subscription.amount ? formatCurrency(subscription.amount) : "₹0.00"}
+        </div>
+      )
+    },
+    {
+      key: 'actions',
+      header: 'Actions',
+      render: (_, subscription) => (
+        <div className="flex items-center justify-end gap-2">
+          <motion.button
+            whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => toggleSubscriptionDetails(subscription._id)}
+            className="p-3 text-primary-600 rounded-lg lg:rounded-xl"
+          >
+            {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => openExtendModal(subscription)}
+            className="p-3 text-primary-600 rounded-lg lg:rounded-xl"
+          >
+            <Plus className="w-4 h-4" />
+          </motion.button>
+        </div>
+      )
+    }
+  ];
+
+  if (loading && subscriptions.length === 0) {
     return (
-      <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-sm p-6 border border-white/30">
-        <AdminTableSkeleton />
+      <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+        <Sidebar />
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+          <AdminTableSkeleton />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-sm overflow-hidden group"
-        >
-          <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Layers className="w-64 h-64 text-primary-700 -rotate-12" />
-          </div>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Layers className="w-6 h-6 text-primary-600 shrink-0" /> Subscriptions <span className="text-slate-400 dark:text-slate-500">({pagination.total || 0})</span></h1>
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
-            <div className="space-y-2">
-              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                MANAGE <span className="text-primary-700">SUBSCRIPTIONS</span>
-              </h1>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Manage student subscription plans and membership status.</p>
-
-              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                <div className="relative group/search w-full lg:w-auto">
-                  <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
-                  <input
-                    type="text"
-                    placeholder="Search by name, email, or plan..."
-                    value={filters.search}
-                    onChange={(e) => handleFilterChange('search', e.target.value)}
-                    className="pl-14 pr-8 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all w-full lg:w-80"
-                  />
-                </div>
-
-                <div className="flex bg-slate-100 dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
-                  {[
-                    { mode: 'table', icon: Table },
-                    { mode: 'grid', icon: LayoutGrid },
-                    { mode: 'list', icon: List }
-                  ].map(({ mode, icon: Icon }) => (
-                    <motion.button
-                      key={mode}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setViewMode(mode)}
-                      className={`p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode ? 'bg-white dark:bg-white/10 text-primary-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </motion.button>
-                  ))}
-                </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={exportToCSV}
-                  className="w-full lg:w-auto flex items-center justify-center gap-3 px-4 lg:px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl shadow-sm group/btn"
+          <div className="grid grid-cols-2 lg:flex lg:flex-wrap lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:w-56">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search by name, email, or plan..."
+                value={filters.search}
+                onChange={(e) => handleFilterChange('search', e.target.value)}
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+              />
+            </div>
+            <select value={filters.plan} onChange={(e) => handleFilterChange('plan', e.target.value)} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value="all">All Plans</option>
+              {filterOptions.plans.map(plan => <option key={plan} value={plan}>{plan}</option>)}
+            </select>
+            <select value={filters.status} onChange={(e) => handleFilterChange('status', e.target.value)} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value="all">All Statuses</option>
+              {filterOptions.statuses.slice(1).map(status => <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>)}
+            </select>
+            <select value={filters.year} onChange={(e) => handleFilterChange('year', parseInt(e.target.value))} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value="">All Years</option>
+              {filterOptions.years.map(year => <option key={year} value={year}>{year}</option>)}
+            </select>
+            <select value={filters.month} onChange={(e) => handleFilterChange('month', parseInt(e.target.value))} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value={0}>All Months</option>
+              {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
+                <option key={month} value={month}>{new Date(0, month - 1).toLocaleString('default', { month: 'long' })}</option>
+              ))}
+            </select>
+            <div className="flex items-center gap-1">
+              {[
+                { mode: 'table', icon: Table, label: 'Table View' },
+                { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+                { mode: 'list', icon: List, label: 'List View' }
+              ].map(({ mode, icon: Icon, label }) => (
+                <button
+                  key={mode}
+                  onClick={() => setViewMode(mode)}
+                  title={label}
+                  className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
                 >
-                  <Download className="w-4 h-4 group-hover/btn:animate-bounce" />
-                  <span className="text-[10px] font-black uppercase tracking-widest">EXPORT TO CSV</span>
-                </motion.button>
-              </div>
+                  <Icon className="w-4 h-4" />
+                </button>
+              ))}
             </div>
-
-            <div className="flex flex-col items-end gap-2 text-right">
-              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ALL-TIME REVENUE</span>
-              <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-700 tabular-nums tracking-tighter">
-                <IndianRupee className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
-                {(summary.totalRevenue || 0).toLocaleString('en-IN')}
-              </div>
-            </div>
+            <button
+              onClick={exportToCSV}
+              title="Export CSV"
+              className="col-span-2 lg:col-span-1 flex items-center justify-center bg-primary-600 text-white p-2 rounded-lg lg:rounded-xl hover:bg-primary-700 shrink-0"
+            >
+              <Download className="w-4 h-4" />
+            </button>
           </div>
-        </motion.div>
-
-        {/* Stats Matrix */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4">
-          <StatsCard i={0} color="primary" icon={Users} label="TOTAL SUBSCRIPTIONS" value={summary.totalSubscriptions || 0} sub="ALL STUDENTS" />
-          <StatsCard i={1} color="emerald" icon={CheckCircle} label="ACTIVE" value={summary.activeSubscriptions || 0} sub="CURRENTLY ACTIVE" />
-          <StatsCard i={2} color="rose" icon={Zap} label="PAID MEMBERS" value={summary.paidSubscriptions || 0} sub="PAID PLANS" />
-          <StatsCard i={3} color="secondary" icon={Clock} label="FREE MEMBERS" value={summary.freeSubscriptions || 0} sub="FREE PLANS" />
-          <StatsCard i={4} color="purple" icon={TrendingUp} label="TOTAL REVENUE" value={formatCurrency(summary.totalRevenue || 0)} sub="ALL TIME" />
-          <StatsCard i={5} color="amber" icon={Calendar} label="THIS MONTH" value={formatCurrency(summary.periodRevenue || 0)} sub="MONTHLY REVENUE" />
         </div>
 
-
-        {/* Filter Controller */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 mb-4 shadow-sm"
-        >
-          <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 w-full">
-            <div className="flex items-center gap-4 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-              <Filter className="w-4 h-4 text-primary-700" />
-              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">FILTERS</span>
+        {/* Stats bar */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+          {[
+            { label: 'Total Subscriptions', val: summary.totalSubscriptions || 0, icon: Users },
+            { label: 'Active', val: summary.activeSubscriptions || 0, icon: CheckCircle },
+            { label: 'Paid Members', val: summary.paidSubscriptions || 0, icon: Crown },
+            { label: 'Free Members', val: summary.freeSubscriptions || 0, icon: Rocket },
+            { label: 'Total Revenue', val: formatCurrency(summary.totalRevenue || 0), icon: TrendingUp },
+            { label: 'This Month', val: formatCurrency(summary.periodRevenue || 0), icon: Calendar }
+          ].map((stat) => (
+            <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
+              <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+              <div className="min-w-0">
+                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
+                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+              </div>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
-              <select
-                value={filters.plan}
-                onChange={(e) => handleFilterChange('plan', e.target.value)}
-                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-              >
-                <option value="all">All Plans</option>
-                {filterOptions.plans.map(plan => (
-                  <option key={plan} value={plan}>{plan}</option>
-                ))}
-              </select>
-
-              <select
-                value={filters.status}
-                onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-              >
-                <option value="all">All Statuses</option>
-                {filterOptions.statuses.slice(1).map(status => (
-                  <option key={status} value={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</option>
-                ))}
-              </select>
-
-              <select
-                value={filters.year}
-                onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-              >
-                <option value="">All Years</option>
-                {filterOptions.years.map(year => (
-                  <option key={year} value={year}>{year}</option>
-                ))}
-              </select>
-
-              <select
-                value={filters.month}
-                onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-              >
-                <option value={0}>All Months</option>
-                {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
-                  <option key={month} value={month}>
-                    {new Date(0, month - 1).toLocaleString('default', { month: 'long' })}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                value={filters.limit}
-                onChange={(e) => handlePageSizeChange(e.target.value)}
-                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-lg lg:rounded-xl px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-              >
-                {[10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>{v} per page</option>)}
-              </select>
-            </div>
-          </div>
-        </motion.div>
+          ))}
+        </div>
 
         {/* Subscription List */}
+        <div className="flex-1 min-h-0 overflow-hidden">
         <AnimatePresence mode="wait">
           {error ? (
             <motion.div
@@ -557,7 +597,7 @@ const AdminSubscriptions = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm"
             >
-              <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
+              <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
@@ -575,308 +615,119 @@ const AdminSubscriptions = () => {
               <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No subscriptions match your current filters. Try adjusting your search or filter criteria.</p>
             </motion.div>
           ) : (
-            <motion.div
-              key={viewMode}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-2 lg:space-y-4 lg:space-y-12"
-            >
+            <div className="h-full flex flex-col">
+            <div className="flex-1 min-h-0 overflow-hidden">
               {/* Table View */}
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
-                  <div className="overflow-x-auto selection:bg-primary-500/30">
-                    <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
-                      <thead>
-                        <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                          <th className="px-3 lg:px-6 py-4">#</th>
-                          <th className="px-3 lg:px-6 py-4 cursor-pointer group" onClick={() => handleSort('createdAt')}>
-                            <div className="flex items-center gap-2 group-hover:text-primary-700 transition-colors">DATE <SortIcon field="createdAt" /></div>
-                          </th>
-                          <th className="px-3 lg:px-6 py-4">STUDENT</th>
-                          <th className="px-3 lg:px-6 py-4">PLAN</th>
-                          <th className="px-3 lg:px-6 py-4">STATUS</th>
-                          <th className="px-3 lg:px-6 py-4">VALID PERIOD</th>
-                          <th className="px-3 lg:px-6 py-4 text-right">AMOUNT</th>
-                          <th className="px-3 lg:px-6 py-4 text-right">ACTIONS</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {subscriptions.map((subscription, index) => (
-                          <motion.tr
-                            key={subscription._id}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.03 }}
-                            className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-sm rounded-3xl"
-                          >
-                            <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
-                              <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((pagination.currentPage - 1) * filters.limit) + index + 1}</span>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6">
-                              <div className="flex flex-col">
-                                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">
-                                  {formatDate(subscription.createdAt || subscription.created_at || subscription.startDate)}
-                                </span>
-                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">ID: {subscription._id?.slice(-6).toUpperCase()}</span>
-                              </div>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6">
-                              <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-                                  <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
-                                    {subscription.user?.name?.charAt(0) || 'U'}
-                                  </div>
-                                </div>
-                                <div className="flex flex-col">
-                                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</span>
-                                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-1 line-clamp-1">{subscription.user?.email || 'N/A'}</span>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6">
-                              <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                                {getPlanIcon(subscription.planName)}
-                                {subscription.planName || 'FREE'}
-                              </div>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6">
-                              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
-                                {getStatusIcon(subscription.status)}
-                                {subscription.status || 'UNKNOWN'}
-                              </div>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6">
-                              <div className="flex flex-col gap-1 text-[10px] font-bold text-slate-500">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-primary-700" />
-                                  <span className="uppercase tracking-widest tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-primary-700"/>
-                                  <span className="uppercase tracking-widest tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : 'No Expiry'}</span>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
-                              <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
-                                {subscription.amount ? formatCurrency(subscription.amount) : "₹0.00"}
-                              </div>
-                            </td>
-                            <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem] text-right">
-                              <div className="flex items-center justify-end gap-2">
-                                <motion.button
-                                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
-                                  whileTap={{ scale: 0.9 }}
-                                  onClick={() => toggleSubscriptionDetails(subscription._id)}
-                                  className="p-3 text-primary-700 rounded-lg lg:rounded-xl"
-                                >
-                                  {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                                </motion.button>
-                                <motion.button
-                                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
-                                  whileTap={{ scale: 0.9 }}
-                                  onClick={() => openExtendModal(subscription)}
-                                  className="p-3 text-primary-700 rounded-lg lg:rounded-xl"
-                                >
-                                  <Plus className="w-4 h-4" />
-                                </motion.button>
-                              </div>
-                            </td>
-                          </motion.tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                  <ResponsiveTable
+                    data={subscriptions}
+                    columns={subscriptionColumns}
+                    viewModes={['table']}
+                    defaultView={'table'}
+                    showPagination={false}
+                    showViewToggle={false}
+                    fillHeight
+                  />
                 </div>
               )}
 
               {/* Grid View */}
               {viewMode === 'grid' && (
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
-                  {subscriptions.map((subscription, index) => (
-                    <motion.div
-                      key={subscription._id}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.05 }}
-                      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden"
-                    >
-                      <div className="flex items-center justify-between mb-4 lg:mb-8">
-                        <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                          {subscription.planName || 'FREE'}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => openExtendModal(subscription)}
-                            className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl border-2 border-primary-500/20"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </motion.button>
-                          <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
-                            {subscription.status || 'UNKNOWN'}
-                          </div>
+                <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+                  {subscriptions.map((subscription) => (
+                    <div key={subscription._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase ${getPlanColor(subscription.planName)}`}>{subscription.planName || 'FREE'}</span>
+                        <div className="flex items-center gap-1.5">
+                          <button onClick={() => openExtendModal(subscription)} className="p-1.5 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg"><Plus className="w-3.5 h-3.5" /></button>
+                          <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase ${getStatusColor(subscription.status)}`}>{subscription.status || 'UNKNOWN'}</span>
                         </div>
                       </div>
 
-                      <div className="space-y-3 lg:space-y-6">
-                        <div className="flex items-center gap-3 lg:gap-6 pb-6 border-b-2 border-slate-100 dark:border-white/5">
-                          <div className="w-16 h-16 rounded-3xl bg-primary-700 p-[3px] shadow-sm">
-                            <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
-                              {subscription.user?.name?.charAt(0) || 'U'}
-                            </div>
-                          </div>
-                          <div className="flex flex-col">
-                            <h4 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2 line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-3 lg:gap-6">
-                          <div className="space-y-1">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">START DATE</span>
-                            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatDate(subscription.startDate || subscription.createdAt)}</div>
-                          </div>
-                          <div className="space-y-1">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">EXPIRY DATE</span>
-                            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{subscription.expiryDate ? formatDate(subscription.expiryDate) : "INDEFINITE"}</div>
-                          </div>
-                        </div>
-
-                        <div className="pt-4 flex items-center justify-between">
-                          <div className="flex flex-col">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">SUBSCRIPTION ID</span>
-                            <span className="text-[10px] font-black text-primary-700 tabular-nums uppercase">#{subscription._id?.slice(-8).toUpperCase()}</span>
-                          </div>
-                          <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">
-                            {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
-                          </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">{subscription.user?.name?.charAt(0) || 'U'}</div>
+                        <div className="min-w-0">
+                          <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{subscription.user?.name || 'N/A'}</h4>
+                          <span className="text-[10px] text-slate-400 truncate block">{subscription.user?.email || 'N/A'}</span>
                         </div>
                       </div>
-                    </motion.div>
+
+                      <div className="grid grid-cols-2 gap-2 text-[10px]">
+                        <div>
+                          <span className="font-bold text-slate-400 uppercase block">Start</span>
+                          <div className="font-black text-slate-900 dark:text-white tabular-nums">{formatDate(subscription.startDate || subscription.createdAt)}</div>
+                        </div>
+                        <div>
+                          <span className="font-bold text-slate-400 uppercase block">Expiry</span>
+                          <div className="font-black text-slate-900 dark:text-white tabular-nums">{subscription.expiryDate ? formatDate(subscription.expiryDate) : "Indefinite"}</div>
+                        </div>
+                      </div>
+
+                      <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                        <span className="text-[9px] font-bold text-primary-600 uppercase tabular-nums">#{subscription._id?.slice(-8).toUpperCase()}</span>
+                        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{subscription.amount ? formatCurrency(subscription.amount) : "₹0"}</div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}
 
               {/* List View */}
               {viewMode === 'list' && (
-                <div className="space-y-3 lg:space-y-6">
-                  {subscriptions.map((subscription, index) => (
-                    <motion.div
-                      key={subscription._id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
-                    >
-                      <div className="flex items-center gap-3 lg:gap-6">
-                        <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-sm">
-                          <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-700">
-                            {subscription.user?.name?.charAt(0) || 'U'}
-                          </div>
-                        </div>
-                        <div className="flex flex-col">
-                          <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors line-clamp-1">{subscription.user?.name || 'N/A'}</h4>
-                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest line-clamp-1">{subscription.user?.email || 'N/A'}</span>
+                <div className="h-full overflow-auto space-y-3">
+                  {subscriptions.map((subscription) => (
+                    <div key={subscription._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">{subscription.user?.name?.charAt(0) || 'U'}</div>
+                        <div className="min-w-0">
+                          <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{subscription.user?.name || 'N/A'}</h4>
+                          <span className="text-[10px] text-slate-400 truncate block">{subscription.user?.email || 'N/A'}</span>
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-4">
-                        <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getPlanColor(subscription.planName)}`}>
-                          {subscription.planName || 'FREE'}
-                        </div>
-                        <div className={`px-4 py-2 rounded-2xl border-2 font-black text-[10px] uppercase tracking-widest ${getStatusColor(subscription.status)}`}>
-                          {subscription.status || 'UNKNOWN'}
-                        </div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase ${getPlanColor(subscription.planName)}`}>{subscription.planName || 'FREE'}</span>
+                        <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase ${getStatusColor(subscription.status)}`}>{subscription.status || 'UNKNOWN'}</span>
                       </div>
 
-                      <div className="flex items-center gap-12">
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">CREATED ON</span>
-                          <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(subscription.createdAt)}</span>
+                      <div className="flex items-center gap-4 shrink-0">
+                        <div className="text-right">
+                          <span className="text-[9px] font-bold text-slate-400 uppercase block">Created</span>
+                          <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{formatDate(subscription.createdAt)}</span>
                         </div>
-                        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic">
-                          {subscription.amount ? formatCurrency(subscription.amount) : "₹0"}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <motion.button
-                            whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => openExtendModal(subscription)}
-                            className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl border-2 border-primary-500/20"
-                          >
-                            <Plus className="w-5 h-5" />
-                          </motion.button>
-                        </div>
+                        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{subscription.amount ? formatCurrency(subscription.amount) : "₹0"}</div>
+                        <button onClick={() => openExtendModal(subscription)} className="p-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg">
+                          <Plus className="w-4 h-4" />
+                        </button>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               )}
+            </div>
 
-              {/* Pagination */}
-              {pagination.totalPages > 1 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 pt-12 border-t-4 border-slate-100 dark:border-white/5"
-                >
-                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-4 lg:px-8 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 italic">
-                    Showing {((pagination.currentPage - 1) * pagination.limit) + 1} to {Math.min(pagination.currentPage * pagination.limit, pagination.total)} of {pagination.total} subscriptions
-                  </div>
-
-                  <div className="max-w-full overflow-x-auto">
-                    <div className="flex items-center gap-4 bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200/50 dark:border-white/5 w-max">
-                      <motion.button
-                        whileHover={{ scale: 1.1, x: -3 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => handlePageChange(pagination.currentPage - 1)}
-                        disabled={pagination.currentPage === 1}
-                        className="shrink-0 p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                      </motion.button>
-
-                      <div className="flex items-center px-4 gap-4">
-                        {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                          const page = i + 1;
-                          return (
-                            <motion.button
-                              key={page}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              onClick={() => handlePageChange(page)}
-                              className={`shrink-0 w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === page ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'}`}
-                            >
-                              {page}
-                            </motion.button>
-                          );
-                        })}
-                      </div>
-
-                      <motion.button
-                        whileHover={{ scale: 1.1, x: 3 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={() => handlePageChange(pagination.currentPage + 1)}
-                        disabled={pagination.currentPage === pagination.totalPages}
-                        className="shrink-0 p-4 bg-white dark:bg-white/10 text-slate-600 dark:text-slate-400 rounded-2xl disabled:opacity-20 transition-all font-black"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </motion.button>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
+            {pagination.totalPages > 1 && (
+              <div className="shrink-0">
+                <Pagination
+                  currentPage={pagination.currentPage}
+                  totalPages={pagination.totalPages}
+                  onPageChange={handlePageChange}
+                  totalItems={pagination.total}
+                  itemsPerPage={filters.limit}
+                  onItemsPerPageChange={handlePageSizeChange}
+                />
+              </div>
+            )}
+            </div>
           )}
         </AnimatePresence>
+        </div>
 
         {/* Extend Subscription Modal */}
         <AnimatePresence>
           {showExtendModal && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <div className="fixed inset-0 z-[100]">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -885,10 +736,11 @@ const AdminSubscriptions = () => {
                 className="absolute inset-0 bg-[#fafafa]/80 dark:bg-[#050505]/80 backdrop-blur-xl"
               />
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-2xl max-h-[75vh] bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col"
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                exit={{ y: '100%' }}
+                transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
+                className="absolute top-16 right-0 bottom-0 left-0 lg:left-64 bg-white dark:bg-slate-900 lg:rounded-l-[3rem] border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
               >
                 <div className="absolute top-0 right-0 p-3 lg:p-8">
                   <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
@@ -896,9 +748,9 @@ const AdminSubscriptions = () => {
                   </motion.button>
                 </div>
 
-                <div className="p-4 lg:p-12 overflow-y-auto">
+                <div className="flex-1 p-4 lg:p-12 overflow-y-auto">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-4 bg-primary-500/20 text-primary-700 rounded-3xl">
+                    <div className="p-4 bg-primary-500/20 text-primary-600 rounded-3xl">
                       <Layers className="w-8 h-8" />
                     </div>
                     <div className="flex flex-col">
@@ -957,7 +809,7 @@ const AdminSubscriptions = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleExtendSubscription}
-                      className="flex-[2] py-5 bg-primary-700 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-sm disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="flex-[2] py-5 bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-[10px] shadow-sm disabled:opacity-50 flex items-center justify-center gap-3"
                       disabled={extending}
                     >
                       {extending ? <Cpu className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}

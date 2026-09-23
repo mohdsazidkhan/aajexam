@@ -68,7 +68,7 @@ const PaymentHistoryPage = () => {
 
    const getStatusConfig = (status) => {
       switch (status) {
-         case 'success': return { label: 'Success', icon: CheckCircle, color: 'text-primary-700', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-800' };
+         case 'success': return { label: 'Success', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-600' };
          case 'pending': return { label: 'Pending', icon: AlertCircle, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800' };
          case 'failed': return { label: 'Failed', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
          case 'refunded': return { label: 'Refunded', icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
@@ -100,7 +100,7 @@ const PaymentHistoryPage = () => {
 
    return (
       <MobileAppWrapper title="Payment History">
-         <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
+         <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Payment History - AajExam" noIndex={true} />
 
             <div className="py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6 lg:space-y-4 mt-0">
@@ -138,7 +138,7 @@ const PaymentHistoryPage = () => {
                         </select>
                      )}
                      {(filterMonth || filterYear) && (
-                        <button onClick={clearFilters} className="px-4 py-3 text-xs font-black text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-2xl transition-colors">
+                        <button onClick={clearFilters} className="px-4 py-3 text-xs font-black text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-2xl transition-colors">
                            Clear
                         </button>
                      )}
@@ -166,7 +166,7 @@ const PaymentHistoryPage = () => {
                                     {/* Top Row: Icon + Status */}
                                     <div className="flex justify-between items-start">
                                        <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl">
-                                          <CreditCard className="w-6 h-6 text-primary-700" />
+                                          <CreditCard className="w-6 h-6 text-primary-600" />
                                        </div>
                                        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black uppercase ${statusConfig.bg} ${statusConfig.color}`}>
                                           <StatusIcon className="w-3 h-3" />

@@ -1,25 +1,41 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { CalendarDays, ListChecks, Sparkles, Table as TableIcon, List, LayoutGrid } from 'lucide-react';
+import { CalendarDays, ListChecks, Sparkles, Table as TableIcon, List, LayoutGrid, Search } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
 import Card from '../../../components/ui/Card';
+import ResponsiveTable from '../../../components/ResponsiveTable';
+import Pagination from '../../../components/Pagination';
+import Sidebar from '../../../components/Sidebar';
 import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
 import AdminRoute from '../../../components/AdminRoute';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import useDebounce from '../../../hooks/useDebounce';
 
 const AdminStudyPlanPage = () => {
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 500);
 
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const res = await API.request('/api/admin/study-plan?page=1&limit=20');
+        setLoading(true);
+        const params = new URLSearchParams({ page: String(page), limit: String(itemsPerPage) });
+        if (debouncedSearch) params.set('search', debouncedSearch);
+        const res = await API.request(`/api/admin/study-plan?${params.toString()}`);
         if (res?.success) {
           setPlans(res.data || []);
+          setTotalPages(res.pagination?.totalPages || 1);
+          setTotalItems(res.pagination?.total ?? (res.data || []).length);
         } else {
           toast.error(res?.message || 'Unable to load study plans');
         }
@@ -31,84 +47,100 @@ const AdminStudyPlanPage = () => {
     };
 
     fetchPlans();
-  }, []);
+  }, [page, itemsPerPage, debouncedSearch]);
+
+  useEffect(() => { setPage(1); }, [debouncedSearch]);
+
+  const columns = [
+    {
+      key: 'exam', header: 'Exam', render: (_, plan) => (
+        <span className="text-slate-500">{plan.exam?.name || 'Unknown Exam'}</span>
+      )
+    },
+    {
+      key: 'title', header: 'Title', render: (_, plan) => (
+        <span className="font-bold text-slate-900 dark:text-white">{plan.title || 'Study Plan'}</span>
+      )
+    },
+    {
+      key: 'user', header: 'User', render: (_, plan) => (
+        <span className="text-slate-500">{plan.user?.name || plan.user?.username || 'Unknown User'}</span>
+      )
+    },
+    {
+      key: 'dailyHours', header: 'Daily Hours', render: (_, plan) => (
+        <span className="text-slate-500">{plan.dailyHours || '-'}</span>
+      )
+    },
+    {
+      key: 'completionPercentage', header: 'Completion', render: (_, plan) => (
+        <span className="text-slate-500">{plan.completionPercentage ?? 0}%</span>
+      )
+    },
+    {
+      key: 'status', header: 'Status', render: (_, plan) => (
+        <span className="text-slate-500">{plan.status?.toUpperCase() || 'UNKNOWN'} · {plan.weeklySchedule?.length ?? 0}w</span>
+      )
+    },
+    {
+      key: 'createdAt', header: 'Created', render: (_, plan) => (
+        <span className="text-slate-500">{plan.createdAt ? new Date(plan.createdAt).toLocaleDateString('en-IN') : '-'}</span>
+      )
+    }
+  ];
 
   return (
     <AdminRoute>
-      <div className="min-h-screen pb-24">
+      <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head>
           <title>Admin Study Planner - AajExam</title>
           <meta name="robots" content="noindex,nofollow" />
         </Head>
+        <Sidebar />
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
-        <div className="py-4 lg:py-8 space-y-3 lg:space-y-6">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <h1 className="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-3">
-                <CalendarDays className="w-7 h-7 text-black dark:text-white" /> Study Planner
-              </h1>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
-                Admin view for study plan generation and active plan tracking.
-              </p>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><CalendarDays className="w-6 h-6 text-primary-600 shrink-0" /> Study Planner <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
+            <div className="flex items-center gap-3 w-full lg:w-auto justify-end flex-wrap">
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search by username, name, email, exam..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                />
+              </div>
+              <div className="flex items-center gap-1">
+                {[
+                  { mode: 'table', icon: TableIcon, label: 'Table View' },
+                  { mode: 'list', icon: List, label: 'List View' },
+                  { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+                ].map(({ mode, icon: Icon, label }) => (
+                  <button key={mode} onClick={() => setViewMode(mode)} title={label}
+                    className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+                    <Icon className="w-4 h-4" />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {loading ? (
-            <AdminTableSkeleton showHeader={false} showFilters={false} />
-          ) : plans.length === 0 ? (
-            <Card className="text-center text-slate-500 dark:text-slate-400">
-              No study plans available. Study planner admin controls can be added here once backend support is present.
-            </Card>
-          ) : (
+          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              {/* View Toggle & Count */}
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{plans.length} plan{plans.length !== 1 ? 's' : ''}</p>
-                <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl p-1 gap-0.5">
-                  {[
-                    { mode: 'table', icon: TableIcon, label: 'Table' },
-                    { mode: 'list', icon: List, label: 'List' },
-                    { mode: 'grid', icon: LayoutGrid, label: 'Grid' },
-                  ].map(({ mode, icon: Icon, label }) => (
-                    <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                      className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
-                      <Icon className="w-4 h-4" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {viewMode === 'table' ? (
-                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead className="bg-white dark:bg-slate-900">
-                      <tr>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Exam</th>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Title</th>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">User</th>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Daily Hours</th>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Completion</th>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Status</th>
-                        <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Created</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                      {plans.map((plan) => (
-                        <tr key={plan._id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                          <td className="px-4 py-3 text-slate-500">{plan.exam?.name || 'Unknown Exam'}</td>
-                          <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{plan.title || 'Study Plan'}</td>
-                          <td className="px-4 py-3 text-slate-500">{plan.user?.name || plan.user?.username || 'Unknown User'}</td>
-                          <td className="px-4 py-3 text-slate-500">{plan.dailyHours || '-'}</td>
-                          <td className="px-4 py-3 text-slate-500">{plan.completionPercentage ?? 0}%</td>
-                          <td className="px-4 py-3 text-slate-500">{plan.status?.toUpperCase() || 'UNKNOWN'} · {plan.weeklySchedule?.length ?? 0}w</td>
-                          <td className="px-4 py-3 text-slate-500">{plan.createdAt ? new Date(plan.createdAt).toLocaleDateString('en-IN') : '-'}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+              <div className="flex-1 min-h-0 overflow-hidden">
+              {plans.length === 0 ? (
+                <Card className="text-center text-slate-500 dark:text-slate-400">
+                  No study plans available. Study planner admin controls can be added here once backend support is present.
+                </Card>
+              ) : viewMode === 'table' ? (
+                <Card className="!p-0 overflow-hidden h-full flex flex-col" padded={false}>
+                  <ResponsiveTable data={plans} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
+                </Card>
               ) : viewMode === 'grid' ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
                   {plans.map((plan) => (
                     <Card key={plan._id} className="flex flex-col gap-2">
                       <div className="text-xs text-slate-400 uppercase tracking-[0.2em]">{plan.exam?.name || 'Unknown Exam'}</div>
@@ -133,7 +165,7 @@ const AdminStudyPlanPage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="space-y-2 lg:space-y-4">
+                <div className="h-full overflow-auto space-y-2 lg:space-y-4">
                   {plans.map((plan) => (
                     <Card key={plan._id} className="">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -166,8 +198,23 @@ const AdminStudyPlanPage = () => {
                   ))}
                 </div>
               )}
+              </div>
+
+              {totalItems > 0 && (
+                <div className="shrink-0">
+                  <Pagination
+                    currentPage={page}
+                    totalPages={totalPages}
+                    onPageChange={setPage}
+                    totalItems={totalItems}
+                    itemsPerPage={itemsPerPage}
+                    onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+                  />
+                </div>
+              )}
             </>
           )}
+          </div>
         </div>
       </div>
     </AdminRoute>

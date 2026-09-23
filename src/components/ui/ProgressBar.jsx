@@ -17,7 +17,7 @@ const ProgressBar = ({
   animate = true
 }) => {
   const variants = {
-    primary: 'bg-primary-700 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+    primary: 'bg-primary-600 shadow-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.3)]',
   };
 
   const heights = {

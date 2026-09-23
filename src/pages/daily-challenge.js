@@ -143,7 +143,7 @@ const DailyChallengePage = () => {
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2">
-            <Target className="w-6 h-6 text-primary-700" />
+            <Target className="w-6 h-6 text-primary-600" />
             <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">{challenge.title}</h1>
           </div>
           <p className="text-sm text-slate-400 font-bold">{challenge.questions.length} Questions | {challenge.duration} Minutes</p>
@@ -153,11 +153,11 @@ const DailyChallengePage = () => {
         {!started && !attempted && (
           <Card className="text-center space-y-6">
             <div className="w-24 h-24 bg-primary-50 dark:bg-primary-900/30 rounded-3xl flex items-center justify-center mx-auto">
-              <Zap className="w-12 h-12 text-primary-700" />
+              <Zap className="w-12 h-12 text-primary-600" />
             </div>
             <h2 className="text-xl font-black">Ready for Today&apos;s Challenge?</h2>
             <p className="text-sm text-slate-500">Complete it to maintain your streak!</p>
-            <button onClick={() => setStarted(true)} className="px-8 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+            <button onClick={() => setStarted(true)} className="px-8 py-3 bg-primary-600 text-white rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
               Start Challenge <ArrowRight className="w-4 h-4 inline ml-2" />
             </button>
           </Card>
@@ -178,7 +178,7 @@ const DailyChallengePage = () => {
                 {challenge.questions[currentQ].options.map((opt, i) => (
                   <button key={i} onClick={() => selectOption(i)}
                     className={`w-full text-left px-4 py-3 rounded-lg lg:rounded-xl text-sm font-bold transition-all border-2 ${answers[currentQ]?.selectedOptionIndex === i
-                      ? 'border-primary-700 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300'
+                      ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300'
                       : 'border-slate-100 dark:border-slate-800 hover:border-slate-300 text-slate-700 dark:text-slate-300'}`}>
                     <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt.text || opt}
                   </button>
@@ -188,8 +188,8 @@ const DailyChallengePage = () => {
             <div className="flex justify-between">
               <button disabled={currentQ === 0} onClick={() => setCurrentQ(currentQ - 1)} className="px-4 py-2.5 text-sm font-bold text-slate-500 disabled:opacity-30 disabled:cursor-not-allowed">Previous</button>
               {currentQ < challenge.questions.length - 1
-                ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition">Next</button>
-                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
+                ? <button onClick={() => setCurrentQ(currentQ + 1)} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition">Next</button>
+                : <button onClick={handleSubmit} disabled={submitting} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">{submitting ? 'Submitting...' : 'Submit'}</button>
               }
             </div>
           </div>
@@ -203,11 +203,11 @@ const DailyChallengePage = () => {
                 <h2 className="text-2xl font-black text-slate-900 dark:text-white">Challenge Complete!</h2>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-1">
-                    <p className="text-3xl font-black text-primary-700">{attemptData.score}</p>
+                    <p className="text-3xl font-black text-primary-600">{attemptData.score}</p>
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Score</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-3xl font-black text-primary-700">{attemptData.accuracy}%</p>
+                    <p className="text-3xl font-black text-primary-600">{attemptData.accuracy}%</p>
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Accuracy</p>
                   </div>
                   <div className="space-y-1">
@@ -222,7 +222,7 @@ const DailyChallengePage = () => {
             {challenge?.questions?.length > 0 && (
               <Card className="space-y-2 lg:space-y-4">
                 <h3 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-2">
-                  <Target className="w-4 h-4 text-primary-700" /> Question Review & Discussion
+                  <Target className="w-4 h-4 text-primary-600" /> Question Review & Discussion
                 </h3>
                 <div className="space-y-2 lg:space-y-4">
                   {challenge.questions.map((q, idx) => {
@@ -231,9 +231,9 @@ const DailyChallengePage = () => {
                     const isSkipped = !ans || ans.selectedOptionIndex === -1;
                     const isCorrect = ans?.isCorrect;
                     return (
-                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
+                      <div key={q._id || idx} className={`rounded-lg lg:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                         <div className="flex items-start gap-2 mb-2">
-                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-700 text-white':'bg-primary-700 text-white'}`}>{idx + 1}</div>
+                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>{idx + 1}</div>
                           <p className="text-sm font-bold text-slate-800 dark:text-white">{q.questionText}</p>
                         </div>
                         <div className="space-y-1 ml-8">
@@ -245,7 +245,7 @@ const DailyChallengePage = () => {
                             if (isSel && !isCorrect) cls = 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-black dark:border-white';
                             return (
                               <div key={oi} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${cls}`}>
-                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-700 shrink-0" />}
+                                {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 shrink-0" />}
                                 {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                                 {!isRight && !isSel && <div className="w-3.5 h-3.5 shrink-0" />}
                                 <span className="text-slate-700 dark:text-slate-300">{opt.text || opt}</span>
@@ -283,7 +283,7 @@ const DailyChallengePage = () => {
                       <motion.div key={i} variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }} className="flex items-center gap-3 px-3 py-2 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                         <span className={`text-sm font-black w-6 ${i < 3 ? 'text-black dark:text-white' : 'text-slate-400'}`}>#{i + 1}</span>
                         <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex-1">{entry.user?.name || 'Student'}</span>
-                        <span className="text-sm font-black text-primary-700">{entry.score}</span>
+                        <span className="text-sm font-black text-primary-600">{entry.score}</span>
                         <span className="text-[10px] font-bold text-slate-400">{entry.accuracy}%</span>
                       </motion.div>
                     ))}

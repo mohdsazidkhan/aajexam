@@ -21,11 +21,11 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const REEL_TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-700', iconColor: 'text-white', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-700', iconColor: 'text-white', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-700', iconColor: 'text-white', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-700', iconColor: 'text-white', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-700', iconColor: 'text-white', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Community poll' },
 ];
 
 const AdminBottomNav = () => {
@@ -115,7 +115,7 @@ const AdminBottomNav = () => {
                 onClick={() => setShowCreate(true)}
                 className="flex items-center justify-center mb-1 px-2"
               >
-                <div className="w-11 h-11 rounded-2xl bg-primary-700 flex items-center justify-center shadow-sm">
+                <div className="w-11 h-11 rounded-2xl bg-primary-600 flex items-center justify-center shadow-sm">
                   <Plus className="w-6 h-6 text-white" />
                 </div>
               </button>

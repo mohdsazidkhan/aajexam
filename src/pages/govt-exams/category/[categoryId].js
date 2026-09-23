@@ -142,12 +142,12 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
                 className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-sm hover:border-primary-700 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
               >
-                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-700 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-sm border-b-2 border-primary-700">
+                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-sm border-b-2 border-primary-600">
                   {exam.code?.[0] || 'E'}
                 </div>
 
                 <div className="flex-1 space-y-2">
-                  <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-700 transition-colors">
+                  <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
                     {exam.name}
                   </h3>
                   <div className="flex items-center gap-6">

@@ -3,24 +3,23 @@
 import { useEffect, useState } from "react";
 
 import Pagination from "../../Pagination";
-import ViewToggle from "../../ViewToggle";
-import SearchFilter from "../../SearchFilter";
 import { isMobile } from "react-device-detect";
 import API from '../../../lib/api';
+import ResponsiveTable from '../../ResponsiveTable';
 import {
-  User, Mail, Calendar, University, Phone, CreditCard,
-  Building, Key, Crown, Search, Filter,
-  Table as TableIcon, LayoutGrid, List, ChevronRight,
-  TrendingUp, Activity, Hash, Info, Zap, Settings, ArrowRight
+  User, Mail, University, CreditCard,
+  Key, Crown, Search,
+  Table as TableIcon, LayoutGrid, List,
+  Zap
 } from "lucide-react";
 import useDebounce from "../../../hooks/useDebounce";
-import { motion, AnimatePresence } from 'framer-motion';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
-const PAGE_LIMIT = 10;
+const PAGE_LIMIT = DEFAULT_PAGE_SIZE;
 
 export default function AdminBankDetails() {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -32,7 +31,7 @@ export default function AdminBankDetails() {
   const [limit, setLimit] = useState(PAGE_LIMIT);
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState(isMobile ? "grid" : "table");
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [pagination, setPagination] = useState({});
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("userInfo") || 'null') : null;
@@ -42,7 +41,7 @@ export default function AdminBankDetails() {
     fetchBankDetails(page, limit, debouncedSearch);
   }, [debouncedSearch, page, limit]);
 
-  const fetchBankDetails = async (page = 1, limit = 10, search = "") => {
+  const fetchBankDetails = async (page = 1, limit = DEFAULT_PAGE_SIZE, search = "") => {
     setLoading(true);
     setError(null);
     try {
@@ -89,6 +88,12 @@ export default function AdminBankDetails() {
     setPage(newPage);
   };
 
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    setLimit(newItemsPerPage);
+    setPage(1);
+  };
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString("en-IN", {
       year: "numeric",
@@ -102,9 +107,9 @@ export default function AdminBankDetails() {
   const getSubscriptionBadge = (status) => {
     const configs = {
       free: "text-slate-500 bg-slate-500/10 border-slate-500/20",
-      basic: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+      basic: "text-primary-600 bg-primary-500/10 border-primary-500/20",
       premium: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-      pro: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+      pro: "text-primary-600 bg-primary-500/10 border-primary-500/20",
     };
 
     return (
@@ -114,382 +119,268 @@ export default function AdminBankDetails() {
     );
   };
 
+  const bankDetailsColumns = [
+    {
+      key: 'user', header: 'USER', render: (_, detail) => (
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
+            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600">
+              {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
+            </div>
+          </div>
+          <div>
+            <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+              {detail.user?.name || "N/A"}
+            </div>
+            <div className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
+              <Mail className="w-3 h-3 mr-1" />
+              {detail.user?.email || "N/A"}
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'account', header: 'ACCOUNT DETAILS', render: (_, detail) => (
+        <div className="space-y-1">
+          <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+            <User className="w-3.5 h-3.5 mr-2 text-primary-600" />
+            {detail.accountHolderName}
+          </div>
+          <div className="flex items-center text-[10px] font-bold text-slate-400 tabular-nums">
+            <CreditCard className="w-3.5 h-3.5 mr-2 text-slate-400" />
+            {detail.accountNumber}
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'bank', header: 'BANK INFORMATION', render: (_, detail) => (
+        <div className="space-y-1">
+          <div className="flex items-center text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">
+            <University className="w-3.5 h-3.5 mr-2 text-primary-600" />
+            {detail.bankName}
+          </div>
+          <div className="flex items-center text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+            <Key className="w-3.5 h-3.5 mr-2 text-slate-400" />
+            {detail.ifscCode}
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'plan', header: 'PLAN', render: (_, detail) => (
+        <div className="flex flex-wrap gap-2">
+          {detail.user?.subscriptionStatus && (
+            <div className="flex items-center">
+              <Crown className="w-3 h-3 mr-1.5 text-black dark:text-white" />
+              {getSubscriptionBadge(detail.user.subscriptionStatus)}
+            </div>
+          )}
+        </div>
+      )
+    },
+    {
+      key: 'createdAt', header: 'ADDED ON', render: (_, detail) => (
+        <div className="text-[10px] font-black text-slate-400 tabular-nums uppercase">
+          {formatDate(detail.createdAt)}
+        </div>
+      )
+    }
+  ];
+
   const TableView = () => (
-    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
-      <div className="overflow-x-auto selection:bg-primary-500/30">
-        <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
-          <thead>
-            <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-              <th className="px-3 lg:px-6 py-4">USER</th>
-              <th className="px-3 lg:px-6 py-4">ACCOUNT DETAILS</th>
-              <th className="px-3 lg:px-6 py-4">BANK INFORMATION</th>
-              <th className="px-3 lg:px-6 py-4">PLAN</th>
-              <th className="px-3 lg:px-6 py-4">ADDED ON</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bankDetails.map((detail, index) => (
-              <tr
-                key={detail._id}
-                className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-sm rounded-3xl"
-              >
-                <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-                      <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
-                        {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">
-                        {detail.user?.name || "N/A"}
-                      </div>
-                      <div className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
-                        <Mail className="w-3 h-3 mr-1" />
-                        {detail.user?.email || "N/A"}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-3 lg:px-6 py-3 lg:py-6">
-                  <div className="space-y-1">
-                    <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                      <User className="w-3.5 h-3.5 mr-2 text-primary-700" />
-                      {detail.accountHolderName}
-                    </div>
-                    <div className="flex items-center text-[10px] font-bold text-slate-400 tabular-nums">
-                      <CreditCard className="w-3.5 h-3.5 mr-2 text-slate-400" />
-                      {detail.accountNumber}
-                    </div>
-                  </div>
-                </td>
-                <td className="px-3 lg:px-6 py-3 lg:py-6">
-                  <div className="space-y-1">
-                    <div className="flex items-center text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">
-                      <University className="w-3.5 h-3.5 mr-2 text-primary-700" />
-                      {detail.bankName}
-                    </div>
-                    <div className="flex items-center text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">
-                      <Key className="w-3.5 h-3.5 mr-2 text-slate-400" />
-                      {detail.ifscCode}
-                    </div>
-                  </div>
-                </td>
-                <td className="px-3 lg:px-6 py-3 lg:py-6">
-                  <div className="flex flex-wrap gap-2">
-                    {detail.user?.subscriptionStatus && (
-                      <div className="flex items-center">
-                        <Crown className="w-3 h-3 mr-1.5 text-black dark:text-white" />
-                        {getSubscriptionBadge(detail.user.subscriptionStatus)}
-                      </div>
-                    )}
-                  </div>
-                </td>
-                <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
-                  <div className="text-[10px] font-black text-slate-400 tabular-nums uppercase">
-                    {formatDate(detail.createdAt)}
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+      <ResponsiveTable
+        data={bankDetails}
+        columns={bankDetailsColumns}
+        viewModes={['table']}
+        defaultView="table"
+        showPagination={false}
+        showViewToggle={false}
+        fillHeight
+      />
     </div>
   );
 
   const CardView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
-      {bankDetails.map((detail, i) => (
-        <motion.div
-          key={detail._id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden cursor-default"
-        >
-          <div className="flex items-center justify-between mb-4 lg:mb-8">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
-                  {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
-                </div>
+    <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+      {bankDetails.map((detail) => (
+        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
+                {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
               </div>
-              <div>
-                <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">
-                  {detail.user?.name || "N/A"}
-                </h3>
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1">
-                  {detail.user?.email || "N/A"}
-                </p>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{detail.user?.name || "N/A"}</h3>
+                <p className="text-[10px] text-slate-400 truncate">{detail.user?.email || "N/A"}</p>
               </div>
             </div>
-            <div className="flex flex-col items-end gap-2">
-              {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
+            {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
+          </div>
+
+          <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/5 space-y-1.5">
+            <div className="flex items-center justify-between text-[10px]">
+              <span className="font-bold text-slate-400 uppercase">Account Holder</span>
+              <span className="font-black text-slate-900 dark:text-white">{detail.accountHolderName}</span>
+            </div>
+            <div className="flex items-center justify-between text-[10px] pt-1.5 border-t border-slate-200 dark:border-white/5">
+              <span className="font-bold text-slate-400 uppercase">Account No.</span>
+              <span className="font-black text-slate-900 dark:text-white tabular-nums">{detail.accountNumber}</span>
             </div>
           </div>
 
-          <div className="space-y-3 lg:space-y-6">
-            <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border-2 border-slate-100 dark:border-white/5 space-y-2 lg:space-y-4 shadow-sm">
-              <div className="flex items-center justify-between">
-                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT HOLDER</span>
-                <div className="flex items-center text-xs font-black text-slate-900 dark:text-white uppercase">
-                  {detail.accountHolderName}
-                </div>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-white/5">
-                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACCOUNT NUMBER</span>
-                <div className="flex items-center text-xs font-black text-slate-900 dark:text-white tabular-nums">
-                  {detail.accountNumber}
-                </div>
-              </div>
+          <div className="p-3 bg-primary-500/5 rounded-xl border border-primary-500/10 space-y-1.5">
+            <div className="flex items-center justify-between text-[10px]">
+              <span className="font-bold text-slate-400 uppercase">Bank</span>
+              <span className="font-black text-slate-900 dark:text-white">{detail.bankName}</span>
             </div>
-
-            <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 space-y-2 lg:space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <University className="w-4 h-4 text-primary-700" />
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">BANK NAME</span>
-                </div>
-                <div className="text-xs font-black text-slate-900 dark:text-white uppercase text-right">
-                  {detail.bankName}
-                </div>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-primary-500/10">
-                <div className="flex items-center gap-2">
-                  <Key className="w-4 h-4 text-primary-700" />
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">IFSC CODE</span>
-                </div>
-                <div className="text-xs font-black text-slate-900 dark:text-white uppercase tabular-nums">
-                  {detail.ifscCode}
-                </div>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-primary-500/10">
-                <div className="flex items-center gap-2">
-                  <Building className="w-4 h-4 text-primary-700" />
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">BRANCH</span>
-                </div>
-                <div className="text-xs font-black text-slate-900 dark:text-white uppercase text-right">
-                  {detail.branchName}
-                </div>
-              </div>
+            <div className="flex items-center justify-between text-[10px] pt-1.5 border-t border-primary-500/10">
+              <span className="font-bold text-slate-400 uppercase">IFSC</span>
+              <span className="font-black text-slate-900 dark:text-white tabular-nums">{detail.ifscCode}</span>
             </div>
-
-            <div className="flex items-center justify-between px-2">
-              <div className="text-[8px] font-black text-slate-300 uppercase tracking-widest flex items-center gap-2">
-                <Calendar className="w-3 h-3" />
-                ADDED: {formatDate(detail.createdAt)}
-              </div>
-              <div className="text-[8px] font-black text-primary-500/50 uppercase tracking-widest">
-                ID: {detail._id?.slice(-8).toUpperCase()}
-              </div>
+            <div className="flex items-center justify-between text-[10px] pt-1.5 border-t border-primary-500/10">
+              <span className="font-bold text-slate-400 uppercase">Branch</span>
+              <span className="font-black text-slate-900 dark:text-white">{detail.branchName}</span>
             </div>
           </div>
 
-          <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary-500/5 rounded-full blur-3xl group-hover:bg-primary-500/10 transition-colors" />
-        </motion.div>
+          <div className="flex items-center justify-between text-[9px] font-bold text-slate-400">
+            <span>Added {formatDate(detail.createdAt)}</span>
+            <span className="text-primary-600">#{detail._id?.slice(-8).toUpperCase()}</span>
+          </div>
+        </div>
       ))}
     </div>
   );
 
   const ListView = () => (
-    <div className="space-y-3 lg:space-y-6">
-      {bankDetails.map((detail, i) => (
-        <motion.div
-          key={detail._id}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: i * 0.05 }}
-          className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
-        >
-          <div className="flex items-center gap-3 lg:gap-6">
-            <div className="w-14 h-14 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-              <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
-                {detail.user?.name?.charAt(0) || <User className="w-6 h-6" />}
-              </div>
+    <div className="h-full overflow-auto space-y-3">
+      {bankDetails.map((detail) => (
+        <div key={detail._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
+              {detail.user?.name?.charAt(0) || <User className="w-4 h-4" />}
             </div>
             <div>
-              <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">
-                {detail.user?.name || "N/A"}
-              </h3>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1">
-                {detail.user?.email || "N/A"}
-              </p>
-              <div className="flex gap-2 mt-2">
-                {detail.user?.subscriptionStatus && getSubscriptionBadge(detail.user.subscriptionStatus)}
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">{detail.user?.name || "N/A"}</h3>
+              <p className="text-[10px] text-slate-400">{detail.user?.email || "N/A"}</p>
+              {detail.user?.subscriptionStatus && <div className="mt-1">{getSubscriptionBadge(detail.user.subscriptionStatus)}</div>}
+            </div>
+          </div>
+
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-3 lg:mx-4">
+            <div className="px-3 py-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 flex gap-2 items-center">
+              <CreditCard className="w-3.5 h-3.5 text-primary-600 shrink-0" />
+              <div className="min-w-0">
+                <div className="text-xs font-black text-slate-900 dark:text-white truncate">{detail.accountHolderName}</div>
+                <div className="text-[10px] text-slate-400 tabular-nums">{detail.accountNumber}</div>
+              </div>
+            </div>
+
+            <div className="px-3 py-2 bg-primary-500/5 rounded-lg border border-primary-500/10 flex gap-2 items-center">
+              <University className="w-3.5 h-3.5 text-primary-600 shrink-0" />
+              <div className="min-w-0">
+                <div className="text-xs font-black text-slate-900 dark:text-white truncate">{detail.bankName}</div>
+                <div className="text-[10px] text-slate-400 tabular-nums">{detail.ifscCode}</div>
               </div>
             </div>
           </div>
 
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:mx-8">
-            <div className="px-3 lg:px-6 py-4 bg-slate-50/50 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/5 flex gap-4 items-center">
-              <div className="p-2.5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
-                <CreditCard className="w-4 h-4" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">ACCOUNT DETAIL</span>
-                <span className="text-xs font-black text-slate-900 dark:text-white uppercase line-clamp-1">{detail.accountHolderName}</span>
-                <span className="text-[10px] font-bold text-slate-500 tabular-nums">{detail.accountNumber}</span>
-              </div>
-            </div>
-
-            <div className="px-3 lg:px-6 py-4 bg-primary-500/5 rounded-2xl border-2 border-primary-500/10 flex gap-4 items-center">
-              <div className="p-2.5 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
-                <University className="w-4 h-4" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">BANK</span>
-                <span className="text-xs font-black text-slate-900 dark:text-white uppercase line-clamp-1">{detail.bankName}</span>
-                <span className="text-[10px] font-bold text-slate-500 tabular-nums uppercase">{detail.ifscCode}</span>
-              </div>
-            </div>
+          <div className="text-right shrink-0">
+            <div className="text-[9px] font-bold text-slate-400 uppercase">Added</div>
+            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{formatDate(detail.createdAt)}</div>
           </div>
-
-          <div className="lg:w-32 text-right">
-            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">ADDED ON</div>
-            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(detail.createdAt)}</div>
-          </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
-    <div className="mx-auto">
-      {/* Header section with Stats & Actions */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 lg:p-12 mb-4 shadow-sm relative overflow-hidden group"
-      >
-        <div className="absolute top-0 right-0 p-4 lg:p-12 opacity-5 translate-x-12 translate-y-[-12] group-hover:rotate-12 transition-transform">
-          <University className="w-64 h-64 text-primary-700" />
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><University className="w-6 h-6 text-primary-600 shrink-0" /> Bank Details <span className="text-slate-400 dark:text-slate-500">({pagination.total || 0})</span></h1>
+
+          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search by name, email, or bank details..."
+                value={searchTerm}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+              />
+            </div>
+            <div className="flex items-center gap-1">
+              {[
+                { mode: 'table', icon: TableIcon, label: 'Table View' },
+                { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+                { mode: 'list', icon: List, label: 'List View' }
+              ].map(({ mode, icon: Icon, label }) => (
+                <button
+                  key={mode}
+                  onClick={() => setViewMode(mode)}
+                  title={label}
+                  className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+                >
+                  <Icon className="w-4 h-4" />
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
-          <div className="space-y-3 lg:space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary-500/20 text-primary-700 rounded-2xl">
-                <University className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-black text-primary-700 uppercase tracking-[0.4em]">ADMIN / BANK DETAILS</span>
-            </div>
-
-            <h1 className="text-3xl lg:text-7xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-              BANK <span className="text-primary-700">DETAILS</span>
-            </h1>
-
-            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest max-w-xl leading-relaxed">
-              View bank account details submitted by students for processing withdrawals.
+        {/* Content */}
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
+        {loading ? (
+          <AdminTableSkeleton showHeader={false} showFilters={false} />
+        ) : error ? (
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
+            <Zap className="w-12 h-12 text-primary-600 mx-auto mb-4" />
+            <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase mb-2">Error Loading Bank Details</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{error}</p>
+          </div>
+        ) : bankDetails.length === 0 ? (
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-12 text-center">
+            <University className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+            <h3 className="text-lg font-black text-slate-500 uppercase">No Bank Details Found</h3>
+            <p className="text-sm text-slate-400 mt-2">
+              {searchTerm
+                ? "No bank details match your search."
+                : "No students have submitted their bank details yet."}
             </p>
           </div>
+        ) : (
+          <>
+          <div className="flex-1 min-h-0 overflow-hidden">
+            {viewMode === "table" && <TableView />}
+            {viewMode === "grid" && <CardView />}
+            {viewMode === "list" && <ListView />}
+          </div>
 
-          <div className="flex flex-col items-end gap-2 text-right">
-            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">TOTAL ENTRIES</span>
-            <div className="flex items-center gap-3 text-2xl lg:text-5xl lg:text-7xl font-black text-primary-700 tabular-nums italic tracking-tighter">
-              <Hash className="w-10 h-10 lg:w-16 lg:h-16 stroke-[3]" />
-              {pagination.total || 0}
+          {pagination.total > 0 && (
+            <div className="shrink-0">
+              <Pagination
+                currentPage={page}
+                totalPages={pagination.totalPages || 1}
+                onPageChange={handlePageChange}
+                totalItems={pagination.total || 0}
+                itemsPerPage={itemsPerPage}
+                onItemsPerPageChange={handleItemsPerPageChange}
+              />
             </div>
-          </div>
+          )}
+          </>
+        )}
         </div>
-      </motion.div>
-
-      {/* Controls Bar */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-6 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm">
-        <div className="lg:col-span-2">
-          <div className="relative group/search">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
-            <input
-              type="text"
-              placeholder="Search by name, email, or bank details..."
-              value={searchTerm}
-              onChange={(e) => handleSearch(e.target.value)}
-              className="w-full pl-14 pr-8 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-          {[
-            { mode: 'table', icon: TableIcon },
-            { mode: 'grid', icon: LayoutGrid },
-            { mode: 'list', icon: List }
-          ].map(({ mode, icon: Icon }) => (
-            <motion.button
-              key={mode}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setViewMode(mode)}
-              className={`flex-1 p-3 rounded-lg lg:rounded-xl transition-all flex items-center justify-center ${viewMode === mode ? 'bg-primary-700 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-            >
-              <Icon className="w-4 h-4" />
-            </motion.button>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-4 bg-white dark:bg-white/5 px-3 lg:px-6 py-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
-          <Settings className="w-4 h-4 text-slate-400" />
-          <select
-            value={itemsPerPage}
-            onChange={(e) => {
-              const newItemsPerPage = Number(e.target.value);
-              setItemsPerPage(newItemsPerPage);
-              setLimit(newItemsPerPage);
-              setPage(1);
-            }}
-            className="w-full lg:w-auto bg-transparent border-none text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 outline-none cursor-pointer flex-1"
-          >
-            {[5, 10, 20, 50, 100, 250, 500].map(v => <option key={v} value={v}>Show {v} items</option>)}
-          </select>
-        </div>
-      </div>
-
-      {/* Content */}
-      {loading ? (
-        <AdminTableSkeleton showHeader={false} showFilters={false} />
-      ) : error ? (
-        <div className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm">
-          <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
-            <Zap className="w-10 h-10 text-white" />
-          </div>
-          <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Error Loading Bank Details</h3>
-          <p className="text-black dark:text-white font-bold uppercase text-sm tracking-widest">{error}</p>
-        </div>
-      ) : bankDetails.length === 0 ? (
-        <div className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-sm">
-          <University className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-          <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">No Bank Details Found</h3>
-          <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">
-            {searchTerm
-              ? "No bank details match your search."
-              : "No students have submitted their bank details yet."}
-          </p>
-        </div>
-      ) : (
-        <>
-          {viewMode === "table" && <TableView />}
-          {viewMode === "grid" && <CardView />}
-          {viewMode === "list" && <ListView />}
-        </>
-      )}
-
-      {/* Pagination */}
-      {pagination.totalPages > 1 && (
-        <Pagination
-          currentPage={pagination.currentPage}
-          totalPages={pagination.totalPages}
-          onPageChange={handlePageChange}
-          totalItems={pagination.total}
-          itemsPerPage={itemsPerPage}
-        />
-      )}
       </div>
     </div>
-  </div>
   );
 }
 

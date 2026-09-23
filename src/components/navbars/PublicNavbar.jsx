@@ -71,7 +71,7 @@ const PublicNavbar = () => {
               <div className="absolute -inset-2 bg-primary-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-700 text-glow-primary">EXAM</span>
+                  AAJ<span className="text-primary-600 text-glow-primary">EXAM</span>
                 </span>
                 <span className="hidden sm:block text-[9px] lg:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
                   Prepare Your Exam Today
@@ -86,7 +86,7 @@ const PublicNavbar = () => {
                   const isActive = router.pathname === link.href;
                   return (
                     <Link title={link.title} key={link.href} href={link.href}>
-                      <button className={`relative px-2.5 py-2 rounded-lg lg:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-700' : 'text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-400'}`}>
+                      <button className={`relative px-2.5 py-2 rounded-lg lg:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
                         {isActive && (
                           <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50" />
                         )}
@@ -106,7 +106,7 @@ const PublicNavbar = () => {
                 onClick={toggleTheme}
                 aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
                 title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-                className="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-700 dark:hover:text-primary-400 border border-slate-200/30 dark:border-slate-700/30 shadow-sm transition-all"
+                className="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 border border-slate-200/30 dark:border-slate-700/30 shadow-sm transition-all"
               >
                 {darkMode ? <Sun className="w-5" /> : <Moon className="w-5" />}
               </button>

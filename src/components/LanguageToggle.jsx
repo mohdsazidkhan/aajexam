@@ -12,7 +12,7 @@ const LanguageToggle = ({ language, onToggle, translating = false, className = '
     aria-label={language === 'en' ? 'Switch to Hindi' : 'Switch to English'}
     className={className}
   >
-    {translating && <span className="w-1.5 h-1.5 rounded-full bg-primary-700 animate-pulse"/>}
+    {translating && <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>}
     <span>{language === 'en' ? 'EN' : 'हिं'}</span>
   </button>
 );

@@ -194,7 +194,7 @@ const CommunityQuestionsPage = () => {
         ) : error ? (
           <Card className="text-center py-2 lg:py-4">
             <p className="text-content-muted text-sm">{error}</p>
-            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-700 text-sm font-bold hover:underline">
+            <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 text-sm font-bold hover:underline">
               Try Again
             </button>
           </Card>
@@ -225,12 +225,12 @@ const CommunityQuestionsPage = () => {
                         className="w-8 h-8 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-primary-700 flex items-center justify-center text-white text-xs font-black">
+                      <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white text-xs font-black">
                         {(q.author?.name || 'U').charAt(0).toUpperCase()}
                       </div>
                     )}
                     <div>
-                      <Link href={`/profile/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-700 transition-colors">
+                      <Link href={`/profile/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-600 transition-colors">
                         {q.author?.name || 'Anonymous'}
                       </Link>
                       <div className="flex items-center gap-2 text-[10px] text-content-muted">
@@ -240,7 +240,7 @@ const CommunityQuestionsPage = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-700 text-[10px] font-bold uppercase">
+                    <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-600 text-[10px] font-bold uppercase">
                       {q.exam?.name || q.exam?.code || 'Exam'}
                     </span>
                   </div>
@@ -276,12 +276,12 @@ const CommunityQuestionsPage = () => {
                 {/* Open to answer CTA */}
                 <Link
                   href={`/community-questions/${q._id}`}
-                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
+                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-600 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
                 >
-                  <span className="text-xs font-bold text-primary-700 dark:text-primary-300 uppercase tracking-wider">
+                  <span className="text-xs font-bold text-primary-600 dark:text-primary-300 uppercase tracking-wider">
                     Attempt & See Explanation
                   </span>
-                  <ArrowRight className="w-4 h-4 text-primary-700 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
 
                 {/* Actions */}
@@ -298,7 +298,7 @@ const CommunityQuestionsPage = () => {
                       <Heart className={`w-4 h-4 ${isLikedByMe(q) ? 'fill-current' : ''}`} />
                       {q.likes || 0}
                     </button>
-                    <Link href={`/community-questions/${q._id}`} className="flex items-center gap-1.5 text-xs font-bold text-content-muted hover:text-primary-700 transition-colors">
+                    <Link href={`/community-questions/${q._id}`} className="flex items-center gap-1.5 text-xs font-bold text-content-muted hover:text-primary-600 transition-colors">
                       <MessageCircle className="w-4 h-4" />
                       {q.answerCount || 0}
                     </Link>
@@ -331,7 +331,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
-              className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -341,7 +341,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= pagination.totalPages}
-              className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

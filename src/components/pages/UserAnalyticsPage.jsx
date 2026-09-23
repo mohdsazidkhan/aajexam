@@ -61,7 +61,7 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 };
 
 // --- Helper: Stat Mini Card ---
-const StatMini = ({ icon: Icon, label, value, color = 'text-primary-700', bg = 'bg-primary-50' }) => (
+const StatMini = ({ icon: Icon, label, value, color = 'text-primary-600', bg = 'bg-primary-50' }) => (
    <div className="flex items-center gap-3 p-3 rounded-2xl bg-background-surface-secondary/50">
       <div className={`p-2 rounded-lg lg:rounded-xl ${bg} dark:bg-slate-700/50 ${color}`}>
          <Icon className="w-4 h-4" />
@@ -76,7 +76,7 @@ const StatMini = ({ icon: Icon, label, value, color = 'text-primary-700', bg = '
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-3 px-1">
-      {Icon && <div className="p-2.5 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl"><Icon className="w-5 h-5" /></div>}
+      {Icon && <div className="p-2.5 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl"><Icon className="w-5 h-5" /></div>}
       <div>
          <h2 className="text-lg lg:text-xl font-black font-outfit">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
@@ -152,7 +152,7 @@ const MyAnalyticsPage = () => {
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-primary-700 text-white border-none shadow-sm overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
+               <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-8">
                      <div className="space-y-2 text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
@@ -187,7 +187,7 @@ const MyAnalyticsPage = () => {
             <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 rounded-[2rem] max-w-full px-0 py-4 lg:py-8">
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-5 py-2.5 rounded-full font-black text-xs uppercase transition-all ${activeTab === tab.key ? 'bg-primary-700 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>
+                     className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-5 py-2.5 rounded-full font-black text-xs uppercase transition-all ${activeTab === tab.key ? 'bg-primary-600 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>
                      <tab.icon className="w-4 h-4" />
                      {tab.label}
                   </button>
@@ -219,7 +219,7 @@ const MyAnalyticsPage = () => {
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Viewed</p>
                            </Card>
                            <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl w-fit mx-auto mb-2"><FileText className="w-6 h-6" /></div>
+                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><FileText className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{data?.myReels?.totalPosted || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Reels Posted</p>
                            </Card>
@@ -228,12 +228,12 @@ const MyAnalyticsPage = () => {
                         {/* Social + Wallet Row */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                            <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl w-fit mx-auto mb-2"><Users className="w-6 h-6" /></div>
+                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><Users className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{followersCount || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Followers</p>
                            </Card>
                            <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-700 rounded-2xl w-fit mx-auto mb-2"><Target className="w-6 h-6" /></div>
+                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><Target className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{followingCount || 0}</p>
                               <p className="text-[10px] font-black text-content-secondary uppercase">Following</p>
                            </Card>
@@ -277,7 +277,7 @@ const MyAnalyticsPage = () => {
                         {/* Overall Quiz Stats */}
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                            <StatMini icon={Zap} label="Total Quizzes" value={quiz?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Target} label="Avg Accuracy" value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-700" bg="bg-primary-50" />
+                           <StatMini icon={Target} label="Avg Accuracy" value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label="Best Score" value={`${quiz?.bestScore || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Clock} label="Total Time" value={`${Math.round((quiz?.totalTime || 0) / 60)}m`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
@@ -287,8 +287,8 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <CheckCircle className="w-5 h-5 text-primary-700" />
-                                    <span className="text-2xl font-black font-outfit text-primary-700">{quiz?.totalCorrect || 0}</span>
+                                    <CheckCircle className="w-5 h-5 text-primary-600" />
+                                    <span className="text-2xl font-black font-outfit text-primary-600">{quiz?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Correct</p>
                               </div>
@@ -322,7 +322,7 @@ const MyAnalyticsPage = () => {
                                                 <div className="flex justify-between items-center">
                                                    <span className="font-black text-base">{s.name}</span>
                                                    <div className="flex items-center gap-3 text-xs font-bold text-content-secondary">
-                                                      <span className="text-primary-700">{s.totalCorrect} correct</span>
+                                                      <span className="text-primary-600">{s.totalCorrect} correct</span>
                                                       <span className="text-black dark:text-white">{s.totalWrong} wrong</span>
                                                       <span>{s.attempts} attempts</span>
                                                    </div>
@@ -350,16 +350,16 @@ const MyAnalyticsPage = () => {
                                              <p className="text-[10px] font-bold text-content-secondary">{t.subjectName} &bull; {t.attempts} attempts</p>
                                           </div>
                                           <div className="flex items-center gap-3">
-                                             <span className="text-primary-700 text-xs font-bold">{t.totalCorrect}  </span>
+                                             <span className="text-primary-600 text-xs font-bold">{t.totalCorrect}  </span>
                                              <span className="text-black dark:text-white text-xs font-bold">{t.totalWrong}  </span>
-                                             <span className="font-black text-sm text-primary-700">{t.avgAccuracy}%</span>
+                                             <span className="font-black text-sm text-primary-600">{t.avgAccuracy}%</span>
                                           </div>
                                        </div>
                                     </Card>
                                  ))}
                                  {quiz.topicWise.length > 6 && (
                                     <button onClick={() => setShowAllTopics(!showAllTopics)}
-                                       className="flex items-center gap-2 mx-auto text-primary-700 font-black text-sm py-2">
+                                       className="flex items-center gap-2 mx-auto text-primary-600 font-black text-sm py-2">
                                        {showAllTopics ? <><ChevronUp className="w-4 h-4" /> Show Less</> : <><ChevronDown className="w-4 h-4" /> Show All {quiz.topicWise.length} Topics</>}
                                     </button>
                                  )}
@@ -382,7 +382,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                            <StatMini icon={GraduationCap} label="Total Exams" value={exam?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={Target} label="Avg Accuracy" value={`${exam?.avgAccuracy || 0}%`} color="text-primary-700" bg="bg-primary-50" />
+                           <StatMini icon={Target} label="Avg Accuracy" value={`${exam?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label="Best Accuracy" value={`${exam?.bestAccuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
@@ -390,8 +390,8 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-2 gap-4 text-center">
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <CheckCircle className="w-5 h-5 text-primary-700" />
-                                    <span className="text-2xl font-black font-outfit text-primary-700">{exam?.totalCorrect || 0}</span>
+                                    <CheckCircle className="w-5 h-5 text-primary-600" />
+                                    <span className="text-2xl font-black font-outfit text-primary-600">{exam?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Correct</p>
                               </div>
@@ -420,7 +420,7 @@ const MyAnalyticsPage = () => {
                      <>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                            <StatMini icon={Eye} label="Reels Viewed" value={reel?.totalViewed || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
-                           <StatMini icon={CheckCircle} label="Questions Answered" value={reel?.totalAnswered || 0} color="text-primary-700" bg="bg-primary-50" />
+                           <StatMini icon={CheckCircle} label="Questions Answered" value={reel?.totalAnswered || 0} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Target} label="Reel Accuracy" value={`${reel?.accuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Clock} label="Time Spent" value={`${Math.round((reel?.totalTimeSpent || 0) / 60)}m`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
@@ -440,7 +440,7 @@ const MyAnalyticsPage = () => {
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">Saved</p>
                               </div>
                               <div>
-                                 <Share2 className="w-5 h-5 text-primary-700 mx-auto mb-1" />
+                                 <Share2 className="w-5 h-5 text-primary-600 mx-auto mb-1" />
                                  <p className="text-xl font-black font-outfit">{reel?.totalShared || 0}</p>
                                  <p className="text-[10px] font-bold text-content-secondary uppercase">Shared</p>
                               </div>
@@ -481,7 +481,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         {/* Balance Card */}
-                        <Card className="bg-primary-700 text-white border-none shadow-sm rounded-[2rem] lg:rounded-[3rem]">
+                        <Card className="bg-primary-600 text-white border-none shadow-sm rounded-[2rem] lg:rounded-[3rem]">
                            <div className="flex justify-between items-start mb-6">
                               <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
                               <span className="text-xs font-black opacity-60 uppercase">Wallet Balance</span>
@@ -495,7 +495,7 @@ const MyAnalyticsPage = () => {
                         {/* Earned / Spent */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                            <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
-                              <div className="p-4 bg-primary-100 dark:bg-primary-900/30 text-primary-700 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
+                              <div className="p-4 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
                               <div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Total Earned</p>
                                  <p className="text-2xl font-black font-outfit">{wallet?.totalEarnings || 0}</p>
@@ -541,13 +541,13 @@ const MyAnalyticsPage = () => {
                                     <div className="flex items-center gap-2 bg-background-surface-secondary p-3 rounded-2xl">
                                        <span className="flex-1 font-black text-lg font-mono tracking-wider">{referral?.code || '---'}</span>
                                        <button onClick={copyReferralCode}
-                                          className="p-2 bg-primary-700 text-white rounded-lg lg:rounded-xl hover:bg-primary-600 transition-colors">
+                                          className="p-2 bg-primary-600 text-white rounded-lg lg:rounded-xl hover:bg-primary-600 transition-colors">
                                           {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                                        </button>
                                     </div>
                                  </div>
                                  <div className="text-center sm:text-right">
-                                    <p className="text-3xl font-black font-outfit text-primary-700">{referral?.totalRewards || 0}</p>
+                                    <p className="text-3xl font-black font-outfit text-primary-600">{referral?.totalRewards || 0}</p>
                                     <p className="text-[10px] font-black text-content-secondary uppercase">Total Referral Rewards</p>
                                  </div>
                               </div>

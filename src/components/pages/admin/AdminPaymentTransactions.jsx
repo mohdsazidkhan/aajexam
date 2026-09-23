@@ -2,20 +2,21 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Filter, Download, Eye, EyeOff, ChevronLeft, ChevronRight, CheckCircle2,
+  Download, Eye, EyeOff, CheckCircle2,
   XCircle, Clock, AlertTriangle, ReceiptText, Search, Table as TableIcon,
   LayoutGrid, List, IndianRupee, TrendingUp, Users, ArrowUpDown,
-  ArrowUp, ArrowDown, Wallet, Calendar, BarChart3, Activity, PieChart,
-  Target, Globe, Cpu, Zap
+  ArrowUp, ArrowDown, Wallet, Calendar, Activity
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import API from '../../../lib/api';
-import Button from '../../ui/Button';
+import ResponsiveTable from '../../ResponsiveTable';
+import Pagination from '../../Pagination';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
 const AdminPaymentTransactions = () => {
@@ -31,13 +32,13 @@ const AdminPaymentTransactions = () => {
     plan: 'all',
     search: '',
     page: 1,
-    limit: 20
+    limit: DEFAULT_PAGE_SIZE
   });
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
     total: 0,
-    limit: 20,
+    limit: DEFAULT_PAGE_SIZE,
     hasNext: false,
     hasPrev: false
   });
@@ -75,7 +76,7 @@ const AdminPaymentTransactions = () => {
           currentPage: 1,
           totalPages: 1,
           total: 0,
-          limit: 20,
+          limit: DEFAULT_PAGE_SIZE,
           hasNext: false,
           hasPrev: false
         });
@@ -132,6 +133,10 @@ const AdminPaymentTransactions = () => {
     setFilters(prev => ({ ...prev, page: newPage }));
   };
 
+  const handleItemsPerPageChange = (newLimit) => {
+    setFilters(prev => ({ ...prev, limit: newLimit, page: 1 }));
+  };
+
   const toggleTransactionDetails = (transactionId) => {
     setExpandedTransaction(expandedTransaction === transactionId ? null : transactionId);
   };
@@ -179,7 +184,7 @@ const AdminPaymentTransactions = () => {
 
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
-      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-700 border-primary-500/20';
+      case 'completed': case 'success': return 'bg-primary-500/10 text-primary-600 border-primary-500/20';
       case 'failed': case 'failure': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
       case 'pending': case 'created': case 'authorized': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
       case 'refunded': return 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20';
@@ -210,8 +215,64 @@ const AdminPaymentTransactions = () => {
 
   const SortIcon = ({ field }) => {
     if (sortField !== field) return <ArrowUpDown className="w-3.5 h-3.5 text-slate-400" />;
-    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-700" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-700" />;
+    return sortOrder === 'asc' ? <ArrowUp className="w-3.5 h-3.5 text-primary-600" /> : <ArrowDown className="w-3.5 h-3.5 text-primary-600" />;
   };
+
+  const transactionColumns = [
+    {
+      key: 'createdAt',
+      header: (
+        <div onClick={() => handleSort('createdAt')} className="flex items-center gap-2 cursor-pointer hover:text-primary-600 transition-colors">Date <SortIcon field="createdAt" /></div>
+      ),
+      render: (_, t) => (
+        <>
+          <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{formatDate(t.createdAt)}</div>
+          <div className="text-[9px] font-bold text-slate-400 uppercase">{new Date(t.createdAt).toLocaleTimeString()}</div>
+        </>
+      )
+    },
+    {
+      key: 'user',
+      header: (
+        <div onClick={() => handleSort('user.name')} className="flex items-center gap-2 cursor-pointer hover:text-primary-600 transition-colors">User <SortIcon field="user.name" /></div>
+      ),
+      render: (_, t) => (
+        <>
+          <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight truncate max-w-[200px]">{t.user?.name || 'Unknown User'}</div>
+          <div className="text-[9px] font-bold text-slate-400 uppercase truncate max-w-[200px]">{t.user?.email || 'N/A'}</div>
+        </>
+      )
+    },
+    {
+      key: 'planId', header: 'Plan', render: (_, t) => (
+        <span className="px-3 py-1 bg-primary-500/10 text-primary-600 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
+      )
+    },
+    {
+      key: 'amount', header: 'Amount', render: (_, t) => (
+        <div className="text-right tabular-nums font-black text-slate-900 dark:text-white">{formatCurrency(t.amount)}</div>
+      )
+    },
+    {
+      key: 'status', header: 'Status', align: 'center', render: (_, t) => (
+        <div className="flex justify-center">
+          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
+            {getStatusIcon(t.payuStatus || t.status)}
+            {t.payuStatus || t.status || 'Unknown'}
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'actions', header: 'Actions', align: 'right', render: (_, t) => (
+        <div className="flex justify-end">
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
+            {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+          </motion.button>
+        </div>
+      )
+    }
+  ];
 
   if (loading && transactions.length === 0) {
     return (<div className="adminContent w-full flex items-center justify-center">
@@ -221,116 +282,88 @@ const AdminPaymentTransactions = () => {
   }
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
 
         {/* Header Section */}
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
-            <div className="space-y-2">
-              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                Payment Transactions
-              </h1>
-              <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-                Track and manage all payment transactions on the platform.
-              </p>
-            </div>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><ReceiptText className="w-6 h-6 text-primary-600 shrink-0" /> Transactions <span className="text-slate-400 dark:text-slate-500">({pagination.total || 0})</span></h1>
 
-            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-              <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm">
-                {[
-                  { icon: TableIcon, id: 'table', label: 'Table' },
-                  { icon: LayoutGrid, id: 'grid', label: 'Cards' },
-                  { icon: List, id: 'list', label: 'List' }
-                ].map((mode) => (
-                  <button
-                    key={mode.id}
-                    onClick={() => setViewMode(mode.id)}
-                    className={`p-4 rounded-full transition-all flex items-center gap-2 ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-                  >
-                    <mode.icon className="w-4 h-4" />
-                    {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
-                  </button>
-                ))}
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                onClick={exportToCSV}
-                className="w-full lg:w-auto px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3"
-              >
-                <Download className="w-4 h-4" /> Export CSV
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4">
-          {[
-            { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, color: 'primary', isCurrency: true },
-            { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, color: 'primary', isCurrency: true },
-            { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: ReceiptText, color: 'primary' },
-            { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users, color: 'primary' }
-          ].map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group hover:border-primary-500/30 transition-all font-outfit"
-            >
-              <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl w-fit mb-6 group-hover:scale-110 transition-transform`}>
-                <stat.icon className="w-6 h-6" />
-              </div>
-              <div className="text-2xl lg:text-3xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-2 truncate">
-                {stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}
-              </div>
-              <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Filter Bar */}
-        <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8">
-            <div className="flex-1 relative group w-full">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
+          <div className="grid grid-cols-2 lg:flex lg:flex-wrap lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:w-56">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search by order ID or username..."
                 value={filters.search}
                 onChange={(e) => handleFilterChange('search', e.target.value)}
-                className="w-full pl-14 pr-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-lg lg:rounded-[2rem] text-xs font-black uppercase outline-none transition-all shadow-sm"
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
               />
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+            <select value={filters.year} onChange={(e) => handleFilterChange('year', parseInt(e.target.value))} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              {Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i).map(y => <option key={y} value={y}>{y}</option>)}
+            </select>
+            <select value={filters.month} onChange={(e) => handleFilterChange('month', e.target.value === 'all' ? 'all' : parseInt(e.target.value))} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value="all">All Months</option>
+              {Array.from({ length: 12 }, (_, i) => (
+                <option key={i + 1} value={i + 1}>{new Date(0, i).toLocaleString('default', { month: 'long' })}</option>
+              ))}
+            </select>
+            <select value={filters.status} onChange={(e) => handleFilterChange('status', e.target.value)} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value="all">All Statuses</option>
+              {filterOptions.statuses.slice(1).map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
+            </select>
+            <select value={filters.plan} onChange={(e) => handleFilterChange('plan', e.target.value)} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+              <option value="all">All Plans</option>
+              {filterOptions.plans.map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
+            <div className="flex items-center gap-1">
               {[
-                { icon: Calendar, val: filters.year, options: Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i), key: 'year' },
-                { icon: Calendar, val: filters.month, options: [{ l: 'All Months', v: 'all' }, ...Array.from({ length: 12 }, (_, i) => ({ l: new Date(0, i).toLocaleString('default', { month: 'long' }), v: i + 1 }))], key: 'month' },
-                { icon: Activity, val: filters.status, options: [{ l: 'All Statuses', v: 'all' }, ...filterOptions.statuses.slice(1).map(s => ({ l: s.charAt(0).toUpperCase() + s.slice(1), v: s }))], key: 'status' },
-                { icon: PieChart, val: filters.plan, options: [{ l: 'All Plans', v: 'all' }, ...filterOptions.plans.map(p => ({ l: p, v: p }))], key: 'plan' }
-              ].map((f, i) => (
-                <div key={i} className="w-full lg:w-auto flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
-                  <f.icon className="w-4 h-4 text-primary-700" />
-                  <select
-                    value={f.val}
-                    onChange={(e) => handleFilterChange(f.key, e.target.value === 'all' ? 'all' : (f.key === 'year' || f.key === 'month' ? parseInt(e.target.value) : e.target.value))}
-                    className="w-full lg:w-auto bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
-                  >
-                    {f.options.map((o, idx) => (
-                      <option key={idx} value={typeof o === 'object' ? o.v : o}>{typeof o === 'object' ? o.l : o}</option>
-                    ))}
-                  </select>
-                </div>
+                { icon: TableIcon, id: 'table', label: 'Table View' },
+                { icon: LayoutGrid, id: 'grid', label: 'Grid View' },
+                { icon: List, id: 'list', label: 'List View' }
+              ].map((mode) => (
+                <button
+                  key={mode.id}
+                  onClick={() => setViewMode(mode.id)}
+                  title={mode.label}
+                  className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+                >
+                  <mode.icon className="w-4 h-4" />
+                </button>
               ))}
             </div>
+            <button
+              onClick={exportToCSV}
+              className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0"
+            >
+              <Download className="w-4 h-4" /> Export CSV
+            </button>
           </div>
         </div>
 
+        {/* Stats bar */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+          {[
+            { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, isCurrency: true },
+            { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, isCurrency: true },
+            { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: ReceiptText },
+            { label: 'Paying Users', val: summary.activeUsers || 0, icon: Users }
+          ].map((stat) => (
+            <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
+              <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+              <div className="min-w-0">
+                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
+                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Main Content Area */}
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
         <AnimatePresence mode="wait">
           {error ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 lg:p-8 rounded-3xl text-center">
@@ -344,162 +377,93 @@ const AdminPaymentTransactions = () => {
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your filters or search terms to find transactions.</p>
             </motion.div>
           ) : (
-            <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <>
+            <div className="flex-1 min-h-0 overflow-hidden">
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">#</th>
-                        <th onClick={() => handleSort('createdAt')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-primary-700 transition-colors">
-                          <div className="flex items-center gap-2">Date <SortIcon field="createdAt" /></div>
-                        </th>
-                        <th onClick={() => handleSort('user.name')} className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest cursor-pointer hover:text-primary-700 transition-colors">
-                          <div className="flex items-center gap-2">User <SortIcon field="user.name" /></div>
-                        </th>
-                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Plan</th>
-                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Amount</th>
-                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Status</th>
-                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                      {transactions.map((t, idx) => (
-                        <motion.tr key={t._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.03 }} className="group hover:bg-slate-50/50 dark:hover:bg-white/5 transition-all">
-                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-slate-300 dark:text-slate-700 font-mono text-[10px]">{(idx + 1).toString().padStart(2, '0')}</td>
-                          <td className="px-4 lg:px-8 py-3 lg:py-6">
-                            <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{formatDate(t.createdAt)}</div>
-                            <div className="text-[9px] font-bold text-slate-400 uppercase">{new Date(t.createdAt).toLocaleTimeString()}</div>
-                          </td>
-                          <td className="px-4 lg:px-8 py-3 lg:py-6">
-                            <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight truncate max-w-[200px]">{t.user?.name || 'Unknown User'}</div>
-                            <div className="text-[9px] font-bold text-slate-400 uppercase truncate max-w-[200px]">{t.user?.email || 'N/A'}</div>
-                          </td>
-                          <td className="px-4 lg:px-8 py-3 lg:py-6">
-                            <span className="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-lg text-[10px] font-black uppercase border border-primary-500/20">{t.planId || 'N/A'}</span>
-                          </td>
-                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-right tabular-nums font-black text-slate-900 dark:text-white">{formatCurrency(t.amount)}</td>
-                          <td className="px-4 lg:px-8 py-3 lg:py-6">
-                            <div className="flex justify-center">
-                              <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
-                                {getStatusIcon(t.payuStatus || t.status)}
-                                {t.payuStatus || t.status || 'Unknown'}
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                            <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
-                              {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                            </motion.button>
-                          </td>
-                        </motion.tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                  <ResponsiveTable data={transactions} columns={transactionColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                 </div>
               )}
 
               {viewMode === 'grid' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
-                  {transactions.map((t, idx) => (
-                    <motion.div key={t._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm flex flex-col font-outfit relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-700" />
-                      <div className="flex justify-between items-start mb-4 lg:mb-8">
-                        <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 ${getStatusColor(t.payuStatus || t.status)}`}>
+                <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+                  {transactions.map((t) => (
+                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                      <div className="flex justify-between items-start gap-2">
+                        <div className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase flex items-center gap-1.5 ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
                           {t.payuStatus || t.status || 'Unknown'}
                         </div>
-                        <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
-                          {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                        </motion.button>
+                        <button onClick={() => toggleTransactionDetails(t._id)} className="p-1.5 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded-lg shrink-0">
+                          {expandedTransaction === t._id ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                        </button>
                       </div>
-                      <div className="space-y-3 lg:space-y-6 flex-1">
+                      <div>
+                        <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{t.user?.name || 'Unknown User'}</div>
+                        <div className="text-[10px] text-slate-400 truncate">{t.user?.email || 'N/A'}</div>
+                      </div>
+                      <div className="bg-slate-50 dark:bg-white/5 rounded-xl p-3 border border-slate-100 dark:border-white/5 flex justify-between items-center">
                         <div>
-                          <div className="text-lg font-black text-slate-900 dark:text-white uppercase truncate">{t.user?.name || 'Unknown User'}</div>
-                          <div className="text-[10px] font-black text-slate-400 uppercase truncate">{t.user?.email || 'N/A'}</div>
+                          <div className="text-[9px] font-bold text-slate-400 uppercase mb-0.5">Amount</div>
+                          <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
                         </div>
-                        <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border-2 border-slate-100 dark:border-white/10 flex justify-between items-center">
-                          <div>
-                            <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Amount</div>
-                            <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatCurrency(t.amount)}</div>
-                          </div>
-                          <div className="p-4 bg-primary-500/10 rounded-2xl text-primary-700 font-black text-xs uppercase tracking-widest">{t.planId || 'N/A'}</div>
-                        </div>
+                        <div className="px-2 py-1 bg-primary-500/10 rounded-lg text-primary-600 font-black text-[10px] uppercase">{t.planId || 'N/A'}</div>
                       </div>
-                      <div className="mt-4 lg:mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between text-[9px] font-black text-slate-400 uppercase">
-                        <div className="flex items-center gap-2"><Calendar className="w-3.5 h-3.5" />{formatDateTime(t.createdAt)}</div>
-                        <div className="flex items-center gap-2"><Wallet className="w-3.5 h-3.5" />{t.paymentMethod || 'Online Payment'}</div>
+                      <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex justify-between text-[9px] font-bold text-slate-400">
+                        <div className="flex items-center gap-1"><Calendar className="w-3 h-3" />{formatDateTime(t.createdAt)}</div>
+                        <div className="flex items-center gap-1"><Wallet className="w-3 h-3" />{t.paymentMethod || 'Online'}</div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               )}
 
               {viewMode === 'list' && (
-                <div className="space-y-3 lg:space-y-6">
-                  {transactions.map((t, idx) => (
-                    <motion.div key={t._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-6 hover:border-primary-500/30 transition-all font-outfit shadow-sm">
-                      <div className="flex items-center gap-3 lg:gap-6">
-                        <div className={`p-4 rounded-2xl border-2 ${getStatusColor(t.payuStatus || t.status)} shadow-sm`}>{getStatusIcon(t.payuStatus || t.status)}</div>
+                <div className="h-full overflow-auto space-y-3">
+                  {transactions.map((t) => (
+                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2.5 rounded-xl border ${getStatusColor(t.payuStatus || t.status)}`}>{getStatusIcon(t.payuStatus || t.status)}</div>
                         <div>
-                          <div className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none mb-1">{t.user?.name || 'Unknown User'}</div>
-                          <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{formatDateTime(t.createdAt)}</div>
+                          <div className="text-sm font-bold text-slate-900 dark:text-white">{t.user?.name || 'Unknown User'}</div>
+                          <div className="text-[10px] text-slate-400">{formatDateTime(t.createdAt)}</div>
                         </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-3 lg:gap-8">
+                      <div className="flex flex-wrap items-center gap-4 shrink-0">
                         <div className="text-right">
-                          <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Plan</div>
-                          <div className="text-sm font-black text-primary-700 uppercase tracking-widest">{t.planId || 'N/A'}</div>
+                          <div className="text-[9px] font-bold text-slate-400 uppercase">Plan</div>
+                          <div className="text-xs font-black text-primary-600 uppercase">{t.planId || 'N/A'}</div>
                         </div>
-                        <div className="text-right min-w-[120px]">
-                          <div className="text-[9px] font-black text-slate-400 uppercase mb-1">Amount Paid</div>
-                          <div className="text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter">{formatCurrency(t.amount)}</div>
+                        <div className="text-right min-w-[90px]">
+                          <div className="text-[9px] font-bold text-slate-400 uppercase">Amount</div>
+                          <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
                         </div>
-                        <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl">
-                          {expandedTransaction === t._id ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                        </motion.button>
+                        <button onClick={() => toggleTransactionDetails(t._id)} className="p-2 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded-lg">
+                          {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        </button>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               )}
-            </motion.div>
+            </div>
+
+            {pagination.totalPages > 1 && (
+              <div className="shrink-0">
+                <Pagination
+                  currentPage={pagination.currentPage}
+                  totalPages={pagination.totalPages}
+                  onPageChange={handlePageChange}
+                  totalItems={pagination.total}
+                  itemsPerPage={filters.limit}
+                  onItemsPerPageChange={handleItemsPerPageChange}
+                />
+              </div>
+            )}
+            </>
           )}
         </AnimatePresence>
-
-        {/* Pagination Controls */}
-        {pagination.totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 shadow-sm w-fit mx-auto">
-            <button
-              onClick={() => handlePageChange(pagination.currentPage - 1)}
-              disabled={pagination.currentPage === 1}
-              className="p-3 rounded-lg lg:rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-1 px-4">
-              {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                const pageNum = i + 1;
-                return (
-                  <button
-                    key={pageNum}
-                    onClick={() => handlePageChange(pageNum)}
-                    className={`w-10 h-10 rounded-lg lg:rounded-xl text-[10px] font-black transition-all ${pagination.currentPage === pageNum ? 'bg-primary-700 text-white shadow-sm scale-110' : 'text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-slate-600'}`}
-                  >
-                    {pageNum.toString().padStart(2, '0')}
-                  </button>
-                );
-              })}
-            </div>
-            <button
-              onClick={() => handlePageChange(pagination.currentPage + 1)}
-              disabled={pagination.currentPage === pagination.totalPages}
-              className="p-3 rounded-lg lg:rounded-xl bg-white dark:bg-white/10 text-slate-600 dark:text-white disabled:opacity-30 hover:scale-110 transition shadow-sm border border-slate-100 dark:border-white/10"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

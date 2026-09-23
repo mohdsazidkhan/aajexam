@@ -114,7 +114,7 @@ const MyChallengesPage = () => {
                                           className="p-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 hover:text-black dark:hover:text-white hover:border-slate-200 dark:border-slate-800 transition-colors shadow-sm"
                                           title="Copy Invite Link"
                                        >
-                                          {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-700" /> : <Copy className="w-4 h-4" />}
+                                          {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-600" /> : <Copy className="w-4 h-4" />}
                                        </button>
                                     </div>
 
@@ -155,7 +155,7 @@ const MyChallengesPage = () => {
                                                    </div>
                                                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{ch.user?.name || 'Unknown'}</span>
                                                 </div>
-                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-black dark:text-white dark:text-white' : 'text-primary-700'}`}>
+                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-black dark:text-white dark:text-white' : 'text-primary-600'}`}>
                                                    {Math.round(ch.attempt?.percentage || 0)}%
                                                 </div>
                                              </div>

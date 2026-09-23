@@ -13,13 +13,13 @@ import Seo from '../components/Seo';
 
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Notification', border:'border-slate-200 dark:border-slate-800'},
-  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-700', dot: 'bg-primary-700', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
-  result: { icon: BarChart2, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Result', border:'border-slate-200 dark:border-slate-800'},
-  answer_key: { icon: Key, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Answer Key', border:'border-slate-200 dark:border-slate-800'},
-  vacancy: { icon: Users, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Vacancy', border:'border-slate-200 dark:border-slate-800'},
-  date_change: { icon: AlertTriangle, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Date Change', border:'border-slate-200 dark:border-slate-800'},
-  syllabus: { icon: Megaphone, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-700', label:'Syllabus', border:'border-slate-200 dark:border-slate-800'},
+  notification: { icon: Bell, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Notification', border:'border-slate-200 dark:border-slate-800'},
+  admit_card:   { icon: CreditCard, color: 'bg-primary-100 dark:bg-primary-900/30 text-primary-600', dot: 'bg-primary-600', label: 'Admit Card', border: 'border-primary-200 dark:border-primary-800/50' },
+  result: { icon: BarChart2, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Result', border:'border-slate-200 dark:border-slate-800'},
+  answer_key: { icon: Key, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Answer Key', border:'border-slate-200 dark:border-slate-800'},
+  vacancy: { icon: Users, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Vacancy', border:'border-slate-200 dark:border-slate-800'},
+  date_change: { icon: AlertTriangle, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Date Change', border:'border-slate-200 dark:border-slate-800'},
+  syllabus: { icon: Megaphone, color:'bg-slate-100 dark:bg-slate-800 text-black dark:text-white', dot:'bg-primary-600', label:'Syllabus', border:'border-slate-200 dark:border-slate-800'},
   other:        { icon: Megaphone, color: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400', dot: 'bg-slate-400', label: 'Other', border: 'border-slate-200 dark:border-slate-700' },
 };
 const getType = (t) => typeConfig[t] || typeConfig.other;
@@ -93,7 +93,7 @@ const EventCard = ({ event, compact = false }) => {
             </span>
           </div>
         </div>
-        <ChevronRight className="w-4 h-4 text-border-secondary group-hover:text-primary-700 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
+        <ChevronRight className="w-4 h-4 text-border-secondary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
       </motion.div>
     </Link>
   );
@@ -115,9 +115,9 @@ const DayPanel = ({ date, events, onClose }) => {
         <Card padded={false} className="overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2">
-              <CalendarDays className="w-4 h-4 text-primary-700" />
+              <CalendarDays className="w-4 h-4 text-primary-600" />
               <span className="text-sm font-black text-content-primary">{dateLabel}</span>
-              <span className="text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-900/30 text-primary-700 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-2 py-0.5 rounded-full">
                 {events.length} event{events.length > 1 ? 's' : ''}
               </span>
             </div>
@@ -272,7 +272,7 @@ const ExamCalendarPage = () => {
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
               <button
                 onClick={goToday}
-                className="text-[10px] font-black text-primary-700 hover:text-primary-700 uppercase tracking-wide mt-0.5"
+                className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-wide mt-0.5"
               >
                 Back to Today
               </button>
@@ -309,7 +309,7 @@ const ExamCalendarPage = () => {
                   transition-all duration-150
                   ${hasEvents ? 'cursor-pointer' : 'cursor-default opacity-60'}
                   ${isToday
-                    ? 'bg-primary-700 border-primary-700'
+                    ? 'bg-primary-600 border-primary-600'
                     : isSelected
                       ? 'bg-primary-50 dark:bg-primary-950/30 border-primary-400 dark:border-primary-600'
                       : 'bg-background-surface border-slate-200 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700'}
@@ -349,11 +349,11 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary-700" />
+                <Clock className="w-4 h-4 text-primary-600" />
                 <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
                   Upcoming (Next 30 Days)
                 </h2>
-                <span className="text-[10px] font-black bg-primary-100 dark:bg-primary-900/30 text-primary-700 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-black bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-2 py-0.5 rounded-full">
                   {upcoming.length}
                 </span>
               </div>
@@ -394,7 +394,7 @@ const ExamCalendarPage = () => {
             <h3 className="text-lg font-black text-content-muted uppercase">No events this month</h3>
             <p className="text-sm text-content-muted font-bold">Check back later or navigate to another month.</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-primary-700 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
+              <button className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
                 View Exam News
               </button>
             </Link>

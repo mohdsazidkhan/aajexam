@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../../Pagination";
+import ResponsiveTable from "../../ResponsiveTable";
 import API from '../../../lib/api';
 import { AdminDetailSkeleton } from "../../skeletons/AdminSkeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 import {
     ArrowLeft,
@@ -22,7 +24,7 @@ import {
     PieChart
 } from 'lucide-react';
 
-const PAGE_LIMIT = 20;
+const PAGE_LIMIT = DEFAULT_PAGE_SIZE;
 
 export default function UserReferralDetail() {
     const { isMounted, isRouterReady, router } = useSSR();
@@ -61,7 +63,7 @@ export default function UserReferralDetail() {
         }
     };
 
-    const fetchUserReferralHistory = async (page = 1, limit = 20) => {
+    const fetchUserReferralHistory = async (page = 1, limit = DEFAULT_PAGE_SIZE) => {
         try {
             setLoading(true);
             const params = {
@@ -90,6 +92,11 @@ export default function UserReferralDetail() {
         setPage(newPage);
     };
 
+    const handleLimitChange = (newLimit) => {
+        setLimit(newLimit);
+        setPage(1);
+    };
+
     const formatDate = (dateString) => {
         if (!dateString) return 'N/A';
         const d = new Date(dateString);
@@ -114,6 +121,51 @@ export default function UserReferralDetail() {
         };
         return colors[type] || 'text-slate-500 bg-slate-500/10 border-slate-500/20';
     };
+
+    const columns = [
+        {
+            key: 'date', header: 'DATE', render: (_, tx) => (
+                <div className="flex flex-col">
+                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none mb-1">{formatDate(tx.date)}</div>
+                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
+                </div>
+            )
+        },
+        {
+            key: 'invitee', header: 'REFERRED USER', render: (_, tx) => (
+                tx.invitee ? (
+                    <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
+                            {tx.invitee.name?.[0].toUpperCase() || 'U'}
+                        </div>
+                        <div>
+                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-600 transition-colors">{tx.invitee.name}</div>
+                            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.invitee.email}</div>
+                        </div>
+                    </div>
+                ) : (
+                    <span className="text-[10px] font-black text-slate-300 italic">Unknown</span>
+                )
+            )
+        },
+        {
+            key: 'rewardType', header: 'REWARD TYPE', render: (_, tx) => (
+                <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest inline-block border ${getRewardTypeColor(tx.rewardType)}`}>
+                    {getRewardTypeLabel(tx.rewardType)}
+                </div>
+            )
+        },
+        {
+            key: 'amount', header: 'AMOUNT', render: (_, tx) => (
+                <div className="text-sm font-black text-primary-600 tabular-nums italic">+₹{tx.amount}</div>
+            )
+        },
+        {
+            key: 'balance', header: 'BALANCE', render: (_, tx) => (
+                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>
+            )
+        }
+    ];
 
     if (loading) {
         return (
@@ -142,29 +194,29 @@ export default function UserReferralDetail() {
     }
 
     return (
-        <div className="min-h-screen font-sans text-slate-900 dark:text-white pb-20">
+        <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-sans text-slate-900 dark:text-white">
             {isMounted && <Sidebar />}
-            <div className="adminContent w-full mx-auto">
+            <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col overflow-hidden">
 
                 {/* Header Section */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-4"
+                    className="mb-4 shrink-0"
                 >
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                         <div className="space-y-2">
                             <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                REFERRAL <span className="text-primary-700">DETAIL</span>
+                                REFERRAL <span className="text-primary-600">DETAIL</span>
                             </h1>
                             <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
-                                <div className="w-12 h-12 bg-primary-700 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-sm">
+                                <div className="w-12 h-12 bg-primary-600 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-sm">
                                     {user?.name?.[0].toUpperCase()}
                                 </div>
                                 <div>
                                     <div className="text-[10px] font-black uppercase tracking-widest leading-none mb-1">{user?.name}</div>
                                     <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest italic">{user?.email}</div>
-                                    <div className="text-[8px] font-black text-primary-700 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
+                                    <div className="text-[8px] font-black text-primary-600 uppercase tracking-[0.2em] mt-2">Referral Code: {user?.referralCode}</div>
                                 </div>
                             </div>
                         </div>
@@ -172,9 +224,9 @@ export default function UserReferralDetail() {
                         <div className="flex flex-wrap items-center gap-4">
                             <button
                                 onClick={() => router.push('/admin/referral-history')}
-                                className="px-4 lg:px-8 py-4 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl xl:rounded-[2.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
+                                className="px-4 lg:px-6 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
                             >
-                                <ArrowLeft className="w-4 h-4 text-primary-700" /> Back to History
+                                <ArrowLeft className="w-4 h-4 text-primary-600" /> Back to History
                             </button>
                         </div>
                     </div>
@@ -202,7 +254,7 @@ export default function UserReferralDetail() {
                 </motion.div>
 
                 {/* Earnings Breakdown */}
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-6 mb-4">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-6 mb-4 shrink-0">
                     {[
                         { id: 'total', label: 'Total Earned', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
                         { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
@@ -213,15 +265,15 @@ export default function UserReferralDetail() {
                             </div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
                             <div className="text-xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none mb-2">₹{tier.amount.toLocaleString()}</div>
-                            <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
+                            <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest opacity-60 italic">{tier.count} rewards</div>
                         </div>
                     ))}
                 </div>
 
                 {/* Table Controller */}
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 shrink-0">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl">
+                        <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl">
                             <Zap className="w-5 h-5" />
                         </div>
                         <div>
@@ -234,7 +286,7 @@ export default function UserReferralDetail() {
                         <div className="relative group">
                             <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <select
-                                className="pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
+                                className="pl-14 pr-10 py-2.5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
                             >
                                 <option>Filter by Date</option>
                             </select>
@@ -244,6 +296,7 @@ export default function UserReferralDetail() {
                 </div>
 
                 {/* Results Interface */}
+                <div className="flex-1 min-h-0 overflow-hidden">
                 <AnimatePresence mode="wait">
                     {transactions.length === 0 ? (
                         <motion.div
@@ -263,79 +316,21 @@ export default function UserReferralDetail() {
                             key="content"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm"
+                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-full flex flex-col"
                         >
-                            <table className="w-full">
-                                <thead>
-                                    <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">DATE</th>
-                                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">REFERRED USER</th>
-                                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">REWARD TYPE</th>
-                                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">AMOUNT</th>
-                                        <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">BALANCE</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                                    {transactions.map((tx, i) => (
-                                        <motion.tr
-                                            key={tx._id || i}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: i * 0.05 }}
-                                            className="group hover:bg-primary-500/5 transition-all"
-                                        >
-                                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                                <div className="flex flex-col">
-                                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none mb-1">{formatDate(tx.date)}</div>
-                                                    <div className="text-[8px] font-bold text-slate-400 uppercase tracking-[0.2em] italic">{formatTime(tx.date)}</div>
-                                                </div>
-                                            </td>
-                                            <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                                {tx.invitee ? (
-                                                    <div className="flex items-center gap-4">
-                                                        <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
-                                                            {tx.invitee.name?.[0].toUpperCase() || 'U'}
-                                                        </div>
-                                                        <div>
-                                                            <div className="text-xs font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 group-hover:text-primary-700 transition-colors">{tx.invitee.name}</div>
-                                                            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{tx.invitee.email}</div>
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <span className="text-[10px] font-black text-slate-300 italic">Unknown</span>
-                                                )}
-                                            </td>
-                                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                <div className={`px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest inline-block border ${getRewardTypeColor(tx.rewardType)}`}>
-                                                    {getRewardTypeLabel(tx.rewardType)}
-                                                </div>
-                                            </td>
-                                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                <div className="text-sm font-black text-primary-700 tabular-nums italic">+₹{tx.amount}</div>
-                                            </td>
-                                            <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums italic tracking-tighter">₹{tx.balance?.toLocaleString() || 0}</div>
-                                            </td>
-                                        </motion.tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                            <ResponsiveTable data={transactions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
+                            <Pagination
+                                currentPage={page}
+                                totalPages={pagination.totalPages || 1}
+                                onPageChange={handlePageChange}
+                                totalItems={pagination.totalItems || 0}
+                                itemsPerPage={limit}
+                                onItemsPerPageChange={handleLimitChange}
+                            />
                         </motion.div>
                     )}
                 </AnimatePresence>
-
-                {/* Pagination */}
-                {pagination.totalPages > 1 && (
-                    <div className="flex justify-center pt-12">
-                        <Pagination
-                            currentPage={page}
-                            totalPages={pagination.totalPages}
-                            onPageChange={handlePageChange}
-                            totalItems={pagination.totalItems}
-                            itemsPerPage={limit}
-                        />
-                    </div>
-                )}
+                </div>
             </div>
         </div>
     );

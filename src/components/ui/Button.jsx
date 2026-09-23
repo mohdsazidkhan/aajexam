@@ -21,7 +21,7 @@ const Button = ({
   // primary   -> brand green bg, white text (identical in light & dark)
   // secondary -> white bg / black text with light gray border in light mode, dark bg / white border+text in dark mode (never white bg in dark mode)
   const variants = {
-    primary: 'bg-primary-700 shadow-sm border-primary-700 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
+    primary: 'bg-primary-600 shadow-sm border-primary-600 text-white active:bg-primary-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]',
     secondary: 'bg-white border-2 border-slate-200 text-black active:bg-slate-100 dark:bg-slate-800 dark:border-slate-800 dark:text-white dark:active:bg-slate-700',
   };
 

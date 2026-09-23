@@ -5,13 +5,16 @@ import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import {
-    Plus, Trash2, Edit3, Filter, Search, RotateCcw, IndianRupee,
+    Plus, Trash2, Edit3, Search, RotateCcw, IndianRupee,
     Calendar, Tag, Receipt, PieChart, TrendingDown,
     PlusCircle, X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import ResponsiveTable from '../../ResponsiveTable';
+import Pagination from '../../Pagination';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
 const AdminExpenses = () => {
@@ -25,7 +28,9 @@ const AdminExpenses = () => {
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');
     const [page, setPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
     const [totalPages, setTotalPages] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
     const [summary, setSummary] = useState({ totalAmount: 0, count: 0, categories: [] });
 
     // Form state
@@ -44,7 +49,7 @@ const AdminExpenses = () => {
     const fetchExpenses = useCallback(async (pg = 1) => {
         try {
             setLoading(true);
-            const params = { page: pg, limit: 10 };
+            const params = { page: pg, limit: itemsPerPage };
             if (search) params.search = search;
             if (category) params.category = category;
 
@@ -52,6 +57,7 @@ const AdminExpenses = () => {
             if (res.success) {
                 setExpenses(res.data || []);
                 setTotalPages(res.totalPages || 1);
+                setTotalItems(res.totalExpenses || 0);
                 setPage(pg);
             }
         } catch (err) {
@@ -59,7 +65,7 @@ const AdminExpenses = () => {
         } finally {
             setLoading(false);
         }
-    }, [search, category]);
+    }, [search, category, itemsPerPage]);
 
     const fetchSummary = async () => {
         try {
@@ -81,6 +87,11 @@ const AdminExpenses = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
+        fetchExpenses(1);
+    };
+
+    const handleItemsPerPageChange = (val) => {
+        setItemsPerPage(val);
         fetchExpenses(1);
     };
 
@@ -152,113 +163,127 @@ const AdminExpenses = () => {
         { id: 'other', label: 'Other', color: 'primary' }
     ];
 
+    const expenseTableColumns = [
+        {
+            key: 'expense', header: 'Expense', render: (_, expense) => (
+                <>
+                    <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors leading-none mb-2">{expense.title}</div>
+                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
+                </>
+            )
+        },
+        {
+            key: 'category', header: 'Category', render: (_, expense) => (
+                <div className="text-center">
+                    <span className="px-4 py-1.5 rounded-lg lg:rounded-xl bg-primary-600 text-white text-[9px] font-black uppercase tracking-widest shadow-sm">
+                        {expense.category}
+                    </span>
+                </div>
+            )
+        },
+        {
+            key: 'amount', header: 'Amount', render: (_, expense) => (
+                <div className="text-right tabular-nums font-black text-black dark:text-white italic tracking-tighter text-lg">
+                    {formatAmount(expense.amount)}
+                </div>
+            )
+        },
+        {
+            key: 'date', header: 'Date', render: (_, expense) => (
+                <>
+                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{new Date(expense.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{new Date(expense.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+                </>
+            )
+        },
+        {
+            key: 'actions', header: 'Actions', render: (_, expense) => (
+                <div className="flex items-center justify-center gap-3">
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        onClick={() => handleOpenModal(expense)}
+                        className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"
+                    >
+                        <Edit3 className="w-4 h-4" />
+                    </motion.button>
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        onClick={() => handleDelete(expense._id)}
+                        className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm"
+                    >
+                        <Trash2 className="w-4 h-4" />
+                    </motion.button>
+                </div>
+            )
+        }
+    ];
+
     return (
-        <div className="min-h-screen text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+        <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
             {userInfo?.role === 'admin' && <Sidebar />}
 
-            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-                {/* Category Summary Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 mb-4">
-                    {summary?.categories?.map((cat, i) => (
-                        <motion.div
-                            key={cat._id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group"
-                        >
-                            <div className="absolute top-0 left-0 w-full h-1 bg-primary-700" />
-                            <div className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl w-fit mb-6 group-hover:rotate-12 transition-transform capitalize font-black text-xs">
-                                {cat._id.charAt(0)}
-                            </div>
-                            <div className="text-3xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-2">
-                                {formatAmount(cat.totalAmount)}
-                            </div>
-                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none capitalize">{cat._id} SPENDING</div>
-                        </motion.div>
-                    ))}
-                </div>
-
+            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
                 {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-sm overflow-hidden group"
-                >
-                    <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <Receipt className="w-64 h-64 text-primary-700 -rotate-12" />
-                    </div>
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+                    <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Receipt className="w-6 h-6 text-primary-600 shrink-0" /> Expenses <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
 
-                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
-                        <div className="space-y-2">
-                            <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                                PLATFORM <span className="text-primary-700">EXPENSES</span>
-                            </h1>
-
-                            <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
-                                Track and record platform expenses.
-                            </p>
-                        </div>
-
-                        <div className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-sm w-full lg:w-auto">
-                            <div className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-xl">
-                                <IndianRupee className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <div className="text-xl lg:text-2xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white leading-none">
-                                    {formatAmount(summary.totalAmount)}
-                                </div>
-                                <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none mt-1">TOTAL EXPENSES</div>
-                            </div>
-                        </div>
-
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => handleOpenModal()}
-                            className="w-full lg:w-auto flex items-center justify-center gap-4 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] shadow-sm group/btn"
-                        >
-                            <PlusCircle className="w-5 h-5 group-hover/btn:rotate-90 transition-transform" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">ADD NEW EXPENSE</span>
-                        </motion.button>
-                    </div>
-                </motion.div>
-
-                {/* Filters */}
-                <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 mb-4">
-                    <form onSubmit={handleSearch} className="relative group/search w-full lg:w-96">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
-                        <input
-                            type="text"
-                            value={search}
-                            onChange={e => setSearch(e.target.value)}
-                            placeholder="SEARCH BY TITLE..."
-                            className="w-full pl-14 pr-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all shadow-sm"
-                        />
-                    </form>
-
-                    <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-sm border-2 border-slate-100 dark:border-white/5 w-full lg:w-auto">
-                        <Filter className="w-4 h-4 text-primary-700" />
+                    <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+                        <form onSubmit={handleSearch} className="relative col-span-2 sm:w-56">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                            <input
+                                type="text"
+                                value={search}
+                                onChange={e => setSearch(e.target.value)}
+                                placeholder="Search by title..."
+                                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                            />
+                        </form>
                         <select
                             value={category}
                             onChange={e => setCategory(e.target.value)}
-                            className="w-full lg:w-auto bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer"
+                            className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
                         >
-                            <option value="">ALL CATEGORIES</option>
+                            <option value="">All Categories</option>
                             {expenseCategories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                         </select>
+                        <button
+                            onClick={() => { setSearch(''); setCategory(''); fetchExpenses(1); }}
+                            title="Reset filters"
+                            className="p-2 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-slate-500 hover:text-primary-600 shrink-0"
+                        >
+                            <RotateCcw className="w-4 h-4" />
+                        </button>
+                        <button
+                            onClick={() => handleOpenModal()}
+                            className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0"
+                        >
+                            <PlusCircle className="w-4 h-4" /> Add Expense
+                        </button>
                     </div>
+                </div>
 
-                    <motion.button
-                        whileHover={{ rotate: 180 }}
-                        onClick={() => { setSearch(''); setCategory(''); fetchExpenses(1); }}
-                        className="w-full lg:w-auto p-4 rounded-full bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 shadow-sm hover:text-primary-700 transition-colors lg:ml-auto"
-                    >
-                        <RotateCcw className="w-5 h-5 mx-auto" />
-                    </motion.button>
+                {/* Stats bar */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+                    <div className="flex items-center gap-2 px-3 py-2">
+                        <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><IndianRupee className="w-3.5 h-3.5" /></div>
+                        <div className="min-w-0">
+                            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
+                            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Expenses</div>
+                        </div>
+                    </div>
+                    {summary?.categories?.map((cat) => (
+                        <div key={cat._id} className="flex items-center gap-2 px-3 py-2">
+                            <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0 uppercase font-black text-[10px] w-7 h-7 flex items-center justify-center">{cat._id.charAt(0)}</div>
+                            <div className="min-w-0">
+                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(cat.totalAmount)}</div>
+                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate capitalize">{cat._id}</div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* List Table */}
+                <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
                 <AnimatePresence mode="wait">
                     {loading ? (
                         <AdminTableSkeleton showHeader={false} showFilters={false} />
@@ -269,103 +294,39 @@ const AdminExpenses = () => {
                             <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Start by adding your first expense to track platform spending.</p>
                         </motion.div>
                     ) : (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden"
-                        >
-                            <div className="overflow-x-auto selection:bg-primary-500/30 text-nowrap">
-                                <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
-                                    <thead>
-                                        <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                                            <th className="px-3 lg:px-6 py-4">Expense</th>
-                                            <th className="px-3 lg:px-6 py-4 text-center">Category</th>
-                                            <th className="px-3 lg:px-6 py-4 text-right">Amount</th>
-                                            <th className="px-3 lg:px-6 py-4">Date</th>
-                                            <th className="px-3 lg:px-6 py-4 text-center">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {expenses.map((expense, idx) => (
-                                            <motion.tr
-                                                key={expense._id}
-                                                initial={{ opacity: 0, x: -20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: idx * 0.03 }}
-                                                className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-sm rounded-3xl"
-                                            >
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6 border-l-4 border-transparent group-hover:border-primary-700 first:rounded-l-[2rem]">
-                                                    <div className="font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors leading-none mb-2">{expense.title}</div>
-                                                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest line-clamp-1 max-w-xs">{expense.description || 'No description'}</div>
-                                                </td>
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
-                                                    <span className="px-4 py-1.5 rounded-lg lg:rounded-xl bg-primary-700 text-white text-[9px] font-black uppercase tracking-widest shadow-sm">
-                                                        {expense.category}
-                                                    </span>
-                                                </td>
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6 text-right tabular-nums font-black text-black dark:text-white italic tracking-tighter text-lg">
-                                                    {formatAmount(expense.amount)}
-                                                </td>
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6">
-                                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{new Date(expense.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
-                                                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{new Date(expense.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
-                                                </td>
-                                                <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
-                                                    <div className="flex items-center justify-center gap-3">
-                                                        <motion.button
-                                                            whileHover={{ scale: 1.1 }}
-                                                            onClick={() => handleOpenModal(expense)}
-                                                            className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"
-                                                        >
-                                                            <Edit3 className="w-4 h-4" />
-                                                        </motion.button>
-                                                        <motion.button
-                                                            whileHover={{ scale: 1.1 }}
-                                                            onClick={() => handleDelete(expense._id)}
-                                                            className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm"
-                                                        >
-                                                            <Trash2 className="w-4 h-4" />
-                                                        </motion.button>
-                                                    </div>
-                                                </td>
-                                            </motion.tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </motion.div>
+                        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                            <ResponsiveTable
+                                data={expenses}
+                                columns={expenseTableColumns}
+                                viewModes={['table']}
+                                defaultView="table"
+                                showPagination={false}
+                                showViewToggle={false}
+                                fillHeight
+                            />
+                        </div>
                     )}
                 </AnimatePresence>
 
                 {/* Pagination */}
-                {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-3 mt-16 bg-white/50 dark:bg-white/5 backdrop-blur-xl p-3 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/5 shadow-sm w-fit mx-auto">
-                        <motion.button
-                            whileHover={{ x: -2 }}
-                            onClick={() => fetchExpenses(page - 1)}
-                            disabled={page === 1}
-                            className="px-3 lg:px-6 py-3 rounded-2xl bg-white dark:bg-white/10 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-widest disabled:opacity-30 border border-slate-100 dark:border-white/10"
-                        >
-                            PREV
-                        </motion.button>
-                        <div className="px-3 lg:px-6 text-[10px] font-black text-primary-700 uppercase tracking-widest border-x-2 border-slate-100 dark:border-white/10">
-                            PAGE {page} OF {totalPages}
-                        </div>
-                        <motion.button
-                            whileHover={{ x: 2 }}
-                            onClick={() => fetchExpenses(page + 1)}
-                            disabled={page === totalPages}
-                            className="px-3 lg:px-6 py-3 rounded-2xl bg-white dark:bg-white/10 text-[10px] font-black text-slate-600 dark:text-white uppercase tracking-widest disabled:opacity-30 border border-slate-100 dark:border-white/10"
-                        >
-                            NEXT
-                        </motion.button>
+                {expenses.length > 0 && (
+                    <div className="shrink-0">
+                        <Pagination
+                            currentPage={page}
+                            totalPages={totalPages}
+                            onPageChange={fetchExpenses}
+                            totalItems={totalItems}
+                            itemsPerPage={itemsPerPage}
+                            onItemsPerPageChange={handleItemsPerPageChange}
+                        />
                     </div>
                 )}
+                </div>
 
                 {/* Expense Modal */}
                 <AnimatePresence>
                     {showModal && (
-                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        <div className="fixed inset-0 z-[100]">
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -374,10 +335,11 @@ const AdminExpenses = () => {
                                 onClick={() => setShowModal(false)}
                             />
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                className="relative bg-white dark:bg-slate-900 w-full max-w-xl max-h-[75vh] rounded-lg lg:rounded-xl xl:rounded-[3rem] shadow-sm overflow-hidden flex flex-col border-2 border-slate-100 dark:border-white/10"
+                                initial={{ y: '100%' }}
+                                animate={{ y: 0 }}
+                                exit={{ y: '100%' }}
+                                transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
+                                className="absolute top-16 right-0 bottom-0 left-0 lg:left-64 bg-white dark:bg-slate-900 lg:rounded-l-[2rem] shadow-2xl overflow-hidden flex flex-col border-l-2 border-slate-100 dark:border-white/10"
                             >
                                 <div className="bg-slate-900 p-4 lg:p-10 text-white relative overflow-hidden">
                                     <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-10">
@@ -392,11 +354,11 @@ const AdminExpenses = () => {
                                     </button>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="p-4 lg:p-10 space-y-2 lg:space-y-4 lg:space-y-8 overflow-y-auto">
+                                <form onSubmit={handleSubmit} className="flex-1 p-4 lg:p-10 space-y-2 lg:space-y-4 lg:space-y-8 overflow-y-auto">
                                     <div className="space-y-2 lg:space-y-4">
                                         <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Title</label>
                                         <div className="relative group/field">
-                                            <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-700 transition-colors" />
+                                            <Tag className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-600 transition-colors" />
                                             <input
                                                 required
                                                 type="text"
@@ -412,7 +374,7 @@ const AdminExpenses = () => {
                                         <div className="space-y-2 lg:space-y-4">
                                             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Amount</label>
                                             <div className="relative group/field">
-                                                <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-700 transition-colors" />
+                                                <IndianRupee className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-600 transition-colors" />
                                                 <input
                                                     required
                                                     type="number"
@@ -426,7 +388,7 @@ const AdminExpenses = () => {
                                         <div className="space-y-2 lg:space-y-4">
                                             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-4">Date</label>
                                             <div className="relative group/field">
-                                                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-700 transition-colors" />
+                                                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/field:text-primary-600 transition-colors" />
                                                 <input
                                                     required
                                                     type="date"

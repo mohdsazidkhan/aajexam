@@ -18,12 +18,12 @@ import {
 // --- Professional Metric Card ---
 function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
     const colors = {
-        primary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
-        secondary: "text-primary-700 bg-primary-500/10 border-primary-500/20",
-        emerald: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+        primary: "text-primary-600 bg-primary-500/10 border-primary-500/20",
+        secondary: "text-primary-600 bg-primary-500/10 border-primary-500/20",
+        emerald: "text-primary-600 bg-primary-500/10 border-primary-500/20",
         amber: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
         rose: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
-        purple: "text-primary-700 bg-primary-500/10 border-primary-500/20",
+        purple: "text-primary-600 bg-primary-500/10 border-primary-500/20",
         cyan: "text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20",
     };
 
@@ -41,7 +41,7 @@ function MetricCard({ icon: Icon, label, value, sub, color = "primary", i = 0 })
                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</div>
             </div>
             <div className="space-y-1">
-                <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-700 transition-colors">
+                <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-600 transition-colors">
                     {value}
                 </div>
                 {sub && (
@@ -102,7 +102,7 @@ const AdminUserAnalyticsDetail = () => {
                     className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-4 md:p-8 lg:p-12 mb-4 shadow-sm overflow-hidden group"
                 >
                     <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <PieChart className="w-64 h-64 text-primary-700 -rotate-12" />
+                        <PieChart className="w-64 h-64 text-primary-600 -rotate-12" />
                     </div>
 
                     <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
@@ -112,7 +112,7 @@ const AdminUserAnalyticsDetail = () => {
                                     whileHover={{ scale: 1.1, x: -5 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => router.push('/admin/analytics/users-overview')}
-                                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl hover:text-primary-700 transition-colors"
+                                    className="p-4 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl hover:text-primary-600 transition-colors"
                                 >
                                     <ArrowLeft className="w-6 h-6" />
                                 </motion.button>
@@ -129,8 +129,8 @@ const AdminUserAnalyticsDetail = () => {
                                         <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{userData.email || 'N/A'}</span>
                                     </div>
                                     <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-primary-500/10 rounded-2xl border-2 border-primary-500/20">
-                                        <TrendingUp className="w-4 h-4 text-primary-700" />
-                                        <span className="text-[10px] font-black text-primary-700 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
+                                        <TrendingUp className="w-4 h-4 text-primary-600" />
+                                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest italic tracking-tighter">{userData.subscriptionStatus?.toUpperCase() || 'FREE'}</span>
                                     </div>
                                 </div>
                             )}
@@ -141,7 +141,7 @@ const AdminUserAnalyticsDetail = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 className={`relative px-4 lg:px-10 py-4 lg:py-8 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 shadow-sm overflow-hidden
-                                        ${netEarnings >= 0 ?"bg-primary-700 border-primary-400/50":"bg-primary-700 border-black/50"}`}
+                                        ${netEarnings >= 0 ?"bg-primary-600 border-primary-400/50":"bg-primary-600 border-black/50"}`}
                             >
                                 <div className="relative z-10 flex flex-col items-center">
                                     <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mb-2">{netEarnings >= 0 ? 'Net Earnings' : 'Net Loss'}</span>
@@ -173,7 +173,7 @@ const AdminUserAnalyticsDetail = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="max-w-2xl mx-auto bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm"
                         >
-                            <div className="w-20 h-20 bg-primary-700 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
+                            <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
                                 <Zap className="w-10 h-10 text-white" />
                             </div>
                             <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-4">Failed to load data. Please try again.</h3>
@@ -182,7 +182,7 @@ const AdminUserAnalyticsDetail = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => router.push('/admin/analytics/users-overview')}
-                                className="px-4 lg:px-8 py-4 bg-primary-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
+                                className="px-4 lg:px-8 py-4 bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm"
                             >
                                 Back to Users
                             </motion.button>
@@ -197,7 +197,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-primary-500/20 text-primary-700 rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-primary-500/20 text-primary-600 rounded-2xl shadow-sm">
                                         <Coins className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -222,7 +222,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-2xl shadow-sm">
                                         <Trophy className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -291,7 +291,7 @@ const AdminUserAnalyticsDetail = () => {
                                 className="space-y-2 lg:space-y-4 lg:space-y-8"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="p-4 bg-primary-500/10 text-primary-700 rounded-2xl shadow-sm">
+                                    <div className="p-4 bg-primary-500/10 text-primary-600 rounded-2xl shadow-sm">
                                         <Book className="w-6 h-6" />
                                     </div>
                                     <div>

@@ -61,7 +61,7 @@ const BackendStatusBanner = () => {
                     opacity: [1, 0, 1]
                   }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-1 -right-1 w-5 h-5 bg-primary-700 rounded-full border-2 border-white dark:border-slate-900 shadow-sm"
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-primary-600 rounded-full border-2 border-white dark:border-slate-900 shadow-sm"
                 />
               </div>
 
@@ -82,7 +82,7 @@ const BackendStatusBanner = () => {
                 whileTap={{ y: 0, scale: 0.95 }}
                 onClick={checkBackendStatus}
                 disabled={isRefreshing}
-                className="flex-shrink-0 px-8 py-4 bg-primary-700 text-white rounded-2xl border-b-[6px] border-primary-700 shadow-sm font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex-shrink-0 px-8 py-4 bg-primary-600 text-white rounded-2xl border-b-[6px] border-primary-600 shadow-sm font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <RefreshCcw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                 {isRefreshing ? 'LINKING...' : 'RE-LINK'}

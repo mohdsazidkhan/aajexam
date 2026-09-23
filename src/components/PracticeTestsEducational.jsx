@@ -8,12 +8,12 @@ const PracticeTestsEducational = ({ levels }) => {
                 {/* Main Heading with Icon */}
                 <div className="text-center mb-20 animate-bounce-in">
                     <div className="inline-block mb-6">
-                        <div className="w-24 h-24 bg-primary-700 rounded-[2rem] flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 rotate-3">
+                        <div className="w-24 h-24 bg-primary-600 rounded-[2rem] flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 rotate-3">
                             <FaTrophy className="text-4xl text-white" />
                         </div>
                     </div>
                     <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-3 lg:mb-6 uppercase tracking-tighter">
-                        Practice <span className="text-primary-700">Tests</span>
+                        Practice <span className="text-primary-600">Tests</span>
                     </h1>
                     <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] max-w-2xl mx-auto leading-relaxed">
                         Prepare for your government exams with a structured practice system built for serious aspirants.
@@ -26,11 +26,11 @@ const PracticeTestsEducational = ({ levels }) => {
                     <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-sm border-2 border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
-                            <div className="bg-primary-700 p-8 rounded-[2rem] shadow-sm border-2 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
+                            <div className="bg-primary-600 p-8 rounded-[2rem] shadow-sm border-2 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
                                 <FaBook className="text-4xl text-white" />
                             </div>
                             <div className="flex-1 text-center lg:text-left">
-                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700">
+                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-600">
                                     How AajExam Works
                                 </h2>
                                 <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
@@ -49,11 +49,11 @@ const PracticeTestsEducational = ({ levels }) => {
                     <div className="group bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 lg:p-14 shadow-sm border-2 border-slate-100 dark:border-slate-700 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 bg-primary-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
-                            <div className="bg-primary-700 p-8 rounded-[2rem] shadow-sm border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
+                            <div className="bg-primary-600 p-8 rounded-[2rem] shadow-sm border-2 border-white dark:border-slate-800 rotate-3 group-hover:rotate-6 transition-transform">
                                 <FaChartLine className="text-4xl text-white" />
                             </div>
                             <div className="flex-1 text-center lg:text-left">
-                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700">
+                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-600">
                                     Adaptive Training
                                 </h2>
                                 <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
@@ -72,11 +72,11 @@ const PracticeTestsEducational = ({ levels }) => {
                     <div className="group bg-white dark:bg-slate-900/50 rounded-[2.5rem] p-10 lg:p-14 shadow-sm border-2 border-slate-100 dark:border-slate-800 transition-all hover:-translate-y-2 relative overflow-hidden">
                         <div className="absolute bottom-0 left-0 w-24 lg:w-48 h-24 lg:h-48 bg-primary-500/5 rounded-full blur-3xl -ml-24 -mb-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors"></div>
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 relative z-10">
-                            <div className="bg-primary-700 p-8 rounded-[2rem] shadow-sm border-2 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
+                            <div className="bg-primary-600 p-8 rounded-[2rem] shadow-sm border-2 border-white dark:border-slate-800 -rotate-3 group-hover:-rotate-6 transition-transform">
                                 <FaGraduationCap className="text-4xl text-white" />
                             </div>
                             <div className="flex-1 text-center lg:text-left">
-                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-700">
+                                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-8 transition-colors group-hover:text-primary-600">
                                     Syllabus Intelligence
                                 </h2>
                                 <div className="space-y-6 text-sm lg:text-base font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-loose">
@@ -96,7 +96,7 @@ const PracticeTestsEducational = ({ levels }) => {
                 <div className="bg-white dark:bg-slate-800 rounded-[3rem] p-4 md:p-8 lg:p-12 border-2 border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
                     <div className="text-center mb-4 lg:mb-8 relative z-10">
                         <h2 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                            Aspirant <span className="text-primary-700">Tips</span>
+                            Aspirant <span className="text-primary-600">Tips</span>
                         </h2>
                         <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mt-4">Essential Strategies for Success</p>
                     </div>

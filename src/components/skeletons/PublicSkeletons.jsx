@@ -176,7 +176,7 @@ export const AuthFormSkeleton = () => (
 );
 
 // ─── Subject/Topic detail skeleton ────────────────────────────────────────────
-const DetailPageSkeleton = ({ color ='bg-primary-700'}) => (
+const DetailPageSkeleton = ({ color ='bg-primary-600'}) => (
   <div className="min-h-screen pb-24 animate-pulse">
     <div className="container mx-auto px-0 lg:px-4 py-0 lg:py-6">
       {/* Back button */}
@@ -264,12 +264,12 @@ export const GovtExamsListSkeleton = () => (
 
 /** Skeleton for /subjects/[id] */
 export const SubjectDetailSkeleton = () => (
-  <DetailPageSkeleton color="bg-primary-700"/>
+  <DetailPageSkeleton color="bg-primary-600"/>
 );
 
 /** Skeleton for /topics/[id] */
 export const TopicDetailSkeleton = () => (
-  <DetailPageSkeleton color="bg-primary-700"/>
+  <DetailPageSkeleton color="bg-primary-600"/>
 );
 
 /** Skeleton for /quiz/[id] (QuizPreviewPage) */

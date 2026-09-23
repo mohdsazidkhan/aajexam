@@ -66,12 +66,12 @@ const Input = ({
           ${variants[variant]} 
           ${isFocused ? 'scale-[1.01] -translate-y-1' : ''}
           ${error ? 'border-black/30 dark:border-white/30 ring-4 ring-black/5 dark:ring-white/5' : ''}
-          ${isFocused ? 'border-primary-700' : 'border-slate-200 dark:border-slate-800'}
+          ${isFocused ? 'border-primary-600' : 'border-slate-200 dark:border-slate-800'}
           rounded-2xl border-2
         `}
       >
         {LeftIcon && (
-          <div className={`transition-colors duration-300 ${isFocused ? 'text-primary-700' : 'text-slate-600 dark:text-slate-400'}`}>
+          <div className={`transition-colors duration-300 ${isFocused ? 'text-primary-600' : 'text-slate-600 dark:text-slate-400'}`}>
             <LeftIcon className="w-5 h-5 ml-1" />
           </div>
         )}
@@ -109,13 +109,13 @@ const Input = ({
 
         <div className="flex items-center gap-2 pr-1">
           {error && <CircleAlert className="w-5 h-5 text-black dark:text-white animate-pulse" />}
-          {!error && value && isFocused && <CircleCheck className="w-5 h-5 text-primary-700" />}
+          {!error && value && isFocused && <CircleCheck className="w-5 h-5 text-primary-600" />}
 
           {RightIcon && (
             <button
               type="button"
               onClick={onRightIconClick}
-              className="p-2 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:hover:text-primary-400 transition-all active:scale-95"
+              className="p-2 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all active:scale-95"
               disabled={!onRightIconClick}
             >
               <RightIcon className="w-5 h-5" />

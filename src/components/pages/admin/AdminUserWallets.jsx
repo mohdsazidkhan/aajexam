@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import {
-  Wallet, Search, LayoutGrid, List, Table, Filter, ArrowUp, ArrowDown,
-  ChevronLeft, ChevronRight, User, Phone, Mail, Award, Crown, CheckCircle2,
-  Clock, XCircle, RefreshCcw, TrendingUp, IndianRupee
+  Wallet, Search, LayoutGrid, List, Table,
+  User, Phone, Mail, Crown,
+  RefreshCcw
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import API from '../../../lib/api';
@@ -13,8 +13,10 @@ import Link from 'next/link';
 import { getCurrentUser } from '../../../utils/authUtils';
 import Pagination from '../../Pagination';
 import { useSSR } from '../../../hooks/useSSR';
-import Button from '../../ui/Button';
+import Sidebar from '../../Sidebar';
+import ResponsiveTable from '../../ResponsiveTable';
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 const AdminUserWallets = () => {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -23,7 +25,7 @@ const AdminUserWallets = () => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [resetting, setResetting] = useState(false);
   const user = getCurrentUser();
 
@@ -66,10 +68,89 @@ const AdminUserWallets = () => {
     return `${day}-${month}-${year}`;
   };
 
-  const handleItemsPerPageChange = (e) => {
-    setItemsPerPage(parseInt(e.target.value));
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
     setPage(1);
   };
+
+  const walletColumns = [
+    {
+      key: 'user',
+      header: 'Student',
+      render: (_, row) => (
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-2xl bg-primary-600 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
+            <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-600">
+              {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-600 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+              {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'contact',
+      header: 'Contact Info',
+      render: (_, row) => (
+        <div className="text-[10px] font-bold text-slate-500">
+          <div className="flex items-center gap-2 mb-1"><Mail className="w-3 h-3" /> {row.user?.email || row.email || '-'}</div>
+          <div className="flex items-center gap-2"><Phone className="w-3 h-3" /> {row.user?.phone || row.phone || '-'}</div>
+        </div>
+      )
+    },
+    {
+      key: 'amount',
+      header: 'Balance',
+      align: 'right',
+      render: (_, row) => (
+        <div className="text-sm font-black text-primary-600 tabular-nums italic tracking-tighter text-right">
+          {formatAmount(row.amount || row.walletBalance)}
+        </div>
+      )
+    },
+    {
+      key: 'pendingRewards',
+      header: 'Pending Rewards',
+      align: 'center',
+      render: () => (
+        <div className="text-center">
+          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">-</span>
+        </div>
+      )
+    },
+    {
+      key: 'questionCounts',
+      header: 'Questions',
+      render: (_, row) => (
+        <div className="grid grid-cols-2 gap-2 max-w-[150px]">
+          <div className="flex flex-col">
+            <span className="text-[8px] font-black text-slate-400 uppercase">TOTAL</span>
+            <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{row.questionCounts?.total || 0}</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[8px] font-black text-primary-600 uppercase">APPROVED</span>
+            <span className="text-xs font-black text-primary-600 tabular-nums">{row.questionCounts?.approved || 0}</span>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'createdAt',
+      header: 'Joined',
+      render: (_, row) => (
+        <div>
+          <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{formatDate(row.createdAt)}</div>
+          <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{row.createdAt ? new Date(row.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : '-'}</div>
+        </div>
+      )
+    }
+  ];
 
   const handleResetClaimableRewards = async () => {
     if (!confirm('Are you sure you want to reset all pending rewards to 0 for every student who has unclaimed rewards? This action cannot be undone.')) {
@@ -94,297 +175,165 @@ const AdminUserWallets = () => {
   };
 
   const content = (
-    <div className="min-h-screen text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
-      <div>
+    <div className="flex-1 min-h-0 flex flex-col overflow-hidden text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-sm overflow-hidden group"
-        >
-          <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Wallet className="w-64 h-64 text-primary-700 -rotate-12" />
-          </div>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Wallet className="w-6 h-6 text-primary-600 shrink-0" /> Wallets <span className="text-slate-400 dark:text-slate-500">({total})</span></h1>
 
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
-            <div className="space-y-2">
-              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                STUDENT <span className="text-primary-700">WALLETS</span>
-              </h1>
-
-              <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
-                View student wallet balances and earning history.
-              </p>
+          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+            <div className="relative col-span-2 sm:w-56">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
+                placeholder="Search by username..."
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+              />
             </div>
-
-            <div className="flex flex-col items-end gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleResetClaimableRewards}
-                disabled={resetting}
-                className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-primary-700 text-white rounded-2xl shadow-sm group/btn disabled:opacity-50"
-              >
-                <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : 'group-hover/btn:rotate-180 transition-transform'}`} />
-                <span className="text-[10px] font-black uppercase tracking-widest">{resetting ? 'RESETTING...' : 'RESET ALL REWARDS'}</span>
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Search + Controls */}
-        <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-6 mb-4">
-          <div className="relative group/search w-full lg:w-96">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within/search:text-primary-700 transition-colors" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
-              placeholder="Search by username..."
-              className="w-full pl-14 pr-8 py-4 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 focus:border-primary-500/50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white placeholder:text-slate-400 outline-none transition-all"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-            <div className="flex bg-slate-100 dark:bg-white/10 p-2 rounded-2xl border-2 border-slate-200/50 dark:border-white/5 w-full lg:w-auto">
+            <div className="flex items-center gap-1">
               {[
-                { id: 'table', icon: Table },
-                { id: 'grid', icon: LayoutGrid },
-                { id: 'list', icon: List }
+                { id: 'table', icon: Table, label: 'Table View' },
+                { id: 'grid', icon: LayoutGrid, label: 'Grid View' },
+                { id: 'list', icon: List, label: 'List View' }
               ].map((mode) => (
-                <motion.button
+                <button
                   key={mode.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode(mode.id)}
-                  className={`flex-1 lg:flex-none p-3 rounded-lg lg:rounded-xl transition-all ${viewMode === mode.id ? 'bg-white dark:bg-white/10 text-primary-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                  title={mode.label}
+                  className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
                 >
-                  <mode.icon className="w-4 h-4 mx-auto" />
-                </motion.button>
+                  <mode.icon className="w-4 h-4" />
+                </button>
               ))}
             </div>
-
-            <div className="flex items-center gap-4 w-full lg:w-auto lg:ml-auto">
-              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ROWS PER PAGE</span>
-              <select
-                value={itemsPerPage}
-                onChange={handleItemsPerPageChange}
-                className="w-full lg:w-auto bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white outline-none cursor-pointer"
-              >
-                {[10, 20, 50, 100, 250, 500, 1000].map(v => <option key={v} value={v}>{v}</option>)}
-              </select>
-            </div>
+            <button
+              onClick={handleResetClaimableRewards}
+              disabled={resetting}
+              className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0 disabled:opacity-50"
+            >
+              <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : ''}`} />
+              {resetting ? 'Resetting...' : 'Reset All Rewards'}
+            </button>
           </div>
         </div>
 
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : items.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-96 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm">
+          <div className="flex flex-col items-center justify-center h-96 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
             <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-6" />
             <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">No Wallet Records Found</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md text-center">There are no student wallets matching your search. Try adjusting your filters or check back later.</p>
           </div>
         ) : (
-          <>
+          <div className="flex-1 min-h-0 flex flex-col">
+            <div className="flex-1 min-h-0 overflow-hidden">
             {viewMode === 'table' && (
-              <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden">
-                <div className="overflow-x-auto selection:bg-primary-500/30 text-nowrap">
-                  <table className="w-full border-separate border-spacing-y-4 px-4 lg:px-8 py-4">
-                    <thead>
-                      <tr className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-left">
-                        <th className="px-3 lg:px-6 py-4">#</th>
-                        <th className="px-3 lg:px-6 py-4">Student</th>
-                        <th className="px-3 lg:px-6 py-4">Contact Info</th>
-                        <th className="px-3 lg:px-6 py-4 text-right">Balance</th>
-                        <th className="px-3 lg:px-6 py-4 text-center">Pending Rewards</th>
-                        <th className="px-3 lg:px-6 py-4">Questions</th>
-                        <th className="px-3 lg:px-6 py-4">Joined</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                      {items.map((row, idx) => (
-                        <motion.tr
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.03 }}
-                          className="group bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-sm rounded-3xl"
-                        >
-                          <td className="px-3 lg:px-6 py-3 lg:py-6 first:rounded-l-[2rem]">
-                            <span className="text-[10px] font-black text-slate-400 tabular-nums">#{((page - 1) * itemsPerPage) + idx + 1}</span>
-                          </td>
-                          <td className="px-3 lg:px-6 py-3 lg:py-6">
-                            <div className="flex items-center gap-4">
-                              <div className="w-10 h-10 rounded-2xl bg-primary-700 p-[2px] shadow-sm group-hover:rotate-6 transition-transform">
-                                <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xs text-primary-700">
-                                  {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
-                                </div>
-                              </div>
-                              <div className="flex flex-col">
-                                <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">{row.user?.name || row.name || 'Unknown'}</span>
-                                <div className="flex items-center gap-2 mt-1">
-                                  <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-700 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
-                                  {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-3 lg:px-6 py-3 lg:py-6 text-[10px] font-bold text-slate-500">
-                            <div className="flex items-center gap-2 mb-1"><Mail className="w-3 h-3" /> {row.user?.email || row.email || '-'}</div>
-                            <div className="flex items-center gap-2"><Phone className="w-3 h-3" /> {row.user?.phone || row.phone || '-'}</div>
-                          </td>
-                          <td className="px-3 lg:px-6 py-3 lg:py-6 text-right">
-                            <div className="text-sm font-black text-primary-700 tabular-nums italic tracking-tighter">
-                              {formatAmount(row.amount || row.walletBalance)}
-                            </div>
-                          </td>
-                          <td className="px-3 lg:px-6 py-3 lg:py-6 text-center">
-                              <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">-</span>
-                          </td>
-                          <td className="px-3 lg:px-6 py-3 lg:py-6">
-                            <div className="grid grid-cols-2 gap-2 max-w-[150px]">
-                              <div className="flex flex-col">
-                                <span className="text-[8px] font-black text-slate-400 uppercase">TOTAL</span>
-                                <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{row.questionCounts?.total || 0}</span>
-                              </div>
-                              <div className="flex flex-col">
-                                <span className="text-[8px] font-black text-primary-700 uppercase">APPROVED</span>
-                                <span className="text-xs font-black text-primary-700 tabular-nums">{row.questionCounts?.approved || 0}</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-3 lg:px-6 py-3 lg:py-6 last:rounded-r-[2rem]">
-                            <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-tighter tabular-nums leading-none mb-1">{formatDate(row.createdAt)}</div>
-                            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{row.createdAt ? new Date(row.createdAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) : '-'}</div>
-                          </td>
-                        </motion.tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                <ResponsiveTable
+                  data={items}
+                  columns={walletColumns}
+                  viewModes={['table']}
+                  defaultView={'table'}
+                  showPagination={false}
+                  showViewToggle={false}
+                  fillHeight
+                />
               </div>
             )}
 
             {/* List View */}
             {viewMode === 'list' && (
-              <div className="space-y-3 lg:space-y-6">
+              <div className="h-full overflow-auto space-y-3">
                 {items.map((row, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 shadow-sm hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8"
-                  >
-                    <div className="flex items-center gap-3 lg:gap-6">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-700 p-[2px] shadow-sm">
-                        <div className="w-full h-full rounded-[14px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-sm text-primary-700">
-                          {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
-                        </div>
+                  <div key={idx} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
+                        {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                       </div>
-                      <div className="flex flex-col">
-                        <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors">{row.user?.name || row.name || 'Unknown'}</h4>
-                        <div className="flex items-center gap-3 mt-1">
-                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{row.user?.email || row.email || 'N/A'}</span>
-                          <span className="w-1 h-1 rounded-full bg-slate-300" />
-                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{row.user?.phone || row.phone || 'N/A'}</span>
+                      <div className="min-w-0">
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{row.user?.name || row.name || 'Unknown'}</h4>
+                        <div className="flex items-center gap-2 text-[10px] text-slate-400 flex-wrap">
+                          <span>{row.user?.email || row.email || 'N/A'}</span>
+                          <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                          <span>{row.user?.phone || row.phone || 'N/A'}</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 lg:gap-6 lg:justify-end">
-                      <div className="flex flex-col items-end">
-                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">STATUS</span>
-                        <div className="text-md font-black italic tracking-tighter text-slate-400">
-                          {row.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE'}
-                        </div>
+                    <div className="flex items-center gap-4 shrink-0">
+                      <div className="text-right">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase block">Status</span>
+                        <div className="text-xs font-black text-slate-500">{row.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE'}</div>
                       </div>
-                      <div className="w-[2px] h-8 bg-slate-100 dark:bg-white/5 hidden lg:block" />
-                      <div className="flex flex-col items-end">
-                        <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">BALANCE</span>
-                        <div className="text-xl font-black text-primary-700 italic tracking-tighter tabular-nums">
-                          {formatAmount(row.amount || row.walletBalance)}
-                        </div>
+                      <div className="text-right">
+                        <span className="text-[9px] font-bold text-slate-400 uppercase block">Balance</span>
+                        <div className="text-sm font-black text-primary-600 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             )}
 
             {/* Grid View */}
             {viewMode === 'grid' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
+              <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
                 {items.map((row, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-500/30 transition-all overflow-hidden"
-                  >
-                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <Wallet className="w-24 h-24 text-primary-700 -rotate-12" />
-                    </div>
-
-                    <div className="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-8 pb-6 border-b-2 border-slate-50 dark:border-white/5">
-                      <div className="w-16 h-16 rounded-3xl bg-primary-700 p-[3px] shadow-sm">
-                        <div className="w-full h-full rounded-[21px] bg-white dark:bg-slate-900 flex items-center justify-center font-black text-xl text-primary-700">
-                          {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
-                        </div>
+                  <div key={idx} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
+                        {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
                       </div>
-                      <div className="flex flex-col">
-                        <h4 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-2">{row.user?.name || row.name || 'Unknown'}</h4>
-                        <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-700 text-[8px] font-black uppercase tracking-widest">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
+                      <div className="min-w-0">
+                        <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">{row.user?.name || row.name || 'Unknown'}</h4>
+                        <div className="flex items-center gap-1.5">
+                          <span className="px-2 py-0.5 rounded-md bg-primary-500/10 text-primary-600 text-[9px] font-black">{(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' ? 'PRO' : 'FREE'}</span>
                           {(row.user?.subscriptionStatus || row.subscriptionStatus) === 'PRO' && <Crown className="w-3 h-3 text-black dark:text-white" />}
                         </div>
                       </div>
                     </div>
-
-                    <div className="space-y-2 lg:space-y-4 mb-4 lg:mb-8">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">STATUS</span>
-                        <span className="text-sm font-black italic tabular-nums text-slate-400">{row.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE'}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">JOINED</span>
-                        <span className="text-[10px] font-black text-slate-900 dark:text-white tabular-nums uppercase">{formatDate(row.createdAt)}</span>
-                      </div>
+                    <div className="text-[10px] text-slate-400">Joined {formatDate(row.createdAt)}</div>
+                    <div className="p-2.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 flex items-center justify-between">
+                      <span className="text-[9px] font-bold text-slate-400 uppercase">Balance</span>
+                      <span className="text-sm font-black text-primary-600 tabular-nums">{formatAmount(row.amount || row.walletBalance)}</span>
                     </div>
-
-                    <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 border-2 border-slate-100 dark:border-white/5">
-                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1 block">BALANCE</span>
-                      <div className="text-3xl font-black text-primary-700 italic tracking-tighter leading-none">{formatAmount(row.amount || row.walletBalance)}</div>
-                    </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             )}
 
-            {/* Pagination */}
-            {Math.max(1, Math.ceil(total / itemsPerPage)) > 1 && (
-              <div className="mt-4 lg:mt-12 flex justify-center">
+            </div>
+
+            {total > 0 && (
+              <div className="shrink-0">
                 <Pagination
                   currentPage={page}
                   totalPages={Math.max(1, Math.ceil(total / itemsPerPage))}
                   onPageChange={setPage}
                   totalItems={total}
                   itemsPerPage={itemsPerPage}
+                  onItemsPerPageChange={handleItemsPerPageChange}
                 />
               </div>
             )}
-          </>
+          </div>
         )}
+        </div>
       </div>
     </div>
   );
 
   return (
-    <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-      {content}
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+        {content}
+      </div>
     </div>
   );
 };

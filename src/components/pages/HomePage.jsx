@@ -144,7 +144,7 @@ const REEL_TYPE_CONFIG = {
    fact: { icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Fact' },
    tip: { icon: Lightbulb, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Tip' },
    current_affairs: { icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-black/10 dark:bg-white/10', label: 'Current Affairs' },
-   poll: { icon: BarChart3, color: 'text-primary-700', bg: 'bg-primary-500/10', label: 'Poll' },
+   poll: { icon: BarChart3, color: 'text-primary-600', bg: 'bg-primary-500/10', label: 'Poll' },
 };
 
 // ─── Blog Card ───
@@ -311,7 +311,7 @@ const HomePage = () => {
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-700 selection:text-white font-outfit mt-4 lg:mt-8">
+      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-4 lg:mt-8">
             {/* ── Stats ── */}
             <section className="px-0 py-2 lg:py-4">
                {streakCount > 0 && (
@@ -326,12 +326,12 @@ const HomePage = () => {
                {/* Quick Stats */}
                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-700 mb-1.5" />
+                     <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-primary-700 mb-1.5" />
+                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{averageMockScore}%</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
                   </div>

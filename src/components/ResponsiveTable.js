@@ -22,6 +22,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Pagination from './Pagination';
 import ViewToggle from './ViewToggle';
 import { AdminTableSkeleton } from './skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../lib/constants/pagination';
 
 /**
  * Premium Responsive Table Component
@@ -35,7 +36,7 @@ const ResponsiveTable = ({
   viewModes = ['table', 'list', 'grid'],
   defaultView = 'table',
   currentView = null,
-  itemsPerPage = 10,
+  itemsPerPage = DEFAULT_PAGE_SIZE,
   showPagination = true,
   showViewToggle = true,
   className = '',
@@ -43,6 +44,7 @@ const ResponsiveTable = ({
   onViewChange = null,
   loading = false,
   emptyMessage = "No data available",
+  fillHeight = false,
 }) => {
   const [internalView, setInternalView] = useState(defaultView);
   const currentViewState = currentView !== null ? currentView : internalView;
@@ -53,6 +55,7 @@ const ResponsiveTable = ({
   const totalPages = showPagination ? Math.ceil(totalItems / itemsPerPageState) : 1;
   const startIndex = (currentPage - 1) * itemsPerPageState;
   const currentData = showPagination ? data.slice(startIndex, startIndex + itemsPerPageState) : data;
+  const getSerialNumber = (index) => startIndex + index + 1;
 
   const handlePageChange = (page) => setCurrentPage(page);
 
@@ -81,56 +84,64 @@ const ResponsiveTable = ({
 
   // --- Table View (Data Matrix) ---
   const renderTableView = () => (
-    <div className="overflow-x-auto rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300">
-      <table className="w-full border-collapse bg-white dark:bg-slate-900 overflow-hidden">
-        <thead className="bg-slate-50 dark:bg-slate-800/40 border-b-2 border-slate-100 dark:border-slate-800">
+    <div className={`${fillHeight ? 'flex-1 min-h-0' : 'max-h-[65vh]'} overflow-auto rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300`}>
+      <table className="w-full border-collapse bg-white dark:bg-slate-900">
+        <thead className="sticky top-0 z-10 bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-800">
           <tr>
+            <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
+              S.No.
+            </th>
             {columns.map((column, index) => (
               <th
                 key={index}
-                className="px-6 py-5 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit"
+                className={`px-3 py-2 text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
+                  }`}
               >
                 {column.header}
               </th>
             ))}
             {actions.length > 0 && (
-              <th className="px-6 py-5 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit">
+              <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
                 Actions
               </th>
             )}
           </tr>
         </thead>
-        <tbody className="divide-y-2 divide-slate-50 dark:divide-slate-800/30">
+        <tbody className="divide-y divide-slate-50 dark:divide-slate-800/30">
           {currentData.map((row, rowIndex) => (
             <motion.tr
               key={rowIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: rowIndex * 0.03 }}
-              className={`hover:bg-primary-500/5 dark:hover:bg-primary-500/10 transition-all duration-300 group ${onRowClick ? 'cursor-pointer' : ''}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.15 }}
+              className={`hover:bg-primary-500/5 dark:hover:bg-primary-500/10 transition-colors duration-200 group ${onRowClick ? 'cursor-pointer' : ''}`}
               onClick={() => onRowClick && onRowClick(row)}
             >
+              <td className="px-3 py-1.5 text-xs font-black text-slate-600 dark:text-slate-300 whitespace-nowrap">
+                {getSerialNumber(rowIndex)}
+              </td>
               {columns.map((column, colIndex) => (
-                <td key={colIndex} className="px-6 py-5 text-xs font-bold text-slate-700 dark:text-slate-200">
-                  {column.render ? column.render(row[column.key], row) : (row[column.key] || 'â€”')}
+                <td key={colIndex} className={`px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
+                  }`}>
+                  {column.render ? column.render(row[column.key], row) : (row[column.key] || '—')}
                 </td>
               ))}
               {actions.length > 0 && (
-                <td className="px-6 py-5">
-                  <div className="flex items-center gap-2">
+                <td className="px-3 py-1.5 whitespace-nowrap">
+                  <div className="flex items-center gap-1.5">
                     {actions.map((action, actionIndex) => (
                       <motion.button
                         key={actionIndex}
                         whileHover={{ scale: 1.15, y: -2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                        className={`p-2.5 rounded-lg lg:rounded-xl transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
-                          action.variant === 'success' ? 'text-primary-700 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
-                            'text-primary-700 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
+                        className={`p-1.5 rounded-lg transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
+                          action.variant === 'success' ? 'text-primary-600 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
+                            'text-primary-600 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
                         title={action.label}
                       >
-                        {action.icon || <MoreHorizontal className="w-4 h-4" />}
+                        {action.icon || <MoreHorizontal className="w-3.5 h-3.5" />}
                       </motion.button>
                     ))}
                   </div>
@@ -177,8 +188,8 @@ const ResponsiveTable = ({
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                     className={`p-3.5 lg:p-3 rounded-lg lg:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 hover:bg-slate-100 dark:bg-slate-800' :
-                      action.variant === 'success' ? 'bg-primary-50 text-primary-700 dark:bg-primary-950/40 hover:bg-primary-100' :
-                        'bg-primary-50 text-primary-700 dark:bg-primary-950/40 hover:bg-primary-100'
+                      action.variant === 'success' ? 'bg-primary-50 text-primary-600 dark:bg-primary-950/40 hover:bg-primary-100' :
+                        'bg-primary-50 text-primary-600 dark:bg-primary-950/40 hover:bg-primary-100'
                       }`}
                   >
                     {action.icon}
@@ -210,7 +221,7 @@ const ResponsiveTable = ({
           <div className="relative z-10 space-y-8">
             {/* Hero Header */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-700 p-0.5 shadow-sm group-hover:rotate-6 transition-transform duration-500">
+              <div className="w-14 h-14 rounded-2xl bg-primary-600 p-0.5 shadow-sm group-hover:rotate-6 transition-transform duration-500">
                 <div className="w-full h-full bg-slate-900 rounded-lg lg:rounded-xl flex items-center justify-center text-white font-black text-2xl italic">
                   {(row.name || row[columns[0]?.key] || 'U')[0]}
                 </div>
@@ -220,8 +231,8 @@ const ResponsiveTable = ({
                   {row.name || row[columns[0]?.key] || 'Unknown Object'}
                 </h3>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <Activity className="w-3 h-3 text-primary-700" />
-                  <span className="text-[9px] font-black text-primary-700 uppercase tracking-widest">{row.status || 'Active'}</span>
+                  <Activity className="w-3 h-3 text-primary-600" />
+                  <span className="text-[9px] font-black text-primary-600 uppercase tracking-widest">{row.status || 'Active'}</span>
                 </div>
               </div>
             </div>
@@ -250,7 +261,7 @@ const ResponsiveTable = ({
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
                     className={`p-4 lg:p-3 rounded-lg lg:rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
-                      'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-700 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
+                      'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
                       }`}
                   >
                     {action.icon}
@@ -265,7 +276,7 @@ const ResponsiveTable = ({
   );
 
   return (
-    <div className={`space-y-10 ${className}`}>
+    <div className={`${fillHeight ? 'flex-1 min-h-0 flex flex-col' : 'space-y-10'} ${className}`}>
       {/* Header Controls (View Toggle & Density) */}
       {(showViewToggle || showPagination) && (
         <motion.div
@@ -285,13 +296,13 @@ const ResponsiveTable = ({
 
           {showPagination && (
             <div className="px-5 py-3 lg:py-2.5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-[1.25rem] lg:rounded-2xl shadow-sm flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
-              <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">Show Units</span>
+              <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">Page Size</span>
               <select
                 value={itemsPerPageState}
                 onChange={handleItemsPerPageChange}
-                className="bg-transparent text-xs font-black text-slate-900 dark:text-white outline-none cursor-pointer focus:text-primary-700 transition-colors font-outfit"
+                className="bg-transparent text-xs font-black text-slate-900 dark:text-white outline-none cursor-pointer focus:text-primary-600 transition-colors font-outfit"
               >
-                {[5, 10, 20, 50].map(v => <option key={v} value={v} className="bg-slate-900">{v}</option>)}
+                {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v} className="bg-slate-900">{v}</option>)}
               </select>
             </div>
           )}
@@ -323,6 +334,7 @@ const ResponsiveTable = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            className={fillHeight && currentViewState === 'table' ? 'flex-1 min-h-0 flex flex-col' : ''}
           >
             {currentViewState === 'table' && renderTableView()}
             {currentViewState === 'list' && renderListView()}

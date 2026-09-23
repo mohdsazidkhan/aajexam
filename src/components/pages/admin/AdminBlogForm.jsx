@@ -180,11 +180,8 @@ const AdminBlogForm = () => {
             </button>
             <div>
               <h1 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter leading-none italic">
-                {isEdit ? 'EDIT' : 'CREATE'} <span className="text-primary-700">BLOG</span>
+                {isEdit ? 'EDIT' : 'CREATE'} <span className="text-primary-600">BLOG</span>
               </h1>
-              <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-1">
-                {isEdit ? 'Update your blog post' : 'Write and publish a new blog post'}
-              </p>
             </div>
           </div>
         </motion.div>
@@ -302,12 +299,12 @@ const AdminBlogForm = () => {
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isFeatured" checked={formData.isFeatured} onChange={handleChange}
-                  className="h-4 w-4 text-primary-700 focus:ring-primary-500 border-gray-300 rounded" />
+                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Featured Blog</label>
               </div>
               <div className="flex items-center">
                 <input type="checkbox" name="isPinned" checked={formData.isPinned} onChange={handleChange}
-                  className="h-4 w-4 text-primary-700 focus:ring-primary-500 border-gray-300 rounded" />
+                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
                 <label className="ml-2 text-sm text-gray-700 dark:text-gray-300 font-medium">Pinned Blog</label>
               </div>
             </div>

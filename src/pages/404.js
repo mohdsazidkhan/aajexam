@@ -50,7 +50,7 @@ export default function Custom404() {
           <div className="flex flex-col gap-4">
             <button
               onClick={handleGoHome}
-              className="w-full bg-primary-700 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-700 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
+              className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
               Go to Home
             </button>
@@ -67,19 +67,19 @@ export default function Custom404() {
             <div className="flex justify-center space-x-4 mt-3">
               <button
                 onClick={() => router.push('/login')}
-                className="text-primary-700 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+                className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
               >
                 Login
               </button>
               <button
                 onClick={() => router.push('/register')}
-                className="text-primary-700 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+                className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
               >
                 Register
               </button>
               <button
                 onClick={() => router.push('/contact')}
-                className="text-primary-700 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+                className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
               >
                 Contact Us
               </button>

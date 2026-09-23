@@ -247,10 +247,10 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <div className="flex items-center gap-3">
                         <button onClick={() => router.push('/admin/pyq')} className="p-2 rounded-lg lg:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"><ArrowLeft className="w-5 h-5" /></button>
                         <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
-                            <FileText className="w-6 h-6 text-primary-700" /> {mode === 'edit' ? 'Edit PYQ' : 'New PYQ Paper'}
+                            <FileText className="w-6 h-6 text-primary-600" /> {mode === 'edit' ? 'Edit PYQ' : 'New PYQ Paper'}
                         </h1>
                     </div>
-                    <button onClick={handleSubmit} disabled={saving} className="px-5 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+                    <button onClick={handleSubmit} disabled={saving} className="px-5 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                         <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save'}
                     </button>
                 </div>
@@ -315,7 +315,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })}
-                                className="w-5 h-5 rounded text-primary-700 border-slate-300" />
+                                className="w-5 h-5 rounded text-primary-600 border-slate-300" />
                             <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Free for all students</span>
                             <span className="text-xs text-slate-400">({form.isFree ? 'anyone can attempt' : 'pro only'})</span>
                         </label>
@@ -325,7 +325,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                     <Card className="space-y-5">
                         <div className="flex items-center justify-between">
                             <h2 className="text-sm font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider">Questions ({form.questions.length})</h2>
-                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-primary-700 text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
+                            <button type="button" onClick={addQuestion} className="px-3 py-2 bg-primary-600 text-white rounded-lg text-xs font-bold hover:bg-primary-600 transition flex items-center gap-1">
                                 <Plus className="w-3 h-3" /> Add Question
                             </button>
                         </div>
@@ -334,7 +334,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                             {form.questions.map((q, qi) => (
                                 <div key={qi} className="p-4 border-2 border-slate-100 dark:border-slate-800 rounded-lg lg:rounded-xl space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-xs font-black text-primary-700">Q{qi + 1}</span>
+                                        <span className="text-xs font-black text-primary-600">Q{qi + 1}</span>
                                         {form.questions.length > 1 && (
                                             <button type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                                         )}
@@ -350,7 +350,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <div className="relative inline-block">
                                                 <img src={q.questionImage} alt="" className="h-20 rounded-lg border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                                                 <button type="button" onClick={() => updateQuestion(qi, { questionImage: '' })}
-                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-primary-700 text-white rounded-full flex items-center justify-center hover:bg-primary-800">
+                                                    className="absolute -top-2 -right-2 w-5 h-5 bg-primary-600 text-white rounded-full flex items-center justify-center hover:bg-primary-800">
                                                     <X className="w-3 h-3" />
                                                 </button>
                                             </div>
@@ -371,7 +371,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             <div key={oi} className="space-y-1.5">
                                             <div className="flex items-center gap-2">
                                                 <button type="button" onClick={() => updateQuestion(qi, { correctAnswerIndex: oi })}
-                                                    className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-primary-700 border-primary-700 text-white' : 'border-slate-300 text-slate-400'}`}>
+                                                    className={`w-6 h-6 rounded-full border-2 flex-shrink-0 flex items-center justify-center text-xs font-black ${q.correctAnswerIndex === oi ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 text-slate-400'}`}>
                                                     {String.fromCharCode(65 + oi)}
                                                 </button>
                                                 <input type="text" value={opt} onChange={e => updateOption(qi, oi, e.target.value)}
@@ -399,7 +399,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                             );
                                         })}
                                         {q.options.length < 6 && (
-                                            <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-700 hover:underline">+ Add option</button>
+                                            <button type="button" onClick={() => addOption(qi)} className="text-[10px] font-bold text-primary-600 hover:underline">+ Add option</button>
                                         )}
                                     </div>
 
@@ -440,7 +440,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
 
                     <div className="flex justify-end gap-3">
                         <button type="button" onClick={() => router.push('/admin/pyq')} className="px-5 py-2.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg lg:rounded-xl text-sm font-bold hover:bg-slate-300 dark:hover:bg-slate-600 transition">Cancel</button>
-                        <button type="submit" disabled={saving} className="px-6 py-2.5 bg-primary-700 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+                        <button type="submit" disabled={saving} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                             <Save className="w-4 h-4" /> {saving ? 'Saving...' : (mode === 'edit' ? 'Update PYQ' : 'Create PYQ')}
                         </button>
                     </div>

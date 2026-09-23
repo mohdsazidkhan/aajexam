@@ -5,31 +5,25 @@ import API from '../../../lib/api';
 import { toast } from 'react-toastify';
 import {
     Users,
-    Calendar,
     Search,
     Download,
     UserPlus,
     LayoutGrid,
     List,
     Table as TableIcon,
-    User,
-    Filter,
-    ChevronRight,
-    ArrowRight,
-    TrendingUp,
     Award,
     Zap,
     Clock,
-    ChevronLeft,
     Mail,
-    ShieldCheck,
     Hash
 } from 'lucide-react';
 import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
 import { isMobile } from 'react-device-detect';
-import Button from '../../ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
+import ResponsiveTable from '../../ResponsiveTable';
+import Pagination from '../../Pagination';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
 const AdminReferralAnalytics = () => {
@@ -47,7 +41,7 @@ const AdminReferralAnalytics = () => {
 
     const [pagination, setPagination] = useState({
         page: 1,
-        limit: 20,
+        limit: DEFAULT_PAGE_SIZE,
         total: 0,
         totalPages: 0
     });
@@ -128,6 +122,10 @@ const AdminReferralAnalytics = () => {
         setPagination(prev => ({ ...prev, page: newPage }));
     };
 
+    const handleLimitChange = (newLimit) => {
+        setPagination(prev => ({ ...prev, limit: newLimit, page: 1 }));
+    };
+
     const exportToCSV = () => {
         const monthName = selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1];
         const yearText = selectedYear === 'all' ? 'All Years' : selectedYear;
@@ -156,6 +154,50 @@ const AdminReferralAnalytics = () => {
         toast.success('CSV exported successfully!');
     };
 
+    const columns = [
+        {
+            key: 'user', header: 'User', render: (_, user) => (
+                <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
+                        {user.name?.[0]?.toUpperCase()}
+                    </div>
+                    <div>
+                        <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{user.name}</div>
+                        <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{user.email}</div>
+                    </div>
+                </div>
+            )
+        },
+        {
+            key: 'referralCode', header: 'Referral Code', render: (_, user) => (
+                <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-600 italic">
+                    <Hash className="w-3 h-3" /> {user.referralCode}
+                </div>
+            )
+        },
+        {
+            key: 'totalReferrals', header: 'Total Referrals', align: 'center', render: (_, user) => (
+                <div>
+                    <div className="text-sm font-black text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                    <div className="text-[9px] font-bold text-slate-400 uppercase">All Time</div>
+                </div>
+            )
+        },
+        {
+            key: 'monthlyReferrals', header: 'Monthly Growth', align: 'center', render: (_, user) => (
+                <div>
+                    <div className="text-sm font-black text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                    <div className="text-[9px] font-bold text-slate-400 uppercase">{selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1]}</div>
+                </div>
+            )
+        },
+        {
+            key: 'joined', header: 'Joined', align: 'right', render: (_, user) => (
+                <span className="text-[10px] font-bold text-slate-400">{new Date(user.createdAt).toLocaleDateString()}</span>
+            )
+        }
+    ];
+
     if (loading && analytics.length === 0) {
         return (
             <div className="min-h-screen p-3 lg:p-8">
@@ -165,129 +207,95 @@ const AdminReferralAnalytics = () => {
     }
 
     return (
-        <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+        <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
             <Sidebar />
-            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-                <div className="transition-all duration-500">
+            <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+                <div className="flex-1 min-h-0 flex flex-col transition-all duration-500">
 
                     {/* Header Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-4"
-                    >
-                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-                            <div className="space-y-2">
-                                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                    REFERRAL <span className="text-primary-700">ANALYTICS</span>
-                                </h1>
-                                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">Track referral performance, user activity, and monthly growth trends.</p>
-                            </div>
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+                        <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Users className="w-6 h-6 text-primary-600 shrink-0" /> Referrals <span className="text-slate-400 dark:text-slate-500">({pagination.total})</span></h1>
 
-                            <div className="flex items-center bg-white dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 shadow-sm w-full lg:w-auto">
+                        <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+                            <div className="relative col-span-2 sm:w-56">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                                <input
+                                    type="text"
+                                    placeholder="Search users..."
+                                    value={searchTerm}
+                                    onChange={handleSearch}
+                                    className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                                />
+                            </div>
+                            <select
+                                value={selectedYear}
+                                onChange={handleYearChange}
+                                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                            >
+                                <option value="all">All Years</option>
+                                {availableYears.map(year => (
+                                    <option key={year} value={year}>{year}</option>
+                                ))}
+                            </select>
+                            <select
+                                value={selectedMonth}
+                                onChange={handleMonthChange}
+                                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                            >
+                                <option value="all">All Months</option>
+                                {months.map((month, index) => (
+                                    <option key={index + 1} value={(index + 1).toString().padStart(2, '0')}>
+                                        {month}
+                                    </option>
+                                ))}
+                            </select>
+                            <div className="flex items-center gap-1">
                                 {[
-                                    { icon: TableIcon, id: 'table', label: 'Table' },
-                                    { icon: List, id: 'list', label: 'List' },
-                                    { icon: LayoutGrid, id: 'grid', label: 'Grid' }
+                                    { icon: TableIcon, id: 'table', label: 'Table View' },
+                                    { icon: List, id: 'list', label: 'List View' },
+                                    { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
                                 ].map((mode) => (
                                     <button
                                         key={mode.id}
                                         onClick={() => setViewMode(mode.id)}
-                                        className={`p-4 rounded-full transition-all flex items-center justify-center gap-2 flex-1 lg:flex-none ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                                        title={mode.label}
+                                        className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
                                     >
                                         <mode.icon className="w-4 h-4" />
-                                        {viewMode === mode.id && <span className="text-[8px] font-black uppercase tracking-widest pr-1">{mode.label}</span>}
                                     </button>
                                 ))}
                             </div>
-                        </div>
-
-                        {/* Summary Visualization */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-4">
-                            {[
-                                { label: "TOTAL USERS", value: pagination.total, icon: Users, color: "bg-primary-700", shadow: "shadow-sm" },
-                                { label: "ACTIVE REFERRERS", value: summary.usersWithReferrals, icon: UserPlus, color: "bg-primary-700", shadow: "shadow-sm" },
-                                { label:"TOTAL REFERRALS", value: summary.totalReferralsSum, icon: Award, color:"bg-primary-700", text:"text-white", shadow:"shadow-sm"},
-                                { label:"THIS MONTH", value: summary.monthlyReferralsSum, icon: Zap, color:"bg-primary-700", text:"text-white", shadow:"shadow-sm"}
-                            ].map((stat, i) => (
-                                <motion.div
-                                    key={stat.label}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className={`relative overflow-hidden ${stat.color} rounded-lg lg:rounded-xl xl:rounded-[2.5rem] p-3 lg:p-8 ${stat.text || 'text-white'} shadow-sm ${stat.shadow}`}
-                                >
-                                    <div className="absolute top-0 right-0 p-4 opacity-20">
-                                        <stat.icon className="w-20 h-20 -rotate-12 translate-x-6 translate-y-2" />
-                                    </div>
-                                    <div className="relative z-10 space-y-2 lg:space-y-4">
-                                        <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{stat.label}</div>
-                                        <div className="text-3xl lg:text-4xl font-black italic tracking-tighter tabular-nums">{stat.value}</div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Filters */}
-                        <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
-                            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 flex-1 w-full lg:w-auto">
-                                <div className="relative group w-full lg:max-w-md">
-                                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-700 transition-colors" />
-                                    <input
-                                        type="text"
-                                        placeholder="Search users..."
-                                        value={searchTerm}
-                                        onChange={handleSearch}
-                                        className="w-full pl-14 pr-8 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none focus:border-primary-500/30 transition-all shadow-sm placeholder:text-slate-400"
-                                    />
-                                </div>
-
-                                <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-                                    <div className="relative w-full lg:w-auto">
-                                        <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                                        <select
-                                            value={selectedYear}
-                                            onChange={handleYearChange}
-                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
-                                        >
-                                            <option value="all">All Years</option>
-                                            {availableYears.map(year => (
-                                                <option key={year} value={year}>{year}</option>
-                                            ))}
-                                        </select>
-                                        <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
-                                    </div>
-
-                                    <div className="relative w-full lg:w-auto">
-                                        <Clock className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                                        <select
-                                            value={selectedMonth}
-                                            onChange={handleMonthChange}
-                                            className="w-full lg:w-auto pl-14 pr-10 py-5 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none appearance-none cursor-pointer hover:border-primary-500/30 transition-all font-outfit"
-                                        >
-                                            <option value="all">All Months</option>
-                                            {months.map((month, index) => (
-                                                <option key={index + 1} value={(index + 1).toString().padStart(2, '0')}>
-                                                    {month.toUpperCase()}
-                                                </option>
-                                            ))}
-                                        </select>
-                                        <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 rotate-90 pointer-events-none" />
-                                    </div>
-                                </div>
-                            </div>
-
                             <button
                                 onClick={exportToCSV}
                                 disabled={analytics.length === 0}
-                                className="w-full lg:w-auto px-4 lg:px-8 py-5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-primary-700 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] shadow-sm hover:bg-primary-600 hover:text-white transition-all flex items-center justify-center gap-3 disabled:opacity-20 active:scale-95 outline-none"
+                                title="Export CSV"
+                                className="flex items-center justify-center bg-primary-50 dark:bg-primary-950/30 text-primary-600 p-2 rounded-lg lg:rounded-xl shrink-0 disabled:opacity-30"
                             >
-                                <Download className="w-5 h-5" /> Export CSV
+                                <Download className="w-4 h-4" />
                             </button>
                         </div>
-                    </motion.div>
+                    </div>
+
+                    {/* Summary Visualization */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+                        {[
+                            { label: "Total Users", value: pagination.total, icon: Users },
+                            { label: "Active Referrers", value: summary.usersWithReferrals, icon: UserPlus },
+                            { label: "Total Referrals", value: summary.totalReferralsSum, icon: Award },
+                            { label: "This Month", value: summary.monthlyReferralsSum, icon: Zap }
+                        ].map((stat) => (
+                            <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
+                                <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                                <div className="min-w-0">
+                                    <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">{stat.value}</div>
+                                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
 
                     {/* Analytics Data */}
+                    <div className="flex-1 min-h-0 overflow-hidden">
                     <AnimatePresence mode="wait">
                         {analytics.length === 0 ? (
                             <motion.div
@@ -305,188 +313,94 @@ const AdminReferralAnalytics = () => {
                                 key="content"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="space-y-2 lg:space-y-4 lg:space-y-12"
+                                className="h-full flex flex-col"
                             >
+                                <div className="flex-1 min-h-0 overflow-hidden">
                                 {/* Grid Visualization */}
                                 {viewMode === 'grid' && (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-8">
+                                    <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
                                         {analytics.map((user, i) => (
-                                            <motion.div
-                                                key={user._id || i}
-                                                initial={{ opacity: 0, scale: 0.95 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col items-center text-center overflow-hidden"
-                                            >
-                                                <div className="relative mb-4 lg:mb-8">
-                                                    <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-xl">
-                                                        {user.name?.[0]?.toUpperCase() || 'U'}
+                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                                                <div className="flex items-start justify-between gap-2">
+                                                    <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center font-black text-sm">{user.name?.[0]?.toUpperCase() || 'U'}</div>
+                                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{user.name || 'Unknown'}</h3>
+                                                    <p className="text-[10px] text-slate-400 truncate">{user.email || 'No email'}</p>
+                                                </div>
+                                                <div className="grid grid-cols-2 gap-2 text-center">
+                                                    <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
+                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Total</div>
                                                     </div>
-                                                    <div className="absolute -bottom-2 -right-2 bg-primary-700 text-white p-2 rounded-lg lg:rounded-xl shadow-sm border-2 border-white dark:border-[#060813]">
-                                                        <Award className="w-4 h-4" />
+                                                    <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5">
+                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Monthly</div>
                                                     </div>
                                                 </div>
-
-                                                <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight mb-1">{user.name || 'Unknown'}</h3>
-                                                <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-4 lg:mb-8 italic">{user.email || 'No email'}</div>
-
-                                                <div className="grid grid-cols-2 gap-4 w-full mb-4 lg:mb-10 text-[9px] font-black uppercase tracking-widest">
-                                                    <div className="p-5 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
-                                                        <div className="text-slate-400 mb-2">Total Referrals</div>
-                                                        <div className="text-xl italic text-primary-700 tabular-nums">{user.totalReferrals}</div>
-                                                    </div>
-                                                    <div className="p-5 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/5 group-hover:border-primary-500/20 transition-all">
-                                                        <div className="text-slate-400 mb-2">Monthly Growth</div>
-                                                        <div className="text-xl italic text-primary-700 tabular-nums">{user.monthlyReferrals}</div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="w-full flex items-center justify-between pt-8 border-t-2 border-slate-50 dark:border-white/5 mt-auto">
-                                                    <div className="flex items-center gap-2">
-                                                        <ShieldCheck className="w-4 h-4 text-primary-700" />
-                                                        <span className="text-[10px] font-black uppercase text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors">{user.referralCode}</span>
-                                                    </div>
-                                                    <span className="text-[9px] font-black uppercase text-slate-400 italic">Joined: {new Date(user.createdAt).getFullYear()}</span>
-                                                </div>
-                                            </motion.div>
+                                                <div className="text-[10px] text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-700">Joined {new Date(user.createdAt).toLocaleDateString()}</div>
+                                            </div>
                                         ))}
                                     </div>
                                 )}
 
                                 {/* List Visualization */}
                                 {viewMode === 'list' && (
-                                    <div className="space-y-3 lg:space-y-6">
+                                    <div className="h-full overflow-auto space-y-3">
                                         {analytics.map((user, i) => (
-                                            <motion.div
-                                                key={user._id || i}
-                                                initial={{ opacity: 0, x: -20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: i * 0.05 }}
-                                                className="group bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 hover:border-primary-500/30 transition-all shadow-sm flex flex-col lg:flex-row lg:items-center gap-10"
-                                            >
-                                                <div className="w-20 h-20 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 border-2 border-slate-100 dark:border-white/10 shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase font-black text-2xl">
-                                                    {user.name?.[0]?.toUpperCase() || 'U'}
-                                                </div>
-
-                                                <div className="flex-1 space-y-2 lg:space-y-4">
-                                                    <div className="flex flex-wrap items-center gap-4">
-                                                        <h3 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none group-hover:text-primary-700 transition-colors">{user.name || 'Unknown'}</h3>
-                                                        <div className="px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border border-primary-500/20 text-primary-700 bg-primary-500/5 italic">{user.referralCode}</div>
+                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
+                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center shrink-0 font-black text-sm">{user.name?.[0]?.toUpperCase() || 'U'}</div>
+                                                <div className="flex-1 min-w-0 space-y-1">
+                                                    <div className="flex flex-wrap items-center gap-2">
+                                                        <h3 className="text-sm font-bold text-slate-900 dark:text-white">{user.name || 'Unknown'}</h3>
+                                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 text-[10px] font-black"><Hash className="w-3 h-3" />{user.referralCode}</span>
                                                     </div>
-                                                    <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                                                        <div className="flex items-center gap-2">
-                                                            <Mail className="w-4 h-4 text-slate-300" />
-                                                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">{user.email}</span>
-                                                        </div>
-                                                        <div className="flex items-center gap-2">
-                                                            <Clock className="w-4 h-4 text-slate-300" />
-                                                            <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">Joined: {new Date(user.createdAt).toLocaleDateString()}</span>
-                                                        </div>
+                                                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-400">
+                                                        <span className="flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> {user.email}</span>
+                                                        <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> Joined {new Date(user.createdAt).toLocaleDateString()}</span>
                                                     </div>
                                                 </div>
-
-                                                <div className="flex gap-4">
-                                                    <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
-                                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">TOTAL REFERRALS</div>
-                                                        <div className="text-2xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.totalReferrals}</div>
+                                                <div className="flex gap-2 shrink-0">
+                                                    <div className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[90px]">
+                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.totalReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Total</div>
                                                     </div>
-                                                    <div className="p-6 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 dark:border-white/10 text-center min-w-[140px] group-hover:border-primary-500/20 transition-all">
-                                                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">MONTHLY GROWTH</div>
-                                                        <div className="text-2xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.monthlyReferrals}</div>
+                                                    <div className="px-3 py-1.5 bg-slate-50 dark:bg-white/5 rounded-lg border border-slate-100 dark:border-white/5 text-center min-w-[90px]">
+                                                        <div className="text-sm font-black text-primary-600 tabular-nums">{user.monthlyReferrals}</div>
+                                                        <div className="text-[9px] font-bold text-slate-400 uppercase">Monthly</div>
                                                     </div>
                                                 </div>
-                                            </motion.div>
+                                            </div>
                                         ))}
                                     </div>
                                 )}
 
                                 {/* Table Visualization */}
                                 {viewMode === 'table' && (
-                                    <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
-                                        <table className="w-full">
-                                            <thead>
-                                                <tr className="bg-slate-50/50 dark:bg-slate-900 border-b border-slate-100 dark:border-white/10 text-left">
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center w-20">#</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">USER</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">REFERRAL CODE</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">TOTAL REFERRALS</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">MONTHLY GROWTH</th>
-                                                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">JOINED</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                                                {analytics.map((user, i) => (
-                                                    <motion.tr
-                                                        key={user._id || i}
-                                                        initial={{ opacity: 0, x: -20 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: i * 0.05 }}
-                                                        className="group hover:bg-primary-500/5 transition-all"
-                                                    >
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <span className="text-[10px] font-black text-slate-400 tabular-nums">#{i + 1 + (pagination.page - 1) * pagination.limit}</span>
-                                                        </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6">
-                                                            <div className="flex items-center gap-4">
-                                                                <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
-                                                                    {user.name?.[0]?.toUpperCase()}
-                                                                </div>
-                                                                <div>
-                                                                    <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{user.name}</div>
-                                                                    <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{user.email}</div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                                                            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[9px] font-black text-primary-700 italic">
-                                                                <Hash className="w-3 h-3" /> {user.referralCode}
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                            <div className="text-xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.totalReferrals}</div>
-                                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">All Time</div>
-                                                        </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                                                            <div className="text-xl font-black italic tracking-tighter text-primary-700 tabular-nums">{user.monthlyReferrals}</div>
-                                                            <div className="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] italic">{selectedMonth === 'all' ? 'All Months' : months[parseInt(selectedMonth) - 1].toUpperCase()}</div>
-                                                        </td>
-                                                        <td className="px-4 lg:px-8 py-3 lg:py-6 text-right font-black text-[10px] text-slate-400 uppercase tracking-widest tabular-nums">
-                                                            {new Date(user.createdAt).toLocaleDateString()}
-                                                        </td>
-                                                    </motion.tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
+                                    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                                        <ResponsiveTable data={analytics} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No referral data found" fillHeight />
                                     </div>
                                 )}
+                                </div>
 
                                 {/* Pagination */}
-                                {pagination.totalPages > 1 && (
-                                    <div className="flex justify-center items-center gap-4 mt-16 text-[10px] font-black uppercase tracking-widest">
-                                        <button
-                                            onClick={() => handlePageChange(pagination.page - 1)}
-                                            disabled={pagination.page === 1}
-                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-sm active:scale-90"
-                                        >
-                                            <ChevronLeft className="w-5 h-5" />
-                                        </button>
-
-                                        <div className="px-4 lg:px-8 py-4 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] shadow-sm italic tracking-tighter shadow-sm">
-                                            Page {pagination.page} <span className="text-primary-200 mx-2">/</span> {pagination.totalPages}
-                                        </div>
-
-                                        <button
-                                            onClick={() => handlePageChange(pagination.page + 1)}
-                                            disabled={pagination.page === pagination.totalPages}
-                                            className="p-6 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-700 disabled:opacity-20 transition-all shadow-sm active:scale-90"
-                                        >
-                                            <ChevronRight className="w-5 h-5" />
-                                        </button>
+                                {pagination.total > 0 && (
+                                    <div className="shrink-0">
+                                        <Pagination
+                                            currentPage={pagination.page}
+                                            totalPages={pagination.totalPages}
+                                            onPageChange={handlePageChange}
+                                            totalItems={pagination.total}
+                                            itemsPerPage={pagination.limit}
+                                            onItemsPerPageChange={handleLimitChange}
+                                        />
                                     </div>
                                 )}
                             </motion.div>
                         )}
                     </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </div>

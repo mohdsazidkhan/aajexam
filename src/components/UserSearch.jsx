@@ -80,21 +80,21 @@ const UserSearch = () => {
                 className="user-result-avatar w-16 h-16 rounded-2xl object-cover flex-shrink-0 border-2 border-slate-100 shadow-sm"
               />
               <div className="user-result-info flex-1 min-w-0">
-                <h4 className="m-0 mb-1 text-base font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-700 transition-colors overflow-hidden text-ellipsis whitespace-nowrap">
+                <h4 className="m-0 mb-1 text-base font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors overflow-hidden text-ellipsis whitespace-nowrap">
                   {user.name}
                 </h4>
                 <p className="user-result-username m-0 mb-1 text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
                   @{user.username}
                 </p>
                 {user.bio && (
-                  <p className="user-result-bio m-0 text-[10px] font-black text-primary-700 uppercase tracking-wider overflow-hidden text-ellipsis whitespace-nowrap">
+                  <p className="user-result-bio m-0 text-[10px] font-black text-primary-600 uppercase tracking-wider overflow-hidden text-ellipsis whitespace-nowrap">
                     {user.bio}
                   </p>
                 )}
               </div>
               <div className="user-result-stats flex items-center gap-6 flex-shrink-0">
                 <div className="user-stat flex flex-col items-center text-center">
-                  <span className="bg-primary-700 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+                  <span className="bg-primary-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
                     STUDENT
                   </span>
                 </div>

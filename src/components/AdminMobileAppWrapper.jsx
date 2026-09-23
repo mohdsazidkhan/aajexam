@@ -71,7 +71,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
           <div className="absolute inset-0 bg-grid-slate-900/[0.04] dark:bg-grid-slate-100/[0.04] pointer-events-none" />
 
           <div className="flex items-center gap-3 relative z-10 transition-transform active:scale-95">
-            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-700 p-0.5 shadow-sm">
+            <Link href="/admin/dashboard" className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-600 p-0.5 shadow-sm">
               <div className="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center text-white text-sm font-black italic">A</div>
             </Link>
             <div className="flex flex-col">
@@ -98,7 +98,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               <motion.button
                 whileTap={{ scale: 0.9, y: 1 }}
                 onClick={() => secureLogout(router)}
-                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-primary-700 border-b-2 border-primary-700 text-white shadow-sm"
+                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-primary-600 border-b-2 border-primary-600 text-white shadow-sm"
               >
                 <LogOut className="w-4 h-4" />
               </motion.button>
@@ -108,7 +108,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
             <motion.button
               whileTap={{ scale: 0.9, y: 1 }}
               onClick={() => dispatch(toggleSidebar())}
-              className={`w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl border-b-2 transition-all ${isOpen ? 'bg-primary-600 border-primary-800' : 'bg-primary-700 border-primary-700'
+              className={`w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl border-b-2 transition-all ${isOpen ? 'bg-primary-600 border-primary-600' : 'bg-primary-600 border-primary-600'
                 } text-white shadow-sm`}
             >
               {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}

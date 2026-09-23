@@ -33,12 +33,12 @@ const NotesSkeleton = () => (
 
 // ─── Note type config ──────────────────────────────────────────────────────────
 const noteTypeConfig = {
-  notes: { icon: BookOpen, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Notes'},
-  formulas: { icon: Calculator, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Formulas'},
-  shortcuts: { icon: Zap, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Shortcuts'},
-  important_points: { icon: Hash, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Key Points'},
-  tables: { icon: StickyNote, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Tables'},
-  mnemonics: { icon: Sparkles, color:'bg-primary-700', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Mnemonics'},
+  notes: { icon: BookOpen, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Notes'},
+  formulas: { icon: Calculator, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Formulas'},
+  shortcuts: { icon: Zap, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Shortcuts'},
+  important_points: { icon: Hash, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Key Points'},
+  tables: { icon: StickyNote, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Tables'},
+  mnemonics: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Mnemonics'},
 };
 const defaultNoteType = { icon: StickyNote, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200', label: 'Note' };
 
@@ -83,7 +83,7 @@ const NotesPage = () => {
 
       {/* ── Hero ── */}
       <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:py-8">
-        <div className="absolute inset-0 bg-primary-700 dark:bg-slate-900" />
+        <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
@@ -109,7 +109,7 @@ const NotesPage = () => {
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   type === f.id
-                    ?'bg-primary-700 text-white border-primary-700'
+                    ?'bg-primary-600 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {f.label}
@@ -169,7 +169,7 @@ const NotesPage = () => {
               <StickyNote className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">No notes found</h3>
               <button onClick={() => { setType('all'); setSearch(''); }}
-                className="px-6 py-2.5 bg-primary-700 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">View All</button>
             </div>
           )}
         </div>

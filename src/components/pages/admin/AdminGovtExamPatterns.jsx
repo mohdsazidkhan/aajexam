@@ -33,6 +33,9 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import ResponsiveTable from '../../ResponsiveTable';
+import Pagination from '../../Pagination';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 const AdminGovtExamPatterns = () => {
   const [loading, setLoading] = useState(false);
@@ -44,6 +47,8 @@ const AdminGovtExamPatterns = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingPattern, setEditingPattern] = useState(null);
   const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -185,6 +190,51 @@ const AdminGovtExamPatterns = () => {
 
   const calculateTotalMarks = () => formData.sections.reduce((sum, sec) => sum + (sec.totalQuestions * sec.marksPerQuestion), 0);
 
+  const patternTotalPages = Math.max(1, Math.ceil(patterns.length / itemsPerPage));
+  const pagedPatterns = patterns.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedExam, itemsPerPage]);
+
+  const patternColumns = [
+    {
+      key: 'title', header: 'Pattern Name', render: (_, p) => (
+        <span className="font-black text-slate-900 dark:text-white uppercase italic tracking-tight">{p.title}</span>
+      )
+    },
+    {
+      key: 'duration', header: 'Duration', render: (_, p) => (
+        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+          <Clock className="w-4 h-4 text-primary-600" /> {p.duration} Min
+        </div>
+      )
+    },
+    {
+      key: 'negativeMarking', header: 'Negative Marks', render: (_, p) => (
+        <span className="text-black dark:text-white font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} per wrong answer</span>
+      )
+    },
+    {
+      key: 'sections', header: 'Sections', render: (_, p) => (
+        <div className="text-center">
+          <span className="px-3 py-1 bg-primary-500/10 text-primary-600 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
+        </div>
+      )
+    },
+    {
+      key: 'actions', header: 'Actions', align: 'right', render: (_, p) => (
+        <div className="flex justify-end gap-3">
+          <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
+            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
+          </Link>
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(p)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl"><Edit3 className="w-4 h-4" /></motion.button>
+          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
+        </div>
+      )
+    }
+  ];
+
   return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
     {/* Header */}
@@ -192,27 +242,48 @@ const AdminGovtExamPatterns = () => {
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
         <div className="space-y-2">
           <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-            Exam Patterns
+            Patterns
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest">
-            Set up exam patterns with sections and marking schemes.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-          <div className="flex items-center bg-slate-100 dark:bg-white/5 p-2 rounded-lg lg:rounded-[2rem] border-2 border-slate-200 dark:border-white/10 shadow-sm w-full lg:w-auto">
+          <div className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-slate-100 dark:bg-white/5 rounded-lg lg:rounded-xl shadow-sm w-full lg:w-auto lg:min-w-[170px]">
+            <Compass className="w-4 h-4 text-primary-600 shrink-0" />
+            <select
+              value={selectedCategory}
+              onChange={(e) => handleCategoryChange(e.target.value)}
+              className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer w-full outline-none"
+            >
+              <option value="all">All Categories</option>
+              {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name}</option>)}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-slate-100 dark:bg-white/5 rounded-lg lg:rounded-xl shadow-sm w-full lg:w-auto lg:min-w-[170px] lg:max-w-[220px]">
+            <LayoutGrid className="w-4 h-4 text-primary-600 shrink-0" />
+            <select
+              value={selectedExam}
+              onChange={(e) => handleExamChange(e.target.value)}
+              className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer w-full outline-none truncate"
+            >
+              <option value="all">All Exams</option>
+              {exams.map(exam => <option key={exam._id} value={exam._id}>{exam.code} - {exam.name}</option>)}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-1">
             {[
-              { icon: TableIcon, id: 'table', label: 'Table' },
-              { icon: LayoutGrid, id: 'grid', label: 'Nodes' },
-              { icon: List, id: 'list', label: 'List' }
+              { icon: TableIcon, id: 'table', label: 'Table View' },
+              { icon: LayoutGrid, id: 'grid', label: 'Grid View' },
+              { icon: List, id: 'list', label: 'List View' }
             ].map((mode) => (
               <button
                 key={mode.id}
                 onClick={() => setViewMode(mode.id)}
-                className={`p-4 rounded-full transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                title={mode.label}
+                className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
               >
                 <mode.icon className="w-4 h-4" />
-                {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
               </button>
             ))}
           </div>
@@ -220,42 +291,13 @@ const AdminGovtExamPatterns = () => {
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
             onClick={handleCreate}
             disabled={selectedExam === 'all'}
-            className={`w-full lg:w-auto px-4 lg:px-8 py-4 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-3 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-700 text-white'}`}
+            className={`w-full lg:w-auto px-4 lg:px-6 py-2.5 rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2 ${selectedExam === 'all' ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-primary-600 text-white'}`}
           >
             <Plus className="w-4 h-4" /> New Pattern
           </motion.button>
         </div>
       </div>
     </motion.div>
-
-    {/* Filters */}
-    <div className="bg-white/50 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-8 mb-4 shadow-sm">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8 font-outfit">
-        <div className="w-full lg:w-1/2 flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5">
-          <Compass className="w-4 h-4 text-primary-700" />
-          <select
-            value={selectedCategory}
-            onChange={(e) => handleCategoryChange(e.target.value)}
-            className="bg-transparent text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest focus:outline-none cursor-pointer w-full"
-          >
-            <option value="all">All Categories</option>
-            {categories.map(cat => <option key={cat._id} value={cat._id}>{cat.name}</option>)}
-          </select>
-        </div>
-
-        <div className="w-full lg:w-1/2 flex items-center gap-3 px-3 lg:px-6 py-3 bg-white dark:bg-white/10 rounded-2xl shadow-sm border-2 border-slate-200/50 dark:border-white/5 text-[10px] uppercase font-black">
-          <LayoutGrid className="w-4 h-4 text-primary-700" />
-          <select
-            value={selectedExam}
-            onChange={(e) => handleExamChange(e.target.value)}
-            className="bg-transparent text-slate-900 dark:text-white tracking-widest focus:outline-none cursor-pointer w-full"
-          >
-            <option value="all">All Exams</option>
-            {exams.map(exam => <option key={exam._id} value={exam._id}>{exam.code} - {exam.name}</option>)}
-          </select>
-        </div>
-      </div>
-    </div>
 
     {/* Content */}
     <AnimatePresence mode="wait">
@@ -270,43 +312,16 @@ const AdminGovtExamPatterns = () => {
       ) : (
         <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           {viewMode === 'table' && (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
-                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Pattern Name</th>
-                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Duration</th>
-                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">Negative Marks</th>
-                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Sections</th>
-                    <th className="px-4 lg:px-8 py-4 lg:py-8 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                  {patterns.map((p, idx) => (
-                    <motion.tr key={p._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.03 }} className="group hover:bg-slate-50/50 dark:hover:bg-white/5 transition-all">
-                      <td className="px-4 lg:px-8 py-3 lg:py-6 font-black text-slate-900 dark:text-white uppercase italic tracking-tight">{p.title}</td>
-                      <td className="px-4 lg:px-8 py-3 lg:py-6">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
-                          <Clock className="w-4 h-4 text-primary-700" /> {p.duration} Min
-                        </div>
-                      </td>
-                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-black dark:text-white font-bold text-xs uppercase tracking-widest">-{p.negativeMarking} per wrong answer</td>
-                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-center">
-                        <span className="px-3 py-1 bg-primary-500/10 text-primary-700 rounded-lg text-[10px] font-black border border-primary-500/20">{p.sections?.length || 0} Sections</span>
-                      </td>
-                      <td className="px-4 lg:px-8 py-3 lg:py-6 text-right">
-                        <div className="flex justify-end gap-3">
-                          <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
-                            <motion.button whileHover={{ scale: 1.1 }} className="p-3 bg-primary-500/10 text-primary-700 rounded-lg lg:rounded-xl border border-primary-500/20"><Settings className="w-4 h-4" /></motion.button>
-                          </Link>
-                          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleEdit(p)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl"><Edit3 className="w-4 h-4" /></motion.button>
-                          <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleDelete(p._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg lg:rounded-xl border border-black/20 dark:border-white/20"><Trash2 className="w-4 h-4" /></motion.button>
-                        </div>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm">
+              <ResponsiveTable data={pagedPatterns} columns={patternColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} />
+              <Pagination
+                currentPage={currentPage}
+                totalPages={patternTotalPages}
+                onPageChange={setCurrentPage}
+                totalItems={patterns.length}
+                itemsPerPage={itemsPerPage}
+                onItemsPerPageChange={(val) => { setItemsPerPage(val); setCurrentPage(1); }}
+              />
             </div>
           )}
 
@@ -314,9 +329,9 @@ const AdminGovtExamPatterns = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
               {patterns.map((p, idx) => (
                 <motion.div key={p._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit">
-                  <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-700 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
+                  <div className="absolute top-6 right-6 p-3 bg-primary-500/10 text-primary-600 rounded-2xl border border-primary-500/20"><Boxes className="w-5 h-5" /></div>
                   <div className="mb-4 lg:mb-8">
-                    <div className="text-[10px] font-black text-primary-700 uppercase tracking-widest mb-1">Exam Pattern</div>
+                    <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">Exam Pattern</div>
                     <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter truncate max-w-[180px]">{p.title}</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-4 mb-0 lg:mb-8">
@@ -331,9 +346,9 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="flex gap-3 pt-6 border-t-2 border-slate-100 dark:border-white/5">
                     <Link href={`/admin/govt-exams/tests?patternId=${p._id}`} className="flex-1">
-                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Manage Tests</motion.button>
+                      <motion.button whileHover={{ scale: 1.02 }} className="w-full py-4 bg-primary-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm">Manage Tests</motion.button>
                     </Link>
-                    <motion.button onClick={() => handleEdit(p)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(p)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-600"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(p._id)} className="p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
@@ -357,9 +372,9 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <Link href={`/admin/govt-exams/tests?patternId=${p._id}`}>
-                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-700 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">View Tests</motion.button>
+                      <motion.button whileHover={{ scale: 1.05 }} className="px-4 lg:px-8 py-3 bg-primary-600 text-white rounded-lg lg:rounded-xl font-black text-[10px] uppercase tracking-widest shadow-sm">View Tests</motion.button>
                     </Link>
-                    <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-700"><Edit3 className="w-5 h-5" /></motion.button>
+                    <motion.button onClick={() => handleEdit(p)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-primary-600"><Edit3 className="w-5 h-5" /></motion.button>
                     <motion.button onClick={() => handleDelete(p._id)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white"><Trash2 className="w-5 h-5" /></motion.button>
                   </div>
                 </motion.div>
@@ -373,29 +388,29 @@ const AdminGovtExamPatterns = () => {
 
     <AnimatePresence>
       {showModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100]">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-950/60 backdrop-blur-md" />
-          <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-5xl bg-white dark:bg-[#0A0F1E] rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm overflow-hidden flex flex-col max-h-[75vh]">
+          <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute top-16 right-0 bottom-0 left-0 lg:left-64 bg-white dark:bg-[#0A0F1E] lg:rounded-l-[3rem] border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
             <div className="p-3 lg:p-8 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-primary-500/5">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary-700 text-white rounded-2xl shadow-sm"><Binary className="w-6 h-6" /></div>
+                <div className="p-3 bg-primary-600 text-white rounded-2xl shadow-sm"><Binary className="w-6 h-6" /></div>
                 <div>
-                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-700">Pattern</span></h2>
+                  <h2 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingPattern ? 'Edit' : 'Add'} <span className="text-primary-600">Pattern</span></h2>
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
                 </div>
               </div>
-              <button onClick={() => setShowModal(false)} className="p-3 rounded-lg lg:rounded-xl hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition-colors"><X className="w-6 h-6" /></button>
+              <button onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg lg:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
               <div className="w-full lg:w-2/5 p-3 lg:p-8 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
                 <form onSubmit={handleSubmit} className="space-y-2 lg:space-y-4 lg:space-y-8">
                   <div className="space-y-2 lg:space-y-4">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Pattern Title</label>
+                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-600 pl-3 block ml-2">Pattern Title</label>
                     <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} placeholder="E.G. TIER 1 CLASSIC" required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black uppercase outline-none shadow-sm" />
                   </div>
                   <div className="grid grid-cols-2 gap-3 lg:gap-6">
                     <div className="space-y-2 lg:space-y-4">
-                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-700 pl-3 block ml-2">Duration (Min)</label>
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-l-4 border-primary-600 pl-3 block ml-2">Duration (Min)</label>
                       <input type="number" value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: parseInt(e.target.value) || 0 })} required className="w-full px-3 lg:px-6 py-5 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl text-xs font-black outline-none" />
                     </div>
                     <div className="space-y-2 lg:space-y-4">
@@ -405,10 +420,10 @@ const AdminGovtExamPatterns = () => {
                   </div>
                   <div className="pt-8 border-t-2 border-slate-100 dark:border-white/5 space-y-2 lg:space-y-4">
                     <div className="p-6 bg-primary-500/5 rounded-3xl border-2 border-primary-500/10 flex justify-between items-center font-outfit">
-                      <span className="text-[10px] font-black text-primary-700 uppercase tracking-widest">Total Marks</span>
-                      <span className="text-2xl font-black text-primary-700 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
+                      <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Total Marks</span>
+                      <span className="text-2xl font-black text-primary-600 italic tracking-tighter">{calculateTotalMarks()} PTS</span>
                     </div>
-                    <button type="submit" className="w-full py-5 bg-primary-700 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-sm flex items-center justify-center gap-3">
+                    <button type="submit" className="w-full py-5 bg-primary-600 text-white rounded-lg lg:rounded-[2rem] font-black text-[10px] uppercase tracking-widest shadow-sm flex items-center justify-center gap-3">
                       <CheckCircle2 className="w-5 h-5" /> {editingPattern ? 'Update Pattern' : 'Create Pattern'}
                     </button>
                   </div>
@@ -417,7 +432,7 @@ const AdminGovtExamPatterns = () => {
               <div className="flex-1 p-3 lg:p-8 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-black/20">
                 <div className="max-w-2xl mx-auto space-y-10">
                   <div className="space-y-2 lg:space-y-4">
-                    <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-700" /> Sections ({formData.sections.length})</h3>
+                    <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-3"><Layers className="w-4 h-4 text-primary-600" /> Sections ({formData.sections.length})</h3>
                     {formData.sections.map((sec, i) => (
                       <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="p-6 bg-white dark:bg-white/5 rounded-lg lg:rounded-[2rem] border-2 border-slate-100 flex items-center justify-between group">
                         <div className="flex items-center gap-3 lg:gap-6">
@@ -432,7 +447,7 @@ const AdminGovtExamPatterns = () => {
                     ))}
                   </div>
                   <div className="p-3 lg:p-8 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-primary-500/20 relative font-outfit">
-                    <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-700 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm">Add Section</div>
+                    <div className="absolute -top-4 left-8 px-4 py-1 bg-primary-600 text-white rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm">Add Section</div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 mt-4">
                       <div className="lg:col-span-2 space-y-2">
                         <label className="text-[9px] font-black text-slate-400 uppercase ml-2">Section Name</label>

@@ -81,8 +81,8 @@ const NotificationsPage = () => {
 
   const getIcon = (type) => {
     switch (type) {
-      case 'test_completed': return <Target className="w-5 h-5 text-primary-700" />;
-      case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-700" />;
+      case 'test_completed': return <Target className="w-5 h-5 text-primary-600" />;
+      case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-600" />;
       case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-black dark:text-white" />;
       default: return <Info className="w-5 h-5 text-black dark:text-white" />;
     }
@@ -92,14 +92,14 @@ const NotificationsPage = () => {
 
   return (
     <MobileAppWrapper title="Notifications">
-      <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
       <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
       <div className="container mx-auto py-12 space-y-10 mt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center lg:text-left">
             <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center lg:justify-start">
-              Notifications {unreadCount > 0 && <span className="bg-primary-700 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
+              Notifications {unreadCount > 0 && <span className="bg-primary-600 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
             </h1>
             <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Updates and reminders from AajExam</p>
           </div>
@@ -138,7 +138,7 @@ const NotificationsPage = () => {
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center gap-2">
                         {n.title && <h4 className={`text-sm font-black uppercase tracking-tight ${!n.isRead ? 'text-slate-900 dark:text-white' : 'text-gray-500'}`}>{n.title}</h4>}
-                        {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-700 rounded-full animate-pulse" />}
+                        {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-pulse" />}
                       </div>
                       <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.message}</p>
                       <div className="flex items-center gap-2 pt-2 opacity-50 group-hover:opacity-100 transition-opacity">
@@ -148,7 +148,7 @@ const NotificationsPage = () => {
                     </div>
 
                     <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-700 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
                       <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>

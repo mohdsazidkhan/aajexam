@@ -28,7 +28,7 @@ import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 
 const STATUS_CONFIG = {
-   approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-700', bg: 'bg-primary-50 dark:bg-primary-900/20' },
+   approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
    pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
    rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
 };
@@ -86,7 +86,7 @@ const MyQuestionsPage = () => {
 
    return (
       <MobileAppWrapper title="My Q&A">
-         <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white mt-0">
+         <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="My Q&A - AajExam" noIndex={true} />
 
             <div className="py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6 lg:space-y-4 mt-0">
@@ -144,7 +144,7 @@ const MyQuestionsPage = () => {
                                     {/* Exam badge */}
                                     {q.exam && (
                                        <div className="flex items-center gap-1.5">
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-primary-50 dark:bg-primary-900/20 text-primary-700 uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-primary-50 dark:bg-primary-900/20 text-primary-600 uppercase">
                                              <GraduationCap className="w-3 h-3 inline mr-1" />
                                              {q.exam.name || q.exam.code || 'Exam'}
                                           </span>
@@ -165,12 +165,12 @@ const MyQuestionsPage = () => {
                                     {hasOptions && (
                                        <div className="space-y-1.5">
                                           {q.options.slice(0, 4).map((opt, i) => (
-                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg lg:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-900/10 text-primary-700' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
+                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg lg:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-900/10 text-primary-600' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
                                                 <span className="w-4 h-4 rounded-full border-2 flex items-center justify-center text-[8px] font-black flex-shrink-0 border-current">
                                                    {String.fromCharCode(65 + i)}
                                                 </span>
                                                 <span className="line-clamp-1">{opt.text}</span>
-                                                {opt.isCorrect && <CheckCircle className="w-3 h-3 text-primary-700 flex-shrink-0 ml-auto" />}
+                                                {opt.isCorrect && <CheckCircle className="w-3 h-3 text-primary-600 flex-shrink-0 ml-auto" />}
                                              </div>
                                           ))}
                                        </div>

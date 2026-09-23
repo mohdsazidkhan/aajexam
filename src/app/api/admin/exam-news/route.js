@@ -11,10 +11,15 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = parseInt(searchParams.get('limit')) || 20;
+        const search = searchParams.get('search');
+
+        const query = search
+            ? { $or: [{ title: { $regex: search, $options: 'i' } }, { content: { $regex: search, $options: 'i' } }] }
+            : {};
 
         const [news, total] = await Promise.all([
-            ExamNews.find().populate('exam', 'name code').sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).lean(),
-            ExamNews.countDocuments()
+            ExamNews.find(query).populate('exam', 'name code').sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).lean(),
+            ExamNews.countDocuments(query)
         ]);
 
         return NextResponse.json({ success: true, data: news, pagination: { page, limit, total, totalPages: Math.ceil(total / limit) } });

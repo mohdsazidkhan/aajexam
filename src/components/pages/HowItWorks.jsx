@@ -83,17 +83,17 @@ const HowItWorks = () => {
    ];
 
    return (
-      <div className="min-h-screen animate-fade-in selection:bg-primary-700 selection:text-white">
+      <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white">
 
          <div className="space-y-20 mt-4">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden px-0 py-4 lg:py-8">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-700 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
+               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
                <div className="space-y-2 lg:space-y-4">
-                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-700">Works</span></h1>
+                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-600">Works</span></h1>
                   <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and earn by referring friends.</p>
                </div>
             </section>
@@ -138,7 +138,7 @@ const HowItWorks = () => {
                                  {step.details.map((d, di) => (
                                     <div key={di} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
                                        <div className="flex items-center gap-2">
-                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-700' : 'text-primary-700'}`} />
+                                          <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600' : 'text-primary-600'}`} />
                                           <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{d.label}</p>
                                        </div>
                                        <p className="text-xs font-black text-slate-900 dark:text-white uppercase">{d.val}</p>
@@ -151,7 +151,7 @@ const HowItWorks = () => {
                            {step.metrics && (
                               <div className="flex flex-wrap gap-2 pt-2">
                                  {step.metrics.map((m, mi) => (
-                                    <span key={mi} className="px-3 py-1 bg-primary-500/5 text-primary-700 text-[10px] font-black uppercase tracking-widest rounded-full border border-primary-500/10">
+                                    <span key={mi} className="px-3 py-1 bg-primary-500/5 text-primary-600 text-[10px] font-black uppercase tracking-widest rounded-full border border-primary-500/10">
                                        {m}
                                     </span>
                                  ))}
@@ -169,7 +169,7 @@ const HowItWorks = () => {
             <section>
                <Card className="border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center lg:text-left">
                   <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
-                     <div className="w-20 h-20 bg-primary-500/20 text-primary-700 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
+                     <div className="w-20 h-20 bg-primary-500/20 text-primary-600 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
                      </div>
                      <div className="space-y-2">
@@ -189,7 +189,7 @@ const HowItWorks = () => {
                         <f.icon className="w-6 h-6" />
                      </div>
                      <div className="space-y-2">
-                        <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-700 transition-colors">{f.title}</h4>
+                        <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{f.title}</h4>
                         <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-[0.1em]">{f.desc}</p>
                      </div>
                   </Card>
@@ -207,7 +207,7 @@ const HowItWorks = () => {
                      <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
                      <Button
                         onClick={() => router.push('/')}
-                        className="bg-primary-700 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-700 active:translate-y-2 active:border-b-0 transition-all"
+                        className="bg-primary-600 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all"
                      >
                         START NOW
                      </Button>

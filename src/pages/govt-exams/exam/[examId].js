@@ -176,7 +176,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-primary-700 text-white border-none shadow-sm overflow-hidden relative">
+      <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative">
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
@@ -218,7 +218,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {aboutText && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <FileText className="w-5 h-5 text-primary-700" />
+            <FileText className="w-5 h-5 text-primary-600" />
             About {examName}
           </h2>
           <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm lg:text-base whitespace-pre-line">
@@ -231,7 +231,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {facts && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
-            <Info className="w-5 h-5 text-primary-700" />
+            <Info className="w-5 h-5 text-primary-600" />
             {examName} Exam Information
           </h2>
           <p className="text-[11px] font-bold text-black dark:text-white mb-4 uppercase tracking-wide">
@@ -262,7 +262,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {subjectAreas.length > 0 && (
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-            <ListChecks className="w-5 h-5 text-primary-700" />
+            <ListChecks className="w-5 h-5 text-primary-600" />
             {examName} Syllabus &amp; Subjects
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -272,12 +272,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 {subject.slug ? (
                   <button
                     onClick={() => router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`)}
-                    className="text-[10px] font-black text-primary-700 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
+                    className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                   >
                     Practice {subject.name} Questions →
                   </button>
                 ) : (
-                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-700 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
+                  <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
                     Practice Questions →
                   </button>
                 )}
@@ -287,7 +287,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 <span className="text-sm font-bold text-content-primary">{subject}</span>
                 <button
                   onClick={() => setActiveTab('quizzes')}
-                  className="text-[10px] font-black text-primary-700 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
+                  className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                 >
                   Practice {subject} Questions →
                 </button>
@@ -305,7 +305,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             onClick={() => setActiveTab(tab.key)}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 shrink-0 ${
               activeTab === tab.key
-                ? 'bg-primary-700 text-white border-primary-600'
+                ? 'bg-primary-600 text-white border-primary-600'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700'
             }`}
           >
@@ -338,7 +338,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0">
                       <BookOpen className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -348,7 +348,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       </p>
                     </div>
                   </div>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-700 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
                     Practice {subject.name} →
                   </span>
                 </Card>
@@ -377,7 +377,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0">
                       <FolderOpen className="w-5 h-5 text-white dark:text-black" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -386,7 +386,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     </div>
                   </div>
                   <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? 'set' : 'sets'} · {topic.questionCount} Qs</p>
-                  <span className="mt-auto text-center text-[10px] font-black text-primary-700 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
+                  <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
                     Practice {topic.name} →
                   </span>
                 </Card>
@@ -414,9 +414,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-                    <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-800' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
+                    <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
                       <div className="flex items-center gap-3">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700' : isPyqTab ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : isPyqTab ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
                           {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -436,7 +436,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                           </p>
                         )}
                         {isCompleted && test.userAttempt && (
-                          <p className="text-xs font-bold text-primary-700">
+                          <p className="text-xs font-bold text-primary-600">
                             Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
                           </p>
                         )}
@@ -444,12 +444,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       <div className="flex gap-2">
                         {isCompleted && (
                           <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
-                            className="flex-1 text-[10px] font-black text-primary-700 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
+                            className="flex-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">
                             Results
                           </button>
                         )}
                         <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
-                          className={`flex-1 text-[10px] font-black px-4 py-2 rounded-lg lg:rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-700'}`}>
+                          className={`flex-1 text-[10px] font-black px-4 py-2 rounded-lg lg:rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-600'}`}>
                           {isCompleted ? 'Retake' : 'Start'}
                         </button>
                       </div>
@@ -471,7 +471,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             </div>
           ) : (
             quizzes.map((quiz, idx) => {
-              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-700 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
+              const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
               return (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                   <Card
@@ -480,7 +480,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-700 flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0">
                         <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -493,7 +493,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     <p className="text-xs font-bold text-content-muted">{quiz.duration} min · {quiz.totalMarks} marks</p>
                     <div className="flex items-center gap-2 mt-auto">
                         <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="flex-1 text-center text-[10px] font-black text-primary-700 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">Start</span>
+                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg lg:rounded-xl uppercase">Start</span>
                       </div>
                   </Card>
                 </motion.div>
@@ -506,7 +506,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* How to Prepare */}
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <GraduationCap className="w-5 h-5 text-primary-700" />
+          <GraduationCap className="w-5 h-5 text-primary-600" />
           How to Prepare for {examName}
         </h2>
         <ol className="space-y-2 text-sm font-medium text-content-primary list-decimal list-inside">
@@ -524,7 +524,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* Related Searches */}
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <Search className="w-5 h-5 text-primary-700" />
+          <Search className="w-5 h-5 text-primary-600" />
           Related Searches
         </h2>
         <p className="text-sm font-medium text-content-muted leading-relaxed">
@@ -542,7 +542,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* FAQ — rendered visibly to match the FAQ structured data above */}
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
-          <HelpCircle className="w-5 h-5 text-primary-700" />
+          <HelpCircle className="w-5 h-5 text-primary-600" />
           Frequently Asked Questions
         </h2>
         <div className="space-y-2 lg:space-y-4">
@@ -557,7 +557,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-primary-700 text-white border-none">
+        <Card className="bg-primary-600 text-white border-none">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

@@ -1,10 +1,15 @@
 'use client';
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import API from "../../../lib/api";
 import { toast } from "react-toastify";
 import { useSSR } from "../../../hooks/useSSR";
-import { Edit3, Trash2, Plus, Search, X, BrainCircuit, Eye, Globe, GlobeLock, ChevronLeft, ChevronRight, Table as TableIcon, LayoutGrid, List } from "lucide-react";
+import { Edit3, Trash2, Plus, Search, X, BrainCircuit, Eye, Globe, GlobeLock, Table as TableIcon, LayoutGrid, List } from "lucide-react";
 import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import ResponsiveTable from '../../ResponsiveTable';
+import Pagination from '../../Pagination';
+import Sidebar from '../../Sidebar';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 const AdminQuizQuizzes = () => {
   const { isMounted } = useSSR();
@@ -19,7 +24,9 @@ const AdminQuizQuizzes = () => {
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [editing, setEditing] = useState(null);
   const [page, setPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
   const [filters, setFilters] = useState({ exam: "", subject: "", status: "" });
   const [form, setForm] = useState({ title: "", description: "", exam: "", subject: "", topic: "", duration: 10, marksPerQuestion: 1, negativeMarking: 0, difficulty: "mixed", type: "topic_practice", tags: "", isFree: true });
   const [qFilters, setQFilters] = useState({ subject: "", topic: "" });
@@ -28,7 +35,7 @@ const AdminQuizQuizzes = () => {
   const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
 
   useEffect(() => { fetchDropdowns(); }, []);
-  useEffect(() => { fetchQuizzes(); }, [page, filters.exam, filters.subject, filters.status]);
+  useEffect(() => { fetchQuizzes(); }, [page, itemsPerPage, filters.exam, filters.subject, filters.status]);
 
   const fetchDropdowns = async () => {
     try {
@@ -42,12 +49,12 @@ const AdminQuizQuizzes = () => {
   const fetchQuizzes = async () => {
     setLoading(true);
     try {
-      const params = { page, limit: 20 };
+      const params = { page, limit: itemsPerPage };
       if (filters.exam) params.exam = filters.exam;
       if (filters.subject) params.subject = filters.subject;
       if (filters.status) params.status = filters.status;
       const res = await API.getAdminQuizzes(params);
-      if (res?.success) { setQuizzes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
+      if (res?.success) { setQuizzes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); }
     } catch (e) { toast.error("Failed to load"); }
     finally { setLoading(false); }
   };
@@ -120,90 +127,100 @@ const AdminQuizQuizzes = () => {
     } catch (e) { toast.error("Failed"); }
   };
 
-  const statusColor = (s) => s === 'published' ? 'bg-primary-100 text-primary-700' : s === 'archived' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white';
+  const statusColor = (s) => s === 'published' ? 'bg-primary-100 text-primary-600' : s === 'archived' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white';
+
+  const columns = [
+    {
+      key: 'title', header: 'Title', render: (_, q) => (
+        <span className="font-bold text-slate-900 dark:text-white">{q.title}</span>
+      )
+    },
+    {
+      key: 'examSubject', header: 'Exam / Subject', render: (_, q) => (
+        <span className="text-slate-500">{q.applicableExams?.map(e => e.name).join(', ') || '—'}{q.subject?.name ? ` · ${q.subject.name}` : ''}{q.topic?.name ? ` · ${q.topic.name}` : ''}</span>
+      )
+    },
+    {
+      key: 'duration', header: 'Duration', render: (_, q) => (
+        <span className="text-slate-500">{q.duration}min</span>
+      )
+    },
+    {
+      key: 'questions', header: 'Questions', render: (_, q) => (
+        <span className="text-slate-500">{q.questions?.length || 0}</span>
+      )
+    },
+    {
+      key: 'status', header: 'Status', render: (_, q) => (
+        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span>
+      )
+    },
+    {
+      key: 'actions', header: 'Actions', align: 'right', render: (_, q) => (
+        <div className="flex justify-end gap-1">
+          <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
+          <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+          <button onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+          <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+        </div>
+      )
+    }
+  ];
 
   if (!isMounted) return null;
 
   return (
-    <div className="space-y-6 pt-4 lg:pt-6">
-      <div className="flex justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2"><BrainCircuit className="w-6 h-6 text-primary-700" /> Quizzes</h1>
-        <div className="flex gap-2">
-          <button onClick={openCreate} className="flex items-center gap-2 bg-primary-700 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Create Quiz</button>
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+        <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><BrainCircuit className="w-6 h-6 text-primary-600" /> Quizzes <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
+
+        <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+          <select value={filters.exam} onChange={e => { setFilters({ ...filters, exam: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm max-w-full lg:max-w-[180px] truncate">
+            <option value="">All Exams</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
+          </select>
+          <select value={filters.subject} onChange={e => { setFilters({ ...filters, subject: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm max-w-full lg:max-w-[180px] truncate">
+            <option value="">All Subjects</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
+          </select>
+          <select value={filters.status} onChange={e => { setFilters({ ...filters, status: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+            <option value="">All Status</option><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option>
+          </select>
+          <div className="flex items-center gap-1">
+            {[
+              { icon: TableIcon, id: 'table', label: 'Table View' },
+              { icon: LayoutGrid, id: 'grid', label: 'Grid View' },
+              { icon: List, id: 'list', label: 'List View' }
+            ].map((mode) => (
+              <button
+                key={mode.id}
+                onClick={() => setViewMode(mode.id)}
+                title={mode.label}
+                className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+              >
+                <mode.icon className="w-4 h-4" />
+              </button>
+            ))}
+          </div>
+          <button onClick={openCreate} className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 shrink-0"><Plus className="w-4 h-4" /> Create Quiz</button>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        <select value={filters.exam} onChange={e => { setFilters({ ...filters, exam: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
-          <option value="">All Exams</option>{exams.map(ex => <option key={ex._id} value={ex._id}>{ex.name}</option>)}
-        </select>
-        <select value={filters.subject} onChange={e => { setFilters({ ...filters, subject: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
-          <option value="">All Subjects</option>{subjects.map(s => <option key={s._id} value={s._id}>{s.name}</option>)}
-        </select>
-        <select value={filters.status} onChange={e => { setFilters({ ...filters, status: e.target.value }); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
-          <option value="">All Status</option><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option>
-        </select>
-        <div className="flex items-center bg-slate-100 dark:bg-white/5 p-1 rounded-lg lg:rounded-xl border border-slate-200 dark:border-white/10">
-          {[
-            { icon: TableIcon, id: 'table', label: 'Table' },
-            { icon: LayoutGrid, id: 'grid', label: 'Grid' },
-            { icon: List, id: 'list', label: 'List' }
-          ].map((mode) => (
-            <button
-              key={mode.id}
-              onClick={() => setViewMode(mode.id)}
-              className={`p-2 rounded-lg transition-all flex items-center gap-2 flex-1 lg:flex-none justify-center ${viewMode === mode.id ? 'bg-white dark:bg-primary-600 text-primary-700 dark:text-white shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-            >
-              <mode.icon className="w-4 h-4" />
-              {viewMode === mode.id && <span className="text-[10px] font-black uppercase tracking-widest leading-none pr-1">{mode.label}</span>}
-            </button>
-          ))}
-        </div>
-      </div>
-
+      <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
       {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
-        <div className="space-y-3">
+        <>
+          <div className="flex-1 min-h-0 overflow-hidden">
           {viewMode === 'table' ? (
-            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="bg-white dark:bg-slate-900">
-                  <tr>
-                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Title</th>
-                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Exam / Subject</th>
-                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Duration</th>
-                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Questions</th>
-                    <th className="px-4 py-3 text-left font-bold text-slate-500 uppercase text-xs">Status</th>
-                    <th className="px-4 py-3 text-right font-bold text-slate-500 uppercase text-xs">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                  {quizzes.map(q => (
-                    <tr key={q._id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                      <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{q.title}</td>
-                      <td className="px-4 py-3 text-slate-500">{q.applicableExams?.map(e => e.name).join(', ') || '—'}{q.subject?.name ? ` · ${q.subject.name}` : ''}{q.topic?.name ? ` · ${q.topic.name}` : ''}</td>
-                      <td className="px-4 py-3 text-slate-500">{q.duration}min</td>
-                      <td className="px-4 py-3 text-slate-500">{q.questions?.length || 0}</td>
-                      <td className="px-4 py-3"><span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span></td>
-                      <td className="px-4 py-3 text-right">
-                        <div className="flex justify-end gap-1">
-                          <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
-                          <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                          <button onClick={() => openEdit(q)} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                          <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                  {quizzes.length === 0 && <tr><td colSpan="6" className="px-4 py-8 text-center text-slate-400">No quizzes found</td></tr>}
-                </tbody>
-              </table>
+            <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+              <ResponsiveTable data={quizzes} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No quizzes found" fillHeight />
             </div>
           ) : viewMode === 'grid' ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
               {quizzes.map(q => (
                 <div key={q._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
                   <div className="flex items-start justify-between gap-2">
-                    <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-700 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5" /></div>
+                    <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5" /></div>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${statusColor(q.status)}`}>{q.status}</span>
                   </div>
                   <div>
@@ -212,8 +229,8 @@ const AdminQuizQuizzes = () => {
                   </div>
                   <div className="flex gap-1 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
                     <button onClick={() => openAddQuestions(q)} title="Add Questions" className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Plus className="w-4 h-4" /></button>
-                    <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="flex-1 flex items-center justify-center py-2 text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                    <button onClick={() => openEdit(q)} className="flex-1 flex items-center justify-center py-2 text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                    <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="flex-1 flex items-center justify-center py-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+                    <button onClick={() => openEdit(q)} className="flex-1 flex items-center justify-center py-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
                     <button onClick={() => handleDelete(q._id)} className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
@@ -221,7 +238,7 @@ const AdminQuizQuizzes = () => {
               {quizzes.length === 0 && <div className="col-span-full py-12 text-center text-slate-400">No quizzes found</div>}
             </div>
           ) : (
-            <>
+            <div className="h-full overflow-auto space-y-3">
               {quizzes.map(q => (
                 <div key={q._id} className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 p-4">
                   <div className="flex justify-between items-start gap-3">
@@ -237,34 +254,44 @@ const AdminQuizQuizzes = () => {
                     </div>
                     <div className="flex gap-1 shrink-0">
                       <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
-                      <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                      <button onClick={() => openEdit(q)} className="p-1.5 text-primary-700 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                      <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
+                      <button onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
                       <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </div>
                 </div>
               ))}
               {quizzes.length === 0 && <div className="py-12 text-center text-slate-400">No quizzes found</div>}
-            </>
-          )}
-
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-4 pt-4">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="p-2 rounded-lg bg-slate-100 disabled:opacity-30"><ChevronLeft className="w-4 h-4" /></button>
-              <span className="text-sm font-bold text-slate-500">Page {page} of {totalPages}</span>
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="p-2 rounded-lg bg-slate-100 disabled:opacity-30"><ChevronRight className="w-4 h-4" /></button>
             </div>
           )}
-        </div>
+          </div>
+
+          {quizzes.length > 0 && (
+            <div className="shrink-0">
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={setPage}
+                totalItems={totalItems}
+                itemsPerPage={itemsPerPage}
+                onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+              />
+            </div>
+          )}
+        </>
       )}
+      </div>
 
       {/* Create/Edit Modal */}
+      <AnimatePresence>
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-lg shadow-sm my-8">
+        <div className="fixed inset-0 lg:left-64 lg:top-16 z-50">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-black/50" />
+          <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-0 bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
+          <div className="p-6 w-full h-full overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Quiz</h2>
-              <button onClick={() => setShowModal(false)}><X className="w-5 h-5 text-slate-400" /></button>
+              <button onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input required placeholder="Quiz Title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
@@ -285,19 +312,24 @@ const AdminQuizQuizzes = () => {
                 <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400"><input type="checkbox" checked={form.isFree} onChange={e => setForm({ ...form, isFree: e.target.checked })} className="accent-primary-500" /> Free</label>
               </div>
               <input placeholder="Tags (comma separated)" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-primary-700 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create as Draft'}</button>
+              <button type="submit" className="w-full bg-primary-600 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create as Draft'}</button>
             </form>
           </div>
+          </motion.div>
         </div>
       )}
+      </AnimatePresence>
 
       {/* Add Questions Modal */}
+      <AnimatePresence>
       {showAddQ && selectedQuiz && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-2xl shadow-sm my-8 max-h-[80vh] flex flex-col">
+        <div className="fixed inset-0 lg:left-64 lg:top-16 z-50">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowAddQ(false)} className="absolute inset-0 bg-black/50" />
+          <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-0 bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
+          <div className="p-6 w-full h-full flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">Add Questions to "{selectedQuiz.title}"</h2>
-              <button onClick={() => setShowAddQ(false)}><X className="w-5 h-5 text-slate-400" /></button>
+              <button onClick={() => setShowAddQ(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <p className="text-xs text-slate-500 mb-3">Current: {selectedQuiz.questions?.length || 0} questions | Selected: {selectedQIds.length}</p>
             <div className="flex-1 overflow-y-auto space-y-2">
@@ -307,16 +339,19 @@ const AdminQuizQuizzes = () => {
                     <input type="checkbox" checked={selectedQIds.includes(q._id)} onChange={e => { if (e.target.checked) setSelectedQIds([...selectedQIds, q._id]); else setSelectedQIds(selectedQIds.filter(id => id !== q._id)); }} className="mt-1 accent-primary-500" />
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-slate-900 dark:text-white">{q.questionText}</p>
-                      <div className="flex gap-1 mt-1">{q.options?.map((o, i) => <span key={i} className={`text-[10px] px-1.5 py-0.5 rounded ${o.isCorrect ? 'bg-primary-100 text-primary-700 font-bold' : 'bg-slate-100 text-slate-500'}`}>{String.fromCharCode(65 + i)}</span>)}</div>
+                      <div className="flex gap-1 mt-1">{q.options?.map((o, i) => <span key={i} className={`text-[10px] px-1.5 py-0.5 rounded ${o.isCorrect ? 'bg-primary-100 text-primary-600 font-bold' : 'bg-slate-100 text-slate-500'}`}>{String.fromCharCode(65 + i)}</span>)}</div>
                     </div>
                   </label>
                 ))
               }
             </div>
-            <button onClick={handleAddQuestions} disabled={!selectedQIds.length} className="mt-4 w-full bg-primary-700 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600 disabled:opacity-30">Add {selectedQIds.length} Questions</button>
+            <button onClick={handleAddQuestions} disabled={!selectedQIds.length} className="mt-4 w-full bg-primary-600 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600 disabled:opacity-30">Add {selectedQIds.length} Questions</button>
           </div>
+          </motion.div>
         </div>
       )}
+      </AnimatePresence>
+      </div>
     </div>
   );
 };

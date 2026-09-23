@@ -149,11 +149,11 @@ const ProfilePage = () => {
   const statTiles = useMemo(
     () => [
       { label: 'Day streak', value: streak?.currentStreak ?? 0, icon: Flame, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
-      { label: 'Followers', value: student?.followersCount || 0, icon: Users, tone: 'bg-primary-500/10 text-primary-700' },
+      { label: 'Followers', value: student?.followersCount || 0, icon: Users, tone: 'bg-primary-500/10 text-primary-600' },
       { label: 'Following', value: student?.followingCount || 0, icon: UserCheck, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
       { label: 'Profile views', value: student?.profileViews || 0, icon: Eye, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
       { label: 'Referrals', value: student?.referralCount || 0, icon: Sparkles, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
-      { label: 'Wallet balance', value: formatCurrency(student?.walletBalance || 0), icon: Wallet, tone: 'bg-primary-500/10 text-primary-700' },
+      { label: 'Wallet balance', value: formatCurrency(student?.walletBalance || 0), icon: Wallet, tone: 'bg-primary-500/10 text-primary-600' },
     ],
     [streak, student]
   );
@@ -183,7 +183,7 @@ const ProfilePage = () => {
   const completion = student?.profileCompletion;
 
   return (
-    <div className="min-h-screen animate-fade-in pb-8 lg:pb-12 selection:bg-primary-700 selection:text-white">
+    <div className="min-h-screen animate-fade-in pb-8 lg:pb-12 selection:bg-primary-600 selection:text-white">
       <Head>
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
@@ -201,7 +201,7 @@ const ProfilePage = () => {
                 <h1 className="text-md lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
                   {student?.name || 'Student'}
                 </h1>
-                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-700 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-600 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
                   {isPro ? 'PRO' : 'FREE'}
                 </span>
                 {isPro && student?.subscriptionExpiry && (
@@ -256,7 +256,7 @@ const ProfilePage = () => {
         <Card className="p-6 lg:p-10 space-y-6" radius="3xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Trophy className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
+              <Trophy className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
               <div>
                 <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">All India Rank</h2>
                 <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
@@ -267,7 +267,7 @@ const ProfilePage = () => {
             </Button>
           </div>
           <div className="grid grid-cols-2 gap-3 lg:gap-6">
-            <div className="rounded-[1.5rem] bg-primary-700 text-white p-4 lg:p-6 text-center">
+            <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 lg:p-6 text-center">
               <p className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</p>
               <p className="text-2xl lg:text-4xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
               <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? `of ${student.examAIR.total}` : 'No exams yet'}</p>
@@ -303,9 +303,9 @@ const ProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-700 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
             >
-              <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-700'}`} />
+              <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
               {tab.label}
             </button>
           ))}
@@ -325,7 +325,7 @@ const ProfilePage = () => {
               {completion && !completion.isComplete && (
                 <Card className="p-6 lg:p-10 space-y-6" radius="3xl">
                   <div className="flex items-center gap-4">
-                    <Target className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
+                    <Target className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
                     <div>
                       <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Complete your profile</h2>
                       <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">A complete profile helps you stand out and unlocks rewards.</p>
@@ -335,7 +335,7 @@ const ProfilePage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {completion.fields.map((field) => (
                       <div key={field.field} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${field.completed ? 'text-primary-700' : 'text-slate-300 dark:text-slate-600'}`} />
+                        <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${field.completed ? 'text-primary-600' : 'text-slate-300 dark:text-slate-600'}`} />
                         <span className={`text-sm font-semibold ${field.completed ? 'text-content-primary' : 'text-content-secondary'}`}>{field.name}</span>
                       </div>
                     ))}
@@ -346,7 +346,7 @@ const ProfilePage = () => {
               {/* Exam performance */}
               <Card className="p-6 lg:p-10 space-y-8" radius="3xl">
                 <div className="flex items-center gap-4">
-                  <TrendingUp className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
+                  <TrendingUp className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
                   <div>
                     <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Exam performance</h2>
                     <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Preparing for {student?.primaryTargetExam || 'All Exams'}.</p>
@@ -385,7 +385,7 @@ const ProfilePage = () => {
               <Card className="space-y-6" radius="3xl">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-700" />
+                    <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
                     <div>
                       <h2 className="text-lg lg:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Badges</h2>
                       <p className="text-xs font-medium text-content-secondary pb-1">Earned through activity and achievements.</p>
@@ -404,7 +404,7 @@ const ProfilePage = () => {
               {/* Account details */}
               <Card className="space-y-6" radius="3xl">
                 <div className="flex items-center gap-3">
-                  <ShieldCheck className="w-5 h-5 text-primary-700" />
+                  <ShieldCheck className="w-5 h-5 text-primary-600" />
                   <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Account details</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -426,14 +426,14 @@ const ProfilePage = () => {
               {student?.referralCode && (
                 <Card className="space-y-2 lg:space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
-                    <Sparkles className="w-5 h-5 text-primary-700" />
+                    <Sparkles className="w-5 h-5 text-primary-600" />
                     <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 select-all text-content-primary">
                       {student.referralCode}
                     </span>
-                    <button onClick={copyReferralCode} className="p-3 bg-primary-700 hover:bg-primary-600 text-white rounded-xl transition-colors">
+                    <button onClick={copyReferralCode} className="p-3 bg-primary-600 hover:bg-primary-600 text-white rounded-xl transition-colors">
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>
@@ -459,13 +459,13 @@ const ProfilePage = () => {
                     <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Payout details</h2>
                     <p className="text-sm font-medium text-content-secondary pb-1">Add your bank details to receive prize money.</p>
                   </div>
-                  {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-700 text-white text-xs font-semibold">Linked</span>}
+                  {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold">Linked</span>}
                 </div>
 
                 {bankDetails ? (
                   <div className="p-4 lg:p-8 bg-background-surface-secondary text-content-primary rounded-[2rem] lg:rounded-[3rem] border border-slate-200 dark:border-slate-800 relative z-10">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-                      <div className="w-16 h-16 bg-primary-500/10 text-primary-700 rounded-[1.5rem] flex items-center justify-center border border-primary-500/20 flex-shrink-0">
+                      <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[1.5rem] flex items-center justify-center border border-primary-500/20 flex-shrink-0">
                         <Building2 className="w-8 h-8" />
                       </div>
                       <div className="flex-1">
@@ -535,13 +535,13 @@ const ProfilePage = () => {
 
               <Card className="space-y-2 lg:space-y-4" radius="3xl">
                 <div className="flex items-center gap-3">
-                  <ShieldCheck className="w-5 h-5 text-primary-700" />
+                  <ShieldCheck className="w-5 h-5 text-primary-600" />
                   <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Account safety</h2>
                 </div>
                 <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
                   Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
                 </p>
-                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-primary-700 text-white shadow-sm rounded-2xl">
+                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-primary-600 text-white shadow-sm rounded-2xl">
                   Log out
                 </Button>
               </Card>

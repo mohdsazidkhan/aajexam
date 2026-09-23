@@ -13,19 +13,55 @@ export async function GET(req) {
         const status = searchParams.get('status');
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = parseInt(searchParams.get('limit')) || 20;
+        const search = searchParams.get('search');
 
-        let query = {};
-        if (status) query.status = status;
+        let match = {};
+        if (status) match.status = status;
 
-        const [mentors, total] = await Promise.all([
-            MentorProfile.find(query)
-                .populate('user', 'name email username')
-                .sort({ createdAt: -1 })
-                .skip((page - 1) * limit)
-                .limit(limit)
-                .lean(),
-            MentorProfile.countDocuments(query)
+        const pipeline = [
+            { $match: match },
+            { $lookup: { from: 'users', localField: 'user', foreignField: '_id', as: 'user' } },
+            { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } }
+        ];
+
+        if (search) {
+            pipeline.push({
+                $match: {
+                    $or: [
+                        { 'user.name': { $regex: search, $options: 'i' } },
+                        { 'user.username': { $regex: search, $options: 'i' } },
+                        { 'user.email': { $regex: search, $options: 'i' } }
+                    ]
+                }
+            });
+        }
+
+        pipeline.push({ $sort: { createdAt: -1 } });
+
+        const [mentors, totalResult] = await Promise.all([
+            MentorProfile.aggregate([
+                ...pipeline,
+                { $skip: (page - 1) * limit },
+                { $limit: limit },
+                {
+                    $project: {
+                        examsCleared: 1,
+                        strategy: 1,
+                        rating: 1,
+                        isVerified: 1,
+                        status: 1,
+                        createdAt: 1,
+                        'user._id': 1,
+                        'user.name': 1,
+                        'user.email': 1,
+                        'user.username': 1
+                    }
+                }
+            ]),
+            MentorProfile.aggregate([...pipeline, { $count: 'total' }])
         ]);
+
+        const total = totalResult[0]?.total || 0;
 
         return NextResponse.json({ success: true, data: mentors, pagination: { page, limit, total, totalPages: Math.ceil(total / limit) } });
     } catch (error) {

@@ -74,7 +74,7 @@ export default function FlashcardDeck() {
     }
 
     const currentCard = deck.cards[currentIndex];
-    const bgClass = currentCard.backgroundColor ||'bg-primary-700';
+    const bgClass = currentCard.backgroundColor ||'bg-primary-600';
 
     return (
         <div className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden font-outfit select-none">

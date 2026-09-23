@@ -70,16 +70,16 @@ export default function SubjectDetail({
         <div className="py-4 lg:py-6 relative space-y-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Home</Link>
+            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
             <span className="text-slate-400">/</span>
-            <Link href="/subjects" className="text-primary-700 dark:text-primary-400 hover:text-primary-700">Subjects</Link>
+            <Link href="/subjects" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Subjects</Link>
             <span className="text-slate-400">/</span>
             <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{subjectName}</span>
           </nav>
 
           {/* Hero — server-rendered */}
           <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
-            <span className="block text-[10px] font-black text-primary-700 uppercase tracking-widest mb-2">Subject</span>
+            <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">Subject</span>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {subjectName}
             </h1>
@@ -97,7 +97,7 @@ export default function SubjectDetail({
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Quizzes</div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-xl font-black text-primary-700">FREE</div>
+                <div className="text-xl font-black text-primary-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function SubjectDetail({
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 {topics.map((t) => (
                   <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-700 transition leading-tight">{t.name}</div>
+                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{t.name}</div>
                   </Link>
                 ))}
               </div>

@@ -105,7 +105,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           placeholder="username"
           maxLength={20}
           className={`username-input flex-1 border-none outline-none text-base font-black bg-transparent text-slate-900 dark:text-white placeholder:text-slate-300 ${username && username !== currentUsername
-            ? (available === true ? 'text-primary-700' : available === false ? 'text-primary-700' : '')
+            ? (available === true ? 'text-primary-600' : available === false ? 'text-primary-600' : '')
             : ''
             }`}
         />
@@ -113,10 +113,10 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-700">Ã¢Å“â€œ</span>
+          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€œ</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-700">Ã¢Å“â€”</span>
+          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€”</span>
         )}
       </div>
 
@@ -130,10 +130,10 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
 
       {message && (
         <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
-          ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 border border-primary-300 dark:border-primary-700'
+          ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-600'
           : available === false
             ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white dark:text-white border border-slate-200 dark:border-slate-800 dark:border-white'
-            : 'bg-primary-100 dark:bg-primary-900/20 text-primary-800 dark:text-primary-400 border border-primary-300 dark:border-primary-700'
+            : 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-600'
           }`}>
           {message}
         </div>
@@ -142,7 +142,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       <button
         onClick={handleSave}
         disabled={!canSave || saving}
-        className="save-username-btn w-full p-5 bg-primary-700 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-sm disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
+        className="save-username-btn w-full p-5 bg-primary-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-sm disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
       >
         {saving ? 'Saving student...' : 'Save Student Identity'}
       </button>

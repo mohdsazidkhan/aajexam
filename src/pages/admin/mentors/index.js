@@ -1,16 +1,21 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Users, Shield, Eye, Star, Table2, List, LayoutGrid, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Users, Shield, Eye, Star, Table2, List, LayoutGrid, Search } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import Link from 'next/link';
 import API from '../../../lib/api';
 import Card from '../../../components/ui/Card';
+import ResponsiveTable from '../../../components/ResponsiveTable';
+import Pagination from '../../../components/Pagination';
+import Sidebar from '../../../components/Sidebar';
 import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
 import AdminRoute from '../../../components/AdminRoute';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import useDebounce from '../../../hooks/useDebounce';
 
 const statusColor = (s) => {
-  if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-700';
+  if (s === 'active') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
   if (s === 'pending') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
   if (s === 'suspended') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
   return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
@@ -35,18 +40,24 @@ const AdminMentors = () => {
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 500);
 
   const fetchData = async () => {
     try {
       setLoading(true);
-      const params = new URLSearchParams({ page, limit: 20 });
+      const params = new URLSearchParams({ page, limit: itemsPerPage });
       if (filter) params.set('status', filter);
+      if (debouncedSearch) params.set('search', debouncedSearch);
       const res = await API.request(`/api/admin/mentors?${params}`);
-      if (res?.success) { setMentors(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
+      if (res?.success) { setMentors(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); }
     } catch (e) { } finally { setLoading(false); }
   };
-  useEffect(() => { fetchData(); }, [page, filter]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { fetchData(); }, [page, filter, itemsPerPage, debouncedSearch]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { setPage(1); }, [debouncedSearch]);
 
   const updateStatus = async (id, status, isVerified) => {
     try {
@@ -56,41 +67,96 @@ const AdminMentors = () => {
   };
   const verify = async (id) => updateStatus(id, 'active', true);
 
-  if (loading) return <AdminTableSkeleton />;
+  const columns = [
+    {
+      key: 'user', header: 'Mentor', render: (_, m) => (
+        <Link href={`/admin/mentors/${m._id}`} className="flex items-center gap-2 group max-w-xs">
+          <div className="min-w-0">
+            <p className="font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors truncate flex items-center gap-1.5">
+              {m.user?.name || 'Unknown'}
+              {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
+            </p>
+            <p className="text-[10px] text-slate-400 dark:text-slate-500 truncate">{m.user?.email}</p>
+          </div>
+        </Link>
+      )
+    },
+    {
+      key: 'examsCleared', header: 'Exam(s)', render: (_, m) => (
+        <span className="whitespace-nowrap">
+          {m.examsCleared?.length ? `${m.examsCleared[0].examName} (${m.examsCleared[0].year})${m.examsCleared.length > 1 ? ` +${m.examsCleared.length - 1}` : ''}` : '—'}
+        </span>
+      )
+    },
+    {
+      key: 'rating', header: 'Rating', align: 'center', render: (_, m) => (
+        <span className="flex items-center justify-center gap-1"><Star className="w-3 h-3 text-black dark:text-white" />{m.rating?.toFixed(1) || '0.0'}</span>
+      )
+    },
+    {
+      key: 'status', header: 'Status', render: (_, m) => (
+        <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide whitespace-nowrap ${statusColor(m.status)}`}>{m.status}</span>
+      )
+    },
+    {
+      key: 'actions', header: 'Actions', align: 'right', render: (_, m) => (
+        <div className="flex items-center justify-end gap-2">
+          <StatusSelect mentor={m} onChange={updateStatus} />
+          {m.status === 'active' && !m.isVerified && (
+            <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          )}
+          <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-600" /></Link>
+        </div>
+      )
+    }
+  ];
 
   return (
     <AdminRoute>
-      <div className="min-h-screen pb-24">
+      <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Manage Mentors - Admin</title></Head>
-        <div className="py-4 lg:py-6 space-y-2 lg:space-y-4">
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-700" /> Mentors</h1>
-            <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700">
-              <option value="">All</option>
-              <option value="pending">Pending</option>
-              <option value="active">Active</option>
-              <option value="suspended">Suspended</option>
-              <option value="rejected">Rejected</option>
-            </select>
-          </div>
+        <Sidebar />
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
 
-          {/* View Toggle & Count */}
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{mentors.length} mentor{mentors.length !== 1 ? 's' : ''} on this page</p>
-            <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl p-1 gap-0.5">
-              {[
-                { mode: 'table', icon: Table2, label: 'Table' },
-                { mode: 'list', icon: List, label: 'List' },
-                { mode: 'grid', icon: LayoutGrid, label: 'Grid' },
-              ].map(({ mode, icon: Icon, label }) => (
-                <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                  className={`p-1.5 rounded-lg transition-all ${viewMode === mode ? 'bg-white dark:bg-slate-700 shadow-sm text-primary-700' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'}`}>
-                  <Icon className="w-4 h-4" />
-                </button>
-              ))}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
+            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Users className="w-6 h-6 text-primary-600 shrink-0" /> Mentors <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
+            <div className="flex items-center gap-3 w-full lg:w-auto justify-end flex-wrap">
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search by username, name, email..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                />
+              </div>
+              <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700">
+                <option value="">All</option>
+                <option value="pending">Pending</option>
+                <option value="active">Active</option>
+                <option value="suspended">Suspended</option>
+                <option value="rejected">Rejected</option>
+              </select>
+              <div className="flex items-center gap-1">
+                {[
+                  { mode: 'table', icon: Table2, label: 'Table View' },
+                  { mode: 'list', icon: List, label: 'List View' },
+                  { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+                ].map(({ mode, icon: Icon, label }) => (
+                  <button key={mode} onClick={() => setViewMode(mode)} title={label}
+                    className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+                    <Icon className="w-4 h-4" />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
+          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
+            <>
+              <div className="flex-1 min-h-0 overflow-hidden">
           {mentors.length === 0 ? (
             <Card className="!py-12 text-center">
               <Users className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
@@ -98,59 +164,12 @@ const AdminMentors = () => {
             </Card>
           ) : viewMode === 'table' ? (
             /* ── Table View ── */
-            <Card className="!p-0 overflow-hidden" padded={false}>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b-2 border-slate-100 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50">
-                      <th className="text-left px-4 py-3 text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Mentor</th>
-                      <th className="text-left px-4 py-3 text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Exam(s)</th>
-                      <th className="text-center px-4 py-3 text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Rating</th>
-                      <th className="text-left px-4 py-3 text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Status</th>
-                      <th className="text-right px-4 py-3 text-[11px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-700/50">
-                    {mentors.map((m, i) => (
-                      <tr key={m._id || i} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                        <td className="px-4 py-3 max-w-xs">
-                          <Link href={`/admin/mentors/${m._id}`} className="flex items-center gap-2 group">
-                            <div className="min-w-0">
-                              <p className="font-bold text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors truncate flex items-center gap-1.5">
-                                {m.user?.name || 'Unknown'}
-                                {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
-                              </p>
-                              <p className="text-[10px] text-slate-400 dark:text-slate-500 truncate">{m.user?.email}</p>
-                            </div>
-                          </Link>
-                        </td>
-                        <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                          {m.examsCleared?.length ? `${m.examsCleared[0].examName} (${m.examsCleared[0].year})${m.examsCleared.length > 1 ? ` +${m.examsCleared.length - 1}` : ''}` : '—'}
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1"><Star className="w-3 h-3 text-black dark:text-white" />{m.rating?.toFixed(1) || '0.0'}</span>
-                        </td>
-                        <td className="px-4 py-3">
-                          <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide whitespace-nowrap ${statusColor(m.status)}`}>{m.status}</span>
-                        </td>
-                        <td className="px-4 py-3">
-                          <div className="flex items-center justify-end gap-2">
-                            <StatusSelect mentor={m} onChange={updateStatus} />
-                            {m.status === 'active' && !m.isVerified && (
-                              <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-                            )}
-                            <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-700" /></Link>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            <Card className="!p-0 overflow-hidden h-full flex flex-col" padded={false}>
+              <ResponsiveTable data={mentors} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </Card>
           ) : viewMode === 'grid' ? (
             /* ── Grid View ── */
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
               {mentors.map((m, i) => (
                 <Card key={m._id || i} className="!p-4 flex flex-col justify-between gap-3">
                   <div>
@@ -159,7 +178,7 @@ const AdminMentors = () => {
                       <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Star className="w-3 h-3 text-black dark:text-white" /> {m.rating?.toFixed(1) || '0.0'}</span>
                     </div>
                     <Link href={`/admin/mentors/${m._id}`} className="group">
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors flex items-center gap-1.5">
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors flex items-center gap-1.5">
                         {m.user?.name || 'Unknown'}
                         {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                       </h3>
@@ -180,7 +199,7 @@ const AdminMentors = () => {
                       {m.status === 'active' && !m.isVerified && (
                         <button onClick={() => verify(m._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Verify"><Shield className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                       )}
-                      <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-700" /></Link>
+                      <Link href={`/admin/mentors/${m._id}`} className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="View full details"><Eye className="w-3.5 h-3.5 text-primary-600" /></Link>
                     </div>
                   </div>
                 </Card>
@@ -188,7 +207,7 @@ const AdminMentors = () => {
             </div>
           ) : (
             /* ── List View ── */
-            <div className="space-y-3">
+            <div className="h-full overflow-auto space-y-3">
               {mentors.map((m, i) => (
                 <Card key={m._id || i} className="!p-4 flex items-center gap-4 flex-wrap sm:flex-nowrap">
                   <div className="flex-1 min-w-0">
@@ -198,7 +217,7 @@ const AdminMentors = () => {
                       {m.examsCleared?.length > 0 && <span className="text-[11px] text-slate-400 dark:text-slate-500">{m.examsCleared[0].examName} ({m.examsCleared[0].year})</span>}
                     </div>
                     <Link href={`/admin/mentors/${m._id}`} className="group">
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-700 transition-colors truncate flex items-center gap-1.5">
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors truncate flex items-center gap-1.5">
                         {m.user?.name || 'Unknown'}
                         {m.isVerified && <Shield className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                       </h3>
@@ -210,43 +229,29 @@ const AdminMentors = () => {
                     {m.status === 'active' && !m.isVerified && (
                       <button onClick={() => verify(m._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-black dark:text-white" /></button>
                     )}
-                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-700" /></Link>
+                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-600" /></Link>
                   </div>
                 </Card>
               ))}
             </div>
           )}
+              </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)}
-                className="p-2 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1)
-                .filter(p => p === 1 || p === totalPages || Math.abs(p - page) <= 1)
-                .reduce((acc, p, i, arr) => {
-                  if (i > 0 && p - arr[i - 1] > 1) acc.push('...');
-                  acc.push(p);
-                  return acc;
-                }, [])
-                .map((p, i) =>
-                  p === '...' ? (
-                    <span key={`dot-${i}`} className="px-1 text-slate-400 text-xs">...</span>
-                  ) : (
-                    <button key={p} onClick={() => setPage(p)}
-                      className={`w-8 h-8 rounded-lg lg:rounded-xl text-xs font-bold transition-colors ${page === p ? 'bg-primary-700 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
-                      {p}
-                    </button>
-                  )
-                )}
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-                className="p-2 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+              {totalItems > 0 && (
+                <div className="shrink-0">
+                  <Pagination
+                    currentPage={page}
+                    totalPages={totalPages}
+                    onPageChange={setPage}
+                    totalItems={totalItems}
+                    itemsPerPage={itemsPerPage}
+                    onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+                  />
+                </div>
+              )}
+            </>
           )}
+          </div>
         </div>
       </div>
     </AdminRoute>
