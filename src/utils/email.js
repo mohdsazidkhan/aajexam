@@ -57,10 +57,10 @@ const sendNewRegistrationAlert = async ({ user, provider = 'email', referrerName
         ['Referred By', referrerName || '—'],
         ['Registered At', registeredAt],
     ].map(([label, value]) => `
-        <tr>
-            <td style="padding:10px 16px;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #f1f5f9;white-space:nowrap;">${label}</td>
-            <td style="padding:10px 16px;font-size:14px;font-weight:600;color:#131f24;border-bottom:1px solid #f1f5f9;">${value}</td>
-        </tr>
+        <div style="padding:10px;border-bottom:1px solid #f1f5f9;">
+            <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.05em;">${label}</p>
+            <p style="margin:0;font-size:14px;font-weight:600;color:#131f24;word-break:break-word;">${value}</p>
+        </div>
     `).join('');
 
     const html = `
@@ -72,9 +72,9 @@ const sendNewRegistrationAlert = async ({ user, provider = 'email', referrerName
             </div>
             <div style="padding:24px;">
                 <p style="margin:0 0 16px;font-size:14px;color:#334155;">A new student just joined AajExam. Here are the details:</p>
-                <table style="width:100%;border-collapse:collapse;border:1px solid #f1f5f9;border-radius:12px;overflow:hidden;">
+                <div style="border:1px solid #f1f5f9;border-radius:12px;overflow:hidden;">
                     ${rows}
-                </table>
+                </div>
                 <div style="text-align:center;margin-top:24px;">
                     <a href="${siteUrl}/admin/students" style="display:inline-block;background:#357a02;color:#ffffff;text-decoration:none;font-weight:800;font-size:13px;padding:12px 28px;border-radius:999px;">View in Admin Panel</a>
                 </div>
