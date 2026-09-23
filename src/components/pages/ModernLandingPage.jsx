@@ -91,7 +91,7 @@ const ModernLandingPage = () => {
             </div>
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
-               <div className="max-w-5xl mx-auto text-center space-y-6 mt-8 lg:mt-0 py-4 lg:py-12">
+               <div className="max-w-5xl mx-auto text-center space-y-6 py-4 lg:py-12">
                   {/* Gamified Floating Elements */}
                   <motion.div
                      animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
@@ -138,7 +138,7 @@ const ModernLandingPage = () => {
                         size="xl"
                         icon={ArrowRight}
                         iconPosition="right"
-                        className="w-full sm:w-auto shadow-sm transform hover:-translate-y-1 transition-all duration-300 font-outfit tracking-[0.08em] text-sm py-3 lg:py-6"
+                        className="w-full sm:w-auto"
                         onClick={() => router.push('/register')}
                      >
                         Start practicing now
