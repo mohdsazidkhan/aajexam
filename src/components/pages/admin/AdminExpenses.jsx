@@ -157,56 +157,8 @@ const AdminExpenses = () => {
             {userInfo?.role === 'admin' && <Sidebar />}
 
             <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-sm overflow-hidden group"
-                >
-                    <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                        <Receipt className="w-64 h-64 text-primary-700 -rotate-12" />
-                    </div>
-
-                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
-                        <div className="space-y-2">
-                            <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
-                                PLATFORM <span className="text-primary-700">EXPENSES</span>
-                            </h1>
-
-                            <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
-                                Track and record platform expenses like advertising, hosting, and maintenance.
-                            </p>
-                        </div>
-
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => handleOpenModal()}
-                            className="w-full lg:w-auto flex items-center justify-center gap-4 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] shadow-sm group/btn"
-                        >
-                            <PlusCircle className="w-5 h-5 group-hover/btn:rotate-90 transition-transform" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">ADD NEW EXPENSE</span>
-                        </motion.button>
-                    </div>
-                </motion.div>
-
-                {/* Summary Cards */}
+                {/* Category Summary Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8 mb-4">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="bg-white/80 dark:bg-white/5 backdrop-blur-xl p-3 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group"
-                    >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-primary-700"/>
-                        <div className="p-4 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl w-fit mb-6 group-hover:scale-125 transition-transform">
-                            <IndianRupee className="w-6 h-6" />
-                        </div>
-                        <div className="text-3xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white mb-2">
-                            {formatAmount(summary.totalAmount)}
-                        </div>
-                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">TOTAL EXPENSES</div>
-                    </motion.div>
-
                     {summary?.categories?.map((cat, i) => (
                         <motion.div
                             key={cat._id}
@@ -226,6 +178,51 @@ const AdminExpenses = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 mb-4 shadow-sm overflow-hidden group"
+                >
+                    <div className="absolute top-0 right-0 p-3 lg:p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <Receipt className="w-64 h-64 text-primary-700 -rotate-12" />
+                    </div>
+
+                    <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-12">
+                        <div className="space-y-2">
+                            <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-outfit">
+                                PLATFORM <span className="text-primary-700">EXPENSES</span>
+                            </h1>
+
+                            <p className="max-w-2xl text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-widest leading-relaxed">
+                                Track and record platform expenses.
+                            </p>
+                        </div>
+
+                        <div className="flex items-center gap-3 px-4 lg:px-8 py-4 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-[2rem] shadow-sm w-full lg:w-auto">
+                            <div className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-xl">
+                                <IndianRupee className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <div className="text-xl lg:text-2xl font-black tabular-nums tracking-tighter text-slate-900 dark:text-white leading-none">
+                                    {formatAmount(summary.totalAmount)}
+                                </div>
+                                <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-none mt-1">TOTAL EXPENSES</div>
+                            </div>
+                        </div>
+
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => handleOpenModal()}
+                            className="w-full lg:w-auto flex items-center justify-center gap-4 px-4 lg:px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] shadow-sm group/btn"
+                        >
+                            <PlusCircle className="w-5 h-5 group-hover/btn:rotate-90 transition-transform" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">ADD NEW EXPENSE</span>
+                        </motion.button>
+                    </div>
+                </motion.div>
 
                 {/* Filters */}
                 <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 lg:gap-6 mb-4">
