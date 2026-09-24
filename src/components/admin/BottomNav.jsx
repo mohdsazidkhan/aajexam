@@ -85,21 +85,21 @@ const AdminBottomNav = () => {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-[130] max-h-[85%] overflow-y-auto rounded-t-3xl bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-sm"
-              style={{ scrollbarWidth: 'none' }}
+              className="fixed bottom-0 left-0 right-0 z-[130] max-h-[85%] flex flex-col rounded-t-3xl bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-sm"
             >
-              <div className="flex justify-center pt-3 pb-2">
-                <div className="w-10 h-1 rounded-full bg-slate-300 dark:bg-slate-700" />
-              </div>
-
-              <div className="px-5 pb-24 pt-2">
-                <div className="flex items-center justify-between mb-5">
+              <div className="shrink-0">
+                <div className="flex justify-center pt-3 pb-2">
+                  <div className="w-10 h-1 rounded-full bg-slate-300 dark:bg-slate-700" />
+                </div>
+                <div className="flex items-center justify-between px-5 pb-3">
                   <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Create</h3>
                   <button onClick={() => setShowCreate(false)} className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800">
                     <X className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   </button>
                 </div>
+              </div>
 
+              <div className="flex-1 min-h-0 overflow-y-auto px-5 pb-24 pt-2" style={{ scrollbarWidth: 'none' }}>
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2.5">Reel</p>
                 <div className="space-y-2.5 mb-6">
                   {REEL_TYPES.map((type) => (
@@ -160,12 +160,12 @@ const AdminBottomNav = () => {
             return (
               <button
                 key="create"
-                aria-label="Create new reel"
-                onClick={() => setShowCreate(true)}
-                className="flex-1 min-w-0 flex items-center justify-center"
+                aria-label={showCreate ? 'Close create menu' : 'Create new reel'}
+                onClick={() => setShowCreate((prev) => !prev)}
+                className="flex-1 min-w-0 flex items-center justify-center -translate-y-5"
               >
-                <div className="w-12 h-12 -translate-y-7 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
-                  <Plus className="w-7 h-7 text-white" />
+                <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
+                  {showCreate ? <X className="w-6 h-6 text-white" /> : <Plus className="w-7 h-7 text-white" />}
                 </div>
               </button>
             );

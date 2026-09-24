@@ -318,7 +318,7 @@ const AdminNotificationsPage = () => {
                               </div>
                               <div>
                                  <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
-                                 <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{formatDate(n.createdAt)} &middot; {formatTime(n.createdAt)}</div>
+                                 <div className="text-[10px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest italic">{formatDate(n.createdAt)} &middot; {formatTime(n.createdAt)}</div>
                               </div>
                            </div>
                            <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-sm shrink-0">
