@@ -339,9 +339,6 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
           <Link href="/admin/email-campaigns" className="text-sm text-black dark:text-white hover:underline inline-flex items-center gap-1 mb-2">
             ← All campaigns
           </Link>
-          <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
-            <Mail className="text-primary-600" /> {campaignIdProp ? 'Edit Campaign' : 'New Campaign'}
-          </h1>
         </div>
 
         {/* ===== Step indicator ===== */}

@@ -138,9 +138,7 @@ const AdminReelAnalytics = () => {
       <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><BarChart3 className="w-6 h-6 text-primary-600 shrink-0" /> Reel Analytics</h1>
-
+        <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-3 mb-4 shrink-0">
           {stats.length > 0 && (
             <div className="flex flex-wrap items-center justify-end gap-2 w-full lg:w-auto">
               {stats.map((stat) => (

@@ -249,9 +249,6 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                         <button onClick={() => router.push('/admin/pyq')} className="p-2 rounded-lg lg:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"><ArrowLeft className="w-5 h-5" /></button>
-                        <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
-                            <FileText className="w-6 h-6 text-primary-600" /> {mode === 'edit' ? 'Edit PYQ' : 'New PYQ Paper'}
-                        </h1>
                     </div>
                     <button onClick={handleSubmit} disabled={saving} className="px-5 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
                         <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save'}

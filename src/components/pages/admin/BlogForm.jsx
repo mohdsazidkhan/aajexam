@@ -181,11 +181,6 @@ const AdminBlogForm = () => {
             <button onClick={() => router.push('/admin/blogs')} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700">
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <div>
-              <h1 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter leading-none italic">
-                {isEdit ? 'EDIT' : 'CREATE'} <span className="text-primary-600">BLOG</span>
-              </h1>
-            </div>
           </div>
         </motion.div>
 

@@ -209,9 +209,6 @@ export default function UserReferralDetail() {
                 >
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
                         <div className="space-y-2">
-                            <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                                REFERRAL <span className="text-primary-600">DETAIL</span>
-                            </h1>
                             <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
                                 <div className="w-12 h-12 bg-primary-600 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-sm">
                                     {user?.name?.[0].toUpperCase()}

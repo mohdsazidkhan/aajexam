@@ -243,15 +243,6 @@ const AdminReelCreate = () => {
         <main className="flex-1 transition-all duration-300">
           <div className="mt-4 lg:mt-2">
 
-            {/* Header */}
-            <div className="flex items-center gap-3 mb-6">
-             <div>
-                <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Flame className="w-6 h-6 text-black dark:text-white" /> Create Reel
-                </h1>
-              </div>
-            </div>
-
             {/* Type Selection */}
             {!type ? (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">

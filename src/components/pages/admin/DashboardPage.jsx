@@ -179,17 +179,6 @@ const DashboardPage = () => {
 
   return (
     <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-6"
-      >
-        <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-4 uppercase leading-none">
-          ADMIN <span className="text-primary-600">DASHBOARD</span>
-        </h1>
-      </motion.div>
-
       {/* Top Headline KPIs */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

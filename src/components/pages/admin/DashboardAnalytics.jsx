@@ -402,8 +402,8 @@ const DashboardAnalytics = () => {
     </div>
   );
 
-  const statBadges = (
-    <>
+  const statCardsSection = (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-4 mb-4 shrink-0">
       {[
         { label: 'Total Users', icon: Users, value: data?.overview?.totalUsers },
         { label: 'Total Quizzes', icon: BarChart3, value: data?.overview?.totalQuizzes },
@@ -414,20 +414,20 @@ const DashboardAnalytics = () => {
       ].map((stat, i) => (
         <div
           key={i}
-          className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0"
+          className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
         >
-          <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0">
-            <stat.icon className="w-3 h-3" />
+          <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0">
+            <stat.icon className="w-4 h-4" />
           </div>
           <div className="min-w-0">
-            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
+            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
               {stat.value?.toLocaleString?.() || stat.value || 0}
             </div>
-            <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 
   const viewToggleButtons = (
@@ -456,7 +456,6 @@ const DashboardAnalytics = () => {
     count: null,
     filters: (
       <>
-        {statBadges}
         {viewToggleButtons}
         {paginationControl}
       </>
@@ -489,6 +488,8 @@ const DashboardAnalytics = () => {
      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
 <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
            {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+
+          {statCardsSection}
 
           {/* Tables */}
           <div className="flex-1 min-h-0 overflow-auto flex flex-col gap-4">

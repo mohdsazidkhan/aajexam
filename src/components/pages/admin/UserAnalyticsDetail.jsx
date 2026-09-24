@@ -121,10 +121,6 @@ const AdminUserAnalyticsDetail = () => {
                                 </motion.button>
                             </div>
 
-                            <h1 className="text-xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
-                                {loading ? 'Loading...' : (userData.name || 'User Performance')}
-                            </h1>
-
                             {!loading && (
                                 <div className="flex flex-wrap items-center gap-3 lg:gap-6">
                                     <div className="flex items-center gap-3 px-3 lg:px-6 py-3 bg-slate-100 dark:bg-white/5 rounded-2xl border-2 border-slate-200/50 dark:border-white/5">
