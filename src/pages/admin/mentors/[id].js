@@ -33,7 +33,13 @@ const AdminMentorDetail = () => {
     } catch (e) { toast.error('Failed'); }
   };
 
-  if (loading) return <AdminTableSkeleton />;
+  if (loading) return (
+    <AdminRoute>
+      <div className="min-h-screen pb-24">
+        <AdminTableSkeleton />
+      </div>
+    </AdminRoute>
+  );
   if (!mentor) return null;
 
   return (

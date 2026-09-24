@@ -569,7 +569,14 @@ const AdminGenerateTests = () => {
     setGenerating(false);
   };
 
-  if (loadingInit) return <AdminTableSkeleton />;
+  if (loadingInit) return (
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+      <Sidebar />
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
+        <AdminTableSkeleton />
+      </div>
+    </div>
+  );
 
   const totalGenerated = sectionStates.reduce((acc, s) => acc + s.questions.length, 0);
   const totalExpected = selectedPattern?.sections.reduce((acc, s) => acc + (s.totalQuestions || 0), 0) || 0;

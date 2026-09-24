@@ -401,7 +401,13 @@ const DashboardAnalytics = () => {
     </div>
   );
 
-  if (loading) return <AdminDashboardSkeleton />;
+  if (loading) return (
+    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans">
+      <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-hidden">
+        <AdminDashboardSkeleton />
+      </div>
+    </div>
+  );
 
   if (error) return (
     <div className="min-h-screen bg-background-page p-6 text-black dark:text-white">
