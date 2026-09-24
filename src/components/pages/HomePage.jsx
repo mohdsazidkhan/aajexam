@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import {
    Flame,
    Trophy,
-   Target,
    Zap,
    BookOpen,
    Award,
@@ -13,7 +12,6 @@ import {
    ChevronRight,
    ShieldCheck,
    Search,
-   MessageSquare,
    PlayCircle,
    Play,
    GraduationCap,
@@ -305,7 +303,6 @@ const HomePage = () => {
    const metrics = performanceReport?.performanceMetrics || {};
    const examStats = metrics.examStats || {};
    const overallReadiness = examStats.overallReadiness ?? 0;
-   const averageMockScore = examStats.averageMockScore ?? 0;
    const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
    const streakCount = examStats.streakCount ?? 0;
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
@@ -324,68 +321,54 @@ const HomePage = () => {
                )}
 
                {/* Quick Stats */}
-               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
+               <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4">
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
                      <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Target className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{averageMockScore}%</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Avg Score</p>
+                     <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
                   </div>
                   <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
                      <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
-                  </div>
                </div>
             </section>
 
             {/* ── Quick Actions ── */}
             <section className="px-0 py-2 lg:py-4">
-               <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3 lg:gap-4">
+               <div className="grid grid-cols-3 gap-1.5 lg:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-3xl p-1.5 lg:p-6 flex items-center gap-1 lg:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
-                        <Zap className="w-7 h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 lg:w-12 lg:h-12 shrink-0 rounded-md lg:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <Zap className="w-3.5 h-3.5 lg:w-7 lg:h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Test</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] lg:text-xs font-black uppercase tracking-tight lg:tracking-wider leading-tight">Start Test</p>
                   </button>
                   <button
                      onClick={() => router.push('/quizzes')}
-                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-3xl p-1.5 lg:p-6 flex items-center gap-1 lg:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
-                        <PlayCircle className="w-7 h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 lg:w-12 lg:h-12 shrink-0 rounded-md lg:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <PlayCircle className="w-3.5 h-3.5 lg:w-7 lg:h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Start Quiz</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] lg:text-xs font-black uppercase tracking-tight lg:tracking-wider leading-tight">Start Quiz</p>
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
-                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-3xl p-1.5 lg:p-6 flex items-center gap-1 lg:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
-                        <FileText className="w-7 h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 lg:w-12 lg:h-12 shrink-0 rounded-md lg:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <FileText className="w-3.5 h-3.5 lg:w-7 lg:h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Blog</p>
-                  </button>
-                  <button
-                     onClick={() => router.push('/community-questions')}
-                     className="bg-white dark:bg-slate-800 rounded-2xl lg:rounded-3xl p-4 lg:p-6 text-center active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-12 h-12 mx-auto rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center mb-2">
-                        <MessageSquare className="w-7 h-7 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[10px] lg:text-xs font-black uppercase tracking-wider">Community</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] lg:text-xs font-black uppercase tracking-tight lg:tracking-wider leading-tight">Read Blog</p>
                   </button>
                </div>
             </section>

@@ -40,6 +40,14 @@ export default function ReferralHistory() {
    const [error, setError] = useState(null);
    const [page, setPage] = useState(1);
    const [pagination, setPagination] = useState({});
+   const [bankDetail, setBankDetail] = useState(null);
+   const [bankDetailLoaded, setBankDetailLoaded] = useState(false);
+   const [showBankForm, setShowBankForm] = useState(false);
+   const [bankForm, setBankForm] = useState({ accountHolderName: '', accountNumber: '', bankName: '', ifscCode: '', branchName: '', upiId: '' });
+   const [savingBank, setSavingBank] = useState(false);
+   const [showPayoutForm, setShowPayoutForm] = useState(false);
+   const [payoutAmount, setPayoutAmount] = useState('');
+   const [submittingPayout, setSubmittingPayout] = useState(false);
 
    const fetchReferralHistory = useCallback(async (pageNum = 1) => {
       try {
@@ -65,9 +73,100 @@ export default function ReferralHistory() {
       if (isMounted) fetchReferralHistory(page);
    }, [isMounted, page, fetchReferralHistory]);
 
+   const fetchBankDetail = useCallback(async () => {
+      try {
+         const res = await API.getBankDetails();
+         const detail = res?.bankDetail || null;
+         setBankDetail(detail);
+         if (detail) {
+            setBankForm({
+               accountHolderName: detail.accountHolderName || '',
+               accountNumber: detail.accountNumber || '',
+               bankName: detail.bankName || '',
+               ifscCode: detail.ifscCode || '',
+               branchName: detail.branchName || '',
+               upiId: detail.upiId || ''
+            });
+         }
+      } catch (err) {
+         // No saved bank details yet — treat as none rather than an error.
+      } finally {
+         setBankDetailLoaded(true);
+      }
+   }, []);
+
+   useEffect(() => {
+      if (isMounted) fetchBankDetail();
+   }, [isMounted, fetchBankDetail]);
+
    const copyToClipboard = (text) => {
       navigator.clipboard.writeText(text);
       toast.success('Referral link copied!');
+   };
+
+   const MIN_PAYOUT = parseInt(process.env.NEXT_PUBLIC_MIN_WITHDRAW_AMOUNT || '1000', 10);
+
+   const handleSaveBankDetail = async () => {
+      const { accountHolderName, accountNumber, bankName, ifscCode, branchName } = bankForm;
+      if (!accountHolderName.trim() || !accountNumber.trim() || !bankName.trim() || !ifscCode.trim() || !branchName.trim()) {
+         toast.error('Fill in all required bank detail fields');
+         return;
+      }
+      try {
+         setSavingBank(true);
+         const res = await API.saveBankDetails(bankForm);
+         if (res?.success) {
+            toast.success('Bank details saved!');
+            setBankDetail(res.bankDetail);
+            setShowBankForm(false);
+         } else {
+            toast.error(res?.message || 'Failed to save bank details');
+         }
+      } catch (err) {
+         toast.error(err?.response?.data?.message || err?.message || 'Failed to save bank details');
+      } finally {
+         setSavingBank(false);
+      }
+   };
+
+   const handleRequestPayout = async () => {
+      const amount = Number(payoutAmount);
+      if (!amount || amount < MIN_PAYOUT) {
+         toast.error(`Minimum withdrawal amount is ₹${MIN_PAYOUT}`);
+         return;
+      }
+      if (amount > (user?.walletBalance || 0)) {
+         toast.error('Amount exceeds your available balance');
+         return;
+      }
+      if (!bankDetail) {
+         toast.error('Add your bank details first');
+         return;
+      }
+      try {
+         setSubmittingPayout(true);
+         const res = await API.createReferralWithdrawRequest({
+            amount,
+            bankDetails: {
+               accountHolderName: bankDetail.accountHolderName,
+               accountNumber: bankDetail.accountNumber,
+               bankName: bankDetail.bankName,
+               ifscCode: bankDetail.ifscCode
+            }
+         });
+         if (res?.success) {
+            toast.success('Withdrawal request submitted! Admin will review and mark it paid.');
+            setShowPayoutForm(false);
+            setPayoutAmount('');
+            fetchReferralHistory(page);
+         } else {
+            toast.error(res?.message || 'Failed to submit request');
+         }
+      } catch (err) {
+         toast.error(err?.response?.data?.message || err?.message || 'Failed to submit request');
+      } finally {
+         setSubmittingPayout(false);
+      }
    };
 
    if (!isMounted) return null;
@@ -86,28 +185,28 @@ export default function ReferralHistory() {
          <div className="container mx-auto mt-0 space-y-2 lg:space-y-4 lg:space-y-8">
 
             {/* --- Header Section --- */}
-            <section className="relative px-0 py-4 lg:py-8">
-               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
+            <section className="relative px-0 py-2 lg:py-8">
+               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 lg:gap-12">
 
-                  <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-6 text-center lg:text-left">
-                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-20 h-20 bg-primary-500/10 text-primary-600 rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
-                        <Users className="w-10 h-10" />
+                  <div className="flex flex-row items-center gap-2 lg:gap-6 text-left">
+                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-8 h-8 lg:w-20 lg:h-20 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
+                        <Users className="w-4 h-4 lg:w-10 lg:h-10" />
                      </motion.div>
-                     <div className="space-y-2 lg:space-y-4">
-                        <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">History</span></h1>
-                        <p className="text-sm font-bold text-content-secondary uppercase tracking-[0.3em] max-w-2xl mx-auto lg:mx-0">Share your link with friends. When they buy the PRO plan (first time), you earn ₹33.</p>
+                     <div className="space-y-0.5 lg:space-y-4">
+                        <h1 className="text-base lg:text-5xl font-black font-outfit uppercase tracking-tight leading-none">Referral <span className="text-primary-600">History</span></h1>
+                        <p className="text-[9px] lg:text-sm font-bold text-content-secondary uppercase tracking-wide lg:tracking-[0.3em] max-w-2xl">Share your link with friends. When they buy the PRO plan (first time), you earn <span className="font-black text-primary-600">₹33</span>.</p>
                      </div>
                   </div>
 
                   {/* Referral Link Card */}
                   {user && (
-                     <Card className="w-full lg:w-auto lg:min-w-[360px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-[2.5rem]">
-                        <div className="p-2 space-y-3 text-left">
-                           <p className="text-xs font-black text-content-secondary uppercase tracking-widest leading-none">Your Invite Code</p>
-                           <div className="flex items-center gap-3">
-                              <p className="flex-1 text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
-                              <Button variant="primary" size="lg" className="rounded-full px-8 py-4 text-xs font-black shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
-                                 <Copy className="w-4 h-4 mx-auto" /> COPY LINK
+                     <Card className="w-full lg:w-auto lg:min-w-[360px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-2xl lg:rounded-[2.5rem]">
+                        <div className="p-1 lg:p-2 space-y-1.5 lg:space-y-3 text-left">
+                           <p className="text-[9px] lg:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">Your Referral Code</p>
+                           <div className="flex items-center gap-2 lg:gap-3">
+                              <p className="flex-1 text-sm lg:text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
+                              <Button variant="primary" size="sm" className="lg:px-8 lg:py-4 lg:rounded-full shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                                 <Copy className="w-3.5 h-3.5 lg:w-4 lg:h-4 mx-auto" /> COPY LINK
                               </Button>
                            </div>
                         </div>
@@ -118,24 +217,151 @@ export default function ReferralHistory() {
 
             {/* --- Stats Grid --- */}
             {user && (
-               <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+               <section className="grid grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-6">
                   {[
+                     { label: 'Referral Rewards', val: `₹${(user.walletBalance || 0).toLocaleString()}`, icon: Coins, color: 'primary' },
                      { label: 'Money You Earned', val: `₹${(user.referralRewards?.reduce((s, r) => s + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'primary' },
                      { label: 'Friends Referred', val: user.referralCount || 0, icon: UserPlus, color: 'primary' },
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-[2rem] lg:rounded-[2.5rem]">
-                        <div className="flex justify-between items-start mb-4 lg:mb-6">
-                           <div className={`p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-2xl`}>
-                              <s.icon className="w-6 h-6" />
+                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl lg:rounded-[2.5rem]">
+                        <div className="flex justify-between items-start mb-1.5 lg:mb-6">
+                           <div className={`p-1.5 lg:p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-lg lg:rounded-2xl`}>
+                              <s.icon className="w-3.5 h-3.5 lg:w-6 lg:h-6" />
                            </div>
-                           <ArrowUpRight className="w-4 h-4 text-slate-200 group-hover:text-content-secondary transition-colors" />
+                           <ArrowUpRight className="hidden lg:block w-4 h-4 text-slate-200 group-hover:text-content-secondary transition-colors" />
                         </div>
-                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest mb-1">{s.label}</p>
-                        <p className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
+                        <p className="text-[8px] lg:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 lg:mb-1">{s.label}</p>
+                        <p className="text-sm lg:text-3xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
                      </Card>
                   ))}
+               </section>
+            )}
+
+            {/* --- Payout Section --- */}
+            {user && bankDetailLoaded && (
+               <section>
+                  <Card className="border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
+                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                        <div className="space-y-2">
+                           <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2">
+                              <Zap className="w-5 h-5 text-primary-600" /> Referral Payouts
+                           </h2>
+                           {(user.walletBalance || 0) >= MIN_PAYOUT ? (
+                              <div className="flex items-start gap-2">
+                                 <CircleCheck className="w-4 h-4 text-primary-600 shrink-0 mt-0.5" />
+                                 <p className="text-sm font-bold text-content-secondary">
+                                    {bankDetail
+                                       ? `You're eligible to withdraw to your ${bankDetail.bankName} account`
+                                       : `You're eligible to withdraw — add your bank details to request it`}
+                                 </p>
+                              </div>
+                           ) : (
+                              <div className="space-y-3 max-w-xs">
+                                 <div className="flex items-start gap-2">
+                                    <Clock className="w-4 h-4 shrink-0 mt-0.5" />
+                                    <p className="text-sm font-bold text-content-secondary">
+                                       Minimum withdrawal is <span className="font-black text-primary-600">₹{MIN_PAYOUT.toLocaleString()}</span> — earn <span className="font-black text-primary-600">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span> more to unlock it
+                                    </p>
+                                 </div>
+                                 <div className="w-full h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                    <div className="h-full bg-primary-600 rounded-full" style={{ width: `${Math.min(100, ((user.walletBalance || 0) / MIN_PAYOUT) * 100)}%` }} />
+                                 </div>
+                              </div>
+                           )}
+                        </div>
+
+                        {(user.walletBalance || 0) >= MIN_PAYOUT && !showPayoutForm && !showBankForm && (
+                           bankDetail ? (
+                              <Button variant="primary" className="rounded-full px-8 py-3 text-xs font-black shadow-sm shrink-0" onClick={() => { setPayoutAmount(String(user.walletBalance)); setShowPayoutForm(true); }}>
+                                 Request Withdrawal <ArrowRight className="w-4 h-4 ml-1" />
+                              </Button>
+                           ) : (
+                              <Button variant="primary" className="rounded-full px-8 py-3 text-xs font-black shadow-sm shrink-0" onClick={() => setShowBankForm(true)}>
+                                 Add Bank Details <ArrowRight className="w-4 h-4 ml-1" />
+                              </Button>
+                           )
+                        )}
+                     </div>
+
+                     {/* Saved bank details + edit link */}
+                     {bankDetail && !showBankForm && (user.walletBalance || 0) >= MIN_PAYOUT && (
+                        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                           <p className="text-xs font-bold text-content-secondary">
+                              {bankDetail.bankName} •••• {bankDetail.accountNumber?.slice(-4)} ({bankDetail.accountHolderName})
+                           </p>
+                           <button onClick={() => setShowBankForm(true)} className="text-xs font-black text-primary-600 uppercase tracking-widest hover:underline">
+                              Edit Bank Details
+                           </button>
+                        </div>
+                     )}
+
+                     {/* Bank details form */}
+                     {showBankForm && (
+                        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {[
+                                 { key: 'accountHolderName', label: 'Account Holder Name' },
+                                 { key: 'accountNumber', label: 'Account Number' },
+                                 { key: 'bankName', label: 'Bank Name' },
+                                 { key: 'ifscCode', label: 'IFSC Code' },
+                                 { key: 'branchName', label: 'Branch Name' },
+                                 { key: 'upiId', label: 'UPI ID (optional)' }
+                              ].map((f) => (
+                                 <div key={f.key}>
+                                    <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{f.label}</label>
+                                    <input
+                                       type="text"
+                                       value={bankForm[f.key]}
+                                       onChange={(e) => setBankForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
+                                       className="w-full mt-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-bold text-sm"
+                                    />
+                                 </div>
+                              ))}
+                           </div>
+                           <div className="flex gap-3">
+                              <Button variant="primary" disabled={savingBank} className="rounded-full px-8 py-3 text-xs font-black shadow-sm" onClick={handleSaveBankDetail}>
+                                 {savingBank ? 'Saving...' : 'Save Bank Details'}
+                              </Button>
+                              <Button variant="secondary" className="rounded-full px-8 py-3 text-xs font-black" onClick={() => setShowBankForm(false)}>
+                                 Cancel
+                              </Button>
+                           </div>
+                        </div>
+                     )}
+
+                     {/* Withdrawal amount form */}
+                     {showPayoutForm && (
+                        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                           <div className="max-w-xs">
+                              <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">Amount (min ₹{MIN_PAYOUT}, max ₹{(user.walletBalance || 0).toLocaleString()})</label>
+                              <input
+                                 type="number"
+                                 min={MIN_PAYOUT}
+                                 max={user.walletBalance}
+                                 value={payoutAmount}
+                                 onChange={(e) => setPayoutAmount(e.target.value)}
+                                 className="w-full mt-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-bold text-sm"
+                              />
+                           </div>
+                           <p className="text-[11px] font-bold text-content-secondary uppercase tracking-widest">
+                              Paid to: {bankDetail?.bankName} •••• {bankDetail?.accountNumber?.slice(-4)}
+                           </p>
+                           <div className="flex gap-3">
+                              <Button variant="primary" disabled={submittingPayout} className="rounded-full px-8 py-3 text-xs font-black shadow-sm" onClick={handleRequestPayout}>
+                                 {submittingPayout ? 'Submitting...' : 'Submit Request'}
+                              </Button>
+                              <Button variant="secondary" className="rounded-full px-8 py-3 text-xs font-black" onClick={() => setShowPayoutForm(false)}>
+                                 Cancel
+                              </Button>
+                           </div>
+                           <p className="text-[10px] font-bold text-content-secondary uppercase tracking-widest">
+                              After you submit, admin reviews the request and marks it paid.
+                           </p>
+                        </div>
+                     )}
+                  </Card>
                </section>
             )}
 
@@ -176,14 +402,14 @@ export default function ReferralHistory() {
                </div>
 
                {/* Right Area: Friend List */}
-               <div className="space-y-8">
+               <div className="space-y-3 lg:space-y-8">
                   <div className="flex items-center justify-between">
-                     <div className="space-y-2">
-                        <h2 className="text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">Logs</span></h2>
-                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">Students who signed up using your referral link</p>
+                     <div className="space-y-1 lg:space-y-2">
+                        <h2 className="text-sm lg:text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">Logs</span></h2>
+                        <p className="text-[9px] lg:text-[10px] font-black text-content-secondary uppercase tracking-widest">Students who signed up using your referral link</p>
                      </div>
-                     <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700">
-                        <History className="w-5 h-5 text-content-secondary" />
+                     <div className="p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-2xl border-2 border-slate-100 dark:border-slate-700">
+                        <History className="w-4 h-4 lg:w-5 lg:h-5 text-content-secondary" />
                      </div>
                   </div>
 
@@ -191,13 +417,13 @@ export default function ReferralHistory() {
                      {loading ? (
                         <ListSkeleton rows={6} />
                      ) : transactions.length === 0 ? (
-                        <Card className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-[4rem]">
-                           <Users className="w-16 h-16 text-slate-200 mx-auto" />
-                           <div className="space-y-2">
-                              <h3 className="text-xl font-black font-outfit uppercase tracking-tight">No Referrals Yet</h3>
-                              <p className="text-xs font-bold text-content-secondary uppercase tracking-widest">You have not referred anyone yet. Share your link and start earning.</p>
+                        <Card className="py-4 lg:py-8 text-center space-y-2 lg:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl lg:rounded-[4rem]">
+                           <Users className="w-8 h-8 lg:w-16 lg:h-16 text-slate-200 mx-auto" />
+                           <div className="space-y-1 lg:space-y-2">
+                              <h3 className="text-sm lg:text-xl font-black font-outfit uppercase tracking-tight">No Referrals Yet</h3>
+                              <p className="text-[10px] lg:text-xs font-bold text-content-secondary uppercase tracking-widest">You have not referred anyone yet. Share your link and start earning.</p>
                            </div>
-                           <Button variant="primary" className="rounded-full mx-auto px-8 py-3 text-[10px] font-black uppercase tracking-widest" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                           <Button variant="primary" size="sm" className="lg:px-8 lg:py-3 mx-auto lg:rounded-full" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                               COPY LINK
                            </Button>
                         </Card>

@@ -113,10 +113,10 @@ const StudentBottomNav = () => {
                 key="create"
                 aria-label="Create new reel"
                 onClick={() => setShowCreate(true)}
-                className="flex items-center justify-center mb-2 px-2"
+                className="flex items-center justify-center -translate-y-5 px-2"
               >
-                <div className="w-11 h-11 rounded-2xl bg-primary-600 flex items-center justify-center shadow-sm">
-                  <Plus className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
+                  <Plus className="w-7 h-7 text-white" />
                 </div>
               </button>
             );
