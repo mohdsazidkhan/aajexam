@@ -211,7 +211,7 @@ const EmailCampaignsListPage = () => {
   if (!isMounted) return <div className="adminContent w-full mx-auto"><AdminTableSkeleton /></div>;
 
   return (
-    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col overflow-hidden">
 
           {/* --- Header: title + New Campaign at the right end --- */}

@@ -402,7 +402,7 @@ const DashboardAnalytics = () => {
   );
 
   if (loading) return (
-    <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans">
+    <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans">
       <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-hidden">
         <AdminDashboardSkeleton />
       </div>
@@ -424,7 +424,7 @@ const DashboardAnalytics = () => {
   );
 
   return (
-     <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
 <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 flex flex-col overflow-hidden">
            <div className="mb-4 shrink-0">
              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
