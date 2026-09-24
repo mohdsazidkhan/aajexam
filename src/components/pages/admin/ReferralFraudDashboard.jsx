@@ -345,7 +345,7 @@ export default function ReferralFraudDashboard() {
                                           <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-black/15 dark:bg-white/15 text-black dark:text-white">{r.status}</span>
                                         )}
                                         {dormant && (
-                                          <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-black/15 dark:bg-white/15 text-black dark:text-white">dormant</span>
+                                          <span className="text-[7px] font-black uppercase px-1.5 py-0.5 rounded bg-black/15 dark:bg-white/15 text-black dark:text-white">Inactive</span>
                                         )}
                                       </div>
                                     </div>
