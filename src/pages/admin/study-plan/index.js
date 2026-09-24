@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { CalendarDays, ListChecks, Sparkles, Table as TableIcon, List, LayoutGrid, Search } from 'lucide-react';
+import { CalendarDays, ListChecks, Sparkles, Table as TableIcon, List, LayoutGrid, Search, Trash2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
@@ -21,9 +21,13 @@ const AdminStudyPlanPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearch = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -50,6 +54,22 @@ const AdminStudyPlanPage = () => {
   }, [page, itemsPerPage, debouncedSearch]);
 
   useEffect(() => { setPage(1); }, [debouncedSearch]);
+
+  const handleDelete = async (plan) => {
+    if (!confirm(`Delete study plan "${plan.title || 'Study Plan'}"?`)) return;
+    try {
+      const res = await API.request(`/api/admin/study-plan/${plan._id}`, { method: 'DELETE' });
+      if (res?.success) {
+        toast.success('Study plan deleted');
+        setPlans(prev => prev.filter(p => p._id !== plan._id));
+        setTotalItems(prev => Math.max(0, prev - 1));
+      } else {
+        toast.error(res?.message || 'Failed to delete study plan');
+      }
+    } catch (error) {
+      toast.error('Failed to delete study plan');
+    }
+  };
 
   const columns = [
     {
@@ -85,6 +105,17 @@ const AdminStudyPlanPage = () => {
     {
       key: 'createdAt', header: 'Created', render: (_, plan) => (
         <span className="text-slate-500">{plan.createdAt ? new Date(plan.createdAt).toLocaleDateString('en-IN') : '-'}</span>
+      )
+    },
+    {
+      key: 'actions', header: 'Actions', align: 'right', render: (_, plan) => (
+        <button
+          onClick={() => handleDelete(plan)}
+          title="Delete"
+          className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+        >
+          <Trash2 className="w-3.5 h-3.5" />
+        </button>
       )
     }
   ];
@@ -142,9 +173,16 @@ const AdminStudyPlanPage = () => {
               ) : viewMode === 'grid' ? (
                 <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
                   {plans.map((plan) => (
-                    <Card key={plan._id} className="flex flex-col gap-2">
+                    <Card key={plan._id} className="flex flex-col gap-2 relative">
+                      <button
+                        onClick={() => handleDelete(plan)}
+                        title="Delete"
+                        className="absolute top-3 right-3 p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
                       <div className="text-xs text-slate-400 uppercase tracking-[0.2em]">{plan.exam?.name || 'Unknown Exam'}</div>
-                      <h2 className="text-base font-black text-slate-900 dark:text-white">{plan.title || 'Study Plan'}</h2>
+                      <h2 className="text-base font-black text-slate-900 dark:text-white pr-8">{plan.title || 'Study Plan'}</h2>
                       <div className="text-xs text-slate-500 dark:text-slate-400">By {plan.user?.name || plan.user?.username || 'Unknown User'}</div>
                       <div className="text-xs text-slate-500 dark:text-slate-400">{plan.status?.toUpperCase() || 'UNKNOWN'} · {plan.weeklySchedule?.length ?? 0} weeks</div>
                       <div className="grid grid-cols-3 gap-2 text-xs text-slate-600 dark:text-slate-300 mt-2 pt-2 border-t border-slate-100 dark:border-slate-700">
@@ -176,8 +214,17 @@ const AdminStudyPlanPage = () => {
                             By {plan.user?.name || plan.user?.username || 'Unknown User'}
                           </div>
                         </div>
-                        <div className="text-sm text-slate-500 dark:text-slate-400">
-                          {plan.status?.toUpperCase() || 'UNKNOWN'} · {plan.weeklySchedule?.length ?? 0} weeks
+                        <div className="flex items-center gap-3">
+                          <div className="text-sm text-slate-500 dark:text-slate-400">
+                            {plan.status?.toUpperCase() || 'UNKNOWN'} · {plan.weeklySchedule?.length ?? 0} weeks
+                          </div>
+                          <button
+                            onClick={() => handleDelete(plan)}
+                            title="Delete"
+                            className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
                         </div>
                       </div>
                       <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-slate-600 dark:text-slate-300">
