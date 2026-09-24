@@ -212,7 +212,6 @@ export default function ReferralFraudDashboard() {
     count: pagination.total || 0,
     filters: (
       <>
-        {signalBadges}
         {searchInput}
         {riskFilterButtons}
         {viewToggleButtons}
@@ -240,6 +239,8 @@ export default function ReferralFraudDashboard() {
               </div>
             ))}
           </div>
+
+          {signalBadges && <div className="mb-4 shrink-0">{signalBadges}</div>}
 
           {/* Loading */}
           <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">

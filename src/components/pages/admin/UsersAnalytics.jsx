@@ -152,8 +152,8 @@ const AdminUsersAnalytics = () => {
         }
     ];
 
-    const statBadges = (
-        <>
+    const statCardsSection = (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4 mb-4 shrink-0">
             {[
                  { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'primary' },
                  { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'primary', isCurrency: true },
@@ -161,20 +161,20 @@ const AdminUsersAnalytics = () => {
                  { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', isCurrency: true },
                  { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', isCurrency: true, isNet: true }
              ].map((stat) => (
-                <div key={stat.label} className="col-span-1 flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
-                    <div className={`p-1 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-md shrink-0`}><stat.icon className="w-3 h-3" /></div>
+                <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div className={`p-2 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-lg shrink-0`}><stat.icon className="w-4 h-4" /></div>
                     <div className="min-w-0">
                         <div className="flex items-baseline gap-0.5">
-                            {stat.isCurrency && <IndianRupee className="w-2 h-2 text-slate-400" />}
-                            <div className={`text-xs font-black tabular-nums tracking-tight whitespace-nowrap ${stat.isNet ? (stat.val >= 0 ? 'text-primary-600' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
+                            {stat.isCurrency && <IndianRupee className="w-3 h-3 text-slate-400" />}
+                            <div className={`text-sm lg:text-base font-black tabular-nums tracking-tight whitespace-nowrap ${stat.isNet ? (stat.val >= 0 ? 'text-primary-600' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
                                 {new Intl.NumberFormat('en-IN').format(stat.val)}
                             </div>
                         </div>
-                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     );
 
     const searchInput = (
@@ -209,8 +209,8 @@ const AdminUsersAnalytics = () => {
     );
 
     const expensesButton = (
-        <button onClick={() => router.push('/admin/expenses')} title="Expenses" className="flex items-center justify-center bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-2 rounded-lg lg:rounded-xl shrink-0">
-            <Wallet className="w-4 h-4" />
+        <button onClick={() => router.push('/admin/expenses')} className="w-full flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 rounded-lg lg:rounded-xl text-sm font-bold">
+            <Wallet className="w-4 h-4" /> Expenses
         </button>
     );
 
@@ -237,7 +237,6 @@ const AdminUsersAnalytics = () => {
         count: summary.totalUsers || totalUsers,
         filters: (
             <>
-                {statBadges}
                 {searchInput}
                 {subscriptionSelect}
                 {viewToggleButtons}
@@ -255,6 +254,8 @@ const AdminUsersAnalytics = () => {
                 <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
                     {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+
+                    {statCardsSection}
 
                     <div className="flex-1 min-h-0 overflow-auto">
                     <AnimatePresence mode="wait">

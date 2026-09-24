@@ -201,27 +201,23 @@ export default function ReferralHistory() {
     }
   ];
 
-  const summaryCards = (
-    <>
-      {summary && (
-        <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-          <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><DollarSign className="w-3.5 h-3.5" /></div>
-          <div className="min-w-0">
-            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Rewards</div>
-          </div>
+  const summaryCards = summary && (
+    <div className="grid grid-cols-2 lg:flex lg:flex-wrap gap-2 lg:gap-4 mb-4 shrink-0">
+      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><DollarSign className="w-4 h-4" /></div>
+        <div className="min-w-0">
+          <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
+          <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Rewards</div>
         </div>
-      )}
-      {summary && (
-        <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-          <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><Award className="w-3.5 h-3.5" /></div>
-          <div className="min-w-0">
-            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Plan 99</div>
-          </div>
+      </div>
+      <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><Award className="w-4 h-4" /></div>
+        <div className="min-w-0">
+          <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
+          <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Plan 99</div>
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 
   const searchInput = (
@@ -266,7 +262,6 @@ export default function ReferralHistory() {
     count: pagination.totalItems || 0,
     filters: (
       <>
-        {summaryCards}
         {searchInput}
         {filterTypeSelect}
         {paginationControl}
@@ -293,6 +288,8 @@ export default function ReferralHistory() {
       <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
 
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+
+        {summaryCards}
 
         {/* Transaction Table */}
         <div className="flex-1 min-h-0 overflow-auto">

@@ -97,23 +97,23 @@ const FinancialAnalytics = () => {
     exportCSV(rows, "financial_audit.csv");
   };
 
-  const statBadges = (
-    <>
+  const statCardsSection = (
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 mb-4 shrink-0">
       {[
         { label: 'Total Revenue', val: `₹${(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}`, icon: IndianRupee },
         { label: 'Period Revenue', val: `₹${(data?.overview?.periodRevenue || 0).toLocaleString('en-IN')}`, icon: TrendingUp },
         { label: 'Subscription Plans', val: data?.subscriptionStats?.length || 0, icon: Layers },
         { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
       ].map((stat) => (
-        <div key={stat.label} className="col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-          <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+        <div key={stat.label} className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-4 h-4" /></div>
           <div className="min-w-0">
-            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
+            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 
   const periodSelect = (
@@ -145,7 +145,6 @@ const FinancialAnalytics = () => {
     count: null,
     filters: (
       <>
-        {statBadges}
         {periodSelect}
         {exportButton}
       </>
@@ -242,6 +241,8 @@ const FinancialAnalytics = () => {
   return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+
+          {statCardsSection}
 
           <AnimatePresence mode="wait">
             {loading ? (

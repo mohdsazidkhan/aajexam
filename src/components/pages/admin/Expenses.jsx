@@ -219,10 +219,10 @@ const AdminExpenses = () => {
     ];
 
     const totalExpensesCard = (
-        <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-            <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><IndianRupee className="w-3.5 h-3.5" /></div>
+        <div className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm w-full lg:w-fit mb-4 shrink-0">
+            <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><IndianRupee className="w-4 h-4" /></div>
             <div className="min-w-0">
-                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
+                <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
                 <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Expenses</div>
             </div>
         </div>
@@ -286,7 +286,6 @@ const AdminExpenses = () => {
         count: totalItems,
         filters: (
             <>
-                {totalExpensesCard}
                 {searchInput}
                 {categorySelect}
                 {resetFiltersButton}
@@ -304,6 +303,8 @@ const AdminExpenses = () => {
 
             <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
                 {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+
+                {totalExpensesCard}
 
                 {/* Stats bar */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
