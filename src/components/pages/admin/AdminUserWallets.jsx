@@ -53,7 +53,11 @@ const AdminUserWallets = () => {
 
   useEffect(() => { load(); }, [load]);
 
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setViewMode('grid');
+  }, []);
 
   const formatAmount = (n) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(n || 0);
 

@@ -57,9 +57,13 @@ const AdminPaymentTransactions = () => {
   });
   const [showFilters, setShowFilters] = useState(true);
   const [expandedTransaction, setExpandedTransaction] = useState(null);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const [sortField, setSortField] = useState('createdAt');
   const [sortOrder, setSortOrder] = useState('desc');
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setViewMode('grid');
+  }, []);
 
   const fetchTransactions = useCallback(async () => {
     try {

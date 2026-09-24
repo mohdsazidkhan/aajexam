@@ -34,9 +34,13 @@ const AdminWithdrawRequests = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [pagination, setPagination] = useState({ page: 1, limit: DEFAULT_PAGE_SIZE, total: 0, totalPages: 1 });
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const user = getCurrentUser();
   const debouncedSearch = useDebounce(searchTerm, 800);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setViewMode('grid');
+  }, []);
 
   const fetchItems = useCallback(async () => {
     setLoading(true);

@@ -25,9 +25,13 @@ const AdminPYQ = () => {
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [exams, setExams] = useState([]);
   const [selectedExamId, setSelectedExamId] = useState('');
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearch = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   // Fetch all exams for the filter dropdown
   useEffect(() => {

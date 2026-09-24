@@ -45,8 +45,12 @@ export default function ReferralFraudDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [pagination, setPagination] = useState({});
   const [expanded, setExpanded] = useState(null);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const debouncedSearch = useDebounce(searchTerm, 800);
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   const openInvitees = (id) => { setExpanded(id); setViewMode('list'); };
 

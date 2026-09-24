@@ -23,7 +23,11 @@ const AdminStreakPage = () => {
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearch = useDebounce(searchTerm, 500);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   const fetchLeaderboard = async () => {
     try {

@@ -40,8 +40,12 @@ const AdminUsersAnalytics = () => {
         netPlatform: 0
     });
 
-    const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+    const [viewMode, setViewMode] = useState('table');
     const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
+
+    useEffect(() => {
+        if (window.innerWidth < 768) setViewMode('grid');
+    }, []);
 
     const fetchStudents = useCallback(async (pg = 1) => {
         try {

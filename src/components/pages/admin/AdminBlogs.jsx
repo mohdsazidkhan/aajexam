@@ -31,13 +31,14 @@ const AdminBlogs = () => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
-  const [viewMode, setViewMode] = useState(() => {
-    try {
-      if (typeof window !== 'undefined' && window.innerWidth < 768) return 'grid';
-    } catch (e) { }
-    return 'table';
-  });
+  const [viewMode, setViewMode] = useState('table');
   const user = getCurrentUser();
+
+  useEffect(() => {
+    try {
+      if (window.innerWidth < 768) setViewMode('grid');
+    } catch (e) { }
+  }, []);
 
   useEffect(() => {
     fetchBlogs();

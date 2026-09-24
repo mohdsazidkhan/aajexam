@@ -40,7 +40,12 @@ const AdminGovtExams = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [editingExam, setEditingExam] = useState(null);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setViewMode('grid');
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);

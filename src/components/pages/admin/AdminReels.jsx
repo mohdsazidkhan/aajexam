@@ -49,8 +49,12 @@ const AdminReels = () => {
   const [statusCounts, setStatusCounts] = useState({});
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
   const [actionLoading, setActionLoading] = useState(null);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const router = useRouter();
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   const load = useCallback(async () => {
     setLoading(true);

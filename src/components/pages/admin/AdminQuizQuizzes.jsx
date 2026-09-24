@@ -32,7 +32,11 @@ const AdminQuizQuizzes = () => {
   const [qFilters, setQFilters] = useState({ subject: "", topic: "" });
   const [availableQuestions, setAvailableQuestions] = useState([]);
   const [selectedQIds, setSelectedQIds] = useState([]);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   useEffect(() => { fetchDropdowns(); }, []);
   useEffect(() => { fetchQuizzes(); }, [page, itemsPerPage, filters.exam, filters.subject, filters.status]);

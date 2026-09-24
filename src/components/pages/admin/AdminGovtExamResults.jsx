@@ -64,9 +64,13 @@ const AdminGovtExamResults = () => {
   const [selectedPattern, setSelectedPattern] = useState("all");
   const [selectedTest, setSelectedTest] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setViewMode('grid');
+  }, []);
 
   const requestCache = useRef({
     exams: new Map(),

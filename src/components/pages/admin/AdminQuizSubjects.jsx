@@ -19,9 +19,13 @@ const AdminQuizSubjects = () => {
   const [editing, setEditing] = useState(null);
   const [search, setSearch] = useState("");
   const [form, setForm] = useState({ name: "", description: "", icon: "", order: 0 });
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   useEffect(() => { fetchData(); }, []);
 

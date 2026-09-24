@@ -28,7 +28,11 @@ const AdminDailyChallenge = () => {
   const [bulkCount, setBulkCount] = useState(10);
   const [bulkGenerating, setBulkGenerating] = useState(false);
   const [bulkProgress, setBulkProgress] = useState(null);
-  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState('table');
+
+  useEffect(() => {
+    if (window.innerWidth < 1024) setViewMode('grid');
+  }, []);
 
   const fetchData = async () => {
     try { setLoading(true); const res = await API.request(`/api/admin/daily-challenge?page=${page}&limit=${itemsPerPage}`); if (res?.success) { setChallenges(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); } } catch (e) { } finally { setLoading(false); }
