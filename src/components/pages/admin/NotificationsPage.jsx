@@ -1,0 +1,403 @@
+﻿'use client';
+
+import React, { useEffect, useState, useCallback } from 'react';
+import API from '../../../lib/api';
+import { AdminTableSkeleton } from '../../admin/Skeletons';
+import Button from '../../ui/Button';
+import StyledSelect from '../../ui/StyledSelect';
+import { useSSR } from '../../../hooks/useSSR';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Bell,
+  Trash2,
+  Filter,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  MessageSquare,
+  Trophy,
+  Wallet,
+  User,
+  Zap,
+  Star,
+  ShieldCheck,
+  ShieldAlert,
+  HelpCircle,
+  FileText,
+  CreditCard,
+  Target,
+  RotateCcw,
+  Flame,
+  Calendar,
+  Newspaper,
+  Globe,
+  ClipboardList,
+  UserCheck,
+  Clock,
+  ThumbsUp,
+  Film
+} from 'lucide-react';
+import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
+
+const AdminNotificationsPage = () => {
+  const { isMounted, router } = useSSR();
+
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(DEFAULT_PAGE_SIZE);
+  const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [typeCounts, setTypeCounts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
+  const typeToPath = {
+    quiz: '/admin/govt-exams/tests',
+    withdraw: '/admin/withdraw-requests',
+    contact: '/admin/contacts',
+    bank: '/admin/bank-details',
+    subscription: '/admin/subscriptions',
+    registration: '/admin/students',
+    quiz_attempt: '/admin/analytics/dashboard',
+    exam_attempt: '/admin/govt-exams/results',
+    blog: '/admin/user-blogs',
+    referral_registration: '/admin/referral-history',
+    competition_reset: '/admin/competition-resets',
+    mentor: '/admin/mentors',
+    daily_challenge: '/admin/daily-challenge',
+    reel: '/admin/reels'
+  };
+
+  const getIconByType = (type, className = 'w-4 h-4') => {
+    switch (type) {
+      case 'question': return <MessageSquare className={className} />;
+      case 'quiz': return <Trophy className={className} />;
+      case 'quiz_attempt': return <Trophy className={className} />;
+      case 'exam_attempt': return <Target className={className} />;
+      case 'withdraw': return <Wallet className={className} />;
+      case 'contact': return <HelpCircle className={className} />;
+      case 'bank': return <CreditCard className={className} />;
+      case 'subscription': return <Star className={className} />;
+      case 'registration': return <User className={className} />;
+      case 'blog': return <FileText className={className} />;
+      case 'referral_registration': return <Zap className={className} />;
+      case 'competition_reset': return <RotateCcw className={className} />;
+      case 'streak': return <Flame className={className} />;
+      case 'daily_challenge': return <Calendar className={className} />;
+      case 'exam_news': return <Newspaper className={className} />;
+      case 'current_affairs': return <Globe className={className} />;
+      case 'study_plan': return <ClipboardList className={className} />;
+      case 'mentor': return <UserCheck className={className} />;
+      case 'revision_reminder': return <Clock className={className} />;
+      case 'discussion_reply': return <MessageSquare className={className} />;
+      case 'discussion_upvote': return <ThumbsUp className={className} />;
+      case 'reel': return <Film className={className} />;
+      default: return <Bell className={className} />;
+    }
+  };
+
+  const getLabelByType = (type) => {
+    if (!type) return 'Other';
+    return type
+      .split('_')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+  };
+
+  const fetchPage = useCallback(async (p = 1, perPage = limit) => {
+    try {
+      setLoading(true);
+      const res = await API.getAdminNotifications(p, perPage, { unreadOnly: false });
+      const data = res?.data || res?.notifications || [];
+      setItems(Array.isArray(data) ? data : []);
+      const pg = res?.pagination || { page: p, totalPages: 1, total: data.length };
+      setPage(pg.page || p);
+      setTotalPages(pg.totalPages || 1);
+      setTotal(pg.total || data.length || 0);
+      setTypeCounts(Array.isArray(res?.typeCounts) ? res.typeCounts : []);
+    } catch (e) {
+      // ignore
+    } finally {
+      setLoading(false);
+    }
+  }, [limit]);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    fetchPage(1, limit);
+  }, [isMounted, fetchPage, limit]);
+
+  const handlePrev = () => page > 1 && fetchPage(page - 1);
+  const handleNext = () => page < totalPages && fetchPage(page + 1);
+
+  const handleLimitChange = (value) => {
+    const per = parseInt(value);
+    setLimit(per);
+    fetchPage(1, per);
+  };
+
+  const handleClearAll = async () => {
+    try {
+      await API.clearAdminNotifications();
+      fetchPage(1, limit);
+    } catch (_) { }
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    const d = new Date(dateString);
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Kolkata',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    }).formatToParts(d).reduce((acc, p) => ({ ...acc, [p.type]: p.value }), {});
+    return `${parts.day} ${parts.month?.toUpperCase()} ${parts.year}`;
+  };
+
+  const formatTime = (dateString) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleTimeString('en-US', {
+      timeZone: 'Asia/Kolkata',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
+  const limitSelect = (
+    <div className="flex items-center gap-3 w-full">
+      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Limit</span>
+      <StyledSelect
+        value={limit}
+        onChange={(val) => handleLimitChange(val)}
+        options={PAGE_SIZE_OPTIONS.map((n) => ({ value: n, label: `${n} per page` }))}
+        className="w-full"
+      />
+    </div>
+  );
+
+  const clearAllButton = (
+    <button
+      onClick={handleClearAll}
+      className="w-full px-4 lg:px-6 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-black dark:text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all flex items-center justify-center gap-2 active:scale-95"
+    >
+      <Trash2 className="w-4 h-4" /> Clear All
+    </button>
+  );
+
+  const paginationControl = totalPages > 1 && (
+    <div className="flex justify-center items-center gap-4 text-[10px] font-black uppercase tracking-widest">
+      <button
+        onClick={handlePrev}
+        disabled={page <= 1}
+        className="p-3 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-600 disabled:opacity-20 transition-all shadow-sm active:scale-90"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+
+      <div className="px-4 py-2.5 bg-slate-900 text-white rounded-lg lg:rounded-[2rem] shadow-sm italic tracking-tighter">
+         Page {page} <span className="text-slate-500 ml-2">of</span> {totalPages}
+      </div>
+
+      <button
+        onClick={handleNext}
+        disabled={page >= totalPages}
+        className="p-3 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-600 disabled:opacity-20 transition-all shadow-sm active:scale-90"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+    </div>
+  );
+
+  useAdminMobileHeader({
+    title: 'Notifications',
+    count: total,
+    filters: (
+      <>
+        {limitSelect}
+        {clearAllButton}
+        {paginationControl}
+      </>
+    )
+  });
+
+  if (loading && items.length === 0) {
+    return (
+      <div className="min-h-screen p-3 lg:p-8">
+        <AdminTableSkeleton showHeader={false} showFilters={false} />
+      </div>
+    );
+  }
+
+  return (
+    <>
+    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+        <div className="adminContent w-full mx-auto">
+
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-4"
+          >
+            {typeCounts.filter((tc) => tc.count > 0).length > 0 && (
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+                {typeCounts.filter((tc) => tc.count > 0).map((tc) => (
+                  <div
+                    key={tc.type}
+                    className="group relative overflow-hidden flex items-center gap-3 px-4 lg:px-5 py-4 bg-white/80 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all"
+                  >
+                    <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-primary-600 text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
+                      {getIconByType(tc.type, 'w-3.5 h-3.5 lg:w-5 lg:h-5')}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[9px] lg:text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-tight truncate">
+                        {getLabelByType(tc.type)}
+                      </p>
+                      <p className="text-2xl lg:text-3xl font-black font-outfit text-slate-900 dark:text-white leading-none mt-1">
+                        {tc.count}
+                      </p>
+                    </div>
+                    <div className="absolute -right-4 -bottom-4 w-16 h-16 rounded-full bg-primary-700/5 dark:bg-primary-500/10 pointer-events-none" />
+                  </div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+
+          {/* Notification List */}
+          <AnimatePresence mode="wait">
+             {items.length === 0 ? (
+               <motion.div
+                 key="empty"
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+               >
+                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                   <Bell className="w-16 h-16 text-slate-300 dark:text-slate-600" />
+                 </div>
+                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Notifications</h3>
+                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No notifications yet. They will appear here as users interact with the platform.</p>
+               </motion.div>
+             ) : (
+               <motion.div
+                 key="stream"
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8"
+               >
+                 {items.map((n, i) => {
+                   const href = typeToPath[n.type] || '/admin/notifications';
+                   return (
+                     <motion.div
+                       key={n._id || i}
+                       initial={{ opacity: 0, scale: 0.95 }}
+                       animate={{ opacity: 1, scale: 1 }}
+                       transition={{ delay: i * 0.05 }}
+                       layout
+                       onClick={() => {
+                         if (!n.isRead) {
+                           setItems((prev) => prev.map((it) => it._id === n._id ? { ...it, isRead: true } : it));
+                           API.markAdminNotificationRead(n._id).catch(() => {
+                             setItems((prev) => prev.map((it) => it._id === n._id ? { ...it, isRead: false } : it));
+                           });
+                         }
+                         router.push(href);
+                       }}
+                       className={`group relative rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col ${n.isRead 
+                         ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
+                         : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-sm active-signal'}`}
+                     >
+                        <div className="flex items-center justify-between gap-4 mb-4 lg:mb-6">
+                           <div className="flex items-center gap-4 min-w-0">
+                              <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-600 text-white shadow-sm'} transition-colors`}>
+                                 {getIconByType(n.type)}
+                              </div>
+                              <div>
+                                 <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest leading-none mb-1">{n.type?.toUpperCase()}</div>
+                                 <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{formatDate(n.createdAt)} &middot; {formatTime(n.createdAt)}</div>
+                              </div>
+                           </div>
+                           <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 group-hover:bg-primary-700 group-hover:text-white transition-all shadow-sm shrink-0">
+                              <ArrowRight className="w-4 h-4" />
+                           </div>
+                        </div>
+
+                        <h3 className={`flex items-center justify-between gap-2 text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors ${n.isRead ? 'text-slate-900 dark:text-white' : 'text-primary-600'}`}>
+                           {n.title}
+                           {!n.isRead && (
+                             <span className="w-2.5 h-2.5 bg-primary-600 rounded-full animate-ping shrink-0" />
+                           )}
+                        </h3>
+                        <p className={`text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-3 ${n.isRead ? 'text-slate-400' : 'text-slate-600 dark:text-slate-300'}`}>
+                           {n.description}
+                        </p>
+
+                        {(n.userId?.name || n.userId?.username || n.userId?.email) && (
+                          <div className="mt-3 pt-3 border-t-2 border-slate-100 dark:border-white/10 flex flex-wrap items-center gap-x-3 gap-y-1">
+                             {n.userId?.name && (
+                               <span className="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">{n.userId.name}</span>
+                             )}
+                             {n.userId?.username && (
+                               <span className="text-[10px] font-black text-primary-600 tracking-widest">@{n.userId.username}</span>
+                             )}
+                             {n.userId?.email && (
+                               <span className="text-[9px] font-bold text-slate-400 lowercase tracking-normal truncate">{n.userId.email}</span>
+                             )}
+                          </div>
+                        )}
+
+                        {n.type === 'exam_attempt' && n.extra && (n.extra.examName || n.extra.categoryName || n.extra.testTitle) && (
+                          <div className="mt-3 flex flex-wrap gap-1.5">
+                             {n.extra.examName && (
+                               <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{n.extra.examName}</span>
+                             )}
+                             {n.extra.categoryName && (
+                               <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{n.extra.categoryName}</span>
+                             )}
+                             {n.extra.testTitle && (
+                               <span className="px-2.5 py-1 rounded-lg bg-primary-500/10 text-[9px] font-black text-primary-600 uppercase tracking-widest truncate max-w-full">{n.extra.testTitle}</span>
+                             )}
+                          </div>
+                        )}
+
+                        {n.type === 'quiz_attempt' && n.extra && (n.extra.quizTitle || n.extra.subCategoryName || n.extra.categoryName) && (
+                          <div className="mt-3 flex flex-wrap gap-1.5">
+                             {n.extra.quizTitle && (
+                               <span className="px-2.5 py-1 rounded-lg bg-primary-500/10 text-[9px] font-black text-primary-600 uppercase tracking-widest truncate max-w-full">{n.extra.quizTitle}</span>
+                             )}
+                             {n.extra.subCategoryName && (
+                               <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{n.extra.subCategoryName}</span>
+                             )}
+                             {n.extra.categoryName && (
+                               <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">{n.extra.categoryName}</span>
+                             )}
+                          </div>
+                        )}
+                     </motion.div>
+                   );
+                 })}
+               </motion.div>
+             )}
+          </AnimatePresence>
+        </div>
+      </div>
+      <style jsx>{`
+        .active-signal {
+          animation: glow-pulse 2s infinite ease-in-out;
+        }
+        @keyframes glow-pulse {
+          0% { border-color: rgba(79, 70, 229, 0.3); box-shadow: 0 0 20px rgba(79, 70, 229, 0.1); }
+          50% { border-color: rgba(79, 70, 229, 0.6); box-shadow: 0 0 40px rgba(79, 70, 229, 0.2); }
+          100% { border-color: rgba(79, 70, 229, 0.3); box-shadow: 0 0 20px rgba(79, 70, 229, 0.1); }
+        }
+      `}</style>
+    </>
+  );
+};
+
+export default AdminNotificationsPage;
+

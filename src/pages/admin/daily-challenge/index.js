@@ -8,9 +8,10 @@ import Card from '../../../components/ui/Card';
 import ResponsiveTable from '../../../components/ResponsiveTable';
 import Pagination from '../../../components/Pagination';
 import Sidebar from '../../../components/Sidebar';
-import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
-import AdminRoute from '../../../components/AdminRoute';
+import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
+import AdminRoute from '../../../components/admin/Route';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const AdminDailyChallenge = () => {
   const [challenges, setChallenges] = useState([]);
@@ -141,48 +142,86 @@ const AdminDailyChallenge = () => {
     }
   ];
 
+  const bulkYearSelect = (
+    <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="w-full lg:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
+      <option value={new Date().getFullYear()}>{new Date().getFullYear()}</option>
+      <option value={new Date().getFullYear() + 1}>{new Date().getFullYear() + 1}</option>
+    </select>
+  );
+
+  const bulkMonthSelect = (
+    <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="w-full lg:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <option key={i} value={i}>{new Date(2000, i, 1).toLocaleString('default', { month: 'long' })}</option>
+      ))}
+    </select>
+  );
+
+  const bulkCountSelect = (
+    <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="w-full lg:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
+      <option value={5}>5 Questions / Day</option>
+      <option value={10}>10 Questions / Day</option>
+      <option value={15}>15 Questions / Day</option>
+      <option value={20}>20 Questions / Day</option>
+    </select>
+  );
+
+  const generateMonthButton = (
+    <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="w-full lg:w-auto px-4 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 flex items-center justify-center">
+      <Calendar className="w-3 h-3 inline mr-1" />{bulkGenerating ? 'Generating...' : 'Generate Month'}
+    </button>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[
+        { mode: 'table', icon: TableIcon, label: 'Table View' },
+        { mode: 'list', icon: List, label: 'List View' },
+        { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+      ].map(({ mode, icon: Icon, label }) => (
+        <button key={mode} onClick={() => setViewMode(mode)} title={label}
+          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <Icon className="w-4 h-4" />
+        </button>
+      ))}
+    </div>
+  );
+
+  const paginationControl = totalItems > 0 && (
+    <Pagination
+      compact
+      currentPage={page}
+      totalPages={totalPages}
+      onPageChange={setPage}
+      totalItems={totalItems}
+      itemsPerPage={itemsPerPage}
+      onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Daily Challenge',
+    count: totalItems,
+    filters: (
+      <>
+        {bulkYearSelect}
+        {bulkMonthSelect}
+        {bulkCountSelect}
+        {generateMonthButton}
+        {viewToggleButtons}
+        {paginationControl}
+      </>
+    )
+  });
+
   return (
     <AdminRoute>
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Daily Challenges - Admin</title></Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Target className="w-6 h-6 text-primary-600 shrink-0" /> Daily Challenge <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
-            <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-              <select value={bulkYear} onChange={e => setBulkYear(parseInt(e.target.value))} className="w-full lg:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
-                <option value={new Date().getFullYear()}>{new Date().getFullYear()}</option>
-                <option value={new Date().getFullYear() + 1}>{new Date().getFullYear() + 1}</option>
-              </select>
-              <select value={bulkMonth} onChange={e => setBulkMonth(parseInt(e.target.value))} className="w-full lg:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <option key={i} value={i}>{new Date(2000, i, 1).toLocaleString('default', { month: 'long' })}</option>
-                ))}
-              </select>
-              <select value={bulkCount} onChange={e => setBulkCount(parseInt(e.target.value))} className="w-full lg:w-auto px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black outline-none">
-                <option value={5}>5 Questions / Day</option>
-                <option value={10}>10 Questions / Day</option>
-                <option value={15}>15 Questions / Day</option>
-                <option value={20}>20 Questions / Day</option>
-              </select>
-              <button onClick={autoGenerateMonth} disabled={bulkGenerating} className="w-full lg:w-auto px-4 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-xs font-bold disabled:opacity-50 flex items-center justify-center">
-                <Calendar className="w-3 h-3 inline mr-1" />{bulkGenerating ? 'Generating...' : 'Generate Month'}
-              </button>
-              <div className="flex items-center gap-1">
-                {[
-                  { mode: 'table', icon: TableIcon, label: 'Table View' },
-                  { mode: 'list', icon: List, label: 'List View' },
-                  { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
-                ].map(({ mode, icon: Icon, label }) => (
-                  <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                    className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
-                    <Icon className="w-4 h-4" />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {bulkProgress && (
             <Card className="shrink-0 mb-4">
@@ -206,12 +245,12 @@ const AdminDailyChallenge = () => {
             </Card>
           )}
 
-        <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
-        <div className="flex-1 min-h-0 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-auto overflow-hidden">
         {challenges.length === 0 ? (
           <Card className="text-center"><p className="text-slate-400 font-bold">No challenges created yet</p></Card>
         ) : viewMode === 'table' ? (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto lg:h-full flex flex-col">
             <ResponsiveTable data={challenges} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
           </div>
         ) : viewMode === 'grid' ? (
@@ -250,19 +289,6 @@ const AdminDailyChallenge = () => {
           </div>
         )}
         </div>
-
-        {totalItems > 0 && (
-          <div className="shrink-0">
-            <Pagination
-              currentPage={page}
-              totalPages={totalPages}
-              onPageChange={setPage}
-              totalItems={totalItems}
-              itemsPerPage={itemsPerPage}
-              onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
-            />
-          </div>
-        )}
         </div>
         </div>
       </div>

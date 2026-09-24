@@ -28,10 +28,12 @@ import {
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import API from '../../../lib/api';
-import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminDashboardSkeleton } from '../../admin/Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
+import StyledSelect from '../../ui/StyledSelect';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 
 ChartJS.register(
@@ -219,6 +221,41 @@ const UserAnalytics = () => {
 
   const mode = typeof document !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 
+  const periodSelect = (
+    <StyledSelect
+      icon={Calendar}
+      value={filters.period}
+      onChange={(val) => setFilters({ ...filters, period: val })}
+      options={[
+        { value: 'week', label: 'Past 7 Days' },
+        { value: 'month', label: 'Past 30 Days' },
+        { value: 'quarter', label: 'Past 90 Days' },
+        { value: 'year', label: 'Full Year' }
+      ]}
+      className="col-span-2 sm:col-span-1"
+    />
+  );
+
+  const exportButton = (
+    <button
+      onClick={handleExport}
+      className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700"
+    >
+      <Download className="w-4 h-4" /> Export to CSV
+    </button>
+  );
+
+  useAdminMobileHeader({
+    title: 'User Stats',
+    count: null,
+    filters: (
+      <>
+        {periodSelect}
+        {exportButton}
+      </>
+    )
+  });
+
   if (loading) {
     return (
       <div className="min-h-screen p-3 lg:p-8">
@@ -232,37 +269,7 @@ const UserAnalytics = () => {
       {isMounted && <Sidebar />}
       <div className="adminContent w-full mx-auto">
 
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0">
-            User <span className="text-primary-600">Stats</span>
-          </h1>
-
-          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-            <div className="relative col-span-2 sm:col-span-1">
-              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-              <select
-                name="period"
-                value={filters.period}
-                onChange={handleFilterChange}
-                className="w-full pl-9 pr-8 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm appearance-none cursor-pointer"
-              >
-                <option value="week">Past 7 Days</option>
-                <option value="month">Past 30 Days</option>
-                <option value="quarter">Past 90 Days</option>
-                <option value="year">Full Year</option>
-              </select>
-            </div>
-
-            <button
-              onClick={handleExport}
-              className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0"
-            >
-              <Download className="w-4 h-4" /> Export CSV
-            </button>
-          </div>
-        </div>
-
+        {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -282,7 +289,7 @@ const UserAnalytics = () => {
           </div>
           <div className="h-[400px] w-full">
             {userGrowthLabels.length > 0 ? <Line data={userGrowthLineData} options={baseOptions(mode)} /> : (
-              <div className="h-full flex flex-col items-center justify-center text-slate-300">
+              <div className="h-auto flex flex-col items-center justify-center text-slate-300">
                 <LineChart className="w-16 h-16 mb-4 opacity-20" />
                 <span className="text-[10px] font-black uppercase tracking-widest">No data available</span>
               </div>

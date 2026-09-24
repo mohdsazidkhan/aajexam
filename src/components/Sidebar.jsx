@@ -70,15 +70,15 @@ const Sidebar = () => {
       title: 'MAIN',
       items: [
         { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' },
-        { path: '/features', icon: ClipboardList, label: 'Features (Free vs PRO)', key: 'features' },
+        { path: '/features', icon: ClipboardList, label: 'Features', key: 'features' },
         { path: '/admin/notifications', icon: Bell, label: 'Notifications', key: 'notifications' },
-        { path: '/admin/email-campaigns', icon: Mail, label: 'Email Campaigns', key: 'emails-campaigns' },
+        { path: '/admin/email-campaigns', icon: Mail, label: 'Campaigns', key: 'emails-campaigns' },
       ]
     },
     {
       title: 'EXAMS',
       items: [
-        { path: '/admin/exam-overview', icon: LayoutDashboard, label: 'Exam Overview', key: 'exam-overview' },
+        { path: '/admin/exam-overview', icon: LayoutDashboard, label: 'Exam Data', key: 'exam-overview' },
         { path: '/admin/govt-exams', icon: ShieldCheck, label: 'Categories', key: 'govt-exams-categories' },
         { path: '/admin/govt-exams/exams', icon: GraduationCap, label: 'Exams', key: 'govt-exams-exams' },
         { path: '/admin/govt-exams/patterns', icon: LayoutDashboard, label: 'Patterns', key: 'govt-exams-patterns' },
@@ -102,7 +102,7 @@ const Sidebar = () => {
         { path: '/admin/blogs', icon: PenSquare, label: 'Blog', key: 'blogs' },
         { path: '/admin/current-affairs', icon: Newspaper, label: 'Current Affairs', key: 'current-affairs' },
         { path: '/admin/exam-news', icon: Megaphone, label: 'Exam News', key: 'exam-news' },
-        { path: '/admin/notes', icon: StickyNote, label: 'Notes & Formulas', key: 'notes' },
+        { path: '/admin/notes', icon: StickyNote, label: 'Notes', key: 'notes' },
         { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq', isPro: true },
       ]
     },
@@ -112,7 +112,7 @@ const Sidebar = () => {
         { path: '/admin/daily-challenge', icon: Target, label: 'Daily Challenge', key: 'daily-challenge' },
         { path: '/admin/streak', icon: Flame, label: 'Streaks', key: 'streak' },
         { path: '/admin/revision', icon: RotateCcw, label: 'Revision Queue', key: 'revision', isPro: true },
-        { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Planner', key: 'study-plan', isPro: true },
+        { path: '/admin/study-plan', icon: CalendarDays, label: 'Study Plans', key: 'study-plan', isPro: true },
       ]
     },
     {
@@ -129,7 +129,7 @@ const Sidebar = () => {
       items: [
         { path: '/admin/students', icon: Users, label: 'Students', key: 'students' },
         { path: '/admin/user-details', icon: User, label: 'User Details', key: 'user-details' },
-        { path: '/admin/contacts', icon: Contact2, label: 'Contact Requests', key: 'contacts' },
+        { path: '/admin/contacts', icon: Contact2, label: 'Contacts', key: 'contacts' },
       ]
     },
     {
@@ -149,9 +149,9 @@ const Sidebar = () => {
         { path: '/admin/user-wallets', icon: Wallet, label: 'Wallets', key: 'user-wallets' },
         { path: '/admin/withdraw-requests', icon: Banknote, label: 'Payouts', key: 'withdraw-requests' },
         { path: '/admin/payment-transactions', icon: CreditCard, label: 'Transactions', key: 'transactions' },
-        { path: '/admin/subscriptions', icon: ShieldCheck, label: 'Subscriptions', key: 'subscriptions' },
+        { path: '/admin/subscriptions', icon: ShieldCheck, label: 'Plans', key: 'subscriptions' },
         { path: '/admin/bank-details', icon: FileText, label: 'Bank Details', key: 'bank-details' },
-        { path: '/admin/referral-history', icon: Globe, label: 'Referral Payouts', key: 'referral-history' },
+        { path: '/admin/referral-history', icon: Globe, label: 'Payouts', key: 'referral-history' },
         { path: '/admin/expenses', icon: History, label: 'Expenses', key: 'platform-expenses' },
       ]
     },

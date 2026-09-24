@@ -5,12 +5,13 @@ import Pagination from "../../Pagination";
 import SearchFilter from "../../SearchFilter";
 import API from '../../../lib/api';
 import useDebounce from "../../../hooks/useDebounce";
-import { AdminDashboardSkeleton } from "../../skeletons/AdminSkeletons";
+import { AdminDashboardSkeleton } from "../../admin/Skeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 import ResponsiveTable from "../../ResponsiveTable";
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 import {
   Users,
@@ -147,6 +148,38 @@ export default function ReferralDashboard() {
     }
   ];
 
+  const searchFilterInput = (
+    <SearchFilter
+      searchTerm={searchTerm}
+      onSearchChange={handleSearch}
+      placeholder="Search users..."
+      className="w-full lg:w-96"
+    />
+  );
+
+  const paginationControl = (
+    <Pagination
+      compact
+      currentPage={page}
+      totalPages={pagination.totalPages || 1}
+      onPageChange={handlePageChange}
+      totalItems={pagination.total || 0}
+      itemsPerPage={limit}
+      onItemsPerPageChange={handleLimitChange}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Referral Dashboard',
+    count: pagination.total || 0,
+    filters: (
+      <>
+        {searchFilterInput}
+        {paginationControl}
+      </>
+    )
+  });
+
   if (loading && referrals.length === 0) {
     return (
       <div className="min-h-screen p-3 lg:p-8">
@@ -158,50 +191,13 @@ export default function ReferralDashboard() {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
-        <div className="flex-1 min-h-0 flex flex-col transition-all duration-500">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
 
-          {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-4 shrink-0"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
-              <div className="space-y-2">
-                <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                  REFERRAL <span className="text-primary-600">DASHBOARD</span> <span className="text-slate-300 dark:text-white/10 ml-2 italic tracking-widest text-2xl lg:text-4xl">({pagination.total || 0})</span>
-                </h1>
-              </div>
-            </div>
-
-            {/* Search and Filter */}
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 lg:gap-8 text-[10px] font-black">
-              <div className="flex flex-wrap items-center gap-3 lg:gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl">
-                    <Filter className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-slate-400 uppercase tracking-widest mb-1">FILTERS</div>
-                    <div className="text-sm italic uppercase tracking-tighter">Search and Filter Users</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-4 w-full xl:w-auto">
-                <SearchFilter
-                  searchTerm={searchTerm}
-                  onSearchChange={handleSearch}
-                  placeholder="Search users..."
-                  className="w-full lg:w-96"
-                />
-              </div>
-            </div>
-          </motion.div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {/* Referral Table */}
-          <div className="flex-1 min-h-0 overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto">
           <AnimatePresence mode="wait">
             {referrals.length === 0 ? (
               <motion.div
@@ -219,17 +215,9 @@ export default function ReferralDashboard() {
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-full flex flex-col"
+                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
               >
                 <ResponsiveTable data={referrals} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
-                <Pagination
-                  currentPage={page}
-                  totalPages={pagination.totalPages || 1}
-                  onPageChange={handlePageChange}
-                  totalItems={pagination.total || 0}
-                  itemsPerPage={limit}
-                  onItemsPerPageChange={handleLimitChange}
-                />
               </motion.div>
             )}
           </AnimatePresence>

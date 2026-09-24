@@ -5,12 +5,13 @@ import { useSearchParams } from "next/navigation";
 import Pagination from "../../Pagination";
 import ResponsiveTable from "../../ResponsiveTable";
 import API from '../../../lib/api';
-import { AdminDetailSkeleton } from "../../skeletons/AdminSkeletons";
+import { AdminDetailSkeleton } from "../../admin/Skeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 import {
     ArrowLeft,
@@ -167,6 +168,8 @@ export default function UserReferralDetail() {
         }
     ];
 
+    useAdminMobileHeader({ title: loading ? 'Loading...' : (user?.name || 'Referral Detail') });
+
     if (loading) {
         return (
             <div className="min-h-screen p-3 lg:p-8">
@@ -196,7 +199,7 @@ export default function UserReferralDetail() {
     return (
         <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-sans text-slate-900 dark:text-white">
             {isMounted && <Sidebar />}
-            <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col overflow-hidden">
+            <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
                 {/* Header Section */}
                 <motion.div
@@ -296,7 +299,7 @@ export default function UserReferralDetail() {
                 </div>
 
                 {/* Results Interface */}
-                <div className="flex-1 min-h-0 overflow-hidden">
+                <div className="flex-1 min-h-0 overflow-auto">
                 <AnimatePresence mode="wait">
                     {transactions.length === 0 ? (
                         <motion.div
@@ -316,10 +319,11 @@ export default function UserReferralDetail() {
                             key="content"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-full flex flex-col"
+                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
                         >
                             <ResponsiveTable data={transactions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                             <Pagination
+      compact
                                 currentPage={page}
                                 totalPages={pagination.totalPages || 1}
                                 onPageChange={handlePageChange}

@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import Head from 'next/head';
-import AdminRoute from '../../../components/AdminRoute';
-import AdminPYQForm from '../../../components/pages/admin/AdminPYQForm';
+import AdminRoute from '../../../components/admin/Route';
+import AdminPYQForm from '../../../components/pages/admin/PYQForm';
 
 export default function CreatePYQPage() {
     return (

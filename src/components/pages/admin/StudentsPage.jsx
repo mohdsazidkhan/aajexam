@@ -21,10 +21,11 @@ import ViewToggle from '../../ViewToggle';
 import SearchFilter from '../../SearchFilter';
 import { isMobile } from 'react-device-detect';
 import useDebounce from "../../../hooks/useDebounce";
-import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
 import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 
 const StudentsPage = () => {
@@ -383,51 +384,81 @@ const StudentsPage = () => {
 
 
 
+  const searchInput = (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => handleSearch(e.target.value)}
+        placeholder="Search students by name or email..."
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+      />
+    </div>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[
+        { icon: TableIcon, id: 'table', label: 'Table View' },
+        { icon: List, id: 'list', label: 'List View' },
+        { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
+      ].map((mode) => (
+        <button
+          key={mode.id}
+          onClick={() => setViewMode(mode.id)}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+          title={mode.label}
+        >
+          <mode.icon className="w-4 h-4" />
+          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+        </button>
+      ))}
+    </div>
+  );
+
+  const newProButton = (
+    <button
+      onClick={() => setShowCreateModal(true)}
+      className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700"
+    >
+      <UserPlus className="w-4 h-4" /> New PRO
+    </button>
+  );
+
+  const paginationControl = (
+    <Pagination
+      compact
+      currentPage={currentPage}
+      totalPages={pagination.totalPages || 1}
+      onPageChange={handlePageChange}
+      totalItems={pagination.total || 0}
+      itemsPerPage={itemsPerPage}
+      onItemsPerPageChange={handleItemsPerPageChange}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Students',
+    count: pagination?.total || 0,
+    filters: (
+      <>
+        {searchInput}
+        {viewToggleButtons}
+        {newProButton}
+        {paginationControl}
+      </>
+    )
+  });
+
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Users className="w-6 h-6 text-primary-600 shrink-0" /> Students <span className="text-slate-400 dark:text-slate-500">({pagination?.total || 0})</span></h1>
+        {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-            <div className="relative col-span-2 sm:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => handleSearch(e.target.value)}
-                placeholder="Search students by name or email..."
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
-              />
-            </div>
-            <div className="flex items-center gap-1">
-              {[
-                { icon: TableIcon, id: 'table', label: 'Table View' },
-                { icon: List, id: 'list', label: 'List View' },
-                { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
-              ].map((mode) => (
-                <button
-                  key={mode.id}
-                  onClick={() => setViewMode(mode.id)}
-                  className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
-                  title={mode.label}
-                >
-                  <mode.icon className="w-4 h-4" />
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={() => setShowCreateModal(true)}
-              className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0"
-            >
-              <UserPlus className="w-4 h-4" /> New PRO
-            </button>
-          </div>
-        </div>
-
-        <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : students.length === 0 ? (
@@ -440,17 +471,17 @@ const StudentsPage = () => {
             </div>
           ) : (
             <>
-              <div className="flex-1 min-h-0 overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto">
                 {/* View Render Logic */}
                 {viewMode === "table" && (
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
                     <ResponsiveTable data={students} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} onRowClick={(student) => router.push(`/admin/students/${student._id}`)} fillHeight />
                   </div>
                 )}
 
                 {/* List View */}
                 {viewMode === "list" && (
-                  <div className="h-full overflow-auto grid grid-cols-1 gap-3">
+                  <div className="h-auto overflow-auto grid content-start items-start grid-cols-1 gap-3">
                     {students.map((student, i) => (
                       <motion.div
                         key={student._id}
@@ -460,8 +491,9 @@ const StudentsPage = () => {
                         onClick={() => router.push(`/admin/students/${student._id}`)}
                         className="group relative bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 cursor-pointer"
                       >
-                        <div className="w-20 h-20 bg-primary-600 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                        <div className="relative w-20 h-20 bg-primary-600 rounded-lg lg:rounded-[2rem] flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm group-hover:scale-110 transition-transform shrink-0">
                           {student.name?.charAt(0).toUpperCase()}
+                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(currentPage - 1) * itemsPerPage + i + 1}</span>
                         </div>
 
                         <div className="flex-1 space-y-2 lg:space-y-4">
@@ -503,7 +535,7 @@ const StudentsPage = () => {
 
                 {/* Grid View */}
                 {viewMode === "grid" && (
-                  <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
+                  <div className="h-auto overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                     {students.map((student, i) => (
                       <motion.div
                         key={student._id}
@@ -519,6 +551,7 @@ const StudentsPage = () => {
                           <div className="w-24 h-24 bg-primary-600 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center text-white text-4xl font-black shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             {student.name?.charAt(0).toUpperCase()}
                           </div>
+                          <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(currentPage - 1) * itemsPerPage + i + 1}</span>
                           <div className="absolute -bottom-2 -right-2 p-2 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 shadow-sm">
                             <Crown className={`w-4 h-4 ${student.subscriptionStatus === 'PRO' ? 'text-black dark:text-white' : 'text-slate-300'}`} />
                           </div>
@@ -561,19 +594,6 @@ const StudentsPage = () => {
                 )}
 
               </div>
-
-              {pagination.total > 0 && (
-                <div className="shrink-0">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={pagination.totalPages || 1}
-                    onPageChange={handlePageChange}
-                    totalItems={pagination.total || 0}
-                    itemsPerPage={itemsPerPage}
-                    onItemsPerPageChange={handleItemsPerPageChange}
-                  />
-                </div>
-              )}
             </>
           )}
         </div>

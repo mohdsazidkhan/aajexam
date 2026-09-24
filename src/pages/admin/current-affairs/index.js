@@ -9,10 +9,11 @@ import Card from '../../../components/ui/Card';
 import ResponsiveTable from '../../../components/ResponsiveTable';
 import Pagination from '../../../components/Pagination';
 import Sidebar from '../../../components/Sidebar';
-import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
-import AdminRoute from '../../../components/AdminRoute';
+import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
+import AdminRoute from '../../../components/admin/Route';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import useDebounce from '../../../hooks/useDebounce';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const categories = ['national', 'international', 'economy', 'science', 'sports', 'awards', 'appointments', 'defence', 'environment', 'other'];
 
@@ -95,42 +96,72 @@ const AdminCurrentAffairs = () => {
 
   const inputClass = "w-full px-4 py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
+  const searchInput = (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input type="text" placeholder="Search title or content..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+    </div>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[
+        { mode: 'table', icon: Table2, label: 'Table View' },
+        { mode: 'list', icon: List, label: 'List View' },
+        { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+      ].map(({ mode, icon: Icon, label }) => (
+        <button key={mode} onClick={() => setViewMode(mode)} title={label}
+          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <Icon className="w-4 h-4" />
+        </button>
+      ))}
+    </div>
+  );
+
+  const addNewButton = (
+    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
+      <Plus className="w-3 h-3" /> Add New
+    </button>
+  );
+
+  const paginationControl = totalItems > 0 && (
+    <Pagination
+      compact
+      currentPage={page}
+      totalPages={totalPages}
+      onPageChange={setPage}
+      totalItems={totalItems}
+      itemsPerPage={itemsPerPage}
+      onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Current Affairs',
+    count: totalItems,
+    filters: (
+      <>
+        {searchInput}
+        {viewToggleButtons}
+        {addNewButton}
+        {paginationControl}
+      </>
+    )
+  });
+
   return (
     <AdminRoute>
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Manage Current Affairs - Admin</title></Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Newspaper className="w-6 h-6 text-primary-600 shrink-0" /> Current Affairs <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
-            <div className="flex items-center gap-3 w-full lg:w-auto justify-end">
-              <div className="relative w-full lg:w-56">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input type="text" placeholder="Search title or content..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
-              </div>
-              <div className="flex items-center gap-1">
-                {[
-                  { mode: 'table', icon: Table2, label: 'Table View' },
-                  { mode: 'list', icon: List, label: 'List View' },
-                  { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
-                ].map(({ mode, icon: Icon, label }) => (
-                  <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                    className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
-                    <Icon className="w-4 h-4" />
-                  </button>
-                ))}
-              </div>
-              <button onClick={() => { setShowForm(true); setEditId(null); }} className="shrink-0 px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
-                <Plus className="w-3 h-3" /> Add New
-              </button>
-            </div>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
           {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              <div className="flex-1 min-h-0 overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto">
           {affairs.length === 0 ? (
             <Card className="!py-12 text-center">
               <Newspaper className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
@@ -139,17 +170,20 @@ const AdminCurrentAffairs = () => {
             </Card>
           ) : viewMode === 'table' ? (
             /* ── Table View ── */
-            <Card className="!p-0 overflow-hidden h-full flex flex-col" padded={false}>
+            <Card className="!p-0 overflow-hidden h-auto flex flex-col" padded={false}>
               <ResponsiveTable data={affairs} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </Card>
           ) : viewMode === 'grid' ? (
             /* ── Grid View ── */
-            <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+            <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
               {affairs.map((a, i) => (
                 <Card key={a._id || i} className="!p-4 flex flex-col justify-between gap-3">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 uppercase tracking-wide">{a.category}</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(page - 1) * itemsPerPage + i + 1}</span>
+                        <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 uppercase tracking-wide">{a.category}</span>
+                      </div>
                       <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Eye className="w-3 h-3" /> {a.views || 0}</span>
                     </div>
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">{a.title}</h3>
@@ -173,6 +207,7 @@ const AdminCurrentAffairs = () => {
             <div className="h-full overflow-auto space-y-2">
               {affairs.map((a, i) => (
                 <Card key={a._id || i} className="!p-4 flex items-center gap-4">
+                  <span className="shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(page - 1) * itemsPerPage + i + 1}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 uppercase tracking-wide">{a.category}</span>
@@ -190,19 +225,6 @@ const AdminCurrentAffairs = () => {
             </div>
           )}
               </div>
-
-              {totalItems > 0 && (
-                <div className="shrink-0">
-                  <Pagination
-                    currentPage={page}
-                    totalPages={totalPages}
-                    onPageChange={setPage}
-                    totalItems={totalItems}
-                    itemsPerPage={itemsPerPage}
-                    onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
-                  />
-                </div>
-              )}
             </>
           )}
           </div>

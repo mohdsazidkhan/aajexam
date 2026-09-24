@@ -4,6 +4,7 @@ import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PAGE_SIZE_OPTIONS } from '../lib/constants/pagination';
+import StyledSelect from './ui/StyledSelect';
 
 /**
  * Premium 3D Pagination Component
@@ -17,7 +18,8 @@ const Pagination = ({
   itemsPerPage,
   onItemsPerPageChange,
   itemsPerPageOptions = PAGE_SIZE_OPTIONS,
-  showInfo = true
+  showInfo = true,
+  compact = false
 }) => {
   const startItem = (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(currentPage * itemsPerPage, totalItems);
@@ -59,38 +61,25 @@ const Pagination = ({
 
   if (totalPages <= 1 && !onItemsPerPageChange) return null;
 
-  return (
-    <div className="sticky bottom-0 z-20 grid grid-cols-1 sm:grid-cols-3 items-center gap-2 sm:gap-4 px-4 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
-      {/* Visual Info Display */}
-      <div className="sm:col-start-1 flex justify-center sm:justify-start">
-        {showInfo && (
-          <div className="text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.15em] font-outfit">
-             Result: <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-600 font-black">{totalItems}</span>
-          </div>
-        )}
-      </div>
+  const infoBlock = showInfo && (
+    <div className="text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.15em] font-outfit">
+       Result: <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-600 font-black">{totalItems}</span>
+    </div>
+  );
 
-      {/* Page Size Selector — bottom-center of the row */}
-      <div className="sm:col-start-2 flex justify-center">
-        {onItemsPerPageChange && (
-          <div className="flex items-center gap-2">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">Page Size</span>
-            <select
-              value={itemsPerPage}
-              onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-              className="px-2.5 py-1 bg-slate-50 dark:bg-black border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg text-[9px] font-black uppercase tracking-widest outline-none cursor-pointer hover:border-primary-500/40 transition-colors"
-            >
-              {itemsPerPageOptions.map((n) => (
-                <option key={n} value={n}>{n}</option>
-              ))}
-            </select>
-          </div>
-        )}
-      </div>
+  const pageSizeBlock = onItemsPerPageChange && (
+    <div className="flex items-center gap-2">
+      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">Page Size</span>
+      <StyledSelect
+        value={itemsPerPage}
+        onChange={(val) => onItemsPerPageChange(Number(val))}
+        options={itemsPerPageOptions.map((n) => ({ value: n, label: String(n) }))}
+        className="min-w-[64px]"
+      />
+    </div>
+  );
 
-      {/* Navigation Controls */}
-      <div className="sm:col-start-3 flex justify-center sm:justify-end">
-      {totalPages > 1 && (
+  const navBlock = totalPages > 1 && (
       <div className="flex items-center gap-1.5">
         {/* Previous Button */}
         <motion.button
@@ -149,8 +138,27 @@ const Pagination = ({
           <ChevronRight className="w-3.5 h-3.5" />
         </motion.button>
       </div>
-      )}
+  );
+
+  if (compact) {
+    return (
+      <div className="sticky bottom-0 z-20 flex flex-col gap-2 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
+        <div className="flex items-center justify-between gap-2">
+          <div className="min-w-0 flex-1 truncate">{infoBlock}</div>
+          <div className="shrink-0">{pageSizeBlock}</div>
+        </div>
+        <div className="flex items-center justify-center">
+          {navBlock}
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="sticky bottom-0 z-20 grid grid-cols-1 sm:grid-cols-3 items-center gap-2 sm:gap-4 px-4 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
+      <div className="sm:col-start-1 flex justify-center sm:justify-start">{infoBlock}</div>
+      <div className="sm:col-start-2 flex justify-center">{pageSizeBlock}</div>
+      <div className="sm:col-start-3 flex justify-center sm:justify-end">{navBlock}</div>
     </div>
   );
 };

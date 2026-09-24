@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { AdminTableSkeleton } from '../../components/skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
 const StudentsPageComponent = dynamic(() => import('../../components/pages/admin/StudentsPage'), {
   ssr: false,

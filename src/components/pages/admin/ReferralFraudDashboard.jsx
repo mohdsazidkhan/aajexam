@@ -7,9 +7,10 @@ import Pagination from '../../Pagination';
 import useDebounce from '../../../hooks/useDebounce';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from '../../admin/Skeletons';
 import ResponsiveTable from '../../ResponsiveTable';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 import {
   ShieldAlert, AlertTriangle, Users, Banknote, Search,
   ChevronDown, ChevronUp, Fingerprint, ShieldCheck,
@@ -140,62 +141,92 @@ export default function ReferralFraudDashboard() {
     { label: 'Reward At Risk', value: inr(summary.rewardAtRisk), icon: Banknote, tone: 'text-primary-600 bg-primary-500/10' },
   ] : [];
 
+  const signalBadges = (
+    summary && Object.keys(summary.signalCounts || {}).length > 0 && (
+      <div className="flex flex-wrap gap-2">
+        {Object.entries(summary.signalCounts).sort((a, b) => b[1] - a[1]).map(([k, c]) => (
+          <span key={k} className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500">
+            {SIGNAL_LABELS[k] || k} · {c}
+          </span>
+        ))}
+      </div>
+    )
+  );
+
+  const searchInput = (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
+        placeholder="Search name / email / code..."
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+      />
+    </div>
+  );
+
+  const riskFilterButtons = (
+    <div className="flex items-center gap-1">
+      {['all', 'high', 'medium', 'low'].map(r => (
+        <button key={r} onClick={() => { setRisk(r); setPage(1); }}
+          className={`px-3 py-2 rounded-lg lg:rounded-xl text-xs font-bold uppercase transition-all ${risk === r
+            ? 'bg-primary-600 text-white'
+            : 'bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-slate-500'}`}>
+          {r}
+        </button>
+      ))}
+    </div>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[
+        { icon: TableIcon, id: 'table', label: 'Table View' },
+        { icon: List, id: 'list', label: 'List View' },
+        { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
+      ].map((mode) => (
+        <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label}
+          className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <mode.icon className="w-4 h-4" />
+          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+        </button>
+      ))}
+    </div>
+  );
+
+  const paginationControl = (
+    <Pagination
+      compact
+      currentPage={pagination.page}
+      totalPages={pagination.totalPages}
+      onPageChange={(p) => setPage(p)}
+      totalItems={pagination.total}
+      itemsPerPage={limit}
+      onItemsPerPageChange={handleLimitChange}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Referral Fraud',
+    count: pagination.total || 0,
+    filters: (
+      <>
+        {signalBadges}
+        {searchInput}
+        {riskFilterButtons}
+        {viewToggleButtons}
+        {paginationControl}
+      </>
+    )
+  });
+
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-          {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><ShieldAlert className="w-6 h-6 text-primary-600 shrink-0" /> Referral Fraud <span className="text-slate-400 dark:text-slate-500">({pagination.total || 0})</span></h1>
-
-              {summary && Object.keys(summary.signalCounts || {}).length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {Object.entries(summary.signalCounts).sort((a, b) => b[1] - a[1]).map(([k, c]) => (
-                    <span key={k} className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500">
-                      {SIGNAL_LABELS[k] || k} · {c}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-              <div className="relative col-span-2 sm:w-56">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-                  placeholder="Search name / email / code..."
-                  className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
-                />
-              </div>
-              <div className="flex items-center gap-1">
-                {['all', 'high', 'medium', 'low'].map(r => (
-                  <button key={r} onClick={() => { setRisk(r); setPage(1); }}
-                    className={`px-3 py-2 rounded-lg lg:rounded-xl text-xs font-bold uppercase transition-all ${risk === r
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-slate-500'}`}>
-                    {r}
-                  </button>
-                ))}
-              </div>
-              <div className="flex items-center gap-1">
-                {[
-                  { icon: TableIcon, id: 'table', label: 'Table View' },
-                  { icon: List, id: 'list', label: 'List View' },
-                  { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
-                ].map((mode) => (
-                  <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label}
-                    className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
-                    <mode.icon className="w-4 h-4" />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {/* Stat cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
@@ -211,7 +242,7 @@ export default function ReferralFraudDashboard() {
           </div>
 
           {/* Loading */}
-          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
           {loading && rows.length === 0 ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : rows.length === 0 ? (
@@ -222,22 +253,26 @@ export default function ReferralFraudDashboard() {
             </div>
           ) : (
             <>
-            <div className="flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 min-h-0 overflow-auto">
             {viewMode === 'table' && (
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
                 <ResponsiveTable data={rows} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
               </div>
             )}
 
             {viewMode === 'grid' && (
-              <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
-                {rows.map((u) => {
+              <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+                {rows.map((u, idx) => {
                   const rs = RISK_STYLES[u.riskLevel] || RISK_STYLES.low;
+                  const serialNumber = (pagination.page - 1) * limit + idx + 1;
                   return (
                     <div key={u._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="w-10 h-10 rounded-xl bg-slate-900 dark:bg-white/10 text-white flex items-center justify-center font-black text-sm shrink-0">{u.name?.[0]?.toUpperCase() || 'U'}</div>
+                          <div className="relative w-10 h-10 rounded-xl bg-slate-900 dark:bg-white/10 text-white flex items-center justify-center font-black text-sm shrink-0">
+                            {u.name?.[0]?.toUpperCase() || 'U'}
+                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{serialNumber}</span>
+                          </div>
                           <div className="min-w-0">
                             <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{u.name || 'Unknown'}</div>
                             <div className="text-[10px] text-slate-400 truncate">{u.email}</div>
@@ -271,9 +306,10 @@ export default function ReferralFraudDashboard() {
             {viewMode === 'list' && (
             <div className="h-full overflow-auto space-y-3">
               <AnimatePresence>
-                {rows.map((u) => {
+                {rows.map((u, idx) => {
                   const rs = RISK_STYLES[u.riskLevel] || RISK_STYLES.low;
                   const open = expanded === u._id;
+                  const serialNumber = (pagination.page - 1) * limit + idx + 1;
                   return (
                     <motion.div key={u._id} layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                       className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
@@ -286,6 +322,7 @@ export default function ReferralFraudDashboard() {
                               <span className="text-xl font-black tracking-tighter">{u.riskScore}</span>
                               <span className="text-[7px] font-black uppercase tracking-widest text-slate-400">risk</span>
                             </div>
+                            <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{serialNumber}</span>
                           </div>
                           <div className="min-w-0">
                             <div className="font-black truncate">{u.name || 'Unknown'}</div>
@@ -363,19 +400,6 @@ export default function ReferralFraudDashboard() {
             </div>
             )}
             </div>
-
-            {pagination.total > 0 && (
-              <div className="shrink-0">
-                <Pagination
-                  currentPage={pagination.page}
-                  totalPages={pagination.totalPages}
-                  onPageChange={(p) => setPage(p)}
-                  totalItems={pagination.total}
-                  itemsPerPage={limit}
-                  onItemsPerPageChange={handleLimitChange}
-                />
-              </div>
-            )}
             </>
           )}
           </div>

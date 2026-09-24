@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { AdminDashboardSkeleton } from '../../components/skeletons/AdminSkeletons';
+import { AdminDashboardSkeleton } from '../../components/admin/Skeletons';
 
 const ReferralFraudDashboard = dynamic(() => import('../../components/pages/admin/ReferralFraudDashboard'), {
   ssr: false,

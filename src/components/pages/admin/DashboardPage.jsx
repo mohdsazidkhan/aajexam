@@ -40,7 +40,8 @@ import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import { getUserRole } from '../../../lib/utils/authUtils';
-import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminDashboardSkeleton } from '../../admin/Skeletons';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const formatINR = (n) => `₹${(n || 0).toLocaleString('en-IN')}`;
 
@@ -150,6 +151,8 @@ const DashboardPage = () => {
       ],
     },
   ];
+
+  useAdminMobileHeader({ title: 'Dashboard' });
 
   if (loading) {
     return (

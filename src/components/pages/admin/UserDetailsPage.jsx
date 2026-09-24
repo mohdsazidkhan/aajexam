@@ -18,8 +18,9 @@ import useDebounce from "../../../hooks/useDebounce";
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
 import Link from 'next/link';
-import { AdminDetailSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminDetailSkeleton } from '../../admin/Skeletons';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 
 const PAGE_LIMIT = DEFAULT_PAGE_SIZE;
@@ -134,44 +135,73 @@ export default function UserDetailsPage() {
     }
   ];
 
+  const searchInput = (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => handleSearch(e.target.value)}
+        placeholder="Search by name, email, or username..."
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+      />
+    </div>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[{ icon: TableIcon, id: 'table', label: 'Table View' }, { icon: List, id: 'list', label: 'List View' }, { icon: LayoutGrid, id: 'grid', label: 'Grid View' }].map((mode) => (
+        <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`flex-1 flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <mode.icon className="w-4 h-4" />
+          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+        </button>
+      ))}
+    </div>
+  );
+
+  const exportButton = (
+    <button className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <DownloadCloud className="w-4 h-4" /> Export
+    </button>
+  );
+
+  const paginationControl = (
+    <Pagination
+      compact
+      currentPage={pagination.currentPage || page}
+      totalPages={pagination.totalPages || 1}
+      onPageChange={handlePageChange}
+      totalItems={pagination.total || 0}
+      itemsPerPage={itemsPerPage}
+      onItemsPerPageChange={handleItemsPerPageChange}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'User Details',
+    count: pagination.total || 0,
+    filters: (
+      <>
+        {searchInput}
+        {viewToggleButtons}
+        {exportButton}
+        {paginationControl}
+      </>
+    )
+  });
+
   if (!isMounted) return null;
 
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
 
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Users className="w-6 h-6 text-primary-600 shrink-0" /> User Details <span className="text-slate-400 dark:text-slate-500">({pagination.total || 0})</span></h1>
-
-          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-            <div className="relative col-span-2 sm:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => handleSearch(e.target.value)}
-                placeholder="Search by name, email, or username..."
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
-              />
-            </div>
-            <div className="flex items-center gap-1">
-              {[{ icon: TableIcon, id: 'table', label: 'Table View' }, { icon: List, id: 'list', label: 'List View' }, { icon: LayoutGrid, id: 'grid', label: 'Grid View' }].map((mode) => (
-                <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
-                  <mode.icon className="w-4 h-4" />
-                </button>
-              ))}
-            </div>
-            <button className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0">
-              <DownloadCloud className="w-4 h-4" /> Export
-            </button>
-          </div>
-        </div>
+        {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         {/* Content */}
-        <div className="flex-1 min-h-0 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-auto">
         <AnimatePresence mode="wait">
           {loading ? (
             <div className="flex items-center justify-center py-32"><AdminDetailSkeleton /></div>
@@ -189,28 +219,21 @@ export default function UserDetailsPage() {
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your search to find students.</p>
             </div>
           ) : (
-            <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-full flex flex-col">
+            <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-auto flex flex-col">
               {viewMode === 'table' && (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm flex-1 min-h-0 flex flex-col">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm flex-1 min-h-0 overflow-auto flex flex-col">
                   <ResponsiveTable data={userDetails} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
-                  <Pagination
-                    currentPage={pagination.currentPage || page}
-                    totalPages={pagination.totalPages || 1}
-                    onPageChange={handlePageChange}
-                    totalItems={pagination.total || 0}
-                    itemsPerPage={itemsPerPage}
-                    onItemsPerPageChange={handleItemsPerPageChange}
-                  />
                 </div>
               )}
 
               {viewMode === 'grid' && (
-                <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
+                <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-8">
                   {userDetails.map((u, i) => (
                     <motion.div key={u._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm text-center group relative overflow-hidden flex flex-col font-outfit">
                       <div className={`absolute top-0 left-0 w-full h-1.5 ${u.subscriptionStatus ==='PRO'?'bg-primary-600':'bg-primary-600'}`} />
                       <div className="mb-6 mx-auto relative">
                         <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] flex items-center justify-center font-black text-3xl shadow-sm group-hover:rotate-6 transition-all">{u.name?.[0] || 'U'}</div>
+                        <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
                         {u.subscriptionStatus === 'PRO' && <div className="absolute -bottom-2 -right-2 p-1.5 bg-white dark:bg-[#0D1225] rounded-lg lg:rounded-xl border-2 border-black dark:border-white shadow-sm"><Crown className="w-4 h-4 text-black dark:text-white" /></div>}
                       </div>
                       <Link href={`/u/${u.username}`} target="_blank" className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none mb-1 truncate hover:text-primary-600 transition-colors block">{u.name || 'Anonymous'}</Link>
@@ -232,7 +255,10 @@ export default function UserDetailsPage() {
                 <div className="flex-1 min-h-0 overflow-auto space-y-3 lg:space-y-6">
                   {userDetails.map((u, i) => (
                     <motion.div key={u._id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm flex flex-col md:flex-row md:items-center gap-3 lg:gap-8 group hover:border-primary-500/30 transition-all font-outfit">
-                      <div className="w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-sm shrink-0">{u.name?.[0] || 'U'}</div>
+                      <div className="relative w-20 h-20 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] flex items-center justify-center font-black text-4xl shadow-sm shrink-0">
+                        {u.name?.[0] || 'U'}
+                        <span className="absolute -top-1.5 -left-1.5 w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-[#0D1225]">{(page - 1) * itemsPerPage + i + 1}</span>
+                      </div>
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                           <div>
@@ -254,19 +280,6 @@ export default function UserDetailsPage() {
                 </div>
               )}
 
-              {/* External Pagination (list/grid views only — table view attaches its own below the table) */}
-              {!loading && viewMode !== 'table' && (
-                <div className="shrink-0 flex justify-center pt-4">
-                  <Pagination
-                    currentPage={pagination.currentPage || page}
-                    totalPages={pagination.totalPages || 1}
-                    onPageChange={handlePageChange}
-                    totalItems={pagination.total || 0}
-                    itemsPerPage={itemsPerPage}
-                    onItemsPerPageChange={handleItemsPerPageChange}
-                  />
-                </div>
-              )}
             </motion.div>
           )}
         </AnimatePresence>

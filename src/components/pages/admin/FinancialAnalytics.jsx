@@ -20,15 +20,17 @@ import {
   Activity, CreditCard, Download, Filter,
   IndianRupee, Layers, LayoutDashboard,
   LineChart, PieChart, TrendingUp, Wallet, Zap, Cpu,
-  Search, Calendar, DownloadCloud, ArrowUpRight, ArrowDownRight,
+  Search, Calendar, ArrowUpRight, ArrowDownRight,
   ShieldCheck, History, BarChart3
 } from "lucide-react";
 
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminDashboardSkeleton } from '../../admin/Skeletons';
 import ResponsiveTable from '../../ResponsiveTable';
+import StyledSelect from '../../ui/StyledSelect';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 ChartJS.register(
   CategoryScale,
@@ -94,6 +96,61 @@ const FinancialAnalytics = () => {
     }));
     exportCSV(rows, "financial_audit.csv");
   };
+
+  const statBadges = (
+    <>
+      {[
+        { label: 'Total Revenue', val: `₹${(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}`, icon: IndianRupee },
+        { label: 'Period Revenue', val: `₹${(data?.overview?.periodRevenue || 0).toLocaleString('en-IN')}`, icon: TrendingUp },
+        { label: 'Subscription Plans', val: data?.subscriptionStats?.length || 0, icon: Layers },
+        { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
+      ].map((stat) => (
+        <div key={stat.label} className="col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
+          <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+          <div className="min-w-0">
+            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
+            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+
+  const periodSelect = (
+    <StyledSelect
+      icon={Calendar}
+      value={filters.period}
+      onChange={(val) => setFilters({ ...filters, period: val })}
+      options={[
+        { value: 'today', label: 'Today' },
+        { value: 'yesterday', label: 'Yesterday' },
+        { value: 'last-7-days', label: 'Past 7 Days' },
+        { value: 'this-month', label: 'This Month' },
+        { value: 'previous-month', label: 'Prev Month' },
+        { value: 'last-3-months', label: 'Quarterly' },
+        { value: 'current-year', label: 'Annual' }
+      ]}
+      className="col-span-2 sm:w-48"
+    />
+  );
+
+  const exportButton = (
+    <button onClick={handleExport} className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <Download className="w-4 h-4" /> Export to CSV
+    </button>
+  );
+
+  useAdminMobileHeader({
+    title: 'Financial',
+    count: null,
+    filters: (
+      <>
+        {statBadges}
+        {periodSelect}
+        {exportButton}
+      </>
+    )
+  });
 
   if (!isMounted) return null;
 
@@ -184,42 +241,7 @@ const FinancialAnalytics = () => {
 
   return (<div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
 
-          {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><IndianRupee className="w-6 h-6 text-primary-600 shrink-0" /> Financial <span className="text-slate-400 dark:text-slate-500">(₹{(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')})</span></h1>
-
-            <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-              {[
-                { label: 'Total Revenue', val: `₹${(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}`, icon: IndianRupee },
-                { label: 'Period Revenue', val: `₹${(data?.overview?.periodRevenue || 0).toLocaleString('en-IN')}`, icon: TrendingUp },
-                { label: 'Subscription Plans', val: data?.subscriptionStats?.length || 0, icon: Layers },
-                { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
-              ].map((stat) => (
-                <div key={stat.label} className="col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-                  <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-              <div className="relative col-span-2 sm:w-48">
-                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-                <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full pl-9 pr-8 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm appearance-none cursor-pointer">
-                  <option value="today">Today</option>
-                  <option value="yesterday">Yesterday</option>
-                  <option value="last-7-days">Past 7 Days</option>
-                  <option value="this-month">This Month</option>
-                  <option value="previous-month">Prev Month</option>
-                  <option value="last-3-months">Quarterly</option>
-                  <option value="current-year">Annual</option>
-                </select>
-              </div>
-              <button onClick={handleExport} className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 shrink-0">
-                <DownloadCloud className="w-4 h-4" /> Export CSV
-              </button>
-            </div>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           <AnimatePresence mode="wait">
             {loading ? (

@@ -35,6 +35,7 @@ import ProBadge from '../ui/ProBadge';
 import UnifiedFooter from '../UnifiedFooter';
 import config from '../../lib/config/appConfig';
 import { FREE_PLAN_FEATURES, PRO_PLAN_FEATURES } from '../../lib/config/planFeatures';
+import { useAdminMobileHeader } from '../../contexts/AdminMobileHeaderContext';
 
 const proPrice = config?.SUBSCRIPTION_PLANS?.PRO?.price ?? 99;
 
@@ -141,6 +142,8 @@ const Cell = ({ value }) => {
 
 const FeaturesPage = () => {
   const router = useRouter();
+
+  useAdminMobileHeader({ title: 'Features' });
 
   return (
     <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white">

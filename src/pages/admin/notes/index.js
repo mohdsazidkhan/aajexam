@@ -9,11 +9,12 @@ import Card from '../../../components/ui/Card';
 import ResponsiveTable from '../../../components/ResponsiveTable';
 import Pagination from '../../../components/Pagination';
 import Sidebar from '../../../components/Sidebar';
-import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
-import AdminRoute from '../../../components/AdminRoute';
+import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
+import AdminRoute from '../../../components/admin/Route';
 import CustomEditor from '../../../components/CustomEditor';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import useDebounce from '../../../hooks/useDebounce';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const noteTypes = ['notes', 'formulas', 'shortcuts', 'important_points', 'tables', 'mnemonics'];
 
@@ -107,42 +108,72 @@ const AdminNotes = () => {
     }
   ];
 
+  const searchInput = (
+    <div className="relative w-full lg:w-56">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input type="text" placeholder="Search title or content..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+    </div>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[
+        { mode: 'table', icon: Table2, label: 'Table View' },
+        { mode: 'list', icon: List, label: 'List View' },
+        { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+      ].map(({ mode, icon: Icon, label }) => (
+        <button key={mode} onClick={() => setViewMode(mode)} title={label}
+          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <Icon className="w-4 h-4" />
+        </button>
+      ))}
+    </div>
+  );
+
+  const addNoteButton = (
+    <button onClick={() => { setShowForm(true); setEditId(null); }} className="w-full px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
+      <Plus className="w-3 h-3" /> Add Note
+    </button>
+  );
+
+  const paginationControl = totalItems > 0 && (
+    <Pagination
+      compact
+      currentPage={page}
+      totalPages={totalPages}
+      onPageChange={setPage}
+      totalItems={totalItems}
+      itemsPerPage={itemsPerPage}
+      onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Notes',
+    count: totalItems,
+    filters: (
+      <>
+        {searchInput}
+        {viewToggleButtons}
+        {addNoteButton}
+        {paginationControl}
+      </>
+    )
+  });
+
   return (
     <AdminRoute>
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Manage Notes - Admin</title></Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><StickyNote className="w-6 h-6 text-primary-600 shrink-0" /> Notes & Formulas <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
-            <div className="flex items-center gap-3 w-full lg:w-auto justify-end">
-              <div className="relative w-full lg:w-56">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input type="text" placeholder="Search title or content..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
-              </div>
-              <div className="flex items-center gap-1">
-                {[
-                  { mode: 'table', icon: Table2, label: 'Table View' },
-                  { mode: 'list', icon: List, label: 'List View' },
-                  { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
-                ].map(({ mode, icon: Icon, label }) => (
-                  <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                    className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
-                    <Icon className="w-4 h-4" />
-                  </button>
-                ))}
-              </div>
-              <button onClick={() => { setShowForm(true); setEditId(null); }} className="shrink-0 px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
-                <Plus className="w-3 h-3" /> Add Note
-              </button>
-            </div>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
           {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              <div className="flex-1 min-h-0 overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto overflow-hidden">
           {notes.length === 0 ? (
             <Card className="!py-12 text-center">
               <StickyNote className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
@@ -151,7 +182,7 @@ const AdminNotes = () => {
             </Card>
           ) : viewMode === 'table' ? (
             /* ── Table View ── */
-            <Card className="!p-0 overflow-hidden h-full flex flex-col" padded={false}>
+            <Card className="!p-0 overflow-hidden h-auto lg:h-full flex flex-col" padded={false}>
               <ResponsiveTable data={notes} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </Card>
           ) : viewMode === 'grid' ? (
@@ -164,8 +195,8 @@ const AdminNotes = () => {
                       <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 uppercase tracking-wide">{n.noteType?.replace('_', ' ')}</span>
                       <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Eye className="w-3 h-3" /> {n.views || 0}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">{n.title}</h3>
-                    {n.subject?.name && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5">{n.subject.name}</p>}
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{n.title}</h3>
+                    {n.subject?.name && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 truncate">{n.subject.name}</p>}
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700/50">
                     <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${difficultyColor(n.difficulty)}`}>{n.difficulty}</span>
@@ -179,40 +210,29 @@ const AdminNotes = () => {
             </div>
           ) : (
             /* ── List View ── */
-            <div className="h-full overflow-auto space-y-2">
+            <div className="h-full overflow-auto space-y-1.5">
               {notes.map((n, i) => (
-                <Card key={n._id || i} className="!p-4 flex items-center gap-4">
+                <Card key={n._id || i} className="!p-3 flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 uppercase tracking-wide">{n.noteType?.replace('_', ' ')}</span>
-                      <span className="text-[11px] text-slate-400 dark:text-slate-500">{n.subject?.name}</span>
-                      <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${difficultyColor(n.difficulty)}`}>{n.difficulty}</span>
-                      <span className="text-[11px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5"><Eye className="w-3 h-3" /> {n.views || 0}</span>
+                    <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                      <span className="shrink-0 px-2 py-0.5 bg-primary-50 dark:bg-primary-500/10 rounded-lg text-[10px] font-black text-primary-600 uppercase tracking-wide whitespace-nowrap">{n.noteType?.replace('_', ' ')}</span>
+                      {n.subject?.name && (
+                        <span className="shrink-0 text-[11px] text-slate-400 dark:text-slate-500 whitespace-nowrap truncate max-w-[120px]">{n.subject.name}</span>
+                      )}
+                      <span className={`shrink-0 px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide whitespace-nowrap ${difficultyColor(n.difficulty)}`}>{n.difficulty}</span>
+                      <span className="shrink-0 text-[11px] text-slate-400 dark:text-slate-500 flex items-center gap-0.5 whitespace-nowrap"><Eye className="w-3 h-3" /> {n.views || 0}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{n.title}</h3>
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 break-all">{n.title}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
-                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
+                    <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                   </div>
                 </Card>
               ))}
             </div>
           )}
               </div>
-
-              {totalItems > 0 && (
-                <div className="shrink-0">
-                  <Pagination
-                    currentPage={page}
-                    totalPages={totalPages}
-                    onPageChange={setPage}
-                    totalItems={totalItems}
-                    itemsPerPage={itemsPerPage}
-                    onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
-                  />
-                </div>
-              )}
             </>
           )}
           </div>

@@ -106,6 +106,7 @@ function AppContent({ Component, pageProps }) {
   }, [router.events, router.asPath]);
 
   const { isAuthenticated, isClient, authChecked } = useAuthStatus();
+  const isAdminRoute = router.pathname.startsWith('/admin');
 
   const renderContent = () => {
     // Until the client has mounted AND finished checking auth state, render a
@@ -118,6 +119,14 @@ function AppContent({ Component, pageProps }) {
     // render after hydration — otherwise React throws a hydration mismatch
     // error.
     if (!isClient || !authChecked) {
+      // Admin routes are noindex and always require auth, so there's no SEO/UX
+      // reason to eagerly mount Component here — doing so mounts it once now
+      // and again inside AppLayout once auth resolves, double-firing its data
+      // fetches. Skip the eager mount for admin routes only; public/student
+      // routes keep it for SSR/SEO and to avoid a blank-page flash.
+      if (isAdminRoute) {
+        return <div id="main-content" className="min-h-screen" />;
+      }
       return (
         <div id="main-content" className="min-h-screen">
           {Component && <Component {...pageProps} />}

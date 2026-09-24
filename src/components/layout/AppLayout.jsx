@@ -27,13 +27,15 @@ import { useAuthStatus } from '../../hooks/useClientSide';
 import { isAdmin } from '../../lib/utils/adminUtils';
 
 // New Navbars
-import StudentNavbar from '../navbars/StudentNavbar';
-import AdminNavbar from '../navbars/AdminNavbar';
-import StudentBottomNav from '../navbars/StudentBottomNav';
-import AdminBottomNav from '../navbars/AdminBottomNav';
-import StudentSidebar from '../StudentSidebar';
+import StudentNavbar from '../student/Navbar';
+import AdminNavbar from '../admin/Navbar';
+import StudentBottomNav from '../student/BottomNav';
+import AdminBottomNav from '../admin/BottomNav';
+import StudentSidebar from '../student/Sidebar';
 import Sidebar from '../Sidebar';
 import UnifiedFooter from '../UnifiedFooter';
+import AdminMobileFilterDrawer from '../admin/MobileFilterDrawer';
+import { AdminMobileHeaderProvider } from '../../contexts/AdminMobileHeaderContext';
 
 const AppLayout = ({ children }) => {
   const router = useRouter();
@@ -141,12 +143,16 @@ const AppLayout = ({ children }) => {
   }
 
   return (
+    <AdminMobileHeaderProvider>
     <div className="min-h-screen bg-background-page transition-colors duration-500 font-nunito selection:bg-primary-600 selection:text-white">
 
       {/* --- Top Navbar --- */}
       {showAppNav && (
         isUserAdmin ? <AdminNavbar /> : <StudentNavbar />
       )}
+
+      {/* --- Mobile filter drawer (admin only) --- */}
+      {showAppNav && isUserAdmin && <AdminMobileFilterDrawer />}
 
       {/* --- Sidebar Overlay (mobile) --- */}
       <AnimatePresence>
@@ -199,6 +205,7 @@ const AppLayout = ({ children }) => {
         isUserAdmin ? <AdminBottomNav /> : <StudentBottomNav />
       )}
     </div>
+    </AdminMobileHeaderProvider>
   );
 };
 

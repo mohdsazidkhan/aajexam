@@ -22,8 +22,10 @@ import {
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import Card from '../../ui/Card';
+import StyledSelect from '../../ui/StyledSelect';
 import ViewToggle from '../../ViewToggle';
-import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminDashboardSkeleton } from '../../admin/Skeletons';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const formatNumber = (num) => (num || 0).toLocaleString('en-IN');
 
@@ -259,6 +261,54 @@ const ExamOverviewPage = () => {
     });
   }, [data.examHierarchy, categoryFilter, searchQuery]);
 
+  const refreshButton = (
+    <button
+      onClick={fetchData}
+      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+    >
+      <RefreshCw className="w-4 h-4" /> Refresh
+    </button>
+  );
+
+  const searchInput = (
+    <div className="relative w-full">
+      <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+      <input
+        type="text"
+        placeholder="Search exams, subjects, topics..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:border-primary-700"
+      />
+    </div>
+  );
+
+  const categorySelect = (
+    <StyledSelect
+      value={categoryFilter}
+      onChange={(val) => setCategoryFilter(val)}
+      options={[{ value: 'ALL', label: 'All Categories' }, ...uniqueCategories.map(cat => ({ value: cat, label: cat }))]}
+      className="w-full md:w-48"
+    />
+  );
+
+  const viewToggleButtons = (
+    <ViewToggle currentView={viewMode} onViewChange={setViewMode} fullWidth />
+  );
+
+  useAdminMobileHeader({
+    title: 'Exam Data',
+    count: filteredExams.length,
+    filters: (
+      <>
+        {refreshButton}
+        {searchInput}
+        {categorySelect}
+        {viewToggleButtons}
+      </>
+    )
+  });
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[80vh]">
@@ -283,18 +333,7 @@ const ExamOverviewPage = () => {
   return (
     <div className="w-full text-slate-900 dark:text-white font-outfit">
 
-      {/* Header */}
-      <div className="flex items-center justify-between gap-4 my-2 lg:my-4">
-        <h1 className="text-2xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-2 lg:mb-0 uppercase leading-none">
-          Exam <span className="text-primary-600">Overview</span>
-        </h1>
-        <button
-          onClick={fetchData}
-          className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-        >
-          <RefreshCw className="w-4 h-4" /> Refresh
-        </button>
-      </div>
+      {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
       {/* Overall Statistics */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
@@ -312,36 +351,6 @@ const ExamOverviewPage = () => {
 
       {/* Main Content Area */}
       <Card variant="white" padded={false} className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-lg lg:rounded-xl overflow-hidden shadow-sm">
-
-        {/* Toolbar */}
-        <div className="p-4 border-b border-slate-200 dark:border-white/10 flex flex-col md:flex-row gap-4 items-center justify-between bg-slate-50 dark:bg-slate-800/50">
-          <div className="relative w-full md:w-96">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search exams, subjects, topics..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:border-primary-700"
-            />
-          </div>
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <select
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="flex-1 md:flex-none md:w-48 px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none"
-            >
-              <option value="ALL">All Categories</option>
-              {uniqueCategories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-            </select>
-            <div className="hidden lg:block shrink-0">
-              <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-            </div>
-            <div className="lg:hidden shrink-0">
-              <ViewToggle currentView={viewMode} onViewChange={setViewMode} />
-            </div>
-          </div>
-        </div>
 
         {/* Content Render Based on View Mode */}
 
@@ -453,14 +462,16 @@ const ExamOverviewPage = () => {
             {filteredExams.length === 0 ? (
               <div className="p-8 text-center text-slate-500">No exams found matching your criteria.</div>
             ) : (
-              filteredExams.map(exam => {
+              filteredExams.map((exam, idx) => {
                 const isExpanded = expandedRows.has(exam._id);
+                const serialNumber = idx + 1;
                 return (
                   <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
+                        <div className="relative w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
                           <GraduationCap className="w-5 h-5" />
+                          <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-900">{serialNumber}</span>
                         </div>
                         <div>
                           <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -533,10 +544,12 @@ const ExamOverviewPage = () => {
             {filteredExams.length === 0 ? (
               <div className="col-span-full p-8 text-center text-slate-500">No exams found matching your criteria.</div>
             ) : (
-              filteredExams.map(exam => {
+              filteredExams.map((exam, idx) => {
                 const isExpanded = expandedRows.has(exam._id);
+                const serialNumber = idx + 1;
                 return (
-                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
+                  <div key={exam._id} className="relative border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
+                    <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
                     <div className="p-5 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">
                         <div>

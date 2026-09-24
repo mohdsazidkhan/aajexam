@@ -8,8 +8,9 @@ import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { buildEmailHtml, personalize } from '../../../utils/emailTemplate';
 import ResponsiveTable from '../../ResponsiveTable';
-import { AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const STATUS_STYLES = {
   draft: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
@@ -208,24 +209,80 @@ const EmailCampaignsListPage = () => {
     }
   ];
 
+  const newCampaignButton = (
+    <Link href="/admin/email-campaigns/new"
+      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-600 hover:bg-primary-600 text-white shadow-sm">
+      <Plus size={20} /> New Campaign
+    </Link>
+  );
+
+  const filterPillButtons = (
+    <div className="flex flex-wrap gap-1">
+      {FILTERS.map((f) => (
+        <button key={f} onClick={() => { setFilter(f); setPage(1); }}
+          className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
+            filter === f ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
+          }`}>
+          {f === 'completed' ? 'Sent to all' : f}
+        </button>
+      ))}
+    </div>
+  );
+
+  const viewSwitcherButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {VIEWS.map((v) => (
+        <button key={v.key} onClick={() => changeView(v.key)} title={`${v.label} View`}
+          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${
+            view === v.key ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'
+          }`}>
+          <v.icon size={16} />
+        </button>
+      ))}
+    </div>
+  );
+
+  const paginationControl = pagination && pagination.total > 0 && (
+    <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+      {pagination.totalPages > 1 && (
+        <>
+          <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1 || loading}
+            className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Prev</button>
+          <span className="text-slate-500">Page {pagination.page} / {pagination.totalPages} · {pagination.total} campaigns</span>
+          <button onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))} disabled={page >= pagination.totalPages || loading}
+            className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Next</button>
+        </>
+      )}
+      <select
+        value={itemsPerPage}
+        onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
+        className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10"
+      >
+        {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v}>{v} per page</option>)}
+      </select>
+    </div>
+  );
+
+  useAdminMobileHeader({
+    title: 'Campaigns',
+    count: pagination?.total ?? null,
+    filters: (
+      <>
+        {newCampaignButton}
+        {filterPillButtons}
+        {viewSwitcherButtons}
+        {paginationControl}
+      </>
+    )
+  });
+
   if (!isMounted) return <div className="adminContent w-full mx-auto"><AdminTableSkeleton /></div>;
 
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 flex flex-col overflow-hidden">
+      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-          {/* --- Header: title + New Campaign at the right end --- */}
-          <div className="flex flex-wrap items-start justify-between gap-3 mb-6 shrink-0">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-                <Mail className="text-primary-600" /> Email Campaigns
-              </h1>
-            </div>
-            <Link href="/admin/email-campaigns/new"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium bg-primary-600 hover:bg-primary-600 text-white shadow-sm">
-              <Plus size={20} /> New Campaign
-            </Link>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {sendingCampaign && (
             <div className="shrink-0 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
@@ -233,32 +290,8 @@ const EmailCampaignsListPage = () => {
             </div>
           )}
 
-          {/* --- Filters + view switcher --- */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4 shrink-0">
-            <div className="flex flex-wrap gap-1">
-              {FILTERS.map((f) => (
-                <button key={f} onClick={() => { setFilter(f); setPage(1); }}
-                  className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
-                    filter === f ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20'
-                  }`}>
-                  {f === 'completed' ? 'Sent to all' : f}
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-1">
-              {VIEWS.map((v) => (
-                <button key={v.key} onClick={() => changeView(v.key)} title={`${v.label} View`}
-                  className={`p-2 rounded-lg transition-all ${
-                    view === v.key ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'
-                  }`}>
-                  <v.icon size={16} />
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* --- Content --- */}
-          <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col">
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : campaigns.length === 0 ? (
@@ -272,7 +305,7 @@ const EmailCampaignsListPage = () => {
             </div>
           ) : view === 'table' ? (
             /* ---------- TABLE ---------- */
-            <div className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 overflow-hidden flex-1 min-h-0 flex flex-col">
+            <div className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 overflow-hidden flex-1 min-h-0 overflow-auto flex flex-col">
               <ResponsiveTable
                 data={campaigns}
                 columns={campaignColumns}
@@ -286,10 +319,11 @@ const EmailCampaignsListPage = () => {
           ) : view === 'list' ? (
             /* ---------- LIST ---------- */
             <div className="flex-1 min-h-0 overflow-auto space-y-2">
-              {campaigns.map((c) => (
+              {campaigns.map((c, idx) => (
                 <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-wrap items-center gap-4">
                   <div className="flex-1 min-w-[200px]">
                     <div className="flex items-center gap-2 flex-wrap">
+                      <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(page - 1) * itemsPerPage + idx + 1}</span>
                       <Link href={`/admin/email-campaigns/${c._id}`} className="font-semibold text-slate-800 dark:text-white hover:text-primary-600 dark:hover:text-primary-400">
                         {c.subject}
                       </Link>
@@ -313,10 +347,11 @@ const EmailCampaignsListPage = () => {
             </div>
           ) : (
             /* ---------- GRID ---------- */
-            <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-              {campaigns.map((c) => (
-                <div key={c._id} className="bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-col">
-                  <div className="flex items-start justify-between gap-2 mb-2">
+            <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              {campaigns.map((c, idx) => (
+                <div key={c._id} className="relative bg-white dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/10 p-4 flex flex-col">
+                  <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{(page - 1) * itemsPerPage + idx + 1}</span>
+                  <div className="flex items-start justify-between gap-2 mb-2 pl-6">
                     <StatusBadge status={c.status} />
                     <span className="text-[10px] font-mono text-slate-400">#{String(c._id).slice(-6)}</span>
                   </div>
@@ -348,28 +383,6 @@ const EmailCampaignsListPage = () => {
             </div>
           )}
           </div>
-
-          {/* --- Pagination --- */}
-          {pagination && pagination.total > 0 && (
-            <div className="shrink-0 flex flex-wrap items-center justify-between gap-3 mt-4 text-sm">
-              {pagination.totalPages > 1 && (
-                <>
-                  <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1 || loading}
-                    className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Prev</button>
-                  <span className="text-slate-500">Page {pagination.page} / {pagination.totalPages} · {pagination.total} campaigns</span>
-                  <button onClick={() => setPage((p) => Math.min(pagination.totalPages, p + 1))} disabled={page >= pagination.totalPages || loading}
-                    className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10 disabled:opacity-40">Next</button>
-                </>
-              )}
-              <select
-                value={itemsPerPage}
-                onChange={(e) => { setItemsPerPage(Number(e.target.value)); setPage(1); }}
-                className="px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-white/10"
-              >
-                {PAGE_SIZE_OPTIONS.map(v => <option key={v} value={v}>{v} per page</option>)}
-              </select>
-            </div>
-          )}
       </div>
     </div>
   );

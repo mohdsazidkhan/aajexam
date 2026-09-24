@@ -21,7 +21,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import Pagination from './Pagination';
 import ViewToggle from './ViewToggle';
-import { AdminTableSkeleton } from './skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from './admin/Skeletons';
 import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../lib/constants/pagination';
 
 /**
@@ -86,7 +86,7 @@ const ResponsiveTable = ({
   const lastColumnIsActions = columns.length > 0 && String(columns[columns.length - 1].key || '').toLowerCase() === 'actions';
 
   const renderTableView = () => (
-    <div className={`${fillHeight ? 'flex-1 min-h-0' : 'max-h-[65vh]'} overflow-auto rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300`}>
+    <div className={`${fillHeight ? 'flex-1 min-h-0 overflow-auto' : 'max-h-[65vh]'} overflow-auto rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300`}>
       <table className="w-full border-collapse bg-white dark:bg-slate-900">
         <thead className="sticky top-0 z-10 bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-800">
           <tr>
@@ -284,7 +284,7 @@ const ResponsiveTable = ({
   );
 
   return (
-    <div className={`${fillHeight ? 'flex-1 min-h-0 flex flex-col' : 'space-y-10'} ${className}`}>
+    <div className={`${fillHeight ? 'flex-1 min-h-0 overflow-auto flex flex-col' : 'space-y-10'} ${className}`}>
       {/* Header Controls (View Toggle & Density) */}
       {(showViewToggle || showPagination) && (
         <motion.div
@@ -342,7 +342,7 @@ const ResponsiveTable = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className={fillHeight && currentViewState === 'table' ? 'flex-1 min-h-0 flex flex-col' : ''}
+            className={fillHeight && currentViewState === 'table' ? 'flex-1 min-h-0 overflow-auto flex flex-col' : ''}
           >
             {currentViewState === 'table' && renderTableView()}
             {currentViewState === 'list' && renderListView()}

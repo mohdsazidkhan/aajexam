@@ -187,7 +187,7 @@ export const CommentSkeleton = ({ rows = 3 }) => (
 );
 
 export const ReelFeedSkeleton = () => (
-  <div className="h-full flex flex-col items-center justify-center bg-slate-950 px-6" style={{ height: '100dvh' }}>
+  <div className="h-auto lg:h-full flex flex-col items-center justify-center bg-slate-950 px-6" style={{ height: '100dvh' }}>
     <div className="w-full max-w-sm space-y-2 lg:space-y-4 animate-pulse">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-full bg-slate-800" />

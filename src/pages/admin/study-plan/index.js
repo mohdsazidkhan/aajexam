@@ -9,10 +9,11 @@ import Card from '../../../components/ui/Card';
 import ResponsiveTable from '../../../components/ResponsiveTable';
 import Pagination from '../../../components/Pagination';
 import Sidebar from '../../../components/Sidebar';
-import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
-import AdminRoute from '../../../components/AdminRoute';
+import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
+import AdminRoute from '../../../components/admin/Route';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import useDebounce from '../../../hooks/useDebounce';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const AdminStudyPlanPage = () => {
   const [plans, setPlans] = useState([]);
@@ -120,6 +121,58 @@ const AdminStudyPlanPage = () => {
     }
   ];
 
+  const searchInput = (
+    <div className="relative w-full sm:w-64">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input
+        type="text"
+        placeholder="Search by username, name, email, exam..."
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+      />
+    </div>
+  );
+
+  const viewToggleButtons = (
+    <div className="flex items-center gap-1 w-full">
+      {[
+        { mode: 'table', icon: TableIcon, label: 'Table View' },
+        { mode: 'list', icon: List, label: 'List View' },
+        { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
+      ].map(({ mode, icon: Icon, label }) => (
+        <button key={mode} onClick={() => setViewMode(mode)} title={label}
+          className={`flex-1 flex items-center justify-center p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <Icon className="w-4 h-4" />
+        </button>
+      ))}
+    </div>
+  );
+
+  const paginationControl = totalItems > 0 && (
+    <Pagination
+      compact
+      currentPage={page}
+      totalPages={totalPages}
+      onPageChange={setPage}
+      totalItems={totalItems}
+      itemsPerPage={itemsPerPage}
+      onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Study Plans',
+    count: totalItems,
+    filters: (
+      <>
+        {searchInput}
+        {viewToggleButtons}
+        {paginationControl}
+      </>
+    )
+  });
+
   return (
     <AdminRoute>
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
@@ -128,46 +181,20 @@ const AdminStudyPlanPage = () => {
           <meta name="robots" content="noindex,nofollow" />
         </Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><CalendarDays className="w-6 h-6 text-primary-600 shrink-0" /> Study Planner <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
-            <div className="flex items-center gap-3 w-full lg:w-auto justify-end flex-wrap">
-              <div className="relative w-full sm:w-64">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search by username, name, email, exam..."
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
-                />
-              </div>
-              <div className="flex items-center gap-1">
-                {[
-                  { mode: 'table', icon: TableIcon, label: 'Table View' },
-                  { mode: 'list', icon: List, label: 'List View' },
-                  { mode: 'grid', icon: LayoutGrid, label: 'Grid View' },
-                ].map(({ mode, icon: Icon, label }) => (
-                  <button key={mode} onClick={() => setViewMode(mode)} title={label}
-                    className={`p-2 rounded-lg transition-all ${viewMode === mode ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
-                    <Icon className="w-4 h-4" />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
           {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              <div className="flex-1 min-h-0 overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto overflow-hidden">
               {plans.length === 0 ? (
                 <Card className="text-center text-slate-500 dark:text-slate-400">
                   No study plans available. Study planner admin controls can be added here once backend support is present.
                 </Card>
               ) : viewMode === 'table' ? (
-                <Card className="!p-0 overflow-hidden h-full flex flex-col" padded={false}>
+                <Card className="!p-0 overflow-hidden h-auto lg:h-full flex flex-col" padded={false}>
                   <ResponsiveTable data={plans} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                 </Card>
               ) : viewMode === 'grid' ? (
@@ -246,19 +273,6 @@ const AdminStudyPlanPage = () => {
                 </div>
               )}
               </div>
-
-              {totalItems > 0 && (
-                <div className="shrink-0">
-                  <Pagination
-                    currentPage={page}
-                    totalPages={totalPages}
-                    onPageChange={setPage}
-                    totalItems={totalItems}
-                    itemsPerPage={itemsPerPage}
-                    onItemsPerPageChange={(val) => { setItemsPerPage(val); setPage(1); }}
-                  />
-                </div>
-              )}
             </>
           )}
           </div>

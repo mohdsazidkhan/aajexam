@@ -7,7 +7,8 @@ import API from '../../../lib/api';
 import Link from 'next/link';
 import { useSSR } from '../../../hooks/useSSR';
 import { buildEmailHtml, personalize } from '../../../utils/emailTemplate';
-import { AdminFormSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminFormSkeleton } from '../../admin/Skeletons';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 // Normalize a campaign (either a raw DB doc or a /process progress object)
 // into one consistent shape for the UI.
@@ -326,6 +327,8 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
     ? Math.min(100, Math.round((campaign.processed / campaign.totalTargeted) * 100))
     : 0;
   const activeStep = stepIndex(campaign);
+
+  useAdminMobileHeader({ title: campaignIdProp ? 'Edit Email Campaign' : 'New Email Campaign' });
 
   if (!isMounted || isLoading) return <div className="p-4 lg:p-8"><AdminFormSkeleton fields={6} /></div>;
 

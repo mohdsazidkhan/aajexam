@@ -34,8 +34,9 @@ import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';
-import { AdminDashboardSkeleton, AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { AdminDashboardSkeleton, AdminTableSkeleton } from '../../admin/Skeletons';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
@@ -242,7 +243,7 @@ const DashboardAnalytics = () => {
 
   const RecentActivityTableView = () => (
     recentActivities.length > 0 ? (
-      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
         <ResponsiveTable
           data={recentActivities}
           columns={recentActivityColumns}
@@ -401,9 +402,70 @@ const DashboardAnalytics = () => {
     </div>
   );
 
+  const statBadges = (
+    <>
+      {[
+        { label: 'Total Users', icon: Users, value: data?.overview?.totalUsers },
+        { label: 'Total Quizzes', icon: BarChart3, value: data?.overview?.totalQuizzes },
+        { label: 'Total Revenue', icon: Wallet, value: `₹${data?.overview?.totalRevenue || 0}` },
+        { label: 'Active Users', icon: Trophy, value: data?.overview?.activeUsers },
+        { label: 'Total Attempts', icon: Clock, value: data?.overview?.totalAttempts },
+        { label: 'Subscriptions', icon: Star, value: data?.overview?.totalSubscriptions },
+      ].map((stat, i) => (
+        <div
+          key={i}
+          className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0"
+        >
+          <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0">
+            <stat.icon className="w-3 h-3" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
+              {stat.value?.toLocaleString?.() || stat.value || 0}
+            </div>
+            <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+
+  const viewToggleButtons = (
+    <ViewToggle
+      currentView={recentActivityViewMode}
+      onViewChange={setRecentActivityViewMode}
+      views={['table', 'list', 'grid']}
+      fullWidth
+    />
+  );
+
+  const paginationControl = activityPagination.totalItems > 0 && (
+    <Pagination
+      compact
+      currentPage={activityPage}
+      totalPages={activityPagination.totalPages || 1}
+      onPageChange={setActivityPage}
+      totalItems={activityPagination.totalItems}
+      itemsPerPage={activityLimit}
+      onItemsPerPageChange={handleActivityLimitChange}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Overview',
+    count: null,
+    filters: (
+      <>
+        {statBadges}
+        {viewToggleButtons}
+        {paginationControl}
+      </>
+    )
+  });
+
   if (loading) return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans">
-      <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-hidden">
+      <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto">
         <AdminDashboardSkeleton />
       </div>
     </div>
@@ -425,53 +487,14 @@ const DashboardAnalytics = () => {
 
   return (
      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 flex flex-col overflow-hidden">
-           <div className="mb-4 shrink-0">
-             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
-               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none shrink-0">
-                 <span className="text-primary-600">Overview</span>
-               </h1>
-
-               <div className="flex flex-wrap items-center justify-end gap-2 w-full lg:w-auto">
-                 {[
-                   { label: 'Total Users', icon: Users, value: data.overview?.totalUsers },
-                   { label: 'Total Quizzes', icon: BarChart3, value: data.overview?.totalQuizzes },
-                   { label: 'Total Revenue', icon: Wallet, value: `₹${data.overview?.totalRevenue}` },
-                   { label: 'Active Users', icon: Trophy, value: data.overview?.activeUsers },
-                   { label: 'Total Attempts', icon: Clock, value: data.overview?.totalAttempts },
-                   { label: 'Subscriptions', icon: Star, value: data.overview?.totalSubscriptions },
-                 ].map((stat, i) => (
-                   <div
-                     key={i}
-                     className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0"
-                   >
-                     <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0">
-                       <stat.icon className="w-3 h-3" />
-                     </div>
-                     <div className="min-w-0">
-                       <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
-                         {stat.value?.toLocaleString?.() || stat.value || 0}
-                       </div>
-                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
-                     </div>
-                   </div>
-                 ))}
-
-                 <ViewToggle
-                   currentView={recentActivityViewMode}
-                   onViewChange={setRecentActivityViewMode}
-                   views={['table', 'list', 'grid']}
-                 />
-               </div>
-             </div>
-           </div>
-
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {/* Tables */}
-          <div className="flex-1 min-h-0 flex flex-col gap-4">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col gap-4">
             {/* Recent Activity */}
-            <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
-              <div className="flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto">
                 {activityLoading ? (
                   <div className="py-12"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>
                 ) : (
@@ -482,19 +505,6 @@ const DashboardAnalytics = () => {
                   </>
                 )}
               </div>
-
-              {activityPagination.totalItems > 0 && (
-                <div className="shrink-0 mt-4">
-                  <Pagination
-                    currentPage={activityPage}
-                    totalPages={activityPagination.totalPages || 1}
-                    onPageChange={setActivityPage}
-                    totalItems={activityPagination.totalItems}
-                    itemsPerPage={activityLimit}
-                    onItemsPerPageChange={handleActivityLimitChange}
-                  />
-                </div>
-              )}
             </div>
 
           </div>

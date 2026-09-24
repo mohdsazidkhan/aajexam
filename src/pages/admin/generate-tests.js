@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { AdminTableSkeleton } from '../../components/skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
 const AdminGenerateTestsComponent = dynamic(
-  () => import('../../components/pages/admin/AdminGenerateTests'),
+  () => import('../../components/pages/admin/GenerateTests'),
   {
     ssr: false,
     loading: () => <AdminTableSkeleton />,

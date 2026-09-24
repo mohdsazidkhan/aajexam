@@ -5,11 +5,13 @@ import Link from "next/link";
 import Pagination from "../../Pagination";
 import API from '../../../lib/api';
 import useDebounce from "../../../hooks/useDebounce";
-import { AdminTableSkeleton } from "../../skeletons/AdminSkeletons";
+import { AdminTableSkeleton } from "../../admin/Skeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from "../../Sidebar";
 import ResponsiveTable from "../../ResponsiveTable";
+import StyledSelect from '../../ui/StyledSelect';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 import {
   History,
@@ -199,11 +201,84 @@ export default function ReferralHistory() {
     }
   ];
 
+  const summaryCards = (
+    <>
+      {summary && (
+        <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
+          <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><DollarSign className="w-3.5 h-3.5" /></div>
+          <div className="min-w-0">
+            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
+            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Rewards</div>
+          </div>
+        </div>
+      )}
+      {summary && (
+        <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
+          <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><Award className="w-3.5 h-3.5" /></div>
+          <div className="min-w-0">
+            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
+            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Plan 99</div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+
+  const searchInput = (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => handleSearch(e.target.value)}
+        placeholder="Search..."
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+      />
+    </div>
+  );
+
+  const filterTypeSelect = (
+    <StyledSelect
+      value={filterType}
+      onChange={(val) => { setFilterType(val); setPage(1); }}
+      options={[
+        { value: 'all', label: 'All Reward Types' },
+        { value: 'plan99', label: 'Plan 99 Reward (₹33)' }
+      ]}
+      className="w-full"
+    />
+  );
+
+  const paginationControl = (
+    <Pagination
+      compact
+      currentPage={page}
+      totalPages={pagination.totalPages || 1}
+      onPageChange={handlePageChange}
+      totalItems={pagination.totalItems || 0}
+      itemsPerPage={limit}
+      onItemsPerPageChange={handleLimitChange}
+    />
+  );
+
+  useAdminMobileHeader({
+    title: 'Payouts',
+    count: pagination.totalItems || 0,
+    filters: (
+      <>
+        {summaryCards}
+        {searchInput}
+        {filterTypeSelect}
+        {paginationControl}
+      </>
+    )
+  });
+
   if (loading && transactions.length === 0) {
     return (
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         </div>
       </div>
@@ -213,56 +288,14 @@ export default function ReferralHistory() {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 flex flex-col overflow-hidden">
+      <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
 
-      <div className="flex-1 min-h-0 flex flex-col transition-all duration-500">
+      <div className="flex-1 min-h-0 overflow-auto flex flex-col transition-all duration-500">
 
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
-          <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><History className="w-6 h-6 text-primary-600 shrink-0" /> Referral Payouts <span className="text-slate-400 dark:text-slate-500">({pagination.totalItems || 0})</span></h1>
-
-          <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
-            {summary && (
-              <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-                <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><DollarSign className="w-3.5 h-3.5" /></div>
-                <div className="min-w-0">
-                  <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.totalRewards?.toLocaleString() || 0}</div>
-                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Rewards</div>
-                </div>
-              </div>
-            )}
-            {summary && (
-              <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
-                <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><Award className="w-3.5 h-3.5" /></div>
-                <div className="min-w-0">
-                  <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight">₹{summary.plan99Rewards?.toLocaleString() || 0}</div>
-                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Plan 99</div>
-                </div>
-              </div>
-            )}
-            <div className="relative col-span-2 sm:w-56">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => handleSearch(e.target.value)}
-                placeholder="Search..."
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
-              />
-            </div>
-            <select
-              value={filterType}
-              onChange={handleFilterChange}
-              className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
-            >
-              <option value="all">All Reward Types</option>
-              <option value="plan99">Plan 99 Reward (₹33)</option>
-            </select>
-          </div>
-        </div>
+        {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         {/* Transaction Table */}
-        <div className="flex-1 min-h-0 overflow-hidden">
+        <div className="flex-1 min-h-0 overflow-auto">
         {transactions.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <History className="w-12 h-12 text-slate-300 mb-4" />
@@ -270,24 +303,11 @@ export default function ReferralHistory() {
             <p className="text-sm text-slate-400 mt-2">No referral transactions found for the selected filter. Try a different filter.</p>
           </div>
         ) : (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
             <ResponsiveTable data={transactions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
           </div>
         )}
         </div>
-
-        {pagination.totalItems > 0 && (
-          <div className="shrink-0">
-            <Pagination
-              currentPage={page}
-              totalPages={pagination.totalPages || 1}
-              onPageChange={handlePageChange}
-              totalItems={pagination.totalItems || 0}
-              itemsPerPage={limit}
-              onItemsPerPageChange={handleLimitChange}
-            />
-          </div>
-        )}
       </div>
     </div>
   </div>

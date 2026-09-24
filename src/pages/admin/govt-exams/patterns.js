@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { AdminTableSkeleton } from '../../../components/skeletons/AdminSkeletons';
+import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
 
-const AdminGovtExamPatterns = dynamic(() => import('../../../components/pages/admin/AdminGovtExamPatterns'), {
+const AdminGovtExamPatterns = dynamic(() => import('../../../components/pages/admin/GovtExamPatterns'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });
