@@ -221,7 +221,7 @@ const AdminGovtExamCategories = () => {
               </h1>
             </div>
 
-            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+            <div className="grid grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
               <div className="flex items-center gap-1">
                 {[
                   { icon: TableIcon, id: 'table', label: 'Table View' },
@@ -358,9 +358,13 @@ const AdminGovtExamCategories = () => {
 
                       <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-relaxed mb-4 lg:mb-10 line-clamp-3">{category.description || 'No description'}</p>
 
-                      <div className="w-full flex gap-3 mt-auto">
-                        <button onClick={() => handleEdit(category)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-primary-600 hover:border-primary-500/30 transition-all">EDIT</button>
-                        <button onClick={() => handleDelete(category._id)} className="flex-1 p-4 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl text-[9px] font-black border-2 border-slate-100 dark:border-white/10 hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all">DELETE</button>
+                      <div className="w-full flex justify-center gap-3 mt-auto">
+                        <button onClick={() => handleEdit(category)} title="Edit" className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all shadow-sm">
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button onClick={() => handleDelete(category._id)} title="Delete" className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg lg:rounded-xl hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all shadow-sm">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                       </div>
                     </motion.div>
                   ))}

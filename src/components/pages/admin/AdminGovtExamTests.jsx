@@ -258,7 +258,7 @@ const AdminGovtExamTests = () => {
                      </h1>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+                  <div className="grid grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                      <div className="flex items-center gap-2 px-3 lg:px-4 py-2.5 bg-slate-100 dark:bg-white/5 rounded-lg lg:rounded-xl shadow-sm w-full lg:w-auto lg:min-w-[170px] lg:max-w-[200px]">
                         <Compass className="w-4 h-4 text-primary-600 shrink-0" />
                         <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} className="bg-transparent w-full outline-none text-[10px] font-black uppercase tracking-widest appearance-none cursor-pointer truncate">

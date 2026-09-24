@@ -340,7 +340,7 @@ const AdminGovtExamResults = () => {
                 </h1>
               </div>
 
-              <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+              <div className="grid grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
                 <div className="relative group w-full lg:w-52">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-primary-600 transition-colors" />
                   <input

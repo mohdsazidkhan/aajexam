@@ -110,7 +110,7 @@ const AdminQuizSubjects = () => {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4 shrink-0">
         <h1 className="text-2xl font-black uppercase text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><BookMarked className="w-6 h-6 text-primary-600" /> Subjects <span className="text-slate-400 dark:text-slate-500">({filtered.length})</span></h1>
 
-        <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+        <div className="grid grid-cols-2 lg:flex lg:items-center gap-3 w-full lg:w-auto">
           <div className="relative w-full lg:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
