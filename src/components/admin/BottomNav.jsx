@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import API from '../../lib/api';
+import { getAuthToken } from '../../lib/utils/authUtils';
 import {
   LayoutDashboard,
-  Bell,
-  BarChart2,
   Users,
   Plus,
   X,
@@ -15,8 +15,10 @@ import {
   Zap,
   Newspaper,
   BarChart3,
-  Flame,
-  Wallet,
+  BrainCircuit,
+  PenSquare,
+  FileText,
+  Bell,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -28,19 +30,41 @@ const REEL_TYPES = [
   { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Community poll' },
 ];
 
+const CONTENT_TYPES = [
+  { path: '/admin/quiz/questions', label: 'Quiz Question', icon: BrainCircuit, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Add a question to a quiz' },
+  { path: '/admin/blogs/create', label: 'Blog', icon: PenSquare, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Write a new blog post' },
+  { path: '/admin/current-affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Add a current affairs entry' },
+  { path: '/admin/pyq/create', label: 'PYQ Paper', icon: FileText, gradient: 'bg-slate-900 dark:bg-white', iconColor: 'text-white dark:text-slate-900', desc: 'Add a previous year paper' },
+];
+
 const AdminBottomNav = () => {
   const router = useRouter();
   const currentPath = router.pathname;
   const [showCreate, setShowCreate] = useState(false);
+  const [notifCount, setNotifCount] = useState(0);
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const token = getAuthToken();
+        if (!token) return;
+        const res = await API.getAdminNotifications(1, 1, { unreadOnly: true });
+        setNotifCount(res?.pagination?.total || (res?.data?.length || 0));
+      } catch (err) {
+        console.error('Error fetching notification count:', err);
+      }
+    };
+    fetchCount();
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Reels', path: '/admin/reels', icon: Flame },
     { name: 'Exams', path: '/admin/govt-exams', icon: BookOpen },
+    { name: 'Quizzes', path: '/admin/quiz/quizzes', icon: BrainCircuit },
     { name: 'CREATE', path: null, icon: Plus },
     { name: 'Users', path: '/admin/students', icon: Users },
-    { name: 'Payouts', path: '/admin/withdraw-requests', icon: Wallet },
-    { name: 'Stats', path: '/admin/analytics/dashboard', icon: BarChart2 },
+    { name: 'Notify', path: '/admin/notifications', icon: Bell },
+    { name: 'Overview', path: '/admin/analytics/dashboard', icon: BarChart3 },
   ];
 
   return (
@@ -70,13 +94,14 @@ const AdminBottomNav = () => {
 
               <div className="px-5 pb-24 pt-2">
                 <div className="flex items-center justify-between mb-5">
-                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Create Reel</h3>
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Create</h3>
                   <button onClick={() => setShowCreate(false)} className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800">
                     <X className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   </button>
                 </div>
 
-                <div className="space-y-2.5">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2.5">Reel</p>
+                <div className="space-y-2.5 mb-6">
                   {REEL_TYPES.map((type) => (
                     <motion.button
                       key={type.value}
@@ -84,6 +109,29 @@ const AdminBottomNav = () => {
                       onClick={() => {
                         setShowCreate(false);
                         router.push(`/admin/reels/create?type=${type.value}`);
+                      }}
+                      className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all active:bg-slate-50 dark:active:bg-slate-800"
+                    >
+                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
+                        <type.icon className={`w-5 h-5 ${type.iconColor}`} />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-sm font-black text-slate-900 dark:text-white">{type.label}</p>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{type.desc}</p>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2.5">Content</p>
+                <div className="space-y-2.5">
+                  {CONTENT_TYPES.map((type) => (
+                    <motion.button
+                      key={type.path}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => {
+                        setShowCreate(false);
+                        router.push(type.path);
                       }}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all active:bg-slate-50 dark:active:bg-slate-800"
                     >
@@ -113,10 +161,10 @@ const AdminBottomNav = () => {
                 key="create"
                 aria-label="Create new reel"
                 onClick={() => setShowCreate(true)}
-                className="flex items-center justify-center mb-1 px-2"
+                className="flex items-center justify-center -translate-y-5 px-2"
               >
-                <div className="w-11 h-11 rounded-2xl bg-primary-600 flex items-center justify-center shadow-sm">
-                  <Plus className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
+                  <Plus className="w-7 h-7 text-white" />
                 </div>
               </button>
             );
@@ -128,7 +176,14 @@ const AdminBottomNav = () => {
               <div className={`flex flex-col items-center justify-center min-h-[44px] pt-2 pb-1.5 transition-all ${
                 isActive ? 'text-slate-900 dark:text-white' : 'text-slate-400 dark:text-slate-500'
               }`}>
-                <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
+                <span className="relative inline-flex">
+                  <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
+                  {item.name === 'Notify' && notifCount > 0 && (
+                    <span className="absolute -top-1 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 bg-primary-600 text-white text-[9px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-950 animate-pulse">
+                      {notifCount > 99 ? '99+' : notifCount}
+                    </span>
+                  )}
+                </span>
                 <span className={`text-[11px] mt-0.5 ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
               </div>
             </Link>

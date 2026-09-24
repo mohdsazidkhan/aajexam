@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Bell,
   Sun,
   Moon,
   LogOut,
@@ -18,9 +17,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../store/sidebarSlice';
 import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
-import { secureLogout, getCurrentUser, getAuthToken } from '../../lib/utils/authUtils';
+import { secureLogout, getCurrentUser } from '../../lib/utils/authUtils';
 import { useSSR } from '../../hooks/useSSR';
-import API from '../../lib/api';
 import { useAdminMobileHeaderContext } from '../../contexts/AdminMobileHeaderContext';
 
 const AdminNavbar = () => {
@@ -31,7 +29,6 @@ const AdminNavbar = () => {
   const user = getCurrentUser();
   const { header, setDrawerOpen } = useAdminMobileHeaderContext();
 
-  const [notifCount, setNotifCount] = useState(0);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   useEffect(() => {
@@ -39,21 +36,6 @@ const AdminNavbar = () => {
       dispatch(initializeDarkMode());
     }
   }, [isMounted, dispatch]);
-
-  useEffect(() => {
-    const fetchCount = async () => {
-      try {
-        const token = getAuthToken();
-        if (!token) return;
-        const resCount = await API.getAdminNotifications(1, 1, { unreadOnly: true });
-        const total = resCount?.pagination?.total || (resCount?.data?.length || 0);
-        setNotifCount(total);
-      } catch (err) {
-        console.error('Error fetching notification count:', err);
-      }
-    };
-    if (isMounted) fetchCount();
-  }, [isMounted]);
 
   if (!isMounted) return null;
 
@@ -119,18 +101,6 @@ const AdminNavbar = () => {
               </button>
             )}
 
-            {/* Notification Badge — desktop only */}
-            <Link href="/admin/notifications" className="relative hidden lg:block">
-              <button className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary-500/10 hover:text-primary-600 transition-all border border-slate-200/50 dark:border-white/5">
-                <Bell className="w-4 h-4" />
-                {notifCount > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[1.1rem] h-[1.1rem] px-1 bg-primary-600 text-white text-[9px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-950 animate-pulse">
-                    {notifCount}
-                  </span>
-                )}
-              </button>
-            </Link>
-
             {/* Profile avatar */}
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -185,18 +155,6 @@ const AdminNavbar = () => {
                 <ShieldCheck className="w-4 h-4 text-primary-600" />
                 <span className="text-sm font-bold text-primary-600 dark:text-primary-400">Admin Panel</span>
               </div>
-
-              {/* Notifications — mobile */}
-              <Link href="/admin/notifications" onClick={() => setShowProfileMenu(false)} className="lg:hidden">
-                <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
-                  <Bell className="w-4 h-4 text-slate-400" /> Notifications
-                  {notifCount > 0 && (
-                    <span className="ml-auto min-w-[1.25rem] h-5 px-1 bg-primary-600 text-white text-[10px] font-black rounded-full flex items-center justify-center">
-                      {notifCount}
-                    </span>
-                  )}
-                </button>
-              </Link>
 
               {[
                 { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
