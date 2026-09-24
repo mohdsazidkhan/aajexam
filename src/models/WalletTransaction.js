@@ -24,7 +24,7 @@ const walletTransactionSchema = new mongoose.Schema({
   // ─── Idempotency key: prevents double-crediting on cron re-runs ───────────
   // Format: "competition-{type}-{period}-rank-{n}-user-{userId}"
   // or:     "referral-{referralCode}-{eventType}"
-  idempotencyKey: { type: String, default: null }
+  idempotencyKey: { type: String }
 }, { timestamps: true });
 
 // Unique sparse index so null values don't conflict but set keys are enforced
