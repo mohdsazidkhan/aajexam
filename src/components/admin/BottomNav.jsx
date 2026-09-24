@@ -152,18 +152,19 @@ const AdminBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav aria-label="Admin navigation" className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
+      <nav aria-label="Admin navigation" className="lg:hidden fixed bottom-0 left-0 right-0 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
-          // Center Plus button
+          // Create — its own flex slot like every other item, just lifted up
+          // by translate so it floats half above / half inside the bar.
           if (item.name === 'CREATE') {
             return (
               <button
                 key="create"
                 aria-label="Create new reel"
                 onClick={() => setShowCreate(true)}
-                className="flex items-center justify-center -translate-y-5 px-2"
+                className="flex-1 min-w-0 flex items-center justify-center"
               >
-                <div className="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 -translate-y-7 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
                   <Plus className="w-7 h-7 text-white" />
                 </div>
               </button>
@@ -172,9 +173,9 @@ const AdminBottomNav = () => {
 
           const isActive = currentPath === item.path || currentPath.startsWith(item.path + '/');
           return (
-            <Link key={item.path} href={item.path} className="flex-1 min-w-0" aria-current={isActive ? 'page' : undefined}>
-              <div className={`flex flex-col items-center justify-center min-h-[44px] pt-2 pb-1.5 transition-all ${
-                isActive ? 'text-slate-900 dark:text-white' : 'text-slate-400 dark:text-slate-500'
+            <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
+              <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
+                isActive ? 'bg-primary-600 text-white' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <span className="relative inline-flex">
                   <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
@@ -184,7 +185,7 @@ const AdminBottomNav = () => {
                     </span>
                   )}
                 </span>
-                <span className={`text-[11px] mt-0.5 ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
+                <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
               </div>
             </Link>
           );
