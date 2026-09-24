@@ -45,6 +45,7 @@ const sendNewRegistrationAlert = async ({ user, provider = 'email', referrerName
     const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@mohdsazidkhan.com';
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
     const registeredAt = new Date().toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
         day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true
     });
 
