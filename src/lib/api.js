@@ -442,8 +442,9 @@ class ApiService {
   }
 
   // ===== ANALYTICS ENDPOINTS =====
-  async getAnalyticsDashboard() {
-    return this.request('/api/admin/analytics/dashboard');
+  async getAnalyticsDashboard(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/analytics/dashboard${queryString ? `?${queryString}` : ''}`);
   }
 
   async getUserAnalytics(params = {}) {

@@ -17,7 +17,8 @@ const SearchFilter = ({
   onClearFilters,
   filterOptions = {},
   placeholder = "Search...",
-  className = ""
+  className = "",
+  compact = false
 }) => {
   const hasActiveFilters = Object.values(filters).some(value => value && value !== '');
   const handleChange = onSearchChange || onSearch;
@@ -26,15 +27,17 @@ const SearchFilter = ({
     <div className={`flex flex-col lg:flex-row items-center gap-4 ${className}`}>
         {/* Search Input Area */}
         <div className="relative flex-1 w-full group">
-          <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10">
-            <Search className="text-slate-600 dark:text-slate-400 group-focus-within:text-primary-600 transition-colors duration-300 w-5 h-5" />
+          <div className={`absolute top-1/2 -translate-y-1/2 z-10 ${compact ? 'left-3' : 'left-6'}`}>
+            <Search className={`text-slate-600 dark:text-slate-400 group-focus-within:text-primary-600 transition-colors duration-300 ${compact ? 'w-4 h-4' : 'w-5 h-5'}`} />
           </div>
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => handleChange?.(e.target.value)}
             placeholder={placeholder}
-            className="w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-sm focus:shadow-sm"
+            className={compact
+              ? "w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300"
+              : "w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-sm focus:shadow-sm"}
           />
         </div>
 

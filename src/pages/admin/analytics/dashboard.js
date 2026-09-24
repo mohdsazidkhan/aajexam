@@ -11,7 +11,7 @@ export default function AnalyticsDashboardPage() {
   return (
     <>
       <Head>
-        <title>Admin Analytics - AajExam</title>
+        <title>Analytics Overview - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <DashboardAnalytics />

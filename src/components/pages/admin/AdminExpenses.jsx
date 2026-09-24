@@ -228,6 +228,13 @@ const AdminExpenses = () => {
                     <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Receipt className="w-6 h-6 text-primary-600 shrink-0" /> Expenses <span className="text-slate-400 dark:text-slate-500">({totalItems})</span></h1>
 
                     <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+                        <div className="col-span-2 lg:col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
+                            <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><IndianRupee className="w-3.5 h-3.5" /></div>
+                            <div className="min-w-0">
+                                <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
+                                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Expenses</div>
+                            </div>
+                        </div>
                         <form onSubmit={handleSearch} className="relative col-span-2 sm:w-56">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <input
@@ -263,14 +270,7 @@ const AdminExpenses = () => {
                 </div>
 
                 {/* Stats bar */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
-                    <div className="flex items-center gap-2 px-3 py-2">
-                        <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><IndianRupee className="w-3.5 h-3.5" /></div>
-                        <div className="min-w-0">
-                            <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{formatAmount(summary.totalAmount)}</div>
-                            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">Total Expenses</div>
-                        </div>
-                    </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
                     {summary?.categories?.map((cat) => (
                         <div key={cat._id} className="flex items-center gap-2 px-3 py-2">
                             <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0 uppercase font-black text-[10px] w-7 h-7 flex items-center justify-center">{cat._id.charAt(0)}</div>

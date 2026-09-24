@@ -33,7 +33,9 @@ import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import ResponsiveTable from '../../ResponsiveTable';
-import { AdminDashboardSkeleton } from '../../skeletons/AdminSkeletons';
+import Pagination from '../../Pagination';
+import { AdminDashboardSkeleton, AdminTableSkeleton } from '../../skeletons/AdminSkeletons';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
@@ -43,12 +45,15 @@ const DashboardAnalytics = () => {
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [activityLoading, setActivityLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recentActivityViewMode, setRecentActivityViewMode] = useState(isMobile ? 'list' : 'table');
+  const [activityPage, setActivityPage] = useState(1);
+  const [activityLimit, setActivityLimit] = useState(DEFAULT_PAGE_SIZE);
 
   useEffect(() => {
-    setLoading(true);
-    API.getAnalyticsDashboard()
+    if (data === null) setLoading(true); else setActivityLoading(true);
+    API.getAnalyticsDashboard({ page: activityPage, limit: activityLimit })
       .then(res => {
         if (res.success) {
           setData(res.data);
@@ -56,13 +61,20 @@ const DashboardAnalytics = () => {
           setError(res.message || 'Failed to load dashboard analytics');
         }
         setLoading(false);
+        setActivityLoading(false);
       })
       .catch(err => {
         console.error('API Error:', err);
         setError('Failed to load dashboard analytics');
         setLoading(false);
+        setActivityLoading(false);
       });
-  }, []);
+  }, [activityPage, activityLimit]);
+
+  const handleActivityLimitChange = (val) => {
+    setActivityLimit(val);
+    setActivityPage(1);
+  };
 
   const isDark = document.documentElement.classList.contains('dark');
 
@@ -136,10 +148,8 @@ const DashboardAnalytics = () => {
     }
   };
 
-  // Limit recent activity items to 20 records
-  const recentActivities = Array.isArray(data?.recentActivity)
-    ? data.recentActivity.slice(0, 20)
-    : [];
+  const recentActivities = Array.isArray(data?.recentActivity) ? data.recentActivity : [];
+  const activityPagination = data?.recentActivityPagination || { totalItems: 0, totalPages: 1 };
 
   // Recent Activity View Components
   const recentActivityColumns = [
@@ -164,16 +174,18 @@ const DashboardAnalytics = () => {
       header: (
         <div className="flex items-center gap-2">
           <BookOpen className="w-4 h-4 text-primary-600" />
-          Quiz
+          Quiz / Exam
         </div>
       ),
       render: (_, a) => (
-        <span className="text-gray-600 dark:text-gray-300 font-medium">
-          {a.quiz?.title ?
-            (a.quiz.title.length > 20 ? `${a.quiz.title.substring(0, 20)}...` : a.quiz.title)
-            : 'Unknown Quiz'
-          }
-        </span>
+        <div className="flex items-center gap-2">
+          <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest ${a.type === 'exam' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white' : 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300'}`}>
+            {a.type === 'exam' ? 'Exam' : 'Quiz'}
+          </span>
+          <span className="text-gray-600 dark:text-gray-300 font-medium whitespace-nowrap">
+            {a.quiz?.title || 'Unknown'}
+          </span>
+        </div>
       )
     },
     {
@@ -230,13 +242,17 @@ const DashboardAnalytics = () => {
 
   const RecentActivityTableView = () => (
     recentActivities.length > 0 ? (
-      <ResponsiveTable
-        data={recentActivities}
-        columns={recentActivityColumns}
-        viewModes={['table']}
-        defaultView={'table'}
-        showViewToggle={false}
-      />
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-full flex flex-col">
+        <ResponsiveTable
+          data={recentActivities}
+          columns={recentActivityColumns}
+          viewModes={['table']}
+          defaultView={'table'}
+          showPagination={false}
+          showViewToggle={false}
+          fillHeight
+        />
+      </div>
     ) : (
       <div className="text-center py-12 text-slate-400">
         <div className="flex flex-col items-center gap-2">
@@ -248,7 +264,7 @@ const DashboardAnalytics = () => {
   );
 
   const RecentActivityCardView = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="h-full overflow-y-auto grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4 content-start">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
           <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200">
@@ -314,7 +330,7 @@ const DashboardAnalytics = () => {
   );
 
   const RecentActivityListView = () => (
-    <div className="space-y-3">
+    <div className="h-full overflow-y-auto space-y-3">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
           <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-600 rounded-lg p-4 hover:shadow-sm transition-all duration-200">
@@ -402,105 +418,77 @@ const DashboardAnalytics = () => {
   );
 
   return (
-     <div className="text-slate-900 dark:text-white min-h-screen font-sans selection:bg-primary-500/30 pb-24">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6">
-           <div className="mb-4">
-             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
-               <div className="space-y-2">
-                 <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
-                   <span className="text-primary-600">General</span>
-                 </h1>
+     <div className="h-[calc(100vh-64px)] max-md:h-[calc(100vh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 flex flex-col overflow-hidden">
+           <div className="mb-4 shrink-0">
+             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8">
+               <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none shrink-0">
+                 <span className="text-primary-600">Overview</span>
+               </h1>
+
+               <div className="flex flex-wrap items-center justify-end gap-2 w-full lg:w-auto">
+                 {[
+                   { label: 'Total Users', icon: Users, value: data.overview?.totalUsers },
+                   { label: 'Total Quizzes', icon: BarChart3, value: data.overview?.totalQuizzes },
+                   { label: 'Total Revenue', icon: Wallet, value: `₹${data.overview?.totalRevenue}` },
+                   { label: 'Active Users', icon: Trophy, value: data.overview?.activeUsers },
+                   { label: 'Total Attempts', icon: Clock, value: data.overview?.totalAttempts },
+                   { label: 'Subscriptions', icon: Star, value: data.overview?.totalSubscriptions },
+                 ].map((stat, i) => (
+                   <div
+                     key={i}
+                     className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0"
+                   >
+                     <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0">
+                       <stat.icon className="w-3 h-3" />
+                     </div>
+                     <div className="min-w-0">
+                       <div className="text-xs font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
+                         {stat.value?.toLocaleString?.() || stat.value || 0}
+                       </div>
+                       <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+                     </div>
+                   </div>
+                 ))}
+
+                 <ViewToggle
+                   currentView={recentActivityViewMode}
+                   onViewChange={setRecentActivityViewMode}
+                   views={['table', 'list', 'grid']}
+                 />
                </div>
              </div>
            </div>
 
-           {/* Metric Matrix */}
-           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 lg:gap-6 mb-4">
-             {[
-               {
-                 label: 'Total Users',
-                 icon: <Users />,
-                 value: data.overview?.totalUsers,
-                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
-               },
-               {
-                 label: 'Total Quizzes',
-                 icon: <BarChart3 />,
-                 value: data.overview?.totalQuizzes,
-                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
-               },
-               {
-                 label: 'TOTAL REVENUE',
-                 icon: <Wallet />,
-                 value: `₹${data.overview?.totalRevenue}`,
-                 gradient: 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20'
-               },
-               {
-                 label: 'Active Users',
-                 icon: <Trophy />,
-                 value: data.overview?.activeUsers,
-                 gradient: 'text-primary-600 bg-primary-600/10 border-primary-600/20'
-               },
-               {
-                 label: 'Total Attempts',
-                 icon: <Clock />,
-                 value: data.overview?.totalAttempts,
-                 gradient: 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20'
-               },
-               {
-                 label: 'Subscriptions',
-                 icon: <Star />,
-                 value: data.overview?.totalSubscriptions,
-                 gradient: 'text-black dark:text-white bg-black/10 dark:bg-white/10 border-black/20 dark:border-white/20'
-               },
-             ].map((stat, i) => (
-               <motion.div
-                 key={i}
-                 initial={{ opacity: 0, y: 20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ delay: i * 0.05 }}
-                 className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm hover:border-primary-600/30 transition-all hover:scale-[1.02]"
-               >
-                 <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
-                   <div className={`p-4 rounded-2xl ${stat.gradient.split(' ').slice(1).join(' ')} ${stat.gradient.split(' ')[0]} group-hover:scale-110 transition-transform`}>
-                     {React.cloneElement(stat.icon, { className: 'w-6 h-6' })}
-                   </div>
-                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</div>
-                 </div>
-                 <div className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter italic leading-none group-hover:text-primary-600 transition-colors">
-                   {stat.value?.toLocaleString() || 0}
-                 </div>
-                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-primary-500/5 rounded-full blur-2xl group-hover:bg-primary-500/10 transition-all" />
-               </motion.div>
-             ))}
-           </div>
-
 
           {/* Tables */}
-          <div className="grid grid-cols-1 gap-4">
+          <div className="flex-1 min-h-0 flex flex-col gap-4">
             {/* Recent Activity */}
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg lg:rounded-xl p-3 lg:p-6 shadow-sm">
-              <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary-500/10 rounded-lg lg:rounded-xl flex items-center justify-center">
-                    <BarChart3 className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-md lg:text-xl font-bold text-gray-900 dark:text-white uppercase tracking-tighter">Recent Activity</h3>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Latest quiz attempts and scores</p>
-                  </div>
-                </div>
-
-                <ViewToggle
-                  currentView={recentActivityViewMode}
-                  onViewChange={setRecentActivityViewMode}
-                  views={['table', 'list', 'grid']}
-                />
+            <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-hidden">
+                {activityLoading ? (
+                  <div className="py-12"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>
+                ) : (
+                  <>
+                    {recentActivityViewMode === 'table' && <RecentActivityTableView />}
+                    {recentActivityViewMode === 'grid' && <RecentActivityCardView />}
+                    {recentActivityViewMode === 'list' && <RecentActivityListView />}
+                  </>
+                )}
               </div>
 
-              {recentActivityViewMode === 'table' && <RecentActivityTableView />}
-              {recentActivityViewMode === 'grid' && <RecentActivityCardView />}
-              {recentActivityViewMode === 'list' && <RecentActivityListView />}
+              {activityPagination.totalItems > 0 && (
+                <div className="shrink-0 mt-4">
+                  <Pagination
+                    currentPage={activityPage}
+                    totalPages={activityPagination.totalPages || 1}
+                    onPageChange={setActivityPage}
+                    totalItems={activityPagination.totalItems}
+                    itemsPerPage={activityLimit}
+                    onItemsPerPageChange={handleActivityLimitChange}
+                  />
+                </div>
+              )}
             </div>
 
           </div>

@@ -189,6 +189,20 @@ const FinancialAnalytics = () => {
             <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><IndianRupee className="w-6 h-6 text-primary-600 shrink-0" /> Financial <span className="text-slate-400 dark:text-slate-500">(₹{(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')})</span></h1>
 
             <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+              {[
+                { label: 'Total Revenue', val: `₹${(data?.overview?.totalRevenue || 0).toLocaleString('en-IN')}`, icon: IndianRupee },
+                { label: 'Period Revenue', val: `₹${(data?.overview?.periodRevenue || 0).toLocaleString('en-IN')}`, icon: TrendingUp },
+                { label: 'Subscription Plans', val: data?.subscriptionStats?.length || 0, icon: Layers },
+                { label: 'Successful Payments', val: data?.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
+              ].map((stat) => (
+                <div key={stat.label} className="col-span-1 flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 shrink-0">
+                  <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
+                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
               <div className="relative col-span-2 sm:w-48">
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                 <select name="period" value={filters.period} onChange={handleFilterChange} className="w-full pl-9 pr-8 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm appearance-none cursor-pointer">
@@ -220,24 +234,6 @@ const FinancialAnalytics = () => {
               </div>
             ) : (
               <div className="space-y-2 lg:space-y-4 lg:space-y-12">
-                
-                {/* Financial Metrics */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
-                  {[
-                    { label: 'Total Revenue', val: `₹${(data.overview?.totalRevenue || 0).toLocaleString('en-IN')}`, icon: IndianRupee },
-                    { label: 'Period Revenue', val: `₹${(data.overview?.periodRevenue || 0).toLocaleString('en-IN')}`, icon: TrendingUp },
-                    { label: 'Subscription Plans', val: data.subscriptionStats?.length || 0, icon: Layers },
-                    { label: 'Successful Payments', val: data.paymentStats?.reduce((sum, p) => sum + p.count, 0) || 0, icon: CreditCard }
-                  ].map((stat) => (
-                    <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                      <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
-                      <div className="min-w-0">
-                        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.val}</div>
-                        <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
 
                 {/* Performance Grids */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8">

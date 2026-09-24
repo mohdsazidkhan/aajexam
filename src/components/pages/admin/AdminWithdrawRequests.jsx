@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
-  Clock, CreditCard, Layers, Table, List,
+  Clock, CreditCard, Layers, Table, List, LayoutGrid,
   XCircle, Landmark, Smartphone, Send, CheckCircle2
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
@@ -175,10 +175,28 @@ const AdminWithdrawRequests = () => {
               </h1>
             </div>
 
-            <div className="grid grid-cols-1 lg:flex lg:items-center gap-3 w-full lg:w-auto">
-              <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search requests..." className="w-full lg:w-64" />
+            <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
+              {statusOptions.map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => { setStatus(opt.value); setPage(1); }}
+                  className={`px-3 py-2 rounded-lg lg:rounded-xl border-2 transition-all flex items-center gap-2 relative group overflow-hidden shrink-0 ${status === opt.value
+                      ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-600 shadow-sm'
+                      : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-primary-500/30'
+                    }`}
+                >
+                  <opt.icon className={`w-4 h-4 ${status === opt.value ? 'text-primary-600 dark:text-white' : 'text-slate-400 group-hover:text-primary-600'}`} />
+                  <div className="text-left">
+                    <div className={`text-[9px] font-black uppercase tracking-widest leading-none mb-0.5 ${status === opt.value ? 'text-primary-600 dark:text-white' : 'text-slate-400'}`}>{opt.label}</div>
+                    <div className={`text-[10px] font-black italic tracking-tighter leading-none ${status === opt.value ? 'text-slate-900 dark:text-white' : 'text-slate-300'}`}>
+                      {statusCounts[opt.value] || 0} requests
+                    </div>
+                  </div>
+                </button>
+              ))}
+              <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search requests..." className="w-full lg:w-64" compact />
               <div className="flex items-center gap-1">
-                {[{ icon: Table, id: 'table', label: 'Table View' }, { icon: List, id: 'list', label: 'List View' }].map((mode) => (
+                {[{ icon: Table, id: 'table', label: 'Table View' }, { icon: LayoutGrid, id: 'grid', label: 'Grid View' }, { icon: List, id: 'list', label: 'List View' }].map((mode) => (
                   <button key={mode.id} onClick={() => setViewMode(mode.id)} title={mode.label} className={`p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
                     <mode.icon className="w-4 h-4" />
                   </button>
@@ -187,28 +205,6 @@ const AdminWithdrawRequests = () => {
             </div>
           </div>
         </motion.div>
-
-        {/* Quick Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-3 lg:gap-4 mb-4 shrink-0">
-          {statusOptions.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => { setStatus(opt.value); setPage(1); }}
-              className={`w-full lg:w-auto px-4 lg:px-6 py-2.5 rounded-lg lg:rounded-xl border-2 transition-all flex items-center gap-4 relative group overflow-hidden ${status === opt.value
-                  ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-600 shadow-sm'
-                  : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-primary-500/30'
-                }`}
-            >
-              <opt.icon className={`w-5 h-5 ${status === opt.value ? 'text-primary-600 dark:text-white' : 'text-slate-400 group-hover:text-primary-600'}`} />
-              <div className="text-left">
-                <div className={`text-[10px] font-black uppercase tracking-widest leading-none mb-1 ${status === opt.value ? 'text-primary-600 dark:text-white' : 'text-slate-400'}`}>{opt.label}</div>
-                <div className={`text-xs font-black italic tracking-tighter leading-none ${status === opt.value ? 'text-slate-900 dark:text-white' : 'text-slate-300'}`}>
-                  {statusCounts[opt.value] || 0} requests
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
 
         {/* Table / List */}
         <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
@@ -227,6 +223,63 @@ const AdminWithdrawRequests = () => {
                 <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm selection:bg-primary-500/30 flex-1 min-h-0 flex flex-col">
                   <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} fillHeight />
                   <Pagination currentPage={page} totalPages={pagination.totalPages || 1} onPageChange={setPage} totalItems={total} itemsPerPage={itemsPerPage} onItemsPerPageChange={handleLimitChange} />
+                </div>
+              ) : viewMode === 'list' ? (
+                <div className="flex-1 min-h-0 overflow-auto space-y-3">
+                  {items.map((req, idx) => (
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-white dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 p-3 lg:p-4 shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
+                      <div className="flex items-center gap-3 flex-1 min-w-0">
+                        <div className="w-10 h-10 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center font-black text-xs uppercase shrink-0">{req.userId?.name?.[0] || 'U'}</div>
+                        <div className="min-w-0">
+                          <div className="text-sm font-black text-slate-900 dark:text-white uppercase italic tracking-tight leading-none mb-1 truncate">{req.userId?.name || 'N/A'}</div>
+                          <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none truncate">{req.userId?.email || 'N/A'}</div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col shrink-0">
+                        <span className="text-lg font-black text-primary-600 italic tracking-tighter leading-none">{formatCurrency(req.amount)}</span>
+                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1 capitalize">{req.requestType} wallet</span>
+                      </div>
+
+                      <div className="shrink-0">
+                        {req.upi ? (
+                          <div className="flex items-center gap-2 text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                            <Smartphone className="w-3 h-3 text-primary-600" />
+                            <span className="font-mono text-[10px]">{req.upi}</span>
+                          </div>
+                        ) : req.bankDetail ? (
+                          <div className="flex items-center gap-2 text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                            <Landmark className="w-3 h-3 text-primary-600" />
+                            <span className="font-mono text-[10px]">{req.bankDetail.accountNumber}</span>
+                          </div>
+                        ) : <span className="text-[9px] italic opacity-50">No payment details</span>}
+                      </div>
+
+                      <div className={`px-3 py-1 rounded-lg text-[8px] font-black uppercase inline-flex items-center gap-2 border-2 shrink-0 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
+                          req.status === 'approved' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' :
+                            req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
+                              'bg-primary-500/10 text-primary-600 border-primary-500/20'
+                        }`}>
+                        {req.status === 'pending' && <Clock className="w-3 h-3" />}
+                        {req.status === 'approved' && <CheckCircle2 className="w-3 h-3" />}
+                        {req.status === 'rejected' && <XCircle className="w-3 h-3" />}
+                        {req.status === 'paid' && <CreditCard className="w-3 h-3" />}
+                        {req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}
+                      </div>
+
+                      {req.status === 'pending' && (
+                        <div className="flex gap-2 shrink-0">
+                          <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'approved')} className="p-2 bg-primary-600 text-white rounded-lg shadow-sm"><CheckCircle2 className="w-4 h-4" /></motion.button>
+                          <motion.button whileHover={{ scale: 1.05 }} onClick={() => updateStatus(req._id, 'rejected')} className="p-2 bg-primary-600 text-white rounded-lg shadow-sm"><XCircle className="w-4 h-4" /></motion.button>
+                        </div>
+                      )}
+                      {req.status === 'approved' && (
+                        <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="shrink-0 px-4 py-2 bg-primary-600 text-white rounded-lg text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
+                          <Send className="w-3 h-3" /> Mark as Paid
+                        </motion.button>
+                      )}
+                    </motion.div>
+                  ))}
                 </div>
               ) : (
                 <div className="flex-1 min-h-0 overflow-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">

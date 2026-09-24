@@ -245,13 +245,13 @@ const EmailCampaignsListPage = () => {
                 </button>
               ))}
             </div>
-            <div className="flex rounded-lg overflow-hidden border border-slate-300 dark:border-white/10">
+            <div className="flex items-center gap-1">
               {VIEWS.map((v) => (
-                <button key={v.key} onClick={() => changeView(v.key)} title={v.label}
-                  className={`px-3 py-1.5 flex items-center gap-1 text-xs ${
-                    view === v.key ? 'bg-primary-600 text-white' : 'bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10'
+                <button key={v.key} onClick={() => changeView(v.key)} title={`${v.label} View`}
+                  className={`p-2 rounded-lg transition-all ${
+                    view === v.key ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'
                   }`}>
-                  <v.icon size={14} /> <span className="hidden sm:inline">{v.label}</span>
+                  <v.icon size={16} />
                 </button>
               ))}
             </div>

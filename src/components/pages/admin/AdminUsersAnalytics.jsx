@@ -7,7 +7,7 @@ import {
     TrendingUp, TrendingDown, LayoutGrid, List, Table as TableIcon, Tag,
     Wallet, PieChart, Activity, ShieldCheck, Mail, Calendar,
     Zap, Target, ExternalLink, Cpu, Globe, ArrowRight, ArrowUpRight, ArrowDownRight, Layers,
-    DownloadCloud, UserCheck, Star, Award, Trophy, Info
+    UserCheck, Star, Award, Trophy, Info
 } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
@@ -157,6 +157,26 @@ const AdminUsersAnalytics = () => {
                         <h1 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2 shrink-0"><Users className="w-6 h-6 text-primary-600 shrink-0" /> Growth <span className="text-slate-400 dark:text-slate-500">({summary.totalUsers || totalUsers})</span></h1>
 
                         <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-3 w-full lg:w-auto">
+                            {[
+                                 { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'primary' },
+                                 { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'primary', isCurrency: true },
+                                 { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'primary', isCurrency: true },
+                                 { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', isCurrency: true },
+                                 { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', isCurrency: true, isNet: true }
+                             ].map((stat) => (
+                                <div key={stat.label} className="col-span-1 flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
+                                    <div className={`p-1 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-md shrink-0`}><stat.icon className="w-3 h-3" /></div>
+                                    <div className="min-w-0">
+                                        <div className="flex items-baseline gap-0.5">
+                                            {stat.isCurrency && <IndianRupee className="w-2 h-2 text-slate-400" />}
+                                            <div className={`text-xs font-black tabular-nums tracking-tight whitespace-nowrap ${stat.isNet ? (stat.val >= 0 ? 'text-primary-600' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
+                                                {new Intl.NumberFormat('en-IN').format(stat.val)}
+                                            </div>
+                                        </div>
+                                        <div className="text-[8px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
+                                    </div>
+                                </div>
+                            ))}
                             <div className="relative col-span-2 sm:w-56">
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                                 <input type="text" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSearch()} placeholder="Search by name or email..." className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
@@ -173,37 +193,13 @@ const AdminUsersAnalytics = () => {
                                     </button>
                                 ))}
                             </div>
-                            <button onClick={() => router.push('/admin/expenses')} className="flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm shrink-0">
-                                <Wallet className="w-4 h-4" /> Expenses
+                            <button onClick={() => router.push('/admin/expenses')} title="Expenses" className="flex items-center justify-center bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-2 rounded-lg lg:rounded-xl shrink-0">
+                                <Wallet className="w-4 h-4" />
                             </button>
                             <button onClick={exportCSV} title="Export CSV" className="flex items-center justify-center bg-primary-50 dark:bg-primary-950/30 text-primary-600 p-2 rounded-lg lg:rounded-xl shrink-0">
-                                <DownloadCloud className="w-4 h-4" />
+                                <Download className="w-4 h-4" />
                             </button>
                         </div>
-                    </div>
-
-                    {/* Summary Metrics */}
-                    <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
-                        {[
-                             { label: 'Total Users', val: summary.totalUsers || totalUsers, icon: Users, color: 'primary' },
-                             { label: 'Monthly Revenue', val: summary.totalRevenue || 0, icon: TrendingUp, color: 'primary', isCurrency: true },
-                             { label: 'Total Earnings', val: summary.totalEarnings || 0, icon: Gift, color: 'primary', isCurrency: true },
-                             { label: 'Other Expenses', val: summary.totalCustomExpenses || 0, icon: Target, color: 'primary', isCurrency: true },
-                             { label: 'Net Profit', val: summary.netPlatform || 0, icon: Activity, color: summary.netPlatform >= 0 ? 'primary' : 'rose', isCurrency: true, isNet: true }
-                         ].map((stat) => (
-                            <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-                                <div className={`p-1.5 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-lg shrink-0`}><stat.icon className="w-3.5 h-3.5" /></div>
-                                <div className="min-w-0">
-                                    <div className="flex items-baseline gap-0.5">
-                                        {stat.isCurrency && <IndianRupee className="w-2.5 h-2.5 text-slate-400" />}
-                                        <div className={`text-sm font-black tabular-nums tracking-tight ${stat.isNet ? (stat.val >= 0 ? 'text-primary-600' : 'text-black dark:text-white') : 'text-slate-900 dark:text-white'}`}>
-                                            {new Intl.NumberFormat('en-IN').format(stat.val)}
-                                        </div>
-                                    </div>
-                                    <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
-                                </div>
-                            </div>
-                        ))}
                     </div>
 
                     <div className="flex-1 min-h-0 overflow-hidden">
