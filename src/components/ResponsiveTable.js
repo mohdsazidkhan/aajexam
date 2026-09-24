@@ -83,6 +83,8 @@ const ResponsiveTable = ({
   };
 
   // --- Table View (Data Matrix) ---
+  const lastColumnIsActions = columns.length > 0 && String(columns[columns.length - 1].key || '').toLowerCase() === 'actions';
+
   const renderTableView = () => (
     <div className={`${fillHeight ? 'flex-1 min-h-0' : 'max-h-[65vh]'} overflow-auto rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300`}>
       <table className="w-full border-collapse bg-white dark:bg-slate-900">
@@ -91,17 +93,20 @@ const ResponsiveTable = ({
             <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
               S.No.
             </th>
-            {columns.map((column, index) => (
-              <th
-                key={index}
-                className={`px-3 py-2 text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
-                  }`}
-              >
-                {column.header}
-              </th>
-            ))}
+            {columns.map((column, index) => {
+              const isStickyActions = lastColumnIsActions && index === columns.length - 1;
+              return (
+                <th
+                  key={index}
+                  className={`px-3 py-2 text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
+                    } ${isStickyActions ? 'sticky right-0 z-20 bg-white dark:bg-slate-800 border-l border-slate-100 dark:border-slate-700' : ''}`}
+                >
+                  {column.header}
+                </th>
+              );
+            })}
             {actions.length > 0 && (
-              <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
+              <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap sticky right-0 z-20 bg-white dark:bg-slate-800 border-l border-slate-100 dark:border-slate-700">
                 Actions
               </th>
             )}
@@ -120,14 +125,17 @@ const ResponsiveTable = ({
               <td className="px-3 py-1.5 text-xs font-black text-slate-600 dark:text-slate-300 whitespace-nowrap">
                 {getSerialNumber(rowIndex)}
               </td>
-              {columns.map((column, colIndex) => (
-                <td key={colIndex} className={`px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
-                  }`}>
-                  {column.render ? column.render(row[column.key], row) : (row[column.key] || '—')}
-                </td>
-              ))}
+              {columns.map((column, colIndex) => {
+                const isStickyActions = lastColumnIsActions && colIndex === columns.length - 1;
+                return (
+                  <td key={colIndex} className={`px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 whitespace-nowrap ${column.align === 'center' ? 'text-center' : column.align === 'right' ? 'text-right' : 'text-left'
+                    } ${isStickyActions ? 'sticky right-0 z-10 bg-white dark:bg-slate-900 group-hover:bg-primary-500/5 dark:group-hover:bg-primary-500/10 border-l border-slate-100 dark:border-slate-800' : ''}`}>
+                    {column.render ? column.render(row[column.key], row) : (row[column.key] || '—')}
+                  </td>
+                );
+              })}
               {actions.length > 0 && (
-                <td className="px-3 py-1.5 whitespace-nowrap">
+                <td className="px-3 py-1.5 whitespace-nowrap sticky right-0 z-10 bg-white dark:bg-slate-900 group-hover:bg-primary-500/5 dark:group-hover:bg-primary-500/10 border-l border-slate-100 dark:border-slate-800">
                   <div className="flex items-center gap-1.5">
                     {actions.map((action, actionIndex) => (
                       <motion.button

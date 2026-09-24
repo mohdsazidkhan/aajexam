@@ -43,6 +43,8 @@ const AdminReels = () => {
   const [loading, setLoading] = useState(false);
   const [statusFilter, setStatusFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
+  const [subjectFilter, setSubjectFilter] = useState('');
+  const [subjectOptions, setSubjectOptions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusCounts, setStatusCounts] = useState({});
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_PAGE_SIZE);
@@ -56,6 +58,7 @@ const AdminReels = () => {
       const params = { page, limit: itemsPerPage };
       if (statusFilter) params.status = statusFilter;
       if (typeFilter) params.type = typeFilter;
+      if (subjectFilter) params.subject = subjectFilter;
       if (searchTerm) params.search = searchTerm;
 
       const res = await API.getAdminReels(params);
@@ -69,9 +72,20 @@ const AdminReels = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, statusFilter, typeFilter, searchTerm, itemsPerPage]);
+  }, [page, statusFilter, typeFilter, subjectFilter, searchTerm, itemsPerPage]);
 
   useEffect(() => { load(); }, [load]);
+
+  useEffect(() => {
+    API.getAdminReelsAnalytics()
+      .then(res => {
+        if (res?.success) {
+          const subjects = (res.data?.subjectBreakdown || []).map(s => s._id).filter(Boolean).sort();
+          setSubjectOptions(subjects);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const handleStatusChange = async (id, newStatus) => {
     setActionLoading(id);
@@ -224,6 +238,12 @@ const AdminReels = () => {
               <option value="tip">Tip/Trick</option>
               <option value="current_affairs">Current Affairs</option>
               <option value="poll">Poll</option>
+            </select>
+            <select value={subjectFilter} onChange={e => { setSubjectFilter(e.target.value); setPage(1); }} className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm max-w-full lg:max-w-[180px] truncate">
+              <option value="">All Categories</option>
+              {subjectOptions.map(subject => (
+                <option key={subject} value={subject}>{subject}</option>
+              ))}
             </select>
             <div className="flex items-center gap-1">
               {[
