@@ -312,73 +312,51 @@ const AdminBlogs = () => {
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-4 shrink-0">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8">
-            <div className="space-y-2">
-              <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic">
-                <span className="text-primary-600">BLOG</span>
-              </h1>
-            </div>
-            <div className="flex flex-col lg:flex-row items-center gap-3">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4">
+            <h1 className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none italic shrink-0">
+              <span className="text-primary-600">BLOG</span>
+            </h1>
+
+            <div className="flex flex-wrap items-center justify-end gap-2 w-full lg:w-auto">
+              <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
+                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm w-full sm:w-48" />
+              <select name="status" value={filters.status} onChange={handleFilterChange}
+                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+                <option value="">All Status</option>
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+              </select>
+              <select name="exam" value={filters.exam} onChange={handleFilterChange}
+                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm max-w-[160px] truncate">
+                <option value="">All Exams</option>
+                {exams.map(exam => (
+                  <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
+                ))}
+              </select>
+              <select name="isFeatured" value={filters.isFeatured} onChange={handleFilterChange}
+                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+                <option value="">Featured: All</option>
+                <option value="true">Featured</option>
+                <option value="false">Not Featured</option>
+              </select>
+              <select name="isPinned" value={filters.isPinned} onChange={handleFilterChange}
+                className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm">
+                <option value="">Pinned: All</option>
+                <option value="true">Pinned</option>
+                <option value="false">Not Pinned</option>
+              </select>
               <ViewToggle currentView={viewMode} onViewChange={setViewMode} views={['table', 'list', 'grid']} />
               <motion.button
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => router.push('/admin/blogs/create')}
-                className="w-full lg:w-auto px-4 lg:px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+                className="px-4 lg:px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2 shrink-0"
               >
                 <Plus className="w-4 h-4" /> NEW BLOG
               </motion.button>
             </div>
           </div>
         </motion.div>
-
-        {/* Filters */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 mb-4 shadow-sm border border-gray-200 dark:border-gray-700 shrink-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Search</label>
-              <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Status</label>
-              <select name="status" value={filters.status} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-                <option value="">All Status</option>
-                <option value="published">Published</option>
-                <option value="draft">Draft</option>
-                <option value="archived">Archived</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Exam</label>
-              <select name="exam" value={filters.exam} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-                <option value="">All Exams</option>
-                {exams.map(exam => (
-                  <option key={exam._id} value={exam._id}>{exam.name} ({exam.code})</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Featured</label>
-              <select name="isFeatured" value={filters.isFeatured} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-                <option value="">All</option>
-                <option value="true">Featured</option>
-                <option value="false">Not Featured</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 mb-1 uppercase">Pinned</label>
-              <select name="isPinned" value={filters.isPinned} onChange={handleFilterChange}
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-                <option value="">All</option>
-                <option value="true">Pinned</option>
-                <option value="false">Not Pinned</option>
-              </select>
-            </div>
-          </div>
-        </div>
 
         {/* Content */}
         <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
