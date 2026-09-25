@@ -15,7 +15,7 @@ const ReferralBanner = ({ user }) => {
     "Invite your friends to AajExam and earn real rewards you can withdraw anytime! 🚀\n\n" +
     "Here's what you earn:\n\n" +
     `💰 ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys the PRO ₹${config.SUBSCRIPTION_PLANS.PRO.price} plan (first-time)\n\n` +
-    `ðŸŽ Your Invitation Code: ${referralCode}\n\n` +
+    `🎁 Your Invitation Code: ${referralCode}\n\n` +
     "🔗 Join here:\n\n" +
     "https://aajexam.com/register";
 

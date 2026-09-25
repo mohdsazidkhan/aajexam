@@ -23,7 +23,7 @@ import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 
-// â€”â€”â€”â€”â€” Stats Card â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+// —————————————————————————————————————————————————————— Stats Card ——————————————————————————————
 function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) {
   const colors = {
     primary: "text-primary-600 bg-primary-500/10 border-primary-500/20",

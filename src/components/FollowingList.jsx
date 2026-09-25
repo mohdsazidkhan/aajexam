@@ -94,7 +94,7 @@ const FollowingList = ({ username: usernameProp }) => {
             </div>
           ) : following.length === 0 ? (
             <div className="text-center py-32 bg-slate-100 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-dashed border-slate-200/50 dark:border-slate-700/30">
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">Ã°Å¸Å½â€œ</div>
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">🎓</div>
               <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-relaxed">Your network is currently empty.<br />Follow other students to see their achievements!</p>
             </div>
           ) : (

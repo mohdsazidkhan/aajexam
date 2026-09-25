@@ -58,7 +58,7 @@ export default function HalalDisclaimer() {
                                         {
                                             title: '2. Legitimate Service',
                                             evidence: '"The Prophet ï·º forbade the selling of what is not in your possession." (Bukhari 2087)',
-                                            desc: 'Users pay for educational access. We provide real, structured value in return â€” not speculative or deceptive gains.'
+                                            desc: 'Users pay for educational access. We provide real, structured value in return — not speculative or deceptive gains.'
                                         },
                                         {
                                             title: '3. Rewards Based on Effort',

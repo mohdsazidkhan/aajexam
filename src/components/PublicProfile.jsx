@@ -247,7 +247,7 @@ const PublicProfile = ({ username }) => {
                         key={index}
                         className="px-8 py-4 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-100 dark:border-slate-700 flex items-center gap-4 group/badge hover:border-primary-700 transition-all shadow-sm hover:-translate-y-1"
                       >
-                        <span className="text-2xl group-hover/badge:scale-125 transition-transform">Ã°Å¸Ââ€ </span>
+                        <span className="text-2xl group-hover/badge:scale-125 transition-transform">🏆</span>
                         <span className="text-[10px] font-black text-slate-700 dark:text-white uppercase tracking-widest">{badge}</span>
                       </div>
                     ))}
@@ -451,7 +451,7 @@ const PublicProfile = ({ username }) => {
                     {contributions.userQuestions.items.map((question) => (
                       <div key={question._id} className="p-8 bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm hover:-translate-y-1 transition-all group">
                         <div className="w-10 h-10 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-sm border-2 border-white dark:border-slate-700">
-                          <span className="text-lg">Ã°Å¸â€™Â¬</span>
+                          <span className="text-lg">💬</span>
                         </div>
                         <h4 className="text-md font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6 leading-tight group-hover:text-primary-600 transition-colors">{question.questionText}</h4>
 
@@ -471,13 +471,13 @@ const PublicProfile = ({ username }) => {
                         {/* Stats */}
                         <div className="flex items-center gap-6 text-[8px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
                           <span className="flex items-center gap-2">
-                            Ã°Å¸â€˜ÂÃ¯Â¸Â {question.viewsCount || 0}
+                            👁️ {question.viewsCount || 0}
                           </span>
                           <span className="flex items-center gap-2">
-                            Ã¢ÂÂ¤Ã¯Â¸Â {question.likesCount || 0}
+                            ❤️ {question.likesCount || 0}
                           </span>
                           <span className="flex items-center gap-2">
-                            Ã°Å¸â€œÂ¤ {question.sharesCount || 0}
+                            📤 {question.sharesCount || 0}
                           </span>
                         </div>
                       </div>
@@ -492,7 +492,7 @@ const PublicProfile = ({ username }) => {
           {!profile.isPublicProfile && !isOwnProfile && (
             <div className="bg-white dark:bg-slate-800 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm p-12 text-center">
               <div className="w-20 h-20 bg-white dark:bg-slate-900 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-slate-100 dark:border-slate-800">
-                <span className="text-4xl text-slate-300">Ã°Å¸â€â€™</span>
+                <span className="text-4xl text-slate-300">🔒</span>
               </div>
               <h3 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">Private Profile</h3>
               <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-relaxed">

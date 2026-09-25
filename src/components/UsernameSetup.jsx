@@ -75,7 +75,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       );
 
       if (response.data.success) {
-        setMessage('Username updated successfully! Ã¢Å“â€œ');
+        setMessage('Username updated successfully! ✓');
         onUpdate && onUpdate(response.data.username);
       }
     } catch (error) {
@@ -113,18 +113,18 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€œ</span>
+          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">✓</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-600">Ã¢Å“â€”</span>
+          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-600">✗</span>
         )}
       </div>
 
       <div className="username-rules my-6 p-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-sm">
         <ul className="list-none p-0 m-0 space-y-1">
-          <li>Ã¢â‚¬Â¢ 3-20 characters</li>
-          <li>Ã¢â‚¬Â¢ Letters, numbers, underscores</li>
-          <li>Ã¢â‚¬Â¢ No spaces or special chars</li>
+          <li>• 3-20 characters</li>
+          <li>• Letters, numbers, underscores</li>
+          <li>• No spaces or special chars</li>
         </ul>
       </div>
 

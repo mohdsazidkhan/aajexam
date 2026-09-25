@@ -3,10 +3,10 @@
  * ProgressBar
  * Animated progress bar with label and color variants.
  * Props:
- *   percent  Ã¢â‚¬â€ 0-100
- *   color    Ã¢â‚¬â€ 'orange' | 'blue' | 'purple' | 'green'
- *   showLabel Ã¢â‚¬â€ bool
- *   height   Ã¢â‚¬â€ 'sm' | 'md' | 'lg'
+ *   percent  — 0-100
+ *   color    — 'orange' | 'blue' | 'purple' | 'green'
+ *   showLabel — bool
+ *   height   — 'sm' | 'md' | 'lg'
  */
 
 const COLOR_MAP = {

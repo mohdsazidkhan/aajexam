@@ -182,7 +182,7 @@ const ResponsiveTable = ({
                     {getIconForKey(col.key)} {col.header}
                   </div>
                   <div className="text-xs font-black text-slate-800 dark:text-slate-100 truncate">
-                    {col.render ? col.render(row[col.key], row) : (row[col.key] || 'â€”')}
+                    {col.render ? col.render(row[col.key], row) : (row[col.key] || '—')}
                   </div>
                 </div>
               ))}
@@ -253,7 +253,7 @@ const ResponsiveTable = ({
                     {getIconForKey(col.key)} {col.header}
                   </div>
                   <div className="text-[10px] font-black text-slate-800 dark:text-slate-200 text-right truncate max-w-[140px]">
-                    {col.render ? col.render(row[col.key], row) : (row[col.key] || 'â€”')}
+                    {col.render ? col.render(row[col.key], row) : (row[col.key] || '—')}
                   </div>
                 </div>
               ))}
