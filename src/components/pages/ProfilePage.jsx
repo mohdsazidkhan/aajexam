@@ -541,9 +541,12 @@ const ProfilePage = () => {
                 <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
                   Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
                 </p>
-                <Button fullWidth onClick={secureLogout} icon={LogOut} className="py-4 text-sm font-black bg-primary-600 text-white shadow-sm rounded-2xl">
-                  Log out
-                </Button>
+                <button
+                  onClick={secureLogout}
+                  className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-black uppercase tracking-wide bg-red-500 hover:bg-red-600 text-white shadow-sm transition-colors"
+                >
+                  <LogOut className="w-4 h-4" /> Log out
+                </button>
               </Card>
             </motion.div>
           )}

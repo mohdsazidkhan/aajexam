@@ -208,7 +208,7 @@ const StudentNavbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 transition-all"
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
               >
                 <LogOut className="w-4 h-4" /> Log out
               </button>

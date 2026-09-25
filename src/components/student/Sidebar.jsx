@@ -204,7 +204,7 @@ const StudentSidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5 min-w-[240px]">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 dark:bg-white/15 text-black dark:text-white text-[11px] font-bold tracking-wide hover:bg-slate-100 dark:hover:bg-white/25 transition-colors flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-lg lg:rounded-xl bg-red-500 hover:bg-red-600 text-white text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>

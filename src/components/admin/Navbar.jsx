@@ -12,6 +12,7 @@ import {
   LayoutDashboard,
   ShieldCheck,
   Filter,
+  UserCircle,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
@@ -101,6 +102,15 @@ const AdminNavbar = () => {
               </button>
             )}
 
+            {/* Theme toggle — desktop only (mobile keeps it in the profile menu) */}
+            <button
+              onClick={toggleTheme}
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="hidden lg:flex w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+            >
+              {darkMode ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            </button>
+
             {/* Profile avatar */}
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -158,6 +168,7 @@ const AdminNavbar = () => {
 
               {[
                 { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
+                { label: 'Profile', icon: UserCircle, path: '/admin/profile' },
               ].map(item => (
                 <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
                   <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
@@ -179,7 +190,7 @@ const AdminNavbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 transition-all"
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
               >
                 <LogOut className="w-4 h-4" /> Log out
               </button>

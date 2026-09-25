@@ -98,7 +98,7 @@ const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {
               <motion.button
                 whileTap={{ scale: 0.9, y: 1 }}
                 onClick={() => secureLogout(router)}
-                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-primary-600 border-b-2 border-primary-600 text-white shadow-sm"
+                className="w-10 h-10 flex items-center justify-center rounded-lg lg:rounded-xl bg-red-500 border-b-2 border-red-600 text-white shadow-sm"
               >
                 <LogOut className="w-4 h-4" />
               </motion.button>
