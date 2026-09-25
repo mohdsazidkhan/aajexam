@@ -33,7 +33,7 @@ const InterviewQuestionsSkeleton = () => (
 );
 
 const typeConfig = {
-  government: { icon: Landmark, label: 'Government Jobs' },
+  government: { icon: Landmark, label: 'Govt. Jobs' },
   private: { icon: Briefcase, label: 'Private Jobs' },
 };
 
@@ -109,11 +109,11 @@ const InterviewQuestionsPage = () => {
       </section>
 
       {/* ── Government / Private toggle + language switch ── */}
-      <div className="flex gap-2 px-1">
+      <div className="flex gap-2 px-1 overflow-x-auto no-scrollbar sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-0 lg:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
         <div className="flex-1 flex gap-2">
           {Object.entries(typeConfig).map(([id, c]) => (
             <button key={id} onClick={() => setType(id)}
-              className={`flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-full font-black uppercase text-xs transition-all border-b-2 active:translate-y-0.5 ${
+              className={`min-w-[150px] flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-full font-black uppercase text-xs transition-all border-b-2 active:translate-y-0.5 ${
                 type === id
                   ? 'bg-primary-600 text-white border-primary-600'
                   : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
@@ -123,7 +123,7 @@ const InterviewQuestionsPage = () => {
           ))}
         </div>
         <div className="flex rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 shrink-0">
-          {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'हिं' }].map(l => (
+          {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (
             <button key={l.id} onClick={() => { setLanguage(l.id); setPage(1); }}
               className={`px-4 py-3 font-black uppercase text-xs transition-all ${
                 language === l.id
@@ -178,16 +178,19 @@ const InterviewQuestionsPage = () => {
                         <h3 className={`text-sm font-black text-content-primary tracking-tight line-clamp-2 ${language === 'hi' && q.questionHi ? 'leading-relaxed' : 'leading-tight'}`}>{(language === 'hi' && q.questionHi) || q.question}</h3>
                         {q.category?.name && (
                           <div className="flex items-center justify-between gap-2 mt-0.5">
-                            <p className="text-[10px] font-bold text-content-muted uppercase">{q.category.name}</p>
-                            <div className="flex items-center gap-1 text-[10px] font-black text-slate-500 uppercase shrink-0">
-                              <Eye className="w-3 h-3" />
-                              {q.views || 0}
-                            </div>
+                            <p className="text-[12px] font-bold text-content-muted uppercase">{q.category.name}</p>
+                            
                           </div>
                         )}
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                    <div className="flex flex-col items-center gap-2">
+                              <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                                                  <div className="flex items-center gap-1 text-[10px] font-black text-slate-500 uppercase shrink-0">
+                              <Eye className="w-3 h-3" />
+                              {q.views || 0}
+                               </div>
+                    </div>
                   </div>
                 </Card>
               </motion.div>
