@@ -130,14 +130,14 @@ const AdminStreakPage = () => {
           <meta name="robots" content="noindex,nofollow" />
         </Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col">
             {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
               <>
-                <div className="flex-1 min-h-0 overflow-auto lg:overflow-hidden">
+                <div className="flex-1 min-h-0">
                   {rankedLeaderboard.length === 0 ? (
                     <Card className="p-10 text-center space-y-3">
                       <Flame className="w-12 h-12 text-slate-300 mx-auto" />

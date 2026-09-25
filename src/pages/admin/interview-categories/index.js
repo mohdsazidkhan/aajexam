@@ -147,10 +147,10 @@ const AdminInterviewCategories = () => {
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Manage Interview Categories - Admin</title></Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
-          <div className="flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col">
             {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
-              <div className="flex-1 min-h-0 overflow-auto lg:overflow-hidden">
+              <div className="flex-1 min-h-0">
                 {categories.length === 0 ? (
                   <Card className="!py-12 text-center">
                     <FolderTree className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
