@@ -181,14 +181,14 @@ const AdminStudyPlanPage = () => {
           <meta name="robots" content="noindex,nofollow" />
         </Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
           {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              <div className="flex-1 min-h-0 overflow-auto overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto lg:overflow-hidden">
               {plans.length === 0 ? (
                 <Card className="text-center text-slate-500 dark:text-slate-400">
                   No study plans available. Study planner admin controls can be added here once backend support is present.

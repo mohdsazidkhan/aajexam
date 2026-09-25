@@ -46,7 +46,7 @@ const AdminNavbar = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-16 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
-        <div className="w-full mx-auto px-4 flex items-center justify-between">
+        <div className="w-full mx-auto px-2 lg:px-4 flex items-center justify-between">
 
           {/* Left */}
           <div className="flex items-center gap-2 lg:gap-4 min-w-0 flex-1">
@@ -119,7 +119,7 @@ const AdminNavbar = () => {
               className="p-0.5 rounded-full flex-shrink-0"
             >
               <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full overflow-hidden bg-primary-600 p-[2px]">
-                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-[10px] font-black uppercase">
+                <div className="w-6 h-6 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-[10px] font-black uppercase">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
               </div>

@@ -222,7 +222,7 @@ export default function AdminContacts() {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         {isMounted && <Sidebar />}
-        <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 

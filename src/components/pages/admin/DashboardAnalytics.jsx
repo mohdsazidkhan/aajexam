@@ -486,7 +486,7 @@ const DashboardAnalytics = () => {
 
   return (
      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
            {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {statCardsSection}
@@ -494,7 +494,7 @@ const DashboardAnalytics = () => {
           {/* Tables */}
           <div className="flex-1 min-h-0 overflow-auto flex flex-col gap-4">
             {/* Recent Activity */}
-            <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+            <div className="flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
               <div className="flex-1 min-h-0 overflow-auto">
                 {activityLoading ? (
                   <div className="py-12"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>

@@ -194,14 +194,14 @@ const AdminPYQ = () => {
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Manage PYQ Papers - Admin</title></Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
           {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              <div className="flex-1 min-h-0 overflow-auto overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto lg:overflow-hidden">
             {tests.length === 0 ? (
               <Card className="p-10 text-center space-y-3">
                 <FileText className="w-12 h-12 text-slate-300 mx-auto" />

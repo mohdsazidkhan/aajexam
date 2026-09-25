@@ -170,14 +170,14 @@ const AdminExamNews = () => {
       <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
         <Head><title>Manage Exam News - Admin</title></Head>
         <Sidebar />
-        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+        <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
 
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
-          <div className="flex-1 min-h-0 overflow-auto flex flex-col overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-auto flex flex-col lg:overflow-hidden">
           {loading ? <AdminTableSkeleton showHeader={false} showFilters={false} /> : (
             <>
-              <div className="flex-1 min-h-0 overflow-auto overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-auto lg:overflow-hidden">
           {news.length === 0 ? (
             <Card className="!py-12 text-center">
               <Megaphone className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
@@ -191,7 +191,7 @@ const AdminExamNews = () => {
             </Card>
           ) : viewMode === 'grid' ? (
             /* ── Grid View ── */
-            <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+            <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
               {news.map((n, i) => (
                 <Card key={n._id || i} className="!p-4 flex flex-col justify-between gap-3">
                   <div>

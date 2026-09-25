@@ -57,7 +57,7 @@ const StudentNavbar = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-16 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
-        <div className="w-full mx-auto px-4 flex items-center justify-between">
+        <div className="w-full mx-auto px-2 lg:px-4 flex items-center justify-between">
 
           {/* Left */}
           <div className="flex items-center gap-2 min-w-0">
