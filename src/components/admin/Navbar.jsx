@@ -119,7 +119,7 @@ const AdminNavbar = () => {
               className="p-0.5 rounded-full flex-shrink-0"
             >
               <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full overflow-hidden bg-primary-600 p-[2px]">
-                <div className="w-6 h-6 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-[10px] font-black uppercase">
+                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-[10px] font-black uppercase">
                   {user?.name?.charAt(0) || 'A'}
                 </div>
               </div>
