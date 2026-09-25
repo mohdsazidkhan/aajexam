@@ -17,6 +17,7 @@ import {
   Gamepad2,
   FolderOpen,
   Sparkles,
+  MessageCircleQuestion,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -49,9 +50,10 @@ const PublicNavbar = () => {
     { label: 'Subjects', title: 'Subjects', href: '/subjects', icon: BookOpen },
     { label: 'Topics', title: 'Topics', href: '/topics', icon: FolderOpen },
     { label: 'Quizzes', title: 'Quizzes', href: '/quizzes', icon: Gamepad2 },
-    { label: 'Current Affairs', title: 'Current Affairs', href: '/current-affairs', icon: Newspaper },
+    { label: 'CA', title: 'Current Affairs', href: '/current-affairs', icon: Newspaper },
     { label: 'News', title: 'News', href: '/exam-news', icon: Newspaper },
     { label: 'Notes', title: 'Notes', href: '/notes', icon: Layers },
+    { label: 'IQs', title: 'Interview Questions', href: '/interview-questions', icon: MessageCircleQuestion },
     { label: 'Blog', title: 'Blog', href: '/blog', icon: Layers },
   ];
 

@@ -36,7 +36,8 @@ import {
   MessageCircle,
   Trophy,
   Swords,
-  Sparkles
+  Sparkles,
+  MessageCircleQuestion
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
@@ -128,6 +129,7 @@ const StudentSidebar = () => {
         { path: '/revision', icon: RotateCcw, label: 'Revision Queue', isPro: true },
         { path: '/study-plan', icon: CalendarDays, label: 'Study Planner', isPro: true },
         { path: '/notes', icon: StickyNote, label: 'Notes & Formulas' },
+        { path: '/interview-questions', icon: MessageCircleQuestion, label: 'Interview Questions' },
         { path: '/mentors', icon: Users, label: 'Mentors', isPro: true },
       ]
     },

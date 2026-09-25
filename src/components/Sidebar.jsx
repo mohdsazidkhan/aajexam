@@ -41,6 +41,8 @@ import {
   ClipboardList,
   Trophy,
   Award,
+  MessageCircleQuestion,
+  FolderTree,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -105,6 +107,8 @@ const Sidebar = () => {
         { path: '/admin/current-affairs', icon: Newspaper, label: 'Current Affairs', key: 'current-affairs' },
         { path: '/admin/exam-news', icon: Megaphone, label: 'Exam News', key: 'exam-news' },
         { path: '/admin/notes', icon: StickyNote, label: 'Notes', key: 'notes' },
+        { path: '/admin/interview-categories', icon: FolderTree, label: 'Interview Categories', key: 'interview-categories' },
+        { path: '/admin/interview-questions', icon: MessageCircleQuestion, label: 'Interview Questions', key: 'interview-questions' },
         { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq', isPro: true },
       ]
     },
