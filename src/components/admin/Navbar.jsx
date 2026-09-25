@@ -66,7 +66,7 @@ const AdminNavbar = () => {
 
             {/* Logo — desktop */}
             <Link href="/admin/dashboard" className="hidden lg:flex items-center shrink-0">
-              <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
+              <span className="text-2xl lg:text-3xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white text-slate-900 dark:text-white">
                 AAJ<span className="text-primary-600">EXAM</span>
               </span>
             </Link>
@@ -80,7 +80,7 @@ const AdminNavbar = () => {
 
             {/* Page title + count — shown right after the logo (web + mobile) */}
             {header.title && (
-              <div className="flex items-center gap-1 lg:gap-2 min-w-0 pl-2 lg:pl-4 ml-1 lg:ml-2 border-l border-slate-200 dark:border-slate-700">
+              <div className="flex items-center gap-1 lg:gap-2 min-w-0 pl-2 lg:pl-4 ml-0 lg:ml-1 border-l border-slate-200 dark:border-slate-700">
                 <span className="text-sm lg:text-lg font-black text-slate-900 dark:text-white truncate">{header.title}</span>
                 {header.count !== null && header.count !== undefined && (
                   <span className="text-xs lg:text-sm font-bold text-slate-400 dark:text-slate-500 shrink-0">({header.count})</span>
