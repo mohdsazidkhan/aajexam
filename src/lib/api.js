@@ -512,6 +512,17 @@ class ApiService {
   }
 
 
+  // Leaderboard / All India Rank (admin)
+  async getAdminLeaderboard(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/leaderboard?${queryString}`);
+  }
+
+  async getAdminAIR(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/air?${queryString}`);
+  }
+
   // Students
   async getAdminStudents(params = {}) {
     const queryString = new URLSearchParams(params).toString();
