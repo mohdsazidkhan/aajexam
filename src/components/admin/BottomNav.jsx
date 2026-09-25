@@ -180,7 +180,7 @@ const AdminBottomNav = () => {
                 <span className="relative inline-flex">
                   <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
                   {item.name === 'Notify' && notifCount > 0 && (
-                    <span className="absolute -top-1 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 bg-primary-600 text-white text-[9px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-950 animate-pulse">
+                    <span className="absolute -top-1 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 bg-red-500 text-white text-[10px] font-black rounded-full flex items-center justify-center">
                       {notifCount > 99 ? '99+' : notifCount}
                     </span>
                   )}
