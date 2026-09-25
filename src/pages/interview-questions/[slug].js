@@ -91,7 +91,7 @@ const InterviewQuestionDetailPage = () => {
       />
       <div className="py-0 lg:py-6">
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <button onClick={() => router.push('/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Interview Questions</button>
+          <button onClick={() => router.push(question.category?.slug ? `/${question.category.slug}-interview-questions` : '/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to <span className="capitalize text-black dark:text-white">{question.category.name}</span></button>
           {hasHindi && (
             <div className="flex rounded-full overflow-auto border-2 border-slate-200 dark:border-slate-700 shrink-0">
               {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (
@@ -109,9 +109,9 @@ const InterviewQuestionDetailPage = () => {
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
             {question.category?.type && <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{question.category.type} job</span>}
-            {question.category?.name && <span className="text-[10px] font-bold text-slate-400">{question.category.name}</span>}
+            {question.category?.name && <span className="text-[10px] font-bold text-slate-400">{question.category.name} Interview Questions</span>}
           </div>
-          <h1 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white">{displayQuestion}</h1>
+          <h1 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white">{displayQuestion}</h1>
           <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
             <span><Eye className="w-3 h-3 inline" /> {question.views} views</span>
           </div>

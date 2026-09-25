@@ -98,6 +98,17 @@ const nextConfig = {
       },
     ];
   },
+  // Pretty category URLs: /it-software-interview-questions masks the real
+  // /interview-questions/category/[slug] page — the file/route stays put.
+  async rewrites() {
+    return [
+      {
+        source: '/:slug-interview-questions',
+        destination: '/interview-questions/category/:slug',
+      },
+    ];
+  },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
