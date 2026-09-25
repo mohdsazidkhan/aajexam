@@ -33,7 +33,7 @@ const xmlUrl = ({ loc, lastmod, changefreq, priority }) => {
    </url>`;
 };
 
-function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [] }) {
+function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [] }) {
     // Only PUBLIC, non-login pages here. Login-gated pages (profile, history,
     // dashboards, etc.) and admin pages are excluded by design and are also
     // disallowed in robots.txt + carry noIndex meta on the page itself.
@@ -54,6 +54,7 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         { path: '/subjects', priority: '0.75', changefreq: 'weekly' },
         { path: '/topics', priority: '0.75', changefreq: 'weekly' },
         { path: '/notes', priority: '0.75', changefreq: 'daily' },
+        { path: '/interview-questions', priority: '0.85', changefreq: 'daily' },
         { path: '/pyq', priority: '0.9', changefreq: 'daily' },
         { path: '/current-affairs', priority: '0.85', changefreq: 'daily' },
         { path: '/exam-news', priority: '0.85', changefreq: 'daily' },
@@ -97,7 +98,11 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         // /practice/<examSlug>/<subjectSlug>/<topicSlug> — same qualification
         // rules as that page's own getStaticPaths (min questions + subject must
         // have 2+ distinct topics), so we never submit a URL that 404s.
-        practiceTopics.filter(p => p?.examSlug && p?.subjectSlug && p?.topicSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/practice/${p.examSlug}/${p.subjectSlug}/${p.topicSlug}`, changefreq: 'monthly', priority: '0.75' })).join('')
+        practiceTopics.filter(p => p?.examSlug && p?.subjectSlug && p?.topicSlug).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/practice/${p.examSlug}/${p.subjectSlug}/${p.topicSlug}`, changefreq: 'monthly', priority: '0.75' })).join(''),
+        // Category pages use the pretty /{slug}-interview-questions URL (masked
+        // via next.config.mjs rewrite onto /interview-questions/category/[slug]).
+        interviewCategories.filter(c => c?.slug).map(c => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/${c.slug}-interview-questions`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.75' })).join(''),
+        interviewQuestions.filter(q => q?.slug).map(q => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/interview-questions/${q.slug}`, lastmod: q.updatedAt || q.createdAt, changefreq: 'monthly', priority: '0.7' })).join('')
     ];
 
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -131,6 +136,8 @@ export async function getServerSideProps({ res }) {
             topics,
             quizzes,
             pyqPapers,
+            interviewCategories,
+            interviewQuestions,
         ] = await Promise.all([
             Exam.find({ isActive: true }).select('_id slug updatedAt createdAt').lean(),
             safeFind(() => import('../models/ExamCategory'), '_id slug updatedAt'),
@@ -177,6 +184,8 @@ export async function getServerSideProps({ res }) {
                     return [];
                 }
             })(),
+            safeFind(() => import('../models/InterviewCategory'), '_id slug updatedAt', { isActive: true }, 5000),
+            safeFind(() => import('../models/InterviewQuestion'), 'slug updatedAt createdAt', { status: 'published' }, 25000),
         ]);
 
         // Consolidated /practice/<exam>/<subject> pages — only the series with
@@ -255,7 +264,7 @@ export async function getServerSideProps({ res }) {
         });
         const pyqExamIndexes = Array.from(pyqExamIndexMap.values());
 
-        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics });
+        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions });
 
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');
