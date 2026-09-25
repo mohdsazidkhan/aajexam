@@ -89,22 +89,22 @@ const InterviewQuestionDetailPage = () => {
           ])
         ]}
       />
-      {hasHindi && (
-        <div className="flex justify-end pt-4 lg:pt-0">
-          <div className="flex rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700">
-            {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'हिं' }].map(l => (
-              <button key={l.id} onClick={() => setLanguage(l.id)}
-                className={`px-4 py-2 font-black uppercase text-xs transition-all ${
-                  language === l.id ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300'
-                }`}>
-                {l.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
       <div className="py-0 lg:py-6">
-        <button onClick={() => router.push('/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Interview Questions</button>
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <button onClick={() => router.push('/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Interview Questions</button>
+          {hasHindi && (
+            <div className="flex rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 shrink-0">
+              {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'हिं' }].map(l => (
+                <button key={l.id} onClick={() => setLanguage(l.id)}
+                  className={`px-4 py-2 font-black uppercase text-xs transition-all ${
+                    language === l.id ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                  }`}>
+                  {l.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
