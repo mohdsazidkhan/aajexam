@@ -13,14 +13,16 @@ import {
   ShieldCheck,
   Filter,
   UserCircle,
+  Bell,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../store/sidebarSlice';
 import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
-import { secureLogout, getCurrentUser } from '../../lib/utils/authUtils';
+import { secureLogout, getCurrentUser, getAuthToken } from '../../lib/utils/authUtils';
 import { useSSR } from '../../hooks/useSSR';
 import { useAdminMobileHeaderContext } from '../../contexts/AdminMobileHeaderContext';
+import API from '../../lib/api';
 
 const AdminNavbar = () => {
   const { isMounted, router } = useSSR();
@@ -31,12 +33,28 @@ const AdminNavbar = () => {
   const { header, setDrawerOpen } = useAdminMobileHeaderContext();
 
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [notifCount, setNotifCount] = useState(0);
 
   useEffect(() => {
     if (isMounted) {
       dispatch(initializeDarkMode());
     }
   }, [isMounted, dispatch]);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    const fetchCount = async () => {
+      try {
+        const token = getAuthToken();
+        if (!token) return;
+        const res = await API.getAdminNotifications(1, 1, { unreadOnly: true });
+        setNotifCount(res?.pagination?.total || (res?.data?.length || 0));
+      } catch (err) {
+        console.error('Error fetching notification count:', err);
+      }
+    };
+    fetchCount();
+  }, [isMounted]);
 
   if (!isMounted) return null;
 
@@ -101,6 +119,20 @@ const AdminNavbar = () => {
                 <Filter className="w-3.5 h-3.5" />
               </button>
             )}
+
+            {/* Notifications — desktop only (mobile keeps it in the bottom nav) */}
+            <Link
+              href="/admin/notifications"
+              aria-label="Notifications"
+              className="hidden lg:flex relative w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+            >
+              <Bell className="w-3.5 h-3.5" />
+              {notifCount > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-[1.1rem] h-[1.1rem] px-1 bg-red-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">
+                  {notifCount > 99 ? '99+' : notifCount}
+                </span>
+              )}
+            </Link>
 
             {/* Theme toggle — desktop only (mobile keeps it in the profile menu) */}
             <button
