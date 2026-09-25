@@ -269,12 +269,12 @@ const ProfilePage = () => {
           <div className="grid grid-cols-2 gap-3 lg:gap-6">
             <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 lg:p-6 text-center">
               <p className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</p>
-              <p className="text-2xl lg:text-4xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
+              <p className="text-xl lg:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
               <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? `of ${student.examAIR.total}` : 'No exams yet'}</p>
             </div>
             <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 lg:p-6 text-center">
               <p className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">Quiz AIR</p>
-              <p className="text-2xl lg:text-4xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
+              <p className="text-xl lg:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
               <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? `of ${student.quizAIR.total}` : 'No quizzes yet'}</p>
             </div>
           </div>

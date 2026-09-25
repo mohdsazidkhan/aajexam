@@ -355,7 +355,7 @@ const SettingsPage = () => {
                   <div className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                     <div className="flex items-center justify-between gap-4 relative z-10">
                       <div className="space-y-1">
-                        <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
+                        <h2 className="text-xl md:text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
                         <p className="text-sm font-bold text-content-secondary">Use a strong password to keep your account safe.</p>
                       </div>
                       <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">

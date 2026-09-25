@@ -59,7 +59,7 @@ const AdminBottomNav = () => {
 
   const navItems = [
     { name: 'Home', path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Exams', path: '/admin/govt-exams', icon: BookOpen },
+    { name: 'Exams', path: '/admin/govt-exams/exams', icon: BookOpen },
     { name: 'Quizzes', path: '/admin/quiz/quizzes', icon: BrainCircuit },
     { name: 'CREATE', path: null, icon: Plus },
     { name: 'Users', path: '/admin/students', icon: Users },
