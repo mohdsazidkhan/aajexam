@@ -107,7 +107,7 @@ const PaymentHistoryPage = () => {
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
                   <div className="space-y-2">
-                     <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Payment History</h1>
+                     <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">Payment History</h1>
                      <p className="text-sm font-bold text-gray-400">
                         {totalCount > 0 ? `${totalCount} payment${totalCount > 1 ? 's' : ''} found` : 'All your payment transactions'}
                      </p>

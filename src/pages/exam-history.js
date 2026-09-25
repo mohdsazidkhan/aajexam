@@ -76,7 +76,7 @@ const ExamHistoryPage = () => {
                <SubscriptionGuard message="Upgrade to PRO to view your complete exam history and detailed performance analytics across all mock tests.">
                   <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                      <div className="space-y-2 text-center lg:text-left">
-                        <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Exam History</h1>
+                        <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">Exam History</h1>
                         <p className="text-sm font-bold text-gray-400">All the exams you have attempted</p>
                      </div>
 

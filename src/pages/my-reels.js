@@ -101,7 +101,7 @@ const MyReelsPage = () => {
                {/* Header */}
                <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-6">
                   <div className="flex gap-4 justify-between items-center">
-                     <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">My Reels</h1>
+                     <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">My Reels</h1>
                      <p className="text-sm font-bold text-gray-400">
                         {total > 0 ? `${total} reel${total > 1 ? 's' : ''} created` : 'Not created'}
                      </p>

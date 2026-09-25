@@ -105,7 +105,7 @@ const BookmarksPage = () => {
             <div className="container mx-auto py-2 lg:py-4 space-y-3 lg:space-y-4 mt-0">
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
-                  <h1 className="text-2xl lg:text-5xl font-black font-outfit tracking-tight">Bookmarks</h1>
+                  <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">Bookmarks</h1>
                   <p className="text-sm font-bold text-gray-400">
                      {total > 0 ? `${total} saved reel${total > 1 ? 's' : ''}` : 'Your saved reels will appear here'}
                   </p>
