@@ -24,19 +24,16 @@ const AdminMobileFilterDrawer = () => {
     <AnimatePresence>
       {drawerOpen && (
         <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             onClick={() => setDrawerOpen(false)}
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[190]"
+            className="fixed inset-0 z-[190]"
           />
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-            className="fixed top-0 right-0 bottom-0 z-[200] w-[300px] max-w-sm lg:max-w-[300px] bg-white dark:bg-slate-900 border-l-2 border-slate-100 dark:border-slate-800 shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-[200] w-[300px] max-w-sm lg:max-w-[300px] bg-slate-50 dark:bg-slate-950 border-l-2 border-slate-100 dark:border-slate-800 shadow-[-8px_0_24px_rgba(0,0,0,0.15)] flex flex-col"
           >
             <div className="flex items-center justify-between px-4 h-12 border-b-2 border-slate-100 dark:border-slate-800 shrink-0">
               <div className="flex items-center gap-2 min-w-0">

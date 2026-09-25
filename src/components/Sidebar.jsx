@@ -168,7 +168,7 @@ const Sidebar = () => {
   if (!isMounted || !isAdmin() || !hasAdminPrivileges()) return null;
 
   return (
-    <div className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
+    <div className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-slate-50 dark:bg-slate-950 border-r-2 border-slate-100 dark:border-slate-800 overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto py-2 px-0 space-y-2 lg:space-y-4 scrollbar-premium relative z-10">
         {sidebarSections.map((section, idx) => (
