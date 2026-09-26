@@ -9,8 +9,11 @@ export async function PUT(req) {
         const auth = await protect(req);
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
+        // Scoped to 'announcement' — the other types are admin activity-log
+        // entries that happen to share this user's id; marking them read here
+        // would incorrectly clear them off the admin's unread feed too.
         await Notification.updateMany(
-            { userId: auth.user.id, isRead: false },
+            { userId: auth.user.id, type: 'announcement', isRead: false },
             { $set: { isRead: true } }
         );
 

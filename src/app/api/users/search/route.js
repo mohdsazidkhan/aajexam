@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
+import { escapeRegex } from '@/lib/utils/regex';
 
 export async function GET(req) {
     try {
@@ -13,7 +14,7 @@ export async function GET(req) {
 
         if (!query || query.length < 2) return NextResponse.json({ message: 'Query too short' }, { status: 400 });
 
-        const searchRegex = new RegExp(query.trim(), 'i');
+        const searchRegex = new RegExp(escapeRegex(query.trim().slice(0, 100)), 'i');
         const filter = { $or: [{ username: searchRegex }, { name: searchRegex }], status: 'active' };
         const [users, total] = await Promise.all([
             User.find(filter)

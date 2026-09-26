@@ -16,6 +16,7 @@ import StudyNote from '@/models/StudyNote';
 import ExamNews from '@/models/ExamNews';
 import CurrentAffair from '@/models/CurrentAffair';
 import { protect } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/regex';
 
 // Web-only search endpoint (tab-scoped, real pagination). The mobile app and
 // the legacy combined endpoint keep using /api/search untouched.
@@ -276,7 +277,7 @@ export async function GET(req) {
 		const limit = Math.max(parseInt(searchParams.get('limit')) || DEFAULT_LIMIT, 1);
 		const skip = (page - 1) * limit;
 
-		const cleanQuery = rawQuery.replace(/^#/, '').trim();
+		const cleanQuery = escapeRegex(rawQuery.replace(/^#/, '').trim().slice(0, 100));
 		const regex = cleanQuery ? new RegExp(cleanQuery, 'i') : null;
 		const auth = await protect(req);
 

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import CommunityAnswer from '@/models/CommunityAnswer';
 import { protect, admin } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/regex';
 
 // GET - Admin list all community answers (moderation queue)
 export async function GET(req) {
@@ -20,7 +21,7 @@ export async function GET(req) {
         const filter = {};
         if (status) filter.status = status;
         if (flaggedOnly) filter.flagCount = { $gt: 0 };
-        if (search) filter.body = { $regex: search, $options: 'i' };
+        if (search) filter.body = { $regex: escapeRegex(search), $options: 'i' };
 
         const [answers, total, statusCountsAgg] = await Promise.all([
             CommunityAnswer.find(filter)

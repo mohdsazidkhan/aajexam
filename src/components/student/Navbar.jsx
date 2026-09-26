@@ -25,6 +25,7 @@ import { useClientSide, useAuthStatus } from '../../hooks/useClientSide';
 import { secureLogout } from '../../lib/utils/authUtils';
 import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
+import API from '../../lib/api';
 import Image from "next/image";
 
 const StudentNavbar = () => {
@@ -35,10 +36,20 @@ const StudentNavbar = () => {
   const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     if (isClient) dispatch(initializeDarkMode());
   }, [isClient, dispatch]);
+
+  useEffect(() => {
+    if (!isClient || !user) return;
+    let cancelled = false;
+    API.getUnreadNotificationCount()
+      .then(res => { if (!cancelled) setUnreadCount(res?.pagination?.total || 0); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [isClient, user, router.pathname]);
 
   const toggleTheme = () => dispatch(toggleDarkMode());
   const handleLogout = () => secureLogout(router);
@@ -105,6 +116,20 @@ const StudentNavbar = () => {
 
           {/* Right */}
           <div className="flex items-center gap-3 lg:gap-4">
+            {/* Notifications */}
+            <Link
+              href="/notifications"
+              aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
+              className="relative flex w-9 h-9 lg:w-10 lg:h-10 rounded-lg lg:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+            >
+              <Bell className="w-4 h-4 lg:w-5 lg:h-5" />
+              {unreadCount > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center">
+                  {unreadCount > 9 ? '9+' : unreadCount}
+                </span>
+              )}
+            </Link>
+
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}

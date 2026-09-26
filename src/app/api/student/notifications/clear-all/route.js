@@ -9,7 +9,10 @@ export async function DELETE(req) {
         const auth = await protect(req);
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
-        await Notification.deleteMany({ userId: auth.user.id });
+        // Scoped to 'announcement' so a student clearing their own inbox never
+        // wipes the admin's activity-log entries that happen to share their id
+        // (registration, quiz/exam attempts, withdrawals, etc.).
+        await Notification.deleteMany({ userId: auth.user.id, type: 'announcement' });
         
         return NextResponse.json({ 
             success: true, 

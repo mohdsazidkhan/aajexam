@@ -655,6 +655,10 @@ class ApiService {
     return this.request('/api/student/notifications');
   }
 
+  async getUnreadNotificationCount() {
+    return this.request('/api/student/notifications?unread=true&limit=1');
+  }
+
   async markNotificationAsRead(notificationId) {
     return this.request(`/api/student/notifications/${notificationId}/read`, {
       method: 'PUT'

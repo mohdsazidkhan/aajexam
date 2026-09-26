@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/regex';
 
 // GET - List all admin accounts
 export async function GET(req) {
@@ -17,7 +18,7 @@ export async function GET(req) {
 
         const query = { role: 'admin' };
         if (search && search.trim()) {
-            const regex = new RegExp(search.trim(), 'i');
+            const regex = new RegExp(escapeRegex(search.trim()), 'i');
             query.$or = [{ name: regex }, { email: regex }];
         }
 

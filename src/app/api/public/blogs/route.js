@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Blog from '@/models/Blog';
+import { escapeRegex } from '@/lib/utils/regex';
 
 export async function GET(req) {
     try {
@@ -16,10 +17,11 @@ export async function GET(req) {
         const query = { status: 'published' };
 
         if (search) {
+            const safeSearch = escapeRegex(search.slice(0, 100));
             query.$or = [
-                { title: { $regex: search, $options: 'i' } },
-                { content: { $regex: search, $options: 'i' } },
-                { tags: { $in: [new RegExp(search, 'i')] } }
+                { title: { $regex: safeSearch, $options: 'i' } },
+                { content: { $regex: safeSearch, $options: 'i' } },
+                { tags: { $in: [new RegExp(safeSearch, 'i')] } }
             ];
         }
         if (exam) query.exam = exam;

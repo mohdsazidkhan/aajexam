@@ -86,7 +86,10 @@ export async function POST(req) {
 
         await dbConnect();
         const body = await req.json();
-        const { name, email, phone, password, role = 'student', referredBy } = body;
+        // `role` is never trusted from the request body — public registration always
+        // creates a student account. Admins are promoted via /api/admin/users/[id]/role.
+        const { name, email, phone, password, referredBy } = body;
+        const role = 'student';
 
         if (!name || !email || !phone || !password) {
             return NextResponse.json({ message: 'All fields are required: name, email, phone, password' }, { status: 400 });
@@ -173,62 +176,53 @@ export async function POST(req) {
         }
 
         // Free subscription
-        const isAdmin = role === 'admin';
-        const freeSubscription = await createFreeSubscription(user._id, isAdmin);
+        const freeSubscription = await createFreeSubscription(user._id);
         user.currentSubscription = freeSubscription._id;
         user.subscriptionExpiry = freeSubscription.endDate;
         await user.save();
 
-        const subscriptionDuration = isAdmin
-            ? 'lifetime'
-            : `until ${freeSubscription.endDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}`;
+        const subscriptionDuration = `until ${freeSubscription.endDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}`;
         await WalletTransaction.create({
             user: user._id, type: 'credit', amount: 0, balance: 0,
             category: 'subscription_payment', description: `FREE PRO subscription (${subscriptionDuration})`
         });
 
-        const successMessage = isAdmin
-            ? '🎉 Admin Registered Successfully!'
-            : '🎉 Registered Successfully!';
+        const successMessage = '🎉 Registered Successfully!';
 
         createNotification({
             userId: user._id, type: 'registration', title: 'New user registered',
             description: `${user.name} (${user.email})`, meta: { userId: user._id }
         });
 
-        if (!isAdmin) {
-            sendNewRegistrationAlert({ user, provider: 'email', referrerName }).catch(() => {});
-        }
+        sendNewRegistrationAlert({ user, provider: 'email', referrerName }).catch(() => {});
 
         // Send Welcome Email
-        if (!isAdmin) {
-            const isPromoActive = new Date() < PROMO_END_DATE;
-            const proBannerTitle = isPromoActive
-                ? '🎁 Your FREE PRO Access is Active!'
-                : '🎁 Your 7-Day PRO Trial is Active!';
-            const proBannerBody = isPromoActive
-                ? `We've unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for free until ${PROMO_END_DATE.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}. Make the most of it!`
-                : 'We\'ve automatically unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for the next 7 days for free. Make the most of it!';
-            const welcomeHtml = `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-                <h2 style="color: #4F46E5;">Welcome to AajExam, ${user.name}! 🎉</h2>
-                <p>We are thrilled to have you on board. Your journey to cracking your dream exam starts today.</p>
-                <div style="background-color: #FEF3C7; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                    <h3 style="margin-top: 0; color: #D97706;">${proBannerTitle}</h3>
-                    <p style="margin-bottom: 0;">${proBannerBody}</p>
-                </div>
-                <p>Log in now to track your daily streak and analyze your test performance.</p>
-                <p>Best of luck,<br><strong>The AajExam Team</strong></p>
+        const isPromoActive = new Date() < PROMO_END_DATE;
+        const proBannerTitle = isPromoActive
+            ? '🎁 Your FREE PRO Access is Active!'
+            : '🎁 Your 7-Day PRO Trial is Active!';
+        const proBannerBody = isPromoActive
+            ? `We've unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for free until ${PROMO_END_DATE.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}. Make the most of it!`
+            : 'We\'ve automatically unlocked all Premium Mock Tests and Previous Year Papers (PYQs) for the next 7 days for free. Make the most of it!';
+        const welcomeHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+            <h2 style="color: #4F46E5;">Welcome to AajExam, ${user.name}! 🎉</h2>
+            <p>We are thrilled to have you on board. Your journey to cracking your dream exam starts today.</p>
+            <div style="background-color: #FEF3C7; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #D97706;">${proBannerTitle}</h3>
+                <p style="margin-bottom: 0;">${proBannerBody}</p>
             </div>
-            `;
-            sendBrevoEmail({
-                to: user.email,
-                subject: isPromoActive
-                    ? 'Welcome to AajExam! Your FREE PRO Access is inside 🎁'
-                    : 'Welcome to AajExam! Your 7-Day PRO Trial is inside 🎁',
-                html: welcomeHtml
-            }).catch(err => console.error('Failed to send welcome email:', err));
-        }
+            <p>Log in now to track your daily streak and analyze your test performance.</p>
+            <p>Best of luck,<br><strong>The AajExam Team</strong></p>
+        </div>
+        `;
+        sendBrevoEmail({
+            to: user.email,
+            subject: isPromoActive
+                ? 'Welcome to AajExam! Your FREE PRO Access is inside 🎁'
+                : 'Welcome to AajExam! Your 7-Day PRO Trial is inside 🎁',
+            html: welcomeHtml
+        }).catch(err => console.error('Failed to send welcome email:', err));
 
         return NextResponse.json({
             success: true,

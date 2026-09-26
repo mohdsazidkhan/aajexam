@@ -36,7 +36,7 @@ const NotificationsPage = () => {
       setLoading(true);
       const res = await API.getStudentNotifications();
       const items = Array.isArray(res?.data) ? res.data : (res?.items || []);
-      setNotifications(items);
+      setNotifications(items.map(n => ({ ...n, id: n.id || n._id })));
     } finally { setLoading(false); }
   };
 
@@ -138,27 +138,27 @@ const NotificationsPage = () => {
                     key={n.id || idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className={`group relative p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
+                    className={`group relative p-4 lg:p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex gap-3 lg:gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
                   >
-                    <div className={`p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-sm' : ''}`}>
+                    <div className={`shrink-0 p-3 lg:p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-sm' : ''}`}>
                       {getIcon(n.type)}
                     </div>
 
-                    <div className="flex-1 space-y-1">
+                    <div className="flex-1 min-w-0 space-y-1">
                       <div className="flex items-center gap-2">
                         {n.title && <h4 className={`text-sm font-black uppercase tracking-tight ${!n.isRead ? 'text-slate-900 dark:text-white' : 'text-gray-500'}`}>{n.title}</h4>}
-                        {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-pulse" />}
+                        {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-pulse shrink-0" />}
                       </div>
-                      <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.message}</p>
-                      <div className="flex items-center gap-2 pt-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                      <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.description}</p>
+                      <div className="flex items-center gap-2 pt-2 opacity-70">
                         <Clock className="w-3 h-3" />
                         <span className="text-[10px] font-black uppercase tracking-widest">{new Date(n.createdAt).toLocaleDateString()} • {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors"><Trash2 className="w-4 h-4" /></button>
+                    <div className="flex items-center gap-1 shrink-0">
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" aria-label="Mark as read"><Eye className="w-4 h-4" /></button>}
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" aria-label="Delete notification"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

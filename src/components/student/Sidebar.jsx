@@ -37,7 +37,8 @@ import {
   Trophy,
   Swords,
   Sparkles,
-  MessageCircleQuestion
+  MessageCircleQuestion,
+  Bell
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
@@ -151,6 +152,7 @@ const StudentSidebar = () => {
       title: 'ACCOUNT',
       items: [
         { path: '/profile', icon: User, label: 'Profile' },
+        { path: '/notifications', icon: Bell, label: 'Notifications' },
         { path: '/subscription', icon: ShieldCheck, label: 'Subscription' },
         { path: '/settings', icon: Settings, label: 'Settings' },
       ]

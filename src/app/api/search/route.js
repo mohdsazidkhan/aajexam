@@ -20,6 +20,7 @@ import CurrentAffair from '@/models/CurrentAffair';
 import CommunityQuestion from '@/models/CommunityQuestion';
 import MentorProfile from '@/models/MentorProfile';
 import { protect } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/regex';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req) {
@@ -43,8 +44,9 @@ export async function GET(req) {
 			});
 		}
 
-		// Strip # prefix for clean search
-		const cleanQuery = rawQuery.replace(/^#/, '').trim();
+		// Strip # prefix for clean search. Escaped once here since every use
+		// below feeds it straight into a $regex/RegExp match.
+		const cleanQuery = escapeRegex(rawQuery.replace(/^#/, '').trim().slice(0, 100));
 		const regex = new RegExp(cleanQuery, 'i');
 
 		// Auth (needed for user-scoped revision queue; also for reel interactions)

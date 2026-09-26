@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import City from '@/models/City';
+import { escapeRegex } from '@/lib/utils/regex';
 
 export async function GET(request) {
     try {
@@ -12,7 +13,7 @@ export async function GET(request) {
 
         const query = { isActive: true };
         if (search && search.trim() !== '') {
-            query.name = { $regex: search.trim(), $options: 'i' };
+            query.name = { $regex: escapeRegex(search.trim().slice(0, 100)), $options: 'i' };
         }
 
         if (type !== 'city') {

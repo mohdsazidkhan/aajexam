@@ -4,6 +4,7 @@ import dbConnect from '@/lib/db';
 import Reel from '@/models/Reel';
 import ReelInteraction from '@/models/ReelInteraction';
 import { protect } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/regex';
 
 export async function GET(req) {
 	try {
@@ -20,7 +21,7 @@ export async function GET(req) {
 		}
 
 		// Strip # prefix if present
-		const cleanQuery = query.replace(/^#/, '').trim().toLowerCase();
+		const cleanQuery = escapeRegex(query.replace(/^#/, '').trim().toLowerCase().slice(0, 100));
 		if (!cleanQuery) {
 			return NextResponse.json({ success: true, data: [], pagination: { page, limit, total: 0, totalPages: 0, hasMore: false } });
 		}

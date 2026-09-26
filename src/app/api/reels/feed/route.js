@@ -4,6 +4,7 @@ import dbConnect from '@/lib/db';
 import Reel from '@/models/Reel';
 import ReelInteraction from '@/models/ReelInteraction';
 import { protect } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/regex';
 
 export async function GET(req) {
 	try {
@@ -23,9 +24,9 @@ export async function GET(req) {
 		// Build filter — only published reels
 		const filter = { status: 'published' };
 		if (type) filter.type = type;
-		if (subject && subject !== 'all') filter.subject = { $regex: subject, $options: 'i' };
-		if (topic) filter.topic = { $regex: topic, $options: 'i' };
-		if (examType && examType !== 'all') filter.examType = { $regex: examType, $options: 'i' };
+		if (subject && subject !== 'all') filter.subject = { $regex: escapeRegex(subject), $options: 'i' };
+		if (topic) filter.topic = { $regex: escapeRegex(topic), $options: 'i' };
+		if (examType && examType !== 'all') filter.examType = { $regex: escapeRegex(examType), $options: 'i' };
 		if (difficulty) filter.difficulty = difficulty;
 		if (tag) filter.tags = { $in: [tag.toLowerCase()] };
 

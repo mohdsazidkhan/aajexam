@@ -15,7 +15,12 @@ export async function GET(req) {
         const unread = searchParams.get('unread') === 'true' || searchParams.get('unread') === '1';
         const skip = (page - 1) * limit;
 
-        const filter = { userId: auth.user.id };
+        // Most notification types are internal admin activity-log entries (e.g.
+        // "user X registered", "user X submitted a quiz") that happen to be
+        // stored with userId = the acting user for the admin feed's benefit —
+        // they were never meant to be shown back to that same user. The only
+        // type genuinely addressed to the student is an admin-sent announcement.
+        const filter = { userId: auth.user.id, type: 'announcement' };
         if (unread) filter.isRead = false;
 
         const [items, total] = await Promise.all([
@@ -45,11 +50,13 @@ export async function DELETE(req) {
         const auth = await protect(req);
         if (!auth.authenticated) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
-        await Notification.deleteMany({ userId: auth.user.id });
-        
-        return NextResponse.json({ 
-            success: true, 
-            message: 'All notifications cleared successfully' 
+        // Scoped to 'announcement' so this never deletes the admin-facing
+        // activity-log entries that happen to share this user's id (see GET above).
+        await Notification.deleteMany({ userId: auth.user.id, type: 'announcement' });
+
+        return NextResponse.json({
+            success: true,
+            message: 'All notifications cleared successfully'
         });
     } catch (error) {
         console.error('DELETE /api/student/notifications error:', error);
