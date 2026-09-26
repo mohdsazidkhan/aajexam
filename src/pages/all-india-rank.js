@@ -370,6 +370,9 @@ const AllIndiaRankPage = () => {
               </div>
             </section>
 
+            {/* ── My Rank ── */}
+            {!loading && myEntry && <MyRankCard entry={myEntry} />}
+
             {/* ── List Actions ── */}
             <div className="flex justify-between items-center px-1">
                <h3 className="text-sm font-black text-content-primary uppercase">
@@ -463,9 +466,6 @@ const AllIndiaRankPage = () => {
               </AnimatePresence>
             )}
           </div>
-
-          {/* ── My Rank — sticky bottom ── */}
-          {!loading && myEntry && <MyRankCard entry={myEntry} />}
         </SubscriptionGuard>
       </div>
     </div>
