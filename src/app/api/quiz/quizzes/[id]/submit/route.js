@@ -94,7 +94,16 @@ export async function POST(req, { params }) {
         attempt.skippedCount = skippedCount;
         attempt.accuracy = Math.round(accuracy * 100) / 100;
         attempt.percentage = Math.round(percentage * 100) / 100;
-        attempt.totalTime = totalTime || 0;
+        // The client sums per-question `Date.now() - questionStartTime` deltas with
+        // no idle cap — if a question is left open for hours (tab left idle, app
+        // backgrounded) that gap gets counted as "time spent" on it, inflating
+        // totalTime to absurd values. Recompute server-side instead: estimate time
+        // spent from the share of questions actually answered against the quiz's
+        // allotted duration, same approach used for real-exam attempts.
+        const totalQuestions = quiz.questions.length;
+        attempt.totalTime = totalQuestions > 0
+            ? Math.round((attempted / totalQuestions) * quiz.duration * 60)
+            : (totalTime || 0);
         attempt.status = 'Completed';
         attempt.submittedAt = new Date();
         await attempt.save();
