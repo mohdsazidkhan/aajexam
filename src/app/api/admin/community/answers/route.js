@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import CommunityAnswer from '@/models/CommunityAnswer';
+import CommunityQuestion from '@/models/CommunityQuestion';
+import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
 import { escapeRegex } from '@/lib/utils/regex';
+
+// Referenced only so their schemas are registered for populate() below.
+void CommunityQuestion; void User;
 
 // GET - Admin list all community answers (moderation queue)
 export async function GET(req) {
@@ -29,7 +34,7 @@ export async function GET(req) {
                 .skip((page - 1) * limit)
                 .limit(limit)
                 .populate('author', 'name username email')
-                .populate('question', 'question')
+                .populate('question', 'question options')
                 .populate('flaggedBy.user', 'name username')
                 .lean(),
             CommunityAnswer.countDocuments(filter),

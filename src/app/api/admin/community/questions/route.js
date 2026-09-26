@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import CommunityQuestion from '@/models/CommunityQuestion';
+import User from '@/models/User';
+import Exam from '@/models/Exam';
 import { protect, admin } from '@/middleware/auth';
 import { escapeRegex } from '@/lib/utils/regex';
+
+// Referenced only so their schemas are registered for populate() below.
+void User; void Exam;
 
 // GET - Admin list all community questions (moderation queue)
 export async function GET(req) {

@@ -34,7 +34,7 @@ const communityQuestionSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ['pending', 'approved', 'rejected'],
-    default: 'approved'
+    default: 'pending'
   },
   likes: {
     type: Number,

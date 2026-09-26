@@ -25,15 +25,22 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
         const skip = (page - 1) * limit;
 
+        // 'announcement' notifications are admin-to-student decisions/broadcasts
+        // (community moderation outcomes, wallet/reel/mentor decisions, etc.) —
+        // they're addressed to the student, not an admin activity-log entry, so
+        // they belong in the student's own inbox, not this feed.
+        const activityFilter = { type: { $ne: 'announcement' } };
+
         const [notifications, total, typeCountsAgg] = await Promise.all([
-            Notification.find({})
+            Notification.find(activityFilter)
                 .sort({ createdAt: -1 })
                 .skip(skip)
                 .limit(limit)
                 .populate('userId', 'name username email')
                 .lean(),
-            Notification.countDocuments({}),
+            Notification.countDocuments(activityFilter),
             Notification.aggregate([
+                { $match: activityFilter },
                 { $group: { _id: '$type', count: { $sum: 1 } } },
                 { $sort: { count: -1 } }
             ])
@@ -102,7 +109,9 @@ export async function DELETE(req) {
         }
 
         await dbConnect();
-        await Notification.deleteMany({});
+        // Never touch 'announcement' — those live in students' own inboxes, not
+        // this admin activity feed (see GET above).
+        await Notification.deleteMany({ type: { $ne: 'announcement' } });
         return NextResponse.json({ message: 'All notifications cleared' });
     } catch (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });

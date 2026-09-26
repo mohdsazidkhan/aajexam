@@ -66,7 +66,8 @@ export async function POST(req) {
       exam,
       options: options || [],
       explanation: explanation || '',
-      image: image || null
+      image: image || null,
+      status: 'pending'
     });
 
     const populated = await CommunityQuestion.findById(newQuestion._id)

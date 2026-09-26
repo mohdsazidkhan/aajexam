@@ -5,6 +5,7 @@ import User from '@/models/User';
 import WalletTransaction from '@/models/WalletTransaction';
 import UserWallet from '@/models/UserWallet';
 import { protect, admin } from '@/middleware/auth';
+import { createNotification } from '@/utils/notifications';
 
 export async function PATCH(req, { params }) {
     try {
@@ -110,6 +111,21 @@ export async function PATCH(req, { params }) {
         } else {
             // 'pending' or any other no-op status.
             wr = await WithdrawRequest.findByIdAndUpdate(wr._id, { $set: { status } }, { new: true });
+        }
+
+        if (uid && ['approved', 'paid', 'rejected'].includes(status)) {
+            const messages = {
+                approved: { title: 'Withdrawal approved', description: `Your withdrawal of ₹${wr.amount} has been approved and will be paid soon.` },
+                paid: { title: 'Withdrawal paid', description: `Your withdrawal of ₹${wr.amount} has been paid.` },
+                rejected: { title: 'Withdrawal rejected', description: `Your withdrawal request of ₹${wr.amount} was rejected.` }
+            };
+            createNotification({
+                userId: uid,
+                type: 'announcement',
+                title: messages[status].title,
+                description: messages[status].description,
+                meta: { withdrawRequestId: wr._id, amount: wr.amount }
+            });
         }
 
         return NextResponse.json({

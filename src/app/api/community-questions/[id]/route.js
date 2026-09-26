@@ -2,6 +2,7 @@ import { protect } from '@/middleware/auth';
 import dbConnect from '@/lib/db';
 import CommunityQuestion from '@/models/CommunityQuestion';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import { createNotification } from '@/utils/notifications';
 
 // GET /api/community-questions/[id] - Get single question
 export async function GET(req, { params }) {
@@ -42,12 +43,25 @@ export async function DELETE(req, { params }) {
       return errorResponse('Question not found', 404);
     }
 
+    const isOwner = question.author.toString() === auth.user._id.toString();
     // Only author or admin can delete
-    if (question.author.toString() !== auth.user._id.toString() && auth.user.role !== 'admin') {
+    if (!isOwner && auth.user.role !== 'admin') {
       return errorResponse('Not authorized to delete this question', 403);
     }
 
     await CommunityQuestion.findByIdAndDelete(id);
+
+    if (!isOwner && auth.user.role === 'admin') {
+      const preview = (question.question || '').slice(0, 80);
+      createNotification({
+        userId: question.author,
+        type: 'announcement',
+        title: 'Your question was removed',
+        description: `Your community question "${preview}" was removed by an admin for not meeting our guidelines.`,
+        meta: { questionId: question._id }
+      });
+    }
+
     return successResponse({}, 'Question deleted successfully');
   } catch (error) {
     return errorResponse(error);

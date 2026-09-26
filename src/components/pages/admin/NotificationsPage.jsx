@@ -60,6 +60,7 @@ const AdminNotificationsPage = () => {
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
   const typeToPath = {
+    question: '/admin/community',
     quiz: '/admin/govt-exams/tests',
     withdraw: '/admin/withdraw-requests',
     contact: '/admin/contacts',
@@ -72,6 +73,13 @@ const AdminNotificationsPage = () => {
     referral_registration: '/admin/referral-history',
     mentor: '/admin/mentors',
     daily_challenge: '/admin/daily-challenge',
+    streak: '/admin/streak',
+    exam_news: '/admin/exam-news',
+    current_affairs: '/admin/current-affairs',
+    study_plan: '/admin/study-plan',
+    revision_reminder: '/admin/revision',
+    discussion_reply: '/admin/community',
+    discussion_upvote: '/admin/community',
     reel: '/admin/reels'
   };
 
@@ -351,13 +359,11 @@ const AdminNotificationsPage = () => {
                          }
                          router.push(href);
                        }}
-                       className={`group relative rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 p-3 lg:p-8 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col ${n.isRead 
-                         ? 'bg-white/80 dark:bg-white/5 border-slate-100 dark:border-white/10 hover:border-primary-500/30' 
-                         : 'bg-primary-500/5 dark:bg-primary-500/10 border-primary-500/30 shadow-sm active-signal'}`}
+                       className="group relative rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-primary-500/30 p-2 lg:p-4 cursor-pointer transition-all shadow-sm hover:scale-[1.02] flex flex-col bg-primary-500/5 dark:bg-primary-500/10 active-signal"
                      >
                         <div className="flex items-center justify-between gap-4 mb-4 lg:mb-6">
                            <div className="flex items-center gap-4 min-w-0">
-                              <div className={`p-3 rounded-2xl ${n.isRead ? 'bg-slate-100 dark:bg-white/10 text-slate-400' : 'bg-primary-600 text-white shadow-sm'} transition-colors`}>
+                              <div className="p-3 rounded-2xl bg-primary-600 text-white shadow-sm transition-colors">
                                  {getIconByType(n.type)}
                               </div>
                               <div>
@@ -370,13 +376,11 @@ const AdminNotificationsPage = () => {
                            </div>
                         </div>
 
-                        <h3 className={`flex items-center justify-between gap-2 text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors ${n.isRead ? 'text-slate-900 dark:text-white' : 'text-primary-600'}`}>
+                        <h3 className="flex items-center justify-between gap-2 text-lg font-black uppercase italic tracking-tighter leading-tight mb-3 transition-colors text-primary-600">
                            {n.title}
-                           {!n.isRead && (
-                             <span className="w-2.5 h-2.5 bg-primary-600 rounded-full animate-ping shrink-0" />
-                           )}
+                           <span className="w-2.5 h-2.5 bg-primary-600 rounded-full animate-ping shrink-0" />
                         </h3>
-                        <p className={`text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-3 ${n.isRead ? 'text-slate-400' : 'text-slate-600 dark:text-slate-300'}`}>
+                        <p className="text-[10px] font-black uppercase tracking-widest leading-relaxed line-clamp-3 text-slate-600 dark:text-slate-300">
                            {n.description}
                         </p>
 

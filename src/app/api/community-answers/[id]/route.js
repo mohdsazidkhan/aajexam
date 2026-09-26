@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import CommunityAnswer from '@/models/CommunityAnswer';
 import CommunityQuestion from '@/models/CommunityQuestion';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import { createNotification } from '@/utils/notifications';
 
 // PATCH /api/community-answers/[id]  { body?, image? }
 export async function PATCH(req, { params }) {
@@ -58,6 +59,17 @@ export async function DELETE(req, { params }) {
     doc.deletedAt = new Date();
     doc.status = 'hidden';
     await doc.save();
+
+    if (isAdmin && !isOwner) {
+      const preview = (doc.body || '').slice(0, 80);
+      createNotification({
+        userId: doc.author,
+        type: 'announcement',
+        title: 'Your answer was removed',
+        description: `Your answer "${preview}" was removed by an admin for not meeting our guidelines.`,
+        meta: { answerId: doc._id, questionId: doc.question }
+      });
+    }
 
     if (!doc.parent) {
       await CommunityQuestion.updateOne(
