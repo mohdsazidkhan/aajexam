@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Download, Eye, EyeOff, CheckCircle2,
+  Download, CheckCircle2,
   XCircle, Clock, AlertTriangle, ReceiptText, Search, Table as TableIcon,
   LayoutGrid, List, IndianRupee, TrendingUp, Users, ArrowUpDown,
-  ArrowUp, ArrowDown, Wallet, Calendar, Activity
+  ArrowUp, ArrowDown, Wallet, Calendar, Activity, Hash, CreditCard,
+  Smartphone, Landmark, User, Mail, Phone
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -58,7 +59,6 @@ const AdminPaymentTransactions = () => {
     statuses: ['all', 'completed', 'pending', 'failed', 'refunded']
   });
   const [showFilters, setShowFilters] = useState(true);
-  const [expandedTransaction, setExpandedTransaction] = useState(null);
   const [viewMode, setViewMode] = useState('table');
   const [sortField, setSortField] = useState('createdAt');
   const [sortOrder, setSortOrder] = useState('desc');
@@ -143,10 +143,6 @@ const AdminPaymentTransactions = () => {
     setFilters(prev => ({ ...prev, limit: newLimit, page: 1 }));
   };
 
-  const toggleTransactionDetails = (transactionId) => {
-    setExpandedTransaction(expandedTransaction === transactionId ? null : transactionId);
-  };
-
   const handleSort = (field) => {
     if (sortField === field) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -176,6 +172,59 @@ const AdminPaymentTransactions = () => {
     const dayStr = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
     const timeStr = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
     return `${dayStr}, ${timeStr}`;
+  };
+
+  const getPaymentDetails = (t) => {
+    const pr = t.payuResponse || {};
+    const mode = pr.mode || null; // e.g. UPI, CC, DC, NB, EMI, CASH
+    const isUpi = mode === 'UPI';
+    const upiId = isUpi && pr.field3 && pr.field3.includes('@') ? pr.field3 : null;
+    const upiChannel = isUpi ? [pr.bankcode, pr.field8].filter(Boolean).join(' · ') : null;
+    return {
+      mode,
+      bankRefNum: pr.bank_ref_num || null,
+      upiId,
+      upiChannel,
+      bankCode: !isUpi ? (pr.bankcode || null) : null,
+      productInfo: pr.productinfo || null
+    };
+  };
+
+  const PaymentDetailsPanel = ({ t }) => {
+    const { mode, bankRefNum, upiId, upiChannel, bankCode, productInfo } = getPaymentDetails(t);
+    const items = [
+      { label: 'User Name', value: t.user?.name, icon: <User className="w-3.5 h-3.5" /> },
+      { label: 'Email', value: t.user?.email, icon: <Mail className="w-3.5 h-3.5" /> },
+      { label: 'Phone', value: t.user?.phone, icon: <Phone className="w-3.5 h-3.5" /> },
+      { label: 'Amount', value: t.amount != null ? `${formatCurrency(t.amount)} (${t.currency || 'INR'})` : null, icon: <IndianRupee className="w-3.5 h-3.5" /> },
+      { label: 'Product Info', value: productInfo, icon: <ReceiptText className="w-3.5 h-3.5" /> },
+      { label: 'Payment Mode', value: mode, icon: <CreditCard className="w-3.5 h-3.5" /> },
+      { label: 'Bank Reference No.', value: bankRefNum, icon: <Hash className="w-3.5 h-3.5" /> },
+      { label: 'UPI ID', value: upiId, icon: <Smartphone className="w-3.5 h-3.5" /> },
+      { label: 'UPI App / Channel', value: upiChannel, icon: <Smartphone className="w-3.5 h-3.5" /> },
+      { label: 'Bank Code', value: bankCode, icon: <Landmark className="w-3.5 h-3.5" /> },
+    ].filter(i => i.value);
+
+    if (items.length === 0) {
+      return (
+        <div className="px-4 py-4 lg:px-6 bg-slate-50 dark:bg-black/20 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+          No additional payment details available
+        </div>
+      );
+    }
+
+    return (
+      <div className="px-4 py-4 lg:px-6 lg:py-5 bg-slate-50 dark:bg-black/20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {items.map((item) => (
+          <div key={item.label} className="min-w-0">
+            <div className="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
+              {item.icon} {item.label}
+            </div>
+            <div className="text-xs font-bold text-slate-800 dark:text-slate-100 truncate" title={item.value}>{item.value}</div>
+          </div>
+        ))}
+      </div>
+    );
   };
 
   const getStatusIcon = (status) => {
@@ -256,7 +305,9 @@ const AdminPaymentTransactions = () => {
     },
     {
       key: 'amount', header: 'Amount', render: (_, t) => (
-        <div className="text-right tabular-nums font-black text-slate-900 dark:text-white">{formatCurrency(t.amount)}</div>
+        <div className="text-right tabular-nums font-black text-slate-900 dark:text-white">
+          {formatCurrency(t.amount)} <span className="text-[9px] font-bold text-slate-400">{t.currency || 'INR'}</span>
+        </div>
       )
     },
     {
@@ -270,13 +321,25 @@ const AdminPaymentTransactions = () => {
       )
     },
     {
-      key: 'actions', header: 'Actions', align: 'right', render: (_, t) => (
-        <div className="flex justify-end">
-          <motion.button whileHover={{ scale: 1.1 }} onClick={() => toggleTransactionDetails(t._id)} className="p-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-xl">
-            {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-          </motion.button>
-        </div>
-      )
+      key: 'phone', header: 'Phone', render: (_, t) => t.user?.phone || 'N/A'
+    },
+    {
+      key: 'productInfo', header: 'Product Info', render: (_, t) => getPaymentDetails(t).productInfo || 'N/A'
+    },
+    {
+      key: 'paymentMode', header: 'Payment Mode', render: (_, t) => getPaymentDetails(t).mode || 'N/A'
+    },
+    {
+      key: 'upiId', header: 'UPI ID', render: (_, t) => getPaymentDetails(t).upiId || 'N/A'
+    },
+    {
+      key: 'upiChannel', header: 'UPI App / Channel', render: (_, t) => {
+        const { upiChannel, bankCode } = getPaymentDetails(t);
+        return upiChannel || bankCode || 'N/A';
+      }
+    },
+    {
+      key: 'bankRefNum', header: 'Bank Ref. No.', render: (_, t) => getPaymentDetails(t).bankRefNum || 'N/A'
     }
   ];
 
@@ -442,15 +505,23 @@ const AdminPaymentTransactions = () => {
             <div className="flex-1 min-h-0 overflow-auto">
               {viewMode === 'table' && (
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden h-auto flex flex-col">
-                  <ResponsiveTable data={transactions} columns={transactionColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
+                  <ResponsiveTable
+                    data={transactions}
+                    columns={transactionColumns}
+                    viewModes={['table']}
+                    defaultView="table"
+                    showPagination={false}
+                    showViewToggle={false}
+                    fillHeight
+                  />
                 </div>
               )}
 
               {viewMode === 'grid' && (
-                <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+                <div className="grid content-start grid-cols-1 sm:grid-cols-2 gap-3 items-start">
                   {transactions.map((t, idx) => (
-                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
-                      <div className="flex justify-between items-start gap-2">
+                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3 overflow-hidden">
+                      <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-1.5">
                           <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 text-[9px] font-black flex items-center justify-center">{(pagination.currentPage - 1) * filters.limit + idx + 1}</span>
                           <div className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase flex items-center gap-1.5 ${getStatusColor(t.payuStatus || t.status)}`}>
@@ -458,24 +529,23 @@ const AdminPaymentTransactions = () => {
                             {t.payuStatus || t.status || 'Unknown'}
                           </div>
                         </div>
-                        <button onClick={() => toggleTransactionDetails(t._id)} className="p-1.5 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded-lg shrink-0">
-                          {expandedTransaction === t._id ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                        </button>
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{t.user?.name || 'Unknown User'}</div>
-                        <div className="text-[10px] text-slate-400 truncate">{t.user?.email || 'N/A'}</div>
-                      </div>
-                      <div className="bg-slate-50 dark:bg-white/5 rounded-xl p-3 border border-slate-100 dark:border-white/5 flex justify-between items-center">
-                        <div>
-                          <div className="text-[9px] font-bold text-slate-400 uppercase mb-0.5">Amount</div>
+                        <div className="flex items-center gap-2 shrink-0">
                           <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
+                          <div className="px-2 py-1 bg-primary-500/10 rounded-lg text-primary-600 font-black text-[10px] uppercase">{t.planId || 'N/A'}</div>
                         </div>
-                        <div className="px-2 py-1 bg-primary-500/10 rounded-lg text-primary-600 font-black text-[10px] uppercase">{t.planId || 'N/A'}</div>
                       </div>
-                      <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex justify-between text-[9px] font-bold text-slate-400">
-                        <div className="flex items-center gap-1"><Calendar className="w-3 h-3" />{formatDateTime(t.createdAt)}</div>
-                        <div className="flex items-center gap-1"><Wallet className="w-3 h-3" />{t.paymentMethod || 'Online'}</div>
+                      <div className="pt-2 border-t border-slate-100 dark:border-slate-700 flex items-start justify-between gap-2">
+                        <div className="min-w-0">
+                          <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{t.user?.name || 'Unknown User'}</div>
+                          <div className="text-[10px] text-slate-400 truncate">{t.user?.email || 'N/A'}</div>
+                        </div>
+                        <div className="shrink-0 text-right text-[9px] font-bold text-slate-400 space-y-0.5">
+                          <div className="flex items-center justify-end gap-1"><Calendar className="w-3 h-3" />{formatDateTime(t.createdAt)}</div>
+                          <div className="flex items-center justify-end gap-1"><Wallet className="w-3 h-3" />{t.paymentMethod || 'Online'}</div>
+                        </div>
+                      </div>
+                      <div className="-mx-4 -mb-4 rounded-b-2xl overflow-hidden">
+                        <PaymentDetailsPanel t={t} />
                       </div>
                     </div>
                   ))}
@@ -485,7 +555,8 @@ const AdminPaymentTransactions = () => {
               {viewMode === 'list' && (
                 <div className="h-full overflow-auto space-y-3">
                   {transactions.map((t, idx) => (
-                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-4">
+                    <div key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                      <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-4">
                       <div className="flex items-center gap-3">
                         <div className={`relative p-2.5 rounded-xl border ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}
@@ -505,10 +576,9 @@ const AdminPaymentTransactions = () => {
                           <div className="text-[9px] font-bold text-slate-400 uppercase">Amount</div>
                           <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(t.amount)}</div>
                         </div>
-                        <button onClick={() => toggleTransactionDetails(t._id)} className="p-2 bg-slate-100 dark:bg-slate-700 text-slate-500 rounded-lg">
-                          {expandedTransaction === t._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                        </button>
                       </div>
+                      </div>
+                      <PaymentDetailsPanel t={t} />
                     </div>
                   ))}
                 </div>

@@ -65,25 +65,40 @@ export async function GET(req) {
         const total = filtered.length;
         const paged = filtered.slice(skip, skip + limit);
 
-        const transactions = paged.map(order => ({
-            id: order._id,
-            amount: order.amount,
-            currency: order.currency || 'INR',
-            description: `Payment for ${order.planId || 'plan'} subscription`,
-            type: order.planId || 'subscription',
-            status: order.derivedStatus,
-            payuStatus: order.payuStatus || null,
-            internalStatus: order.status,
-            date: order.createdAt,
-            createdAt: order.createdAt,
-            updatedAt: order.updatedAt,
-            orderId: order.orderId,
-            transactionId: order.payuTransactionId || order.orderId,
-            paymentMethod: order.paymentMethod || 'payu',
-            subscription: order.subscriptionId,
-            refundAmount: order.refundAmount,
-            refundReason: order.refundReason
-        }));
+        const transactions = paged.map(order => {
+            const pr = order.payuResponse || {};
+            const paymentMode = pr.mode || null;
+            const isUpi = paymentMode === 'UPI';
+            const upiId = isUpi && pr.field3 && pr.field3.includes('@') ? pr.field3 : null;
+            const upiChannel = isUpi ? [pr.bankcode, pr.field8].filter(Boolean).join(' · ') : null;
+            const bankCode = !isUpi ? (pr.bankcode || null) : null;
+
+            return {
+                id: order._id,
+                amount: order.amount,
+                currency: order.currency || 'INR',
+                description: `Payment for ${order.planId || 'plan'} subscription`,
+                type: order.planId || 'subscription',
+                status: order.derivedStatus,
+                payuStatus: order.payuStatus || null,
+                internalStatus: order.status,
+                date: order.createdAt,
+                createdAt: order.createdAt,
+                updatedAt: order.updatedAt,
+                orderId: order.orderId,
+                transactionId: order.payuTransactionId || order.orderId,
+                paymentMethod: order.paymentMethod || 'payu',
+                subscription: order.subscriptionId,
+                refundAmount: order.refundAmount,
+                refundReason: order.refundReason,
+                paymentMode,
+                bankRefNum: pr.bank_ref_num || null,
+                upiId,
+                upiChannel,
+                bankCode,
+                productInfo: pr.productinfo || null
+            };
+        });
 
         // Summary across the FILTERED set so summary cards reflect what the
         // user is actually viewing.
@@ -95,6 +110,9 @@ export async function GET(req) {
             refundedCount: filtered.filter(o => o.derivedStatus === 'refunded').length,
             totalSpent: filtered
                 .filter(o => o.derivedStatus === 'success')
+                .reduce((sum, o) => sum + (o.amount || 0), 0),
+            pendingAmount: filtered
+                .filter(o => o.derivedStatus === 'pending')
                 .reduce((sum, o) => sum + (o.amount || 0), 0),
             totalRefunded: filtered.reduce((sum, o) => sum + (o.refundAmount || 0), 0)
         };
