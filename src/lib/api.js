@@ -423,8 +423,17 @@ class ApiService {
   }
 
   // ===== PUBLIC ENDPOINTS =====
+  // Cached + de-duped: the landing page mounts twice (SEO shell render, then
+  // the real public layout render) and React StrictMode double-invokes
+  // effects in dev, so this can otherwise fire 4x on a single page load.
   async getPublicLandingStats() {
-    return this.request('/api/public/landing-stats');
+    if (!this._landingStatsPromise) {
+      this._landingStatsPromise = this.request('/api/public/landing-stats').catch((err) => {
+        this._landingStatsPromise = null;
+        throw err;
+      });
+    }
+    return this._landingStatsPromise;
   }
 
   async getPublicSitemapData() {
