@@ -92,8 +92,8 @@ const AllIndiaRankPage = () => {
     },
     {
       key: 'city', header: 'City', render: (_, row) => (
-        <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-300">
-          <MapPin className="w-3.5 h-3.5 text-slate-400" /> {row.city || '—'}
+        <div className="flex items-center gap-1.5 text-sm font-semibold text-primary-600">
+          <MapPin className="w-3.5 h-3.5 text-primary-500" /> {row.city || '—'}
         </div>
       )
     },
@@ -240,8 +240,8 @@ const AllIndiaRankPage = () => {
                           <span className={`shrink-0 inline-flex px-1.5 sm:px-2 py-0.5 sm:py-1 text-[7px] sm:text-[10px] font-black rounded-full ${row.subscriptionStatus === 'PRO' ? 'bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-200' : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'}`}>{row.subscriptionStatus || 'FREE'}</span>
                         </div>
                         {row.city && (
-                          <div className="flex items-center gap-1 text-[8px] sm:text-[10px] font-semibold text-slate-500 dark:text-slate-400">
-                            <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 shrink-0" /> <span className="break-words">{row.city}</span>
+                          <div className="flex items-center gap-1 text-[8px] sm:text-[10px] font-semibold text-primary-600">
+                            <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-primary-500 shrink-0" /> <span className="break-words">{row.city}</span>
                           </div>
                         )}
                         <div className="grid grid-cols-2 gap-1 sm:gap-2 text-center">

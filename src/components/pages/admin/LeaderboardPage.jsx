@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Search, Flame, Target, BrainCircuit, GraduationCap, LayoutGrid, List, Table as TableIcon } from 'lucide-react';
+import { Trophy, Search, Flame, Target, BrainCircuit, GraduationCap, LayoutGrid, List, Table as TableIcon, MapPin } from 'lucide-react';
 import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';
 import ResponsiveTable from '../../ResponsiveTable';
@@ -89,6 +89,13 @@ const LeaderboardPage = () => {
             <div className="text-sm font-black text-slate-900 dark:text-white break-words">{row.name || 'Unknown'}</div>
             <div className="text-[10px] font-bold text-slate-400 break-words">{row.username ? `@${row.username}` : row.email}</div>
           </div>
+        </div>
+      )
+    },
+    {
+      key: 'city', header: 'City', render: (_, row) => (
+        <div className="flex items-center gap-1.5 text-sm font-semibold text-primary-600">
+          <MapPin className="w-3.5 h-3.5 text-primary-500" /> {row.city || '—'}
         </div>
       )
     },

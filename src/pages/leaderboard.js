@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  Star, Zap, ChevronRight, ChevronLeft, Users, RefreshCw, FileText, BrainCircuit, Clock
+  Star, Zap, ChevronRight, ChevronLeft, Users, RefreshCw, FileText, BrainCircuit, Clock, MapPin
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -198,9 +198,16 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
         )}
       </div>
-      {entry.username && (
-        <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>
-      )}
+      <div className="flex items-center gap-1.5 flex-wrap">
+        {entry.username && (
+          <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>
+        )}
+        {entry.city && (
+          <span className="text-[10px] font-bold text-primary-600 truncate flex items-center gap-0.5">
+            <MapPin className="w-2.5 h-2.5" />{entry.city}
+          </span>
+        )}
+      </div>
     </div>
   );
 

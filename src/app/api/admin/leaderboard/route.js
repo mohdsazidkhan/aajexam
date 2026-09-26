@@ -114,6 +114,7 @@ export async function GET(req) {
                     username: '$user.username',
                     email: '$user.email',
                     profilePicture: '$user.profilePicture',
+                    city: '$user.city',
                     subscriptionStatus: '$user.subscriptionStatus',
                     totalQuizzes: 1,
                     avgPercentage: { $round: ['$avgPercentage', 1] },

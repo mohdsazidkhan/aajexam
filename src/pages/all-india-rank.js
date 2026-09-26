@@ -128,7 +128,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <div className="flex items-center gap-1.5 flex-wrap">
         {entry.username && <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>}
         {entry.city && (
-          <span className="text-[10px] font-bold text-content-muted/80 truncate flex items-center gap-0.5">
+          <span className="text-[10px] font-bold text-primary-600 truncate flex items-center gap-0.5">
             <MapPin className="w-2.5 h-2.5" />{entry.city}
           </span>
         )}

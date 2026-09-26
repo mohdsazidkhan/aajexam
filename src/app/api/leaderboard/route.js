@@ -124,6 +124,7 @@ export async function GET(req) {
                     name: '$user.name',
                     username: '$user.username',
                     profilePicture: '$user.profilePicture',
+                    city: '$user.city',
                     subscriptionStatus: '$user.subscriptionStatus',
                     totalQuizzes: 1, // Will rename to totalAttempts in UI if needed, kept as totalQuizzes for API consistency
                     avgPercentage: { $round: ['$avgPercentage', 1] },
