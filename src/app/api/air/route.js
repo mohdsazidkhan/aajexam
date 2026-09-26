@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import UserTestAttempt from '@/models/UserTestAttempt';
-import User from '@/models/User';
 import mongoose from 'mongoose';
 
 // GET /api/air?examId=optional&limit=20
@@ -78,6 +77,7 @@ export async function GET(req) {
                     totalScore: { $sum: '$score' },
                     totalMarks: { $sum: '$practiceTestMarks' },
                     totalCorrect: { $sum: '$correctCount' },
+                    totalTimeSpent: { $sum: '$totalTime' },
                     bestScore: { $max: '$score' },
                 }
             },
@@ -131,6 +131,7 @@ export async function GET(req) {
                     totalScore: { $round: ['$totalScore', 1] },
                     totalMarks: { $ifNull: ['$totalMarks', 0] },
                     totalCorrect: { $ifNull: ['$totalCorrect', 0] },
+                    totalTimeSpent: { $ifNull: ['$totalTimeSpent', 0] },
                     bestScore: { $round: ['$bestScore', 1] },
                     currentStreak: { $ifNull: ['$streak.currentStreak', 0] },
                     longestStreak: { $ifNull: ['$streak.longestStreak', 0] },
@@ -138,10 +139,15 @@ export async function GET(req) {
             }
         );
 
-        const [leaderboard, totalAttemptsResult, totalUsers] = await Promise.all([
+        const [leaderboard, totalAttemptsResult, rankedUsersResult, totalTimeResult] = await Promise.all([
             UserTestAttempt.aggregate(pipeline),
             UserTestAttempt.aggregate([...preGroupStages, { $count: 'total' }]),
-            User.countDocuments({ role: { $ne: 'admin' } }),
+            // "Ranked Users" = distinct users with at least one matching completed
+            // attempt (not the whole platform's user count) — same scope as above.
+            UserTestAttempt.aggregate([...preGroupStages, { $group: { _id: '$user' } }, { $count: 'total' }]),
+            // Platform-wide total across every matching attempt, not just the
+            // top `limit` shown — same "Completed" + optional examId scope.
+            UserTestAttempt.aggregate([...preGroupStages, { $group: { _id: null, totalMs: { $sum: '$totalTime' } } }]),
         ]);
 
         // Add rank numbers
@@ -155,7 +161,8 @@ export async function GET(req) {
             data: ranked,
             examId,
             totalAttempts: totalAttemptsResult[0]?.total || 0,
-            totalUsers,
+            totalUsers: rankedUsersResult[0]?.total || 0,
+            totalTimeSpentSeconds: Math.round((totalTimeResult[0]?.totalMs || 0) / 1000),
         });
     } catch (error) {
         console.error('AIR API error:', error);

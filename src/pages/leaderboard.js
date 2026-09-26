@@ -10,17 +10,7 @@ import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { getCurrentUser } from '../lib/utils/authUtils';
-
-// QuizAttempt.totalTime is stored in seconds, UserTestAttempt.totalTime in
-// milliseconds (Date.now() delta) — normalize to seconds before formatting.
-const formatTimeSpent = (rawTotalTime, type) => {
-  const seconds = Math.round((rawTotalTime || 0) / (type === 'exam' ? 1000 : 1));
-  const hrs = Math.floor(seconds / 3600);
-  const mins = Math.floor((seconds % 3600) / 60);
-  if (hrs > 0) return `${hrs}h ${mins}m`;
-  if (mins > 0) return `${mins}m`;
-  return `${seconds}s`;
-};
+import { formatTimeSpent } from '../lib/utils/timeFormat';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (

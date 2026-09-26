@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  ChevronRight, ChevronLeft, Users, RefreshCw, Globe, ChevronDown, MapPin, Sparkles
+  ChevronRight, ChevronLeft, Users, RefreshCw, Globe, ChevronDown, MapPin, Sparkles, Clock
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -11,6 +11,7 @@ import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import { getCurrentUser } from '../lib/utils/authUtils';
+import { formatTimeSpent, formatSecondsSpent } from '../lib/utils/timeFormat';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -86,7 +87,7 @@ const Podium = ({ top3, currentUserId }) => {
                 <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
                   {entry.name || entry.username || 'User'}
                 </p>
-                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.avgPercentage}% avg</p>
+                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.totalExams} exams</p>
               </div>
               <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
                 <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
@@ -100,7 +101,7 @@ const Podium = ({ top3, currentUserId }) => {
 };
 
 // ─── Shared table column template (desktop only; mobile uses a stacked card) ──
-const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_20px]';
+const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_84px_20px]';
 
 // ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
 const LeaderboardRow = ({ entry, index, currentUserId }) => {
@@ -147,6 +148,9 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
             {identity}
           </div>
           <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
+            <Clock className="w-3 h-3 text-content-muted" />{formatTimeSpent(entry.totalTimeSpent, 'exam')}
+          </p>
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
             <Target className="w-3 h-3 text-content-muted" />{entry.totalExams}
           </p>
           <p className="text-xs font-black text-content-primary text-center">{entry.totalMarks ?? 0}</p>
@@ -174,6 +178,10 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
             <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
           </div>
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide whitespace-nowrap">Total Time Spent</p>
+              <p className="text-sm font-black text-content-primary">{formatTimeSpent(entry.totalTimeSpent, 'exam')}</p>
+            </div>
             <div>
               <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Exams</p>
               <p className="text-sm font-black text-content-primary">{entry.totalExams}</p>
@@ -216,7 +224,7 @@ const MyRankCard = ({ entry }) => {
           <Avatar entry={entry} size="md" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-black text-white truncate">Your Rank</p>
-            <p className="text-[10px] font-bold text-white/70">{entry.totalExams} exams · {entry.avgAccuracy}% accuracy · {entry.avgPercentage}% avg score</p>
+            <p className="text-[10px] font-bold text-white/70">{entry.totalExams} exams · {entry.avgAccuracy}% accuracy · {entry.avgPercentage}% avg score · {formatTimeSpent(entry.totalTimeSpent, 'exam')} spent</p>
           </div>
           <div className="text-right flex-shrink-0">
             <p className="text-xl font-black text-white">#{entry.rank}</p>
@@ -234,6 +242,7 @@ const AllIndiaRankPage = () => {
   const [data, setData] = useState([]);
   const [totalAttempts, setTotalAttempts] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
+  const [totalTimeSpentSeconds, setTotalTimeSpentSeconds] = useState(0);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [page, setPage] = useState(1);
@@ -268,6 +277,7 @@ const AllIndiaRankPage = () => {
         setData(res.data || []);
         setTotalAttempts(res.totalAttempts || 0);
         setTotalUsers(res.totalUsers || 0);
+        setTotalTimeSpentSeconds(res.totalTimeSpentSeconds || 0);
       }
     } catch (e) {
       console.error('AIR fetch error:', e);
@@ -322,7 +332,7 @@ const AllIndiaRankPage = () => {
                   All India Rank
                 </motion.h1>
                 <p className="text-black/70 dark:text-white/80 text-xs font-bold uppercase tracking-widest mt-1 mb-6">
-                  {selectedExamId ? 'Exam Filtered Rankings' : 'Overall Platform Rankings'}
+                  Ranked by: Exams Attempted, then Accuracy, then Total Score
                 </p>
 
                 {/* Exam Filter Dropdown */}
@@ -378,10 +388,11 @@ const AllIndiaRankPage = () => {
 
             {/* ── Quick Stats ── */}
             {!loading && data.length > 0 && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-5 gap-2 sm:gap-3">
                 {[
                   { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white' },
+                  { label: selectedExamId ? 'Time Spent On This Exam' : 'Total All Exams Time Spent', value: formatSecondsSpent(totalTimeSpentSeconds), icon: Clock, color: 'text-black dark:text-white' },
                   { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-600 dark:text-primary-400' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
                 ].map((stat, i) => (
@@ -416,6 +427,7 @@ const AllIndiaRankPage = () => {
                   <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
                     <p className="text-[10px] font-black text-content-muted uppercase">Player</p>
+                    <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">Total Time Spent</p>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">Exams</p>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">Marks</p>
                     <p className="text-[10px] font-black text-content-muted uppercase text-center">Correct</p>

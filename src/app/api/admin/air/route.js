@@ -77,11 +77,15 @@ export async function GET(req) {
                     totalScore: { $sum: '$score' },
                     totalMarks: { $sum: '$practiceTestMarks' },
                     totalCorrect: { $sum: '$correctCount' },
+                    totalTimeSpent: { $sum: '$totalTime' },
                     bestScore: { $max: '$score' },
                 }
             },
             { $match: { totalExams: { $gte: 1 } } },
-            { $sort: { avgAccuracy: -1, totalExams: -1, totalScore: -1 } },
+            // Rank by: most exams attempted, then accuracy, then total score —
+            // must match /api/air's sort exactly (this is meant to be the same
+            // ranking pipeline, just paginated/searchable for admin use).
+            { $sort: { totalExams: -1, avgAccuracy: -1, totalScore: -1 } },
             {
                 $lookup: {
                     from: 'users',
@@ -117,6 +121,7 @@ export async function GET(req) {
                     totalScore: { $round: ['$totalScore', 1] },
                     totalMarks: { $ifNull: ['$totalMarks', 0] },
                     totalCorrect: { $ifNull: ['$totalCorrect', 0] },
+                    totalTimeSpent: { $ifNull: ['$totalTimeSpent', 0] },
                     bestScore: { $round: ['$bestScore', 1] },
                     currentStreak: { $ifNull: ['$streak.currentStreak', 0] },
                     longestStreak: { $ifNull: ['$streak.longestStreak', 0] },

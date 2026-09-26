@@ -12,22 +12,12 @@ import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
+import { formatTimeSpent } from '../../../lib/utils/timeFormat';
 
 const TYPE_OPTIONS = [
   { value: 'quiz', label: 'QUIZ LEADERBOARD', tooltip: 'Ranked by: Quizzes Attempted, then Accuracy, then Total Score' },
   { value: 'exam', label: 'EXAM LEADERBOARD', tooltip: 'Ranked by: Exams Attempted, then Accuracy, then Total Score' },
 ];
-
-// QuizAttempt.totalTime is stored in seconds, UserTestAttempt.totalTime in
-// milliseconds (Date.now() delta) — normalize to seconds before formatting.
-const formatTimeSpent = (rawTotalTime, type) => {
-  const seconds = Math.round((rawTotalTime || 0) / (type === 'exam' ? 1000 : 1));
-  const hrs = Math.floor(seconds / 3600);
-  const mins = Math.floor((seconds % 3600) / 60);
-  if (hrs > 0) return `${hrs}h ${mins}m`;
-  if (mins > 0) return `${mins}m`;
-  return `${seconds}s`;
-};
 
 const PERIOD_OPTIONS = [
   { value: 'all-time', label: 'ALL TIME' },

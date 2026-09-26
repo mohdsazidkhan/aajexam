@@ -12,6 +12,7 @@ import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
+import { formatTimeSpent } from '../../../lib/utils/timeFormat';
 
 const AllIndiaRankPage = () => {
   const { isMounted } = useSSR();
@@ -94,6 +95,11 @@ const AllIndiaRankPage = () => {
         <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-300">
           <MapPin className="w-3.5 h-3.5 text-slate-400" /> {row.city || '—'}
         </div>
+      )
+    },
+    {
+      key: 'totalTimeSpent', header: 'Total Time Spent', align: 'center', render: (_, row) => (
+        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums whitespace-nowrap">{formatTimeSpent(row.totalTimeSpent, 'exam')}</div>
       )
     },
     {

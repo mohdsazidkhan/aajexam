@@ -24,11 +24,13 @@ import {
    Lightbulb,
    Newspaper,
    BarChart3,
+   Clock,
 } from "lucide-react";
 
 import API from "../../lib/api";
 import { useAuthStatus } from "../../hooks/useClientSide";
 import HomePageSkeleton from "../HomePageSkeleton";
+import { formatSecondsSpent } from "../../lib/utils/timeFormat";
 
 // ─── Section Header ───
 const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) => (
@@ -306,6 +308,9 @@ const HomePage = () => {
    const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
    const streakCount = examStats.streakCount ?? 0;
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
+   const quizTimeSpentSeconds = performanceReport?.quizTimeSpentSeconds ?? 0;
+   const examTimeSpentSeconds = performanceReport?.examTimeSpentSeconds ?? 0;
+   const totalTimeSpentSeconds = performanceReport?.totalTimeSpentSeconds ?? 0;
 
    return (
       <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 lg:mt-4">
@@ -336,6 +341,25 @@ const HomePage = () => {
                      <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
                      <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
                      <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
+                  </div>
+               </div>
+
+               {/* Time Spent Stats */}
+               <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4 mt-2 md:mt-3 lg:mt-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
+                     <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(totalTimeSpentSeconds)}</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Total Time Spent</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
+                     <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(quizTimeSpentSeconds)}</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes Time Spent</p>
+                  </div>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
+                     <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(examTimeSpentSeconds)}</p>
+                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Exams Time Spent</p>
                   </div>
                </div>
             </section>
