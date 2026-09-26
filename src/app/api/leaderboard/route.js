@@ -45,6 +45,7 @@ export async function GET(req) {
             totalScore: { $sum: '$score' },
             totalMarks: { $sum: '$practiceTestMarks' },
             totalCorrect: { $sum: '$correctCount' },
+            totalTimeSpent: { $sum: '$totalTime' },
             bestScore: { $max: '$score' },
         } : {
             _id: '$user',
@@ -54,6 +55,7 @@ export async function GET(req) {
             totalScore: { $sum: '$score' },
             totalMarks: { $sum: '$totalMarks' },
             totalCorrect: { $sum: '$correctCount' },
+            totalTimeSpent: { $sum: '$totalTime' },
             bestScore: { $max: '$percentage' },
         };
 
@@ -86,7 +88,8 @@ export async function GET(req) {
                 $match: { totalQuizzes: { $gte: 1 } }
             },
             {
-                $sort: { avgAccuracy: -1, avgPercentage: -1, totalQuizzes: -1 }
+                // Rank by: most quizzes/tests attempted, then accuracy, then total score.
+                $sort: { totalQuizzes: -1, avgAccuracy: -1, totalScore: -1 }
             },
             // Join User data
             {
@@ -128,6 +131,7 @@ export async function GET(req) {
                     totalScore: { $round: ['$totalScore', 1] },
                     totalMarks: { $ifNull: ['$totalMarks', 0] },
                     totalCorrect: { $ifNull: ['$totalCorrect', 0] },
+                    totalTimeSpent: { $ifNull: ['$totalTimeSpent', 0] },
                     bestScore: { $round: ['$bestScore', 1] },
                     currentStreak: { $ifNull: ['$streak.currentStreak', 0] },
                     longestStreak: { $ifNull: ['$streak.longestStreak', 0] },

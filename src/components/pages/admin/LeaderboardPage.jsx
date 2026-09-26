@@ -14,9 +14,20 @@ import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const TYPE_OPTIONS = [
-  { value: 'quiz', label: 'QUIZ LEADERBOARD' },
-  { value: 'exam', label: 'EXAM LEADERBOARD' },
+  { value: 'quiz', label: 'QUIZ LEADERBOARD', tooltip: 'Ranked by: Quizzes Attempted, then Accuracy, then Total Score' },
+  { value: 'exam', label: 'EXAM LEADERBOARD', tooltip: 'Ranked by: Exams Attempted, then Accuracy, then Total Score' },
 ];
+
+// QuizAttempt.totalTime is stored in seconds, UserTestAttempt.totalTime in
+// milliseconds (Date.now() delta) — normalize to seconds before formatting.
+const formatTimeSpent = (rawTotalTime, type) => {
+  const seconds = Math.round((rawTotalTime || 0) / (type === 'exam' ? 1000 : 1));
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  if (hrs > 0) return `${hrs}h ${mins}m`;
+  if (mins > 0) return `${mins}m`;
+  return `${seconds}s`;
+};
 
 const PERIOD_OPTIONS = [
   { value: 'all-time', label: 'ALL TIME' },
@@ -92,6 +103,11 @@ const LeaderboardPage = () => {
       )
     },
     {
+      key: 'totalTimeSpent', header: 'Total Time Spent', align: 'center', render: (_, row) => (
+        <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums whitespace-nowrap">{formatTimeSpent(row.totalTimeSpent, type)}</div>
+      )
+    },
+    {
       key: 'totalQuizzes', header: 'Attempts', align: 'center', render: (_, row) => (
         <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{row.totalQuizzes}</div>
       )
@@ -145,6 +161,7 @@ const LeaderboardPage = () => {
           <button
             key={opt.value}
             onClick={() => handleTypeChange(opt.value)}
+            title={opt.tooltip}
             className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-[10px] sm:text-xs font-black uppercase tracking-wide transition-all ${type === opt.value ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
           >
             <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  Star, Zap, ChevronRight, ChevronLeft, Users, RefreshCw, FileText, BrainCircuit
+  Star, Zap, ChevronRight, ChevronLeft, Users, RefreshCw, FileText, BrainCircuit, Clock
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -10,6 +10,17 @@ import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { getCurrentUser } from '../lib/utils/authUtils';
+
+// QuizAttempt.totalTime is stored in seconds, UserTestAttempt.totalTime in
+// milliseconds (Date.now() delta) — normalize to seconds before formatting.
+const formatTimeSpent = (rawTotalTime, type) => {
+  const seconds = Math.round((rawTotalTime || 0) / (type === 'exam' ? 1000 : 1));
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  if (hrs > 0) return `${hrs}h ${mins}m`;
+  if (mins > 0) return `${mins}m`;
+  return `${seconds}s`;
+};
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -112,7 +123,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 };
 
 // ─── Top 3 Podium ─────────────────────────────────────────────────────────────
-const Podium = ({ top3, currentUserId }) => {
+const Podium = ({ top3, currentUserId, type }) => {
   // Reorder: 2nd | 1st | 3rd
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
@@ -152,7 +163,7 @@ const Podium = ({ top3, currentUserId }) => {
                 <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
                   {entry.name || entry.username || 'User'}
                 </p>
-                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.avgPercentage}%</p>
+                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'}</p>
               </div>
               <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
                 <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
@@ -167,7 +178,7 @@ const Podium = ({ top3, currentUserId }) => {
 
 // ─── Shared table column template (kept identical between header & rows so
 // everything lines up on desktop) — desktop only; mobile uses a stacked card. ──
-const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_20px]';
+const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_84px_20px]';
 
 // ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
 const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
@@ -224,6 +235,9 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
             {identity}
           </div>
           <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
+            <Clock className="w-3 h-3 text-content-muted" />{formatTimeSpent(entry.totalTimeSpent, type)}
+          </p>
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
             <Target className="w-3 h-3 text-content-muted" />{entry.totalQuizzes}
           </p>
           <p className="text-xs font-black text-content-primary text-center">{entry.totalMarks ?? 0}</p>
@@ -257,6 +271,10 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           </div>
 
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide whitespace-nowrap">Total Time Spent</p>
+              <p className="text-sm font-black text-content-primary">{formatTimeSpent(entry.totalTimeSpent, type)}</p>
+            </div>
             <div>
               <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{type === 'quiz' ? 'Quizzes' : 'Exams'}</p>
               <p className="text-sm font-black text-content-primary">{entry.totalQuizzes}</p>
@@ -309,7 +327,7 @@ const MyRankCard = ({ entry, type }) => {
           <Avatar entry={entry} size="md" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-black text-white truncate">Your Rank</p>
-            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'} · {entry.avgPercentage}% avg score</p>
+            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'} · {entry.avgPercentage}% avg score · {formatTimeSpent(entry.totalTimeSpent, type)} spent</p>
           </div>
           <div className="text-right flex-shrink-0">
             <p className="text-xl font-black text-white">#{entry.rank}</p>
@@ -354,9 +372,9 @@ const LeaderboardPage = () => {
   useEffect(() => { setPage(1); }, [type, period]);
 
   const top3 = data.slice(0, 3);
-  const rest = data.slice(3);
-  const totalPages = Math.max(1, Math.ceil(rest.length / ROWS_PER_PAGE));
-  const pagedRest = rest.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
+  // Table shows every ranked user, including the top 3 already on the podium above.
+  const totalPages = Math.max(1, Math.ceil(data.length / ROWS_PER_PAGE));
+  const pagedRest = data.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
 
   return (
     <div className="min-h-screen pb-32 font-outfit">
@@ -382,6 +400,7 @@ const LeaderboardPage = () => {
               <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-sm">
                 <button
                   onClick={() => setType('quiz')}
+                  title="Ranked by: Quizzes Attempted, then Accuracy, then Total Score"
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
                     type === 'quiz' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
@@ -390,6 +409,7 @@ const LeaderboardPage = () => {
                 </button>
                 <button
                   onClick={() => setType('exam')}
+                  title="Ranked by: Exams Attempted, then Accuracy, then Total Score"
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
                     type === 'exam' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
@@ -456,7 +476,7 @@ const LeaderboardPage = () => {
                 <div className="w-16 h-20 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
               </div>
             ) : top3.length > 0 ? (
-              <Podium top3={top3} currentUserId={currentUserId} />
+              <Podium top3={top3} currentUserId={currentUserId} type={type} />
             ) : null}
           </div>
         </section>
@@ -508,6 +528,7 @@ const LeaderboardPage = () => {
               <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
                 <p className="text-[10px] font-black text-content-muted uppercase">Player</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">Total Time Spent</p>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center">{type === 'quiz' ? 'Quizzes' : 'Exams'}</p>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center">Marks</p>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center">Correct</p>
@@ -517,7 +538,7 @@ const LeaderboardPage = () => {
                 <div />
               </div>
 
-              {/* Rows — top 3 already shown on the podium above */}
+              {/* Rows — includes ranks 1-3 too, even though they're already on the podium above */}
               {pagedRest.map((entry, i) => (
                 <LeaderboardRow
                   key={entry.userId}

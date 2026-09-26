@@ -51,7 +51,19 @@ export async function POST(req, { params }) {
         attempt.correctCount = evaluation.correctCount;
         attempt.wrongCount = evaluation.wrongCount;
         attempt.accuracy = evaluation.accuracy;
-        attempt.totalTime = Date.now() - attempt.startedAt.getTime();
+        // Real-exam attempts don't track per-question time client-side (unlike
+        // quizzes), so wall-clock elapsed-since-start is the only signal we'd
+        // otherwise have — but that blows up to days if a test is left open and
+        // resumed later. Instead, estimate time spent from how many questions
+        // were actually answered: (answered / total) share of the test's allotted
+        // duration. A fully-answered attempt gets the full duration; a half-done
+        // one gets half — proportional to real engagement, not idle wall-clock time.
+        const answeredCount = (evaluation.correctCount || 0) + (evaluation.wrongCount || 0);
+        const totalQuestions = test.questions?.length || 0;
+        const maxDurationMs = (test.duration || 0) * 60 * 1000;
+        attempt.totalTime = totalQuestions > 0
+            ? Math.round((answeredCount / totalQuestions) * maxDurationMs)
+            : Date.now() - attempt.startedAt.getTime();
         attempt.submittedAt = new Date();
         attempt.status = 'Completed';
         await attempt.save();
