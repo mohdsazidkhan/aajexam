@@ -38,6 +38,10 @@ const WelcomePromoModal = dynamic(() => import('../components/modals/WelcomeProm
   ssr: false,
 });
 
+const CityPromptModal = dynamic(() => import('../components/modals/CityPromptModal'), {
+  ssr: false,
+});
+
 // Global styles for mobile optimization
 const globalStyles = `
   /* Mobile Viewport and Touch Scrolling Fixes */
@@ -136,9 +140,12 @@ function AppContent({ Component, pageProps }) {
 
     if (isAuthenticated) {
       return (
-        <AppLayout>
-          {Component && <Component {...pageProps} />}
-        </AppLayout>
+        <>
+          <AppLayout>
+            {Component && <Component {...pageProps} />}
+          </AppLayout>
+          <CityPromptModal />
+        </>
       );
     }
 
