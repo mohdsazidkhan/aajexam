@@ -13,7 +13,7 @@ import API from '../../../lib/api';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import Sidebar from '../../Sidebar';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 

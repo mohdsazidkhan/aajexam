@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import API from '../../../lib/api';
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import Sidebar from "../../Sidebar";
 
 import { Flame, Eye, Heart, MessageCircle, BarChart3, CheckCircle2, TrendingUp } from 'lucide-react';

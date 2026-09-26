@@ -292,6 +292,14 @@ const SearchPage = () => {
       saveSearchTerm(tag);
    };
 
+   // Lets a clickable <div> row respond to Enter/Space like a real button, for keyboard users.
+   const onActivateKey = (handler) => (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+         e.preventDefault();
+         handler();
+      }
+   };
+
    // ── Shared row renderer — one item, any type ──
    const ResultRow = ({ item }) => {
       switch (item.type) {
@@ -326,7 +334,7 @@ const SearchPage = () => {
          }
          case 'test':
             return (
-               <div onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} onKeyDown={onActivateKey(() => router.push(`/govt-exams/test/${item.slug || item._id}/start`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -339,7 +347,7 @@ const SearchPage = () => {
          case 'examCategory':
          case 'pattern':
             return (
-               <div onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} onKeyDown={onActivateKey(() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams'))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
@@ -350,7 +358,7 @@ const SearchPage = () => {
             );
          case 'quiz':
             return (
-               <div onClick={() => router.push(`/quiz/${item.slug || item._id}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/quiz/${item.slug || item._id}`)} onKeyDown={onActivateKey(() => router.push(`/quiz/${item.slug || item._id}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -368,7 +376,7 @@ const SearchPage = () => {
             );
          case 'subject':
             return (
-               <div onClick={() => router.push(`/subjects/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/subjects/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/subjects/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -379,7 +387,7 @@ const SearchPage = () => {
             );
          case 'topic':
             return (
-               <div onClick={() => router.push(`/topics/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/topics/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/topics/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
@@ -390,7 +398,7 @@ const SearchPage = () => {
             );
          case 'hashtag':
             return (
-               <div onClick={() => goToTag(item.tag)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => goToTag(item.tag)} onKeyDown={onActivateKey(() => goToTag(item.tag))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
@@ -401,7 +409,7 @@ const SearchPage = () => {
             );
          case 'blog':
             return (
-               <div onClick={() => router.push(`/blog/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/blog/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/blog/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -412,7 +420,7 @@ const SearchPage = () => {
             );
          case 'note':
             return (
-               <div onClick={() => router.push(`/notes/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/notes/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/notes/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -423,7 +431,7 @@ const SearchPage = () => {
             );
          case 'examNews':
             return (
-               <div onClick={() => router.push(`/exam-news/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/exam-news/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/exam-news/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
@@ -434,7 +442,7 @@ const SearchPage = () => {
             );
          case 'currentAffair':
             return (
-               <div onClick={() => router.push(`/current-affairs/${item.slug}`)} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+               <div role="button" tabIndex={0} onClick={() => router.push(`/current-affairs/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/current-affairs/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>

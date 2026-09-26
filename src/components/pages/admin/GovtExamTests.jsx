@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import API from "../../../lib/api";
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
 import { motion, AnimatePresence } from "framer-motion";
@@ -126,7 +126,7 @@ const AdminGovtExamTests = () => {
 
    const handleCreate = () => {
       if (selectedPattern === "all") {
-         toast.warning("Please select an exam pattern first");
+         toast("Please select an exam pattern first", { icon: '⚠️' });
          return;
       }
       setEditingTest(null);

@@ -14,7 +14,7 @@ import SearchFilter from '../../SearchFilter';
 import ViewToggle from '../../ViewToggle';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import Sidebar from "../../Sidebar";
 
 import { getCurrentUser } from '../../../utils/authUtils';

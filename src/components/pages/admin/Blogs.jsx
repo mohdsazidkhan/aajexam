@@ -9,7 +9,7 @@ import ResponsiveTable from '../../ResponsiveTable';
 import StyledSelect from '../../ui/StyledSelect';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { Plus, Eye, Heart, Pin, Star, Trash2, Edit3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Sidebar from "../../Sidebar";

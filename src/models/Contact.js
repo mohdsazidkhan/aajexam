@@ -13,10 +13,8 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+}, { timestamps: true });
+
+contactSchema.index({ createdAt: -1 });
 
 export default mongoose.models.Contact || mongoose.model('Contact', contactSchema);

@@ -1,25 +1,15 @@
-import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Seo from '../../../components/Seo';
-import { ListSkeleton } from '../../../components/skeletons/PrivateSkeletons';
 
-const FollowingList = dynamic(() => import('../../../components/FollowingList'), {
-  ssr: false,
-  loading: () => <div className="container mx-auto py-4"><ListSkeleton rows={8} /></div>
-});
-
-export default function FollowingListPage() {
+// Legacy URL — following list now lives at /u/[username]/following.
+export default function FollowingRedirect() {
   const router = useRouter();
   const { username } = router.query;
 
-  return (
-    <>
-      <Seo
-        title={`@${username || 'User'} – Following | AajExam`}
-        description={`Accounts followed by @${username || 'this user'} on AajExam.`}
-        noIndex={true}
-      />
-      <FollowingList username={username} />
-    </>
-  );
+  useEffect(() => {
+    if (username) router.replace(`/u/${encodeURIComponent(username)}/following`);
+  }, [username, router]);
+
+  return <Seo title="Redirecting..." noIndex={true} />;
 }

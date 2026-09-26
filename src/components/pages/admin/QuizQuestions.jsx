@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import API from "../../../lib/api";
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import { useSSR } from "../../../hooks/useSSR";
 import { Edit3, Trash2, Plus, Search, X, HelpCircle } from "lucide-react";
 import { AdminTableSkeleton } from '../../admin/Skeletons';

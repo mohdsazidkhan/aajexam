@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
 import ResponsiveTable from '../../ResponsiveTable';

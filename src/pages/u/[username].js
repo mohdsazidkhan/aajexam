@@ -1,16 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { PlayCircle, Eye, Heart, FileText, Lightbulb, Zap, Newspaper, BarChart3 } from 'lucide-react';
 import API from '../../lib/api';
-import { generateBreadcrumbSchema } from '../../utils/schema';
 import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
 import FollowButton from '../../components/FollowButton';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
+import Seo from '../../components/Seo';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   const router = useRouter();
@@ -108,21 +107,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   return (
     <MobileAppWrapper title={profile.name || 'Profile'}>
       <div className="max-w-full mx-auto min-h-screen font-outfit">
-        <Head>
-          <title>{seo?.title || 'Profile - AajExam'}</title>
-          {seo?.description && <meta name="description" content={seo.description} />}
-          {seo?.keywords && <meta name="keywords" content={seo.keywords} />}
-          <meta property="og:type" content="profile" />
-          {seo?.title && <meta property="og:title" content={seo.title} />}
-          {seo?.description && <meta property="og:description" content={seo.description} />}
-          {seo?.image && <meta property="og:image" content={seo.image} />}
-          {seo?.url && <meta property="og:url" content={seo.url} />}
-          <meta name="twitter:card" content="summary_large_image" />
-          {seo?.title && <meta name="twitter:title" content={seo.title} />}
-          {seo?.description && <meta name="twitter:description" content={seo.description} />}
-          {seo?.image && <meta name="twitter:image" content={seo.image} />}
-          {seo?.url && <link rel="canonical" href={seo.url} />}
-        </Head>
+        <Seo
+          title={seo?.title || 'Profile - AajExam'}
+          description={seo?.description}
+          keywords={seo?.keywords}
+          image={seo?.image}
+          canonical={seo?.url}
+          type="profile"
+        />
 
         {/* Profile Header */}
         <div className="mb-6">

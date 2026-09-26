@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import API from '../../../lib/api';
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';

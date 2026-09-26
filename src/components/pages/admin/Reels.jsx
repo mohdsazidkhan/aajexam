@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from "react";
 import API from '../../../lib/api';
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import { getCurrentUser } from "../../../utils/authUtils";
 import Pagination from '../../Pagination';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';

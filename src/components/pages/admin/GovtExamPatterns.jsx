@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import API from "../../../lib/api";
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import { getCurrentUser } from "../../../utils/authUtils";
 import {
   Edit3,
@@ -127,7 +127,7 @@ const AdminGovtExamPatterns = () => {
 
   const handleCreate = () => {
     if (selectedExam === "all") {
-      toast.warning("Please select an exam first");
+      toast("Please select an exam first", { icon: '⚠️' });
       return;
     }
     setEditingPattern(null);

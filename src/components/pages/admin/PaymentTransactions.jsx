@@ -277,7 +277,7 @@ const AdminPaymentTransactions = () => {
     {
       key: 'createdAt',
       header: (
-        <div onClick={() => handleSort('createdAt')} className="flex items-center gap-2 cursor-pointer hover:text-primary-600 transition-colors">Date <SortIcon field="createdAt" /></div>
+        <div role="button" tabIndex={0} onClick={() => handleSort('createdAt')} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSort('createdAt'); } }} className="flex items-center gap-2 cursor-pointer hover:text-primary-600 transition-colors">Date <SortIcon field="createdAt" /></div>
       ),
       render: (_, t) => (
         <>
@@ -289,7 +289,7 @@ const AdminPaymentTransactions = () => {
     {
       key: 'user',
       header: (
-        <div onClick={() => handleSort('user.name')} className="flex items-center gap-2 cursor-pointer hover:text-primary-600 transition-colors">User <SortIcon field="user.name" /></div>
+        <div role="button" tabIndex={0} onClick={() => handleSort('user.name')} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSort('user.name'); } }} className="flex items-center gap-2 cursor-pointer hover:text-primary-600 transition-colors">User <SortIcon field="user.name" /></div>
       ),
       render: (_, t) => (
         <>

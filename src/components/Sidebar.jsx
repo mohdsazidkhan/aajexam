@@ -43,6 +43,7 @@ import {
   Award,
   MessageCircleQuestion,
   FolderTree,
+  Home,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -110,6 +111,7 @@ const Sidebar = () => {
         { path: '/admin/interview-categories', icon: FolderTree, label: 'Interview Categories', key: 'interview-categories' },
         { path: '/admin/interview-questions', icon: MessageCircleQuestion, label: 'Interview Questions', key: 'interview-questions' },
         { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq', isPro: true },
+        { path: '/admin/homepage-content', icon: Home, label: 'Homepage Content', key: 'homepage-content' },
       ]
     },
     {
@@ -127,6 +129,7 @@ const Sidebar = () => {
       title: 'COMMUNITY',
       items: [
         { path: '/admin/mentors', icon: Users, label: 'Mentors', key: 'mentors', isPro: true },
+        { path: '/admin/community', icon: MessageCircle, label: 'Community Q&A', key: 'community' },
         { path: '/admin/reels', icon: Zap, label: 'Reels', key: 'reels' },
         { path: '/admin/reels/create', icon: Flame, label: 'Create Reel', key: 'reels-create' },
         { path: '/admin/reels/analytics', icon: BarChart3, label: 'Reel Analytics', key: 'reels-analytics' },
@@ -137,6 +140,7 @@ const Sidebar = () => {
       items: [
         { path: '/admin/students', icon: Users, label: 'Students', key: 'students' },
         { path: '/admin/user-details', icon: User, label: 'User Details', key: 'user-details' },
+        { path: '/admin/admins', icon: ShieldCheck, label: 'Admins', key: 'admins' },
         { path: '/admin/contacts', icon: Contact2, label: 'Contacts', key: 'contacts' },
       ]
     },

@@ -7,7 +7,7 @@ import API from '../../../lib/api';
 import CustomEditor from '../../CustomEditor';
 import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { ArrowLeft, Save } from 'lucide-react';
 import { motion } from 'framer-motion';
 

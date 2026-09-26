@@ -1,5 +1,5 @@
 import { getCurrentUser } from './authUtils';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import config from '../config/appConfig';
 import { useState, useEffect } from 'react';
 

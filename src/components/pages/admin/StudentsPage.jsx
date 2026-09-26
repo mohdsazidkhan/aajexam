@@ -14,7 +14,7 @@ import API from '../../../lib/api';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { safeLocalStorage } from '../../../lib/utils/storage';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
@@ -156,6 +156,21 @@ const StudentsPage = () => {
         console.error('Error deleting student:', error);
         toast.error('Unable to delete student. Please try again.');
       }
+    }
+  };
+
+  const handlePromoteToAdmin = async (student) => {
+    if (!window.confirm(`Grant admin access to ${student.name || student.email}? They will get full access to the admin panel.`)) return;
+    try {
+      const res = await API.request(`/api/admin/users/${student._id}/role`, { method: 'PUT', body: JSON.stringify({ role: 'admin' }) });
+      if (res?.success) {
+        toast.success(res.message || 'Promoted to admin');
+        fetchStudents(currentPage, searchTerm, filters);
+      } else {
+        toast.error(res?.message || 'Failed to promote');
+      }
+    } catch (error) {
+      toast.error(error?.message || 'Failed to promote');
     }
   };
 
@@ -366,6 +381,18 @@ const StudentsPage = () => {
         title="View student details"
       >
         <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+      </button>
+
+      {/* Promote to Admin */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePromoteToAdmin(student);
+        }}
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        title="Promote to admin"
+      >
+        <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
 
       {/* Delete Button */}

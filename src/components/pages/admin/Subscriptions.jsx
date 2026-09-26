@@ -393,7 +393,7 @@ const AdminSubscriptions = () => {
     {
       key: 'createdAt',
       header: (
-        <div className="flex items-center gap-2 hover:text-primary-600 transition-colors cursor-pointer" onClick={() => handleSort('createdAt')}>
+        <div role="button" tabIndex={0} className="flex items-center gap-2 hover:text-primary-600 transition-colors cursor-pointer" onClick={() => handleSort('createdAt')} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSort('createdAt'); } }}>
           DATE <SortIcon field="createdAt" />
         </div>
       ),

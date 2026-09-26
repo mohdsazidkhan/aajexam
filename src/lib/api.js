@@ -491,11 +491,6 @@ class ApiService {
   }
 
   // Admin Notifications
-  async getAdminLatestNotifications(limit = 10, { unreadOnly = true } = {}) {
-    const u = unreadOnly ? '1' : '0';
-    const params = new URLSearchParams({ limit, unread: u }).toString();
-    return this.request(`/api/admin/notifications/latest?${params}`);
-  }
   async getAdminNotifications(page = 1, limit = 20, { unreadOnly = true } = {}) {
     const u = unreadOnly ? '1' : '0';
     const params = new URLSearchParams({ page, limit, unread: u }).toString();

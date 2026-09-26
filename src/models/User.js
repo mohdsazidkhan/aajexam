@@ -4,7 +4,7 @@ import './Subscription'; // Ensure Subscription model is registered
 
 const userSchema = new mongoose.Schema({
   name: String,
-  email: { type: String },
+  email: { type: String, required: true, match: /^[^@\s]+@[^@\s]+\.[^@\s]+$/ },
   phone: { type: String, required: false }, // Removed unique constraint for Google users
   password: { type: String },
   role: { type: String, enum: ['admin', 'student'], default: 'student' },

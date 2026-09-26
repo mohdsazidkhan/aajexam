@@ -18,6 +18,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
+import API from '../lib/api';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
@@ -81,9 +82,17 @@ const NotificationsPage = () => {
 
   const getIcon = (type) => {
     switch (type) {
-      case 'test_completed': return <Target className="w-5 h-5 text-primary-600" />;
-      case 'reward_earned': return <Trophy className="w-5 h-5 text-primary-600" />;
-      case 'subscription_expired': return <CircleAlert className="w-5 h-5 text-black dark:text-white" />;
+      case 'quiz_attempt':
+      case 'exam_attempt':
+      case 'daily_challenge':
+        return <Target className="w-5 h-5 text-primary-600" />;
+      case 'referral_registration':
+      case 'mentor':
+        return <Trophy className="w-5 h-5 text-primary-600" />;
+      case 'streak':
+        return <Zap className="w-5 h-5 text-primary-600" />;
+      case 'subscription':
+        return <CircleAlert className="w-5 h-5 text-black dark:text-white" />;
       default: return <Info className="w-5 h-5 text-black dark:text-white" />;
     }
   };

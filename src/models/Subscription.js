@@ -41,5 +41,9 @@ const subscriptionSchema = new mongoose.Schema({
   cancellationReason: { type: String }
 }, { timestamps: true });
 
+subscriptionSchema.index({ user: 1, status: 1 });
+subscriptionSchema.index({ status: 1, endDate: 1 });
+subscriptionSchema.index({ createdAt: -1 });
+
 const Subscription = mongoose.models.Subscription || mongoose.model('Subscription', subscriptionSchema);
 export default Subscription;

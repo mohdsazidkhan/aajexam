@@ -230,7 +230,7 @@ const CommunityQuestionsPage = () => {
                       </div>
                     )}
                     <div>
-                      <Link href={`/profile/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-600 transition-colors">
+                      <Link href={`/u/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-600 transition-colors">
                         {q.author?.name || 'Anonymous'}
                       </Link>
                       <div className="flex items-center gap-2 text-[10px] text-content-muted">

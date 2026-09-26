@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import API from '../../../lib/api';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import {
     Users,
     Search,

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import API from "../../../lib/api";
-import { toast } from "react-toastify";
+import { toast } from 'react-hot-toast';
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
 import { motion, AnimatePresence } from "framer-motion";
