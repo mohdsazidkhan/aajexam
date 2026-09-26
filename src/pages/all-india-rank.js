@@ -141,7 +141,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           {rankBadge}
           <div className="flex items-center gap-2.5 min-w-0">
             <Avatar entry={entry} size="md" />
@@ -163,7 +163,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
+          ${isMe ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600' : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'}`}>
           <div className="flex items-center gap-3">
             {rankBadge}
             <Avatar entry={entry} size="md" />
