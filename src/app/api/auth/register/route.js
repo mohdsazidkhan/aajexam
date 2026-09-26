@@ -228,7 +228,7 @@ export async function POST(req) {
             success: true,
             message: successMessage,
             user: {
-                _id: user._id, name: user.name, email: user.email, username: user.username,
+                _id: user._id, name: user.name, email: user.email, username: user.username, city: user.city,
                 role: user.role, referralCode: user.referralCode, subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry, currentSubscription: freeSubscription,
                 badges: user.badges,

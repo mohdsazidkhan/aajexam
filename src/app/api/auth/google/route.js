@@ -189,7 +189,7 @@ export async function POST(req) {
         return successResponse({
             token,
             user: {
-                _id: user._id, name: user.name, email: user.email, username: user.username,
+                _id: user._id, name: user.name, email: user.email, username: user.username, city: user.city,
                 role: user.role, subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry, currentSubscription: user.currentSubscription,
                 badges: user.badges, profileCompletion: updatedProfileDetails,

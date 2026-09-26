@@ -6,6 +6,7 @@ import { Building2, CreditCard, Eye, EyeOff, Facebook, Globe, Info, Instagram, L
 import { toast } from 'react-hot-toast';
 
 import API from '../lib/api';
+import { getCurrentUser } from '../lib/utils/authUtils';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import SearchableDropdown from '../components/SearchableDropdown';
 import Card from '../components/ui/Card';
@@ -65,7 +66,14 @@ const SettingsPage = () => {
     event.preventDefault();
     setSaving(true);
     try {
-      await API.updateProfile(profile);
+      const res = await API.updateProfile(profile);
+      // The cached localStorage user (read by e.g. the city-prompt modal,
+      // navbar) is never refreshed otherwise, so it'd keep showing stale
+      // values — like an empty city — until the next login.
+      if (res?.success && res.user) {
+        const stored = getCurrentUser();
+        if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, ...res.user }));
+      }
       toast.success('Profile updated.');
     } finally {
       setSaving(false);

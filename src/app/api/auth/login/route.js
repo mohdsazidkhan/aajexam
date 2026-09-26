@@ -101,6 +101,7 @@ export async function POST(req) {
                 email: user.email,
                 username: user.username,
                 phone: user.phone,
+                city: user.city,
                 role: user.role,
                 subscriptionStatus: user.subscriptionStatus,
                 subscriptionExpiry: user.subscriptionExpiry,

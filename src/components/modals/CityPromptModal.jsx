@@ -16,15 +16,25 @@ const CityPromptModal = () => {
 
   useEffect(() => {
     const user = getCurrentUser();
-    if (!user || user.city) return;
+    if (!user) return;
     if (sessionStorage.getItem('cityPromptShown')) return;
 
-    const timer = setTimeout(() => {
-      setShow(true);
-      sessionStorage.setItem('cityPromptShown', 'true');
-    }, 1500);
+    // The cached localStorage user (set at login/register) doesn't carry
+    // `city` at all, so it's never a reliable signal either way — always
+    // confirm against the live profile before deciding to show this.
+    let cancelled = false;
+    let timer;
+    API.getProfile().then((res) => {
+      if (cancelled) return;
+      if (res?.success && !res.user?.city) {
+        timer = setTimeout(() => {
+          setShow(true);
+          sessionStorage.setItem('cityPromptShown', 'true');
+        }, 1500);
+      }
+    }).catch(() => {});
 
-    return () => clearTimeout(timer);
+    return () => { cancelled = true; clearTimeout(timer); };
   }, []);
 
   const handleClose = () => setShow(false);
