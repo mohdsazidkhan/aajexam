@@ -91,7 +91,7 @@ const ModernLandingPage = () => {
             </div>
 
             <div className="container mx-auto px-3 lg:px-6 relative z-10">
-               <div className="max-w-5xl mx-auto text-center space-y-6 py-4 lg:py-12">
+               <div className="max-w-5xl mx-auto text-center space-y-5 lg:space-y-6 py-4 lg:py-12">
                   {/* Gamified Floating Elements */}
                   <motion.div
                      animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
@@ -126,12 +126,13 @@ const ModernLandingPage = () => {
                      <p
                         className="text-base lg:text-xl lg:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 lg:px-4"
                      >
-                        Practice daily for government exams, see how you are improving, and earn rewards for your hard work.
+                        Practice daily for government exams and track your improvement.
+
                      </p>
                   </div>
 
                   <div
-                     className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-0 lg:pt-4"
+                     className="flex flex-col sm:flex-row items-center justify-center gap-3 lg:gap-6 pt-0 lg:pt-4"
                   >
                      <Button
                         variant="primary"
@@ -156,7 +157,7 @@ const ModernLandingPage = () => {
                   </div>
 
                   <div
-                     className="flex flex-wrap items-center justify-center gap-x-6 lg:gap-x-12 gap-y-4 pt-4 lg:pt-6 border-t-2 border-slate-200/50 dark:border-slate-800/50"
+                     className="flex flex-wrap items-center justify-center gap-x-6 lg:gap-x-12 gap-y-2 lg:gap-y-4 pt-2 lg:pt-4 lg:pt-6 border-t-2 border-slate-200/50 dark:border-slate-800/50"
                   >
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
                         <ShieldCheck className="w-5 h-5 text-primary-600" /> Questions by experts
@@ -222,16 +223,16 @@ const ModernLandingPage = () => {
          <section className="border-t-2 border-slate-100 dark:border-slate-800 px-0 py-4 lg:py-8">
             <div className="container mx-auto px-0 lg:px-8">
                <div className="max-w-4xl mx-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-6 relative">
                      <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
 
                      {[
-                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Banking, etc.", icon: Target, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                        { step: 2, title: "Practice Daily", desc: "Take topic-wise quizzes and mock tests.", icon: Zap, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
-                        { step: 3, title: "Track & Win", desc: "Analyze performance and earn rewards.", icon: Trophy, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" }
+                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" }
                      ].map((item, i) => (
-                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border-2 border-slate-200 dark:border-slate-700">
-                           <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
+                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-3 lg:p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border-2 border-slate-200 dark:border-slate-700">
+                           <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-2 lg:mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
                               <item.icon className={`w-8 h-8 ${item.color}`} />
                            </div>
                            <h3 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">

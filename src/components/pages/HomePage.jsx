@@ -308,7 +308,7 @@ const HomePage = () => {
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-4 lg:mt-8">
+      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 lg:mt-4">
             {/* ── Stats ── */}
             <section className="px-0 py-2 lg:py-4">
                {streakCount > 0 && (

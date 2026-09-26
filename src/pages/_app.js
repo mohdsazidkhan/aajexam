@@ -143,7 +143,7 @@ function AppContent({ Component, pageProps }) {
     }
 
     return (
-      <main id="main-content" className="min-h-screen pt-16 lg:pt-20">
+      <main id="main-content" className="min-h-screen pt-16">
         <PublicNavbar />
         <div className="appContainer px-4 lg:px-8">
           {Component && <Component {...pageProps} />}

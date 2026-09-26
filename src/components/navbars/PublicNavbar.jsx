@@ -62,7 +62,7 @@ const PublicNavbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
           ? 'py-2.5 bg-white dark:bg-slate-900 backdrop-blur-2xl border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
-          : 'py-2 lg:py-4 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
+          : 'py-2.5 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
           }`}
       >
         <div className="container mx-auto px-4 pointer-events-auto">
