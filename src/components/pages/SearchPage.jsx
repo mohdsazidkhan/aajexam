@@ -501,6 +501,9 @@ const SearchPage = () => {
                      <input
                         ref={inputRef}
                         type="text"
+                        autoFocus
+                        enterKeyHint="search"
+                        inputMode="search"
                         className="w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2 lg:py-3 pl-9 pr-8 text-sm lg:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
                         placeholder="Search"
                         value={query}
@@ -534,11 +537,6 @@ const SearchPage = () => {
                         </div>
                      )}
                   </div>
-                  {(isFocused || query) && (
-                     <button type="submit" disabled={loading || !query.trim()} className="text-sm font-bold text-primary-600 shrink-0 disabled:opacity-40">
-                        Search
-                     </button>
-                  )}
                </form>
             </div>
 
