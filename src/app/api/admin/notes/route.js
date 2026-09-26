@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import StudyNote from '@/models/StudyNote';
 import { protect, admin } from '@/middleware/auth';
+import { notifyAllStudents } from '@/utils/notifications';
 
 export async function GET(req) {
     try {
@@ -44,6 +45,15 @@ export async function POST(req) {
         body.isAdminCreated = true;
 
         const note = await StudyNote.create(body);
+
+        if (note.status === 'published') {
+            notifyAllStudents({
+                title: 'New study note added',
+                description: note.title || 'A new study note is up on AajExam.',
+                meta: { studyNoteId: note._id }
+            });
+        }
+
         return NextResponse.json({ success: true, data: note }, { status: 201 });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

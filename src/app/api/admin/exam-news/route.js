@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import ExamNews from '@/models/ExamNews';
 import { protect, admin } from '@/middleware/auth';
+import { notifyAllStudents } from '@/utils/notifications';
 
 export async function GET(req) {
     try {
@@ -36,6 +37,15 @@ export async function POST(req) {
         const body = await req.json();
         body.createdBy = auth.user._id;
         const news = await ExamNews.create(body);
+
+        if (news.status === 'published') {
+            notifyAllStudents({
+                title: 'New exam news',
+                description: news.title || 'A new exam news update is up on AajExam.',
+                meta: { examNewsId: news._id }
+            });
+        }
+
         return NextResponse.json({ success: true, data: news }, { status: 201 });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

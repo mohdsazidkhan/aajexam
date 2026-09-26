@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Reel from '@/models/Reel';
 import { protect } from '@/middleware/auth';
-import { createNotification } from '@/utils/notifications';
+import { createNotification, notifyAllStudents } from '@/utils/notifications';
 
 export async function POST(req) {
 	try {
@@ -85,6 +85,12 @@ export async function POST(req) {
 					meta: { userId: auth.user._id, reelId: reel._id }
 				});
 			} catch (e) { console.error('Notification Error:', e); }
+		} else {
+			notifyAllStudents({
+				title: 'New reel added',
+				description: reel.title || reel.questionText || 'A new reel is up on AajExam.',
+				meta: { reelId: reel._id }
+			});
 		}
 
 		return NextResponse.json({

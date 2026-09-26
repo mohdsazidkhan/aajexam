@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import Blog from '@/models/Blog';
 import { protect, admin } from '@/middleware/auth';
 import { uploadImage } from '@/lib/cloudinary';
+import { notifyAllStudents } from '@/utils/notifications';
 
 export async function GET(req) {
     try {
@@ -107,6 +108,15 @@ export async function POST(req) {
         });
 
         await blog.save();
+
+        if (blog.status === 'published') {
+            notifyAllStudents({
+                title: 'New blog post',
+                description: blog.title || 'A new blog post is up on AajExam.',
+                meta: { blogId: blog._id, slug: blog.slug }
+            });
+        }
+
         return NextResponse.json({ message: 'Blog created successfully', blog }, { status: 201 });
     } catch (error) {
         console.error('Admin create blog error:', error);

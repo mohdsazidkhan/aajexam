@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
 import { protect, admin } from '@/middleware/auth';
+import { notifyAllStudents } from '@/utils/notifications';
 
 // GET - Admin list all PYQs
 export async function GET(req) {
@@ -76,6 +77,13 @@ export async function POST(req) {
         });
 
         await pyqTest.save();
+
+        notifyAllStudents({
+            title: 'New PYQ paper added',
+            description: pyqTest.title || 'A new previous-year paper is up on AajExam.',
+            meta: { practiceTestId: pyqTest._id }
+        });
+
         return NextResponse.json({ success: true, data: pyqTest }, { status: 201 });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

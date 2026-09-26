@@ -193,7 +193,7 @@ const ReelCreate = () => {
       if (type === 'poll') Object.assign(data, { pollQuestion, pollOptions: pollOptions.filter(o => o.text) });
 
       const res = await API.createReel(data);
-      if (res?.success) { toast.success(res.message || 'Submitted!'); router.push('/reels'); }
+      if (res?.success) { toast.success(res.message || 'Submitted!'); router.push('/my-reels'); }
       else toast.error(res?.message || 'Failed');
     } catch (err) { toast.error('Error'); }
     finally { setLoading(false); }

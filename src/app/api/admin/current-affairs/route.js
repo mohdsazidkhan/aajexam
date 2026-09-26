@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import CurrentAffair from '@/models/CurrentAffair';
 import { protect, admin } from '@/middleware/auth';
+import { notifyAllStudents } from '@/utils/notifications';
 
 // GET - Admin list
 export async function GET(req) {
@@ -39,6 +40,15 @@ export async function POST(req) {
         body.createdBy = auth.user._id;
 
         const affair = await CurrentAffair.create(body);
+
+        if (affair.status === 'published') {
+            notifyAllStudents({
+                title: 'New current affairs update',
+                description: affair.title || 'A new current affairs entry is up on AajExam.',
+                meta: { currentAffairId: affair._id }
+            });
+        }
+
         return NextResponse.json({ success: true, data: affair }, { status: 201 });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

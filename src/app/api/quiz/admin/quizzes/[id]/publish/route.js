@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
 import { protect, admin } from '@/middleware/auth';
+import { notifyAllStudents } from '@/utils/notifications';
 
 // PATCH - publish or unpublish a quiz
 export async function PATCH(req, { params }) {
@@ -28,6 +29,15 @@ export async function PATCH(req, { params }) {
         }
 
         await quiz.save();
+
+        if (quiz.status === 'published') {
+            notifyAllStudents({
+                title: 'New quiz available',
+                description: quiz.title || 'A new quiz is up on AajExam.',
+                meta: { quizId: quiz._id }
+            });
+        }
+
         return NextResponse.json({ success: true, data: quiz });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
