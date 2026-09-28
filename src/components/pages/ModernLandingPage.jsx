@@ -475,24 +475,24 @@ const ModernLandingPage = () => {
 
          <section className="px-0 py-4 lg:py-8">
             <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-sm p-12 lg:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
-               <div className="relative z-10 space-y-8">
+               <div className="relative z-10 space-y-4 lg:space-y-8 py-4 lg:py-8">
                   <motion.h2
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
-                     className="text-2xl lg:text-4xl lg:text-9xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
+                     className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
                   >
                      Your Dream Job <br /><span className="text-primary-600">Is Waiting.</span>
                   </motion.h2>
                   <p className="text-md md:text-xl lg:text-2xl font-bold text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed tracking-[0.04em] px-4">Start today. Join AajExam, practice every day, and get the government job you want.</p>
-                  <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+                  <div className="pt-4 lg:pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
                      <Button
                         variant="primary"
                         size="xl"
                         icon={ArrowRight}
                         iconPosition="right"
-                        className="w-full sm:w-auto shadow-sm rounded-2xl px-16 font-outfit font-black text-sm tracking-[0.08em] py-8 transition-transform active:scale-95"
+                        className="w-full sm:w-auto shadow-sm rounded-2xl font-outfit font-black text-sm tracking-[0.08em] transition-transform active:scale-95"
                         onClick={() => router.push('/register')}
                      >
-                        Join now for free
+                        Join Now For Free
                      </Button>
                   </div>
                </div>
