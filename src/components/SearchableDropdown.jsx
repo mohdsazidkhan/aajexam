@@ -9,7 +9,9 @@ const SearchableDropdown = ({
   onChange,
   type,
   placeholder = 'Search...',
-  className = ''
+  className = '',
+  disabled = false,
+  extraParams = {}
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,13 +33,16 @@ const SearchableDropdown = ({
     if (!isOpen) setSearchTerm(value || '');
   }, [value, isOpen]);
 
+  const extraParamsKey = JSON.stringify(extraParams);
+
   useEffect(() => {
     if (!isOpen) return;
 
     const fetchOptions = async () => {
       try {
         setLoading(true);
-        const res = await API.request(`/api/locations?type=${type}&search=${encodeURIComponent(searchTerm)}`);
+        const params = new URLSearchParams({ type, search: searchTerm, ...extraParams });
+        const res = await API.request(`/api/locations?${params.toString()}`);
         if (res.success) setOptions(res.data || []);
       } catch (err) {
         console.error(`Failed to fetch ${type}:`, err);
@@ -48,9 +53,11 @@ const SearchableDropdown = ({
 
     const delayDebounceFn = setTimeout(fetchOptions, 400);
     return () => clearTimeout(delayDebounceFn);
-  }, [searchTerm, type, isOpen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm, type, isOpen, extraParamsKey]);
 
   const handleOpen = () => {
+    if (disabled) return;
     setIsOpen(true);
     setSearchTerm('');
   };
@@ -69,12 +76,13 @@ const SearchableDropdown = ({
   return (
     <div className="relative w-full" ref={dropdownRef}>
       <div
-        className={`flex items-center justify-between w-full px-4 py-4 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus-within:border-primary-700 focus-within:bg-primary-500/5 transition-all cursor-text ${className}`}
+        className={`flex items-center justify-between w-full px-4 py-4 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus-within:border-primary-700 focus-within:bg-primary-500/5 transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-text'} ${className}`}
         onClick={!isOpen ? handleOpen : undefined}
       >
         <input
           type="text"
-          className="w-full bg-slate-50 dark:bg-black outline-none border-none p-0 font-bold placeholder:text-slate-300 dark:placeholder:text-slate-600"
+          disabled={disabled}
+          className="w-full bg-slate-50 dark:bg-black outline-none border-none p-0 font-bold placeholder:text-slate-300 dark:placeholder:text-slate-600 disabled:cursor-not-allowed"
           placeholder={placeholder}
           value={isOpen ? searchTerm : (value || '')}
           onChange={(e) => {
@@ -84,18 +92,18 @@ const SearchableDropdown = ({
           onFocus={() => { if (!isOpen) handleOpen(); }}
         />
         <div className="flex items-center gap-2 text-slate-400 flex-shrink-0">
-          {value && (
+          {value && !disabled && (
             <button type="button" onClick={handleClear} className="hover:text-slate-600 dark:hover:text-slate-200">
               <X className="w-4 h-4" />
             </button>
           )}
-          <button type="button" onClick={() => setIsOpen(!isOpen)}>
+          <button type="button" disabled={disabled} onClick={() => !disabled && setIsOpen(!isOpen)}>
             <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
           </button>
         </div>
       </div>
 
-      {isOpen && (
+      {isOpen && !disabled && (
         <div className="absolute z-50 w-full mt-1 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-sm max-h-60 overflow-y-auto">
           {loading ? (
             <div className="p-4 text-center text-sm font-semibold text-slate-400">Loading...</div>

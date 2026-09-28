@@ -13,20 +13,26 @@ export async function POST(req) {
         }
 
         await dbConnect();
-        const { title, description, target } = await req.json();
+        const { title, description, target, userIds } = await req.json();
 
         const trimmedTitle = (title || '').trim();
         const trimmedDescription = (description || '').trim();
         if (!trimmedTitle || !trimmedDescription) {
             return NextResponse.json({ success: false, message: 'Title and message are required' }, { status: 400 });
         }
-        if (!['all', 'pro', 'free'].includes(target)) {
+        if (!['all', 'pro', 'free', 'users'].includes(target)) {
             return NextResponse.json({ success: false, message: 'Invalid target' }, { status: 400 });
         }
 
         const query = { role: 'student' };
         if (target === 'pro') query.subscriptionStatus = 'PRO';
         if (target === 'free') query.subscriptionStatus = 'FREE';
+        if (target === 'users') {
+            if (!Array.isArray(userIds) || userIds.length === 0) {
+                return NextResponse.json({ success: false, message: 'Select at least one user' }, { status: 400 });
+            }
+            query._id = { $in: userIds };
+        }
 
         const users = await User.find(query).select('_id').lean();
         if (users.length === 0) {

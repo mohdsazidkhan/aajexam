@@ -14,9 +14,10 @@ const userSchema = new mongoose.Schema({
   googleId: { type: String }, // Google OAuth ID
   profilePicture: { type: String }, // Profile picture URL from Google
 
-  // Shown on rank/leaderboard pages when set. No collection UI yet — reserved
-  // for a future profile-edit field; defaults to empty for all existing users.
+  // Shown on rank/leaderboard pages when set. Free-text, matched against the
+  // City master list rather than referencing it directly (mirrors `city` below).
   city: { type: String, trim: true, default: '' },
+  state: { type: String, trim: true, default: '' },
 
   // Social media links (optional)
   socialLinks: {

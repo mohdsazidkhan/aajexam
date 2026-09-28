@@ -5,12 +5,13 @@ import { MapPin, X } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { getCurrentUser } from '../../lib/utils/authUtils';
-import SearchableDropdown from '../SearchableDropdown';
+import StateCitySelect from '../StateCitySelect';
 
 // Nudges any logged-in user with no city on file to add one — shown once per
 // browser session (not every page load) so it's a gentle reminder, not a wall.
 const CityPromptModal = () => {
   const [show, setShow] = useState(false);
+  const [state, setState] = useState('');
   const [city, setCity] = useState('');
   const [saving, setSaving] = useState(false);
 
@@ -40,17 +41,21 @@ const CityPromptModal = () => {
   const handleClose = () => setShow(false);
 
   const handleSave = async () => {
+    if (!state.trim()) {
+      toast.error('Please select your state');
+      return;
+    }
     if (!city.trim()) {
       toast.error('Please select your city');
       return;
     }
     setSaving(true);
     try {
-      const res = await API.updateProfile({ city: city.trim() });
+      const res = await API.updateProfile({ state: state.trim(), city: city.trim() });
       if (res?.success) {
         const stored = getCurrentUser();
         if (stored) {
-          localStorage.setItem('userInfo', JSON.stringify({ ...stored, city: city.trim() }));
+          localStorage.setItem('userInfo', JSON.stringify({ ...stored, state: state.trim(), city: city.trim() }));
         }
         toast.success('City added! This helps rank you against students near you.');
         setShow(false);
@@ -101,11 +106,11 @@ const CityPromptModal = () => {
             Show up on your city&apos;s leaderboard and compete with students near you.
           </p>
 
-          <SearchableDropdown
-            type="city"
-            value={city}
-            onChange={setCity}
-            placeholder="Search your city..."
+          <StateCitySelect
+            state={state}
+            city={city}
+            onChange={({ state: newState, city: newCity }) => { setState(newState); setCity(newCity); }}
+            stacked
           />
 
           <button

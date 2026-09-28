@@ -44,6 +44,7 @@ import {
   MessageCircleQuestion,
   FolderTree,
   Home,
+  Landmark,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -142,6 +143,7 @@ const Sidebar = () => {
         { path: '/admin/user-details', icon: User, label: 'User Details', key: 'user-details' },
         { path: '/admin/admins', icon: ShieldCheck, label: 'Admins', key: 'admins' },
         { path: '/admin/contacts', icon: Contact2, label: 'Contacts', key: 'contacts' },
+        { path: '/admin/locations', icon: Landmark, label: 'Locations', key: 'locations' },
       ]
     },
     {

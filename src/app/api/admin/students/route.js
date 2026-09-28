@@ -25,7 +25,7 @@ export async function GET(req) {
             const skip = (page - 1) * limit;
             const [students, total] = await Promise.all([
                 User.find(query)
-                    .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
+                    .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks city createdAt')
                     .sort({ createdAt: -1 })
                     .skip(skip)
                     .limit(limit)
@@ -41,7 +41,7 @@ export async function GET(req) {
             });
         } else {
             const students = await User.find(query)
-                .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks createdAt')
+                .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks city createdAt')
                 .sort({ createdAt: -1 })
                 .lean();
 

@@ -546,6 +546,23 @@ class ApiService {
     });
   }
 
+  // Admin: States & Cities
+  async getAdminStates(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/admin/locations/states${query ? `?${query}` : ''}`);
+  }
+  async createState(data) { return this.request('/api/admin/locations/states', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateState(id, data) { return this.request(`/api/admin/locations/states/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteState(id) { return this.request(`/api/admin/locations/states/${id}`, { method: 'DELETE' }); }
+
+  async getAdminCities(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/admin/locations/cities${query ? `?${query}` : ''}`);
+  }
+  async createCity(data) { return this.request('/api/admin/locations/cities', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateCity(id, data) { return this.request(`/api/admin/locations/cities/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteCity(id) { return this.request(`/api/admin/locations/cities/${id}`, { method: 'DELETE' }); }
+
   async adminCreateSubscription(data) {
     return this.request('/api/admin/subscriptions/create', {
       method: 'POST',

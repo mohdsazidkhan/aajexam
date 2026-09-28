@@ -15,7 +15,7 @@ export async function PUT(req) {
         const userId = auth.user._id;
 
         // Fields allowed to be updated
-        const { name, phone, bio, city, isPublicProfile, primaryTargetExam, socialLinks } = body;
+        const { name, phone, bio, city, state, isPublicProfile, primaryTargetExam, socialLinks } = body;
 
         const user = await User.findById(userId);
         if (!user) {
@@ -26,6 +26,7 @@ export async function PUT(req) {
         if (phone) user.phone = phone;
         if (bio !== undefined) user.bio = bio;
         if (city !== undefined) user.city = city;
+        if (state !== undefined) user.state = state;
         if (isPublicProfile !== undefined) user.isPublicProfile = !!isPublicProfile;
         if (primaryTargetExam) user.primaryTargetExam = primaryTargetExam;
         if (socialLinks && typeof socialLinks === 'object') {
@@ -44,6 +45,7 @@ export async function PUT(req) {
                 role: user.role,
                 bio: user.bio,
                 city: user.city,
+                state: user.state,
                 isPublicProfile: user.isPublicProfile,
                 primaryTargetExam: user.primaryTargetExam,
                 socialLinks: user.socialLinks,

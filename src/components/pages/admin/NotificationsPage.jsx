@@ -6,6 +6,7 @@ import API from '../../../lib/api';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import Button from '../../ui/Button';
 import StyledSelect from '../../ui/StyledSelect';
+import UserSearchPicker from '../../admin/UserSearchPicker';
 import { useSSR } from '../../../hooks/useSSR';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -57,6 +58,8 @@ const AdminNotificationsPage = () => {
   const [showCompose, setShowCompose] = useState(false);
   const [composeForm, setComposeForm] = useState({ title: '', description: '', target: 'all' });
   const [sending, setSending] = useState(false);
+  const [specificUser, setSpecificUser] = useState(null);
+  const [selectedUsers, setSelectedUsers] = useState([]);
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
   const typeToPath = {
@@ -159,22 +162,47 @@ const AdminNotificationsPage = () => {
     } catch (_) { }
   };
 
+  const closeCompose = () => {
+    setShowCompose(false);
+    setComposeForm({ title: '', description: '', target: 'all' });
+    setSpecificUser(null);
+    setSelectedUsers([]);
+  };
+
   const handleSendBroadcast = async (e) => {
     e.preventDefault();
     if (!composeForm.title.trim() || !composeForm.description.trim()) {
       toast.error('Title and message are required');
       return;
     }
+    if (composeForm.target === 'specific' && !specificUser) {
+      toast.error('Please select a user');
+      return;
+    }
+    if (composeForm.target === 'selected' && selectedUsers.length === 0) {
+      toast.error('Please select at least one user');
+      return;
+    }
+
+    const isUserTarget = composeForm.target === 'specific' || composeForm.target === 'selected';
+    const payload = {
+      title: composeForm.title,
+      description: composeForm.description,
+      target: isUserTarget ? 'users' : composeForm.target,
+      ...(isUserTarget && {
+        userIds: composeForm.target === 'specific' ? [specificUser._id] : selectedUsers.map((u) => u._id)
+      })
+    };
+
     setSending(true);
     try {
       const res = await API.request('/api/admin/notifications/broadcast', {
         method: 'POST',
-        body: JSON.stringify(composeForm)
+        body: JSON.stringify(payload)
       });
       if (res?.success) {
         toast.success(`Sent to ${res.count ?? 0} user${res.count === 1 ? '' : 's'}`);
-        setShowCompose(false);
-        setComposeForm({ title: '', description: '', target: 'all' });
+        closeCompose();
         fetchPage(1, limit);
       } else {
         toast.error(res?.message || 'Failed to send');
@@ -441,7 +469,7 @@ const AdminNotificationsPage = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4"
-            onClick={() => !sending && setShowCompose(false)}
+            onClick={() => !sending && closeCompose()}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -454,7 +482,7 @@ const AdminNotificationsPage = () => {
                 <h3 className="text-lg lg:text-2xl font-black uppercase italic tracking-tighter flex items-center gap-2">
                   <Megaphone className="w-5 h-5 text-primary-600" /> Announce
                 </h3>
-                <button onClick={() => setShowCompose(false)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors">
+                <button onClick={closeCompose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors">
                   <XIcon className="w-4 h-4" />
                 </button>
               </div>
@@ -464,14 +492,33 @@ const AdminNotificationsPage = () => {
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Send to</label>
                   <select
                     value={composeForm.target}
-                    onChange={(e) => setComposeForm((f) => ({ ...f, target: e.target.value }))}
+                    onChange={(e) => {
+                      const target = e.target.value;
+                      setComposeForm((f) => ({ ...f, target }));
+                      setSpecificUser(null);
+                      setSelectedUsers([]);
+                    }}
                     className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                   >
                     <option value="all">All users</option>
                     <option value="pro">PRO subscribers only</option>
                     <option value="free">Free users only</option>
+                    <option value="specific">Specific user</option>
+                    <option value="selected">Selected users</option>
                   </select>
                 </div>
+                {composeForm.target === 'specific' && (
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">User</label>
+                    <UserSearchPicker value={specificUser} onChange={setSpecificUser} placeholder="Search by name or email..." />
+                  </div>
+                )}
+                {composeForm.target === 'selected' && (
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Users</label>
+                    <UserSearchPicker multiple value={selectedUsers} onChange={setSelectedUsers} placeholder="Search by name or email..." />
+                  </div>
+                )}
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Title</label>
                   <input

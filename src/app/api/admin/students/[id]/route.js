@@ -11,7 +11,7 @@ export async function PUT(req, { params }) {
         }
 
         await dbConnect();
-        const { name, email, phone, status, isBlocked } = await req.json();
+        const { name, email, phone, status, isBlocked, city } = await req.json();
         const { id } = params;
 
         const student = await User.findById(id);
@@ -22,6 +22,7 @@ export async function PUT(req, { params }) {
         if (phone) student.phone = phone;
         if (status !== undefined) student.status = status;
         if (isBlocked !== undefined) student.isBlocked = isBlocked;
+        if (city !== undefined) student.city = city.trim();
 
         await student.save();
         return NextResponse.json({ message: '🎉 Student Updated Successfully!', student });

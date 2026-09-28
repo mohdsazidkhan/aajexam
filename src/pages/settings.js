@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import API from '../lib/api';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import MobileAppWrapper from '../components/MobileAppWrapper';
-import SearchableDropdown from '../components/SearchableDropdown';
+import StateCitySelect from '../components/StateCitySelect';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
@@ -203,13 +203,12 @@ const SettingsPage = () => {
                             <input disabled className={`${FIELD_CLASSNAME} opacity-60 cursor-not-allowed`} value={profile.username ? `@${profile.username}` : ''} />
                           </div>
 
-                          <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">City</label>
-                            <SearchableDropdown
-                              type="city"
-                              value={profile.city || ''}
-                              onChange={(val) => setProfile({ ...profile, city: val })}
-                              placeholder="Search your city..."
+                          <div className="space-y-2 lg:col-span-2">
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">State & City</label>
+                            <StateCitySelect
+                              state={profile.state || ''}
+                              city={profile.city || ''}
+                              onChange={({ state, city }) => setProfile({ ...profile, state, city })}
                             />
                           </div>
 

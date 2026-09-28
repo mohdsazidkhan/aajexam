@@ -6,7 +6,7 @@ import {
   Users, UserPlus, Search, Filter, LayoutGrid, List, Table as TableIcon,
   Shield, Zap, Award, Mail, Calendar, MoreVertical, Trash2, Edit3,
   CheckCircle2, XCircle, Info, ExternalLink, CreditCard, Wallet, Crown,
-  TrendingUp, Settings, ArrowRight, Download,
+  TrendingUp, Settings, ArrowRight, Download, MapPin,
   MailWarning, UserCheck, UserMinus, RefreshCcw, Plus, X
 } from "lucide-react";
 
@@ -16,6 +16,7 @@ import Link from 'next/link';
 import { safeLocalStorage } from '../../../lib/utils/storage';
 import { toast } from 'react-hot-toast';
 import ResponsiveTable from '../../ResponsiveTable';
+import SearchableDropdown from '../../SearchableDropdown';
 import Pagination from '../../Pagination';
 import ViewToggle from '../../ViewToggle';
 import SearchFilter from '../../SearchFilter';
@@ -49,6 +50,11 @@ const StudentsPage = () => {
     duration: '1 month'
   });
   const [createLoading, setCreateLoading] = useState(false);
+
+  // Edit City State
+  const [cityEditStudent, setCityEditStudent] = useState(null);
+  const [cityDraft, setCityDraft] = useState('');
+  const [cityLoading, setCityLoading] = useState(false);
 
   const handleCreateSubscription = async (e) => {
     e.preventDefault();
@@ -143,6 +149,27 @@ const StudentsPage = () => {
     } catch (error) {
       console.error('Error updating student:', error);
       toast.error('Unable to update student. Please try again.');
+    }
+  };
+
+  const openCityEditor = (student) => {
+    setCityEditStudent(student);
+    setCityDraft(student.city || '');
+  };
+
+  const handleSaveCity = async () => {
+    if (!cityEditStudent) return;
+    try {
+      setCityLoading(true);
+      await API.updateStudent(cityEditStudent._id, { city: cityDraft.trim() });
+      toast.success('City updated successfully!');
+      setCityEditStudent(null);
+      fetchStudents(currentPage, searchTerm, filters);
+    } catch (error) {
+      console.error('Error updating city:', error);
+      toast.error('Unable to update city. Please try again.');
+    } finally {
+      setCityLoading(false);
     }
   };
 
@@ -261,6 +288,20 @@ const StudentsPage = () => {
       )
     },
     {
+      key: 'city',
+      header: 'City',
+      render: (_, student) => (
+        <button
+          onClick={(e) => { e.stopPropagation(); openCityEditor(student); }}
+          className="flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 dark:hover:text-primary-400 transition-colors"
+          title="Set city"
+        >
+          <MapPin className="w-3.5 h-3.5 text-primary-500" />
+          {student.city || 'Add city'}
+        </button>
+      )
+    },
+    {
       key: 'level',
       header: 'Status',
       render: (_, student) => (
@@ -368,6 +409,18 @@ const StudentsPage = () => {
         <option value="FREE">FREE</option>
         <option value="PRO">PRO</option>
       </select>
+
+      {/* Edit City Button */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          openCityEditor(student);
+        }}
+        className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-300 p-1.5 sm:p-2 rounded-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+        title={student.city ? `City: ${student.city}` : 'Set city'}
+      >
+        <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+      </button>
 
       {/* Edit Button */}
       <button
@@ -744,6 +797,83 @@ const StudentsPage = () => {
                       </motion.button>
                     </div>
                   </form>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* Edit City Modal */}
+        <AnimatePresence>
+          {cityEditStudent && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setCityEditStudent(null)}
+                className="absolute inset-0 bg-[#0A0F1E]/90 backdrop-blur-3xl"
+              />
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ type: 'tween', duration: 0.2 }}
+                className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden"
+              >
+                <div className="p-6 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 bg-primary-500/10 text-primary-600 rounded-xl shadow-sm">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-black text-primary-600 uppercase tracking-[0.3em] mb-1">City</div>
+                      <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">
+                        {cityEditStudent.name || cityEditStudent.email}
+                      </h2>
+                    </div>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setCityEditStudent(null)}
+                    className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.button>
+                </div>
+
+                <div className="p-6 space-y-4">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 italic">Set City</label>
+                  <SearchableDropdown
+                    type="city"
+                    value={cityDraft}
+                    onChange={setCityDraft}
+                    placeholder="Search for a city..."
+                  />
+
+                  <div className="flex items-center gap-3 pt-2">
+                    <motion.button
+                      type="button"
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => setCityEditStudent(null)}
+                      className="flex-1 py-4 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+                    >
+                      Cancel
+                    </motion.button>
+                    <motion.button
+                      type="button"
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      disabled={cityLoading}
+                      onClick={handleSaveCity}
+                      className="flex-1 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    >
+                      {cityLoading ? <RefreshCcw className="w-4 h-4 animate-spin" /> : 'Save'}
+                    </motion.button>
+                  </div>
                 </div>
               </motion.div>
             </div>
