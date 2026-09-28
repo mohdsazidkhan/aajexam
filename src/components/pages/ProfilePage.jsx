@@ -161,7 +161,7 @@ const ProfilePage = () => {
   const accountDetails = [
     { label: 'Email', value: student?.email || 'Not added', icon: Mail },
     { label: 'Phone', value: student?.phone || 'Not added', icon: Phone },
-    { label: 'City', value: student?.city || 'Not added', icon: MapPin },
+    { label: 'City', value: student?.city ? `${student.city}${student.state ? `, ${student.state}` : ''}` : 'Not added', icon: MapPin },
     { label: 'Target exam', value: student?.primaryTargetExam || 'All Exams', icon: Target },
     { label: 'Current Plan', value: student?.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE', icon: ShieldCheck },
     {
@@ -216,7 +216,7 @@ const ProfilePage = () => {
 
                 {student?.city && (
                   <p className="flex items-center gap-1.5 text-xs lg:text-sm font-medium text-content-secondary">
-                    <MapPin className="w-3.5 h-3.5 lg:w-4 lg:h-4" /> {student.city}
+                    <MapPin className="w-3.5 h-3.5 lg:w-4 lg:h-4" /> {student.city}{student.state && `, ${student.state}`}
                   </p>
                 )}
               </div>

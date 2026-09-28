@@ -42,6 +42,7 @@ export async function GET(req, { params }) {
                 username: user.username,
                 bio: user.bio,
                 city: user.city,
+                state: user.state,
                 primaryTargetExam: user.primaryTargetExam,
                 profilePicture: user.profilePicture,
                 badges: user.badges,

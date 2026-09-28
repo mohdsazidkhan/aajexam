@@ -183,7 +183,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <div className="flex flex-wrap items-center gap-2 mt-3">
                   {profile.city && (
                     <span className="px-3 py-1.5 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] sm:text-xs font-bold border border-slate-100 dark:border-slate-700">
-                      📍 {profile.city}
+                      📍 {profile.city}{profile.state && `, ${profile.state}`}
                     </span>
                   )}
                   {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
