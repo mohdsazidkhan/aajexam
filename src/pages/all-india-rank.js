@@ -45,7 +45,7 @@ const rankConfig = {
 const AVATAR_COLORS = ['bg-primary-600', 'bg-blue-600', 'bg-rose-600', 'bg-amber-600', 'bg-violet-600', 'bg-cyan-600', 'bg-orange-600', 'bg-emerald-600'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
-  const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', xl: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
+  const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
   const colorIdx = initial.charCodeAt(0) % AVATAR_COLORS.length;
   const rc = rankConfig[entry?.rank];

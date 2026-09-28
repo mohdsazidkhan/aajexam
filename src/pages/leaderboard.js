@@ -88,7 +88,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = {
     sm: 'w-8 h-8 text-[11px]',
     md: 'w-10 h-10 text-sm',
-    xl: 'w-14 h-14 text-lg',
+    lg: 'w-14 h-14 text-lg',
     xl: 'w-16 h-16 text-xl',
   };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
