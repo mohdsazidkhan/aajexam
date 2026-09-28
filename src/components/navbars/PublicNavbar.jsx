@@ -65,7 +65,7 @@ const PublicNavbar = () => {
           : 'py-2.5 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
           }`}
       >
-        <div className="container mx-auto px-4 pointer-events-auto">
+        <div className="container mx-auto px-4 xxl:px-0 pointer-events-auto">
           <div className="flex items-center justify-between">
 
             {/* --- Logo --- */}

@@ -2,7 +2,7 @@ import React from 'react';
 
 // Basic shimmer block (mirrors PrivateSkeletons.jsx's local `Sh`)
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 // Generic admin table page: filter/search bar + data table.

@@ -152,7 +152,7 @@ function AppContent({ Component, pageProps }) {
     return (
       <main id="main-content" className="min-h-screen pt-16">
         <PublicNavbar />
-        <div className="appContainer px-4 xl:px-8">
+        <div className="appContainer px-4 xxl:px-8">
           {Component && <Component {...pageProps} />}
         </div>
         <UnifiedFooter />

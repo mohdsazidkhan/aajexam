@@ -12,11 +12,11 @@ import Seo from '../Seo';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const TopicListSkeleton = () => (
-  <div className="space-y-6 xl:space-y-10 pb-10 font-outfit">
+  <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
     <Sh className="h-40 xl:h-52 w-full rounded-[2.5rem] mt-4 xl:mt-8" />
     <div className="flex gap-2 px-1">
       {[1,2,3].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}

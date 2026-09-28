@@ -88,7 +88,7 @@ const LoginPage = () => {
     <MobileAppWrapper showHeader={true} title="Login">
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
         <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
-          <div className="space-y-10 relative z-10">
+          <div className="space-y-4 xl:space-y-8 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
               <div className="p-5 bg-primary-600 rounded-[2.5rem] shadow-sm w-fit text-white">
                 <Trophy className="w-12 h-12" />
@@ -96,7 +96,7 @@ const LoginPage = () => {
             </motion.div>
 
             <div className="space-y-2 xl:space-y-4">
-              <h1 className="text-2xl md:text-3xl xl:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+              <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
                 Welcome back!
                 <br />
                 Keep practicing.
@@ -106,7 +106,7 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <div className="space-y-2 xl:space-y-4 pt-8">
+            <div className="space-y-2 xl:space-y-4 pt-4">
               {[
                 { icon: CircleCheck, text: 'Continue where you left off' },
                 { icon: Brain, text: 'Check your progress and complete daily challenge' },
@@ -202,7 +202,7 @@ const LoginPage = () => {
               </form>
             </div>
 
-            <div className="text-center pt-4">
+            <div className="text-center">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Don&apos;t have an account?{' '}
                 <Link href="/register" className="text-primary-600 hover:underline font-black">

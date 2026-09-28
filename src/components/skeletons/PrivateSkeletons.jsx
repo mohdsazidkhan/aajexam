@@ -2,7 +2,7 @@ import React from 'react';
 
 // Basic shimmer block
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 // ─── Shared Layout Wrapper ───
@@ -362,7 +362,7 @@ export const DetailSkeleton = () => (
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-10/12 rounded-lg" />
       </div>
-      <div className="space-y-2 xl:space-y-4 pt-8">
+      <div className="space-y-2 xl:space-y-4 pt-4">
         <Sh className="h-8 w-1/3 rounded-lg" />
         <Sh className="h-5 w-full rounded-lg" />
         <Sh className="h-5 w-9/12 rounded-lg" />

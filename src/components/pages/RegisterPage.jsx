@@ -153,7 +153,7 @@ const RegisterPageInner = () => {
               </p>
             </div>
 
-            <div className="space-y-2 xl:space-y-4 pt-8">
+            <div className="space-y-2 xl:space-y-4 pt-4">
               {[
                 { icon: Rocket, text: 'Get full PRO access free — no payment, no card' },
                 { icon: Brain, text: 'Attempt 500+ Previous Year Papers free' },
@@ -320,7 +320,7 @@ const RegisterPageInner = () => {
               </Button>
             </form>
 
-            <div className="text-center pt-2">
+            <div className="text-center">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Already have an account?{' '}
                 <Link href="/login" className="text-primary-600 hover:underline font-black">

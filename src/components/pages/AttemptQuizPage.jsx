@@ -669,7 +669,7 @@ const AttemptQuizPage = () => {
                 className="flex items-center justify-center gap-1.5 min-w-[52px] px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               />
               {/* Timer */}
-              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
+              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:bg-white/30 dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
                 <Clock className="w-4 h-4" />
                 {formatTime(timeLeft)}
               </div>

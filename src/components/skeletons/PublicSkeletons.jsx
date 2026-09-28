@@ -8,7 +8,7 @@
 
 // ─── Base shimmer block ───────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 // ─── Reusable row skeleton (icon + 2 text lines + badges) ────────────────────
@@ -277,7 +277,7 @@ export const QuizPreviewPageSkeleton = QuizPreviewSkeleton;
 
 /** Skeleton for /blog (BlogsPage list) */
 export const BlogListSkeleton = () => (
-  <div className="animate-pulse space-y-6 py-6">
+  <div className="container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl">
     {/* Filters */}
     <div className="flex gap-3">
       <Sh className="h-9 w-32 rounded-lg xl:rounded-xl" />

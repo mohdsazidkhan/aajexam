@@ -15,7 +15,7 @@ import { formatTimeSpent, formatSecondsSpent } from '../lib/utils/timeFormat';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const LeaderboardSkeleton = () => (
