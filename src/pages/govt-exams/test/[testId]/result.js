@@ -102,9 +102,9 @@ const TestResult = ({ resolvedId } = {}) => {
   };
 
   if (loading) return (
-    <div className="space-y-4 lg:space-y-8 animate-fade-in py-4 lg:py-8">
+    <div className="space-y-4 xl:space-y-8 animate-fade-in py-4 xl:py-8">
       <Skeleton height="300px" borderRadius="1rem" />
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map(i => <Skeleton key={i} height="120px" borderRadius="1.5rem" />)}
       </div>
       <Skeleton height="400px" borderRadius="1.5rem" />
@@ -123,7 +123,7 @@ const TestResult = ({ resolvedId } = {}) => {
   const beatPct = percentile > 0 ? percentile.toFixed(1) : '0';
 
   return (
-    <div className="container mx-auto space-y-6 lg:space-y-10 animate-fade-in pb-24">
+    <div className="container mx-auto space-y-6 xl:space-y-10 animate-fade-in pb-24">
       <Seo title={`Result – ${result?.testTitle || 'Test'} | AajExam`} description="Your AajExam practice test result." noIndex={true} />
 
       {/* --- Celebration Hero --- */}
@@ -134,12 +134,12 @@ const TestResult = ({ resolvedId } = {}) => {
             animate={{ scale: 1, opacity: 1 }}
             className="absolute -top-12 -left-12 z-20 pointer-events-none"
           >
-            <Trophy className="w-20 lg:w-32 h-20 lg:h-32 text-black dark:text-white rotate-[-15deg] drop-shadow-sm" />
+            <Trophy className="w-20 xl:w-32 h-20 xl:h-32 text-black dark:text-white rotate-[-15deg] drop-shadow-sm" />
           </motion.div>
         )}
 
         <Card className={`
-          relative overflow-hidden text-center py-8 px-5 lg:py-12 lg:px-8 border-none shadow-sm
+          relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none shadow-sm
           ${isGreat ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800'}
         `}>
           <div className="relative z-10 space-y-6">
@@ -148,7 +148,7 @@ const TestResult = ({ resolvedId } = {}) => {
               animate={{ y: 0, opacity: 1 }}
               className="space-y-2"
             >
-              <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">
+              <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">
                 {isGreat ? 'Excellent Result!' : 'Good Effort!'}
               </h1>
               <p className="text-xl font-bold opacity-80 uppercase tracking-widest">
@@ -156,14 +156,14 @@ const TestResult = ({ resolvedId } = {}) => {
               </p>
             </motion.div>
 
-            <div className="flex justify-center items-center gap-6 lg:gap-12 py-4">
+            <div className="flex justify-center items-center gap-6 xl:gap-12 py-4">
               <div className="flex flex-col items-center">
-                <span className="text-xl lg:text-5xl font-black font-outfit tracking-tighter">{result?.score}</span>
+                <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{result?.score}</span>
                 <span className="text-sm font-black uppercase opacity-60">Score</span>
               </div>
               <div className="h-20 w-1 bg-white/20 rounded-full" />
               <div className="flex flex-col items-center">
-                <span className="text-xl lg:text-5xl font-black font-outfit tracking-tighter">{accuracy.toFixed(0)}%</span>
+                <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{accuracy.toFixed(0)}%</span>
                 <span className="text-sm font-black uppercase opacity-60">Accuracy</span>
               </div>
             </div>
@@ -182,11 +182,11 @@ const TestResult = ({ resolvedId } = {}) => {
                 transition={{ delay: 0.2 }}
                 className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm"
               >
-                <span className="text-base lg:text-lg font-black tracking-wide">
+                <span className="text-base xl:text-lg font-black tracking-wide">
                   All India Rank <span className="text-black dark:text-white">#{result.rank}</span> of {lbStats.totalParticipants.toLocaleString('en-IN')}
                 </span>
                 <span className="hidden sm:inline h-5 w-px bg-white/30" />
-                <span className="text-xs lg:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
                   {percentileBand} · Beat {beatPct}% candidates
                 </span>
               </motion.div>
@@ -201,7 +201,7 @@ const TestResult = ({ resolvedId } = {}) => {
       </section>
 
       {/* --- Key Metrics Grid --- */}
-      <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="grid grid-cols-2 xl:grid-cols-4 gap-4">
         {[
           {
             label: 'All India Rank',
@@ -234,9 +234,9 @@ const TestResult = ({ resolvedId } = {}) => {
         ].map((item, idx) => (
           <Card key={idx} className="flex flex-col items-center text-center gap-1.5 border-2 hover:border-primary-700 transition-colors">
             <div className={`w-14 h-14 shrink-0 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
-              <item.icon className="w-6 h-6 lg:w-7 lg:h-7" />
+              <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
-            <span className="text-xl lg:text-2xl font-black font-outfit">{item.value}</span>
+            <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.label}</span>
             {item.sub && <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400">{item.sub}</span>}
           </Card>
@@ -245,7 +245,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
       {/* --- Section Tabs --- */}
       <section className="space-y-6">
-        <div className="flex gap-4 p-2 bg-gray-100 dark:bg-slate-800 rounded-[2rem] w-fit mx-auto lg:mx-0">
+        <div className="flex gap-4 p-2 bg-gray-100 dark:bg-slate-800 rounded-[2rem] w-fit mx-auto xl:mx-0">
           {['summary', 'review'].map(tab => (
             <button
               key={tab}
@@ -270,7 +270,7 @@ const TestResult = ({ resolvedId } = {}) => {
               className="space-y-12"
             >
               {/* Leaderboard */}
-              <div className="space-y-2 lg:space-y-4">
+              <div className="space-y-2 xl:space-y-4">
                 <div className="flex items-end justify-between px-2 gap-2 flex-wrap">
                   <h3 className="text-xl font-black font-outfit uppercase">Leaderboard</h3>
                   {lbStats.totalParticipants > 0 && (
@@ -330,9 +330,9 @@ const TestResult = ({ resolvedId } = {}) => {
               </div>
 
               {/* Section breakdown */}
-              <div className="space-y-2 lg:space-y-4">
+              <div className="space-y-2 xl:space-y-4">
                 <h3 className="text-xl font-black font-outfit uppercase px-2">Section Performance</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
                     <Card key={idx} className="border-2">
                       <div className="flex justify-between items-center mb-2">
@@ -367,7 +367,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
                 return (
                   <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-black/20 dark:border-white/20'}`}>
-                    <div className={`p-3 lg:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-black/5 dark:bg-white/5'}`}>
+                    <div className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-black/5 dark:bg-white/5'}`}>
                       <div className="space-y-1">
                         <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-black dark:text-white'}`}>
                           {isCorrect ? 'PERFECT' : isSkipped ? 'SKIPPED' : 'INCORRECT'}
@@ -377,11 +377,11 @@ const TestResult = ({ resolvedId } = {}) => {
                       {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-black dark:text-white w-8 h-8" />}
                     </div>
 
-                    <div className="p-3 lg:p-6 space-y-2 lg:space-y-4">
+                    <div className="p-3 xl:p-6 space-y-2 xl:space-y-4">
                       {q.questionImage && (
-                        <img src={q.questionImage} alt="" className="max-h-72 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                        <img src={q.questionImage} alt="" className="max-h-72 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                       )}
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                         {q.options.map((opt, oIdx) => {
                           const isSelected = attempt?.selectedIndex === oIdx;
                           const isAnswer = q.correctAnswerIndex === oIdx;
@@ -394,7 +394,7 @@ const TestResult = ({ resolvedId } = {}) => {
                                 isSelected ? 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600 text-red-700 dark:text-red-400' :
                                   'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400'}
                                 `}>
-                              <div className={`w-8 h-8 rounded-lg lg:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
+                              <div className={`w-8 h-8 rounded-lg xl:rounded-xl flex items-center justify-center font-black shrink-0 ${isAnswer ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}`}>
                                 {String.fromCharCode(65 + oIdx)}
                               </div>
                               <div className="flex-1 flex flex-col gap-2">
@@ -412,7 +412,7 @@ const TestResult = ({ resolvedId } = {}) => {
                           {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
                           {q.explanationImage && (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                            <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
                           )}
                         </div>
                       )}
@@ -433,10 +433,10 @@ const TestResult = ({ resolvedId } = {}) => {
 
       {/* --- Share Result --- */}
       {mounted && result && (
-        <section className="px-0 py-4 lg:py-8">
+        <section className="px-0 py-4 xl:py-8">
           <Card className="border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
-              <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Flex your result</h3>
+              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">Flex your result</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
                 {result.rank && lbStats.totalParticipants > 0
                   ? `Share your All India Rank #${result.rank} of ${lbStats.totalParticipants.toLocaleString('en-IN')} with friends`
@@ -466,13 +466,13 @@ const TestResult = ({ resolvedId } = {}) => {
       )}
 
       {/* --- Action Bar --- */}
-      <section className="flex flex-col lg:flex-row justify-center items-center gap-4 px-0 py-4 lg:py-8">
+      <section className="flex flex-col xl:flex-row justify-center items-center gap-4 px-0 py-4 xl:py-8">
         <Button
           variant="primary"
           size="lg"
           fullWidth
           onClick={() => router.push(`/govt-exams/test/${testId}/start`)}
-          className="lg:w-auto px-12 py-6 text-xl"
+          className="xl:w-auto px-12 py-6 text-xl"
         >
           <RotateCcw className="w-6 h-6 mr-2" /> RETAKE TEST
         </Button>
@@ -481,7 +481,7 @@ const TestResult = ({ resolvedId } = {}) => {
           size="lg"
           fullWidth
           onClick={() => router.push('/govt-exams')}
-          className="lg:w-auto px-12 py-6 text-xl"
+          className="xl:w-auto px-12 py-6 text-xl"
         >
           <Home className="w-6 h-6 mr-2" /> BACK TO TESTS
         </Button>

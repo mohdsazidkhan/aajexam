@@ -61,17 +61,17 @@ const QuizHistoryPage = () => {
             <meta name="robots" content="noindex,nofollow" />
          </Head>
 
-         <div className="container mx-auto py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6">
+         <div className="container mx-auto py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view your detailed quiz attempt history and performance insights.">
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
                   <div className="space-y-1">
-                     <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Quiz History</h1>
+                     <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Quiz History</h1>
                      <p className="text-sm font-bold text-slate-400">All quizzes you have attempted</p>
                   </div>
                   <div className="flex gap-3">
                      <select
-                        className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
+                        className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
                         <option value="">All</option>
@@ -83,7 +83,7 @@ const QuizHistoryPage = () => {
 
                {/* Results */}
                {attempts.length === 0 ? (
-                  <div className="py-16 text-center space-y-2 lg:space-y-4">
+                  <div className="py-16 text-center space-y-2 xl:space-y-4">
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <BrainCircuit className="w-10 h-10 text-slate-300" />
                      </div>
@@ -91,7 +91,7 @@ const QuizHistoryPage = () => {
                      <Button variant="primary" onClick={() => router.push('/quizzes')}>Start a Quiz</Button>
                   </div>
                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
                      {attempts.map((attempt, idx) => {
                         const quiz = attempt.quiz;
                         const rank = getRankBadge(attempt.accuracy || 0);
@@ -100,10 +100,10 @@ const QuizHistoryPage = () => {
                         return (
                            <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
-                                 <div className="space-y-2 lg:space-y-4">
+                                 <div className="space-y-2 xl:space-y-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">
-                                       <div className="p-2.5 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl">
+                                       <div className="p-2.5 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl">
                                           <BrainCircuit className="w-5 h-5 text-primary-600" />
                                        </div>
                                        {isCompleted && (
@@ -185,9 +185,9 @@ const QuizHistoryPage = () => {
                {/* Pagination */}
                {totalPages > 1 && (
                   <div className="flex justify-center items-center gap-4 pt-6">
-                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
                      <span className="text-sm font-bold text-slate-500">Page {currentPage} of {totalPages}</span>
-                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
                   </div>
                )}
             </SubscriptionGuard>

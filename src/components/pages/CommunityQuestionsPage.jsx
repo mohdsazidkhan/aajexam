@@ -142,11 +142,11 @@ const CommunityQuestionsPage = () => {
 
   return (
     <div className="min-h-screen bg-background-primary">
-      <div className="mx-auto py-2 lg:py-4">
+      <div className="mx-auto py-2 xl:py-4">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-4">
           <div>
-            <h1 className="text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight">
+            <h1 className="text-xl xl:text-2xl font-black text-content-primary uppercase tracking-tight">
               Community Questions
             </h1>
             <p className="text-sm text-content-muted mt-1">
@@ -158,7 +158,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.exam}
               onChange={(e) => handleFilterChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
               <option value="">All Exams</option>
               {exams.map(exam => (
@@ -171,7 +171,7 @@ const CommunityQuestionsPage = () => {
             <select
               value={filters.sort}
               onChange={(e) => handleFilterChange('sort', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
               <option value="latest">Latest First</option>
               <option value="popular">Most Popular</option>
@@ -192,14 +192,14 @@ const CommunityQuestionsPage = () => {
         {loading ? (
           <ListSkeleton rows={6} />
         ) : error ? (
-          <Card className="text-center py-2 lg:py-4">
+          <Card className="text-center py-2 xl:py-4">
             <p className="text-content-muted text-sm">{error}</p>
             <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 text-sm font-bold hover:underline">
               Try Again
             </button>
           </Card>
         ) : questions.length === 0 ? (
-          <Card className="text-center py-2 lg:py-4">
+          <Card className="text-center py-2 xl:py-4">
             <MessageSquarePlus className="w-12 h-12 text-content-muted mx-auto mb-3 opacity-50" />
             <h3 className="text-lg font-bold text-content-primary mb-1">No Questions Yet</h3>
             <p className="text-sm text-content-muted mb-4">Be the first to share a question with the community!</p>
@@ -212,7 +212,7 @@ const CommunityQuestionsPage = () => {
             )}
           </Card>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 container py-2 lg:py-4">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 container py-2 xl:py-4">
             {questions.map((q) => (
               <Card key={q._id} radius="2xl" hoverable className="group">
                 {/* Author & Meta */}
@@ -247,13 +247,13 @@ const CommunityQuestionsPage = () => {
                 </div>
 
                 {/* Question Text */}
-                <p className="text-sm lg:text-base font-semibold text-content-primary leading-relaxed mb-3 whitespace-pre-line">
+                <p className="text-sm xl:text-base font-semibold text-content-primary leading-relaxed mb-3 whitespace-pre-line">
                   {q.question}
                 </p>
 
                 {/* Image */}
                 {q.image && (
-                  <div className="mb-3 rounded-lg lg:rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-800">
+                  <div className="mb-3 rounded-lg xl:rounded-xl overflow-hidden border-2 border-slate-200 dark:border-slate-800">
                     <img src={q.image} alt="Question" className="w-full max-h-80 object-contain bg-white dark:bg-slate-900" />
                   </div>
                 )}
@@ -264,7 +264,7 @@ const CommunityQuestionsPage = () => {
                     {q.options.filter(o => o.text?.trim()).map((opt, i) => (
                       <div
                         key={i}
-                        className="px-3 py-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-secondary text-sm font-semibold"
+                        className="px-3 py-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-secondary text-sm font-semibold"
                       >
                         <span className="font-black mr-2 text-xs">{String.fromCharCode(65 + i)}.</span>
                         {opt.text}
@@ -276,7 +276,7 @@ const CommunityQuestionsPage = () => {
                 {/* Open to answer CTA */}
                 <Link
                   href={`/community-questions/${q._id}`}
-                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg lg:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-600 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
+                  className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg xl:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-600 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
                 >
                   <span className="text-xs font-bold text-primary-600 dark:text-primary-300 uppercase tracking-wider">
                     Attempt & See Explanation
@@ -331,7 +331,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
-              className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -341,7 +341,7 @@ const CommunityQuestionsPage = () => {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= pagination.totalPages}
-              className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

@@ -56,7 +56,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
     return (
       <div className="space-y-8 animate-fade-in py-10">
         <Skeleton height="200px" borderRadius="1.5rem" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-6">
           {[1, 2, 3, 4].map(i => <Skeleton key={i} height="120px" borderRadius="1.5rem" />)}
         </div>
       </div>
@@ -102,7 +102,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           Back to Hub
         </button>
 
-        <div className="bg-slate-950 rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-14 shadow-sm relative overflow-hidden border-2 border-slate-800">
+        <div className="bg-slate-950 rounded-[2rem] xl:rounded-[3rem] p-6 xl:p-14 shadow-sm relative overflow-hidden border-2 border-slate-800">
           {/* Background atmosphere */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full blur-3xl -ml-32 -mb-32" />
@@ -112,7 +112,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
               <Target className="w-3 h-3" />
               {category?.type || 'Competitive'} Category
             </div>
-            <h1 className="text-2xl lg:text-4xl xl:text-6xl font-black text-white uppercase tracking-tighter leading-none">{categoryName}</h1>
+            <h1 className="text-2xl xl:text-4xl xl:text-6xl font-black text-white uppercase tracking-tighter leading-none">{categoryName}</h1>
             <p className="text-lg font-bold text-slate-400 max-w-2xl leading-relaxed">
               {category?.description || 'Everything you need to master exams in this category. Start your journey today!'}
             </p>
@@ -124,13 +124,13 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
       {/* --- Exams List --- */}
       <section className="space-y-8">
         <div className="flex justify-between items-center px-4">
-          <h2 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Available Exams</h2>
+          <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Available Exams</h2>
           <span className="bg-slate-100 dark:bg-slate-800 px-5 py-2 rounded-2xl text-[10px] font-black text-slate-500 uppercase tracking-widest border-2 border-slate-50 dark:border-slate-800">
             {exams.length} TOTAL
           </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-6">
           {exams.map((exam, idx) => (
             <motion.div
               key={exam._id}
@@ -140,14 +140,14 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
             >
               <div
                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
-                className="group flex items-center gap-3 lg:gap-6 p-4 lg:p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-sm hover:border-primary-700 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
+                className="group flex items-center gap-3 xl:gap-6 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-sm hover:border-primary-700 transition-all cursor-pointer active:translate-y-1 active:border-b-2"
               >
-                <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center text-white font-black text-xl lg:text-3xl group-hover:scale-110 transition-transform shadow-sm border-b-2 border-primary-600">
+                <div className="w-10 xl:w-20 h-10 xl:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center text-white font-black text-xl xl:text-3xl group-hover:scale-110 transition-transform shadow-sm border-b-2 border-primary-600">
                   {exam.code?.[0] || 'E'}
                 </div>
 
                 <div className="flex-1 space-y-2">
-                  <h3 className="text-sm lg:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
                     {exam.name}
                   </h3>
                   <div className="flex items-center gap-6">
@@ -162,7 +162,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
                   </div>
                 </div>
 
-                <div className="w-8 lg:w-12 h-8 lg:h-12 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-sm border-2 border-slate-100 dark:border-slate-800">
+                <div className="w-8 xl:w-12 h-8 xl:h-12 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-sm border-2 border-slate-100 dark:border-slate-800">
                   <ChevronRight className="w-6 h-6" />
                 </div>
               </div>
@@ -176,7 +176,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
               <Info className="w-10 h-10" />
             </div>
             <div>
-              <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tight">No exams found</h3>
+              <h3 className="text-xl xl:text-2xl font-black text-slate-400 uppercase tracking-tight">No exams found</h3>
               <p className="text-slate-400 font-bold mt-2">Try another category or search in the Study Hub.</p>
             </div>
           </div>

@@ -122,7 +122,7 @@ const AdminPYQ = () => {
   const searchInput = (
     <div className="relative w-full sm:w-56">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search paper title..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+      <input type="text" placeholder="Search paper title..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -132,7 +132,7 @@ const AdminPYQ = () => {
       <select
         value={selectedExamId}
         onChange={handleExamChange}
-        className="w-full sm:w-auto pl-8 pr-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition sm:min-w-[160px]"
+        className="w-full sm:w-auto pl-8 pr-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 transition sm:min-w-[160px]"
       >
         <option value="">All Exams</option>
         {exams.map(exam => (
@@ -158,7 +158,7 @@ const AdminPYQ = () => {
   );
 
   const newPyqButton = (
-    <button onClick={() => router.push('/admin/pyq/create')} className="w-full px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
+    <button onClick={() => router.push('/admin/pyq/create')} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
       <Plus className="w-3 h-3" /> New PYQ
     </button>
   );
@@ -209,11 +209,11 @@ const AdminPYQ = () => {
                 <p className="text-sm text-slate-400">{selectedExamId ? 'Try selecting a different exam or clear the filter.' : 'Click "New PYQ" above to add your first previous-year paper.'}</p>
               </Card>
             ) : viewMode === 'table' ? (
-              <Card className="!p-0 overflow-hidden h-auto lg:h-full flex flex-col" padded={false}>
+              <Card className="!p-0 overflow-hidden h-auto xl:h-full flex flex-col" padded={false}>
                 <ResponsiveTable data={tests} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
               </Card>
             ) : viewMode === 'grid' ? (
-              <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+              <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
                 {tests.map((t, i) => {
                   const examId = t.examPattern?.exam?._id ? String(t.examPattern.exam._id) : null;
                   const maxYear = examId ? maxYearByExam[examId] : null;

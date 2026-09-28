@@ -74,7 +74,7 @@ const LeaderboardPage = () => {
   const columns = [
     {
       key: 'rank', header: 'Rank', render: (_, row) => (
-        <div className={`w-8 lg:w-12 h-8 lg:h-12 rounded-lg lg:rounded-xl flex items-center justify-center font-black italic text-sm ${row.rank <= 3 ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
+        <div className={`w-8 xl:w-12 h-8 xl:h-12 rounded-lg xl:rounded-xl flex items-center justify-center font-black italic text-sm ${row.rank <= 3 ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-white/10 text-slate-400'}`}>
           #{row.rank}
         </div>
       )
@@ -145,7 +145,7 @@ const LeaderboardPage = () => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search by name, username or email..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -251,7 +251,7 @@ const LeaderboardPage = () => {
                 )}
 
                 {viewMode === 'grid' && (
-                  <div className="flex-1 min-h-0 overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-3">
+                  <div className="flex-1 min-h-0 overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-1.5 sm:gap-3">
                     {data.map((row, i) => (
                       <motion.div key={row.userId || i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }} className="bg-white dark:bg-slate-800 rounded-lg sm:rounded-2xl border border-slate-200 dark:border-slate-700 p-2 sm:p-4 flex flex-col gap-1.5 sm:gap-3">
                         <div className="flex items-start gap-1.5">

@@ -141,7 +141,7 @@ const QuestionReelCard = ({ reel, onAnswer, onTagPress }) => {
               whileTap={!answered ? { scale: 0.97 } : {}}
               onClick={() => handleSelect(i)}
               disabled={answered}
-              className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
+              className={`w-full flex items-center gap-2 p-2 sm:p-3 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 transition-all text-left ${optionStyle}`}
             >
               <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 ${answered && i === result?.correctAnswerIndex
                 ? 'border-primary-400 bg-primary-400 text-primary-600'
@@ -175,11 +175,11 @@ const FactReelCard = ({ reel, onTagPress }) => (
     </div>
     <div className="h-px bg-transparent mb-2 sm:mb-4" />
 
-    <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-4">{reel.title}</h2>
+    <h2 className="text-md sm:text-lg md:text-xl xl:text-2xl font-bold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
     {reel.highlightText && (
       <div className="pb-3 sm:my-6">
-        <p className="text-md sm:text-lg md:text-xl lg:text-2xl font-black text-white/90 leading-tight">{reel.highlightText}</p>
+        <p className="text-md sm:text-lg md:text-xl xl:text-2xl font-black text-white/90 leading-tight">{reel.highlightText}</p>
       </div>
     )}
 
@@ -205,10 +205,10 @@ const TipReelCard = ({ reel, onTagPress }) => (
     </div>
     <div className="h-px bg-transparent mb-5" />
 
-    <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
+    <h2 className="text-md sm:text-lg md:text-xl xl:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.title}</h2>
 
     {reel.formula && (
-      <div className="p-2 sm:p-4 rounded-lg lg:rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
+      <div className="p-2 sm:p-4 rounded-lg xl:rounded-xl sm:rounded-2xl bg-white/10 border border-white/10 mb-2 sm:mb-4 font-mono text-center">
         <p className="text-md sm:text-lg font-bold text-black dark:text-white">{reel.formula}</p>
       </div>
     )}
@@ -229,7 +229,7 @@ const CAReelCard = ({ reel, onTagPress }) => (
       {reel.caCategory && <ClickableTag text={reel.caCategory} onPress={onTagPress} className="text-xs text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white">#{reel.caCategory}</ClickableTag>}
     </div>
     {/* <div className="h-px bg-transparent mb-5" /> */}
-    <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-extrabold text-white mb-2 sm:mb-4">{reel.title}</h2>
+    <h2 className="text-md sm:text-lg md:text-xl xl:text-2xl font-extrabold text-white mb-2 sm:mb-4">{reel.title}</h2>
 
     {reel.content && <p className="text-sm text-white/70 leading-relaxed mb-2 sm:mb-4">{reel.content}</p>}
 
@@ -285,7 +285,7 @@ const PollReelCard = ({ reel, onVote }) => {
       </div>
       <div className="h-px bg-transparent mb-5" />
 
-      <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.pollQuestion}</h2>
+      <h2 className="text-md sm:text-lg md:text-xl xl:text-2xl font-bold text-white mb-2 sm:mb-6">{reel.pollQuestion}</h2>
 
       <div className="space-y-3">
         {pollData.map((opt, i) => {
@@ -296,7 +296,7 @@ const PollReelCard = ({ reel, onVote }) => {
               whileTap={!voted ? { scale: 0.97 } : {}}
               onClick={() => handleVote(i)}
               disabled={voted}
-              className="w-full text-left relative overflow-hidden rounded-lg lg:rounded-xl sm:rounded-2xl border border-white/10 p-2 sm:p-3.5"
+              className="w-full text-left relative overflow-hidden rounded-lg xl:rounded-xl sm:rounded-2xl border border-white/10 p-2 sm:p-3.5"
             >
               {voted && (
                 <motion.div
@@ -404,7 +404,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
         <div className="flex flex-wrap gap-2">
           {[['all', 'All'], ['question', 'Questions'], ['fact', 'Facts'], ['tip', 'Tips'], ['current_affairs', 'CA'], ['poll', 'Polls']].map(([val, label]) => (
             <button key={val} onClick={() => onChange({ ...selected, type: val === 'all' ? '' : val })}
-              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold transition-all border ${(!selected.type && val === 'all') || selected.type === val
+              className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold transition-all border ${(!selected.type && val === 'all') || selected.type === val
                 ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10 hover:border-white/20'}`}>
               {label}
             </button>
@@ -418,10 +418,10 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
           <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-3">Subject</p>
           <div className="flex flex-wrap gap-2">
             <button onClick={() => onChange({ ...selected, subject: '' })}
-              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${!selected.subject ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
+              className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold border ${!selected.subject ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
             {filters.subjects.map(s => (
               <button key={s} onClick={() => onChange({ ...selected, subject: s })}
-                className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${selected.subject === s ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{s}</button>
+                className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold border ${selected.subject === s ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{s}</button>
             ))}
           </div>
         </section>
@@ -433,10 +433,10 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
           <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-3">Exam Target</p>
           <div className="flex flex-wrap gap-2">
             <button onClick={() => onChange({ ...selected, examType: '' })}
-              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${!selected.examType ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
+              className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold border ${!selected.examType ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>All</button>
             {filters.examTypes.map(e => (
               <button key={e} onClick={() => onChange({ ...selected, examType: e })}
-                className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${selected.examType === e ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{e}</button>
+                className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold border ${selected.examType === e ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>{e}</button>
             ))}
           </div>
         </section>
@@ -448,7 +448,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => (
         <div className="flex flex-wrap gap-2 pb-4">
           {['all', 'easy', 'medium', 'hard'].map(d => (
             <button key={d} onClick={() => onChange({ ...selected, difficulty: d === 'all' ? '' : d })}
-              className={`px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold border ${(!selected.difficulty && d === 'all') || selected.difficulty === d
+              className={`px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold border ${(!selected.difficulty && d === 'all') || selected.difficulty === d
                 ? 'bg-white text-black border-white' : 'bg-white/5 text-white/60 border-white/10'}`}>
               {d.charAt(0).toUpperCase() + d.slice(1)}
             </button>
@@ -800,7 +800,7 @@ const ReelsFeed = () => {
         <Flame className="w-16 h-16 text-slate-600 mb-4" />
         <p className="text-lg font-bold mb-2">No reels yet</p>
         <p className="text-sm text-white/50 text-center">Reels will appear here once published</p>
-        <Link href="/" className="mt-6 px-6 py-2.5 rounded-lg lg:rounded-xl bg-white/10 text-sm font-semibold hover:bg-white/20 transition-colors">
+        <Link href="/" className="mt-6 px-6 py-2.5 rounded-lg xl:rounded-xl bg-white/10 text-sm font-semibold hover:bg-white/20 transition-colors">
           Go Home
         </Link>
       </div>
@@ -818,7 +818,7 @@ const ReelsFeed = () => {
       // Desktop: render inside StudentLayout's main column so it respects
       // the sidebar offset and navbar like every other page. Height is
       // viewport minus the 64px desktop navbar.
-      className="w-full overflow-hidden select-none bg-black fixed inset-0 h-[100dvh] z-[180] lg:static lg:inset-auto lg:h-[calc(100vh-64px)] lg:z-auto"
+      className="w-full overflow-hidden select-none bg-black fixed inset-0 h-[100dvh] z-[180] xl:static xl:inset-auto xl:h-[calc(100vh-64px)] xl:z-auto"
     >
       {/* Filter Panel — overlay */}
       <AnimatePresence>
@@ -1093,7 +1093,7 @@ const ReelsFeed = () => {
                     <div className="w-10 h-1 rounded-full bg-white/20" />
                   </div>
 
-                  <div className="px-5 pb-6 space-y-2 lg:space-y-4">
+                  <div className="px-5 pb-6 space-y-2 xl:space-y-4">
                     {/* Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -1247,7 +1247,7 @@ const ReelsFeed = () => {
             </AnimatePresence>
 
             {/* ── Desktop: nav arrows (left side) ── */}
-            <div className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col gap-3 z-20">
+            <div className="hidden xl:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col gap-3 z-20">
               <button onClick={goPrev} disabled={currentIndex === 0}
                 className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
                 <ChevronUp className="w-5 h-5" />
@@ -1312,7 +1312,7 @@ const ReelsFeed = () => {
                       onClick={() => setShowCreateDrawer(false)}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border border-white/10 hover:border-white/20 transition-all active:bg-white/5"
                     >
-                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
+                      <div className={`w-11 h-11 rounded-lg xl:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className="w-5 h-5 text-white" />
                       </div>
                       <div className="text-left">

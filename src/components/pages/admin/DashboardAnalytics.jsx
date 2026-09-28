@@ -265,7 +265,7 @@ const DashboardAnalytics = () => {
   );
 
   const RecentActivityCardView = () => (
-    <div className="h-full overflow-y-auto grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4 content-start">
+    <div className="h-full overflow-y-auto grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-4 content-start">
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
           <div key={i} className="bg-white dark:bg-slate-900/40 backdrop-blur-xl border border-slate-100 dark:border-white/5 rounded-2xl p-4 hover:shadow-sm transition-all duration-200">
@@ -335,7 +335,7 @@ const DashboardAnalytics = () => {
       {recentActivities.length > 0 ? (
         recentActivities.map((a, i) => (
           <div key={i} className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-600 rounded-lg p-4 hover:shadow-sm transition-all duration-200">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
                   <User className="w-5 h-5 text-primary-600" />
@@ -348,7 +348,7 @@ const DashboardAnalytics = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3">
+              <div className="flex flex-col xl:flex-row items-start xl:items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 bg-primary-100 dark:bg-primary-900/30 rounded-md flex items-center justify-center">
                     <BookOpen className="w-3.5 h-3.5 text-primary-600" />
@@ -403,7 +403,7 @@ const DashboardAnalytics = () => {
   );
 
   const statCardsSection = (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-4 mb-4 shrink-0">
+    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-4 mb-4 shrink-0">
       {[
         { label: 'Total Users', icon: Users, value: data?.overview?.totalUsers },
         { label: 'Total Quizzes', icon: BarChart3, value: data?.overview?.totalQuizzes },
@@ -414,13 +414,13 @@ const DashboardAnalytics = () => {
       ].map((stat, i) => (
         <div
           key={i}
-          className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl lg:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
+          className="flex items-center gap-2 p-3 bg-white dark:bg-slate-800 rounded-xl xl:rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
         >
           <div className="p-2 bg-primary-500/10 text-primary-600 rounded-lg shrink-0">
             <stat.icon className="w-4 h-4" />
           </div>
           <div className="min-w-0">
-            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
+            <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white tabular-nums tracking-tight whitespace-nowrap">
               {stat.value?.toLocaleString?.() || stat.value || 0}
             </div>
             <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">{stat.label}</div>
@@ -464,7 +464,7 @@ const DashboardAnalytics = () => {
 
   if (loading) return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans">
-      <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto">
+      <div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 xl:pt-6 flex-1 min-h-0 overflow-auto">
         <AdminDashboardSkeleton />
       </div>
     </div>
@@ -472,7 +472,7 @@ const DashboardAnalytics = () => {
 
   if (error) return (
     <div className="min-h-screen bg-background-page p-6 text-black dark:text-white">
-      <div className="container mx-auto py-0 lg:py-4 px-4 lg:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-3 rounded">
+      <div className="container mx-auto py-0 xl:py-4 px-4 xl:px-10 bg-slate-100 dark:bg-slate-800 border border-black dark:border-white py-3 rounded">
         {error}
       </div>
       </div>
@@ -486,7 +486,7 @@ const DashboardAnalytics = () => {
 
   return (
      <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col text-slate-900 dark:text-white font-sans selection:bg-primary-500/30">
-<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 lg:pt-6 flex-1 min-h-0 overflow-auto flex flex-col">
+<div className="w-full mx-auto text-slate-900 dark:text-white font-outfit pt-4 xl:pt-6 flex-1 min-h-0 overflow-auto flex flex-col">
            {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {statCardsSection}

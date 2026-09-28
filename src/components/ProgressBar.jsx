@@ -19,8 +19,8 @@ const COLOR_MAP = {
 
 const HEIGHT_MAP = {
     sm: 'h-2',
-    lg: 'h-4',
-    lg: 'h-6',
+    xl: 'h-4',
+    xl: 'h-6',
 };
 
 export default function ProgressBar({

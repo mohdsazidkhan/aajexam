@@ -75,22 +75,22 @@ const PublicNavbar = () => {
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                   AAJ<span className="text-primary-600 text-glow-primary">EXAM</span>
                 </span>
-                <span className="hidden sm:block text-[9px] lg:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
+                <span className="hidden sm:block text-[9px] xl:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
                   Prepare Your Exam Today
                 </span>
               </div>
             </Link>
 
             {/* --- Desktop Navigation --- */}
-            <div className="hidden lg:flex lg:flex-1 lg:justify-center">
+            <div className="hidden xl:flex xl:flex-1 xl:justify-center">
               <div className="flex items-center gap-1.5 p-1">
                 {navLinks.map((link) => {
                   const isActive = router.pathname === link.href;
                   return (
                     <Link title={link.title} key={link.href} href={link.href}>
-                      <button className={`relative px-2.5 py-2 rounded-lg lg:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                      <button className={`relative px-2.5 py-2 rounded-lg xl:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
                         {isActive && (
-                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50" />
+                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg xl:rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
                           {link.label}

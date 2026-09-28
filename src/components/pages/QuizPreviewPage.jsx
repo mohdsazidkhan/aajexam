@@ -89,7 +89,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
       'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30';
 
   return (
-    <div className="min-h-screen bg-background-page py-5 lg:py-12 pb-24">
+    <div className="min-h-screen bg-background-page py-5 xl:py-12 pb-24">
       <div className="container mx-auto">
 
         {/* Breadcrumb */}
@@ -118,12 +118,12 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         </div>
 
         {/* Quiz Header Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 lg:p-8 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-5 xl:p-8 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center mb-4">
-            <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-lg lg:rounded-xl text-white bg-primary-600 flex items-center justify-center mr-4 shrink-0">
-              <BrainCircuit className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
+            <div className="w-6 xl:w-12 h-6 xl:h-12 rounded-lg xl:rounded-xl text-white bg-primary-600 flex items-center justify-center mr-4 shrink-0">
+              <BrainCircuit className="w-4 xl:w-6 h-4 xl:h-6 text-white" />
             </div>
-            <h1 className="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
               {quiz.title}
               {(quiz.accessLevel || '').toUpperCase() === 'PRO' && <ProBadge />}
             </h1>
@@ -134,22 +134,22 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl p-3 text-center">
+            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl p-3 text-center">
               <HelpCircle className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.questions?.length || 0}</div>
               <div className="text-xs text-slate-500">Questions</div>
             </div>
-            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl p-3 text-center">
+            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl p-3 text-center">
               <Clock className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.duration}</div>
               <div className="text-xs text-slate-500">Minutes</div>
             </div>
-            <div className={`rounded-lg lg:rounded-xl p-3 text-center ${difficultyColor}`}>
+            <div className={`rounded-lg xl:rounded-xl p-3 text-center ${difficultyColor}`}>
               <BarChart3 className="w-6 h-6 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white capitalize">{quiz.difficulty}</div>
               <div className="text-xs text-slate-500">Difficulty</div>
             </div>
-            <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl p-3 text-center">
+            <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl p-3 text-center">
               <Trophy className="w-6 h-6 text-primary-600 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.totalMarks}</div>
               <div className="text-xs text-slate-500">Total Marks</div>
@@ -173,7 +173,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           {/* Start Button */}
           <button
             onClick={handleStartQuiz}
-            className={`w-full px-8 py-4 rounded-lg lg:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm ${
+            className={`w-full px-8 py-4 rounded-lg xl:rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm ${
               isLocked
                 ?'bg-primary-600 text-white hover:bg-primary-700'
                 : 'bg-primary-600 text-white hover:bg-primary-700'
@@ -193,7 +193,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Quiz Stats */}
         {quiz.totalAttempts > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Users className="w-5 h-5 text-primary-600" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Quiz Statistics</h2>
@@ -213,7 +213,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Tags */}
         {quiz.tags?.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-3">
               <Tag className="w-5 h-5 text-slate-500" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Tags</h2>
@@ -230,7 +230,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <div className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-black dark:text-white" />
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">Leaderboard</h2>

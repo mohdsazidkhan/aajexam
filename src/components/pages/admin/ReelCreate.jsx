@@ -28,7 +28,7 @@ const COLOR_MAP = {
   green: 'border-primary-600 bg-primary-50 dark:bg-primary-950/30',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const AdminReelCreate = () => {
@@ -241,11 +241,11 @@ const AdminReelCreate = () => {
   return (
     <div className="flex min-h-screen">
         <main className="flex-1 transition-all duration-300">
-          <div className="mt-4 lg:mt-2">
+          <div className="mt-4 xl:mt-2">
 
             {/* Type Selection */}
             {!type ? (
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {TYPES.map((t) => (
                   <motion.button
                     key={t.value}
@@ -278,7 +278,7 @@ const AdminReelCreate = () => {
                 </div>
 
                 {/* Common Fields */}
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-2 xl:space-y-4">
                   <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -329,7 +329,7 @@ const AdminReelCreate = () => {
 
                 {/* Type-specific fields */}
                 {type === 'question' && (
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
                     <h3 className="font-bold text-black dark:text-white">Question Details</h3>
                     <div>
                       <label className={labelClass}>Question Text *</label>
@@ -372,7 +372,7 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'fact' && (
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 lg:space-y-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 xl:space-y-4">
                     <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
                     <div>
                       <label className={labelClass}>Highlight Text (big centered text)</label>
@@ -393,7 +393,7 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'tip' && (
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
                     <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
                     <div>
                       <label className={labelClass}>Formula</label>
@@ -424,7 +424,7 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'current_affairs' && (
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
                     <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -466,7 +466,7 @@ const AdminReelCreate = () => {
                 )}
 
                 {type === 'poll' && (
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 lg:space-y-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 xl:space-y-4">
                     <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
                     <div>
                       <label className={labelClass}>Poll Question *</label>
@@ -491,7 +491,7 @@ const AdminReelCreate = () => {
                 )}
 
                 {/* Audio & Duration — Instagram Style */}
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-2 xl:space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                       <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
@@ -513,7 +513,7 @@ const AdminReelCreate = () => {
                     {filteredAudios.map(a => (
                       <div key={a.value}
                         onClick={() => handleAudioSelect(a.value)}
-                        className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl cursor-pointer transition-all ${audioFile === a.value
+                        className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
                           ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
                           : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                       >
@@ -572,7 +572,7 @@ const AdminReelCreate = () => {
                   <Button type="submit" disabled={loading} className="flex-1 sm:flex-none">
                     {loading ? 'Creating...' : 'Create & Publish Reel'}
                   </Button>
-                  <button type="button" onClick={() => router.back()} className="px-6 py-2.5 rounded-lg lg:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+                  <button type="button" onClick={() => router.back()} className="px-6 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                     Cancel
                   </button>
                 </div>

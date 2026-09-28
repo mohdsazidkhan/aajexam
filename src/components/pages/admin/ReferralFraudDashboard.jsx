@@ -161,7 +161,7 @@ export default function ReferralFraudDashboard() {
         value={searchTerm}
         onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
         placeholder="Search name / email / code..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -170,7 +170,7 @@ export default function ReferralFraudDashboard() {
     <div className="flex items-center gap-1">
       {['all', 'high', 'medium', 'low'].map(r => (
         <button key={r} onClick={() => { setRisk(r); setPage(1); }}
-          className={`px-3 py-2 rounded-lg lg:rounded-xl text-xs font-bold uppercase transition-all ${risk === r
+          className={`px-3 py-2 rounded-lg xl:rounded-xl text-xs font-bold uppercase transition-all ${risk === r
             ? 'bg-primary-600 text-white'
             : 'bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-slate-500'}`}>
           {r}
@@ -228,7 +228,7 @@ export default function ReferralFraudDashboard() {
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {/* Stat cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
             {stats.map((s) => (
               <div key={s.label} className="flex items-center gap-2 px-3 py-2">
                 <div className={`p-1.5 rounded-lg shrink-0 ${s.tone}`}><s.icon className="w-3.5 h-3.5" /></div>
@@ -262,7 +262,7 @@ export default function ReferralFraudDashboard() {
             )}
 
             {viewMode === 'grid' && (
-              <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+              <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                 {rows.map((u, idx) => {
                   const rs = RISK_STYLES[u.riskLevel] || RISK_STYLES.low;
                   const serialNumber = (pagination.page - 1) * limit + idx + 1;
@@ -314,9 +314,9 @@ export default function ReferralFraudDashboard() {
                   return (
                     <motion.div key={u._id} layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                       className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                      <div className="p-4 flex flex-col lg:flex-row lg:items-center gap-4">
+                      <div className="p-4 flex flex-col xl:flex-row xl:items-center gap-4">
                         {/* Risk score dial */}
-                        <div className="flex items-center gap-4 lg:w-64">
+                        <div className="flex items-center gap-4 xl:w-64">
                           <div className="relative w-16 h-16 shrink-0">
                             <div className="absolute inset-0 rounded-2xl bg-slate-100 dark:bg-white/5" />
                             <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -343,7 +343,7 @@ export default function ReferralFraudDashboard() {
                         </div>
 
                         {/* Numbers */}
-                        <div className="flex items-center gap-5 lg:gap-6">
+                        <div className="flex items-center gap-5 xl:gap-6">
                           <div className="text-center">
                             <div className="text-lg font-black">{u.referralCount}</div>
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">invites</div>
@@ -353,7 +353,7 @@ export default function ReferralFraudDashboard() {
                             <div className="text-[8px] font-black uppercase tracking-widest text-slate-400">earned</div>
                           </div>
                           <button onClick={() => setExpanded(open ? null : u._id)}
-                            className="p-2.5 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                            className="p-2.5 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
                             {open ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                           </button>
                         </div>
@@ -373,7 +373,7 @@ export default function ReferralFraudDashboard() {
                                   const created = r.createdAt ? new Date(r.createdAt).getTime() : 0;
                                   const dormant = !r.lastLoginDate || (new Date(r.lastLoginDate).getTime() - created < 3 * 60 * 1000);
                                   return (
-                                    <div key={r._id} className="flex items-center justify-between gap-2 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-white/10 px-3 py-2">
+                                    <div key={r._id} className="flex items-center justify-between gap-2 bg-white dark:bg-white/5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-white/10 px-3 py-2">
                                       <div className="min-w-0">
                                         <div className="text-[11px] font-black truncate">{r.name || 'Unknown'}</div>
                                         <div className="text-[9px] text-slate-400 font-bold truncate">{r.email}</div>

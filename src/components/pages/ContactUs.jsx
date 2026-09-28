@@ -79,37 +79,37 @@ const ContactUs = ({ contactInfo = {
    return (
       <MobileAppWrapper title="Contact Support">
          <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-600 selection:text-white font-outfit mt-0">
-            <div className="py-10 lg:py-20 space-y-12 lg:space-y-20">
+            <div className="py-10 xl:py-20 space-y-12 xl:space-y-20">
 
                {/* --- Header Section --- */}
                <section className="text-center space-y-6 relative overflow-hidden">
                   <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                      <MessageSquare className="w-10 h-10" />
                   </motion.div>
-                  <div className="space-y-2 lg:space-y-4">
-                     <h1 className="text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-600">Support</span></h1>
-                     <p className="text-sm lg:text-base font-medium text-slate-600 dark:text-slate-400 mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
+                  <div className="space-y-2 xl:space-y-4">
+                     <h1 className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Contact <span className="text-primary-600">Support</span></h1>
+                     <p className="text-sm xl:text-base font-medium text-slate-600 dark:text-slate-400 mx-auto px-4">Have a question or problem? Talk to us. We are happy to help you.</p>
                   </div>
                </section>
 
-               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+               <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10 items-start">
 
                   {/* --- Contact Details --- */}
-                  <div className="lg:col-span-6 space-y-8">
-                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="xl:col-span-6 space-y-8">
+                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                         {[
                            { label: 'Email Support', val: contactInfo.email, icon: Mail, color: 'primary' },
                            { label: 'Phone Number', val: contactInfo.phone, icon: Phone, color: 'primary' },
                            { label: 'Office Address', val: contactInfo.address, icon: MapPin, color: 'primary' },
                            { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'primary' }
                         ].map((item, i) => (
-                           <Card key={i} className="flex items-center gap-6 lg:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] lg:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
-                              <div className={`w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg lg:rounded-xl xl:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
-                                 <item.icon className="w-5 h-5 lg:w-6 lg:h-6" />
+                           <Card key={i} className="flex items-center gap-6 xl:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] xl:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
+                              <div className={`w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
+                                 <item.icon className="w-5 h-5 xl:w-6 xl:h-6" />
                               </div>
                               <div className="min-w-0">
-                                 <p className="text-[9px] lg:text-[10px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.2em] leading-none mb-1.5 lg:mb-2">{item.label}</p>
-                                 <p className="text-sm lg:text-base font-black text-slate-900 dark:text-white uppercase tracking-tight truncate">{item.val}</p>
+                                 <p className="text-[9px] xl:text-[10px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.2em] leading-none mb-1.5 xl:mb-2">{item.label}</p>
+                                 <p className="text-sm xl:text-base font-black text-slate-900 dark:text-white uppercase tracking-tight truncate">{item.val}</p>
                               </div>
                            </Card>
                         ))}
@@ -125,13 +125,13 @@ const ContactUs = ({ contactInfo = {
                            </div>
                            <div className="flex flex-wrap gap-4">
                               {socialLinks.map((s, i) => (
-                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg lg:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
+                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg xl:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
                                     <s.icon className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
                                  </a>
                               ))}
                            </div>
                         </div>
-                        <Sparkles className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/5 -rotate-12" />
+                        <Sparkles className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/5 -rotate-12" />
                      </Card>
 
                      {/* Support Info */}
@@ -145,23 +145,23 @@ const ContactUs = ({ contactInfo = {
                               <p className="text-xs font-medium opacity-90">Students always come first. We are ready to help.</p>
                            </div>
                         </div>
-                        <Sparkles className="absolute top-0 right-0 w-20 lg:w-32 h-20 lg:h-32 text-white/10 pointer-events-none" />
+                        <Sparkles className="absolute top-0 right-0 w-20 xl:w-32 h-20 xl:h-32 text-white/10 pointer-events-none" />
                      </Card>
                   </div>
 
                   {/* --- Contact Form --- */}
-                  <div className="lg:col-span-6">
-                     <Card className="space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-sm rounded-[3rem] lg:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
+                  <div className="xl:col-span-6">
+                     <Card className="space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-sm rounded-[3rem] xl:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -ml-32 -mt-32" />
 
                         <div className="space-y-6 relative z-10">
-                           <h3 className="text-2xl lg:text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Send a Message</h3>
-                           <p className="text-xs lg:text-sm font-medium text-slate-500 dark:text-slate-400">We usually reply within 24 hours. Write to us anytime.</p>
+                           <h3 className="text-2xl xl:text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">Send a Message</h3>
+                           <p className="text-xs xl:text-sm font-medium text-slate-500 dark:text-slate-400">We usually reply within 24 hours. Write to us anytime.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
-                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                              <div className="space-y-2 lg:space-y-4">
+                           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                              <div className="space-y-2 xl:space-y-4">
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Full Name</label>
                                  <input
                                     className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
@@ -169,7 +169,7 @@ const ContactUs = ({ contactInfo = {
                                     value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required
                                  />
                               </div>
-                              <div className="space-y-2 lg:space-y-4">
+                              <div className="space-y-2 xl:space-y-4">
                                  <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Email Address</label>
                                  <input
                                     type="email"
@@ -180,7 +180,7 @@ const ContactUs = ({ contactInfo = {
                               </div>
                            </div>
 
-                           <div className="space-y-2 lg:space-y-4">
+                           <div className="space-y-2 xl:space-y-4">
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Subject</label>
                               <input
                                  className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
@@ -189,7 +189,7 @@ const ContactUs = ({ contactInfo = {
                               />
                            </div>
 
-                           <div className="space-y-2 lg:space-y-4">
+                           <div className="space-y-2 xl:space-y-4">
                               <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">Your Message</label>
                               <textarea
                                  rows="5"
@@ -217,7 +217,7 @@ const ContactUs = ({ contactInfo = {
                            <Button
                               variant="primary"
                               fullWidth
-                              className="bg-primary-600 hover:bg-primary-600 active:bg-primary-600 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base lg:text-lg shadow-sm border-b-[8px] active:border-b-0 border-primary-600 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
+                              className="bg-primary-600 hover:bg-primary-600 active:bg-primary-600 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base xl:text-lg shadow-sm border-b-[8px] active:border-b-0 border-primary-600 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
                               type="submit"
                               disabled={loading}
                            >

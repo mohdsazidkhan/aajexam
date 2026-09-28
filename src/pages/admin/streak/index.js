@@ -78,7 +78,7 @@ const AdminStreakPage = () => {
         placeholder="Search by name, email, username..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -145,11 +145,11 @@ const AdminStreakPage = () => {
                       {searchTerm && <p className="text-sm text-slate-400">Try a different name, email, or username.</p>}
                     </Card>
                   ) : viewMode === 'table' ? (
-                    <Card className="!p-0 overflow-hidden h-auto lg:h-full flex flex-col" padded={false}>
+                    <Card className="!p-0 overflow-hidden h-auto xl:h-full flex flex-col" padded={false}>
                       <ResponsiveTable data={rankedLeaderboard} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                     </Card>
                   ) : viewMode === 'grid' ? (
-                    <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                    <div className="h-full overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
                       {rankedLeaderboard.map((entry, i) => (
                         <Card key={entry._id || i} className="flex flex-col gap-3">
                           <div className="flex items-start justify-between gap-2">

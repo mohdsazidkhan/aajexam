@@ -61,10 +61,10 @@ const Avatar = ({ student, sizeClass }) => (
       alt={student?.name || 'Profile'}
       width={112}
       height={112}
-      className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
+      className={`${sizeClass} rounded-lg xl:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
     />
   ) : (
-    <div className={`${sizeClass} rounded-lg lg:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
+    <div className={`${sizeClass} rounded-lg xl:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
       {student?.name?.charAt(0)?.toUpperCase() || 'U'}
     </div>
   )
@@ -174,7 +174,7 @@ const ProfilePage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background-page font-outfit">
-        <div className="py-4 lg:py-12"><ProfileSkeleton /></div>
+        <div className="py-4 xl:py-12"><ProfileSkeleton /></div>
       </div>
     );
   }
@@ -183,25 +183,25 @@ const ProfilePage = () => {
   const completion = student?.profileCompletion;
 
   return (
-    <div className="min-h-screen animate-fade-in pb-8 lg:pb-12 selection:bg-primary-600 selection:text-white">
+    <div className="min-h-screen animate-fade-in pb-8 xl:pb-12 selection:bg-primary-600 selection:text-white">
       <Head>
         <title>My Profile | {student?.name || 'Student'}</title>
       </Head>
 
-      <div className="container mx-auto space-y-2 lg:space-y-4 mt-4 mb-4 lg:mb-4">
+      <div className="container mx-auto space-y-2 xl:space-y-4 mt-4 mb-4 xl:mb-4">
 
         {/* Hero — single full-width card, responsive from mobile to desktop */}
-        <Card className="p-5 lg:p-10 space-y-6" radius="3xl">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8">
-          <div className="flex flex-row items-start gap-4 lg:gap-8">
-            <Avatar student={student} sizeClass="w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 text-lg sm:text-2xl lg:text-5xl" />
+        <Card className="p-5 xl:p-10 space-y-6" radius="3xl">
+          <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 xl:gap-8">
+          <div className="flex flex-row items-start gap-4 xl:gap-8">
+            <Avatar student={student} sizeClass="w-14 h-14 sm:w-20 sm:h-20 xl:w-28 xl:h-28 text-lg sm:text-2xl xl:text-5xl" />
 
-            <div className="flex-1 min-w-0 space-y-3 lg:space-y-4">
-              <div className="flex flex-wrap items-center gap-2 lg:gap-3">
-                <h1 className="text-md lg:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
+            <div className="flex-1 min-w-0 space-y-3 xl:space-y-4">
+              <div className="flex flex-wrap items-center gap-2 xl:gap-3">
+                <h1 className="text-md xl:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
                   {student?.name || 'Student'}
                 </h1>
-                <span className={`px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-black uppercase ${isPro ?'bg-primary-600 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                <span className={`px-2.5 py-1 rounded-full text-[10px] xl:text-xs font-black uppercase ${isPro ?'bg-primary-600 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
                   {isPro ? 'PRO' : 'FREE'}
                 </span>
                 {isPro && student?.subscriptionExpiry && (
@@ -212,11 +212,11 @@ const ProfilePage = () => {
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
-                <p className="text-sm lg:text-base font-semibold text-content-secondary">@{student?.username || 'guest'}</p>
+                <p className="text-sm xl:text-base font-semibold text-content-secondary">@{student?.username || 'guest'}</p>
 
                 {student?.city && (
-                  <p className="flex items-center gap-1.5 text-xs lg:text-sm font-medium text-content-secondary">
-                    <MapPin className="w-3.5 h-3.5 lg:w-4 lg:h-4" /> {student.city}{student.state && `, ${student.state}`}
+                  <p className="flex items-center gap-1.5 text-xs xl:text-sm font-medium text-content-secondary">
+                    <MapPin className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> {student.city}{student.state && `, ${student.state}`}
                   </p>
                 )}
               </div>
@@ -224,7 +224,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-            <div className="flex flex-col items-start lg:items-end gap-2 lg:gap-3 lg:flex-shrink-0 w-full sm:w-auto">
+            <div className="flex flex-col items-start xl:items-end gap-2 xl:gap-3 xl:flex-shrink-0 w-full sm:w-auto">
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
                 {student?.username && (
                   <Button variant="secondary" size="sm" icon={Eye} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
@@ -235,13 +235,13 @@ const ProfilePage = () => {
                   Account settings
                 </Button>
               </div>
-              {student?.bio && <p className="text-xs lg:text-sm font-medium text-content-secondary leading-relaxed lg:text-right">{student.bio}</p>}
+              {student?.bio && <p className="text-xs xl:text-sm font-medium text-content-secondary leading-relaxed xl:text-right">{student.bio}</p>}
               {socialLinks.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2 lg:gap-3">
+                <div className="flex flex-wrap items-center gap-2 xl:gap-3">
                   {socialLinks.map(([key, url]) => {
                     const { icon: Icon, color } = SOCIAL_ICONS[key];
                     return (
-                      <a key={key} href={url} target="_blank" rel="noopener noreferrer" className={`p-2.5 lg:p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 ${color}`}>
+                      <a key={key} href={url} target="_blank" rel="noopener noreferrer" className={`p-2.5 xl:p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 ${color}`}>
                         <Icon className="w-4 h-4" />
                       </a>
                     );
@@ -253,29 +253,29 @@ const ProfilePage = () => {
         </Card>
 
         {/* All India Rank */}
-        <Card className="p-6 lg:p-10 space-y-6" radius="3xl">
+        <Card className="p-6 xl:p-10 space-y-6" radius="3xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Trophy className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
+              <Trophy className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
               <div>
-                <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">All India Rank</h2>
-                <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
+                <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">All India Rank</h2>
+                <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
               </div>
             </div>
             <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/leaderboard')}>
               View leaderboard
             </Button>
           </div>
-          <div className="grid grid-cols-2 gap-3 lg:gap-6">
-            <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 lg:p-6 text-center">
-              <p className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</p>
-              <p className="text-xl lg:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
-              <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? `of ${student.examAIR.total}` : 'No exams yet'}</p>
+          <div className="grid grid-cols-2 gap-3 xl:gap-6">
+            <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 xl:p-6 text-center">
+              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</p>
+              <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
+              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? `of ${student.examAIR.total}` : 'No exams yet'}</p>
             </div>
-            <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 lg:p-6 text-center">
-              <p className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">Quiz AIR</p>
-              <p className="text-xl lg:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
-              <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? `of ${student.quizAIR.total}` : 'No quizzes yet'}</p>
+            <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-6 text-center">
+              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">Quiz AIR</p>
+              <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
+              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? `of ${student.quizAIR.total}` : 'No quizzes yet'}</p>
             </div>
           </div>
         </Card>
@@ -284,11 +284,11 @@ const ProfilePage = () => {
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
           {statTiles.map((item) => (
             <Card key={item.label} className="text-center space-y-2" radius="2xl">
-              <div className={`w-9 h-9 lg:w-11 lg:h-11 mx-auto rounded-xl lg:rounded-2xl flex items-center justify-center ${item.tone}`}>
-                <item.icon className="w-4 h-4 lg:w-5 lg:h-5" />
+              <div className={`w-9 h-9 xl:w-11 xl:h-11 mx-auto rounded-xl xl:rounded-2xl flex items-center justify-center ${item.tone}`}>
+                <item.icon className="w-4 h-4 xl:w-5 xl:h-5" />
               </div>
-              <p className="text-sm lg:text-xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
-              <p className="text-[8px] lg:text-[10px] font-bold uppercase tracking-wide text-content-secondary">{item.label}</p>
+              <p className="text-sm xl:text-xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
+              <p className="text-[8px] xl:text-[10px] font-bold uppercase tracking-wide text-content-secondary">{item.label}</p>
             </Card>
           ))}
         </div>
@@ -303,7 +303,7 @@ const ProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveSubTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg lg:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg xl:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
             >
               <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
               {tab.label}
@@ -323,12 +323,12 @@ const ProfilePage = () => {
             >
               {/* Profile completion */}
               {completion && !completion.isComplete && (
-                <Card className="p-6 lg:p-10 space-y-6" radius="3xl">
+                <Card className="p-6 xl:p-10 space-y-6" radius="3xl">
                   <div className="flex items-center gap-4">
-                    <Target className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
+                    <Target className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
                     <div>
-                      <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Complete your profile</h2>
-                      <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">A complete profile helps you stand out and unlocks rewards.</p>
+                      <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Complete your profile</h2>
+                      <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">A complete profile helps you stand out and unlocks rewards.</p>
                     </div>
                   </div>
                   <ProgressBar progress={completion.percentage} variant="primary" height="md" />
@@ -344,35 +344,35 @@ const ProfilePage = () => {
               )}
 
               {/* Exam performance */}
-              <Card className="p-6 lg:p-10 space-y-8" radius="3xl">
+              <Card className="p-6 xl:p-10 space-y-8" radius="3xl">
                 <div className="flex items-center gap-4">
-                  <TrendingUp className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
+                  <TrendingUp className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
                   <div>
-                    <h2 className="text-lg lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Exam performance</h2>
-                    <p className="text-xs lg:text-sm font-medium text-content-secondary pb-1">Preparing for {student?.primaryTargetExam || 'All Exams'}.</p>
+                    <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Exam performance</h2>
+                    <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">Preparing for {student?.primaryTargetExam || 'All Exams'}.</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+                <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
                   {[
                     { label: 'Overall readiness', value: `${student?.performanceMetrics?.examStats?.overallReadiness || 0}%` },
                     { label: 'Quizzes attempted', value: quizzesAttempted },
                     { label: 'Tests attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
                     { label: 'Avg score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
                   ].map((item) => (
-                    <div key={item.label} className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 lg:p-5 text-center">
-                      <p className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
-                      <p className="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{item.label}</p>
+                    <div key={item.label} className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-5 text-center">
+                      <p className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
+                      <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{item.label}</p>
                     </div>
                   ))}
                 </div>
 
                 {subjectAccuracy.length > 0 && (
-                  <div className="space-y-2 lg:space-y-4">
+                  <div className="space-y-2 xl:space-y-4">
                     <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-content-secondary">
                       <BookOpen className="w-4 h-4" /> Subject-wise accuracy
                     </p>
-                    <div className="space-y-2 lg:space-y-4">
+                    <div className="space-y-2 xl:space-y-4">
                       {subjectAccuracy.map(([subject, score]) => (
                         <ProgressBar key={subject} progress={score} variant="primary" height="sm" label={subject} />
                       ))}
@@ -383,15 +383,15 @@ const ProfilePage = () => {
 
               {/* Badges */}
               <Card className="space-y-6" radius="3xl">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <Award className="w-7 h-7 lg:w-8 lg:h-8 text-primary-600" />
+                    <Award className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
                     <div>
-                      <h2 className="text-lg lg:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Badges</h2>
+                      <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Badges</h2>
                       <p className="text-xs font-medium text-content-secondary pb-1">Earned through activity and achievements.</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3 lg:justify-end lg:flex-shrink-0">
+                  <div className="flex flex-wrap gap-3 xl:justify-end xl:flex-shrink-0">
                     {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
                       <span key={index} className="px-4 py-2.5 bg-background-surface-secondary text-content-primary rounded-xl text-xs font-black uppercase tracking-wider border border-slate-200 dark:border-slate-800">
                         {badge}
@@ -407,7 +407,7 @@ const ProfilePage = () => {
                   <ShieldCheck className="w-5 h-5 text-primary-600" />
                   <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Account details</h3>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
                   {accountDetails.map((item) => (
                     <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
                       <div className="p-2 bg-background-surface-secondary rounded-lg shadow-sm text-content-secondary flex-shrink-0">
@@ -424,7 +424,7 @@ const ProfilePage = () => {
 
               {/* Referral code */}
               {student?.referralCode && (
-                <Card className="space-y-2 lg:space-y-4" radius="3xl">
+                <Card className="space-y-2 xl:space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-primary-600" />
                     <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
@@ -453,39 +453,39 @@ const ProfilePage = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="p-4 lg:p-10 space-y-2 lg:space-y-4 lg:space-y-8 relative overflow-hidden" radius="3xl">
+              <Card className="p-4 xl:p-10 space-y-2 xl:space-y-4 xl:space-y-8 relative overflow-hidden" radius="3xl">
                 <div className="flex items-center justify-between gap-4 relative z-10">
                   <div>
-                    <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Payout details</h2>
+                    <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Payout details</h2>
                     <p className="text-sm font-medium text-content-secondary pb-1">Add your bank details to receive prize money.</p>
                   </div>
                   {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold">Linked</span>}
                 </div>
 
                 {bankDetails ? (
-                  <div className="p-4 lg:p-8 bg-background-surface-secondary text-content-primary rounded-[2rem] lg:rounded-[3rem] border border-slate-200 dark:border-slate-800 relative z-10">
+                  <div className="p-4 xl:p-8 bg-background-surface-secondary text-content-primary rounded-[2rem] xl:rounded-[3rem] border border-slate-200 dark:border-slate-800 relative z-10">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-6">
                       <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[1.5rem] flex items-center justify-center border border-primary-500/20 flex-shrink-0">
                         <Building2 className="w-8 h-8" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl lg:text-2xl font-black font-outfit tracking-tight">{bankDetails.bankName}</h3>
+                        <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight">{bankDetails.bankName}</h3>
                         <p className="text-sm font-medium text-content-secondary mt-1">
                           {bankDetails.accountHolderName || 'Account holder'} · Account ending {bankDetails.accountNumber?.slice(-4) || '----'}
                         </p>
                       </div>
-                      <Button variant="primary" className="px-6 py-3 rounded-lg lg:rounded-xl text-sm font-semibold" onClick={() => router.push('/settings')}>
+                      <Button variant="primary" className="px-6 py-3 rounded-lg xl:rounded-xl text-sm font-semibold" onClick={() => router.push('/settings')}>
                         Update
                       </Button>
                     </div>
                   </div>
                 ) : (
-                  <div className="p-6 lg:p-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] lg:rounded-[3rem] text-center space-y-5 relative z-10">
+                  <div className="p-6 xl:p-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] xl:rounded-[3rem] text-center space-y-5 relative z-10">
                     <div className="w-20 h-20 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto opacity-70">
                       <CreditCard className="w-10 h-10 text-content-secondary" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary">No bank account linked</h3>
+                      <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">No bank account linked</h3>
                       <p className="text-sm font-medium text-content-secondary max-w-md mx-auto">
                         Add your bank details to receive rewards without delays.
                       </p>
@@ -512,7 +512,7 @@ const ProfilePage = () => {
             >
               <Card className="space-y-6" radius="3xl">
                 <div className="space-y-1">
-                  <h2 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Quick actions</h2>
+                  <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Quick actions</h2>
                   <p className="text-sm font-medium text-content-secondary pb-1">Jump to the places you are most likely to need next.</p>
                 </div>
 
@@ -533,7 +533,7 @@ const ProfilePage = () => {
                 </div>
               </Card>
 
-              <Card className="space-y-2 lg:space-y-4" radius="3xl">
+              <Card className="space-y-2 xl:space-y-4" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-600" />
                   <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Account safety</h2>

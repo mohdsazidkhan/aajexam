@@ -156,7 +156,7 @@ const PaymentHistoryPage = () => {
             const StatusIcon = cfg.icon;
             return (
                <div className="flex justify-center">
-                  <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${cfg.bg} ${cfg.color} ${cfg.border}`}>
+                  <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${cfg.bg} ${cfg.color} ${cfg.border}`}>
                      <StatusIcon className="w-3.5 h-3.5" /> {cfg.label}
                   </div>
                </div>
@@ -191,7 +191,7 @@ const PaymentHistoryPage = () => {
    );
 
    const statsBar = (
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
          {[
             { label: 'Total Spent', val: summary.totalSpent || 0, icon: IndianRupee, isCurrency: true },
             { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: Receipt },
@@ -252,9 +252,9 @@ const PaymentHistoryPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Payment History - AajExam" noIndex={true} />
 
-            <div className="py-2 lg:py-4 space-y-2 lg:space-y-4 mt-0">
+            <div className="py-2 xl:py-4 space-y-2 xl:space-y-4 mt-0">
                {/* Mobile header: heading + filters share a row, stats and toggle stack below */}
-               <div className="flex flex-col gap-3 lg:hidden">
+               <div className="flex flex-col gap-3 xl:hidden">
                   <div className="flex items-center justify-between gap-3">
                      <h1 className="text-xl font-black font-outfit tracking-tight truncate min-w-0">
                         Payment History{totalCount > 0 ? ` (${totalCount})` : ''}
@@ -266,7 +266,7 @@ const PaymentHistoryPage = () => {
                </div>
 
                {/* Desktop header: heading, stats, view toggle, filters share a single row */}
-               <div className="hidden lg:flex lg:items-center gap-4">
+               <div className="hidden xl:flex xl:items-center gap-4">
                   <h1 className="text-3xl font-black font-outfit tracking-tight truncate shrink-0">
                      Payment History{totalCount > 0 ? ` (${totalCount})` : ''}
                   </h1>
@@ -277,11 +277,11 @@ const PaymentHistoryPage = () => {
 
                {/* Transactions */}
                {transactions.length === 0 ? (
-                  <div className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
+                  <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <Receipt className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl lg:text-2xl font-black font-outfit">No payments yet</h3>
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit">No payments yet</h3>
                      <p className="text-sm font-bold text-gray-400">Your payment transactions will appear here</p>
                   </div>
                ) : (
@@ -300,7 +300,7 @@ const PaymentHistoryPage = () => {
                      )}
 
                      {viewMode === 'grid' && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
                            {transactions.map((txn, idx) => {
                               const statusConfig = getStatusConfig(txn.status);
                               const StatusIcon = statusConfig.icon;

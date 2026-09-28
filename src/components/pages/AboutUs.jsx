@@ -62,27 +62,27 @@ const AboutUs = () => {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
          </Head>
 
-         <div className="py-4 md:py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
+         <div className="py-4 md:py-6 xl:py-12 space-y-6 xl:space-y-12 mt-0">
 
             {/* --- Hero Section --- */}
             <section className="text-center space-y-6 relative overflow-hidden">
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-sm rotate-12">
                   <Sparkles className="text-white w-10 h-10" />
                </motion.div>
-               <div className="space-y-2 lg:space-y-4">
-                  <h1 className="text-xl lg:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-600">Us</span></h1>
-                  <p className="text-lg md:text-xl lg:text-2xl font-medium text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">Practice daily. Learn more. Get the job you always wanted.</p>
+               <div className="space-y-2 xl:space-y-4">
+                  <h1 className="text-xl xl:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">About <span className="text-primary-600">Us</span></h1>
+                  <p className="text-lg md:text-xl xl:text-2xl font-medium text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">Practice daily. Learn more. Get the job you always wanted.</p>
                </div>
 
                {/* Stats Ribbon */}
-               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
+               <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
                   {stats.map((stat, i) => (
                      <Card key={i} className="flex items-center justify-center gap-6 border-2 border-slate-100 dark:border-slate-800">
                         <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl`}>
                            <stat.icon className="w-6 h-6" />
                         </div>
                         <div className="text-left">
-                           <p className="text-xl lg:text-3xl font-black font-outfit text-slate-900 dark:text-white leading-none">{stat.value}</p>
+                           <p className="text-xl xl:text-3xl font-black font-outfit text-slate-900 dark:text-white leading-none">{stat.value}</p>
                            <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{stat.label}</p>
                         </div>
                      </Card>
@@ -91,15 +91,15 @@ const AboutUs = () => {
             </section>
 
             {/* --- Mission & Vision --- */}
-            <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <section className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
                <Card className="p-10 space-y-8 border-none bg-slate-900 text-white shadow-sm relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
                      <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-400 backdrop-blur-sm border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
                      </div>
-                     <h2 className="text-xl md:text-2xl lg:text-4xl font-black font-outfit uppercase tracking-tight leading-none">Good Education <br />For Every Student</h2>
+                     <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none">Good Education <br />For Every Student</h2>
                      <p className="text-slate-300 font-bold leading-relaxed">AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.</p>
-                     <div className="space-y-2 lg:space-y-4">
+                     <div className="space-y-2 xl:space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
                            <div key={i} className="flex items-center gap-3">
                               <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
@@ -112,12 +112,12 @@ const AboutUs = () => {
                </Card>
 
                <div className="space-y-10 px-4">
-                  <div className="space-y-2 lg:space-y-4">
-                     <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-wide">How We Help You</h3>
+                  <div className="space-y-2 xl:space-y-4">
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-wide">How We Help You</h3>
                      <p className="text-slate-700 dark:text-slate-400 font-bold leading-relaxed">We use simple and effective ways to help you study. Our platform is built to boost your score in SSC, UPSC, Banking, and Railway exams.</p>
                   </div>
                   <div className="space-y-2">
-                     <div className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white w-fit rounded-lg lg:rounded-xl"><Target className="w-5 h-5" /></div>
+                     <div className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white w-fit rounded-lg xl:rounded-xl"><Target className="w-5 h-5" /></div>
                      <h4 className="font-black uppercase text-sm">All Subjects Covered</h4>
                      <p className="text-xs font-medium text-slate-600 dark:text-slate-400">We cover Maths, English, and General Knowledge for all major government exams.</p>
                   </div>
@@ -127,11 +127,11 @@ const AboutUs = () => {
             {/* --- Platform Features Grid --- */}
             <section className="space-y-12">
                <div className="text-center space-y-2">
-                  <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Our Features</h2>
+                  <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">Our Features</h2>
                   <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">Designed for your study success</p>
                </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                   {features.map((f, i) => (
                      <Card key={i} hoverable className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                         <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
@@ -149,17 +149,17 @@ const AboutUs = () => {
             {/* --- Trust & Commitment --- */}
             <section>
                <Card className="p-10 border-none bg-slate-100 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-800">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                     <div className="lg:col-span-4 text-center lg:text-left space-y-6">
-                        <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto lg:mx-0 shadow-sm">
+                  <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
+                     <div className="xl:col-span-4 text-center xl:text-left space-y-6">
+                        <div className="w-20 h-20 bg-white dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto xl:mx-0 shadow-sm">
                            <Building2 className="w-10 h-10 text-primary-600" />
                         </div>
                         <div className="space-y-2">
-                           <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Officially Registered</h3>
+                           <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">Officially Registered</h3>
                            <p className="text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">A Government Registered Company (UDYAM)</p>
                         </div>
                      </div>
-                     <div className="lg:col-span-8 space-y-6 pl-0 lg:pl-10 lg:border-l-2 border-slate-200 dark:border-slate-700">
+                     <div className="xl:col-span-8 space-y-6 pl-0 xl:pl-10 xl:border-l-2 border-slate-200 dark:border-slate-700">
                         <p className="text-sm font-medium text-slate-600 dark:text-slate-300 leading-8">Led by <strong>MOHD SAZID KHAN</strong>, AajExam is 100% based on your knowledge and hard work. Everything you earn here is through your own effort. We follow all rules to make sure the platform is safe, fair, and honest for every student.</p>
                      </div>
                   </div>
@@ -170,12 +170,12 @@ const AboutUs = () => {
             <section>
                <Card className="p-12 text-center bg-primary-600 border-none text-white shadow-sm relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
-                     <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
+                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">Ready to Begin?</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.</p>
                      <Button onClick={() => router.push('/')} variant="secondary" size="lg" className="mx-auto px-12 py-6 text-sm font-black">START LEARNING FOR FREE</Button>
                   </div>
                   <Sparkles className="absolute top-10 left-10 w-24 h-24 text-white/10" />
-                  <ShieldCheck className="absolute bottom-10 right-10 w-20 lg:w-32 h-20 lg:h-32 text-white/10" />
+                  <ShieldCheck className="absolute bottom-10 right-10 w-20 xl:w-32 h-20 xl:h-32 text-white/10" />
                </Card>
             </section>
 

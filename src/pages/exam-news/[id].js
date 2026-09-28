@@ -28,7 +28,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
   }, [lookupId, initialNews, router]);
 
   if (loading) return (
-    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
+    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
       <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
@@ -67,14 +67,14 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
           ])
         ]}
       />
-      <div className="py-0 lg:py-6 space-y-2 lg:space-y-4">
+      <div className="py-0 xl:py-6 space-y-2 xl:space-y-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>
             {news.exam?.name && <span className="text-[10px] font-bold text-slate-400">{news.exam.name}</span>}
             <span className="text-[10px] text-slate-400"><Eye className="w-3 h-3 inline" /> {news.views}</span>
           </div>
-          <h1 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white">{news.title}</h1>
+          <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{news.title}</h1>
         </div>
 
         {news.importantDates?.length > 0 && (

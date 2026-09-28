@@ -97,7 +97,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     return (
       <div className="space-y-8 animate-fade-in py-10">
         <Skeleton height="100px" borderRadius="1.5rem" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {[1, 2, 3, 4, 5, 6].map(i => <Skeleton key={i} height="120px" borderRadius="1.5rem" />)}
         </div>
       </div>
@@ -105,7 +105,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
   }
 
   return (
-    <div className="space-y-3 lg:space-y-6 animate-fade-in bg-transparent font-outfit pb-4 lg:pb-8">
+    <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
       <Seo
         title={seo?.title || 'Government Exam Preparation Hub – Free Practice Tests, PYQs & Quizzes | AajExam'}
         description={seoDescription}
@@ -129,15 +129,15 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       />
 
       {/* Hero */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 lg:py-8">
+      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 xl:py-8">
         <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
             <TrendingUp className="w-3.5 h-3.5" /> {exams.length} Exams Available
           </motion.div>
-          <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Exams Hub</h1>
-          <div className="w-full max-w-lg px-2 lg:px-0">
+          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Exams Hub</h1>
+          <div className="w-full max-w-lg px-2 xl:px-0">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
@@ -145,7 +145,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                 placeholder="Search exams..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none"
+                className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none"
               />
             </div>
           </div>
@@ -154,8 +154,8 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       </section>
 
       {/* Filters + Search */}
-      <section className="space-y-2 lg:space-y-4">
-        <div className="sticky top-16 lg:top-20 z-20 backdrop-blur-xl py-0 lg:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
+      <section className="space-y-2 xl:space-y-4">
+        <div className="sticky top-16 xl:top-20 z-20 backdrop-blur-xl py-0 xl:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
             {filters.map(f => (
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
@@ -171,7 +171,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
         </div>
 
         {/* Exams Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 pt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6 pt-2">
           {filteredExams.map((exam, idx) => (
             <motion.div key={exam._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
               <Card
@@ -181,8 +181,8 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 lg:w-12 h-8 lg:h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
-                      <ShieldCheck className="w-4 lg:w-6 h-4 lg:h-6 text-white" />
+                    <div className="w-8 xl:w-12 h-8 xl:h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
+                      <ShieldCheck className="w-4 xl:w-6 h-4 xl:h-6 text-white" />
                     </div>
                     <div>
                       <h3 className="text-md font-black text-content-primary uppercase tracking-tight">{exam.name}</h3>
@@ -204,15 +204,15 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
 
                 {/* Counts */}
                 <div className="flex items-center flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <FileText className="w-3 h-3" />
                     {exam.practiceTestCount || 0} Tests
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                     <History className="w-3 h-3" />
                     {exam.pyqCount || 0} PYQs
                   </div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg lg:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {exam.quizCount || 0} Quizzes
                   </div>
@@ -222,7 +222,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           ))}
 
           {filteredExams.length === 0 && !loading && (
-            <div className="col-span-full py-20 text-center space-y-2 lg:space-y-4">
+            <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Search className="w-20 h-20 text-gray-300 mx-auto" />
               <h3 className="text-xl font-black text-gray-400 uppercase">No exams found</h3>
               <Button variant="primary" onClick={() => { setActiveFilter('all'); setSearchQuery(''); }}>View All</Button>

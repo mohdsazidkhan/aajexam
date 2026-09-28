@@ -40,12 +40,12 @@ export default function Blog({ groups = [], allPosts = [] }) {
 
       {/* Server-rendered index — the interactive list above is client-only, so
           without this every article is an orphan for crawlers. */}
-      <div className="px-3 lg:px-0 pb-10">
+      <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection
           title="All articles"
           intro="Notifications, admit cards, results, salary break-downs and preparation guides for every government exam we cover — grouped by exam."
           groups={groups}
-          columns="sm:grid-cols-2 lg:grid-cols-3"
+          columns="sm:grid-cols-2 xl:grid-cols-3"
         />
       </div>
     </>

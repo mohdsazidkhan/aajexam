@@ -29,7 +29,7 @@ const TYPE_COLORS = {
   poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const AdminReelEdit = () => {
@@ -280,11 +280,11 @@ const AdminReelEdit = () => {
   return (
     <div className="flex min-h-screen">
         <main className="flex-1 transition-all duration-300">
-          <div className="mt-4 lg:mt-2">
+          <div className="mt-4 xl:mt-2">
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <button onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+              <button onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                 <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
               </button>
               <div className="flex-1">
@@ -298,7 +298,7 @@ const AdminReelEdit = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
 
               {/* Status + Common Fields */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-2 lg:space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-2 xl:space-y-4">
                 <h3 className="font-bold text-slate-900 dark:text-white">Common Details</h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -359,7 +359,7 @@ const AdminReelEdit = () => {
 
               {/* Question Fields */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
                   <h3 className="font-bold text-black dark:text-white">Question Details</h3>
                   <div>
                     <label className={labelClass}>Question Text *</label>
@@ -394,7 +394,7 @@ const AdminReelEdit = () => {
 
               {/* Fact Fields */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 xl:space-y-4">
                   <h3 className="font-bold text-primary-600 dark:text-primary-400">Fact Details</h3>
                   <div>
                     <label className={labelClass}>Highlight Text</label>
@@ -420,7 +420,7 @@ const AdminReelEdit = () => {
 
               {/* Tip Fields */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
                   <h3 className="font-bold text-black dark:text-white">Trick / Shortcut Details</h3>
                   <div>
                     <label className={labelClass}>Formula</label>
@@ -460,7 +460,7 @@ const AdminReelEdit = () => {
 
               {/* CA Fields */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-5 space-y-2 xl:space-y-4">
                   <h3 className="font-bold text-black dark:text-white">Current Affairs Details</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -509,7 +509,7 @@ const AdminReelEdit = () => {
 
               {/* Poll Fields */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 lg:space-y-4">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-5 space-y-2 xl:space-y-4">
                   <h3 className="font-bold text-primary-600 dark:text-primary-400">Poll Details</h3>
                   <div>
                     <label className={labelClass}>Poll Question</label>
@@ -538,7 +538,7 @@ const AdminReelEdit = () => {
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-2 lg:space-y-4">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-5 space-y-2 xl:space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Music className="w-5 h-5 text-black dark:text-white" /> Add Audio
@@ -560,7 +560,7 @@ const AdminReelEdit = () => {
                   {filteredAudios.map(a => (
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
-                      className={`flex items-center gap-3 p-3 rounded-lg lg:rounded-xl cursor-pointer transition-all ${audioFile === a.value
+                      className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
                         ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                     >
@@ -621,7 +621,7 @@ const AdminReelEdit = () => {
                   {saving ? 'Saving...' : 'Save Changes'}
                 </Button>
                 <button type="button" onClick={() => router.push('/admin/reels')}
-                  className="px-6 py-2.5 rounded-lg lg:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+                  className="px-6 py-2.5 rounded-lg xl:rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                   Cancel
                 </button>
               </div>

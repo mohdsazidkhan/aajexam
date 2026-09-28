@@ -124,13 +124,13 @@ const AdminMentors = () => {
         placeholder="Search by username, name, email..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
 
   const statusFilterSelect = (
-    <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700">
+    <select value={filter} onChange={e => { setFilter(e.target.value); setPage(1); }} className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700">
       <option value="">All</option>
       <option value="pending">Pending</option>
       <option value="active">Active</option>
@@ -199,12 +199,12 @@ const AdminMentors = () => {
             </Card>
           ) : viewMode === 'table' ? (
             /* ── Table View ── */
-            <Card className="!p-0 overflow-hidden h-auto lg:h-full flex flex-col" padded={false}>
+            <Card className="!p-0 overflow-hidden h-auto xl:h-full flex flex-col" padded={false}>
               <ResponsiveTable data={mentors} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </Card>
           ) : viewMode === 'grid' ? (
             /* ── Grid View ── */
-            <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+            <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
               {mentors.map((m, i) => (
                 <Card key={m._id || i} className="!p-4 flex flex-col justify-between gap-3">
                   <div>
@@ -262,9 +262,9 @@ const AdminMentors = () => {
                   <div className="flex items-center gap-2 shrink-0">
                     <StatusSelect mentor={m} onChange={updateStatus} />
                     {m.status === 'active' && !m.isVerified && (
-                      <button onClick={() => verify(m._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-black dark:text-white" /></button>
+                      <button onClick={() => verify(m._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" title="Verify"><Shield className="w-4 h-4 text-black dark:text-white" /></button>
                     )}
-                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-600" /></Link>
+                    <Link href={`/admin/mentors/${m._id}`} className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" title="View full details"><Eye className="w-4 h-4 text-primary-600" /></Link>
                   </div>
                 </Card>
               ))}

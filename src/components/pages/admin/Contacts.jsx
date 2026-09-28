@@ -113,7 +113,7 @@ export default function AdminContacts() {
     {
       key: 'user', header: 'USER', align: 'center', render: (_, contact) => (
         <div className="flex justify-center">
-          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
+          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:scale-110 group-hover:bg-primary-700 transition-all uppercase">
             {contact.name?.[0].toUpperCase() || 'U'}
           </div>
         </div>
@@ -143,10 +143,10 @@ export default function AdminContacts() {
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, contact) => (
         <div className="flex justify-center gap-3">
-          <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-600 border-2 border-primary-500/20 rounded-lg lg:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
+          <button onClick={() => window.open(`mailto:${contact.email}`, '_blank')} className="p-3 bg-primary-500/10 text-primary-600 border-2 border-primary-500/20 rounded-lg xl:rounded-xl hover:bg-primary-700 hover:text-white transition-all shadow-sm active:scale-95">
             <Send className="w-4 h-4" />
           </button>
-          <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg lg:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
+          <button onClick={() => handleDelete(contact._id)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white border-2 border-black/20 dark:border-white/20 rounded-lg xl:rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all shadow-sm active:scale-95">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
@@ -162,7 +162,7 @@ export default function AdminContacts() {
         value={searchTerm}
         onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search messages..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -213,7 +213,7 @@ export default function AdminContacts() {
 
   if (loading && contacts.length === 0) {
     return (
-      <div className="min-h-screen p-3 lg:p-8">
+      <div className="min-h-screen p-3 xl:p-8">
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       </div>
     );
@@ -234,12 +234,12 @@ export default function AdminContacts() {
                  key="empty"
                  initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                 className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                >
-                 <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                 <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-8 shadow-sm">
                    <Mail className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                  </div>
-                 <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
+                 <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">No Messages Found</h3>
                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No contact messages yet. Messages will appear here when users submit the contact form.</p>
                </motion.div>
              ) : (
@@ -264,7 +264,7 @@ export default function AdminContacts() {
                 )}
 
                 {viewMode === 'grid' && (
-                  <div className="flex-1 min-h-0 overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 items-start">
+                  <div className="flex-1 min-h-0 overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-3 items-start">
                      {contacts.map((contact, i) => (
                        <motion.div
                          key={contact._id || i}
@@ -312,7 +312,7 @@ export default function AdminContacts() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4"
+                        className="group bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 hover:border-primary-500/30 transition-all flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-4"
                       >
                          <div className="relative w-10 h-10 bg-slate-100 dark:bg-white/10 text-slate-400 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-700 group-hover:text-white transition-all">
                             <User className="w-5 h-5" />

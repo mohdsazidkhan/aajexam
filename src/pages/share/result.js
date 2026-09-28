@@ -61,7 +61,7 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-sm bg-primary-600 text-white p-8 lg:p-12">
+            <Card className="relative overflow-hidden border-none shadow-sm bg-primary-600 text-white p-8 xl:p-12">
               <div className="absolute top-0 right-0 opacity-10">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
@@ -73,27 +73,27 @@ export default function SharedResult({ stats }) {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-sm lg:text-base font-black uppercase tracking-widest opacity-80">
+                  <p className="text-sm xl:text-base font-black uppercase tracking-widest opacity-80">
                     {user} scored
                   </p>
-                  <h1 className="text-3xl lg:text-5xl font-black font-outfit tracking-tight">
+                  <h1 className="text-3xl xl:text-5xl font-black font-outfit tracking-tight">
                     {testTitle}
                   </h1>
                 </div>
 
                 {rank && total && (
                   <div className="flex flex-wrap items-baseline gap-3">
-                    <span className="text-5xl lg:text-7xl font-black tracking-tighter text-black dark:text-white">
+                    <span className="text-5xl xl:text-7xl font-black tracking-tighter text-black dark:text-white">
                       #{rank}
                     </span>
-                    <span className="text-xl lg:text-2xl font-bold opacity-80">
+                    <span className="text-xl xl:text-2xl font-bold opacity-80">
                       of {Number(total).toLocaleString('en-IN')} candidates
                     </span>
                   </div>
                 )}
 
                 {pctNum > 0 && (
-                  <p className="text-lg lg:text-xl font-bold opacity-90">
+                  <p className="text-lg xl:text-xl font-bold opacity-90">
                     Beat <span className="text-black dark:text-white">{pctNum.toFixed(1)}%</span> of candidates on AajExam
                   </p>
                 )}
@@ -101,7 +101,7 @@ export default function SharedResult({ stats }) {
             </Card>
           </motion.div>
 
-          <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <section className="grid grid-cols-2 xl:grid-cols-4 gap-4">
             {[
               { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: 'text-black dark:text-white' },
               { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: 'text-primary-600' },
@@ -112,20 +112,20 @@ export default function SharedResult({ stats }) {
                 <div className={`w-12 h-12 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
                   <item.icon className="w-6 h-6" />
                 </div>
-                <span className="text-xl lg:text-2xl font-black font-outfit">{item.value}</span>
+                <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
                 <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.label}</span>
               </Card>
             ))}
           </section>
 
-          <Card className="p-8 lg:p-10 border-2 text-center space-y-5 bg-white dark:bg-slate-800">
-            <h2 className="text-2xl lg:text-3xl font-black font-outfit uppercase">
+          <Card className="p-8 xl:p-10 border-2 text-center space-y-5 bg-white dark:bg-slate-800">
+            <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase">
               Think you can beat this?
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
               Free unlimited mock tests for SSC, RRB, Banking, and State Police exams. Track your All India Rank live.
             </p>
-            <div className="flex flex-col lg:flex-row justify-center gap-3 pt-2">
+            <div className="flex flex-col xl:flex-row justify-center gap-3 pt-2">
               <Button
                 variant="primary"
                 size="lg"

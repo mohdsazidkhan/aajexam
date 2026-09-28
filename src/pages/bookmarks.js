@@ -102,10 +102,10 @@ const BookmarksPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Bookmarks - AajExam" noIndex={true} />
 
-            <div className="container mx-auto py-2 lg:py-4 space-y-3 lg:space-y-4 mt-0">
+            <div className="container mx-auto py-2 xl:py-4 space-y-3 xl:space-y-4 mt-0">
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
-                  <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">Bookmarks</h1>
+                  <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">Bookmarks</h1>
                   <p className="text-sm font-bold text-gray-400">
                      {total > 0 ? `${total} saved reel${total > 1 ? 's' : ''}` : 'Your saved reels will appear here'}
                   </p>
@@ -113,16 +113,16 @@ const BookmarksPage = () => {
 
                {/* Bookmarked Reels Grid */}
                {reels.length === 0 ? (
-                  <div className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
+                  <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <Bookmark className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl lg:text-2xl font-black font-outfit">No bookmarks yet</h3>
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit">No bookmarks yet</h3>
                      <p className="text-sm font-bold text-gray-400">Bookmark reels while watching to save them here</p>
                      <Button variant="primary" className="mx-auto" onClick={() => router.push('/reels')}>Browse Reels</Button>
                   </div>
                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
                      {reels.map((reel, idx) => {
                         const typeConfig = TYPE_CONFIG[reel.type] || TYPE_CONFIG.fact;
                         const TypeIcon = typeConfig.icon;
@@ -131,7 +131,7 @@ const BookmarksPage = () => {
                         return (
                            <motion.div key={reel._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="group cursor-pointer hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full">
-                                 <div className="space-y-2 lg:space-y-4 flex-1">
+                                 <div className="space-y-2 xl:space-y-4 flex-1">
                                     {/* Top: Type badge + Difficulty + Unbookmark */}
                                     <div className="flex items-center justify-between">
                                        <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ const BookmarksPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleUnbookmark(reel._id); }}
-                                          className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors"
+                                          className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors"
                                           title="Remove bookmark"
                                        >
                                           <BookmarkCheck className="w-5 h-5" />
@@ -170,7 +170,7 @@ const BookmarksPage = () => {
 
                                     {/* Title / Content */}
                                     <div className="space-y-1">
-                                       <p className="font-black text-sm lg:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
+                                       <p className="font-black text-sm xl:text-base line-clamp-3 leading-snug">{getReelTitle(reel)}</p>
                                        {reel.type === 'question' && reel.userInteraction?.answered && (
                                           <div className={`flex items-center gap-1.5 text-xs font-bold ${reel.userInteraction.isCorrect ? 'text-primary-600' : 'text-black dark:text-white'}`}>
                                              {reel.userInteraction.isCorrect ? <CheckCircle className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}

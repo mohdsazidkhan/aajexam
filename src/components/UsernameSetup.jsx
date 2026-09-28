@@ -90,8 +90,8 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
   const canSave = isValid && (username === currentUsername || available === true);
 
   return (
-    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
-      <h3 className="m-0 mb-2 text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Set Your Username</h3>
+    <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
+      <h3 className="m-0 mb-2 text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Set Your Username</h3>
       <p className="username-info m-0 mb-8 text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
         Choose a unique username that others can use to find and follow you.
       </p>
@@ -113,10 +113,10 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           <span className="checking-spinner w-6 h-6 border-2 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin ml-3"></span>
         )}
         {available === true && username !== currentUsername && (
-          <span className="status-icon success ml-3 text-xl lg:text-2xl font-black text-primary-600">✓</span>
+          <span className="status-icon success ml-3 text-xl xl:text-2xl font-black text-primary-600">✓</span>
         )}
         {available === false && (
-          <span className="status-icon error ml-3 text-xl lg:text-2xl font-black text-primary-600">✗</span>
+          <span className="status-icon error ml-3 text-xl xl:text-2xl font-black text-primary-600">✗</span>
         )}
       </div>
 

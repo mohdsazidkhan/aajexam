@@ -63,8 +63,8 @@ const TermsAndConditions = () => {
          <div className="min-h-screen font-outfit pb-20 selection:bg-primary-600 selection:text-white mt-0">
 
             {/* --- Header Section --- */}
-            <div className="relative overflow-hidden py-8 lg:py-16 border-b-2 border-slate-100 dark:border-slate-800">
-               <div className="container mx-auto px-6 lg:px-10 relative z-10 text-center space-y-8">
+            <div className="relative overflow-hidden py-8 xl:py-16 border-b-2 border-slate-100 dark:border-slate-800">
+               <div className="container mx-auto px-6 xl:px-10 relative z-10 text-center space-y-8">
                   <motion.div
                      initial={{ rotate: -10, opacity: 0 }}
                      animate={{ rotate: 0, opacity: 1 }}
@@ -72,11 +72,11 @@ const TermsAndConditions = () => {
                   >
                      <FileContract className="w-14 h-14 text-primary-600" />
                   </motion.div>
-                  <div className="space-y-2 lg:space-y-4">
-                     <h1 className="text-xl lg:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
+                  <div className="space-y-2 xl:space-y-4">
+                     <h1 className="text-xl xl:text-5xl font-black uppercase tracking-tighter leading-none text-slate-900 dark:text-white">
                         Terms of <span className="text-primary-600">Service</span>
                      </h1>
-                     <p className="text-xs lg:text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] max-w-2xl mx-auto px-6">
+                     <p className="text-xs xl:text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] max-w-2xl mx-auto px-6">
                         RULES AND GUIDELINES FOR USING OUR PLATFORM
                      </p>
                   </div>
@@ -91,12 +91,12 @@ const TermsAndConditions = () => {
 
                      {/* 1. Acceptance of Terms */}
                      <section id="acceptance" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 xl:p-12 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-none relative overflow-hidden mt-4">
                            <div className="flex items-center gap-6 mb-10">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <CircleCheck className="w-8 h-8" />
                               </div>
-                              <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">1. Acceptance of Terms</h2>
+                              <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">1. Acceptance of Terms</h2>
                            </div>
                            <div className="space-y-6">
                               <p className="text-md leading-relaxed text-slate-600 dark:text-slate-400 font-medium">
@@ -110,12 +110,12 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 2. User Eligibility */}
-                     <section id="eligibility" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
+                     <section id="eligibility" className="bg-white dark:bg-slate-800 p-4 xl:p-12 xl:p-20 rounded-[2rem] xl:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 space-y-12">
                         <div className="flex items-center gap-6 relative z-10">
                            <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                               <UserCheck className="w-8 h-8" />
                            </div>
-                           <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">2. User Eligibility</h2>
+                           <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white">2. User Eligibility</h2>
                         </div>
 
                         <div className="grid grid-cols-1 gap-8">
@@ -138,22 +138,22 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 3. Subscription & Payments */}
-                     <section id="subscription" className="bg-slate-900 rounded-[2rem] lg:rounded-[4rem] p-4 md:p-12 lg:p-20 space-y-12 relative overflow-hidden shadow-sm">
+                     <section id="subscription" className="bg-slate-900 rounded-[2rem] xl:rounded-[4rem] p-4 md:p-12 xl:p-20 space-y-12 relative overflow-hidden shadow-sm">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]" />
 
                         <div className="flex items-center gap-6 relative z-10">
                            <div className="w-16 h-16 bg-primary-500/20 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/20">
                               <Users className="w-8 h-8" />
                            </div>
-                           <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-white">3. Subscription Plans</h2>
+                           <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter text-white">3. Subscription Plans</h2>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-                           <div className="p-8 bg-white/5 rounded-[2.5rem] border-2 border-white/10 space-y-2 lg:space-y-4">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 relative z-10">
+                           <div className="p-8 bg-white/5 rounded-[2.5rem] border-2 border-white/10 space-y-2 xl:space-y-4">
                               <h4 className="text-primary-600 font-black uppercase tracking-widest text-xs">Free Plan</h4>
                               <p className="text-sm font-medium text-slate-400">Unlimited topic-wise practice, 2 subject tests/day, first full mock test free, and latest-year PYQs for every exam.</p>
                            </div>
-                           <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-2 lg:space-y-4 shadow-sm group hover:scale-[1.02] transition-transform">
+                           <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-2 xl:space-y-4 shadow-sm group hover:scale-[1.02] transition-transform">
                               <div className="flex justify-between items-center">
                                  <h4 className="text-white font-black uppercase tracking-widest text-xs">Pro Plan</h4>
                                  <Zap className="w-4 h-4 text-primary-600" />
@@ -170,16 +170,16 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 4. Reward Programs */}
-                     <section id="rewards" className="bg-white dark:bg-slate-800 p-4 lg:p-12 xl:p-20 rounded-[1rem] lg:rounded-[4rem] shadow-sm space-y-12 border-none">
+                     <section id="rewards" className="bg-white dark:bg-slate-800 p-4 xl:p-12 xl:p-20 rounded-[1rem] xl:rounded-[4rem] shadow-sm space-y-12 border-none">
                         <div className="flex items-center gap-6">
                            <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-sm border-2 border-black/10 dark:border-white/10">
                               <Gift className="w-8 h-8" />
                            </div>
-                           <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">4. Reward Rules</h2>
+                           <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">4. Reward Rules</h2>
                         </div>
 
                         <div className="space-y-10">
-                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                           <div className="p-4 xl:p-8 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                               <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h4>
                               <ul className="space-y-8">
                                  <li className="flex gap-6">
@@ -202,15 +202,15 @@ const TermsAndConditions = () => {
                      </section>
 
                      {/* 5. Prohibited Activities */}
-                     <section id="prohibited" className="bg-white dark:bg-slate-800 p-4 lg:p-12 lg:p-20 rounded-[2rem] lg:rounded-[4rem] shadow-sm space-y-12 border-none ring-8 ring-black/10 dark:ring-white/10">
+                     <section id="prohibited" className="bg-white dark:bg-slate-800 p-4 xl:p-12 xl:p-20 rounded-[2rem] xl:rounded-[4rem] shadow-sm space-y-12 border-none ring-8 ring-black/10 dark:ring-white/10">
                         <div className="flex items-center gap-6">
                            <div className="w-16 h-16 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-3xl flex items-center justify-center shadow-sm border-2 border-black/10 dark:border-white/10">
                               <Ban className="w-8 h-8" />
                            </div>
-                           <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">5. Account Termination</h2>
+                           <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">5. Account Termination</h2>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-6">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 pb-6">
                            {[
                               'Scripted Automation', 'External Resource Collusion', 'Using Multiple Accounts', 'Referral Link Fraud', 'Pretending to be Someone Else', 'Abusive Behavior'
                            ].map((ban, i) => (
@@ -230,22 +230,22 @@ const TermsAndConditions = () => {
 
                      {/* IP & Liability */}
                      <div className="grid grid-cols-1 gap-10">
-                        <section id="intellectual" className="bg-white dark:bg-slate-800 p-4 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center gap-10">
+                        <section id="intellectual" className="bg-white dark:bg-slate-800 p-4 xl:p-12 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 flex flex-col xl:flex-row items-center gap-10">
                            <div className="w-20 h-20 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-black/5 dark:border-white/5">
                               <Lock className="w-10 h-10" />
                            </div>
-                           <div className="space-y-3 text-center lg:text-left">
-                              <h3 className="text-xl lg:text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">6. Intellectual Property</h3>
+                           <div className="space-y-3 text-center xl:text-left">
+                              <h3 className="text-xl xl:text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">6. Intellectual Property</h3>
                               <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-loose">All content, quizzes, and branding are the exclusive property of AajExam and are protected by law.</p>
                            </div>
                         </section>
 
-                        <section id="liability" className="bg-white dark:bg-slate-800 p-4 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center gap-10">
+                        <section id="liability" className="bg-white dark:bg-slate-800 p-4 xl:p-12 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 flex flex-col xl:flex-row items-center gap-10">
                            <div className="w-20 h-20 bg-slate-500/10 text-slate-700 dark:text-slate-400 rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-slate-500/5">
                               <Gavel className="w-10 h-10" />
                            </div>
-                           <div className="space-y-3 text-center lg:text-left">
-                              <h3 className="text-xl lg:text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">7. Liability Disclaimer</h3>
+                           <div className="space-y-3 text-center xl:text-left">
+                              <h3 className="text-xl xl:text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white leading-none">7. Liability Disclaimer</h3>
                               <p className="text-sm font-medium text-slate-500 dark:text-slate-400 leading-loose">Our content is provided "as-is". We provide study tools but do not guarantee success in government examinations.</p>
                            </div>
                         </section>
@@ -253,19 +253,19 @@ const TermsAndConditions = () => {
 
                      {/* Contact Section */}
                      <section id="contact" className="group">
-                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] shadow-sm space-y-10 border-none relative overflow-hidden">
+                        <div className="bg-white dark:bg-slate-800 p-4 md:p-8 xl:p-12 rounded-[2.5rem] xl:rounded-[4rem] shadow-sm space-y-10 border-none relative overflow-hidden">
                            <div className="flex items-center gap-6">
                               <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-3xl flex items-center justify-center shadow-sm border-2 border-primary-500/10">
                                  <Mail className="w-8 h-8" />
                               </div>
                               <div className="space-y-1">
-                                 <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">10. Contact Information</h2>
+                                 <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">10. Contact Information</h2>
                                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">LEGAL AND SUPPORT</p>
                               </div>
                            </div>
-                           <div className="p-4 lg:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 lg:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
+                           <div className="p-4 xl:p-8 bg-white dark:bg-slate-900/50 rounded-[2.5rem] space-y-2 xl:space-y-4 border-2 border-slate-100 dark:border-slate-800 group-hover:border-primary-500/20 transition-all shadow-sm">
                               <p className="text-sm font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support Email:</p>
-                              <p className="text-xl lg:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
+                              <p className="text-xl xl:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
                               onClick={() => router.push('/home')}

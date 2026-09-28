@@ -118,7 +118,7 @@ const PayuFailure = () => {
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Checking your payment</h1>
+              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Checking your payment</h1>
               <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
                 We are gathering the latest payment details so you know what happened.
               </p>
@@ -138,13 +138,13 @@ const PayuFailure = () => {
       />
       <div className="min-h-screen py-8">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 lg:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
-            <div className="text-center space-y-2 lg:space-y-4">
+          <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 xl:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
+            <div className="text-center space-y-2 xl:space-y-4">
               <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white">
                 <CircleAlert className="w-12 h-12" />
               </div>
               <div className="space-y-2">
-                <h1 className="text-xl md:text-2xl lg:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment failed</h1>
+                <h1 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment failed</h1>
                 <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
                   {error || 'The payment could not be completed. Please try again or use a different payment method.'}
                 </p>
@@ -152,7 +152,7 @@ const PayuFailure = () => {
             </div>
 
             {detailRows.length > 0 && (
-              <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8 space-y-2 lg:space-y-4">
+              <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
                 <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment details</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (
@@ -165,7 +165,7 @@ const PayuFailure = () => {
               </div>
             )}
 
-            <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 lg:p-8 space-y-2 lg:space-y-4">
+            <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
               <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">What to try next</h2>
               <ul className="space-y-3">
                 {[

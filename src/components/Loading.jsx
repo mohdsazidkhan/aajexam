@@ -22,7 +22,7 @@ const Loading = ({
   const sizeMap = {
     sm: { container: 'w-12 h-12', ring: 'w-8 h-8', dot: 'w-2 h-2', text: 'text-[8px]', mt: 'mt-2' },
     md: { container: 'w-24 h-24', ring: 'w-16 h-16', dot: 'w-4 h-4', text: 'text-[10px]', mt: 'mt-4' },
-    lg: { container: 'w-40 h-40', ring: 'w-28 h-28', dot: 'w-8 h-8', text: 'text-xs', mt: 'mt-6' },
+    xl: { container: 'w-40 h-40', ring: 'w-28 h-28', dot: 'w-8 h-8', text: 'text-xs', mt: 'mt-6' },
   };
 
   const colorMap = {

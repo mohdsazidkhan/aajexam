@@ -39,7 +39,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.05 + 0.3 }}
-      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
+      className="group relative bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 p-6 hover:border-primary-500/30 transition-all shadow-sm overflow-hidden cursor-default"
     >
       <div className="flex items-center justify-between mb-4">
         <div className={`p-3 rounded-2xl ${colors[color]} group-hover:scale-110 transition-transform`}>
@@ -48,7 +48,7 @@ function StatsCard({ icon: Icon, label, value, sub, color = "primary", i = 0 }) 
         <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</div>
       </div>
       <div className="space-y-1">
-        <div className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-600 transition-colors">
+        <div className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white tabular-nums tracking-tighter leading-none group-hover:text-primary-600 transition-colors">
           {value}
         </div>
         {sub !== undefined && (
@@ -477,7 +477,7 @@ const AdminSubscriptions = () => {
             whileHover={{ scale: 1.1, backgroundColor: 'rgba(79, 70, 229, 0.1)' }}
             whileTap={{ scale: 0.9 }}
             onClick={() => toggleSubscriptionDetails(subscription._id)}
-            className="p-3 text-primary-600 rounded-lg lg:rounded-xl"
+            className="p-3 text-primary-600 rounded-lg xl:rounded-xl"
           >
             {expandedSubscription === subscription._id ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </motion.button>
@@ -485,7 +485,7 @@ const AdminSubscriptions = () => {
             whileHover={{ scale: 1.1, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
             whileTap={{ scale: 0.9 }}
             onClick={() => openExtendModal(subscription)}
-            className="p-3 text-primary-600 rounded-lg lg:rounded-xl"
+            className="p-3 text-primary-600 rounded-lg xl:rounded-xl"
           >
             <Plus className="w-4 h-4" />
           </motion.button>
@@ -502,7 +502,7 @@ const AdminSubscriptions = () => {
         placeholder="Search by name, email, or plan..."
         value={filters.search}
         onChange={(e) => handleFilterChange('search', e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -569,7 +569,7 @@ const AdminSubscriptions = () => {
   const exportButton = (
     <button
       onClick={exportToCSV}
-      className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700"
+      className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -623,7 +623,7 @@ const AdminSubscriptions = () => {
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+        <div className="grid grid-cols-2 xl:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
           {[
             { label: 'Total Subscriptions', val: summary.totalSubscriptions || 0, icon: Users },
             { label: 'Active', val: summary.activeSubscriptions || 0, icon: CheckCircle },
@@ -650,12 +650,12 @@ const AdminSubscriptions = () => {
               key="error"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl lg:rounded-[3.5rem] p-4 lg:p-12 text-center shadow-sm"
+              className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl xl:rounded-[3.5rem] p-4 xl:p-12 text-center shadow-sm"
             >
-              <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-8 shadow-sm">
+              <div className="w-20 h-20 bg-primary-600 rounded-3xl flex items-center justify-center mx-auto mb-4 xl:mb-8 shadow-sm">
                 <Zap className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
+              <h3 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">SOMETHING WENT WRONG</h3>
               <p className="text-black dark:text-white font-bold uppercase text-sm tracking-widest">{error}</p>
             </motion.div>
           ) : subscriptions.length === 0 ? (
@@ -663,10 +663,10 @@ const AdminSubscriptions = () => {
               key="empty"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl lg:rounded-[3.5rem] p-24 text-center shadow-sm"
+              className="bg-slate-100 dark:bg-white/5 border-2 border-slate-200 dark:border-white/5 rounded-2xl xl:rounded-[3.5rem] p-24 text-center shadow-sm"
             >
-              <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-              <h3 className="text-xl lg:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
+              <Layers className="w-24 h-24 text-slate-300 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <h3 className="text-xl xl:text-2xl font-black text-slate-400 uppercase tracking-tighter">NO SUBSCRIPTIONS FOUND</h3>
               <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.3em] mt-4">No subscriptions match your current filters. Try adjusting your search or filter criteria.</p>
             </motion.div>
           ) : (
@@ -689,7 +689,7 @@ const AdminSubscriptions = () => {
 
               {/* Grid View */}
               {viewMode === 'grid' && (
-                <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+                <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                   {subscriptions.map((subscription, idx) => (
                     <div key={subscription._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
                       <div className="flex items-center justify-between gap-2">
@@ -735,7 +735,7 @@ const AdminSubscriptions = () => {
               {viewMode === 'list' && (
                 <div className="h-full overflow-auto space-y-3">
                   {subscriptions.map((subscription, idx) => (
-                    <div key={subscription._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4">
+                    <div key={subscription._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-4">
                       <div className="flex items-center gap-3">
                         <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
                           {subscription.user?.name?.charAt(0) || 'U'}
@@ -788,32 +788,32 @@ const AdminSubscriptions = () => {
                 animate={{ y: 0 }}
                 exit={{ y: '100%' }}
                 transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-                className="absolute top-16 right-0 bottom-0 left-0 lg:left-64 bg-white dark:bg-slate-900 lg:rounded-l-[3rem] border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
+                className="absolute top-16 right-0 bottom-0 left-0 xl:left-64 bg-white dark:bg-slate-900 xl:rounded-l-[3rem] border-l-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
               >
-                <div className="absolute top-0 right-0 p-3 lg:p-8">
+                <div className="absolute top-0 right-0 p-3 xl:p-8">
                   <motion.button whileHover={{ rotate: 90 }} onClick={closeExtendModal} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 rounded-2xl">
                     <X className="w-6 h-6" />
                   </motion.button>
                 </div>
 
-                <div className="flex-1 p-4 lg:p-12 overflow-y-auto">
+                <div className="flex-1 p-4 xl:p-12 overflow-y-auto">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-4 bg-primary-500/20 text-primary-600 rounded-3xl">
                       <Layers className="w-8 h-8" />
                     </div>
                     <div className="flex flex-col">
-                      <h3 className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
+                      <h3 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-none">EXTEND SUBSCRIPTION</h3>
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{selectedSubscription?.user?.name || 'User'} &mdash; {selectedSubscription?.user?.email || 'N/A'}</span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 lg:p-8 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
-                    <div className="space-y-2 lg:space-y-4">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-8 mb-4 bg-slate-50 dark:bg-white/5 p-4 xl:p-8 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-200/50 dark:border-white/5">
+                    <div className="space-y-2 xl:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">SELECT PLAN</label>
                       <select
                         value={extendForm.plan}
                         onChange={(e) => setExtendForm({ ...extendForm, plan: e.target.value })}
-                        className="w-full bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 xl:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="free">Free</option>
                         <option value="basic">Basic</option>
@@ -821,12 +821,12 @@ const AdminSubscriptions = () => {
                         <option value="pro">Pro</option>
                       </select>
                     </div>
-                    <div className="space-y-2 lg:space-y-4">
+                    <div className="space-y-2 xl:space-y-4">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">DURATION</label>
                       <select
                         value={extendForm.duration}
                         onChange={(e) => setExtendForm({ ...extendForm, duration: e.target.value })}
-                        className="w-full bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 lg:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/50 rounded-2xl px-3 xl:px-6 py-4 text-sm font-black uppercase tracking-tight text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="1 month">1 Month</option>
                         <option value="2 months">2 Months</option>
@@ -839,7 +839,7 @@ const AdminSubscriptions = () => {
                   </div>
 
                   {error && (
-                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 lg:mb-8 p-4 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-4 xl:mb-8 p-4 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 rounded-2xl text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
                       {error}
                     </motion.div>
                   )}

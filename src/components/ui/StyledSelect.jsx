@@ -53,7 +53,7 @@ const StyledSelect = ({
     <div className={`relative ${className}`} ref={ref}>
       <div
         onClick={() => !disabled && setIsOpen((prev) => !prev)}
-        className={`flex items-center gap-2 px-3 lg:px-4 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black shadow-sm transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer focus-within:border-primary-700'}`}
+        className={`flex items-center gap-2 px-3 xl:px-4 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black shadow-sm transition-all ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer focus-within:border-primary-700'}`}
       >
         {Icon && <Icon className="w-4 h-4 text-primary-600 shrink-0" />}
         <span className={`flex-1 truncate text-[10px] font-black uppercase tracking-widest ${selected ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`}>
@@ -63,7 +63,7 @@ const StyledSelect = ({
       </div>
 
       {isOpen && !disabled && (
-        <div className="absolute z-50 left-0 right-0 mt-1 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl shadow-sm overflow-hidden">
+        <div className="absolute z-50 left-0 right-0 mt-1 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl shadow-sm overflow-hidden">
           <div className="relative border-b-2 border-slate-200 dark:border-slate-800 p-2">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
             <input

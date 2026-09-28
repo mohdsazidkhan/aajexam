@@ -90,7 +90,7 @@ const AdminReelAnalytics = () => {
   const TopReelsListView = () => (
     <div className="space-y-1">
       {data.topReels.map((reel, i) => (
-        <div key={reel._id} className="flex items-start sm:items-center gap-3 p-3 rounded-lg lg:rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+        <div key={reel._id} className="flex items-start sm:items-center gap-3 p-3 rounded-lg xl:rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
           <span className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center text-[10px] font-black text-slate-500 shrink-0 mt-0.5 sm:mt-0">{i + 1}</span>
           <div className="flex-1 min-w-0">
             <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white line-clamp-2 sm:truncate">
@@ -108,9 +108,9 @@ const AdminReelAnalytics = () => {
   );
 
   const TopReelsGridView = () => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
       {data.topReels.map((reel, i) => (
-        <div key={reel._id} className="p-4 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
+        <div key={reel._id} className="p-4 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
           <div className="flex items-center justify-between mb-2">
             <span className="w-6 h-6 rounded-full bg-primary-500/10 text-primary-600 flex items-center justify-center text-[10px] font-black shrink-0">{i + 1}</span>
             <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider capitalize">{reel.type}</span>
@@ -138,9 +138,9 @@ const AdminReelAnalytics = () => {
       <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit flex-1 min-h-0 overflow-auto flex flex-col">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-3 mb-4 shrink-0">
+        <div className="flex flex-col xl:flex-row xl:items-center justify-end gap-3 mb-4 shrink-0">
           {stats.length > 0 && (
-            <div className="flex flex-wrap items-center justify-end gap-2 w-full lg:w-auto">
+            <div className="flex flex-wrap items-center justify-end gap-2 w-full xl:w-auto">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex items-center gap-1.5 px-2 py-1.5 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shrink-0">
                   <div className="p-1 bg-primary-500/10 text-primary-600 rounded-md shrink-0">
@@ -163,7 +163,7 @@ const AdminReelAnalytics = () => {
           {loading ? <AdminDashboardSkeleton /> : data ? (
             <div className="space-y-4 pb-4">
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 {/* Type Breakdown */}
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-3 sm:p-4">
                   <h3 className="font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight text-xs">By Type</h3>
@@ -210,9 +210,9 @@ const AdminReelAnalytics = () => {
 
             </div>
           ) : (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
-              <BarChart3 className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-              <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Analytics Data</h3>
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+              <BarChart3 className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Analytics Data</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Create some reels first to see analytics.</p>
             </div>
           )}

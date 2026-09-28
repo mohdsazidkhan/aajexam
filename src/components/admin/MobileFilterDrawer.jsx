@@ -33,7 +33,7 @@ const AdminMobileFilterDrawer = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
-            className="fixed top-0 right-0 bottom-0 z-[200] w-[300px] max-w-sm lg:max-w-[300px] bg-slate-50 dark:bg-slate-950 border-l-2 border-slate-100 dark:border-slate-800 shadow-[-8px_0_24px_rgba(0,0,0,0.15)] flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-[200] w-[300px] max-w-sm xl:max-w-[300px] bg-slate-50 dark:bg-slate-950 border-l-2 border-slate-100 dark:border-slate-800 shadow-[-8px_0_24px_rgba(0,0,0,0.15)] flex flex-col"
           >
             <div className="flex items-center justify-between px-4 h-12 border-b-2 border-slate-100 dark:border-slate-800 shrink-0">
               <div className="flex items-center gap-2 min-w-0">

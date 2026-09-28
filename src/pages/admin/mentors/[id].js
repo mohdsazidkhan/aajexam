@@ -49,7 +49,7 @@ const AdminMentorDetail = () => {
     <AdminRoute>
       <div className="min-h-screen pb-24">
         <Head><title>{mentor.user?.name || 'Mentor'} - Admin</title></Head>
-        <div className="py-0 lg:py-6 space-y-2 lg:space-y-4">
+        <div className="py-0 xl:py-6 space-y-2 xl:space-y-4">
           <Link href="/admin/mentors" className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline w-fit">
             <ArrowLeft className="w-4 h-4" /> Back to Mentors
           </Link>
@@ -93,22 +93,22 @@ const AdminMentorDetail = () => {
 
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
-              <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
+              <div className="p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
                 <Star className="w-4 h-4 text-black dark:text-white mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.rating?.toFixed(1) || '0.0'}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">{mentor.totalRatings || 0} Ratings</p>
               </div>
-              <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
+              <div className="p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
                 <Users className="w-4 h-4 text-primary-600 mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.helpedStudents || 0}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">Students Helped</p>
               </div>
-              <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
+              <div className="p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
                 <Clock className="w-4 h-4 text-black dark:text-white mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.preparationMonths || 0}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">Prep Months</p>
               </div>
-              <div className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
+              <div className="p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800 text-center">
                 <MessageCircle className="w-4 h-4 text-black dark:text-white mx-auto mb-1" />
                 <p className="text-sm font-black text-slate-900 dark:text-white">{mentor.amaThreads?.length || 0}</p>
                 <p className="text-[9px] text-slate-400 uppercase font-bold">AMA Threads</p>
@@ -192,7 +192,7 @@ const AdminMentorDetail = () => {
             <Card className="space-y-3">
               <h2 className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5"><MessageCircle className="w-4 h-4 text-primary-600" /> AMA Threads</h2>
               {mentor.amaThreads.map((t, i) => (
-                <div key={i} className="p-3 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800 space-y-1.5">
+                <div key={i} className="p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800 space-y-1.5">
                   <p className="text-xs font-bold text-slate-800 dark:text-slate-100">Q: {t.question}</p>
                   <p className="text-[9px] text-slate-400">Asked by {t.askedBy?.name || 'Anonymous'} · {t.upvotes || 0} upvotes</p>
                   {t.answer ? (

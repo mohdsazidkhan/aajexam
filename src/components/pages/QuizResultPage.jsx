@@ -78,36 +78,36 @@ const QuizResultPage = () => {
 
         {/* Result Card */}
         <div className="text-center mb-6">
-          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 lg:p-8 border border-primary-200 dark:border-primary-600 shadow-sm">
+          <div className="bg-primary-50 dark:bg-primary-900/30 rounded-2xl p-5 xl:p-8 border border-primary-200 dark:border-primary-600 shadow-sm">
             <div className="flex justify-center mb-3">
               <div className="w-16 h-16 bg-primary-400 rounded-full flex items-center justify-center">
                 <Trophy className="w-8 h-8 text-white" />
               </div>
             </div>
-            {quiz && <h2 className="text-lg lg:text-xl font-bold text-slate-800 dark:text-white mb-1">{quiz.title}</h2>}
+            {quiz && <h2 className="text-lg xl:text-xl font-bold text-slate-800 dark:text-white mb-1">{quiz.title}</h2>}
             {quiz?.subject && <p className="text-sm text-slate-500 mb-4">{quiz.applicableExams?.map(e => e.name).join(', ') || ''} · {quiz.subject?.name}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}</p>}
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
+              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-primary-600">{attempt.correctCount}</div>
                 <div className="text-xs text-slate-500">Correct</div>
               </div>
-              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
+              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{attempt.wrongCount}</div>
                 <div className="text-xs text-slate-500">Wrong</div>
               </div>
-              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
+              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{Math.round(attempt.percentage || 0)}%</div>
                 <div className="text-xs text-slate-500">Score</div>
               </div>
-              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg lg:rounded-xl p-3 border border-white/20">
+              <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{Math.round(attempt.accuracy || 0)}%</div>
                 <div className="text-xs text-slate-500">Accuracy</div>
               </div>
             </div>
 
             {attempt.rank && (
-              <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg lg:rounded-xl inline-flex items-center gap-2">
+              <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl inline-flex items-center gap-2">
                 <Crown className="w-4 h-4" />
                 <span className="font-semibold text-sm">Rank #{attempt.rank} · Top {Math.round(attempt.percentile || 0)}%</span>
               </div>
@@ -116,9 +116,9 @@ const QuizResultPage = () => {
         </div>
 
         {/* Review */}
-        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm p-4 lg:p-8 border border-white/20 mb-6">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm p-4 xl:p-8 border border-white/20 mb-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-primary-600 rounded-lg lg:rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
               <Brain className="w-5 h-5 text-white" />
             </div>
             <h2 className="text-lg font-bold text-slate-800 dark:text-white">Question Review</h2>
@@ -135,7 +135,7 @@ const QuizResultPage = () => {
               const badge = getSpeedBadge(ans.timeTaken);
 
               return (
-                <div key={index} className={`rounded-lg lg:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
+                <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>
                       {index + 1}
@@ -197,10 +197,10 @@ const QuizResultPage = () => {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <button onClick={() => router.back()} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+          <button onClick={() => router.back()} className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg xl:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
             <ArrowLeft className="w-4 h-4" /> Go Back
           </button>
-          <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
+          <button onClick={() => router.push('/')} className="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg xl:rounded-xl font-semibold transition-colors flex items-center justify-center gap-2">
             <Home className="w-4 h-4" /> Home
           </button>
         </div>

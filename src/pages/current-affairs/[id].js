@@ -28,7 +28,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
   }, [lookupId, initialAffair, router]);
 
   if (loading) return (
-    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
+    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
       <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
@@ -66,7 +66,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
           ])
         ]}
       />
-      <div className="py-0 lg:py-6">
+      <div className="py-0 xl:py-6">
         <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         <div className="space-y-2">
@@ -75,7 +75,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
             <span className="text-[10px] text-slate-400 flex items-center gap-1"><Calendar className="w-3 h-3" />{new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span className="text-[10px] text-slate-400 flex items-center gap-1"><Eye className="w-3 h-3" />{affair.views}</span>
           </div>
-          <h1 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white">{affair.title}</h1>
+          <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{affair.title}</h1>
         </div>
 
         <Card className="">
@@ -96,7 +96,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
         )}
 
         {affair.questions?.length > 0 && (
-          <Card className="space-y-2 lg:space-y-4">
+          <Card className="space-y-2 xl:space-y-4">
             <h3 className="text-sm font-black text-slate-900 dark:text-white">Practice Questions</h3>
             {affair.questions.map((q, i) => (
               <div key={i} className="space-y-2 pb-3 border-b border-slate-100 dark:border-slate-800 last:border-0">

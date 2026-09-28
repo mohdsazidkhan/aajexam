@@ -22,7 +22,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 lg:p-4 font-outfit">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 xl:p-4 font-outfit">
       <div
         className={`absolute inset-0 bg-slate-950/40 backdrop-blur-sm transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         onClick={handleClose}
@@ -32,14 +32,14 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         className={`relative bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-sm max-w-4xl w-full max-h-[75vh] overflow-y-auto transition-all duration-500 transform border-2 border-slate-200 dark:border-slate-800 font-outfit scrollbar-none ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
         {/* HEADER */}
-        <div className="bg-primary-600 text-white p-4 lg:p-10 rounded-t-[2.5rem] shadow-sm border-b-2 border-white/20">
+        <div className="bg-primary-600 text-white p-4 xl:p-10 rounded-t-[2.5rem] shadow-sm border-b-2 border-white/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center shadow-sm transform -rotate-6">
                 <FaGraduationCap className="text-3xl text-primary-600" />
               </div>
               <div>
-                <h2 className="text-xl lg:text-2xl font-black uppercase tracking-tighter">AajExam — Exam Focused!</h2>
+                <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter">AajExam — Exam Focused!</h2>
                 <p className="text-[10px] font-black uppercase tracking-widest text-primary-100 opacity-80 mt-1">Dedicated Exam Preparation Platform</p>
               </div>
             </div>
@@ -53,11 +53,11 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* BODY */}
-        <div className="p-4 lg:p-10 space-y-8">
+        <div className="p-4 xl:p-10 space-y-8">
 
           {/* PLATFORM UPDATE */}
           <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-2xl p-6">
-            <h3 className="text-sm lg:text-lg font-black text-black dark:text-white mb-2 flex items-center uppercase tracking-tight">
+            <h3 className="text-sm xl:text-lg font-black text-black dark:text-white mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="text-black dark:text-white mr-2" /> Platform Update
             </h3>
             <p className="text-sm text-black dark:text-white font-medium">
@@ -67,7 +67,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
 
           {/* WHAT'S NEW */}
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
-            <h3 className="text-sm lg:text-lg font-black text-primary-600 dark:text-primary-200 mb-3 uppercase tracking-tight">
+            <h3 className="text-sm xl:text-lg font-black text-primary-600 dark:text-primary-200 mb-3 uppercase tracking-tight">
               ✅ What's Available
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -104,7 +104,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
 
           {/* DATA SAFE NOTICE */}
           <div className="bg-primary-600 text-white rounded-[2rem] p-6 shadow-sm border-2 border-white dark:border-slate-700">
-            <h3 className="text-sm lg:text-lg font-black mb-2 flex items-center uppercase tracking-tight">
+            <h3 className="text-sm xl:text-lg font-black mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="mr-3" /> Your Data is Safe
             </h3>
             <p className="text-sm font-medium opacity-90 leading-relaxed">
@@ -114,7 +114,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
 
           {/* APP LINKS */}
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
-            <h3 className="text-sm lg:text-lg font-black text-primary-600 dark:text-primary-200 mb-4 flex items-center uppercase tracking-tight">
+            <h3 className="text-sm xl:text-lg font-black text-primary-600 dark:text-primary-200 mb-4 flex items-center uppercase tracking-tight">
               <span className="text-xl mr-2">📱</span>
               Our Apps
             </h3>

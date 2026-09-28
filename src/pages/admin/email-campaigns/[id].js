@@ -19,7 +19,7 @@ export default function EditEmailCampaign() {
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       {/* Wait for the router so the id is available on first client render. */}
-      {router.isReady ? <EmailCampaignBuilder campaignId={id} /> : <div className="p-4 lg:p-8"><AdminFormSkeleton /></div>}
+      {router.isReady ? <EmailCampaignBuilder campaignId={id} /> : <div className="p-4 xl:p-8"><AdminFormSkeleton /></div>}
     </>
   );
 }

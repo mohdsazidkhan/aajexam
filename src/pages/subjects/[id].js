@@ -67,7 +67,7 @@ export default function SubjectDetail({
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="py-4 lg:py-6 relative space-y-8">
+        <div className="py-4 xl:py-6 relative space-y-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
@@ -78,25 +78,25 @@ export default function SubjectDetail({
           </nav>
 
           {/* Hero — server-rendered */}
-          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">Subject</span>
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+            <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {subjectName}
             </h1>
-            <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-6">
+            <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-6">
               {subject?.description ? subject.description.slice(0, 220) : `Master ${subjectName} for government competitive exams with topic-wise drills, study notes and exam-replicating practice tests on AajExam.`}
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-xl font-black text-slate-900 dark:text-white">{topics.length}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Topics</div>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-xl font-black text-slate-900 dark:text-white">{quizCount}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Quizzes</div>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 text-center border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-xl font-black text-primary-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
@@ -105,11 +105,11 @@ export default function SubjectDetail({
 
           {/* About — long-form intro */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About {subjectName}
               </h2>
-              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base lg:text-lg whitespace-pre-line">
+              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
               </div>
             </section>
@@ -117,11 +117,11 @@ export default function SubjectDetail({
 
           {/* Topics under this subject */}
           {topics.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Topics in {subjectName}
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                 {topics.map((t) => (
                   <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
                     <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{t.name}</div>
@@ -136,14 +136,14 @@ export default function SubjectDetail({
 
           {/* FAQ */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-2 lg:space-y-4">
+              <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
                   <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                    <summary className="font-black text-slate-900 dark:text-white text-base lg:text-lg uppercase tracking-tight">{f.question}</summary>
+                    <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
                     <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>
                 ))}

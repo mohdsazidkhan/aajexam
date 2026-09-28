@@ -169,7 +169,7 @@ const DashboardPage = () => {
       <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
-            <div className="text-2xl lg:text-6xl mb-4">⚠️</div>
+            <div className="text-2xl xl:text-6xl mb-4">⚠️</div>
             <div className="text-lg text-primary-600 dark:text-white">{error}</div>
           </div>
         </div>
@@ -184,7 +184,7 @@ const DashboardPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-8"
+        className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-8"
       >
         {[
           { label: 'TOTAL REVENUE', value: formatINR(stats.totalRevenue), subtitle: `${formatINR(stats.revenueThisMonth)} this month`, icon: Banknote, color: 'primary' },
@@ -192,17 +192,17 @@ const DashboardPage = () => {
           { label: 'ACTIVE PRO', value: (stats.activeProUsers || 0).toLocaleString('en-IN'), subtitle: `${stats.activeSubscriptions || 0} active subscriptions`, icon: Crown, color: 'primary' },
           { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts`, icon: Sparkles, color: 'primary' },
         ].map((item, idx) => (
-          <Card key={idx} variant="white" className="border-2 border-slate-100 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 lg:p-10 rounded-lg lg:rounded-xl xl:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
+          <Card key={idx} variant="white" className="border-2 border-slate-100 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 xl:p-10 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
             <div className="flex items-center justify-between relative z-10">
               <div>
                 <p className="text-primary-600 text-[10px] font-black uppercase tracking-[0.3em] mb-2">{item.label}</p>
-                <p className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none italic">{item.value}</p>
+                <p className="text-2xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none italic">{item.value}</p>
                 <p className="text-slate-500 text-[9px] font-black uppercase tracking-widest mt-6 flex items-center gap-2">
                   <CheckCircle className={`w-3.5 h-3.5 text-${item.color}-500`} /> {item.subtitle}
                 </p>
               </div>
-              <div className={`p-2.5 lg:p-5 rounded-lg lg:rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-sm`}>
-                <item.icon className="w-5 h-5 lg:w-10 lg:h-10" />
+              <div className={`p-2.5 xl:p-5 rounded-lg xl:rounded-2xl bg-${item.color}-500/10 text-${item.color}-600 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-sm`}>
+                <item.icon className="w-5 h-5 xl:w-10 xl:h-10" />
               </div>
             </div>
             <div className={`absolute -bottom-6 -left-6 w-24 h-24 bg-${item.color}-500/5 rounded-full blur-3xl`} />
@@ -223,7 +223,7 @@ const DashboardPage = () => {
             variants={{ show: { transition: { staggerChildren: 0.04 } } }}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6"
+            className="grid grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6"
           >
             {section.cards.map((card) => (
               <motion.div
@@ -237,20 +237,20 @@ const DashboardPage = () => {
                   hoverable
                   padded={false}
                   onClick={() => router.push(card.link)}
-                  className="h-full border-2 border-slate-100 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2rem] overflow-hidden group"
+                  className="h-full border-2 border-slate-100 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2rem] overflow-hidden group"
                 >
-                  <div className="p-3 lg:p-5 flex flex-col h-full relative">
+                  <div className="p-3 xl:p-5 flex flex-col h-full relative">
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-2xl bg-primary-500/10 text-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
-                        <card.icon className="w-5 h-5 lg:w-7 lg:h-7" />
+                      <div className="w-10 h-10 xl:w-14 xl:h-14 rounded-2xl bg-primary-500/10 text-primary-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+                        <card.icon className="w-5 h-5 xl:w-7 xl:h-7" />
                       </div>
-                      <div className="text-md lg:text-2xl font-black tracking-tighter text-primary-600 tabular-nums italic">
+                      <div className="text-md xl:text-2xl font-black tracking-tighter text-primary-600 tabular-nums italic">
                         {card.count}
                       </div>
                     </div>
                     <div className="mt-auto">
                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{card.subtitle || 'METRIC'}</p>
-                      <h2 className="text-sm lg:text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors leading-none">
+                      <h2 className="text-sm xl:text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors leading-none">
                         {card.title}
                       </h2>
                     </div>
@@ -269,21 +269,21 @@ const DashboardPage = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
-        className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] p-0 lg:p-4 shadow-sm border-none relative overflow-hidden"
+        className="bg-white dark:bg-slate-900/40 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] p-0 xl:p-4 shadow-sm border-none relative overflow-hidden"
       >
-        <div className="flex items-center gap-3 lg:gap-6 mb-2 lg:mb-4 py-2 px-3 lg:px-6 lg:py-4">
+        <div className="flex items-center gap-3 xl:gap-6 mb-2 xl:mb-4 py-2 px-3 xl:px-6 xl:py-4">
           <div className="w-14 h-14 rounded-2xl bg-primary-500/10 flex items-center justify-center text-primary-600 shadow-sm border border-primary-500/20">
             <Zap className="w-7 h-7 fill-current" />
           </div>
           <div>
             <span className="text-[10px] font-black text-primary-600 uppercase tracking-[0.4em] mb-1 block">SHORTCUTS</span>
-            <h2 className="text-2xl lg:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
+            <h2 className="text-2xl xl:text-4xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
               QUICK <span className="text-primary-600">LINKS</span>
             </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-6 relative z-10">
           {[
             { href: '/admin/students', label: 'Students', desc: 'Browse and manage student accounts', icon: Users },
             { href: '/admin/mentors', label: 'Mentors', desc: 'Approve and manage mentor profiles', icon: UserCheck },
@@ -306,8 +306,8 @@ const DashboardPage = () => {
               whileHover={{ x: 10 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Link href={action.href} className="flex items-center p-3 lg:p-6 rounded-lg lg:rounded-xl xl:rounded-[2rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-2 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-sm group h-full">
-                <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-lg lg:rounded-[1.25rem] flex items-center justify-center mr-5 shadow-sm group-hover:rotate-6 transition-transform shrink-0">
+              <Link href={action.href} className="flex items-center p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-[2rem] bg-slate-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border-2 border-slate-100 dark:border-white/5 transition-all duration-300 shadow-sm group h-full">
+                <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-lg xl:rounded-[1.25rem] flex items-center justify-center mr-5 shadow-sm group-hover:rotate-6 transition-transform shrink-0">
                   <action.icon className="w-7 h-7" />
                 </div>
                 <div>

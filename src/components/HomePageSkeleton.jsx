@@ -22,13 +22,13 @@ const SectionRowSkeleton = () => (
 );
 
 const HomePageSkeleton = () => (
-  <div className="space-y-5 md:space-y-6 lg:space-y-8 font-outfit">
+  <div className="space-y-5 md:space-y-6 xl:space-y-8 font-outfit">
 
     {/* ── Stats ── */}
-    <section className="px-0 py-4 lg:py-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
+    <section className="px-0 py-4 xl:py-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 xl:gap-4">
         {[1, 2, 3, 4].map(i => (
-          <div key={i} className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800 space-y-2">
+          <div key={i} className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800 space-y-2">
             <Skeleton width="18px" height="18px" borderRadius="0.4rem" />
             <Skeleton width="40px" height="22px" borderRadius="0.4rem" />
             <Skeleton width="60px" height="9px" borderRadius="0.25rem" />
@@ -38,10 +38,10 @@ const HomePageSkeleton = () => (
     </section>
 
     {/* ── Quick Actions ── */}
-    <section className="px-0 py-4 lg:py-8">
-      <div className="grid grid-cols-3 gap-2.5 md:gap-3 lg:gap-4">
+    <section className="px-0 py-4 xl:py-8">
+      <div className="grid grid-cols-3 gap-2.5 md:gap-3 xl:gap-4">
         {[1, 2, 3].map(i => (
-          <div key={i} className="rounded-2xl lg:rounded-3xl p-4 lg:p-6 bg-slate-100 dark:bg-slate-800 flex flex-col items-center gap-2">
+          <div key={i} className="rounded-2xl xl:rounded-3xl p-4 xl:p-6 bg-slate-100 dark:bg-slate-800 flex flex-col items-center gap-2">
             <Skeleton width="48px" height="48px" borderRadius="1rem" />
             <Skeleton width="48px" height="9px" borderRadius="0.25rem" />
           </div>
@@ -51,7 +51,7 @@ const HomePageSkeleton = () => (
 
     {/* ── Govt Exams / Quizzes / Subjects / Topics / Reels / Blogs ── */}
     {[1, 2, 3, 4, 5, 6].map(i => (
-      <section key={i} className="px-0 lg:px-4">
+      <section key={i} className="px-0 xl:px-4">
         <SectionRowSkeleton />
       </section>
     ))}

@@ -207,14 +207,14 @@ const AdminPaymentTransactions = () => {
 
     if (items.length === 0) {
       return (
-        <div className="px-4 py-4 lg:px-6 bg-slate-50 dark:bg-black/20 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+        <div className="px-4 py-4 xl:px-6 bg-slate-50 dark:bg-black/20 text-[10px] font-black text-slate-400 uppercase tracking-widest">
           No additional payment details available
         </div>
       );
     }
 
     return (
-      <div className="px-4 py-4 lg:px-6 lg:py-5 bg-slate-50 dark:bg-black/20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="px-4 py-4 xl:px-6 xl:py-5 bg-slate-50 dark:bg-black/20 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
         {items.map((item) => (
           <div key={item.label} className="min-w-0">
             <div className="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
@@ -313,7 +313,7 @@ const AdminPaymentTransactions = () => {
     {
       key: 'status', header: 'Status', align: 'center', render: (_, t) => (
         <div className="flex justify-center">
-          <div className={`px-4 py-1.5 rounded-lg lg:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
+          <div className={`px-4 py-1.5 rounded-lg xl:rounded-xl border-2 text-[9px] font-black uppercase flex items-center gap-2 shadow-sm ${getStatusColor(t.payuStatus || t.status)}`}>
             {getStatusIcon(t.payuStatus || t.status)}
             {t.payuStatus || t.status || 'Unknown'}
           </div>
@@ -351,7 +351,7 @@ const AdminPaymentTransactions = () => {
         placeholder="Search by order ID or username..."
         value={filters.search}
         onChange={(e) => handleFilterChange('search', e.target.value)}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -418,7 +418,7 @@ const AdminPaymentTransactions = () => {
   const exportButton = (
     <button
       onClick={exportToCSV}
-      className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -469,7 +469,7 @@ const AdminPaymentTransactions = () => {
         {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
           {[
             { label: 'Total Revenue', val: summary.totalRevenue || 0, icon: IndianRupee, isCurrency: true },
             { label: 'Monthly Revenue', val: summary.periodRevenue || 0, icon: TrendingUp, isCurrency: true },
@@ -490,14 +490,14 @@ const AdminPaymentTransactions = () => {
         <div className="flex-1 min-h-0 overflow-auto flex flex-col">
         <AnimatePresence mode="wait">
           {error ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 lg:p-8 rounded-3xl text-center">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/20 p-3 xl:p-8 rounded-3xl text-center">
               <AlertTriangle className="w-12 h-12 text-black dark:text-white mx-auto mb-4" />
               <div className="text-black dark:text-white font-black uppercase tracking-widest">{error}</div>
             </motion.div>
           ) : transactions.length === 0 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-sm">
-              <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 lg:mb-8 opacity-20" />
-              <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Transactions Found</h3>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-20 text-center shadow-sm">
+              <ReceiptText className="w-16 h-16 text-slate-300 dark:text-slate-700 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 font-outfit">No Transactions Found</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Try adjusting your filters or search terms to find transactions.</p>
             </motion.div>
           ) : (
@@ -556,7 +556,7 @@ const AdminPaymentTransactions = () => {
                 <div className="h-full overflow-auto space-y-3">
                   {transactions.map((t, idx) => (
                     <div key={t._id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                      <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 lg:gap-4">
+                      <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 xl:gap-4">
                       <div className="flex items-center gap-3">
                         <div className={`relative p-2.5 rounded-xl border ${getStatusColor(t.payuStatus || t.status)}`}>
                           {getStatusIcon(t.payuStatus || t.status)}

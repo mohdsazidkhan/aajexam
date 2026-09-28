@@ -100,7 +100,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           <div className="text-6xl mb-4">📝</div>
           <h1 className="text-2xl font-bold mb-2">Blog Not Found</h1>
           <p className="text-gray-600 dark:text-gray-300 mb-6">The blog you're looking for doesn't exist or has been removed.</p>
-          <Link href="/blog" className="bg-primary-600 text-white px-6 py-3 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+          <Link href="/blog" className="bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
             Browse All Blogs
           </Link>
         </div>
@@ -130,12 +130,12 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             <span className="text-gray-500 dark:text-gray-400 text-sm">{formatDate(blog.publishedAt || blog.createdAt)}</span>
           </div>
 
-          <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black text-gray-900 dark:text-gray-100 mb-4 leading-tight">
+          <h1 className="text-xl md:text-2xl xl:text-3xl xl:text-4xl font-black text-gray-900 dark:text-gray-100 mb-4 leading-tight">
             {blog.title}
           </h1>
 
           {blog.excerpt && (
-            <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{blog.excerpt}</p>
+            <p className="text-base xl:text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{blog.excerpt}</p>
           )}
 
           <div className="flex items-center justify-between flex-wrap gap-4">
@@ -160,7 +160,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         <div className="mb-8">
           <img src={optimizedImage(blog.featuredImage) || '/default_banner.png'} alt={blog.featuredImageAlt || blog.title}
             width={1200} height={630} fetchPriority="high" decoding="async"
-            className="w-full h-48 md:h-72 lg:h-96 object-cover rounded-2xl shadow-sm" />
+            className="w-full h-48 md:h-72 xl:h-96 object-cover rounded-2xl shadow-sm" />
         </div>
 
         {/* Content */}
@@ -170,10 +170,10 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         </article>
 
         {/* Actions */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 py-6 border-t border-b border-gray-200 dark:border-gray-700 mb-6">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-4 py-6 border-t border-b border-gray-200 dark:border-gray-700 mb-6">
           <div className="flex items-center gap-4">
             <button onClick={handleLike} disabled={liked}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm transition-colors ${liked
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm transition-colors ${liked
                 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 dark:text-white'
                 : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-black dark:hover:text-white'}`}>
               <Heart className={`w-4 h-4 ${liked ? 'fill-black dark:fill-white' : ''}`} />
@@ -182,7 +182,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
             {canNativeShare ? (
               <button onClick={handleNativeShare}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600">
+                className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600">
                 <Share2 className="w-4 h-4" /> Share
               </button>
             ) : (
@@ -208,33 +208,33 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         </div>
 
         {/* Next steps — contextual internal links */}
-        <section className="mb-8 rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 lg:py-8">
-          <h2 className="text-lg lg:text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
+        <section className="mb-8 rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 xl:py-8">
+          <h2 className="text-lg xl:text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
             Prepare for {blog.exam?.name || 'this exam'} on AajExam
           </h2>
-          <p className="text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
+          <p className="text-sm xl:text-base text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
             Reading the notification is step one. Start free practice with topic-wise quizzes,
             previous-year papers and full-length mock tests built for this exam.
           </p>
           <div className="flex flex-wrap gap-3">
             {blog.exam?.slug && (
               <Link href={`/govt-exams/exam/${blog.exam.slug}`}
-                className="bg-primary-600 text-white px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
+                className="bg-primary-600 text-white px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
                 {blog.exam.name} syllabus & pattern
               </Link>
             )}
             {hasPyq && blog.exam?.slug && (
               <Link href={`/pyq/${blog.exam.slug}`}
-                className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+                className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
                 Previous year question papers
               </Link>
             )}
             <Link href="/quizzes"
-              className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
               Free practice quizzes
             </Link>
             <Link href="/govt-exams"
-              className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg lg:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
+              className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
               All government exams
             </Link>
           </div>
@@ -258,7 +258,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {relatedBlogs?.filter(r => r._id !== blog._id).length > 0 && (
           <div className="mb-8">
             <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Related Blogs</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {relatedBlogs.filter(r => r._id !== blog._id).slice(0, 6).map((related) => (
                 <Link key={related._id} href={`/blog/${related.slug}`}
                   className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -286,7 +286,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Back */}
         <div className="text-center">
           <Link href="/blog"
-            className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
+            className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
         </div>

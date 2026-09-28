@@ -100,11 +100,11 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                 schemas={schemas}
             />
 
-            <div className="min-h-screen pb-8 lg:pb-16 font-outfit relative overflow-hidden">
+            <div className="min-h-screen pb-8 xl:pb-16 font-outfit relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="py-4 lg:py-8 space-y-4 lg:space-y-8 relative">
+                <div className="py-4 xl:py-8 space-y-4 xl:space-y-8 relative">
                     {/* Header / breadcrumb */}
                     <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
                         <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
@@ -113,15 +113,15 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     </nav>
 
                     {/* Hero */}
-                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
-                        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
+                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+                        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-6 mb-2 md:mb-4 xl:mb-8">
                             <div className="space-y-2">
                                 <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest">PYQ Library</span>
-                                <h1 className="text-2xl lg:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase flex items-center gap-3">
-                                    <FileText className="w-7 h-7 lg:w-10 lg:h-10 text-primary-600" />
+                                <h1 className="text-2xl xl:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase flex items-center gap-3">
+                                    <FileText className="w-7 h-7 xl:w-10 xl:h-10 text-primary-600" />
                                     Previous Year Papers
                                 </h1>
-                                <p className="text-sm lg:text-lg font-bold text-slate-500 dark:text-slate-400 max-w-2xl">
+                                <p className="text-sm xl:text-lg font-bold text-slate-500 dark:text-slate-400 max-w-2xl">
                                     {totalPYQs} verified PYQ {totalPYQs === 1 ? 'paper' : 'papers'} across {examsWithPYQ.length} {examsWithPYQ.length === 1 ? 'exam' : 'exams'} — practise with real questions, real timing, and detailed solutions.
                                 </p>
                             </div>
@@ -129,7 +129,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterExam}
                                     onChange={onExamChange}
-                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
+                                    className="w-1/2 xl:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">All Exams</option>
                                     {exams.map((e) => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -137,7 +137,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <select
                                     value={filterYear}
                                     onChange={onYearChange}
-                                    className="w-1/2 lg:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold outline-none truncate"
+                                    className="w-1/2 xl:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none truncate"
                                 >
                                     <option value="">All Years</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
@@ -148,23 +148,23 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                     {/* Browse by exam — high-value internal linking for SEO */}
                     {examsWithPYQ.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-                            <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight flex items-center">
+                        <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight flex items-center">
                                 <FaGraduationCap className="text-primary-600 mr-3" /> Browse PYQs by Exam
                             </h2>
                             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-6">
                                 Pick an exam to view its complete PYQ archive year-wise and shift-wise.
                             </p>
-                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-3">
                                 {examsWithPYQ.map((e) => {
                                     const completed = progressData[e.slug] || 0;
                                     const total = e.paperCount;
                                     const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
                                     
                                     return (
-                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 lg:p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
+                                    <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 xl:p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
                                         <div className="relative z-10">
-                                            <div className="text-sm lg:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{e.name}</div>
+                                            <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{e.name}</div>
                                             <div className="text-[10px] font-bold text-slate-500 flex items-center justify-between mb-3">
                                                 <span>{e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'}</span>
                                                 <FaArrowRight className="text-[10px] opacity-0 group-hover:opacity-100 transition" />
@@ -193,19 +193,19 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     )}
 
                     {/* Long-form intro */}
-                    <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-                        <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
+                    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+                        <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> Why Solve PYQs?
                         </h2>
-                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base lg:text-lg whitespace-pre-line">
+                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                             {intro}
                         </div>
                     </section>
 
                     {/* Latest / filtered list */}
-                    <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
+                    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
                         <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
-                            <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
                                 {filterExam || filterYear ? 'Filtered Papers' : 'Latest PYQ Papers'}
                             </h2>
                             <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
@@ -271,9 +271,9 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                         {totalPages > 1 && (
                             <div className="flex justify-center items-center gap-4 mt-8">
-                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
                                 <span className="text-sm font-bold text-slate-500">Page {page} of {totalPages}</span>
-                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
                             </div>
                         )}
                     </section>
@@ -332,7 +332,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             { icon: '🧠', text: 'Weakness analysis' },
                                             { icon: '🚀', text: 'Unlimited mock tests' },
                                         ].map((item) => (
-                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl px-3 py-2">
+                                            <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl px-3 py-2">
                                                 <span>{item.icon}</span> {item.text}
                                             </div>
                                         ))}
@@ -359,14 +359,14 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     )}
 
                     {/* FAQ */}
-                    <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-                        <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+                        <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                             Frequently Asked Questions
                         </h2>
-                        <div className="space-y-2 lg:space-y-4">
+                        <div className="space-y-2 xl:space-y-4">
                             {faqs.map((f, i) => (
                                 <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                                    <summary className="font-black text-slate-900 dark:text-white text-base lg:text-lg uppercase tracking-tight">{f.question}</summary>
+                                    <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
                                     <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                                 </details>
                             ))}

@@ -80,7 +80,7 @@ const ExitIntentModalInner = ({ onClose }) => {
               <Gift className="w-10 h-10 text-primary-600" />
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
+            <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
               Wait! Don't Leave Empty Handed.
             </h2>
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">

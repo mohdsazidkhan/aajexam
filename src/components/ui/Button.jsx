@@ -26,10 +26,10 @@ const Button = ({
   };
 
   const sizes = {
-    sm: 'px-4 py-2.5 text-xs font-black uppercase tracking-[0.08em] rounded-lg lg:rounded-xl',
+    sm: 'px-4 py-2.5 text-xs font-black uppercase tracking-[0.08em] rounded-lg xl:rounded-xl',
     md: 'px-6 py-3.5 text-sm font-black uppercase tracking-[0.08em] rounded-2xl',
-    lg: 'px-8 py-5 text-sm lg:text-base font-black uppercase tracking-[0.1em] rounded-[2rem]',
-    xl: 'px-8 py-4 text-sm lg:px-10 lg:py-6 lg:text-lg font-black uppercase tracking-[0.12em] rounded-[2.5rem]',
+    xl: 'px-8 py-5 text-sm xl:text-base font-black uppercase tracking-[0.1em] rounded-[2rem]',
+    xl: 'px-8 py-4 text-sm xl:px-10 xl:py-6 xl:text-lg font-black uppercase tracking-[0.12em] rounded-[2.5rem]',
   };
 
   const IconComponent = () => Icon ? (

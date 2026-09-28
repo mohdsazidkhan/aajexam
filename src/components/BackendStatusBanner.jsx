@@ -46,7 +46,7 @@ const BackendStatusBanner = () => {
         >
           <div className="relative group">
             {/* Glassmorphism Container */}
-            <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-2 border-black/30 dark:border-white/30 rounded-[2.5rem] p-6 shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex flex-col lg:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
+            <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-2 border-black/30 dark:border-white/30 rounded-[2.5rem] p-6 shadow-[0_20px_50px_rgba(244,63,94,0.2)] flex flex-col xl:flex-row items-center gap-8 overflow-hidden transition-all duration-500">
               {/* Background Tech Highlight */}
               <div className="absolute -left-10 -top-10 w-40 h-40 bg-black/5 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -66,8 +66,8 @@ const BackendStatusBanner = () => {
               </div>
 
               {/* Information Block */}
-              <div className="flex-1 text-center lg:text-left space-y-2">
-                <h3 className="text-base font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white flex items-center justify-center lg:justify-start gap-2.5">
+              <div className="flex-1 text-center xl:text-left space-y-2">
+                <h3 className="text-base font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white flex items-center justify-center xl:justify-start gap-2.5">
                   <AlertCircle className="w-5 h-5 text-black dark:text-white" />
                   Station Uplink Interrupted
                 </h3>

@@ -36,23 +36,23 @@ export default function Quizzes({ subjects = [], latestQuizzes = [], practiceGro
       />
       <QuizListPage />
 
-      <div className="px-3 lg:px-0 pb-10 space-y-6">
+      <div className="px-3 xl:px-0 pb-10 space-y-6">
         <LinkIndexSection
           title="Browse quizzes by subject"
           intro="Start with a subject, drill into a topic, then attempt the quizzes under it. Every quiz is free, timed and shipped with step-by-step solutions."
           groups={[{ items: subjects.map((s) => ({ href: `/subjects/${s.slug}`, name: s.name, meta: s.topicCount ? `${s.topicCount} topics` : null })) }]}
-          columns="sm:grid-cols-2 lg:grid-cols-4"
+          columns="sm:grid-cols-2 xl:grid-cols-4"
         />
         <LinkIndexSection
           title="Subject-wise previous year questions"
           intro="Every question asked in past papers, grouped by exam and subject, with answers and explanations. These pages carry the full question bank; the individual sets below are ten-question slices of it."
           groups={practiceGroups}
-          columns="sm:grid-cols-2 lg:grid-cols-3"
+          columns="sm:grid-cols-2 xl:grid-cols-3"
         />
         <LinkIndexSection
           title="Latest quizzes"
           groups={[{ items: latestQuizzes.map((q) => ({ href: `/quiz/${q.slug}`, name: q.title, meta: q.meta })) }]}
-          columns="sm:grid-cols-2 lg:grid-cols-3"
+          columns="sm:grid-cols-2 xl:grid-cols-3"
         />
       </div>
     </>

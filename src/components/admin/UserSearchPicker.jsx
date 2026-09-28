@@ -64,7 +64,7 @@ const UserSearchPicker = ({ multiple = false, value, onChange, placeholder = 'Se
   return (
     <div ref={ref} className="relative">
       {showSingleSelected ? (
-        <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-black">
+        <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-black">
           <div className="min-w-0">
             <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{value.name}</div>
             <div className="text-xs text-slate-400 truncate">{value.email}</div>
@@ -82,13 +82,13 @@ const UserSearchPicker = ({ multiple = false, value, onChange, placeholder = 'Se
             onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
             onFocus={() => query && setIsOpen(true)}
             placeholder={placeholder}
-            className="w-full pl-9 pr-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+            className="w-full pl-9 pr-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
           />
         </div>
       )}
 
       {isOpen && !showSingleSelected && (
-        <div className="absolute z-50 w-full mt-1 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl shadow-lg max-h-52 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-1 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl shadow-lg max-h-52 overflow-y-auto">
           {loading ? (
             <div className="p-3 text-center text-xs font-semibold text-slate-400">Searching...</div>
           ) : results.length > 0 ? (

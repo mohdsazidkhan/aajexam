@@ -69,7 +69,7 @@ const EducationalContent = ({ content }) => {
     };
 
     return (
-        <section className="font-outfit overflow-hidden dark: px-0 py-4 lg:py-8">
+        <section className="font-outfit overflow-hidden dark: px-0 py-4 xl:py-8">
             <div className="mx-auto space-y-24">
 
                 {/* Header Section */}
@@ -84,17 +84,17 @@ const EducationalContent = ({ content }) => {
                     </motion.div>
 
                     <div className="space-y-2">
-                        <h1 className="text-xl lg:text-5xl font-black text-content-primary uppercase tracking-tighter leading-none">
+                        <h1 className="text-xl xl:text-5xl font-black text-content-primary uppercase tracking-tighter leading-none">
                             Why Aspirants Choose <span className="text-primary-600">AajExam</span>
                         </h1>
-                        <p className="text-sm lg:text-xl font-bold text-content-secondary dark:text-slate-500 max-w-2xl mx-auto uppercase tracking-widest">
+                        <p className="text-sm xl:text-xl font-bold text-content-secondary dark:text-slate-500 max-w-2xl mx-auto uppercase tracking-widest">
                             Structured preparation for SSC, UPSC, Banking, Railway and State PSC exams
                         </p>
                     </div>
                 </div>
 
                 {/* Core Cards */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
                     {[
                         { title: "Why AajExam", content: data.platformPurpose, icon: Target, color: "primary" },
                         { title: "Who It's For", content: data.targetAudience, icon: Users, color: "primary" },
@@ -110,8 +110,8 @@ const EducationalContent = ({ content }) => {
                                 <div className={`w-16 h-16 rounded-3xl flex items-center justify-center border-2 border-slate-50 dark:border-slate-700 shadow-sm bg-slate-50 dark:bg-slate-800`}>
                                     <card.icon className={`w-8 h-8 text-${card.color}-500`} />
                                 </div>
-                                <div className="space-y-2 lg:space-y-4">
-                                    <h3 className="text-md md:text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+                                <div className="space-y-2 xl:space-y-4">
+                                    <h3 className="text-md md:text-xl xl:text-2xl font-black text-content-primary uppercase tracking-tight group-hover:text-primary-600 transition-colors">
                                         {card.title}
                                     </h3>
                                     <p className="text-sm font-medium text-content-secondary dark:text-slate-400 leading-relaxed">
@@ -126,7 +126,7 @@ const EducationalContent = ({ content }) => {
                 {/* Features Matrix */}
                 <div className="space-y-12">
                     <div className="text-center">
-                        <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-content-primary uppercase tracking-tight">Key Features</h2>
+                        <h2 className="text-xl md:text-2xl xl:text-3xl font-black text-content-primary uppercase tracking-tight">Key Features</h2>
                     </div>
 
                     <motion.div
@@ -134,7 +134,7 @@ const EducationalContent = ({ content }) => {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-4 gap-8"
+                        className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-4 gap-8"
                     >
                         {features.map((feature, index) => (
                             <motion.div
@@ -165,9 +165,9 @@ const EducationalContent = ({ content }) => {
                     className="relative p-12 bg-primary-600 rounded-[3rem] text-white border-b-2 border-primary-600 shadow-sm overflow-hidden group cursor-pointer"
                 >
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/20 transition-all" />
-                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-8">
                         <div className="space-y-2">
-                            <h2 className="text-xl lg:text-3xl font-black uppercase tracking-tighter">Start Preparing Free</h2>
+                            <h2 className="text-xl xl:text-3xl font-black uppercase tracking-tighter">Start Preparing Free</h2>
                             <p className="text-sm font-bold text-white/80 uppercase tracking-widest max-w-xl">
                                 Join 100,000+ aspirants practising for SSC, UPSC, Banking and Railway exams on AajExam. Free to start.
                             </p>

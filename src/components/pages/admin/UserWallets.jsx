@@ -188,7 +188,7 @@ const AdminUserWallets = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={(e) => { if (e.key === 'Enter') { setPage(1); load(); } }}
         placeholder="Search by username..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -217,7 +217,7 @@ const AdminUserWallets = () => {
     <button
       onClick={handleResetClaimableRewards}
       disabled={resetting}
-      className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700 disabled:opacity-50"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700 disabled:opacity-50"
     >
       <RefreshCcw className={`w-4 h-4 ${resetting ? 'animate-spin' : ''}`} />
       {resetting ? 'Resetting...' : 'Reset All Rewards'}
@@ -284,7 +284,7 @@ const AdminUserWallets = () => {
             {viewMode === 'list' && (
               <div className="h-full overflow-auto space-y-3">
                 {items.map((row, idx) => (
-                  <div key={idx} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-6">
+                  <div key={idx} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-6">
                     <div className="flex items-center gap-3">
                       <div className="relative w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center font-black text-sm text-white shrink-0">
                         {(row.user?.name || row.name || 'U').charAt(0).toUpperCase()}
@@ -317,7 +317,7 @@ const AdminUserWallets = () => {
 
             {/* Grid View */}
             {viewMode === 'grid' && (
-              <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+              <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                 {items.map((row, idx) => (
                   <div key={idx} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
                     <div className="flex items-center gap-3">

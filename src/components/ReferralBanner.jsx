@@ -49,7 +49,7 @@ const ReferralBanner = ({ user }) => {
 
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm p-5 lg:p-10 border-2 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
+    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
       {/* Decorative background */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none" />
 
@@ -58,7 +58,7 @@ const ReferralBanner = ({ user }) => {
         <div className="w-20 h-20 bg-slate-50 dark:bg-slate-700 rounded-[2rem] flex items-center justify-center shadow-sm border-2 border-slate-100 dark:border-slate-600 mx-auto mb-6">
           <Target className="w-10 h-10 text-primary-600" />
         </div>
-        <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
+        <h3 className="text-xl md:text-2xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
           Invite <span className="text-primary-600">& Earn!</span>
         </h3>
         <p className="text-slate-700 dark:text-gray-400 text-sm font-bold uppercase tracking-widest">
@@ -101,7 +101,7 @@ const ReferralBanner = ({ user }) => {
 
 
       {/* Share Buttons */}
-      <div className="space-y-2 lg:space-y-4">
+      <div className="space-y-2 xl:space-y-4">
         <button
           onClick={() => setShowShareOptions(!showShareOptions)}
           className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-sm transition-all active:translate-y-1 flex items-center justify-center gap-3"

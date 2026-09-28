@@ -14,7 +14,7 @@ import { formatTimeSpent } from '../lib/utils/timeFormat';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const LeaderboardSkeleton = () => (
@@ -88,7 +88,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = {
     sm: 'w-8 h-8 text-[11px]',
     md: 'w-10 h-10 text-sm',
-    lg: 'w-14 h-14 text-lg',
+    xl: 'w-14 h-14 text-lg',
     xl: 'w-16 h-16 text-xl',
   };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
@@ -116,7 +116,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 const Podium = ({ top3, currentUserId, type }) => {
   // Reorder: 2nd | 1st | 3rd
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
-  const podiumH = { 1: 'h-20 lg:h-24', 2: 'h-14 lg:h-16', 3: 'h-10 lg:h-12' };
+  const podiumH = { 1: 'h-20 xl:h-24', 2: 'h-14 xl:h-16', 3: 'h-10 xl:h-12' };
   const podiumGradient = {
     1: 'bg-primary-600',
     2: 'bg-slate-400',
@@ -220,7 +220,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
       <Link href={entry.username ? `/u/${entry.username}` : '#'}>
         {/* ── Desktop: table row ── */}
         <div className={`
-          hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
+          hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600'
             : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
@@ -247,7 +247,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
 
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`
-          flex lg:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
+          flex xl:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
           ${isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600'
             : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
@@ -382,10 +382,10 @@ const LeaderboardPage = () => {
         noIndex={false}
       />
 
-      <div className="space-y-5 lg:space-y-8">
+      <div className="space-y-5 xl:space-y-8">
 
         {/* ── Hero Banner ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20">
+        <section className="relative rounded-[2rem] xl:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20">
           <div className="absolute inset-0 bg-white dark:bg-black" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 dark:bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
@@ -459,7 +459,7 @@ const LeaderboardPage = () => {
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-black dark:text-white tracking-tight"
+              className="text-2xl sm:text-3xl xl:text-4xl font-black uppercase text-black dark:text-white tracking-tight"
             >
               Leaderboard
             </motion.h1>
@@ -502,7 +502,7 @@ const LeaderboardPage = () => {
         {loading ? (
           <LeaderboardSkeleton />
         ) : data.length === 0 ? (
-          <div className="py-16 sm:py-20 text-center space-y-2 lg:space-y-4">
+          <div className="py-16 sm:py-20 text-center space-y-2 xl:space-y-4">
             <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
             <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">No data yet for this period</h3>
             <p className="text-sm text-content-muted font-bold">Attempt quizzes to appear on the leaderboard!</p>
@@ -522,7 +522,7 @@ const LeaderboardPage = () => {
               className="space-y-2"
             >
               {/* Column header — desktop table only; mobile list has no header row */}
-              <div className={`hidden lg:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
+              <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
                 <p className="text-[10px] font-black text-content-muted uppercase">Player</p>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">Total Time Spent</p>

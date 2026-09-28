@@ -92,7 +92,7 @@ const BlogsPage = () => {
   };
 
   const GridView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`}
           className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -104,7 +104,7 @@ const BlogsPage = () => {
               {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
               <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
             </div>
-            <h3 className="text-base lg:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
+            <h3 className="text-base xl:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
               {blog.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
@@ -132,7 +132,7 @@ const BlogsPage = () => {
   );
 
   const ListView = () => (
-    <div className="space-y-2 lg:space-y-4">
+    <div className="space-y-2 xl:space-y-4">
       {blogs.map((blog) => (
         <Link key={blog._id} href={`/blog/${blog.slug}`}
           className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row">
@@ -173,17 +173,17 @@ const BlogsPage = () => {
 
   return (
     <div className="min-h-screen bg-background-page">
-      <div className="container mx-auto py-2 lg:py-4">
+      <div className="container mx-auto py-2 xl:py-4">
         {/* Header & Filters */}
         <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between mb-6 gap-4">
           <div>
-            <h1 className="text-2xl lg:text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
+            <h1 className="text-2xl xl:text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
               Blog ({pagination.total || 0})
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Exam preparation tips, guides & insights</p>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-3 bg-white dark:bg-gray-800 rounded-lg lg:rounded-xl p-3 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col xl:flex-row items-center gap-3 bg-white dark:bg-gray-800 rounded-lg xl:rounded-xl p-3 shadow-sm border border-gray-200 dark:border-gray-700">
             {/* View Toggle */}
             <div className="flex items-center gap-2">
               <button onClick={() => setViewMode('grid')}
@@ -215,7 +215,7 @@ const BlogsPage = () => {
             {/* Search */}
             <form onSubmit={handleSearch} className="relative">
               <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search blogs..."
-                className="w-full lg:w-64 px-4 py-2 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
+                className="w-full xl:w-64 px-4 py-2 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
               <button type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-600 text-white rounded-r-lg">
                 <Search className="w-4 h-4" />
               </button>

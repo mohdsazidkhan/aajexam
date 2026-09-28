@@ -32,13 +32,13 @@ const MentorsPage = () => {
   }, [search, page]);
 
   if (loading) return (
-    <div className="min-h-screen pb-8 lg:pb-16">
-      <div className="py-4 lg:py-6"><GridSkeleton count={8} /></div>
+    <div className="min-h-screen pb-8 xl:pb-16">
+      <div className="py-4 xl:py-6"><GridSkeleton count={8} /></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen pb-8 lg:pb-16">
+    <div className="min-h-screen pb-8 xl:pb-16">
       <Seo
         title="Mentors – Connect with Government Exam Toppers | AajExam"
         description="Connect with verified mentors who have cracked SSC, UPSC, Banking, Railway and State PSC exams. Get personalised study plans, doubt-clearing and exam strategy guidance on AajExam Pro."
@@ -56,17 +56,17 @@ const MentorsPage = () => {
           { name: 'Mentors', url: '/mentors' }
         ])}
       />
-      <div className="py-4 lg:py-6 space-y-3 lg:space-y-6">
+      <div className="py-4 xl:py-6 space-y-3 xl:space-y-6">
         <SubscriptionGuard message="Access to Mentors is a PRO feature. Connect with students who have successfully cleared exams to get personalized guidance!">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-600" /> Mentors</h1>
+              <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-600" /> Mentors</h1>
               <p className="text-sm font-bold text-slate-400">Learn from students who cleared exams</p>
             </div>
-            <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-xs font-bold">Become Mentor</button>
+            <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold">Become Mentor</button>
           </div>
 
-          <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl px-3 py-2">
+          <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl px-3 py-2">
             <Search className="w-4 h-4 text-slate-400" />
             <input type="text" placeholder="Search by exam name..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
               className="flex-1 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
@@ -122,9 +122,9 @@ const MentorsPage = () => {
 
           {totalPages > 1 && (
             <div className="flex justify-center items-center gap-4">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
+              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
               <span className="text-sm font-bold text-slate-500">Page {page} of {totalPages}</span>
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg lg:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
             </div>
           )}
         </SubscriptionGuard>

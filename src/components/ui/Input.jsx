@@ -37,8 +37,8 @@ const Input = ({
 
   const containerSizes = {
     sm: 'px-4 py-2.5 min-h-[44px] text-xs',
-    lg: 'px-5 py-4 min-h-[56px] text-sm',
-    lg: 'px-6 py-5 min-h-[64px] text-base',
+    xl: 'px-5 py-4 min-h-[56px] text-sm',
+    xl: 'px-6 py-5 min-h-[64px] text-base',
   };
 
   const variants = {

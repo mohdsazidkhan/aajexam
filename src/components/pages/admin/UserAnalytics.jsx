@@ -239,7 +239,7 @@ const UserAnalytics = () => {
   const exportButton = (
     <button
       onClick={handleExport}
-      className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700"
+      className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700"
     >
       <Download className="w-4 h-4" /> Export to CSV
     </button>
@@ -258,7 +258,7 @@ const UserAnalytics = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen p-3 lg:p-8">
+      <div className="min-h-screen p-3 xl:p-8">
         <AdminDashboardSkeleton />
       </div>
     );
@@ -274,11 +274,11 @@ const UserAnalytics = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-12 shadow-sm overflow-hidden"
+          className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-12 shadow-sm overflow-hidden"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl">
+              <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-xl">
                 <LineChart className="w-5 h-5" />
               </div>
               <div>

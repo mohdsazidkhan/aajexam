@@ -219,7 +219,7 @@ const AdminReels = () => {
         placeholder="Search reels by content or author..."
         value={searchTerm}
         onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -235,7 +235,7 @@ const AdminReels = () => {
         { value: 'draft', label: `Draft (${statusCounts.draft || 0})` },
         { value: 'rejected', label: `Rejected (${statusCounts.rejected || 0})` }
       ]}
-      className="w-full lg:max-w-[180px]"
+      className="w-full xl:max-w-[180px]"
     />
   );
 
@@ -251,7 +251,7 @@ const AdminReels = () => {
         { value: 'current_affairs', label: 'Current Affairs' },
         { value: 'poll', label: 'Poll' }
       ]}
-      className="w-full lg:max-w-[180px]"
+      className="w-full xl:max-w-[180px]"
     />
   );
 
@@ -260,7 +260,7 @@ const AdminReels = () => {
       value={subjectFilter}
       onChange={val => { setSubjectFilter(val); setPage(1); }}
       options={[{ value: '', label: 'All Categories' }, ...subjectOptions.map(subject => ({ value: subject, label: subject }))]}
-      className="w-full lg:max-w-[180px]"
+      className="w-full xl:max-w-[180px]"
     />
   );
 
@@ -285,7 +285,7 @@ const AdminReels = () => {
   );
 
   const createReelLink = (
-    <Link href="/admin/reels/create" className="w-full col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700">
+    <Link href="/admin/reels/create" className="w-full col-span-2 xl:col-span-1 flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
       <Plus className="w-4 h-4" /> Create Reel
     </Link>
   );
@@ -342,7 +342,7 @@ const AdminReels = () => {
                     <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No reels found" fillHeight />
                   </div>
                 ) : viewMode === 'grid' ? (
-                  <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                  <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
                     {items.map((item, idx) => {
                       const Icon = TYPE_ICONS[item.type] || HelpCircle;
                       const serialNumber = (page - 1) * itemsPerPage + idx + 1;

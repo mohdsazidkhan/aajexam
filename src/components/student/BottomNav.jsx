@@ -86,7 +86,7 @@ const StudentBottomNav = () => {
                       }}
                       className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all active:bg-slate-50 dark:active:bg-slate-800"
                     >
-                      <div className={`w-11 h-11 rounded-lg lg:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
+                      <div className={`w-11 h-11 rounded-lg xl:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className={`w-5 h-5 ${type.iconColor}`} />
                       </div>
                       <div className="text-left">
@@ -103,7 +103,7 @@ const StudentBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav aria-label="Main navigation" className="lg:hidden fixed bottom-0 left-0 right-0 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
+      <nav aria-label="Main navigation" className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
           // Create — its own flex slot like every other item, just lifted up
           // by translate so it floats half above / half inside the bar.

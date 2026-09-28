@@ -31,8 +31,8 @@ const Sh = ({ className = '' }) => (
   <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg ${className}`} />
 );
 const CalendarSkeleton = () => (
-  <div className="space-y-2 lg:space-y-4">
-    <Sh className="h-48 lg:h-52 w-full rounded-[2.5rem]" />
+  <div className="space-y-2 xl:space-y-4">
+    <Sh className="h-48 xl:h-52 w-full rounded-[2.5rem]" />
     <div className="flex gap-2">
       {Array.from({ length: 10 }).map((_, i) => <Sh key={i} className="shrink-0 w-14 sm:w-16 h-20 sm:h-24 rounded-2xl" />)}
     </div>
@@ -56,7 +56,7 @@ const EventCard = ({ event, compact = false }) => {
   if (compact) {
     return (
       <Link href={`/exam-news/${event.examNewsSlug}`}>
-        <div className={`flex items-start gap-2.5 p-3 rounded-lg lg:rounded-xl border ${cfg.border} ${cfg.color} transition-all hover:opacity-80 group`}>
+        <div className={`flex items-start gap-2.5 p-3 rounded-lg xl:rounded-xl border ${cfg.border} ${cfg.color} transition-all hover:opacity-80 group`}>
           <Icon className="w-4 h-4 flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <p className="text-[11px] font-black truncate leading-tight">{event.label}</p>
@@ -75,7 +75,7 @@ const EventCard = ({ event, compact = false }) => {
         animate={{ opacity: 1, y: 0 }}
         className={`flex items-start gap-3 p-3.5 rounded-2xl border-2 ${cfg.border} bg-background-surface hover:border-opacity-80 transition-all group cursor-pointer`}
       >
-        <div className={`w-9 h-9 rounded-lg lg:rounded-xl ${cfg.color} flex items-center justify-center flex-shrink-0`}>
+        <div className={`w-9 h-9 rounded-lg xl:rounded-xl ${cfg.color} flex items-center justify-center flex-shrink-0`}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
@@ -128,7 +128,7 @@ const DayPanel = ({ date, events, onClose }) => {
               Close
             </button>
           </div>
-          <div className="p-4 grid grid-cols-1 lg:grid-cols-3 gap-2.5">
+          <div className="p-4 grid grid-cols-1 xl:grid-cols-3 gap-2.5">
             {events.map((ev, i) => (
               <EventCard key={i} event={ev} />
             ))}
@@ -213,16 +213,16 @@ const ExamCalendarPage = () => {
         noIndex={false}
       />
 
-      <div className="space-y-5 lg:space-y-8">
+      <div className="space-y-5 xl:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 lg:py-8">
+        <section className="relative rounded-[2rem] xl:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 xl:py-8">
           <div className="absolute inset-0 bg-white dark:bg-black" />
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
           <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-black/10 dark:text-white/10 pointer-events-none" />
 
-          <div className="relative p-2 lg:p-4 z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="relative p-2 xl:p-4 z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -233,7 +233,7 @@ const ExamCalendarPage = () => {
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
+                className="text-2xl sm:text-3xl xl:text-4xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
               >
                 Exam Calendar
               </motion.h1>
@@ -259,14 +259,14 @@ const ExamCalendarPage = () => {
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Prev</span>
           </button>
 
           <div className="flex-1 text-center">
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-content-primary tracking-tight">
+            <h2 className="text-lg sm:text-xl xl:text-2xl font-black text-content-primary tracking-tight">
               {MONTHS[month - 1]} {year}
             </h2>
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
@@ -281,7 +281,7 @@ const ExamCalendarPage = () => {
 
           <button
             onClick={nextMonth}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg lg:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="w-4 h-4" />
@@ -289,7 +289,7 @@ const ExamCalendarPage = () => {
         </div>
 
         {/* ── Calendar Strip (single scrollable row) ── */}
-        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 lg:mx-0 lg:px-0">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 xl:mx-0 xl:px-0">
           {cells.filter(Boolean).map(cell => {
             const { day, dateStr, eventsForDay } = cell;
             const isToday = dateStr === todayStr;
@@ -369,7 +369,7 @@ const ExamCalendarPage = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="grid grid-cols-1 lg:grid-cols-3 gap-2.5 overflow-hidden"
+                  className="grid grid-cols-1 xl:grid-cols-3 gap-2.5 overflow-hidden"
                 >
                   {upcoming.map((ev, i) => (
                     <motion.div
@@ -389,7 +389,7 @@ const ExamCalendarPage = () => {
 
         {/* Empty state */}
         {totalEvents === 0 && upcoming.length === 0 && (
-          <div className="py-16 text-center space-y-2 lg:space-y-4">
+          <div className="py-16 text-center space-y-2 xl:space-y-4">
             <CalendarDays className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
             <h3 className="text-lg font-black text-content-muted uppercase">No events this month</h3>
             <p className="text-sm text-content-muted font-bold">Check back later or navigate to another month.</p>

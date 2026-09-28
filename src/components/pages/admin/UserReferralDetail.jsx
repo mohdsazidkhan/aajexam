@@ -136,7 +136,7 @@ export default function UserReferralDetail() {
             key: 'invitee', header: 'REFERRED USER', render: (_, tx) => (
                 tx.invitee ? (
                     <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
+                        <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm">
                             {tx.invitee.name?.[0].toUpperCase() || 'U'}
                         </div>
                         <div>
@@ -172,7 +172,7 @@ export default function UserReferralDetail() {
 
     if (loading) {
         return (
-            <div className="min-h-screen p-3 lg:p-8">
+            <div className="min-h-screen p-3 xl:p-8">
                 <AdminDetailSkeleton />
             </div>
         );
@@ -180,15 +180,15 @@ export default function UserReferralDetail() {
 
     if (!userId || error) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center p-3 lg:p-8">
-                <div className="p-4 lg:p-10 bg-white dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] shadow-sm border-b-2 border-slate-100 dark:border-white/5 mb-4 lg:mb-8">
+            <div className="min-h-screen flex flex-col items-center justify-center p-3 xl:p-8">
+                <div className="p-4 xl:p-10 bg-white dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] shadow-sm border-b-2 border-slate-100 dark:border-white/5 mb-4 xl:mb-8">
                     <Zap className="w-16 h-16 text-slate-200 dark:text-slate-700" />
                 </div>
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">{error ? 'Error' : 'User Not Found'}</h3>
-                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 lg:mb-8">{error || 'No user ID was provided. Please go back and select a user.'}</p>
+                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4 italic">{error ? 'Error' : 'User Not Found'}</h3>
+                <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-4 xl:mb-8">{error || 'No user ID was provided. Please go back and select a user.'}</p>
                 <button
                     onClick={() => router.push('/admin/referral-history')}
-                    className="px-4 lg:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg lg:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center gap-3 transition-transform hover:scale-105"
+                    className="px-4 xl:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg xl:rounded-[2rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center gap-3 transition-transform hover:scale-105"
                 >
                     <ArrowLeft className="w-4 h-4" /> Back to History
                 </button>
@@ -207,7 +207,7 @@ export default function UserReferralDetail() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-4 shrink-0"
                 >
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 lg:gap-8 mb-4">
+                    <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-3 xl:gap-8 mb-4">
                         <div className="space-y-2">
                             <div className="flex items-center gap-4 bg-white/50 dark:bg-white/5 p-4 rounded-3xl border-2 border-slate-100 dark:border-white/5 backdrop-blur-3xl w-fit">
                                 <div className="w-12 h-12 bg-primary-600 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-sm">
@@ -224,7 +224,7 @@ export default function UserReferralDetail() {
                         <div className="flex flex-wrap items-center gap-4">
                             <button
                                 onClick={() => router.push('/admin/referral-history')}
-                                className="px-4 lg:px-6 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
+                                className="px-4 xl:px-6 py-2.5 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 text-slate-900 dark:text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-transform flex items-center gap-2"
                             >
                                 <ArrowLeft className="w-4 h-4 text-primary-600" /> Back to History
                             </button>
@@ -232,7 +232,7 @@ export default function UserReferralDetail() {
                     </div>
 
                     {/* Metric Overview */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+                    <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
                         {[
                             { label: 'Total Earnings', value: `₹${(user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'primary' },
                             { label: 'People Referred', value: user?.referralCount || 0, icon: Users, color: 'primary' },
@@ -241,12 +241,12 @@ export default function UserReferralDetail() {
                         ].map((stat, i) => (
                             <div
                                 key={stat.label}
-                                className="p-3 lg:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
+                                className="p-3 xl:p-8 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm transition-all hover:scale-[1.02]"
                             >
                                 <div className={`p-4 rounded-2xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-6 shadow-sm`}>
                                     <stat.icon className="w-5 h-5" />
                                 </div>
-                                <div className="text-2xl lg:text-4xl font-black text-slate-900 dark:text-white tabular-nums mb-2 tracking-tighter italic leading-none">{stat.value}</div>
+                                <div className="text-2xl xl:text-4xl font-black text-slate-900 dark:text-white tabular-nums mb-2 tracking-tighter italic leading-none">{stat.value}</div>
                                 <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</div>
                             </div>
                         ))}
@@ -254,13 +254,13 @@ export default function UserReferralDetail() {
                 </motion.div>
 
                 {/* Earnings Breakdown */}
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 lg:gap-6 mb-4 shrink-0">
+                <div className="grid grid-cols-1 xl:grid-cols-5 gap-3 xl:gap-6 mb-4 shrink-0">
                     {[
                         { id: 'total', label: 'Total Earned', amount: user?.referralRewards?.reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.length || 0, icon: PieChart, color: 'slate' },
                         { id: 'plan99', label: 'Plan 99', amount: user?.referralRewards?.filter(r => r.type === 'plan99').reduce((sum, r) => sum + (r.amount || 0), 0) || 0, count: user?.referralRewards?.filter(r => r.type === 'plan99').length || 0, icon: ShieldCheck, color: 'primary' }
                     ].map((tier) => (
-                        <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group hover:border-primary-500/30 transition-all">
-                            <div className="p-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit">
+                        <div key={tier.id} className="p-6 bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[2.5rem] border-2 border-slate-100 dark:border-white/10 shadow-sm group hover:border-primary-500/30 transition-all">
+                            <div className="p-3 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-white/5 text-slate-500 mb-6 w-fit">
                                 <tier.icon className="w-5 h-5" />
                             </div>
                             <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">{tier.label}</div>
@@ -271,9 +271,9 @@ export default function UserReferralDetail() {
                 </div>
 
                 {/* Table Controller */}
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 lg:p-10 mb-4 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-8 shrink-0">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 p-6 xl:p-10 mb-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-8 shrink-0">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-xl">
+                        <div className="p-3 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-xl">
                             <Zap className="w-5 h-5" />
                         </div>
                         <div>
@@ -303,12 +303,12 @@ export default function UserReferralDetail() {
                             key="empty"
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                            className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                         >
-                            <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                            <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-8 shadow-sm">
                                 <Wallet className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                             </div>
-                            <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS YET</h3>
+                            <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO TRANSACTIONS YET</h3>
                             <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">This user has no referral reward transactions yet.</p>
                         </motion.div>
                     ) : (
@@ -316,7 +316,7 @@ export default function UserReferralDetail() {
                             key="content"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
+                            className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
                         >
                             <ResponsiveTable data={transactions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
                             <Pagination

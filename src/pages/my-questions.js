@@ -89,11 +89,11 @@ const MyQuestionsPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="My Q&A - AajExam" noIndex={true} />
 
-            <div className="py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6 lg:space-y-4 mt-0">
+            <div className="py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6 xl:space-y-4 mt-0">
                {/* Header */}
-               <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+               <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
                   <div className="flex justify-between items-center gap-4">
-                     <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">My Q&A</h1>
+                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">My Q&A</h1>
                      <p className="text-sm font-bold text-gray-400">
                         {total > 0 ? `${total} question${total > 1 ? 's' : ''} posted` : 'Questions you have posted'}
                      </p>
@@ -106,16 +106,16 @@ const MyQuestionsPage = () => {
 
                {/* Questions Grid */}
                {questions.length === 0 ? (
-                  <div className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
+                  <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <MessageSquare className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl lg:text-2xl font-black font-outfit">No questions yet</h3>
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit">No questions yet</h3>
                      <p className="text-sm font-bold text-gray-400">Ask your first question to the community!</p>
                      <Button variant="primary" className="mx-auto" onClick={() => router.push('/community-questions/ask')}>Ask Question</Button>
                   </div>
                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
                      {questions.map((q, idx) => {
                         const statusConfig = STATUS_CONFIG[q.status] || STATUS_CONFIG.approved;
                         const StatusIcon = statusConfig.icon;
@@ -125,7 +125,7 @@ const MyQuestionsPage = () => {
                            <motion.div key={q._id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="group hover:shadow-sm transition-all duration-500 border-2 flex flex-col h-full cursor-pointer"
                                  onClick={() => router.push(`/community-questions/${q._id}`)}>
-                                 <div className="space-y-2 lg:space-y-4 flex-1">
+                                 <div className="space-y-2 xl:space-y-4 flex-1">
                                     {/* Top: Status + Delete */}
                                     <div className="flex items-center justify-between">
                                        <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${statusConfig.bg} ${statusConfig.color}`}>
@@ -134,7 +134,7 @@ const MyQuestionsPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleDelete(q._id); }}
-                                          className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors"
+                                          className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors"
                                           title="Delete question"
                                        >
                                           <Trash2 className="w-4 h-4" />
@@ -152,7 +152,7 @@ const MyQuestionsPage = () => {
                                     )}
 
                                     {/* Question Text */}
-                                    <p className="font-black text-sm lg:text-base line-clamp-3 leading-snug">{q.question}</p>
+                                    <p className="font-black text-sm xl:text-base line-clamp-3 leading-snug">{q.question}</p>
 
                                     {/* Image indicator */}
                                     {q.image && (
@@ -165,7 +165,7 @@ const MyQuestionsPage = () => {
                                     {hasOptions && (
                                        <div className="space-y-1.5">
                                           {q.options.slice(0, 4).map((opt, i) => (
-                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg lg:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-900/10 text-primary-600' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
+                                             <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg xl:rounded-xl text-[11px] font-bold ${opt.isCorrect ? 'bg-primary-50 dark:bg-primary-900/10 text-primary-600' : 'bg-slate-50 dark:bg-slate-800 text-content-secondary'}`}>
                                                 <span className="w-4 h-4 rounded-full border-2 flex items-center justify-center text-[8px] font-black flex-shrink-0 border-current">
                                                    {String.fromCharCode(65 + i)}
                                                 </span>

@@ -67,8 +67,8 @@ const StudentNavbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[150] h-12 lg:h-16 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
-        <div className="w-full mx-auto px-2 lg:px-4 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-[150] h-12 xl:h-16 bg-white dark:bg-slate-900 border-b-2 border-slate-100 dark:border-slate-800 flex items-center">
+        <div className="w-full mx-auto px-2 xl:px-4 flex items-center justify-between">
 
           {/* Left */}
           <div className="flex items-center gap-2 min-w-0">
@@ -77,7 +77,7 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isSidebarOpen}
-              className={`hidden lg:flex w-12 h-12 rounded-xl xl:rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
+              className={`hidden xl:flex w-12 h-12 rounded-xl xl:rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   : 'bg-primary-600 text-white shadow-sm hover:scale-105'
                 }`}
@@ -86,7 +86,7 @@ const StudentNavbar = () => {
             </button>
 
             {/* Logo — desktop */}
-            <Link href="/home" className="relative hidden lg:flex items-start gap-1">
+            <Link href="/home" className="relative hidden xl:flex items-start gap-1">
               <span className="flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                   AAJ<span className="text-primary-600">EXAM</span>
@@ -99,7 +99,7 @@ const StudentNavbar = () => {
             </Link>
 
             {/* Logo — mobile, smaller, left-aligned */}
-            <Link href="/home" className="relative lg:hidden flex items-center gap-1.5 shrink-0">
+            <Link href="/home" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
               <span className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                 AAJ<span className="text-primary-600">EXAM</span>
               </span>
@@ -108,21 +108,21 @@ const StudentNavbar = () => {
           </div>
 
           {/* Center — logged-in user's name on desktop */}
-          <div className="hidden lg:block absolute left-1/2 -translate-x-1/2">
+          <div className="hidden xl:block absolute left-1/2 -translate-x-1/2">
             <span className="uppercase text-lg font-black text-slate-700 dark:text-slate-300 truncate max-w-xs">
               Welcome back, <span className="text-primary-600">{user.name}</span>
             </span>
           </div>
 
           {/* Right */}
-          <div className="flex items-center gap-3 lg:gap-4">
+          <div className="flex items-center gap-3 xl:gap-4">
             {/* Notifications */}
             <Link
               href="/notifications"
               aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
-              className="relative flex w-9 h-9 lg:w-10 lg:h-10 rounded-lg lg:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+              className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
             >
-              <Bell className="w-4 h-4 lg:w-5 lg:h-5" />
+              <Bell className="w-4 h-4 xl:w-5 xl:h-5" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center">
                   {unreadCount > 9 ? '9+' : unreadCount}
@@ -134,9 +134,9 @@ const StudentNavbar = () => {
             <button
               onClick={toggleTheme}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="flex w-9 h-9 lg:w-10 lg:h-10 rounded-lg lg:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
+              className="flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
             >
-              {darkMode ? <Sun className="w-4 h-4 lg:w-5 lg:h-5" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5" />}
+              {darkMode ? <Sun className="w-4 h-4 xl:w-5 xl:h-5" /> : <Moon className="w-4 h-4 xl:w-5 xl:h-5" />}
             </button>
 
             {/* Profile avatar — plan (PRO/FREE/EXPIRED) now shown as a
@@ -148,7 +148,7 @@ const StudentNavbar = () => {
               title={isExpired ? 'PRO plan expired' : `${plan} plan`}
               className="p-0.5 rounded-full"
             >
-              <div className="relative w-8 h-8 lg:w-10 lg:h-10">
+              <div className="relative w-8 h-8 xl:w-10 xl:h-10">
                 <div className="w-full h-full rounded-full overflow-hidden p-[2px]">
                   {user.profilePicture ? (
                     <Image
@@ -174,7 +174,7 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isSidebarOpen}
-              className={`lg:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
+              className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   : 'bg-primary-600 text-white shadow-sm'
                 }`}
@@ -195,10 +195,10 @@ const StudentNavbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               role="menu"
-              className="fixed top-12 lg:top-16 right-3 lg:right-8 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-sm z-[170]"
+              className="fixed top-12 xl:top-16 right-3 xl:right-8 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-2 shadow-sm z-[170]"
             >
               {/* User info */}
-              <div className="px-3 py-2.5 mb-1 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-slate-800/50">
+              <div className="px-3 py-2.5 mb-1 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800/50">
 
                 <p className="text-[12px] text-slate-400 truncate">{user.email}</p>
               </div>
@@ -209,7 +209,7 @@ const StudentNavbar = () => {
                 { label: 'Settings', icon: Settings, path: '/settings' },
               ].map(item => (
                 <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
-                  <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                  <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                     <item.icon className="w-4 h-4 text-slate-400" /> {item.label}
                     {item.showBalance && (
                       <span className="ml-auto text-sm font-black text-primary-600 flex items-center gap-0.5">
@@ -223,7 +223,7 @@ const StudentNavbar = () => {
               {/* Theme toggle — mobile only */}
               <button
                 onClick={() => { toggleTheme(); setShowProfileMenu(false); }}
-                className="lg:hidden w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
+                className="xl:hidden w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
               >
                 {darkMode ? <Sun className="w-4 h-4 text-slate-400" /> : <Moon className="w-4 h-4 text-slate-400" />}
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
@@ -233,7 +233,7 @@ const StudentNavbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg lg:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
               >
                 <LogOut className="w-4 h-4" /> Log out
               </button>

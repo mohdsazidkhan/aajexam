@@ -191,14 +191,14 @@ const FAQ = () => {
             <div className="min-h-screen">
                 <div className="container mx-auto mt-0">
                     {/* Hero Section */}
-                    <div className="text-center mb-8 lg:mb-12">
-                        <div className="w-16 lg:w-24 h-16 lg:h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="text-center mb-8 xl:mb-12">
+                        <div className="w-16 xl:w-24 h-16 xl:h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
                             <FaQuestionCircle className="text-white text-3xl" />
                         </div>
-                        <h1 className="text-2xl lg:text-3xl xl:text-5xl font-bold text-primary-600 mb-4">
+                        <h1 className="text-2xl xl:text-3xl xl:text-5xl font-bold text-primary-600 mb-4">
                             Frequently Asked Questions
                         </h1>
-                        <p className="text-md lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        <p className="text-md xl:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                             Find answers to common questions about AajExam platform, subscriptions, and exam preparation
                         </p>
                     </div>
@@ -207,27 +207,27 @@ const FAQ = () => {
                     {faqs.map((category, catIndex) => {
                         const Icon = category.icon;
                         return (
-                            <div key={catIndex} className="mb-8 lg:mb-12">
+                            <div key={catIndex} className="mb-8 xl:mb-12">
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="w-12 h-12 bg-primary-600 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                    <div className="w-12 h-12 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
                                         <Icon className="text-white text-xl" />
                                     </div>
-                                    <h2 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
+                                    <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white">
                                         {category.category}
                                     </h2>
                                 </div>
 
-                                <div className="space-y-2 lg:space-y-4">
+                                <div className="space-y-2 xl:space-y-4">
                                     {category.questions.map((faq, qIndex) => (
                                         <div
                                             key={qIndex}
-                                            className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
+                                            className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 xl:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
                                         >
-                                            <h3 className="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
+                                            <h3 className="text-lg xl:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
                                                 <span className="text-primary-600 flex-shrink-0">Q:</span>
                                                 <span>{faq.q}</span>
                                             </h3>
-                                            <p className="text-md lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
+                                            <p className="text-md xl:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
                                                 <span className="text-primary-600 font-semibold">A:</span> {faq.a}
                                             </p>
                                         </div>
@@ -239,8 +239,8 @@ const FAQ = () => {
 
                     {/* Contact Section */}
                     <div className="text-center mt-12">
-                        <div className="bg-primary-100 dark:bg-primary-600 rounded-3xl p-4 lg:p-8">
-                            <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+                        <div className="bg-primary-100 dark:bg-primary-600 rounded-3xl p-4 xl:p-8">
+                            <h2 className="text-2xl xl:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
                                 Still Have Questions?
                             </h2>
                             <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
@@ -248,7 +248,7 @@ const FAQ = () => {
                             </p>
                             <button
                                 onClick={() => router.push('/contact')}
-                                className="bg-gray-800 text-white px-8 py-3 rounded-lg lg:rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
+                                className="bg-gray-800 text-white px-8 py-3 rounded-lg xl:rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
                             >
                                 Contact Support
                             </button>

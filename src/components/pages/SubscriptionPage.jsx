@@ -97,7 +97,7 @@ const SubscriptionPage = () => {
     return (
       <div className="space-y-8 mx-auto">
         <Skeleton height="200px" borderRadius="2.5rem" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
           <Skeleton height="500px" borderRadius="2rem" />
           <Skeleton height="500px" borderRadius="2rem" />
         </div>
@@ -111,20 +111,20 @@ const SubscriptionPage = () => {
         <title>Subscription | AajExam</title>
       </Head>
 
-      <div className="space-y-2 lg:space-y-4 lg:space-y-8 animate-fade-in mx-auto mt-2 lg:mt-4">
+      <div className="space-y-2 xl:space-y-4 xl:space-y-8 animate-fade-in mx-auto mt-2 xl:mt-4">
         {subscription && (
-          <Card variant="dark" depth={false} className={`p-3 lg:p-4 border-none overflow-hidden relative rounded-2xl lg:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-primary-600' : 'bg-slate-950 shadow-sm'}`}>
-            <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-8">
-              <div className="flex items-start gap-3 lg:gap-6">
-                <div className="w-10 h-10 lg:w-16 lg:h-16 bg-white/20 rounded-lg lg:rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <ShieldCheck className="w-5 h-5 lg:w-8 lg:h-8" />
+          <Card variant="dark" depth={false} className={`p-3 xl:p-4 border-none overflow-hidden relative rounded-2xl xl:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-primary-600' : 'bg-slate-950 shadow-sm'}`}>
+            <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 xl:gap-8">
+              <div className="flex items-start gap-3 xl:gap-6">
+                <div className="w-10 h-10 xl:w-16 xl:h-16 bg-white/20 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-5 h-5 xl:w-8 xl:h-8" />
                 </div>
-                <div className="space-y-1 lg:space-y-2">
-                  <p className="text-[10px] lg:text-sm font-semibold opacity-80">Your current plan</p>
-                  <h1 className="text-sm lg:text-3xl font-black font-outfit leading-tight uppercase">
+                <div className="space-y-1 xl:space-y-2">
+                  <p className="text-[10px] xl:text-sm font-semibold opacity-80">Your current plan</p>
+                  <h1 className="text-sm xl:text-3xl font-black font-outfit leading-tight uppercase">
                     {subscription.planName} plan {subscription.status === 'active' ? 'is active' : 'has expired'}
                   </h1>
-                  <p className="text-[11px] lg:text-base font-medium opacity-90">
+                  <p className="text-[11px] xl:text-base font-medium opacity-90">
                     {subscription.expiryDate
                       ? subscription.status === 'active'
                         ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
@@ -136,7 +136,7 @@ const SubscriptionPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 w-full lg:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 w-full xl:w-auto">
                 {(subscription.planName || '').toUpperCase() === 'FREE' && (() => {
                   const proPlan = plans.find((plan) => plan.key.toUpperCase() === 'PRO');
                   if (!proPlan) return null;
@@ -147,7 +147,7 @@ const SubscriptionPage = () => {
                       size="sm"
                       disabled={isBuying}
                       fullWidth
-                      className="lg:w-auto rounded-2xl px-6 py-3 lg:px-8 lg:py-4"
+                      className="xl:w-auto rounded-2xl px-6 py-3 xl:px-8 xl:py-4"
                       onClick={() => handleBuy(proPlan)}
                     >
                       {isBuying ? (
@@ -163,22 +163,22 @@ const SubscriptionPage = () => {
                 })()}
               </div>
             </div>
-            <Sparkles className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 opacity-10" />
+            <Sparkles className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 opacity-10" />
           </Card>
         )}
 
-        <section className="space-y-5 lg:space-y-10">
-          <div className="text-center space-y-2 lg:space-y-4 max-w-3xl mx-auto px-2">
-            <h2 className="text-lg lg:text-5xl font-black font-outfit tracking-tight">Choose your exam prep plan</h2>
-            <p className="text-xs lg:text-lg font-medium text-content-secondary">
+        <section className="space-y-5 xl:space-y-10">
+          <div className="text-center space-y-2 xl:space-y-4 max-w-3xl mx-auto px-2">
+            <h2 className="text-lg xl:text-5xl font-black font-outfit tracking-tight">Choose your exam prep plan</h2>
+            <p className="text-xs xl:text-lg font-medium text-content-secondary">
               🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.
             </p>
-            <Link href="/features" className="inline-block text-xs lg:text-sm font-bold text-primary-600 hover:text-primary-600 underline underline-offset-4">
+            <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 hover:text-primary-600 underline underline-offset-4">
               See the full feature comparison
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 pt-2 lg:pt-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-12 pt-2 xl:pt-6">
             {plans.map((plan) => {
               const theme = PLAN_THEMES[plan.tone];
               const isCurrent = (subscription?.planName || '').toUpperCase() === (plan.key || '').toUpperCase() && subscription.status === 'active';
@@ -186,35 +186,35 @@ const SubscriptionPage = () => {
               const isBuying = buyingPlan === plan.key;
 
               return (
-                <Card key={plan.key} className={`p-4 lg:p-10 flex flex-col justify-between group transition-all duration-300 h-full relative rounded-2xl lg:rounded-[3.5rem] border-2 ${theme.card} ${isCurrent ? 'ring-2 ring-primary-500/40' : ''}`}>
-                  <div className="space-y-2 lg:space-y-4 lg:space-y-8 relative z-10">
-                    <div className="flex justify-between items-start gap-3 lg:gap-4">
-                      <div className={`p-2.5 lg:p-4 rounded-2xl lg:rounded-3xl ${theme.iconWrap}`}>
-                        <plan.icon className="w-6 h-6 lg:w-10 lg:h-10" />
+                <Card key={plan.key} className={`p-4 xl:p-10 flex flex-col justify-between group transition-all duration-300 h-full relative rounded-2xl xl:rounded-[3.5rem] border-2 ${theme.card} ${isCurrent ? 'ring-2 ring-primary-500/40' : ''}`}>
+                  <div className="space-y-2 xl:space-y-4 xl:space-y-8 relative z-10">
+                    <div className="flex justify-between items-start gap-3 xl:gap-4">
+                      <div className={`p-2.5 xl:p-4 rounded-2xl xl:rounded-3xl ${theme.iconWrap}`}>
+                        <plan.icon className="w-6 h-6 xl:w-10 xl:h-10" />
                       </div>
-                      <span className={`text-[10px] lg:text-xs font-semibold px-2.5 lg:px-4 py-1 lg:py-1.5 rounded-full ${theme.badge}`}>
+                      <span className={`text-[10px] xl:text-xs font-semibold px-2.5 xl:px-4 py-1 xl:py-1.5 rounded-full ${theme.badge}`}>
                         {plan.eyebrow}
                       </span>
                     </div>
 
-                    <div className="space-y-1.5 lg:space-y-3">
+                    <div className="space-y-1.5 xl:space-y-3">
                       <div>
-                        <h3 className="text-base lg:text-3xl font-black font-outfit tracking-tight">{plan.name}</h3>
-                        <p className="text-[11px] lg:text-sm font-medium text-content-secondary mt-1">{isCurrent ? 'This is your current plan.' : 'You can upgrade anytime.'}</p>
+                        <h3 className="text-base xl:text-3xl font-black font-outfit tracking-tight">{plan.name}</h3>
+                        <p className="text-[11px] xl:text-sm font-medium text-content-secondary mt-1">{isCurrent ? 'This is your current plan.' : 'You can upgrade anytime.'}</p>
                       </div>
 
                       <div className="flex items-end gap-2">
-                        <span className="text-3xl lg:text-5xl font-black font-outfit leading-none">Rs.{plan.price}</span>
-                        <span className="text-xs lg:text-sm font-medium text-content-secondary pb-1">per {plan.duration}</span>
+                        <span className="text-3xl xl:text-5xl font-black font-outfit leading-none">Rs.{plan.price}</span>
+                        <span className="text-xs xl:text-sm font-medium text-content-secondary pb-1">per {plan.duration}</span>
                       </div>
                     </div>
 
-                    <div className="space-y-2.5 lg:space-y-4">
-                      <p className="text-xs lg:text-sm font-semibold text-content-secondary">What you get with this plan</p>
-                      <ul className="space-y-1.5 lg:space-y-3">
+                    <div className="space-y-2.5 xl:space-y-4">
+                      <p className="text-xs xl:text-sm font-semibold text-content-secondary">What you get with this plan</p>
+                      <ul className="space-y-1.5 xl:space-y-3">
                         {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-2 lg:gap-3 text-xs lg:text-base font-medium text-content-secondary">
-                            <CircleCheck className={`w-3.5 h-3.5 lg:w-5 lg:h-5 shrink-0 ${theme.check}`} />
+                          <li key={feature} className="flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-medium text-content-secondary">
+                            <CircleCheck className={`w-3.5 h-3.5 xl:w-5 xl:h-5 shrink-0 ${theme.check}`} />
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -222,14 +222,14 @@ const SubscriptionPage = () => {
                     </div>
                   </div>
 
-                  <div className="pt-5 lg:pt-10 relative z-10">
+                  <div className="pt-5 xl:pt-10 relative z-10">
                     {isCurrent ? (
-                      <div className="flex items-center justify-center gap-2 text-primary-600 font-semibold text-xs lg:text-sm bg-primary-500/5 py-3 lg:py-4 rounded-2xl w-full border-2 border-primary-500/20">
+                      <div className="flex items-center justify-center gap-2 text-primary-600 font-semibold text-xs xl:text-sm bg-primary-500/5 py-3 xl:py-4 rounded-2xl w-full border-2 border-primary-500/20">
                         <CircleCheck className="w-4 h-4" />
                         Current plan
                       </div>
                     ) : isFree ? (
-                      <div className="flex items-center justify-center gap-2 text-content-secondary font-semibold text-xs lg:text-sm bg-slate-50 dark:bg-slate-800/50 py-3 lg:py-4 rounded-2xl w-full border-2 border-slate-200 dark:border-slate-800">
+                      <div className="flex items-center justify-center gap-2 text-content-secondary font-semibold text-xs xl:text-sm bg-slate-50 dark:bg-slate-800/50 py-3 xl:py-4 rounded-2xl w-full border-2 border-slate-200 dark:border-slate-800">
                         Free for everyone
                       </div>
                     ) : (
@@ -238,7 +238,7 @@ const SubscriptionPage = () => {
                         size="md"
                         fullWidth
                         disabled={isBuying}
-                        className={`py-3.5 lg:py-6 text-xs lg:text-sm font-black rounded-2xl ${theme.buttonClass}`}
+                        className={`py-3.5 xl:py-6 text-xs xl:text-sm font-black rounded-2xl ${theme.buttonClass}`}
                         onClick={() => handleBuy(plan)}
                       >
                         {isBuying ? (
@@ -264,7 +264,7 @@ const SubscriptionPage = () => {
           </div>
         </section>
 
-        <section className="space-y-3 lg:space-y-6">
+        <section className="space-y-3 xl:space-y-6">
           <PaymentTransactions />
         </section>
 

@@ -29,12 +29,12 @@ export default function Topics({ groups = [] }) {
       />
       <TopicListPage />
 
-      <div className="px-3 lg:px-0 pb-10">
+      <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection
           title="All topics by subject"
           intro="Every topic we host, grouped under its subject. Each topic page carries free MCQs with explanations, study notes and previous-year question highlights."
           groups={groups}
-          columns="sm:grid-cols-2 lg:grid-cols-4"
+          columns="sm:grid-cols-2 xl:grid-cols-4"
         />
       </div>
     </>

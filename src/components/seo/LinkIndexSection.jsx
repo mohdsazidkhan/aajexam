@@ -15,17 +15,17 @@ import Link from 'next/link';
  * @param {Array}   groups   [{ heading, href, items: [{ href, name, meta }] }]
  * @param {string}  columns  tailwind grid-column classes for the link grid
  */
-export default function LinkIndexSection({ title, intro, groups = [], columns = 'sm:grid-cols-2 lg:grid-cols-3' }) {
+export default function LinkIndexSection({ title, intro, groups = [], columns = 'sm:grid-cols-2 xl:grid-cols-3' }) {
   const usable = groups.filter((g) => g?.items?.length > 0);
   if (usable.length === 0) return null;
 
   return (
-    <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-      <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
+    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+      <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
         {title}
       </h2>
       {intro && (
-        <p className="text-sm lg:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+        <p className="text-sm xl:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
           {intro}
         </p>
       )}
@@ -34,7 +34,7 @@ export default function LinkIndexSection({ title, intro, groups = [], columns = 
         {usable.map((group, gi) => (
           <div key={group.heading || gi}>
             {group.heading && (
-              <h3 className="text-sm lg:text-base font-black text-slate-900 dark:text-white mb-4 uppercase tracking-widest">
+              <h3 className="text-sm xl:text-base font-black text-slate-900 dark:text-white mb-4 uppercase tracking-widest">
                 {group.href
                   ? <Link href={group.href} className="hover:text-primary-600 dark:hover:text-primary-400">{group.heading}</Link>
                   : group.heading}

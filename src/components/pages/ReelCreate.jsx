@@ -22,7 +22,7 @@ const TYPES = [
   { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Community poll' },
 ];
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg lg:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const ReelCreate = () => {
@@ -173,7 +173,7 @@ const ReelCreate = () => {
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">Login required to create reels</p>
-            <Link href="/login"className="px-6 py-2.5 rounded-lg lg:rounded-xl bg-primary-600 text-white text-sm font-semibold">Login</Link>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-primary-600 text-white text-sm font-semibold">Login</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -211,13 +211,13 @@ const ReelCreate = () => {
           </div>
         </div>
 
-        <div className="py-0 lg:py-6">
+        <div className="py-0 xl:py-6">
           {!type ? (
-            <div className="space-y-2 lg:space-y-4">
-              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
+            <div className="space-y-2 xl:space-y-4">
+              <div className="grid grid-cols-2 xl:grid-cols-5 gap-3">
                 {TYPES.map(t => (
                   <motion.button key={t.value} onClick={() => setType(t.value)}
-                    className={`p-2.5 lg:p-5 rounded-xl lg:rounded-2xl border-2 text-left transition-all ${t.color}`}>
+                    className={`p-2.5 xl:p-5 rounded-xl xl:rounded-2xl border-2 text-left transition-all ${t.color}`}>
                     <t.icon className="w-8 h-8 mb-3 opacity-70" />
                     <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{t.label}</h3>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{t.desc}</p>
@@ -369,7 +369,7 @@ const ReelCreate = () => {
                   {filteredAudios.map(a => (
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
-                      className={`flex items-center gap-3 p-2.5 rounded-lg lg:rounded-xl cursor-pointer transition-all ${audioFile === a.value
+                      className={`flex items-center gap-3 p-2.5 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
                         ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                     >

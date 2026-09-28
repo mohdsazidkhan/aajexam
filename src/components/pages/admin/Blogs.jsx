@@ -226,11 +226,11 @@ const AdminBlogs = () => {
   );
 
   const renderGridView = () => (
-    <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-4">
       {blogs.map((blog, idx) => {
         const serialNumber = (currentPage - 1) * itemsPerPage + idx + 1;
         return (
-        <div key={blog._id} className="bg-white dark:bg-gray-800 rounded-lg lg:rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
+        <div key={blog._id} className="bg-white dark:bg-gray-800 rounded-lg xl:rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
           <div className="relative mb-3">
             <img src={blog.featuredImage || '/default_banner.png'} alt={blog.title} className="w-full h-40 rounded-lg object-cover" />
             <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
@@ -310,7 +310,7 @@ const AdminBlogs = () => {
 
   const searchInput = (
     <input type="text" name="search" value={filters.search} onChange={handleFilterChange} placeholder="Search blogs..."
-      className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm w-full" />
+      className="px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm w-full" />
   );
 
   const statusSelect = (
@@ -370,7 +370,7 @@ const AdminBlogs = () => {
     <motion.button
       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
       onClick={() => router.push('/admin/blogs/create')}
-      className="w-full px-4 lg:px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg lg:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
+      className="w-full px-4 xl:px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm flex items-center justify-center gap-2"
     >
       <Plus className="w-4 h-4" /> NEW BLOG
     </motion.button>

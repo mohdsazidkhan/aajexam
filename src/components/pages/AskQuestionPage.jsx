@@ -175,11 +175,11 @@ const AskQuestionPage = () => {
 
   return (
     <div className="min-h-screen bg-background-primary">
-      <div className="mx-auto py-4 lg:py-8">
+      <div className="mx-auto py-4 xl:py-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div>
-            <h1 className="text-xl lg:text-2xl font-black text-content-primary uppercase tracking-tight">
+            <h1 className="text-xl xl:text-2xl font-black text-content-primary uppercase tracking-tight">
               Post a Question
             </h1>
             <p className="text-xs text-content-muted mt-0.5">Share with the community</p>
@@ -189,7 +189,7 @@ const AskQuestionPage = () => {
         <form onSubmit={handleSubmit}>
           {/* Error */}
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 dark:bg-white/10 border-2 border-slate-200 dark:border-slate-800 dark:border-white/20 text-black dark:text-white text-sm font-semibold">
+            <div className="mb-4 px-4 py-3 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-800 dark:bg-white/10 border-2 border-slate-200 dark:border-slate-800 dark:border-white/20 text-black dark:text-white text-sm font-semibold">
               {error}
             </div>
           )}
@@ -200,7 +200,7 @@ const AskQuestionPage = () => {
             <select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
               required
             >
               <option value="">Select Exam</option>
@@ -222,7 +222,7 @@ const AskQuestionPage = () => {
               rows={4}
               maxLength={2000}
               required
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
             <p className="text-[10px] text-content-muted text-right mt-1">
               {form.question.length}/2000
@@ -232,7 +232,7 @@ const AskQuestionPage = () => {
             <div className="mt-3">
               {form.image ? (
                 <div className="relative inline-block">
-                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800" />
+                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800" />
                   <button
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
@@ -242,7 +242,7 @@ const AskQuestionPage = () => {
                   </button>
                 </div>
               ) : (
-                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
                   <ImageIcon className="w-4 h-4" />
                   {uploadingImage ? 'Uploading...' : 'Add Image (optional)'}
                   <input
@@ -280,12 +280,12 @@ const AskQuestionPage = () => {
                     value={opt.text}
                     onChange={(e) => handleOptionChange(i, 'text', e.target.value)}
                     placeholder={`Option ${String.fromCharCode(65 + i)}`}
-                    className="flex-1 px-3 py-2 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
+                    className="flex-1 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
-                    className={`p-2 rounded-lg lg:rounded-xl border-2 text-xs font-bold transition-colors ${
+                    className={`p-2 rounded-lg xl:rounded-xl border-2 text-xs font-bold transition-colors ${
                       opt.isCorrect
                         ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
                         : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
@@ -298,7 +298,7 @@ const AskQuestionPage = () => {
                     <button
                       type="button"
                       onClick={() => removeOption(i)}
-                      className="p-2 rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
+                      className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -317,7 +317,7 @@ const AskQuestionPage = () => {
               placeholder="Add an explanation for the answer..."
               rows={3}
               maxLength={3000}
-              className="w-full px-3 py-2.5 rounded-lg lg:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
             />
           </Card>
 

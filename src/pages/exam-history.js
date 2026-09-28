@@ -72,11 +72,11 @@ const ExamHistoryPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Exam History - AajExam" noIndex={true} />
 
-            <div className="py-4 py-6 lg:py-12 space-y-6 lg:space-y-12 mt-0">
+            <div className="py-4 py-6 xl:py-12 space-y-6 xl:space-y-12 mt-0">
                <SubscriptionGuard message="Upgrade to PRO to view your complete exam history and detailed performance analytics across all mock tests.">
-                  <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-                     <div className="space-y-2 text-center lg:text-left">
-                        <h1 className="text-xl lg:text-3xl font-black font-outfit tracking-tight">Exam History</h1>
+                  <div className="flex flex-col xl:flex-row items-center justify-between gap-8">
+                     <div className="space-y-2 text-center xl:text-left">
+                        <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">Exam History</h1>
                         <p className="text-sm font-bold text-gray-400">All the exams you have attempted</p>
                      </div>
 
@@ -102,13 +102,13 @@ const ExamHistoryPage = () => {
                   </div>
 
                   {history.length === 0 ? (
-                     <div className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
+                     <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
                         <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50"><History className="w-10 h-10 text-gray-400" /></div>
-                        <h3 className="text-xl lg:text-2xl font-black font-outfit">No exams yet</h3>
+                        <h3 className="text-xl xl:text-2xl font-black font-outfit">No exams yet</h3>
                         <Button variant="primary" className='mx-auto' onClick={() => router.push('/govt-exams')}>Try Your First Exam</Button>
                      </div>
                   ) : (
-                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-8">
                         {history.map((attempt, idx) => {
                            const rank = getRankBadge(attempt.accuracy || 0);
                            return (
@@ -129,7 +129,7 @@ const ExamHistoryPage = () => {
                                           <p className="text-[10px] font-bold text-gray-400">{attempt.examName || 'Standard Exam'} • {attempt.patternTitle}</p>
                                        </div>
 
-                                       <div className="space-y-2 lg:space-y-4">
+                                       <div className="space-y-2 xl:space-y-4">
                                           <div className="flex justify-between items-end">
                                              <span className="text-[10px] font-black text-gray-400">Accuracy</span>
                                              <span className={`text-sm font-black text-${rank.color}-500`}>{attempt.accuracy?.toFixed(0)}%</span>

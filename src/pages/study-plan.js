@@ -103,21 +103,21 @@ const StudyPlanPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="py-4 lg:py-6"><ListSkeleton rows={7} /></div>
+      <div className="py-4 xl:py-6"><ListSkeleton rows={7} /></div>
     </div>
   );
 
   return (
     <div className="min-h-screen pb-24">
       <Seo title="AI Study Planner – AajExam" description="Generate a personalised AI study plan for your government exam." noIndex={true} />
-      <div className="py-4 lg:py-6 space-y-6">
+      <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="AI Study Planner is a PRO feature. Upgrade to get a personalized roadmap and master your exams!">
           <div className="flex items-center justify-between gap-3">
             <div className="space-y-1">
-              <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-600" /> Study Planner</h1>
+              <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-600" /> Study Planner</h1>
               <p className="text-sm font-bold text-slate-400 flex items-center gap-1"><Sparkles className="w-3 h-3" /> AI-powered personalized plans</p>
             </div>
-            <button onClick={() => setShowForm(!showForm)} className="px-4 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-xs font-bold hover:bg-primary-600 transition flex-shrink-0">
+            <button onClick={() => setShowForm(!showForm)} className="px-4 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-primary-600 transition flex-shrink-0">
               <Plus className="w-3 h-3 inline mr-1" /> New Plan
             </button>
           </div>
@@ -126,11 +126,11 @@ const StudyPlanPage = () => {
           {showForm && (
             <Card className="space-y-5">
               <h2 className="text-sm font-black text-slate-900 dark:text-white">Generate Study Plan</h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Target Exam *</label>
                   <select value={form.examId} onChange={e => setForm({ ...form, examId: e.target.value })}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none">
                     <option value="">Select Exam</option>
                     {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
                   </select>
@@ -138,7 +138,7 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Exam Date *</label>
                   <input type="date" value={form.examDate} min={todayStr} onChange={e => setForm({ ...form, examDate: e.target.value })}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none" />
                   {durationPreview && (
                     durationPreview.invalid
                       ? <p className="text-[10px] font-bold text-black dark:text-white mt-1">Date past me hai</p>
@@ -152,20 +152,20 @@ const StudyPlanPage = () => {
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Daily Hours *</label>
                   <input type="number" min="1" max="16" value={form.dailyHours} onChange={e => setForm({ ...form, dailyHours: e.target.value })}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Weak Subjects (comma separated)</label>
                   <input type="text" placeholder="Maths, English" value={form.weakSubjects} onChange={e => setForm({ ...form, weakSubjects: e.target.value })}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-slate-400 uppercase block mb-1">Strong Subjects (comma separated)</label>
                   <input type="text" placeholder="GK, Reasoning" value={form.strongSubjects} onChange={e => setForm({ ...form, strongSubjects: e.target.value })}
-                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none" />
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none" />
                 </div>
               </div>
-              <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              <button onClick={generatePlan} disabled={generating} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
                 {generating ? <><Sparkles className="w-4 h-4 inline mr-1 animate-spin" /> Generating...</> : <><Sparkles className="w-4 h-4 inline mr-1" /> Generate Plan</>}
               </button>
             </Card>
@@ -214,7 +214,7 @@ const StudyPlanPage = () => {
                     Exam: <b>{fmtDate(activePlan.examDate)}</b> · {activePlan.totalDays} din
                   </p>
                 </div>
-                <div className="inline-flex rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
+                <div className="inline-flex rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-800 p-1">
                   <button onClick={() => setViewMode('weekly')} className={`px-3 py-1.5 rounded-lg text-[11px] font-black flex items-center gap-1 transition ${viewMode === 'weekly' ? 'bg-white dark:bg-slate-700 text-primary-600 shadow-sm' : 'text-slate-500'}`}>
                     <LayoutGrid className="w-3 h-3" /> Weekly
                   </button>
@@ -280,11 +280,11 @@ const StudyPlanPage = () => {
           )}
 
           {plans.length === 0 && !showForm && (
-            <Card className="text-center space-y-2 lg:space-y-4">
+            <Card className="text-center space-y-2 xl:space-y-4">
               <CalendarDays className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">No Study Plans Yet</h2>
               <p className="text-sm text-slate-400">Create your first AI-powered study plan!</p>
-              <button onClick={() => setShowForm(true)} className="px-6 py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold">Create Plan</button>
+              <button onClick={() => setShowForm(true)} className="px-6 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold">Create Plan</button>
             </Card>
           )}
         </SubscriptionGuard>

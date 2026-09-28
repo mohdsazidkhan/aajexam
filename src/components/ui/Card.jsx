@@ -30,7 +30,7 @@ const Card = ({
   };
 
   const radii = {
-    xl: 'rounded-lg lg:rounded-xl',
+    xl: 'rounded-lg xl:rounded-xl',
     '2xl': 'rounded-2xl',
     '3xl': 'rounded-3xl',
     '4xl': 'rounded-[2.5rem]',
@@ -50,7 +50,7 @@ const Card = ({
         ${variants[variant]} 
         ${radii[radius]}
         ${noBorder ? 'border-none' : 'border-2'}
-        ${padded ? 'p-2 lg:p-4' : ''}
+        ${padded ? 'p-2 xl:p-4' : ''}
         ${hoverable ? 'cursor-pointer group' : ''} 
         ${glow ? 'glow-border' : ''}
         transition-all duration-300 font-outfit relative overflow-hidden

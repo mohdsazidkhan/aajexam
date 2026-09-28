@@ -42,7 +42,7 @@ class ErrorBoundary extends React.Component {
                   scale: [1, 1.2, 1]
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 lg:w-48 h-24 lg:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
+                className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 xl:w-48 h-24 xl:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
               />
 
               <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-sm mb-10 group overflow-hidden">

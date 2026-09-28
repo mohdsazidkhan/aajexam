@@ -56,19 +56,19 @@ const AdminProfilePage = () => {
   };
 
   return (
-    <div className="space-y-4 lg:space-y-6 mt-4 mb-4">
+    <div className="space-y-4 xl:space-y-6 mt-4 mb-4">
       {/* Admin info */}
-      <Card className="p-5 lg:p-8" radius="3xl">
+      <Card className="p-5 xl:p-8" radius="3xl">
         <div className="flex flex-col sm:flex-row sm:items-center gap-5">
           <div className="flex items-center gap-5">
-            <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden bg-primary-600 p-[3px] flex-shrink-0">
-              <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xl lg:text-2xl font-black uppercase">
+            <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden bg-primary-600 p-[3px] flex-shrink-0">
+              <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white text-xl xl:text-2xl font-black uppercase">
                 {user?.name?.charAt(0) || 'A'}
               </div>
             </div>
 
             <div className="min-w-0 space-y-1.5">
-              <h1 className="text-xl lg:text-2xl font-black font-outfit tracking-tight text-content-primary truncate">
+              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary truncate">
                 {user?.name || 'Admin'}
               </h1>
               <span className="inline-flex items-center gap-1.5 py-1 rounded-full bg-primary-50 dark:bg-primary-900/10 text-primary-600 dark:text-primary-400 text-[10px] font-black uppercase tracking-wide">
@@ -103,10 +103,10 @@ const AdminProfilePage = () => {
       </Card>
 
       {/* Change password */}
-      <Card className="p-5 lg:p-8 space-y-6" radius="3xl">
+      <Card className="p-5 xl:p-8 space-y-6" radius="3xl">
         <div className="flex items-center justify-between gap-4">
           <div className="space-y-1">
-            <h2 className="text-lg lg:text-xl font-black font-outfit tracking-tight text-content-primary">Change password</h2>
+            <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight text-content-primary">Change password</h2>
             <p className="text-sm font-medium text-content-secondary">Use a strong password to keep your account safe.</p>
           </div>
           <div className="p-3 bg-primary-600 text-white rounded-2xl shadow-sm hidden sm:block">
@@ -115,7 +115,7 @@ const AdminProfilePage = () => {
         </div>
 
         <form onSubmit={handleChangePassword} className="space-y-5">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
             {PASSWORD_FIELDS.map((item) => (
               <div key={item.id} className="space-y-2">
                 <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{item.label}</label>
@@ -138,14 +138,14 @@ const AdminProfilePage = () => {
             ))}
           </div>
 
-          <Button variant="primary" size="md" className="w-full lg:w-auto text-sm font-black shadow-sm" type="submit" disabled={saving}>
+          <Button variant="primary" size="md" className="w-full xl:w-auto text-sm font-black shadow-sm" type="submit" disabled={saving}>
             {saving ? 'Updating password...' : 'Update password'}
           </Button>
         </form>
       </Card>
 
       {/* Logout */}
-      <Card className="p-5 lg:p-8" radius="3xl">
+      <Card className="p-5 xl:p-8" radius="3xl">
         <button
           onClick={() => secureLogout(router)}
           className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-black uppercase tracking-wide bg-red-500 hover:bg-red-600 text-white shadow-sm transition-colors"

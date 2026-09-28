@@ -166,7 +166,7 @@ const AnnouncementsPage = () => {
     <>
       <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input type="text" placeholder="Search title or message..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+        <input type="text" placeholder="Search title or message..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
       </div>
       <StyledSelect
         icon={Users}
@@ -180,10 +180,10 @@ const AnnouncementsPage = () => {
           { value: 'users', label: 'Specific / Selected Users' }
         ]}
         placeholder="All Targets"
-        className="w-full lg:w-64"
+        className="w-full xl:w-64"
       />
       {viewToggleButtons}
-      <button onClick={() => setShowCompose(true)} className="w-full lg:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <button onClick={() => setShowCompose(true)} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
         <Plus className="w-4 h-4" /> New Announcement
       </button>
       <Pagination
@@ -263,7 +263,7 @@ const AnnouncementsPage = () => {
               <ResponsiveTable data={announcements} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} emptyMessage="No announcements found" fillHeight />
             </div>
           ) : viewMode === 'grid' ? (
-            <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+            <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
               {announcements.map((a, idx) => renderGridCard(a, idx))}
             </div>
           ) : (

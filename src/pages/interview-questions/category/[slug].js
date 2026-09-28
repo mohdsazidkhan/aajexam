@@ -85,7 +85,7 @@ const CategoryDetailPage = () => {
   };
 
   if (loadingCategory) return (
-    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
+    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
       <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
@@ -110,7 +110,7 @@ const CategoryDetailPage = () => {
         ])}
       />
 
-      <div className="py-0 lg:py-6 space-y-4 lg:space-y-6">
+      <div className="py-0 xl:py-6 space-y-4 xl:space-y-6">
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <button onClick={() => router.push('/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline">
             <ArrowLeft className="w-4 h-4" /> Back to Interview Questions
@@ -132,7 +132,7 @@ const CategoryDetailPage = () => {
             <Icon className="w-6 h-6 text-white dark:text-black" />
           </div>
           <div>
-            <h1 className="text-lg lg:text-2xl font-black text-slate-900 dark:text-white">{pageTitle}</h1>
+            <h1 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white">{pageTitle}</h1>
             <span className="inline-block mt-1 px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[9px] font-black uppercase text-content-muted">
               {cfg.label}
             </span>

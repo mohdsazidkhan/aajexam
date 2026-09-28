@@ -86,8 +86,8 @@ const LoginPage = () => {
 
   return (
     <MobileAppWrapper showHeader={true} title="Login">
-      <div className="flex-1 flex flex-col lg:flex-row items-stretch">
-        <div className="hidden lg:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
+      <div className="flex-1 flex flex-col xl:flex-row items-stretch">
+        <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
           <div className="space-y-10 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
               <div className="p-5 bg-primary-600 rounded-[2.5rem] shadow-sm w-fit text-white">
@@ -95,8 +95,8 @@ const LoginPage = () => {
               </div>
             </motion.div>
 
-            <div className="space-y-2 lg:space-y-4">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+            <div className="space-y-2 xl:space-y-4">
+              <h1 className="text-2xl md:text-3xl xl:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
                 Welcome back!
                 <br />
                 Keep practicing.
@@ -106,14 +106,14 @@ const LoginPage = () => {
               </p>
             </div>
 
-            <div className="space-y-2 lg:space-y-4 pt-8">
+            <div className="space-y-2 xl:space-y-4 pt-8">
               {[
                 { icon: CircleCheck, text: 'Continue where you left off' },
                 { icon: Brain, text: 'Check your progress and complete daily challenge' },
                 { icon: Sparkles, text: 'Play daily quizzes subject & topic wise' }
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
-                  <div className="p-2 bg-primary-500/10 rounded-lg lg:rounded-xl">
+                  <div className="p-2 bg-primary-500/10 rounded-lg xl:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-600" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
@@ -126,18 +126,18 @@ const LoginPage = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-center">
-          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-sm space-y-8 rounded-[3rem]">
+          <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm space-y-8 rounded-[3rem]">
             <div className="text-center space-y-3">
-              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Welcome back</h2>
+              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Welcome back</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
                 Enter your details to log in.
               </p>
             </div>
 
-            <div className="space-y-2 lg:space-y-4">
+            <div className="space-y-2 xl:space-y-4">
               <button
                 onClick={() => googleLogin()}
-                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 lg:mt-2"
+                className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 xl:mt-2"
               >
                 <img src="/google.svg" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Continue with Google

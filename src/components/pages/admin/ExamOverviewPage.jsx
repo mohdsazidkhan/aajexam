@@ -30,13 +30,13 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 const formatNumber = (num) => (num || 0).toLocaleString('en-IN');
 
 const StatCard = ({ title, count, icon: Icon, color }) => (
-  <Card hoverable padded={false} className="border border-slate-200 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl overflow-hidden group">
+  <Card hoverable padded={false} className="border border-slate-200 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl overflow-hidden group">
     <div className="p-4 flex flex-col relative">
       <div className="flex items-center justify-between mb-3">
-        <div className={`w-10 h-10 rounded-lg lg:rounded-xl bg-${color}-500/10 text-${color}-600 dark:text-${color}-400 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm`}>
+        <div className={`w-10 h-10 rounded-lg xl:rounded-xl bg-${color}-500/10 text-${color}-600 dark:text-${color}-400 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm`}>
           <Icon className="w-5 h-5" />
         </div>
-        <div className={`text-xl lg:text-2xl font-black tracking-tighter text-${color}-600 dark:text-${color}-400 tabular-nums italic`}>
+        <div className={`text-xl xl:text-2xl font-black tracking-tighter text-${color}-600 dark:text-${color}-400 tabular-nums italic`}>
           {formatNumber(count)}
         </div>
       </div>
@@ -70,7 +70,7 @@ const ExamDetails = ({ exam }) => (
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><BookOpen className="w-3 h-3" /> Subjects ({exam.counts.subjects})</h4>
       {exam.subjects.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2">
           {exam.subjects.map(s => (
             <div key={s._id} className="text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center">
               <span className="truncate" title={s.name}>{s.name}</span>
@@ -84,7 +84,7 @@ const ExamDetails = ({ exam }) => (
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Hash className="w-3 h-3" /> Topics ({exam.counts.topics})</h4>
       {exam.topics.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.topics.map(t => (
             <div key={t._id} className="text-xs px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center">
               <span className="truncate" title={t.name}>{t.name}</span>
@@ -98,7 +98,7 @@ const ExamDetails = ({ exam }) => (
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><BrainCircuit className="w-3 h-3" /> Quizzes ({exam.counts.quizzes})</h4>
       {exam.quizzes.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.quizzes.map(q => (
             <div key={q._id} className="text-[11px] px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center justify-between">
               <span className="truncate mr-2" title={q.title}>{q.title}</span>
@@ -113,7 +113,7 @@ const ExamDetails = ({ exam }) => (
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><FileText className="w-3 h-3" /> PYQs ({exam.counts.pyqs})</h4>
       {exam.pyqs.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.pyqs.map(p => (
             <div key={p._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 dark:bg-white/10 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex items-center justify-between">
               <span className="truncate mr-2 flex items-center gap-1.5" title={p.title}>
@@ -131,7 +131,7 @@ const ExamDetails = ({ exam }) => (
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Target className="w-3 h-3" /> Practice Tests ({exam.counts.practiceTests})</h4>
       {exam.practiceTests.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.practiceTests.map(m => (
             <div key={m._id} className="text-[11px] px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-lg flex items-center justify-between">
               <span className="truncate mr-2" title={m.title}>{m.title}</span>
@@ -171,7 +171,7 @@ const ExamDetails = ({ exam }) => (
     <div>
       <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-3 flex items-center gap-2"><Newspaper className="w-3 h-3" /> Blogs ({exam.counts.blogs})</h4>
       {exam.blogs?.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.blogs.map(b => (
             <div key={b._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 dark:bg-white/10 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex flex-col justify-center">
               <span className="truncate font-medium mb-1" title={b.title}>{b.title}</span>
@@ -336,7 +336,7 @@ const ExamOverviewPage = () => {
       {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
       {/* Overall Statistics */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+      <div className="grid grid-cols-2 xl:grid-cols-5 gap-4 mb-4">
         <StatCard title="Exam Categories" count={overallStats.categories} icon={Layers} color="indigo" />
         <StatCard title="Exams" count={overallStats.exams} icon={GraduationCap} color="blue" />
         <StatCard title="Exam Patterns" count={overallStats.patterns} icon={LayoutDashboard} color="cyan" />
@@ -350,7 +350,7 @@ const ExamOverviewPage = () => {
       </div>
 
       {/* Main Content Area */}
-      <Card variant="white" padded={false} className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-lg lg:rounded-xl overflow-hidden shadow-sm">
+      <Card variant="white" padded={false} className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-lg xl:rounded-xl overflow-hidden shadow-sm">
 
         {/* Content Render Based on View Mode */}
 
@@ -466,7 +466,7 @@ const ExamOverviewPage = () => {
                 const isExpanded = expandedRows.has(exam._id);
                 const serialNumber = idx + 1;
                 return (
-                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
+                  <div key={exam._id} className="border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30">
                     <div className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
                         <div className="relative w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0">
@@ -540,7 +540,7 @@ const ExamOverviewPage = () => {
 
         {/* GRID VIEW */}
         {viewMode === 'grid' && (
-          <div className="p-0 lg:p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="p-0 xl:p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {filteredExams.length === 0 ? (
               <div className="col-span-full p-8 text-center text-slate-500">No exams found matching your criteria.</div>
             ) : (
@@ -548,7 +548,7 @@ const ExamOverviewPage = () => {
                 const isExpanded = expandedRows.has(exam._id);
                 const serialNumber = idx + 1;
                 return (
-                  <div key={exam._id} className="relative border border-slate-200 dark:border-white/10 rounded-lg lg:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
+                  <div key={exam._id} className="relative border border-slate-200 dark:border-white/10 rounded-lg xl:rounded-xl overflow-hidden bg-white dark:bg-slate-900/30 flex flex-col">
                     <span className="absolute top-2 left-2 w-5 h-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] font-black flex items-center justify-center shadow-sm z-10">{serialNumber}</span>
                     <div className="p-5 flex-1 flex flex-col">
                       <div className="flex justify-between items-start mb-4">

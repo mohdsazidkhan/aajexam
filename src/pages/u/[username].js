@@ -83,14 +83,14 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
   if (loading) return (
     <div className="min-h-screen bg-background-page pb-20 font-outfit">
-      <div className="py-4 lg:py-8"><ProfileSkeleton /></div>
+      <div className="py-4 xl:py-8"><ProfileSkeleton /></div>
     </div>
   );
 
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 font-outfit">
-        <h2 className="text-lg lg:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Profile Not Found</h2>
+        <h2 className="text-lg xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Profile Not Found</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
@@ -119,11 +119,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Profile Header */}
         <div className="mb-6">
           {/* Banner */}
-          <div className="h-32 sm:h-40 lg:h-48 bg-primary-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
+          <div className="h-32 sm:h-40 xl:h-48 bg-primary-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
 
           {/* Profile Card - overlaps banner */}
           <div className="-mt-16 sm:-mt-20 relative z-10">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-sm p-4 sm:p-5 lg:p-6">
+            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-sm p-4 sm:p-5 xl:p-6">
               {/* Avatar + Info + Action */}
               <div className="flex items-start gap-3 sm:gap-4">
                 {/* Avatar */}
@@ -134,10 +134,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                         alt={profile.name}
                         width={112}
                         height={112}
-                        className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700"
+                        className="w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28 rounded-lg xl:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700"
                       />
                     ) : (
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-lg lg:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl lg:text-5xl font-black">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 xl:w-28 xl:h-28 rounded-lg xl:rounded-xl sm:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 text-3xl sm:text-4xl xl:text-5xl font-black">
                       {profile.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -145,7 +145,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
                 {/* Name + Username */}
                 <div className="flex-1 min-w-0 pt-1">
-                  <h1 className="text-base sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight">{profile.name}</h1>
+                  <h1 className="text-base sm:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-tight">{profile.name}</h1>
                   {profile.username && (
                     <p className="text-xs sm:text-sm font-bold text-primary-600">
                       @{profile.username}
@@ -165,7 +165,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 )}
                 {isOwnProfile && (
                   <button
-                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
+                    className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
                     onClick={() => router.push('/settings')}
                   >
                     Edit Profile
@@ -200,22 +200,22 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/followers`)}
                 >
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
+                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Followers</span>
                 </div>
                 <div
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/following`)}
                 >
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
+                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Following</span>
                 </div>
                 <div>
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white">{profile.reelsCount || 0}</span>
+                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white">{profile.reelsCount || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Reels</span>
                 </div>
                 <div>
-                  <span className="text-base sm:text-lg lg:text-xl font-black text-slate-900 dark:text-white">{profile.profileViews || 0}</span>
+                  <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white">{profile.profileViews || 0}</span>
                   <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Views</span>
                 </div>
               </div>
@@ -224,23 +224,23 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         </div>
 
         {/* Content Sections */}
-        <div className="space-y-2 lg:space-y-4 pb-8">
+        <div className="space-y-2 xl:space-y-4 pb-8">
           {/* All India Rank */}
           {(profile.isPublicProfile || isOwnProfile) && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
+              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 All India Rank
               </h2>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-600 rounded-lg lg:rounded-xl sm:rounded-2xl text-white">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-600 rounded-lg xl:rounded-xl sm:rounded-2xl text-white">
                   <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</span>
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
+                  <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1 text-center">{profile.examAIR ? `of ${profile.examAIR.total}` : 'No exams yet'}</span>
                 </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">Quiz AIR</span>
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{profile.quizAIR ? `#${profile.quizAIR.rank}` : '—'}</span>
+                  <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{profile.quizAIR ? `#${profile.quizAIR.rank}` : '—'}</span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 text-center">{profile.quizAIR ? `of ${profile.quizAIR.total}` : 'No quizzes yet'}</span>
                 </div>
               </div>
@@ -250,7 +250,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {/* Badges Section */}
           {profile.badges && profile.badges.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
+              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 Badges
               </h2>
@@ -258,7 +258,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 {profile.badges.map((badge, index) => (
                   <span
                     key={index}
-                    className="px-3 py-2 sm:px-4 sm:py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg lg:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider border border-slate-100 dark:border-slate-700"
+                    className="px-3 py-2 sm:px-4 sm:py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg xl:rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-wider border border-slate-100 dark:border-slate-700"
                   >
                     {badge}
                   </span>
@@ -270,25 +270,25 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {/* Quiz Statistics Section */}
           {(profile.isPublicProfile || isOwnProfile) && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
+              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 Exam Statistics
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600">
                     {profile.performanceMetrics?.examStats?.mockTestsAttempted || 0}
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
                 </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-primary-600">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600">
                     {profile.performanceMetrics?.examStats?.overallReadiness || 0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Readiness</span>
                 </div>
-                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-black dark:text-white">
+                <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
+                  <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-black dark:text-white">
                     {profile.performanceMetrics?.examStats?.averageMockScore || 0}%
                   </span>
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Average</span>
@@ -300,13 +300,13 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
           {/* Reels Grid — Instagram style */}
           {reels.length > 0 && (
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-              <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
+              <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 <PlayCircle className="w-5 h-5" />
                 Reels
                 <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
               </h2>
-              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
+              <div className="grid grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
                 {reels.map((reel) => {
                   const typeConfig = {
                     question: { icon: FileText, gradient: 'bg-primary-600', label: 'Question' },
@@ -321,7 +321,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
 
                   return (
                     <Link href="/reels" key={reel._id}>
-                      <div className={`relative aspect-[3/4] rounded-lg lg:rounded-xl sm:rounded-2xl overflow-hidden ${config.gradient} group cursor-pointer`}>
+                      <div className={`relative aspect-[3/4] rounded-lg xl:rounded-xl sm:rounded-2xl overflow-hidden ${config.gradient} group cursor-pointer`}>
                         {/* Content preview */}
                         <div className="absolute inset-0 p-2.5 sm:p-3 pb-8 sm:pb-9 flex flex-col justify-between">
                           {/* Type badge */}
@@ -355,7 +355,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 <button
                   onClick={() => fetchReels(reelsPage + 1)}
                   disabled={reelsLoading}
-                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 bg-slate-50 dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
+                  className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 bg-slate-50 dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                 >
                   {reelsLoading ? 'Loading...' : 'Load More Reels'}
                 </button>

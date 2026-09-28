@@ -69,13 +69,13 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
 
   return (
     <div className="min-h-screen pb-24">
-      <div className="py-0 lg:py-6">
-        <button onClick={() => router.back()} className="hidden lg:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
+      <div className="py-0 xl:py-6">
+        <button onClick={() => router.back()} className="hidden xl:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
 
         {/* Hero */}
         <div className="bg-primary-600 rounded-2xl p-6 text-white mb-5">
           <Layers className="w-8 h-8 mb-2" />
-          <h1 className="text-xl lg:text-3xl font-black uppercase">{topic.name}</h1>
+          <h1 className="text-xl xl:text-3xl font-black uppercase">{topic.name}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
           <div className="flex gap-3 mt-3">
             <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{quizzes.length} Quizzes</span>
@@ -87,7 +87,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             <button 
               onClick={handleStartAdaptive}
               disabled={generatingAdaptive}
-              className="w-full sm:w-auto bg-white text-black dark:text-white hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg lg:rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto bg-white text-black dark:text-white hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg xl:rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {generatingAdaptive ? (
                 <><div className="w-4 h-4 border-2 border-black dark:border-white border-t-transparent rounded-full animate-spin" /> GENERATING...</>
@@ -111,7 +111,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
 
         {/* Flashcards */}
         {activeTab === 'flashcards' && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
             {flashcards.length === 0 ? (
               <div className="col-span-full py-16 text-center">
                 <Sparkles className="w-12 h-12 text-slate-200 mx-auto mb-2" />
@@ -148,8 +148,8 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No quizzes</p></div> : quizzes.map((quiz, idx) => (
               <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/quiz/${quiz.slug}`)}
-                className="flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-700 transition-all">
-                <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+                className="flex items-center gap-2 xl:gap-4 p-2 xl:p-4 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-700 transition-all">
+                <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
                   <p className="text-xs text-slate-400">{quiz.subject?.name || ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
@@ -167,8 +167,8 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               const done = test.userAttempt?.status === 'Completed';
               return (
                 <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
-                  className={`flex items-center gap-2 lg:gap-4 p-2 lg:p-4 bg-white dark:bg-slate-800 rounded-lg lg:rounded-xl border ${done ? 'border-slate-200 dark:border-slate-800' : 'border-slate-200 dark:border-slate-700'}`}>
-                  <div className={`w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 text-slate-400'}`}>
+                  className={`flex items-center gap-2 xl:gap-4 p-2 xl:p-4 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border ${done ? 'border-slate-200 dark:border-slate-800' : 'border-slate-200 dark:border-slate-700'}`}>
+                  <div className={`w-10 h-10 rounded-lg xl:rounded-xl flex items-center justify-center shrink-0 ${done ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 text-slate-400'}`}>
                     {done ? <Trophy className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   </div>
                   <div className="flex-1 min-w-0">

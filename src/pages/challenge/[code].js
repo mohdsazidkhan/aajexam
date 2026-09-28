@@ -47,7 +47,7 @@ export default function ChallengePage() {
                         <div className="w-20 h-20 bg-slate-300 dark:bg-slate-700 rounded-2xl" />
                         <div className="h-6 w-64 bg-slate-300 dark:bg-slate-700 rounded-lg" />
                         <div className="h-4 w-40 bg-slate-300 dark:bg-slate-700 rounded-lg" />
-                        <div className="h-16 w-40 bg-slate-300 dark:bg-slate-700 rounded-lg lg:rounded-xl" />
+                        <div className="h-16 w-40 bg-slate-300 dark:bg-slate-700 rounded-lg xl:rounded-xl" />
                         <div className="h-14 w-full bg-slate-300 dark:bg-slate-700 rounded-2xl" />
                     </div>
                 </div>
@@ -85,7 +85,7 @@ export default function ChallengePage() {
                             Quiz: <span className="text-white font-bold">{challenge.quiz?.title || 'Unknown'}</span>
                         </p>
 
-                        <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-lg lg:rounded-xl px-6 py-3 mb-6">
+                        <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-lg xl:rounded-xl px-6 py-3 mb-6">
                             <p className="text-black dark:text-white text-xs font-bold uppercase tracking-wider mb-1">Target to beat</p>
                             <p className="text-white text-4xl font-black">{Math.round(hostScore?.percentage || 0)}%</p>
                         </div>
@@ -98,7 +98,7 @@ export default function ChallengePage() {
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
                         ) : (
-                            <div className="bg-primary-500/20 border border-primary-400/30 text-primary-100 px-6 py-3 rounded-lg lg:rounded-xl font-bold flex items-center gap-2">
+                            <div className="bg-primary-500/20 border border-primary-400/30 text-primary-100 px-6 py-3 rounded-lg xl:rounded-xl font-bold flex items-center gap-2">
                                 <Trophy className="w-5 h-5" /> You have completed this challenge!
                             </div>
                         )}
@@ -109,7 +109,7 @@ export default function ChallengePage() {
                 {challenge.hasPlayed && (
                     <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 p-2 rounded-lg lg:rounded-xl">
+                            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 p-2 rounded-lg xl:rounded-xl">
                                 <Users className="w-6 h-6 text-black dark:text-white" />
                             </div>
                             <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Challenge Leaderboard</h2>

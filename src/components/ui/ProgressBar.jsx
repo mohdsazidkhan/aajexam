@@ -23,14 +23,14 @@ const ProgressBar = ({
   const heights = {
     sm: 'h-3 rounded-full',
     md: 'h-6 rounded-[1rem]',
-    lg: 'h-10 rounded-[1.5rem]',
+    xl: 'h-10 rounded-[1.5rem]',
     xl: 'h-14 rounded-[2rem]',
   };
 
   const progressValue = Math.min(Math.max(progress, 0), 100);
 
   return (
-    <div className={`w-full space-y-2 lg:space-y-4 ${className}`}>
+    <div className={`w-full space-y-2 xl:space-y-4 ${className}`}>
       {(label || showPercentage) && (
         <div className="flex justify-between items-end px-4">
           <div className="flex items-center gap-3">

@@ -88,20 +88,20 @@ const HowItWorks = () => {
          <div className="space-y-20 mt-4">
 
             {/* --- Hero Section --- */}
-            <section className="text-center space-y-6 relative overflow-hidden px-0 py-4 lg:py-8">
+            <section className="text-center space-y-6 relative overflow-hidden px-0 py-4 xl:py-8">
                <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
                   <Rocket className="w-10 h-10" />
                </motion.div>
-               <div className="space-y-2 lg:space-y-4">
-                  <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-600">Works</span></h1>
-                  <p className="text-sm lg:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and earn by referring friends.</p>
+               <div className="space-y-2 xl:space-y-4">
+                  <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-600">Works</span></h1>
+                  <p className="text-sm xl:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and earn by referring friends.</p>
                </div>
             </section>
 
             {/* --- Step-by-Step Path --- */}
             <section className="relative space-y-12">
                {/* Center Line (hidden on small) */}
-               <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-1.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 rounded-full hidden lg:block" />
+               <div className="absolute left-8 xl:left-1/2 top-0 bottom-0 w-1.5 bg-slate-200 dark:bg-slate-800 -translate-x-1/2 rounded-full hidden xl:block" />
 
                {steps.map((step, idx) => (
                   <motion.div
@@ -109,15 +109,15 @@ const HowItWorks = () => {
                      initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
                      whileInView={{ opacity: 1, x: 0 }}
                      viewport={{ once: true }}
-                     className={`relative flex flex-col lg:flex-row items-center gap-12 ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                     className={`relative flex flex-col xl:flex-row items-center gap-12 ${idx % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
                   >
                      {/* Step Marker */}
-                     <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden lg:flex">
+                     <div className="absolute left-8 xl:left-1/2 -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-100 dark:border-slate-700 flex items-center justify-center z-10 shadow-sm hidden xl:flex">
                         <div className={`w-3 h-3 rounded-full bg-${step.color}-500 shadow-sm`} />
                      </div>
 
                      {/* Content Card */}
-                     <div className="w-full lg:w-[45%]">
+                     <div className="w-full xl:w-[45%]">
                         <Card className="space-y-6 group border-2 hover:border-primary-500/30 transition-all duration-300">
                            <div className="flex items-center justify-between">
                               <div className={`p-4 bg-${step.color}-500/10 text-${step.color}-500 rounded-2xl group-hover:scale-110 transition-transform shadow-sm`}>
@@ -128,7 +128,7 @@ const HowItWorks = () => {
                               </span>
                            </div>
                            <div className="space-y-3">
-                              <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">{step.title}</h3>
+                              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{step.title}</h3>
                               <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{step.desc}</p>
                            </div>
 
@@ -160,29 +160,29 @@ const HowItWorks = () => {
                         </Card>
                      </div>
 
-                     <div className="hidden lg:block w-[45%]" />
+                     <div className="hidden xl:block w-[45%]" />
                   </motion.div>
                ))}
             </section>
 
             {/* --- Skill-Based Callout --- */}
             <section>
-               <Card className="border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center lg:text-left">
-                  <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
+               <Card className="border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center xl:text-left">
+                  <div className="relative z-10 flex flex-col xl:flex-row items-center gap-8">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-600 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
                      </div>
                      <div className="space-y-2">
-                        <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight">Important Note</h3>
+                        <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">Important Note</h3>
                         <p className="text-sm font-bold text-slate-300 leading-relaxed uppercase tracking-wide">AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.</p>
                      </div>
                   </div>
-                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/5 -rotate-12" />
+                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/5 -rotate-12" />
                </Card>
             </section>
 
             {/* --- Features Grid --- */}
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <section className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                {features.map((f, i) => (
                   <Card key={i} className="group space-y-6 border-2 hover:border-primary-500/50 transition-all duration-300">
                      <div className={`p-4 bg-${f.color}-500/10 text-${f.color}-500 rounded-2xl group-hover:scale-110 group-hover:bg-${f.color}-500 group-hover:text-white transition-all w-fit shadow-sm`}>
@@ -198,13 +198,13 @@ const HowItWorks = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card className="p-10 lg:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[3rem] lg:rounded-[4rem]">
+               <Card className="p-10 xl:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[3rem] xl:rounded-[4rem]">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
                   <div className="relative z-10 space-y-10">
-                     <h2 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tighter">Get Started <span className="text-primary-400">Today</span></h2>
-                     <p className="text-base lg:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
+                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">Get Started <span className="text-primary-400">Today</span></h2>
+                     <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
                      <Button
                         onClick={() => router.push('/')}
                         className="bg-primary-600 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all"

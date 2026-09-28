@@ -36,10 +36,10 @@ import { formatSecondsSpent } from "../../lib/utils/timeFormat";
 const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) => (
    <div className="flex items-center justify-between mb-4">
       <div className="flex items-center gap-2.5">
-         <div className={`w-9 h-9 rounded-lg lg:rounded-xl flex items-center justify-center ${iconBg}`}>
+         <div className={`w-9 h-9 rounded-lg xl:rounded-xl flex items-center justify-center ${iconBg}`}>
             <IconComp className={`w-[18px] h-[18px] ${iconColor}`} />
          </div>
-         <h2 className="text-base lg:text-lg font-black text-slate-900 dark:text-white tracking-tight">
+         <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight">
             {title}
          </h2>
       </div>
@@ -57,7 +57,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
 const SectionSkeleton = () => (
    <div className="flex gap-3 overflow-hidden pb-1">
       {[1, 2, 3, 4].map(i => (
-         <div key={i} className="min-w-[140px] lg:min-w-[160px] h-[130px] rounded-2xl bg-slate-100 dark:bg-slate-800 animate-pulse" />
+         <div key={i} className="min-w-[140px] xl:min-w-[160px] h-[130px] rounded-2xl bg-slate-100 dark:bg-slate-800 animate-pulse" />
       ))}
    </div>
 );
@@ -66,7 +66,7 @@ const SectionSkeleton = () => (
 const GovtExamCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <GraduationCap className="w-6 h-6 text-black dark:text-white" />
@@ -84,9 +84,9 @@ const GovtExamCard = ({ item, onClick }) => (
 const QuizCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[160px] lg:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+      className="min-w-[160px] xl:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
    >
-      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+      <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <Brain className="w-5 h-5 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -104,7 +104,7 @@ const QuizCard = ({ item, onClick }) => (
 const SubjectCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <BookOpen className="w-6 h-6 text-black dark:text-white" />
@@ -124,9 +124,9 @@ const SubjectCard = ({ item, onClick }) => (
 const TopicCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[140px] lg:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+      <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <Layers className="w-5 h-5 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
@@ -151,7 +151,7 @@ const REEL_TYPE_CONFIG = {
 const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[200px] lg:min-w-[220px] rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
+      className="min-w-[200px] xl:min-w-[220px] rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
    >
       <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
          {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -179,7 +179,7 @@ const ReelCard = ({ item, onClick }) => {
    return (
       <div
          onClick={onClick}
-         className="min-w-[180px] lg:min-w-[200px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+         className="min-w-[180px] xl:min-w-[200px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
       >
          <div className={`flex items-center gap-1.5 self-start px-2 py-1 rounded-lg ${cfg.bg}`}>
             <TypeIcon className={`w-3.5 h-3.5 ${cfg.color}`} />
@@ -313,12 +313,12 @@ const HomePage = () => {
    const totalTimeSpentSeconds = performanceReport?.totalTimeSpentSeconds ?? 0;
 
    return (
-      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 lg:mt-4">
+      <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 xl:mt-4">
             {/* ── Stats ── */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                {streakCount > 0 && (
-                  <div className="flex items-center justify-end mb-3 lg:mb-6">
-                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-black/10 dark:bg-white/10 rounded-lg lg:rounded-xl">
+                  <div className="flex items-center justify-end mb-3 xl:mb-6">
+                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl">
                         <Flame className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />
                         <span className="text-xs font-black text-black dark:text-white">{streakCount}</span>
                      </div>
@@ -326,79 +326,79 @@ const HomePage = () => {
                )}
 
                {/* Quick Stats */}
-               <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4">
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <TrendingUp className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
+               <div className="grid grid-cols-3 gap-2 md:gap-3 xl:gap-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
+                     <TrendingUp className="w-4 h-4 xl:w-5 xl:h-5 text-primary-600 mb-1.5" />
+                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
+                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
+                     <Brain className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
+                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
+                     <BookOpen className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
+                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
                   </div>
                </div>
 
                {/* Time Spent Stats */}
-               <div className="grid grid-cols-3 gap-2 md:gap-3 lg:gap-4 mt-2 md:mt-3 lg:mt-4">
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-primary-600 mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(totalTimeSpentSeconds)}</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Total Time Spent</p>
+               <div className="grid grid-cols-3 gap-2 md:gap-3 xl:gap-4 mt-2 md:mt-3 xl:mt-4">
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
+                     <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-primary-600 mb-1.5" />
+                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(totalTimeSpentSeconds)}</p>
+                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Total Time Spent</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(quizTimeSpentSeconds)}</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes Time Spent</p>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
+                     <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(quizTimeSpentSeconds)}</p>
+                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes Time Spent</p>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl lg:rounded-3xl p-3 lg:p-6 border border-slate-100 dark:border-slate-800">
-                     <Clock className="w-4 h-4 lg:w-5 lg:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl lg:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(examTimeSpentSeconds)}</p>
-                     <p className="text-[11px] lg:text-xs font-bold text-slate-400 uppercase tracking-wider">Exams Time Spent</p>
+                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
+                     <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
+                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(examTimeSpentSeconds)}</p>
+                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Exams Time Spent</p>
                   </div>
                </div>
             </section>
 
             {/* ── Quick Actions ── */}
-            <section className="px-0 py-2 lg:py-4">
-               <div className="grid grid-cols-3 gap-1.5 lg:gap-4">
+            <section className="px-0 py-2 xl:py-4">
+               <div className="grid grid-cols-3 gap-1.5 xl:gap-4">
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-3xl p-1.5 lg:p-6 flex items-center gap-1 lg:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-3xl p-1.5 xl:p-6 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-6 h-6 lg:w-12 lg:h-12 shrink-0 rounded-md lg:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <Zap className="w-3.5 h-3.5 lg:w-7 lg:h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 xl:w-12 xl:h-12 shrink-0 rounded-md xl:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <Zap className="w-3.5 h-3.5 xl:w-7 xl:h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] lg:text-xs font-black uppercase tracking-tight lg:tracking-wider leading-tight">Start Test</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Start Test</p>
                   </button>
                   <button
                      onClick={() => router.push('/quizzes')}
-                     className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-3xl p-1.5 lg:p-6 flex items-center gap-1 lg:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-3xl p-1.5 xl:p-6 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-6 h-6 lg:w-12 lg:h-12 shrink-0 rounded-md lg:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <PlayCircle className="w-3.5 h-3.5 lg:w-7 lg:h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 xl:w-12 xl:h-12 shrink-0 rounded-md xl:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <PlayCircle className="w-3.5 h-3.5 xl:w-7 xl:h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] lg:text-xs font-black uppercase tracking-tight lg:tracking-wider leading-tight">Start Quiz</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Start Quiz</p>
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
-                     className="bg-white dark:bg-slate-800 rounded-lg lg:rounded-3xl p-1.5 lg:p-6 flex items-center gap-1 lg:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-3xl p-1.5 xl:p-6 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-6 h-6 lg:w-12 lg:h-12 shrink-0 rounded-md lg:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <FileText className="w-3.5 h-3.5 lg:w-7 lg:h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 xl:w-12 xl:h-12 shrink-0 rounded-md xl:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <FileText className="w-3.5 h-3.5 xl:w-7 xl:h-7 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] lg:text-xs font-black uppercase tracking-tight lg:tracking-wider leading-tight">Read Blog</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Read Blog</p>
                   </button>
                </div>
             </section>
 
             {/* ═══════ GOVT EXAMS ═══════ */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                <SectionHeader
                   title="Govt. Exams"
                   icon={GraduationCap}
@@ -424,7 +424,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ QUIZZES ═══════ */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                <SectionHeader
                   title="Quizzes"
                   icon={Brain}
@@ -450,7 +450,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ SUBJECTS ═══════ */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                <SectionHeader
                   title="Subjects"
                   icon={BookOpen}
@@ -476,7 +476,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ TOPICS ═══════ */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                <SectionHeader
                   title="Topics"
                   icon={Layers}
@@ -502,7 +502,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ REELS ═══════ */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                <SectionHeader
                   title="Reels"
                   icon={PlayCircle}
@@ -528,7 +528,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ BLOGS ═══════ */}
-            <section className="px-0 py-2 lg:py-4">
+            <section className="px-0 py-2 xl:py-4">
                <SectionHeader
                   title="Blogs"
                   icon={FileText}

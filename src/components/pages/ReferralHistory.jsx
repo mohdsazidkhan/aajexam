@@ -182,31 +182,31 @@ export default function ReferralHistory() {
    return (
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white">
 
-         <div className="container mx-auto mt-0 space-y-2 lg:space-y-4 lg:space-y-8">
+         <div className="container mx-auto mt-0 space-y-2 xl:space-y-4 xl:space-y-8">
 
             {/* --- Header Section --- */}
-            <section className="relative px-0 py-2 lg:py-8">
-               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 lg:gap-12">
+            <section className="relative px-0 py-2 xl:py-8">
+               <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3 xl:gap-12">
 
-                  <div className="flex flex-row items-center gap-2 lg:gap-6 text-left">
-                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-8 h-8 lg:w-20 lg:h-20 bg-primary-500/10 text-primary-600 rounded-lg lg:rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
-                        <Users className="w-4 h-4 lg:w-10 lg:h-10" />
+                  <div className="flex flex-row items-center gap-2 xl:gap-6 text-left">
+                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-8 h-8 xl:w-20 xl:h-20 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
+                        <Users className="w-4 h-4 xl:w-10 xl:h-10" />
                      </motion.div>
-                     <div className="space-y-0.5 lg:space-y-4">
-                        <h1 className="text-base lg:text-5xl font-black font-outfit uppercase tracking-tight leading-none">Referral <span className="text-primary-600">History</span></h1>
-                        <p className="text-[9px] lg:text-sm font-bold text-content-secondary uppercase tracking-wide lg:tracking-[0.3em] max-w-2xl">Share your link with friends. When they buy the PRO plan (first time), you earn <span className="font-black text-primary-600">₹33</span>.</p>
+                     <div className="space-y-0.5 xl:space-y-4">
+                        <h1 className="text-base xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">Referral <span className="text-primary-600">History</span></h1>
+                        <p className="text-[9px] xl:text-sm font-bold text-content-secondary uppercase tracking-wide xl:tracking-[0.3em] max-w-2xl">Share your link with friends. When they buy the PRO plan (first time), you earn <span className="font-black text-primary-600">₹33</span>.</p>
                      </div>
                   </div>
 
                   {/* Referral Link Card */}
                   {user && (
-                     <Card className="w-full lg:w-auto lg:min-w-[360px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-2xl lg:rounded-[2.5rem]">
-                        <div className="p-1 lg:p-2 space-y-1.5 lg:space-y-3 text-left">
-                           <p className="text-[9px] lg:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">Your Referral Code</p>
-                           <div className="flex items-center gap-2 lg:gap-3">
-                              <p className="flex-1 text-sm lg:text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
-                              <Button variant="primary" size="sm" className="lg:px-8 lg:py-4 lg:rounded-full shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
-                                 <Copy className="w-3.5 h-3.5 lg:w-4 lg:h-4 mx-auto" /> COPY LINK
+                     <Card className="w-full xl:w-auto xl:min-w-[360px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-2xl xl:rounded-[2.5rem]">
+                        <div className="p-1 xl:p-2 space-y-1.5 xl:space-y-3 text-left">
+                           <p className="text-[9px] xl:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">Your Referral Code</p>
+                           <div className="flex items-center gap-2 xl:gap-3">
+                              <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
+                              <Button variant="primary" size="sm" className="xl:px-8 xl:py-4 xl:rounded-full shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                                 <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4 mx-auto" /> COPY LINK
                               </Button>
                            </div>
                         </div>
@@ -217,7 +217,7 @@ export default function ReferralHistory() {
 
             {/* --- Stats Grid --- */}
             {user && (
-               <section className="grid grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-6">
+               <section className="grid grid-cols-2 xl:grid-cols-5 gap-2 xl:gap-6">
                   {[
                      { label: 'Referral Rewards', val: `₹${(user.walletBalance || 0).toLocaleString()}`, icon: Coins, color: 'primary' },
                      { label: 'Money You Earned', val: `₹${(user.referralRewards?.reduce((s, r) => s + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'primary' },
@@ -225,15 +225,15 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl lg:rounded-[2.5rem]">
-                        <div className="flex justify-between items-start mb-1.5 lg:mb-6">
-                           <div className={`p-1.5 lg:p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-lg lg:rounded-2xl`}>
-                              <s.icon className="w-3.5 h-3.5 lg:w-6 lg:h-6" />
+                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl xl:rounded-[2.5rem]">
+                        <div className="flex justify-between items-start mb-1.5 xl:mb-6">
+                           <div className={`p-1.5 xl:p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-lg xl:rounded-2xl`}>
+                              <s.icon className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                            </div>
-                           <ArrowUpRight className="hidden lg:block w-4 h-4 text-slate-200 group-hover:text-content-secondary transition-colors" />
+                           <ArrowUpRight className="hidden xl:block w-4 h-4 text-slate-200 group-hover:text-content-secondary transition-colors" />
                         </div>
-                        <p className="text-[8px] lg:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 lg:mb-1">{s.label}</p>
-                        <p className="text-sm lg:text-3xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
+                        <p className="text-[8px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 xl:mb-1">{s.label}</p>
+                        <p className="text-sm xl:text-3xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
                      </Card>
                   ))}
                </section>
@@ -243,7 +243,7 @@ export default function ReferralHistory() {
             {user && bankDetailLoaded && (
                <section>
                   <Card className="border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
-                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                     <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6">
                         <div className="space-y-2">
                            <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2">
                               <Zap className="w-5 h-5 text-primary-600" /> Referral Payouts
@@ -370,13 +370,13 @@ export default function ReferralHistory() {
 
                {/* Left Sidebar: Breakdown */}
                <div className="space-y-8">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-8">
+                  <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <div className="space-y-2">
                         <h2 className="text-xl font-black font-outfit uppercase tracking-tight">How You <span className="text-primary-600">Earned</span></h2>
                         <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">See which type of referral gave you how much money</p>
                      </div>
 
-                     <div className="w-full lg:w-auto lg:min-w-[320px] space-y-2 lg:space-y-4">
+                     <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
                         {[
                            { label: 'Friend Buys ₹99 Plan', type: 'plan99', color: 'primary' }
                         ].map((b, i) => {
@@ -402,14 +402,14 @@ export default function ReferralHistory() {
                </div>
 
                {/* Right Area: Friend List */}
-               <div className="space-y-3 lg:space-y-8">
+               <div className="space-y-3 xl:space-y-8">
                   <div className="flex items-center justify-between">
-                     <div className="space-y-1 lg:space-y-2">
-                        <h2 className="text-sm lg:text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">Logs</span></h2>
-                        <p className="text-[9px] lg:text-[10px] font-black text-content-secondary uppercase tracking-widest">Students who signed up using your referral link</p>
+                     <div className="space-y-1 xl:space-y-2">
+                        <h2 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">Logs</span></h2>
+                        <p className="text-[9px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest">Students who signed up using your referral link</p>
                      </div>
-                     <div className="p-2 lg:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-2xl border-2 border-slate-100 dark:border-slate-700">
-                        <History className="w-4 h-4 lg:w-5 lg:h-5 text-content-secondary" />
+                     <div className="p-2 xl:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700">
+                        <History className="w-4 h-4 xl:w-5 xl:h-5 text-content-secondary" />
                      </div>
                   </div>
 
@@ -417,18 +417,18 @@ export default function ReferralHistory() {
                      {loading ? (
                         <ListSkeleton rows={6} />
                      ) : transactions.length === 0 ? (
-                        <Card className="py-4 lg:py-8 text-center space-y-2 lg:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl lg:rounded-[4rem]">
-                           <Users className="w-8 h-8 lg:w-16 lg:h-16 text-slate-200 mx-auto" />
-                           <div className="space-y-1 lg:space-y-2">
-                              <h3 className="text-sm lg:text-xl font-black font-outfit uppercase tracking-tight">No Referrals Yet</h3>
-                              <p className="text-[10px] lg:text-xs font-bold text-content-secondary uppercase tracking-widest">You have not referred anyone yet. Share your link and start earning.</p>
+                        <Card className="py-4 xl:py-8 text-center space-y-2 xl:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl xl:rounded-[4rem]">
+                           <Users className="w-8 h-8 xl:w-16 xl:h-16 text-slate-200 mx-auto" />
+                           <div className="space-y-1 xl:space-y-2">
+                              <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">No Referrals Yet</h3>
+                              <p className="text-[10px] xl:text-xs font-bold text-content-secondary uppercase tracking-widest">You have not referred anyone yet. Share your link and start earning.</p>
                            </div>
-                           <Button variant="primary" size="sm" className="lg:px-8 lg:py-3 mx-auto lg:rounded-full" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                           <Button variant="primary" size="sm" className="xl:px-8 xl:py-3 mx-auto xl:rounded-full" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                               COPY LINK
                            </Button>
                         </Card>
                      ) : (
-                        <div className="space-y-2 lg:space-y-4">
+                        <div className="space-y-2 xl:space-y-4">
                            <Card className="overflow-hidden border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
@@ -445,7 +445,7 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-8 py-6">
                                                 <div className="flex items-center gap-4">
-                                                   <div className="w-10 h-10 rounded-lg lg:rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
+                                                   <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -480,7 +480,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       className={`w-10 h-10 rounded-lg lg:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-600 text-white shadow-sm' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
+                                       className={`w-10 h-10 rounded-lg xl:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-600 text-white shadow-sm' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
                                     >
                                        {i + 1}
                                     </button>

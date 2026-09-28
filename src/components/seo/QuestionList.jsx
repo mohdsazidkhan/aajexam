@@ -18,12 +18,12 @@ export default function QuestionList({ questions = [], title = 'Questions with s
   if (questions.length === 0) return null;
 
   return (
-    <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-      <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
+    <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+      <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-3 uppercase tracking-tight">
         {title}
       </h2>
       {intro && (
-        <p className="text-sm lg:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
+        <p className="text-sm xl:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-4xl">
           {intro}
         </p>
       )}
@@ -33,7 +33,7 @@ export default function QuestionList({ questions = [], title = 'Questions with s
           const correctIndex = (q.options || []).findIndex((o) => o.isCorrect);
           return (
             <li key={q._id || qi} className="rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-5">
-              <h3 className="text-base lg:text-lg font-black text-slate-900 dark:text-white leading-snug mb-1">
+              <h3 className="text-base xl:text-lg font-black text-slate-900 dark:text-white leading-snug mb-1">
                 <span className="text-primary-600 mr-2">Q{qi + 1}.</span>
                 {q.questionText}
               </h3>
@@ -41,12 +41,12 @@ export default function QuestionList({ questions = [], title = 'Questions with s
               {q.image && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={q.image} alt={`Figure for question ${qi + 1}`} loading="lazy" decoding="async"
-                  className="my-3 max-h-72 w-auto rounded-lg lg:rounded-xl border-2 border-slate-200 dark:border-slate-700" />
+                  className="my-3 max-h-72 w-auto rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700" />
               )}
 
               <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 list-none p-0">
                 {(q.options || []).map((opt, oi) => (
-                  <li key={opt._id || oi} className="text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-slate-800 px-3 py-2">
+                  <li key={opt._id || oi} className="text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-slate-800 px-3 py-2">
                     <span className="font-black text-slate-500 dark:text-slate-500 mr-2">{LABELS[oi] || oi + 1}.</span>
                     {opt.text}
                   </li>

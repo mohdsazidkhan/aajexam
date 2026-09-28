@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Tracker Skeleton (matches the loaded data view) ---
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const TrackerSkeleton = () => (
@@ -85,7 +85,7 @@ const SubjectAccordion = ({ subject }) => {
               ) : (
                 <div className="space-y-1.5">
                   {subject.topics.map(topic => (
-                    <div key={topic._id} className="flex items-center justify-between p-3 rounded-lg lg:rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors">
+                    <div key={topic._id} className="flex items-center justify-between p-3 rounded-lg xl:rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-colors">
                       <div className="flex items-center gap-3">
                         {topic.isCompleted ? (
                           <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
@@ -164,26 +164,26 @@ const SyllabusTrackerPage = () => {
   }, [selectedExam]);
 
   if (loadingExams) return (
-    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
-      <div className="py-4 lg:py-6"><DashboardSkeleton /></div>
+    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
+      <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
+    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
       <Seo
         title="Syllabus Tracker (PRO) | AajExam"
         description="Auto-track your exam syllabus completion based on quizzes you practice."
         noIndex={true}
       />
 
-      <div className="py-4 lg:py-6 space-y-6">
+      <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Syllabus Tracker is a PRO feature. Upgrade to auto-track your exam completion!">
 
           <div className="flex flex-col sm:flex-row justify-start sm:justify-between items-stretch sm:items-center gap-3">
 
             <div className="space-y-1">
-              <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-content-primary flex items-center gap-2">
+              <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-content-primary flex items-center gap-2">
                 <Layers className="w-6 h-6 text-black dark:text-white" /> Syllabus Tracker
               </h1>
               <p className="text-sm font-bold text-content-muted">Auto-tracks topics as you complete quizzes!</p>
@@ -197,7 +197,7 @@ const SyllabusTrackerPage = () => {
               <select
                 value={selectedExam}
                 onChange={e => setSelectedExam(e.target.value)}
-                className="w-full appearance-none bg-background-surface border border-slate-300 dark:border-slate-700 text-content-primary text-sm font-bold rounded-lg lg:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
+                className="w-full appearance-none bg-background-surface border border-slate-300 dark:border-slate-700 text-content-primary text-sm font-bold rounded-lg xl:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
               >
                 <option value="">Select Exam to Track</option>
                 {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
@@ -254,7 +254,7 @@ const SyllabusTrackerPage = () => {
 
             </motion.div>
           ) : !selectedExam ? (
-            <div className="py-20 text-center space-y-2 lg:space-y-4">
+            <div className="py-20 text-center space-y-2 xl:space-y-4">
               <Layers className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
               <p className="text-sm font-bold text-content-muted">Select an exam above to view its syllabus tracker.</p>
             </div>

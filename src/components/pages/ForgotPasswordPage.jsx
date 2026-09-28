@@ -59,7 +59,7 @@ const ForgotPasswordPage = () => {
           <Card className="p-10 border-none shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
 
             {/* Header */}
-            <div className="text-center space-y-2 lg:space-y-4">
+            <div className="text-center space-y-2 xl:space-y-4">
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
@@ -67,7 +67,7 @@ const ForgotPasswordPage = () => {
               >
                 <Key className="w-10 h-10" />
               </motion.div>
-              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
+              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
                 Reset <span className="text-primary-600">Password</span>
               </h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em] px-4">Enter your email and we will send you a link to reset your password.</p>
@@ -118,7 +118,7 @@ const ForgotPasswordPage = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2 lg:space-y-4">
+                  <div className="space-y-2 xl:space-y-4">
                     <Button
                       type="submit"
                       variant="primary"
@@ -146,7 +146,7 @@ const ForgotPasswordPage = () => {
               )}
             </AnimatePresence>
 
-            <Sparkles className="absolute -bottom-12 -right-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-600 dark:text-primary-500/5 pointer-events-none" />
+            <Sparkles className="absolute -bottom-12 -right-12 w-24 xl:w-48 h-24 xl:h-48 text-primary-600 dark:text-primary-500/5 pointer-events-none" />
           </Card>
         </motion.div>
       </div>    </MobileAppWrapper>

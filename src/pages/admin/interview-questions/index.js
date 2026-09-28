@@ -65,7 +65,7 @@ const AdminInterviewQuestions = () => {
   const handleEdit = (q) => { setEditId(q._id); setForm({ question: q.question, questionHi: q.questionHi || '', answer: q.answer || '', answerHi: q.answerHi || '', tips: q.tips || '', tipsHi: q.tipsHi || '', category: q.category?._id || '', tags: (q.tags || []).join(', ') }); setShowForm(true); };
   const handleDelete = async (id) => { if (!confirm('Delete?')) return; try { await API.request(`/api/admin/interview-questions/${id}`, { method: 'DELETE' }); toast.success('Deleted'); fetchData(); } catch (e) { } };
 
-  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
+  const inputClass = "w-full px-4 py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
   const columns = [
     {
@@ -110,9 +110,9 @@ const AdminInterviewQuestions = () => {
   ];
 
   const searchInput = (
-    <div className="relative w-full lg:w-56">
+    <div className="relative w-full xl:w-56">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search question or answer..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+      <input type="text" placeholder="Search question or answer..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -132,7 +132,7 @@ const AdminInterviewQuestions = () => {
   );
 
   const addQuestionButton = (
-    <button onClick={() => { setShowForm(true); setEditId(null); setForm(emptyForm); }} className="w-full px-4 py-2 rounded-lg lg:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
+    <button onClick={() => { setShowForm(true); setEditId(null); setForm(emptyForm); }} className="w-full px-4 py-2 rounded-lg xl:rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-colors bg-primary-600 text-white">
       <Plus className="w-3 h-3" /> Add Question
     </button>
   );
@@ -180,11 +180,11 @@ const AdminInterviewQuestions = () => {
               <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Click &quot;Add Question&quot; to create one</p>
             </Card>
           ) : viewMode === 'table' ? (
-            <Card className="!p-0 overflow-hidden h-auto lg:h-full flex flex-col" padded={false}>
+            <Card className="!p-0 overflow-hidden h-auto xl:h-full flex flex-col" padded={false}>
               <ResponsiveTable data={questions} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
             </Card>
           ) : viewMode === 'grid' ? (
-            <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+            <div className="overflow-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
               {questions.map((q, i) => {
                 const serialNumber = (page - 1) * itemsPerPage + i + 1;
                 return (
@@ -242,7 +242,7 @@ const AdminInterviewQuestions = () => {
           {/* Add / Edit Drawer */}
           <AnimatePresence>
             {showForm && (
-              <div className="fixed inset-0 lg:left-64 lg:top-16 z-50">
+              <div className="fixed inset-0 xl:left-64 xl:top-16 z-50">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => { setShowForm(false); setEditId(null); }} className="absolute inset-0 bg-black/50" />
                 <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-0 bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
                   <div className="p-5 border-b-2 border-slate-100 dark:border-slate-700/50 flex items-center justify-between shrink-0">
@@ -252,7 +252,7 @@ const AdminInterviewQuestions = () => {
                     </div>
                     <button onClick={() => { setShowForm(false); setEditId(null); }} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
                   </div>
-                  <div className="p-5 space-y-2 lg:space-y-4 overflow-y-auto flex-1">
+                  <div className="p-5 space-y-2 xl:space-y-4 overflow-y-auto flex-1">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Category <span className="text-black dark:text-white">*</span></label>
@@ -269,7 +269,7 @@ const AdminInterviewQuestions = () => {
 
                     <div className="pt-2 border-t-2 border-slate-100 dark:border-slate-700/50">
                       <p className="text-[11px] font-black text-primary-600 uppercase tracking-wide mb-2">English</p>
-                      <div className="space-y-2 lg:space-y-4">
+                      <div className="space-y-2 xl:space-y-4">
                         <div>
                           <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Question <span className="text-black dark:text-white">*</span></label>
                           <input placeholder="e.g. Tell me about yourself" value={form.question} onChange={e => setForm({ ...form, question: e.target.value })} className={inputClass} />
@@ -299,7 +299,7 @@ const AdminInterviewQuestions = () => {
 
                     <div className="pt-2 border-t-2 border-slate-100 dark:border-slate-700/50">
                       <p className="text-[11px] font-black text-primary-600 uppercase tracking-wide mb-2">Hindi (optional)</p>
-                      <div className="space-y-2 lg:space-y-4">
+                      <div className="space-y-2 xl:space-y-4">
                         <div>
                           <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5">Question (Hindi)</label>
                           <input placeholder="जैसे: अपने बारे में बताइए" value={form.questionHi} onChange={e => setForm({ ...form, questionHi: e.target.value })} className={inputClass} />
@@ -328,8 +328,8 @@ const AdminInterviewQuestions = () => {
                     </div>
                   </div>
                   <div className="p-5 border-t-2 border-slate-100 dark:border-slate-700/50 flex items-center gap-3 shrink-0">
-                    <button onClick={handleSave} className="px-6 py-2.5 bg-primary-600 hover:bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
-                    <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg lg:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
+                    <button onClick={handleSave} className="px-6 py-2.5 bg-primary-600 hover:bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold transition-colors">{editId ? 'Update' : 'Create'}</button>
+                    <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-6 py-2.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg xl:rounded-xl text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
                   </div>
                 </motion.div>
               </div>

@@ -10,7 +10,7 @@ import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 
 // --- Readiness Skeleton (matches the loaded result view) ---
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg lg:rounded-xl ${className}`} />
+  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const ReadinessSkeleton = () => (
@@ -22,7 +22,7 @@ const ReadinessSkeleton = () => (
       <Sh className="h-3 w-full max-w-sm mx-auto" />
     </Card>
 
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
       {[1, 2, 3, 4].map(i => (
         <Card key={i} className="text-center space-y-2">
           <Sh className="h-6 w-12 mx-auto" />
@@ -74,7 +74,7 @@ const ReadinessPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-24">
-      <div className="py-4 lg:py-6"><DashboardSkeleton /></div>
+      <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
     </div>
   );
 
@@ -83,22 +83,22 @@ const ReadinessPage = () => {
   return (
     <div className="min-h-screen pb-24">
       <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
-      <div className="py-4 lg:py-6 space-y-6">
+      <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">
-          <div className="flex justify-between items-center flex-col lg:flex-row gap-4">
-          <div className="space-y-1 text-center lg:text-left">
-            <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center lg:justify-start gap-2"><Target className="w-6 h-6 text-primary-600" /> Exam Readiness</h1>
+          <div className="flex justify-between items-center flex-col xl:flex-row gap-4">
+          <div className="space-y-1 text-center xl:text-left">
+            <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center xl:justify-start gap-2"><Target className="w-6 h-6 text-primary-600" /> Exam Readiness</h1>
             <p className="text-sm font-bold text-slate-400">How prepared are you?</p>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-3 lg:gap-5 w-full lg:w-auto">
+          <div className="flex flex-col xl:flex-row gap-3 xl:gap-5 w-full xl:w-auto">
             <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
-              className="w-full lg:flex-1 px-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm outline-none">
+              className="w-full xl:flex-1 px-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none">
               <option value="">Select Exam</option>
               {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
             </select>
             <button onClick={analyzeReadiness} disabled={!selectedExam || analyzing}
-              className="w-full lg:w-auto px-6 py-2.5 bg-primary-600 text-white rounded-lg lg:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+              className="w-full xl:w-auto px-6 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-sm font-bold hover:bg-primary-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
               {analyzing ? 'Analyzing...' : 'Analyze'}
             </button>
           </div>
@@ -118,7 +118,7 @@ const ReadinessPage = () => {
               </Card>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
                 <Card className="text-center space-y-1"><p className="text-xl font-black text-slate-700 dark:text-white">{readiness.totalAttempts}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Attempts</p></Card>
                 <Card className="text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgQuizScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Avg Quiz</p></Card>
                 <Card className="text-center space-y-1"><p className="text-xl font-black text-black dark:text-white">{readiness.avgTestScore}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Avg Test</p></Card>
@@ -156,7 +156,7 @@ const ReadinessPage = () => {
           {analyzing && !readiness && <ReadinessSkeleton />}
 
           {!readiness && !analyzing && (
-            <Card className="text-center space-y-2 lg:space-y-4">
+            <Card className="text-center space-y-2 xl:space-y-4">
               <BarChart3 className="w-12 h-12 text-slate-300 mx-auto" />
               <h2 className="text-xl font-black text-slate-400">Select an Exam</h2>
               <p className="text-sm text-slate-400">Choose your target exam to see your readiness score based on your quiz and test history.</p>

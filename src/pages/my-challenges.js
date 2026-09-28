@@ -68,19 +68,19 @@ const MyChallengesPage = () => {
             <meta name="robots" content="noindex,nofollow" />
          </Head>
 
-         <div className="container mx-auto py-4 lg:py-4 lg:py-8 space-y-3 lg:space-y-6">
+         <div className="container mx-auto py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view and track your multiplayer challenges.">
                {/* Header */}
-               <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                  <div className="space-y-1 text-center lg:text-left">
-                     <h1 className="text-2xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">My Challenges</h1>
+               <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
+                  <div className="space-y-1 text-center xl:text-left">
+                     <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">My Challenges</h1>
                      <p className="text-sm font-bold text-slate-400">Track the challenges you've sent to friends</p>
                   </div>
                </div>
 
                {/* Results */}
                {challenges.length === 0 ? (
-                  <div className="py-16 text-center space-y-2 lg:space-y-4">
+                  <div className="py-16 text-center space-y-2 xl:space-y-4">
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <Swords className="w-10 h-10 text-slate-300" />
                      </div>
@@ -88,7 +88,7 @@ const MyChallengesPage = () => {
                      <p className="text-sm text-slate-500">Take a quiz and challenge your friends to beat your score!</p>
                   </div>
                ) : (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                      {challenges.map((challenge, idx) => {
                         const quiz = challenge.quiz || {};
                         const hostScore = challenge.hostAttempt?.score || 0;
@@ -118,7 +118,7 @@ const MyChallengesPage = () => {
                                        </button>
                                     </div>
 
-                                    <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-lg lg:rounded-xl">
+                                    <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-lg xl:rounded-xl">
                                        <div className="flex-1">
                                           <div className="text-[10px] font-bold text-slate-400 uppercase">Your Score</div>
                                           <div className="text-lg font-black text-black dark:text-white">{Math.round(hostPercentage)}%</div>

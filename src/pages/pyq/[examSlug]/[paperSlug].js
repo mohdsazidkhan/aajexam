@@ -98,11 +98,11 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                 schemas={schemas}
             />
 
-            <div className="py-4 lg:py-8 min-h-screen font-outfit relative overflow-hidden">
+            <div className="py-4 xl:py-8 min-h-screen font-outfit relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="py-0 lg:py-6 relative">
+                <div className="py-0 xl:py-6 relative">
                     {/* Breadcrumb */}
                     <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
                         <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
@@ -115,7 +115,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     </nav>
 
                     {/* Hero */}
-                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800">
+                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 xl:p-12 shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-3 flex-wrap mb-6">
                             <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">PYQ {paper.pyqYear || ''}</span>
                             {paper.pyqShift && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{paper.pyqShift}</span>}
@@ -123,14 +123,14 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                             {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">Free</span>}
                         </div>
 
-                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
+                        <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
                             {paper.title}
                         </h1>
-                        <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-4xl">
+                        <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-4xl">
                             Attempt the official {examName} previous year question paper{yearLabel}{shiftLabel} as a free, timed mock test on AajExam. Get instant scoring, sectional analysis, and detailed solutions for every question.
                         </p>
 
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 mb-8">
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
                                 <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.questionCount || 0}</div>
@@ -162,19 +162,19 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     </header>
 
                     {/* About this paper — long-form intro for SEO */}
-                    <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
-                        <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
+                    <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
+                        <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight flex items-center">
                             <FaBookOpen className="text-primary-600 mr-3" /> About This Paper
                         </h2>
-                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base lg:text-lg whitespace-pre-line">
+                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                             {intro}
                         </div>
                     </section>
 
                     {/* Section breakdown */}
                     {pattern?.sections?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
-                            <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                                 Exam Pattern & Sections
                             </h2>
                             <div className="overflow-x-auto rounded-2xl border-2 border-slate-200 dark:border-slate-700">
@@ -204,8 +204,8 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Sample questions */}
                     {sampleQuestions?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
-                            <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">
                                 Sample Questions with Answers
                             </h2>
                             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-8">
@@ -213,7 +213,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                             </p>
                             <div className="space-y-6">
                                 {sampleQuestions.map((q, idx) => (
-                                    <article key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 lg:p-6 border-2 border-slate-100 dark:border-slate-800">
+                                    <article key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 xl:p-6 border-2 border-slate-100 dark:border-slate-800">
                                         <div className="flex items-start gap-3 mb-4">
                                             <span className="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-black text-sm">{idx + 1}</span>
                                             <div className="flex-1 space-y-2">
@@ -255,14 +255,14 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 ))}
                             </div>
                             {/* ── Register Gate CTA ── */}
-                            <div className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-primary-500/30 bg-slate-900 p-6 lg:p-10 text-white">
+                            <div className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-primary-500/30 bg-slate-900 p-6 xl:p-10 text-white">
                                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] pointer-events-none" />
-                                <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-6">
+                                <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center gap-6">
                                     <div className="flex-1 space-y-3">
                                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black text-primary-400 uppercase tracking-wider">
                                             <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" /> Free account required
                                         </div>
-                                        <h3 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">
+                                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">
                                             Attempt All {paper.questionCount || 0} Questions
                                         </h3>
                                         <p className="text-sm font-bold text-slate-400 max-w-lg">
@@ -280,7 +280,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="flex flex-col gap-3 w-full lg:w-auto lg:min-w-[220px]">
+                                    <div className="flex flex-col gap-3 w-full xl:w-auto xl:min-w-[220px]">
                                         <button
                                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
                                             className="w-full px-8 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm border-b-2 border-primary-600 active:translate-y-0.5"
@@ -300,16 +300,16 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     )}
 
                     {/* ── Sticky bottom CTA (mobile) ── */}
-                    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t-2 border-slate-200 dark:border-slate-800 p-4 flex gap-3 shadow-sm">
+                    <div className="fixed bottom-0 left-0 right-0 z-40 xl:hidden bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t-2 border-slate-200 dark:border-slate-800 p-4 flex gap-3 shadow-sm">
                         <button
                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
-                            className="flex-1 py-3 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg lg:rounded-xl text-xs shadow-sm transition-all"
+                            className="flex-1 py-3 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg xl:rounded-xl text-xs shadow-sm transition-all"
                         >
                             Attempt Free →
                         </button>
                         <button
                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
-                            className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-lg lg:rounded-xl text-xs transition-all"
+                            className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-lg xl:rounded-xl text-xs transition-all"
                         >
                             Log In
                         </button>
@@ -318,14 +318,14 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {/* FAQ */}
                     {faqs?.length > 0 && (
 
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
-                            <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                                 Frequently Asked Questions
                             </h2>
-                            <div className="space-y-2 lg:space-y-4">
+                            <div className="space-y-2 xl:space-y-4">
                                 {faqs.map((f, i) => (
                                     <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                                        <summary className="font-black text-slate-900 dark:text-white text-base lg:text-lg uppercase tracking-tight">
+                                        <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">
                                             {f.question}
                                         </summary>
                                         <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">
@@ -339,11 +339,11 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                     {/* Related papers */}
                     {related?.length > 0 && (
-                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 lg:py-8">
-                            <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                        <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                                 More {examName} PYQ Papers
                             </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                                 {related.map((r) => (
                                     <Link key={r._id} href={`/pyq/${exam.slug}/${r.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
                                         <div className="flex items-center gap-2 mb-2 flex-wrap">

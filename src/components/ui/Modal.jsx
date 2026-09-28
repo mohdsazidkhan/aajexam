@@ -43,8 +43,8 @@ const Modal = ({
 
   const sizes = {
     sm: 'max-w-md w-[90vw]',
-    lg: 'max-w-xl w-[95vw]',
-    lg: 'max-w-3xl w-[95vw]',
+    xl: 'max-w-xl w-[95vw]',
+    xl: 'max-w-3xl w-[95vw]',
     xl: 'max-w-5xl w-[95vw]',
     fullscreen: 'max-w-none w-full h-full rounded-none',
   };
@@ -107,7 +107,7 @@ const Modal = ({
             exit="exit"
             className={`
               relative bg-white dark:bg-slate-900              ${sizes[size]} 
-              ${size === 'fullscreen' ? 'rounded-none' : 'rounded-[3rem] lg:rounded-[4.5rem]'} 
+              ${size === 'fullscreen' ? 'rounded-none' : 'rounded-[3rem] xl:rounded-[4.5rem]'} 
               border-2 border-slate-200 dark:border-slate-800              ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-sm'} 
               transition-all duration-300 font-outfit overflow-hidden
               ${className}
@@ -117,7 +117,7 @@ const Modal = ({
           >
             {/* Header Stats */}
             {(title || showCloseButton) && (
-              <div className="flex items-center justify-between p-10 lg:p-14 pb-6 lg:pb-8 border-b-2 border-slate-100 dark:border-slate-700/50">
+              <div className="flex items-center justify-between p-10 xl:p-14 pb-6 xl:pb-8 border-b-2 border-slate-100 dark:border-slate-700/50">
                 <div className="flex items-center gap-6">
                   {Icon && (
                     <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[1.5rem] flex items-center justify-center border-2 border-primary-500/20">
@@ -125,7 +125,7 @@ const Modal = ({
                     </div>
                   )}
                   <div className="space-y-1 text-left">
-                    {title && <h2 className={`text-xl lg:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none ${titleClassName}`}>{title}</h2>}
+                    {title && <h2 className={`text-xl xl:text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none ${titleClassName}`}>{title}</h2>}
                     {subtitle && <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-400">{subtitle}</p>}
                   </div>
                 </div>
@@ -143,7 +143,7 @@ const Modal = ({
             )}
 
             {/* Modal Content */}
-            <div className={`p-10 lg:p-14 pt-8 lg:pt-10 overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : 'max-h-[75vh]'}`}>
+            <div className={`p-10 xl:p-14 pt-8 xl:pt-10 overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : 'max-h-[75vh]'}`}>
               {children}
             </div>
 

@@ -34,7 +34,7 @@ function Error({ statusCode }) {
             </svg>
           </div>
 
-          <h1 className="text-2xl lg:text-5xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
+          <h1 className="text-2xl xl:text-5xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
             {statusCode ? `Error ${statusCode}` : 'Something Went Wrong'}
           </h1>
 

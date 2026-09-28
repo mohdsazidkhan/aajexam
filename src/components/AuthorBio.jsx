@@ -2,16 +2,16 @@
 
 const AuthorBio = () => {
     return (
-        <div className="mt-12 p-4 md:p-8 lg:p-12 bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
+        <div className="mt-12 p-4 md:p-8 xl:p-12 bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
             {/* Decorative background */}
-            <div className="absolute top-0 right-0 w-24 lg:w-48 h-24 lg:h-48 bg-primary-500/5 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors" />
+            <div className="absolute top-0 right-0 w-24 xl:w-48 h-24 xl:h-48 bg-primary-500/5 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none group-hover:bg-primary-500/10 transition-colors" />
 
-            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 relative z-10">
-                <div className="w-20 h-20 rounded-2xl bg-primary-600 shrink-0 flex items-center justify-center text-white text-xl lg:text-3xl font-black shadow-sm border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform">
+            <div className="flex flex-col xl:flex-row items-center xl:items-start gap-8 relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-primary-600 shrink-0 flex items-center justify-center text-white text-xl xl:text-3xl font-black shadow-sm border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform">
                     S
                 </div>
 
-                <div className="flex-1 text-center lg:text-left">
+                <div className="flex-1 text-center xl:text-left">
                     <h3 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mb-4">
                         Curator Intelligence
                     </h3>

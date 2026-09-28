@@ -46,20 +46,20 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-center justify-center z-[9999] p-4 font-outfit">
-      <div className="bg-background-surface rounded-[2.5rem] p-4 lg:p-8 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
+      <div className="bg-background-surface rounded-[2.5rem] p-4 xl:p-8 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 lg:w-20 h-10 lg:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
-            <FaSchool className="text-white text-xl lg:text-3xl" />
+          <div className="w-10 xl:w-20 h-10 xl:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
+            <FaSchool className="text-white text-xl xl:text-3xl" />
           </div>
 
-          <h2 className="text-md md:text-xl lg:text-2xl font-black text-content-primary mb-3 lg:mb-6 uppercase tracking-tighter">
+          <h2 className="text-md md:text-xl xl:text-2xl font-black text-content-primary mb-3 xl:mb-6 uppercase tracking-tighter">
             Exam <span className="text-primary-600">Practice</span>
           </h2>
 
           {/* Test Info */}
-          <div className="bg-background-surface-secondary rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
-            <h3 className="text-content-primary text-sm lg:text-md mb-3 lg:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
+          <div className="bg-background-surface-secondary rounded-[1rem] xl:rounded-[2rem] p-3 xl:p-6 mb-3 xl:mb-6 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
+            <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
             </h3>
 
             {/* Subscription Info */}
@@ -85,26 +85,26 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{categoryName}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{examTitle}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
+                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{pattern.totalMarks} Marks</span>
@@ -112,7 +112,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg lg:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
+                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
@@ -121,7 +121,7 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg lg:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                  <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest text-center">
@@ -134,7 +134,7 @@ const TestStartModal = ({
 
           {/* Sections Preview */}
           {sections.length > 0 && (
-            <div className="bg-white dark:bg-slate-800/30 rounded-[1rem] lg:rounded-[2rem] p-3 lg:p-6 mb-3 lg:mb-6 border-2 border-slate-200/50 dark:border-slate-700/30">
+            <div className="bg-white dark:bg-slate-800/30 rounded-[1rem] xl:rounded-[2rem] p-3 xl:p-6 mb-3 xl:mb-6 border-2 border-slate-200/50 dark:border-slate-700/30">
               <h4 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.3em] mb-6 text-center flex items-center justify-center gap-2">
                 <FaList className="w-3 h-3" />
                 Exam Stages ({sections.length})
@@ -192,7 +192,7 @@ const TestStartModal = ({
                   <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />
                 )}
               </div>
-              <span className="text-[11px] lg:text-xs font-black text-content-primary uppercase tracking-widest text-left leading-relaxed">
+              <span className="text-[11px] xl:text-xs font-black text-content-primary uppercase tracking-widest text-left leading-relaxed">
                 I have read and agree to the test instructions
               </span>
             </label>

@@ -160,7 +160,7 @@ const AdminReferralAnalytics = () => {
         {
             key: 'user', header: 'User', render: (_, user) => (
                 <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
+                    <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm group-hover:bg-primary-700 transition-all uppercase">
                         {user.name?.[0]?.toUpperCase()}
                     </div>
                     <div>
@@ -208,7 +208,7 @@ const AdminReferralAnalytics = () => {
                 placeholder="Search users..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
             />
         </div>
     );
@@ -261,7 +261,7 @@ const AdminReferralAnalytics = () => {
         <button
             onClick={exportToCSV}
             disabled={analytics.length === 0}
-            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
+            className="w-full flex items-center justify-center gap-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm shrink-0 disabled:opacity-30"
         >
             <Download className="w-4 h-4" /> Export to CSV
         </button>
@@ -296,7 +296,7 @@ const AdminReferralAnalytics = () => {
 
     if (loading && analytics.length === 0) {
         return (
-            <div className="min-h-screen p-3 lg:p-8">
+            <div className="min-h-screen p-3 xl:p-8">
                 <AdminDashboardSkeleton />
             </div>
         );
@@ -311,7 +311,7 @@ const AdminReferralAnalytics = () => {
                     {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
                     {/* Summary Visualization */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-0 lg:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 lg:p-0 p-2">
+                    <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 mb-4 shrink-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
                         {[
                             { label: "Total Users", value: pagination.total, icon: Users },
                             { label: "Active Referrers", value: summary.usersWithReferrals, icon: UserPlus },
@@ -336,10 +336,10 @@ const AdminReferralAnalytics = () => {
                                 key="empty"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
                             >
-                                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
+                                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-8" />
+                                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO DATA FOUND</h3>
                                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No referral data found for the selected filters.</p>
                             </motion.div>
                         ) : (
@@ -352,7 +352,7 @@ const AdminReferralAnalytics = () => {
                                 <div className="flex-1 min-h-0 overflow-auto">
                                 {/* Grid Visualization */}
                                 {viewMode === 'grid' && (
-                                    <div className="grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+                                    <div className="grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start">
                                         {analytics.map((user, i) => (
                                             <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
                                                 <div className="flex items-start justify-between gap-2">
@@ -386,7 +386,7 @@ const AdminReferralAnalytics = () => {
                                 {viewMode === 'list' && (
                                     <div className="h-full overflow-auto space-y-3">
                                         {analytics.map((user, i) => (
-                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
+                                            <div key={user._id || i} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-4">
                                                 <div className="relative w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-xl flex items-center justify-center shrink-0 font-black text-sm">
                                                     {user.name?.[0]?.toUpperCase() || 'U'}
                                                     <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{i + 1 + (pagination.page - 1) * pagination.limit}</span>

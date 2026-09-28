@@ -136,7 +136,7 @@ const AdminWithdrawRequests = () => {
     {
       key: 'status', header: 'Status', render: (_, req) => (
         <div className="space-y-3">
-          <div className={`px-4 py-1 rounded-lg lg:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
+          <div className={`px-4 py-1 rounded-lg xl:rounded-xl text-[9px] font-black uppercase inline-flex items-center gap-2 border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
               req.status === 'approved' ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' :
                 req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' :
                   'bg-primary-500/10 text-primary-600 border-primary-500/20'
@@ -154,7 +154,7 @@ const AdminWithdrawRequests = () => {
             </div>
           )}
           {req.status === 'approved' && (
-            <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="w-full py-2 bg-primary-600 text-white rounded-lg lg:rounded-xl text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
+            <motion.button whileHover={{ scale: 1.02 }} onClick={() => updateStatus(req._id, 'paid')} className="w-full py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest shadow-sm flex items-center justify-center gap-2">
               <Send className="w-3 h-3" /> Mark as Paid
             </motion.button>
           )}
@@ -164,12 +164,12 @@ const AdminWithdrawRequests = () => {
   ];
 
   const statusFilterButtons = (
-    <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
+    <div className="flex flex-wrap items-center gap-2 w-full xl:w-auto">
       {statusOptions.map((opt) => (
         <button
           key={opt.value}
           onClick={() => { setStatus(opt.value); setPage(1); }}
-          className={`px-3 py-2 rounded-lg lg:rounded-xl border-2 transition-all flex items-center gap-2 relative group overflow-hidden shrink-0 ${status === opt.value
+          className={`px-3 py-2 rounded-lg xl:rounded-xl border-2 transition-all flex items-center gap-2 relative group overflow-hidden shrink-0 ${status === opt.value
               ? 'bg-white dark:bg-primary-600 border-primary-600 dark:border-primary-600 shadow-sm'
               : 'bg-white/50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-primary-500/30'
             }`}
@@ -187,7 +187,7 @@ const AdminWithdrawRequests = () => {
   );
 
   const searchFilterInput = (
-    <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search requests..." className="w-full lg:w-64" compact />
+    <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search requests..." className="w-full xl:w-64" compact />
   );
 
   const viewToggleButtons = (
@@ -234,21 +234,21 @@ const AdminWithdrawRequests = () => {
           {loading ? (
             <AdminTableSkeleton showHeader={false} showFilters={false} />
           ) : items.length === 0 ? (
-            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
-              <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 lg:mb-8 opacity-20" />
-              <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Withdrawal Requests</h3>
+            <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-200 dark:border-white/10 p-24 text-center">
+              <CreditCard className="w-20 h-20 text-slate-300 mx-auto mb-4 xl:mb-8 opacity-20" />
+              <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">No Withdrawal Requests</h3>
               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest">No pending withdrawal requests at this time.</p>
             </div>
           ) : (
             <motion.div key={viewMode} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex-1 min-h-0 overflow-auto flex flex-col">
               {viewMode === 'table' ? (
-                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm selection:bg-primary-500/30 flex-1 min-h-0 overflow-auto flex flex-col">
+                <div className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm selection:bg-primary-500/30 flex-1 min-h-0 overflow-auto flex flex-col">
                   <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} fillHeight />
                 </div>
               ) : viewMode === 'list' ? (
                 <div className="flex-1 min-h-0 overflow-auto space-y-3">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-white dark:bg-white/5 rounded-lg lg:rounded-xl border-2 border-slate-100 dark:border-white/10 p-3 lg:p-4 shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }} className="bg-white dark:bg-white/5 rounded-lg xl:rounded-xl border-2 border-slate-100 dark:border-white/10 p-3 xl:p-4 shadow-sm flex flex-col sm:flex-row sm:items-center gap-3 hover:border-primary-500/20 transition-all">
                       <div className="flex items-center gap-3 flex-1 min-w-0">
                         <div className="relative w-10 h-10 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center font-black text-xs uppercase shrink-0">
                           {req.userId?.name?.[0] || 'U'}
@@ -306,11 +306,11 @@ const AdminWithdrawRequests = () => {
                   ))}
                 </div>
               ) : (
-                <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8">
+                <div className="flex-1 min-h-0 overflow-auto grid content-start items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-8">
                   {items.map((req, idx) => (
-                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg lg:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 lg:p-8 shadow-sm relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
+                    <motion.div key={req._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }} className="bg-white dark:bg-white/5 backdrop-blur-3xl rounded-lg xl:rounded-xl xl:rounded-[3rem] border-2 border-slate-100 dark:border-white/10 p-3 xl:p-8 shadow-sm relative font-outfit overflow-hidden group hover:border-primary-500/20 transition-all">
                       <div className="absolute top-0 left-0 w-full h-1.5 bg-primary-600" />
-                      <div className="flex justify-between items-start mb-4 lg:mb-8">
+                      <div className="flex justify-between items-start mb-4 xl:mb-8">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-black italic shadow-sm text-xs">{req.userId?.name?.[0] || 'U'}</div>
                           <div>
@@ -318,10 +318,10 @@ const AdminWithdrawRequests = () => {
                             <div className="text-[9px] font-black text-slate-400 tracking-widest uppercase">{req.requestType} wallet</div>
                           </div>
                         </div>
-                        <div className={`px-3 py-1 rounded-lg lg:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
+                        <div className={`px-3 py-1 rounded-lg xl:rounded-xl text-[8px] font-black uppercase border-2 ${req.status === 'pending' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : req.status === 'rejected' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-primary-500/10 text-primary-600 border-primary-500/20'}`}>{req.status === 'pending' ? 'Pending' : req.status === 'approved' ? 'Approved' : req.status === 'rejected' ? 'Rejected' : req.status === 'paid' ? 'Paid' : req.status}</div>
                       </div>
 
-                      <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 lg:mb-8 border-2 border-slate-100 dark:border-white/5">
+                      <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-6 mb-4 xl:mb-8 border-2 border-slate-100 dark:border-white/5">
                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Withdrawal Amount</div>
                         <div className="text-3xl font-black text-primary-600 italic tracking-tighter leading-none mb-4">{formatCurrency(req.amount)}</div>
                         <div className="pt-4 border-t-2 border-slate-100 dark:border-white/5">

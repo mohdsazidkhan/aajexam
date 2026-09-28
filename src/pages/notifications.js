@@ -105,9 +105,9 @@ const NotificationsPage = () => {
       <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
       <div className="container mx-auto py-12 space-y-10 mt-0">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center lg:text-left">
-            <h1 className="text-2xl lg:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center lg:justify-start">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center xl:text-left">
+            <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center xl:justify-start">
               Notifications {unreadCount > 0 && <span className="bg-primary-600 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
             </h1>
             <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Updates and reminders from AajExam</p>
@@ -122,12 +122,12 @@ const NotificationsPage = () => {
         <Card className="overflow-hidden">
           <AnimatePresence mode="popLayout">
             {notifications.length === 0 ? (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 lg:py-8 text-center space-y-3 lg:space-y-6">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">
                 <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                   <Inbox className="w-10 h-10 text-gray-400" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase">Inbox Empty</h3>
+                  <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">Inbox Empty</h3>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">You&apos;re all caught up with your academic updates!</p>
                 </div>
               </motion.div>
@@ -138,9 +138,9 @@ const NotificationsPage = () => {
                     key={n.id || idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className={`group relative p-4 lg:p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex flex-col lg:flex-row gap-3 lg:gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
+                    className={`group relative p-4 xl:p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex flex-col xl:flex-row gap-3 xl:gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
                   >
-                    <div className={`shrink-0 p-3 lg:p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-sm' : ''}`}>
+                    <div className={`shrink-0 p-3 xl:p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-sm' : ''}`}>
                       {getIcon(n.type)}
                     </div>
 
@@ -157,8 +157,8 @@ const NotificationsPage = () => {
                     </div>
 
                     <div className="flex items-center gap-1 shrink-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg lg:rounded-xl transition-colors" aria-label="Mark as read"><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg lg:rounded-xl transition-colors" aria-label="Delete notification"><Trash2 className="w-4 h-4" /></button>
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" aria-label="Mark as read"><Eye className="w-4 h-4" /></button>}
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label="Delete notification"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

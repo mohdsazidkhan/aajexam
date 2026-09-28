@@ -15,7 +15,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
   };
 
   return (
-    <div className="font-outfit space-y-2 lg:space-y-4">
+    <div className="font-outfit space-y-2 xl:space-y-4">
       <button
         onClick={handlePayuPayment}
         disabled={loading}
@@ -52,7 +52,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
       {paymentData?.txnid && (
         <div className="p-5 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex items-center gap-3 text-primary-600">
-            <div className="w-10 h-10 bg-primary-600 rounded-lg lg:rounded-xl flex items-center justify-center text-white shadow-sm">
+            <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center text-white shadow-sm">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>

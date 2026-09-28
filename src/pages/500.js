@@ -39,7 +39,7 @@ export default function Custom500() {
             500
           </h1>
 
-          <h2 className="text-xl lg:text-2xl font-black text-slate-800 dark:text-slate-200 mb-4 uppercase tracking-tight">
+          <h2 className="text-xl xl:text-2xl font-black text-slate-800 dark:text-slate-200 mb-4 uppercase tracking-tight">
             Something went wrong
           </h2>
 

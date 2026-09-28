@@ -35,12 +35,12 @@ export default function Subjects({ subjects = [] }) {
       />
       <SubjectListPage />
 
-      <div className="px-3 lg:px-0 pb-10">
+      <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection
           title="All subjects"
           intro="Every subject we cover, with free topic-wise MCQs, study notes and timed practice quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams."
           groups={[{ items: subjects.map((s) => ({ href: `/subjects/${s.slug}`, name: s.name, meta: s.topicCount ? `${s.topicCount} topics` : null })) }]}
-          columns="sm:grid-cols-2 lg:grid-cols-4"
+          columns="sm:grid-cols-2 xl:grid-cols-4"
         />
       </div>
     </>

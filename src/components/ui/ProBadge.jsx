@@ -7,14 +7,14 @@ const ProBadge = ({ className = '', size = 'md' }) => {
     xs: 'text-[8px] px-1.5 py-0.5 gap-1',
     sm: 'text-[10px] px-2 py-0.5 gap-1',
     md: 'text-[11px] px-2.5 py-1 gap-1.5',
-    lg: 'text-xs px-3 py-1.5 gap-2',
+    xl: 'text-xs px-3 py-1.5 gap-2',
   };
 
   const iconSizes = {
     xs: 'w-2 h-2',
     sm: 'w-2.5 h-2.5',
     md: 'w-3 h-3',
-    lg: 'w-4 h-4',
+    xl: 'w-4 h-4',
   };
 
   return (

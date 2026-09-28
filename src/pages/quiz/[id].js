@@ -89,7 +89,7 @@ export default function QuizPreview({
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="py-4 lg:py-6 relative space-y-8">
+        <div className="py-4 xl:py-6 relative space-y-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
@@ -112,32 +112,32 @@ export default function QuizPreview({
           </nav>
 
           {/* Hero — server-rendered */}
-          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 lg:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
+          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {subjectName && <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{subjectName}</span>}
               {topicName && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{topicName}</span>}
               {quiz?.difficulty && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{quiz.difficulty}</span>}
             </div>
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+            <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {quizTitle}
             </h1>
-            <p className="text-md lg:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-5">
+            <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-5">
               {quiz?.description ? quiz.description.slice(0, 220) : `Free practice quiz on ${quizTitle} with detailed solutions for government exam preparation.`}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
               {quiz?.duration && (
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                   <div className="text-lg font-black text-slate-900 dark:text-white">{quiz.duration}</div>
                   <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Minutes</div>
                 </div>
               )}
               {quiz?.totalMarks && (
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                   <div className="text-lg font-black text-slate-900 dark:text-white">{quiz.totalMarks}</div>
                   <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Marks</div>
                 </div>
               )}
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg lg:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-primary-600">FREE</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
               </div>
@@ -146,18 +146,18 @@ export default function QuizPreview({
 
           {/* About — long-form intro */}
           {aboutText && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 About This Quiz
               </h2>
-              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base lg:text-lg whitespace-pre-line">
+              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
               </div>
             </section>
           )}
 
           {seriesHref && (
-            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 lg:py-8">
+            <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 xl:py-8">
               <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
                 This is one set from a larger bank.{' '}
                 <Link href={seriesHref.href} className="text-primary-600 dark:text-primary-400 underline">
@@ -180,14 +180,14 @@ export default function QuizPreview({
 
           {/* FAQ */}
           {faqs.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-2 lg:space-y-4">
+              <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
                   <details key={i} className="group bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-slate-100 dark:border-slate-800 p-5 cursor-pointer">
-                    <summary className="font-black text-slate-900 dark:text-white text-base lg:text-lg uppercase tracking-tight">{f.question}</summary>
+                    <summary className="font-black text-slate-900 dark:text-white text-base xl:text-lg uppercase tracking-tight">{f.question}</summary>
                     <p className="mt-3 text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-line">{f.answer}</p>
                   </details>
                 ))}
@@ -197,11 +197,11 @@ export default function QuizPreview({
 
           {/* Related quizzes */}
           {relatedQuizzes.length > 0 && (
-            <section className="rounded-[3rem] shadow-sm px-0 py-4 lg:py-8">
-              <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+            <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
+              <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
                 Related {topicName || subjectName || ''} Quizzes
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {relatedQuizzes.map((q) => (
                   <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
                     <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{q.title}</div>

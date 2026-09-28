@@ -89,10 +89,10 @@ const AnnounceModal = ({ isOpen, onClose, onSent }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl lg:rounded-[2rem] border-2 border-slate-200 dark:border-slate-800 shadow-sm p-5 lg:p-8"
+            className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2rem] border-2 border-slate-200 dark:border-slate-800 shadow-sm p-5 xl:p-8"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg lg:text-2xl font-black uppercase italic tracking-tighter flex items-center gap-2">
+              <h3 className="text-lg xl:text-2xl font-black uppercase italic tracking-tighter flex items-center gap-2">
                 <Megaphone className="w-5 h-5 text-primary-600" /> Announce
               </h3>
               <button onClick={handleClose} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors">
@@ -111,7 +111,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent }) => {
                     setSpecificUser(null);
                     setSelectedUsers([]);
                   }}
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                 >
                   <option value="all">All users</option>
                   <option value="pro">PRO subscribers only</option>
@@ -140,7 +140,7 @@ const AnnounceModal = ({ isOpen, onClose, onSent }) => {
                   onChange={(e) => setComposeForm((f) => ({ ...f, title: e.target.value }))}
                   maxLength={200}
                   placeholder="e.g. New PYQ papers added!"
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                 />
               </div>
               <div>
@@ -151,13 +151,13 @@ const AnnounceModal = ({ isOpen, onClose, onSent }) => {
                   maxLength={500}
                   rows={4}
                   placeholder="What do you want to tell them?"
-                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
+                  className="w-full px-3 py-2.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-600"
                 />
               </div>
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary-600 text-white rounded-lg lg:rounded-xl font-black uppercase text-xs tracking-widest hover:bg-primary-700 transition-all disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary-600 text-white rounded-lg xl:rounded-xl font-black uppercase text-xs tracking-widest hover:bg-primary-700 transition-all disabled:opacity-50"
               >
                 <Send className="w-4 h-4" /> {sending ? 'Sending...' : 'Send Announcement'}
               </button>

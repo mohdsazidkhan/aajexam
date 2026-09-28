@@ -165,12 +165,12 @@ const StudentSidebar = () => {
 
   return (
     <div
-      className={`fixed left-0 top-12 lg:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
+      className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-300 ease-in-out bg-white dark:bg-slate-900 border-r-2 border-slate-100 dark:border-slate-800 shadow-[30px_0_60px_rgba(0,0,0,0.1)] dark:shadow-[30px_0_60px_rgba(0,0,0,0.3)] overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'
         }`}
     >
 
       {/* Navigation */}
-      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-0 space-y-2 lg:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
@@ -190,7 +190,7 @@ const StudentSidebar = () => {
                       )}
                       <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
-                        <span className="text-[11px] lg:text-[13px] font-bold tracking-wide uppercase">{item.label}</span>
+                        <span className="text-[11px] xl:text-[13px] font-bold tracking-wide uppercase">{item.label}</span>
                       </div>
                       {item.isPro && (
                         <ProBadge size="xs" className="relative z-10" />
@@ -208,7 +208,7 @@ const StudentSidebar = () => {
       <div className="p-4 border-t border-slate-100 dark:border-white/5 min-w-[240px]">
         <button
           onClick={() => secureLogout(router)}
-          className="w-full py-3 rounded-lg lg:rounded-xl bg-red-500 hover:bg-red-600 text-white text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group"
+          className="w-full py-3 rounded-lg xl:rounded-xl bg-red-500 hover:bg-red-600 text-white text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group"
         >
           <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
         </button>

@@ -86,13 +86,13 @@ const WelcomePromoModalInner = ({ onClose }) => {
               <Gift className="w-6 h-6 text-primary-600" />
             </div>
 
-            <h2 className="text-lg lg:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
+            <h2 className="text-lg xl:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
               Sabke Liye PRO Ab FREE Hai!
             </h2>
             <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2 max-w-sm mx-auto">
               Pehle se Register hain? Aapko PRO already FREE mil chuka hai, bas Login karein. Naye Hain? Sign Up karein aur turant PRO FREE paayein.
             </p>
-            <p className="text-xl lg:text-2xl font-black font-outfit uppercase tracking-tight text-primary-600 mb-4">
+            <p className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-primary-600 mb-4">
               31 Dec 2026 Tak FREE
             </p>
 

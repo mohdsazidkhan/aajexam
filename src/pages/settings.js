@@ -123,7 +123,7 @@ const SettingsPage = () => {
   if (loading) {
     return (
       <MobileAppWrapper title="Account Settings">
-        <div className="container mx-auto mt-4 py-0 lg:py-8"><ProfileSkeleton /></div>
+        <div className="container mx-auto mt-4 py-0 xl:py-8"><ProfileSkeleton /></div>
       </MobileAppWrapper>
     );
   }
@@ -133,11 +133,11 @@ const SettingsPage = () => {
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
-        <div className="container mx-auto mt-4 space-y-6 lg:space-y-12">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-6">
-            <div className="space-y-2 lg:space-y-4">
-              <h1 className="text-3xl lg:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
-              <p className="text-sm lg:text-base font-bold text-content-secondary max-w-xl">
+        <div className="container mx-auto mt-4 space-y-6 xl:space-y-12">
+          <div className="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-4 xl:gap-6">
+            <div className="space-y-2 xl:space-y-4">
+              <h1 className="text-3xl xl:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
+              <p className="text-sm xl:text-base font-bold text-content-secondary max-w-xl">
                 Update your profile, add bank details and change your password.
               </p>
             </div>
@@ -147,7 +147,7 @@ const SettingsPage = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3 lg:px-6 py-2.5 rounded-lg lg:rounded-xl text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
+                  className={`flex items-center gap-2 px-3 xl:px-6 py-2.5 rounded-lg xl:rounded-xl text-[10px] uppercase font-black tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${activeTab === tab.id
                     ? 'bg-primary-600 text-white shadow-sm scale-105'
                     : 'text-content-secondary hover:text-primary-600 hover:bg-slate-100 dark:hover:bg-slate-700/50'
                     }`}
@@ -168,12 +168,12 @@ const SettingsPage = () => {
               transition={{ duration: 0.2 }}
             >
               {activeTab === 'profile' && (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                  <div className="lg:col-span-8">
-                    <div className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+                  <div className="xl:col-span-8">
+                    <div className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
-                          <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Your Profile</h2>
+                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Your Profile</h2>
                           <p className="text-sm font-bold text-content-secondary">Keep your details up to date.</p>
                         </div>
                         <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
@@ -182,7 +182,7 @@ const SettingsPage = () => {
                       </div>
 
                       <form onSubmit={handleUpdateProfile} className="space-y-6">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Full name</label>
                             <input className={FIELD_CLASSNAME} value={profile.name || ''} onChange={(event) => setProfile({ ...profile, name: event.target.value })} />
@@ -203,7 +203,7 @@ const SettingsPage = () => {
                             <input disabled className={`${FIELD_CLASSNAME} opacity-60 cursor-not-allowed`} value={profile.username ? `@${profile.username}` : ''} />
                           </div>
 
-                          <div className="space-y-2 lg:col-span-2">
+                          <div className="space-y-2 xl:col-span-2">
                             <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">State & City</label>
                             <StateCitySelect
                               state={profile.state || ''}
@@ -248,7 +248,7 @@ const SettingsPage = () => {
                           <p className="text-[10px] font-semibold text-slate-400 px-1">{(profile.bio || '').length}/100</p>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                           {SOCIAL_FIELDS.map((social) => (
                             <div key={social.key} className="space-y-2">
                               <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1 flex items-center gap-1.5">
@@ -287,8 +287,8 @@ const SettingsPage = () => {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-4 space-y-6">
-                    <Card className="bg-slate-900 border-none text-white rounded-[2.5rem] space-y-2 lg:space-y-4">
+                  <div className="xl:col-span-4 space-y-6">
+                    <Card className="bg-slate-900 border-none text-white rounded-[2.5rem] space-y-2 xl:space-y-4">
                       <div className="flex items-center gap-3">
                         <Info className="w-5 h-5 text-primary-400" />
                         <h3 className="font-outfit font-black tracking-tight text-lg">Why this matters</h3>
@@ -302,12 +302,12 @@ const SettingsPage = () => {
               )}
 
               {activeTab === 'bank' && (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                  <div className="lg:col-span-8">
-                    <div padded={false} className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+                  <div className="xl:col-span-8">
+                    <div padded={false} className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
-                          <h2 className="text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Bank Details</h2>
+                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Bank Details</h2>
                           <p className="text-sm font-bold text-content-secondary">Add your bank account to receive reward money.</p>
                         </div>
                         <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
@@ -316,7 +316,7 @@ const SettingsPage = () => {
                       </div>
 
                       <form onSubmit={handleUpdateBank} className="space-y-6">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Account holder name</label>
                             <input className={FIELD_CLASSNAME} value={bank.accountHolderName || ''} onChange={(event) => setBank({ ...bank, accountHolderName: event.target.value })} />
@@ -345,8 +345,8 @@ const SettingsPage = () => {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-4 space-y-6">
-                    <Card className="rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 lg:space-y-4">
+                  <div className="xl:col-span-4 space-y-6">
+                    <Card className="rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 xl:space-y-4">
                       <CreditCard className="w-10 h-10 mx-auto text-primary-600" />
                       <h3 className="font-outfit font-black tracking-tight text-lg">Secure handling</h3>
                       <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -359,10 +359,10 @@ const SettingsPage = () => {
 
               {activeTab === 'security' && (
                 <div>
-                  <div className="p-4 lg:p-8 space-y-4 lg:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
+                  <div className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                     <div className="flex items-center justify-between gap-4 relative z-10">
                       <div className="space-y-1">
-                        <h2 className="text-xl md:text-xl lg:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
+                        <h2 className="text-xl md:text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
                         <p className="text-sm font-bold text-content-secondary">Use a strong password to keep your account safe.</p>
                       </div>
                       <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
@@ -371,7 +371,7 @@ const SettingsPage = () => {
                     </div>
 
                     <form onSubmit={handleChangePassword} className="space-y-6">
-                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                         {[
                           { id: 'old', label: 'Current password' },
                           { id: 'new', label: 'New password' },

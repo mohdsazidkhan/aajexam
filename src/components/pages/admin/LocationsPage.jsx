@@ -218,7 +218,7 @@ const LocationsPage = () => {
   ];
 
   const tabButtons = (
-    <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-900 rounded-lg lg:rounded-xl w-full lg:w-auto">
+    <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-900 rounded-lg xl:rounded-xl w-full xl:w-auto">
       {[
         { id: 'states', label: 'States', icon: Landmark },
         { id: 'cities', label: 'Cities', icon: MapPin }
@@ -226,7 +226,7 @@ const LocationsPage = () => {
         <button
           key={tab.id}
           onClick={() => setActiveTab(tab.id)}
-          className={`flex-1 lg:flex-none flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === tab.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
+          className={`flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === tab.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
         >
           <tab.icon className="w-3.5 h-3.5" /> {tab.label}
         </button>
@@ -258,10 +258,10 @@ const LocationsPage = () => {
     <>
       <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input type="text" placeholder="Search states..." value={stateSearch} onChange={e => setStateSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+        <input type="text" placeholder="Search states..." value={stateSearch} onChange={e => setStateSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
       </div>
       {viewToggleButtons}
-      <button onClick={openCreateState} className="w-full lg:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <button onClick={openCreateState} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
         <Plus className="w-4 h-4" /> Add State
       </button>
       <Pagination
@@ -280,7 +280,7 @@ const LocationsPage = () => {
     <>
       <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        <input type="text" placeholder="Search cities..." value={citySearch} onChange={e => setCitySearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+        <input type="text" placeholder="Search cities..." value={citySearch} onChange={e => setCitySearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
       </div>
       <StyledSelect
         icon={Landmark}
@@ -288,10 +288,10 @@ const LocationsPage = () => {
         onChange={setCityStateFilter}
         options={[{ value: '', label: 'All States' }, ...stateOptions]}
         placeholder="All States"
-        className="w-full lg:w-56"
+        className="w-full xl:w-56"
       />
       {viewToggleButtons}
-      <button onClick={openCreateCity} className="w-full lg:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-700">
+      <button onClick={openCreateCity} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
         <Plus className="w-4 h-4" /> Add City
       </button>
       <Pagination
@@ -364,7 +364,7 @@ const LocationsPage = () => {
                 <ResponsiveTable data={states} columns={stateColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} emptyMessage="No states found" fillHeight />
               </div>
             ) : viewMode === 'grid' ? (
-              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
                 {states.map((s, idx) => renderGridCard(s, idx, {
                   Icon: Landmark,
                   title: s.name,
@@ -394,7 +394,7 @@ const LocationsPage = () => {
                 <ResponsiveTable data={cities} columns={cityColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} emptyMessage="No cities found" fillHeight />
               </div>
             ) : viewMode === 'grid' ? (
-              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+              <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
                 {cities.map((c, idx) => renderGridCard(c, idx, {
                   Icon: MapPin,
                   title: c.name,

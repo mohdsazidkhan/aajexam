@@ -44,18 +44,18 @@ const ForgotPasswordPage = () => {
   return (
     <MobileAppWrapper showHeader={true} title="Account Recovery">
       <Seo title="Forgot Password – AajExam" description="Reset your AajExam password securely." noIndex={true} canonical="/forgot-password" />
-      <div className="h-auto lg:min-h-screen bg-background-page flex flex-col selection:bg-primary-600 selection:text-white">
-        <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 lg:py-8">
+      <div className="h-auto xl:min-h-screen bg-background-page flex flex-col selection:bg-primary-600 selection:text-white">
+        <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden py-4 xl:py-8">
           {/* --- Background Decorative Icons --- */}
-          <div className="absolute top-20 left-20 opacity-5 rotate-12 hidden lg:block"><ShieldQuestion className="w-64 h-64" /></div>
-          <div className="absolute bottom-20 right-20 opacity-5 -rotate-12 hidden lg:block"><Lock className="w-64 h-64" /></div>
+          <div className="absolute top-20 left-20 opacity-5 rotate-12 hidden xl:block"><ShieldQuestion className="w-64 h-64" /></div>
+          <div className="absolute bottom-20 right-20 opacity-5 -rotate-12 hidden xl:block"><Lock className="w-64 h-64" /></div>
 
-          <Card className="w-full max-w-md p-5 lg:p-10 border-2 shadow-sm relative z-10 space-y-8">
+          <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm relative z-10 space-y-8">
             <div className="text-center space-y-2">
               <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
                 <ShieldQuestion className="w-8 h-8" />
               </div>
-              <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight">Forgot Password</h1>
+              <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">Forgot Password</h1>
               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Get back into your AajExam account</p>
             </div>
 

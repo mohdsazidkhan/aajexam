@@ -311,9 +311,9 @@ const SearchPage = () => {
             const isFollowing = followMap[userId];
             const isThisLoading = followLoading === userId;
             return (
-               <div className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
-                  <Link href={item.username ? `/u/${item.username}` : '#'} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg lg:rounded-xl">
-                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-primary-600 p-[2px] shrink-0">
+               <div className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 transition-colors">
+                  <Link href={item.username ? `/u/${item.username}` : '#'} className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer active:bg-slate-100 dark:active:bg-slate-800 rounded-lg xl:rounded-xl">
+                     <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-primary-600 p-[2px] shrink-0">
                         <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center text-slate-900 dark:text-white font-black text-lg">{(item.name || item.username || 'U').charAt(0).toUpperCase()}</div>
                      </div>
                      <div className="min-w-0 flex-1">
@@ -334,8 +334,8 @@ const SearchPage = () => {
          }
          case 'test':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} onKeyDown={onActivateKey(() => router.push(`/govt-exams/test/${item.slug || item._id}/start`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} onKeyDown={onActivateKey(() => router.push(`/govt-exams/test/${item.slug || item._id}/start`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">{item.duration} min · {item.totalMarks} marks</p>
@@ -347,8 +347,8 @@ const SearchPage = () => {
          case 'examCategory':
          case 'pattern':
             return (
-               <div role="button" tabIndex={0} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} onKeyDown={onActivateKey(() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams'))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} onKeyDown={onActivateKey(() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams'))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
                      <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
@@ -358,8 +358,8 @@ const SearchPage = () => {
             );
          case 'quiz':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/quiz/${item.slug || item._id}`)} onKeyDown={onActivateKey(() => router.push(`/quiz/${item.slug || item._id}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/quiz/${item.slug || item._id}`)} onKeyDown={onActivateKey(() => router.push(`/quiz/${item.slug || item._id}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400">
@@ -376,8 +376,8 @@ const SearchPage = () => {
             );
          case 'subject':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/subjects/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/subjects/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/subjects/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/subjects/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
@@ -387,8 +387,8 @@ const SearchPage = () => {
             );
          case 'topic':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/topics/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/topics/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/topics/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/topics/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
                      <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
@@ -398,8 +398,8 @@ const SearchPage = () => {
             );
          case 'hashtag':
             return (
-               <div role="button" tabIndex={0} onClick={() => goToTag(item.tag)} onKeyDown={onActivateKey(() => goToTag(item.tag))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => goToTag(item.tag)} onKeyDown={onActivateKey(() => goToTag(item.tag))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Hash className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white">#{item.tag}</p>
                      <p className="text-xs text-slate-400">{item.count} question{item.count !== 1 ? 's' : ''}</p>
@@ -409,8 +409,8 @@ const SearchPage = () => {
             );
          case 'blog':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/blog/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/blog/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/blog/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/blog/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
@@ -420,8 +420,8 @@ const SearchPage = () => {
             );
          case 'note':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/notes/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/notes/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/notes/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/notes/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><StickyNote className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.noteType || '').replace('_', ' ')}{item.subject?.name ? ` · ${item.subject.name}` : ''}{item.exam?.name ? ` · ${item.exam.name}` : ''}</p>
@@ -431,8 +431,8 @@ const SearchPage = () => {
             );
          case 'examNews':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/exam-news/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/exam-news/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/exam-news/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/exam-news/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Newspaper className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{(item.type || '').replace('_', ' ')}{item.exam?.name ? ` · ${item.exam.name}` : item.examName ? ` · ${item.examName}` : ''}</p>
@@ -442,8 +442,8 @@ const SearchPage = () => {
             );
          case 'currentAffair':
             return (
-               <div role="button" tabIndex={0} onClick={() => router.push(`/current-affairs/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/current-affairs/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg lg:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
+               <div role="button" tabIndex={0} onClick={() => router.push(`/current-affairs/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/current-affairs/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
+                  <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Globe className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
                      <p className="text-xs text-slate-400 truncate">{item.category || ''}{item.date ? ` · ${new Date(item.date).toLocaleDateString()}` : ''}</p>
@@ -492,12 +492,12 @@ const SearchPage = () => {
          {/* ── Fixed Header: Search bar + Tabs — truly pinned to top on web and mobile ── */}
          <div
             ref={headerRef}
-            className={`fixed ${isAuthenticated() ? 'top-12' : 'top-0'} lg:top-16 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
-               isAuthenticated() && isSidebarOpen ? 'lg:left-60' : ''
+            className={`fixed ${isAuthenticated() ? 'top-12' : 'top-0'} xl:top-16 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
+               isAuthenticated() && isSidebarOpen ? 'xl:left-60' : ''
             }`}
          >
             {/* Search Bar — Instagram style */}
-            <div className="px-3 lg:px-8 pt-3 lg:pt-4 pb-2">
+            <div className="px-3 xl:px-8 pt-3 xl:pt-4 pb-2">
                <form onSubmit={handleSearch} className="flex items-center gap-2">
                   {query && (
                      <button type="button" aria-label="Clear search" onClick={resetToBrowse} className="p-2 shrink-0 -ml-1">
@@ -512,7 +512,7 @@ const SearchPage = () => {
                         autoFocus
                         enterKeyHint="search"
                         inputMode="search"
-                        className="w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2 lg:py-3 pl-9 pr-8 text-sm lg:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
+                        className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2 xl:py-3 pl-9 pr-8 text-sm xl:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
                         placeholder="Search"
                         value={query}
                         onFocus={() => setIsFocused(true)}
@@ -530,7 +530,7 @@ const SearchPage = () => {
 
                      {/* Recent searches — only while focused, before any query is typed */}
                      {isFocused && !query.trim() && recentSearches.length > 0 && (
-                        <div className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg lg:rounded-xl shadow-sm z-50 overflow-hidden">
+                        <div className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg xl:rounded-xl shadow-sm z-50 overflow-hidden">
                            {recentSearches.map((term, i) => (
                               <button
                                  key={i}
@@ -550,12 +550,12 @@ const SearchPage = () => {
 
             {/* Tabs — always visible, right after the search input */}
             <div className="pb-0 border-b border-slate-100 dark:border-slate-800/50">
-               <div className="flex overflow-x-auto no-scrollbar gap-1 px-3 lg:px-8">
+               <div className="flex overflow-x-auto no-scrollbar gap-1 px-3 xl:px-8">
                   {TABS.map(tab => (
                      <button
                         key={tab.key}
                         onClick={() => handleTabChange(tab.key)}
-                        className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider transition-all border-b-2 ${
+                        className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2.5 text-[11px] xl:text-xs font-bold uppercase tracking-wider transition-all border-b-2 ${
                            activeTab === tab.key
                               ? 'text-slate-900 dark:text-white border-slate-900 dark:border-white'
                               : 'text-slate-400 border-transparent'
@@ -571,13 +571,13 @@ const SearchPage = () => {
 
          {/* ── Content — pushed down by the fixed header's real measured height ── */}
          <div className="pb-24" style={{ paddingTop: headerHeight }}>
-            <div className="py-3 lg:py-6">
+            <div className="py-3 xl:py-6">
 
                   {loading ? (
-                     <div className="px-3 lg:px-8"><ListSkeleton rows={6} /></div>
+                     <div className="px-3 xl:px-8"><ListSkeleton rows={6} /></div>
                   ) : activeTab === 'all' ? (
                      /* ══════ ALL TAB — Sectioned Layout ══════ */
-                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2 lg:space-y-4">
+                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2 xl:space-y-4">
 
                         {/* ── Sections, in SECTION_ORDER (Reels rendered as a horizontal-scroll strip) ── */}
                         {SECTION_ORDER.map(key => {
@@ -604,12 +604,12 @@ const SearchPage = () => {
                            }
 
                            return (
-                              <div key={key} className="px-3 lg:px-8">
+                              <div key={key} className="px-3 xl:px-8">
                                  <div className="flex items-center gap-1.5 mb-2">
                                     <Icon className={`w-4 h-4 ${meta.color}`} />
                                     <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{meta.label}</h3>
                                  </div>
-                                 <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
+                                 <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
                                     {section.items.map((item, idx) => <ResultRow item={item} key={item._id || item.tag || idx} />)}
                                  </div>
                                  {section.hasMore && (
@@ -633,7 +633,7 @@ const SearchPage = () => {
 
                   ) : activeTab === 'reel' ? (
                      /* ══════ REELS TAB — Full Grid ══════ */
-                     <div className="px-3 lg:px-8">
+                     <div className="px-3 xl:px-8">
                         {currentTabData.items.length === 0 ? (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto"><Play className="w-7 h-7 text-slate-300" /></div>
@@ -642,7 +642,7 @@ const SearchPage = () => {
                            </div>
                         ) : (
                            <>
-                              <div className="grid grid-cols-3 lg:grid-cols-4 gap-px lg:gap-0.5 rounded-lg lg:rounded-xl overflow-hidden">
+                              <div className="grid grid-cols-3 xl:grid-cols-4 gap-px xl:gap-0.5 rounded-lg xl:rounded-xl overflow-hidden">
                                  {currentTabData.items.map(reel => renderReelCard(reel, 'grid'))}
                               </div>
                               {currentTabData.hasMore && (
@@ -658,7 +658,7 @@ const SearchPage = () => {
 
                   ) : (
                      /* ══════ OTHER TABS — Infinite-scroll List View ══════ */
-                     <div className="px-3 lg:px-8">
+                     <div className="px-3 xl:px-8">
                         {currentTabData.items.length === 0 ? (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto"><Search className="w-7 h-7 text-slate-300" /></div>
@@ -666,7 +666,7 @@ const SearchPage = () => {
                               <p className="text-xs text-slate-400">Try a different search term</p>
                            </div>
                         ) : (
-                           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
+                           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
                               {currentTabData.items.map((item, idx) => (
                                  <ResultRow item={item} key={item._id || item.tag || idx} />
                               ))}

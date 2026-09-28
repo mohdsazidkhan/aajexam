@@ -87,7 +87,7 @@ export default function ReferralDashboard() {
       header: 'USER',
       render: (_, u) => (
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg lg:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
+          <div className="w-10 h-10 bg-slate-900 dark:bg-white/10 text-white rounded-lg xl:rounded-xl flex items-center justify-center font-black text-xs shadow-sm transition-all uppercase">
             {u.name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div>
@@ -153,7 +153,7 @@ export default function ReferralDashboard() {
       searchTerm={searchTerm}
       onSearchChange={handleSearch}
       placeholder="Search users..."
-      className="w-full lg:w-96"
+      className="w-full xl:w-96"
     />
   );
 
@@ -182,7 +182,7 @@ export default function ReferralDashboard() {
 
   if (loading && referrals.length === 0) {
     return (
-      <div className="min-h-screen p-3 lg:p-8">
+      <div className="min-h-screen p-3 xl:p-8">
         <AdminDashboardSkeleton />
       </div>
     );
@@ -204,10 +204,10 @@ export default function ReferralDashboard() {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
               >
-                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 lg:mb-8" />
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO REFERRALS FOUND</h3>
+                <Users className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4 xl:mb-8" />
+                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">NO REFERRALS FOUND</h3>
                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No users with referral activity were found. Try adjusting your search.</p>
               </motion.div>
             ) : (
@@ -215,7 +215,7 @@ export default function ReferralDashboard() {
                 key="content"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl lg:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
+                className="bg-white/80 dark:bg-white/5 backdrop-blur-3xl rounded-2xl xl:rounded-[3.5rem] border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm h-auto flex flex-col"
               >
                 <ResponsiveTable data={referrals} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
               </motion.div>

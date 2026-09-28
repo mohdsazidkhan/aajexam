@@ -90,13 +90,13 @@ const AppLayout = ({ children }) => {
   if (isBlockedFromAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background-page font-outfit p-4">
-        <div className="max-w-md w-full bg-white dark:bg-slate-900 shadow-sm rounded-[2.5rem] p-5 lg:p-10 border-2 border-slate-200 dark:border-slate-800 text-center">
+        <div className="max-w-md w-full bg-white dark:bg-slate-900 shadow-sm rounded-[2.5rem] p-5 xl:p-10 border-2 border-slate-200 dark:border-slate-800 text-center">
           <div className="flex items-center justify-center w-20 h-20 mx-auto bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-8 shadow-sm border-2 border-white dark:border-slate-800">
             <svg className="w-10 h-10 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h2 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Admin Only</h2>
+          <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Admin Only</h2>
           <p className="text-slate-600 dark:text-slate-400 uppercase tracking-widest text-[10px] font-black leading-relaxed">
             Redirecting you back home...
           </p>
@@ -128,7 +128,7 @@ const AppLayout = ({ children }) => {
             width: shouldShiftContent ? 'calc(100% - 240px)' : '100%',
             transition: 'margin-left 0.3s ease-in-out, width 0.3s ease-in-out',
           }}
-          className="pt-12 lg:pt-16"
+          className="pt-12 xl:pt-16"
         >
           {children}
         </div>
@@ -142,7 +142,7 @@ const AppLayout = ({ children }) => {
     return (
       <div className="fixed inset-0 font-nunito" style={{ overflow: 'hidden', height: '100dvh', touchAction: 'none' }}>
         {showAppNav && !isUserAdmin && (
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <StudentNavbar />
           </div>
         )}
@@ -158,7 +158,7 @@ const AppLayout = ({ children }) => {
           )}
         </AnimatePresence>
         {showAppNav && !isUserAdmin && <StudentSidebar />}
-        <div className="h-full lg:pt-16" style={{ overflow: 'hidden' }}>
+        <div className="h-full xl:pt-16" style={{ overflow: 'hidden' }}>
           {children}
         </div>
         {showAppNav && !isUserAdmin && (
@@ -209,10 +209,10 @@ const AppLayout = ({ children }) => {
         }}
         className={`min-h-screen
           ${showAppNav ?
-            'pt-12 lg:pt-16 pb-10 lg:pb-0' :
-            (isFullscreenPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 lg:pt-16')
+            'pt-12 xl:pt-16 pb-10 xl:pb-0' :
+            (isFullscreenPage ? 'p-0 m-0 overflow-hidden' : 'pt-12 xl:pt-16')
           }`}>
-        <div className={`mx-auto transition-all duration-500 ${isFullscreenPage ? 'max-w-full px-0' : 'container px-4 lg:px-8'}`}>
+        <div className={`mx-auto transition-all duration-500 ${isFullscreenPage ? 'max-w-full px-0' : 'container px-4 xl:px-8'}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={router.pathname}

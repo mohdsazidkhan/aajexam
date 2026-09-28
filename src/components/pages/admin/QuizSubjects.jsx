@@ -104,7 +104,7 @@ const AdminQuizSubjects = () => {
   const searchInput = (
     <div className="relative w-full">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-      <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
+      <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
     </div>
   );
 
@@ -129,7 +129,7 @@ const AdminQuizSubjects = () => {
   );
 
   const addSubjectButton = (
-    <button onClick={openCreate} className="w-full lg:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg lg:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Add Subject</button>
+    <button onClick={openCreate} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600"><Plus className="w-4 h-4" /> Add Subject</button>
   );
 
   const paginationControl = (
@@ -172,7 +172,7 @@ const AdminQuizSubjects = () => {
           <ResponsiveTable data={pagedSubjects} columns={columns} viewModes={['table']} defaultView={'table'} showPagination={false} showViewToggle={false} emptyMessage="No subjects found" fillHeight />
         </div>
       ) : viewMode === 'grid' ? (
-        <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+        <div className="h-auto overflow-auto grid content-start grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-start">
           {filtered.map((sub, idx) => (
             <div key={sub._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
               <div className="flex items-start justify-between gap-2">
@@ -220,7 +220,7 @@ const AdminQuizSubjects = () => {
 
       <AnimatePresence>
       {showModal && (
-        <div className="fixed inset-0 lg:left-64 lg:top-16 z-50">
+        <div className="fixed inset-0 xl:left-64 xl:top-16 z-50">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowModal(false)} className="absolute inset-0 bg-black/50" />
           <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }} className="absolute inset-0 bg-white dark:bg-slate-800 shadow-2xl overflow-hidden flex flex-col">
           <div className="p-6 w-full h-full overflow-y-auto">
@@ -228,11 +228,11 @@ const AdminQuizSubjects = () => {
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Subject</h2>
               <button onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-2 lg:space-y-4">
-              <input required placeholder="Subject Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
-              <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
-              <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm" />
-              <button type="submit" className="w-full bg-primary-600 text-white py-2.5 rounded-lg lg:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create'}</button>
+            <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-4">
+              <input required placeholder="Subject Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+              <input placeholder="Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+              <input type="number" placeholder="Order" value={form.order} onChange={e => setForm({ ...form, order: parseInt(e.target.value) || 0 })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
+              <button type="submit" className="w-full bg-primary-600 text-white py-2.5 rounded-lg xl:rounded-xl font-bold hover:bg-primary-600">{editing ? 'Update' : 'Create'}</button>
             </form>
           </div>
           </motion.div>

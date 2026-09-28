@@ -129,7 +129,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         ])}
       />
 
-      <section className="hidden lg:flex items-center justify-end">
+      <section className="hidden xl:flex items-center justify-end">
         <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
           GO BACK
@@ -143,7 +143,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
             <Zap className="w-4 h-4" />
             Practice Tests
           </div>
-          <h1 className="text-xl lg:text-3xl font-black font-outfit uppercase leading-tight">{pattern?.title || 'Exam Pattern'}</h1>
+          <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight">{pattern?.title || 'Exam Pattern'}</h1>
           <div className="flex gap-4">
             <div className="flex items-center gap-2 text-sm font-bold opacity-90 uppercase tracking-wide">
               <Clock className="w-4 h-4" /> {pattern?.duration || '60'}m
@@ -153,14 +153,14 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
             </div>
           </div>
         </div>
-        <Award className="absolute -bottom-10 -right-10 w-24 lg:w-48 h-24 lg:h-48 text-white/10 -rotate-12" />
+        <Award className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/10 -rotate-12" />
       </Card>
 
       {/* --- Quests List --- */}
       <section className="space-y-6">
-        <h2 className="text-xl lg:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase px-1">Select A Quest</h2>
+        <h2 className="text-xl xl:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase px-1">Select A Quest</h2>
 
-        <div className="space-y-2 lg:space-y-4">
+        <div className="space-y-2 xl:space-y-4">
           {tests.map((test, idx) => {
             const isCompleted = test.userAttempt?.status === 'Completed';
             const isPro = (user?.subscriptionStatus || '').toUpperCase() === 'PRO' || user?.role === 'admin';
@@ -227,9 +227,9 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         </div>
 
         {tests.length === 0 && (
-          <div className="py-20 text-center space-y-2 lg:space-y-4">
+          <div className="py-20 text-center space-y-2 xl:space-y-4">
             <ShieldAlert className="w-20 h-20 text-gray-300 mx-auto" />
-            <h3 className="text-xl lg:text-2xl font-black text-gray-400 uppercase">No Quests Available</h3>
+            <h3 className="text-xl xl:text-2xl font-black text-gray-400 uppercase">No Quests Available</h3>
             <p className="text-gray-400 font-bold">Check back soon for new content!</p>
           </div>
         )}

@@ -63,7 +63,7 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 // --- Helper: Stat Mini Card ---
 const StatMini = ({ icon: Icon, label, value, color = 'text-primary-600', bg = 'bg-primary-50' }) => (
    <div className="flex items-center gap-3 p-3 rounded-2xl bg-background-surface-secondary/50">
-      <div className={`p-2 rounded-lg lg:rounded-xl ${bg} dark:bg-slate-700/50 ${color}`}>
+      <div className={`p-2 rounded-lg xl:rounded-xl ${bg} dark:bg-slate-700/50 ${color}`}>
          <Icon className="w-4 h-4" />
       </div>
       <div>
@@ -78,7 +78,7 @@ const SectionHeader = ({ icon: Icon, title, subtitle }) => (
    <div className="flex items-center gap-3 px-1">
       {Icon && <div className="p-2.5 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl"><Icon className="w-5 h-5" /></div>}
       <div>
-         <h2 className="text-lg lg:text-xl font-black font-outfit">{title}</h2>
+         <h2 className="text-lg xl:text-xl font-black font-outfit">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
       </div>
    </div>
@@ -127,12 +127,12 @@ const MyAnalyticsPage = () => {
 
    if (loading) return (
       <div className="min-h-screen pb-24">
-         <div className="py-4 lg:py-6"><DashboardSkeleton /></div>
+         <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
       </div>
    );
 
    if (error) return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 mt-0 lg:mt-16">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 mt-0 xl:mt-16">
          <XCircle className="w-16 h-16 text-black dark:text-white" />
          <p className="text-lg font-black text-content-secondary">{error}</p>
          <Button variant="primary" onClick={() => window.location.reload()}>Retry</Button>
@@ -146,35 +146,35 @@ const MyAnalyticsPage = () => {
    const totalActivity = (quiz?.totalAttempts || 0) + (exam?.totalAttempts || 0) + (reel?.totalAnswered || 0);
 
    return (
-      <div className="space-y-3 lg:space-y-6 animate-fade-in mt-4 pb-4">
+      <div className="space-y-3 xl:space-y-6 animate-fade-in mt-4 pb-4">
          <Head><title>My Analytics - AajExam</title></Head>
 
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative rounded-[2rem] lg:rounded-[3rem]">
-                  <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-8">
-                     <div className="space-y-2 text-center lg:text-left">
+               <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative rounded-[2rem] xl:rounded-[3rem]">
+                  <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-5 xl:gap-8">
+                     <div className="space-y-2 text-center xl:text-left">
                         <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
                            <Star className="w-4 h-4 fill-white text-white" />
                            My Analytics
                         </div>
-                        <h1 className="text-2xl lg:text-4xl font-black font-outfit">Performance Dashboard</h1>
-                        <p className="text-sm lg:text-base font-bold opacity-80">Quizzes, Exams, Reels & Blogs - sab ek jagah</p>
+                        <h1 className="text-2xl xl:text-4xl font-black font-outfit">Performance Dashboard</h1>
+                        <p className="text-sm xl:text-base font-bold opacity-80">Quizzes, Exams, Reels & Blogs - sab ek jagah</p>
                      </div>
-                     <div className="flex items-center gap-5 lg:gap-8">
+                     <div className="flex items-center gap-5 xl:gap-8">
                         <div className="text-center">
-                           <p className="text-2xl lg:text-4xl font-black font-outfit">{overallAccuracy.toFixed(0)}%</p>
+                           <p className="text-2xl xl:text-4xl font-black font-outfit">{overallAccuracy.toFixed(0)}%</p>
                            <p className="text-[10px] font-black opacity-60 uppercase">Quiz Accuracy</p>
                         </div>
-                        <div className="h-12 lg:h-16 w-0.5 bg-white/20 rounded-full" />
+                        <div className="h-12 xl:h-16 w-0.5 bg-white/20 rounded-full" />
                         <div className="text-center">
-                           <p className="text-2xl lg:text-4xl font-black font-outfit">{totalActivity}</p>
+                           <p className="text-2xl xl:text-4xl font-black font-outfit">{totalActivity}</p>
                            <p className="text-[10px] font-black opacity-60 uppercase">Total Activity</p>
                         </div>
-                        <div className="h-12 lg:h-16 w-0.5 bg-white/20 rounded-full hidden sm:block" />
+                        <div className="h-12 xl:h-16 w-0.5 bg-white/20 rounded-full hidden sm:block" />
                         <div className="text-center hidden sm:block">
-                           <p className="text-2xl lg:text-4xl font-black font-outfit">{wallet?.balance || 0}</p>
+                           <p className="text-2xl xl:text-4xl font-black font-outfit">{wallet?.balance || 0}</p>
                            <p className="text-[10px] font-black opacity-60 uppercase">Wallet</p>
                         </div>
                      </div>
@@ -184,7 +184,7 @@ const MyAnalyticsPage = () => {
             </section>
 
             {/* --- Tab Switcher --- */}
-            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 rounded-[2rem] max-w-full px-0 py-4 lg:py-8">
+            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 rounded-[2rem] max-w-full px-0 py-4 xl:py-8">
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
                      className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-5 py-2.5 rounded-full font-black text-xs uppercase transition-all ${activeTab === tab.key ? 'bg-primary-600 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>
@@ -202,7 +202,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'overview' && (
                      <>
                         {/* Quick Stats Grid */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
                            <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Zap className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{quiz?.totalAttempts || 0}</p>
@@ -226,7 +226,7 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Social + Wallet Row */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
                            <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
                               <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><Users className="w-6 h-6" /></div>
                               <p className="text-xl font-black font-outfit">{followersCount || 0}</p>
@@ -251,9 +251,9 @@ const MyAnalyticsPage = () => {
 
                         {/* Subject-wise Quick View (from quiz) */}
                         {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 lg:space-y-4">
+                           <div className="space-y-2 xl:space-y-4">
                               <SectionHeader icon={BarChart3} title="Subject Performance" subtitle="Based on your quiz attempts" />
-                              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                                  {quiz.subjectWise.map((s, idx) => {
                                     return (
                                        <Card key={idx} className="border-slate-200 dark:border-slate-800 space-y-3 rounded-3xl">
@@ -275,7 +275,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'quizzes' && (
                      <>
                         {/* Overall Quiz Stats */}
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
                            <StatMini icon={Zap} label="Total Quizzes" value={quiz?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Target} label="Avg Accuracy" value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label="Best Score" value={`${quiz?.bestScore || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
@@ -311,7 +311,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Subject Wise */}
                         {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 lg:space-y-4">
+                           <div className="space-y-2 xl:space-y-4">
                               <SectionHeader icon={BookOpen} title="Subject Wise Performance" />
                               <div className="space-y-3">
                                  {quiz.subjectWise.map((s, idx) => {
@@ -339,7 +339,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Topic Wise */}
                         {quiz?.topicWise?.length > 0 && (
-                           <div className="space-y-2 lg:space-y-4">
+                           <div className="space-y-2 xl:space-y-4">
                               <SectionHeader icon={Target} title="Topic Wise Performance" subtitle="Top topics by attempts" />
                               <div className="space-y-2">
                                  {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((t, idx) => (
@@ -380,7 +380,7 @@ const MyAnalyticsPage = () => {
                   {/* ======================== EXAMS TAB ======================== */}
                   {activeTab === 'exams' && (
                      <>
-                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 xl:grid-cols-3 gap-3">
                            <StatMini icon={GraduationCap} label="Total Exams" value={exam?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Target} label="Avg Accuracy" value={`${exam?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label="Best Accuracy" value={`${exam?.bestAccuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
@@ -418,7 +418,7 @@ const MyAnalyticsPage = () => {
                   {/* ======================== REELS TAB ======================== */}
                   {activeTab === 'reels' && (
                      <>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
                            <StatMini icon={Eye} label="Reels Viewed" value={reel?.totalViewed || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={CheckCircle} label="Questions Answered" value={reel?.totalAnswered || 0} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Target} label="Reel Accuracy" value={`${reel?.accuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
@@ -449,7 +449,7 @@ const MyAnalyticsPage = () => {
 
                         {/* Reel Subject Wise */}
                         {reel?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 lg:space-y-4">
+                           <div className="space-y-2 xl:space-y-4">
                               <SectionHeader icon={BookOpen} title="Reel Subject Performance" subtitle="Question reels you answered" />
                               <div className="space-y-3">
                                  {reel.subjectWise.map((s, idx) => {
@@ -481,19 +481,19 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         {/* Balance Card */}
-                        <Card className="bg-primary-600 text-white border-none shadow-sm rounded-[2rem] lg:rounded-[3rem]">
+                        <Card className="bg-primary-600 text-white border-none shadow-sm rounded-[2rem] xl:rounded-[3rem]">
                            <div className="flex justify-between items-start mb-6">
                               <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
                               <span className="text-xs font-black opacity-60 uppercase">Wallet Balance</span>
                            </div>
                            <div>
                               <p className="text-xs font-black opacity-60">Current Balance</p>
-                              <h3 className="text-4xl lg:text-5xl font-black font-outfit">{wallet?.balance || 0}</h3>
+                              <h3 className="text-4xl xl:text-5xl font-black font-outfit">{wallet?.balance || 0}</h3>
                            </div>
                         </Card>
 
                         {/* Earned / Spent */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                            <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
                               <div className="p-4 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
                               <div>
@@ -511,19 +511,19 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Earnings Breakdown */}
-                        <div className="space-y-2 lg:space-y-4">
+                        <div className="space-y-2 xl:space-y-4">
                            <SectionHeader icon={Coins} title="Earnings Breakdown" />
-                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                               <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg lg:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Blog Earnings</span>
                                  </div>
                                  <span className="font-black text-lg text-black dark:text-white">{wallet?.blogEarnings || 0}</span>
                               </Card>
                               <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg lg:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Referral Rewards</span>
                                  </div>
                                  <span className="font-black text-lg text-black dark:text-white">{wallet?.referralRewards || 0}</span>
@@ -532,7 +532,7 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Referral Section */}
-                        <div className="space-y-2 lg:space-y-4">
+                        <div className="space-y-2 xl:space-y-4">
                            <SectionHeader icon={UserPlus} title="Referral" subtitle={`${referral?.count || 0} people joined using your code`} />
                            <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
                               <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -541,7 +541,7 @@ const MyAnalyticsPage = () => {
                                     <div className="flex items-center gap-2 bg-background-surface-secondary p-3 rounded-2xl">
                                        <span className="flex-1 font-black text-lg font-mono tracking-wider">{referral?.code || '---'}</span>
                                        <button onClick={copyReferralCode}
-                                          className="p-2 bg-primary-600 text-white rounded-lg lg:rounded-xl hover:bg-primary-600 transition-colors">
+                                          className="p-2 bg-primary-600 text-white rounded-lg xl:rounded-xl hover:bg-primary-600 transition-colors">
                                           {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                                        </button>
                                     </div>

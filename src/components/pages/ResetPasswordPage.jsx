@@ -78,7 +78,7 @@ const ResetPasswordPage = () => {
           <Card className="p-10 border-none shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
 
             {/* Header */}
-            <div className="text-center space-y-2 lg:space-y-4">
+            <div className="text-center space-y-2 xl:space-y-4">
               <motion.div
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
@@ -86,7 +86,7 @@ const ResetPasswordPage = () => {
               >
                 <RefreshCw className="w-10 h-10" />
               </motion.div>
-              <h2 className="text-xl lg:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
+              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">
                 New <span className="text-primary-600">Password</span>
               </h2>
               <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-none px-4">Please enter your new password below.</p>
@@ -103,7 +103,7 @@ const ResetPasswordPage = () => {
                   <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-full flex items-center justify-center mx-auto">
                     <CircleCheck className="w-8 h-8" />
                   </div>
-                  <div className="space-y-2 lg:space-y-4">
+                  <div className="space-y-2 xl:space-y-4">
                     <h3 className="text-lg font-black font-outfit uppercase text-primary-600">Password Updated</h3>
                     <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
                       Your password has been reset. Redirecting to login...
@@ -160,7 +160,7 @@ const ResetPasswordPage = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2 lg:space-y-4">
+                  <div className="space-y-2 xl:space-y-4">
                     <Button
                       type="submit"
                       variant="primary"
@@ -188,7 +188,7 @@ const ResetPasswordPage = () => {
               )}
             </AnimatePresence>
 
-            <Sparkles className="absolute -bottom-12 -left-12 w-24 lg:w-48 h-24 lg:h-48 text-primary-600 dark:text-primary-500/5 pointer-events-none" />
+            <Sparkles className="absolute -bottom-12 -left-12 w-24 xl:w-48 h-24 xl:h-48 text-primary-600 dark:text-primary-500/5 pointer-events-none" />
           </Card>
         </motion.div>
       </div>    </MobileAppWrapper>

@@ -58,7 +58,7 @@ const NoteDetailPage = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen pb-8 lg:pb-16 font-outfit">
+    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
       <div className="py-8"><DetailSkeleton /></div>
     </div>
   );
@@ -96,7 +96,7 @@ const NoteDetailPage = () => {
           ])
         ]}
       />
-      <div className="py-0 lg:py-6">
+      <div className="py-0 xl:py-6">
         <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Notes</button>
 
         <div className="flex items-start justify-between gap-4">
@@ -106,14 +106,14 @@ const NoteDetailPage = () => {
               {note.subject?.name && <span className="text-[10px] font-bold text-slate-400">{note.subject.name}</span>}
               {note.topic?.name && <span className="text-[10px] font-bold text-slate-400">/ {note.topic.name}</span>}
             </div>
-            <h1 className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white">{note.title}</h1>
+            <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{note.title}</h1>
             <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
               <span><Eye className="w-3 h-3 inline" /> {note.views} views</span>
               <span><Bookmark className="w-3 h-3 inline" /> {note.bookmarks} saved</span>
               {note.contributor?.name && <span>By {note.contributor.name}</span>}
             </div>
           </div>
-          <button onClick={toggleBookmark} className={`p-2 rounded-lg lg:rounded-xl transition-colors ${bookmarked ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
+          <button onClick={toggleBookmark} className={`p-2 rounded-lg xl:rounded-xl transition-colors ${bookmarked ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
             <Bookmark className="w-5 h-5" fill={bookmarked ? 'currentColor' : 'none'} />
           </button>
         </div>

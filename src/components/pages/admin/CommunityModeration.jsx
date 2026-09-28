@@ -166,7 +166,7 @@ export default function CommunityModeration() {
         value={searchTerm}
         onChange={(e) => { setSearchTerm(e.target.value); setPage(1); }}
         placeholder="Search questions..."
-        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-sm"
+        className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
       />
     </div>
   );
@@ -175,7 +175,7 @@ export default function CommunityModeration() {
     <select
       value={status}
       onChange={(e) => { setStatus(e.target.value); setPage(1); }}
-      className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg lg:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700"
+      className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700"
     >
       <option value="">All statuses</option>
       <option value="pending">Pending ({statusCounts.pending || 0})</option>
@@ -226,7 +226,7 @@ export default function CommunityModeration() {
 
   if (loading && items.length === 0) {
     return (
-      <div className="min-h-screen p-3 lg:p-8">
+      <div className="min-h-screen p-3 xl:p-8">
         <AdminTableSkeleton showHeader={false} showFilters={false} />
       </div>
     );
@@ -246,12 +246,12 @@ export default function CommunityModeration() {
                 key="empty"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-10 lg:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl lg:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
+                className="flex flex-col items-center justify-center py-10 xl:py-20 text-center bg-white/50 dark:bg-white/5 rounded-2xl xl:rounded-[4rem] border-2 border-dashed border-slate-100 dark:border-white/5 shadow-sm"
               >
-                <div className="p-4 lg:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg lg:rounded-xl xl:rounded-[3rem] mb-4 lg:mb-8 shadow-sm">
+                <div className="p-4 xl:p-10 bg-slate-100/50 dark:bg-white/5 rounded-lg xl:rounded-xl xl:rounded-[3rem] mb-4 xl:mb-8 shadow-sm">
                   <MessageCircle className="w-16 h-16 text-slate-300 dark:text-slate-600" />
                 </div>
-                <h3 className="text-xl lg:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">Nothing to Review</h3>
+                <h3 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter mb-3">Nothing to Review</h3>
                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">No questions match these filters right now.</p>
               </motion.div>
             ) : viewMode === 'table' ? (
@@ -259,7 +259,7 @@ export default function CommunityModeration() {
                 <ResponsiveTable data={items} columns={columns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} />
               </motion.div>
             ) : (
-              <motion.div key="content" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start' : 'flex flex-col gap-3'}>
+              <motion.div key="content" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 items-start' : 'flex flex-col gap-3'}>
                 {items.map((item, i) => {
                   const isBusy = busyId === item._id;
                   return (

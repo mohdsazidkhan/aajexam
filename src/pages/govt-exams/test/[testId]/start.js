@@ -209,7 +209,7 @@ const TestStart = ({ resolvedId } = {}) => {
   };
 
   if (loading) return (
-    <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-2 lg:space-y-4">
+    <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-2 xl:space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
       <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
     </div>
@@ -260,7 +260,7 @@ const TestStart = ({ resolvedId } = {}) => {
           className="fixed top-6 right-6 z-[60] flex items-center justify-between gap-6 pointer-events-none"
         >
           {/* Left: Spacer or Placeholder */}
-          <div className="flex-1 lg:flex-none" />
+          <div className="flex-1 xl:flex-none" />
 
           {/* Center: Test Progress (Minimalist) */}
           <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-8 py-4 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
@@ -279,7 +279,7 @@ const TestStart = ({ resolvedId } = {}) => {
           <div className="flex items-center gap-3 pointer-events-auto">
             <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-600 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
               <Clock className="w-5 h-5 text-current opacity-80" />
-              <span className="font-mono text-xl lg:text-2xl font-black">{formatTime(timeLeft)}</span>
+              <span className="font-mono text-xl xl:text-2xl font-black">{formatTime(timeLeft)}</span>
             </div>
 
             <LanguageToggle
@@ -291,7 +291,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
             <button
               onClick={toggleFullscreen}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden lg:block"
+              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden xl:block"
               title="Toggle Focus Mode"
             >
               {isFullscreen ? <Minimize className="w-6 h-6" /> : <Maximize className="w-6 h-6" />}
@@ -309,10 +309,10 @@ const TestStart = ({ resolvedId } = {}) => {
       </AnimatePresence>
 
       {/* --- Main Quiz Body --- */}
-      <main className="flex-1 relative flex flex-col lg:flex-row overflow-hidden">
+      <main className="flex-1 relative flex flex-col xl:flex-row overflow-hidden">
 
         {/* Sidebar Palette (Desktop) */}
-        <aside className={`${showSidebar ? 'hidden lg:flex' : 'hidden'} w-80 border-r border-slate-200 dark:border-slate-800 flex-col p-6 overflow-y-auto`}>
+        <aside className={`${showSidebar ? 'hidden xl:flex' : 'hidden'} w-80 border-r border-slate-200 dark:border-slate-800 flex-col p-6 overflow-y-auto`}>
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Stats Overview</h3>
@@ -334,7 +334,7 @@ const TestStart = ({ resolvedId } = {}) => {
               </div>
             </div>
 
-            <div className="space-y-2 lg:space-y-4">
+            <div className="space-y-2 xl:space-y-4">
               <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Question Map</h3>
               {sectionNames.map((secName) => {
                 const group = sectionGroups[secName];
@@ -359,7 +359,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             key={idx}
                             onClick={() => setCurrentQIndex(idx)}
                             className={`
-                              h-10 rounded-lg lg:rounded-xl font-black text-xs transition-all border-b-2
+                              h-10 rounded-lg xl:rounded-xl font-black text-xs transition-all border-b-2
                               ${isCurrent ? 'bg-primary-600 text-white border-primary-600 -translate-y-1' :
                                 isMarked ?'bg-primary-600 text-white border-primary-600':
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-600' :
@@ -379,10 +379,10 @@ const TestStart = ({ resolvedId } = {}) => {
         </aside>
 
         {/* Content Area */}
-        <section className="flex-1 overflow-y-auto scroll-smooth relative px-0 py-4 lg:py-8">
+        <section className="flex-1 overflow-y-auto scroll-smooth relative px-0 py-4 xl:py-8">
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)} title="Show panel"
-              className="hidden lg:flex absolute top-20 left-2 z-10 items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg lg:rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">
+              className="hidden xl:flex absolute top-20 left-2 z-10 items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">
               <PanelLeftOpen className="w-4 h-4" />
             </button>
           )}
@@ -393,14 +393,14 @@ const TestStart = ({ resolvedId } = {}) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="mx-auto space-y-2 lg:space-y-4"
+              className="mx-auto space-y-2 xl:space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 uppercase shrink-0">
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
-                <h2 className="text-lg lg:text-xl font-black font-outfit leading-tight text-slate-800 dark:text-white whitespace-pre-wrap">
+                <h2 className="text-lg xl:text-xl font-black font-outfit leading-tight text-slate-800 dark:text-white whitespace-pre-wrap">
                   {currentQ.questionText}
                 </h2>
               </div>
@@ -413,7 +413,7 @@ const TestStart = ({ resolvedId } = {}) => {
               )}
 
               {currentQ.questionImage && (
-                <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-lg lg:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
               )}
 
               <div className="grid grid-cols-1 gap-4">
@@ -433,7 +433,7 @@ const TestStart = ({ resolvedId } = {}) => {
                         `}
                     >
                       <div className={`
-                            w-10 h-10 rounded-lg lg:rounded-xl flex items-center justify-center font-black text-lg shrink-0 transition-colors
+                            w-10 h-10 rounded-lg xl:rounded-xl flex items-center justify-center font-black text-lg shrink-0 transition-colors
                             ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}
                          `}>
                         {String.fromCharCode(65 + idx)}
@@ -495,7 +495,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
         <div className="flex items-center gap-4">
           <button
-            className="lg:hidden p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl"
+            className="xl:hidden p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl"
             onClick={() => setShowPalette(true)}
           >
             <Menu className="w-6 h-6" />
@@ -530,7 +530,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
             <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[3rem] p-8 z-50 max-h-[75vh] overflow-y-auto">
               <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-8" />
-              <h3 className="text-xl lg:text-2xl font-black font-outfit uppercase mb-6">Question Map</h3>
+              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase mb-6">Question Map</h3>
               <div className="space-y-5">
                 {sectionNames.map((secName) => {
                   const group = sectionGroups[secName];
@@ -582,7 +582,7 @@ const TestStart = ({ resolvedId } = {}) => {
               <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CircleAlert className="w-10 h-10" />
               </div>
-              <h2 className="text-xl lg:text-2xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
+              <h2 className="text-xl xl:text-2xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
               <p className="text-center text-slate-500 mb-8 font-bold leading-relaxed px-4">
                 You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
