@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Notification from '@/models/Notification';
+import Announcement from '@/models/Announcement';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
 
@@ -34,22 +35,32 @@ export async function POST(req) {
             query._id = { $in: userIds };
         }
 
-        const users = await User.find(query).select('_id').lean();
-        if (users.length === 0) {
-            return NextResponse.json({ success: true, count: 0, message: 'No matching users to notify' });
+        const users = await User.find(query).select(target === 'users' ? '_id name email' : '_id').lean();
+
+        const finalTitle = trimmedTitle.slice(0, 200);
+        const finalDescription = trimmedDescription.slice(0, 500);
+
+        if (users.length > 0) {
+            const docs = users.map((u) => ({
+                userId: u._id,
+                type: 'announcement',
+                title: finalTitle,
+                description: finalDescription,
+                meta: { sentBy: auth.user._id, target }
+            }));
+            await Notification.insertMany(docs, { ordered: false });
         }
 
-        const docs = users.map((u) => ({
-            userId: u._id,
-            type: 'announcement',
-            title: trimmedTitle.slice(0, 200),
-            description: trimmedDescription.slice(0, 500),
-            meta: { sentBy: auth.user._id, target }
-        }));
+        await Announcement.create({
+            title: finalTitle,
+            description: finalDescription,
+            target,
+            recipientCount: users.length,
+            recipients: target === 'users' ? users.map((u) => ({ userId: u._id, name: u.name, email: u.email })) : [],
+            sentBy: auth.user._id
+        });
 
-        await Notification.insertMany(docs, { ordered: false });
-
-        return NextResponse.json({ success: true, count: docs.length });
+        return NextResponse.json({ success: true, count: users.length });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

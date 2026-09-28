@@ -563,6 +563,11 @@ class ApiService {
   async updateCity(id, data) { return this.request(`/api/admin/locations/cities/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
   async deleteCity(id) { return this.request(`/api/admin/locations/cities/${id}`, { method: 'DELETE' }); }
 
+  async getAdminAnnouncements(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/admin/announcements${query ? `?${query}` : ''}`);
+  }
+
   async adminCreateSubscription(data) {
     return this.request('/api/admin/subscriptions/create', {
       method: 'POST',
