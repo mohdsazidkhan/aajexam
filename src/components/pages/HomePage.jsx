@@ -330,7 +330,7 @@ const HomePage = () => {
                )}
 
                {/* Stats grid — compact chips */}
-               <div className="grid grid-cols-3 gap-1.5 md:gap-2 xl:gap-3">
+               <div className="grid grid-cols-2 xl:grid-cols-3 gap-1.5 md:gap-2 xl:gap-3">
                   {[
                      { icon: TrendingUp, value: `${overallReadiness}%`, label: 'Readiness', accent: true },
                      { icon: Brain, value: quizzesAttempted, label: 'Quizzes' },
