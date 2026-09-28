@@ -133,22 +133,16 @@ const RegisterPageInner = () => {
     <MobileAppWrapper showHeader={true} title="Register">
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
         {/* Left panel */}
-        <div className="hidden xl:flex w-1/2 bg-slate-900 p-20 flex-col justify-center items-start relative overflow-hidden text-white">
-          <div className="space-y-10 relative z-10">
-            <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }}>
-              <div className="p-5 bg-primary-600 rounded-[2.5rem] shadow-sm w-fit">
-                <Rocket className="w-12 h-12" />
-              </div>
-            </motion.div>
-
+        <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
+          <div className="space-y-4 xl:space-y-8 relative z-10">
             <div className="space-y-2 xl:space-y-4">
-              <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-full">
+              <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-full">
                 🎁 Register now — Get PRO Free till 31 Dec 2026
               </span>
-              <h1 className="text-2xl md:text-3xl xl:text-4xl xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">
-                Join the <span className="text-primary-400">community</span>.
+              <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
+                Join the <span className="text-primary-600 dark:text-primary-400">community</span>.
               </h1>
-              <p className="text-xl font-bold text-slate-300 max-w-md leading-relaxed">
+              <p className="text-xl font-bold text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
                 Join thousands of students who study every day, improve their scores, and unlock PRO for free.
               </p>
             </div>
@@ -159,9 +153,9 @@ const RegisterPageInner = () => {
                 { icon: Brain, text: 'Attempt 500+ Previous Year Papers free' },
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 text-slate-300 font-bold">
-                  <div className="p-2 bg-white/10 rounded-lg xl:rounded-xl">
-                    <item.icon className="w-5 h-5 text-primary-400" />
+                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
+                  <div className="p-2 bg-primary-500/10 rounded-lg xl:rounded-xl">
+                    <item.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
                 </div>
@@ -169,7 +163,6 @@ const RegisterPageInner = () => {
             </div>
           </div>
 
-          <Sparkles className="absolute -top-10 -right-10 w-96 h-96 opacity-10 animate-pulse" />
         </div>
 
         {/* Right panel — form */}
