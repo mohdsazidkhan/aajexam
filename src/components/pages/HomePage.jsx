@@ -25,6 +25,7 @@ import {
    Newspaper,
    BarChart3,
    Clock,
+   Film,
 } from "lucide-react";
 
 import API from "../../lib/api";
@@ -305,11 +306,14 @@ const HomePage = () => {
    const metrics = performanceReport?.performanceMetrics || {};
    const examStats = metrics.examStats || {};
    const overallReadiness = examStats.overallReadiness ?? 0;
-   const mockTestsAttempted = examStats.mockTestsAttempted ?? 0;
    const streakCount = examStats.streakCount ?? 0;
    const quizzesAttempted = performanceReport?.quizzesAttempted ?? 0;
+   const pyqTestsAttempted = performanceReport?.pyqTestsAttempted ?? 0;
+   const practiceTestsAttempted = performanceReport?.practiceTestsAttempted ?? 0;
    const quizTimeSpentSeconds = performanceReport?.quizTimeSpentSeconds ?? 0;
    const examTimeSpentSeconds = performanceReport?.examTimeSpentSeconds ?? 0;
+   const dailyChallengeTimeSpentSeconds = performanceReport?.dailyChallengeTimeSpentSeconds ?? 0;
+   const reelTimeSpentSeconds = performanceReport?.reelTimeSpentSeconds ?? 0;
    const totalTimeSpentSeconds = performanceReport?.totalTimeSpentSeconds ?? 0;
 
    return (
@@ -325,42 +329,29 @@ const HomePage = () => {
                   </div>
                )}
 
-               {/* Quick Stats */}
-               <div className="grid grid-cols-3 gap-2 md:gap-3 xl:gap-4">
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
-                     <TrendingUp className="w-4 h-4 xl:w-5 xl:h-5 text-primary-600 mb-1.5" />
-                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{overallReadiness}%</p>
-                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Readiness</p>
-                  </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
-                     <Brain className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{quizzesAttempted}</p>
-                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes</p>
-                  </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
-                     <BookOpen className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{mockTestsAttempted}</p>
-                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Tests</p>
-                  </div>
-               </div>
-
-               {/* Time Spent Stats */}
-               <div className="grid grid-cols-3 gap-2 md:gap-3 xl:gap-4 mt-2 md:mt-3 xl:mt-4">
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
-                     <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-primary-600 mb-1.5" />
-                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(totalTimeSpentSeconds)}</p>
-                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Total Time Spent</p>
-                  </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
-                     <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(quizTimeSpentSeconds)}</p>
-                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Quizzes Time Spent</p>
-                  </div>
-                  <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-3xl p-3 xl:p-6 border border-slate-100 dark:border-slate-800">
-                     <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-black dark:text-white mb-1.5" />
-                     <p className="text-lg md:text-xl xl:text-3xl font-black text-slate-900 dark:text-white">{formatSecondsSpent(examTimeSpentSeconds)}</p>
-                     <p className="text-[11px] xl:text-xs font-bold text-slate-400 uppercase tracking-wider">Exams Time Spent</p>
-                  </div>
+               {/* Stats grid — compact chips */}
+               <div className="grid grid-cols-3 gap-1.5 md:gap-2 xl:gap-3">
+                  {[
+                     { icon: TrendingUp, value: `${overallReadiness}%`, label: 'Readiness', accent: true },
+                     { icon: Brain, value: quizzesAttempted, label: 'Quizzes' },
+                     { icon: GraduationCap, value: pyqTestsAttempted, label: "PYQ's" },
+                     { icon: BookOpen, value: practiceTestsAttempted, label: 'Practice Tests' },
+                     { icon: Clock, value: formatSecondsSpent(totalTimeSpentSeconds), label: 'Total Time', accent: true },
+                     { icon: Clock, value: formatSecondsSpent(quizTimeSpentSeconds), label: 'Quiz Time' },
+                     { icon: Clock, value: formatSecondsSpent(examTimeSpentSeconds), label: 'Exam Time' },
+                     { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
+                     { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
+                  ].map(({ icon: Icon, value, label, accent }, idx) => (
+                     <div key={idx} className="flex items-center gap-1.5 xl:gap-2 bg-white dark:bg-slate-900 rounded-xl xl:rounded-2xl p-2 xl:p-2.5 border border-slate-100 dark:border-slate-800">
+                        <div className={`w-7 h-7 xl:w-8 xl:h-8 shrink-0 rounded-lg flex items-center justify-center ${accent ? 'bg-primary-500/10' : 'bg-slate-100 dark:bg-slate-800'}`}>
+                           <Icon className={`w-3.5 h-3.5 xl:w-4 xl:h-4 ${accent ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`} />
+                        </div>
+                        <div className="min-w-0">
+                           <p className="text-xs xl:text-sm font-black text-slate-900 dark:text-white leading-tight truncate">{value}</p>
+                           <p className="text-[8px] xl:text-[9px] font-bold text-slate-400 uppercase tracking-tight leading-tight truncate">{label}</p>
+                        </div>
+                     </div>
+                  ))}
                </div>
             </section>
 

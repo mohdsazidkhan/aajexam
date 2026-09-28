@@ -479,6 +479,10 @@ const ReelsFeed = () => {
   const containerRef = useRef(null);
   const touchStartY = useRef(0);
 
+  // Time-spent tracking (per viewed reel)
+  const viewedReelIdRef = useRef(null);
+  const viewStartedAtRef = useRef(null);
+
   // Audio & Timer state
   const audioRef = useRef(null);
   const timerIntervalRef = useRef(null);
@@ -659,7 +663,17 @@ const ReelsFeed = () => {
 
   // Track views + check follow status
   useEffect(() => {
+    // Flush watch time accumulated on the reel we're leaving, then start a
+    // fresh timer for the newly current one — API.viewReel would otherwise
+    // always report 0s since it defaulted to no time argument.
+    if (viewedReelIdRef.current && viewStartedAtRef.current) {
+      const elapsed = Math.round((Date.now() - viewStartedAtRef.current) / 1000);
+      if (elapsed > 0) API.viewReel(viewedReelIdRef.current, elapsed).catch(() => {});
+    }
+
     if (reels[currentIndex]) {
+      viewedReelIdRef.current = reels[currentIndex]._id;
+      viewStartedAtRef.current = Date.now();
       API.viewReel(reels[currentIndex]._id).catch(() => {});
 
       // Check follow status for creator (if not already checked)
@@ -671,8 +685,21 @@ const ReelsFeed = () => {
           }
         }).catch(() => {});
       }
+    } else {
+      viewedReelIdRef.current = null;
+      viewStartedAtRef.current = null;
     }
   }, [currentIndex]);
+
+  // Flush the last reel's watch time when leaving the reels page entirely
+  useEffect(() => {
+    return () => {
+      if (viewedReelIdRef.current && viewStartedAtRef.current) {
+        const elapsed = Math.round((Date.now() - viewStartedAtRef.current) / 1000);
+        if (elapsed > 0) API.viewReel(viewedReelIdRef.current, elapsed).catch(() => {});
+      }
+    };
+  }, []);
 
   // Follow/Unfollow toggle
   const handleFollowToggle = async (userId) => {
@@ -921,6 +948,18 @@ const ReelsFeed = () => {
 
             {/* ── Right: profile + actions (exact Instagram Reels style) ── */}
             <div className="absolute right-3 bottom-5 flex flex-col items-center gap-3 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
+              {/* Desktop: nav arrows (above profile avatar) */}
+              <div className="hidden xl:flex flex-col gap-3">
+                <button onClick={goPrev} disabled={currentIndex === 0}
+                  className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
+                  <ChevronUp className="w-5 h-5" />
+                </button>
+                <button onClick={goNext} disabled={currentIndex >= reels.length - 1 && !hasMore}
+                  className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
+                  <ChevronDown className="w-5 h-5" />
+                </button>
+              </div>
+
               {/* Profile avatar + follow */}
               <div className="relative">
                 <Link href={`/u/${currentReel.createdBy?.username || 'aajexam'}`}>
@@ -1246,17 +1285,6 @@ const ReelsFeed = () => {
               )}
             </AnimatePresence>
 
-            {/* ── Desktop: nav arrows (left side) ── */}
-            <div className="hidden xl:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col gap-3 z-20">
-              <button onClick={goPrev} disabled={currentIndex === 0}
-                className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
-                <ChevronUp className="w-5 h-5" />
-              </button>
-              <button onClick={goNext} disabled={currentIndex >= reels.length - 1 && !hasMore}
-                className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
-                <ChevronDown className="w-5 h-5" />
-              </button>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
