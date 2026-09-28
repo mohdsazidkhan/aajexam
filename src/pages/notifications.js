@@ -138,7 +138,7 @@ const NotificationsPage = () => {
                     key={n.id || idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className={`group relative p-4 lg:p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex gap-3 lg:gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
+                    className={`group relative p-4 lg:p-6 transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex flex-col lg:flex-row gap-3 lg:gap-6 items-start ${!n.isRead ? 'bg-primary-500/5' : ''}`}
                   >
                     <div className={`shrink-0 p-3 lg:p-4 rounded-2xl bg-white dark:bg-slate-800 shadow-sm transition-transform group-hover:scale-110 ${!n.isRead ? 'border-2 border-primary-500/20 shadow-sm' : ''}`}>
                       {getIcon(n.type)}
