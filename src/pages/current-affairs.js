@@ -110,8 +110,8 @@ const CurrentAffairsPage = () => {
           </motion.div>
           <h1 className="text-2xl lg:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Current Affairs</h1>
           {/* Search + Date */}
-          <div className="w-full max-w-lg px-2 lg:px-0">
-            <div className="relative flex-1">
+          <div className="w-full max-w-lg px-2 lg:px-0 flex flex-col lg:flex-row justify-between items-center gap-2 lg:gap-4">
+            <div className="w-full relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder="Search current affairs..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
                 className="w-full bg-slate-50 dark:bg-black rounded-lg lg:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
