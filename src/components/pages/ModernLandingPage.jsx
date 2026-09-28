@@ -140,7 +140,7 @@ const ModernLandingPage = () => {
                         icon={ArrowRight}
                         iconPosition="right"
                         className="w-full sm:w-auto"
-                        onClick={() => router.push('/register')}
+                        onClick={() => router.push('/login')}
                      >
                         Start practicing now
                      </Button>

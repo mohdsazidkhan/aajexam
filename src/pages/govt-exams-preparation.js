@@ -81,17 +81,17 @@ export default function GovtExamsPreparation({ initialData }) {
                                     exams.map((exam, index) => (
                                         <div key={exam._id || index} className="bg-white dark:bg-slate-900 rounded-[1rem] lg:rounded-[2.5rem] p-4 lg:p-8 shadow-sm hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between group active:translate-y-1 active:border-b-2">
                                             <div>
-                                                <div className="w-16 h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center mb-6 shadow-sm border-2 border-white dark:border-slate-800 overflow-hidden">
-                                                    {exam.logo ? (
-                                                        <img src={exam.logo} alt={exam.name} className="w-full h-full object-cover" />
-                                                    ) : (
-                                                        <FaGraduationCap className="text-primary-600 text-2xl" />
-                                                    )}
+                                                <div className="flex items-center justify-start gap-4 mb-2 lg:mb-4">
+                                                <div className="w-10 lg:w-16 h-10 lg:h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 overflow-hidden">
+                                                    
+                                                    <FaGraduationCap className="text-primary-600 text-2xl" />
+                                                
                                                 </div>
-                                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+                                                <h3 className="text-md md:text-xl lg:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
                                                     {exam.name}
                                                 </h3>
-                                                <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 line-clamp-3 leading-relaxed">
+                                                </div>
+                                                <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 lg:mb-6 line-clamp-3 leading-relaxed">
                                                     {exam.description || 'Comprehensive exam preparation materials and practice tests.'}
                                                 </p>
                                             </div>
@@ -112,7 +112,7 @@ export default function GovtExamsPreparation({ initialData }) {
 
                             {/* Pagination */}
                             {pagination.totalPages > 1 && (
-                                <div className="mt-20 flex items-center justify-center gap-3">
+                                <div className="mt-8 lg:mt-16 flex items-center justify-center gap-3">
                                     <button
                                         onClick={() => handlePageChange(pagination.currentPage - 1)}
                                         disabled={pagination.currentPage <= 1}
@@ -158,14 +158,14 @@ export default function GovtExamsPreparation({ initialData }) {
                         </>
                     )}
 
-                    <div className="mt-32 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 lg:p-10 xl:p-20 text-white text-center border-2 border-slate-800 relative overflow-hidden shadow-sm">
+                    <div className="mt-8 lg:mt-16 bg-slate-950 dark:bg-slate-900 rounded-[3rem] p-4 lg:p-10 xl:p-20 text-white text-center border-2 border-slate-800 relative overflow-hidden shadow-sm">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
                         <h2 className="text-2xl lg:text-5xl font-black mb-3 lg:mb-6 uppercase tracking-tighter relative z-10">
                             Ready to <span className="text-primary-400">Ace</span> Your Exam?
                         </h2>
-                        <p className="text-md lg:text-xl font-bold opacity-80 mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
+                        <p className="text-md lg:text-xl font-bold opacity-80 mb-4 lg:mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
                             Join thousands of students who are already using AajExam to improve their scores and time management.
                         </p>
                         <button

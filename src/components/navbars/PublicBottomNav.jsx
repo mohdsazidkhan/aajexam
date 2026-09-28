@@ -8,7 +8,7 @@ import {
   User,
   GraduationCap,
   Gamepad2,
-  BookOpen,
+  BookOpen
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -20,7 +20,7 @@ const PublicBottomNav = () => {
     { name: 'Home', path: '/', icon: Home },
     { name: 'Exams', path: '/exams', icon: GraduationCap },
     { name: 'Quizzes', path: '/quizzes', icon: Gamepad2 },
-    { name: 'Notes', path: '/notes', icon: BookOpen },
+    { name: 'Blog', path: '/blog', icon: BookOpen },
     { name: 'Login', path: '/login', icon: User },
   ];
 
