@@ -4,6 +4,7 @@ import darkModeReducer from './darkModeSlice';
 import languageReducer from './languageSlice';
 import themeColorReducer from './themeColorSlice';
 import fontReducer from './fontSlice';
+import textSizeReducer from './textSizeSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     darkMode: darkModeReducer,
     language: languageReducer,
     themeColor: themeColorReducer,
-    font: fontReducer
+    font: fontReducer,
+    textSize: textSizeReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -6,9 +6,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Check, Sun, Moon, Search, Type, Settings } from 'lucide-react';
 import { THEME_PRESETS } from '../lib/colorShades';
 import { GOOGLE_FONTS } from '../lib/googleFonts';
+import { TEXT_SIZE_PRESETS } from '../lib/textSize';
 import { setThemeId } from '../store/themeColorSlice';
 import { setDarkMode } from '../store/darkModeSlice';
 import { setFontFamily } from '../store/fontSlice';
+import { setTextSize } from '../store/textSizeSlice';
 
 // Every theme x mode combination, e.g. "AajExam Green" (light) / "AajExam Dark" (dark).
 const THEME_OPTIONS = THEME_PRESETS.flatMap((theme) => [
@@ -19,6 +21,7 @@ const THEME_OPTIONS = THEME_PRESETS.flatMap((theme) => [
 const TABS = [
   { id: 'theme', label: 'Themes' },
   { id: 'font', label: 'Font Family' },
+  { id: 'size', label: 'Text Size' },
 ];
 
 // Drop-in replacement for the header's Sun/Moon dark-mode icon button.
@@ -29,6 +32,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const themeId = useSelector((state) => state.themeColor?.themeId ?? 'green');
   const isDark = useSelector((state) => state.darkMode?.isDark ?? false);
   const fontFamily = useSelector((state) => state.font?.fontFamily ?? 'Lato');
+  const textSizeId = useSelector((state) => state.textSize?.sizeId ?? 'm');
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState('theme');
   const [search, setSearch] = useState('');
@@ -59,6 +63,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     dispatch(setFontFamily(font));
     setOpen(false);
     setSearch('');
+  };
+
+  const handleSelectTextSize = (sizeId) => {
+    dispatch(setTextSize(sizeId));
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -131,19 +140,21 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                   ))}
                 </div>
 
-                <div className="relative px-1">
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder={tab === 'theme' ? 'Search theme...' : 'Search font...'}
-                    className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
-                  />
-                </div>
+                {tab !== 'size' && (
+                  <div className="relative px-1">
+                    <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      placeholder={tab === 'theme' ? 'Search theme...' : 'Search font...'}
+                      className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
+                    />
+                  </div>
+                )}
               </div>
 
-              {tab === 'theme' ? (
+              {tab === 'theme' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-3 gap-2 content-start px-4 pb-6">
                   {filteredThemeOptions.length === 0 && (
                     <p className="col-span-full text-sm text-slate-400 text-center py-4">No theme found</p>
@@ -177,7 +188,9 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                     );
                   })}
                 </div>
-              ) : (
+              )}
+
+              {tab === 'font' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-3 gap-2 content-start px-4 pb-6">
                   {filteredFonts.length === 0 && (
                     <p className="col-span-full text-sm text-slate-400 text-center py-4">No font found</p>
@@ -198,6 +211,36 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       >
                         <Type className={`w-4 h-4 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
                         <span className="flex-1 text-left truncate">{font}</span>
+                        {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {tab === 'size' && (
+                <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-2 px-4 pb-6">
+                  {TEXT_SIZE_PRESETS.map((preset) => {
+                    const isSelected = preset.id === textSizeId;
+                    return (
+                      <button
+                        key={preset.id}
+                        type="button"
+                        onClick={() => handleSelectTextSize(preset.id)}
+                        style={isSelected ? { backgroundColor: activeHex } : undefined}
+                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
+                          isSelected
+                            ? 'text-white'
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                        }`}
+                      >
+                        <span className="w-8 text-center font-black leading-none flex-shrink-0" style={{ fontSize: `${preset.px}px` }}>
+                          Aa
+                        </span>
+                        <span className="flex-1 text-left">
+                          <span className="block text-sm font-semibold">{preset.shortLabel} — {preset.label}</span>
+                          <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>{preset.px}px</span>
+                        </span>
                         {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
                       </button>
                     );

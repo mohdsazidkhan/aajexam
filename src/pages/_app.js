@@ -8,6 +8,7 @@ import store from '../store';
 import { initializeDarkMode } from '../store/darkModeSlice';
 import { initializeThemeColor } from '../store/themeColorSlice';
 import { initializeFont } from '../store/fontSlice';
+import { initializeTextSize } from '../store/textSizeSlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { useRouter } from 'next/router';
@@ -104,6 +105,7 @@ function AppContent({ Component, pageProps }) {
     dispatch(initializeDarkMode());
     dispatch(initializeThemeColor());
     dispatch(initializeFont());
+    dispatch(initializeTextSize());
   }, [dispatch]);
 
   useEffect(() => {
