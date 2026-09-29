@@ -17,6 +17,8 @@ import ExamNews from '@/models/ExamNews';
 import CurrentAffair from '@/models/CurrentAffair';
 import { protect } from '@/middleware/auth';
 import { escapeRegex } from '@/lib/utils/regex';
+import mongoose from 'mongoose';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 // Web-only search endpoint (tab-scoped, real pagination). The mobile app and
 // the legacy combined endpoint keep using /api/search untouched.
@@ -91,9 +93,10 @@ async function fetchReels(regex, cleanQuery, skip, limit, auth) {
 	return { items: withInteraction.map((r) => ({ ...r, type: 'reel' })), hasMore: skip + items.length < total };
 }
 
-async function fetchSubjects(regex, skip, limit) {
+async function fetchSubjects(regex, skip, limit, scope) {
 	const filter = { isActive: true };
 	if (regex) filter.$or = [{ name: regex }, { description: regex }];
+	applyExamScope(filter, scope.ids, { field: 'exams' });
 	const [items, total] = await Promise.all([
 		Subject.find(filter).populate('exams', 'name code').sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
 		Subject.countDocuments(filter),
@@ -101,9 +104,10 @@ async function fetchSubjects(regex, skip, limit) {
 	return { items: items.map((s) => ({ ...s, type: 'subject' })), hasMore: skip + items.length < total };
 }
 
-async function fetchTopics(regex, skip, limit) {
+async function fetchTopics(regex, skip, limit, scope) {
 	const filter = { isActive: true };
 	if (regex) filter.$or = [{ name: regex }, { description: regex }];
+	applyExamScope(filter, scope.ids, { field: 'exams' });
 	const [items, total] = await Promise.all([
 		Topic.find(filter).populate('subject', 'name').populate('exams', 'name code').sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
 		Topic.countDocuments(filter),
@@ -111,9 +115,10 @@ async function fetchTopics(regex, skip, limit) {
 	return { items: items.map((t) => ({ ...t, type: 'topic' })), hasMore: skip + items.length < total };
 }
 
-async function fetchQuizzes(regex, skip, limit) {
+async function fetchQuizzes(regex, skip, limit, scope) {
 	const filter = { status: 'published' };
 	if (regex) filter.$or = [{ title: regex }, { description: regex }, { tags: regex }];
+	applyExamScope(filter, scope.ids, { field: 'applicableExams' });
 	const [items, total] = await Promise.all([
 		Quiz.find(filter)
 			.select('_id title slug description difficulty type duration totalMarks isFree totalAttempts avgScore tags publishedAt')
@@ -129,8 +134,9 @@ async function fetchQuizzes(regex, skip, limit) {
 	return { items: items.map((q) => ({ ...q, type: 'quiz' })), hasMore: skip + items.length < total };
 }
 
-async function fetchPracticeTests(regex, skip, limit) {
+async function fetchPracticeTests(regex, skip, limit, scope) {
 	const filter = {};
+	if (scope.ids.length) filter.examPattern = { $in: scope.patternIds };
 	if (regex) {
 		filter.$or = [
 			{ title: regex },
@@ -154,8 +160,9 @@ async function fetchPracticeTests(regex, skip, limit) {
 	return { items: items.map((t) => ({ ...t, type: 'test' })), hasMore: skip + items.length < total };
 }
 
-async function fetchBlogs(regex, skip, limit) {
+async function fetchBlogs(regex, skip, limit, scope) {
 	const filter = { status: 'published' };
+	applyExamScope(filter, scope.ids);
 	if (regex) {
 		filter.$or = [
 			{ title: regex }, { content: regex }, { excerpt: regex },
@@ -175,9 +182,10 @@ async function fetchBlogs(regex, skip, limit) {
 	return { items: items.map((b) => ({ ...b, type: 'blog' })), hasMore: skip + items.length < total };
 }
 
-async function fetchCurrentAffairs(regex, skip, limit) {
+async function fetchCurrentAffairs(regex, skip, limit, scope) {
 	const filter = { status: 'published' };
 	if (regex) filter.$or = [{ title: regex }, { content: regex }, { keyPoints: regex }, { tags: regex }, { category: regex }];
+	applyExamScope(filter, scope.ids, { includeGeneric: true });
 	const [items, total] = await Promise.all([
 		CurrentAffair.find(filter)
 			.select('_id title category date views tags exam')
@@ -191,9 +199,10 @@ async function fetchCurrentAffairs(regex, skip, limit) {
 	return { items: items.map((c) => ({ ...c, type: 'currentAffair' })), hasMore: skip + items.length < total };
 }
 
-async function fetchNotes(regex, skip, limit) {
+async function fetchNotes(regex, skip, limit, scope) {
 	const filter = { status: 'published' };
 	if (regex) filter.$or = [{ title: regex }, { content: regex }, { tags: regex }];
+	applyExamScope(filter, scope.ids, { includeGeneric: true });
 	const [items, total] = await Promise.all([
 		StudyNote.find(filter)
 			.select('_id title slug noteType difficulty views bookmarks subject topic exam tags createdAt')
@@ -209,9 +218,10 @@ async function fetchNotes(regex, skip, limit) {
 	return { items: items.map((n) => ({ ...n, type: 'note' })), hasMore: skip + items.length < total };
 }
 
-async function fetchExamNews(regex, skip, limit) {
+async function fetchExamNews(regex, skip, limit, scope) {
 	const filter = { status: 'published' };
 	if (regex) filter.$or = [{ title: regex }, { content: regex }, { examName: regex }, { tags: regex }];
+	applyExamScope(filter, scope.ids);
 	const [items, total] = await Promise.all([
 		ExamNews.find(filter)
 			.select('_id title type examName exam isPinned views tags createdAt')
@@ -239,10 +249,11 @@ async function fetchUsers(regex, skip, limit) {
 	return { items: items.map((u) => ({ ...u, type: 'user' })), hasMore: skip + items.length < total };
 }
 
-async function fetchHashtags(cleanQuery, skip, limit) {
+async function fetchHashtags(cleanQuery, skip, limit, scope) {
 	const cap = skip + limit + 1;
+	const examMatch = scope.ids.length ? { exam: { $in: scope.ids.map((id) => new mongoose.Types.ObjectId(id)) } } : {};
 	const pipeline = [
-		{ $match: cleanQuery ? { isActive: true, tags: { $elemMatch: { $regex: cleanQuery, $options: 'i' } } } : { isActive: true } },
+		{ $match: cleanQuery ? { isActive: true, ...examMatch, tags: { $elemMatch: { $regex: cleanQuery, $options: 'i' } } } : { isActive: true, ...examMatch } },
 		{ $unwind: '$tags' },
 		...(cleanQuery ? [{ $match: { tags: { $regex: cleanQuery, $options: 'i' } } }] : []),
 		{ $group: { _id: '$tags', count: { $sum: 1 } } },
@@ -255,10 +266,10 @@ async function fetchHashtags(cleanQuery, skip, limit) {
 	return { items: items.map((h) => ({ ...h, type: 'hashtag' })), hasMore: all.length > skip + limit };
 }
 
-function examMergeSources(regex) {
-	const examCategoryFilter = regex ? { $or: [{ name: regex }, { type: regex }, { description: regex }] } : {};
-	const examFilter = { isActive: true, ...(regex ? { $or: [{ name: regex }, { code: regex }, { description: regex }] } : {}) };
-	const patternFilter = regex ? { $or: [{ title: regex }, { 'sections.name': regex }] } : {};
+function examMergeSources(regex, scope) {
+	const examCategoryFilter = applyExamScope(regex ? { $or: [{ name: regex }, { type: regex }, { description: regex }] } : {}, scope.categoryIds, { field: '_id' });
+	const examFilter = applyExamScope({ isActive: true, ...(regex ? { $or: [{ name: regex }, { code: regex }, { description: regex }] } : {}) }, scope.ids, { field: '_id' });
+	const patternFilter = applyExamScope(regex ? { $or: [{ title: regex }, { 'sections.name': regex }] } : {}, scope.ids, { field: 'exam' });
 	return [
 		async (cap) => (await Exam.find(examFilter).populate('category', 'name type').limit(cap).lean()).map((e) => ({ ...e, type: 'exam' })),
 		async (cap) => (await ExamCategory.find(examCategoryFilter).limit(cap).lean()).map((c) => ({ ...c, type: 'examCategory' })),
@@ -281,20 +292,33 @@ export async function GET(req) {
 		const regex = cleanQuery ? new RegExp(cleanQuery, 'i') : null;
 		const auth = await protect(req);
 
+		// Target exams (?examIds=a,b). Empty = no filter. Patterns/categories are derived once so
+		// practice tests and exam categories can be scoped too.
+		const ids = parseExamIds(searchParams.get('examIds'));
+		const scope = { ids, patternIds: [], categoryIds: [] };
+		if (ids.length) {
+			const [patterns, exams] = await Promise.all([
+				ExamPattern.find({ exam: { $in: ids } }).select('_id').lean(),
+				Exam.find({ _id: { $in: ids } }).select('category').lean(),
+			]);
+			scope.patternIds = patterns.map((x) => x._id);
+			scope.categoryIds = [...new Set(exams.map((e) => String(e.category)).filter((c) => c && c !== 'undefined'))];
+		}
+
 		if (type === 'all') {
 			const [reel, exam, test, quiz, subject, topic, blog, currentAffair, note, examNews, user, hashtag] = await Promise.all([
 				fetchReels(regex, cleanQuery, 0, PREVIEW_LIMIT, auth),
-				mergeAndPaginate(examMergeSources(regex), 0, PREVIEW_LIMIT),
-				fetchPracticeTests(regex, 0, PREVIEW_LIMIT),
-				fetchQuizzes(regex, 0, PREVIEW_LIMIT),
-				fetchSubjects(regex, 0, PREVIEW_LIMIT),
-				fetchTopics(regex, 0, PREVIEW_LIMIT),
-				fetchBlogs(regex, 0, PREVIEW_LIMIT),
-				fetchCurrentAffairs(regex, 0, PREVIEW_LIMIT),
-				fetchNotes(regex, 0, PREVIEW_LIMIT),
-				fetchExamNews(regex, 0, PREVIEW_LIMIT),
+				mergeAndPaginate(examMergeSources(regex, scope), 0, PREVIEW_LIMIT),
+				fetchPracticeTests(regex, 0, PREVIEW_LIMIT, scope),
+				fetchQuizzes(regex, 0, PREVIEW_LIMIT, scope),
+				fetchSubjects(regex, 0, PREVIEW_LIMIT, scope),
+				fetchTopics(regex, 0, PREVIEW_LIMIT, scope),
+				fetchBlogs(regex, 0, PREVIEW_LIMIT, scope),
+				fetchCurrentAffairs(regex, 0, PREVIEW_LIMIT, scope),
+				fetchNotes(regex, 0, PREVIEW_LIMIT, scope),
+				fetchExamNews(regex, 0, PREVIEW_LIMIT, scope),
 				fetchUsers(regex, 0, PREVIEW_LIMIT),
-				fetchHashtags(cleanQuery, 0, PREVIEW_LIMIT),
+				fetchHashtags(cleanQuery, 0, PREVIEW_LIMIT, scope),
 			]);
 
 			return NextResponse.json({
@@ -306,18 +330,18 @@ export async function GET(req) {
 
 		let result;
 		switch (type) {
-			case 'exam': result = await mergeAndPaginate(examMergeSources(regex), skip, limit); break;
+			case 'exam': result = await mergeAndPaginate(examMergeSources(regex, scope), skip, limit); break;
 			case 'reel': result = await fetchReels(regex, cleanQuery, skip, limit, auth); break;
-			case 'subject': result = await fetchSubjects(regex, skip, limit); break;
-			case 'topic': result = await fetchTopics(regex, skip, limit); break;
-			case 'quiz': result = await fetchQuizzes(regex, skip, limit); break;
-			case 'test': result = await fetchPracticeTests(regex, skip, limit); break;
-			case 'blog': result = await fetchBlogs(regex, skip, limit); break;
-			case 'currentAffair': result = await fetchCurrentAffairs(regex, skip, limit); break;
-			case 'note': result = await fetchNotes(regex, skip, limit); break;
-			case 'examNews': result = await fetchExamNews(regex, skip, limit); break;
+			case 'subject': result = await fetchSubjects(regex, skip, limit, scope); break;
+			case 'topic': result = await fetchTopics(regex, skip, limit, scope); break;
+			case 'quiz': result = await fetchQuizzes(regex, skip, limit, scope); break;
+			case 'test': result = await fetchPracticeTests(regex, skip, limit, scope); break;
+			case 'blog': result = await fetchBlogs(regex, skip, limit, scope); break;
+			case 'currentAffair': result = await fetchCurrentAffairs(regex, skip, limit, scope); break;
+			case 'note': result = await fetchNotes(regex, skip, limit, scope); break;
+			case 'examNews': result = await fetchExamNews(regex, skip, limit, scope); break;
 			case 'user': result = await fetchUsers(regex, skip, limit); break;
-			case 'hashtag': result = await fetchHashtags(cleanQuery, skip, limit); break;
+			case 'hashtag': result = await fetchHashtags(cleanQuery, skip, limit, scope); break;
 			default:
 				return NextResponse.json({ success: false, error: `Unknown type: ${type}` }, { status: 400 });
 		}

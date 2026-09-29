@@ -46,7 +46,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const [exams, setExams] = useState([]);
   const [selectedExamIds, setSelectedExamIds] = useState([]);
   const [savingTargets, setSavingTargets] = useState(false);
-  const tabs = loggedIn ? [TARGET_TAB, ...TABS] : TABS;
+  const tabs = loggedIn ? [...TABS, TARGET_TAB] : TABS;
 
   const activeTheme = THEME_PRESETS.find((t) => t.id === themeId) || THEME_PRESETS[0];
   const activeHex = isDark ? activeTheme.dark : activeTheme.light;
@@ -63,13 +63,14 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     return GOOGLE_FONTS.filter((font) => font.toLowerCase().includes(query));
   }, [search]);
 
-  // On open: show the tab first for logged-in users and load exams + current selection.
+  // On open (logged-in users): load exams + current selection for the Target Exams tab.
   useEffect(() => {
     if (!open) return;
+    setTab('theme'); // always open on the first tab
+    setSearch('');
     const user = getCurrentUser();
     setLoggedIn(!!user);
-    if (!user) { setTab((t) => (t === 'targets' ? 'theme' : t)); return; }
-    setTab('targets');
+    if (!user) return;
     let cancelled = false;
     API.getAllExams().then((res) => {
       if (cancelled || !res?.success) return;
@@ -189,9 +190,10 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       key={t.id}
                       type="button"
                       onClick={() => { setTab(t.id); setSearch(''); }}
+                      style={tab === t.id ? { backgroundColor: activeHex } : undefined}
                       className={`flex-1 text-center text-xs font-black uppercase tracking-wide py-2 rounded-lg transition-all ${
                         tab === t.id
-                          ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm'
+                          ? 'text-white shadow-sm'
                           : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
@@ -223,8 +225,8 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                     {filteredExams.length === 0 && (
                       <p className="text-sm text-slate-400 text-center py-4">{exams.length ? 'No exam found' : 'Loading exams...'}</p>
                     )}
-                    <div className="flex flex-wrap gap-2">
-                      {filteredExams.map((exam) => {
+                    <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
+                      {filteredExams.map((exam, index) => {
                         const active = selectedExamIds.includes(exam._id);
                         return (
                           <button
@@ -232,12 +234,13 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             type="button"
                             onClick={() => toggleTargetExam(exam._id)}
                             style={active ? { backgroundColor: activeHex, borderColor: activeHex } : undefined}
-                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                            className={`w-full flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border transition-all ${
                               active ? 'text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'
                             }`}
                           >
-                            {active && <Check className="w-3 h-3" />}
-                            {exam.name}
+                            <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
+                            {active && <Check className="w-3 h-3 flex-shrink-0" />}
+                            <span className="flex-1 text-left truncate">{exam.name}</span>
                           </button>
                         );
                       })}
@@ -266,11 +269,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               )}
 
               {tab === 'theme' && (
-                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-3 gap-2 content-start px-4 pb-6">
+                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
                   {filteredThemeOptions.length === 0 && (
                     <p className="col-span-full text-sm text-slate-400 text-center py-4">No theme found</p>
                   )}
-                  {filteredThemeOptions.map((option) => {
+                  {filteredThemeOptions.map((option, index) => {
                     const isSelected = option.themeId === themeId && option.isDark === isDark;
                     return (
                       <button
@@ -284,6 +287,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                         }`}
                       >
+                        <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
                         <span
                           className="w-5 h-5 rounded-full border-2 border-white/50 flex-shrink-0"
                           style={{ backgroundColor: option.hex }}
@@ -302,11 +306,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               )}
 
               {tab === 'font' && (
-                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-3 gap-2 content-start px-4 pb-6">
+                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
                   {filteredFonts.length === 0 && (
                     <p className="col-span-full text-sm text-slate-400 text-center py-4">No font found</p>
                   )}
-                  {filteredFonts.map((font) => {
+                  {filteredFonts.map((font, index) => {
                     const isSelected = font === fontFamily;
                     return (
                       <button
@@ -320,6 +324,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                         }`}
                       >
+                        <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
                         <Type className={`w-4 h-4 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
                         <span className="flex-1 text-left truncate">{font}</span>
                         {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
@@ -330,8 +335,8 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               )}
 
               {tab === 'size' && (
-                <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-2 px-4 pb-6">
-                  {TEXT_SIZE_PRESETS.map((preset) => {
+                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
+                  {TEXT_SIZE_PRESETS.map((preset, index) => {
                     const isSelected = preset.id === textSizeId;
                     return (
                       <button
@@ -345,6 +350,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                         }`}
                       >
+                        <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
                         <span className="w-8 text-center font-black leading-none flex-shrink-0" style={{ fontSize: `${preset.px}px` }}>
                           Aa
                         </span>

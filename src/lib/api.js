@@ -343,7 +343,8 @@ class ApiService {
   // Web-only: tab-scoped search with real pagination (type='all' | 'exam' | 'subject' | 'topic' |
   // 'quiz' | 'test' | 'reel' | 'blog' | 'currentAffair' | 'note' | 'examNews' | 'feature')
   async searchWeb({ query = '', type = 'all', page = 1, limit = 24 }) {
-    const searchQuery = new URLSearchParams({ query, type, page, limit }).toString();
+    const { examIds } = this.withTargetExams({});
+    const searchQuery = new URLSearchParams({ query, type, page, limit, ...(examIds ? { examIds } : {}) }).toString();
     return this.request(`/api/web/search?${searchQuery}`);
   }
 

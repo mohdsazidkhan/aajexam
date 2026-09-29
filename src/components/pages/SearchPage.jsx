@@ -35,6 +35,7 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
 import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { isAuthenticated, getUser } from '../../lib/auth';
 import { ListSkeleton } from '../skeletons/PrivateSkeletons';
 
@@ -233,6 +234,14 @@ const SearchPage = () => {
       runSearch(q, 'all');
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [searchParams]);
+
+   // Target exams changed while this page is open: re-run the current search with the new filter.
+   const targetVersion = useTargetExamsVersion();
+   useEffect(() => {
+      if (!targetVersion) return;
+      runSearch(query, activeTabRef.current);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [targetVersion]);
 
    const handleTabChange = (tabKey) => {
       setActiveTab(tabKey);
