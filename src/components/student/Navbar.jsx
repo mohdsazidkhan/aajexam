@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  Sun,
-  Moon,
   LogOut,
   User,
   Settings,
@@ -23,17 +21,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useClientSide, useAuthStatus } from '../../hooks/useClientSide';
 import { secureLogout } from '../../lib/utils/authUtils';
-import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
+import { initializeDarkMode } from '../../store/darkModeSlice';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import API from '../../lib/api';
 import Image from "next/image";
+import ThemeColorMenuButton from '../ThemeColorMenuButton';
 
 const StudentNavbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const isClient = useClientSide();
   const { user } = useAuthStatus();
-  const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -51,7 +49,6 @@ const StudentNavbar = () => {
     return () => { cancelled = true; };
   }, [isClient, user, router.pathname]);
 
-  const toggleTheme = () => dispatch(toggleDarkMode());
   const handleLogout = () => secureLogout(router);
 
   if (!isClient || !user) return null;
@@ -130,14 +127,8 @@ const StudentNavbar = () => {
               )}
             </Link>
 
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
-            >
-              {darkMode ? <Sun className="w-4 h-4 xl:w-5 xl:h-5" /> : <Moon className="w-4 h-4 xl:w-5 xl:h-5" />}
-            </button>
+            {/* Theme colour + dark mode */}
+            <ThemeColorMenuButton buttonClassName="flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0" />
 
             {/* Profile avatar — plan (PRO/FREE/EXPIRED) now shown as a
                 badge next to the logo instead of floating on the avatar. */}
@@ -219,15 +210,6 @@ const StudentNavbar = () => {
                   </button>
                 </Link>
               ))}
-
-              {/* Theme toggle — mobile only */}
-              <button
-                onClick={() => { toggleTheme(); setShowProfileMenu(false); }}
-                className="xl:hidden w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
-              >
-                {darkMode ? <Sun className="w-4 h-4 text-slate-400" /> : <Moon className="w-4 h-4 text-slate-400" />}
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
-              </button>
 
               <div className="my-1 border-t border-slate-100 dark:border-slate-800 mx-2" />
 

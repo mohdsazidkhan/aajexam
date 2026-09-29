@@ -31,6 +31,21 @@
     --border-secondary: #cbd5e1;
 
     --navbar-height: 5rem;
+
+    /* Primary (brand/theme) color scale — default AajExam Green (#45B800).
+       ThemeColorMenuButton overrides these on document.documentElement via JS
+       when the user picks a different theme; these are just the SSR/no-JS defaults. */
+    --color-primary-50: #f6fbf2;
+    --color-primary-100: #e9f6e0;
+    --color-primary-200: #cbebb8;
+    --color-primary-300: #abdf8c;
+    --color-primary-400: #79cc47;
+    --color-primary-500: #45b800;
+    --color-primary-600: #3ca000;
+    --color-primary-700: #328400;
+    --color-primary-800: #286b00;
+    --color-primary-900: #1f5300;
+    --color-primary-950: #153700;
   }
 
   .dark {
@@ -66,12 +81,12 @@
   }
 
   ::selection {
-    background-color: #58cc02;
+    background-color: var(--color-primary-500);
     color: white;
   }
 
   :where(a, button, input, textarea, select, [role="button"], [tabindex]):focus-visible {
-    outline: 3px solid rgba(88, 204, 2, 0.45);
+    outline: 3px solid color-mix(in srgb, var(--color-primary-500) 45%, transparent);
     outline-offset: 3px;
   }
 
@@ -92,7 +107,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #58cc02;
+    background: var(--color-primary-500);
   }
 
   .dark ::-webkit-scrollbar-thumb {
@@ -100,7 +115,7 @@
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: #58cc02;
+    background: var(--color-primary-500);
   }
 }
 
@@ -128,7 +143,7 @@
   }
 
   .text-glow-primary {
-    text-shadow: 0 0 20px rgba(88, 204, 2, 0.3);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--color-primary-500) 30%, transparent);
   }
 
   .text-glow-secondary {
@@ -144,7 +159,7 @@
     content: '';
     position: absolute;
     inset: -1px;
-    background: linear-gradient(45deg, #58cc02, #ffffff, #000000, #58cc02);
+    background: linear-gradient(45deg, var(--color-primary-500), #ffffff, #000000, var(--color-primary-500));
     background-size: 400%;
     z-index: -1;
     filter: blur(8px);

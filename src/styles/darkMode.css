@@ -9,7 +9,7 @@
   --text-muted: var(--text-muted);
   --border-primary: var(--border-primary);
   --border-secondary: var(--border-secondary);
-  --accent-primary: #58cc02;
+  --accent-primary: var(--color-primary-500);
   --accent-secondary: #1cb0f6;
   --success: #10b981;
   --warning: #f59e0b;

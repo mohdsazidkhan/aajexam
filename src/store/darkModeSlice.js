@@ -1,4 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { applyThemeForMode, DEFAULT_THEME_ID } from '../lib/colorShades';
+
+// Re-applies the user's chosen theme color for the given light/dark mode,
+// so toggling dark mode keeps using that theme's correct-contrast variant.
+const reapplyThemeColor = (isDark) => {
+  if (typeof window === 'undefined') return;
+  const themeId = localStorage.getItem('themeId') || DEFAULT_THEME_ID;
+  applyThemeForMode(themeId, isDark);
+};
 
 // Initialize dark mode from localStorage or system preference
 const getInitialDarkMode = () => {
@@ -27,6 +36,7 @@ const darkModeSlice = createSlice({
           root.classList.remove('dark');
           localStorage.setItem('theme', 'light');
         }
+        reapplyThemeColor(state.isDark);
       }
     },
     setDarkMode: (state, action) => {
@@ -40,6 +50,7 @@ const darkModeSlice = createSlice({
           root.classList.remove('dark');
           localStorage.setItem('theme', 'light');
         }
+        reapplyThemeColor(state.isDark);
       }
     },
     initializeDarkMode: (state) => {
@@ -58,6 +69,7 @@ const darkModeSlice = createSlice({
         } else {
           root.classList.remove('dark');
         }
+        reapplyThemeColor(shouldBeDark);
       }
     },
   },

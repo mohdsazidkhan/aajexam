@@ -3,10 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
-  Sun,
-  Moon,
   Compass,
   Layers,
   ShieldCheck,
@@ -22,14 +20,14 @@ import {
 import { motion } from 'framer-motion';
 
 import { useClientSide } from '../../hooks/useClientSide';
-import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
+import { initializeDarkMode } from '../../store/darkModeSlice';
 import Button from '../ui/Button';
+import ThemeColorMenuButton from '../ThemeColorMenuButton';
 
 const PublicNavbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const isClient = useClientSide();
-  const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -40,8 +38,6 @@ const PublicNavbar = () => {
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, [isClient, dispatch]);
-
-  const toggleTheme = () => dispatch(toggleDarkMode());
 
   const navLinks = [
     { label: 'Home', title: 'Home', href: '/', icon: Compass },
@@ -104,14 +100,7 @@ const PublicNavbar = () => {
 
             {/* --- Actions --- */}
             <div className="flex items-center gap-3 relative z-10">
-              <button
-                onClick={toggleTheme}
-                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-                title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-                className="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 border border-slate-200/30 dark:border-slate-700/30 shadow-sm transition-all"
-              >
-                {darkMode ? <Sun className="w-5" /> : <Moon className="w-5" />}
-              </button>
+              <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm transition-all" />
 
               <Link href="/login">
                 <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">Get Started</Button>

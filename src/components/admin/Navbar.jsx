@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Sun,
-  Moon,
   LogOut,
   Menu,
   X,
@@ -18,17 +16,17 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../store/sidebarSlice';
-import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
+import { initializeDarkMode } from '../../store/darkModeSlice';
 import { secureLogout, getCurrentUser, getAuthToken } from '../../lib/utils/authUtils';
 import { useSSR } from '../../hooks/useSSR';
 import { useAdminMobileHeaderContext } from '../../contexts/AdminMobileHeaderContext';
 import API from '../../lib/api';
+import ThemeColorMenuButton from '../ThemeColorMenuButton';
 
 const AdminNavbar = () => {
   const { isMounted, router } = useSSR();
   const dispatch = useDispatch();
   const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
-  const darkMode = useSelector((state) => state.darkMode.isDark);
   const user = getCurrentUser();
   const { header, setDrawerOpen } = useAdminMobileHeaderContext();
 
@@ -58,7 +56,6 @@ const AdminNavbar = () => {
 
   if (!isMounted) return null;
 
-  const toggleTheme = () => dispatch(toggleDarkMode());
   const handleLogout = () => secureLogout(router);
 
   return (
@@ -134,14 +131,8 @@ const AdminNavbar = () => {
               )}
             </Link>
 
-            {/* Theme toggle — desktop only (mobile keeps it in the profile menu) */}
-            <button
-              onClick={toggleTheme}
-              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="hidden xl:flex w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
-            >
-              {darkMode ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
-            </button>
+            {/* Theme colour + dark mode */}
+            <ThemeColorMenuButton buttonClassName="flex w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0" />
 
             {/* Profile avatar */}
             <button
@@ -208,15 +199,6 @@ const AdminNavbar = () => {
                   </button>
                 </Link>
               ))}
-
-              {/* Theme toggle */}
-              <button
-                onClick={() => { toggleTheme(); setShowProfileMenu(false); }}
-                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
-              >
-                {darkMode ? <Sun className="w-4 h-4 text-slate-400" /> : <Moon className="w-4 h-4 text-slate-400" />}
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
-              </button>
 
               <div className="my-1 border-t border-slate-100 dark:border-slate-800 mx-2" />
 

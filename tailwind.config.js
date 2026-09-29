@@ -14,17 +14,20 @@ module.exports = {
       },
       colors: {
         primary: {
-          50: '#f7fff0',
-          100: '#edffdb',
-          200: '#d9ffb8',
-          300: '#bcff85',
-          400: '#94f54d',
-          500: '#58cc02', // AajExam Green
-          600: '#46a302',
-          700: '#357a02',
-          800: '#2a6102',
-          900: '#235002',
-          950: '#173601',
+          // Values come from CSS custom properties so the user-selected theme
+          // color (ThemeColorMenuButton) can override them at runtime; defaults
+          // live in src/styles/index.css.
+          50: 'var(--color-primary-50)',
+          100: 'var(--color-primary-100)',
+          200: 'var(--color-primary-200)',
+          300: 'var(--color-primary-300)',
+          400: 'var(--color-primary-400)',
+          500: 'var(--color-primary-500)',
+          600: 'var(--color-primary-600)',
+          700: 'var(--color-primary-700)',
+          800: 'var(--color-primary-800)',
+          900: 'var(--color-primary-900)',
+          950: 'var(--color-primary-950)',
         },
         slate: {
           950: '#0F1720', // Even darker for specific surfaces

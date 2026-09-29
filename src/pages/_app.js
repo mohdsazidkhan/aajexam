@@ -6,6 +6,7 @@ import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import store from '../store';
 import { initializeDarkMode } from '../store/darkModeSlice';
+import { initializeThemeColor } from '../store/themeColorSlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { useRouter } from 'next/router';
@@ -100,6 +101,7 @@ function AppContent({ Component, pageProps }) {
 
   useEffect(() => {
     dispatch(initializeDarkMode());
+    dispatch(initializeThemeColor());
   }, [dispatch]);
 
   useEffect(() => {
