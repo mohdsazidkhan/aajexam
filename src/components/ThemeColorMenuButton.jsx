@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Check, Sun, Moon, Search } from 'lucide-react';
@@ -40,6 +40,13 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     setSearch('');
   };
 
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [open]);
+
   return (
     <div className="relative flex-shrink-0">
       <button
@@ -59,14 +66,14 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
       <AnimatePresence>
         {open && (
           <>
-            <div className="fixed top-12 xl:top-16 inset-x-0 bottom-0 z-[160] bg-black/30" onClick={() => setOpen(false)} />
+            <div className="fixed inset-0 z-[160] bg-black/30" onClick={() => setOpen(false)} />
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
               transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
               role="menu"
-              className="fixed top-12 xl:top-16 bottom-0 right-0 z-[170] w-full xl:w-1/2 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-lg flex flex-col"
+              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[70vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
                 <div className="relative px-1">
