@@ -4,6 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { isAuthenticated, getCurrentUser } from '../../lib/utils/authUtils';
@@ -40,6 +42,11 @@ const CommunityQuestionsPage = () => {
 
   const currentPage = parseInt(router.query.page || '1', 10);
 
+  const targetVersion = useTargetExamsVersion();
+  // Resolved after mount (localStorage) so SSR and first paint match.
+  const [hasTargets, setHasTargets] = useState(false);
+  useEffect(() => { setHasTargets(getStoredTargetExamIds().length > 0); }, [targetVersion]);
+
   const fetchQuestions = useCallback(async () => {
     try {
       setLoading(true);
@@ -48,7 +55,8 @@ const CommunityQuestionsPage = () => {
         page: currentPage,
         limit: 15,
         sort: filters.sort,
-        ...(filters.exam && { exam: filters.exam })
+        // '' = default (target exams if any); 'all' = explicit "All Exams", no target filter.
+        ...(filters.exam === 'all' ? { examIds: 'all' } : filters.exam && { exam: filters.exam })
       };
       const res = await API.getCommunityQuestions(params);
       if (res.success) {
@@ -61,7 +69,7 @@ const CommunityQuestionsPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, filters.sort, filters.exam]);
+  }, [currentPage, filters.sort, filters.exam, targetVersion]);
 
   const fetchExams = async () => {
     try {
@@ -160,7 +168,8 @@ const CommunityQuestionsPage = () => {
               onChange={(e) => handleFilterChange('exam', e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
-              <option value="">All Exams</option>
+              <option value="">{hasTargets ? 'My target exams' : 'All Exams'}</option>
+              {hasTargets && <option value="all">All Exams</option>}
               {exams.map(exam => (
                 <option key={exam._id} value={exam._id}>
                   {exam.name}

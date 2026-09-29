@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import CommunityQuestion from '@/models/CommunityQuestion';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import { createNotification } from '@/utils/notifications';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 // GET /api/community-questions - List all approved questions with filters
 export async function GET(req) {
@@ -16,6 +17,7 @@ export async function GET(req) {
 
     const filter = { status: 'approved' };
     if (exam) filter.exam = exam;
+    else applyExamScope(filter, parseExamIds(searchParams.get('examIds')));
 
     const sortOption = sort === 'popular' ? { likes: -1, createdAt: -1 } : { createdAt: -1 };
 

@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
 import ExamPattern from '@/models/ExamPattern';
 import { markPyqAccess } from '@/lib/subscription';
+import { parseExamIds } from '@/lib/utils/targetExams';
 
 // GET - List all PYQ tests (public)
 export async function GET(req) {
@@ -16,8 +17,9 @@ export async function GET(req) {
         const skip = (page - 1) * limit;
 
         let patternFilter = {};
-        if (examId) {
-            const patterns = await ExamPattern.find({ exam: examId }).select('_id').lean();
+        const examIds = parseExamIds(searchParams.get('examIds'));
+        if (examId || examIds.length) {
+            const patterns = await ExamPattern.find({ exam: examId ? examId : { $in: examIds } }).select('_id').lean();
             patternFilter.examPattern = { $in: patterns.map(p => p._id) };
         }
 

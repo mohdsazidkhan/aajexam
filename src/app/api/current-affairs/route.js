@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import CurrentAffair from '@/models/CurrentAffair';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 // GET - List current affairs (public)
 export async function GET(req) {
@@ -17,6 +18,7 @@ export async function GET(req) {
 
         let query = { status: 'published' };
         if (category) query.category = category;
+        applyExamScope(query, parseExamIds(searchParams.get('examIds')), { includeGeneric: true });
         if (search) query.$text = { $search: search };
 
         if (day && month && year) {

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Blog from '@/models/Blog';
 import { escapeRegex } from '@/lib/utils/regex';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 export async function GET(req) {
     try {
@@ -25,6 +26,7 @@ export async function GET(req) {
             ];
         }
         if (exam) query.exam = exam;
+        else applyExamScope(query, parseExamIds(searchParams.get('examIds')));
         if (featured === 'true') query.isFeatured = true;
 
         const [blogs, total] = await Promise.all([

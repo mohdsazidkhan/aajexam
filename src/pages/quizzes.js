@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../lib/utils/targetExams';
 import Seo from '../components/Seo';
 import LinkIndexSection from '../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
@@ -6,7 +10,24 @@ import { PageLoadingFallback } from '../components/skeletons/PublicSkeletons';
 
 const QuizListPage = dynamic(() => import('../components/pages/QuizListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
-export default function Quizzes({ subjects = [], latestQuizzes = [], practiceGroups = [] }) {
+export default function Quizzes(props) {
+  // Static HTML carries the full catalogue (SEO). Logged-in users with target exams get the
+  // same sections limited to those exams, on mount and right after they change them.
+  const [scoped, setScoped] = useState(null);
+  const targetVersion = useTargetExamsVersion();
+
+  useEffect(() => {
+    const ids = getStoredTargetExamIds();
+    if (!ids.length) { setScoped(null); return; }
+    let cancelled = false;
+    API.request(`/api/quiz/index?examIds=${ids.join(',')}`).then((res) => {
+      if (!cancelled && res?.success) setScoped(res.data);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [targetVersion]);
+
+  const { subjects = [], latestQuizzes = [], practiceGroups = [] } = scoped || props;
+
   return (
     <>
       <Seo
@@ -61,74 +82,8 @@ export default function Quizzes({ subjects = [], latestQuizzes = [], practiceGro
 
 export async function getStaticProps() {
   try {
-    const dbConnect = (await import('../lib/db')).default;
-    const Subject = (await import('../models/Subject')).default;
-    const Topic = (await import('../models/Topic')).default;
-    const Quiz = (await import('../models/Quiz')).default;
-
-    await dbConnect();
-
-    const Exam = (await import('../models/Exam')).default;
-
-    const [subjectDocs, topicCounts, quizDocs, seriesGroups] = await Promise.all([
-      Subject.find({}).select('name slug').sort({ name: 1 }).limit(300).lean(),
-      Topic.aggregate([{ $group: { _id: '$subject', n: { $sum: 1 } } }]),
-      Quiz.find({ status: 'published', noindexOverride: { $ne: true } })
-        .select('title slug difficulty publishedAt createdAt')
-        .sort({ publishedAt: -1, createdAt: -1 })
-        .limit(120)
-        .lean(),
-      // Consolidated /practice/<exam>/<subject> question banks.
-      Quiz.aggregate([
-        { $match: { type: 'subject_test', status: 'published' } },
-        { $unwind: '$applicableExams' },
-        { $group: { _id: { exam: '$applicableExams', subject: '$subject' }, questions: { $sum: { $size: { $ifNull: ['$questions', []] } } } } },
-        { $match: { questions: { $gte: 50 } } },
-        { $sort: { questions: -1 } }
-      ])
-    ]);
-
-    const [seriesExams, seriesSubjects] = await Promise.all([
-      Exam.find({ _id: { $in: seriesGroups.map((g) => g._id.exam) } }).select('name slug').lean(),
-      Subject.find({ _id: { $in: seriesGroups.map((g) => g._id.subject) } }).select('name slug').lean()
-    ]);
-    const examById = new Map(seriesExams.map((e) => [String(e._id), e]));
-    const subjectById = new Map(seriesSubjects.map((x) => [String(x._id), x]));
-
-    const groupedByExam = new Map();
-    for (const g of seriesGroups) {
-      const ex = examById.get(String(g._id.exam));
-      const sub = subjectById.get(String(g._id.subject));
-      if (!ex?.slug || !sub?.slug) continue;
-      if (!groupedByExam.has(ex.slug)) {
-        groupedByExam.set(ex.slug, { heading: ex.name || ex.slug, href: `/govt-exams/exam/${ex.slug}`, items: [] });
-      }
-      groupedByExam.get(ex.slug).items.push({
-        href: `/practice/${ex.slug}/${sub.slug}`,
-        name: `${sub.name} previous year questions`,
-        meta: `${g.questions} questions`
-      });
-    }
-    const practiceGroups = Array.from(groupedByExam.values()).sort((a, b) => b.items.length - a.items.length);
-
-    const countBySubject = new Map(topicCounts.map((t) => [String(t._id), t.n]));
-
-    return {
-      props: {
-        subjects: subjectDocs.filter((s) => s?.slug).map((s) => ({
-          name: s.name || '',
-          slug: s.slug,
-          topicCount: countBySubject.get(String(s._id)) || 0
-        })),
-        latestQuizzes: quizDocs.filter((q) => q?.slug).map((q) => ({
-          title: q.title || q.slug,
-          slug: q.slug,
-          meta: q.difficulty || null
-        })),
-        practiceGroups
-      },
-      revalidate: 1800
-    };
+    const { buildQuizzesIndex } = await import('../lib/quizzesIndex');
+    return { props: await buildQuizzesIndex(), revalidate: 1800 };
   } catch (e) {
     console.error('Error in quizzes getStaticProps:', e);
     return { props: { subjects: [], latestQuizzes: [], practiceGroups: [] }, revalidate: 300 };

@@ -8,6 +8,8 @@ import { ProBadge } from '../../components/ui';
 import { hasProSubscription } from '../../lib/utils/subscriptionUtils';
 import { Lock } from 'lucide-react';
 import Seo from '../../components/Seo';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { parseExamIds, getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import {
     generateBreadcrumbSchema,
     generateFAQSchema,
@@ -20,7 +22,7 @@ import PracticeTest from '../../models/PracticeTest';
 
 const PAGE_SIZE = 20;
 
-export default function PYQIndexPage({ tests, totalPages, page, year, examId, exams, examsWithPYQ, totalPYQs, intro, faqs, years }) {
+export default function PYQIndexPage({ tests, totalPages, page, year, examId, examIdsFilter, exams, examsWithPYQ, totalPYQs, intro, faqs, years }) {
     const router = useRouter();
     const [filterYear, setFilterYear] = useState(year || '');
     const [filterExam, setFilterExam] = useState(examId || '');
@@ -43,10 +45,33 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
         }
     }, []);
 
+    // Logged-in users with target exams land on their exams' papers. Done client-side
+    // (never in SSR) so crawlers and logged-out visitors always get the full library.
+    useEffect(() => {
+        if (!router.isReady) return;
+        const { examId: qExam, examIds: qExamIds, all } = router.query;
+        if (qExam || qExamIds || all) return;
+        const ids = getStoredTargetExamIds();
+        if (ids.length) router.replace({ pathname: '/pyq', query: { ...router.query, examIds: ids.join(',') } }, undefined, { shallow: false });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.isReady]);
+
+    // Selection changed while this page is open: re-run SSR with the new ids right away.
+    const targetVersion = useTargetExamsVersion();
+    useEffect(() => {
+        if (!targetVersion) return;
+        const ids = getStoredTargetExamIds();
+        const q = { ...router.query };
+        delete q.examId; delete q.page; delete q.all;
+        if (ids.length) q.examIds = ids.join(','); else { delete q.examIds; q.all = '1'; }
+        setFilterExam('');
+        router.push({ pathname: '/pyq', query: q });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [targetVersion]);
+
     const updateQuery = (next) => {
         const q = { ...router.query, ...next };
-        if (next.year === '') delete q.year;
-        if (next.examId === '') delete q.examId;
+        Object.keys(next).forEach((k) => { if (next[k] === '') delete q[k]; });
         if (next.page === 1) delete q.page;
         router.push({ pathname: '/pyq', query: q });
     };
@@ -57,7 +82,8 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
     };
     const onExamChange = (e) => {
         setFilterExam(e.target.value);
-        updateQuery({ examId: e.target.value, page: 1 });
+        // Explicit pick overrides the target-exams default; 'All Exams' opts out of it for this visit.
+        updateQuery({ examId: e.target.value, examIds: '', all: e.target.value ? '' : '1', page: 1 });
     };
 
     const seoTitle = 'Previous Year Question Papers (PYQ) – Free Solved PYQ Mock Tests for SSC, RRB, IBPS, UPSC | AajExam';
@@ -126,6 +152,15 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 </p>
                             </div>
                             <div className="flex gap-2">
+                                {examIdsFilter && (
+                                    <button
+                                        type="button"
+                                        onClick={() => updateQuery({ examIds: '', all: '1', page: 1 })}
+                                        className="px-3 py-2 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-wider bg-primary-600 text-white whitespace-nowrap"
+                                    >
+                                        Your target exams · Show all
+                                    </button>
+                                )}
                                 <select
                                     value={filterExam}
                                     onChange={onExamChange}
@@ -427,11 +462,12 @@ export async function getServerSideProps({ query, res }) {
         const page = Math.max(1, parseInt(query.page, 10) || 1);
         const yearFilter = query.year ? parseInt(query.year, 10) || null : null;
         const examIdFilter = query.examId && /^[a-f0-9]{24}$/i.test(query.examId) ? query.examId : null;
+        const examIdsFilter = examIdFilter ? [] : parseExamIds(query.examIds);
 
         // Build pattern filter for the optional examId
         let patternFilter = {};
-        if (examIdFilter) {
-            const patterns = await ExamPattern.find({ exam: examIdFilter }).select('_id').lean();
+        if (examIdFilter || examIdsFilter.length) {
+            const patterns = await ExamPattern.find({ exam: examIdFilter ? examIdFilter : { $in: examIdsFilter } }).select('_id').lean();
             patternFilter = { examPattern: { $in: patterns.map((p) => p._id) } };
         }
 
@@ -537,6 +573,7 @@ export async function getServerSideProps({ query, res }) {
                 page,
                 year: yearFilter || '',
                 examId: examIdFilter || '',
+                examIdsFilter: examIdsFilter.join(','),
                 exams,
                 examsWithPYQ,
                 totalPYQs,
@@ -554,6 +591,7 @@ export async function getServerSideProps({ query, res }) {
                 page: 1,
                 year: '',
                 examId: '',
+                examIdsFilter: '',
                 exams: [],
                 examsWithPYQ: [],
                 totalPYQs: 0,

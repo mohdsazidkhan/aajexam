@@ -4,6 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import { BlogListSkeleton } from '../skeletons/PublicSkeletons';
 import { useSelector } from 'react-redux';
 import { Search, Eye, Heart, Clock, Star, Pin, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -24,6 +26,11 @@ const BlogsPage = () => {
   const currentPage = parseInt(router.query.page || '1', 10);
   const [viewMode, setViewMode] = useState('grid');
 
+  const targetVersion = useTargetExamsVersion();
+  // Resolved after mount (localStorage) so SSR and first paint match.
+  const [hasTargets, setHasTargets] = useState(false);
+  useEffect(() => { setHasTargets(getStoredTargetExamIds().length > 0); }, [targetVersion]);
+
   const fetchBlogs = useCallback(async () => {
     try {
       setLoading(true);
@@ -32,7 +39,9 @@ const BlogsPage = () => {
         page: currentPage,
         limit: 9,
         search: filters.search,
-        exam: filters.exam,
+        // '' = default (target exams if any); 'all' = explicit "All Exams", no target filter.
+        exam: filters.exam === 'all' ? undefined : filters.exam,
+        examIds: filters.exam === 'all' ? 'all' : undefined,
         featured: filters.featured || undefined,
       };
       const response = await API.getPublishedBlogs(params);
@@ -49,7 +58,7 @@ const BlogsPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, filters.search, filters.exam, filters.featured]);
+  }, [currentPage, filters.search, filters.exam, filters.featured, targetVersion]);
 
   const fetchExams = async () => {
     try {
@@ -199,7 +208,8 @@ const BlogsPage = () => {
             {/* Exam Filter */}
             <select name="exam" value={filters.exam} onChange={handleFilterChange}
               className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-              <option value="">All Exams</option>
+              <option value="">{hasTargets ? 'My target exams' : 'All Exams'}</option>
+              {hasTargets && <option value="all">All Exams</option>}
               {exams.map(exam => (
                 <option key={exam._id} value={exam._id}>{exam.name}</option>
               ))}

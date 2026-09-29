@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Target, TrendingUp, TrendingDown, BarChart3, AlertTriangle, CheckCircle, ArrowRight } from 'lucide-react';
 import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
@@ -51,16 +52,17 @@ const ReadinessPage = () => {
   const [readiness, setReadiness] = useState(null);
   const [loading, setLoading] = useState(true);
   const [analyzing, setAnalyzing] = useState(false);
+  const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
     const fetchExams = async () => {
       try {
-        const res = await API.request('/api/real-exams/all-exams');
+        const res = await API.getAllExams({ forUser: true });
         if (res?.success) setExams(res.data || []);
       } catch (e) { } finally { setLoading(false); }
     };
     fetchExams();
-  }, []);
+  }, [targetVersion]);
 
   const analyzeReadiness = async () => {
     if (!selectedExam) return;

@@ -1,5 +1,6 @@
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
+import Exam from '@/models/Exam';
 import { protect } from '@/middleware/auth';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 
@@ -15,7 +16,7 @@ export async function PUT(req) {
         const userId = auth.user._id;
 
         // Fields allowed to be updated
-        const { name, phone, bio, city, state, isPublicProfile, primaryTargetExam, socialLinks } = body;
+        const { name, phone, bio, city, state, isPublicProfile, primaryTargetExam, targetExams, targetExamsPrompted, socialLinks } = body;
 
         const user = await User.findById(userId);
         if (!user) {
@@ -28,7 +29,19 @@ export async function PUT(req) {
         if (city !== undefined) user.city = city;
         if (state !== undefined) user.state = state;
         if (isPublicProfile !== undefined) user.isPublicProfile = !!isPublicProfile;
-        if (primaryTargetExam) user.primaryTargetExam = primaryTargetExam;
+        if (Array.isArray(targetExams)) {
+            // Exam's query hook drops actualExam:false docs, so fake/placeholder exams can't be selected.
+            const ids = [...new Set(targetExams.map(String))];
+            const valid = ids.length
+                ? await Exam.find({ _id: { $in: ids }, actualExam: true }).select('name').lean()
+                : [];
+            user.targetExams = valid.map((e) => e._id);
+            user.targetExamsPrompted = true;
+            user.primaryTargetExam = valid.length ? valid.map((e) => e.name).join(', ') : 'All Exams';
+        } else if (primaryTargetExam) {
+            user.primaryTargetExam = primaryTargetExam;
+        }
+        if (targetExamsPrompted === true) user.targetExamsPrompted = true;
         if (socialLinks && typeof socialLinks === 'object') {
             user.socialLinks = { ...(user.socialLinks?.toObject?.() || user.socialLinks || {}), ...socialLinks };
         }
@@ -48,6 +61,8 @@ export async function PUT(req) {
                 state: user.state,
                 isPublicProfile: user.isPublicProfile,
                 primaryTargetExam: user.primaryTargetExam,
+                targetExams: user.targetExams,
+                targetExamsPrompted: user.targetExamsPrompted,
                 socialLinks: user.socialLinks,
                 profilePicture: user.profilePicture
             }

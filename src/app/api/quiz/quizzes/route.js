@@ -4,6 +4,7 @@ import Quiz from '@/models/Quiz';
 import Subject from '@/models/Subject';
 import Topic from '@/models/Topic';
 import Exam from '@/models/Exam';
+import { parseExamIds } from '@/lib/utils/targetExams';
 
 // GET - public: list published quizzes with filters
 export async function GET(req) {
@@ -20,7 +21,9 @@ export async function GET(req) {
         const limit = parseInt(searchParams.get('limit')) || 20;
 
         const filter = { status: 'published' };
+        const examIds = parseExamIds(searchParams.get('examIds'));
         if (exam) filter.applicableExams = exam;
+        else if (examIds.length) filter.applicableExams = { $in: examIds };
         if (subject) filter.subject = subject;
         if (topic) filter.topic = topic;
         if (type) filter.type = type;

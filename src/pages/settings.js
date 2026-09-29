@@ -6,6 +6,7 @@ import { Building2, CreditCard, Eye, EyeOff, Facebook, Globe, Info, Instagram, L
 import { toast } from 'react-hot-toast';
 
 import API from '../lib/api';
+import { notifyTargetExamsChanged } from '../lib/utils/targetExams';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import MobileAppWrapper from '../components/MobileAppWrapper';
 import StateCitySelect from '../components/StateCitySelect';
@@ -25,7 +26,7 @@ const SOCIAL_FIELDS = [
 ];
 
 const SettingsPage = () => {
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('targets');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [profile, setProfile] = useState({});
@@ -33,6 +34,11 @@ const SettingsPage = () => {
   const [exams, setExams] = useState([]);
   const [passwordData, setPasswordData] = useState({ old: '', new: '', confirm: '' });
   const [showPass, setShowPass] = useState({ old: false, new: false, confirm: false });
+
+  useEffect(() => {
+    const tab = new URLSearchParams(window.location.search).get('tab');
+    if (['targets', 'profile', 'bank', 'security'].includes(tab)) setActiveTab(tab);
+  }, []);
 
   useEffect(() => {
     const init = async () => {
@@ -62,11 +68,23 @@ const SettingsPage = () => {
     init();
   }, []);
 
+  // Legacy users only have the primaryTargetExam name string; map it to ids until they re-save.
+  const selectedExamIds = (profile.targetExams?.length
+    ? profile.targetExams.map((e) => String(e?._id || e))
+    : exams.filter((e) => (profile.primaryTargetExam || '').split(', ').includes(e.name)).map((e) => e._id));
+
+  const toggleTargetExam = (id) => {
+    const next = selectedExamIds.includes(id) ? selectedExamIds.filter((x) => x !== id) : [...selectedExamIds, id];
+    setProfile({ ...profile, targetExams: next });
+  };
+
   const handleUpdateProfile = async (event) => {
     event.preventDefault();
     setSaving(true);
     try {
-      const res = await API.updateProfile(profile);
+      // Target exams are saved from their own tab; don't let this form overwrite them.
+      const { targetExams: _t, primaryTargetExam: _p, ...profileFields } = profile;
+      const res = await API.updateProfile(profileFields);
       // The cached localStorage user (read by e.g. the city-prompt modal,
       // navbar) is never refreshed otherwise, so it'd keep showing stale
       // values — like an empty city — until the next login.
@@ -75,6 +93,22 @@ const SettingsPage = () => {
         if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, ...res.user }));
       }
       toast.success('Profile updated.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleSaveTargets = async () => {
+    setSaving(true);
+    try {
+      const res = await API.updateProfile({ targetExams: selectedExamIds });
+      if (res?.success && res.user) {
+        setProfile((prev) => ({ ...prev, targetExams: res.user.targetExams, primaryTargetExam: res.user.primaryTargetExam }));
+        const stored = getCurrentUser();
+        if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, ...res.user }));
+        notifyTargetExamsChanged();
+        toast.success('Target exams updated.');
+      }
     } finally {
       setSaving(false);
     }
@@ -115,6 +149,7 @@ const SettingsPage = () => {
   };
 
   const tabs = [
+    { id: 'targets', label: 'Target exams', icon: Target },
     { id: 'profile', label: 'Profile', icon: User },
     { id: 'bank', label: 'Bank', icon: Building2 },
     { id: 'security', label: 'Security', icon: Lock },
@@ -138,7 +173,7 @@ const SettingsPage = () => {
             <div className="space-y-2 xl:space-y-4">
               <h1 className="text-3xl xl:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
               <p className="text-sm xl:text-base font-bold text-content-secondary max-w-xl">
-                Update your profile, add bank details and change your password.
+                Choose your target exams, update your profile, add bank details and change your password.
               </p>
             </div>
 
@@ -167,6 +202,47 @@ const SettingsPage = () => {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
             >
+              {activeTab === 'targets' && (
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+                  <div className="xl:col-span-8">
+                    <div className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="space-y-1">
+                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Target exams</h2>
+                          <p className="text-sm font-bold text-content-secondary">
+                            Select the exams you are preparing for. {selectedExamIds.length ? `${selectedExamIds.length} selected.` : 'Nothing selected means all exams.'}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
+                          <Target className="w-6 h-6" />
+                        </div>
+                      </div>
+                            <div className="flex flex-wrap gap-2 p-3 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black ">
+                              {exams.map((exam) => {
+                                const active = selectedExamIds.includes(exam._id);
+                                return (
+                                  <button
+                                    key={exam._id}
+                                    type="button"
+                                    onClick={() => toggleTargetExam(exam._id)}
+                                    className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${active ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'}`}
+                                  >
+                                    {exam.name}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                      <div className="flex gap-3">
+                        <Button type="button" onClick={handleSaveTargets} disabled={saving}>{saving ? 'Saving...' : 'Save target exams'}</Button>
+                        {selectedExamIds.length > 0 && (
+                          <Button type="button" variant="secondary" onClick={() => setProfile({ ...profile, targetExams: [] })}>Clear</Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {activeTab === 'profile' && (
                 <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
                   <div className="xl:col-span-8">
@@ -212,27 +288,6 @@ const SettingsPage = () => {
                             />
                           </div>
 
-                          <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1 flex items-center gap-2">
-                              Target exam
-                              {profile.primaryTargetExam && profile.primaryTargetExam !== 'All Exams' && (
-                                <span className="px-2 py-0.5 rounded-full bg-primary-500/10 text-primary-600 text-[9px] font-black uppercase tracking-wider">Selected</span>
-                              )}
-                            </label>
-                            <div className="relative">
-                              <Target className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
-                              <select
-                                className={`${FIELD_CLASSNAME} pl-11 appearance-none`}
-                                value={profile.primaryTargetExam || 'All Exams'}
-                                onChange={(event) => setProfile({ ...profile, primaryTargetExam: event.target.value })}
-                              >
-                                <option value="All Exams">All Exams</option>
-                                {exams.map((exam) => (
-                                  <option key={exam._id} value={exam.name}>{exam.name}</option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
                         </div>
 
                         <div className="space-y-2">

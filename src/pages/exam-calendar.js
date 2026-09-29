@@ -8,6 +8,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 
@@ -151,12 +152,14 @@ const ExamCalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showUpcoming, setShowUpcoming] = useState(true);
   const todayChipRef = React.useRef(null);
+  const targetVersion = useTargetExamsVersion();
 
   const fetchCalendar = useCallback(async () => {
     try {
       setLoading(true);
       setSelectedDate(null);
-      const res = await API.request(`/api/exam-news/calendar?month=${month}&year=${year}`);
+      const { examIds } = API.withTargetExams({});
+      const res = await API.request(`/api/exam-news/calendar?month=${month}&year=${year}${examIds ? `&examIds=${examIds}` : ''}`);
       if (res?.success) {
         setEvents(res.events || {});
         setUpcoming(res.upcoming || []);
@@ -167,7 +170,7 @@ const ExamCalendarPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [month, year]);
+  }, [month, year, targetVersion]);
 
   useEffect(() => { fetchCalendar(); }, [fetchCalendar]);
 

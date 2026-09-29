@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';
 import Seo from '../Seo';
 
@@ -49,12 +50,13 @@ const TopicListPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
+  const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
     API.getAllTopics().then(res => {
       if (res.success) setTopics(res.data || []);
     }).finally(() => setLoading(false));
-  }, []);
+  }, [targetVersion]);
 
   const filters = [
     { id: 'all', label: 'All Topics', icon: Sparkles },

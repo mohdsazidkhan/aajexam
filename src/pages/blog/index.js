@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
@@ -9,7 +13,24 @@ const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
   loading: () => <BlogListSkeleton />
 });
 
-export default function Blog({ groups = [], allPosts = [] }) {
+export default function Blog(props) {
+  // Static HTML lists every article (SEO). Logged-in users with target exams get the index
+  // limited to those exams, on mount and right after they change them.
+  const [scoped, setScoped] = useState(null);
+  const targetVersion = useTargetExamsVersion();
+
+  useEffect(() => {
+    const ids = getStoredTargetExamIds();
+    if (!ids.length) { setScoped(null); return; }
+    let cancelled = false;
+    API.request(`/api/public/blogs/index?examIds=${ids.join(',')}`).then((res) => {
+      if (!cancelled && res?.success) setScoped(res.data);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [targetVersion]);
+
+  const { groups = [], allPosts = [] } = scoped || props;
+
   return (
     <>
       <Seo
@@ -54,38 +75,8 @@ export default function Blog({ groups = [], allPosts = [] }) {
 
 export async function getStaticProps() {
   try {
-    const dbConnect = (await import('../../lib/db')).default;
-    const Blog = (await import('../../models/Blog')).default;
-    await import('../../models/Exam');
-
-    await dbConnect();
-    const docs = await Blog.find({ status: 'published' })
-      .select('slug title readingTime publishedAt createdAt exam')
-      .populate('exam', 'name slug')
-      .sort({ createdAt: -1 })
-      .limit(500)
-      .lean();
-
-    const allPosts = docs.filter((d) => d?.slug).map((d) => ({ slug: d.slug, title: d.title || '' }));
-
-    // Group by exam so the index doubles as a per-exam hub for crawlers.
-    const byExam = new Map();
-    for (const d of docs) {
-      if (!d?.slug) continue;
-      const key = d.exam?.name || 'General exam updates';
-      if (!byExam.has(key)) {
-        byExam.set(key, { heading: key, href: d.exam?.slug ? `/govt-exams/exam/${d.exam.slug}` : null, items: [] });
-      }
-      byExam.get(key).items.push({
-        href: `/blog/${d.slug}`,
-        name: d.title || d.slug,
-        meta: `${d.readingTime || 5} min read`
-      });
-    }
-
-    const groups = Array.from(byExam.values()).sort((a, b) => b.items.length - a.items.length);
-
-    return { props: { groups, allPosts }, revalidate: 900 };
+    const { buildBlogIndex } = await import('../../lib/blogIndex');
+    return { props: await buildBlogIndex(), revalidate: 900 };
   } catch (e) {
     console.error('Error in blog index getStaticProps:', e);
     return { props: { groups: [], allPosts: [] }, revalidate: 300 };

@@ -4,6 +4,7 @@ import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X, TrendingUp, Spa
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
@@ -64,6 +65,7 @@ const CurrentAffairsPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
+  const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,16 +74,18 @@ const CurrentAffairsPage = () => {
         const params = new URLSearchParams({ page, limit: 30, month: selectedMonth, year: selectedYear });
         if (category !== 'all') params.set('category', category);
         if (search.trim()) params.set('search', search.trim());
+        const { examIds } = API.withTargetExams({});
+        if (examIds) params.set('examIds', examIds);
         const [listRes, todayRes] = await Promise.all([
           API.request(`/api/current-affairs?${params}`),
-          API.request('/api/current-affairs/today')
+          API.request(`/api/current-affairs/today${examIds ? `?examIds=${examIds}` : ''}`)
         ]);
         if (listRes?.success) { setAffairs(listRes.data || []); setTotalPages(listRes.pagination?.totalPages || 1); }
         if (todayRes?.success) setTodayAffairs(todayRes.data);
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, [category, page, search, selectedMonth, selectedYear]);
+  }, [category, page, search, selectedMonth, selectedYear, targetVersion]);
 
   const isCurrentMonth = selectedMonth === (now.getMonth() + 1) && selectedYear === CURRENT_YEAR;
   const hasFilters = search.trim() || !isCurrentMonth || category !== 'all';

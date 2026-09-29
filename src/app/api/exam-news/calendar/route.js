@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import ExamNews from '@/models/ExamNews';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 // GET /api/exam-news/calendar?month=7&year=2026
 export async function GET(req) {
@@ -23,26 +24,27 @@ export async function GET(req) {
         const upcomingEnd = new Date();
         upcomingEnd.setDate(upcomingEnd.getDate() + 30);
 
+        const examIds = parseExamIds(searchParams.get('examIds'));
         const [news, upcomingNews] = await Promise.all([
-            ExamNews.find({
+            ExamNews.find(applyExamScope({
                 status: 'published',
                 'importantDates.date': {
                     $gte: startOfMonth,
                     $lte: endOfMonth,
                 }
-            })
+            }, examIds))
                 .populate('exam', 'name code')
                 .select('title slug type examName exam importantDates isPinned')
                 .sort({ isPinned: -1, 'importantDates.date': 1 })
                 .limit(200)
                 .lean(),
-            ExamNews.find({
+            ExamNews.find(applyExamScope({
                 status: 'published',
                 'importantDates.date': {
                     $gte: upcomingStart,
                     $lte: upcomingEnd,
                 }
-            })
+            }, examIds))
                 .populate('exam', 'name code')
                 .select('title slug type examName exam importantDates isPinned')
                 .sort({ 'importantDates.date': 1 })

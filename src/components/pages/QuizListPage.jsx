@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';
 import { ProBadge } from '../ui';
 import Seo from '../Seo';
@@ -63,6 +64,7 @@ const QuizListPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
+  const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
     setLoading(true);
@@ -75,7 +77,7 @@ const QuizListPage = () => {
         setTotalCount(res.pagination?.total || res.data?.length || 0);
       }
     }).finally(() => setLoading(false));
-  }, [page, activeFilter]);
+  }, [page, activeFilter, targetVersion]);
 
   // Difficulty is now filtered server-side (see effect above) — switching
   // tabs must restart from page 1, since the old page number may not exist

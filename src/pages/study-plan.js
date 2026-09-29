@@ -4,6 +4,7 @@ import { CalendarDays, Sparkles, CheckCircle, Clock, Target, Plus, Trash2, Play,
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
@@ -35,19 +36,21 @@ const StudyPlanPage = () => {
   const fmtShort = (d) => new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
   const dayName = (d) => new Date(d).toLocaleDateString('en-IN', { weekday: 'short' });
 
+  const targetVersion = useTargetExamsVersion();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [plansRes, examsRes] = await Promise.all([
           API.request('/api/study-plan').catch(() => null),
-          API.request('/api/real-exams/all-exams').catch(() => null)
+          API.getAllExams({ forUser: true }).catch(() => null)
         ]);
         if (plansRes?.success) setPlans(plansRes.data || []);
         if (examsRes?.success) setExams(examsRes.data || []);
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, []);
+  }, [targetVersion]);
 
   const generatePlan = async () => {
     if (!form.examId || !form.examDate || !form.dailyHours) { toast.error('Fill all required fields'); return; }

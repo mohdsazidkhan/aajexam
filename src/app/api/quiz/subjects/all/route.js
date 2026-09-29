@@ -4,12 +4,14 @@ import Subject from '@/models/Subject';
 import Question from '@/models/Question';
 import Quiz from '@/models/Quiz';
 import Topic from '@/models/Topic';
+import { parseExamIds } from '@/lib/utils/targetExams';
 
-export async function GET() {
+export async function GET(req) {
     try {
         await dbConnect();
 
-        const subjects = await Subject.find({ isActive: true })
+        const examIds = parseExamIds(new URL(req.url).searchParams.get('examIds'));
+        const subjects = await Subject.find({ isActive: true, ...(examIds.length ? { exams: { $in: examIds } } : {}) })
             .sort({ order: 1, name: 1 })
             .lean();
 

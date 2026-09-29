@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 
 import API from "../../lib/api";
+import useTargetExamsVersion from "../../hooks/useTargetExamsVersion";
 import { useAuthStatus } from "../../hooks/useClientSide";
 import HomePageSkeleton from "../HomePageSkeleton";
 import { formatSecondsSpent } from "../../lib/utils/timeFormat";
@@ -231,7 +232,7 @@ const HomePage = () => {
 
       const fetchers = [
          // Govt Exams
-         API.getAllExams()
+         API.getAllExams({ forUser: true })
             .then(res => {
                if (res.success && res.data) setExams(res.data);
                else if (res.success && res.exams) setExams(res.exams);
@@ -293,11 +294,13 @@ const HomePage = () => {
       setLoading(false);
    }, []);
 
+   const targetVersion = useTargetExamsVersion();
+
    useEffect(() => {
-      if (fetchedRef.current) return;
+      if (fetchedRef.current && targetVersion === 0) return;
       fetchedRef.current = true;
       fetchAllData();
-   }, [fetchAllData]);
+   }, [fetchAllData, targetVersion]);
 
    if (!authLoading || loading) {
       return <HomePageSkeleton />;

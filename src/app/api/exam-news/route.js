@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import ExamNews from '@/models/ExamNews';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 // GET - List exam news (public)
 export async function GET(req) {
@@ -16,6 +17,7 @@ export async function GET(req) {
         let query = { status: 'published' };
         if (type) query.type = type;
         if (examId) query.exam = examId;
+        else applyExamScope(query, parseExamIds(searchParams.get('examIds')));
         if (search) query.$text = { $search: search };
 
         const [news, total] = await Promise.all([

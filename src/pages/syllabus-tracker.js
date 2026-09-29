@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Target, CheckCircle2, Circle, ChevronDown, ChevronUp, PlayCircle, BookOpen, Layers } from 'lucide-react';
 import Link from 'next/link';
 import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import SubscriptionGuard from '../components/SubscriptionGuard';
@@ -124,11 +125,13 @@ const SyllabusTrackerPage = () => {
   const [loadingExams, setLoadingExams] = useState(true);
   const [loadingData, setLoadingData] = useState(false);
 
-  // 1. Fetch available exams for the dropdown
+  const targetVersion = useTargetExamsVersion();
+
+  // 1. Fetch available exams for the dropdown (limited to the user's target exams, if any)
   useEffect(() => {
     const fetchExams = async () => {
       try {
-        const res = await API.request('/api/real-exams/all-exams');
+        const res = await API.getAllExams({ forUser: true });
         if (res?.success) setExams(res.data || []);
       } catch (e) {
         console.error('Failed to load exams', e);
@@ -137,7 +140,7 @@ const SyllabusTrackerPage = () => {
       }
     };
     fetchExams();
-  }, []);
+  }, [targetVersion]);
 
   // 2. Fetch tracker data when an exam is selected
   useEffect(() => {

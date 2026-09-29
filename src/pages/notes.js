@@ -4,6 +4,7 @@ import { StickyNote, Bookmark, Eye, Search, BookOpen, Hash, Sparkles, Calculator
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import API from '../lib/api';
+import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
@@ -55,6 +56,7 @@ const NotesPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
+  const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,12 +65,14 @@ const NotesPage = () => {
         const params = new URLSearchParams({ page, limit: 30 });
         if (type !== 'all') params.set('type', type);
         if (search) params.set('search', search);
+        const { examIds } = API.withTargetExams({});
+        if (examIds) params.set('examIds', examIds);
         const res = await API.request(`/api/notes?${params}`);
         if (res?.success) { setNotes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, [type, page, search]);
+  }, [type, page, search, targetVersion]);
 
   const filtered = useMemo(() => notes, [notes]);
 

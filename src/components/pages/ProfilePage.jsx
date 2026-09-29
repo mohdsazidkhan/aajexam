@@ -162,7 +162,7 @@ const ProfilePage = () => {
     { label: 'Email', value: student?.email || 'Not added', icon: Mail },
     { label: 'Phone', value: student?.phone || 'Not added', icon: Phone },
     { label: 'City', value: student?.city ? `${student.city}${student.state ? `, ${student.state}` : ''}` : 'Not added', icon: MapPin },
-    { label: 'Target exam', value: student?.primaryTargetExam || 'All Exams', icon: Target },
+    { label: 'Target exams', value: student?.primaryTargetExam || 'All Exams', icon: Target },
     { label: 'Current Plan', value: student?.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE', icon: ShieldCheck },
     {
       label: 'Joined',

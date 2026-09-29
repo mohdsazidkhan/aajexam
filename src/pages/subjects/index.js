@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
@@ -6,7 +10,24 @@ import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons'
 
 const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
-export default function Subjects({ subjects = [] }) {
+export default function Subjects(props) {
+  // Static HTML lists the full catalogue (SEO). Logged-in users with target exams get the
+  // index limited to those exams, on mount and right after they change them.
+  const [scoped, setScoped] = useState(null);
+  const targetVersion = useTargetExamsVersion();
+
+  useEffect(() => {
+    const ids = getStoredTargetExamIds();
+    if (!ids.length) { setScoped(null); return; }
+    let cancelled = false;
+    API.request(`/api/quiz/subjects/index?examIds=${ids.join(',')}`).then((res) => {
+      if (!cancelled && res?.success) setScoped(res.data);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [targetVersion]);
+
+  const { subjects = [] } = scoped || props;
+
   return (
     <>
       <Seo
@@ -49,21 +70,8 @@ export default function Subjects({ subjects = [] }) {
 
 export async function getStaticProps() {
   try {
-    const dbConnect = (await import('../../lib/db')).default;
-    const Subject = (await import('../../models/Subject')).default;
-    const Topic = (await import('../../models/Topic')).default;
-
-    await dbConnect();
-    const docs = await Subject.find({}).select('name slug').sort({ name: 1 }).limit(300).lean();
-
-    const topicCounts = await Topic.aggregate([{ $group: { _id: '$subject', n: { $sum: 1 } } }]);
-    const countBySubject = new Map(topicCounts.map((t) => [String(t._id), t.n]));
-
-    const subjects = docs
-      .filter((s) => s?.slug)
-      .map((s) => ({ name: s.name || '', slug: s.slug, topicCount: countBySubject.get(String(s._id)) || 0 }));
-
-    return { props: { subjects }, revalidate: 3600 };
+    const { buildSubjectsIndex } = await import('../../lib/catalogIndex');
+    return { props: await buildSubjectsIndex(), revalidate: 3600 };
   } catch (e) {
     console.error('Error in subjects getStaticProps:', e);
     return { props: { subjects: [] }, revalidate: 300 };

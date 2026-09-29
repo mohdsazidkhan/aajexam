@@ -98,6 +98,11 @@ const userSchema = new mongoose.Schema({
 
   // AajExam Transformation Fields
   primaryTargetExam: { type: String, default: 'All Exams' }, // e.g. SSC-CHSL, UPSC-CSE, or 'All Exams'
+  // Multi-select target exams (source of truth for content filtering). Empty = All Exams.
+  // primaryTargetExam stays as a comma-joined display string for older clients.
+  targetExams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exam' }],
+  // True once the user answered (or skipped) the post-login target-exams prompt, so it isn't shown again.
+  targetExamsPrompted: { type: Boolean, default: false },
   performanceMetrics: {
     examStats: {
       overallReadiness: { type: Number, default: 0 }, // 0-100 scale

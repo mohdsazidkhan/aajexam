@@ -1,3 +1,5 @@
+import { getStoredTargetExamIds } from './utils/targetExams';
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
   (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000');
 
@@ -229,8 +231,15 @@ class ApiService {
   }
 
   // ===== QUIZ ENDPOINTS =====
+  // Adds the user's target exams (if any) unless the caller passed examIds/exam itself.
+  withTargetExams(params = {}) {
+    if (params.examIds !== undefined || params.exam) return params;
+    const ids = getStoredTargetExamIds();
+    return ids.length ? { ...params, examIds: ids.join(',') } : params;
+  }
+
   async getQuizzes(params = {}) {
-    const query = this.buildQuery(params);
+    const query = this.buildQuery(this.withTargetExams(params));
     return this.request(`/api/quiz/quizzes${query ? `?${query}` : ''}`);
   }
 
@@ -271,7 +280,7 @@ class ApiService {
   }
 
   async getAllSubjects(params = {}) {
-    const query = this.buildQuery(params);
+    const query = this.buildQuery(this.withTargetExams(params));
     return this.request(`/api/quiz/subjects/all${query ? `?${query}` : ''}`);
   }
 
@@ -280,7 +289,7 @@ class ApiService {
   }
 
   async getAllTopics(params = {}) {
-    const query = this.buildQuery(params);
+    const query = this.buildQuery(this.withTargetExams(params));
     return this.request(`/api/quiz/topics/all${query ? `?${query}` : ''}`);
   }
 
@@ -779,8 +788,10 @@ class ApiService {
     return this.request('/api/real-exams/categories');
   }
 
-  async getAllExams() {
-    return this.request('/api/real-exams/all-exams');
+  // forUser: true limits the list to the user's target exams (settings/admin need the full list).
+  async getAllExams({ forUser = false } = {}) {
+    const ids = forUser ? getStoredTargetExamIds() : [];
+    return this.request(`/api/real-exams/all-exams${ids.length ? `?examIds=${ids.join(',')}` : ''}`);
   }
 
   async getPracticeTestsByExam(examId, params = {}) {
@@ -1054,12 +1065,13 @@ class ApiService {
 
   // ===== BLOG ENDPOINTS (Public) =====
   async getPublishedBlogs(params = {}) {
-    const query = this.buildQuery(params);
+    const query = this.buildQuery(this.withTargetExams(params));
     return this.request(`/api/public/blogs${query ? `?${query}` : ''}`);
   }
 
   async getFeaturedBlogs(limit = 5) {
-    return this.request(`/api/public/blogs/featured?limit=${limit}`);
+    const { examIds } = this.withTargetExams({});
+    return this.request(`/api/public/blogs/featured?limit=${limit}${examIds ? `&examIds=${examIds}` : ''}`);
   }
 
   async getBlogBySlug(slug) {
@@ -1106,7 +1118,7 @@ class ApiService {
 
   // ===== COMMUNITY QUESTIONS =====
   async getCommunityQuestions(params = {}) {
-    const query = this.buildQuery(params);
+    const query = this.buildQuery(this.withTargetExams(params));
     return this.request(`/api/community-questions${query ? `?${query}` : ''}`);
   }
 

@@ -19,6 +19,8 @@ import {
 import { motion } from 'framer-motion';
 
 import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import Skeleton from '../../components/Skeleton';
@@ -39,7 +41,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
   const fetchExams = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await API.getAllExams();
+      const res = await API.getAllExams({ forUser: true });
       if (res?.success) setExams(res.data || []);
     } catch (err) {
       console.error('Error fetching exams:', err);
@@ -48,6 +50,14 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
       setLoading(false);
     }
   }, []);
+
+  const targetVersion = useTargetExamsVersion();
+
+  // SSR always ships the full list (SEO). Logged-in users with target exams get the
+  // filtered list on mount, and again right after they change their selection.
+  useEffect(() => {
+    if (targetVersion > 0 || getStoredTargetExamIds().length) fetchExams();
+  }, [targetVersion, fetchExams]);
 
   useEffect(() => {
     if (!exams.length && !initialError) fetchExams();

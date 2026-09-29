@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import Topic from '@/models/Topic';
 import Question from '@/models/Question';
 import Quiz from '@/models/Quiz';
+import { parseExamIds } from '@/lib/utils/targetExams';
 
 export async function GET(req) {
     try {
@@ -12,6 +13,8 @@ export async function GET(req) {
 
         const filter = { isActive: true };
         if (subject) filter.subject = subject;
+        const examIds = parseExamIds(searchParams.get('examIds'));
+        if (examIds.length) filter.exams = { $in: examIds };
 
         const topics = await Topic.find(filter)
             .populate('subject', 'name')

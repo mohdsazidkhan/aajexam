@@ -4,6 +4,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Check, Sun, Moon, Search, Type, Settings } from 'lucide-react';
+import { toast } from 'react-hot-toast';
+import API from '../lib/api';
+import { getCurrentUser } from '../lib/utils/authUtils';
+import { getStoredTargetExamIds, notifyTargetExamsChanged } from '../lib/utils/targetExams';
 import { THEME_PRESETS } from '../lib/colorShades';
 import { GOOGLE_FONTS } from '../lib/googleFonts';
 import { TEXT_SIZE_PRESETS } from '../lib/textSize';
@@ -18,6 +22,7 @@ const THEME_OPTIONS = THEME_PRESETS.flatMap((theme) => [
   { key: `${theme.id}-dark`, themeId: theme.id, isDark: true, label: theme.darkName, hex: theme.dark },
 ]);
 
+const TARGET_TAB = { id: 'targets', label: 'Target Exams' };
 const TABS = [
   { id: 'theme', label: 'Themes' },
   { id: 'font', label: 'Font Family' },
@@ -36,6 +41,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState('theme');
   const [search, setSearch] = useState('');
+  // Target Exams tab is for logged-in users only; resolved after mount to avoid an SSR mismatch.
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [exams, setExams] = useState([]);
+  const [selectedExamIds, setSelectedExamIds] = useState([]);
+  const [savingTargets, setSavingTargets] = useState(false);
+  const tabs = loggedIn ? [TARGET_TAB, ...TABS] : TABS;
 
   const activeTheme = THEME_PRESETS.find((t) => t.id === themeId) || THEME_PRESETS[0];
   const activeHex = isDark ? activeTheme.dark : activeTheme.light;
@@ -51,6 +62,55 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     if (!query) return GOOGLE_FONTS;
     return GOOGLE_FONTS.filter((font) => font.toLowerCase().includes(query));
   }, [search]);
+
+  // On open: show the tab first for logged-in users and load exams + current selection.
+  useEffect(() => {
+    if (!open) return;
+    const user = getCurrentUser();
+    setLoggedIn(!!user);
+    if (!user) { setTab((t) => (t === 'targets' ? 'theme' : t)); return; }
+    setTab('targets');
+    let cancelled = false;
+    API.getAllExams().then((res) => {
+      if (cancelled || !res?.success) return;
+      const list = res.data || [];
+      setExams(list);
+      let ids = getStoredTargetExamIds();
+      if (!ids.length && user.primaryTargetExam && user.primaryTargetExam !== 'All Exams') {
+        const names = user.primaryTargetExam.split(', ');
+        ids = list.filter((e) => names.includes(e.name)).map((e) => e._id);
+      }
+      setSelectedExamIds(ids);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [open]);
+
+  const toggleTargetExam = (id) => {
+    setSelectedExamIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  };
+
+  const handleSaveTargets = async () => {
+    setSavingTargets(true);
+    try {
+      const res = await API.updateProfile({ targetExams: selectedExamIds });
+      if (res?.success && res.user) {
+        const stored = getCurrentUser();
+        if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, ...res.user }));
+        notifyTargetExamsChanged();
+        toast.success('Target exams updated.');
+        setOpen(false);
+        setSearch('');
+      }
+    } finally {
+      setSavingTargets(false);
+    }
+  };
+
+  const filteredExams = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return exams;
+    return exams.filter((e) => e.name.toLowerCase().includes(query));
+  }, [exams, search]);
 
   const handleSelectTheme = (option) => {
     dispatch(setThemeId(option.themeId));
@@ -124,7 +184,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
             >
               <div className="flex-shrink-0 p-4 pb-2">
                 <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
-                  {TABS.map((t) => (
+                  {tabs.map((t) => (
                     <button
                       key={t.id}
                       type="button"
@@ -147,12 +207,63 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       type="text"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder={tab === 'theme' ? 'Search theme...' : 'Search font...'}
+                      placeholder={tab === 'theme' ? 'Search theme...' : tab === 'targets' ? 'Search exam...' : 'Search font...'}
                       className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
                     />
                   </div>
                 )}
               </div>
+
+              {tab === 'targets' && loggedIn && (
+                <>
+                  <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-4">
+                    <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                      Select the exams you are preparing for. {selectedExamIds.length ? `${selectedExamIds.length} selected.` : 'Nothing selected means all exams.'}
+                    </p>
+                    {filteredExams.length === 0 && (
+                      <p className="text-sm text-slate-400 text-center py-4">{exams.length ? 'No exam found' : 'Loading exams...'}</p>
+                    )}
+                    <div className="flex flex-wrap gap-2">
+                      {filteredExams.map((exam) => {
+                        const active = selectedExamIds.includes(exam._id);
+                        return (
+                          <button
+                            key={exam._id}
+                            type="button"
+                            onClick={() => toggleTargetExam(exam._id)}
+                            style={active ? { backgroundColor: activeHex, borderColor: activeHex } : undefined}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                              active ? 'text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'
+                            }`}
+                          >
+                            {active && <Check className="w-3 h-3" />}
+                            {exam.name}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 flex gap-2 px-4 py-3 border-t border-slate-200 dark:border-slate-800">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedExamIds([])}
+                      disabled={!selectedExamIds.length}
+                      className="px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-40"
+                    >
+                      Clear
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleSaveTargets}
+                      disabled={savingTargets}
+                      style={{ backgroundColor: activeHex }}
+                      className="flex-1 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide text-white disabled:opacity-60"
+                    >
+                      {savingTargets ? 'Saving...' : 'Save target exams'}
+                    </button>
+                  </div>
+                </>
+              )}
 
               {tab === 'theme' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-3 gap-2 content-start px-4 pb-6">

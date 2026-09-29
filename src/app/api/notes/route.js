@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import StudyNote from '@/models/StudyNote';
+import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
 // GET - List study notes (public)
 export async function GET(req) {
@@ -19,6 +20,7 @@ export async function GET(req) {
         if (subject) query.subject = subject;
         if (topic) query.topic = topic;
         if (exam) query.exam = exam;
+        else applyExamScope(query, parseExamIds(searchParams.get('examIds')), { includeGeneric: true });
         if (noteType) query.noteType = noteType;
         if (search) query.$text = { $search: search };
 

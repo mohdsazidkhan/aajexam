@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import API from '../../lib/api';
+import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
+import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema } from '../../utils/schema';
@@ -6,7 +10,24 @@ import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons'
 
 const TopicListPage = dynamic(() => import('../../components/pages/TopicListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
-export default function Topics({ groups = [] }) {
+export default function Topics(props) {
+  // Static HTML lists the full catalogue (SEO). Logged-in users with target exams get the
+  // index limited to those exams, on mount and right after they change them.
+  const [scoped, setScoped] = useState(null);
+  const targetVersion = useTargetExamsVersion();
+
+  useEffect(() => {
+    const ids = getStoredTargetExamIds();
+    if (!ids.length) { setScoped(null); return; }
+    let cancelled = false;
+    API.request(`/api/quiz/topics/index?examIds=${ids.join(',')}`).then((res) => {
+      if (!cancelled && res?.success) setScoped(res.data);
+    }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [targetVersion]);
+
+  const { groups = [] } = scoped || props;
+
   return (
     <>
       <Seo
@@ -43,34 +64,8 @@ export default function Topics({ groups = [] }) {
 
 export async function getStaticProps() {
   try {
-    const dbConnect = (await import('../../lib/db')).default;
-    const Topic = (await import('../../models/Topic')).default;
-    await import('../../models/Subject');
-
-    await dbConnect();
-
-    // Cap the page so the HTML stays a reasonable size; the remaining topics
-    // stay reachable through their subject pages.
-    const docs = await Topic.find({})
-      .select('name slug subject')
-      .populate('subject', 'name slug')
-      .sort({ name: 1 })
-      .limit(900)
-      .lean();
-
-    const bySubject = new Map();
-    for (const t of docs) {
-      if (!t?.slug) continue;
-      const key = t.subject?.name || 'Other topics';
-      if (!bySubject.has(key)) {
-        bySubject.set(key, { heading: key, href: t.subject?.slug ? `/subjects/${t.subject.slug}` : null, items: [] });
-      }
-      bySubject.get(key).items.push({ href: `/topics/${t.slug}`, name: t.name || t.slug });
-    }
-
-    const groups = Array.from(bySubject.values()).sort((a, b) => b.items.length - a.items.length);
-
-    return { props: { groups }, revalidate: 3600 };
+    const { buildTopicsIndex } = await import('../../lib/catalogIndex');
+    return { props: await buildTopicsIndex(), revalidate: 3600 };
   } catch (e) {
     console.error('Error in topics getStaticProps:', e);
     return { props: { groups: [] }, revalidate: 300 };

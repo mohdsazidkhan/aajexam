@@ -5,13 +5,15 @@ import ExamCategory from '@/models/ExamCategory';
 import ExamPattern from '@/models/ExamPattern';
 import PracticeTest from '@/models/PracticeTest';
 import Quiz from '@/models/Quiz';
+import { parseExamIds } from '@/lib/utils/targetExams';
 
-export async function GET() {
+export async function GET(req) {
     try {
         await dbConnect();
 
+        const examIds = parseExamIds(new URL(req.url).searchParams.get('examIds'));
         const [exams, practiceTestCounts, quizCounts] = await Promise.all([
-            Exam.find({ isActive: true, actualExam: { $ne: false } })
+            Exam.find({ isActive: true, actualExam: { $ne: false }, ...(examIds.length ? { _id: { $in: examIds } } : {}) })
                 .populate('category', 'name type')
                 .sort({ name: 1 })
                 .lean(),
