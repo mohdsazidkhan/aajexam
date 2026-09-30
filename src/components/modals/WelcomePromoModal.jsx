@@ -12,7 +12,7 @@ const PROMO_FEATURES = [
   'All Previous Year Papers (PYQs)',
   'Full-Length Mock Tests',
   'All Quizzes, Subjects & Topics',
-  'Certificates',
+  'Daily Challenges & Revisions & Bookmarks',
 ];
 
 const WelcomePromoModalInner = ({ onClose }) => {

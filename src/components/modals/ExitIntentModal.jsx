@@ -90,7 +90,15 @@ const ExitIntentModalInner = ({ onClose }) => {
             <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
-                Free Latest PYQ PDF & Tests
+                Free Latest PYQ's & Practice Tests
+              </div>
+              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
+                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 dark:bg-white/30 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
+                Subjects, Topics wise Quizzes
+              </div>
+              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
+                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 dark:bg-white/30 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
+                Daily Challenges & Revisions & Bookmarks
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 dark:bg-white/30 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
