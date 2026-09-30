@@ -86,7 +86,7 @@ export async function GET(req) {
             },
             {
                 // Rank by: most exams attempted, then accuracy, then total score.
-                $sort: { totalExams: -1, avgAccuracy: -1, totalScore: -1 }
+                $sort: { totalExams: -1, avgAccuracy: -1, totalScore: -1, _id: 1 }
             },
             { $limit: limit },
             // Join User data
