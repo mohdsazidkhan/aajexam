@@ -3,18 +3,17 @@ import dbConnect from '@/lib/db';
 import DailyChallenge from '@/models/DailyChallenge';
 import DailyChallengeAttempt from '@/models/DailyChallengeAttempt';
 import { protect } from '@/middleware/auth';
+import { istDayRange } from '@/lib/utils/istDay';
 
 // GET - Get today's challenge
 export async function GET(req) {
     try {
         await dbConnect();
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const tomorrow = new Date(today);
-        tomorrow.setDate(tomorrow.getDate() + 1);
+        // "Today" is the IST calendar day (the server runs in UTC).
+        const { start, end } = istDayRange();
 
         const challenge = await DailyChallenge.findOne({
-            date: { $gte: today, $lt: tomorrow },
+            date: { $gte: start, $lt: end },
             status: 'published'
         }).lean();
 
