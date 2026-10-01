@@ -3,6 +3,7 @@
 import React from 'react';
 import { RefreshCcw, Home, Terminal, ShieldAlert, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { reportWebError } from '../lib/errorReporter';
 
 /**
  * Premium Critical Failure (ErrorBoundary) Component
@@ -21,8 +22,14 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ error, errorInfo });
-    // In a real app, you could log this Stats to a remote server
     console.error('SYSTEM_BREACH_LOG:', error, errorInfo);
+    reportWebError({
+      type: 'render',
+      message: error?.message,
+      errorName: error?.name,
+      stack: error?.stack,
+      componentStack: errorInfo?.componentStack,
+    });
   }
 
   render() {

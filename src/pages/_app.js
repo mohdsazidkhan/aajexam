@@ -19,6 +19,7 @@ import '../styles/darkMode.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
 import { lato } from '../lib/fonts';
+import { installGlobalErrorReporting } from '../lib/errorReporter';
 
 const Toaster = dynamic(
   () => import('react-hot-toast').then((m) => m.Toaster),
@@ -104,6 +105,10 @@ const toastOptions = {
 function AppContent({ Component, pageProps }) {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    installGlobalErrorReporting();
+  }, []);
 
   useEffect(() => {
     dispatch(initializeDarkMode());

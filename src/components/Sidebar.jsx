@@ -22,6 +22,7 @@ import {
   FileText,
   Globe,
   Contact2,
+  Bug,
   Activity,
   PenSquare,
   Flame,
@@ -156,6 +157,8 @@ const Sidebar = () => {
         { path: '/admin/analytics/financial', icon: Banknote, label: 'Financial', key: 'analytics-financial' },
         { path: '/admin/referral-analytics', icon: Globe, label: 'Referrals', key: 'referral-analytics' },
         { path: '/admin/referral-fraud', icon: ShieldAlert, label: 'Referral Fraud', key: 'referral-fraud' },
+        { path: '/admin/app-errors', icon: Bug, label: 'App Errors', key: 'app-errors' },
+        { path: '/admin/web-errors', icon: Bug, label: 'Web Errors', key: 'web-errors' },
       ]
     },
     {

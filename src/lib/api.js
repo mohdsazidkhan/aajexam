@@ -1,4 +1,5 @@
 import { getStoredTargetExamIds } from './utils/targetExams';
+import { reportApiFailure } from './errorReporter';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
   (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000');
@@ -118,6 +119,7 @@ class ApiService {
         error.response = { status: response.status, data };
         const dataObj = typeof data === 'object' && data !== null ? data : {};
         error.message = dataObj.message || dataObj.error || `HTTP ${response.status}: ${response.statusText}`;
+        reportApiFailure({ endpoint, method: options.method, statusCode: response.status, message: error.message });
         throw error;
       }
 
@@ -583,6 +585,24 @@ class ApiService {
       method: 'POST',
       body: JSON.stringify(data)
     });
+  }
+
+  // Client error reports (kind: 'mobile' -> /admin/app-errors, 'web' -> /admin/web-errors)
+  async getClientErrors(kind, params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/${kind}-errors?${queryString}`);
+  }
+
+  async updateClientError(kind, id, body) {
+    return this.request(`/api/admin/${kind}-errors/${id}`, { method: 'PATCH', body: JSON.stringify(body) });
+  }
+
+  async deleteClientError(kind, id) {
+    return this.request(`/api/admin/${kind}-errors/${id}`, { method: 'DELETE' });
+  }
+
+  async purgeResolvedClientErrors(kind) {
+    return this.request(`/api/admin/${kind}-errors`, { method: 'DELETE' });
   }
 
   // Contacts
