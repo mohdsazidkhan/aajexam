@@ -881,22 +881,28 @@ class ApiService {
     return this.request(`/api/real-exams/patterns/${patternId}/tests${queryString ? `?${queryString}` : ''}`);
   }
 
+  // Admin practice-test CRUD. (These used to call /api/real-exams/tests[/id], which has no route handler.)
   async createPracticeTest(testData) {
-    return this.request('/api/real-exams/tests', {
+    return this.request('/api/real-exams/admin/tests', {
       method: 'POST',
       body: JSON.stringify(testData)
     });
   }
 
+  // One test with the full question content (read from the `questions` collection), for the edit form.
+  async getPracticeTestForEdit(id) {
+    return this.request(`/api/real-exams/admin/tests/${id}`);
+  }
+
   async updatePracticeTest(id, testData) {
-    return this.request(`/api/real-exams/tests/${id}`, {
+    return this.request(`/api/real-exams/admin/tests/${id}`, {
       method: 'PUT',
       body: JSON.stringify(testData)
     });
   }
 
   async deletePracticeTest(id) {
-    return this.request(`/api/real-exams/tests/${id}`, {
+    return this.request(`/api/real-exams/admin/tests/${id}`, {
       method: 'DELETE'
     });
   }

@@ -4,6 +4,7 @@ import PracticeTest from '@/models/PracticeTest';
 import ExamPattern from '@/models/ExamPattern';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import { protect } from '@/middleware/auth';
+import { hydrateTestQuestions } from '@/lib/utils/hydrateTestQuestions';
 
 export async function GET(req, { params }) {
     try {
@@ -14,6 +15,7 @@ export async function GET(req, { params }) {
 
         const test = await PracticeTest.findById(testId).populate('examPattern', 'title duration totalMarks sections negativeMarking').lean();
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
+        await hydrateTestQuestions(test);
 
         const user = auth.user;
 

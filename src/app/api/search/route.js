@@ -21,6 +21,7 @@ import CommunityQuestion from '@/models/CommunityQuestion';
 import MentorProfile from '@/models/MentorProfile';
 import { protect } from '@/middleware/auth';
 import { escapeRegex } from '@/lib/utils/regex';
+import { questionIdsMatching, hydrateRevisionItems } from '@/lib/utils/hydrateTestQuestions';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req) {
@@ -48,6 +49,8 @@ export async function GET(req) {
 		// below feeds it straight into a $regex/RegExp match.
 		const cleanQuery = escapeRegex(rawQuery.replace(/^#/, '').trim().slice(0, 100));
 		const regex = new RegExp(cleanQuery, 'i');
+		// question text lives in `questions`: find the daily challenges / revision entries that link to a matching question
+		const textIds = await questionIdsMatching(regex);
 
 		// Auth (needed for user-scoped revision queue; also for reel interactions)
 		const auth = await protect(req);
@@ -123,20 +126,25 @@ export async function GET(req) {
 
 			// ── PracticeTests: title, questions.questionText, questions.explanation,
 			//    questions.section, questions.difficulty, questions.tags[] ──
-			PracticeTest.find({
-				$or: [
-					{ title: regex },
-					{ 'questions.questionText': regex },
-					{ 'questions.explanation': regex },
-					{ 'questions.section': regex },
-					{ 'questions.difficulty': regex },
-					{ 'questions.tags': regex },
-				]
-			})
-				.select('_id title totalMarks duration isFree examPattern publishedAt')
-				.populate({ path: 'examPattern', select: 'title exam', populate: { path: 'exam', select: 'name category', populate: { path: 'category', select: 'name type' } } })
-				.limit(limit)
-				.lean(),
+			(async () => {
+				// tests hold ids into `questions`; the text lives there, so match the content there and find the tests that contain it
+				const qIds = textIds;
+				return PracticeTest.find({
+					$or: [
+						{ title: regex },
+						{ 'questions.questionText': regex },
+						{ 'questions.explanation': regex },
+						{ 'questions.section': regex },
+						{ 'questions.difficulty': regex },
+						{ 'questions.tags': regex },
+						...(qIds.length ? [{ 'questions._id': { $in: qIds } }] : []),
+					]
+				})
+					.select('_id title totalMarks duration isFree examPattern publishedAt')
+					.populate({ path: 'examPattern', select: 'title exam', populate: { path: 'exam', select: 'name category', populate: { path: 'category', select: 'name type' } } })
+					.limit(limit)
+					.lean();
+			})(),
 
 			// ── Blogs: title, content, excerpt, featuredImageAlt, metaTitle,
 			//    metaDescription, tags[] ──
@@ -285,6 +293,7 @@ export async function GET(req) {
 					{ title: regex },
 					{ 'questions.questionText': regex },
 					{ 'questions.explanation': regex },
+					...(textIds.length ? [{ 'questions.question': { $in: textIds } }] : []),
 				]
 			})
 				.select('_id title date duration totalMarks totalAttempts avgScore exam')
@@ -296,9 +305,10 @@ export async function GET(req) {
 			// ── Revision queue (user-scoped, only if logged in) ──
 			(async () => {
 				if (!auth.authenticated) return [];
-				return RevisionQueue.find({
+				const found = await RevisionQueue.find({
 					user: auth.user._id,
 					$or: [
+						...(textIds.length ? [{ questionRef: { $in: textIds } }] : []),
 						{ 'questionSnapshot.questionText': regex },
 						{ 'questionSnapshot.explanation': regex },
 						{ 'questionSnapshot.subject': regex },
@@ -306,10 +316,11 @@ export async function GET(req) {
 						{ sourceTitle: regex },
 					]
 				})
-					.select('_id source sourceTitle questionSnapshot nextReviewDate status totalReviews correctReviews')
+					.select('_id source sourceTitle questionRef questionSnapshot nextReviewDate status totalReviews correctReviews')
 					.sort({ nextReviewDate: 1 })
 					.limit(limit)
 					.lean();
+				return hydrateRevisionItems(found);
 			})(),
 
 			// ── ExamNews: title, content, tags ──

@@ -36,10 +36,9 @@ export async function POST(req) {
             return NextResponse.json({ message: 'No questions available in question bank' }, { status: 400 });
         }
 
+        // store links into `questions`; the content stays there
         const challengeQuestions = questions.map(q => ({
-            questionText: q.questionText,
-            options: q.options,
-            explanation: q.explanation || '',
+            question: q._id,
             subject: q.subject?.toString() || '',
             difficulty: q.difficulty
         }));

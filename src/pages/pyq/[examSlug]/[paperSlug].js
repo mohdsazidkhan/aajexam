@@ -13,6 +13,7 @@ import dbConnect from '../../../lib/db';
 import Exam from '../../../models/Exam';
 import ExamPattern from '../../../models/ExamPattern';
 import PracticeTest from '../../../models/PracticeTest';
+import { hydrateTestQuestions } from '../../../lib/utils/hydrateTestQuestions';
 import mongoose from 'mongoose';
 
 const SAMPLE_COUNT = 5;
@@ -471,7 +472,9 @@ export async function getServerSideProps({ params, res }) {
 
         const pattern = paperDoc.examPattern;
         const questions = paperDoc.questions || [];
-        const sampleQuestions = questions.slice(0, SAMPLE_COUNT).map((q) => ({
+        // only the sample is shown, so only the sample needs its content (text lives in `questions`, tests hold ids)
+        const sampleSource = await hydrateTestQuestions({ questions: questions.slice(0, SAMPLE_COUNT) });
+        const sampleQuestions = sampleSource.questions.map((q) => ({
             section: q.section,
             questionText: q.questionText,
             questionImage: q.questionImage || null,

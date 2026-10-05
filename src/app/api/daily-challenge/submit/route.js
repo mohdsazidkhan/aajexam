@@ -5,6 +5,7 @@ import DailyChallengeAttempt from '@/models/DailyChallengeAttempt';
 import UserStreak from '@/models/UserStreak';
 import { protect } from '@/middleware/auth';
 import { addManyWrongAnswersToRevision, snapshotFromDailyChallengeQuestion } from '@/utils/revision';
+import { hydrateDailyChallenge } from '@/lib/utils/hydrateTestQuestions';
 import { createNotification } from '@/utils/notifications';
 
 // POST - Submit daily challenge
@@ -19,6 +20,9 @@ export async function POST(req) {
         const challenge = await DailyChallenge.findById(challengeId);
         if (!challenge) return NextResponse.json({ message: 'Challenge not found' }, { status: 404 });
 
+        // question content lives in `questions`: evaluate on a hydrated copy (challenge.save() below must not write it back)
+        const hydrated = await hydrateDailyChallenge(challenge.toObject());
+
         // Check if already attempted
         const existing = await DailyChallengeAttempt.findOne({ user: auth.user._id, challenge: challengeId });
         if (existing) return NextResponse.json({ message: 'Already attempted today', data: existing }, { status: 400 });
@@ -26,7 +30,7 @@ export async function POST(req) {
         // Calculate score
         let correctCount = 0, wrongCount = 0, skippedCount = 0;
         const processedAnswers = answers.map((ans, i) => {
-            const question = challenge.questions[i];
+            const question = hydrated.questions[i];
             if (!question) return { questionIndex: i, selectedOptionIndex: -1, isCorrect: false, timeTaken: 0 };
 
             if (ans.selectedOptionIndex === -1 || ans.selectedOptionIndex === undefined) {
@@ -64,13 +68,14 @@ export async function POST(req) {
         const wrongRevisionItems = processedAnswers
             .filter(a => !a.isCorrect && a.selectedOptionIndex !== -1)
             .map(a => {
-                const q = challenge.questions[a.questionIndex];
+                const q = hydrated.questions[a.questionIndex];
                 return q ? {
                     userId: auth.user._id,
                     source: 'daily_challenge',
                     sourceId: challengeId,
                     sourceTitle: challenge.date ? new Date(challenge.date).toISOString().slice(0, 10) : '',
                     sourceQuestionId: q._id,
+                    questionRef: q.question || null,
                     snapshot: snapshotFromDailyChallengeQuestion(q)
                 } : null;
             })

@@ -142,7 +142,14 @@ const AdminGovtExamTests = () => {
       setShowModal(true);
    };
 
-   const handleEdit = (test) => {
+   const handleEdit = async (listed) => {
+      // The list only carries each question's link; the question text/options live in the `questions` collection, so load the
+      // full test for the form from the server.
+      let test = listed;
+      try {
+         const res = await API.getPracticeTestForEdit(listed._id);
+         if (res?.success && res.data) test = { ...listed, ...res.data };
+      } catch (e) { toast.error("Could not load the test's questions"); return; }
       setEditingTest(test);
       setUploadMode(false);
       setJsonText("");

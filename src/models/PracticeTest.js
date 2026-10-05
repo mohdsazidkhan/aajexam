@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { attachSlugHook, slugify } from '../lib/utils/slug';
 import ExamPattern from './ExamPattern';
 import Exam from './Exam';
+import { linkAndCompactQuestions } from '../lib/utils/mirrorTestQuestions';
 
 const practiceTestSchema = new mongoose.Schema({
     examPattern: { type: mongoose.Schema.Types.ObjectId, ref: 'ExamPattern', required: true },
@@ -15,17 +16,21 @@ const practiceTestSchema = new mongoose.Schema({
     pyqShift: { type: String, default: null, trim: true },
     pyqExamName: { type: String, default: null, trim: true },
     publishedAt: { type: Date, default: Date.now },
+    // A test element is a LINK: `_id` is the id of the question in the `questions` collection (text, options, correct answer, images,
+    // explanation, tags and difficulty live there, translations in `questiontranslations`) and `section` is the only test-specific
+    // field. The content fields below are optional: they are only present on an element that has not been linked yet (new input
+    // before the model hook runs, a question repeated inside one test, an invalid question).
     questions: [{
-        questionText: { type: String, required: true },
-        questionImage: { type: String, default: '' },
-        options: [{ type: String, required: true }],
-        optionImages: [{ type: String, default: '' }],
-        correctAnswerIndex: { type: Number, required: true, min: 0 },
+        questionText: { type: String },
+        questionImage: { type: String },
+        options: { type: [String], default: undefined },
+        optionImages: { type: [String], default: undefined },
+        correctAnswerIndex: { type: Number, min: 0 },
         explanation: { type: String, trim: true },
-        explanationImage: { type: String, default: '' },
+        explanationImage: { type: String },
         section: { type: String, required: true, trim: true },
-        tags: [{ type: String, trim: true }],
-        difficulty: { type: String, enum: ['easy', 'medium', 'hard', 'mixed'], default: 'medium' }
+        tags: { type: [String], default: undefined },
+        difficulty: { type: String, enum: ['easy', 'medium', 'hard', 'mixed'] }
     }]
 }, { timestamps: true });
 
@@ -75,6 +80,52 @@ practiceTestSchema.pre('save', async function autoNumberSlug(next) {
     } catch (err) {
         next(err);
     }
+});
+
+// Store-time linking: every question is stored as a link to its document in `questions` (see linkAndCompactQuestions): identical
+// content reuses the existing document, new content creates a hidden one, an edit of a linked question updates the shared
+// document in place (and clears its translations). Best-effort: a failure is logged and the test is still saved as submitted.
+// Callers that bypass Mongoose (raw-driver seeds) run scripts/mirrorTests.mjs afterwards.
+practiceTestSchema.pre('save', async function linkEmbeddedQuestions(next) {
+    try {
+        if ((this.isNew || this.isModified('questions')) && this.questions && this.questions.length) {
+            await linkAndCompactQuestions(this.questions, { examPatternId: this.examPattern });
+        }
+    } catch (err) {
+        console.error('PracticeTest question linking failed (save):', err);
+    }
+    next();
+});
+
+practiceTestSchema.pre('insertMany', async function linkEmbeddedQuestionsBulk(next, docs) {
+    try {
+        for (const doc of Array.isArray(docs) ? docs : []) {
+            if (doc && Array.isArray(doc.questions) && doc.questions.length) {
+                await linkAndCompactQuestions(doc.questions, { examPatternId: doc.examPattern });
+            }
+        }
+    } catch (err) {
+        console.error('PracticeTest question linking failed (insertMany):', err);
+    }
+    next();
+});
+
+practiceTestSchema.pre('findOneAndUpdate', async function linkEditedQuestions(next) {
+    try {
+        const update = this.getUpdate() || {};
+        const target = update.$set && update.$set.questions ? update.$set : update;
+        if (Array.isArray(target.questions) && target.questions.length) {
+            let patternId = target.examPattern || (update.$set && update.$set.examPattern);
+            if (!patternId) {
+                const current = await this.model.findOne(this.getQuery()).select('examPattern').lean();
+                patternId = current && current.examPattern;
+            }
+            await linkAndCompactQuestions(target.questions, { examPatternId: patternId });
+        }
+    } catch (err) {
+        console.error('PracticeTest question linking failed (update):', err);
+    }
+    next();
 });
 
 attachSlugHook(practiceTestSchema, { sourceField: 'title' });

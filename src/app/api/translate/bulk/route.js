@@ -6,6 +6,7 @@ import PracticeTest from '@/models/PracticeTest';
 import QuestionTranslation from '@/models/QuestionTranslation';
 import { protect } from '@/middleware/auth';
 import { enforceRateLimit } from '@/lib/rateLimit';
+import { hydrateTestQuestions } from '@/lib/utils/hydrateTestQuestions';
 import {
     LANGUAGE_MAP,
     QUESTIONS_PER_CHUNK,
@@ -52,6 +53,7 @@ async function loadQuestions(sourceType, sourceId) {
 
     const test = await PracticeTest.findById(sourceId).select('questions').lean();
     if (!test) return null;
+    await hydrateTestQuestions(test);
     return (test.questions || []).map((q) => ({
         _id: q._id,
         questionText: q.questionText || '',

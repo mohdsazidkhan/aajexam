@@ -1,10 +1,13 @@
 import mongoose from 'mongoose';
 
+// When the entry links to a question (`questionRef`) the text, options, correct answer and explanation live in `questions` and the
+// snapshot only keeps the subject / topic / difficulty labels. A full snapshot is stored only when there is no question to link to
+// (reel question, a test question that has no document).
 const questionSnapshotSchema = new mongoose.Schema({
-    questionText: { type: String, required: true },
-    options: [{ type: String }],
-    correctAnswerIndex: { type: Number, required: true },
-    explanation: { type: String, default: '' },
+    questionText: { type: String },
+    options: { type: [String], default: undefined },
+    correctAnswerIndex: { type: Number },
+    explanation: { type: String },
     subject: { type: String, default: '' },
     topic: { type: String, default: '' },
     difficulty: { type: String, default: 'medium' }
@@ -17,7 +20,7 @@ const revisionQueueSchema = new mongoose.Schema({
     sourceTitle: { type: String, default: '' },
     sourceQuestionId: { type: mongoose.Schema.Types.ObjectId, required: true },
     questionRef: { type: mongoose.Schema.Types.ObjectId, ref: 'Question', default: null },
-    questionSnapshot: { type: questionSnapshotSchema, required: true },
+    questionSnapshot: { type: questionSnapshotSchema, default: () => ({}) },
 
     nextReviewDate: { type: Date, required: true },
     interval: { type: Number, default: 1 },

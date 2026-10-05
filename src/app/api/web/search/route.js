@@ -17,6 +17,7 @@ import ExamNews from '@/models/ExamNews';
 import CurrentAffair from '@/models/CurrentAffair';
 import { protect } from '@/middleware/auth';
 import { escapeRegex } from '@/lib/utils/regex';
+import { questionIdsMatching } from '@/lib/utils/hydrateTestQuestions';
 import mongoose from 'mongoose';
 import { parseExamIds, applyExamScope } from '@/lib/utils/targetExams';
 
@@ -138,6 +139,8 @@ async function fetchPracticeTests(regex, skip, limit, scope) {
 	const filter = {};
 	if (scope.ids.length) filter.examPattern = { $in: scope.patternIds };
 	if (regex) {
+		// tests hold ids into `questions`; the text lives there, so match the content there and find the tests that contain it
+		const qIds = await questionIdsMatching(regex);
 		filter.$or = [
 			{ title: regex },
 			{ 'questions.questionText': regex },
@@ -145,6 +148,7 @@ async function fetchPracticeTests(regex, skip, limit, scope) {
 			{ 'questions.section': regex },
 			{ 'questions.difficulty': regex },
 			{ 'questions.tags': regex },
+			...(qIds.length ? [{ 'questions._id': { $in: qIds } }] : []),
 		];
 	}
 	const [items, total] = await Promise.all([

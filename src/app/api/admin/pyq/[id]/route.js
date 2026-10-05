@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
 import { protect, admin } from '@/middleware/auth';
+import { hydrateTestQuestions } from '@/lib/utils/hydrateTestQuestions';
 
 // GET - Single PYQ detail
 export async function GET(req, { params }) {
@@ -17,6 +18,8 @@ export async function GET(req, { params }) {
             .lean();
 
         if (!test) return NextResponse.json({ message: 'PYQ not found' }, { status: 404 });
+        // the edit form must show the question content from `questions` (the source of truth), not a stale embedded copy
+        await hydrateTestQuestions(test);
         return NextResponse.json({ success: true, data: test });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

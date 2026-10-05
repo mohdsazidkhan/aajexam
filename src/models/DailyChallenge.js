@@ -1,18 +1,20 @@
 import mongoose from 'mongoose';
+import { linkDailyChallengeQuestions } from '../lib/utils/mirrorTestQuestions';
 
 const dailyChallengeSchema = new mongoose.Schema({
     date: { type: Date, required: true, unique: true },
     title: { type: String, required: true, trim: true },
     exam: { type: mongoose.Schema.Types.ObjectId, ref: 'Exam' },
+    // Each entry links to its document in `questions` (`question`): the text, options, correct answer and explanation live THERE.
+    // The content fields are only present on an entry that is not linked (custom question typed in by an admin with no
+    // identical document yet). `_id` of the entry itself is kept: revision entries are keyed by it.
     questions: [{
-        questionText: { type: String, required: true },
-        options: [{
-            text: { type: String, required: true },
-            isCorrect: { type: Boolean, default: false }
-        }],
-        explanation: { type: String, default: '' },
+        question: { type: mongoose.Schema.Types.ObjectId, ref: 'Question' },
+        questionText: { type: String },
+        options: { type: [{ text: { type: String, required: true }, isCorrect: { type: Boolean, default: false } }], default: undefined },
+        explanation: { type: String },
         subject: { type: String, default: '' },
-        difficulty: { type: String, enum: ['easy', 'medium', 'hard'], default: 'medium' }
+        difficulty: { type: String, enum: ['easy', 'medium', 'hard'] }
     }],
     duration: { type: Number, default: 10 },
     totalMarks: { type: Number, default: 10 },
@@ -23,6 +25,19 @@ const dailyChallengeSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 dailyChallengeSchema.index({ date: -1 }, { unique: true });
+
+// A custom question whose content already exists in `questions` becomes a link (no copy stored). One without a match keeps its
+// content, the same as before.
+dailyChallengeSchema.pre('save', async function linkDailyQuestions(next) {
+    try {
+        if ((this.isNew || this.isModified('questions')) && this.questions && this.questions.length) {
+            await linkDailyChallengeQuestions(this.questions);
+        }
+    } catch (err) {
+        console.error('DailyChallenge question linking failed:', err);
+    }
+    next();
+});
 dailyChallengeSchema.index({ status: 1, date: -1 });
 
 export default mongoose.models.DailyChallenge || mongoose.model('DailyChallenge', dailyChallengeSchema);

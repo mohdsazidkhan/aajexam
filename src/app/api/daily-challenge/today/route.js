@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import DailyChallenge from '@/models/DailyChallenge';
+import { hydrateDailyChallenge } from '@/lib/utils/hydrateTestQuestions';
 import DailyChallengeAttempt from '@/models/DailyChallengeAttempt';
 import { protect } from '@/middleware/auth';
 import { istDayRange } from '@/lib/utils/istDay';
@@ -36,6 +37,8 @@ export async function GET(req) {
                 attemptData = attempt;
             }
         }
+
+        await hydrateDailyChallenge(challenge);
 
         // Hide correct answers if not attempted
         const challengeData = { ...challenge };

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import RevisionQueue from '@/models/RevisionQueue';
 import { protect } from '@/middleware/auth';
+import { hydrateRevisionItems } from '@/lib/utils/hydrateTestQuestions';
 
 // GET - Get user's revision queue (only items currently due for review)
 // Once a user reviews an item, SM-2 pushes its nextReviewDate into the future,
@@ -41,6 +42,7 @@ export async function GET(req) {
             .sort({ nextReviewDate: 1, createdAt: -1 })
             .limit(limit)
             .lean();
+        await hydrateRevisionItems(items);
 
         const [totalDue, totalItems, mastered, countsBySource] = await Promise.all([
             RevisionQueue.countDocuments({ user: auth.user._id, status: 'active', nextReviewDate: { $lte: now } }),

@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import RevisionQueue from '@/models/RevisionQueue';
 import { protect, admin } from '@/middleware/auth';
+import { hydrateRevisionItems, questionIdsByText } from '@/lib/utils/hydrateTestQuestions';
+import { escapeRegex } from '@/lib/utils/regex';
 
 export async function GET(req) {
   try {
@@ -30,6 +32,8 @@ export async function GET(req) {
     if (source) match.source = source;
     if (Object.keys(match).length) pipeline.push({ $match: match });
 
+    // question text lives in `questions`: also match the entries that link to a question containing the search text
+    const linkedIds = search ? await questionIdsByText(new RegExp(escapeRegex(search), 'i')) : [];
     if (search) {
       pipeline.push({
         $match: {
@@ -38,6 +42,7 @@ export async function GET(req) {
             { 'user.username': { $regex: search, $options: 'i' } },
             { 'user.email': { $regex: search, $options: 'i' } },
             { 'questionSnapshot.questionText': { $regex: search, $options: 'i' } },
+            ...(linkedIds.length ? [{ questionRef: { $in: linkedIds } }] : []),
             { sourceTitle: { $regex: search, $options: 'i' } }
           ]
         }
@@ -64,6 +69,7 @@ export async function GET(req) {
             correctReviews: 1,
             status: 1,
             createdAt: 1,
+            questionRef: 1,
             'questionSnapshot.questionText': 1,
             'questionSnapshot.subject': 1,
             'questionSnapshot.topic': 1,
@@ -79,6 +85,8 @@ export async function GET(req) {
     ]);
 
     const total = totalResult[0]?.total || 0;
+
+    await hydrateRevisionItems(items);
 
     return NextResponse.json({
       success: true,

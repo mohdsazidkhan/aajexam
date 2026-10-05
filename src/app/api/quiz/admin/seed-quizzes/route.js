@@ -7,6 +7,7 @@ import Question from '@/models/Question';
 import Quiz from '@/models/Quiz';
 import PracticeTest from '@/models/PracticeTest';
 import { protect, admin } from '@/middleware/auth';
+import { hydrateTests } from '@/lib/utils/hydrateTestQuestions';
 
 export async function POST(req) {
     try {
@@ -23,6 +24,7 @@ export async function POST(req) {
 
         // Load ALL PT questions flat
         const allPTs = await PracticeTest.find({}).select('questions').lean();
+        await hydrateTests(allPTs);
         const allQ = [];
         for (const pt of allPTs) {
             for (const q of (pt.questions || [])) allQ.push(q);

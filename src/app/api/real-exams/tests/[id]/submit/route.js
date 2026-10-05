@@ -9,6 +9,7 @@ import { normalizeSubmittedAnswers, evaluateAnswers, recomputeRanksForTest } fro
 import { createNotification } from '@/utils/notifications';
 import { addManyWrongAnswersToRevision, snapshotFromPracticeTestQuestion } from '@/utils/revision';
 import { sendBrevoEmail } from '@/utils/email';
+import { hydrateTestQuestions } from '@/lib/utils/hydrateTestQuestions';
 
 export async function POST(req, { params }) {
     try {
@@ -42,6 +43,7 @@ export async function POST(req, { params }) {
         ]);
         if (!test) return NextResponse.json({ success: false, message: 'Test not found' }, { status: 404 });
         if (!attempt) return NextResponse.json({ success: false, message: 'No active attempt found' }, { status: 400 });
+        await hydrateTestQuestions(test);
 
         const normalizedAnswers = normalizeSubmittedAnswers(test, answers);
         const evaluation = evaluateAnswers(test.questions, normalizedAnswers, test.examPattern.sections);

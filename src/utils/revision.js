@@ -1,4 +1,17 @@
 import RevisionQueue from '@/models/RevisionQueue';
+import Question from '@/models/Question';
+
+const labelsOnly = (snapshot) => ({ subject: snapshot?.subject || '', topic: snapshot?.topic || '', difficulty: snapshot?.difficulty || 'medium' });
+
+// the question this entry links to: an explicit questionRef, or the id itself when it is a quiz / practice-test question
+const refCandidate = (item) => item.questionRef || ((item.source === 'quiz' || item.source === 'practice_test') ? item.sourceQuestionId : null);
+
+async function existingQuestionIds(ids) {
+    const list = [...new Set(ids.filter(Boolean).map(String))];
+    if (!list.length) return new Set();
+    const docs = await Question.find({ _id: { $in: list } }).select('_id').lean();
+    return new Set(docs.map((d) => String(d._id)));
+}
 
 export function snapshotFromQuestionDoc(question) {
     const rawOptions = question?.options || [];
@@ -54,8 +67,13 @@ export function snapshotFromReel(reel) {
     };
 }
 
-export async function addWrongAnswerToRevision({ userId, source, sourceId, sourceTitle = '', sourceQuestionId, questionRef = null, snapshot }) {
+export async function addWrongAnswerToRevision({ userId, source, sourceId, sourceTitle = '', sourceQuestionId, questionRef = null, snapshot }, known = null) {
     if (!userId || !source || !sourceId || !sourceQuestionId || !snapshot) return null;
+
+    // linked to a question => keep only the labels, the content is read from `questions`
+    const candidate = refCandidate({ source, sourceQuestionId, questionRef });
+    const exists = candidate ? (known || await existingQuestionIds([candidate])).has(String(candidate)) : false;
+    if (exists) { questionRef = candidate; snapshot = labelsOnly(snapshot); }
 
     // Available for review immediately so newly-wrong answers show up instantly in the queue
     const nextReviewDate = new Date();
@@ -68,6 +86,7 @@ export async function addWrongAnswerToRevision({ userId, source, sourceId, sourc
         existing.lastAnswer = 'wrong';
         existing.status = 'active';
         existing.questionSnapshot = snapshot;
+        if (questionRef) existing.questionRef = questionRef;
         if (sourceTitle) existing.sourceTitle = sourceTitle;
         await existing.save();
         return existing;
@@ -89,7 +108,8 @@ export async function addWrongAnswerToRevision({ userId, source, sourceId, sourc
 }
 
 export async function addManyWrongAnswersToRevision(items) {
-    const results = await Promise.allSettled(items.map(item => addWrongAnswerToRevision(item)));
+    const known = await existingQuestionIds(items.map(refCandidate));
+    const results = await Promise.allSettled(items.map(item => addWrongAnswerToRevision(item, known)));
     results.forEach(r => {
         if (r.status === 'rejected') console.error('Revision insert failed:', r.reason?.message);
     });
