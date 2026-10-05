@@ -10,6 +10,7 @@ import PracticeTest from '@/models/PracticeTest';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import QuizAttempt from '@/models/QuizAttempt';
 import ExamPattern from '@/models/ExamPattern';
+import { notEmbedded } from '@/lib/utils/embeddedSource';
 
 export async function GET() {
     try {
@@ -39,7 +40,7 @@ export async function GET() {
             Quiz.countDocuments(),
             Subject.countDocuments({ isActive: true }),
             Topic.countDocuments({ isActive: true }),
-            Question.countDocuments(),
+            Question.countDocuments(notEmbedded),
             PracticeTest.aggregate([
                 { $project: { count: { $size: '$questions' } } },
                 { $group: { _id: null, total: { $sum: '$count' } } }

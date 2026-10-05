@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import dbConnect from './db';
 import Subject from '../models/Subject';
 import Topic from '../models/Topic';
+import { notEmbedded } from './utils/embeddedSource';
 
 // Data behind the "All subjects" / "All topics by subject" indexes. examIds empty = full
 // catalogue (static/ISR pages, what crawlers see); otherwise limited to those exams.
@@ -12,7 +13,7 @@ export async function buildSubjectsIndex(examIds = []) {
   const scoped = examIds.length > 0;
   const docs = await Subject.find(scoped ? { exams: { $in: examIds } } : {}).select('name slug').sort({ name: 1 }).limit(300).lean();
   const topicCounts = await Topic.aggregate([
-    ...(scoped ? [{ $match: { exams: { $in: toObjectIds(examIds) } } }] : []),
+    { $match: { ...notEmbedded, ...(scoped ? { exams: { $in: toObjectIds(examIds) } } : {}) } },
     { $group: { _id: '$subject', n: { $sum: 1 } } }
   ]);
   const countBySubject = new Map(topicCounts.map((t) => [String(t._id), t.n]));
@@ -27,7 +28,7 @@ export async function buildTopicsIndex(examIds = []) {
   await dbConnect();
   // Cap the page so the HTML stays a reasonable size; the remaining topics
   // stay reachable through their subject pages.
-  const docs = await Topic.find(examIds.length ? { exams: { $in: examIds } } : {})
+  const docs = await Topic.find({ ...notEmbedded, ...(examIds.length ? { exams: { $in: examIds } } : {}) })
     .select('name slug subject')
     .populate('subject', 'name slug')
     .sort({ name: 1 })

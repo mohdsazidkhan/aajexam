@@ -10,6 +10,7 @@ import PracticeTest from '@/models/PracticeTest';
 import Question from '@/models/Question';
 import Blog from '@/models/Blog';
 import { protect, admin } from '@/middleware/auth';
+import { notEmbedded } from '@/lib/utils/embeddedSource';
 
 export async function GET(req) {
     try {
@@ -37,11 +38,11 @@ export async function GET(req) {
             Exam.countDocuments({ actualExam: { $ne: false } }),
             ExamPattern.countDocuments(),
             Subject.countDocuments(),
-            Topic.countDocuments(),
+            Topic.countDocuments(notEmbedded),
             Quiz.countDocuments(),
             PracticeTest.countDocuments({ isPYQ: true }),
             PracticeTest.countDocuments({ isPYQ: false }),
-            Question.countDocuments(),
+            Question.countDocuments(notEmbedded),
             Blog.countDocuments()
         ]);
 
@@ -76,11 +77,12 @@ export async function GET(req) {
             Exam.find({ actualExam: { $ne: false } }).lean(),
             ExamPattern.find().lean(),
             Subject.find().lean(),
-            Topic.find().lean(),
+            Topic.find(notEmbedded).lean(),
             Quiz.find().lean(),
             PracticeTest.find().lean(),
             Blog.find().lean(),
             Question.aggregate([
+                { $match: notEmbedded },
                 { $group: { _id: '$exam', count: { $sum: 1 } } }
             ])
         ]);

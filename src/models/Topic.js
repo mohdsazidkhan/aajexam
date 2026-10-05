@@ -11,6 +11,8 @@ const topicSchema = new mongoose.Schema({
     exams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Exam' }],
     isActive: { type: Boolean, default: true },
     order: { type: Number, default: 0 },
+    // 'practice_embedded' = holder topic for mirrored PracticeTest/PYQ questions (see lib/utils/embeddedSource.js)
+    source: { type: String, default: '' },
     // Set when a duplicate Topic doc is merged into a canonical one (data cleanup).
     mergedInto: { type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }
 }, { timestamps: true });

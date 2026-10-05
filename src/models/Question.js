@@ -7,7 +7,8 @@ const questionSchema = new mongoose.Schema({
     questionText: { type: String, required: true, trim: true },
     options: [{
         text: { type: String, required: true, trim: true },
-        isCorrect: { type: Boolean, default: false }
+        isCorrect: { type: Boolean, default: false },
+        image: { type: String, default: '' }
     }],
     explanation: { type: String, trim: true, default: '' },
     difficulty: { type: String, enum: ['easy', 'medium', 'hard'], default: 'medium' },
@@ -15,6 +16,8 @@ const questionSchema = new mongoose.Schema({
     language: { type: String, enum: ['hi', 'en'], default: 'hi' },
     image: { type: String, default: '' },
     isActive: { type: Boolean, default: true },
+    // 'practice_embedded' = mirrors a PracticeTest/PYQ embedded question (see lib/utils/embeddedSource.js)
+    source: { type: String, default: '' },
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 

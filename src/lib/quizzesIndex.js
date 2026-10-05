@@ -4,6 +4,7 @@ import Subject from '../models/Subject';
 import Topic from '../models/Topic';
 import Quiz from '../models/Quiz';
 import Exam from '../models/Exam';
+import { notEmbedded } from './utils/embeddedSource';
 
 // Data behind the three link-index sections on /quizzes. examIds empty = full catalogue
 // (static/ISR page, what crawlers see); otherwise limited to those exams (logged-in users).
@@ -14,7 +15,7 @@ export async function buildQuizzesIndex(examIds = []) {
   const [subjectDocs, topicCounts, quizDocs, seriesGroups] = await Promise.all([
     Subject.find(scoped ? { exams: { $in: examIds } } : {}).select('name slug').sort({ name: 1 }).limit(300).lean(),
     Topic.aggregate([
-      ...(scoped ? [{ $match: { exams: { $in: examIds.map((id) => new mongoose.Types.ObjectId(id)) } } }] : []),
+      { $match: { ...notEmbedded, ...(scoped ? { exams: { $in: examIds.map((id) => new mongoose.Types.ObjectId(id)) } } : {}) } },
       { $group: { _id: '$subject', n: { $sum: 1 } } }
     ]),
     // The full-catalogue list skips noindex quizzes (crawler links); a logged-in user's own exams show them all.

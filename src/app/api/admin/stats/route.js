@@ -14,6 +14,7 @@ import Quiz from '@/models/Quiz';
 import Question from '@/models/Question';
 import Subject from '@/models/Subject';
 import Topic from '@/models/Topic';
+import { notEmbedded } from '@/lib/utils/embeddedSource';
 import Reel from '@/models/Reel';
 import StudyNote from '@/models/StudyNote';
 import Blog from '@/models/Blog';
@@ -119,10 +120,10 @@ export async function GET(req) {
             // Quiz bank
             Quiz.countDocuments(),
             Quiz.countDocuments({ status: 'published' }),
-            Question.countDocuments(),
-            Question.countDocuments({ isActive: true }),
+            Question.countDocuments(notEmbedded),
+            Question.countDocuments({ ...notEmbedded, isActive: true }),
             Subject.countDocuments(),
-            Topic.countDocuments(),
+            Topic.countDocuments(notEmbedded),
 
             // Other content
             Reel.countDocuments(),

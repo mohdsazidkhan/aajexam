@@ -69,3 +69,7 @@ _neet2*.pdf
 _q_neet*
 _extracted_neet*
 _figmeta_neet*
+
+# embedded->questions migration plan (large generated data)
+/scripts/migration/*.json
+/scripts/migration/*.txt
