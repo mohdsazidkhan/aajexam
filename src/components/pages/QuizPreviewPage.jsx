@@ -85,8 +85,8 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
   }
 
   const difficultyColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/30' :
-    quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30' :
-      'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30';
+    quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' :
+      'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
 
   return (
     <div className="min-h-screen bg-background-page py-5 xl:py-12 pb-24">
@@ -134,12 +134,12 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl p-3 text-center">
+            <div className="bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl p-3 text-center">
               <HelpCircle className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.questions?.length || 0}</div>
               <div className="text-xs text-slate-500">Questions</div>
             </div>
-            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl p-3 text-center">
+            <div className="bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl p-3 text-center">
               <Clock className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.duration}</div>
               <div className="text-xs text-slate-500">Minutes</div>
@@ -163,7 +163,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
                 +{quiz.marksPerQuestion} per correct
               </span>
               {quiz.negativeMarking > 0 && (
-                <span className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg font-medium">
+                <span className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg font-medium">
                   -{quiz.negativeMarking} per wrong
                 </span>
               )}

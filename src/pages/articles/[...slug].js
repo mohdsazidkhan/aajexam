@@ -12,7 +12,7 @@ export default function ArticlesGone() {
         <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
             <div style={{ maxWidth: 520 }}>
                 <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>This article is no longer available</h1>
-                <p style={{ color: '#475569', lineHeight: 1.6 }}>
+                <p className="text-slate-600 dark:text-slate-300" style={{ lineHeight: 1.6 }}>
                     The articles section has moved. Browse our <Link href="/blog" style={{ color: '#58cc02', textDecoration: 'underline' }}>blog</Link> for the latest exam strategy, or <Link href="/notes" style={{ color: '#58cc02', textDecoration: 'underline' }}>study notes</Link> for topic-wise guides.
                 </p>
             </div>

@@ -191,7 +191,7 @@ const StudyPlanPage = () => {
                   <button onClick={() => togglePlanStatus(plan._id, plan.status)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
                     {plan.status === 'active' ? <Pause className="w-4 h-4 text-slate-400" /> : <Play className="w-4 h-4 text-primary-600" />}
                   </button>
-                  <button onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
+                  <button onClick={() => deletePlan(plan._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                 </div>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">

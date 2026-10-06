@@ -121,7 +121,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                             <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">PYQ {paper.pyqYear || ''}</span>
                             {paper.pyqShift && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{paper.pyqShift}</span>}
                             <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{examName}</span>
-                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">Free</span>}
+                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">Free</span>}
                         </div>
 
                         <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">

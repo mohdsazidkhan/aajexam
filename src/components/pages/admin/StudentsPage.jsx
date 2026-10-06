@@ -336,7 +336,7 @@ const StudentsPage = () => {
           )
         } else if (student.status === 'suspended') {
           return (
-            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white">
+            <div className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
               {student.status || 'N/A'}
             </div>
           )
@@ -454,7 +454,7 @@ const StudentsPage = () => {
           e.stopPropagation();
           handleDelete(student._id);
         }}
-        className="text-black dark:text-white hover:text-black dark:hover:text-white p-1.5 sm:p-2 rounded-md hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/20 transition-colors"
+        className="text-black dark:text-white hover:text-black dark:hover:text-white p-1.5 sm:p-2 rounded-md hover:bg-slate-100 dark:hover:bg-white/20 transition-colors"
         title="Remove student"
       >
         <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

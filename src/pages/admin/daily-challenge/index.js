@@ -38,6 +38,7 @@ const AdminDailyChallenge = () => {
   const fetchData = async () => {
     try { setLoading(true); const res = await API.request(`/api/admin/daily-challenge?page=${page}&limit=${itemsPerPage}`); if (res?.success) { setChallenges(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); } } catch (e) { } finally { setLoading(false); }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchData(); }, [page, itemsPerPage]);
 
   const autoGenerate = async () => {

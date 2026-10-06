@@ -50,6 +50,7 @@ const DailyChallengePage = () => {
       });
     }, 1000);
     return () => clearInterval(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [started, attempted]);
 
   const selectOption = (idx) => {
@@ -231,7 +232,7 @@ const DailyChallengePage = () => {
                     const isSkipped = !ans || ans.selectedOptionIndex === -1;
                     const isCorrect = ans?.isCorrect;
                     return (
-                      <div key={q._id || idx} className={`rounded-lg xl:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
+                      <div key={q._id || idx} className={`rounded-lg xl:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                         <div className="flex items-start gap-2 mb-2">
                           <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>{idx + 1}</div>
                           <p className="text-sm font-bold text-slate-800 dark:text-white">{q.questionText}</p>
@@ -242,7 +243,7 @@ const DailyChallengePage = () => {
                             const isRight = oi === correctIdx;
                             let cls = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
                             if (isRight) cls = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400';
-                            if (isSel && !isCorrect) cls = 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-black dark:border-white';
+                            if (isSel && !isCorrect) cls = 'bg-slate-100 dark:bg-slate-800 border-black dark:border-white';
                             return (
                               <div key={oi} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border text-xs ${cls}`}>
                                 {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 shrink-0" />}
@@ -254,7 +255,7 @@ const DailyChallengePage = () => {
                           })}
                         </div>
                         {q.explanation && (
-                          <div className="ml-8 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                          <div className="ml-8 mt-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
                             <p className="text-[11px] text-black dark:text-white"><span className="font-semibold">Explanation:</span> {q.explanation}</p>
                           </div>
                         )}

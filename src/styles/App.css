@@ -100,22 +100,22 @@
 }
 
 .dark .rich-text-editor .toolbar {
-  background-color: #0f172a;
-  border-bottom-color: #1e293b;
+  background-color: #131f24;
+  border-bottom-color: #1c2d35;
 }
 
 .dark .rich-text-editor .toolbar button {
-  background-color: #1e293b;
+  background-color: #1c2d35;
   color: #f1f5f9;
-  border-color: #334155;
+  border-color: #344955;
 }
 
 .dark .rich-text-editor .toolbar button:hover {
-  background-color: #334155;
+  background-color: #344955;
 }
 
 .dark .rich-text-editor.fullscreen {
-  background: #0f172a;
+  background: #131f24;
 }
 
 .dark .rich-text-editor.fullscreen .editor:focus {

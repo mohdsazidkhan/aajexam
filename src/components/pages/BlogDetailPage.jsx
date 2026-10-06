@@ -174,8 +174,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
           <div className="flex items-center gap-4">
             <button onClick={handleLike} disabled={liked}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm transition-colors ${liked
-                ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 dark:text-white'
-                : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-black dark:hover:text-white'}`}>
+                ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '
+                : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-slate-100 hover:text-black dark:hover:text-white'}`}>
               <Heart className={`w-4 h-4 ${liked ? 'fill-black dark:fill-white' : ''}`} />
               {liked ? 'Liked' : 'Like'}
             </button>

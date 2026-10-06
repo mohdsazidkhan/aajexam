@@ -84,7 +84,7 @@ export const getSubscriptionStatusTextWithTheme = () => {
     return {
       text: 'Expired',
       color: 'text-primary-600 dark:text-white',
-      bgColor: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20'
+      bgColor: 'bg-slate-100 dark:bg-slate-800'
     };
   }
 
@@ -94,7 +94,7 @@ export const getSubscriptionStatusTextWithTheme = () => {
   return {
     text: `${planInfo.name} Plan`,
     color: plan === SUBSCRIPTION_PLANS.PRO ? 'text-primary-600' : 'text-gray-600 dark:text-gray-400',
-    bgColor: plan === SUBSCRIPTION_PLANS.PRO ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' : 'bg-gray-100 dark:bg-gray-700'
+    bgColor: plan === SUBSCRIPTION_PLANS.PRO ? 'bg-slate-100 dark:bg-slate-800' : 'bg-gray-100 dark:bg-gray-700'
   };
 };
 

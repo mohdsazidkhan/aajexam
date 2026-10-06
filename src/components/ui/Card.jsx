@@ -24,7 +24,7 @@ const Card = ({
     glass: 'glass border-white/20 dark:border-slate-800/20 shadow-sm',
     'glass-light': 'glass-light border-white/10 shadow-sm',
     'glass-dark': 'glass-dark border-white/10 shadow-sm text-white',
-    dark: 'bg-slate-950 border-slate-800 text-white shadow-sm',
+ dark: 'bg-slate-950 border-slate-800 text-white shadow-sm',
     primary: 'bg-primary-600 border-primary-600 shadow-sm text-white',
     none: '',
   };

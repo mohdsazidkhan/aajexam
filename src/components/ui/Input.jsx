@@ -93,7 +93,7 @@ const Input = ({
             <input
               type={type}
               className={`
-                flex-1 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none font-bold uppercase tracking-tight
+ flex-1 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none font-bold uppercase tracking-tight
                 ${containerSizes[size]}
               `}
               placeholder={placeholder}

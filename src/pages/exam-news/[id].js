@@ -70,7 +70,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
       <div className="py-0 xl:py-6 space-y-2 xl:space-y-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>
+            <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[9px] font-black text-black dark:text-white uppercase">{news.type?.replace('_', ' ')}</span>
             {news.exam?.name && <span className="text-[10px] font-bold text-slate-400">{news.exam.name}</span>}
             <span className="text-[10px] text-slate-400"><Eye className="w-3 h-3 inline" /> {news.views}</span>
           </div>
@@ -78,7 +78,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
         </div>
 
         {news.importantDates?.length > 0 && (
-          <Card className="space-y-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20">
+          <Card className="space-y-2 bg-slate-100 dark:bg-slate-800">
             <h3 className="text-sm font-black text-black dark:text-white">Important Dates</h3>
             {news.importantDates.map((d, i) => (
               <div key={i} className="flex justify-between text-xs">

@@ -143,13 +143,13 @@ const RevisionPage = () => {
                     })}
                   </div>
                   {currentItem.questionSnapshot?.explanation && (
-                    <div className="p-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg xl:rounded-xl text-xs leading-relaxed text-black dark:text-white">{currentItem.questionSnapshot.explanation}</div>
+                    <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl text-xs leading-relaxed text-black dark:text-white">{currentItem.questionSnapshot.explanation}</div>
                   )}
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider text-center">How well did you know this?</p>
                     <div className="grid grid-cols-3 gap-3">
-                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
-                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20 rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
+                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
+                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
                       <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 rounded-lg xl:rounded-xl text-xs font-bold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
                     </div>
                   </div>

@@ -43,8 +43,8 @@ function StepBar({ step }) {
               <div style={{
                 width: 36, height: 36, borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: done ? '#58cc02' : active ? '#58cc02' : 'rgba(255,255,255,0.08)',
-                border: active ? '2px solid #58cc02' : done ? '2px solid #58cc02' : '2px solid rgba(255,255,255,0.15)',
+                background: done ? '#58cc02' : active ? '#58cc02' : 'rgba(var(--gt-fg),0.08)',
+                border: active ? '2px solid #58cc02' : done ? '2px solid #58cc02' : '2px solid rgba(var(--gt-fg),0.15)',
                 fontWeight: 700, fontSize: 14,
                 color: (active || done) ? '#fff' : '#64748b',
                 transition: 'all 0.3s',
@@ -54,14 +54,14 @@ function StepBar({ step }) {
               </div>
               <span style={{
                 fontSize: 11, fontWeight: active ? 700 : 500,
-                color: active ? '#94f54d' : done ? '#58cc02' : '#64748b',
+                color: active ? 'var(--gt-accent)' : done ? '#58cc02' : '#64748b',
                 whiteSpace: 'nowrap',
               }}>{label}</span>
             </div>
             {i < steps.length - 1 && (
               <div style={{
                 flex: 1, height: 2, margin: '0 8px', marginBottom: 22,
-                background: done ? '#58cc02' : 'rgba(255,255,255,0.08)',
+                background: done ? '#58cc02' : 'rgba(var(--gt-fg),0.08)',
                 transition: 'background 0.4s',
               }} />
             )}
@@ -78,16 +78,16 @@ function StepBar({ step }) {
 function SectionCard({ section, status, error, questions, streamText, expanded, onToggle }) {
   const statusColor = {
     [STATUS.IDLE]: '#64748b',
-    [STATUS.GENERATING]: '#e2e8f0',
+    [STATUS.GENERATING]: 'var(--gt-text)',
     [STATUS.DONE]: '#58cc02',
-    [STATUS.ERROR]: '#e2e8f0',
+    [STATUS.ERROR]: 'var(--gt-text)',
   }[status];
 
   const statusIcon = {
     [STATUS.IDLE]: <Target size={15} color="#64748b" />,
-    [STATUS.GENERATING]: <Loader2 size={15} color="#e2e8f0" style={{ animation: 'spin 1s linear infinite' }} />,
+    [STATUS.GENERATING]: <Loader2 size={15} color="var(--gt-text)" style={{ animation: 'spin 1s linear infinite' }} />,
     [STATUS.DONE]: <CheckCircle2 size={15} color="#58cc02" />,
-    [STATUS.ERROR]: <XCircle size={15} color="#e2e8f0" />,
+    [STATUS.ERROR]: <XCircle size={15} color="var(--gt-text)" />,
   }[status];
 
   return (
@@ -95,13 +95,13 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: `1px solid ${status === STATUS.GENERATING ? 'rgba(226,232,240,0.4)' : status === STATUS.DONE ? 'rgba(88,204,2,0.25)' : status === STATUS.ERROR ? 'rgba(226,232,240,0.3)' : 'rgba(255,255,255,0.08)'}`,
+        background: 'rgba(var(--gt-fg),0.04)',
+        border: `1px solid ${status === STATUS.GENERATING ? 'rgba(var(--gt-fg),0.4)' : status === STATUS.DONE ? 'rgba(88,204,2,0.25)' : status === STATUS.ERROR ? 'rgba(var(--gt-fg),0.3)' : 'rgba(var(--gt-fg),0.08)'}`,
         borderRadius: 14,
         marginBottom: 12,
         overflow: 'hidden',
         transition: 'border-color 0.3s',
-        boxShadow: status === STATUS.GENERATING ? '0 0 20px rgba(226,232,240,0.1)' : 'none',
+        boxShadow: status === STATUS.GENERATING ? '0 0 20px rgba(var(--gt-fg),0.1)' : 'none',
       }}
     >
       {/* Header */}
@@ -115,10 +115,10 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
         <div style={{
           width: 8, height: 8, borderRadius: '50%',
           background: statusColor,
-          boxShadow: status === STATUS.GENERATING ? '0 0 10px rgba(226,232,240,0.8)' : 'none',
+          boxShadow: status === STATUS.GENERATING ? '0 0 10px rgba(var(--gt-fg),0.8)' : 'none',
           animation: status === STATUS.GENERATING ? 'pulse 1.5s ease-in-out infinite' : 'none',
         }} />
-        <span style={{ flex: 1, fontWeight: 600, fontSize: 14, color: '#e2e8f0' }}>
+        <span style={{ flex: 1, fontWeight: 600, fontSize: 14, color: 'var(--gt-text)' }}>
           {section.name}
         </span>
         <span style={{ fontSize: 12, color: '#64748b' }}>
@@ -140,7 +140,7 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
 
       {/* Error message */}
       {status === STATUS.ERROR && error && (
-        <div style={{ padding: '8px 18px 14px', color: '#e2e8f0', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div style={{ padding: '8px 18px 14px', color: 'var(--gt-text)', fontSize: 13, display: 'flex', alignItems: 'center', gap: 6 }}>
           <AlertCircle size={13} /> {error}
         </div>
       )}
@@ -154,13 +154,13 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
             exit={{ height: 0, opacity: 0 }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '14px 18px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div style={{ borderTop: '1px solid rgba(var(--gt-fg),0.06)', padding: '14px 18px', display: 'flex', flexDirection: 'column', gap: 12 }}>
               
               {/* Show streaming text if generating */}
               {status === STATUS.GENERATING && streamText && (
                 <div style={{ 
-                  background: 'rgba(0,0,0,0.3)', padding: '12px 16px', borderRadius: 10,
-                  border: '1px solid rgba(88,204,2,0.2)', color: '#94f54d',
+                  background: 'rgba(var(--gt-fg), 0.06)', padding: '12px 16px', borderRadius: 10,
+                  border: '1px solid rgba(88,204,2,0.2)', color: 'var(--gt-accent)',
                   fontSize: 12, fontFamily: 'monospace', whiteSpace: 'pre-wrap',
                   maxHeight: 250, overflowY: 'auto'
                 }}>
@@ -186,12 +186,12 @@ function SectionCard({ section, status, error, questions, streamText, expanded, 
 function QuestionPreview({ question, index }) {
   const [showExplanation, setShowExplanation] = useState(false);
 
-  const diffColors = { easy: '#58cc02', medium: '#e2e8f0', hard: '#e2e8f0' };
+  const diffColors = { easy: '#58cc02', medium: 'var(--gt-text)', hard: 'var(--gt-text)' };
 
   return (
     <div style={{
-      background: 'rgba(255,255,255,0.03)',
-      border: '1px solid rgba(255,255,255,0.06)',
+      background: 'rgba(var(--gt-fg),0.03)',
+      border: '1px solid rgba(var(--gt-fg),0.06)',
       borderRadius: 10,
       padding: '12px 14px',
     }}>
@@ -199,17 +199,17 @@ function QuestionPreview({ question, index }) {
         <span style={{
           minWidth: 24, height: 24, borderRadius: 6,
           background: 'rgba(88,204,2,0.2)', display: 'flex', alignItems: 'center',
-          justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#94f54d',
+          justifyContent: 'center', fontSize: 11, fontWeight: 700, color: 'var(--gt-accent)',
         }}>
           {index + 1}
         </span>
-        <p style={{ margin: 0, fontSize: 13, color: '#e2e8f0', lineHeight: 1.5, flex: 1 }}>
+        <p style={{ margin: 0, fontSize: 13, color: 'var(--gt-text)', lineHeight: 1.5, flex: 1 }}>
           {question.questionText}
         </p>
         <span style={{
           fontSize: 10, fontWeight: 600, padding: '2px 7px', borderRadius: 20,
-          background: `${diffColors[question.difficulty] || '#e2e8f0'}22`,
-          color: diffColors[question.difficulty] || '#e2e8f0',
+          background: `${diffColors[question.difficulty] || 'var(--gt-text)'}22`,
+          color: diffColors[question.difficulty] || 'var(--gt-text)',
         }}>
           {question.difficulty}
         </span>
@@ -220,9 +220,9 @@ function QuestionPreview({ question, index }) {
         {question.options.map((opt, oi) => (
           <div key={oi} style={{
             padding: '6px 10px', borderRadius: 7, fontSize: 12,
-            background: oi === question.correctAnswerIndex ? 'rgba(88,204,2,0.15)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${oi === question.correctAnswerIndex ? 'rgba(88,204,2,0.4)' : 'rgba(255,255,255,0.06)'}`,
-            color: oi === question.correctAnswerIndex ? '#bcff85' : '#94a3b8',
+            background: oi === question.correctAnswerIndex ? 'rgba(88,204,2,0.15)' : 'rgba(var(--gt-fg),0.04)',
+            border: `1px solid ${oi === question.correctAnswerIndex ? 'rgba(88,204,2,0.4)' : 'rgba(var(--gt-fg),0.06)'}`,
+            color: oi === question.correctAnswerIndex ? 'var(--gt-accent-2)' : 'var(--gt-text-2)',
             fontWeight: oi === question.correctAnswerIndex ? 600 : 400,
           }}>
             {['A', 'B', 'C', 'D'][oi]}. {opt}
@@ -233,7 +233,7 @@ function QuestionPreview({ question, index }) {
       {/* Hint */}
       {question.hint && (
         <div style={{ fontSize: 11, color: '#64748b', marginBottom: 6, display: 'flex', gap: 5, alignItems: 'flex-start' }}>
-          <span style={{ color: '#e2e8f0', fontWeight: 700, minWidth: 30 }}>Hint:</span>
+          <span style={{ color: 'var(--gt-text)', fontWeight: 700, minWidth: 30 }}>Hint:</span>
           <span>{question.hint}</span>
         </div>
       )}
@@ -251,7 +251,7 @@ function QuestionPreview({ question, index }) {
         {showExplanation ? 'Hide' : 'Show'} explanation
       </button>
       {showExplanation && (
-        <p style={{ fontSize: 12, color: '#94a3b8', margin: '6px 0 0', lineHeight: 1.5 }}>
+        <p style={{ fontSize: 12, color: 'var(--gt-text-2)', margin: '6px 0 0', lineHeight: 1.5 }}>
           {question.explanation}
         </p>
       )}
@@ -262,7 +262,7 @@ function QuestionPreview({ question, index }) {
           {question.tags.map((t, ti) => (
             <span key={ti} style={{
               fontSize: 10, padding: '2px 6px', borderRadius: 10,
-              background: 'rgba(88,204,2,0.12)', color: '#94f54d',
+              background: 'rgba(88,204,2,0.12)', color: 'var(--gt-accent)',
             }}>#{t}</span>
           ))}
         </div>
@@ -573,8 +573,8 @@ const AdminGenerateTests = () => {
   const resetButton = step > 1 && (
     <button onClick={handleReset} style={{
       width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '8px 14px',
-      background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
-      borderRadius: 8, color: '#94a3b8', cursor: 'pointer', fontSize: 13,
+      background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.1)',
+      borderRadius: 8, color: 'var(--gt-text-2)', cursor: 'pointer', fontSize: 13,
       fontFamily: 'inherit', transition: 'all 0.2s',
     }}>
       <RefreshCw size={13} /> Start Over
@@ -587,7 +587,7 @@ const AdminGenerateTests = () => {
   });
 
   if (loadingInit) return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="gt-root min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
       <Sidebar />
       <div className="adminContent w-full mx-auto text-slate-900 dark:text-white font-outfit">
         <AdminTableSkeleton />
@@ -599,11 +599,13 @@ const AdminGenerateTests = () => {
   const totalExpected = selectedPattern?.sections.reduce((acc, s) => acc + (s.totalQuestions || 0), 0) || 0;
 
   return (
-    <div className="min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
+    <div className="gt-root min-h-screen font-outfit text-slate-900 dark:text-white pb-20">
       <style>{`
         @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
         @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.2)} }
-        select option { background: #1e2532; color: #e2e8f0; }
+        .gt-root { --gt-fg: 15,23,42; --gt-text: #0f172a; --gt-text-2: #475569; --gt-accent: #3ca000; --gt-accent-2: #286b00; --gt-opt-bg: #ffffff; }
+        .dark .gt-root { --gt-fg: 255,255,255; --gt-text: #e2e8f0; --gt-text-2: #94a3b8; --gt-accent: #94f54d; --gt-accent-2: #bcff85; --gt-opt-bg: #1e2532; }
+        select option { background: var(--gt-opt-bg); color: var(--gt-text); }
       `}</style>
 
       <Sidebar />
@@ -618,14 +620,14 @@ const AdminGenerateTests = () => {
         {/* ── STEP 1: SELECT EXAM ── */}
         {step === 1 && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 28 }}>
-              <h2 style={{ margin: '0 0 20px', fontSize: 16, fontWeight: 700, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
+              <h2 style={{ margin: '0 0 20px', fontSize: 16, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <BookOpen size={16} color="#58cc02" /> Select Exam
               </h2>
 
               {/* Category */}
               <div style={{ marginBottom: 20 }}>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: '#94a3b8', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--gt-text-2)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Exam Category
                 </label>
                 <select
@@ -643,7 +645,7 @@ const AdminGenerateTests = () => {
               {/* Exams */}
               {exams.length > 0 && (
                 <div>
-                  <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: '#94a3b8', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--gt-text-2)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     Exam
                   </label>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10 }}>
@@ -653,9 +655,9 @@ const AdminGenerateTests = () => {
                         onClick={() => handleExamSelect(exam)}
                         style={{
                           padding: '14px 16px', borderRadius: 12, cursor: 'pointer',
-                          background: 'rgba(255,255,255,0.04)',
-                          border: '1px solid rgba(255,255,255,0.1)',
-                          color: '#e2e8f0', textAlign: 'left', fontFamily: 'inherit',
+                          background: 'rgba(var(--gt-fg),0.04)',
+                          border: '1px solid rgba(var(--gt-fg),0.1)',
+                          color: 'var(--gt-text)', textAlign: 'left', fontFamily: 'inherit',
                           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                           transition: 'all 0.2s',
                         }}
@@ -664,8 +666,8 @@ const AdminGenerateTests = () => {
                           e.currentTarget.style.borderColor = 'rgba(88,204,2,0.4)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                          e.currentTarget.style.background = 'rgba(var(--gt-fg),0.04)';
+                          e.currentTarget.style.borderColor = 'rgba(var(--gt-fg),0.1)';
                         }}
                       >
                         <div>
@@ -685,12 +687,12 @@ const AdminGenerateTests = () => {
         {/* ── STEP 2: SELECT PATTERN ── */}
         {step === 2 && selectedExam && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 28 }}>
+            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-                <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                   <Layers size={16} color="#58cc02" /> Select Exam Pattern
                 </h2>
-                <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 20, background: 'rgba(88,204,2,0.15)', color: '#94f54d' }}>
+                <span style={{ fontSize: 12, padding: '3px 10px', borderRadius: 20, background: 'rgba(88,204,2,0.15)', color: 'var(--gt-accent)' }}>
                   {selectedExam.name}
                 </span>
               </div>
@@ -708,9 +710,9 @@ const AdminGenerateTests = () => {
                       onClick={() => handlePatternSelect(pattern)}
                       style={{
                         padding: '18px 20px', borderRadius: 14, cursor: 'pointer',
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        color: '#e2e8f0', textAlign: 'left', fontFamily: 'inherit',
+                        background: 'rgba(var(--gt-fg),0.04)',
+                        border: '1px solid rgba(var(--gt-fg),0.1)',
+                        color: 'var(--gt-text)', textAlign: 'left', fontFamily: 'inherit',
                         transition: 'all 0.2s',
                       }}
                       onMouseEnter={(e) => {
@@ -718,8 +720,8 @@ const AdminGenerateTests = () => {
                         e.currentTarget.style.borderColor = 'rgba(88,204,2,0.35)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                        e.currentTarget.style.background = 'rgba(var(--gt-fg),0.04)';
+                        e.currentTarget.style.borderColor = 'rgba(var(--gt-fg),0.1)';
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
@@ -731,7 +733,7 @@ const AdminGenerateTests = () => {
                         <StatChip icon={<Trophy size={11} />} label={`${pattern.totalMarks} marks`} />
                         <StatChip icon={<Layers size={11} />} label={`${pattern.sections?.length || 0} sections`} />
                         {pattern.negativeMarking > 0 && (
-                          <StatChip icon={<Shield size={11} />} label={`-${pattern.negativeMarking} negative`} color="#e2e8f0" />
+                          <StatChip icon={<Shield size={11} />} label={`-${pattern.negativeMarking} negative`} color="var(--gt-text)" />
                         )}
                       </div>
                       {pattern.sections?.length > 0 && (
@@ -739,7 +741,7 @@ const AdminGenerateTests = () => {
                           {pattern.sections.map((s, si) => (
                             <span key={si} style={{
                               fontSize: 11, padding: '3px 8px', borderRadius: 8,
-                              background: 'rgba(88,204,2,0.12)', color: '#94f54d',
+                              background: 'rgba(88,204,2,0.12)', color: 'var(--gt-accent)',
                             }}>
                               {s.name} ({s.totalQuestions}Q)
                             </span>
@@ -758,8 +760,8 @@ const AdminGenerateTests = () => {
         {step === 3 && selectedPattern && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             {/* Config card */}
-            <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
-              <h2 style={{ margin: '0 0 18px', fontSize: 15, fontWeight: 700, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.08)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+              <h2 style={{ margin: '0 0 18px', fontSize: 15, fontWeight: 700, color: 'var(--gt-text)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Sparkles size={15} color="#58cc02" /> Generation Config
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
@@ -786,9 +788,9 @@ const AdminGenerateTests = () => {
                         onClick={() => !generating && setLanguage(val)}
                         style={{
                           flex: 1, padding: '10px 12px', borderRadius: 10, cursor: generating ? 'not-allowed' : 'pointer',
-                          background: language === val ? 'rgba(88,204,2,0.25)' : 'rgba(255,255,255,0.04)',
-                          border: `1px solid ${language === val ? '#58cc02' : 'rgba(255,255,255,0.1)'}`,
-                          color: language === val ? '#94f54d' : '#94a3b8',
+                          background: language === val ? 'rgba(88,204,2,0.25)' : 'rgba(var(--gt-fg),0.04)',
+                          border: `1px solid ${language === val ? '#58cc02' : 'rgba(var(--gt-fg),0.1)'}`,
+                          color: language === val ? 'var(--gt-accent)' : 'var(--gt-text-2)',
                           fontFamily: 'inherit', fontSize: 13, fontWeight: language === val ? 700 : 400,
                           transition: 'all 0.2s',
                         }}
@@ -815,7 +817,7 @@ const AdminGenerateTests = () => {
               </div>
 
               {/* Pattern summary */}
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '12px 14px', background: 'rgba(255,255,255,0.03)', borderRadius: 10, border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', padding: '12px 14px', background: 'rgba(var(--gt-fg),0.03)', borderRadius: 10, border: '1px solid rgba(var(--gt-fg),0.06)' }}>
                 <StatChip icon={<BookOpen size={11} />} label={selectedExam?.name} />
                 <StatChip icon={<Layers size={11} />} label={selectedPattern.title} />
                 <StatChip icon={<Clock size={11} />} label={`${selectedPattern.duration} min`} />
@@ -847,11 +849,11 @@ const AdminGenerateTests = () => {
               <div style={{ display: 'flex', gap: 10, marginBottom: 20 }}>
                 <div style={{
                   flex: 1, padding: '14px 18px', borderRadius: 12,
-                  background: 'rgba(226,232,240,0.08)', border: '1px solid rgba(226,232,240,0.2)',
+                  background: 'rgba(var(--gt-fg),0.08)', border: '1px solid rgba(var(--gt-fg),0.2)',
                   display: 'flex', alignItems: 'center', gap: 10,
                 }}>
-                  <Loader2 size={16} color="#e2e8f0" style={{ animation: 'spin 1s linear infinite' }} />
-                  <span style={{ fontSize: 13, color: '#e2e8f0', fontWeight: 600 }}>
+                  <Loader2 size={16} color="var(--gt-text)" style={{ animation: 'spin 1s linear infinite' }} />
+                  <span style={{ fontSize: 13, color: 'var(--gt-text)', fontWeight: 600 }}>
                     Generating questions… ({totalGenerated}/{totalExpected} done)
                   </span>
                 </div>
@@ -859,8 +861,8 @@ const AdminGenerateTests = () => {
                   onClick={handleCancel}
                   style={{
                     padding: '12px 18px', borderRadius: 12, cursor: 'pointer',
-                    background: 'rgba(226,232,240,0.1)', border: '1px solid rgba(226,232,240,0.25)',
-                    color: '#e2e8f0', fontFamily: 'inherit', fontSize: 13, fontWeight: 600,
+                    background: 'rgba(var(--gt-fg),0.1)', border: '1px solid rgba(var(--gt-fg),0.25)',
+                    color: 'var(--gt-text)', fontFamily: 'inherit', fontSize: 13, fontWeight: 600,
                   }}
                 >
                   Cancel
@@ -901,10 +903,10 @@ const AdminGenerateTests = () => {
                 >
                   <CheckCircle2 size={22} color="#58cc02" />
                   <div style={{ flex: 1 }}>
-                    <p style={{ margin: 0, fontWeight: 700, color: '#bcff85', fontSize: 15 }}>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--gt-accent-2)', fontSize: 15 }}>
                       Generation complete — {totalGenerated} questions ready
                     </p>
-                    <p style={{ margin: '3px 0 0', fontSize: 12, color: '#94f54d' }}>
+                    <p style={{ margin: '3px 0 0', fontSize: 12, color: 'var(--gt-accent)' }}>
                       Review the questions above, then save as a Practice Test
                     </p>
                   </div>
@@ -914,7 +916,7 @@ const AdminGenerateTests = () => {
                     style={{
                       display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px',
                       borderRadius: 12, cursor: saving ? 'not-allowed' : 'pointer',
-                      background: saving ? 'rgba(255,255,255,0.08)' : '#58cc02',
+                      background: saving ? 'rgba(var(--gt-fg),0.08)' : '#58cc02',
                       border: 'none', color: '#fff', fontFamily: 'inherit', fontSize: 14, fontWeight: 700,
                       boxShadow: saving ? 'none' : '0 4px 16px rgba(88,204,2,0.35)',
                       opacity: !testTitle.trim() ? 0.5 : 1,
@@ -935,8 +937,8 @@ const AdminGenerateTests = () => {
                 onClick={handleGenerate}
                 style={{
                   marginTop: 12, width: '100%', padding: '12px', borderRadius: 12,
-                  background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-                  color: '#94a3b8', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13,
+                  background: 'rgba(var(--gt-fg),0.04)', border: '1px solid rgba(var(--gt-fg),0.1)',
+                  color: 'var(--gt-text-2)', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                 }}
               >
@@ -966,15 +968,15 @@ function StatChip({ icon, label, color = '#64748b' }) {
 // ─────────────────────────────────────────────
 const selectStyle = {
   width: '100%', padding: '10px 12px', borderRadius: 10,
-  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
-  color: '#e2e8f0', fontSize: 13, fontFamily: 'inherit',
+  background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.12)',
+  color: 'var(--gt-text)', fontSize: 13, fontFamily: 'inherit',
   outline: 'none', cursor: 'pointer',
 };
 
 const inputStyle = {
   width: '100%', padding: '10px 12px', borderRadius: 10,
-  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
-  color: '#e2e8f0', fontSize: 13, fontFamily: 'inherit',
+  background: 'rgba(var(--gt-fg),0.06)', border: '1px solid rgba(var(--gt-fg),0.12)',
+  color: 'var(--gt-text)', fontSize: 13, fontFamily: 'inherit',
   outline: 'none', boxSizing: 'border-box',
 };
 

@@ -37,7 +37,7 @@ const SearchFilter = ({
             placeholder={placeholder}
             className={compact
               ? "w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300"
-              : "w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-sm focus:shadow-sm"}
+              : "w-full pl-16 pr-6 py-4 bg-slate-50 dark:bg-black border-2 border-transparent focus:border-primary-500/30 rounded-2xl outline-none text-sm font-bold font-outfit text-slate-700 dark:text-slate-200 placeholder:text-slate-600 dark:text-slate-400 transition-all duration-300 focus:shadow-sm"}
           />
         </div>
 
@@ -73,7 +73,7 @@ const SearchFilter = ({
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
                 onClick={onClearFilters}
-                className="flex items-center gap-2 px-6 py-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white rounded-2xl border-b-2 border-slate-200 dark:border-slate-800 dark:border-white/50 hover:bg-slate-100 dark:hover:bg-white/40 transition-all duration-300 group shadow-sm hover:shadow-sm"
+                className="flex items-center gap-2 px-6 py-4 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-2xl border-b-2 border-slate-200 dark:border-slate-800 dark:border-white/50 hover:bg-slate-100 dark:hover:bg-white/40 transition-all duration-300 group shadow-sm hover:shadow-sm"
               >
                 <X className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Clear Filters</span>

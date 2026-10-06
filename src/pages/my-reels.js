@@ -33,17 +33,17 @@ import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 
 const TYPE_CONFIG = {
-   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
 };
 
 const STATUS_CONFIG = {
    published: { label: 'Published', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
-   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
    draft: { label: 'Draft', icon: Clock, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20' },
    archived: { label: 'Archived', icon: Clock, color: 'text-gray-400', bg: 'bg-white dark:bg-slate-900/20' },
 };
@@ -77,6 +77,7 @@ const MyReelsPage = () => {
       }
    };
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    useEffect(() => { fetchReels(); }, [currentPage, statusFilter]);
 
    const getReelTitle = (reel) => {
@@ -161,17 +162,17 @@ const MyReelsPage = () => {
                                     {/* Subject & Topic */}
                                     <div className="flex flex-wrap items-center gap-1.5">
                                        {reel.subject && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white uppercase">
                                              #{reel.subject}
                                           </span>
                                        )}
                                        {reel.topic && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
                                              #{reel.topic}
                                           </span>
                                        )}
                                        {reel.difficulty && (
-                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20'}`}>
+                                          <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold uppercase ${reel.difficulty === 'easy' ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20' : reel.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 ' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 '}`}>
                                              {reel.difficulty}
                                           </span>
                                        )}
@@ -182,7 +183,7 @@ const MyReelsPage = () => {
 
                                     {/* Rejected reason */}
                                     {reel.status === 'rejected' && reel.adminNotes && (
-                                       <p className="text-[11px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/10 p-2 rounded-lg xl:rounded-xl">
+                                       <p className="text-[11px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 p-2 rounded-lg xl:rounded-xl">
                                           Reason: {reel.adminNotes}
                                        </p>
                                     )}

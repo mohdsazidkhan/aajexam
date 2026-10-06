@@ -180,7 +180,7 @@ const DashboardAnalytics = () => {
       ),
       render: (_, a) => (
         <div className="flex items-center gap-2">
-          <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest ${a.type === 'exam' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white' : 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300'}`}>
+          <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest ${a.type === 'exam' ? 'bg-black/10 text-black dark:text-white' : 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300'}`}>
             {a.type === 'exam' ? 'Exam' : 'Quiz'}
           </span>
           <span className="text-gray-600 dark:text-gray-300 font-medium whitespace-nowrap">
@@ -202,7 +202,7 @@ const DashboardAnalytics = () => {
           <span className={`px-3 py-1 rounded-full text-sm font-semibold ${a.score >= 80 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
             a.score >= 60 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
               a.score >= 40 ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300' :
-                'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'
+                'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '
             }`}>
             {a.score || 0}
           </span>

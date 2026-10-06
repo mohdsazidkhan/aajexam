@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import {
@@ -195,7 +196,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
         )}
         {entry.subscriptionStatus === 'PRO' && (
-          <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
+          <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
         )}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -430,7 +431,7 @@ const LeaderboardPage = () => {
                         shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
                         ${isActive
                           ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
-                          : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white'
+                          : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:hover:border-white'
                         }
                       `}
                     >
@@ -445,7 +446,7 @@ const LeaderboardPage = () => {
                 onClick={() => fetchLeaderboard(true)}
                 disabled={refreshing || loading}
                 title="Refresh"
-                className="absolute right-0 top-0 shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+                className="absolute right-0 top-0 shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
               </button>
@@ -552,7 +553,7 @@ const LeaderboardPage = () => {
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                    className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -560,7 +561,7 @@ const LeaderboardPage = () => {
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                    className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>

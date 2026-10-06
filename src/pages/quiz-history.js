@@ -38,6 +38,7 @@ const QuizHistoryPage = () => {
       } finally { setLoading(false); }
    };
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    useEffect(() => { fetchHistory(); }, [currentPage, filter]);
 
    const getRankBadge = (acc) => {

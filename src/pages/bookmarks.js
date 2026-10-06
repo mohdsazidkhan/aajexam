@@ -31,17 +31,17 @@ import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 
 const TYPE_CONFIG = {
-   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   fact: { label: 'Fact', icon: BookOpen, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   tip: { label: 'Tip', icon: Zap, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   current_affairs: { label: 'Current Affairs', icon: Newspaper, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   poll: { label: 'Poll', icon: BarChart3, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
 };
 
 const DIFFICULTY_STYLES = {
    easy: 'text-primary-600 bg-primary-50 dark:bg-primary-900/20',
-   medium: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20',
-   hard: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20',
+   medium: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800',
+   hard: 'text-black dark:text-white bg-slate-100 dark:bg-slate-800',
 };
 
 const BookmarksPage = () => {
@@ -70,6 +70,7 @@ const BookmarksPage = () => {
       }
    };
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    useEffect(() => { fetchBookmarks(); }, [currentPage]);
 
    const handleUnbookmark = async (reelId) => {
@@ -157,12 +158,12 @@ const BookmarksPage = () => {
                                     {/* Subject & Topic */}
                                     <div className="flex flex-wrap items-center gap-1.5">
                                        {reel.subject && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white uppercase">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white uppercase">
                                              #{reel.subject}
                                           </span>
                                        )}
                                        {reel.topic && (
-                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white">
+                                          <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
                                              #{reel.topic}
                                           </span>
                                        )}

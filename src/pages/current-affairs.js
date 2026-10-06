@@ -35,15 +35,15 @@ const CASkeleton = () => (
 
 // ─── Category icon / color map ─────────────────────────────────────────────────
 const catConfig = {
-  national: { icon: Globe, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  international: { icon: Globe, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  national: { icon: Globe, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
+  international: { icon: Globe, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
   economy:       { icon: TrendingUp, color: 'bg-primary-600', chip: 'text-primary-600 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  sports: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  science: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  defence: { icon: Sword, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  sports: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
+  science: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
+  defence: { icon: Sword, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
   environment:   { icon: Leaf,     color: 'bg-primary-600',  chip: 'text-primary-600 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50' },
-  awards: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
-  appointments: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800'},
+  awards: { icon: Trophy, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
+  appointments: { icon: Sparkles, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800'},
 };
 const defaultCat = { icon: Newspaper, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' };
 
@@ -161,7 +161,7 @@ const CurrentAffairsPage = () => {
 
         {/* Today highlight */}
         {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
-          <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 dark:border-white/30">
+          <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 dark:border-white/30">
             <h2 className="text-sm font-black text-black dark:text-white mb-2 flex items-center gap-2">
               <Flame className="w-4 h-4" /> Today — {todayAffairs.total} Updates
             </h2>
@@ -214,7 +214,7 @@ const CurrentAffairsPage = () => {
                       {affair.views || 0}
                     </div>
                     {affair.questions?.length > 0 && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                      <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                         <Tag className="w-3 h-3" />
                         {affair.questions.length} Qs
                       </div>

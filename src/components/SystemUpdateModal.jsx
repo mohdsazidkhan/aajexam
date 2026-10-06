@@ -56,7 +56,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         <div className="p-4 xl:p-10 space-y-8">
 
           {/* PLATFORM UPDATE */}
-          <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-2xl p-6">
+          <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-black text-black dark:text-white mb-2 flex items-center uppercase tracking-tight">
               <FaShieldAlt className="text-black dark:text-white mr-2" /> Platform Update
             </h3>

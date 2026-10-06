@@ -30,8 +30,8 @@ const getScoreMessage = (pct) => {
 const speedBadge = (sec) => {
   if (!sec || sec <= 0) return null;
   if (sec <= 20) return { label: 'Fast', icon: <Zap className="w-3 h-3" />, cls: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' };
-  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
-  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
+  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' };
+  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' };
 };
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
@@ -43,7 +43,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
   if (!leaderboard || leaderboard.length === 0) {
     return (
       <div className="text-center py-4 mb-4">
-        <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 dark:border-primary-600">
+        <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 dark:border-primary-600">
           <Trophy className="w-10 h-10 text-black dark:text-white mx-auto mb-3" />
           <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-1">No Leaderboard Yet</h3>
           <p className="text-sm text-slate-500 dark:text-slate-400">Be the first to complete this quiz!</p>
@@ -66,7 +66,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
         {leaderboard.map((entry, index) => {
           const isCurrentUser = entry.user?._id === currentUser?.id;
           return (
-            <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl ${isCurrentUser ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white' : 'bg-white/60 dark:bg-slate-700/60'}`}>
+            <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl ${isCurrentUser ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white' : 'bg-white/60 dark:bg-slate-700/60'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${index === 0 ?'bg-primary-600':
                   index === 1 ? 'bg-slate-400' :
                     index === 2 ?'bg-primary-600':
@@ -358,7 +358,7 @@ const AttemptQuizPage = () => {
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
               Question {currentQuestionIndex + 1} of {quiz?.questions?.length || 0}. Exiting will submit your quiz with current answers.
             </p>
-            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-lg p-3 mb-5">
+            <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-lg p-3 mb-5">
               <p className="text-xs text-black dark:text-white">This action cannot be undone.</p>
             </div>
             <div className="flex gap-3">
@@ -491,7 +491,7 @@ const AttemptQuizPage = () => {
               </div>
 
               {result.rank && (
-                <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl mb-3 inline-flex items-center gap-2">
+                <div className="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl mb-3 inline-flex items-center gap-2">
                   <Crown className="w-4 h-4" />
                   <span className="font-semibold text-sm">Rank #{result.rank} · Top {Math.round(result.percentile || 0)}%</span>
                 </div>
@@ -521,7 +521,7 @@ const AttemptQuizPage = () => {
                 const badge = speedBadge(secTaken);
 
                 return (
-                  <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
+                  <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                     {/* Question header */}
                     <div className="flex items-start gap-3 mb-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>
@@ -565,7 +565,7 @@ const AttemptQuizPage = () => {
                     </div>
 
                     {question.explanation && (
-                      <div className="ml-0 xl:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                      <div className="ml-0 xl:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
                         <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                       </div>
                     )}
@@ -669,7 +669,7 @@ const AttemptQuizPage = () => {
                 className="flex items-center justify-center gap-1.5 min-w-[52px] px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               />
               {/* Timer */}
-              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:bg-white/30 dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
+              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
                 <Clock className="w-4 h-4" />
                 {formatTime(timeLeft)}
               </div>

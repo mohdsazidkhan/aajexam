@@ -28,7 +28,7 @@ function Error({ statusCode }) {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
 
         <div className="max-w-md w-full bg-white dark:bg-slate-900 shadow-sm rounded-[3rem] p-10 text-center border-2 border-slate-200 dark:border-slate-800 relative z-10">
-          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-[2rem] mb-8 shadow-sm border-2 border-white dark:border-slate-800">
+          <div className="flex items-center justify-center w-24 h-24 mx-auto bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-8 shadow-sm border-2 border-white dark:border-slate-800">
             <svg className="w-12 h-12 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>

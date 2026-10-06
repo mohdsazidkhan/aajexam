@@ -213,7 +213,7 @@ export default function MentorProfilePage() {
             <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><BookOpen className="w-4 h-4 text-black dark:text-white" /> Recommended Books</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
-                <span key={i} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg text-xs font-bold text-black dark:text-white">{book}</span>
+                <span key={i} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-bold text-black dark:text-white">{book}</span>
               ))}
             </div>
           </Card>

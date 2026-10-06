@@ -44,6 +44,7 @@ const CategoryDetailPage = () => {
     fetchCategory();
 
     return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   useEffect(() => {

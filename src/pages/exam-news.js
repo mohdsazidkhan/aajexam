@@ -34,12 +34,12 @@ const NewsSkeleton = () => (
 
 // ─── Type config ───────────────────────────────────────────────────────────────
 const typeConfig = {
-  notification: { icon: Bell, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Notification'},
+  notification: { icon: Bell, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Notification'},
   admit_card:   { icon: CreditCard,   color: 'bg-primary-600', chip: 'text-primary-600 bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800/50', label: 'Admit Card' },
-  result: { icon: BarChart2, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Result'},
-  answer_key: { icon: Key, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Answer Key'},
-  vacancy: { icon: Users, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Vacancy'},
-  date_change: { icon: AlertTriangle, color:'bg-primary-600', chip:'text-black dark:text-white dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-slate-200 dark:border-slate-800', label:'Date Change'},
+  result: { icon: BarChart2, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Result'},
+  answer_key: { icon: Key, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Answer Key'},
+  vacancy: { icon: Users, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Vacancy'},
+  date_change: { icon: AlertTriangle, color:'bg-primary-600', chip:'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800', label:'Date Change'},
 };
 const defaultType = { icon: Megaphone, color: 'bg-slate-400', chip: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600', label: 'Other' };
 
@@ -156,7 +156,7 @@ const ExamNewsPage = () => {
                       {cfg.label}
                     </div>
                     {item.isPinned && (
-                      <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
+                      <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                         <Pin className="w-3 h-3" /> Pinned
                       </div>
                     )}

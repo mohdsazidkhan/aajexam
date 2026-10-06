@@ -336,7 +336,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                     <div className="flex items-center justify-between">
                                         <span className="text-xs font-black text-primary-600">Q{qi + 1}</span>
                                         {form.questions.length > 1 && (
-                                            <button type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
+                                            <button type="button" onClick={() => removeQuestion(qi)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                                         )}
                                     </div>
 
@@ -378,7 +378,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                                     className="flex-1 px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-primary-700"
                                                     placeholder={`Option ${String.fromCharCode(65 + oi)}`} />
                                                 {optImg ? (
-                                                    <button type="button" onClick={() => updateOptionImage(qi, oi, '')} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg" title="Remove image">
+                                                    <button type="button" onClick={() => updateOptionImage(qi, oi, '')} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" title="Remove image">
                                                         <X className="w-3.5 h-3.5 text-black dark:text-white" />
                                                     </button>
                                                 ) : (
@@ -389,7 +389,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
                                                     </label>
                                                 )}
                                                 {q.options.length > 2 && (
-                                                    <button type="button" onClick={() => removeOption(qi, oi)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                                                    <button type="button" onClick={() => removeOption(qi, oi)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                                                 )}
                                             </div>
                                             {optImg && (

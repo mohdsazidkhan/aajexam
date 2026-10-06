@@ -95,7 +95,7 @@ const AdminQuizSubjects = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, sub) => (
         <div className="text-right">
           <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -209,7 +209,7 @@ const AdminQuizSubjects = () => {
               <span className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${sub.isActive ? 'bg-primary-100 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{sub.isActive ? 'Active' : 'Inactive'}</span>
               <div className="flex gap-1 shrink-0">
                 <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
               </div>
             </div>
           ))}

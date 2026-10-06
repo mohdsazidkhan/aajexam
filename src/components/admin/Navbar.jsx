@@ -81,7 +81,7 @@ const AdminNavbar = () => {
 
             {/* Logo — desktop */}
             <Link href="/admin/dashboard" className="hidden xl:flex items-center shrink-0">
-              <span className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white text-slate-900 dark:text-white">
+              <span className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white ">
                 AAJ<span className="text-primary-600">EXAM</span>
               </span>
             </Link>

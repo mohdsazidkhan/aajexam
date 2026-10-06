@@ -12,7 +12,7 @@ import {
    Plus,
    GraduationCap,
    Trash2,
-   Image
+   Image as ImageIcon
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -29,8 +29,8 @@ import Pagination from '../components/Pagination';
 
 const STATUS_CONFIG = {
    approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
-   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
-   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20' },
+   pending: { label: 'Pending', icon: Clock, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
+   rejected: { label: 'Rejected', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
 };
 
 const MyQuestionsPage = () => {
@@ -60,6 +60,7 @@ const MyQuestionsPage = () => {
       }
    };
 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    useEffect(() => { fetchQuestions(); }, [currentPage]);
 
    const handleDelete = async (id) => {
@@ -134,7 +135,7 @@ const MyQuestionsPage = () => {
                                        </div>
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleDelete(q._id); }}
-                                          className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors"
+                                          className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors"
                                           title="Delete question"
                                        >
                                           <Trash2 className="w-4 h-4" />
@@ -157,7 +158,7 @@ const MyQuestionsPage = () => {
                                     {/* Image indicator */}
                                     {q.image && (
                                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400">
-                                          <Image className="w-3 h-3" /> Has image
+                                          <ImageIcon className="w-3 h-3" /> Has image
                                        </div>
                                     )}
 

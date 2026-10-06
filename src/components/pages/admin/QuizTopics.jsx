@@ -97,8 +97,8 @@ const AdminQuizTopics = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, t) => (
         <div className="text-right">
-          <button onClick={() => openEdit(t)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDelete(t._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button onClick={() => openEdit(t)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
+          <button onClick={() => handleDelete(t._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -221,8 +221,8 @@ const AdminQuizTopics = () => {
               </div>
               <span className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${t.isActive ? 'bg-primary-100 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{t.isActive ? 'Active' : 'Inactive'}</span>
               <div className="flex gap-1 shrink-0">
-                <button onClick={() => openEdit(t)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-700 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                <button onClick={() => handleDelete(t._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                <button onClick={() => openEdit(t)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                <button onClick={() => handleDelete(t._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
               </div>
             </div>
           ))}

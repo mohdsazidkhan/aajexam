@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import {
@@ -38,7 +39,7 @@ const LeaderboardSkeleton = () => (
 const rankConfig = {
   1: { gradient: 'bg-primary-600', ringColor: 'ring-primary-700/10', textColor: 'text-white' },
   2: { gradient: 'bg-slate-400', ringColor: 'ring-slate-400 dark:ring-slate-500', textColor: 'text-slate-500 dark:text-slate-400' },
-  3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 dark:ring-white/10', textColor: 'text-black dark:text-white' },
+  3: { gradient: 'bg-slate-100 dark:bg-slate-800', ringColor: 'ring-black/10 dark:ring-white/10 ', textColor: 'text-black dark:text-white' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
@@ -123,7 +124,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
           {entry.name || entry.username || 'Anonymous'}
         </p>
         {isMe && <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>}
-        {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
+        {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
         {entry.username && <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>}
@@ -382,7 +383,7 @@ const AllIndiaRankPage = () => {
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title="Refresh Ranks"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">Refresh</span>
@@ -448,7 +449,7 @@ const AllIndiaRankPage = () => {
                       <button
                         onClick={() => setPage(p => Math.max(1, p - 1))}
                         disabled={page === 1}
-                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
                       >
                         <ChevronLeft className="w-4 h-4" />
                       </button>
@@ -456,7 +457,7 @@ const AllIndiaRankPage = () => {
                       <button
                         onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                         disabled={page === totalPages}
-                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all"
+                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
                       >
                         <ChevronRight className="w-4 h-4" />
                       </button>

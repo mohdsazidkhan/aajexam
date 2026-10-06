@@ -170,6 +170,7 @@ const ExamCalendarPage = () => {
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year, targetVersion]);
 
   useEffect(() => { fetchCalendar(); }, [fetchCalendar]);

@@ -299,7 +299,7 @@ const AdminUsersAnalytics = () => {
                                                         {(s.name || 'U')[0]}
                                                         <span className="absolute -top-1.5 -left-1.5 w-5 h-5 rounded-full bg-primary-600 text-white text-[9px] font-black flex items-center justify-center shadow-sm z-10 ring-2 ring-white dark:ring-slate-800">{(page - 1) * itemsPerPage + idx + 1}</span>
                                                     </div>
-                                                    <span className={`text-[9px] font-black px-2 py-0.5 rounded ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>{s.subscriptionStatus || 'FREE'}</span>
+                                                    <span className={`text-[9px] font-black px-2 py-0.5 rounded ${s.subscriptionStatus === 'PRO' ? 'bg-black/10 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}>{s.subscriptionStatus || 'FREE'}</span>
                                                 </div>
                                                 <div>
                                                     <h3 className="text-sm font-bold text-slate-900 dark:text-white truncate">{s.name || 'Anonymous'}</h3>

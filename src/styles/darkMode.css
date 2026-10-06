@@ -849,3 +849,14 @@ html, body {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+/* Safety net: 800-weight neutral text/hover has no dark counterpart elsewhere and
+   would be invisible (slate-800 == card colour) on dark surfaces. */
+.dark .text-slate-800,
+.dark .text-gray-800,
+.dark .text-zinc-800,
+.dark .text-neutral-800,
+.dark .hover\:text-slate-800:hover,
+.dark .hover\:text-gray-800:hover {
+  color: var(--text-primary);
+}

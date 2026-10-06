@@ -133,7 +133,7 @@ const PaymentTransactions = () => {
         return 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300';
       case 'failed':
       case 'failure':
-        return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white';
+        return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
       case 'created':
       case 'authorized':
       case 'pending':

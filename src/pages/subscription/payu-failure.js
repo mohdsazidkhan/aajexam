@@ -140,7 +140,7 @@ const PayuFailure = () => {
         <div className="max-w-3xl mx-auto">
           <div className="bg-white dark:bg-slate-900 rounded-[3rem] p-8 xl:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
             <div className="text-center space-y-2 xl:space-y-4">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
                 <CircleAlert className="w-12 h-12" />
               </div>
               <div className="space-y-2">

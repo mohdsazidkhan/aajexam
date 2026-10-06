@@ -61,6 +61,7 @@ const AdminPYQ = () => {
     } catch (e) { } finally { setLoading(false); }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchData(); }, [page, selectedExamId, itemsPerPage, debouncedSearch]);
   useEffect(() => { setPage(1); }, [debouncedSearch]);
 
@@ -102,7 +103,7 @@ const AdminPYQ = () => {
     {
       key: 'access', header: 'Access', render: (_, t) => {
         const isFree = getIsFree(t);
-        return <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>;
+        return <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>{isFree ? 'FREE' : 'PRO'}</span>;
       }
     },
     {
@@ -111,7 +112,7 @@ const AdminPYQ = () => {
           <button onClick={() => router.push(`/admin/pyq/edit/${t._id}`)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition" title="Edit">
             <Pencil className="w-4 h-4 text-slate-500" />
           </button>
-          <button onClick={() => handleDelete(t._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/20 rounded-lg transition" title="Delete">
+          <button onClick={() => handleDelete(t._id)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/20 rounded-lg transition" title="Delete">
             <Trash2 className="w-4 h-4 text-black dark:text-white" />
           </button>
         </div>
@@ -222,7 +223,7 @@ const AdminPYQ = () => {
                     <Card key={t._id || i} className="flex flex-col gap-3">
                       <div className="flex items-start justify-between gap-2">
                         <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5" /></div>
-                        <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
+                        <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>{isFree ? 'FREE' : 'PRO'}</span>
                       </div>
                       <div>
                         <div className="flex items-center gap-2 flex-wrap mb-1">
@@ -253,7 +254,7 @@ const AdminPYQ = () => {
                         <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[10px] font-black text-primary-600 dark:text-primary-300">{t.pyqYear || 'PYQ'}</span>
                         {t.pyqShift && <span className="text-[10px] font-bold text-slate-400">{t.pyqShift}</span>}
                         {t.examPattern?.exam?.name && <span className="text-[10px] font-bold text-slate-400">· {t.examPattern.exam.name}</span>}
-                        <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/20'}`}>{isFree ? 'FREE' : 'PRO'}</span>
+                        <span className={`text-[9px] font-black px-2 py-0.5 rounded ${isFree ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/20' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>{isFree ? 'FREE' : 'PRO'}</span>
                       </div>
                       <h3 className="text-sm font-black text-slate-900 dark:text-white truncate">{t.title}</h3>
                       <p className="text-[10px] text-slate-400">{t.questions?.length || 0} questions · {t.duration} min · {t.totalMarks} marks</p>
@@ -262,7 +263,7 @@ const AdminPYQ = () => {
                       <button onClick={() => router.push(`/admin/pyq/edit/${t._id}`)} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition" title="Edit">
                         <Pencil className="w-4 h-4 text-slate-500" />
                       </button>
-                      <button onClick={() => handleDelete(t._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/20 rounded-lg transition" title="Delete">
+                      <button onClick={() => handleDelete(t._id)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/20 rounded-lg transition" title="Delete">
                         <Trash2 className="w-4 h-4 text-black dark:text-white" />
                       </button>
                     </div>

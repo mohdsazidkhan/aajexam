@@ -93,7 +93,7 @@ export default function ChallengePage() {
                         {!challenge.hasPlayed ? (
                             <button 
                                 onClick={handleAcceptChallenge}
-                                className="w-full bg-white text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 font-black text-xl py-4 rounded-2xl shadow-sm transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                                className="w-full bg-white text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 font-black text-xl py-4 rounded-2xl shadow-sm transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
                             >
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
@@ -109,7 +109,7 @@ export default function ChallengePage() {
                 {challenge.hasPlayed && (
                     <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 p-2 rounded-lg xl:rounded-xl">
+                            <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg xl:rounded-xl">
                                 <Users className="w-6 h-6 text-black dark:text-white" />
                             </div>
                             <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Challenge Leaderboard</h2>
@@ -118,7 +118,7 @@ export default function ChallengePage() {
                         <div className="space-y-3">
                             {leaderboard.map((entry, index) => (
                                 <div key={index} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
-                                    index === 0 ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:bg-white/20 dark:border-white' :
+                                    index === 0 ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white' :
                                     'bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
                                 }`}>
                                     <div className="flex-shrink-0">
@@ -131,12 +131,12 @@ export default function ChallengePage() {
                                     <div className="flex-grow min-w-0">
                                         <h3 className="font-bold text-slate-800 dark:text-white truncate text-lg">
                                             {entry.user?.name || 'Anonymous'}
-                                            {entry.isHost && <span className="ml-2 text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 px-2 py-0.5 rounded-full uppercase tracking-wider">Host</span>}
+                                            {entry.isHost && <span className="ml-2 text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-2 py-0.5 rounded-full uppercase tracking-wider">Host</span>}
                                         </h3>
                                     </div>
 
                                     <div className="text-right">
-                                        <p className={`font-black text-2xl ${index === 0 ? 'text-black dark:text-white dark:text-white' : 'text-slate-800 dark:text-white'}`}>
+                                        <p className={`font-black text-2xl ${index === 0 ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>
                                             {Math.round(entry.percentage)}%
                                         </p>
                                         <p className="text-xs text-slate-400 font-medium">{Math.round(entry.totalTime)}s</p>

@@ -502,7 +502,7 @@ const MyAnalyticsPage = () => {
                               </div>
                            </Card>
                            <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
-                              <div className="p-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-2xl"><TrendingDown className="w-7 h-7" /></div>
+                              <div className="p-4 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-2xl"><TrendingDown className="w-7 h-7" /></div>
                               <div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">Total Spent</p>
                                  <p className="text-2xl font-black font-outfit">{wallet?.totalExpenses || 0}</p>
@@ -516,14 +516,14 @@ const MyAnalyticsPage = () => {
                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                               <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Blog Earnings</span>
                                  </div>
                                  <span className="font-black text-lg text-black dark:text-white">{wallet?.blogEarnings || 0}</span>
                               </Card>
                               <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
                                  <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
+                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
                                     <span className="font-black text-sm">Referral Rewards</span>
                                  </div>
                                  <span className="font-black text-lg text-black dark:text-white">{wallet?.referralRewards || 0}</span>

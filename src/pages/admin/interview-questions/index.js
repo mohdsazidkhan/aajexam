@@ -50,6 +50,7 @@ const AdminInterviewQuestions = () => {
       if (categoriesRes?.success) setCategories(categoriesRes.data || []);
     } catch (e) { } finally { setLoading(false); }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchData(); }, [page, itemsPerPage, debouncedSearch]);
   useEffect(() => { setPage(1); }, [debouncedSearch]);
 
@@ -102,8 +103,8 @@ const AdminInterviewQuestions = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, q) => (
         <div className="flex items-center justify-end gap-1">
-          <button onClick={() => handleEdit(q)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-          <button onClick={() => handleDelete(q._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          <button onClick={() => handleEdit(q)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          <button onClick={() => handleDelete(q._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
         </div>
       )
     }
@@ -201,8 +202,8 @@ const AdminInterviewQuestions = () => {
                     {q.category?.name && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 truncate">{q.category.name}</p>}
                   </div>
                   <div className="flex items-center justify-end gap-1 pt-2 border-t border-slate-100 dark:border-slate-700/50">
-                    <button onClick={() => handleEdit(q)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-                    <button onClick={() => handleDelete(q._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleEdit(q)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(q._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                   </div>
                 </Card>
                 );
@@ -226,8 +227,8 @@ const AdminInterviewQuestions = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 break-all">{q.question}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button onClick={() => handleEdit(q)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-                    <button onClick={() => handleDelete(q._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleEdit(q)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(q._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                   </div>
                 </Card>
                 );

@@ -81,7 +81,7 @@ const StreakPage = () => {
 
         {/* Today Status */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-          <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 ring-4 ring-black/10 dark:ring-white/10'}`}>
+          <Card className={`p-6 text-center ${streak?.todayCompleted ? 'bg-primary-50 dark:bg-primary-900/20 ring-4 ring-primary-500/20' : 'bg-slate-100 dark:bg-slate-800 ring-4 ring-black/10 dark:ring-white/10'}`}>
             {streak?.todayCompleted
               ? <><Shield className="w-10 h-10 text-primary-600 mx-auto mb-2" /><h2 className="text-lg font-black text-primary-600 dark:text-primary-300">Today&apos;s Challenge Complete!</h2></>
               : <><Flame className="w-10 h-10 text-black dark:text-white mx-auto mb-2 animate-pulse" /><h2 className="text-lg font-black text-black dark:text-white">Complete Today&apos;s Challenge to Keep Streak!</h2>

@@ -54,7 +54,7 @@ const EducationalContent = ({ content }) => {
             title: "Sector Rewards",
             description: "Dominate the leaderboards and claim monthly recruitment bonuses.",
             color: "text-black dark:text-white",
-            bg: "bg-slate-100 dark:bg-slate-800 dark:bg-white/10"
+            bg: "bg-slate-100 dark:bg-slate-800"
         }
     ];
 

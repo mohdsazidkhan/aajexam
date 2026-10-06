@@ -74,7 +74,7 @@ const MyChallengesPage = () => {
                <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
                   <div className="space-y-1 text-center xl:text-left">
                      <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">My Challenges</h1>
-                     <p className="text-sm font-bold text-slate-400">Track the challenges you've sent to friends</p>
+                     <p className="text-sm font-bold text-slate-400">Track the challenges you&apos;ve sent to friends</p>
                   </div>
                </div>
 
@@ -99,7 +99,7 @@ const MyChallengesPage = () => {
                            <motion.div key={challenge._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
                               <Card className="p-0 overflow-hidden group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
                                  {/* Challenge Header */}
-                                 <div className="p-5 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
+                                 <div className="p-5 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
                                     <div className="flex justify-between items-start mb-4">
                                        <div>
                                           <div className="text-[10px] font-black uppercase tracking-wider text-black dark:text-white mb-1 flex items-center gap-1">
@@ -146,7 +146,7 @@ const MyChallengesPage = () => {
                                           {challenge.challengers.slice(0, 3).map((ch, i) => (
                                              <div key={i} className={`flex items-center justify-between p-2.5 rounded-lg border ${
                                                 (ch.attempt?.percentage || 0) > hostPercentage 
-                                                   ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 border-slate-200 dark:border-slate-800 dark:border-white/30' 
+                                                   ? 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white/30' 
                                                    : 'bg-primary-50 dark:bg-primary-900/10 border-primary-100 dark:border-primary-900/30'
                                              }`}>
                                                 <div className="flex items-center gap-2">
@@ -155,7 +155,7 @@ const MyChallengesPage = () => {
                                                    </div>
                                                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{ch.user?.name || 'Unknown'}</span>
                                                 </div>
-                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-black dark:text-white dark:text-white' : 'text-primary-600'}`}>
+                                                <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-black dark:text-white ' : 'text-primary-600'}`}>
                                                    {Math.round(ch.attempt?.percentage || 0)}%
                                                 </div>
                                              </div>

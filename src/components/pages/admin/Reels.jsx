@@ -23,18 +23,18 @@ import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const TYPE_COLORS = {
-  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
   fact: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
-  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
+  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
   poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
 const STATUS_COLORS = {
   published: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
-  pending: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  pending: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
   draft: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400',
-  rejected: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  rejected: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
   archived: 'bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500',
 };
 
@@ -205,7 +205,7 @@ const AdminReels = () => {
             <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600 hover:bg-primary-700 hover:text-white transition-all" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
           )}
           <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
-          <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
+          <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
         </div>
       )
     }
@@ -378,7 +378,7 @@ const AdminReels = () => {
                                 <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
                               )}
                               <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
-                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
+                              <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
                             </div>
                           </div>
                         </div>
@@ -413,7 +413,7 @@ const AdminReels = () => {
                               <button onClick={() => handleStatusChange(item._id, 'published')} className="p-1.5 rounded-lg bg-primary-50 dark:bg-primary-950/30 text-primary-600" title="Approve"><CheckCircle2 className="w-3.5 h-3.5" /></button>
                             )}
                             <Link href={`/admin/reels/edit/${item._id}`} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500" title="Edit"><Edit3 className="w-3.5 h-3.5" /></Link>
-                            <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
+                            <button onClick={() => handleDelete(item._id)} className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white" title="Delete"><Trash2 className="w-3.5 h-3.5" /></button>
                           </div>
                         </div>
                       );

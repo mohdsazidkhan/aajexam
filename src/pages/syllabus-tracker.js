@@ -49,13 +49,13 @@ const SubjectAccordion = ({ subject }) => {
   const isAllDone = subject.completedTopics === subject.totalTopics && subject.totalTopics > 0;
 
   return (
-    <Card padded={false} className="overflow-hidden mb-4 border-2 border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:border-slate-800 dark:hover:border-white transition-all">
+    <Card padded={false} className="overflow-hidden mb-4 border-2 border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:hover:border-white transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-4 sm:p-5 bg-background-surface hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
       >
         <div className="flex items-center gap-4">
-          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white'}`}>
+          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${isAllDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
@@ -100,7 +100,7 @@ const SubjectAccordion = ({ subject }) => {
 
                       {!topic.isCompleted && (
                         <Link href={`/quizzes?topic=${topic.slug}`}>
-                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white text-[10px] font-black uppercase hover:bg-slate-100 dark:hover:bg-white/50 transition-colors">
+                          <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-black dark:text-white text-[10px] font-black uppercase hover:bg-slate-100 dark:hover:bg-white/50 transition-colors">
                             <PlayCircle className="w-3 h-3" /> Practice
                           </button>
                         </Link>

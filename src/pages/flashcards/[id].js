@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { ArrowLeft, Share2, Expand, X } from 'lucide-react';

@@ -115,9 +115,9 @@ const ExamDetails = ({ exam }) => (
       {exam.pyqs.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.pyqs.map(p => (
-            <div key={p._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 dark:bg-white/10 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex items-center justify-between">
+            <div key={p._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex items-center justify-between">
               <span className="truncate mr-2 flex items-center gap-1.5" title={p.title}>
-                <span className="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 rounded text-[9px] uppercase font-bold shrink-0">PYQ</span>
+                <span className="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded text-[9px] uppercase font-bold shrink-0">PYQ</span>
                 {p.title}
               </span>
               <span className="text-slate-400 font-medium shrink-0">{p.totalQuestions} Qs</span>
@@ -173,7 +173,7 @@ const ExamDetails = ({ exam }) => (
       {exam.blogs?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 gap-2 max-h-48 overflow-y-auto pr-2 scrollbar-premium">
           {exam.blogs.map(b => (
-            <div key={b._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 dark:bg-white/10 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex flex-col justify-center">
+            <div key={b._id} className="text-[11px] px-3 py-2 bg-slate-100/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 dark:border-white/30 rounded-lg flex flex-col justify-center">
               <span className="truncate font-medium mb-1" title={b.title}>{b.title}</span>
               <div className="flex items-center justify-between">
                 <span className={`text-[9px] font-bold uppercase ${b.status === 'published' ? 'text-primary-600' : 'text-black dark:text-white'}`}>{b.status}</span>

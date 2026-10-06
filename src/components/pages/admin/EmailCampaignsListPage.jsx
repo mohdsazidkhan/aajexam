@@ -14,9 +14,9 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 
 const STATUS_STYLES = {
   draft: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
-  published: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
-  active: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
-  paused: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white',
+  published: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
+  active: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
+  paused: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
   completed: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300'
 };
 const STATUS_LABEL = {
@@ -156,7 +156,7 @@ const EmailCampaignsListPage = () => {
         : 'Already sending or sent — open the campaign to delete it'}
       className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs ${
         canDelete(c)
-          ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/50'
+          ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/50'
           : 'bg-slate-50 dark:bg-slate-800 text-slate-300 dark:text-slate-600 cursor-not-allowed'
       }`}
     >
@@ -201,7 +201,7 @@ const EmailCampaignsListPage = () => {
         <div className="flex justify-end gap-2">
           <PreviewBtn c={c} />
           <DeleteBtn c={c} />
-          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+          <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
             Open
           </Link>
         </div>
@@ -285,7 +285,7 @@ const EmailCampaignsListPage = () => {
           {/* Title + filters now live in the navbar (title/count) and the filter drawer (controls), on web and mobile alike */}
 
           {sendingCampaign && (
-            <div className="shrink-0 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
+            <div className="shrink-0 mb-4 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
               📤 &ldquo;{sendingCampaign.subject}&rdquo; is mid-send. Only one campaign can send at a time — finish it before starting another.
             </div>
           )}
@@ -338,7 +338,7 @@ const EmailCampaignsListPage = () => {
                   <div className="flex gap-2">
                     <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                    <Link href={`/admin/email-campaigns/${c._id}`} className="px-3 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+                    <Link href={`/admin/email-campaigns/${c._id}`} className="px-3 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
                       Open
                     </Link>
                   </div>
@@ -372,7 +372,7 @@ const EmailCampaignsListPage = () => {
                       <div className="flex gap-2">
                         <PreviewBtn c={c} />
                           <DeleteBtn c={c} />
-                        <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 dark:bg-white/40 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
+                        <Link href={`/admin/email-campaigns/${c._id}`} className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/60">
                           Open
                         </Link>
                       </div>

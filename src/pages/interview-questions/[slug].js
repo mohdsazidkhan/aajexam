@@ -46,6 +46,7 @@ const InterviewQuestionDetailPage = () => {
     fetchQuestion();
 
     return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   if (loading) return (

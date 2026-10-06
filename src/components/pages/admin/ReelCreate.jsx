@@ -21,10 +21,10 @@ const TYPES = [
 ];
 
 const COLOR_MAP = {
-  blue: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30',
+  blue: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800',
   purple: 'border-primary-600 bg-primary-50 dark:bg-primary-900/30',
-  amber: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30',
-  red: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30',
+  amber: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800',
+  red: 'border-black dark:border-white bg-slate-100 dark:bg-slate-800',
   green: 'border-primary-600 bg-primary-50 dark:bg-primary-950/30',
 };
 
@@ -266,10 +266,10 @@ const AdminReelCreate = () => {
                 {/* Type badge + change */}
                 <div className="flex items-center gap-3">
                   <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
-                    type === 'question' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' :
+                    type === 'question' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' :
                     type === 'fact' ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' :
-                    type === 'tip' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' :
-                    type === 'current_affairs' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' :
+                    type === 'tip' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' :
+                    type === 'current_affairs' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' :
                     'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400'
                   }`}>
                     {type === 'current_affairs' ? 'Current Affairs' : type}
@@ -514,7 +514,7 @@ const AdminReelCreate = () => {
                       <div key={a.value}
                         onClick={() => handleAudioSelect(a.value)}
                         className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                          ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
+                          ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white'
                           : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                       >
                         <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
@@ -523,7 +523,7 @@ const AdminReelCreate = () => {
                           {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                         </button>
                         <div className="flex-1 min-w-0">
-                          <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white dark:text-white' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                          <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
                           <div className="flex items-center gap-2">
                             <p className="text-[11px] text-slate-400 truncate">{a.artist}</p>
                             {a.audioDuration && (

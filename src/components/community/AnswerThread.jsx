@@ -32,7 +32,7 @@ const RoleBadge = ({ role }) => {
     </span>
   );
   if (role === 'admin') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
       <Shield className="w-2.5 h-2.5" /> ADMIN
     </span>
   );
@@ -101,7 +101,7 @@ function AnswerItem({
           <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{upvotes - downvotes}</span>
           <button
             onClick={() => handleVote('down')}
-            className={`p-1 rounded hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/30 transition ${myVote === 'down' ? 'text-black dark:text-white' : 'text-slate-400'}`}
+            className={`p-1 rounded hover:bg-slate-100 dark:hover:bg-white/30 transition ${myVote === 'down' ? 'text-black dark:text-white' : 'text-slate-400'}`}
           >
             <ThumbsDown className="w-4 h-4" />
           </button>
@@ -120,7 +120,7 @@ function AnswerItem({
             )}
             <RoleBadge role={item.authorRole} />
             {item.isPinned && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
                 <Pin className="w-2.5 h-2.5" /> PINNED
               </span>
             )}

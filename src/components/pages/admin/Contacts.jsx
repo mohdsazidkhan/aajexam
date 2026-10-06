@@ -123,7 +123,7 @@ export default function AdminContacts() {
       key: 'email', header: 'EMAIL', render: (_, contact) => (
         <>
           <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{contact.name || 'Unknown'}</div>
-          <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
+          <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{contact.email || 'No email'}</div>
         </>
       )
     },

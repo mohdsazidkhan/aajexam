@@ -223,8 +223,8 @@ const AdminQuizQuestions = () => {
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button onClick={() => openEdit(q)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                  <button onClick={() => openEdit(q)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                  <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
             </div>

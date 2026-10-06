@@ -370,7 +370,7 @@ const ReelCreate = () => {
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
                       className={`flex items-center gap-3 p-2.5 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                        ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border border-slate-200 dark:border-slate-800 dark:border-white'
+                        ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white'
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                     >
                       {/* Play/Pause */}
@@ -381,7 +381,7 @@ const ReelCreate = () => {
                       </button>
                       {/* Info */}
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white dark:text-white' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
+                        <p className={`text-sm font-semibold truncate ${audioFile === a.value ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>{a.label}</p>
                         <div className="flex items-center gap-2">
                           <p className="text-[12px] text-slate-400 truncate">{a.artist}</p>
                           {a.audioDuration && (

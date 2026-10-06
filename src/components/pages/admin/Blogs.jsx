@@ -143,7 +143,7 @@ const AdminBlogs = () => {
   const getStatusBadge = (status) => {
     const cfg = {
       published: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300',
-      draft: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+      draft: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
       archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
     };
     return (
@@ -432,7 +432,7 @@ const AdminBlogs = () => {
         )}
 
         {error && (
-          <div className="shrink-0 mt-4 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
+          <div className="shrink-0 mt-4 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
             <p className="text-black dark:text-white">{error}</p>
           </div>
         )}

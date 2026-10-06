@@ -106,9 +106,9 @@ const Modal = ({
             animate="visible"
             exit="exit"
             className={`
-              relative bg-white dark:bg-slate-900              ${sizes[size]} 
+ relative bg-white dark:bg-slate-900 ${sizes[size]} 
               ${size === 'fullscreen' ? 'rounded-none' : 'rounded-[3rem] xl:rounded-[4.5rem]'} 
-              border-2 border-slate-200 dark:border-slate-800              ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-sm'} 
+ border-2 border-slate-200 dark:border-slate-800 ${size === 'fullscreen' ? '' : 'border-b-[12px] shadow-sm'} 
               transition-all duration-300 font-outfit overflow-hidden
               ${className}
             `}

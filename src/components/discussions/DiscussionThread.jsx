@@ -31,7 +31,7 @@ const RoleBadge = ({ role }) => {
     </span>
   );
   if (role === 'admin') return (
-    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
+    <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
       <Shield className="w-2.5 h-2.5" /> ADMIN
     </span>
   );
@@ -102,12 +102,12 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
             )}
             <RoleBadge role={item.authorRole} />
             {item.isPinned && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
                 <Pin className="w-2.5 h-2.5" /> PINNED
               </span>
             )}
             {item.isAlternateSolution && (
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 rounded">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded">
                 <Lightbulb className="w-2.5 h-2.5" /> ALT SOLUTION
               </span>
             )}

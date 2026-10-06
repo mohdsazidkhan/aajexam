@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -124,6 +125,7 @@ const TestStart = ({ resolvedId } = {}) => {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft, startedAt]);
 
   useEffect(() => {
@@ -406,7 +408,7 @@ const TestStart = ({ resolvedId } = {}) => {
               </div>
 
               {translatingQ && (
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-full text-[11px] font-black text-black dark:text-white uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-[11px] font-black text-black dark:text-white uppercase tracking-widest">
                   <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
                   Translating to हिंदी…
                 </div>

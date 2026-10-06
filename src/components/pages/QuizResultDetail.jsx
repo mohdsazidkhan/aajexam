@@ -35,8 +35,8 @@ const getSpeedBadge = (sec, totalQ) => {
   if (!sec || !totalQ) return null;
   const avg = sec; // per-question seconds
   if (avg <= 20) return { label: 'Fast', cls: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' };
-  if (avg <= 60) return { label: 'Good', cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
-  return { label: 'Slow', cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
+  if (avg <= 60) return { label: 'Good', cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' };
+  return { label: 'Slow', cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' };
 };
 
 const QuizResultDetail = () => {
@@ -168,7 +168,7 @@ const QuizResultDetail = () => {
             </div>
 
             {attempt.rank && (
-              <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl inline-flex items-center gap-2">
+              <div className="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl inline-flex items-center gap-2">
                 <Crown className="w-4 h-4" />
                 <span className="font-semibold text-sm">Rank #{attempt.rank} · Top {Math.round(attempt.percentile || 0)}%</span>
               </div>
@@ -197,7 +197,7 @@ const QuizResultDetail = () => {
               const speedBadge = getSpeedBadge(timeSec);
 
               return (
-                <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
+                <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                   {/* Question header: number + time badge + text */}
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>
@@ -244,7 +244,7 @@ const QuizResultDetail = () => {
                   </div>
 
                   {question.explanation && (
-                    <div className="ml-0 xl:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                    <div className="ml-0 xl:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
                       <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                     </div>
                   )}

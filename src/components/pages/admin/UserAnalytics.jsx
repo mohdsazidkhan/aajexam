@@ -104,11 +104,11 @@ const UserAnalytics = () => {
   const chartColor = {
     text: {
       light: '#0f172a',
-      dark: '#f8fafc'
+ dark: '#f8fafc'
     },
     grid: {
       light: 'rgba(0, 0, 0, 0.05)',
-      dark: 'rgba(255, 255, 255, 0.05)'
+ dark: 'rgba(255, 255, 255, 0.05)'
     }
   };
 

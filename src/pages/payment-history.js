@@ -78,14 +78,15 @@ const PaymentHistoryPage = () => {
    };
 
    useEffect(() => { fetchFilterOptions(); }, []);
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    useEffect(() => { fetchTransactions(); }, [currentPage, filterMonth, filterYear]);
 
    const getStatusConfig = (status) => {
       switch (status) {
          case 'success': return { label: 'Success', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-600' };
          case 'pending': return { label: 'Pending', icon: AlertCircle, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800' };
-         case 'failed': return { label: 'Failed', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
-         case 'refunded': return { label: 'Refunded', icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
+         case 'failed': return { label: 'Failed', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
+         case 'refunded': return { label: 'Refunded', icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
          default: return { label: status || 'Unknown', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
       }
    };

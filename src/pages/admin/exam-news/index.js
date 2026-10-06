@@ -44,6 +44,7 @@ const AdminExamNews = () => {
       if (res?.success) { setNews(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); }
     } catch (e) { } finally { setLoading(false); }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchData(); }, [page, itemsPerPage, debouncedSearch]);
   useEffect(() => { setPage(1); }, [debouncedSearch]);
 
@@ -63,9 +64,9 @@ const AdminExamNews = () => {
 
   const typeColor = (t) => {
     if (t === 'result' || t === 'answer_key') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
-    if (t === 'admit_card') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
+    if (t === 'admit_card') return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
     if (t === 'vacancy') return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
-    if (t === 'date_change') return 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white';
+    if (t === 'date_change') return 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ';
     return 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
   };
 
@@ -105,8 +106,8 @@ const AdminExamNews = () => {
       key: 'actions', header: 'Actions', align: 'right', render: (_, n) => (
         <div className="flex items-center justify-end gap-1">
           {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-600" /></a>}
-          <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-          <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
         </div>
       )
     }
@@ -213,8 +214,8 @@ const AdminExamNews = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-1.5 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg transition-colors" title="Official Link"><ExternalLink className="w-3.5 h-3.5 text-primary-600" /></a>}
-                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                     </div>
                   </div>
                 </Card>
@@ -237,8 +238,8 @@ const AdminExamNews = () => {
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     {n.officialLink && <a href={n.officialLink} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" title="Official Link"><ExternalLink className="w-4 h-4 text-primary-600" /></a>}
-                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
-                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
+                    <button onClick={() => handleEdit(n)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" title="Edit"><Pencil className="w-4 h-4 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(n._id)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" title="Delete"><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>
                   </div>
                 </Card>
               ))}

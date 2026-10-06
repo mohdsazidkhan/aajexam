@@ -13,10 +13,10 @@ import {
 
 const TYPE_ICONS = { question: HelpCircle, fact: BookOpen, tip: Zap, current_affairs: Newspaper, poll: BarChart3 };
 const TYPE_COLORS = {
-  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  fact: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
-  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white',
+  question: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
+  fact: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
+  tip: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
+  current_affairs: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ',
   poll: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400',
 };
 
@@ -102,8 +102,8 @@ const ReelsSaved = () => {
                           )}
                           {reel.difficulty && (
                             <span className={`px-2 py-0.5 rounded text-[9px] font-bold border ${reel.difficulty === 'easy' ? 'border-primary-200 text-primary-600 dark:border-primary-900/30 dark:text-primary-400'
-                              : reel.difficulty === 'hard' ? 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 dark:text-white'
-                                : 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 dark:text-white'}`}>
+                              : reel.difficulty === 'hard' ? 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 '
+                                : 'border-slate-200 dark:border-slate-800 text-black dark:text-white dark:border-white/30 '}`}>
                               {reel.difficulty}
                             </span>
                           )}
@@ -122,7 +122,7 @@ const ReelsSaved = () => {
               {hasMore && (
                 <button
                   onClick={() => setPage(p => p + 1)}
-                  className="w-full py-3 text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg xl:rounded-xl"
+                  className="w-full py-3 text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl"
                 >
                   Load more
                 </button>

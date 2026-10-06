@@ -379,7 +379,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
             {/* --- Editor --- */}
             <div className="space-y-2 xl:space-y-4">
               {!canEditFields && (
-                <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
+                <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white text-xs text-black dark:text-white">
                   {isPublished
                     ? 'Published — fields are locked. Use "Back to Draft" to edit.'
                     : isCompleted
@@ -438,7 +438,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
               {/* ---- Step 1: Save as Draft ---- */}
               {canEditFields && (
                 <button onClick={saveDraft} disabled={isSavingDraft}
-                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-slate-700 hover:bg-slate-800 dark:bg-white/10 dark:hover:bg-white/20 text-white disabled:opacity-50">
+                  className="w-full py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-medium bg-slate-700 hover:bg-slate-800 dark:hover:bg-white/20 text-white disabled:opacity-50">
                   {isSavingDraft ? 'Saving…' : campaign ? '💾 Update Draft' : '💾 Save as Draft'}
                 </button>
               )}
@@ -593,7 +593,7 @@ const EmailCampaignBuilder = ({ campaignId: campaignIdProp = null }) => {
                                   <span className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-semibold ${
                                     r.status === 'sent'
                                       ? 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300'
-                                      : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 dark:text-white'
+                                      : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '
                                   }`} title={r.error || ''}>{r.status}</span>
                                 </div>
                               ))}

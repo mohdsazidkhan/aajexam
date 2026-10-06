@@ -50,6 +50,7 @@ const AdminStreakPage = () => {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchLeaderboard(); }, [page, itemsPerPage, debouncedSearch]);
   useEffect(() => { setPage(1); }, [debouncedSearch]);
 

@@ -21,8 +21,8 @@ const fmtSec = (sec) => {
 const getSpeedBadge = (sec) => {
   if (!sec || sec <= 0) return null;
   if (sec <= 20) return { label: 'Fast', icon: <Zap className="w-3 h-3" />, cls: 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' };
-  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
-  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 dark:text-white' };
+  if (sec <= 60) return { label: 'Good', icon: null, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' };
+  return { label: 'Slow', icon: <AlertCircle className="w-3 h-3" />, cls: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' };
 };
 
 const QuizResultPage = () => {
@@ -107,7 +107,7 @@ const QuizResultPage = () => {
             </div>
 
             {attempt.rank && (
-              <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/30 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl inline-flex items-center gap-2">
+              <div className="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl inline-flex items-center gap-2">
                 <Crown className="w-4 h-4" />
                 <span className="font-semibold text-sm">Rank #{attempt.rank} · Top {Math.round(attempt.percentile || 0)}%</span>
               </div>
@@ -135,7 +135,7 @@ const QuizResultPage = () => {
               const badge = getSpeedBadge(ans.timeTaken);
 
               return (
-                <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
+                <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>
                       {index + 1}
@@ -163,7 +163,7 @@ const QuizResultPage = () => {
                       const isCorrectOpt = optIdx === correctIndex;
                       let optClass = 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600';
                       if (isCorrectOpt) optClass = 'bg-primary-100 dark:bg-primary-900/30 border-primary-400 dark:border-primary-600';
-                      if (isSelected && !isCorrect) optClass = 'bg-slate-100 dark:bg-slate-800 dark:bg-white/30 border-black dark:border-white dark:border-white';
+                      if (isSelected && !isCorrect) optClass = 'bg-slate-100 dark:bg-slate-800 border-black dark:border-white ';
 
                       return (
                         <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
@@ -177,7 +177,7 @@ const QuizResultPage = () => {
                   </div>
 
                   {question.explanation && (
-                    <div className="ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg">
+                    <div className="ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
                       <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
                     </div>
                   )}

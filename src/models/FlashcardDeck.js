@@ -21,6 +21,5 @@ const flashcardDeckSchema = new mongoose.Schema({
 
 flashcardDeckSchema.index({ subject: 1, status: 1 });
 flashcardDeckSchema.index({ topic: 1, status: 1 });
-flashcardDeckSchema.index({ slug: 1 });
 
 export default mongoose.models.FlashcardDeck || mongoose.model('FlashcardDeck', flashcardDeckSchema);

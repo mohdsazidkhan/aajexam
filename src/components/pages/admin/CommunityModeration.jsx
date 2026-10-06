@@ -288,7 +288,7 @@ export default function CommunityModeration() {
                       {item.options?.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
                           {item.options.map((o, idx) => (
-                            <span key={idx} className={`px-2 py-0.5 rounded-lg text-[10px] font-bold ${o.isCorrect ? 'bg-primary-50 dark:bg-primary-500/10 text-primary-600' : 'bg-slate-100 dark:bg-white/10 text-slate-500'}`}>{o.text}</span>
+                            <span key={idx} className={`px-2 py-0.5 rounded-lg text-[10px] font-bold ${o.isCorrect ? 'bg-primary-50 dark:bg-primary-500/10 text-primary-600' : 'bg-slate-100 text-slate-500'}`}>{o.text}</span>
                           ))}
                         </div>
                       )}

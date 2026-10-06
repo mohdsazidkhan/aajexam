@@ -104,7 +104,7 @@ const TestStartModal = ({
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
+                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{pattern.totalMarks} Marks</span>
@@ -112,7 +112,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 dark:bg-white/30 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
+                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">

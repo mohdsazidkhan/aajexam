@@ -164,10 +164,10 @@ const AdminQuizQuizzes = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, q) => (
         <div className="flex justify-end gap-1">
-          <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
+          <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
           <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
           <button onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -310,10 +310,10 @@ const AdminQuizQuizzes = () => {
                       </div>
                     </div>
                     <div className="flex gap-1 shrink-0">
-                      <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
+                      <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
                       <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
                       <button onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                      <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                      <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </div>
                 </div>

@@ -89,7 +89,7 @@ export default function MentorApply() {
                   <input type="number" placeholder="Rank" value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />
                   <input type="number" placeholder="Score" value={exam.score} onChange={e => updateExam(i, 'score', e.target.value)} className={`${inputClass} w-24`} />
                   {form.examsCleared.length > 1 && (
-                    <button type="button" onClick={() => removeExam(i)} className="p-2 text-black dark:text-white hover:bg-slate-100 dark:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
+                    <button type="button" onClick={() => removeExam(i)} className="p-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
                   )}
                 </div>
               ))}

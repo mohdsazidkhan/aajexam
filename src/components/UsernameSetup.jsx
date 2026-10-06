@@ -132,7 +132,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         <div className={`username-message p-2.5 px-4 rounded-md my-4 text-sm ${available === true
           ? 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-600'
           : available === false
-            ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/20 text-black dark:text-white dark:text-white border border-slate-200 dark:border-slate-800 dark:border-white'
+            ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white border border-slate-200 dark:border-slate-800 dark:border-white'
             : 'bg-primary-100 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-600'
           }`}>
           {message}

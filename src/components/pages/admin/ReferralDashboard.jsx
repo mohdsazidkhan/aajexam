@@ -92,7 +92,7 @@ export default function ReferralDashboard() {
           </div>
           <div>
             <div className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none mb-1">{u.name || 'Unknown'}</div>
-            <div className="text-[10px] font-bold text-slate-800 uppercase tracking-widest italic">{u.email}</div>
+            <div className="text-[10px] font-bold text-slate-800 dark:text-slate-100 uppercase tracking-widest italic">{u.email}</div>
           </div>
         </div>
       )

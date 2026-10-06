@@ -310,7 +310,7 @@ const AdminBlogForm = () => {
 
           {/* Error */}
           {error && (
-            <div className="bg-slate-100 dark:bg-slate-800 dark:bg-white/20 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
+            <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">
               <p className="text-black dark:text-white">{error}</p>
             </div>
           )}

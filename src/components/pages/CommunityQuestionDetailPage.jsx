@@ -119,7 +119,7 @@ export default function CommunityQuestionDetailPage() {
                 let cls = 'border-slate-200 dark:border-slate-700 hover:border-primary-300 bg-white dark:bg-slate-800';
                 if (attempted) {
                   if (isRight) cls = 'border-primary-400 bg-primary-50 dark:bg-primary-900/20';
-                  else if (isSel) cls = 'border-black dark:border-white bg-slate-100 dark:bg-slate-800 dark:bg-white/20';
+                  else if (isSel) cls = 'border-black dark:border-white bg-slate-100 dark:bg-slate-800';
                 } else if (isSel) {
                   cls = 'border-primary-600 bg-primary-50 dark:bg-primary-900/20';
                 }
@@ -155,7 +155,7 @@ export default function CommunityQuestionDetailPage() {
           {/* Explanation — gated until attempted (for MCQ) */}
           {question.explanation && (
             canRevealAnswer ? (
-              <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800 dark:bg-white/20 rounded-lg border-l-4 border-black dark:border-white">
+              <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800 rounded-lg border-l-4 border-black dark:border-white">
                 <p className="text-xs font-bold text-black dark:text-white uppercase mb-1 flex items-center gap-1">
                   <Lightbulb className="w-3 h-3" /> Explanation
                 </p>

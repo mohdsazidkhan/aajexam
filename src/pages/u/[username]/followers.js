@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -17,6 +18,7 @@ export default function FollowersListPage() {
     if (username) {
       fetchFollowers();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [username, page]);
 
   const fetchFollowers = async () => {

@@ -143,7 +143,7 @@ const ResponsiveTable = ({
                         whileHover={{ scale: 1.15, y: -2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                        className={`p-1.5 rounded-lg transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
+                        className={`p-1.5 rounded-lg transition-all duration-300 shadow-sm ${action.variant === 'danger' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-100 ' :
                           action.variant === 'success' ? 'text-primary-600 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100' :
                             'text-primary-600 bg-primary-50 dark:bg-primary-950/30 hover:bg-primary-100'
                           }`}
@@ -195,7 +195,7 @@ const ResponsiveTable = ({
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                    className={`p-3.5 xl:p-3 rounded-lg xl:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/40 hover:bg-slate-100 dark:bg-slate-800' :
+                    className={`p-3.5 xl:p-3 rounded-lg xl:rounded-xl shadow-sm transition-all duration-300 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 ' :
                       action.variant === 'success' ? 'bg-primary-50 text-primary-600 dark:bg-primary-950/40 hover:bg-primary-100' :
                         'bg-primary-50 text-primary-600 dark:bg-primary-950/40 hover:bg-primary-100'
                       }`}
@@ -268,7 +268,7 @@ const ResponsiveTable = ({
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => { e.stopPropagation(); action.onClick(row); }}
-                    className={`p-4 xl:p-3 rounded-lg xl:rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:bg-white/30 hover:bg-slate-100 dark:bg-slate-800' :
+                    className={`p-4 xl:p-3 rounded-lg xl:rounded-xl transition-all duration-500 ${action.variant === 'danger' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white hover:bg-slate-100 ' :
                       'bg-slate-50 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:bg-slate-800 hover:bg-slate-100 shadow-sm'
                       }`}
                   >

@@ -132,7 +132,7 @@ const ReadinessPage = () => {
                 <Card className="space-y-3">
                   <h3 className="text-sm font-black text-black dark:text-white flex items-center gap-1"><AlertTriangle className="w-4 h-4" /> Weak Subjects (Below 50%)</h3>
                   {readiness.weakSubjects.map((s, i) => (
-                    <div key={i} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 dark:bg-white/10 rounded-lg">
+                    <div key={i} className="flex items-center justify-between px-3 py-3 bg-slate-100 dark:bg-slate-800 rounded-lg">
                       <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{s.subject}</span>
                       <span className="text-xs font-black text-black dark:text-white">{s.accuracy}%</span>
                     </div>

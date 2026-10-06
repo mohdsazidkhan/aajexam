@@ -50,6 +50,7 @@ const AdminNotes = () => {
       if (subjectsRes?.success) setSubjects(subjectsRes.data || []);
     } catch (e) { } finally { setLoading(false); }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchData(); }, [page, itemsPerPage, debouncedSearch]);
   useEffect(() => { setPage(1); }, [debouncedSearch]);
 
@@ -67,7 +68,7 @@ const AdminNotes = () => {
 
   const inputClass = "w-full px-4 py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm bg-slate-50 dark:bg-black text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-2 focus:ring-primary-500/20 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
-  const difficultyColor = (d) => d === 'advanced' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : d === 'intermediate' ? 'bg-slate-100 dark:bg-slate-800 dark:bg-white/10 text-black dark:text-white dark:text-white' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
+  const difficultyColor = (d) => d === 'advanced' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' : d === 'intermediate' ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white ' : 'bg-primary-50 dark:bg-primary-500/10 text-primary-600';
 
   const columns = [
     {
@@ -101,8 +102,8 @@ const AdminNotes = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, n) => (
         <div className="flex items-center justify-end gap-1">
-          <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-          <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+          <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
         </div>
       )
     }
@@ -201,8 +202,8 @@ const AdminNotes = () => {
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700/50">
                     <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wide ${difficultyColor(n.difficulty)}`}>{n.difficulty}</span>
                     <div className="flex items-center gap-1">
-                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                      <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                     </div>
                   </div>
                 </Card>
@@ -225,8 +226,8 @@ const AdminNotes = () => {
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 break-all">{n.title}</h3>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
-                    <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
-                    <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleEdit(n)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Edit"><Pencil className="w-3.5 h-3.5 text-black dark:text-white" /></button>
+                    <button onClick={() => handleDelete(n._id)} className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Delete"><Trash2 className="w-3.5 h-3.5 text-black dark:text-white" /></button>
                   </div>
                 </Card>
               ))}

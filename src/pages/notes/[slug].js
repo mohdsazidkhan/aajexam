@@ -48,6 +48,7 @@ const NoteDetailPage = () => {
     fetchNote();
 
     return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   const toggleBookmark = async () => {
