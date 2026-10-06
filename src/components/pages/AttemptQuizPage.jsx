@@ -666,7 +666,7 @@ const AttemptQuizPage = () => {
                 language={language}
                 onToggle={toggleLanguage}
                 translating={translating}
-                className="flex items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                className="flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               />
               {/* Timer */}
               <div className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
@@ -677,7 +677,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={toggleFullscreen}
                 title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
-                className="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                className="flex shrink-0 items-center justify-center w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               >
                 {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
               </button>
