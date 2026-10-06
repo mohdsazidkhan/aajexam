@@ -1,0 +1,579 @@
+﻿group,keep_this_one,merge,topic_name,subject,questions,quizzes_notes_decks,active,topic_id
+1,KEEP,,"General Intelligence & Reasoning","General Intelligence & Reasoning",4925,491,Y,6a4f382e794f184d9d20b8a7
+1,,,"General Intelligence and Reasoning","General Intelligence and Reasoning",2147,214,Y,6a4f3859794f184d9d20e602
+2,KEEP,,"General Awareness","General Awareness",5922,588,Y,6a4f3852794f184d9d20de7d
+2,,,"General Awareness","General Knowledge & General Awareness",0,0,N,6a9951e62f5de0fef16280e5
+3,KEEP,,"English Language","English Language",4864,483,Y,6a4f3871794f184d9d21014c
+3,,,"english language","English Language & Comprehension",0,0,N,6a9951e92f5de0fef162811c
+4,KEEP,,"Quantitative Aptitude","Quantitative Aptitude",4517,448,Y,6a4f385e794f184d9d20ebcd
+4,,,"quantitative aptitude","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef16280f4
+5,KEEP,,"Mathematics","Mathematics",3442,342,Y,6a4f37cb8b27be2fa5212fd4
+5,,,"mathematics","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef16280f1
+5,,,"Mathematics","Mathematics and Science",0,0,N,6a9953372f5de0fef1628aad
+6,KEEP,,"General Knowledge","General Knowledge",2516,252,Y,6a4f38ba794f184d9d2151ca
+6,,,"General Knowledge","General Studies",10,1,Y,6a9952c32f5de0fef16289fc
+6,,,"General Knowledge","Current Affairs",10,1,Y,6a9952c72f5de0fef1628a19
+7,KEEP,,"Reasoning Ability","Reasoning Ability",1201,120,Y,6a4f3884794f184d9d2116ad
+7,,,"reasoning ability","Reasoning & Mental Aptitude",0,0,N,6a9951e22f5de0fef162808c
+8,KEEP,,"Biology","Biology",1061,107,Y,6a4f38b3794f184d9d214a11
+8,,,"Biology","General Knowledge",0,0,N,6a9951e42f5de0fef16280b3
+9,KEEP,,"Numerical Ability","Numerical Ability",740,74,Y,6a4f3852794f184d9d20de40
+9,,,"Numerical Ability","General Aptitude",19,11,Y,69ddd20bd47e29acaab82db1
+10,KEEP,,"Physics","Physics",740,75,Y,6a4f38ac794f184d9d214313
+10,,,"Physics","General Knowledge",0,0,N,6a9952012f5de0fef1628156
+11,KEEP,,"Chemistry","Chemistry",740,75,Y,6a4f38b0794f184d9d214692
+11,,,"Chemistry","General Knowledge",0,0,N,6a9951e42f5de0fef16280bb
+12,KEEP,,"UP Police Constable – Mental Aptitude / Reasoning","Mental Aptitude / Reasoning",347,0,N,6ac38206247ce61a3f50f074
+12,,,"UP Police Constable – Reasoning & Mental Aptitude","Reasoning & Mental Aptitude",284,0,N,6ac38206247ce61a3f50f0a8
+13,KEEP,,"English","English",415,42,Y,6a4f3850794f184d9d20dc47
+13,,,"english","Rajasthan GK",0,0,N,6a9951e82f5de0fef1628107
+14,KEEP,,"Paper I","Paper I",254,26,N,6a4f38a2794f184d9d2137b5
+14,,,"Paper-I","General Studies",0,0,N,6a9952232f5de0fef16288ab
+15,KEEP,,"General Science","General Science",156,322,Y,6a4f37b08b27be2fa521216f
+15,,,"General Science","General Knowledge & General Awareness",79,11,Y,69ddd200d47e29acaab82c8e
+15,,,"general science","General Knowledge",0,0,N,6a9951e52f5de0fef16280ca
+16,KEEP,,"Paper II","Paper II",172,18,Y,6a4f38a3794f184d9d2138ed
+16,,,"Paper-II","CSAT (Aptitude)",0,0,N,6a9953372f5de0fef1628aaa
+17,KEEP,,"Social Studies/Social Science","Social Studies/Social Science",120,14,Y,6a4f391feb25adf6407740c4
+17,,,"Social Science (Social Studies)","Social Studies",25,1,Y,6aa6d22e6eecee63bb2a2707
+18,KEEP,,"Social Studies","Social Studies",115,13,Y,6a4f3921eb25adf6407741b4
+18,,,"Social Studies","Social Studies/Social Science",0,0,N,6a9953372f5de0fef1628aae
+19,KEEP,,"Mental Aptitude / Reasoning","Mental Aptitude / Reasoning",96,9,Y,6a4f38b9794f184d9d21516d
+19,,,"Reasoning & Mental Aptitude","Reasoning & Mental Aptitude",10,1,Y,6a9953622f5de0fef1628aff
+20,KEEP,,"Series","Numerical & Mental Ability",73,11,Y,69ddd204d47e29acaab82cf4
+20,,,"series","Reasoning & Mental Aptitude",23,1,Y,6a9951e22f5de0fef162808d
+21,KEEP,,"Coding-Decoding","Reasoning / Logical Ability",57,5,Y,69ddd204d47e29acaab82cf5
+21,,,"Coding Decoding","General Intelligence and Reasoning",25,1,Y,6a994d232f5de0fef162569e
+21,,,"Coding and Decoding","General Intelligence & Reasoning",10,1,Y,6a980c8fbb449b52622758dd
+21,,,"coding-decoding","Reasoning & Mental Aptitude",0,0,N,6a9951e22f5de0fef162808e
+22,KEEP,,"Current Affairs","Current Affairs",64,7,Y,6a4f3918eb25adf6407739cb
+22,,,"Current Affairs","General Knowledge",24,11,Y,69ddd200d47e29acaab82c90
+23,KEEP,,"Computer Knowledge","Computer Knowledge",84,9,Y,6a4f3919eb25adf640773a1e
+23,,,"computer knowledge","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a79
+24,KEEP,,"LCM & HCF","Quantitative Aptitude",31,5,Y,69ddd202d47e29acaab82cce
+24,,,"LCM and HCF","Elementary Mathematics",25,1,Y,6a9951e82f5de0fef162810b
+24,,,"HCF and LCM","Numerical & Mental Ability",10,1,Y,6a9952432f5de0fef162890a
+24,,,"Hcf Lcm","Numerical Ability",10,1,Y,6a9952592f5de0fef162894b
+24,,,"LCM-HCF","Numerical Ability (Quantitative Aptitude)",0,0,N,6a9952582f5de0fef1628945
+25,KEEP,,"Synonyms & Antonyms","Vocabulary",74,2,Y,69ddd205d47e29acaab82d17
+25,,,"synonyms & antonyms","English Language & Comprehension",0,0,N,6a9952572f5de0fef162892e
+26,KEEP,,"Percentage","Numerical & Mental Ability",62,11,Y,69ddd202d47e29acaab82cc6
+26,,,"Percentages","Elementary Mathematics",10,1,Y,6a980cad715cfcc96a5b7900
+27,KEEP,,"Analogy","General Intelligence & Reasoning",72,10,Y,69ddd204d47e29acaab82cf2
+27,,,"analogy","Reasoning & Mental Aptitude",0,0,N,6a9952202f5de0fef1628884
+28,KEEP,,"Number System","Quantitative Aptitude",45,5,Y,69ddd202d47e29acaab82cc5
+28,,,"Number Systems","Elementary Mathematics",10,1,Y,6a980cad715cfcc96a5b78fb
+28,,,"Number System","Numerical & Mental Ability",10,1,Y,6a99535f2f5de0fef1628af7
+28,,,"number system","Numerical Ability (Quantitative Aptitude)",0,0,N,6a99521e2f5de0fef162887a
+29,KEEP,,"Sports","General Knowledge / Current Affairs",38,4,Y,69ddd200d47e29acaab82c94
+29,,,"sports","Rajasthan GK",25,1,Y,6a9951e42f5de0fef16280bf
+30,KEEP,,"Blood Relations","Reasoning / Logical Ability",37,7,Y,69ddd204d47e29acaab82cf6
+30,,,"Blood Relation","General Intelligence & Reasoning",25,1,Y,6a9951e22f5de0fef1628086
+30,,,"blood relations","Reasoning & Mental Aptitude",0,0,N,6a9952202f5de0fef1628886
+31,KEEP,,"Non-Verbal Reasoning","Reasoning Ability",52,11,Y,69ddd204d47e29acaab82d03
+31,,,"Non-Verbal Reasoning","Reasoning / Logical Ability",10,1,Y,6a9952f32f5de0fef1628a72
+31,,,"non-verbal reasoning","Reasoning & Mental Aptitude",0,0,N,6a9951e22f5de0fef162808b
+32,KEEP,,"Indian Geography","Geography",61,3,Y,69ddd200d47e29acaab82c8b
+32,,,"indian geography","General Knowledge",0,0,N,6a9952412f5de0fef16288f7
+33,KEEP,,"Physics Basics","General Science",53,5,Y,69ddd202d47e29acaab82cbb
+33,,,"physics basics","General Knowledge",0,0,N,6a9952922f5de0fef16289a3
+34,KEEP,,"Average","Numerical & Mental Ability",43,8,Y,69ddd202d47e29acaab82cca
+34,,,"Averages","Numerical Ability",9,1,Y,6a980cad715cfcc96a5b7902
+35,KEEP,,"Time Speed & Distance","Quantitative Aptitude",27,7,Y,69ddd202d47e29acaab82ccb
+35,,,"time speed & distance","Numerical Ability (Quantitative Aptitude)",25,1,Y,6a9951e72f5de0fef16280f3
+36,KEEP,,"Grammar Rules","English Language",52,11,Y,69ddd206d47e29acaab82d21
+36,,,"grammar rules","English Language & Comprehension",0,0,N,6a9951e92f5de0fef162812f
+37,KEEP,,"art & culture","General Knowledge / Current Affairs",25,1,Y,6a9951e52f5de0fef16280d4
+37,,,"Art & Culture","History",15,3,Y,69ddd1ffd47e29acaab82c86
+37,,,"Art and Culture","Rajasthan General Studies",10,1,Y,6a9968332f5de0fef162a0b2
+38,KEEP,,"Reading Comprehension","English Comprehension",48,11,Y,69ddd205d47e29acaab82d13
+38,,,"reading comprehension","English Language & Comprehension",0,0,N,6a9951e92f5de0fef1628124
+39,KEEP,,"Hindi Grammar","Hindi Language",48,11,Y,69ddd20cd47e29acaab82dbd
+39,,,"hindi grammar","General Hindi",0,0,N,6a9951e92f5de0fef1628116
+40,KEEP,,"Error Spotting","English Comprehension",27,3,Y,69ddd205d47e29acaab82d15
+40,,,"Error Spotting","General Hindi",10,1,Y,6a9951e92f5de0fef162812e
+40,,,"Error Spotting","English Language",10,1,Y,6a9952552f5de0fef162892a
+40,,,"error spotting","English Language & Comprehension",0,0,N,6a9951e92f5de0fef1628128
+41,KEEP,,"Data Sufficiency","Logical Reasoning",36,10,Y,69ddd203d47e29acaab82ce7
+41,,,"Data Sufficiency","Reasoning",10,1,Y,6a9952a92f5de0fef16289be
+41,,,"data sufficiency","Reasoning & Mental Aptitude",0,0,N,6a9951e32f5de0fef1628096
+42,KEEP,,"Prepositions","English Language & Comprehension",26,6,Y,69ddd206d47e29acaab82d2a
+42,,,"Preposition","English Comprehension",10,1,Y,6a9951e92f5de0fef1628112
+42,,,"Preposition","General Hindi",10,1,Y,6a99535e2f5de0fef1628aea
+43,KEEP,,"Constitution of India","Polity & Governance",45,6,Y,69ddd200d47e29acaab82c88
+43,,,"constitution of india","General Knowledge / Current Affairs",0,0,N,6a9952412f5de0fef16288f0
+44,KEEP,,"One Word Substitution","Vocabulary",25,2,Y,69ddd205d47e29acaab82d18
+44,,,"One Word Substitution","General Hindi",10,1,Y,6a9951e92f5de0fef162812b
+44,,,"One Word Substitution","English Language & Comprehension",10,1,Y,6a9952032f5de0fef1628160
+44,,,"one word substitution","English Comprehension",0,0,N,6a9951e92f5de0fef1628123
+45,KEEP,,"Classification","Reasoning / Logical Ability",42,7,Y,69ddd204d47e29acaab82cf3
+45,,,"classification","Reasoning & Mental Aptitude",0,0,N,6a9951e22f5de0fef1628090
+46,KEEP,,"Computer Basics","Computer Knowledge",42,11,Y,69ddd209d47e29acaab82d79
+46,,,"computer basics","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a7b
+47,KEEP,,"antonyms","English Language & Comprehension",22,1,Y,6a9951e92f5de0fef1628118
+47,,,"Antonym","English Comprehension",10,1,Y,6a9952032f5de0fef162815d
+47,,,"Antonym","General Hindi",10,1,Y,6a9952462f5de0fef1628928
+48,KEEP,,"Fill in the Blanks","English Grammar",30,11,Y,69ddd205d47e29acaab82d16
+48,,,"Fill in the Blanks","English Language",10,1,Y,6a9952552f5de0fef1628929
+48,,,"fill in the blanks","English Language & Comprehension",0,0,N,6a9951e92f5de0fef162811e
+49,KEEP,,"important appointments","General Awareness",25,1,Y,6a9951e52f5de0fef16280c7
+49,,,"Important Appointments","Current Affairs",15,2,Y,69ddd20bd47e29acaab82da0
+50,KEEP,,"state polity","Haryana GK",25,1,Y,6a9952af2f5de0fef16289f3
+50,,,"State Polity","State Specific GK",15,2,Y,69ddd20cd47e29acaab82dcd
+51,KEEP,,"World History","History",28,11,Y,69ddd1ffd47e29acaab82c85
+51,,,"World History","General Awareness",10,1,Y,6a9952912f5de0fef162899f
+51,,,"world history","General Knowledge",0,0,N,6a9952412f5de0fef16288f8
+52,KEEP,,"Simplification","Elementary Mathematics",37,2,Y,69ddd202d47e29acaab82ccf
+52,,,"simplification","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef1628104
+53,KEEP,,"Spelling Test","Vocabulary",36,2,Y,69ddd206d47e29acaab82d23
+53,,,"spelling test","English Language & Comprehension",0,0,N,6a9952462f5de0fef1628925
+54,KEEP,,"International Relations","Polity & Governance",15,2,Y,69ddd201d47e29acaab82ca1
+54,,,"International Relations","Current Affairs",10,1,Y,6a9951e52f5de0fef16280cf
+54,,,"International Relations","General Knowledge / Current Affairs",10,1,Y,6a9952c72f5de0fef1628a15
+54,,,"international relations","General Knowledge",0,0,N,6a9952ef2f5de0fef1628a30
+55,KEEP,,"Current Electricity","Physics",35,3,Y,69ddd207d47e29acaab82d3a
+55,,,"current electricity","General Science",0,0,N,6a9952222f5de0fef162889f
+56,KEEP,,"Idioms & Phrases","Vocabulary",34,2,Y,69ddd205d47e29acaab82d19
+56,,,"idioms & phrases","English Language & Comprehension",0,0,N,6a9952242f5de0fef16288b0
+57,KEEP,,"order & ranking","Reasoning",25,1,Y,6a99523e2f5de0fef16288c8
+57,,,"Order & Ranking","Reasoning Ability",8,3,Y,69ddd204d47e29acaab82cfe
+57,,,"Ranking & Order","Logical Reasoning",0,3,Y,69ddd205d47e29acaab82d07
+57,,,"ranking & order","Reasoning & Mental Aptitude",0,0,N,6a99523e2f5de0fef16288d3
+58,KEEP,,"Indian Polity","General Knowledge & General Awareness",32,11,Y,69ddd1ffd47e29acaab82c87
+58,,,"indian polity","General Knowledge",0,0,N,6a9951e52f5de0fef16280c4
+59,KEEP,,"Biology Basics","General Science",32,8,Y,69ddd202d47e29acaab82cbd
+59,,,"biology basics","General Knowledge",0,0,N,6a9952402f5de0fef16288e2
+60,KEEP,,"Mensuration","Quantitative Aptitude",32,9,Y,69ddd202d47e29acaab82cd5
+60,,,"mensuration","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef16280fa
+61,KEEP,,"Direction Sense","Reasoning / Logical Ability",32,7,Y,69ddd204d47e29acaab82cf7
+61,,,"direction sense","Reasoning & Mental Aptitude",0,0,N,6a9951e32f5de0fef162809f
+62,KEEP,,"Hindi","Hindi",32,4,Y,6a4f3919eb25adf640773ac0
+62,,,"hindi","General Hindi",0,0,N,6a9952252f5de0fef16288b7
+62,,,"Hindi","General Knowledge",0,0,N,6a9952ad2f5de0fef16289d2
+63,KEEP,,"Simple & Compound Interest","Quantitative Aptitude",31,3,Y,69ddd202d47e29acaab82cc8
+63,,,"simple & compound interest","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef1628102
+64,KEEP,,"Puzzles","General Intelligence and Reasoning",20,2,Y,69ddd205d47e29acaab82d06
+64,,,"Puzzle","Reasoning & Mental Aptitude",10,1,Y,6a9952a82f5de0fef16289b7
+64,,,"puzzles","General Intelligence & Reasoning",0,0,N,6a9951e32f5de0fef162809a
+64,,,"puzzle","Computer Awareness / Fundamentals",0,0,N,6a99523e2f5de0fef16288ca
+65,KEEP,,"Tenses","English Language & Comprehension",10,2,Y,69ddd206d47e29acaab82d28
+65,,,"Tense","English Comprehension",10,1,Y,6a9951e82f5de0fef162810e
+65,,,"Tense","General Hindi",10,1,Y,6a9952462f5de0fef1628926
+66,KEEP,,"Number","General Hindi",10,1,Y,6a9951e22f5de0fef1628087
+66,,,"Numbers","Quantitative Aptitude",10,1,Y,6a9951e62f5de0fef16280e9
+66,,,"Number","General Intelligence & Reasoning",10,1,Y,6a99528e2f5de0fef1628989
+67,KEEP,,"Odd One Out","General Intelligence & Reasoning",10,1,Y,6a9951e22f5de0fef162808a
+67,,,"Odd One Out","General Hindi",10,1,Y,6a9952202f5de0fef1628883
+67,,,"Odd One Out","Numerical & Mental Ability",10,1,Y,6a99535f2f5de0fef1628af9
+67,,,"odd one out","Rajasthan GK",0,0,N,6a9952402f5de0fef16288e5
+68,KEEP,,"Science & Technology","General Studies",10,1,Y,6a9952222f5de0fef16288a4
+68,,,"Science & Technology","General Science",10,1,Y,6a99526e2f5de0fef162896a
+68,,,"Science & Technology","General Knowledge / Current Affairs",10,1,Y,6a9952ee2f5de0fef1628a2a
+69,KEEP,,"Synonyms","English Language & Comprehension",10,1,Y,6a9952242f5de0fef16288b5
+69,,,"Synonym","English Comprehension",10,1,Y,6a9952452f5de0fef162891a
+69,,,"Synonym","General Hindi",10,1,Y,6a99535e2f5de0fef1628af3
+70,KEEP,,"Algebra","Numerical & Mental Ability",29,2,Y,69ddd202d47e29acaab82cd3
+70,,,"algebra","Quantitative Aptitude",0,0,N,6a9952442f5de0fef1628914
+71,KEEP,,"Para Jumble","English Language & Comprehension",10,1,Y,6a9952462f5de0fef1628921
+71,,,"Para Jumble","English Language",10,1,Y,6a9952562f5de0fef162892c
+71,,,"Para Jumbles","English Comprehension",9,2,Y,69ddd206d47e29acaab82d1f
+72,KEEP,,"Capital Markets","Financial Awareness",18,6,Y,69ddd20ad47e29acaab82d84
+72,,,"Capital Market","General Awareness",10,1,Y,6a99526d2f5de0fef1628960
+73,KEEP,,"Important Days","General Knowledge",17,3,Y,69ddd200d47e29acaab82c93
+73,,,"Important Days","General Knowledge / Current Affairs",10,1,Y,6a9952ee2f5de0fef1628a28
+74,KEEP,,"Mixture & Alligation","Quantitative Aptitude",17,2,Y,69ddd202d47e29acaab82ccd
+74,,,"Mixture and Alligation","Elementary Mathematics",10,1,Y,6a9951e82f5de0fef162810c
+74,,,"mixture & alligation","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef16280ff
+75,KEEP,,"Venn Diagram","Reasoning Ability",17,2,Y,69ddd204d47e29acaab82cfb
+75,,,"Venn Diagram","General Intelligence & Reasoning",10,1,Y,6a99523f2f5de0fef16288d5
+76,KEEP,,"Alphabet Series","General Intelligence & Reasoning",10,1,Y,6a9951e22f5de0fef1628085
+76,,,"Alphabet Series","Reasoning",10,1,Y,6a99523e2f5de0fef16288cf
+76,,,"Alphabet Series","Reasoning & Mental Aptitude",6,1,Y,6a99523e2f5de0fef16288c7
+77,KEEP,,"Static GK","General Awareness",15,2,Y,69ddd200d47e29acaab82c8f
+77,,,"Static GK","Current Affairs",10,1,Y,6a9952c72f5de0fef1628a18
+77,,,"static gk","General Knowledge / Current Affairs",0,0,N,6a9952222f5de0fef162889c
+78,KEEP,,"Disaster Management","Geography",15,2,Y,69ddd201d47e29acaab82cac
+78,,,"Disaster Management","General Knowledge / Current Affairs",10,1,Y,6a9952c72f5de0fef1628a17
+78,,,"disaster management","General Knowledge",0,0,N,6a9952ee2f5de0fef1628a2c
+79,KEEP,,"Profit & Loss","Numerical Ability (Quantitative Aptitude)",15,3,Y,69ddd202d47e29acaab82cc7
+79,,,"Profit and Loss","Elementary Mathematics",10,1,Y,6a980cad715cfcc96a5b7903
+79,,,"profit & loss","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef1628101
+80,KEEP,,"Ratio & Proportion","Numerical Ability (Quantitative Aptitude)",15,3,Y,69ddd202d47e29acaab82cc9
+80,,,"Ratio and Proportion","Elementary Mathematics",10,1,Y,6a980cad715cfcc96a5b7901
+80,,,"ratio & proportion","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef16280fc
+81,KEEP,,"Interest","Numerical Ability",25,7,Y,69ddd203d47e29acaab82cdd
+81,,,"interest","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef1628106
+82,KEEP,,"Bar Graphs","Data Interpretation",25,2,Y,69ddd203d47e29acaab82ce2
+82,,,"bar graphs","Quantitative Aptitude",0,0,N,6a9952432f5de0fef1628906
+83,KEEP,,"Word Usage","Vocabulary",25,2,Y,69ddd206d47e29acaab82d24
+83,,,"word usage","English Language & Comprehension",0,0,N,6a9951e92f5de0fef1628119
+84,KEEP,,"Foreign Words","Vocabulary",25,2,Y,69ddd206d47e29acaab82d25
+84,,,"foreign words","English Language & Comprehension",0,0,N,6a9952462f5de0fef1628924
+85,KEEP,,"Conjunctions","English Language & Comprehension",15,2,Y,69ddd206d47e29acaab82d2b
+85,,,"Conjunction","General Hindi",10,1,Y,6a99535e2f5de0fef1628ae9
+86,KEEP,,"Chemical Bonding","Chemistry",25,2,Y,69ddd207d47e29acaab82d44
+86,,,"chemical bonding","General Science",0,0,N,6a9952c62f5de0fef1628a12
+87,KEEP,,"Number Series","Reasoning & Numerical Ability",25,1,Y,6a994d242f5de0fef16256a1
+87,,,"number series","Reasoning & Mental Aptitude",0,0,N,6a9952202f5de0fef1628889
+88,KEEP,,"ranking","Reasoning / Logical Ability",25,1,Y,6a99523e2f5de0fef16288c9
+88,,,"Ranking","General Intelligence & Reasoning",0,0,N,6a9951e32f5de0fef16280a2
+89,KEEP,,"nationalsymbols","General Studies",25,1,Y,6a9951e42f5de0fef16280c3
+89,,,"NationalSymbols","General Knowledge / Current Affairs",0,0,N,6a9952ee2f5de0fef1628a29
+90,KEEP,,"Fractions","Numerical & Mental Ability",25,1,Y,6a9951e62f5de0fef16280e8
+90,,,"fractions","Numerical Ability (Quantitative Aptitude)",0,0,N,6a99521e2f5de0fef162887b
+91,KEEP,,"Voice","English Comprehension",25,1,Y,6a9951e92f5de0fef1628111
+91,,,"voice","General Hindi",0,0,N,6a9951e92f5de0fef1628126
+92,KEEP,,"Indian National Movement","History",24,3,Y,69ddd1ffd47e29acaab82c84
+92,,,"indian national movement","General Studies",0,0,N,6a9952222f5de0fef1628898
+93,KEEP,,"Sentence Improvement","English Grammar",14,5,Y,69ddd205d47e29acaab82d1c
+93,,,"Improvement of Sentences","English",10,1,Y,6a980cae715cfcc96a5b790c
+93,,,"sentence improvement","English Language & Comprehension",0,0,N,6a9952242f5de0fef16288b1
+94,KEEP,,"networking","Computer Awareness / Fundamentals",23,1,Y,6a9952442f5de0fef1628916
+94,,,"Networking","Computer Science",0,0,N,6a9968342f5de0fef162a0bf
+95,KEEP,,"Error Correction","Hindi Language",22,3,Y,69ddd20cd47e29acaab82dc0
+95,,,"error correction","General Hindi",0,0,N,6a99535e2f5de0fef1628aee
+96,KEEP,,"Chemistry Basics","General Science",21,5,Y,69ddd202d47e29acaab82cbc
+96,,,"chemistry basics","General Knowledge",0,0,N,6a9951e52f5de0fef16280c9
+97,KEEP,,"Missing Number","General Intelligence & Reasoning",21,11,Y,69ddd204d47e29acaab82cfc
+97,,,"missing number","Reasoning & Mental Aptitude",0,0,N,6a9951e32f5de0fef162809d
+98,KEEP,,"Sentence Rearrangement","English Language",21,5,Y,69ddd205d47e29acaab82d1d
+98,,,"sentence rearrangement","English Language & Comprehension",0,0,N,6a9951e92f5de0fef162811b
+99,KEEP,,"Photosynthesis","Biology",21,2,Y,69ddd208d47e29acaab82d5b
+99,,,"photosynthesis","General Awareness",0,0,N,6a9952912f5de0fef162899b
+100,KEEP,,"Inequality","Reasoning & Mental Aptitude",20,3,Y,69ddd204d47e29acaab82cff
+100,,,"inequality","General Intelligence & Reasoning",0,0,N,6a9951e32f5de0fef1628095
+101,KEEP,,"Input-Output","Analytical Reasoning",20,2,Y,69ddd205d47e29acaab82d09
+101,,,"input-output","General Intelligence & Reasoning",0,0,N,6a99523f2f5de0fef16288d4
+102,KEEP,,"Data Interpretation","Reasoning & Numerical Ability",10,1,Y,6a994d242f5de0fef16256a0
+102,,,"Data Interpretation","Quantitative Aptitude",10,1,Y,6a9952432f5de0fef1628905
+103,KEEP,,"Age","General Intelligence & Reasoning",10,1,Y,6a9951e22f5de0fef1628083
+103,,,"Ages","Numerical Ability",10,1,Y,6a9952022f5de0fef162815c
+104,KEEP,,"Direction","General Intelligence & Reasoning",10,1,Y,6a9951e22f5de0fef1628084
+104,,,"Direction","Reasoning & Mental Aptitude",10,1,Y,6a99523e2f5de0fef16288cd
+105,KEEP,,"Logical Reasoning","Reasoning & Mental Aptitude",10,1,Y,6a9951e22f5de0fef162808f
+105,,,"Logical Reasoning","Reasoning & Numerical Ability",10,1,Y,6a9968332f5de0fef162a0b5
+106,KEEP,,"Logical Series","Reasoning",10,1,Y,6a9951e32f5de0fef16280a1
+106,,,"Logical Series","General Intelligence & Reasoning",10,1,Y,6a9952002f5de0fef1628148
+107,KEEP,,"India","General Science",10,1,Y,6a9951e42f5de0fef16280b7
+107,,,"India","General Knowledge / Current Affairs",10,1,Y,6a9952412f5de0fef16288ec
+108,KEEP,,"Defence","General Knowledge",10,1,Y,6a9951e52f5de0fef16280cd
+108,,,"Defence","General Knowledge / Current Affairs",10,1,Y,6a9951e62f5de0fef16280e6
+109,KEEP,,"Books","General Knowledge",10,1,Y,6a9951e52f5de0fef16280d7
+109,,,"Books","General Awareness",10,1,Y,6a9952012f5de0fef1628155
+110,KEEP,,"Speed","Quantitative Aptitude",10,1,Y,6a9951e62f5de0fef16280ea
+110,,,"Speed","Numerical Ability (Quantitative Aptitude)",10,1,Y,6a9951e72f5de0fef16280f7
+111,KEEP,,"Ratio","Numerical & Mental Ability",10,1,Y,6a9951e62f5de0fef16280eb
+111,,,"Ratio","Numerical Ability (Quantitative Aptitude)",10,1,Y,6a9951e72f5de0fef16280fd
+112,KEEP,,"Square Roots","Numerical & Mental Ability",10,1,Y,6a9951e72f5de0fef1628100
+112,,,"Square Roots","Numerical Ability",10,1,Y,6a9952582f5de0fef1628948
+113,KEEP,,"Simple Interest","Numerical Ability (Quantitative Aptitude)",10,1,Y,6a9951e82f5de0fef1628109
+113,,,"Simple Interest","Numerical & Mental Ability",10,1,Y,6a99521e2f5de0fef1628877
+114,KEEP,,"Sentence Types","English/Hindi",10,1,Y,6a9951e92f5de0fef162811d
+114,,,"Sentence Types","English Comprehension",10,1,Y,6a9952722f5de0fef1628980
+115,KEEP,,"Narration","English Comprehension",10,1,Y,6a9951e92f5de0fef1628120
+115,,,"Narration","English Language & Comprehension",10,1,Y,6a9952242f5de0fef16288ad
+116,KEEP,,"Alphabet Coding","General Intelligence & Reasoning",10,1,Y,6a9952002f5de0fef1628147
+116,,,"Alphabet Coding","Reasoning & Mental Aptitude",10,1,Y,6a9952952f5de0fef16289af
+117,KEEP,,"Error","English Comprehension",10,1,Y,6a9952032f5de0fef162815e
+117,,,"Error","Numerical & Mental Ability",10,1,Y,6a9952722f5de0fef162897d
+118,KEEP,,"Pronoun","General Hindi",10,1,Y,6a9952032f5de0fef1628161
+118,,,"Pronoun","English Language & Comprehension",10,1,Y,6a9952932f5de0fef16289ac
+119,KEEP,,"Phrasal Verbs","English Comprehension",10,1,Y,6a9952032f5de0fef1628164
+119,,,"Phrasal Verbs","English Language & Comprehension",10,1,Y,6a9952572f5de0fef162892f
+120,KEEP,,"Boats","Numerical Ability",10,1,Y,6a99521e2f5de0fef1628875
+120,,,"Boats","Quantitative Aptitude",10,1,Y,6a99521f2f5de0fef162887f
+121,KEEP,,"Technology","General Knowledge",10,1,Y,6a9952212f5de0fef162888a
+121,,,"Technology","Current Affairs",10,1,Y,6a9952c72f5de0fef1628a1a
+122,KEEP,,"Schemes","General Knowledge",10,1,Y,6a9952212f5de0fef162888b
+122,,,"Schemes","General Awareness",10,1,Y,6a9952922f5de0fef16289a1
+123,KEEP,,"Wildlife","Rajasthan GK",10,1,Y,6a9952212f5de0fef162888c
+123,,,"Wildlife","General Knowledge",10,1,Y,6a9952c52f5de0fef1628a0d
+124,KEEP,,"Banking","Current Affairs",10,1,Y,6a9952212f5de0fef1628890
+124,,,"Banking","General Knowledge / Current Affairs",10,1,Y,6a9952412f5de0fef16288e8
+125,KEEP,,"Infrastructure","Rajasthan GK",10,1,Y,6a9952212f5de0fef1628891
+125,,,"Infrastructure","General Knowledge",10,1,Y,6a9952ac2f5de0fef16289ca
+126,KEEP,,"Institutions","General Knowledge",10,1,Y,6a9952212f5de0fef1628893
+126,,,"Institutions","General Awareness",10,1,Y,6a9952902f5de0fef1628992
+127,KEEP,,"Money Market","General Knowledge",10,1,Y,6a9952222f5de0fef1628895
+127,,,"Money Market","General Awareness",10,1,Y,6a99526d2f5de0fef162895d
+128,KEEP,,"Calendar","General Intelligence & Reasoning",10,1,Y,6a99523d2f5de0fef16288c5
+128,,,"Calendar","General Knowledge",10,1,Y,6a99535c2f5de0fef1628add
+129,KEEP,,"Circular Seating","General Intelligence & Reasoning",10,1,Y,6a99523f2f5de0fef16288d6
+129,,,"Circular Seating","Reasoning & Mental Aptitude",10,1,Y,6a9952a82f5de0fef16289b9
+130,KEEP,,"Festivals","General Knowledge",10,1,Y,6a99523f2f5de0fef16288d7
+130,,,"Festivals","General Knowledge / Current Affairs",10,1,Y,6a9952ef2f5de0fef1628a2e
+131,KEEP,,"Regulations","General Knowledge",10,1,Y,6a9952412f5de0fef16288e9
+131,,,"Regulations","General Awareness",10,1,Y,6a99526d2f5de0fef162895b
+132,KEEP,,"Payments","General Knowledge",10,1,Y,6a9952422f5de0fef16288fd
+132,,,"Payments","General Awareness",10,1,Y,6a99528f2f5de0fef162898f
+133,KEEP,,"Number Classification","Reasoning / Logical Ability",10,1,Y,6a99525a2f5de0fef162894d
+133,,,"Number Classification","General Intelligence & Reasoning",10,1,Y,6a99528d2f5de0fef1628986
+134,KEEP,,"Time","Reasoning Ability",10,1,Y,6a99525b2f5de0fef162894e
+134,,,"Time","Numerical & Mental Ability",10,1,Y,6a99535f2f5de0fef1628af5
+135,KEEP,,"Dictionary Order","Reasoning & Mental Aptitude",10,1,Y,6a99526c2f5de0fef1628956
+135,,,"Dictionary Order","General Intelligence & Reasoning",10,1,Y,6a99528d2f5de0fef1628985
+136,KEEP,,"Banking Technology","General Awareness",10,1,Y,6a99526d2f5de0fef162895e
+136,,,"Banking Technology","General Knowledge",10,1,Y,6a9952ef2f5de0fef1628a2f
+137,KEEP,,"NBFC","General Awareness",10,1,Y,6a99526d2f5de0fef1628963
+137,,,"NBFC","General Knowledge / Current Affairs",10,1,Y,6a9952ef2f5de0fef1628a2d
+138,KEEP,,"Finance","General Awareness",10,1,Y,6a99526d2f5de0fef1628964
+138,,,"Finance","General Knowledge / Current Affairs",10,1,Y,6a9952f02f5de0fef1628a35
+139,KEEP,,"NRI Banking","General Awareness",10,1,Y,6a99526d2f5de0fef1628965
+139,,,"Nri Banking","General Knowledge / Current Affairs",10,1,Y,6a9952f02f5de0fef1628a37
+140,KEEP,,"BODMAS","Numerical & Mental Ability",10,1,Y,6a99526f2f5de0fef1628974
+140,,,"BODMAS","Reasoning & Mental Aptitude",10,1,Y,6a9952ab2f5de0fef16289c2
+141,KEEP,,"Cube","Quantitative Aptitude",10,1,Y,6a99526f2f5de0fef162897b
+141,,,"Cubes","Numerical & Mental Ability",10,1,Y,6a99535f2f5de0fef1628af8
+142,KEEP,,"Adjectives","English Language & Comprehension",10,1,Y,6a9952932f5de0fef16289aa
+142,,,"Adjective","General Hindi",10,1,Y,6a99535e2f5de0fef1628ae7
+143,KEEP,,"Rivers","General Knowledge",10,1,Y,6a9952ac2f5de0fef16289cd
+143,,,"Rivers","General Science",10,1,Y,6a9952c52f5de0fef1628a0c
+144,KEEP,,"Time and Work","Elementary Mathematics",10,1,Y,6a980cae715cfcc96a5b7907
+144,,,"Work & Time","Numerical Ability (Quantitative Aptitude)",8,4,Y,69ddd202d47e29acaab82ccc
+144,,,"Time & Work","Quantitative Aptitude",1,3,Y,69ddd203d47e29acaab82cdc
+144,,,"time & work","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef16280f0
+145,KEEP,,"Culture","General Knowledge",10,1,Y,6a980cac715cfcc96a5b78f5
+145,,,"Culture","General Knowledge / Current Affairs",9,1,Y,6a9951e52f5de0fef16280dd
+146,KEEP,,"Alphabet","General Intelligence & Reasoning",10,1,Y,6a9951e22f5de0fef1628088
+146,,,"Alphabet","Reasoning / Logical Ability",9,1,Y,6a99523e2f5de0fef16288d2
+147,KEEP,,"Polity","General Knowledge",10,1,Y,6a9951e42f5de0fef16280b2
+147,,,"Polity","General Knowledge / Current Affairs",9,1,Y,6a9952412f5de0fef16288fa
+148,KEEP,,"Usage","English/Hindi",10,1,Y,6a9951e92f5de0fef1628113
+148,,,"Usage","General Hindi",9,1,Y,6a99535e2f5de0fef1628aec
+149,KEEP,,"Security","General Awareness",10,1,Y,6a9952232f5de0fef16288a9
+149,,,"Security","General Knowledge / Current Affairs",9,1,Y,6a9952c72f5de0fef1628a16
+150,KEEP,,"Stock Market","General Awareness",10,1,Y,6a99528f2f5de0fef162898b
+150,,,"Stock Market","General Knowledge / Current Affairs",9,1,Y,6a9952412f5de0fef16288f3
+151,KEEP,,"MSME Finance","General Awareness",10,1,Y,6a99528f2f5de0fef1628990
+151,,,"Msme Finance","General Knowledge",9,1,Y,6a9952422f5de0fef1628901
+152,KEEP,,"Speed & Distance","Numerical & Mental Ability",10,1,Y,6a9952f62f5de0fef1628a77
+152,,,"Speed & Distance","Numerical Ability (Quantitative Aptitude)",9,1,Y,6a9952582f5de0fef1628943
+153,KEEP,,"Digital Payments","General Awareness",10,1,Y,6a99526d2f5de0fef162895c
+153,,,"Digital Payments","General Knowledge",9,1,Y,6a9952ac2f5de0fef16289cb
+154,KEEP,,"Bihar","General Knowledge / Current Affairs",10,1,Y,6a99526f2f5de0fef1628970
+154,,,"Bihar","General Studies",9,1,Y,6a9952c32f5de0fef16289fb
+155,KEEP,,"Surds & Indices","Quantitative Aptitude",17,2,Y,69ddd202d47e29acaab82cd0
+155,,,"surds & indices","Numerical & Mental Ability",0,0,N,6a99521f2f5de0fef162887c
+156,KEEP,,"Word Formation","General Intelligence & Reasoning",10,1,Y,6a9952002f5de0fef1628149
+156,,,"Word Formation","Reasoning & Mental Aptitude",7,1,Y,6a9951e32f5de0fef1628099
+157,KEEP,,"Idiom","English Comprehension",10,1,Y,6a9952032f5de0fef1628163
+157,,,"Idioms","English Language & Comprehension",7,1,Y,6a9952242f5de0fef16288af
+158,KEEP,,"Appointments","Current Affairs",10,1,Y,6a9952c72f5de0fef1628a14
+158,,,"Appointments","General Knowledge",7,1,Y,6a9952402f5de0fef16288df
+159,KEEP,,"Paper Folding","General Intelligence & Reasoning",16,2,Y,69ddd204d47e29acaab82d01
+159,,,"paper folding","Reasoning / Logical Ability",0,0,N,6a9952f32f5de0fef1628a73
+160,KEEP,,"Governance","General Knowledge",15,2,Y,69ddd200d47e29acaab82c8a
+160,,,"governance","General Awareness",0,0,N,6a99526e2f5de0fef162896c
+161,KEEP,,"World Geography","General Knowledge / Current Affairs",10,1,Y,6a9951e52f5de0fef16280d3
+161,,,"World Geography","General Knowledge",5,3,Y,69ddd200d47e29acaab82c8c
+161,,,"world geography","General Awareness",0,0,N,6a9951e52f5de0fef16280d1
+162,KEEP,,"Freedom Fighters","History",15,2,Y,69ddd200d47e29acaab82c9b
+162,,,"freedom fighters","General Knowledge",0,0,N,6a9952902f5de0fef1628998
+163,KEEP,,"Parliament & State Legislature","Polity & Governance",15,2,Y,69ddd200d47e29acaab82c9e
+163,,,"parliament & state legislature","General Awareness",0,0,N,6a99526e2f5de0fef1628967
+164,KEEP,,"Panchayati Raj & Municipalities","Polity & Governance",15,2,Y,69ddd201d47e29acaab82c9f
+164,,,"panchayati raj & municipalities","General Awareness",0,0,N,6a9952912f5de0fef162899d
+165,KEEP,,"Governance & Public Policy","Polity & Governance",15,2,Y,69ddd201d47e29acaab82ca0
+165,,,"governance & public policy","General Awareness",0,0,N,6a9952412f5de0fef16288fb
+166,KEEP,,"Climatology","Geography",15,2,Y,69ddd201d47e29acaab82ca7
+166,,,"climatology","General Awareness",0,0,N,6a9952402f5de0fef16288e6
+167,KEEP,,"Oceanography","Geography",15,2,Y,69ddd201d47e29acaab82ca8
+167,,,"oceanography","General Awareness",0,0,N,6a9952902f5de0fef1628997
+168,KEEP,,"Rivers & Lakes","Geography",15,2,Y,69ddd201d47e29acaab82cad
+168,,,"rivers & lakes","General Knowledge",0,0,N,6a9952222f5de0fef16288a3
+169,KEEP,,"Soil Types","Geography",15,2,Y,69ddd201d47e29acaab82cae
+169,,,"soil types","General Knowledge",0,0,N,6a9952412f5de0fef16288ea
+170,KEEP,,"Macroeconomics","Economy",15,2,Y,69ddd201d47e29acaab82cb0
+170,,,"macroeconomics","General Awareness",0,0,N,6a99526f2f5de0fef1628972
+171,KEEP,,"Microeconomics","Economy",15,2,Y,69ddd201d47e29acaab82cb1
+171,,,"microeconomics","General Knowledge",0,0,N,6a9952232f5de0fef16288a7
+172,KEEP,,"Budget & Economic Survey","Economy",15,2,Y,69ddd201d47e29acaab82cb2
+172,,,"budget & economic survey","General Awareness",0,0,N,6a9952422f5de0fef16288ff
+173,KEEP,,"Taxation","General Awareness",15,2,Y,69ddd201d47e29acaab82cb4
+173,,,"taxation","General Studies",0,0,N,6a9952222f5de0fef1628897
+174,KEEP,,"Poverty & Unemployment","Economy",15,2,Y,69ddd201d47e29acaab82cb5
+174,,,"poverty & unemployment","General Awareness",0,0,N,6a9952402f5de0fef16288e4
+175,KEEP,,"Sustainable Development","Economy",15,2,Y,69ddd201d47e29acaab82cb6
+175,,,"sustainable development","General Knowledge",0,0,N,6a9952ab2f5de0fef16289c3
+176,KEEP,,"International Trade","Economy",15,2,Y,69ddd201d47e29acaab82cb7
+176,,,"international trade","General Knowledge",0,0,N,6a9952412f5de0fef16288fc
+177,KEEP,,"Agriculture Economy","Economy",15,11,Y,69ddd201d47e29acaab82cb8
+177,,,"agriculture economy","General Knowledge / Current Affairs",0,0,N,6a9952402f5de0fef16288e0
+178,KEEP,,"Economic Reforms","Economy",15,2,Y,69ddd201d47e29acaab82cb9
+178,,,"economic reforms","General Knowledge",0,0,N,6a9952ac2f5de0fef16289ce
+179,KEEP,,"Diseases","General Science",15,2,Y,69ddd202d47e29acaab82cc1
+179,,,"diseases","General Awareness",0,0,N,6a9952912f5de0fef162899a
+180,KEEP,,"Inventions & Discoveries","General Science",15,2,Y,69ddd202d47e29acaab82cc3
+180,,,"inventions & discoveries","General Knowledge",0,0,N,6a9952ab2f5de0fef16289c5
+181,KEEP,,"Trigonometry","Advanced Maths",15,2,Y,69ddd202d47e29acaab82cd6
+181,,,"trigonometry","Quantitative Aptitude",0,0,N,6a9952432f5de0fef162890c
+182,KEEP,,"Coordinate Geometry","Advanced Maths",15,2,Y,69ddd203d47e29acaab82cda
+182,,,"coordinate geometry","Quantitative Aptitude",0,0,N,6a9952442f5de0fef1628911
+183,KEEP,,"Determinants","Mathematics",15,2,Y,69ddd203d47e29acaab82cde
+183,,,"determinants","Numerical & Mental Ability",0,0,N,6a9951e72f5de0fef1628105
+184,KEEP,,"Geometry & Mensuration","Advanced Maths",15,2,Y,69ddd203d47e29acaab82ce0
+184,,,"geometry & mensuration","Quantitative Aptitude",0,0,N,6a9952432f5de0fef162890b
+185,KEEP,,"Pie Charts","Data Interpretation",15,2,Y,69ddd203d47e29acaab82ce3
+185,,,"pie charts","Quantitative Aptitude",0,0,N,6a9952442f5de0fef1628910
+186,KEEP,,"Line Graphs","Data Interpretation",15,2,Y,69ddd203d47e29acaab82ce4
+186,,,"line graphs","Quantitative Aptitude",0,0,N,6a9952432f5de0fef1628904
+187,KEEP,,"Tabulation","Data Interpretation",15,2,Y,69ddd203d47e29acaab82ce5
+187,,,"tabulation","Quantitative Aptitude",0,0,N,6a9952442f5de0fef162890e
+188,KEEP,,"Caselets","Data Interpretation",15,2,Y,69ddd203d47e29acaab82ce6
+188,,,"caselets","Quantitative Aptitude",0,0,N,6a9952442f5de0fef162890f
+189,KEEP,,"Mixed DI","Data Interpretation",15,2,Y,69ddd203d47e29acaab82ce8
+189,,,"mixed di","Quantitative Aptitude",0,0,N,6a9952442f5de0fef1628912
+190,KEEP,,"Syllogism","Reasoning / Logical Ability",15,3,Y,69ddd204d47e29acaab82cf8
+190,,,"syllogism","Reasoning & Mental Aptitude",0,0,N,6a9951e32f5de0fef162809b
+191,KEEP,,"Matrix","Reasoning Ability",15,2,Y,69ddd204d47e29acaab82cf9
+191,,,"matrix","Rajasthan GK",0,0,N,6a9951e32f5de0fef162809e
+192,KEEP,,"Word Arrangement","Reasoning Ability",15,8,Y,69ddd204d47e29acaab82cfa
+192,,,"word arrangement","Reasoning & Mental Aptitude",0,0,N,6a9951e32f5de0fef1628098
+193,KEEP,,"Embedded Figures","Reasoning Ability",15,2,Y,69ddd204d47e29acaab82d00
+193,,,"embedded figures","Reasoning & Mental Aptitude",0,0,N,6a9952a92f5de0fef16289bf
+194,KEEP,,"Inequalities","Logical Reasoning",15,2,Y,69ddd205d47e29acaab82d08
+194,,,"inequalities","Reasoning / Logical Ability",0,0,N,6a99523e2f5de0fef16288d0
+195,KEEP,,"Cause & Effect","Analytical Reasoning",15,2,Y,69ddd205d47e29acaab82d0e
+195,,,"cause & effect","Reasoning & Mental Aptitude",0,0,N,6a9953622f5de0fef1628afc
+196,KEEP,,"Decision Making","Analytical Reasoning",15,2,Y,69ddd205d47e29acaab82d10
+196,,,"decision making","Reasoning & Mental Aptitude",0,0,N,6a9951e22f5de0fef1628091
+197,KEEP,,"Strengthening & Weakening","Analytical Reasoning",15,2,Y,69ddd205d47e29acaab82d11
+197,,,"strengthening & weakening","General Intelligence & Reasoning",0,0,N,6a9951e22f5de0fef1628093
+198,KEEP,,"Subject-Verb Agreement","English Grammar",15,2,Y,69ddd206d47e29acaab82d27
+198,,,"subject-verb agreement","English Language & Comprehension",0,0,N,6a9952242f5de0fef16288b3
+199,KEEP,,"Articles","English Language & Comprehension",15,3,Y,69ddd206d47e29acaab82d29
+199,,,"articles","English Comprehension",0,0,N,6a9952712f5de0fef162897c
+200,KEEP,,"Para Summary","Comprehension",15,2,Y,69ddd206d47e29acaab82d2d
+200,,,"para summary","English Language & Comprehension",0,0,N,6a9952462f5de0fef162891e
+201,KEEP,,"Inference Based","Comprehension",15,2,Y,69ddd206d47e29acaab82d2e
+201,,,"inference based","English Language & Comprehension",0,0,N,6a9952252f5de0fef16288b8
+202,KEEP,,"Work Energy Power","Physics",15,2,Y,69ddd207d47e29acaab82d32
+202,,,"work energy power","General Awareness",0,0,N,6a99526e2f5de0fef1628968
+203,KEEP,,"Rotational Motion","Physics",15,2,Y,69ddd207d47e29acaab82d33
+203,,,"rotational motion","General Awareness",0,0,N,6a9952902f5de0fef1628995
+204,KEEP,,"Kinetic Theory","Physics",15,2,Y,69ddd207d47e29acaab82d37
+204,,,"kinetic theory","General Awareness",0,0,N,6a9952232f5de0fef16288a8
+205,KEEP,,"EMI & AC","Physics",15,2,Y,69ddd207d47e29acaab82d3c
+205,,,"emi & ac","General Awareness",0,0,N,6a99526e2f5de0fef162896f
+206,KEEP,,"States of Matter","Chemistry",15,2,Y,69ddd207d47e29acaab82d45
+206,,,"states of matter","General Awareness",0,0,N,6a9952902f5de0fef1628994
+207,KEEP,,"Chemical Kinetics","Chemistry",15,2,Y,69ddd207d47e29acaab82d49
+207,,,"chemical kinetics","General Science",0,0,N,6a9952c62f5de0fef1628a0f
+208,KEEP,,"Organic Chemistry","Chemistry",15,2,Y,69ddd208d47e29acaab82d4e
+208,,,"organic chemistry","General Science",0,0,N,6a9952c62f5de0fef1628a0e
+209,KEEP,,"Cell Structure","Biology",15,2,Y,69ddd208d47e29acaab82d58
+209,,,"cell structure","General Awareness",0,0,N,6a9952912f5de0fef1628999
+210,KEEP,,"Cell Division","Biology",15,2,Y,69ddd208d47e29acaab82d59
+210,,,"cell division","General Awareness",0,0,N,6a99526e2f5de0fef162896e
+211,KEEP,,"Human Physiology","Biology",15,2,Y,69ddd208d47e29acaab82d5d
+211,,,"human physiology","General Awareness",0,0,N,6a9952222f5de0fef16288a1
+212,KEEP,,"Body Fluids & Circulation","Biology",15,2,Y,69ddd208d47e29acaab82d60
+212,,,"body fluids & circulation","General Awareness",0,0,N,6a9952922f5de0fef16289a2
+213,KEEP,,"Molecular Biology","Biology",15,2,Y,69ddd208d47e29acaab82d66
+213,,,"molecular biology","General Science",0,0,N,6a9952222f5de0fef1628896
+214,KEEP,,"Human Health & Disease","Biology",15,2,Y,69ddd208d47e29acaab82d68
+214,,,"human health & disease","General Awareness",0,0,N,6a9952232f5de0fef16288a6
+215,KEEP,,"Insurance","General Awareness",15,2,Y,69ddd209d47e29acaab82d74
+215,,,"insurance","General Knowledge",0,0,N,6a99535c2f5de0fef1628adc
+216,KEEP,,"Operating Systems","Computer Knowledge",15,2,Y,69ddd209d47e29acaab82d7f
+216,,,"operating systems","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a7a
+217,KEEP,,"Defense Technology","Science & Technology",15,2,Y,69ddd20ad47e29acaab82d95
+217,,,"defense technology","General Science",0,0,N,6a9952c62f5de0fef1628a10
+218,KEEP,,"Nuclear Technology","Science & Technology",15,2,Y,69ddd20ad47e29acaab82d96
+218,,,"nuclear technology","General Awareness",0,0,N,6a99526e2f5de0fef1628969
+219,KEEP,,"IT & Computers","Science & Technology",15,2,Y,69ddd20ad47e29acaab82d99
+219,,,"it & computers","General Science",0,0,N,6a9952c62f5de0fef1628a11
+220,KEEP,,"Health & Medicine","Science & Technology",15,2,Y,69ddd20ad47e29acaab82d9a
+220,,,"health & medicine","General Awareness",0,0,N,6a99526e2f5de0fef162896d
+221,KEEP,,"Summits & Conferences","Current Affairs",15,2,Y,69ddd20bd47e29acaab82d9f
+221,,,"summits & conferences","General Knowledge / Current Affairs",0,0,N,6a9952f02f5de0fef1628a33
+222,KEEP,,"Muhavare & Lokoktiyan","Hindi Language",15,2,Y,69ddd20cd47e29acaab82dbf
+222,,,"muhavare & lokoktiyan","General Hindi",0,0,N,6a9951e92f5de0fef1628122
+223,KEEP,,"Essay Writing","Hindi Language",15,2,Y,69ddd20cd47e29acaab82dc1
+223,,,"essay writing","General Hindi",0,0,N,6a99535e2f5de0fef1628af1
+224,KEEP,,"Patra Lekhan","Hindi Language",15,2,Y,69ddd20cd47e29acaab82dc2
+224,,,"patra lekhan","General Hindi",0,0,N,6a99535e2f5de0fef1628aef
+225,KEEP,,"State Geography","State Specific GK",15,2,Y,69ddd20cd47e29acaab82dcc
+225,,,"state geography","Haryana GK",0,0,N,6a9952af2f5de0fef16289f5
+226,KEEP,,"State Economy","State Specific GK",15,2,Y,69ddd20cd47e29acaab82dce
+226,,,"state economy","Haryana GK",0,0,N,6a9952cc2f5de0fef1628a1e
+227,KEEP,,"Culture & Heritage","State Specific GK",15,2,Y,69ddd20cd47e29acaab82dcf
+227,,,"culture & heritage","Rajasthan GK",0,0,N,6a9952af2f5de0fef16289f2
+228,KEEP,,"State Schemes","State Specific GK",15,2,Y,69ddd20cd47e29acaab82dd0
+228,,,"state schemes","Haryana GK",0,0,N,6a9952af2f5de0fef16289f0
+229,KEEP,,"Government Schemes","General Awareness",14,2,Y,69ddd200d47e29acaab82c95
+229,,,"government schemes","General Knowledge",0,0,N,6a9952402f5de0fef16288de
+230,KEEP,,"National Events","Current Affairs",14,8,Y,69ddd20ad47e29acaab82d9d
+230,,,"national events","General Knowledge / Current Affairs",0,0,N,6a9951e52f5de0fef16280dc
+231,KEEP,,"Life Science","General Science",13,11,Y,69ddd202d47e29acaab82cbe
+231,,,"life science","General Knowledge",0,0,N,6a9952412f5de0fef16288eb
+232,KEEP,,"MS Office","Computer Knowledge",13,4,Y,69ddd209d47e29acaab82d7a
+232,,,"ms office","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a7d
+233,KEEP,,"Time and Distance","Elementary Mathematics",10,1,Y,6a980cae715cfcc96a5b7905
+233,,,"Time & Distance","Mathematics",2,3,Y,69ddd203d47e29acaab82cdb
+233,,,"time & distance","Numerical & Mental Ability",0,0,N,6a9952592f5de0fef162894c
+234,KEEP,,"Statement and Conclusion","General Intelligence & Reasoning",10,1,Y,6a9951e32f5de0fef16280a6
+234,,,"Statement & Conclusion","Reasoning Ability",1,4,Y,69ddd204d47e29acaab82cfd
+234,,,"statement & conclusion","Reasoning",0,0,N,6a9951e32f5de0fef1628094
+235,KEEP,,"Course of Action","Analytical Reasoning",11,2,Y,69ddd205d47e29acaab82d0f
+235,,,"course of action","General Intelligence & Reasoning",0,0,N,6a99523e2f5de0fef16288cc
+236,KEEP,,"Internet & Networking","Computer Knowledge",11,3,Y,69ddd209d47e29acaab82d7b
+236,,,"internet & networking","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a83
+237,KEEP,,"Awards & Honours","Current Affairs",10,2,Y,69ddd200d47e29acaab82c91
+237,,,"awards & honours","General Awareness",0,0,N,6a9952912f5de0fef162899c
+238,KEEP,,"Fundamental Rights & Duties","Polity & Governance",10,2,Y,69ddd200d47e29acaab82c9d
+238,,,"fundamental rights & duties","General Knowledge",0,0,N,6a9952422f5de0fef1628903
+239,KEEP,,"Partnership","Numerical Ability",10,2,Y,69ddd202d47e29acaab82cd1
+239,,,"partnership","Quantitative Aptitude",0,0,N,6a99521f2f5de0fef162887d
+240,KEEP,,"Assumptions & Conclusions","Logical Reasoning",10,2,Y,69ddd205d47e29acaab82d0b
+240,,,"assumptions & conclusions","Reasoning & Mental Aptitude",0,0,N,6a9953622f5de0fef1628afd
+241,KEEP,,"Cloze Test","English Comprehension",10,2,Y,69ddd205d47e29acaab82d14
+241,,,"cloze test","English Language & Comprehension",0,0,N,6a9952242f5de0fef16288b4
+242,KEEP,,"Monetary Policy","General Awareness",10,2,Y,69ddd209d47e29acaab82d6e
+242,,,"monetary policy","General Knowledge",0,0,N,6a9952ac2f5de0fef16289c7
+243,KEEP,,"Spelling","English Language & Comprehension",10,1,Y,6a9951e82f5de0fef162810f
+243,,,"spelling","Rajasthan GK",0,0,N,6a9951e92f5de0fef162812d
+244,KEEP,,"Non-Verbal","General Intelligence & Reasoning",10,1,Y,6a9952002f5de0fef162814b
+244,,,"non-verbal","General Knowledge",0,0,N,6a99535c2f5de0fef1628ade
+245,KEEP,,"Decimals","Quantitative Aptitude",10,1,Y,6a9952022f5de0fef162815b
+245,,,"decimals","Reasoning",0,0,N,6a9952c92f5de0fef1628a1c
+246,KEEP,,"Floor","Reasoning & Mental Aptitude",10,1,Y,6a9952a82f5de0fef16289b8
+246,,,"floor","Computer Awareness / Fundamentals",0,0,N,6a99523e2f5de0fef16288cb
+247,KEEP,,"Mirror Image","General Intelligence & Reasoning",9,3,Y,69ddd204d47e29acaab82d02
+247,,,"mirror image","Reasoning & Mental Aptitude",0,0,N,6a9952202f5de0fef1628885
+248,KEEP,,"Direct-Indirect Speech","English Grammar",9,4,Y,69ddd205d47e29acaab82d1b
+248,,,"direct-indirect speech","English Language & Comprehension",0,0,N,6a9951e92f5de0fef1628129
+249,KEEP,,"Spelling Correction","English Language",9,5,Y,69ddd205d47e29acaab82d1e
+249,,,"spelling correction","English Language & Comprehension",0,0,N,6a9951e92f5de0fef162812c
+250,KEEP,,"Database Basics","Computer Knowledge",8,3,Y,69ddd209d47e29acaab82d7e
+250,,,"database basics","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a7f
+251,KEEP,,"Computer Abbreviations","Computer Knowledge",8,11,Y,69ddd209d47e29acaab82d80
+251,,,"computer abbreviations","Computer Awareness / Fundamentals",0,0,N,6a9952f92f5de0fef1628a78
+252,KEEP,,"Active-Passive Voice","English Grammar",7,3,Y,69ddd205d47e29acaab82d1a
+252,,,"active-passive voice","English Language & Comprehension",0,0,N,6a9952252f5de0fef16288b9
+253,KEEP,,"Ancient India","History",6,5,Y,69ddd200d47e29acaab82c97
+253,,,"ancient india","General Knowledge",0,0,N,6a9952422f5de0fef1628900
+254,KEEP,,"Physical Geography","Geography",6,3,Y,69ddd201d47e29acaab82ca6
+254,,,"physical geography","General Knowledge / Current Affairs",0,0,N,6a9952f02f5de0fef1628a34
+255,KEEP,,"Banking & Finance","Economy",5,11,Y,69ddd201d47e29acaab82cb3
+255,,,"banking & finance","General Knowledge",0,0,N,6a9952222f5de0fef1628894
+256,KEEP,,"Seating Arrangement","Reasoning / Logical Ability",5,4,Y,69ddd205d47e29acaab82d05
+256,,,"seating arrangement","Reasoning & Mental Aptitude",0,0,N,6a9952202f5de0fef1628887
+257,KEEP,,"Comprehension","Hindi Language",5,11,Y,69ddd20cd47e29acaab82dbe
+257,,,"comprehension","General Hindi",0,0,N,6a9951e92f5de0fef1628125
+258,KEEP,,"Medieval India","History",4,3,Y,69ddd200d47e29acaab82c98
+258,,,"medieval india","General Knowledge",0,0,N,6a99526f2f5de0fef1628971
+259,KEEP,,"Human Body","General Science",4,4,Y,69ddd202d47e29acaab82cbf
+259,,,"human body","General Knowledge",0,0,N,6a9952412f5de0fef16288ed
+260,KEEP,,"Economy News","Current Affairs",2,4,Y,69ddd20bd47e29acaab82da2
+260,,,"economy news","General Knowledge / Current Affairs",0,0,N,6a9951e52f5de0fef16280ce
+261,KEEP,,"International Events","Current Affairs",1,5,Y,69ddd20ad47e29acaab82d9e
+261,,,"international events","General Knowledge / Current Affairs",0,0,N,6a9952902f5de0fef1628996
+262,KEEP,,"Post-Independence India","History",0,3,Y,69ddd200d47e29acaab82c9a
+262,,,"post-independence india","General Knowledge / Current Affairs",0,0,N,6a9951e52f5de0fef16280e1
+263,KEEP,,"SI","Elementary Mathematics",0,0,N,6a9951e72f5de0fef16280ee
+263,,,"si","Numerical & Mental Ability",0,0,N,6a99521f2f5de0fef1628880
+264,KEEP,,"di","Numerical & Mental Ability",0,0,N,6a9952442f5de0fef1628915
+264,,,"DI","Numerical Ability (Quantitative Aptitude)",0,0,N,6a9952582f5de0fef1628944
+265,KEEP,,"phrasalverbs","English Comprehension",0,0,N,6a9952462f5de0fef1628927
+265,,,"PhrasalVerbs","English Language & Comprehension",0,0,N,6a9952932f5de0fef16289ab
