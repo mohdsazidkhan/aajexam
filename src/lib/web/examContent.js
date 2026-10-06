@@ -23,15 +23,17 @@ export async function buildExamContent(examId, req) {
         };
     }
 
-    const [ptDocs, pyqDocs, quizDocs] = await Promise.all([
+    // Question counts are computed server-side: shipping every test's full questions
+    // array just to read .length made this endpoint time out on exams with many papers.
+    const [ptDocs, pyqDocs, quizDocs, countRows] = await Promise.all([
         PracticeTest.find({ examPattern: { $in: patternIds }, isPYQ: { $ne: true } })
             .populate({ path: 'examPattern', select: 'title duration totalMarks sections negativeMarking' })
-            .select('-questions.correctAnswerIndex')
+            .select('-questions')
             .sort({ publishedAt: -1 })
             .lean(),
         PracticeTest.find({ examPattern: { $in: patternIds }, isPYQ: true })
             .populate({ path: 'examPattern', select: 'title duration totalMarks sections negativeMarking' })
-            .select('-questions.correctAnswerIndex')
+            .select('-questions')
             .sort({ pyqYear: -1, publishedAt: -1 })
             .lean(),
         Quiz.find({ applicableExams: examId, status: 'published' })
@@ -39,8 +41,13 @@ export async function buildExamContent(examId, req) {
             .populate('topic', 'name slug')
             .select('-questions')
             .sort({ publishedAt: -1 })
-            .lean()
+            .lean(),
+        PracticeTest.aggregate([
+            { $match: { examPattern: { $in: patternIds } } },
+            { $project: { c: { $size: { $ifNull: ['$questions', []] } } } }
+        ])
     ]);
+    const countMap = Object.fromEntries(countRows.map(r => [r._id.toString(), r.c]));
 
     const [practiceTestsAccess, pyqsAccess] = await Promise.all([
         markPyqAccess(ptDocs),
@@ -63,7 +70,7 @@ export async function buildExamContent(examId, req) {
 
     const decorate = (t) => ({
         ...t,
-        questionCount: t.questions?.length || 0,
+        questionCount: countMap[t._id.toString()] || 0,
         userAttempt: attemptMap[t._id.toString()] || null
     });
 

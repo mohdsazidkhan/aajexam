@@ -45,7 +45,9 @@ export async function GET(req) {
             questionCount: questMap[t._id.toString()] || 0,
         }));
 
-        return NextResponse.json({ success: true, data, count: data.length });
+        const response = NextResponse.json({ success: true, data, count: data.length });
+        response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=900');
+        return response;
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

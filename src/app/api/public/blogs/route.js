@@ -41,13 +41,21 @@ export async function GET(req) {
         ]);
         const totalPages = Math.ceil(total / limit);
 
-        return NextResponse.json({
+        // List cards only show a 120-200 char teaser (excerpt || content); sending whole
+        // article bodies was ~90% of the payload and made this slow on mobile networks.
+        for (const b of blogs) {
+            if (typeof b.content === 'string') b.content = b.content.slice(0, 400);
+        }
+
+        const response = NextResponse.json({
             success: true,
             data: {
                 blogs,
                 pagination: { total, totalPages, page, limit, hasPrev: page > 1, hasNext: page < totalPages }
             }
         });
+        response.headers.set('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=600');
+        return response;
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
