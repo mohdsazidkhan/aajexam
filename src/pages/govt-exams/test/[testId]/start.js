@@ -89,6 +89,9 @@ const TestStart = ({ resolvedId } = {}) => {
         if (saved) {
           setStarted(true);
         }
+      } else {
+        toast.error(res?.message || res?.error || "Failed to load test.");
+        router.back();
       }
     } catch (err) {
       toast.error("Failed to load test.");
@@ -216,6 +219,8 @@ const TestStart = ({ resolvedId } = {}) => {
       <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
     </div>
   );
+
+  if (!test) return null;
 
   if (!started) {
     return (

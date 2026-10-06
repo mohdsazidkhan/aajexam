@@ -26,11 +26,16 @@ const TestStartModal = ({
   isOpen,
   onClose,
   onConfirm,
-  test = {},
-  pattern = {},
-  exam = {},
-  category = {}
+  test: testProp,
+  pattern: patternProp,
+  exam: examProp,
+  category: categoryProp
 }) => {
+  // Props may arrive as null (defaults only cover undefined)
+  const test = testProp || {};
+  const pattern = patternProp || {};
+  const exam = examProp || {};
+  const category = categoryProp || {};
   const [acceptedRules, setAcceptedRules] = useState(false);
 
   if (!isOpen) return null;

@@ -46,6 +46,11 @@ export async function POST(req) {
             If you believe this action was taken in error, please contact our support team for further assistance.`, 403);
         }
 
+        // Google-only accounts have no password; bcrypt.compare would throw -> 500.
+        if (!user.password || typeof password !== 'string') {
+            return errorResponse(user.password ? 'Invalid Credentials' : 'This account uses Google sign-in. Please continue with Google.', 401);
+        }
+
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return errorResponse('Invalid Credentials', 401);
