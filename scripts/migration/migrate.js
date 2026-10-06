@@ -67,7 +67,8 @@ async function scanMembers({ content = false } = {}) {
       const q = qs[idx]; if (!q) { S.missing++; continue; }
       const id = String(q._id); const st = id === e.old ? 'old' : id === e.g.newId ? 'new' : 'other';
       if (st === 'other') { S.idMismatch++; if (S.samples.length < 10) S.samples.push(`idMismatch test ${tid} idx ${idx} have ${id} want ${e.old}`); continue; }
-      if (embKey(q) !== e.g.k) { S.keyMismatch++; if (S.samples.length < 10) S.samples.push(`keyMismatch test ${tid} idx ${idx} id ${id}`); continue; }
+      // a compacted element (compact.js) carries no text any more: its content was verified identical to its `questions` doc then, so only the id state is checked
+      if (ws(q.questionText) && embKey(q) !== e.g.k) { S.keyMismatch++; if (S.samples.length < 10) S.samples.push(`keyMismatch test ${tid} idx ${idx} id ${id}`); continue; }
       st === 'old' ? S.stateOld++ : S.stateNew++;
       S.nOpts.set(e.old, (q.options || []).length);
       if (content && e.g.kind === 'new') {
