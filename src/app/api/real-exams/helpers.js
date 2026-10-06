@@ -82,8 +82,11 @@ export function evaluateAnswers(questions, submittedAnswers, sections) {
         }
         answerDetails.push({ questionId: question._id, selectedIndex: isAnswered ? submitted : -1, isCorrect, timeTaken: 0 });
     });
-    const accuracy = attemptedCount > 0 ? (correctCount / attemptedCount) * 100 : 0;
-    return { totalScore, correctCount, wrongCount, attemptedCount, accuracy, answerDetails, sectionWiseScore };
+    // Sums of fractional marks (e.g. 0.33 * 17) carry float noise (5.699999999999999); store 2 decimals.
+    const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+    Object.values(sectionWiseScore).forEach(sec => { sec.score = round2(sec.score); });
+    const accuracy = round2(attemptedCount > 0 ? (correctCount / attemptedCount) * 100 : 0);
+    return { totalScore: round2(totalScore), correctCount, wrongCount, attemptedCount, accuracy, answerDetails, sectionWiseScore };
 }
 
 export async function recomputeRanksForTest(testId, targetAttemptId = null) {

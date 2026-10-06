@@ -19,8 +19,7 @@ import {
   CircleAlert,
   Menu,
   X,
-  PanelLeftClose,
-  PanelLeftOpen
+  LayoutGrid
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-hot-toast";
@@ -82,7 +81,13 @@ const TestStart = ({ resolvedId } = {}) => {
       const res = await API.startPracticeTest(testId);
       if (res?.success) {
         setTest(res.data);
-        setQuestions((res.data.questions || []).map((q, idx) => ({ ...q, _id: q._id || q.id || `q_${idx}` })));
+        // `_oi` = position in the server's question order (submit is positional). The list is then
+        // grouped by section so each section is a contiguous range (1-25, 26-50, ...) in the UI.
+        const loaded = (res.data.questions || []).map((q, idx) => ({ ...q, _id: q._id || q.id || `q_${idx}`, _oi: idx }));
+        const sectionOrder = [];
+        loaded.forEach(q => { const sec = q.section || 'General'; if (!sectionOrder.includes(sec)) sectionOrder.push(sec); });
+        const grouped = sectionOrder.flatMap(sec => loaded.filter(q => (q.section || 'General') === sec));
+        setQuestions(grouped);
         setAttemptId(res.data.attemptId);
 
         // If we have saved progress, we can auto-start
@@ -141,7 +146,9 @@ const TestStart = ({ resolvedId } = {}) => {
     if (submitting) return;
     setSubmitting(true);
     try {
-      const answersIndices = questions.map(q => answers[q._id] !== undefined ? answers[q._id] : null);
+      // Server expects answers in its own question order, not the section-grouped display order.
+      const answersIndices = new Array(questions.length).fill(null);
+      questions.forEach(q => { if (answers[q._id] !== undefined) answersIndices[q._oi] = answers[q._id]; });
       const res = await API.submitTest(testId, answersIndices);
       if (res?.success) {
         localStorage.removeItem(`test_${testId}`);
@@ -255,6 +262,22 @@ const TestStart = ({ resolvedId } = {}) => {
   const progressPercent = ((currentQIndex + 1) / questions.length) * 100;
   const answeredCount = Object.keys(answers).length;
 
+  const toggleMark = () => {
+    if (!currentQ) return;
+    const nextMarked = new Set(marked);
+    if (nextMarked.has(currentQ._id)) nextMarked.delete(currentQ._id);
+    else nextMarked.add(currentQ._id);
+    setMarked(nextMarked);
+  };
+  const clearAnswer = () => {
+    if (!currentQ) return;
+    setAnswers(prev => {
+      const next = { ...prev };
+      delete next[currentQ._id];
+      return next;
+    });
+  };
+
   return (
     <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col" style={{ height: '100dvh' }}>
       <Seo title={`${test?.title || 'Practice Test'} – In Progress | AajExam`} description="Test in progress on AajExam." noIndex={true} />
@@ -264,17 +287,40 @@ const TestStart = ({ resolvedId } = {}) => {
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="relative shrink-0 z-[60] flex items-center justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 xl:border-0 xl:bg-transparent xl:dark:bg-transparent xl:p-0 xl:fixed xl:top-6 xl:right-6 xl:pointer-events-none"
+          className="relative shrink-0 z-[60] flex items-center justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 xl:px-6 xl:py-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
         >
           {/* Left: Spacer or Placeholder */}
+          {/* Questions panel toggle */}
+          <button
+            onClick={() => setShowPalette(true)}
+            title="Questions"
+            aria-label="Open questions"
+            className="xl:hidden shrink-0 p-2.5 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 transition-all active:scale-95"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => setShowSidebar(v => !v)}
+            title={showSidebar ? "Hide questions" : "Show questions"}
+            aria-label="Toggle questions panel"
+            className={`hidden xl:flex shrink-0 p-3 rounded-xl shadow-sm border-2 transition-all active:scale-95 ${showSidebar ? "bg-primary-500/10 text-primary-600 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 border-slate-200 dark:border-slate-800"}`}
+          >
+            <LayoutGrid className="w-6 h-6" />
+          </button>
+          <p className="hidden xl:block shrink-0 text-xs 2xl:text-[13px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+            <span className="font-black uppercase tracking-widest">Status:</span>{" "}
+            Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>,{" "}
+            Answered: <span className="text-primary-600">{answeredCount}</span>,{" "}
+            Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>,{" "}
+            Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span>
+          </p>
           <div className="flex-1 min-w-0 md:hidden xl:hidden">
-            <p className="truncate text-[11px] font-black text-slate-500 uppercase tracking-widest leading-tight">{test?.title}</p>
+            <p className="break-words text-[11px] font-black text-slate-500 uppercase tracking-wide leading-tight">{test?.title}</p>
             <p className="text-xs font-black text-primary-600 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
           </div>
-          <div className="hidden xl:block xl:flex-none" />
-
+          
           {/* Center: Test Progress (Minimalist) */}
-          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-5 py-3 xl:px-8 xl:py-4 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
+          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">
                 <span className="pr-4">{test?.title}</span>
@@ -288,29 +334,29 @@ const TestStart = ({ resolvedId } = {}) => {
 
           {/* Right: Timer & Tools */}
           <div className="flex items-center gap-2 xl:gap-3 pointer-events-auto shrink-0">
-            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-6 xl:py-3 rounded-xl xl:rounded-[1.5rem] shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-600 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
-              <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-current opacity-80" />
-              <span className="font-mono text-base xl:text-2xl font-black">{formatTime(timeLeft)}</span>
+            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-5 xl:py-2.5 rounded-xl shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-600 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+              <Clock className="w-4 h-4 text-current opacity-80" />
+              <span className="font-mono text-sm xl:text-xl font-black">{formatTime(timeLeft)}</span>
             </div>
 
             <LanguageToggle
               language={language}
               onToggle={toggleLanguage}
               translating={translatingQ}
-              className="px-2.5 py-2 xl:px-4 xl:py-3 min-w-[44px] xl:min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-600 rounded-xl xl:rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
+              className="px-2.5 py-2 xl:px-4 xl:py-2.5 min-w-[44px] xl:min-w-[56px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
             />
 
             <button
               onClick={toggleFullscreen}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group hidden xl:block"
+              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
               title="Toggle Focus Mode"
             >
-              {isFullscreen ? <Minimize className="w-6 h-6" /> : <Maximize className="w-6 h-6" />}
+              {isFullscreen ? <Minimize className="w-5 h-5 xl:w-6 xl:h-6" /> : <Maximize className="w-5 h-5 xl:w-6 xl:h-6" />}
             </button>
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="p-2.5 xl:p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-xl xl:rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
+              className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
               title="Exit Test"
             >
               <X className="w-5 h-5 xl:w-6 xl:h-6 group-hover:rotate-90 transition-transform" />
@@ -323,30 +369,23 @@ const TestStart = ({ resolvedId } = {}) => {
       <main className="flex-1 relative flex flex-col xl:flex-row overflow-hidden">
 
         {/* Sidebar Palette (Desktop) */}
-        <aside className={`${showSidebar ? 'hidden xl:flex' : 'hidden'} w-80 border-r border-slate-200 dark:border-slate-800 flex-col p-6 overflow-y-auto`}>
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Stats Overview</h3>
-              <button onClick={() => setShowSidebar(false)} title="Hide panel" className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400">
-                <PanelLeftClose className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest sr-only">Stats Overview</h3>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="bg-primary-500/10 p-3 rounded-2xl border border-primary-500/20">
-                  <p className="text-[10px] font-black text-primary-600 uppercase">Answered</p>
-                  <p className="text-2xl font-black">{answeredCount}</p>
-                </div>
-                <div className="bg-black/10 dark:bg-white/10 p-3 rounded-2xl border border-black/20 dark:border-white/20">
-                  <p className="text-[10px] font-black text-black dark:text-white uppercase">Marked</p>
-                  <p className="text-2xl font-black">{marked.size}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-2 xl:space-y-4">
-              <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Question Map</h3>
+        <motion.aside
+          initial={false}
+          animate={{ width: showSidebar ? 320 : 0, opacity: showSidebar ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          aria-hidden={!showSidebar}
+          className="hidden xl:flex shrink-0 border-r border-slate-200 dark:border-slate-800 overflow-hidden"
+        >
+          <motion.div
+            initial={false}
+            animate={{ x: showSidebar ? 0 : -320 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="w-80 shrink-0 flex flex-col p-6 pb-0"
+          >
+          <div className="flex flex-col gap-6 flex-1 min-h-0">
+            <div className="flex flex-col gap-2 xl:gap-4 flex-1 min-h-0">
+              <h3 className="shrink-0 text-xs font-black text-slate-400 uppercase tracking-widest">Questions</h3>
+              <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain space-y-2 xl:space-y-4 pr-1 pb-6">
               {sectionNames.map((secName) => {
                 const group = sectionGroups[secName];
                 const answeredInSec = group.filter(({ q }) => answers[q._id] !== undefined).length;
@@ -385,18 +424,14 @@ const TestStart = ({ resolvedId } = {}) => {
                   </div>
                 );
               })}
+              </div>
             </div>
           </div>
-        </aside>
+          </motion.div>
+        </motion.aside>
 
         {/* Content Area */}
         <section className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth relative px-3 sm:px-6 xl:px-8 py-3 sm:py-4 xl:py-8">
-          {!showSidebar && (
-            <button onClick={() => setShowSidebar(true)} title="Show panel"
-              className="hidden xl:flex absolute top-20 left-2 z-10 items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">
-              <PanelLeftOpen className="w-4 h-4" />
-            </button>
-          )}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentQIndex}
@@ -407,7 +442,7 @@ const TestStart = ({ resolvedId } = {}) => {
               className="mx-auto space-y-2 xl:space-y-4"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 uppercase shrink-0">
+                <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 uppercase shrink-0">
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
@@ -459,16 +494,11 @@ const TestStart = ({ resolvedId } = {}) => {
                 })}
               </div>
 
-              <div className="grid grid-cols-2 gap-2 sm:gap-4 pt-2 xl:pt-4">
+              <div className="xl:hidden grid grid-cols-2 gap-2 sm:gap-4 pt-2">
                 <Button
                   variant="primary"
                   className="w-full !px-2 sm:!px-4 text-[11px] sm:text-sm"
-                  onClick={() => {
-                    const nextMarked = new Set(marked);
-                    if (nextMarked.has(currentQ._id)) nextMarked.delete(currentQ._id);
-                    else nextMarked.add(currentQ._id);
-                    setMarked(nextMarked);
-                  }}
+                  onClick={toggleMark}
                 >
                   <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
                   {marked.has(currentQ._id) ? 'MARKED' : <><span className="sm:hidden">MARK</span><span className="hidden sm:inline">MARK FOR REVIEW</span></>}
@@ -477,11 +507,7 @@ const TestStart = ({ resolvedId } = {}) => {
                   variant="secondary"
                   className="w-full !px-2 sm:!px-4 text-[11px] sm:text-sm"
                   disabled={answers[currentQ._id] === undefined}
-                  onClick={() => setAnswers(prev => {
-                    const next = { ...prev };
-                    delete next[currentQ._id];
-                    return next;
-                  })}
+                  onClick={clearAnswer}
                 >
                   <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 text-slate-400" />
                   <span className="sm:hidden">CLEAR</span><span className="hidden sm:inline">CLEAR ANSWER</span>
@@ -499,10 +525,31 @@ const TestStart = ({ resolvedId } = {}) => {
           size="lg"
           disabled={currentQIndex === 0}
           onClick={() => setCurrentQIndex(prev => prev - 1)}
-          className="font-black !px-3 sm:!px-6"
+          className="font-black h-12 sm:h-14 !px-3 sm:!px-8 sm:min-w-[10rem]"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 sm:mr-2" /> <span className="hidden sm:inline">PREVIOUS</span><span className="sm:hidden text-xs">PREV</span>
         </Button>
+
+        {/* Mark / Clear — web only, centred between Previous and Next */}
+        <div className="hidden xl:flex flex-1 items-center justify-center gap-4">
+          <Button
+            variant="primary"
+            className="h-14 !px-6 min-w-[12rem] text-sm"
+            onClick={toggleMark}
+          >
+            <Flag className={`w-5 h-5 mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
+            {marked.has(currentQ._id) ? 'MARKED' : <>MARK FOR REVIEW</>}
+          </Button>
+          <Button
+            variant="secondary"
+            className="h-14 !px-6 min-w-[12rem] text-sm"
+            disabled={answers[currentQ._id] === undefined}
+            onClick={clearAnswer}
+          >
+            <Trash2 className="w-5 h-5 mr-2 shrink-0 text-slate-400" />
+            CLEAR ANSWER
+          </Button>
+        </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
           <button
@@ -516,7 +563,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <Button
               variant="primary"
               size="lg"
-              className="bg-primary-600 hover:bg-primary-600 !px-4 sm:!px-12 text-xs sm:text-base"
+              className="bg-primary-600 hover:bg-primary-600 h-12 sm:h-14 !px-4 sm:!px-12 sm:min-w-[10rem] text-xs sm:text-base"
               onClick={() => setShowSubmitModal(true)}
             >
               FINISH <span className="hidden sm:inline">&nbsp;TEST</span> <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />
@@ -525,7 +572,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <Button
               variant="primary"
               size="lg"
-              className="!px-5 sm:!px-12"
+              className="h-12 sm:h-14 !px-5 sm:!px-12 sm:min-w-[10rem]"
               onClick={() => setCurrentQIndex(prev => prev + 1)}
             >
               NEXT <ChevronRight className="w-6 h-6 ml-2" />
@@ -539,10 +586,11 @@ const TestStart = ({ resolvedId } = {}) => {
         {showPalette && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-t-[3rem] p-5 sm:p-8 pb-[max(1.25rem,env(safe-area-inset-bottom))] z-50 max-h-[80vh] overflow-y-auto" style={{ maxHeight: '80dvh' }}>
-              <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-5 sm:mb-8" />
-              <h3 className="text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase mb-4 sm:mb-6">Question Map</h3>
-              <div className="space-y-5">
+            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-t-[3rem] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[80vh]" style={{ maxHeight: '80dvh' }}>
+              <div className="w-12 h-1.5 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-4 sm:mb-6" />
+              <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase">Questions</h3>
+              <p className="shrink-0 text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 pb-3 sm:pb-4 border-b border-slate-100 dark:border-slate-800 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>, Answered: <span className="text-primary-600">{answeredCount}</span>, Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span></p>
+              <div className="space-y-5 flex-1 min-h-0 overflow-y-auto overscroll-contain pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
                 {sectionNames.map((secName) => {
                   const group = sectionGroups[secName];
                   const answeredInSec = group.filter(({ q }) => answers[q._id] !== undefined).length;

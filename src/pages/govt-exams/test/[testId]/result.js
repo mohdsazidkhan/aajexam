@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import { fmtNum } from '../../../../lib/utils/formatNumber';
 import { useRouter } from 'next/router';
 import Seo from '../../../../components/Seo';
 import {
@@ -159,7 +160,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
             <div className="flex justify-center items-center gap-6 xl:gap-12 py-4">
               <div className="flex flex-col items-center">
-                <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{result?.score}</span>
+                <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{fmtNum(result?.score)}</span>
                 <span className="text-sm font-black uppercase opacity-60">Score</span>
               </div>
               <div className="h-20 w-1 bg-white/20 rounded-full" />
@@ -220,8 +221,8 @@ const TestResult = ({ resolvedId } = {}) => {
           },
           {
             label: 'Top Score',
-            value: lbStats.topScore ? lbStats.topScore : '—',
-            sub: result?.score != null ? `You: ${result.score}` : null,
+            value: lbStats.topScore ? fmtNum(lbStats.topScore) : '—',
+            sub: result?.score != null ? `You: ${fmtNum(result.score)}` : null,
             icon: Crown,
             color: 'text-black dark:text-white'
           },
@@ -304,7 +305,7 @@ const TestResult = ({ resolvedId } = {}) => {
                                 {isUser && <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">YOU</span>}
                               </div>
                             </td>
-                            <td className="px-6 py-4 text-center font-black">{entry.score}</td>
+                            <td className="px-6 py-4 text-center font-black">{fmtNum(entry.score)}</td>
                             <td className="px-6 py-4 text-right font-bold text-gray-400">#{displayRank}</td>
                           </tr>
                         );
@@ -321,7 +322,7 @@ const TestResult = ({ resolvedId } = {}) => {
                               <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">YOUR POSITION</span>
                             </div>
                           </td>
-                          <td className="px-6 py-4 text-center font-black">{result.score}</td>
+                          <td className="px-6 py-4 text-center font-black">{fmtNum(result.score)}</td>
                           <td className="px-6 py-4 text-right font-bold text-primary-600">#{result.rank}</td>
                         </tr>
                       )}
@@ -338,7 +339,7 @@ const TestResult = ({ resolvedId } = {}) => {
                     <Card key={idx} className="border-2">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
-                        <span className="font-black text-primary-600">{stats.score} pts</span>
+                        <span className="font-black text-primary-600">{fmtNum(stats.score)} pts</span>
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
                         <div className="bg-primary-600 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
@@ -449,7 +450,7 @@ const TestResult = ({ resolvedId } = {}) => {
                 if (result.rank) p.set('rank', String(result.rank));
                 if (lbStats.totalParticipants) p.set('total', String(lbStats.totalParticipants));
                 if (result.percentile != null) p.set('pct', String(result.percentile));
-                if (result.score != null) p.set('score', String(result.score));
+                if (result.score != null) p.set('score', String(fmtNum(result.score)));
                 if (result.accuracy != null) p.set('accuracy', String(result.accuracy));
                 if (result.testTitle) p.set('testTitle', result.testTitle);
                 if (user?.name) p.set('user', user.name);
@@ -458,7 +459,7 @@ const TestResult = ({ resolvedId } = {}) => {
               text={
                 result.rank && lbStats.totalParticipants > 0
                   ? `I scored All India Rank #${result.rank} of ${lbStats.totalParticipants.toLocaleString('en-IN')} in ${result.testTitle} on AajExam. Think you can beat me?`
-                  : `I scored ${result.score} in ${result.testTitle} on AajExam. Think you can beat me?`
+                  : `I scored ${fmtNum(result.score)} in ${result.testTitle} on AajExam. Think you can beat me?`
               }
             />
           </Card>

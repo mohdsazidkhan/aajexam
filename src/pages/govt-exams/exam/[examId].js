@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { fmtNum } from '../../../lib/utils/formatNumber';
 import { useRouter } from 'next/router';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
@@ -437,7 +438,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                         )}
                         {isCompleted && test.userAttempt && (
                           <p className="text-xs font-bold text-primary-600">
-                            Score: {test.userAttempt.score} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
+                            Score: {fmtNum(test.userAttempt.score)} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
                           </p>
                         )}
                       </div>

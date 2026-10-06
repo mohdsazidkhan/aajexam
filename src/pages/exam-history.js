@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { fmtNum } from '../lib/utils/formatNumber';
 import {
    History,
    Search,
@@ -141,7 +142,7 @@ const ExamHistoryPage = () => {
                                        <div className="grid grid-cols-2 gap-4 pt-2 border-t-2 border-slate-50 dark:border-slate-800">
                                           <div className="space-y-1">
                                              <span className="text-[8px] font-black text-gray-400">Score</span>
-                                             <p className="text-sm font-black">{attempt.score} / {attempt.totalMarks}</p>
+                                             <p className="text-sm font-black">{fmtNum(attempt.score)} / {fmtNum(attempt.totalMarks)}</p>
                                           </div>
                                           <div className="space-y-1">
                                              <span className="text-[8px] font-black text-gray-400">Rank</span>
