@@ -86,9 +86,10 @@ const User = mongoose.models.User || mongoose.model('User', userSchema, 'users')
 async function main() {
     await mongoose.connect(MONGO_URI);
 
-    const admin = await User.findOne({ role: 'admin' }).sort({ createdAt: 1 }).lean();
+    // createdBy is always the AajExam admin account, never "the oldest admin"
+    const admin = await User.findOne({ email: 'aajexam.com@gmail.com' }).lean();
     if (!admin) {
-        console.error('No admin user found in DB — cannot set createdBy.');
+        console.error('aajexam.com@gmail.com not found in DB — cannot set createdBy.');
         process.exit(1);
     }
     console.log(`Using admin "${admin.email || admin._id}" as createdBy`);
