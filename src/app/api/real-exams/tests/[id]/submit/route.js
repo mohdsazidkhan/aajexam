@@ -10,6 +10,7 @@ import { createNotification } from '@/utils/notifications';
 import { addManyWrongAnswersToRevision, snapshotFromPracticeTestQuestion } from '@/utils/revision';
 import { sendBrevoEmail } from '@/utils/email';
 import { hydrateTestQuestions } from '@/lib/utils/hydrateTestQuestions';
+import { fmtNum } from '@/lib/utils/formatNumber';
 
 export async function POST(req, { params }) {
     try {
@@ -128,7 +129,7 @@ export async function POST(req, { params }) {
                             <h3 style="margin-top: 0; color: #1E293B;">${test.title}</h3>
                             <p style="margin: 5px 0;"><strong>Exam:</strong> ${examName}</p>
                             <p style="margin: 5px 0;"><strong>Time Taken:</strong> ${timeString}</p>
-                            <p style="margin: 5px 0; font-size: 1.1em;"><strong>Score:</strong> <span style="color: #059669; font-weight: bold;">${evaluation.totalScore}</span> / ${test.totalMarks || (test.questions.length)}</p>
+                            <p style="margin: 5px 0; font-size: 1.1em;"><strong>Score:</strong> <span style="color: #059669; font-weight: bold;">${fmtNum(evaluation.totalScore)}</span> / ${test.totalMarks || (test.questions.length)}</p>
                             <p style="margin: 5px 0;"><strong>Current Rank:</strong> #${attempt.rank || 'N/A'}</p>
                         </div>
 
@@ -140,7 +141,7 @@ export async function POST(req, { params }) {
                     `;
                     sendBrevoEmail({
                         to: user.email,
-                        subject: `Result: ${test.title} - You scored ${evaluation.totalScore}!`,
+                        subject: `Result: ${test.title} - You scored ${fmtNum(evaluation.totalScore)}!`,
                         html: resultHtml
                     }).catch(err => console.error('Failed to send result email:', err));
                 }
