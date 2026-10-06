@@ -13,22 +13,20 @@ module.exports = {
         sans: ['var(--font-lato)', 'Lato', 'Noto Sans', 'sans-serif'],
       },
       colors: {
-        primary: {
-          // Values come from CSS custom properties so the user-selected theme
-          // color (ThemeColorMenuButton) can override them at runtime; defaults
-          // live in src/styles/index.css.
-          50: 'var(--color-primary-50)',
-          100: 'var(--color-primary-100)',
-          200: 'var(--color-primary-200)',
-          300: 'var(--color-primary-300)',
-          400: 'var(--color-primary-400)',
-          500: 'var(--color-primary-500)',
-          600: 'var(--color-primary-600)',
-          700: 'var(--color-primary-700)',
-          800: 'var(--color-primary-800)',
-          900: 'var(--color-primary-900)',
-          950: 'var(--color-primary-950)',
-        },
+        // Values come from CSS custom properties so the user-selected theme
+        // color (ThemeColorMenuButton) can override them at runtime; defaults
+        // live in src/styles/index.css. Plain var() colors cannot take an opacity
+        // modifier in Tailwind (bg-primary-500/10, dark:bg-primary-900/30 would
+        // silently not be generated), so build them with color-mix().
+        primary: Object.fromEntries(
+          [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((k) => [
+            k,
+            ({ opacityValue }) =>
+              opacityValue === undefined || String(opacityValue).includes("var(")
+                ? `var(--color-primary-${k})`
+                : `color-mix(in srgb, var(--color-primary-${k}) calc(${opacityValue} * 100%), transparent)`,
+          ])
+        ),
         slate: {
           950: '#0F1720', // Even darker for specific surfaces
           900: '#131f24', // AajExam Dark Background (matches --bg-page in dark mode)

@@ -224,7 +224,7 @@ const TestStart = ({ resolvedId } = {}) => {
 
   if (!started) {
     return (
-      <div className="h-screen bg-slate-950 flex items-center justify-center p-6">
+      <div className="h-screen bg-slate-950 flex items-center justify-center p-3 sm:p-6" style={{ height: '100dvh' }}>
         <TestStartModal
           isOpen={true}
           test={test}
@@ -256,7 +256,7 @@ const TestStart = ({ resolvedId } = {}) => {
   const answeredCount = Object.keys(answers).length;
 
   return (
-    <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col">
+    <div className="h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-primary-500/30 overflow-hidden flex flex-col" style={{ height: '100dvh' }}>
       <Seo title={`${test?.title || 'Practice Test'} – In Progress | AajExam`} description="Test in progress on AajExam." noIndex={true} />
 
       {/* --- Immersive Floating Mission Controller --- */}
@@ -264,13 +264,17 @@ const TestStart = ({ resolvedId } = {}) => {
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed top-6 right-6 z-[60] flex items-center justify-between gap-6 pointer-events-none"
+          className="relative shrink-0 z-[60] flex items-center justify-between gap-2 sm:gap-3 xl:gap-6 px-3 py-2 sm:px-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 xl:border-0 xl:bg-transparent xl:dark:bg-transparent xl:p-0 xl:fixed xl:top-6 xl:right-6 xl:pointer-events-none"
         >
           {/* Left: Spacer or Placeholder */}
-          <div className="flex-1 xl:flex-none" />
+          <div className="flex-1 min-w-0 md:hidden xl:hidden">
+            <p className="truncate text-[11px] font-black text-slate-500 uppercase tracking-widest leading-tight">{test?.title}</p>
+            <p className="text-xs font-black text-primary-600 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
+          </div>
+          <div className="hidden xl:block xl:flex-none" />
 
           {/* Center: Test Progress (Minimalist) */}
-          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-8 py-4 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
+          <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-[2rem] px-5 py-3 xl:px-8 xl:py-4 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">
                 <span className="pr-4">{test?.title}</span>
@@ -283,17 +287,17 @@ const TestStart = ({ resolvedId } = {}) => {
           </div>
 
           {/* Right: Timer & Tools */}
-          <div className="flex items-center gap-3 pointer-events-auto">
-            <div className={`flex items-center gap-3 px-6 py-3 rounded-[1.5rem] shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-600 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
-              <Clock className="w-5 h-5 text-current opacity-80" />
-              <span className="font-mono text-xl xl:text-2xl font-black">{formatTime(timeLeft)}</span>
+          <div className="flex items-center gap-2 xl:gap-3 pointer-events-auto shrink-0">
+            <div className={`flex items-center gap-1.5 xl:gap-3 px-3 py-2 xl:px-6 xl:py-3 rounded-xl xl:rounded-[1.5rem] shadow-sm border-2 ${timeLeft < 300 ?'bg-primary-600 text-white border-white/20 animate-pulse':'bg-slate-900/90 dark:bg-slate-800/90 text-white border-slate-700/50'} backdrop-blur-md transition-all`}>
+              <Clock className="w-4 h-4 xl:w-5 xl:h-5 text-current opacity-80" />
+              <span className="font-mono text-base xl:text-2xl font-black">{formatTime(timeLeft)}</span>
             </div>
 
             <LanguageToggle
               language={language}
               onToggle={toggleLanguage}
               translating={translatingQ}
-              className="px-4 py-3 min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-600 rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
+              className="px-2.5 py-2 xl:px-4 xl:py-3 min-w-[44px] xl:min-w-[64px] bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 hover:text-primary-600 rounded-xl xl:rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 font-black text-sm tracking-widest uppercase flex items-center justify-center gap-1.5"
             />
 
             <button
@@ -306,10 +310,10 @@ const TestStart = ({ resolvedId } = {}) => {
 
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
+              className="p-2.5 xl:p-4 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-xl xl:rounded-[1.5rem] shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
               title="Exit Test"
             >
-              <X className="w-6 h-6 group-hover:rotate-90 transition-transform" />
+              <X className="w-5 h-5 xl:w-6 xl:h-6 group-hover:rotate-90 transition-transform" />
             </button>
           </div>
         </motion.div>
@@ -386,7 +390,7 @@ const TestStart = ({ resolvedId } = {}) => {
         </aside>
 
         {/* Content Area */}
-        <section className="flex-1 overflow-y-auto scroll-smooth relative px-0 py-4 xl:py-8">
+        <section className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth relative px-3 sm:px-6 xl:px-8 py-3 sm:py-4 xl:py-8">
           {!showSidebar && (
             <button onClick={() => setShowSidebar(true)} title="Show panel"
               className="hidden xl:flex absolute top-20 left-2 z-10 items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300">
@@ -402,12 +406,12 @@ const TestStart = ({ resolvedId } = {}) => {
               transition={{ duration: 0.3 }}
               className="mx-auto space-y-2 xl:space-y-4"
             >
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-xs font-black text-primary-600 uppercase shrink-0">
                   <Target className="w-3 h-3" />
                   Q {currentQIndex + 1}
                 </div>
-                <h2 className="text-lg xl:text-xl font-black font-outfit leading-tight text-slate-800 dark:text-white whitespace-pre-wrap">
+                <h2 className="text-lg xl:text-xl font-black font-outfit leading-snug xl:leading-tight text-slate-800 dark:text-white whitespace-pre-wrap break-words min-w-0">
                   {currentQ.questionText}
                 </h2>
               </div>
@@ -420,10 +424,10 @@ const TestStart = ({ resolvedId } = {}) => {
               )}
 
               {currentQ.questionImage && (
-                <img src={currentQ.questionImage} alt="" className="max-h-72 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
+                <img src={currentQ.questionImage} alt="" className="max-h-56 sm:max-h-72 max-w-full rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
               )}
 
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-2.5 sm:gap-4">
                 {currentQ.options.map((opt, idx) => {
                   const isSelected = answers[currentQ._id] === idx;
                   const optImg = currentQ.optionImages?.[idx] || '';
@@ -433,32 +437,32 @@ const TestStart = ({ resolvedId } = {}) => {
                       disabled={translatingQ}
                       onClick={() => handleAnswer(idx)}
                       className={`
-                          group relative py-2 px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
+                          group relative py-2.5 px-3 sm:py-2 sm:px-5 rounded-2xl border-2 transition-all text-left flex items-center gap-3 sm:gap-4                          ${translatingQ ? 'opacity-60 cursor-not-allowed border-b-2 translate-y-0' : 'active:border-b-0 active:translate-y-1'}
                           ${isSelected
                           ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
                           : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}
                         `}
                     >
                       <div className={`
-                            w-10 h-10 rounded-lg xl:rounded-xl flex items-center justify-center font-black text-lg shrink-0 transition-colors
+                            w-8 h-8 sm:w-10 sm:h-10 rounded-lg xl:rounded-xl flex items-center justify-center font-black text-base sm:text-lg shrink-0 transition-colors
                             ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-400'}
                          `}>
                         {String.fromCharCode(65 + idx)}
                       </div>
-                      <div className="flex-1 flex flex-col gap-2 items-start">
-                        {opt && <span className="text-base font-bold leading-tight">{opt}</span>}
-                        {optImg && <img src={optImg} alt="" className="max-h-32 rounded-lg object-contain bg-white" />}
+                      <div className="flex-1 min-w-0 flex flex-col gap-2 items-start">
+                        {opt && <span className="text-sm sm:text-base font-bold leading-snug sm:leading-tight break-words max-w-full">{opt}</span>}
+                        {optImg && <img src={optImg} alt="" className="max-h-28 sm:max-h-32 max-w-full rounded-lg object-contain bg-white" />}
                       </div>
-                      {isSelected && <CircleCheck className="w-8 h-8 text-white animate-pop-in" />}
+                      {isSelected && <CircleCheck className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 text-white animate-pop-in" />}
                     </button>
                   );
                 })}
               </div>
 
-              <div className="flex items-center gap-4 pt-4">
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 pt-2 xl:pt-4">
                 <Button
                   variant="primary"
-                  className="flex-1"
+                  className="w-full !px-2 sm:!px-4 text-[11px] sm:text-sm"
                   onClick={() => {
                     const nextMarked = new Set(marked);
                     if (nextMarked.has(currentQ._id)) nextMarked.delete(currentQ._id);
@@ -466,12 +470,12 @@ const TestStart = ({ resolvedId } = {}) => {
                     setMarked(nextMarked);
                   }}
                 >
-                  <Flag className={`w-5 h-5 mr-2 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
-                  {marked.has(currentQ._id) ? 'MARKED' : 'MARK FOR REVIEW'}
+                  <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
+                  {marked.has(currentQ._id) ? 'MARKED' : <><span className="sm:hidden">MARK</span><span className="hidden sm:inline">MARK FOR REVIEW</span></>}
                 </Button>
                 <Button
                   variant="secondary"
-                  className="flex-1"
+                  className="w-full !px-2 sm:!px-4 text-[11px] sm:text-sm"
                   disabled={answers[currentQ._id] === undefined}
                   onClick={() => setAnswers(prev => {
                     const next = { ...prev };
@@ -479,8 +483,8 @@ const TestStart = ({ resolvedId } = {}) => {
                     return next;
                   })}
                 >
-                  <Trash2 className="w-5 h-5 mr-2 text-slate-400" />
-                  CLEAR ANSWER
+                  <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 text-slate-400" />
+                  <span className="sm:hidden">CLEAR</span><span className="hidden sm:inline">CLEAR ANSWER</span>
                 </Button>
               </div>
             </motion.div>
@@ -489,20 +493,20 @@ const TestStart = ({ resolvedId } = {}) => {
       </main>
 
       {/* --- Bottom Action Bar (Fixed) --- */}
-      <footer className="h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 flex items-center justify-between z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+      <footer className="min-h-[4rem] sm:min-h-[5rem] xl:h-24 shrink-0 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-3 sm:px-6 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] gap-2 flex items-center justify-between z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
         <Button
           variant="secondary"
           size="lg"
           disabled={currentQIndex === 0}
           onClick={() => setCurrentQIndex(prev => prev - 1)}
-          className="font-black"
+          className="font-black !px-3 sm:!px-6"
         >
-          <ChevronLeft className="w-6 h-6 mr-2" /> PREVIOUS
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 sm:mr-2" /> <span className="hidden sm:inline">PREVIOUS</span><span className="sm:hidden text-xs">PREV</span>
         </Button>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
-            className="xl:hidden p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl"
+            className="xl:hidden p-3 sm:p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl"
             onClick={() => setShowPalette(true)}
           >
             <Menu className="w-6 h-6" />
@@ -512,16 +516,16 @@ const TestStart = ({ resolvedId } = {}) => {
             <Button
               variant="primary"
               size="lg"
-              className="bg-primary-600 hover:bg-primary-600 px-12"
+              className="bg-primary-600 hover:bg-primary-600 !px-4 sm:!px-12 text-xs sm:text-base"
               onClick={() => setShowSubmitModal(true)}
             >
-              FINISH TEST <Send className="w-6 h-6 ml-2" />
+              FINISH <span className="hidden sm:inline">&nbsp;TEST</span> <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />
             </Button>
           ) : (
             <Button
               variant="primary"
               size="lg"
-              className="px-12"
+              className="!px-5 sm:!px-12"
               onClick={() => setCurrentQIndex(prev => prev + 1)}
             >
               NEXT <ChevronRight className="w-6 h-6 ml-2" />
@@ -535,9 +539,9 @@ const TestStart = ({ resolvedId } = {}) => {
         {showPalette && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
-            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[3rem] p-8 z-50 max-h-[75vh] overflow-y-auto">
-              <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-8" />
-              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase mb-6">Question Map</h3>
+            <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-t-[3rem] p-5 sm:p-8 pb-[max(1.25rem,env(safe-area-inset-bottom))] z-50 max-h-[80vh] overflow-y-auto" style={{ maxHeight: '80dvh' }}>
+              <div className="w-12 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-5 sm:mb-8" />
+              <h3 className="text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase mb-4 sm:mb-6">Question Map</h3>
               <div className="space-y-5">
                 {sectionNames.map((secName) => {
                   const group = sectionGroups[secName];
@@ -552,7 +556,7 @@ const TestStart = ({ resolvedId } = {}) => {
                           {answeredInSec}/{group.length}
                         </span>
                       </div>
-                      <div className="grid grid-cols-5 gap-3">
+                      <div className="grid grid-cols-5 sm:grid-cols-6 gap-2 sm:gap-3">
                         {group.map(({ q, idx }) => {
                           const isAnswered = answers[q._id] !== undefined;
                           const isMarked = marked.has(q._id);
@@ -561,7 +565,7 @@ const TestStart = ({ resolvedId } = {}) => {
                             <button
                               key={idx}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
-                              className={`h-14 rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-600 text-white border-primary-600' :
+                              className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-600 text-white border-primary-600' :
                                 isMarked ?'bg-primary-600 text-white border-primary-600':
                                   isAnswered ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 border-primary-200 dark:border-primary-600' :
                                     'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'}`}
@@ -583,18 +587,18 @@ const TestStart = ({ resolvedId } = {}) => {
       {/* --- Submit Confirmation Modal --- */}
       <AnimatePresence>
         {showSubmitModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 max-w-md w-full max-h-[75vh] overflow-y-auto shadow-sm border-2 border-primary-500/20">
-              <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CircleAlert className="w-10 h-10" />
+            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative bg-white dark:bg-slate-800 rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-10 max-w-md w-full max-h-[85vh] overflow-y-auto shadow-sm border-2 border-primary-500/20">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <CircleAlert className="w-7 h-7 sm:w-10 sm:h-10" />
               </div>
               <h2 className="text-xl xl:text-2xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
-              <p className="text-center text-slate-500 mb-8 font-bold leading-relaxed px-4">
+              <p className="text-center text-slate-500 mb-5 sm:mb-8 font-bold leading-relaxed text-sm sm:text-base px-1 sm:px-4">
                 You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
               <div className="space-y-3">
-                <Button variant="primary" fullWidth size="lg" className="py-6 text-xl" onClick={handleAutoSubmit} disabled={submitting}>
+                <Button variant="primary" fullWidth size="lg" className="py-4 sm:py-6 text-lg sm:text-xl" onClick={handleAutoSubmit} disabled={submitting}>
                   {submitting ? 'SUBMITTING...' : 'YES, I\'M DONE!'}
                 </Button>
                 <Button variant="secondary" fullWidth size="lg" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>

@@ -50,8 +50,8 @@ const TestStartModal = ({
   const sections = pattern?.sections || [];
 
   return (
-    <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-center justify-center z-[9999] p-4 font-outfit">
-      <div className="bg-background-surface rounded-[2.5rem] p-4 xl:p-8 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[75vh] overflow-y-auto scrollbar-none animate-bounce-in">
+    <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-end sm:items-center justify-center z-[9999] p-2 sm:p-4 font-outfit">
+      <div className="bg-background-surface rounded-3xl sm:rounded-[2.5rem] p-4 sm:p-6 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh' }}>
         <div className="text-center">
           {/* Header */}
           <div className="w-10 xl:w-20 h-10 xl:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
@@ -64,7 +64,8 @@ const TestStartModal = ({
 
           {/* Test Info */}
           <div className="bg-background-surface-secondary rounded-[1rem] xl:rounded-[2rem] p-3 xl:p-6 mb-3 xl:mb-6 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
-            <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2">
+            <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2 break-words">
+              {testTitle}
             </h3>
 
             {/* Subscription Info */}
@@ -88,7 +89,7 @@ const TestStartModal = ({
               )}
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <BookOpen className="w-5 h-5" />
@@ -164,7 +165,7 @@ const TestStartModal = ({
           )}
 
           {/* Test Rules */}
-          <div className="bg-background-surface-secondary rounded-[2rem] p-6 mb-8 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
+          <div className="bg-background-surface-secondary rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 mb-4 sm:mb-8 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
             <h4 className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-4 text-center">
               Test Instructions
             </h4>
@@ -177,24 +178,24 @@ const TestStartModal = ({
                 pattern?.negativeMarking > 0 ? `Negative Marking: -${pattern.negativeMarking} Marks` : null
               ].filter(Boolean).map((rule, idx) => (
                 <li key={idx} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-primary-600 rounded-full shadow-sm" />
+                  <div className="w-1.5 h-1.5 shrink-0 bg-primary-600 rounded-full shadow-sm" />
                   <span className="leading-tight">{rule}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="bg-slate-100 dark:bg-slate-800/30 p-6 rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 mb-8 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all group">
-            <label className="flex items-center gap-4 cursor-pointer">
-              <div className="relative">
+          <div className="bg-slate-100 dark:bg-slate-800/30 p-4 sm:p-6 rounded-2xl sm:rounded-[2rem] border-2 border-slate-200/50 dark:border-slate-700/30 mb-4 sm:mb-8 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all group">
+            <label className="flex items-center gap-3 sm:gap-4 cursor-pointer">
+              <div className="relative shrink-0">
                 <input
                   type="checkbox"
                   checked={acceptedRules}
                   onChange={(e) => setAcceptedRules(e.target.checked)}
-                  className="w-10 h-10 border-2 border-slate-200 dark:border-slate-700 rounded-2xl appearance-none checked:bg-primary-600 checked:border-primary-600 transition-all cursor-pointer shadow-sm"
+                  className="w-8 h-8 sm:w-10 sm:h-10 border-2 border-slate-200 dark:border-slate-700 rounded-xl sm:rounded-2xl appearance-none checked:bg-primary-600 checked:border-primary-600 transition-all cursor-pointer shadow-sm"
                 />
                 {acceptedRules && (
-                  <CheckCircle2 className="absolute inset-0 m-auto text-white w-6 h-6 pointer-events-none" />
+                  <CheckCircle2 className="absolute inset-0 m-auto text-white w-5 h-5 sm:w-6 sm:h-6 pointer-events-none" />
                 )}
               </div>
               <span className="text-[11px] xl:text-xs font-black text-content-primary uppercase tracking-widest text-left leading-relaxed">
@@ -204,17 +205,17 @@ const TestStartModal = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4 sticky bottom-0 -mx-4 sm:mx-0 px-4 sm:px-0 pt-3 pb-1 bg-background-surface">
             <button
               onClick={onClose}
-              className="flex-1 px-6 py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
+              className="flex-1 px-4 sm:px-6 py-4 sm:py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-2xl sm:rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
             >
               Cancel
             </button>
             <button
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
-              className={`flex-[2] px-8 py-5 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
+              className={`flex-[2] px-5 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
                 ? 'bg-primary-600 text-white border-white/20 shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
@@ -224,7 +225,7 @@ const TestStartModal = ({
           </div>
 
           {!acceptedRules && (
-            <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.1em] mt-6 text-center">
+            <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.1em] mt-3 sm:mt-6 text-center">
               Please accept the instructions to continue
             </p>
           )}

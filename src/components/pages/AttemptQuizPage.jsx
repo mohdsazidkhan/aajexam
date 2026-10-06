@@ -528,7 +528,7 @@ const AttemptQuizPage = () => {
                         {index + 1}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold text-slate-800 dark:text-white">{question.questionText}</p>
+                        <p className="text-sm font-bold text-slate-800 dark:text-white break-words">{question.questionText}</p>
                         {/* ⏱ Time-per-question */}
                         {timeLabel && (
                           <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
@@ -558,7 +558,7 @@ const AttemptQuizPage = () => {
                             {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
                             {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />}
                             {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
-                            <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>
+                            <span className="text-slate-700 dark:text-slate-300 break-words min-w-0">{opt.text}</span>
                           </div>
                         );
                       })}
@@ -592,12 +592,12 @@ const AttemptQuizPage = () => {
               <button
                 onClick={handleChallenge}
                 disabled={isGeneratingChallenge}
-                className="w-full px-6 py-4 bg-primary-600 hover:bg-black text-white rounded-2xl font-black text-lg uppercase tracking-wider shadow-sm transition-transform hover:scale-[1.02] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-primary-600 hover:bg-black text-white rounded-2xl font-black text-sm sm:text-lg uppercase tracking-wide sm:tracking-wider shadow-sm transition-transform hover:scale-[1.02] flex items-center justify-center gap-2 sm:gap-3 text-center disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isGeneratingChallenge ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
-                  <><Users className="w-6 h-6" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
+                  <><Users className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
                 )}
               </button>
             )}
@@ -619,7 +619,7 @@ const AttemptQuizPage = () => {
   // ─── QUIZ IN PROGRESS ───
   return (
     <div className="min-h-screen bg-background-page overflow-x-hidden">
-      <div className="pt-3 pb-32">
+      <div className="pt-3 pb-32 sm:pb-36">
 
         {/* Quiz Header */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm border border-white/20 p-3 mb-3">
@@ -631,7 +631,7 @@ const AttemptQuizPage = () => {
                 <BrainCircuit className="w-4 h-4 text-white" />
               </div>
               <div className="min-w-0">
-                <h1 title={quiz?.title} className="text-sm xl:text-lg font-bold text-slate-800 dark:text-white truncate max-w-[200px] xl:max-w-none">{quiz?.title}</h1>
+                <h1 title={quiz?.title} className="text-sm xl:text-lg font-bold text-slate-800 dark:text-white truncate xl:max-w-none">{quiz?.title}</h1>
                 <p className="text-[10px] xl:text-xs text-slate-500">{quiz.questions.length} Questions</p>
               </div>
             </div>
@@ -660,16 +660,16 @@ const AttemptQuizPage = () => {
             </div>
 
             {/* Right: Language + Timer + Fullscreen */}
-            <div className="flex items-center gap-2 flex-1 justify-end">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 xl:flex-1 justify-end">
               {/* Language */}
               <LanguageToggle
                 language={language}
                 onToggle={toggleLanguage}
                 translating={translating}
-                className="flex items-center justify-center gap-1.5 min-w-[52px] px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                className="flex items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               />
               {/* Timer */}
-              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
+              <div className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm ${timeLeft <= 60 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white animate-pulse' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
                 <Clock className="w-4 h-4" />
                 {formatTime(timeLeft)}
               </div>
@@ -677,7 +677,7 @@ const AttemptQuizPage = () => {
               <button
                 onClick={toggleFullscreen}
                 title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
-                className="flex items-center justify-center w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                className="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               >
                 {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
               </button>
@@ -729,7 +729,7 @@ const AttemptQuizPage = () => {
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white text-sm font-bold shrink-0">
               {currentQuestionIndex + 1}
             </div>
-            <p className="text-base xl:text-lg font-semibold text-slate-800 dark:text-white leading-relaxed">
+            <p className="text-[15px] sm:text-base xl:text-lg font-semibold text-slate-800 dark:text-white leading-relaxed break-words min-w-0">
               {translated?.questionText || currentQuestion.questionText}
             </p>
           </div>
@@ -755,7 +755,7 @@ const AttemptQuizPage = () => {
                 <button
                   key={optIdx}
                   onClick={() => handleSelect(optIdx)}
-                  className={`w-full text-left flex items-center gap-3 px-4 py-3 rounded-lg xl:rounded-xl border-2 transition-all duration-200 ${isSelected
+                  className={`w-full text-left flex items-center gap-3 px-3 sm:px-4 py-3 rounded-lg xl:rounded-xl border-2 transition-all duration-200 ${isSelected
                       ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/30 shadow-sm'
                       : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-500'
                     }`}
@@ -764,7 +764,7 @@ const AttemptQuizPage = () => {
                     }`}>
                     {String.fromCharCode(65 + optIdx)}
                   </div>
-                  <span className={`text-sm font-medium ${isSelected ? 'text-primary-600 dark:text-primary-200' : 'text-slate-700 dark:text-slate-300'}`}>
+                  <span className={`text-sm font-medium break-words min-w-0 ${isSelected ? 'text-primary-600 dark:text-primary-200' : 'text-slate-700 dark:text-slate-300'}`}>
                     {translated?.optionTexts?.[optIdx] || option.text}
                   </span>
                 </button>
@@ -774,7 +774,7 @@ const AttemptQuizPage = () => {
         </div>
 
         {/* Navigation Buttons - Fixed Bottom */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-200 dark:border-slate-700 p-3 z-40">
+        <div className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-200 dark:border-slate-700 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] z-40">
           <div className="flex gap-3 max-w-4xl mx-auto">
             <button
               onClick={handlePreviousQuestion}
