@@ -10,6 +10,8 @@ import DiscussionThread from '../components/discussions/DiscussionThread';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import { ChallengeSkeleton } from '../components/skeletons/PrivateSkeletons';
+import LanguageToggle from '../components/LanguageToggle';
+import useStoredTranslations from '../hooks/useStoredTranslations';
 
 const DailyChallengePage = () => {
   const [challenge, setChallenge] = useState(null);
@@ -22,6 +24,11 @@ const DailyChallengePage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
   const [leaderboard, setLeaderboard] = useState([]);
+  // EN <-> HI: stored Hindi from the DB first, the model only for questions that have none
+  const { language, toggleLanguage, translating, get: getHindi } = useStoredTranslations({
+    ids: (challenge?.questions || []).map((q) => q.question),
+    source: 'daily_challenge'
+  });
 
   useEffect(() => {
     const fetchToday = async () => {
@@ -142,8 +149,14 @@ const DailyChallengePage = () => {
       />
       <div className="py-4 xl:py-6 space-y-4 sm:space-y-6">
         {/* Header */}
-        <div className="text-center space-y-2">
-          <div className="flex items-center justify-center gap-2">
+        <div className="text-center space-y-2 relative">
+          <LanguageToggle
+            language={language}
+            onToggle={toggleLanguage}
+            translating={translating}
+            className="absolute top-0 right-0 flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+          />
+          <div className="flex items-center justify-center gap-2 px-14">
             <Target className="w-6 h-6 text-primary-600" />
             <h1 className="text-xl sm:text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white break-words min-w-0">{challenge.title}</h1>
           </div>
@@ -174,14 +187,14 @@ const DailyChallengePage = () => {
               </span>
             </div>
             <Card className="space-y-2 xl:space-y-4">
-              <h3 className="text-[15px] sm:text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed break-words">{challenge.questions[currentQ].questionText}</h3>
+              <h3 className="text-[15px] sm:text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed break-words">{getHindi(challenge.questions[currentQ].question)?.questionText || challenge.questions[currentQ].questionText}</h3>
               <div className="space-y-3">
                 {challenge.questions[currentQ].options.map((opt, i) => (
                   <button key={i} onClick={() => selectOption(i)}
                     className={`w-full text-left px-3 sm:px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold break-words transition-all border-2 ${answers[currentQ]?.selectedOptionIndex === i
                       ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300'
                       : 'border-slate-100 dark:border-slate-800 hover:border-slate-300 text-slate-700 dark:text-slate-300'}`}>
-                    <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt.text || opt}
+                    <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(challenge.questions[currentQ].question)?.optionTexts?.[i] || opt.text || opt}
                   </button>
                 ))}
               </div>
@@ -235,7 +248,7 @@ const DailyChallengePage = () => {
                       <div key={q._id || idx} className={`rounded-lg xl:rounded-xl p-3 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white'}`}>
                         <div className="flex items-start gap-2 mb-2">
                           <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${isSkipped ?'bg-slate-400 text-white': isCorrect ?'bg-primary-600 text-white':'bg-primary-600 text-white'}`}>{idx + 1}</div>
-                          <p className="text-sm font-bold text-slate-800 dark:text-white break-words min-w-0">{q.questionText}</p>
+                          <p className="text-sm font-bold text-slate-800 dark:text-white break-words min-w-0">{getHindi(q.question)?.questionText || q.questionText}</p>
                         </div>
                         <div className="space-y-1 ml-0 sm:ml-8">
                           {q.options?.map((opt, oi) => {
@@ -249,7 +262,7 @@ const DailyChallengePage = () => {
                                 {isRight && <CheckCircle className="w-3.5 h-3.5 text-primary-600 shrink-0" />}
                                 {isSel && !isCorrect && <XCircle className="w-3.5 h-3.5 text-black dark:text-white shrink-0" />}
                                 {!isRight && !isSel && <div className="w-3.5 h-3.5 shrink-0" />}
-                                <span className="text-slate-700 dark:text-slate-300 break-words min-w-0">{opt.text || opt}</span>
+                                <span className="text-slate-700 dark:text-slate-300 break-words min-w-0">{getHindi(q.question)?.optionTexts?.[oi] || opt.text || opt}</span>
                               </div>
                             );
                           })}

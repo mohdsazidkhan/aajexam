@@ -8,6 +8,8 @@ import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import Seo from '../components/Seo';
 import { RevisionSkeleton } from '../components/skeletons/PrivateSkeletons';
+import LanguageToggle from '../components/LanguageToggle';
+import useStoredTranslations from '../hooks/useStoredTranslations';
 
 const SOURCE_TABS = [
   { key: 'all', label: 'All', icon: Layers },
@@ -25,6 +27,11 @@ const RevisionPage = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [reviewing, setReviewing] = useState(false);
   const [activeTab, setActiveTab] = useState('all');
+  // EN <-> HI: stored Hindi from the DB first, the model only for questions that have none
+  const { language, toggleLanguage, translating, get: getHindi } = useStoredTranslations({
+    ids: dueItems.map((it) => it.questionRef),
+    source: 'revision'
+  });
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -75,7 +82,13 @@ const RevisionPage = () => {
       <Seo title="Revision Queue – AajExam" description="Spaced-repetition revision queue for your AajExam practice." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
-          <div className="space-y-1">
+          <div className="space-y-1 relative">
+            <LanguageToggle
+              language={language}
+              onToggle={toggleLanguage}
+              translating={translating}
+              className="absolute top-0 right-0 flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+            />
             <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-6 h-6 text-primary-600" /> Revision Queue</h1>
             <p className="text-sm font-bold text-slate-400">Spaced repetition - review your weak questions</p>
           </div>
@@ -119,13 +132,13 @@ const RevisionPage = () => {
                 <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300">{(currentItem.source || '').replace('_', ' ')}</span>
                 {currentItem.sourceTitle && <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 truncate max-w-[70%]">{currentItem.sourceTitle}</span>}
               </div>
-              <h3 className="text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{currentItem.questionSnapshot?.questionText}</h3>
+              <h3 className="text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{getHindi(currentItem.questionRef)?.questionText || currentItem.questionSnapshot?.questionText}</h3>
 
               {!showAnswer ? (
                 <div className="space-y-3">
                   {currentItem.questionSnapshot?.options?.map((opt, i) => (
                     <div key={i} className="px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                      <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt}
+                      <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt}
                     </div>
                   ))}
                   <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-600 hover:bg-primary-600 transition text-white rounded-lg xl:rounded-xl text-sm font-bold mt-2">Show Answer</button>
@@ -137,7 +150,7 @@ const RevisionPage = () => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
                       return (
                         <div key={i} className={`px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border-2 ${isCorrect ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/20' : 'border-slate-100 dark:border-slate-800'}`}>
-                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-600 ml-2" />}
+                          <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt} {isCorrect && <CheckCircle className="w-4 h-4 inline text-primary-600 ml-2" />}
                         </div>
                       );
                     })}

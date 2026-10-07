@@ -941,6 +941,15 @@ class ApiService {
     });
   }
 
+  // Daily challenge / revision: stored Hindi for these question ids first; the server
+  // translates (and stores) only the ones that have none yet.
+  async lookupTranslations({ ids, lang = 'hi', source }) {
+    return this.request('/api/translate/lookup', {
+      method: 'POST',
+      body: JSON.stringify({ ids, lang, source })
+    });
+  }
+
   async getUserTestResults(userId, params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/real-exams/user/${userId}/results${queryString ? `?${queryString}` : ''}`);

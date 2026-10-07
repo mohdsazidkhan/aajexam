@@ -15,8 +15,8 @@ import mongoose from 'mongoose';
  */
 const questionTranslationSchema = new mongoose.Schema({
     questionId: { type: mongoose.Schema.Types.ObjectId, required: true },
-    sourceType: { type: String, enum: ['quiz', 'test'], required: true },
-    sourceId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    sourceType: { type: String, enum: ['quiz', 'test', 'daily_challenge', 'revision'], required: true },
+    sourceId: { type: mongoose.Schema.Types.ObjectId },
     lang: { type: String, required: true, lowercase: true },
     questionText: { type: String, default: '' },
     options: [{ type: String }],
