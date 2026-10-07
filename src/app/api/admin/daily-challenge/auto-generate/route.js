@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import DailyChallenge from '@/models/DailyChallenge';
-import Question from '@/models/Question';
+import { pickDailyQuestions, usedDailyQuestionIds, toChallengeQuestions } from '@/lib/utils/dailyQuestionPicker';
 import { protect, admin } from '@/middleware/auth';
 
 // POST - Auto-generate daily challenge from question bank
@@ -23,25 +23,15 @@ export async function POST(req) {
         }).lean();
         if (existing) return NextResponse.json({ message: 'Challenge already exists for this date', data: existing }, { status: 400 });
 
-        // Pick random questions
-        let query = { isActive: true };
-        if (difficulty !== 'mixed') query.difficulty = difficulty;
-
-        const questions = await Question.aggregate([
-            { $match: query },
-            { $sample: { size: count } }
-        ]);
+        // Random questions that are clean, image-free and already have Hindi (so the EN/HI toggle works), no repeats
+        const questions = await pickDailyQuestions({ count, difficulty, exclude: await usedDailyQuestionIds() });
 
         if (questions.length === 0) {
-            return NextResponse.json({ message: 'No questions available in question bank' }, { status: 400 });
+            return NextResponse.json({ message: 'No eligible questions available in question bank' }, { status: 400 });
         }
 
         // store links into `questions`; the content stays there
-        const challengeQuestions = questions.map(q => ({
-            question: q._id,
-            subject: q.subject?.toString() || '',
-            difficulty: q.difficulty
-        }));
+        const challengeQuestions = toChallengeQuestions(questions);
 
         const challenge = await DailyChallenge.create({
             date: targetDate,

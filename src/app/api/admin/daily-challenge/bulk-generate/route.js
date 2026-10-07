@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import DailyChallenge from '@/models/DailyChallenge';
-import Question from '@/models/Question';
+import { pickDailyQuestions, usedDailyQuestionIds, toChallengeQuestions } from '@/lib/utils/dailyQuestionPicker';
 import { protect, admin } from '@/middleware/auth';
 
 // POST - Bulk auto-generate daily challenges for a specific month
@@ -22,9 +22,8 @@ export async function POST(req) {
         let generatedCount = 0;
         let skippedCount = 0;
 
-        // Base query for random questions
-        let query = { isActive: true };
-        if (difficulty !== 'mixed') query.difficulty = difficulty;
+        // Questions already used in a challenge (grows as we generate) so no day repeats one
+        const used = await usedDailyQuestionIds();
 
         for (let day = 1; day <= numDays; day++) {
             const targetDate = new Date(year, month, day);
@@ -40,26 +39,19 @@ export async function POST(req) {
                 continue;
             }
 
-            // Pick random questions for this day
-            const questions = await Question.aggregate([
-                { $match: query },
-                { $sample: { size: count } }
-            ]);
+            // Clean, image-free questions that already have Hindi, never repeated
+            const questions = await pickDailyQuestions({ count, difficulty, exclude: used });
 
             if (questions.length === 0) {
                 return NextResponse.json({ 
-                    message: `Stopped at day ${day}: No questions available in question bank`, 
+                    message: `Stopped at day ${day}: No eligible questions available in question bank`, 
                     generated: generatedCount, 
                     skipped: skippedCount 
                 }, { status: 400 });
             }
 
             // store links into `questions`; the content stays there
-            const challengeQuestions = questions.map(q => ({
-                question: q._id,
-                subject: q.subject?.toString() || '',
-                difficulty: q.difficulty
-            }));
+            const challengeQuestions = toChallengeQuestions(questions);
 
             await DailyChallenge.create({
                 date: targetDate,
