@@ -297,3 +297,38 @@ td {
   }
 }
 
+
+/* Hindi (Devanagari) needs more vertical room: matras above and below the line clip or
+   collide at the tight line-heights the English design uses, and wrapped text looks
+   squashed. Applies site-wide, only while the language is Hindi (html[lang="hi"]). */
+html[lang="hi"] body {
+  line-height: 1.3;
+}
+html[lang="hi"] :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.1;
+}
+/* every Tailwind leading-* utility (none/tight/snug/normal, numeric 3-10, arbitrary) */
+html[lang="hi"] [class*="leading-"] {
+  line-height: 1.2 !important;
+}
+html[lang="hi"] .leading-none,
+html[lang="hi"] .leading-tight,
+html[lang="hi"] [class*="leading-["] {
+  line-height: 1.1 !important;
+}
+html[lang="hi"] .leading-relaxed {
+  line-height: 1.4 !important;
+}
+html[lang="hi"] .leading-loose {
+  line-height: 1.6 !important;
+}
+html[lang="hi"] .tracking-tighter,
+html[lang="hi"] .tracking-tight {
+  letter-spacing: 0 !important;
+}
+/* Devanagari glyphs sit high in the line box (tall headline, little room below the baseline), so
+   centered button text looks pushed up. Nudge the label down a touch, Hindi only. */
+html[lang="hi"] .btn-label {
+  position: relative;
+  top: 0.12em;
+}

@@ -1923,6 +1923,8 @@ const HI = {
   'Network error: Unable to connect to server. Please check your internet connection.': 'नेटवर्क त्रुटि: सर्वर से जुड़ नहीं पा रहे। कृपया अपना इंटरनेट कनेक्शन जाँचें।',
   'An unexpected error occurred. Please try again.': 'कोई अनपेक्षित त्रुटि हुई। कृपया दोबारा कोशिश करें।',
   '{name} Syllabus & Subjects': '{name} सिलेबस और विषय',
+  'English fonts': 'अंग्रेज़ी फ़ॉन्ट',
+  'Hindi fonts': 'हिंदी फ़ॉन्ट',
 };
 
 export default HI;

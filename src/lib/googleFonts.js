@@ -1,59 +1,18 @@
-// Curated list of Google Fonts that support the site's heavy use of bold/black
-// (700-900) weights, so switching fonts doesn't break the design language.
+// Fonts offered in the Font Family tab: five English and five Hindi (Devanagari) fonts, all
+// with the bold/black (700-900) weights the site's design language relies on.
 export const DEFAULT_FONT = 'Lato';
+export const HINDI_FONT = 'Hind';
 
-export const GOOGLE_FONTS = [
-  'Lato',
-  'Inter',
-  'Roboto',
-  'Open Sans',
-  'Poppins',
-  'Montserrat',
-  'Nunito',
-  'Nunito Sans',
-  'Raleway',
-  'Rubik',
-  'Work Sans',
-  'Manrope',
-  'Mulish',
-  'DM Sans',
-  'Karla',
-  'Quicksand',
-  'Sora',
-  'Urbanist',
-  'Plus Jakarta Sans',
-  'Outfit',
-  'Space Grotesk',
-  'Figtree',
-  'Lexend',
-  'Barlow',
-  'Kanit',
-  'Josefin Sans',
-  'Oswald',
-  'Archivo',
-  'Titillium Web',
-  'Cabin',
-  'Heebo',
-  'Hind',
-  'IBM Plex Sans',
-  'Jost',
-  'Libre Franklin',
-  'Maven Pro',
-  'Overpass',
-  'PT Sans',
-  'Red Hat Display',
-  'Rajdhani',
-  'Saira',
-  'Signika',
-  'Ubuntu',
-  'Varela Round',
-  'Zilla Slab',
-  'Exo 2',
-  'Asap',
-  'Catamaran',
-  'Chivo',
-  'Fira Sans',
-];
+export const ENGLISH_FONTS = ['Lato', 'Inter', 'Poppins', 'Roboto', 'Open Sans'];
+export const HINDI_FONTS = ['Hind', 'Mukta', 'Noto Sans Devanagari', 'Baloo 2', 'Yantramanav'];
+export const GOOGLE_FONTS = [...ENGLISH_FONTS, ...HINDI_FONTS];
+
+// A font saved before the list was trimmed falls back to one that is still offered
+// (a Hindi font when the site language is Hindi).
+export function sanitizeFont(fontName, language) {
+  if (GOOGLE_FONTS.includes(fontName)) return fontName;
+  return language === 'hi' ? HINDI_FONT : DEFAULT_FONT;
+}
 
 const FONT_LINK_ID = 'dynamic-google-font';
 

@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const PADDING_CLASS = /^(?:[a-z0-9-]+:)*!?-?p[xytrblse]?-/;
+
 /**
  * Button - A friendly, bubbly, AajExam-inspired 3D button for the gamified learning experience.
  */
@@ -26,11 +28,19 @@ const Button = ({
   };
 
   const sizes = {
-    sm: 'px-4 py-2.5 text-xs font-black uppercase tracking-[0.08em] rounded-lg xl:rounded-xl',
-    md: 'px-6 py-3.5 text-sm font-black uppercase tracking-[0.08em] rounded-2xl',
-    xl: 'px-8 py-5 text-sm xl:text-base font-black uppercase tracking-[0.1em] rounded-[2rem]',
-    xl: 'px-8 py-4 text-sm xl:px-10 xl:py-6 xl:text-lg font-black uppercase tracking-[0.12em] rounded-[2.5rem]',
+    sm: 'px-4 py-2 text-xs font-black uppercase tracking-[0.08em] rounded-lg xl:rounded-xl',
+    md: 'px-6 py-2.5 text-sm font-black uppercase tracking-[0.08em] rounded-2xl',
+    lg: 'px-8 py-3',
+    xl: 'px-8 py-3 text-sm xl:px-10 xl:py-4 xl:text-lg font-black uppercase tracking-[0.12em] rounded-[2.5rem]',
   };
+
+  // One default padding per size. Padding utilities passed in className are dropped: they sat
+  // on top of the size padding and, because Tailwind orders by stylesheet and not by class
+  // order, either stacked unpredictably or lost, so buttons of one size looked different.
+  const extraClasses = className
+    .split(/\s+/)
+    .filter((token) => token && !PADDING_CLASS.test(token))
+    .join(' ');
 
   const IconComponent = () => Icon ? (
     <Icon className={`${size === 'sm' ? 'w-3.5 h-3.5' : size === 'xl' ? 'w-6 h-6' : 'w-5 h-5'} group-hover:scale-110 transition-transform`} />
@@ -50,7 +60,7 @@ const Button = ({
         relative transition-all duration-150 flex items-center justify-center gap-3
         ${variant === 'secondary' ? 'border-b-2' : 'border-b-[6px] active:border-b-0'}
         group cursor-pointer font-outfit overflow-hidden
-        ${className}
+        ${extraClasses}
       `}
     >
       {/* Premium Shimmer Overlay */}
@@ -61,7 +71,7 @@ const Button = ({
       {/* Button Content */}
       <div className="relative z-10 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
         {iconPosition === 'left' && <IconComponent />}
-        <span className="whitespace-nowrap flex items-center gap-2">{children}</span>
+        <span className="btn-label whitespace-nowrap flex items-center gap-2">{children}</span>
         {iconPosition === 'right' && <IconComponent />}
       </div>
     </motion.button>

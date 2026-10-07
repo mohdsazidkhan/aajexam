@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { applyFont, DEFAULT_FONT } from '../lib/googleFonts';
+import { applyFont, DEFAULT_FONT, sanitizeFont } from '../lib/googleFonts';
 
 const getInitialFont = () => {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem('fontFamily');
-    if (saved) return saved;
+    if (saved) return sanitizeFont(saved, localStorage.getItem('pageLanguage'));
   }
   return DEFAULT_FONT;
 };
@@ -26,7 +26,7 @@ const fontSlice = createSlice({
       // Re-read from localStorage on client to fix SSR hydration mismatch,
       // same rationale as initializeDarkMode/initializeThemeColor.
       if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem('fontFamily') || DEFAULT_FONT;
+        const saved = sanitizeFont(localStorage.getItem('fontFamily') || DEFAULT_FONT, localStorage.getItem('pageLanguage'));
         state.fontFamily = saved;
         applyFont(saved);
       }
