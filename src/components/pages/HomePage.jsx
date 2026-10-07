@@ -26,6 +26,7 @@ import {
    BarChart3,
    Clock,
    Film,
+   RotateCcw,
 } from "lucide-react";
 
 import API from "../../lib/api";
@@ -359,34 +360,61 @@ const HomePage = () => {
             </section>
 
             {/* ── Quick Actions ── */}
-            <section className="px-0 py-2 xl:py-4">
-               <div className="grid grid-cols-3 gap-1.5 xl:gap-4">
+            <section className="px-0 py-2 xl:py-2">
+               <div className="grid grid-cols-3 gap-1.5 xl:gap-3">
                   <button
                      onClick={() => router.push('/govt-exams')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-3xl p-1.5 xl:p-6 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-6 h-6 xl:w-12 xl:h-12 shrink-0 rounded-md xl:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <Zap className="w-3.5 h-3.5 xl:w-7 xl:h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <Zap className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
                      <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Start Test</p>
                   </button>
                   <button
                      onClick={() => router.push('/quizzes')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-3xl p-1.5 xl:p-6 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-6 h-6 xl:w-12 xl:h-12 shrink-0 rounded-md xl:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <PlayCircle className="w-3.5 h-3.5 xl:w-7 xl:h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <PlayCircle className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
                      <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Start Quiz</p>
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-3xl p-1.5 xl:p-6 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
                   >
-                     <div className="w-6 h-6 xl:w-12 xl:h-12 shrink-0 rounded-md xl:rounded-2xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <FileText className="w-3.5 h-3.5 xl:w-7 xl:h-7 text-slate-900 dark:text-white" />
+                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <FileText className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
                      <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Read Blog</p>
+                  </button>
+                  <button
+                     onClick={() => router.push('/daily-challenge')}
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                  >
+                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <Flame className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
+                     </div>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Daily Challenge</p>
+                  </button>
+                  <button
+                     onClick={() => router.push('/revision')}
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                  >
+                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <RotateCcw className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
+                     </div>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Revision</p>
+                  </button>
+                  <button
+                     onClick={() => router.push('/all-india-rank')}
+                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
+                  >
+                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
+                        <Award className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
+                     </div>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">All India Rank</p>
                   </button>
                </div>
             </section>
