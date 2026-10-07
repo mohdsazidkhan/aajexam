@@ -464,7 +464,7 @@ const LeaderboardPage = () => {
             >
               Leaderboard
             </motion.h1>
-            <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Top {type === 'quiz' ? 'Quiz' : 'Exam'} Performers</p>
+            <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Ranked by: {type === 'quiz' ? 'Quizzes' : 'Exams'} Attempted, then Accuracy, then Total Score</p>
 
             {/* Podium */}
             {loading ? (
