@@ -34,27 +34,31 @@ import useTargetExamsVersion from "../../hooks/useTargetExamsVersion";
 import { useAuthStatus } from "../../hooks/useClientSide";
 import HomePageSkeleton from "../HomePageSkeleton";
 import { formatSecondsSpent } from "../../lib/utils/timeFormat";
+import useTranslate from "../../hooks/useTranslate";
 
 // ─── Section Header ───
-const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) => (
+const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) => {
+   const { translate } = useTranslate();
+   return (
    <div className="flex items-center justify-between mb-4">
       <div className="flex items-center gap-2.5">
          <div className={`w-9 h-9 rounded-lg xl:rounded-xl flex items-center justify-center ${iconBg}`}>
             <IconComp className={`w-[18px] h-[18px] ${iconColor}`} />
          </div>
          <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight">
-            {title}
+            {translate(title)}
          </h2>
       </div>
       <button
          onClick={onViewAll}
          className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-primary-500/10 hover:bg-primary-500/20 transition-colors"
       >
-         <span className="text-xs font-extrabold text-black dark:text-white">View All</span>
+         <span className="text-xs font-extrabold text-black dark:text-white">{translate('View All')}</span>
          <ChevronRight className="w-3.5 h-3.5 text-black dark:text-white" />
       </button>
    </div>
-);
+   );
+};
 
 // ─── Skeleton for sections ───
 const SectionSkeleton = () => (
@@ -66,7 +70,9 @@ const SectionSkeleton = () => (
 );
 
 // ─── Govt Exam Card ───
-const GovtExamCard = ({ item, onClick }) => (
+const GovtExamCard = ({ item, onClick }) => {
+   const { translateData } = useTranslate();
+   return (
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
@@ -75,16 +81,19 @@ const GovtExamCard = ({ item, onClick }) => (
          <GraduationCap className="w-6 h-6 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
-         {item.name}
+         {translateData(item.name)}
       </p>
       {item.code && (
          <p className="text-[11px] font-semibold text-slate-400">{item.code}</p>
       )}
    </div>
-);
+   );
+};
 
 // ─── Quiz Card ───
-const QuizCard = ({ item, onClick }) => (
+const QuizCard = ({ item, onClick }) => {
+   const { translate, translateData } = useTranslate();
+   return (
    <div
       onClick={onClick}
       className="min-w-[160px] xl:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
@@ -93,18 +102,21 @@ const QuizCard = ({ item, onClick }) => (
          <Brain className="w-5 h-5 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
-         {item.title || item.name}
+         {translateData(item.title || item.name)}
       </p>
       <div className="flex items-center gap-1 text-[11px] font-semibold text-slate-400">
-         {item.totalQuestions > 0 && <span>{item.totalQuestions} Q</span>}
+         {item.totalQuestions > 0 && <span>{item.totalQuestions} {translate('Q')}</span>}
          {item.totalQuestions > 0 && item.duration > 0 && <span>·</span>}
-         {item.duration > 0 && <span>{item.duration} min</span>}
+         {item.duration > 0 && <span>{translate('{count} min', { count: item.duration })}</span>}
       </div>
    </div>
-);
+   );
+};
 
 // ─── Subject Card ───
-const SubjectCard = ({ item, onClick }) => (
+const SubjectCard = ({ item, onClick }) => {
+   const { translate, translateData } = useTranslate();
+   return (
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
@@ -113,18 +125,21 @@ const SubjectCard = ({ item, onClick }) => (
          <BookOpen className="w-6 h-6 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
-         {item.name}
+         {translateData(item.name)}
       </p>
       {(item.quizCount > 0 || item.topicCount > 0) && (
          <p className="text-[11px] font-semibold text-slate-400">
-            {item.topicCount > 0 ? `${item.topicCount} Topics` : `${item.quizCount} Quizzes`}
+            {item.topicCount > 0 ? translate('{count} Topics', { count: item.topicCount }) : translate('{count} Quizzes', { count: item.quizCount })}
          </p>
       )}
    </div>
-);
+   );
+};
 
 // ─── Topic Card ───
-const TopicCard = ({ item, onClick }) => (
+const TopicCard = ({ item, onClick }) => {
+   const { translate, translateData } = useTranslate();
+   return (
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
@@ -133,13 +148,14 @@ const TopicCard = ({ item, onClick }) => (
          <Layers className="w-5 h-5 text-black dark:text-white" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
-         {item.name}
+         {translateData(item.name)}
       </p>
       {item.quizCount > 0 && (
-         <p className="text-[11px] font-semibold text-slate-400">{item.quizCount} Quizzes</p>
+         <p className="text-[11px] font-semibold text-slate-400">{translate('{count} Quizzes', { count: item.quizCount })}</p>
       )}
    </div>
-);
+   );
+};
 
 // ─── Reel Card ───
 const REEL_TYPE_CONFIG = {
@@ -176,6 +192,7 @@ const BlogCard = ({ item, onClick }) => (
 );
 
 const ReelCard = ({ item, onClick }) => {
+   const { translate } = useTranslate();
    const cfg = REEL_TYPE_CONFIG[item.type] || REEL_TYPE_CONFIG.fact;
    const TypeIcon = cfg.icon;
 
@@ -186,10 +203,10 @@ const ReelCard = ({ item, onClick }) => {
       >
          <div className={`flex items-center gap-1.5 self-start px-2 py-1 rounded-lg ${cfg.bg}`}>
             <TypeIcon className={`w-3.5 h-3.5 ${cfg.color}`} />
-            <span className={`text-[10px] font-extrabold uppercase tracking-wide ${cfg.color}`}>{cfg.label}</span>
+            <span className={`text-[10px] font-extrabold uppercase tracking-wide ${cfg.color}`}>{translate(cfg.label)}</span>
          </div>
          <p className="text-xs font-bold text-slate-900 dark:text-white leading-[1.4] line-clamp-3">
-            {item.questionText || item.factText || item.tipText || item.newsContent || item.pollQuestion || 'Reel'}
+            {item.questionText || item.factText || item.tipText || item.newsContent || item.pollQuestion || translate('Reel')}
          </p>
          <div className="flex items-center gap-3 mt-auto text-slate-400">
             <div className="flex items-center gap-1">
@@ -207,6 +224,7 @@ const ReelCard = ({ item, onClick }) => {
 
 const HomePage = () => {
    const router = useRouter();
+   const { translate } = useTranslate();
    const { user, isClient: authLoading } = useAuthStatus();
    const [loading, setLoading] = useState(true);
    const fetchedRef = useRef(false);
@@ -352,7 +370,7 @@ const HomePage = () => {
                         </div>
                         <div className="min-w-0">
                            <p className="text-xs xl:text-sm font-black text-slate-900 dark:text-white leading-tight truncate">{value}</p>
-                           <p className="text-[8px] xl:text-[9px] font-bold text-slate-400 uppercase tracking-tight leading-tight truncate">{label}</p>
+                           <p className="text-[8px] xl:text-[9px] font-bold text-slate-400 uppercase tracking-tight leading-tight truncate">{translate(label)}</p>
                         </div>
                      </div>
                   ))}
@@ -369,7 +387,7 @@ const HomePage = () => {
                      <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
                         <Zap className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Start Test</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Start Test')}</p>
                   </button>
                   <button
                      onClick={() => router.push('/quizzes')}
@@ -378,7 +396,7 @@ const HomePage = () => {
                      <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
                         <PlayCircle className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Start Quiz</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Start Quiz')}</p>
                   </button>
                   <button
                      onClick={() => router.push('/blog')}
@@ -387,7 +405,7 @@ const HomePage = () => {
                      <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
                         <FileText className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Read Blog</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Read Blog')}</p>
                   </button>
                   <button
                      onClick={() => router.push('/daily-challenge')}
@@ -396,7 +414,7 @@ const HomePage = () => {
                      <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
                         <Flame className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Daily Challenge</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Daily Challenge')}</p>
                   </button>
                   <button
                      onClick={() => router.push('/revision')}
@@ -405,7 +423,7 @@ const HomePage = () => {
                      <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
                         <RotateCcw className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">Revision</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Revision')}</p>
                   </button>
                   <button
                      onClick={() => router.push('/all-india-rank')}
@@ -414,7 +432,7 @@ const HomePage = () => {
                      <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
                         <Award className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
                      </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">All India Rank</p>
+                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('All India Rank')}</p>
                   </button>
                </div>
             </section>
@@ -422,7 +440,7 @@ const HomePage = () => {
             {/* ═══════ GOVT EXAMS ═══════ */}
             <section className="px-0 py-2 xl:py-4">
                <SectionHeader
-                  title="Govt. Exams"
+                  title={translate('Govt. Exams')}
                   icon={GraduationCap}
                   iconColor="text-black dark:text-white"
                   iconBg="bg-black/10 dark:bg-white/10"
@@ -440,7 +458,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No exams available</p>
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No exams available')}</p>
                   )
                }
             </section>
@@ -448,7 +466,7 @@ const HomePage = () => {
             {/* ═══════ QUIZZES ═══════ */}
             <section className="px-0 py-2 xl:py-4">
                <SectionHeader
-                  title="Quizzes"
+                  title={translate('Quizzes')}
                   icon={Brain}
                   iconColor="text-black dark:text-white"
                   iconBg="bg-black/10 dark:bg-white/10"
@@ -466,7 +484,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No quizzes available</p>
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No quizzes available')}</p>
                   )
                }
             </section>
@@ -474,7 +492,7 @@ const HomePage = () => {
             {/* ═══════ SUBJECTS ═══════ */}
             <section className="px-0 py-2 xl:py-4">
                <SectionHeader
-                  title="Subjects"
+                  title={translate('Subjects')}
                   icon={BookOpen}
                   iconColor="text-black dark:text-white"
                   iconBg="bg-black/10 dark:bg-white/10"
@@ -492,7 +510,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No subjects available</p>
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No subjects available')}</p>
                   )
                }
             </section>
@@ -500,7 +518,7 @@ const HomePage = () => {
             {/* ═══════ TOPICS ═══════ */}
             <section className="px-0 py-2 xl:py-4">
                <SectionHeader
-                  title="Topics"
+                  title={translate('Topics')}
                   icon={Layers}
                   iconColor="text-black dark:text-white"
                   iconBg="bg-black/10 dark:bg-white/10"
@@ -518,7 +536,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No topics available</p>
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No topics available')}</p>
                   )
                }
             </section>
@@ -526,7 +544,7 @@ const HomePage = () => {
             {/* ═══════ REELS ═══════ */}
             <section className="px-0 py-2 xl:py-4">
                <SectionHeader
-                  title="Reels"
+                  title={translate('Reels')}
                   icon={PlayCircle}
                   iconColor="text-black dark:text-white"
                   iconBg="bg-black/10 dark:bg-white/10"
@@ -544,7 +562,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No reels available</p>
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No reels available')}</p>
                   )
                }
             </section>
@@ -552,7 +570,7 @@ const HomePage = () => {
             {/* ═══════ BLOGS ═══════ */}
             <section className="px-0 py-2 xl:py-4">
                <SectionHeader
-                  title="Blogs"
+                  title={translate('Blogs')}
                   icon={FileText}
                   iconColor="text-black dark:text-white"
                   iconBg="bg-black/10 dark:bg-white/10"
@@ -570,7 +588,7 @@ const HomePage = () => {
                         ))}
                      </div>
                   ) : (
-                     <p className="text-sm font-semibold text-slate-400 text-center py-8">No blogs available</p>
+                     <p className="text-sm font-semibold text-slate-400 text-center py-8">{translate('No blogs available')}</p>
                   )
                }
             </section>

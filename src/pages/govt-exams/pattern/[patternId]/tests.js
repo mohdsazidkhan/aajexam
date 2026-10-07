@@ -27,8 +27,10 @@ import Card from '../../../../components/ui/Card';
 import ProgressBar from '../../../../components/ui/ProgressBar';
 import Skeleton from '../../../../components/Skeleton';
 import { ProBadge } from '../../../../components/ui';
+import useTranslate from '../../../../hooks/useTranslate';
 
 const PatternTests = ({ patternId, initialPattern = null, initialTests = [], initialPagination = null, initialError = '', seo }) => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const [pattern, setPattern] = useState(initialPattern);
   const [tests, setTests] = useState(initialTests);
@@ -64,11 +66,11 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         setTotalPages(res.pagination?.pages || 1);
         if (res.pattern) setPattern(res.pattern);
       } else {
-        setError('Failed to load tests.');
+        setError(translate('Failed to load tests.'));
       }
     } catch (err) {
       console.error(err);
-      setError('An error occurred.');
+      setError(translate('An error occurred.'));
     } finally {
       setLoading(false);
     }
@@ -132,7 +134,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
       <section className="hidden xl:flex items-center justify-end">
         <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
-          GO BACK
+          {translate('GO BACK')}
         </Button>
       </section>
 
@@ -141,15 +143,15 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         <div className="relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <Zap className="w-4 h-4" />
-            Practice Tests
+            {translate('Practice Tests')}
           </div>
-          <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight">{pattern?.title || 'Exam Pattern'}</h1>
+          <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight">{translateData(pattern?.title) || translate('Exam Pattern')}</h1>
           <div className="flex gap-4">
             <div className="flex items-center gap-2 text-sm font-bold opacity-90 uppercase tracking-wide">
               <Clock className="w-4 h-4" /> {pattern?.duration || '60'}m
             </div>
             <div className="flex items-center gap-2 text-sm font-bold opacity-90 uppercase tracking-wide">
-              <Trophy className="w-4 h-4" /> {pattern?.totalMarks || '100'} Marks
+              <Trophy className="w-4 h-4" /> {translate('{count} Marks', { count: pattern?.totalMarks || '100' })}
             </div>
           </div>
         </div>
@@ -158,7 +160,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
       {/* --- Quests List --- */}
       <section className="space-y-6">
-        <h2 className="text-xl xl:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase px-1">Select A Quest</h2>
+        <h2 className="text-xl xl:text-2xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase px-1">{translate('Select A Quest')}</h2>
 
         <div className="space-y-2 xl:space-y-4">
           {tests.map((test, idx) => {
@@ -194,18 +196,18 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
 
                       <div className="flex-1 text-center sm:text-left space-y-1">
                         <div className="flex items-center justify-center sm:justify-start gap-2">
-                          <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase line-clamp-1">{test.title}</h3>
+                          <h3 className="text-xl font-black text-gray-800 dark:text-gray-100 font-outfit uppercase line-clamp-1">{translateData(test.title)}</h3>
                           {isLocked ? <ProBadge size="xs" /> : <Unlock className="w-4 h-4 text-primary-600" />}
                         </div>
                         <p className="text-xs font-bold text-gray-400 uppercase">
-                          {test.questionCount || 0} Questions • {test.totalMarks || 100} Marks
+                          {translate('{questions} Questions • {marks} Marks', { questions: test.questionCount || 0, marks: test.totalMarks || 100 })}
                         </p>
                       </div>
 
                       <div className="flex gap-2">
                         {isCompleted && (
                           <Button variant="secondary" size="sm" onClick={() => handleViewResult(test)} className="!rounded-full px-4">
-                            RESULTS <Eye className="w-4 h-4 ml-1" />
+                            {translate('RESULTS')} <Eye className="w-4 h-4 ml-1" />
                           </Button>
                         )}
                         <Button
@@ -215,7 +217,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
                           onClick={() => handleStartTest(test)}
                           className="min-w-[120px]"
                         >
-                          {isCompleted ? 'RETAKE' : 'START'}
+                          {isCompleted ? translate('RETAKE') : translate('START')}
                         </Button>
                       </div>
                     </div>
@@ -229,17 +231,17 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         {tests.length === 0 && (
           <div className="py-20 text-center space-y-2 xl:space-y-4">
             <ShieldAlert className="w-20 h-20 text-gray-300 mx-auto" />
-            <h3 className="text-xl xl:text-2xl font-black text-gray-400 uppercase">No Quests Available</h3>
-            <p className="text-gray-400 font-bold">Check back soon for new content!</p>
+            <h3 className="text-xl xl:text-2xl font-black text-gray-400 uppercase">{translate('No Quests Available')}</h3>
+            <p className="text-gray-400 font-bold">{translate('Check back soon for new content!')}</p>
           </div>
         )}
 
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-8">
-            <Button variant="secondary" disabled={page === 1} onClick={() => setPage(page - 1)}>Prev</Button>
-            <span className="font-black text-gray-400">PAGE {page} OF {totalPages}</span>
-            <Button variant="primary" disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</Button>
+            <Button variant="secondary" disabled={page === 1} onClick={() => setPage(page - 1)}>{translate('Prev')}</Button>
+            <span className="font-black text-gray-400">{translate('PAGE {page} OF {total}', { page, total: totalPages })}</span>
+            <Button variant="primary" disabled={page === totalPages} onClick={() => setPage(page + 1)}>{translate('Next')}</Button>
           </div>
         )}
       </section>

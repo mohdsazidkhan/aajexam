@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, X } from 'lucide-react';
 import API from '../lib/api';
+import useTranslate from '../hooks/useTranslate';
 
 const SearchableDropdown = ({
   value,
@@ -13,6 +14,7 @@ const SearchableDropdown = ({
   disabled = false,
   extraParams = {}
 }) => {
+  const { translate } = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [options, setOptions] = useState([]);
@@ -106,7 +108,7 @@ const SearchableDropdown = ({
       {isOpen && !disabled && (
         <div className="absolute z-50 w-full mt-1 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-sm max-h-60 overflow-y-auto">
           {loading ? (
-            <div className="p-4 text-center text-sm font-semibold text-slate-400">Loading...</div>
+            <div className="p-4 text-center text-sm font-semibold text-slate-400">{translate('Loading...')}</div>
           ) : options.length > 0 ? (
             <ul className="py-1">
               {options.map((option, idx) => (
@@ -120,7 +122,7 @@ const SearchableDropdown = ({
               ))}
             </ul>
           ) : (
-            <div className="p-4 text-center text-sm font-semibold text-slate-400">No results found</div>
+            <div className="p-4 text-center text-sm font-semibold text-slate-400">{translate('No results found')}</div>
           )}
         </div>
       )}

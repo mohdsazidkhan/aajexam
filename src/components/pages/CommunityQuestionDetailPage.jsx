@@ -12,8 +12,10 @@ import Card from '../ui/Card';
 import { QAThreadSkeleton } from '../skeletons/PrivateSkeletons';
 import AnswerThread from '../community/AnswerThread';
 import { getCurrentUser } from '../../lib/utils/authUtils';
+import useTranslate from '../../hooks/useTranslate';
 
 export default function CommunityQuestionDetailPage() {
+  const { translate } = useTranslate();
   const router = useRouter();
   const { id } = router.query;
   const [question, setQuestion] = useState(null);
@@ -45,7 +47,7 @@ export default function CommunityQuestionDetailPage() {
   }, [id, currentUserId]);
 
   const toggleLike = async () => {
-    if (!user) return toast.error('Please login to like');
+    if (!user) return toast.error(translate('Please login to like'));
     if (liking) return;
     setLiking(true);
     const prev = liked;
@@ -60,7 +62,7 @@ export default function CommunityQuestionDetailPage() {
   if (loading) return <div className="container mx-auto py-6"><QAThreadSkeleton /></div>;
   if (!question) return (
     <div className="min-h-screen flex items-center justify-center">
-      <p className="text-slate-500">Question not found</p>
+      <p className="text-slate-500">{translate('Question not found')}</p>
     </div>
   );
 
@@ -83,7 +85,7 @@ export default function CommunityQuestionDetailPage() {
             <div className="w-7 h-7 rounded-full bg-primary-400 text-white text-xs font-bold flex items-center justify-center">
               {(question.author?.name || '?').charAt(0).toUpperCase()}
             </div>
-            <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || 'User'}</span>
+            <span className="font-bold text-slate-800 dark:text-slate-200">{question.author?.name || translate('User')}</span>
             {question.author?.username && (
               <Link href={`/u/${question.author.username}`} className="text-primary-600 font-semibold hover:underline">
                 @{question.author.username}
@@ -146,7 +148,7 @@ export default function CommunityQuestionDetailPage() {
                   onClick={() => setAttempted(true)}
                   className="w-full px-4 py-2.5 mt-1 bg-primary-600 hover:bg-primary-600 text-white rounded-lg xl:rounded-xl font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Answer
+                  {translate('Submit Answer')}
                 </button>
               )}
             </div>
@@ -176,7 +178,7 @@ export default function CommunityQuestionDetailPage() {
               <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} /> {likes}
             </button>
             <span className="flex items-center gap-1"><Eye className="w-4 h-4" /> {question.views || 0}</span>
-            <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" /> {question.answerCount || 0} answers</span>
+            <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" /> {translate('{count} answers', { count: question.answerCount || 0 })}</span>
           </div>
         </Card>
 

@@ -2,8 +2,10 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { safeLocalStorage } from '../lib/utils/storage'
+import useTranslate from '../hooks/useTranslate';
 
 export default function Custom404() {
+  const { translate } = useTranslate();
   const router = useRouter()
 
   const handleGoHome = () => {
@@ -40,11 +42,11 @@ export default function Custom404() {
           </h1>
 
           <h2 className="text-xl xl:text-2xl font-black text-slate-800 dark:text-slate-200 mb-4 uppercase tracking-tight">
-            Page Not Found
+            {translate('Page Not Found')}
           </h2>
 
           <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose mb-10">
-            Sorry, the page you are looking for does not exist or has been moved.
+            {translate('Sorry, the page you are looking for does not exist or has been moved.')}
           </p>
 
           <div className="flex flex-col gap-4">
@@ -52,36 +54,36 @@ export default function Custom404() {
               onClick={handleGoHome}
               className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
-              Go to Home
+              {translate('Go to Home')}
             </button>
             <button
               onClick={handleGoBack}
               className="w-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
             >
-              Go Back
+              {translate('Go Back')}
             </button>
           </div>
 
           <div className="mt-8 text-sm text-gray-500 dark:text-gray-400">
-            <p>Looking for something specific?</p>
+            <p>{translate('Looking for something specific?')}</p>
             <div className="flex justify-center space-x-4 mt-3">
               <button
                 onClick={() => router.push('/login')}
                 className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
               >
-                Login
+                {translate('Login')}
               </button>
               <button
                 onClick={() => router.push('/register')}
                 className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
               >
-                Register
+                {translate('Register')}
               </button>
               <button
                 onClick={() => router.push('/contact')}
                 className="text-primary-600 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
               >
-                Contact Us
+                {translate('Contact Us')}
               </button>
             </div>
           </div>

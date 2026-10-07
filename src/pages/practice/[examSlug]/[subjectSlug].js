@@ -7,6 +7,7 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '../../../utils/schema';
+import useTranslate from '../../../hooks/useTranslate';
 
 // A series page needs enough real content to deserve indexing on its own.
 const MIN_QUESTIONS_TO_INDEX = 50;
@@ -35,6 +36,7 @@ export default function SubjectPractice({
   faqs = [],
   indexable = true,
 }) {
+  const { translate, translateData } = useTranslate();
   const examName = exam?.name || 'Government exam';
   const subjectName = subject?.name || 'Subject';
   const heading = `${examName} ${subjectName} — Previous Year Questions`;
@@ -76,42 +78,42 @@ export default function SubjectPractice({
 
       <div className="min-h-screen pb-12 font-outfit">
         <div className="py-4 xl:py-6 space-y-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
+          <nav aria-label={translate('Breadcrumb')} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
+            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
             <span className="text-slate-400">/</span>
-            <Link href="/quizzes" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Quizzes</Link>
+            <Link href="/quizzes" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Quizzes')}</Link>
             {exam?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/govt-exams/exam/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{examName}</Link>
+                <Link href={`/govt-exams/exam/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(examName)}</Link>
               </>
             )}
             <span className="text-slate-400">/</span>
-            <span className="text-slate-600 dark:text-slate-400">{subjectName} PYQ</span>
+            <span className="text-slate-600 dark:text-slate-400">{translate('{name} PYQ', { name: translateData(subjectName) })}</span>
           </nav>
 
           <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">
-              Previous year questions · {examName}
+              Previous year questions · {translateData(examName)}
             </span>
             <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {heading}
             </h1>
             <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-5">
-              {totalQuestions} {subjectName} questions asked in past {examName} papers, split into {quizCount} timed practice sets — every question with its answer and explanation.
+              {totalQuestions} {translateData(subjectName)} questions asked in past {translateData(examName)} papers, split into {quizCount} timed practice sets — every question with its answer and explanation.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-slate-900 dark:text-white">{totalQuestions}</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Questions</div>
+                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Questions')}</div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                 <div className="text-lg font-black text-slate-900 dark:text-white">{quizCount}</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Practice sets</div>
+                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Practice sets')}</div>
               </div>
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-lg font-black text-primary-600">FREE</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
+                <div className="text-lg font-black text-primary-600">{translate('FREE')}</div>
+                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Access')}</div>
               </div>
             </div>
           </header>
@@ -119,7 +121,7 @@ export default function SubjectPractice({
           {aboutText && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                About {examName} {subjectName} previous year questions
+                {translate('About {exam} {subject} previous year questions', { exam: translateData(examName), subject: translateData(subjectName) })}
               </h2>
               <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
@@ -135,22 +137,22 @@ export default function SubjectPractice({
 
           <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">
-              Keep going
+              {translate('Keep going')}
             </h2>
             <div className="flex flex-wrap gap-3">
               {exam?.slug && (
                 <Link href={`/govt-exams/exam/${exam.slug}`} className="bg-primary-600 text-white px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors">
-                  {examName} syllabus &amp; pattern
+                  {translateData(examName)} syllabus &amp; pattern
                 </Link>
               )}
               {hasPyq && exam?.slug && (
                 <Link href={`/pyq/${exam.slug}`} className="bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
-                  Full {examName} question papers
+                  {translate('Full {exam} question papers', { exam: translateData(examName) })}
                 </Link>
               )}
               {subject?.slug && (
                 <Link href={`/subjects/${subject.slug}`} className="bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
-                  All {subjectName} practice
+                  {translate('All {subject} practice', { subject: translateData(subjectName) })}
                 </Link>
               )}
             </div>
@@ -159,7 +161,7 @@ export default function SubjectPractice({
           {faqs.length > 0 && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                Frequently Asked Questions
+                {translate('Frequently Asked Questions')}
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (

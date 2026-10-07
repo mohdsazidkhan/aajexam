@@ -15,6 +15,7 @@ import ExamPattern from '../../../models/ExamPattern';
 import PracticeTest from '../../../models/PracticeTest';
 import { hydrateTestQuestions } from '../../../lib/utils/hydrateTestQuestions';
 import mongoose from 'mongoose';
+import useTranslate from '../../../hooks/useTranslate';
 
 const SAMPLE_COUNT = 5;
 
@@ -26,14 +27,15 @@ const formatDate = (dateString) => {
 };
 
 export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, related, faqs, intro }) {
+  const { translate, translateData } = useTranslate();
     const router = useRouter();
 
     if (!exam || !paper) {
         return (
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="text-center">
-                    <h1 className="text-2xl font-black text-slate-800 dark:text-white mb-4">PYQ Paper Not Found</h1>
-                    <Link href="/pyq" className="text-primary-600 hover:text-primary-600 font-bold">← Browse all PYQs</Link>
+                    <h1 className="text-2xl font-black text-slate-800 dark:text-white mb-4">{translate('PYQ Paper Not Found')}</h1>
+                    <Link href="/pyq" className="text-primary-600 hover:text-primary-600 font-bold">{translate('← Browse all PYQs')}</Link>
                 </div>
             </div>
         );
@@ -105,52 +107,52 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                 <div className="py-0 xl:py-6 relative">
                     {/* Breadcrumb */}
-                    <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-                        <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
+                    <nav aria-label={translate('Breadcrumb')} className="mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
+                        <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
                         <span className="text-slate-400">/</span>
-                        <Link href="/pyq" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">PYQ</Link>
+                        <Link href="/pyq" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('PYQ')}</Link>
                         <span className="text-slate-400">/</span>
-                        <Link href={`/pyq/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{examName}</Link>
+                        <Link href={`/pyq/${exam.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(examName)}</Link>
                         <span className="text-slate-400">/</span>
-                        <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{paper.title}</span>
+                        <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{translateData(paper.title)}</span>
                     </nav>
 
                     {/* Hero */}
                     <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 xl:p-12 shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-3 flex-wrap mb-6">
-                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">PYQ {paper.pyqYear || ''}</span>
+                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translate('PYQ {year}', { year: paper.pyqYear || '' })}</span>
                             {paper.pyqShift && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{paper.pyqShift}</span>}
-                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{examName}</span>
-                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">Free</span>}
+                            <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translateData(examName)}</span>
+                            {paper.accessLevel === 'FREE' && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{translate('Free')}</span>}
                         </div>
 
                         <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
-                            {paper.title}
+                            {translateData(paper.title)}
                         </h1>
                         <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-4xl">
-                            Attempt the official {examName} previous year question paper{yearLabel}{shiftLabel} as a free, timed mock test on AajExam. Get instant scoring, sectional analysis, and detailed solutions for every question.
+                            {translate('Attempt the official {name} previous year question paper{label} as a free, timed mock test on AajExam. Get instant scoring, sectional analysis, and detailed solutions for every question.', { name: translateData(examName), label: `${yearLabel}${shiftLabel}` })}
                         </p>
 
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 mb-8">
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
                                 <FaListOl className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.questionCount || 0}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Questions</div>
+                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Questions')}</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
                                 <FaTrophy className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.totalMarks}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Marks</div>
+                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Total Marks')}</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
                                 <FaClock className="text-xl text-primary-600 mx-auto mb-2" />
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{paper.duration}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Minutes</div>
+                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Minutes')}</div>
                             </div>
                             <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 text-center border-2 border-slate-100 dark:border-slate-800">
                                 <FaCalendar className="text-xl text-black dark:text-white mx-auto mb-2" />
                                 <div className="text-md font-black text-slate-900 dark:text-white">{paper.pyqYear || '—'}</div>
-                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Year</div>
+                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Year')}</div>
                             </div>
                         </div>
 
@@ -176,22 +178,22 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {pattern?.sections?.length > 0 && (
                         <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                                Exam Pattern & Sections
+                                {translate('Exam Pattern & Sections')}
                             </h2>
                             <div className="overflow-x-auto rounded-2xl border-2 border-slate-200 dark:border-slate-700">
                                 <table className="w-full text-left">
                                     <thead className="bg-slate-100 dark:bg-slate-800">
                                         <tr>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">Section</th>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">Questions</th>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">Marks/Q</th>
-                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">Negative</th>
+                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">{translate('Section')}</th>
+                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">{translate('Questions')}</th>
+                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">{translate('Marks/Q')}</th>
+                                            <th className="px-4 py-3 text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 text-center">{translate('Negative')}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {pattern.sections.map((s, i) => (
                                             <tr key={i} className="border-t border-slate-200 dark:border-slate-700">
-                                                <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{s.name}</td>
+                                                <td className="px-4 py-3 font-bold text-slate-900 dark:text-white">{translateData(s.name)}</td>
                                                 <td className="px-4 py-3 text-center font-bold text-slate-700 dark:text-slate-300">{s.totalQuestions}</td>
                                                 <td className="px-4 py-3 text-center font-bold text-slate-700 dark:text-slate-300">{s.marksPerQuestion}</td>
                                                 <td className="px-4 py-3 text-center font-bold text-slate-700 dark:text-slate-300">{s.negativePerQuestion || 0}</td>
@@ -207,10 +209,10 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {sampleQuestions?.length > 0 && (
                         <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tight">
-                                Sample Questions with Answers
+                                {translate('Sample Questions with Answers')}
                             </h2>
                             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-8">
-                                Showing {sampleQuestions.length} of {paper.questionCount || 0} questions. Start the mock test to attempt all questions in timed mode.
+                                {translate('Showing {shown} of {total} questions. Start the mock test to attempt all questions in timed mode.', { shown: sampleQuestions.length, total: paper.questionCount || 0 })}
                             </p>
                             <div className="space-y-6">
                                 {sampleQuestions.map((q, idx) => (
@@ -244,7 +246,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                         </ol>
                                         {(q.explanation || q.explanationImage) && (
                                             <div className="ml-11 mt-3 px-4 py-3 bg-white dark:bg-slate-900 rounded-lg border-l-4 border-primary-600">
-                                                <p className="text-xs font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest mb-1">Explanation</p>
+                                                <p className="text-xs font-black text-primary-600 dark:text-primary-400 uppercase tracking-widest mb-1">{translate('Explanation')}</p>
                                                 {q.explanation && <p className="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-pre-line">{q.explanation}</p>}
                                                 {q.explanationImage && (
                                                     /* eslint-disable-next-line @next/next/no-img-element */
@@ -261,13 +263,13 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                 <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center gap-6">
                                     <div className="flex-1 space-y-3">
                                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black text-primary-400 uppercase tracking-wider">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" /> Free account required
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" /> {translate('Free account required')}
                                         </div>
                                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">
-                                            Attempt All {paper.questionCount || 0} Questions
+                                            {translate('Attempt All {count} Questions', { count: paper.questionCount || 0 })}
                                         </h3>
                                         <p className="text-sm font-bold text-slate-400 max-w-lg">
-                                            You&apos;ve seen {sampleQuestions.length} sample questions. Create a free account in 30 seconds to attempt the full paper with timer, scoring, and detailed solutions.
+                                            {translate("You've seen {count} sample questions. Create a free account in 30 seconds to attempt the full paper with timer, scoring, and detailed solutions.", { count: sampleQuestions.length })}
                                         </p>
                                         <div className="flex flex-wrap gap-3 pt-1">
                                             {[
@@ -286,13 +288,13 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
                                             className="w-full px-8 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm border-b-2 border-primary-600 active:translate-y-0.5"
                                         >
-                                            Create Free Account →
+                                            {translate('Create Free Account →')}
                                         </button>
                                         <button
                                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
                                             className="w-full px-8 py-4 bg-white/5 hover:bg-white/10 text-slate-300 font-black uppercase tracking-widest rounded-2xl border border-white/10 transition-all text-sm"
                                         >
-                                            Already have account? Log in
+                                            {translate('Already have account? Log in')}
                                         </button>
                                     </div>
                                 </div>
@@ -306,13 +308,13 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                             onClick={() => router.push(`/register?next=${encodeURIComponent(router.asPath)}`)}
                             className="flex-1 py-3 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-lg xl:rounded-xl text-xs shadow-sm transition-all"
                         >
-                            Attempt Free →
+                            {translate('Attempt Free →')}
                         </button>
                         <button
                             onClick={() => router.push(`/login?next=${encodeURIComponent(router.asPath)}`)}
                             className="px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black uppercase tracking-widest rounded-lg xl:rounded-xl text-xs transition-all"
                         >
-                            Log In
+                            {translate('Log In')}
                         </button>
                     </div>
 
@@ -321,7 +323,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
 
                         <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                                Frequently Asked Questions
+                                {translate('Frequently Asked Questions')}
                             </h2>
                             <div className="space-y-2 xl:space-y-4">
                                 {faqs.map((f, i) => (
@@ -342,7 +344,7 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                     {related?.length > 0 && (
                         <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                                More {examName} PYQ Papers
+                                {translate('More {name} PYQ Papers', { name: translateData(examName) })}
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                                 {related.map((r) => (
@@ -351,14 +353,14 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
                                             {r.pyqYear && <span className="px-2 py-0.5 bg-primary-100 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{r.pyqYear}</span>}
                                             {r.pyqShift && <span className="text-[9px] font-bold text-slate-400">{r.pyqShift}</span>}
                                         </div>
-                                        <h3 className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-2 line-clamp-2">{r.title}</h3>
-                                        <p className="text-[11px] font-bold text-slate-500">{r.duration} min · {r.totalMarks} marks</p>
+                                        <h3 className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-2 line-clamp-2">{translateData(r.title)}</h3>
+                                        <p className="text-[11px] font-bold text-slate-500">{translate('{duration} min · {marks} marks', { duration: r.duration, marks: r.totalMarks })}</p>
                                     </Link>
                                 ))}
                             </div>
                             <div className="mt-6 text-center">
                                 <Link href={`/pyq/${exam.slug}`} className="inline-flex items-center text-sm font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest">
-                                    View all {examName} PYQs <FaArrowRight className="ml-2" />
+                                    {translate('View all {name} PYQs', { name: translateData(examName) })} <FaArrowRight className="ml-2" />
                                 </Link>
                             </div>
                         </section>

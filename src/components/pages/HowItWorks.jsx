@@ -24,8 +24,10 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import UnifiedFooter from '../UnifiedFooter';
 import config from '../../lib/config/appConfig';
+import useTranslate from '../../hooks/useTranslate';
 
 const HowItWorks = () => {
+  const { translate, rich } = useTranslate();
    const router = useRouter();
 
    const steps = [
@@ -93,8 +95,8 @@ const HowItWorks = () => {
                   <Rocket className="w-10 h-10" />
                </motion.div>
                <div className="space-y-2 xl:space-y-4">
-                  <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">How It <span className="text-primary-600">Works</span></h1>
-                  <p className="text-sm xl:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">Simple steps to follow. Study daily, pass your exam, and earn by referring friends.</p>
+                  <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{rich('How It <0>Works</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
+                  <p className="text-sm xl:text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] mx-auto px-4">{translate('Simple steps to follow. Study daily, pass your exam, and earn by referring friends.')}</p>
                </div>
             </section>
 
@@ -124,12 +126,12 @@ const HowItWorks = () => {
                                  <step.icon className="w-6 h-6" />
                               </div>
                               <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-${step.color}-500/10 text-${step.color}-500`}>
-                                 {step.badge}
+                                 {translate(step.badge)}
                               </span>
                            </div>
                            <div className="space-y-3">
-                              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{step.title}</h3>
-                              <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{step.desc}</p>
+                              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate(step.title)}</h3>
+                              <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{translate(step.desc)}</p>
                            </div>
 
                            {/* Tier Details (for step 2) */}
@@ -139,9 +141,9 @@ const HowItWorks = () => {
                                     <div key={di} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
                                        <div className="flex items-center gap-2">
                                           <d.icon className={`w-3 h-3 ${di === 1 ? 'text-primary-600' : 'text-primary-600'}`} />
-                                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{d.label}</p>
+                                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{translate(d.label)}</p>
                                        </div>
-                                       <p className="text-xs font-black text-slate-900 dark:text-white uppercase">{d.val}</p>
+                                       <p className="text-xs font-black text-slate-900 dark:text-white uppercase">{translate(d.val)}</p>
                                     </div>
                                  ))}
                               </div>
@@ -173,8 +175,8 @@ const HowItWorks = () => {
                         <Lightbulb className="w-10 h-10" />
                      </div>
                      <div className="space-y-2">
-                        <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">Important Note</h3>
-                        <p className="text-sm font-bold text-slate-300 leading-relaxed uppercase tracking-wide">AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.</p>
+                        <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('Important Note')}</h3>
+                        <p className="text-sm font-bold text-slate-300 leading-relaxed uppercase tracking-wide">{translate('AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.')}</p>
                      </div>
                   </div>
                   <ShieldCheck className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/5 -rotate-12" />
@@ -189,8 +191,8 @@ const HowItWorks = () => {
                         <f.icon className="w-6 h-6" />
                      </div>
                      <div className="space-y-2">
-                        <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{f.title}</h4>
-                        <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-[0.1em]">{f.desc}</p>
+                        <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{translate(f.title)}</h4>
+                        <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-relaxed uppercase tracking-[0.1em]">{translate(f.desc)}</p>
                      </div>
                   </Card>
                ))}
@@ -203,13 +205,13 @@ const HowItWorks = () => {
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
                   <div className="relative z-10 space-y-10">
-                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">Get Started <span className="text-primary-400">Today</span></h2>
-                     <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.</p>
+                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">{rich('Get Started <0>Today</0>', [(c) => <span className="text-primary-400">{c}</span>])}</h2>
+                     <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">{translate('Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.')}</p>
                      <Button
                         onClick={() => router.push('/')}
                         className="bg-primary-600 mx-auto hover:bg-primary-600 text-white px-16 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all"
                      >
-                        START NOW
+                        {translate('START NOW')}
                      </Button>
                   </div>
                </Card>

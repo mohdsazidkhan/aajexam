@@ -7,6 +7,7 @@ import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
 import { BlogListSkeleton } from '../../components/skeletons/PublicSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
   ssr: false,
@@ -14,6 +15,7 @@ const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
 });
 
 export default function Blog(props) {
+  const { translate } = useTranslate();
   // Static HTML lists every article (SEO). Logged-in users with target exams get the index
   // limited to those exams, on mount and right after they change them.
   const [scoped, setScoped] = useState(null);
@@ -63,7 +65,7 @@ export default function Blog(props) {
           without this every article is an orphan for crawlers. */}
       <div className="container mx-auto px-3 xl:px-0 pb-10">
         <LinkIndexSection
-          title="All articles"
+          title={translate('All articles')}
           intro="Notifications, admit cards, results, salary break-downs and preparation guides for every government exam we cover — grouped by exam."
           groups={groups}
           columns="sm:grid-cols-2 xl:grid-cols-3"

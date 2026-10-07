@@ -7,8 +7,10 @@ import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schem
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
 import { ExamCardSkeleton } from '../components/skeletons/PublicSkeletons';
+import useTranslate from '../hooks/useTranslate';
 
 export default function GovtExamsPreparation({ initialData }) {
+  const { translate, rich, translateData } = useTranslate();
     const router = useRouter();
     const exams = initialData?.exams || [];
     const pagination = initialData?.pagination || {};
@@ -23,7 +25,7 @@ export default function GovtExamsPreparation({ initialData }) {
     };
 
     return (
-        <MobileAppWrapper showHeader={true} title="Govt Exams Preparation">
+        <MobileAppWrapper showHeader={true} title={translate('Govt Exams Preparation')}>
             <Seo
                 title="Government Exams Preparation Guide – Strategy, Syllabus & Practice | AajExam"
                 description="Step-by-step preparation guide for SSC CHSL, CGL, MTS, UPSC, IBPS, SBI, RRB and State PSC exams. Syllabus, exam pattern, study plan, free practice tests and PYQs on AajExam."
@@ -58,13 +60,13 @@ export default function GovtExamsPreparation({ initialData }) {
                     <div className="text-center mb-4 xl:mb-8">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-600 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-white dark:border-slate-800 mb-3 xl:mb-6">
                             <FaQuestionCircle className="w-4 h-4" />
-                            <span>{pagination.totalExams || 0} Exams Available</span>
+                            <span>{translate('{count} Exams Available', { count: pagination.totalExams || 0 })}</span>
                         </div>
                         <h1 className="text-xl xl:text-5xl font-black text-slate-900 dark:text-white mb-3 xl:mb-6 uppercase tracking-tighter">
-                            Government Exams <span className="text-primary-600">Preparation</span>
+                            {rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                         </h1>
                         <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            Master your competitive exams with our structured quiz modules and real-time performance tracking.
+                            {translate('Master your competitive exams with our structured quiz modules and real-time performance tracking.')}
                         </p>
                     </div>
 
@@ -88,24 +90,24 @@ export default function GovtExamsPreparation({ initialData }) {
                                                 
                                                 </div>
                                                 <h3 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
-                                                    {exam.name}
+                                                    {translateData(exam.name)}
                                                 </h3>
                                                 </div>
                                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 xl:mb-6 line-clamp-3 leading-relaxed">
-                                                    {exam.description || 'Comprehensive exam preparation materials and practice tests.'}
+                                                    {exam.description || translate('Comprehensive exam preparation materials and practice tests.')}
                                                 </p>
                                             </div>
                                             <button
                                                 onClick={() => router.push(`/govt-exams/exam/${exam.slug}`)}
                                                 className="w-full bg-primary-600 hover:bg-primary-600 text-white px-6 py-4 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] flex items-center justify-center shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0"
                                             >
-                                                Start Practice <FaChartLine className="ml-2" />
+                                                {translate('Start Practice')} <FaChartLine className="ml-2" />
                                             </button>
                                         </div>
                                     ))
                                 ) : (
                                     <div className="col-span-full text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm font-bold uppercase tracking-widest text-slate-400 text-sm">
-                                        No exams found.
+                                        {translate('No exams found.')}
                                     </div>
                                 )}
                             </div>
@@ -163,16 +165,16 @@ export default function GovtExamsPreparation({ initialData }) {
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
                         <h2 className="text-2xl xl:text-5xl font-black mb-3 xl:mb-6 uppercase tracking-tighter relative z-10">
-                            Ready to <span className="text-primary-400">Ace</span> Your Exam?
+                            {rich('Ready to <0>Ace</0> Your Exam?', [(c) => <span className="text-primary-400">{c}</span>])}
                         </h2>
                         <p className="text-md xl:text-xl font-bold opacity-80 mb-4 xl:mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
-                            Join thousands of students who are already using AajExam to improve their scores and time management.
+                            {translate('Join thousands of students who are already using AajExam to improve their scores and time management.')}
                         </p>
                         <button
                             onClick={() => router.push('/govt-exams')}
                             className="bg-primary-600 hover:bg-primary-600 text-white px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0 transition-all relative z-10"
                         >
-                            Get Started Now
+                            {translate('Get Started Now')}
                         </button>
                     </div>
                 </div>

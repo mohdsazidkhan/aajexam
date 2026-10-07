@@ -8,10 +8,16 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '../../utils/schema';
+import useTranslate from '../../hooks/useTranslate';
+
+const PreviewLoading = () => {
+  const { translate, translateData } = useTranslate();
+  return <div className="py-10 text-center text-sm font-bold text-slate-400">{translate('Loading quiz preview…')}</div>;
+};
 
 const QuizPreviewPage = dynamic(() => import('../../components/pages/QuizPreviewPage'), {
   ssr: false,
-  loading: () => <div className="py-10 text-center text-sm font-bold text-slate-400">Loading quiz preview…</div>,
+  loading: () => <PreviewLoading />,
 });
 
 export default function QuizPreview({
@@ -24,6 +30,7 @@ export default function QuizPreview({
   faqs = [],
   robotsMeta = 'index, follow',
 }) {
+  const { translate, translateData } = useTranslate();
   const quizTitle = quiz?.title || 'Quiz';
   const subjectName = quiz?.subject?.name || '';
   const topicName = quiz?.topic?.name || '';
@@ -91,20 +98,20 @@ export default function QuizPreview({
 
         <div className="py-4 xl:py-6 relative space-y-8">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
+          <nav aria-label={translate('Breadcrumb')} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
+            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
             <span className="text-slate-400">/</span>
-            <Link href="/quizzes" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Quizzes</Link>
+            <Link href="/quizzes" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Quizzes')}</Link>
             {subjectName && quiz?.subject?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/subjects/${quiz.subject.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{subjectName}</Link>
+                <Link href={`/subjects/${quiz.subject.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(subjectName)}</Link>
               </>
             )}
             {topicName && quiz?.topic?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/topics/${quiz.topic.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{topicName}</Link>
+                <Link href={`/topics/${quiz.topic.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(topicName)}</Link>
               </>
             )}
             <span className="text-slate-400">/</span>
@@ -114,8 +121,8 @@ export default function QuizPreview({
           {/* Hero — server-rendered */}
           <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
-              {subjectName && <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{subjectName}</span>}
-              {topicName && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{topicName}</span>}
+              {subjectName && <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translateData(subjectName)}</span>}
+              {topicName && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translateData(topicName)}</span>}
               {quiz?.difficulty && <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-[10px] font-black text-black dark:text-white uppercase tracking-widest">{quiz.difficulty}</span>}
             </div>
             <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
@@ -128,18 +135,18 @@ export default function QuizPreview({
               {quiz?.duration && (
                 <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                   <div className="text-lg font-black text-slate-900 dark:text-white">{quiz.duration}</div>
-                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Minutes</div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Minutes')}</div>
                 </div>
               )}
               {quiz?.totalMarks && (
                 <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
                   <div className="text-lg font-black text-slate-900 dark:text-white">{quiz.totalMarks}</div>
-                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Marks</div>
+                  <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Marks')}</div>
                 </div>
               )}
               <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
-                <div className="text-lg font-black text-primary-600">FREE</div>
-                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Access</div>
+                <div className="text-lg font-black text-primary-600">{translate('FREE')}</div>
+                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Access')}</div>
               </div>
             </div>
           </header>
@@ -148,7 +155,7 @@ export default function QuizPreview({
           {aboutText && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                About This Quiz
+                {translate('About This Quiz')}
               </h2>
               <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
@@ -159,9 +166,9 @@ export default function QuizPreview({
           {seriesHref && (
             <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 xl:py-8">
               <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
-                This is one set from a larger bank.{' '}
+                {translate('This is one set from a larger bank.')}{' '}
                 <Link href={seriesHref.href} className="text-primary-600 dark:text-primary-400 underline">
-                  See all {seriesHref.examName} {subjectName} previous year questions
+                  {translate('See all {exam} {subject} previous year questions', { exam: translateData(seriesHref.examName), subject: translateData(subjectName) })}
                 </Link>
                 .
               </p>
@@ -182,7 +189,7 @@ export default function QuizPreview({
           {faqs.length > 0 && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                Frequently Asked Questions
+                {translate('Frequently Asked Questions')}
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
@@ -199,12 +206,12 @@ export default function QuizPreview({
           {relatedQuizzes.length > 0 && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                Related {topicName || subjectName || ''} Quizzes
+                {translate('Related {name} Quizzes', { name: translateData(topicName) || subjectName || '' })}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {relatedQuizzes.map((q) => (
                   <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{q.title}</div>
+                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{translateData(q.title)}</div>
                   </Link>
                 ))}
               </div>

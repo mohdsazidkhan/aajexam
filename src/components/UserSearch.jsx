@@ -1,8 +1,10 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import useTranslate from '../hooks/useTranslate';
 
 const UserSearch = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [users, setUsers] = useState([]);
@@ -52,7 +54,7 @@ const UserSearch = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search students by name or username..."
+          placeholder={translate('Search students by name or username...')}
           className="search-input w-full p-5 pr-14 text-sm font-black uppercase tracking-widest border-2 border-slate-300 dark:border-slate-700 rounded-2xl outline-none transition-all bg-slate-50 dark:bg-black text-slate-900 dark:white focus:border-primary-700 shadow-sm"
         />
         {loading && (
@@ -62,7 +64,7 @@ const UserSearch = () => {
 
       {searched && users.length === 0 && !loading && (
         <div className="no-results text-center py-16 px-5 bg-slate-100 dark:bg-slate-800/50 rounded-[2.5rem] border-2 border-dashed border-slate-200/50 dark:border-slate-700/30">
-          <p className="m-0 text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">No students found for "{query}"</p>
+          <p className="m-0 text-sm font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">{translate('No students found for "{query}"', { query })}</p>
         </div>
       )}
 
@@ -95,14 +97,14 @@ const UserSearch = () => {
               <div className="user-result-stats flex items-center gap-6 flex-shrink-0">
                 <div className="user-stat flex flex-col items-center text-center">
                   <span className="bg-primary-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
-                    STUDENT
+                    {translate('STUDENT')}
                   </span>
                 </div>
                 <div className="user-stat flex flex-col items-center text-center">
                   <span className="text-lg font-black text-slate-900 dark:text-white">
                     {user.followersCount || 0}
                   </span>
-                  <small className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-0.5">Students</small>
+                  <small className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mt-0.5">{translate('Students')}</small>
                 </div>
               </div>
             </div>

@@ -9,8 +9,10 @@ import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import { BlogListSkeleton } from '../skeletons/PublicSkeletons';
 import { useSelector } from 'react-redux';
 import { Search, Eye, Heart, Clock, Star, Pin, ChevronLeft, ChevronRight } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 const BlogsPage = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [blogs, setBlogs] = useState([]);
   const [exams, setExams] = useState([]);
@@ -54,7 +56,7 @@ const BlogsPage = () => {
       }
     } catch (err) {
       console.error('Error fetching blogs:', err);
-      setError('Failed to load blogs');
+      setError(translate('Failed to load blogs'));
     } finally {
       setLoading(false);
     }
@@ -123,9 +125,9 @@ const BlogsPage = () => {
               <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
                 <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
                 <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
-                <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {blog.readingTime || 5} min</span>
+                <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {translate('{count} min', { count: blog.readingTime || 5 })}</span>
               </div>
-              <span className="text-primary-600 text-xs font-bold">Read More</span>
+              <span className="text-primary-600 text-xs font-bold">{translate('Read More')}</span>
             </div>
             {blog.exam && (
               <div className="mt-3">
@@ -166,9 +168,9 @@ const BlogsPage = () => {
               <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
                 <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
                 <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
-                <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {blog.readingTime || 5} min read</span>
+                <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {translate('{count} min read', { count: blog.readingTime || 5 })}</span>
               </div>
-              <span className="text-primary-600 text-xs font-bold">Read More</span>
+              <span className="text-primary-600 text-xs font-bold">{translate('Read More')}</span>
             </div>
           </div>
         </Link>
@@ -189,7 +191,7 @@ const BlogsPage = () => {
             <h1 className="text-2xl xl:text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
               Blog ({pagination.total || 0})
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Exam preparation tips, guides & insights</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{translate('Exam preparation tips, guides & insights')}</p>
           </div>
 
           <div className="flex flex-col xl:flex-row items-center gap-3 bg-white dark:bg-gray-800 rounded-lg xl:rounded-xl p-3 shadow-sm border border-gray-200 dark:border-gray-700">
@@ -197,19 +199,19 @@ const BlogsPage = () => {
             <div className="flex items-center gap-2">
               <button onClick={() => setViewMode('grid')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
-                Grid
+                {translate('Grid')}
               </button>
               <button onClick={() => setViewMode('list')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
-                List
+                {translate('List')}
               </button>
             </div>
 
             {/* Exam Filter */}
             <select name="exam" value={filters.exam} onChange={handleFilterChange}
               className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-              <option value="">{hasTargets ? 'My target exams' : 'All Exams'}</option>
-              {hasTargets && <option value="all">All Exams</option>}
+              <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
+              {hasTargets && <option value="all">{translate('All Exams')}</option>}
               {exams.map(exam => (
                 <option key={exam._id} value={exam._id}>{exam.name}</option>
               ))}
@@ -219,12 +221,12 @@ const BlogsPage = () => {
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" name="featured" checked={filters.featured} onChange={handleFilterChange}
                 className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
-              <span className="text-xs font-bold text-gray-600 dark:text-gray-300">Featured</span>
+              <span className="text-xs font-bold text-gray-600 dark:text-gray-300">{translate('Featured')}</span>
             </label>
 
             {/* Search */}
             <form onSubmit={handleSearch} className="relative">
-              <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search blogs..."
+              <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder={translate('Search blogs...')}
                 className="w-full xl:w-64 px-4 py-2 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
               <button type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-600 text-white rounded-r-lg">
                 <Search className="w-4 h-4" />
@@ -239,8 +241,8 @@ const BlogsPage = () => {
         ) : (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">📝</div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">No blogs found</h3>
-            <p className="text-gray-600 dark:text-gray-300">Try adjusting your filters or check back later.</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{translate('No blogs found')}</h3>
+            <p className="text-gray-600 dark:text-gray-300">{translate('Try adjusting your filters or check back later.')}</p>
           </div>
         )}
 
@@ -253,11 +255,11 @@ const BlogsPage = () => {
                 <ChevronLeft className="w-4 h-4" /> Previous
               </button>
               <span className="px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-300">
-                Page {pagination.page} of {pagination.totalPages}
+                {translate('Page {page} of {total}', { page: pagination.page, total: pagination.totalPages })}
               </span>
               <button onClick={() => goToPage(Math.min(currentPage + 1, pagination.totalPages))} disabled={!pagination.hasNext}
                 className="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1">
-                Next <ChevronRight className="w-4 h-4" />
+                {translate('Next')} <ChevronRight className="w-4 h-4" />
               </button>
             </nav>
           </div>

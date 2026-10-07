@@ -38,6 +38,7 @@ import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { isAuthenticated, getUser } from '../../lib/auth';
 import { ListSkeleton } from '../skeletons/PrivateSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 const TABS = [
    { key: 'all', label: 'All', icon: Compass },
@@ -94,6 +95,7 @@ const formatCount = (n) => {
 };
 
 const SearchPage = () => {
+  const { translate, translateData } = useTranslate();
    const router = useRouter();
    const searchParams = useSearchParams();
    const inputRef = useRef(null);
@@ -274,21 +276,21 @@ const SearchPage = () => {
 
    // Follow/unfollow toggle
    const handleFollowToggle = async (userId) => {
-      if (!isAuthenticated()) { toast.error('Login to follow'); return; }
+      if (!isAuthenticated()) { toast.error(translate('Login to follow')); return; }
       setFollowLoading(userId);
       try {
          const isCurrentlyFollowing = followMap[userId];
          if (isCurrentlyFollowing) {
             await API.request(`/api/users/unfollow/${userId}`, { method: 'DELETE' });
             setFollowMap(prev => ({ ...prev, [userId]: false }));
-            toast.success('Unfollowed');
+            toast.success(translate('Unfollowed'));
          } else {
             await API.request(`/api/users/follow/${userId}`, { method: 'POST' });
             setFollowMap(prev => ({ ...prev, [userId]: true }));
-            toast.success('Following!');
+            toast.success(translate('Following!'));
          }
       } catch (err) {
-         toast.error('Failed');
+         toast.error(translate('Failed'));
       } finally {
          setFollowLoading(null);
       }
@@ -331,11 +333,11 @@ const SearchPage = () => {
                      </div>
                   </Link>
                   {isSelf ? (
-                     <span className="shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-400 dark:text-slate-500">You</span>
+                     <span className="shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold text-slate-400 dark:text-slate-500">{translate('You')}</span>
                   ) : isAuthenticated() && userId && (
                      <button onClick={(e) => { e.stopPropagation(); handleFollowToggle(userId); }} disabled={isThisLoading}
                         className={`shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${isFollowing ? 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700' : 'bg-primary-600 text-white hover:bg-primary-600'} disabled:opacity-50`}>
-                        {isThisLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : isFollowing ? 'Following' : 'Follow'}
+                        {isThisLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : isFollowing ? translate('Following') : translate('Follow')}
                      </button>
                   )}
                </div>
@@ -346,10 +348,10 @@ const SearchPage = () => {
                <div role="button" tabIndex={0} onClick={() => router.push(`/govt-exams/test/${item.slug || item._id}/start`)} onKeyDown={onActivateKey(() => router.push(`/govt-exams/test/${item.slug || item._id}/start`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><FileText className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
-                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
-                     <p className="text-xs text-slate-400">{item.duration} min · {item.totalMarks} marks</p>
+                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(item.title)}</p>
+                     <p className="text-xs text-slate-400">{translate('{duration} min · {marks} marks', { duration: item.duration, marks: item.totalMarks })}</p>
                   </div>
-                  <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg shrink-0">START</span>
+                  <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg shrink-0">{translate('START')}</span>
                </div>
             );
          case 'exam':
@@ -359,8 +361,8 @@ const SearchPage = () => {
                <div role="button" tabIndex={0} onClick={() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams')} onKeyDown={onActivateKey(() => item.type === 'exam' ? router.push(`/govt-exams/exam/${item.slug}`) : router.push('/govt-exams'))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><ShieldCheck className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
-                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name || item.title}</p>
-                     <p className="text-xs text-slate-400">{item.category?.name || item.type || 'Exam'}</p>
+                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(item.name || item.title)}</p>
+                     <p className="text-xs text-slate-400">{translateData(item.category?.name) || item.type || translate('Exam')}</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
                </div>
@@ -370,15 +372,15 @@ const SearchPage = () => {
                <div role="button" tabIndex={0} onClick={() => router.push(`/quiz/${item.slug || item._id}`)} onKeyDown={onActivateKey(() => router.push(`/quiz/${item.slug || item._id}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                   <div className="min-w-0 flex-1">
-                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
+                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(item.title)}</p>
                      <p className="text-xs text-slate-400">
-                        {item.subject?.name || ''}{item.topic?.name ? ` · ${item.topic.name}` : ''} · {item.duration} min · {item.totalMarks} marks
+                        {translateData(item.subject?.name) || ''}{item.topic?.name ? ` · ${item.topic.name}` : ''} · {translate('{duration} min · {marks} marks', { duration: item.duration, marks: item.totalMarks })}
                      </p>
                   </div>
                   <div className="flex flex-col items-end gap-0.5 shrink-0">
-                     <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">START</span>
+                     <span className="text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-2 py-1 rounded-lg">{translate('START')}</span>
                      {item.totalAttempts > 0 && (
-                        <span className="text-[9px] text-slate-400">{formatCount(item.totalAttempts)} played</span>
+                        <span className="text-[9px] text-slate-400">{translate('{count} played', { count: formatCount(item.totalAttempts) })}</span>
                      )}
                   </div>
                </div>
@@ -388,8 +390,8 @@ const SearchPage = () => {
                <div role="button" tabIndex={0} onClick={() => router.push(`/subjects/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/subjects/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookMarked className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
-                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
-                     <p className="text-xs text-slate-400">{item.exam?.name || 'General'}{item.description ? ` · ${item.description}` : ''}</p>
+                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(item.name)}</p>
+                     <p className="text-xs text-slate-400">{translateData(item.exam?.name) || translate('General')}{item.description ? ` · ${item.description}` : ''}</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
                </div>
@@ -399,7 +401,7 @@ const SearchPage = () => {
                <div role="button" tabIndex={0} onClick={() => router.push(`/topics/${item.slug}`)} onKeyDown={onActivateKey(() => router.push(`/topics/${item.slug}`))} className="flex items-center gap-3 px-3 py-3 rounded-lg xl:rounded-xl cursor-pointer bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 active:bg-slate-50 dark:active:bg-slate-900 transition-colors">
                   <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><Layers className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
-                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.name}</p>
+                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(item.name)}</p>
                      <p className="text-xs text-slate-400">{item.subject?.name || ''}{item.exams?.length ? ` · ${item.exams.map(e => e.name).join(', ')}` : ''}</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
@@ -422,7 +424,7 @@ const SearchPage = () => {
                   <div className="w-12 h-12 xl:w-14 xl:h-14 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0"><BookOpen className="w-5 h-5 text-white"/></div>
                   <div className="min-w-0 flex-1">
                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{item.title}</p>
-                     <p className="text-xs text-slate-400 truncate">{item.exam?.name || 'Blog'}{item.readingTime ? ` · ${item.readingTime} min read` : ''}</p>
+                     <p className="text-xs text-slate-400 truncate">{item.exam?.name || translate('Blog')}{item.readingTime ? ` · ${translate('{count} min read', { count: item.readingTime })}` : ''}</p>
                   </div>
                   <ChevronRight className="w-4 h-4 text-slate-300 shrink-0" />
                </div>
@@ -475,7 +477,7 @@ const SearchPage = () => {
             <div className={`relative w-full overflow-hidden ${config.gradient} ${isGrid ? 'aspect-square' : 'h-40'}`}>
                <div className="absolute top-1.5 left-1.5 z-10"><ReelIcon className="w-3 h-3 text-white/60" /></div>
                <div className="absolute inset-x-0 bottom-0 bg-black/80 pt-8 px-2 pb-2">
-                  <p className="text-[9px] font-bold text-white leading-tight line-clamp-2 mb-1">{displayTitle || 'Untitled'}</p>
+                  <p className="text-[9px] font-bold text-white leading-tight line-clamp-2 mb-1">{displayTitle || translate('Untitled')}</p>
                   <div className="flex items-center gap-1.5">
                      <Play className="w-2 h-2 text-white/80 fill-white/80" />
                      <span className="text-[8px] font-bold text-white/70">{formatCount(reel.viewsCount)}</span>
@@ -509,7 +511,7 @@ const SearchPage = () => {
             <div className="px-3 xl:px-8 pt-3 xl:pt-4 pb-2">
                <form onSubmit={handleSearch} className="flex items-center gap-2">
                   {query && (
-                     <button type="button" aria-label="Clear search" onClick={resetToBrowse} className="p-2 shrink-0 -ml-1">
+                     <button type="button" aria-label={translate('Clear search')} onClick={resetToBrowse} className="p-2 shrink-0 -ml-1">
                         <ArrowLeft className="w-5 h-5 text-slate-900 dark:text-white" />
                      </button>
                   )}
@@ -522,7 +524,7 @@ const SearchPage = () => {
                         enterKeyHint="search"
                         inputMode="search"
                         className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2 xl:py-3 pl-9 pr-8 text-sm xl:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
-                        placeholder="Search"
+                        placeholder={translate('Search')}
                         value={query}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setTimeout(() => setIsFocused(false), 150)}
@@ -571,7 +573,7 @@ const SearchPage = () => {
                         }`}
                      >
                         <tab.icon className="w-3.5 h-3.5" />
-                        {tab.label}
+                        {translate(tab.label)}
                      </button>
                   ))}
                </div>
@@ -601,9 +603,9 @@ const SearchPage = () => {
                                     <div className="flex items-center justify-between px-4 mb-2">
                                        <div className="flex items-center gap-1.5">
                                           <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
-                                          <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{meta.label}</h3>
+                                          <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                        </div>
-                                       <button onClick={() => handleTabChange('reel')} className="text-[11px] font-bold text-primary-600">See all</button>
+                                       <button onClick={() => handleTabChange('reel')} className="text-[11px] font-bold text-primary-600">{translate('See all')}</button>
                                     </div>
                                     <div className="flex overflow-x-auto no-scrollbar gap-1.5 px-4 pb-1">
                                        {section.items.map(reel => renderReelCard(reel, 'small'))}
@@ -616,13 +618,13 @@ const SearchPage = () => {
                               <div key={key} className="px-3 xl:px-8">
                                  <div className="flex items-center gap-1.5 mb-2">
                                     <Icon className={`w-4 h-4 ${meta.color}`} />
-                                    <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{meta.label}</h3>
+                                    <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                  </div>
                                  <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
                                     {section.items.map((item, idx) => <ResultRow item={item} key={item._id || item.tag || idx} />)}
                                  </div>
                                  {section.hasMore && (
-                                    <button onClick={() => handleTabChange(key)} className="text-[11px] font-bold text-primary-600 px-1 py-2">See all {meta.label.toLowerCase()} →</button>
+                                    <button onClick={() => handleTabChange(key)} className="text-[11px] font-bold text-primary-600 px-1 py-2">{translate('See all {name} →', { name: translate(meta.label).toLowerCase() })}</button>
                                  )}
                               </div>
                            );
@@ -634,8 +636,8 @@ const SearchPage = () => {
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
                                  <Search className="w-7 h-7 text-slate-300" />
                               </div>
-                              <p className="text-sm font-bold text-slate-900 dark:text-white">No results found</p>
-                              <p className="text-xs text-slate-400">Try a different search term</p>
+                              <p className="text-sm font-bold text-slate-900 dark:text-white">{translate('No results found')}</p>
+                              <p className="text-xs text-slate-400">{translate('Try a different search term')}</p>
                            </div>
                         )}
                      </motion.div>
@@ -646,8 +648,8 @@ const SearchPage = () => {
                         {currentTabData.items.length === 0 ? (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto"><Play className="w-7 h-7 text-slate-300" /></div>
-                              <p className="text-sm font-bold text-slate-900 dark:text-white">No reels found</p>
-                              <p className="text-xs text-slate-400">Try a different search term</p>
+                              <p className="text-sm font-bold text-slate-900 dark:text-white">{translate('No reels found')}</p>
+                              <p className="text-xs text-slate-400">{translate('Try a different search term')}</p>
                            </div>
                         ) : (
                            <>
@@ -657,7 +659,7 @@ const SearchPage = () => {
                               {currentTabData.hasMore && (
                                  <div className="flex justify-center py-4">
                                     <button onClick={loadMore} disabled={loadingMore} className="text-xs font-bold text-primary-600 flex items-center gap-1.5 disabled:opacity-50">
-                                       {loadingMore && <LoaderIcon className="w-3.5 h-3.5 animate-spin" />} Load more
+                                       {loadingMore && <LoaderIcon className="w-3.5 h-3.5 animate-spin" />} {translate('Load more')}
                                     </button>
                                  </div>
                               )}
@@ -671,8 +673,8 @@ const SearchPage = () => {
                         {currentTabData.items.length === 0 ? (
                            <div className="py-12 text-center space-y-3">
                               <div className="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto"><Search className="w-7 h-7 text-slate-300" /></div>
-                              <p className="text-sm font-bold text-slate-900 dark:text-white">No results found</p>
-                              <p className="text-xs text-slate-400">Try a different search term</p>
+                              <p className="text-sm font-bold text-slate-900 dark:text-white">{translate('No results found')}</p>
+                              <p className="text-xs text-slate-400">{translate('Try a different search term')}</p>
                            </div>
                         ) : (
                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">

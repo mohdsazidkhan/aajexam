@@ -46,10 +46,12 @@ import { secureLogout, getCurrentUser, isAuthenticated } from '../../lib/utils/a
 import { useSSR } from '../../hooks/useSSR';
 import API from '../../lib/api';
 import { ProBadge } from '../ui';
+import useTranslate from '../../hooks/useTranslate';
 
 const StudentSidebar = () => {
   const { isMounted, router } = useSSR();
   const dispatch = useDispatch();
+  const { translate } = useTranslate();
   const isOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
   const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const user = getCurrentUser();
@@ -170,11 +172,11 @@ const StudentSidebar = () => {
     >
 
       {/* Navigation */}
-      <nav aria-label="Sidebar navigation" className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {sidebarSections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
-              {section.title}
+              {translate(section.title)}
             </h3>
             <div className="space-y-0.5">
               {section.items.map((item, itemIdx) => {
@@ -190,7 +192,7 @@ const StudentSidebar = () => {
                       )}
                       <div className="flex items-center gap-2 relative z-10">
                         <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={active ? 2.5 : 2} />
-                        <span className="text-[11px] xl:text-[13px] font-bold tracking-wide uppercase">{item.label}</span>
+                        <span className="text-[11px] xl:text-[13px] font-bold tracking-wide uppercase">{translate(item.label)}</span>
                       </div>
                       {item.isPro && (
                         <ProBadge size="xs" className="relative z-10" />
@@ -210,7 +212,7 @@ const StudentSidebar = () => {
           onClick={() => secureLogout(router)}
           className="w-full py-3 rounded-lg xl:rounded-xl bg-red-500 hover:bg-red-600 text-white text-[11px] font-bold tracking-wide transition-colors flex items-center justify-center gap-2 group"
         >
-          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> LOG OUT
+          <LogOut className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" /> {translate('LOG OUT')}
         </button>
       </div>
     </div>

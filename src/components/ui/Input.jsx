@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CircleAlert, CircleCheck, ChevronRight, Info } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 /**
  * Input - A friendly, AajExam-inspired 3D input field for the gamified learning experience.
@@ -33,6 +34,7 @@ const Input = ({
   exit,
   ...props
 }) => {
+  const { translate } = useTranslate();
   const [isFocused, setIsFocused] = useState(false);
 
   const containerSizes = {
@@ -55,7 +57,7 @@ const Input = ({
       {label && (
         <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-700 dark:text-slate-400 pl-4">
           {label}
-          {required && <span className="text-black dark:text-white ml-1 select-none">REQUIRED</span>}
+          {required && <span className="text-black dark:text-white ml-1 select-none">{translate('REQUIRED')}</span>}
         </label>
       )}
 

@@ -6,8 +6,10 @@ import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import { Gift, X, BookOpen, Target } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
+import useTranslate from '../../hooks/useTranslate';
 
 const ExitIntentModalInner = ({ onClose }) => {
+  const { translate, rich } = useTranslate();
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -30,18 +32,18 @@ const ExitIntentModalInner = ({ onClose }) => {
           localStorage.setItem('userInfo', JSON.stringify(authRes.user));
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
-          toast.success('Welcome to AajExam! 🎉 Your free mock test is unlocked.');
+          toast.success(translate('Welcome to AajExam! 🎉 Your free mock test is unlocked.'));
           onClose();
           router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
         }
       } catch (error) {
-        toast.error('Google sign-up failed. Please try again.');
+        toast.error(translate('Google sign-up failed. Please try again.'));
       } finally {
         setIsGoogleLoading(false);
       }
     },
     onError: () => {
-      toast.error('Google sign-up was cancelled.');
+      toast.error(translate('Google sign-up was cancelled.'));
       setIsGoogleLoading(false);
     },
   });
@@ -81,28 +83,28 @@ const ExitIntentModalInner = ({ onClose }) => {
             </div>
 
             <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
-              Wait! Don't Leave Empty Handed.
+              {translate('Wait! Don\'t Leave Empty Handed.')}
             </h2>
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              Sign up in 10 seconds to unlock a <span className="text-primary-600 font-black">Free Premium Mock Test</span> and personalized progress tracking.
+              {rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
             </p>
 
             <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
-                Free Latest PYQ's & Practice Tests
+                {translate('Free Latest PYQ\'s & Practice Tests')}
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                Subjects, Topics wise Quizzes
+                {translate('Subjects, Topics wise Quizzes')}
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                Daily Challenges & Revisions & Bookmarks
+                {translate('Daily Challenges & Revisions & Bookmarks')}
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                Personalized Weakness Analysis
+                {translate('Personalized Weakness Analysis')}
               </div>
             </div>
 
@@ -121,9 +123,9 @@ const ExitIntentModalInner = ({ onClose }) => {
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
               )}
-              {isGoogleLoading ? 'Signing in...' : 'Claim Free Account'}
+              {isGoogleLoading ? translate('Signing in...') : translate('Claim Free Account')}
             </button>
-            <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">Takes only 10 seconds</p>
+            <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
           </div>
         </div>
       </motion.div>

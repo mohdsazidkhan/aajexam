@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import { getCurrentUser } from '../../lib/utils/authUtils';
 import { CommentSkeleton } from '../skeletons/PrivateSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 const timeAgo = (date) => {
   if (!date) return '';
@@ -43,6 +44,7 @@ function AnswerItem({
   item, onVote, onReply, onDelete, onFlag, onAccept,
   isReply = false, currentUserId, canAccept
 }) {
+  const { translate } = useTranslate();
   const [myVote, setMyVote] = useState(
     item.upvotedBy?.some(u => String(u) === String(currentUserId)) ? 'up'
     : item.downvotedBy?.some(u => String(u) === String(currentUserId)) ? 'down'
@@ -54,7 +56,7 @@ function AnswerItem({
   const [replyText, setReplyText] = useState('');
 
   const handleVote = async (action) => {
-    if (!currentUserId) return toast.error('Please login');
+    if (!currentUserId) return toast.error(translate('Please login'));
     if (String(item.author?._id) === String(currentUserId)) return;
     const prev = { myVote, upvotes, downvotes };
     let nu = upvotes, nd = downvotes, nm = myVote;
@@ -69,7 +71,7 @@ function AnswerItem({
     const res = await onVote(item._id, action);
     if (!res?.success) {
       setMyVote(prev.myVote); setUpvotes(prev.upvotes); setDownvotes(prev.downvotes);
-      toast.error(res?.message || 'Vote failed');
+      toast.error(res?.message || translate('Vote failed'));
     } else {
       setUpvotes(res.upvotes); setDownvotes(res.downvotes); setMyVote(res.myVote);
     }
@@ -87,7 +89,7 @@ function AnswerItem({
     <div className={`${isReply ? 'ml-8 pl-4 border-l-2 border-slate-200 dark:border-slate-700' : item.isAcceptedAnswer ? 'border-2 border-primary-400 bg-primary-50/50 dark:bg-primary-900/10 rounded-lg xl:rounded-xl p-3' : ''} py-3`}>
       {item.isAcceptedAnswer && !isReply && (
         <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
-          <CheckCircle2 className="w-3.5 h-3.5" /> Accepted Answer
+          <CheckCircle2 className="w-3.5 h-3.5" /> {translate('Accepted Answer')}
         </div>
       )}
       <div className="flex items-start gap-3">
@@ -112,7 +114,7 @@ function AnswerItem({
             <div className="w-6 h-6 rounded-full bg-primary-400 text-white text-[10px] font-bold flex items-center justify-center">
               {(item.author?.name || '?').charAt(0).toUpperCase()}
             </div>
-            <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || 'User'}</span>
+            <span className="font-bold text-slate-800 dark:text-slate-200">{item.author?.name || translate('User')}</span>
             {item.author?.username && (
               <Link href={`/u/${item.author.username}`} className="text-[11px] font-semibold text-primary-600 hover:underline">
                 @{item.author.username}
@@ -125,7 +127,7 @@ function AnswerItem({
               </span>
             )}
             <span className="text-slate-400">· {timeAgo(item.createdAt)}</span>
-            {item.isEdited && <span className="text-slate-400 text-[10px]">(edited)</span>}
+            {item.isEdited && <span className="text-slate-400 text-[10px]">{translate('(edited)')}</span>}
           </div>
 
           <p className="text-sm text-slate-800 dark:text-slate-200 whitespace-pre-wrap break-words leading-relaxed">
@@ -138,7 +140,7 @@ function AnswerItem({
           <div className="mt-2 flex items-center gap-4 text-xs">
             {!isReply && (
               <button onClick={() => setShowReplyBox(v => !v)} className="flex items-center gap-1 text-slate-500 hover:text-primary-600 transition">
-                <CornerDownRight className="w-3.5 h-3.5" /> Reply{item.replyCount ? ` (${item.replyCount})` : ''}
+                <CornerDownRight className="w-3.5 h-3.5" /> {translate('Reply')}{item.replyCount ? ` (${item.replyCount})` : ''}
               </button>
             )}
             {canAccept && !isReply && (
@@ -147,7 +149,7 @@ function AnswerItem({
                 className={`flex items-center gap-1 transition ${item.isAcceptedAnswer ? 'text-primary-600 font-bold' : 'text-slate-400 hover:text-primary-600'}`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                {item.isAcceptedAnswer ? 'Accepted' : 'Accept'}
+                {item.isAcceptedAnswer ? translate('Accepted') : translate('Accept')}
               </button>
             )}
             {!isOwner && (
@@ -168,11 +170,11 @@ function AnswerItem({
                 value={replyText}
                 onChange={e => setReplyText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && submitReply()}
-                placeholder="Write a reply…"
+                placeholder={translate('Write a reply…')}
                 className="flex-1 text-sm px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <button onClick={submitReply} className="px-3 py-1.5 text-xs font-bold bg-primary-600 text-white rounded-lg hover:bg-primary-600">
-                Post
+                {translate('Post')}
               </button>
             </div>
           )}
@@ -202,6 +204,7 @@ function AnswerItem({
 }
 
 export default function AnswerThread({ questionId, questionAuthorId, onAnswerPosted }) {
+  const { translate } = useTranslate();
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [sort, setSort] = useState('top');
@@ -228,35 +231,35 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
   const handleVote = async (id, action) => API.voteCommunityAnswer(id, action);
 
   const handleReply = async ({ body, parentId }) => {
-    if (!user) { toast.error('Please login to reply'); return false; }
+    if (!user) { toast.error(translate('Please login to reply')); return false; }
     const res = await API.postCommunityAnswer(questionId, { body, parentId });
     if (res?.success) { await load(); return true; }
-    toast.error(res?.message || 'Reply failed');
+    toast.error(res?.message || translate('Reply failed'));
     return false;
   };
 
   const handleDelete = async (id) => {
-    if (!confirm('Delete this answer?')) return;
+    if (!confirm(translate('Delete this answer?'))) return;
     const res = await API.deleteCommunityAnswer(id);
-    if (res?.success) { toast.success('Deleted'); await load(); }
-    else toast.error(res?.message || 'Delete failed');
+    if (res?.success) { toast.success(translate('Deleted')); await load(); }
+    else toast.error(res?.message || translate('Delete failed'));
   };
 
   const handleFlag = async (id) => {
     const reason = prompt('Why are you reporting this? (optional)') || '';
     const res = await API.flagCommunityAnswer(id, reason);
-    if (res?.success) toast.success('Reported');
-    else toast.error(res?.message || 'Report failed');
+    if (res?.success) toast.success(translate('Reported'));
+    else toast.error(res?.message || translate('Report failed'));
   };
 
   const handleAccept = async (id) => {
     const res = await API.acceptCommunityAnswer(id);
-    if (res?.success) { toast.success(res.accepted ? 'Marked as accepted' : 'Unaccepted'); await load(); }
-    else toast.error(res?.message || 'Failed');
+    if (res?.success) { toast.success(res.accepted ? translate('Marked as accepted') : translate('Unaccepted')); await load(); }
+    else toast.error(res?.message || translate('Failed'));
   };
 
   const submitNew = async () => {
-    if (!user) return toast.error('Please login to answer');
+    if (!user) return toast.error(translate('Please login to answer'));
     if (newAnswer.trim().length < 2) return;
     setSubmitting(true);
     try {
@@ -266,7 +269,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
         await load();
         if (onAnswerPosted) onAnswerPosted();
       } else {
-        toast.error(res?.message || 'Failed to post');
+        toast.error(res?.message || translate('Failed to post'));
       }
     } finally { setSubmitting(false); }
   };
@@ -275,7 +278,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
     <div className="mt-6">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-base font-bold text-slate-800 dark:text-slate-100">
-          {total} {total === 1 ? 'Answer' : 'Answers'}
+          {total} {total === 1 ? translate('Answer') : translate('Answers')}
         </h3>
         {items.length > 0 && (
           <div className="flex gap-1.5 text-[10px] font-bold">
@@ -285,7 +288,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
                 onClick={() => { setSort(s); load(s); }}
                 className={`px-2.5 py-1 rounded uppercase tracking-wider ${sort === s ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'}`}
               >
-                {s === 'top' ? 'Top' : 'Newest'}
+                {s === 'top' ? translate('Top') : translate('Newest')}
               </button>
             ))}
           </div>
@@ -297,7 +300,7 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
           <textarea
             value={newAnswer}
             onChange={e => setNewAnswer(e.target.value)}
-            placeholder="Write your answer…"
+            placeholder={translate('Write your answer…')}
             rows={3}
             className="w-full text-sm px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black focus:outline-none focus:ring-2 focus:ring-primary-500 resize-y"
           />
@@ -307,21 +310,21 @@ export default function AnswerThread({ questionId, questionAuthorId, onAnswerPos
               onClick={submitNew}
               className="px-4 py-2 text-xs font-bold bg-primary-600 text-white rounded-lg hover:bg-primary-600 disabled:opacity-50"
             >
-              {submitting ? 'Posting…' : 'Post Answer'}
+              {submitting ? translate('Posting…') : translate('Post Answer')}
             </button>
           </div>
         </div>
       ) : (
         <div className="mb-4 p-3 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/40 text-center">
           <p className="text-sm text-slate-500">
-            <Link href="/login" className="text-primary-600 font-bold hover:underline">Login</Link> to post an answer
+            <Link href="/login" className="text-primary-600 font-bold hover:underline">{translate('Login')}</Link> to post an answer
           </p>
         </div>
       )}
 
       {loading && <CommentSkeleton rows={3} />}
       {!loading && items.length === 0 && (
-        <p className="text-sm text-slate-400 py-6 text-center">No answers yet. Be the first to help!</p>
+        <p className="text-sm text-slate-400 py-6 text-center">{translate('No answers yet. Be the first to help!')}</p>
       )}
 
       <div className="divide-y divide-slate-100 dark:divide-slate-700/50">

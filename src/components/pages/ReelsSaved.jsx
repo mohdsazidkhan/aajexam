@@ -10,6 +10,7 @@ import MobileAppWrapper from '../MobileAppWrapper';
 import {
   Bookmark, ArrowLeft, Heart, Eye, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Flame
 } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 const TYPE_ICONS = { question: HelpCircle, fact: BookOpen, tip: Zap, current_affairs: Newspaper, poll: BarChart3 };
 const TYPE_COLORS = {
@@ -21,6 +22,7 @@ const TYPE_COLORS = {
 };
 
 const ReelsSaved = () => {
+  const { translate } = useTranslate();
   const [reels, setReels] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -35,7 +37,7 @@ const ReelsSaved = () => {
         setHasMore(res.pagination?.hasMore || false);
       }
     } catch (err) {
-      toast.error('Failed to load saved reels');
+      toast.error(translate('Failed to load saved reels'));
     } finally {
       setLoading(false);
     }
@@ -70,10 +72,10 @@ const ReelsSaved = () => {
               <div className="w-20 h-20 rounded-[2rem] bg-slate-100 dark:bg-slate-900 flex items-center justify-center mx-auto mb-6">
                 <Bookmark className="w-10 h-10 text-slate-300 dark:text-slate-600" />
               </div>
-              <p className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">No saved reels yet</p>
-              <p className="text-sm text-slate-400 dark:text-slate-500 mt-2 max-w-[200px] mx-auto">Bookmark interesting reels to revisit them anytime</p>
+              <p className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('No saved reels yet')}</p>
+              <p className="text-sm text-slate-400 dark:text-slate-500 mt-2 max-w-[200px] mx-auto">{translate('Bookmark interesting reels to revisit them anytime')}</p>
               <Link href="/reels" className="inline-block mt-8 px-8 py-3 rounded-2xl bg-primary-600 text-white text-sm font-black uppercase tracking-widest hover:bg-primary-700 transition-all shadow-sm active:scale-95">
-                Browse Reels
+                {translate('Browse Reels')}
               </Link>
             </div>
           ) : (
@@ -124,7 +126,7 @@ const ReelsSaved = () => {
                   onClick={() => setPage(p => p + 1)}
                   className="w-full py-3 text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl"
                 >
-                  Load more
+                  {translate('Load more')}
                 </button>
               )}
             </div>

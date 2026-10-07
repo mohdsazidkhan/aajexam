@@ -21,8 +21,10 @@ import ProgressBar from '../../../components/ui/ProgressBar';
 import Skeleton from '../../../components/Skeleton';
 import Seo from '../../../components/Seo';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../../utils/schema';
+import useTranslate from '../../../hooks/useTranslate';
 
 const CategoryExams = ({ initialCategory = null, initialExams = [], initialError = '', seo, categoryId }) => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const [category, setCategory] = useState(initialCategory);
   const [exams, setExams] = useState(initialExams);
@@ -38,11 +40,11 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
         setExams(res.data || []);
         if (res.category) setCategory(res.category);
       } else {
-        setError('Failed to load exams.');
+        setError(translate('Failed to load exams.'));
       }
     } catch (err) {
       console.error('Error fetching exams:', err);
-      setError('An error occurred.');
+      setError(translate('An error occurred.'));
     } finally {
       setLoading(false);
     }
@@ -99,7 +101,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 active:translate-y-1 active:border-b-0 transition-all w-fit"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Hub
+          {translate('Back to Hub')}
         </button>
 
         <div className="bg-slate-950 rounded-[2rem] xl:rounded-[3rem] p-6 xl:p-14 shadow-sm relative overflow-hidden border-2 border-slate-800">
@@ -110,11 +112,11 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           <div className="relative z-10 space-y-6">
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
               <Target className="w-3 h-3" />
-              {category?.type || 'Competitive'} Category
+              {translate('{type} Category', { type: category?.type || translate('Competitive') })}
             </div>
             <h1 className="text-2xl xl:text-4xl xl:text-6xl font-black text-white uppercase tracking-tighter leading-none">{categoryName}</h1>
             <p className="text-lg font-bold text-slate-400 max-w-2xl leading-relaxed">
-              {category?.description || 'Everything you need to master exams in this category. Start your journey today!'}
+              {category?.description || translate('Everything you need to master exams in this category. Start your journey today!')}
             </p>
           </div>
           <Building className="absolute -bottom-10 -right-10 w-64 h-64 text-white/5 -rotate-12 pointer-events-none" />
@@ -124,9 +126,9 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
       {/* --- Exams List --- */}
       <section className="space-y-8">
         <div className="flex justify-between items-center px-4">
-          <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Available Exams</h2>
+          <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Available Exams')}</h2>
           <span className="bg-slate-100 dark:bg-slate-800 px-5 py-2 rounded-2xl text-[10px] font-black text-slate-500 uppercase tracking-widest border-2 border-slate-50 dark:border-slate-800">
-            {exams.length} TOTAL
+            {translate('{count} TOTAL', { count: exams.length })}
           </span>
         </div>
 
@@ -148,16 +150,16 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
 
                 <div className="flex-1 space-y-2">
                   <h3 className="text-sm xl:text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter group-hover:text-primary-600 transition-colors">
-                    {exam.name}
+                    {translateData(exam.name)}
                   </h3>
                   <div className="flex items-center gap-6">
                     <span className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                       <Zap className="w-3.5 h-3.5 fill-slate-400 stroke-none" />
-                      {exam.testCount || 0} Tests
+                      {translate('{count} Tests', { count: exam.testCount || 0 })}
                     </span>
                     <span className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
                       <Star className="w-3.5 h-3.5 fill-slate-400 stroke-none" />
-                      {exam.patternCount || 0} Patterns
+                      {translate('{count} Patterns', { count: exam.patternCount || 0 })}
                     </span>
                   </div>
                 </div>
@@ -176,8 +178,8 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
               <Info className="w-10 h-10" />
             </div>
             <div>
-              <h3 className="text-xl xl:text-2xl font-black text-slate-400 uppercase tracking-tight">No exams found</h3>
-              <p className="text-slate-400 font-bold mt-2">Try another category or search in the Study Hub.</p>
+              <h3 className="text-xl xl:text-2xl font-black text-slate-400 uppercase tracking-tight">{translate('No exams found')}</h3>
+              <p className="text-slate-400 font-bold mt-2">{translate('Try another category or search in the Study Hub.')}</p>
             </div>
           </div>
         )}

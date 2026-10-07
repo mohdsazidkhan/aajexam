@@ -22,6 +22,11 @@ export const LanguageProvider = ({ children }) => {
     (state) => state.language.currentLanguage
   );
   const translations = useSelector((state) => state.language.translations);
+
+  // Keep <html lang> in step with the chosen UI language (screen readers, fonts).
+  React.useEffect(() => {
+    document.documentElement.lang = currentLanguage === 'hi' ? 'hi' : 'en';
+  }, [currentLanguage]);
   const isTranslating = useSelector((state) => state.language.isTranslating);
 
   React.useEffect(() => {

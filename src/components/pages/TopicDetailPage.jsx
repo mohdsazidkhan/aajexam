@@ -6,8 +6,10 @@ import { motion } from 'framer-motion';
 import API from '../../lib/api';
 import { TopicDetailSkeleton } from '../skeletons/PublicSkeletons';
 import TestStartModal from '../TestStartModal';
+import useTranslate from '../../hooks/useTranslate';
 
 const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const lookupId = resolvedId || router.query.id;
   const [topic, setTopic] = useState(initialTopic || null);
@@ -35,7 +37,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   }, [lookupId]);
 
   if (loading) return <TopicDetailSkeleton />;
-  if (!topic) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Topic not found</p></div>;
+  if (!topic) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">{translate('Topic not found')}</p></div>;
 
   const tabs = [
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
@@ -70,16 +72,16 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   return (
     <div className="min-h-screen pb-24">
       <div className="py-0 xl:py-6">
-        <button onClick={() => router.back()} className="hidden xl:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> Back</button>
+        <button onClick={() => router.back()} className="hidden xl:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> {translate('Back')}</button>
 
         {/* Hero */}
         <div className="bg-primary-600 rounded-2xl p-6 text-white mb-5">
           <Layers className="w-8 h-8 mb-2" />
-          <h1 className="text-xl xl:text-3xl font-black uppercase">{topic.name}</h1>
+          <h1 className="text-xl xl:text-3xl font-black uppercase">{translateData(topic.name)}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
           <div className="flex gap-3 mt-3">
-            <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{quizzes.length} Quizzes</span>
-            <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{practiceTests.length} Tests</span>
+            <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
+            <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{translate('{count} Tests', { count: practiceTests.length })}</span>
           </div>
           
           {/* Adaptive Practice Button */}
@@ -90,12 +92,12 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               className="w-full sm:w-auto bg-white text-black dark:text-white hover:bg-slate-50 font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg xl:rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {generatingAdaptive ? (
-                <><div className="w-4 h-4 border-2 border-black dark:border-white border-t-transparent rounded-full animate-spin" /> GENERATING...</>
+                <><div className="w-4 h-4 border-2 border-black dark:border-white border-t-transparent rounded-full animate-spin" /> {translate('GENERATING...')}</>
               ) : (
-                <><BrainCircuit className="w-5 h-5" /> START ADAPTIVE PRACTICE <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-md ml-1">PRO</span></>
+                <><BrainCircuit className="w-5 h-5" /> {translate('START ADAPTIVE PRACTICE')} <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-md ml-1">{translate('PRO')}</span></>
               )}
             </button>
-            <p className="text-[10px] font-bold text-white/80 mt-2 pl-1">Generates custom difficulty based on your past accuracy.</p>
+            <p className="text-[10px] font-bold text-white/80 mt-2 pl-1">{translate('Generates custom difficulty based on your past accuracy.')}</p>
           </div>
         </div>
 
@@ -104,7 +106,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
           {tabs.map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs border-b-2 shrink-0 ${activeTab === tab.key ?'bg-primary-600 text-white border-primary-600':'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'}`}>
-              <tab.icon className="w-3.5 h-3.5" /> {tab.label} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{tab.count}</span>
+              <tab.icon className="w-3.5 h-3.5" /> {translate(tab.label)} <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{tab.count}</span>
             </button>
           ))}
         </div>
@@ -115,7 +117,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
             {flashcards.length === 0 ? (
               <div className="col-span-full py-16 text-center">
                 <Sparkles className="w-12 h-12 text-slate-200 mx-auto mb-2" />
-                <p className="text-sm text-slate-400">No flashcards available yet.</p>
+                <p className="text-sm text-slate-400">{translate('No flashcards available yet.')}</p>
               </div>
             ) : flashcards.map((deck, idx) => (
               <motion.div key={deck._id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}
@@ -129,7 +131,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                       <Sparkles className="w-3 h-3" /> REVISION
                     </span>
                     <span className="bg-white dark:bg-black text-black dark:text-white text-[10px] font-black px-2 py-1 rounded-md">
-                      {deck.cardCount} CARDS
+                      {translate('{count} CARDS', { count: deck.cardCount })}
                     </span>
                   </div>
                   <div>
@@ -145,16 +147,16 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         {/* Quizzes */}
         {activeTab === 'quizzes' && (
           <div className="space-y-3">
-            {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No quizzes</p></div> : quizzes.map((quiz, idx) => (
+            {quizzes.length === 0 ? <div className="py-16 text-center"><BrainCircuit className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">{translate('No quizzes')}</p></div> : quizzes.map((quiz, idx) => (
               <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
                 onClick={() => router.push(`/quiz/${quiz.slug}`)}
                 className="flex items-center gap-2 xl:gap-4 p-2 xl:p-4 bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary-700 transition-all">
                 <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-primary-600 flex items-center justify-center shrink-0"><BrainCircuit className="w-5 h-5 text-white" /></div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{quiz.title}</p>
-                  <p className="text-xs text-slate-400">{quiz.subject?.name || ''} · {quiz.duration} min · {quiz.totalMarks} marks</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(quiz.title)}</p>
+                  <p className="text-xs text-slate-400">{translateData(quiz.subject?.name) || ''} · {translate('{duration} min · {marks} marks', { duration: quiz.duration, marks: quiz.totalMarks })}</p>
                 </div>
-                <span className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-2 rounded-lg uppercase">Start</span>
+                <span className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-2 rounded-lg uppercase">{translate('Start')}</span>
               </motion.div>
             ))}
           </div>
@@ -163,7 +165,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
         {/* Practice Tests */}
         {activeTab === 'tests' && (
           <div className="space-y-3">
-            {practiceTests.length === 0 ? <div className="py-16 text-center"><FileText className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">No practice tests</p></div> : practiceTests.map((test, idx) => {
+            {practiceTests.length === 0 ? <div className="py-16 text-center"><FileText className="w-12 h-12 text-slate-200 mx-auto mb-2" /><p className="text-sm text-slate-400">{translate('No practice tests')}</p></div> : practiceTests.map((test, idx) => {
               const done = test.userAttempt?.status === 'Completed';
               return (
                 <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
@@ -172,10 +174,10 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                     {done ? <Trophy className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{test.title}</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{translateData(test.title)}</p>
                     <p className="text-xs text-slate-400">{test.questionCount || 0} Q · {test.totalMarks} marks · {fmtDur(test.duration)}</p>
                   </div>
-                  <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)} className={`text-[10px] font-black px-3 py-2 rounded-lg uppercase ${done ? 'bg-slate-100 text-slate-600' : 'bg-primary-600 text-white'}`}>{done ? 'Retake' : 'Start'}</button>
+                  <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)} className={`text-[10px] font-black px-3 py-2 rounded-lg uppercase ${done ? 'bg-slate-100 text-slate-600' : 'bg-primary-600 text-white'}`}>{done ? translate('Retake') : translate('Start')}</button>
                 </motion.div>
               );
             })}

@@ -22,8 +22,10 @@ import {
   MessageCircle,
   ArrowRight
 } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 const CommunityQuestionsPage = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const authenticated = isAuthenticated();
   const currentUser = getCurrentUser();
@@ -65,7 +67,7 @@ const CommunityQuestionsPage = () => {
       }
     } catch (err) {
       console.error('Error fetching community questions:', err);
-      setError('Failed to load questions');
+      setError(translate('Failed to load questions'));
     } finally {
       setLoading(false);
     }
@@ -117,7 +119,7 @@ const CommunityQuestionsPage = () => {
   };
 
   const handleDelete = async (questionId) => {
-    if (!confirm('Are you sure you want to delete this question?')) return;
+    if (!confirm(translate('Are you sure you want to delete this question?'))) return;
     try {
       setDeletingId(questionId);
       const res = await API.deleteCommunityQuestion(questionId);
@@ -155,10 +157,10 @@ const CommunityQuestionsPage = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between gap-4">
           <div>
             <h1 className="text-xl xl:text-2xl font-black text-content-primary uppercase tracking-tight">
-              Community Questions
+              {translate('Community Questions')}
             </h1>
             <p className="text-sm text-content-muted mt-1">
-              Practice questions shared by fellow students
+              {translate('Practice questions shared by fellow students')}
             </p>
           </div>
           {/* Filters */}
@@ -168,8 +170,8 @@ const CommunityQuestionsPage = () => {
               onChange={(e) => handleFilterChange('exam', e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
-              <option value="">{hasTargets ? 'My target exams' : 'All Exams'}</option>
-              {hasTargets && <option value="all">All Exams</option>}
+              <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
+              {hasTargets && <option value="all">{translate('All Exams')}</option>}
               {exams.map(exam => (
                 <option key={exam._id} value={exam._id}>
                   {exam.name}
@@ -182,14 +184,14 @@ const CommunityQuestionsPage = () => {
               onChange={(e) => handleFilterChange('sort', e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
             >
-              <option value="latest">Latest First</option>
-              <option value="popular">Most Popular</option>
+              <option value="latest">{translate('Latest First')}</option>
+              <option value="popular">{translate('Most Popular')}</option>
             </select>
           </div>
           {authenticated && (
             <Link href="/community-questions/ask">
               <Button variant="primary" size="sm" icon={MessageSquarePlus}>
-                Post Question
+                {translate('Post Question')}
               </Button>
             </Link>
           )}
@@ -204,18 +206,18 @@ const CommunityQuestionsPage = () => {
           <Card className="text-center py-2 xl:py-4">
             <p className="text-content-muted text-sm">{error}</p>
             <button onClick={fetchQuestions} className="mt-3 mx-auto text-primary-600 text-sm font-bold hover:underline">
-              Try Again
+              {translate('Try Again')}
             </button>
           </Card>
         ) : questions.length === 0 ? (
           <Card className="text-center py-2 xl:py-4">
             <MessageSquarePlus className="w-12 h-12 text-content-muted mx-auto mb-3 opacity-50" />
-            <h3 className="text-lg font-bold text-content-primary mb-1">No Questions Yet</h3>
-            <p className="text-sm text-content-muted mb-4">Be the first to share a question with the community!</p>
+            <h3 className="text-lg font-bold text-content-primary mb-1">{translate('No Questions Yet')}</h3>
+            <p className="text-sm text-content-muted mb-4">{translate('Be the first to share a question with the community!')}</p>
             {authenticated && (
               <Link href="/community-questions/ask">
                 <Button className='mx-auto' variant="primary" size="sm" icon={MessageSquarePlus}>
-                  Post First Question
+                  {translate('Post First Question')}
                 </Button>
               </Link>
             )}
@@ -240,7 +242,7 @@ const CommunityQuestionsPage = () => {
                     )}
                     <div>
                       <Link href={`/u/${q.author?.username || ''}`} className="text-sm font-bold text-content-primary hover:text-primary-600 transition-colors">
-                        {q.author?.name || 'Anonymous'}
+                        {q.author?.name || translate('Anonymous')}
                       </Link>
                       <div className="flex items-center gap-2 text-[10px] text-content-muted">
                         <Calendar className="w-3 h-3" />
@@ -250,7 +252,7 @@ const CommunityQuestionsPage = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-1 rounded-lg bg-primary-50 dark:bg-primary-500/10 text-primary-600 text-[10px] font-bold uppercase">
-                      {q.exam?.name || q.exam?.code || 'Exam'}
+                      {q.exam?.name || q.exam?.code || translate('Exam')}
                     </span>
                   </div>
                 </div>
@@ -288,7 +290,7 @@ const CommunityQuestionsPage = () => {
                   className="flex items-center justify-between px-3 py-2 mb-3 rounded-lg xl:rounded-xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-600 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-colors group"
                 >
                   <span className="text-xs font-bold text-primary-600 dark:text-primary-300 uppercase tracking-wider">
-                    Attempt & See Explanation
+                    {translate('Attempt & See Explanation')}
                   </span>
                   <ArrowRight className="w-4 h-4 text-primary-600 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
@@ -325,7 +327,7 @@ const CommunityQuestionsPage = () => {
                       className="flex items-center gap-1 text-xs font-bold text-content-muted hover:text-black dark:hover:text-white transition-colors disabled:opacity-50"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
-                      {deletingId === q._id ? 'Deleting...' : 'Delete'}
+                      {deletingId === q._id ? translate('Deleting...') : translate('Delete')}
                     </button>
                   )}
                 </div>
@@ -345,7 +347,7 @@ const CommunityQuestionsPage = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
             <span className="px-4 py-2 text-sm font-bold text-content-primary">
-              Page {currentPage} of {pagination.totalPages}
+              {translate('Page {page} of {total}', { page: currentPage, total: pagination.totalPages })}
             </span>
             <button
               onClick={() => handlePageChange(currentPage + 1)}
@@ -361,11 +363,11 @@ const CommunityQuestionsPage = () => {
         {!authenticated && (
           <Card className="mt-6 text-center" variant="primary" radius="2xl">
             <p className="text-sm font-bold text-white mb-3">
-              Login to post your own questions and like others!
+              {translate('Login to post your own questions and like others!')}
             </p>
             <Link href="/login">
               <Button variant="secondary" size="sm" className='mx-auto'>
-                Login Now
+                {translate('Login Now')}
               </Button>
             </Link>
           </Card>

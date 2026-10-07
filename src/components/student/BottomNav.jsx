@@ -18,6 +18,7 @@ import {
   BrainCircuit
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useTranslate from '../../hooks/useTranslate';
 
 const REEL_TYPES = [
   { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'MCQ with explanation' },
@@ -29,6 +30,7 @@ const REEL_TYPES = [
 
 const StudentBottomNav = () => {
   const router = useRouter();
+  const { translate } = useTranslate();
   const currentPath = router.pathname;
   const [showCreate, setShowCreate] = useState(false);
 
@@ -67,7 +69,7 @@ const StudentBottomNav = () => {
                   <div className="w-10 h-1 rounded-full bg-slate-300 dark:bg-slate-700" />
                 </div>
                 <div className="flex items-center justify-between px-5 pb-3">
-                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Create Reel</h3>
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">{translate('Create Reel')}</h3>
                   <button onClick={() => setShowCreate(false)} className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800">
                     <X className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   </button>
@@ -90,8 +92,8 @@ const StudentBottomNav = () => {
                         <type.icon className={`w-5 h-5 ${type.iconColor}`} />
                       </div>
                       <div className="text-left">
-                        <p className="text-sm font-black text-slate-900 dark:text-white">{type.label}</p>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{type.desc}</p>
+                        <p className="text-sm font-black text-slate-900 dark:text-white">{translate(type.label)}</p>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{translate(type.desc)}</p>
                       </div>
                     </motion.button>
                   ))}
@@ -103,7 +105,7 @@ const StudentBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav aria-label="Main navigation" className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
+      <nav aria-label={translate('Main navigation')} className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
           // Create — its own flex slot like every other item, just lifted up
           // by translate so it floats half above / half inside the bar.
@@ -111,7 +113,7 @@ const StudentBottomNav = () => {
             return (
               <button
                 key="create"
-                aria-label={showCreate ? 'Close create menu' : 'Create new reel'}
+                aria-label={showCreate ? translate('Close create menu') : translate('Create new reel')}
                 onClick={() => setShowCreate((prev) => !prev)}
                 className="flex-1 min-w-0 flex items-center justify-center -translate-y-5"
               >
@@ -129,7 +131,7 @@ const StudentBottomNav = () => {
                 isActive ? 'bg-primary-600 text-white' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
-                <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{item.name}</span>
+                <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{translate(item.name)}</span>
               </div>
             </Link>
           );

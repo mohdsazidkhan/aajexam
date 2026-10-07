@@ -2,6 +2,7 @@
 import { isAuthenticated, getCurrentUser } from '../utils/authUtils';
 import { hasActiveSubscription } from '../utils/subscriptionUtils';
 import { toast } from 'react-hot-toast';
+import useTranslate from '../hooks/useTranslate';
 
 /**
  * Route component that requires active subscription
@@ -11,6 +12,7 @@ import { toast } from 'react-hot-toast';
  * @param {boolean} props.showToast - Whether to show error toast (default: true)
  */
 const SubscriptionRoute = ({ children, redirectTo = '/subscription', showToast = true }) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   
   // First check if user is authenticated
@@ -22,7 +24,7 @@ const SubscriptionRoute = ({ children, redirectTo = '/subscription', showToast =
   // Then check if user has active subscription
   if (!hasActiveSubscription()) {
     if (showToast) {
-      toast.error('This feature requires an active subscription!');
+      toast.error(translate('This feature requires an active subscription!'));
     }
     router.push(redirectTo);
     return null;

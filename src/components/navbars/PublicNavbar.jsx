@@ -23,10 +23,12 @@ import { useClientSide } from '../../hooks/useClientSide';
 import { initializeDarkMode } from '../../store/darkModeSlice';
 import Button from '../ui/Button';
 import ThemeColorMenuButton from '../ThemeColorMenuButton';
+import useTranslate from '../../hooks/useTranslate';
 
 const PublicNavbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { translate } = useTranslate();
   const isClient = useClientSide();
   const [scrolled, setScrolled] = useState(false);
 
@@ -69,10 +71,10 @@ const PublicNavbar = () => {
               <div className="absolute -inset-2 bg-primary-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-600 text-glow-primary">EXAM</span>
+                  AAJ<span className="text-primary-600 text-glow-primary">{translate('EXAM')}</span>
                 </span>
                 <span className="hidden sm:block text-[9px] xl:text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
-                  Prepare Your Exam Today
+                  {translate('Prepare Your Exam Today')}
                 </span>
               </div>
             </Link>
@@ -83,13 +85,13 @@ const PublicNavbar = () => {
                 {navLinks.map((link) => {
                   const isActive = router.pathname === link.href;
                   return (
-                    <Link title={link.title} key={link.href} href={link.href}>
+                    <Link title={translate(link.title)} key={link.href} href={link.href}>
                       <button className={`relative px-2.5 py-2 rounded-lg xl:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
                         {isActive && (
                           <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg xl:rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
-                          {link.label}
+                          {translate(link.label)}
                         </span>
                       </button>
                     </Link>
@@ -103,7 +105,7 @@ const PublicNavbar = () => {
               <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm transition-all" />
 
               <Link href="/login">
-                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">Get Started</Button>
+                <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">{translate('Get Started')}</Button>
               </Link>
             </div>
           </div>

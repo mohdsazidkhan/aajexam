@@ -2,8 +2,10 @@
 
 import React from 'react'
 import { useGlobalError } from '@/contexts/GlobalErrorContext'
+import useTranslate from '../hooks/useTranslate';
 
 export default function GlobalErrorBanner() {
+  const { translate } = useTranslate();
   const { error, clearError } = useGlobalError()
 
   if (!error) return null
@@ -20,7 +22,7 @@ export default function GlobalErrorBanner() {
             </svg>
           </div>
           <div className="space-y-1">
-            <p className="text-base font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">Security Breach!</p>
+            <p className="text-base font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">{translate('Security Breach!')}</p>
             <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-relaxed">{error.message}</p>
           </div>
         </div>

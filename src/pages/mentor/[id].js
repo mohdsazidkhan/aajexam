@@ -10,8 +10,10 @@ import { toast } from 'react-hot-toast';
 import Seo from '../../components/Seo';
 import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../../utils/schema';
+import useTranslate from '../../hooks/useTranslate';
 
 export default function MentorProfilePage() {
+  const { translate } = useTranslate();
   const router = useRouter();
   const { id } = router.query;
   const [mentor, setMentor] = useState(null);
@@ -50,16 +52,16 @@ export default function MentorProfilePage() {
         body: JSON.stringify({ amaId, answer: answerText.trim() }),
       });
       if (res?.success) {
-        toast.success('Answer submitted!');
+        toast.success(translate('Answer submitted!'));
         setAnsweringId(null);
         setAnswerText('');
         const updated = await API.request(`/api/mentor/${id}`);
         if (updated?.success) setMentor(updated.data);
       } else {
-        toast.error(res?.message || 'Failed to submit answer');
+        toast.error(res?.message || translate('Failed to submit answer'));
       }
     } catch {
-      toast.error('Failed to submit answer');
+      toast.error(translate('Failed to submit answer'));
     } finally {
       setSubmittingAnswer(false);
     }
@@ -74,16 +76,16 @@ export default function MentorProfilePage() {
         body: JSON.stringify({ question: question.trim() }),
       });
       if (res?.success) {
-        toast.success('Question submitted!');
+        toast.success(translate('Question submitted!'));
         setQuestion('');
         // Refresh mentor data
         const updated = await API.request(`/api/mentor/${id}`);
         if (updated?.success) setMentor(updated.data);
       } else {
-        toast.error(res?.message || 'Failed to submit question');
+        toast.error(res?.message || translate('Failed to submit question'));
       }
     } catch {
-      toast.error('Please login to ask a question');
+      toast.error(translate('Please login to ask a question'));
     } finally {
       setAskingQuestion(false);
     }
@@ -97,7 +99,7 @@ export default function MentorProfilePage() {
         if (updated?.success) setMentor(updated.data);
       }
     } catch {
-      toast.error('Please login to upvote');
+      toast.error(translate('Please login to upvote'));
     }
   };
 
@@ -111,8 +113,8 @@ export default function MentorProfilePage() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
         <Users className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-        <p className="text-lg font-bold text-slate-500">Mentor not found</p>
-        <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-600">Back to Mentors</button>
+        <p className="text-lg font-bold text-slate-500">{translate('Mentor not found')}</p>
+        <button onClick={() => router.push('/mentors')} className="mt-4 text-sm font-bold text-primary-600">{translate('Back to Mentors')}</button>
       </div>
     </div>
   );
@@ -145,14 +147,14 @@ export default function MentorProfilePage() {
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <h1 className="text-xl font-black text-slate-900 dark:text-white">{mentor.user?.name || 'Mentor'}</h1>
+                <h1 className="text-xl font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h1>
                 {mentor.isVerified && <Shield className="w-4 h-4 text-primary-600" />}
               </div>
               {mentor.user?.bio && <p className="text-sm text-slate-500 mb-3">{mentor.user.bio}</p>}
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500">
                 <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 text-black dark:text-white fill-black dark:fill-white" /> {mentor.rating?.toFixed(1) || '0.0'} ({mentor.totalRatings || 0})</span>
-                <span className="flex items-center gap-1"><MessageCircle className="w-3.5 h-3.5" /> {mentor.helpedStudents || 0} helped</span>
-                {mentor.preparationMonths > 0 && <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {mentor.preparationMonths} months prep</span>}
+                <span className="flex items-center gap-1"><MessageCircle className="w-3.5 h-3.5" /> {translate('{count} helped', { count: mentor.helpedStudents || 0 })}</span>
+                {mentor.preparationMonths > 0 && <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {translate('{count} months prep', { count: mentor.preparationMonths })}</span>}
               </div>
             </div>
           </div>
@@ -161,15 +163,15 @@ export default function MentorProfilePage() {
         {/* Exams Cleared */}
         {mentor.examsCleared?.length > 0 && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-primary-600" /> Exams Cleared</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Award className="w-4 h-4 text-primary-600" /> {translate('Exams Cleared')}</h2>
             <div className="flex flex-col gap-2">
               {mentor.examsCleared.map((exam, i) => (
                 <div key={i} className="flex items-center justify-between p-3 bg-primary-50 dark:bg-primary-900/10 rounded-lg xl:rounded-xl">
                   <span className="text-sm font-bold text-slate-900 dark:text-white">{exam.examName}</span>
                   <div className="flex items-center gap-3 text-xs font-bold text-slate-500">
                     <span><Calendar className="w-3 h-3 inline" /> {exam.year}</span>
-                    {exam.rank && <span>Rank: {exam.rank}</span>}
-                    {exam.score && <span>Score: {exam.score}</span>}
+                    {exam.rank && <span>{translate('Rank: {rank}', { rank: exam.rank })}</span>}
+                    {exam.score && <span>{translate('Score: {score}', { score: exam.score })}</span>}
                   </div>
                 </div>
               ))}
@@ -180,7 +182,7 @@ export default function MentorProfilePage() {
         {/* Strategy */}
         {mentor.strategy && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">Preparation Strategy</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">{translate('Preparation Strategy')}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.strategy}</p>
           </Card>
         )}
@@ -188,7 +190,7 @@ export default function MentorProfilePage() {
         {/* Daily Routine */}
         {mentor.dailyRoutine && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-black dark:text-white" /> Daily Routine</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><Clock className="w-4 h-4 text-black dark:text-white" /> {translate('Daily Routine')}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line">{mentor.dailyRoutine}</p>
           </Card>
         )}
@@ -196,7 +198,7 @@ export default function MentorProfilePage() {
         {/* Tips */}
         {mentor.tips?.length > 0 && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">Tips for Students</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">{translate('Tips for Students')}</h2>
             <ul className="space-y-2">
               {mentor.tips.map((tip, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
@@ -210,7 +212,7 @@ export default function MentorProfilePage() {
         {/* Books */}
         {mentor.booksRecommended?.length > 0 && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><BookOpen className="w-4 h-4 text-black dark:text-white" /> Recommended Books</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3 flex items-center gap-2"><BookOpen className="w-4 h-4 text-black dark:text-white" /> {translate('Recommended Books')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.booksRecommended.map((book, i) => (
                 <span key={i} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-bold text-black dark:text-white">{book}</span>
@@ -222,7 +224,7 @@ export default function MentorProfilePage() {
         {/* Specialization */}
         {mentor.specialization?.length > 0 && (
           <Card>
-            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">Specialization</h2>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-3">{translate('Specialization')}</h2>
             <div className="flex flex-wrap gap-2">
               {mentor.specialization.map((spec, i) => (
                 <span key={i} className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-xs font-bold text-primary-600 dark:text-primary-400">{spec}</span>
@@ -233,11 +235,11 @@ export default function MentorProfilePage() {
 
         {/* AMA Section */}
         <Card>
-          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2"><MessageCircle className="w-4 h-4 text-primary-600" /> Ask Me Anything</h2>
+          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wide mb-4 flex items-center gap-2"><MessageCircle className="w-4 h-4 text-primary-600" /> {translate('Ask Me Anything')}</h2>
 
           {/* Ask Question */}
           <div className="flex gap-2 mb-5">
-            <input type="text" placeholder="Ask a question..." value={question} onChange={e => setQuestion(e.target.value)}
+            <input type="text" placeholder={translate('Ask a question...')} value={question} onChange={e => setQuestion(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
               className="flex-1 bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-700" />
             <button onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
@@ -263,7 +265,7 @@ export default function MentorProfilePage() {
                   ) : isOwner ? (
                     answeringId === thread._id ? (
                       <div className="flex gap-2">
-                        <input type="text" placeholder="Write your answer..." value={answerText} onChange={e => setAnswerText(e.target.value)}
+                        <input type="text" placeholder={translate('Write your answer...')} value={answerText} onChange={e => setAnswerText(e.target.value)}
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
                           className="flex-1 bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-300 dark:border-slate-700" />
                         <button onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
@@ -272,17 +274,17 @@ export default function MentorProfilePage() {
                         </button>
                         <button onClick={() => { setAnsweringId(null); setAnswerText(''); }}
                           className="px-3 py-2 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl text-xs font-bold shrink-0">
-                          Cancel
+                          {translate('Cancel')}
                         </button>
                       </div>
                     ) : (
                       <button onClick={() => { setAnsweringId(thread._id); setAnswerText(''); }}
                         className="text-xs font-bold text-primary-600 hover:text-primary-600">
-                        Write an answer
+                        {translate('Write an answer')}
                       </button>
                     )
                   ) : (
-                    <p className="text-xs text-slate-400 italic">Awaiting answer...</p>
+                    <p className="text-xs text-slate-400 italic">{translate('Awaiting answer...')}</p>
                   )}
                   <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
                     <button onClick={() => handleUpvote(thread._id)} className="flex items-center gap-1 hover:text-primary-600">
@@ -294,7 +296,7 @@ export default function MentorProfilePage() {
               ))}
             </div>
           ) : (
-            <p className="text-sm text-slate-400 text-center py-4">No questions yet. Be the first to ask!</p>
+            <p className="text-sm text-slate-400 text-center py-4">{translate('No questions yet. Be the first to ask!')}</p>
           )}
         </Card>
       </div>

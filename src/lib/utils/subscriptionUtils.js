@@ -2,6 +2,7 @@ import { getCurrentUser } from './authUtils';
 import { toast } from 'react-hot-toast';
 import config from '../config/appConfig';
 import { useState, useEffect } from 'react';
+import { translateNow } from '../../hooks/useTranslate';
 
 /**
  * Check if user has active subscription (any tier)
@@ -146,7 +147,7 @@ export const getDaysRemaining = () => {
  */
 export const requireSubscription = (router, redirectTo = '/subscription') => {
   if (!hasActiveSubscription()) {
-    toast.error('This feature requires an active subscription!');
+    toast.error(translateNow('This feature requires an active subscription!'));
     if (router) {
       router.push(redirectTo);
     }
@@ -164,7 +165,7 @@ export const requireSubscription = (router, redirectTo = '/subscription') => {
  */
 export const requireSubscriptionPlan = (planName, router, redirectTo = '/subscription') => {
   if (!hasSubscriptionPlan(planName)) {
-    toast.error(`This feature requires a ${planName} subscription!`);
+    toast.error(translateNow('This feature requires a {plan} subscription!', { plan: planName }));
     if (router) {
       router.push(redirectTo);
     }

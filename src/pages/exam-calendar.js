@@ -11,6 +11,7 @@ import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
+import useTranslate from '../hooks/useTranslate';
 
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
@@ -50,9 +51,10 @@ const EventDot = ({ event }) => {
 
 // ─── Event Card (upcoming list & day detail) ──────────────────────────────────
 const EventCard = ({ event, compact = false }) => {
+  const { translate, locale } = useTranslate();
   const cfg = getType(event.type);
   const Icon = cfg.icon;
-  const dateStr = new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  const dateStr = new Date(event.date).toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
 
   if (compact) {
     return (
@@ -90,7 +92,7 @@ const EventCard = ({ event, compact = false }) => {
             <Clock className="w-3 h-3 text-content-muted" />
             <span className="text-[10px] font-bold text-content-muted">{dateStr}</span>
             <span className={`ml-1 text-[9px] font-black uppercase px-1.5 py-0.5 rounded-full ${cfg.color}`}>
-              {cfg.label}
+              {translate(cfg.label)}
             </span>
           </div>
         </div>
@@ -102,8 +104,9 @@ const EventCard = ({ event, compact = false }) => {
 
 // ─── Day Detail Panel ─────────────────────────────────────────────────────────
 const DayPanel = ({ date, events, onClose }) => {
+  const { translate, locale } = useTranslate();
   if (!date || !events?.length) return null;
-  const dateLabel = new Date(date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+  const dateLabel = new Date(date).toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 
   return (
     <AnimatePresence>
@@ -126,7 +129,7 @@ const DayPanel = ({ date, events, onClose }) => {
               onClick={onClose}
               className="text-content-muted hover:text-content-primary transition-colors text-[10px] font-black uppercase"
             >
-              Close
+              {translate('Close')}
             </button>
           </div>
           <div className="p-4 grid grid-cols-1 xl:grid-cols-3 gap-2.5">
@@ -142,6 +145,7 @@ const DayPanel = ({ date, events, onClose }) => {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 const ExamCalendarPage = () => {
+  const { translate, locale } = useTranslate();
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth() + 1); // 1-based
@@ -233,25 +237,25 @@ const ExamCalendarPage = () => {
                 className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/30 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
               >
                 <CalendarDays className="w-3.5 h-3.5" />
-                {totalEvents} events this month
+                {translate('{count} events this month', { count: totalEvents })}
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
                 className="text-2xl sm:text-3xl xl:text-4xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
               >
-                Exam Calendar
+                {translate('Exam Calendar')}
               </motion.h1>
-              <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Important Dates at a Glance</p>
+              <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">{translate('Important Dates at a Glance')}</p>
             </div>
 
             {/* Type legend */}
             <div className="flex gap-2 overflow-x-auto no-scrollbar">
-              {['admit_card', 'result', 'vacancy', 'notification'].map(t => {
-                const cfg = getType(t);
+              {['admit_card', 'result', 'vacancy', 'notification'].map(typeKey => {
+                const cfg = getType(typeKey);
                 return (
-                  <div key={t} className="flex items-center gap-1.5 bg-black/10 dark:bg-white/15 backdrop-blur-sm border border-black/20 dark:border-white/20 px-2.5 py-1 rounded-full shrink-0 whitespace-nowrap">
+                  <div key={typeKey} className="flex items-center gap-1.5 bg-black/10 dark:bg-white/15 backdrop-blur-sm border border-black/20 dark:border-white/20 px-2.5 py-1 rounded-full shrink-0 whitespace-nowrap">
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
-                    <span className="text-[10px] font-black text-black dark:text-white uppercase">{cfg.label}</span>
+                    <span className="text-[10px] font-black text-black dark:text-white uppercase">{translate(cfg.label)}</span>
                   </div>
                 );
               })}
@@ -266,19 +270,19 @@ const ExamCalendarPage = () => {
             className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">Prev</span>
+            <span className="hidden sm:inline">{translate('Prev')}</span>
           </button>
 
           <div className="flex-1 text-center">
             <h2 className="text-lg sm:text-xl xl:text-2xl font-black text-content-primary tracking-tight">
-              {MONTHS[month - 1]} {year}
+              {translate(MONTHS[month - 1])} {year}
             </h2>
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
               <button
                 onClick={goToday}
                 className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-wide mt-0.5"
               >
-                Back to Today
+                {translate('Back to Today')}
               </button>
             )}
           </div>
@@ -287,7 +291,7 @@ const ExamCalendarPage = () => {
             onClick={nextMonth}
             className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
-            <span className="hidden sm:inline">Next</span>
+            <span className="hidden sm:inline">{translate('Next')}</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
@@ -299,7 +303,7 @@ const ExamCalendarPage = () => {
             const isToday = dateStr === todayStr;
             const isSelected = dateStr === selectedDate;
             const hasEvents = eventsForDay.length > 0;
-            const dayName = new Date(year, month - 1, day).toLocaleDateString('en-IN', { weekday: 'short' });
+            const dayName = new Date(year, month - 1, day).toLocaleDateString(locale, { weekday: 'short' });
 
             return (
               <button
@@ -355,7 +359,7 @@ const ExamCalendarPage = () => {
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-primary-600" />
                 <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
-                  Upcoming (Next 30 Days)
+                  {translate('Upcoming (Next 30 Days)')}
                 </h2>
                 <span className="text-[10px] font-black bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-2 py-0.5 rounded-full">
                   {upcoming.length}
@@ -395,11 +399,11 @@ const ExamCalendarPage = () => {
         {totalEvents === 0 && upcoming.length === 0 && (
           <div className="py-16 text-center space-y-2 xl:space-y-4">
             <CalendarDays className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
-            <h3 className="text-lg font-black text-content-muted uppercase">No events this month</h3>
-            <p className="text-sm text-content-muted font-bold">Check back later or navigate to another month.</p>
+            <h3 className="text-lg font-black text-content-muted uppercase">{translate('No events this month')}</h3>
+            <p className="text-sm text-content-muted font-bold">{translate('Check back later or navigate to another month.')}</p>
             <Link href="/exam-news">
               <button className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
-                View Exam News
+                {translate('View Exam News')}
               </button>
             </Link>
           </div>

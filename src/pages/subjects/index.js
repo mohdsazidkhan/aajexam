@@ -7,10 +7,12 @@ import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
 import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
 export default function Subjects(props) {
+  const { translate } = useTranslate();
   // Static HTML lists the full catalogue (SEO). Logged-in users with target exams get the
   // index limited to those exams, on mount and right after they change them.
   const [scoped, setScoped] = useState(null);
@@ -58,7 +60,7 @@ export default function Subjects(props) {
 
       <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection
-          title="All subjects"
+          title={translate('All subjects')}
           intro="Every subject we cover, with free topic-wise MCQs, study notes and timed practice quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams."
           groups={[{ items: subjects.map((s) => ({ href: `/subjects/${s.slug}`, name: s.name, meta: s.topicCount ? `${s.topicCount} topics` : null })) }]}
           columns="sm:grid-cols-2 xl:grid-cols-4"

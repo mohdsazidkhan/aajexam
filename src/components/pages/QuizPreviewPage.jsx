@@ -13,8 +13,10 @@ import { getCurrentUser } from '../../lib/utils/authUtils';
 import { QuizPreviewPageSkeleton } from '../skeletons/PublicSkeletons';
 import { ProBadge } from '../ui';
 import { Lock } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const lookupId = resolvedId || router.query.id;
 
@@ -29,13 +31,13 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         setLoading(true);
         const res = await API.getQuizById(lookupId);
         if (res.success) setQuiz(res.data);
-        else toast.error('Quiz not found');
+        else toast.error(translate('Quiz not found'));
 
         const lbRes = await API.getQuizLeaderboard(lookupId, 10);
         if (lbRes.success) setLeaderboard(lbRes.data || []);
       } catch (err) {
         console.error('Error loading quiz:', err);
-        toast.error('Error loading quiz');
+        toast.error(translate('Error loading quiz'));
       } finally {
         setLoading(false);
       }
@@ -55,7 +57,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
 
   const handleStartQuiz = () => {
     if (isLocked) {
-      toast.error('This is a PRO feature. Upgrade to unlock!');
+      toast.error(translate('This is a PRO feature. Upgrade to unlock!'));
       router.push('/subscription');
       return;
     }
@@ -77,8 +79,8 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background-page">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">Quiz Not Found</h1>
-          <Link href="/search" className="text-primary-600 hover:text-primary-600">← Back to Search</Link>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">{translate('Quiz Not Found')}</h1>
+          <Link href="/search" className="text-primary-600 hover:text-primary-600">{translate('← Back to Search')}</Link>
         </div>
       </div>
     );
@@ -106,13 +108,13 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           {quiz.subject && (
             <>
               <span className="text-slate-400">·</span>
-              <span className="text-slate-500 dark:text-slate-400">{quiz.subject.name}</span>
+              <span className="text-slate-500 dark:text-slate-400">{translateData(quiz.subject.name)}</span>
             </>
           )}
           {quiz.topic && (
             <>
               <span className="text-slate-400">·</span>
-              <span className="text-slate-500 dark:text-slate-400">{quiz.topic.name}</span>
+              <span className="text-slate-500 dark:text-slate-400">{translateData(quiz.topic.name)}</span>
             </>
           )}
         </div>
@@ -124,7 +126,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
               <BrainCircuit className="w-4 xl:w-6 h-4 xl:h-6 text-white" />
             </div>
             <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-              {quiz.title}
+              {translateData(quiz.title)}
               {(quiz.accessLevel || '').toUpperCase() === 'PRO' && <ProBadge />}
             </h1>
           </div>
@@ -137,22 +139,22 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
             <div className="bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl p-3 text-center">
               <HelpCircle className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.questions?.length || 0}</div>
-              <div className="text-xs text-slate-500">Questions</div>
+              <div className="text-xs text-slate-500">{translate('Questions')}</div>
             </div>
             <div className="bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl p-3 text-center">
               <Clock className="w-6 h-6 text-black dark:text-white mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.duration}</div>
-              <div className="text-xs text-slate-500">Minutes</div>
+              <div className="text-xs text-slate-500">{translate('Minutes')}</div>
             </div>
             <div className={`rounded-lg xl:rounded-xl p-3 text-center ${difficultyColor}`}>
               <BarChart3 className="w-6 h-6 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white capitalize">{quiz.difficulty}</div>
-              <div className="text-xs text-slate-500">Difficulty</div>
+              <div className="text-xs text-slate-500">{translate('Difficulty')}</div>
             </div>
             <div className="bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl p-3 text-center">
               <Trophy className="w-6 h-6 text-primary-600 mx-auto mb-1" />
               <div className="text-xl font-bold text-slate-900 dark:text-white">{quiz.totalMarks}</div>
-              <div className="text-xs text-slate-500">Total Marks</div>
+              <div className="text-xs text-slate-500">{translate('Total Marks')}</div>
             </div>
           </div>
 
@@ -160,11 +162,11 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           {(quiz.marksPerQuestion > 0 || quiz.negativeMarking > 0) && (
             <div className="flex flex-wrap gap-3 mb-6 text-sm">
               <span className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-lg font-medium">
-                +{quiz.marksPerQuestion} per correct
+                {translate('+{marks} per correct', { marks: quiz.marksPerQuestion })}
               </span>
               {quiz.negativeMarking > 0 && (
                 <span className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg font-medium">
-                  -{quiz.negativeMarking} per wrong
+                  {translate('-{marks} per wrong', { marks: quiz.negativeMarking })}
                 </span>
               )}
             </div>
@@ -196,16 +198,16 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Users className="w-5 h-5 text-primary-600" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Quiz Statistics</h2>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Quiz Statistics')}</h2>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-600">{quiz.totalAttempts}</div>
-                <div className="text-xs text-slate-500">Total Attempts</div>
+                <div className="text-xs text-slate-500">{translate('Total Attempts')}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-600">{Math.round(quiz.avgScore)}%</div>
-                <div className="text-xs text-slate-500">Average Score</div>
+                <div className="text-xs text-slate-500">{translate('Average Score')}</div>
               </div>
             </div>
           </div>
@@ -216,7 +218,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm mb-6 border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-3">
               <Tag className="w-5 h-5 text-slate-500" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Tags</h2>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Tags')}</h2>
             </div>
             <div className="flex flex-wrap gap-2">
               {quiz.tags.map((tag, i) => (
@@ -233,7 +235,7 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
           <div className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl p-4 xl:p-6 shadow-sm border border-slate-100 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-black dark:text-white" />
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Leaderboard</h2>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">{translate('Leaderboard')}</h2>
             </div>
             <div className="space-y-2">
               {leaderboard.slice(0, 10).map((entry, i) => (
@@ -244,11 +246,11 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
                     {i + 1}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{entry.user?.name || 'Anonymous'}</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{entry.user?.name || translate('Anonymous')}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-bold text-slate-900 dark:text-white">{Math.round(entry.percentage || 0)}%</p>
-                    <p className="text-[10px] text-slate-400">{entry.accuracy?.toFixed(0)}% accuracy</p>
+                    <p className="text-[10px] text-slate-400">{translate('{value}% accuracy', { value: entry.accuracy?.toFixed(0) })}</p>
                   </div>
                 </div>
               ))}

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { FaTimes, FaRocket, FaGift, FaCreditCard, FaShieldAlt, FaGraduationCap, FaBookOpen } from 'react-icons/fa';
+import useTranslate from '../hooks/useTranslate';
 
 const SystemUpdateModal = ({ isOpen, onClose }) => {
+  const { translate, rich } = useTranslate();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -39,8 +41,8 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 <FaGraduationCap className="text-3xl text-primary-600" />
               </div>
               <div>
-                <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter">AajExam — Exam Focused!</h2>
-                <p className="text-[10px] font-black uppercase tracking-widest text-primary-100 opacity-80 mt-1">Dedicated Exam Preparation Platform</p>
+                <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter">{translate('AajExam — Exam Focused!')}</h2>
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary-100 opacity-80 mt-1">{translate('Dedicated Exam Preparation Platform')}</p>
               </div>
             </div>
             <button
@@ -61,42 +63,42 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               <FaShieldAlt className="text-black dark:text-white mr-2" /> Platform Update
             </h3>
             <p className="text-sm text-black dark:text-white font-medium">
-              AajExam is now <span className="font-black">100% dedicated to Government Exam Preparation!</span> We've streamlined the platform to focus entirely on helping you crack your dream exam.
+              {rich("AajExam is now <0>100% dedicated to Government Exam Preparation!</0> We've streamlined the platform to focus entirely on helping you crack your dream exam.", [(c) => <span className="font-black">{c}</span>])}
             </p>
           </div>
 
           {/* WHAT'S NEW */}
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-black text-primary-600 dark:text-primary-200 mb-3 uppercase tracking-tight">
-              ✅ What's Available
+              {translate('✅ What\'s Available')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📝</span>
                 <div>
-                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">Real Exam Patterns</p>
-                  <p className="text-xs text-primary-600">SSC, UPSC, Banking, Railway & more</p>
+                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Real Exam Patterns')}</p>
+                  <p className="text-xs text-primary-600">{translate('SSC, UPSC, Banking, Railway & more')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📊</span>
                 <div>
-                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">Full-Length Mock Tests</p>
-                  <p className="text-xs text-primary-600">With section-wise analysis</p>
+                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Full-Length Mock Tests')}</p>
+                  <p className="text-xs text-primary-600">{translate('With section-wise analysis')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">🏆</span>
                 <div>
-                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">Test Leaderboards</p>
-                  <p className="text-xs text-primary-600">Compare your rank with others</p>
+                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Test Leaderboards')}</p>
+                  <p className="text-xs text-primary-600">{translate('Compare your rank with others')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-xl">📈</span>
                 <div>
-                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">Detailed Analytics</p>
-                  <p className="text-xs text-primary-600">Track accuracy, speed & progress</p>
+                  <p className="font-bold text-primary-600 dark:text-primary-200 text-sm">{translate('Detailed Analytics')}</p>
+                  <p className="text-xs text-primary-600">{translate('Track accuracy, speed & progress')}</p>
                 </div>
               </div>
             </div>
@@ -108,7 +110,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
               <FaShieldAlt className="mr-3" /> Your Data is Safe
             </h3>
             <p className="text-sm font-medium opacity-90 leading-relaxed">
-              Your account, subscription, and wallet balance are completely safe. All your exam preparation data has been preserved on this platform.
+              {translate('Your account, subscription, and wallet balance are completely safe. All your exam preparation data has been preserved on this platform.')}
             </p>
           </div>
 
@@ -116,7 +118,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
           <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-300 dark:border-primary-600 rounded-2xl p-6">
             <h3 className="text-sm xl:text-lg font-black text-primary-600 dark:text-primary-200 mb-4 flex items-center uppercase tracking-tight">
               <span className="text-xl mr-2">📱</span>
-              Our Apps
+              {translate('Our Apps')}
             </h3>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
@@ -126,7 +128,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-black text-white rounded-2xl hover:bg-gray-800 transition-all shadow-sm active:translate-y-1 font-black uppercase text-xs tracking-widest"
               >
                 <FaGraduationCap className="mr-3" />
-                AajExam App (Exams)
+                {translate('AajExam App (Exams)')}
               </a>
               <a
                 href="https://subgquiz.com"
@@ -135,7 +137,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-gray-700 text-white rounded-2xl hover:bg-gray-800 transition-all active:translate-y-1 font-black uppercase text-xs tracking-widest"
               >
                 <FaBookOpen className="mr-3" />
-                SubgQuiz (Quizzes)
+                {translate('SubgQuiz (Quizzes)')}
               </a>
             </div>
           </div>
@@ -146,13 +148,13 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
         <div className="bg-slate-100 dark:bg-slate-800/50 p-8 rounded-b-[2.5rem] border-t-2 border-slate-200 dark:border-slate-800">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
             <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest text-center sm:text-left leading-loose">
-              Crack your dream exam with AajExam.
+              {translate('Crack your dream exam with AajExam.')}
             </p>
             <button
               onClick={handleClose}
               className="bg-primary-600 text-white px-12 py-5 rounded-[1.5rem] text-xs font-black uppercase tracking-widest transition-all active:translate-y-1 shadow-sm"
             >
-              Start Preparing!
+              {translate('Start Preparing!')}
             </button>
           </div>
         </div>

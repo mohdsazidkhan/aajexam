@@ -23,6 +23,7 @@ import Pagination from './Pagination';
 import ViewToggle from './ViewToggle';
 import { AdminTableSkeleton } from './admin/Skeletons';
 import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../lib/constants/pagination';
+import useTranslate from '../hooks/useTranslate';
 
 /**
  * Premium Responsive Table Component
@@ -46,6 +47,7 @@ const ResponsiveTable = ({
   emptyMessage = "No data available",
   fillHeight = false,
 }) => {
+  const { translate } = useTranslate();
   const [internalView, setInternalView] = useState(defaultView);
   const currentViewState = currentView !== null ? currentView : internalView;
   const [currentPage, setCurrentPage] = useState(1);
@@ -91,7 +93,7 @@ const ResponsiveTable = ({
         <thead className="sticky top-0 z-10 bg-white dark:bg-slate-800 border-b-2 border-slate-100 dark:border-slate-800">
           <tr>
             <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap">
-              S.No.
+              {translate('S.No.')}
             </th>
             {columns.map((column, index) => {
               const isStickyActions = lastColumnIsActions && index === columns.length - 1;
@@ -107,7 +109,7 @@ const ResponsiveTable = ({
             })}
             {actions.length > 0 && (
               <th className="px-3 py-2 text-left text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] font-outfit whitespace-nowrap sticky right-0 z-20 bg-white dark:bg-slate-800 border-l border-slate-100 dark:border-slate-700">
-                Actions
+                {translate('Actions')}
               </th>
             )}
           </tr>
@@ -236,11 +238,11 @@ const ResponsiveTable = ({
               </div>
               <div className="min-w-0 flex-1">
                 <h3 className="text-base font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white truncate">
-                  {row.name || row[columns[0]?.key] || 'Unknown Object'}
+                  {row.name || row[columns[0]?.key] || translate('Unknown Object')}
                 </h3>
                 <div className="flex items-center gap-1.5 mt-1">
                   <Activity className="w-3 h-3 text-primary-600" />
-                  <span className="text-[9px] font-black text-primary-600 uppercase tracking-widest">{row.status || 'Active'}</span>
+                  <span className="text-[9px] font-black text-primary-600 uppercase tracking-widest">{row.status || translate('Active')}</span>
                 </div>
               </div>
             </div>
@@ -304,7 +306,7 @@ const ResponsiveTable = ({
 
           {showPagination && (
             <div className="px-5 py-3 xl:py-2.5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-[1.25rem] xl:rounded-2xl shadow-sm flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
-              <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">Page Size</span>
+              <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest font-outfit">{translate('Page Size')}</span>
               <select
                 value={itemsPerPageState}
                 onChange={handleItemsPerPageChange}

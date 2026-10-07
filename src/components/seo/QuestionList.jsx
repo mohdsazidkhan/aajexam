@@ -1,3 +1,4 @@
+import useTranslate from '../../hooks/useTranslate';
 const LABELS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 /**
@@ -15,6 +16,7 @@ const LABELS = ['A', 'B', 'C', 'D', 'E', 'F'];
  * it is author-supplied content and effectively always plain.
  */
 export default function QuestionList({ questions = [], title = 'Questions with solutions', intro }) {
+  const { translate } = useTranslate();
   if (questions.length === 0) return null;
 
   return (
@@ -40,7 +42,7 @@ export default function QuestionList({ questions = [], title = 'Questions with s
 
               {q.image && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={q.image} alt={`Figure for question ${qi + 1}`} loading="lazy" decoding="async"
+                <img src={q.image} alt={translate('Figure for question {n}', { n: qi + 1 })} loading="lazy" decoding="async"
                   className="my-3 max-h-72 w-auto rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700" />
               )}
 
@@ -56,10 +58,10 @@ export default function QuestionList({ questions = [], title = 'Questions with s
               {correctIndex > -1 && (
                 <details className="mt-3 group">
                   <summary className="cursor-pointer text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400">
-                    Show answer
+                    {translate('Show answer')}
                   </summary>
                   <p className="mt-2 text-sm font-bold text-primary-600 dark:text-primary-400">
-                    Answer: {LABELS[correctIndex] || correctIndex + 1}. {q.options[correctIndex]?.text}
+                    {translate('Answer:')} {LABELS[correctIndex] || correctIndex + 1}. {q.options[correctIndex]?.text}
                   </p>
                   {q.explanation && (
                     <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300 leading-relaxed">

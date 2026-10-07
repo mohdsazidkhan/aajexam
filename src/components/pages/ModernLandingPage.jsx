@@ -25,8 +25,10 @@ import MobileAppWrapper from "../MobileAppWrapper";
 import API from '../../lib/api';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
+import useTranslate from '../../hooks/useTranslate';
 
 const ModernLandingPage = () => {
+   const { translate, rich } = useTranslate();
    const [stats, setStats] = useState({
       activeStudents: "250+",
       totalExams: "10+",
@@ -82,7 +84,7 @@ const ModernLandingPage = () => {
    }, []);
 
    return (
-      <MobileAppWrapper showHeader={true} title="Home">
+      <MobileAppWrapper showHeader={true} title={translate('Home')}>
          <section className="relative overflow-hidden -mx-4 xl:-mx-8">
             <div className="absolute inset-0 pointer-events-none">
                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-primary-500/20 blur-[120px] opacity-70" />
@@ -112,21 +114,21 @@ const ModernLandingPage = () => {
                      className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-600 border-2 border-primary-500/10 shadow-sm"
                   >
                      <Sparkles className="w-4 h-4 text-primary-600" />
-                     Trusted by students across India
+                     {translate('Trusted by students across India')}
                   </div>
 
                   <div className="space-y-2 xl:space-y-4">
                      <h1
                         className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] xl:leading-[0.85] text-slate-900 dark:text-white"
                      >
-                        Practice for <span className="text-primary-600">Exams</span>
-                        <p className="text-primary-600">You Study. You Win.</p>
+                        {rich('Practice for <0>Exams</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                        <p className="text-primary-600">{translate('You Study. You Win.')}</p>
                      </h1>
 
                      <p
                         className="text-base xl:text-xl xl:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 xl:px-4"
                      >
-                        Practice daily for government exams and track your improvement.
+                        {translate('Practice daily for government exams and track your improvement.')}
 
                      </p>
                   </div>
@@ -142,7 +144,7 @@ const ModernLandingPage = () => {
                         className="w-full sm:w-auto"
                         onClick={() => router.push('/login')}
                      >
-                        Start practicing now
+                        {translate('Start practicing now')}
                      </Button>
                      <Button
                         variant="secondary"
@@ -152,7 +154,7 @@ const ModernLandingPage = () => {
                         className="w-full sm:w-auto font-outfit tracking-[0.08em] text-sm py-3 xl:py-6"
                         onClick={() => router.push('/govt-exams-preparation')}
                      >
-                        Browse exams
+                        {translate('Browse exams')}
                      </Button>
                   </div>
 
@@ -160,13 +162,13 @@ const ModernLandingPage = () => {
                      className="flex flex-wrap items-center justify-center gap-x-6 xl:gap-x-12 gap-y-2 xl:gap-y-4 pt-2 xl:pt-4 xl:pt-6 border-t-2 border-slate-200/50 dark:border-slate-800/50"
                   >
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <ShieldCheck className="w-5 h-5 text-primary-600" /> Questions by experts
+                        <ShieldCheck className="w-5 h-5 text-primary-600" /> {translate('Questions by experts')}
                      </div>
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <Flame className="w-5 h-5 text-primary-600" /> Thousands of questions
+                        <Flame className="w-5 h-5 text-primary-600" /> {translate('Thousands of questions')}
                      </div>
                      <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                        <Trophy className="w-5 h-5 text-black dark:text-white" /> Practice with topic-wise quizzes
+                        <Trophy className="w-5 h-5 text-black dark:text-white" /> {translate('Practice with topic-wise quizzes')}
                      </div>
                   </div>
                </div>
@@ -197,22 +199,22 @@ const ModernLandingPage = () => {
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-primary-600 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
-                        Registered Users (Last 30 Days)
+                        {translate('Registered Users (Last 30 Days)')}
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
-                        Practice Test Attempts (Last 30 Days)
+                        {translate('Practice Test Attempts (Last 30 Days)')}
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
-                        PYQ's Attempts (Last 30 Days)
+                        {translate("PYQ's Attempts (Last 30 Days)")}
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
                         <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
                         <span className="text-black dark:text-white font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
-                        Quiz Attempts (Last 30 Days)
+                        {translate('Quiz Attempts (Last 30 Days)')}
                      </div>
                   </div>
                ))}
@@ -236,10 +238,10 @@ const ModernLandingPage = () => {
                               <item.icon className={`w-8 h-8 ${item.color}`} />
                            </div>
                            <h3 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
-                              Step {item.step}: {item.title}
+                              {translate('Step {step}: {title}', { step: item.step, title: translate(item.title) })}
                            </h3>
                            <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
-                              {item.desc}
+                              {translate(item.desc)}
                            </p>
                         </div>
                      ))}
@@ -265,7 +267,7 @@ const ModernLandingPage = () => {
                            <stat.icon className="w-6 h-6 xl:w-8 xl:h-8" />
                         </div>
                         <div className="text-2xl xl:text-5xl font-black font-outfit text-slate-900 dark:text-white mb-1 leading-none">{stat.val}</div>
-                        <div className="text-[10px] xl:text-xs font-black tracking-[0.08em] text-slate-600 dark:text-slate-400">{stat.label}</div>
+                        <div className="text-[10px] xl:text-xs font-black tracking-[0.08em] text-slate-600 dark:text-slate-400">{translate(stat.label)}</div>
                      </div>
                   ))}
                </div>
@@ -281,13 +283,13 @@ const ModernLandingPage = () => {
                <div className="text-center space-y-2 xl:space-y-4 mb-10">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-600 dark:text-primary-400 uppercase">
                      <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
-                     Last Year PYQ — Always Free
+                     {translate('Last Year PYQ — Always Free')}
                   </div>
                   <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-                     Practice with <span className="text-primary-600">Real Papers</span>
+                     {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                   </h2>
                   <p className="text-base xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                     500+ Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.
+                     {translate('500+ Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.')}
                   </p>
                </div>
 
@@ -303,10 +305,10 @@ const ModernLandingPage = () => {
                            className={`cursor-pointer p-4 xl:p-8 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
                         >
                            <span className={`text-sm xl:text-base font-black ${theme.text} mb-1`}>{exam.name}</span>
-                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.pyqCount} PYQs</span>
-                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{exam.practiceTestCount} Practice Tests</span>
-                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{exam.quizCount} Quizzes</span>
-                           <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{translate('{count} PYQs', { count: exam.pyqCount })}</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{translate('{count} Practice Tests', { count: exam.practiceTestCount })}</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{translate('{count} Quizzes', { count: exam.quizCount })}</span>
+                           <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">{translate('Latest Free')}</span>
                         </motion.div>
                      );
                   }) : [
@@ -324,8 +326,8 @@ const ModernLandingPage = () => {
                         className={`cursor-pointer p-4 xl:p-8 rounded-2xl ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
                      >
                         <span className={`text-sm xl:text-base font-black ${exam.text}`}>{exam.name}</span>
-                        <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{exam.papers} papers</span>
-                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">Latest Free</span>
+                        <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{translate('{count} papers', { count: exam.papers })}</span>
+                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">{translate('Latest Free')}</span>
                      </motion.div>
                   ))}
                </div>
@@ -338,13 +340,13 @@ const ModernLandingPage = () => {
                      onClick={() => router.push('/register')}
                      className="w-full sm:w-auto px-10 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm"
                   >
-                     Start Free PYQ Practice →
+                     {translate('Start Free PYQ Practice →')}
                   </motion.button>
                   <button
                      onClick={() => router.push('/pyq')}
                      className="w-full sm:w-auto px-8 py-4 bg-primary-600 hover:opacity-90 text-white font-black uppercase tracking-widest rounded-2xl border border-primary-600 transition-all text-sm"
                   >
-                     Browse All PYQs
+                     {translate('Browse All PYQs')}
                   </button>
                </div>
             </div>
@@ -354,8 +356,8 @@ const ModernLandingPage = () => {
          <section id="features" className="py-10 xl:py-32 border-t-2 border-b-2 border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-3 xl:px-6 space-y-10 xl:space-y-20">
                <div className="text-center space-y-6 max-w-3xl mx-auto">
-                  <h2 className="text-xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">Study Smart. <br /> Pass Your Exam.</h2>
-                  <p className="text-xl font-bold text-slate-700 dark:text-slate-400 px-4">Everything you need to prepare for government exams, all in one place.</p>
+                  <h2 className="text-xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
+                  <p className="text-xl font-bold text-slate-700 dark:text-slate-400 px-4">{translate('Everything you need to prepare for government exams, all in one place.')}</p>
 
                </div>
 
@@ -365,11 +367,11 @@ const ModernLandingPage = () => {
                         <div className="p-4 xl:p-5 bg-white/20 backdrop-blur-md rounded-3xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-white/20">
                            <Trophy className="w-10 h-10 xl:w-12 xl:h-12" />
                         </div>
-                        <h3 className="text-xl xl:text-5xl font-black font-outfit uppercase leading-[0.9]">See your progress</h3>
-                        <p className="text-base xl:text-md xl:text-xl font-bold opacity-80 leading-relaxed">Know how well you are doing. Get a clear report after every exam and move up as you improve.</p>
+                        <h3 className="text-xl xl:text-5xl font-black font-outfit uppercase leading-[0.9]">{translate('See your progress')}</h3>
+                        <p className="text-base xl:text-md xl:text-xl font-bold opacity-80 leading-relaxed">{translate('Know how well you are doing. Get a clear report after every exam and move up as you improve.')}</p>
                         <div className="pt-4 xl:pt-8">
                            <Button variant="secondary" size="lg" className="rounded-[1.5rem] xl:rounded-[2rem] px-6 xl:px-8 font-black tracking-[0.08em] text-sm py-4 xl:py-6" onClick={() => router.push('/register')}>
-                              Check your progress
+                              {translate('Check your progress')}
                            </Button>
                         </div>
                      </div>
@@ -382,8 +384,8 @@ const ModernLandingPage = () => {
                         <div className="p-3 xl:p-4 bg-primary-500/10 text-primary-600 rounded-2xl xl:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
-                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">Practice every day</h3>
-                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">Practice a little every day. This helps you remember more and climb higher on the student list.</p>
+                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('Practice every day')}</h3>
+                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">{translate('Practice a little every day. This helps you remember more and climb higher on the student list.')}</p>
                      </div>
                      <div className="space-y-3 xl:space-y-4 pt-8 xl:pt-10">
                         {[80, 60, 95].map((width, index) => (
@@ -403,8 +405,8 @@ const ModernLandingPage = () => {
                         <div className="p-3 xl:p-4 bg-primary-500/10 text-primary-600 rounded-2xl xl:rounded-[2rem] w-fit border-2 border-primary-500/10">
                            <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
-                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">See your test results</h3>
-                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">After every test, see how many you got right and which topics need more practice.</p>
+                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('See your test results')}</h3>
+                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">{translate('After every test, see how many you got right and which topics need more practice.')}</p>
                      </div>
                      <div className="flex gap-3 xl:gap-4 pt-8 xl:pt-10">
                         <div className="flex-1 h-24 xl:h-32 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
@@ -424,11 +426,11 @@ const ModernLandingPage = () => {
                         <div className="p-3 xl:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-600 rounded-2xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto xl:mx-0">
                            <Medal className="w-10 h-10 xl:w-12 xl:h-12" />
                         </div>
-                        <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">Refer & Earn</h3>
-                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 xl:px-0">Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.</p>
+                        <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
+                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 xl:px-0">{translate('Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.')}</p>
                         <div className="pt-2 xl:pt-4">
                            <Button variant="primary" size="lg" className="w-full xl:w-auto shadow-sm rounded-lg xl:rounded-xl xl:rounded-2xl px-8 xl:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 xl:py-6" onClick={() => router.push('/login')}>
-                              Start referring
+                              {translate('Start referring')}
                            </Button>
                         </div>
                      </div>
@@ -446,7 +448,7 @@ const ModernLandingPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         className="text-3xl xl:text-9xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-[0.8] mb-8 xl:mb-12"
                      >
-                        Study with <br /><span className="text-primary-600">Confidence.</span>
+                        {translate('Study with')} <br /><span className="text-primary-600">{translate('Confidence.')}</span>
                      </motion.h2>
 
                      <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
@@ -459,8 +461,8 @@ const ModernLandingPage = () => {
                               <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
                                  <item.icon className="w-8 h-8" />
                               </div>
-                              <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{item.title}</h3>
-                              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs mx-auto text-center px-4">{item.desc}</p>
+                              <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{translate(item.title)}</h3>
+                              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs mx-auto text-center px-4">{translate(item.desc)}</p>
                            </div>
                         ))}
                      </div>
@@ -480,9 +482,9 @@ const ModernLandingPage = () => {
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
                      className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
                   >
-                     Your Dream Job <br /><span className="text-primary-600">Is Waiting.</span>
+                     {translate('Your Dream Job')} <br /><span className="text-primary-600">{translate('Is Waiting.')}</span>
                   </motion.h2>
-                  <p className="text-md md:text-xl xl:text-2xl font-bold text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed tracking-[0.04em] px-4">Start today. Join AajExam, practice every day, and get the government job you want.</p>
+                  <p className="text-md md:text-xl xl:text-2xl font-bold text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed tracking-[0.04em] px-4">{translate('Start today. Join AajExam, practice every day, and get the government job you want.')}</p>
                   <div className="pt-4 xl:pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
                      <Button
                         variant="primary"
@@ -492,7 +494,7 @@ const ModernLandingPage = () => {
                         className="w-full sm:w-auto shadow-sm rounded-2xl font-outfit font-black text-sm tracking-[0.08em] transition-transform active:scale-95"
                         onClick={() => router.push('/register')}
                      >
-                        Join Now For Free
+                        {translate('Join Now For Free')}
                      </Button>
                   </div>
                </div>

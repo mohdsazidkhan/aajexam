@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaCookie, FaTimes } from 'react-icons/fa';
+import useTranslate from '../hooks/useTranslate';
 
 const CookieConsent = () => {
+  const { translate, rich } = useTranslate();
     const [showBanner, setShowBanner] = useState(false);
 
     useEffect(() => {
@@ -42,13 +44,13 @@ const CookieConsent = () => {
                     </div>
                     <div className="flex-1">
                         <h3 className="text-sm xl:text-md font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tighter">
-                            We use <span className="text-primary-600">cookies</span>
+                            {rich('We use <0>cookies</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                         </h3>
                         <p className="text-[10px] xl:text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide leading-tight">
-                            Cookies help us remember your login and personalise your experience.
-                            See our {' '}
+                            {translate('Cookies help us remember your login and personalise your experience.')}{' '}
+                            {translate('See our')} {' '}
                             <Link href="/privacy" className="text-primary-600 hover:underline transition-colors font-black">
-                                Privacy Policy
+                                {translate('Privacy Policy')}
                             </Link>
                         </p>
                     </div>
@@ -60,13 +62,13 @@ const CookieConsent = () => {
                         onClick={handleDecline}
                         className="flex-1 xl:flex-none px-4 py-2 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest hover:text-slate-900 dark:hover:text-white transition-colors"
                     >
-                        No
+                        {translate('No')}
                     </button>
                     <button
                         onClick={handleAccept}
                         className="flex-[2] xl:flex-none px-6 py-3 bg-primary-600 text-white rounded-lg xl:rounded-xl font-black uppercase tracking-[0.1em] text-[10px] shadow-sm hover:bg-primary-800 transition-all active:translate-y-1 active:shadow-none border-b-2 border-primary-600"
                     >
-                        Accept
+                        {translate('Accept')}
                     </button>
                 </div>
             </div>

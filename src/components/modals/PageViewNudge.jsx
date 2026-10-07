@@ -6,8 +6,10 @@ import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import { Sparkles, X, ArrowRight } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
+import useTranslate from '../../hooks/useTranslate';
 
 const NudgeInner = ({ onClose }) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -30,18 +32,18 @@ const NudgeInner = ({ onClose }) => {
           localStorage.setItem('userInfo', JSON.stringify(authRes.user));
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
-          toast.success('Welcome to AajExam! 🎉 Progress saved.');
+          toast.success(translate('Welcome to AajExam! 🎉 Progress saved.'));
           onClose();
           router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
         }
       } catch (error) {
-        toast.error('Google sign-up failed. Please try again.');
+        toast.error(translate('Google sign-up failed. Please try again.'));
       } finally {
         setIsGoogleLoading(false);
       }
     },
     onError: () => {
-      toast.error('Google sign-up was cancelled.');
+      toast.error(translate('Google sign-up was cancelled.'));
       setIsGoogleLoading(false);
     },
   });
@@ -73,10 +75,10 @@ const NudgeInner = ({ onClose }) => {
            </div>
            <div>
               <h3 className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-primary-400 mb-0.5">
-                 You're on fire! 🔥
+                 {translate('You\'re on fire! 🔥')}
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 font-medium leading-snug">
-                 You're studying hard! Create a free account now to save your progress and get personalized tests.
+                 {translate('You\'re studying hard! Create a free account now to save your progress and get personalized tests.')}
               </p>
            </div>
         </div>
@@ -89,7 +91,7 @@ const NudgeInner = ({ onClose }) => {
         >
            {isGoogleLoading ? (
                <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />
-           ) : 'Save Progress Free'}
+           ) : translate('Save Progress Free')}
            {!isGoogleLoading && <ArrowRight className="w-4 h-4" />}
         </button>
       </div>

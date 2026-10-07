@@ -3,6 +3,7 @@
 import React from 'react';
 import { Search, X, Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useTranslate from '../hooks/useTranslate';
 
 /**
  * Premium Search and Filter Component
@@ -20,6 +21,7 @@ const SearchFilter = ({
   className = "",
   compact = false
 }) => {
+  const { translate } = useTranslate();
   const hasActiveFilters = Object.values(filters).some(value => value && value !== '');
   const handleChange = onSearchChange || onSearch;
 
@@ -76,7 +78,7 @@ const SearchFilter = ({
                 className="flex items-center gap-2 px-6 py-4 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-2xl border-b-2 border-slate-200 dark:border-slate-800 dark:border-white/50 hover:bg-slate-100 dark:hover:bg-white/40 transition-all duration-300 group shadow-sm hover:shadow-sm"
               >
                 <X className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
-                <span className="text-[10px] font-black uppercase tracking-widest">Clear Filters</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">{translate('Clear Filters')}</span>
               </motion.button>
             )}
           </AnimatePresence>

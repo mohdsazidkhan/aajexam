@@ -2,8 +2,10 @@
 import { FaFilter, FaDownload, FaEye, FaEyeSlash, FaChevronLeft, FaChevronRight, FaRupeeSign, FaCheckCircle, FaTimesCircle, FaClock, FaExclamationTriangle, FaCreditCard, FaReceipt, FaTag, FaCalendar, FaGlobe, FaSearch, FaTimes } from 'react-icons/fa';
 import API from '../lib/api';
 import { ListSkeleton } from './skeletons/PrivateSkeletons';
+import useTranslate from '../hooks/useTranslate';
 
 const PaymentTransactions = () => {
+  const { translate, rich } = useTranslate();
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,10 +44,10 @@ const PaymentTransactions = () => {
         setPagination(response.data.pagination);
         setSummary(response.data.summary);
       } else {
-        setError(response.message || 'Failed to fetch transactions');
+        setError(response.message || translate('Failed to fetch transactions'));
       }
     } catch (err) {
-      setError('Error fetching transactions: ' + err.message);
+      setError(translate('Error fetching transactions: {message}', { message: err.message }));
     } finally {
       setLoading(false);
     }
@@ -212,8 +214,8 @@ const PaymentTransactions = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-8 relative z-10">
           <div>
-            <h2 className="text-lg xl:text-4xl font-black mb-1 xl:mb-3 uppercase tracking-tight xl:tracking-tighter">Payment <span className="text-primary-100">History</span></h2>
-            <p className="text-[8px] xl:text-[10px] font-black uppercase tracking-[0.15em] xl:tracking-[0.3em] text-primary-100 opacity-80">All your AajExam plan purchases & receipts</p>
+            <h2 className="text-lg xl:text-4xl font-black mb-1 xl:mb-3 uppercase tracking-tight xl:tracking-tighter">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-100">{c}</span>])}</h2>
+            <p className="text-[8px] xl:text-[10px] font-black uppercase tracking-[0.15em] xl:tracking-[0.3em] text-primary-100 opacity-80">{translate('All your AajExam plan purchases & receipts')}</p>
           </div>
           <div className="flex items-center w-full sm:w-auto">
             <button
@@ -221,7 +223,7 @@ const PaymentTransactions = () => {
               className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-4 py-2.5 xl:px-8 xl:py-5 rounded-lg xl:rounded-xl xl:rounded-2xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 xl:space-x-3 border-2 xl:border-2 border-white/10 shadow-sm"
             >
               <FaFilter className="text-xs xl:text-sm" />
-              <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">Filters</span>
+              <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">{translate('Filters')}</span>
             </button>
           </div>
         </div>
@@ -234,7 +236,7 @@ const PaymentTransactions = () => {
             <div className="bg-white dark:bg-slate-800 rounded-2xl xl:rounded-[2.5rem] p-4 xl:p-10 border-2 xl:border-2 border-slate-100 dark:border-slate-700 shadow-sm xl:shadow-sm transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">Total Investment</p>
+                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">{translate('Total Investment')}</p>
                   <p className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
@@ -247,7 +249,7 @@ const PaymentTransactions = () => {
             <div className="bg-white dark:bg-slate-800 rounded-2xl xl:rounded-[2.5rem] p-4 xl:p-10 border-2 xl:border-2 border-slate-100 dark:border-slate-700 shadow-sm xl:shadow-sm transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">Total Transactions</p>
+                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">{translate('Total Transactions')}</p>
                   <p className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
                     {summary.totalTransactions || 0}
                   </p>
@@ -260,7 +262,7 @@ const PaymentTransactions = () => {
             <div className="bg-white dark:bg-slate-800 rounded-2xl xl:rounded-[2.5rem] p-4 xl:p-10 border-2 xl:border-2 border-slate-100 dark:border-slate-700 shadow-sm xl:shadow-sm transition-all hover:-translate-y-2 group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">Successful Clear</p>
+                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">{translate('Successful Clear')}</p>
                   <p className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
                     {summary.paymentOrders?.completed || 0}
                   </p>
@@ -283,7 +285,7 @@ const PaymentTransactions = () => {
               <FaSearch className="absolute left-3 xl:left-4 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400 text-xs xl:text-base" />
               <input
                 type="text"
-                placeholder="Search history..."
+                placeholder={translate('Search history...')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
@@ -296,18 +298,18 @@ const PaymentTransactions = () => {
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
               className="px-4 xl:px-6 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
-              <option value={1}>January</option>
-              <option value={2}>February</option>
-              <option value={3}>March</option>
-              <option value={4}>April</option>
-              <option value={5}>May</option>
-              <option value={6}>June</option>
-              <option value={7}>July</option>
-              <option value={8}>August</option>
-              <option value={9}>September</option>
-              <option value={10}>October</option>
-              <option value={11}>November</option>
-              <option value={12}>December</option>
+              <option value={1}>{translate('January')}</option>
+              <option value={2}>{translate('February')}</option>
+              <option value={3}>{translate('March')}</option>
+              <option value={4}>{translate('April')}</option>
+              <option value={5}>{translate('May')}</option>
+              <option value={6}>{translate('June')}</option>
+              <option value={7}>{translate('July')}</option>
+              <option value={8}>{translate('August')}</option>
+              <option value={9}>{translate('September')}</option>
+              <option value={10}>{translate('October')}</option>
+              <option value={11}>{translate('November')}</option>
+              <option value={12}>{translate('December')}</option>
             </select>
 
             {/* Year Filter */}
@@ -327,13 +329,13 @@ const PaymentTransactions = () => {
               onChange={(e) => handleFilterChange('status', e.target.value)}
               className="px-4 xl:px-6 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
-              <option value="all">All Status</option>
-              <option value="paid">Paid</option>
-              <option value="success">Success</option>
-              <option value="created">Created</option>
-              <option value="authorized">Authorized</option>
-              <option value="failed">Failed</option>
-              <option value="refunded">Refunded</option>
+              <option value="all">{translate('All Status')}</option>
+              <option value="paid">{translate('Paid')}</option>
+              <option value="success">{translate('Success')}</option>
+              <option value="created">{translate('Created')}</option>
+              <option value="authorized">{translate('Authorized')}</option>
+              <option value="failed">{translate('Failed')}</option>
+              <option value="refunded">{translate('Refunded')}</option>
             </select>
           </div>
 
@@ -342,7 +344,7 @@ const PaymentTransactions = () => {
               onClick={clearFilters}
               className="px-5 xl:px-8 py-2 xl:py-3 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl text-[9px] xl:text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
             >
-              Clear All
+              {translate('Clear All')}
             </button>
           </div>
         </div>
@@ -362,7 +364,7 @@ const PaymentTransactions = () => {
             <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-3 xl:mb-6 shadow-sm border-2 border-white">
               <FaReceipt className="text-slate-600 dark:text-slate-400 text-base xl:text-2xl" />
             </div>
-            <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">No records found</p>
+            <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate('No records found')}</p>
           </div>
         ) : (
           <div className="space-y-3 xl:space-y-6">
@@ -424,17 +426,17 @@ const PaymentTransactions = () => {
                       <div className="bg-white dark:bg-slate-800 p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h4 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
                           <FaCreditCard className="text-primary-600" />
-                          Payment Details
+                          {translate('Payment Details')}
                         </h4>
                         <div className="space-y-2 xl:space-y-4">
                           {transaction.subscriptionName && (
                             <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                              <span className="text-slate-600 dark:text-slate-400">Subscription</span>
+                              <span className="text-slate-600 dark:text-slate-400">{translate('Subscription')}</span>
                               <span className="text-slate-800 dark:text-white">{transaction.subscriptionName}</span>
                             </div>
                           )}
                           <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">Status</span>
+                            <span className="text-slate-600 dark:text-slate-400">{translate('Status')}</span>
                             <span className={`px-2.5 xl:px-3 py-0.5 xl:py-1 rounded-lg ${getStatusColor(transaction.paymentStatus || transaction.status)}`}>
                               {transaction.paymentStatus || transaction.status}
                             </span>
@@ -446,15 +448,15 @@ const PaymentTransactions = () => {
                       <div className="bg-white dark:bg-slate-800 p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
                         <h4 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
                           <FaReceipt className="text-primary-600" />
-                          Transaction Details
+                          {translate('Transaction Details')}
                         </h4>
                         <div className="space-y-2 xl:space-y-4">
                           <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">Type</span>
+                            <span className="text-slate-600 dark:text-slate-400">{translate('Type')}</span>
                             <span className="text-slate-800 dark:text-white">{transaction.type}</span>
                           </div>
                           <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
-                            <span className="text-slate-600 dark:text-slate-400">Order ID</span>
+                            <span className="text-slate-600 dark:text-slate-400">{translate('Order ID')}</span>
                             <span className="text-slate-800 dark:text-white font-mono break-all text-right">{transaction.orderId}</span>
                           </div>
                         </div>
@@ -471,7 +473,7 @@ const PaymentTransactions = () => {
         {pagination.totalPages > 1 && (
           <div className="mt-6 xl:mt-12 flex flex-col xl:flex-row items-center justify-between gap-3 xl:gap-6">
             <div className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
-              Records {((pagination.currentPage - 1) * filters.limit) + 1}-{Math.min(pagination.currentPage * filters.limit, pagination.totalCount)} of {pagination.totalCount}
+              {translate('Records {from}-{to} of {total}', { from: ((pagination.currentPage - 1) * filters.limit) + 1, to: Math.min(pagination.currentPage * filters.limit, pagination.totalCount), total: pagination.totalCount })}
             </div>
             <div className="flex items-center gap-2 xl:gap-3">
               <button

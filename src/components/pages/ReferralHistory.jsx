@@ -28,10 +28,12 @@ import { useSSR } from '../../hooks/useSSR';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import UnifiedFooter from '../UnifiedFooter';
+import useTranslate from '../../hooks/useTranslate';
 
 const PAGE_LIMIT = 20;
 
 export default function ReferralHistory() {
+  const { translate, rich } = useTranslate();
    const { isMounted, router } = useSSR();
 
    const [user, setUser] = useState(null);
@@ -60,10 +62,10 @@ export default function ReferralHistory() {
             setTransactions(response.data?.transactions || []);
             setPagination(response.data?.pagination || {});
          } else {
-            setError(response?.message || 'Failed to load referral data');
+            setError(response?.message || translate('Failed to load referral data'));
          }
       } catch (err) {
-         setError(err.message || 'Connection lost. Please try again.');
+         setError(err.message || translate('Connection lost. Please try again.'));
       } finally {
          setLoading(false);
       }
@@ -101,7 +103,7 @@ export default function ReferralHistory() {
 
    const copyToClipboard = (text) => {
       navigator.clipboard.writeText(text);
-      toast.success('Referral link copied!');
+      toast.success(translate('Referral link copied!'));
    };
 
    const MIN_PAYOUT = parseInt(process.env.NEXT_PUBLIC_MIN_WITHDRAW_AMOUNT || '1000', 10);
@@ -109,21 +111,21 @@ export default function ReferralHistory() {
    const handleSaveBankDetail = async () => {
       const { accountHolderName, accountNumber, bankName, ifscCode, branchName } = bankForm;
       if (!accountHolderName.trim() || !accountNumber.trim() || !bankName.trim() || !ifscCode.trim() || !branchName.trim()) {
-         toast.error('Fill in all required bank detail fields');
+         toast.error(translate('Fill in all required bank detail fields'));
          return;
       }
       try {
          setSavingBank(true);
          const res = await API.saveBankDetails(bankForm);
          if (res?.success) {
-            toast.success('Bank details saved!');
+            toast.success(translate('Bank details saved!'));
             setBankDetail(res.bankDetail);
             setShowBankForm(false);
          } else {
-            toast.error(res?.message || 'Failed to save bank details');
+            toast.error(res?.message || translate('Failed to save bank details'));
          }
       } catch (err) {
-         toast.error(err?.response?.data?.message || err?.message || 'Failed to save bank details');
+         toast.error(err?.response?.data?.message || err?.message || translate('Failed to save bank details'));
       } finally {
          setSavingBank(false);
       }
@@ -132,15 +134,15 @@ export default function ReferralHistory() {
    const handleRequestPayout = async () => {
       const amount = Number(payoutAmount);
       if (!amount || amount < MIN_PAYOUT) {
-         toast.error(`Minimum withdrawal amount is ₹${MIN_PAYOUT}`);
+         toast.error(translate('Minimum withdrawal amount is ₹{amount}', { amount: MIN_PAYOUT }));
          return;
       }
       if (amount > (user?.walletBalance || 0)) {
-         toast.error('Amount exceeds your available balance');
+         toast.error(translate('Amount exceeds your available balance'));
          return;
       }
       if (!bankDetail) {
-         toast.error('Add your bank details first');
+         toast.error(translate('Add your bank details first'));
          return;
       }
       try {
@@ -155,15 +157,15 @@ export default function ReferralHistory() {
             }
          });
          if (res?.success) {
-            toast.success('Withdrawal request submitted! Admin will review and mark it paid.');
+            toast.success(translate('Withdrawal request submitted! Admin will review and mark it paid.'));
             setShowPayoutForm(false);
             setPayoutAmount('');
             fetchReferralHistory(page);
          } else {
-            toast.error(res?.message || 'Failed to submit request');
+            toast.error(res?.message || translate('Failed to submit request'));
          }
       } catch (err) {
-         toast.error(err?.response?.data?.message || err?.message || 'Failed to submit request');
+         toast.error(err?.response?.data?.message || err?.message || translate('Failed to submit request'));
       } finally {
          setSubmittingPayout(false);
       }
@@ -193,7 +195,7 @@ export default function ReferralHistory() {
                         <Users className="w-4 h-4 xl:w-10 xl:h-10" />
                      </motion.div>
                      <div className="space-y-0.5 xl:space-y-4">
-                        <h1 className="text-base xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">Referral <span className="text-primary-600">History</span></h1>
+                        <h1 className="text-base xl:text-5xl font-black font-outfit uppercase tracking-tight leading-none">{rich('Referral <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
                         <p className="text-[9px] xl:text-sm font-bold text-content-secondary uppercase tracking-wide xl:tracking-[0.3em] max-w-2xl">Share your link with friends. When they buy the PRO plan (first time), you earn <span className="font-black text-primary-600">₹33</span>.</p>
                      </div>
                   </div>
@@ -202,7 +204,7 @@ export default function ReferralHistory() {
                   {user && (
                      <Card className="w-full xl:w-auto xl:min-w-[360px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-2xl xl:rounded-[2.5rem]">
                         <div className="p-1 xl:p-2 space-y-1.5 xl:space-y-3 text-left">
-                           <p className="text-[9px] xl:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">Your Referral Code</p>
+                           <p className="text-[9px] xl:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">{translate('Your Referral Code')}</p>
                            <div className="flex items-center gap-2 xl:gap-3">
                               <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
                               <Button variant="primary" size="sm" className="xl:px-8 xl:py-4 xl:rounded-full shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
@@ -232,7 +234,7 @@ export default function ReferralHistory() {
                            </div>
                            <ArrowUpRight className="hidden xl:block w-4 h-4 text-slate-200 group-hover:text-content-secondary transition-colors" />
                         </div>
-                        <p className="text-[8px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 xl:mb-1">{s.label}</p>
+                        <p className="text-[8px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 xl:mb-1">{translate(s.label)}</p>
                         <p className="text-sm xl:text-3xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
                      </Card>
                   ))}
@@ -262,7 +264,7 @@ export default function ReferralHistory() {
                                  <div className="flex items-start gap-2">
                                     <Clock className="w-4 h-4 shrink-0 mt-0.5" />
                                     <p className="text-sm font-bold text-content-secondary">
-                                       Minimum withdrawal is <span className="font-black text-primary-600">₹{MIN_PAYOUT.toLocaleString()}</span> — earn <span className="font-black text-primary-600">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span> more to unlock it
+                                       {rich('Minimum withdrawal is <0></0> — earn <1></1> more to unlock it', [() => <span className="font-black text-primary-600">₹{MIN_PAYOUT.toLocaleString()}</span>, () => <span className="font-black text-primary-600">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span>])}
                                     </p>
                                  </div>
                                  <div className="w-full h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
@@ -275,11 +277,11 @@ export default function ReferralHistory() {
                         {(user.walletBalance || 0) >= MIN_PAYOUT && !showPayoutForm && !showBankForm && (
                            bankDetail ? (
                               <Button variant="primary" className="rounded-full px-8 py-3 text-xs font-black shadow-sm shrink-0" onClick={() => { setPayoutAmount(String(user.walletBalance)); setShowPayoutForm(true); }}>
-                                 Request Withdrawal <ArrowRight className="w-4 h-4 ml-1" />
+                                 {translate('Request Withdrawal')} <ArrowRight className="w-4 h-4 ml-1" />
                               </Button>
                            ) : (
                               <Button variant="primary" className="rounded-full px-8 py-3 text-xs font-black shadow-sm shrink-0" onClick={() => setShowBankForm(true)}>
-                                 Add Bank Details <ArrowRight className="w-4 h-4 ml-1" />
+                                 {translate('Add Bank Details')} <ArrowRight className="w-4 h-4 ml-1" />
                               </Button>
                            )
                         )}
@@ -292,7 +294,7 @@ export default function ReferralHistory() {
                               {bankDetail.bankName} •••• {bankDetail.accountNumber?.slice(-4)} ({bankDetail.accountHolderName})
                            </p>
                            <button onClick={() => setShowBankForm(true)} className="text-xs font-black text-primary-600 uppercase tracking-widest hover:underline">
-                              Edit Bank Details
+                              {translate('Edit Bank Details')}
                            </button>
                         </div>
                      )}
@@ -310,7 +312,7 @@ export default function ReferralHistory() {
                                  { key: 'upiId', label: 'UPI ID (optional)' }
                               ].map((f) => (
                                  <div key={f.key}>
-                                    <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{f.label}</label>
+                                    <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate(f.label)}</label>
                                     <input
                                        type="text"
                                        value={bankForm[f.key]}
@@ -322,10 +324,10 @@ export default function ReferralHistory() {
                            </div>
                            <div className="flex gap-3">
                               <Button variant="primary" disabled={savingBank} className="rounded-full px-8 py-3 text-xs font-black shadow-sm" onClick={handleSaveBankDetail}>
-                                 {savingBank ? 'Saving...' : 'Save Bank Details'}
+                                 {savingBank ? translate('Saving...') : translate('Save Bank Details')}
                               </Button>
                               <Button variant="secondary" className="rounded-full px-8 py-3 text-xs font-black" onClick={() => setShowBankForm(false)}>
-                                 Cancel
+                                 {translate('Cancel')}
                               </Button>
                            </div>
                         </div>
@@ -335,7 +337,7 @@ export default function ReferralHistory() {
                      {showPayoutForm && (
                         <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
                            <div className="max-w-xs">
-                              <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">Amount (min ₹{MIN_PAYOUT}, max ₹{(user.walletBalance || 0).toLocaleString()})</label>
+                              <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('Amount (min ₹{min}, max ₹{max})', { min: MIN_PAYOUT, max: (user.walletBalance || 0).toLocaleString() })}</label>
                               <input
                                  type="number"
                                  min={MIN_PAYOUT}
@@ -346,18 +348,18 @@ export default function ReferralHistory() {
                               />
                            </div>
                            <p className="text-[11px] font-bold text-content-secondary uppercase tracking-widest">
-                              Paid to: {bankDetail?.bankName} •••• {bankDetail?.accountNumber?.slice(-4)}
+                              {translate('Paid to: {bank}', { bank: bankDetail?.bankName })} •••• {bankDetail?.accountNumber?.slice(-4)}
                            </p>
                            <div className="flex gap-3">
                               <Button variant="primary" disabled={submittingPayout} className="rounded-full px-8 py-3 text-xs font-black shadow-sm" onClick={handleRequestPayout}>
-                                 {submittingPayout ? 'Submitting...' : 'Submit Request'}
+                                 {submittingPayout ? translate('Submitting...') : translate('Submit Request')}
                               </Button>
                               <Button variant="secondary" className="rounded-full px-8 py-3 text-xs font-black" onClick={() => setShowPayoutForm(false)}>
-                                 Cancel
+                                 {translate('Cancel')}
                               </Button>
                            </div>
                            <p className="text-[10px] font-bold text-content-secondary uppercase tracking-widest">
-                              After you submit, admin reviews the request and marks it paid.
+                              {translate('After you submit, admin reviews the request and marks it paid.')}
                            </p>
                         </div>
                      )}
@@ -372,8 +374,8 @@ export default function ReferralHistory() {
                <div className="space-y-8">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <div className="space-y-2">
-                        <h2 className="text-xl font-black font-outfit uppercase tracking-tight">How You <span className="text-primary-600">Earned</span></h2>
-                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">See which type of referral gave you how much money</p>
+                        <h2 className="text-xl font-black font-outfit uppercase tracking-tight">{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('See which type of referral gave you how much money')}</p>
                      </div>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -386,11 +388,11 @@ export default function ReferralHistory() {
                               <Card key={i} className="relative overflow-hidden group rounded-2xl">
                                  <div className="flex justify-between items-center relative z-10">
                                     <div className="space-y-1">
-                                       <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{b.label}</p>
+                                       <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{translate(b.label)}</p>
                                        <p className="text-xl font-black font-outfit text-content-primary uppercase">₹{amount.toLocaleString()}</p>
                                     </div>
                                     <div className={`text-[10px] font-black px-3 py-1 rounded-full bg-${b.color}-500/10 text-${b.color}-500 border border-${b.color}-500/20`}>
-                                       {count} FRIENDS
+                                       {translate('{count} FRIENDS', { count })}
                                     </div>
                                  </div>
                                  <div className={`absolute top-0 right-0 w-1.5 h-full bg-${b.color}-500`} />
@@ -405,8 +407,8 @@ export default function ReferralHistory() {
                <div className="space-y-3 xl:space-y-8">
                   <div className="flex items-center justify-between">
                      <div className="space-y-1 xl:space-y-2">
-                        <h2 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">Referral <span className="text-primary-600">Logs</span></h2>
-                        <p className="text-[9px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest">Students who signed up using your referral link</p>
+                        <h2 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <p className="text-[9px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('Students who signed up using your referral link')}</p>
                      </div>
                      <div className="p-2 xl:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700">
                         <History className="w-4 h-4 xl:w-5 xl:h-5 text-content-secondary" />
@@ -420,11 +422,11 @@ export default function ReferralHistory() {
                         <Card className="py-4 xl:py-8 text-center space-y-2 xl:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl xl:rounded-[4rem]">
                            <Users className="w-8 h-8 xl:w-16 xl:h-16 text-slate-200 mx-auto" />
                            <div className="space-y-1 xl:space-y-2">
-                              <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">No Referrals Yet</h3>
-                              <p className="text-[10px] xl:text-xs font-bold text-content-secondary uppercase tracking-widest">You have not referred anyone yet. Share your link and start earning.</p>
+                              <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate('No Referrals Yet')}</h3>
+                              <p className="text-[10px] xl:text-xs font-bold text-content-secondary uppercase tracking-widest">{translate('You have not referred anyone yet. Share your link and start earning.')}</p>
                            </div>
                            <Button variant="primary" size="sm" className="xl:px-8 xl:py-3 mx-auto xl:rounded-full" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
-                              COPY LINK
+                              {translate('COPY LINK')}
                            </Button>
                         </Card>
                      ) : (
@@ -434,10 +436,10 @@ export default function ReferralHistory() {
                                  <table className="w-full text-left border-collapse">
                                     <thead className="bg-slate-50/50 dark:bg-slate-900/50">
                                        <tr>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">Student</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">Reward Type</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">Reward</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 text-right">Status</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Student')}</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward Type')}</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward')}</th>
+                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 text-right">{translate('Status')}</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-border-primary">
@@ -449,7 +451,7 @@ export default function ReferralHistory() {
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
-                                                      <p className="text-sm font-bold font-outfit uppercase truncate max-w-[150px]">{tx.invitee?.name || 'Student'}</p>
+                                                      <p className="text-sm font-bold font-outfit uppercase truncate max-w-[150px]">{tx.invitee?.name || translate('Student')}</p>
                                                       <p className="text-[10px] font-black text-content-secondary uppercase tracking-tight">{new Date(tx.date).toLocaleDateString()}</p>
                                                    </div>
                                                 </div>
@@ -463,7 +465,7 @@ export default function ReferralHistory() {
                                                 <p className="text-sm font-black text-primary-600 uppercase">+₹{tx.amount}</p>
                                              </td>
                                              <td className="px-8 py-6 text-right">
-                                                <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">Balance</p>
+                                                <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">{translate('Balance')}</p>
                                                 <p className="text-sm font-black font-outfit uppercase tracking-tight text-content-secondary">₹{tx.balance?.toLocaleString()}</p>
                                              </td>
                                           </motion.tr>

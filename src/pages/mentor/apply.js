@@ -5,8 +5,10 @@ import { Users, Plus, X, Send } from 'lucide-react';
 import API from '../../lib/api';
 import { toast } from 'react-hot-toast';
 import Seo from '../../components/Seo';
+import useTranslate from '../../hooks/useTranslate';
 
 export default function MentorApply() {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -29,8 +31,8 @@ export default function MentorApply() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.strategy.trim()) return toast.error('Please share your preparation strategy');
-    if (!form.examsCleared[0]?.examName) return toast.error('Please add at least one exam');
+    if (!form.strategy.trim()) return toast.error(translate('Please share your preparation strategy'));
+    if (!form.examsCleared[0]?.examName) return toast.error(translate('Please add at least one exam'));
 
     setLoading(true);
     try {
@@ -44,13 +46,13 @@ export default function MentorApply() {
       };
       const res = await API.request('/api/mentor/apply', { method: 'POST', body: JSON.stringify(payload) });
       if (res?.success) {
-        toast.success('Application submitted! We will review it soon.');
+        toast.success(translate('Application submitted! We will review it soon.'));
         router.push('/mentors');
       } else {
-        toast.error(res?.message || 'Something went wrong');
+        toast.error(res?.message || translate('Something went wrong'));
       }
     } catch (err) {
-      toast.error('Failed to submit application');
+      toast.error(translate('Failed to submit application'));
     } finally {
       setLoading(false);
     }
@@ -72,22 +74,22 @@ export default function MentorApply() {
             <Users className="w-5 h-5 text-primary-600" />
           </div>
           <div>
-            <h1 className="text-xl font-black text-slate-900 dark:text-white uppercase">Become a Mentor</h1>
-            <p className="text-xs text-slate-400 font-bold">Share your exam success story and help others</p>
+            <h1 className="text-xl font-black text-slate-900 dark:text-white uppercase">{translate('Become a Mentor')}</h1>
+            <p className="text-xs text-slate-400 font-bold">{translate('Share your exam success story and help others')}</p>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Exams Cleared */}
           <div>
-            <label className={labelClass}>Exams Cleared *</label>
+            <label className={labelClass}>{translate('Exams Cleared *')}</label>
             <div className="space-y-3">
               {form.examsCleared.map((exam, i) => (
                 <div key={i} className="flex flex-wrap gap-2 items-start p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700">
-                  <input placeholder="Exam name *" value={exam.examName} onChange={e => updateExam(i, 'examName', e.target.value)} className={`${inputClass} flex-1 min-w-[150px]`} />
-                  <input type="number" placeholder="Year *" value={exam.year} onChange={e => updateExam(i, 'year', e.target.value)} className={`${inputClass} w-24`} />
-                  <input type="number" placeholder="Rank" value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />
-                  <input type="number" placeholder="Score" value={exam.score} onChange={e => updateExam(i, 'score', e.target.value)} className={`${inputClass} w-24`} />
+                  <input placeholder={translate('Exam name *')} value={exam.examName} onChange={e => updateExam(i, 'examName', e.target.value)} className={`${inputClass} flex-1 min-w-[150px]`} />
+                  <input type="number" placeholder={translate('Year *')} value={exam.year} onChange={e => updateExam(i, 'year', e.target.value)} className={`${inputClass} w-24`} />
+                  <input type="number" placeholder={translate('Rank')} value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />
+                  <input type="number" placeholder={translate('Score')} value={exam.score} onChange={e => updateExam(i, 'score', e.target.value)} className={`${inputClass} w-24`} />
                   {form.examsCleared.length > 1 && (
                     <button type="button" onClick={() => removeExam(i)} className="p-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
                   )}
@@ -101,62 +103,62 @@ export default function MentorApply() {
 
           {/* Strategy */}
           <div>
-            <label className={labelClass}>Preparation Strategy *</label>
-            <textarea rows={4} placeholder="Describe your preparation strategy in detail..." value={form.strategy} onChange={e => setForm(f => ({ ...f, strategy: e.target.value }))} className={inputClass} />
+            <label className={labelClass}>{translate('Preparation Strategy *')}</label>
+            <textarea rows={4} placeholder={translate('Describe your preparation strategy in detail...')} value={form.strategy} onChange={e => setForm(f => ({ ...f, strategy: e.target.value }))} className={inputClass} />
           </div>
 
           {/* Daily Routine */}
           <div>
-            <label className={labelClass}>Daily Routine</label>
-            <textarea rows={3} placeholder="Describe your daily study routine..." value={form.dailyRoutine} onChange={e => setForm(f => ({ ...f, dailyRoutine: e.target.value }))} className={inputClass} />
+            <label className={labelClass}>{translate('Daily Routine')}</label>
+            <textarea rows={3} placeholder={translate('Describe your daily study routine...')} value={form.dailyRoutine} onChange={e => setForm(f => ({ ...f, dailyRoutine: e.target.value }))} className={inputClass} />
           </div>
 
           {/* Preparation Months */}
           <div>
-            <label className={labelClass}>Months of Preparation</label>
-            <input type="number" placeholder="e.g. 12" value={form.preparationMonths} onChange={e => setForm(f => ({ ...f, preparationMonths: e.target.value }))} className={`${inputClass} w-32`} />
+            <label className={labelClass}>{translate('Months of Preparation')}</label>
+            <input type="number" placeholder={translate('e.g. 12')} value={form.preparationMonths} onChange={e => setForm(f => ({ ...f, preparationMonths: e.target.value }))} className={`${inputClass} w-32`} />
           </div>
 
           {/* Tips */}
           <div>
-            <label className={labelClass}>Tips for Students</label>
+            <label className={labelClass}>{translate('Tips for Students')}</label>
             {form.tips.map((tip, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`Tip ${i + 1}`} value={tip} onChange={e => updateField('tips', i, e.target.value)} className={`${inputClass} flex-1`} />
                 {form.tips.length > 1 && <button type="button" onClick={() => removeField('tips', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> Add tip</button>
+            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add tip')}</button>
           </div>
 
           {/* Books */}
           <div>
-            <label className={labelClass}>Books Recommended</label>
+            <label className={labelClass}>{translate('Books Recommended')}</label>
             {form.booksRecommended.map((book, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`Book ${i + 1}`} value={book} onChange={e => updateField('booksRecommended', i, e.target.value)} className={`${inputClass} flex-1`} />
                 {form.booksRecommended.length > 1 && <button type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> Add book</button>
+            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add book')}</button>
           </div>
 
           {/* Specialization */}
           <div>
-            <label className={labelClass}>Specialization</label>
+            <label className={labelClass}>{translate('Specialization')}</label>
             {form.specialization.map((spec, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`e.g. Mathematics, Reasoning`} value={spec} onChange={e => updateField('specialization', i, e.target.value)} className={`${inputClass} flex-1`} />
                 {form.specialization.length > 1 && <button type="button" onClick={() => removeField('specialization', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> Add specialization</button>
+            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add specialization')}</button>
           </div>
 
           {/* Submit */}
           <button type="submit" disabled={loading}
             className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-3 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
-            <Send className="w-4 h-4" /> {loading ? 'Submitting...' : 'Submit Application'}
+            <Send className="w-4 h-4" /> {loading ? translate('Submitting...') : translate('Submit Application')}
           </button>
         </form>
       </div>

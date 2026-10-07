@@ -20,6 +20,7 @@
 import { toast } from 'react-hot-toast';
 
 import API from '../api';
+import { translateNow } from '../../hooks/useTranslate';
 
 const safeLocalStorage = {
     setItem: (key, value) => {
@@ -123,7 +124,7 @@ const submitForm = ({ paymentUrl, paymentParams, targetWindow }) => {
 export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = true } = {}) => {
     const resolvedUser = resolveCurrentUser(userInfo);
     if (!resolvedUser?._id) {
-        toast.error('Please log in to continue with payment.');
+        toast.error(translateNow('Please log in to continue with payment.'));
         return { success: false, reason: 'unauthenticated' };
     }
 
@@ -141,7 +142,7 @@ export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = tru
             } catch (_) { /* cross-origin write may fail */ }
         }
         if (!popup) {
-            toast.error('Please allow popups for AajExam to continue payment.');
+            toast.error(translateNow('Please allow popups for AajExam to continue payment.'));
             return { success: false, reason: 'popup_blocked' };
         }
     }
@@ -168,20 +169,20 @@ export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = tru
             targetWindow: popup
         });
 
-        toast.success('Opening secure payment page...');
+        toast.success(translateNow('Opening secure payment page...'));
         return { success: true, txnid };
     } catch (error) {
         // Close the placeholder tab so the user isn't stuck with a spinner.
         if (popup) { try { popup.close(); } catch (_) { /* noop */ } }
 
         if (error?.message?.includes('User not found')) {
-            toast.error('Your session expired. Please log in again.');
+            toast.error(translateNow('Your session expired. Please log in again.'));
         } else if (error?.message?.includes('Invalid plan')) {
-            toast.error('That plan is not available right now.');
+            toast.error(translateNow('That plan is not available right now.'));
         } else if (error?.message?.includes('PayU payment gateway not configured')) {
-            toast.error('Payments are temporarily unavailable. Please try again later.');
+            toast.error(translateNow('Payments are temporarily unavailable. Please try again later.'));
         } else {
-            toast.error(error?.message || 'Failed to start the payment.');
+            toast.error(error?.message || translateNow('Failed to start the payment.'));
         }
         onError?.(error);
         return { success: false, error };

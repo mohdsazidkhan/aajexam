@@ -2,6 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import useTranslate from '../../hooks/useTranslate';
+
+const PercentLabel = () => {
+  const { translate } = useTranslate();
+  return <span className="text-[8px] ml-1 opacity-50">{translate('PERCENT')}</span>;
+};
 
 /**
  * ProgressBar - A friendly, AajExam-inspired progress bar for tracking learning milestones.
@@ -39,7 +45,7 @@ const ProgressBar = ({
           </div>
           {showPercentage && (
             <span className="text-sm font-black font-outfit uppercase tracking-tighter text-content-primary">
-              {progressValue.toFixed(0)}<span className="text-[8px] ml-1 opacity-50">PERCENT</span>
+              {progressValue.toFixed(0)}<PercentLabel />
             </span>
           )}
         </div>

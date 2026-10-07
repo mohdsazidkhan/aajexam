@@ -5,8 +5,10 @@ import Head from 'next/head';
 import axios from 'axios';
 import { ListSkeleton } from '../../../components/skeletons/PrivateSkeletons';
 import MobileAppWrapper from '../../../components/MobileAppWrapper';
+import useTranslate from '../../../hooks/useTranslate';
 
 export default function FollowersListPage() {
+  const { translate } = useTranslate();
   const router = useRouter();
   const { username } = router.query;
   const [followers, setFollowers] = useState([]);
@@ -84,7 +86,7 @@ export default function FollowersListPage() {
           ) : followers.length === 0 ? (
             <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
               <div className="text-4xl mb-4">👥</div>
-              <p className="text-sm xl:text-lg font-black text-slate-400 uppercase tracking-tight">No followers yet</p>
+              <p className="text-sm xl:text-lg font-black text-slate-400 uppercase tracking-tight">{translate('No followers yet')}</p>
             </div>
           ) : (
             <div className="space-y-2 xl:space-y-4">
@@ -115,7 +117,7 @@ export default function FollowersListPage() {
 
                   <div className="text-right hidden sm:block">
                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-                      {user.followersCount || 0} followers
+                      {translate('{count} followers', { count: user.followersCount || 0 })}
                     </p>
                   </div>
                 </div>
@@ -131,17 +133,17 @@ export default function FollowersListPage() {
                 disabled={page === 1}
                 className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
               >
-                Previous
+                {translate('Previous')}
               </button>
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                Page {page} / {pagination.totalPages}
+                {translate('Page {page} of {total}', { page, total: pagination.totalPages })}
               </span>
               <button
                 onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
                 disabled={page === pagination.totalPages}
                 className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
               >
-                Next
+                {translate('Next')}
               </button>
             </div>
           )}

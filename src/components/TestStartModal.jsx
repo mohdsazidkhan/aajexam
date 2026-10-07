@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import { ProBadge } from './ui';
+import useTranslate from '../hooks/useTranslate';
 
 const TestStartModal = ({
   isOpen,
@@ -31,6 +32,7 @@ const TestStartModal = ({
   exam: examProp,
   category: categoryProp
 }) => {
+  const { translate, rich, translateData } = useTranslate();
   // Props may arrive as null (defaults only cover undefined)
   const test = testProp || {};
   const pattern = patternProp || {};
@@ -59,13 +61,13 @@ const TestStartModal = ({
           </div>
 
           <h2 className="text-md md:text-xl xl:text-2xl font-black text-content-primary mb-3 xl:mb-6 uppercase tracking-tighter">
-            Exam <span className="text-primary-600">Practice</span>
+            {rich('Exam <0>Practice</0>', [(c) => <span className="text-primary-600">{c}</span>])}
           </h2>
 
           {/* Test Info */}
           <div className="bg-background-surface-secondary rounded-[1rem] xl:rounded-[2rem] p-3 xl:p-6 mb-3 xl:mb-6 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
             <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2 break-words">
-              {testTitle}
+              {translateData(testTitle)}
             </h3>
 
             {/* Subscription Info */}
@@ -74,7 +76,7 @@ const TestStartModal = ({
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <ProBadge size="sm" />
                   <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest">
-                    {(test.isLastYear || test.isFree || (test.accessLevel || '').toUpperCase() === 'FREE') ? "FREE PAPER" : "PRO ONLY PAPERS"}
+                    {(test.isLastYear || test.isFree || (test.accessLevel || '').toUpperCase() === 'FREE') ? translate('FREE PAPER') : translate('PRO ONLY PAPERS')}
                   </span>
                 </div>
               ) : ((test.accessLevel || '').toUpperCase() === 'PRO' || test.type === 'full_mock') && (
@@ -82,7 +84,7 @@ const TestStartModal = ({
                    <div className="flex items-center gap-2">
                      <ProBadge size="sm" />
                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                       {getCurrentUser()?.fullMockAttemptCount === 0 ? "FIRST MOCK IS FREE!" : "PRO ONLY TEST"}
+                       {getCurrentUser()?.fullMockAttemptCount === 0 ? translate('FIRST MOCK IS FREE!') : translate('PRO ONLY TEST')}
                      </span>
                    </div>
                 </div>
@@ -94,13 +96,13 @@ const TestStartModal = ({
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{categoryName}</span>
+                <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translateData(categoryName)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
                   <GraduationCap className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{examTitle}</span>
+                <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translateData(examTitle)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
@@ -113,7 +115,7 @@ const TestStartModal = ({
                   <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
                     <Trophy className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{pattern.totalMarks} Marks</span>
+                  <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
                 </div>
               )}
               {pattern?.negativeMarking > 0 ? (
@@ -122,7 +124,7 @@ const TestStartModal = ({
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
-                    Negative Marking: -{pattern.negativeMarking} per wrong answer
+                    {translate('Negative Marking: -{marks} per wrong answer', { marks: pattern.negativeMarking })}
                   </span>
                 </div>
               ) : (
@@ -131,7 +133,7 @@ const TestStartModal = ({
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest text-center">
-                    No Negative Marking
+                    {translate('No Negative Marking')}
                   </span>
                 </div>
               )}
@@ -155,8 +157,8 @@ const TestStartModal = ({
                       {section.name}
                     </p>
                     <div className="flex gap-4 text-[9px] font-black text-content-secondary uppercase tracking-[0.1em]">
-                      <span className="flex items-center gap-1"><Zap className="w-3 h-3 text-primary-600" /> {section.totalQuestions} Questions</span>
-                      <span className="flex items-center gap-1 opacity-50"><Trophy className="w-3 h-3" /> {section.marksPerQuestion * section.totalQuestions} Mks</span>
+                      <span className="flex items-center gap-1"><Zap className="w-3 h-3 text-primary-600" /> {translate('{count} Questions', { count: section.totalQuestions })}</span>
+                      <span className="flex items-center gap-1 opacity-50"><Trophy className="w-3 h-3" /> {translate('{count} Mks', { count: section.marksPerQuestion * section.totalQuestions })}</span>
                     </div>
                   </div>
                 ))}
@@ -167,7 +169,7 @@ const TestStartModal = ({
           {/* Test Rules */}
           <div className="bg-background-surface-secondary rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 mb-4 sm:mb-8 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
             <h4 className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-4 text-center">
-              Test Instructions
+              {translate('Test Instructions')}
             </h4>
             <ul className="text-[10px] font-black text-content-secondary dark:text-slate-500 uppercase tracking-widest space-y-3 text-left">
               {[
@@ -175,11 +177,11 @@ const TestStartModal = ({
                 "Switch between English and Hindi anytime",
                 "Submit all answers in one session",
                 "Leaving early will auto-submit answers",
-                pattern?.negativeMarking > 0 ? `Negative Marking: -${pattern.negativeMarking} Marks` : null
+                pattern?.negativeMarking > 0 ? translate('Negative Marking: -{marks} Marks', { marks: pattern.negativeMarking }) : null
               ].filter(Boolean).map((rule, idx) => (
                 <li key={idx} className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 shrink-0 bg-primary-600 rounded-full shadow-sm" />
-                  <span className="leading-tight">{rule}</span>
+                  <span className="leading-tight">{translate(rule)}</span>
                 </li>
               ))}
             </ul>
@@ -199,7 +201,7 @@ const TestStartModal = ({
                 )}
               </div>
               <span className="text-[11px] xl:text-xs font-black text-content-primary uppercase tracking-widest text-left leading-relaxed">
-                I have read and agree to the test instructions
+                {translate('I have read and agree to the test instructions')}
               </span>
             </label>
           </div>
@@ -210,7 +212,7 @@ const TestStartModal = ({
               onClick={onClose}
               className="flex-1 px-4 sm:px-6 py-4 sm:py-5 bg-slate-100 dark:bg-slate-800 text-content-secondary rounded-2xl sm:rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:translate-y-1"
             >
-              Cancel
+              {translate('Cancel')}
             </button>
             <button
               onClick={() => onConfirm()}
@@ -220,13 +222,13 @@ const TestStartModal = ({
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >
-              Start Test
+              {translate('Start Test')}
             </button>
           </div>
 
           {!acceptedRules && (
             <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.1em] mt-3 sm:mt-6 text-center">
-              Please accept the instructions to continue
+              {translate('Please accept the instructions to continue')}
             </p>
           )}
         </div>

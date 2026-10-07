@@ -23,8 +23,10 @@ import Button from '../ui/Button';
 import Card from '../ui/Card';
 import UnifiedFooter from '../UnifiedFooter';
 import MobileAppWrapper from '../MobileAppWrapper';
+import useTranslate from '../../hooks/useTranslate';
 
 const LoginPage = () => {
+  const { translate } = useTranslate();
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -53,10 +55,10 @@ const LoginPage = () => {
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
           router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
-          toast.success('Welcome to AajExam!');
+          toast.success(translate('Welcome to AajExam!'));
         }
       } catch (error) {
-        toast.error('Google login failed.');
+        toast.error(translate('Google login failed.'));
       }
     }
   });
@@ -75,17 +77,17 @@ const LoginPage = () => {
         localStorage.setItem('token', res.token);
         window.dispatchEvent(new CustomEvent('authStateChanged'));
         router.push(res.user.role === 'admin' ? '/admin/dashboard' : '/home');
-        toast.success('Welcome back!');
+        toast.success(translate('Welcome back!'));
       }
     } catch (err) {
-      toast.error('Login failed. Check your credentials.');
+      toast.error(translate('Login failed. Check your credentials.'));
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <MobileAppWrapper showHeader={true} title="Login">
+    <MobileAppWrapper showHeader={true} title={translate('Login')}>
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
         <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
           <div className="space-y-4 xl:space-y-8 relative z-10">
@@ -97,12 +99,12 @@ const LoginPage = () => {
 
             <div className="space-y-2 xl:space-y-4">
               <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
-                Welcome back!
+                {translate('Welcome back!')}
                 <br />
-                Keep practicing.
+                {translate('Keep practicing.')}
               </h1>
               <p className="text-xl font-bold text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
-                Log in to continue your practice and see how you are doing today.
+                {translate('Log in to continue your practice and see how you are doing today.')}
               </p>
             </div>
 
@@ -116,7 +118,7 @@ const LoginPage = () => {
                   <div className="p-2 bg-primary-500/10 rounded-lg xl:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-600" />
                   </div>
-                  <span className="text-sm font-black tracking-[0.04em]">{item.text}</span>
+                  <span className="text-sm font-black tracking-[0.04em]">{translate(item.text)}</span>
                 </div>
               ))}
             </div>
@@ -128,9 +130,9 @@ const LoginPage = () => {
         <div className="flex-1 flex items-center justify-center">
           <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm space-y-8 rounded-[3rem]">
             <div className="text-center space-y-3">
-              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">Welcome back</h2>
+              <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{translate('Welcome back')}</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
-                Enter your details to log in.
+                {translate('Enter your details to log in.')}
               </p>
             </div>
 
@@ -140,13 +142,13 @@ const LoginPage = () => {
                 className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-600 font-black text-sm uppercase tracking-wide hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm group mt-4 xl:mt-2"
               >
                 <img src="/google.svg" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                Continue with Google
+                {translate('Continue with Google')}
               </button>
 
               <div className="relative flex items-center py-2">
                 <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
                 <span className="flex-shrink mx-4 text-xs font-black text-slate-500 dark:text-slate-400 tracking-[0.08em]">
-                  Or continue with email
+                  {translate('Or continue with email')}
                 </span>
                 <div className="flex-grow border-t-2 border-slate-100 dark:border-slate-800" />
               </div>
@@ -154,7 +156,7 @@ const LoginPage = () => {
               <form onSubmit={handleLogin} className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em] px-1">
-                    Email or phone
+                    {translate('Email or phone')}
                   </label>
                   <div className="relative group">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-600 dark:group-focus-within:text-primary-600 transition-colors" />
@@ -162,7 +164,7 @@ const LoginPage = () => {
                       type="text"
                       required
                       className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
-                      placeholder="you@example.com"
+                      placeholder={translate('you@example.com')}
                       value={identifier}
                       onChange={(e) => setIdentifier(e.target.value)}
                     />
@@ -171,9 +173,9 @@ const LoginPage = () => {
 
                 <div className="space-y-2">
                   <div className="flex justify-between items-end px-1">
-                    <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">Password</label>
+                    <label className="text-xs font-black text-slate-600 dark:text-slate-400 tracking-[0.08em]">{translate('Password')}</label>
                     <Link href="/forgot-password" className="text-xs font-black text-primary-600 hover:underline">
-                      Forgot password?
+                      {translate('Forgot password?')}
                     </Link>
                   </div>
                   <div className="relative group">
@@ -182,7 +184,7 @@ const LoginPage = () => {
                       type={showPassword ? 'text' : 'password'}
                       required
                       className="w-full pl-12 pr-12 py-4 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all font-bold placeholder:font-bold placeholder:text-slate-300"
-                      placeholder="Enter your password"
+                      placeholder={translate('Enter your password')}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -197,16 +199,16 @@ const LoginPage = () => {
                 </div>
 
                 <Button variant="primary" fullWidth size="lg" className="py-5 rounded-2xl shadow-sm" type="submit" disabled={isLoading}>
-                  {isLoading ? 'Logging in...' : 'Login'}
+                  {isLoading ? translate('Logging in...') : translate('Login')}
                 </Button>
               </form>
             </div>
 
             <div className="text-center">
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">
-                Don&apos;t have an account?{' '}
+                {translate("Don't have an account?")}{' '}
                 <Link href="/register" className="text-primary-600 hover:underline font-black">
-                  REGISTER
+                  {translate('REGISTER')}
                 </Link>
               </p>
             </div>

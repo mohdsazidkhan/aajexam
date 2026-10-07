@@ -1,4 +1,10 @@
 import React from 'react';
+import useTranslate from '../../hooks/useTranslate';
+
+const ReelsLoadingText = () => {
+  const { translate } = useTranslate();
+  return <p className="text-xs font-bold text-white/30 uppercase tracking-widest mt-8">{translate('Loading reels...')}</p>;
+};
 
 // Basic shimmer block
 const Sh = ({ className = '' }) => (
@@ -205,7 +211,7 @@ export const ReelFeedSkeleton = () => (
         <div className="h-12 bg-slate-800/50 rounded-2xl" />
       </div>
     </div>
-    <p className="text-xs font-bold text-white/30 uppercase tracking-widest mt-8">Loading reels...</p>
+    <ReelsLoadingText />
   </div>
 );
 

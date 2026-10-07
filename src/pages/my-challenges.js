@@ -13,10 +13,12 @@ import API from '../lib/api';
 import { ListSkeleton } from '../components/skeletons/PrivateSkeletons';
 import Card from '../components/ui/Card';
 import SubscriptionGuard from '../components/SubscriptionGuard';
+import useTranslate from '../hooks/useTranslate';
 
 const PAGE_SIZE = 20;
 
 const MyChallengesPage = () => {
+  const { translate, translateData } = useTranslate();
    const [challenges, setChallenges] = useState([]);
    const [loading, setLoading] = useState(true);
    const [loadingMore, setLoadingMore] = useState(false);
@@ -35,7 +37,7 @@ const MyChallengesPage = () => {
             setPage(pageNum);
          }
       } catch (e) {
-         toast.error("Could not load your challenges");
+         toast.error(translate('Could not load your challenges'));
       } finally {
          setLoading(false);
          setLoadingMore(false);
@@ -50,7 +52,7 @@ const MyChallengesPage = () => {
       const link = `${window.location.origin}/challenge/${code}`;
       navigator.clipboard.writeText(link);
       setCopiedId(code);
-      toast.success('Challenge link copied!');
+      toast.success(translate('Challenge link copied!'));
       setTimeout(() => setCopiedId(null), 2000);
    };
 
@@ -73,8 +75,8 @@ const MyChallengesPage = () => {
                {/* Header */}
                <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
                   <div className="space-y-1 text-center xl:text-left">
-                     <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">My Challenges</h1>
-                     <p className="text-sm font-bold text-slate-400">Track the challenges you&apos;ve sent to friends</p>
+                     <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">{translate('My Challenges')}</h1>
+                     <p className="text-sm font-bold text-slate-400">{translate('Track the challenges you\'ve sent to friends')}</p>
                   </div>
                </div>
 
@@ -84,8 +86,8 @@ const MyChallengesPage = () => {
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <Swords className="w-10 h-10 text-slate-300" />
                      </div>
-                     <h3 className="text-xl font-black text-slate-400">No challenges created yet</h3>
-                     <p className="text-sm text-slate-500">Take a quiz and challenge your friends to beat your score!</p>
+                     <h3 className="text-xl font-black text-slate-400">{translate('No challenges created yet')}</h3>
+                     <p className="text-sm text-slate-500">{translate('Take a quiz and challenge your friends to beat your score!')}</p>
                   </div>
                ) : (
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -103,16 +105,16 @@ const MyChallengesPage = () => {
                                     <div className="flex justify-between items-start mb-4">
                                        <div>
                                           <div className="text-[10px] font-black uppercase tracking-wider text-black dark:text-white mb-1 flex items-center gap-1">
-                                             <Swords className="w-3 h-3" /> Challenge Code: {challenge.code}
+                                             <Swords className="w-3 h-3" /> {translate('Challenge Code: {code}', { code: challenge.code })}
                                           </div>
-                                          <h3 className="text-lg font-bold text-slate-800 dark:text-white line-clamp-1">{quiz.title || 'Unknown Quiz'}</h3>
+                                          <h3 className="text-lg font-bold text-slate-800 dark:text-white line-clamp-1">{translateData(quiz.title) || translate('Unknown Quiz')}</h3>
                                           <p className="text-xs font-semibold text-slate-500">{new Date(challenge.createdAt).toLocaleDateString()} • {quiz.subject?.name || quiz.subject}</p>
                                        </div>
                                        
                                        <button 
                                           onClick={() => handleCopy(challenge.code)}
                                           className="p-2 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 hover:text-black dark:hover:text-white hover:border-slate-200 dark:border-slate-800 transition-colors shadow-sm"
-                                          title="Copy Invite Link"
+                                          title={translate('Copy Invite Link')}
                                        >
                                           {copiedId === challenge.code ? <CheckCircle className="w-4 h-4 text-primary-600" /> : <Copy className="w-4 h-4" />}
                                        </button>
@@ -120,12 +122,12 @@ const MyChallengesPage = () => {
 
                                     <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-900/60 p-3 rounded-lg xl:rounded-xl">
                                        <div className="flex-1">
-                                          <div className="text-[10px] font-bold text-slate-400 uppercase">Your Score</div>
+                                          <div className="text-[10px] font-bold text-slate-400 uppercase">{translate('Your Score')}</div>
                                           <div className="text-lg font-black text-black dark:text-white">{Math.round(hostPercentage)}%</div>
                                        </div>
                                        <div className="w-px h-8 bg-slate-200 dark:bg-slate-700"></div>
                                        <div className="flex-1 text-right">
-                                          <div className="text-[10px] font-bold text-slate-400 uppercase">Challengers</div>
+                                          <div className="text-[10px] font-bold text-slate-400 uppercase">{translate('Challengers')}</div>
                                           <div className="text-lg font-black text-slate-700 dark:text-slate-300">{challengersCount}</div>
                                        </div>
                                     </div>
@@ -139,7 +141,7 @@ const MyChallengesPage = () => {
                                     
                                     {challengersCount === 0 ? (
                                        <div className="text-center py-4 text-sm font-medium text-slate-400 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-dashed border-slate-200 dark:border-slate-700">
-                                          No one has played this yet.
+                                          {translate('No one has played this yet.')}
                                        </div>
                                     ) : (
                                        <div className="space-y-2">
@@ -153,7 +155,7 @@ const MyChallengesPage = () => {
                                                    <div className="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold">
                                                       {ch.user?.name ? ch.user.name.charAt(0).toUpperCase() : '?'}
                                                    </div>
-                                                   <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{ch.user?.name || 'Unknown'}</span>
+                                                   <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{ch.user?.name || translate('Unknown')}</span>
                                                 </div>
                                                 <div className={`text-sm font-black ${(ch.attempt?.percentage || 0) > hostPercentage ? 'text-black dark:text-white ' : 'text-primary-600'}`}>
                                                    {Math.round(ch.attempt?.percentage || 0)}%
@@ -162,7 +164,7 @@ const MyChallengesPage = () => {
                                           ))}
                                           {challengersCount > 3 && (
                                              <div className="text-center pt-2">
-                                                <span className="text-xs font-bold text-black dark:text-white hover:underline cursor-pointer">+ {challengersCount - 3} more opponents</span>
+                                                <span className="text-xs font-bold text-black dark:text-white hover:underline cursor-pointer">{translate('+ {count} more opponents', { count: challengersCount - 3 })}</span>
                                              </div>
                                           )}
                                        </div>
@@ -182,7 +184,7 @@ const MyChallengesPage = () => {
                         disabled={loadingMore}
                         className="px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                      >
-                        {loadingMore ? 'Loading…' : 'Load More'}
+                        {loadingMore ? translate('Loading…') : translate('Load More')}
                      </button>
                   </div>
                )}

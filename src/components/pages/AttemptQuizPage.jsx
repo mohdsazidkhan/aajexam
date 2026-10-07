@@ -38,15 +38,17 @@ import API from '../../lib/api';
 import { QuizAttemptSkeleton } from '../skeletons/PrivateSkeletons';
 import LanguageToggle from '../LanguageToggle';
 import useQuestionTranslation from '../../hooks/useQuestionTranslation';
+import useTranslate from '../../hooks/useTranslate';
 
 const LeaderboardTable = ({ leaderboard, currentUser }) => {
+  const { translate, translateData } = useTranslate();
   if (!leaderboard || leaderboard.length === 0) {
     return (
       <div className="text-center py-4 mb-4">
         <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 dark:border-primary-600">
           <Trophy className="w-10 h-10 text-black dark:text-white mx-auto mb-3" />
-          <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-1">No Leaderboard Yet</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400">Be the first to complete this quiz!</p>
+          <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-1">{translate('No Leaderboard Yet')}</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{translate('Be the first to complete this quiz!')}</p>
         </div>
       </div>
     );
@@ -58,7 +60,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
         <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
           <Trophy className="w-5 h-5 text-white" />
         </div>
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white">Leaderboard</h3>
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white">{translate('Leaderboard')}</h3>
       </div>
 
       {/* Mobile List */}
@@ -76,8 +78,8 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-slate-800 dark:text-white truncate">
-                  {entry.user?.name || 'Anonymous'}
-                  {isCurrentUser && <span className="text-xs text-black dark:text-white ml-1">(You)</span>}
+                  {entry.user?.name || translate('Anonymous')}
+                  {isCurrentUser && <span className="text-xs text-black dark:text-white ml-1">{translate('(You)')}</span>}
                 </p>
               </div>
               <span className="text-sm font-bold text-slate-800 dark:text-white">{Math.round(entry.percentage || 0)}%</span>
@@ -90,6 +92,7 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
 };
 
 const AttemptQuizPage = () => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const { id: quizId } = router.query;
 
@@ -215,7 +218,7 @@ const AttemptQuizPage = () => {
           setTimeout(() => setShowConfetti(false), 3000);
         }
       } else {
-        toast.error(res.message || 'Error submitting quiz');
+        toast.error(res.message || translate('Error submitting quiz'));
         setSubmitted(false);
       }
 
@@ -227,7 +230,7 @@ const AttemptQuizPage = () => {
       }
     } catch (error) {
       console.error('Error submitting quiz:', error);
-      toast.error('Error submitting quiz');
+      toast.error(translate('Error submitting quiz'));
       setSubmitted(false);
     } finally {
       setSubmitting(false);
@@ -245,7 +248,7 @@ const AttemptQuizPage = () => {
         setLoading(true);
         const startRes = await API.startQuiz(quizId);
         if (!startRes.success) {
-          toast.error(startRes.message || 'Could not start quiz');
+          toast.error(startRes.message || translate('Could not start quiz'));
           return;
         }
 
@@ -258,7 +261,7 @@ const AttemptQuizPage = () => {
         setIsTimerRunning(true);
 
         if (startRes.resumed) {
-          toast.success('Resumed your previous attempt');
+          toast.success(translate('Resumed your previous attempt'));
           // Restore previous answers if any
           const prevAnswers = startRes.data.answers || [];
           const restored = prevAnswers.map(a => a.selectedOptionIndex === -1 ? null : a.selectedOptionIndex);
@@ -271,7 +274,7 @@ const AttemptQuizPage = () => {
         } catch (e) { }
       } catch (error) {
         console.error('Error fetching quiz:', error);
-        toast.error('Error loading quiz');
+        toast.error(translate('Error loading quiz'));
       } finally {
         setLoading(false);
       }
@@ -354,19 +357,19 @@ const AttemptQuizPage = () => {
             <div className="w-14 h-14 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="w-7 h-7 text-white" />
             </div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-3">Exit Quiz?</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-3">{translate('Exit Quiz?')}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
-              Question {currentQuestionIndex + 1} of {quiz?.questions?.length || 0}. Exiting will submit your quiz with current answers.
+              {translate('Question {current} of {total}. Exiting will submit your quiz with current answers.', { current: currentQuestionIndex + 1, total: quiz?.questions?.length || 0 })}
             </p>
             <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-lg p-3 mb-5">
-              <p className="text-xs text-black dark:text-white">This action cannot be undone.</p>
+              <p className="text-xs text-black dark:text-white">{translate('This action cannot be undone.')}</p>
             </div>
             <div className="flex gap-3">
               <button onClick={() => handleExitConfirm(false)} className="flex-1 px-4 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg xl:rounded-xl font-medium transition-colors">
-                Continue Quiz
+                {translate('Continue Quiz')}
               </button>
               <button onClick={() => handleExitConfirm(true)} className="flex-1 px-4 py-2.5 bg-primary-600 hover:bg-black text-white rounded-lg xl:rounded-xl font-medium transition-colors">
-                Exit & Submit
+                {translate('Exit & Submit')}
               </button>
             </div>
           </div>
@@ -384,8 +387,8 @@ const AttemptQuizPage = () => {
       <div className="min-h-screen flex items-center justify-center bg-background-page">
         <div className="text-center">
           <XCircle className="w-12 h-12 text-black dark:text-white mx-auto mb-3" />
-          <p className="text-slate-700 dark:text-slate-300 font-semibold">No questions available for this quiz.</p>
-          <button onClick={() => router.push('/')} className="mt-4 text-primary-600 hover:underline text-sm">Go Home</button>
+          <p className="text-slate-700 dark:text-slate-300 font-semibold">{translate('No questions available for this quiz.')}</p>
+          <button onClick={() => router.push('/')} className="mt-4 text-primary-600 hover:underline text-sm">{translate('Go Home')}</button>
         </div>
       </div>
     );
@@ -397,7 +400,7 @@ const AttemptQuizPage = () => {
   const handleChallenge = async () => {
     const isPro = currentUser?.subscriptionStatus?.toUpperCase() === 'PRO' || currentUser?.role === 'admin';
     if (!isPro) {
-      toast.error('Only PRO users can challenge friends!');
+      toast.error(translate('Only PRO users can challenge friends!'));
       router.push('/subscription');
       return;
     }
@@ -412,8 +415,8 @@ const AttemptQuizPage = () => {
       if (res.success && res.challengeCode) {
         const link = `${window.location.origin}/challenge/${res.challengeCode}`;
         const shareData = {
-          title: 'Can you beat my score?',
-          text: `I scored ${Math.round(result?.percentage || 0)}% on this quiz. I challenge you to beat me!`,
+          title: translate('Can you beat my score?'),
+          text: translate('I scored {score}% on this quiz. I challenge you to beat me!', { score: Math.round(result?.percentage || 0) }),
           url: link
         };
 
@@ -421,13 +424,13 @@ const AttemptQuizPage = () => {
           await navigator.share(shareData);
         } else {
           await navigator.clipboard.writeText(link);
-          toast.success('Challenge link copied to clipboard!');
+          toast.success(translate('Challenge link copied to clipboard!'));
         }
       } else {
-        toast.error(res.message || 'Failed to create challenge');
+        toast.error(res.message || translate('Failed to create challenge'));
       }
     } catch (err) {
-      toast.error('Something went wrong');
+      toast.error(translate('Something went wrong'));
     } finally {
       setIsGeneratingChallenge(false);
     }
@@ -459,41 +462,41 @@ const AttemptQuizPage = () => {
               </div>
               {/* Score-based feedback */}
               <p className={`text-xl xl:text-2xl font-black mb-1 ${getScoreMessage(result.percentage || 0).cls}`}>
-                {getScoreMessage(result.percentage || 0).text}
+                {translate(getScoreMessage(result.percentage || 0).text)}
               </p>
-              <h2 className="text-xl xl:text-3xl font-bold text-slate-800 dark:text-white mb-4">Quiz Completed!</h2>
+              <h2 className="text-xl xl:text-3xl font-bold text-slate-800 dark:text-white mb-4">{translate('Quiz Completed!')}</h2>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                   <div className="text-xl font-bold text-primary-600">{result.correctCount}</div>
-                  <div className="text-xs text-slate-500">Correct</div>
+                  <div className="text-xs text-slate-500">{translate('Correct')}</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                   <div className="text-xl font-bold text-black dark:text-white">{result.wrongCount}</div>
-                  <div className="text-xs text-slate-500">Wrong</div>
+                  <div className="text-xs text-slate-500">{translate('Wrong')}</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                   <div className="text-xl font-bold text-black dark:text-white">{Math.round(result.percentage || 0)}%</div>
-                  <div className="text-xs text-slate-500">Score</div>
+                  <div className="text-xs text-slate-500">{translate('Score')}</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                   <div className="text-xl font-bold text-black dark:text-white">{Math.round(result.accuracy || 0)}%</div>
-                  <div className="text-xs text-slate-500">Accuracy</div>
+                  <div className="text-xs text-slate-500">{translate('Accuracy')}</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                   <div className="text-xl font-bold text-black dark:text-white">{quiz?.duration ? `${quiz.duration}m` : '—'}</div>
-                  <div className="text-xs text-slate-500">Quiz Total Time</div>
+                  <div className="text-xs text-slate-500">{translate('Quiz Total Time')}</div>
                 </div>
                 <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                   <div className="text-xl font-bold text-black dark:text-white">{fmtSec(timeTaken.reduce((sum, t) => sum + (t || 0), 0)) || '0s'}</div>
-                  <div className="text-xs text-slate-500">Total Time Taken</div>
+                  <div className="text-xs text-slate-500">{translate('Total Time Taken')}</div>
                 </div>
               </div>
 
               {result.rank && (
                 <div className="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl mb-3 inline-flex items-center gap-2">
                   <Crown className="w-4 h-4" />
-                  <span className="font-semibold text-sm">Rank #{result.rank} · Top {Math.round(result.percentile || 0)}%</span>
+                  <span className="font-semibold text-sm">{translate('Rank #{rank} · Top {percentile}%', { rank: result.rank, percentile: Math.round(result.percentile || 0) })}</span>
                 </div>
               )}
             </div>
@@ -505,7 +508,7 @@ const AttemptQuizPage = () => {
               <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
                 <Brain className="w-5 h-5 text-white" />
               </div>
-              <h2 className="text-lg font-bold text-slate-800 dark:text-white">Quiz Review</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-white">{translate('Quiz Review')}</h2>
             </div>
 
             <div className="space-y-5">
@@ -533,11 +536,11 @@ const AttemptQuizPage = () => {
                         {timeLabel && (
                           <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
                             <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${badge?.cls || 'bg-slate-100 text-slate-500'}`}>
-                              <Clock className="w-3 h-3" />Time Taken: {timeLabel}
+                              <Clock className="w-3 h-3" />{translate('Time Taken: {time}', { time: timeLabel })}
                             </span>
                             {badge && (
                               <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${badge.cls}`}>
-                                {badge.icon}{badge.label}
+                                {badge.icon}{translate(badge.label)}
                               </span>
                             )}
                           </div>
@@ -566,7 +569,7 @@ const AttemptQuizPage = () => {
 
                     {question.explanation && (
                       <div className="ml-0 xl:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                        <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
+                        <p className="text-xs text-black dark:text-white"><span className="font-semibold">{translate('Explanation:')}</span> {question.explanation}</p>
                       </div>
                     )}
 
@@ -597,7 +600,7 @@ const AttemptQuizPage = () => {
                 {isGeneratingChallenge ? (
                   <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
-                  <><Users className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
+                  <><Users className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" /> {translate('CHALLENGE FRIENDS TO BEAT THIS SCORE')}</>
                 )}
               </button>
             )}
@@ -631,8 +634,8 @@ const AttemptQuizPage = () => {
                 <BrainCircuit className="w-4 h-4 text-white" />
               </div>
               <div className="min-w-0">
-                <h1 title={quiz?.title} className="text-sm xl:text-lg font-bold text-slate-800 dark:text-white truncate xl:max-w-none">{quiz?.title}</h1>
-                <p className="text-[10px] xl:text-xs text-slate-500">{quiz.questions.length} Questions</p>
+                <h1 title={quiz?.title} className="text-sm xl:text-lg font-bold text-slate-800 dark:text-white truncate xl:max-w-none">{translateData(quiz?.title)}</h1>
+                <p className="text-[10px] xl:text-xs text-slate-500">{translate('{count} Questions', { count: quiz.questions.length })}</p>
               </div>
             </div>
 
@@ -676,7 +679,7 @@ const AttemptQuizPage = () => {
               {/* Fullscreen Toggle */}
               <button
                 onClick={toggleFullscreen}
-                title={isFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'}
+                title={isFullscreen ? translate('Exit Fullscreen') : translate('Enter Fullscreen')}
                 className="flex shrink-0 items-center justify-center w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
               >
                 {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -689,8 +692,8 @@ const AttemptQuizPage = () => {
             <div className="bg-primary-600 h-1.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
           <div className="flex justify-between mt-1">
-            <span className="text-[10px] text-slate-400">Q {currentQuestionIndex + 1}/{quiz.questions.length}</span>
-            <span className="text-[10px] text-slate-400">{answeredCount} answered</span>
+            <span className="text-[10px] text-slate-400">{translate('Q {current}/{total}', { current: currentQuestionIndex + 1, total: quiz.questions.length })}</span>
+            <span className="text-[10px] text-slate-400">{translate('{count} answered', { count: answeredCount })}</span>
           </div>
 
         </div>
@@ -737,7 +740,7 @@ const AttemptQuizPage = () => {
           {translating && (
             <p className="text-[11px] font-bold text-black dark:text-white mb-3 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
-              हिंदी में अनुवाद हो रहा है… (अभी अंग्रेज़ी दिख रही है)
+              {translate('हिंदी में अनुवाद हो रहा है… (अभी अंग्रेज़ी दिख रही है)')}
             </p>
           )}
 
@@ -789,14 +792,14 @@ const AttemptQuizPage = () => {
                 disabled={submitting}
                 className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg xl:rounded-xl font-bold text-sm bg-primary-600 text-white shadow-sm transition-all disabled:opacity-50"
               >
-                {submitting ? 'Submitting...' : 'Submit Quiz'}
+                {submitting ? translate('Submitting...') : translate('Submit Quiz')}
               </button>
             ) : (
               <button
                 onClick={handleNextQuestion}
                 className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-lg xl:rounded-xl font-bold text-sm bg-primary-600 text-white shadow-sm transition-all"
               >
-                Next <ArrowRight className="w-4 h-4" />
+                {translate('Next')} <ArrowRight className="w-4 h-4" />
               </button>
             )}
           </div>

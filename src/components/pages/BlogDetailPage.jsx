@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { Eye, Heart, Clock, Star, Pin, ArrowLeft, Share2 } from 'lucide-react';
 import { FaWhatsapp, FaTelegramPlane, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { optimizedImage } from '../../utils/imageUrl';
+import useTranslate from '../../hooks/useTranslate';
 
 
 /**
@@ -21,11 +22,12 @@ import { optimizedImage } from '../../utils/imageUrl';
 const renderContent = (html) => {
   if (!html) return '';
   return html
-    .replace(/>[ \t]*\r?\n[ \t\r\n]*</g, '><')
+    .replace(/>{translate('[ \\t]*\\r?\\n[ \\t\\r\\n]*')}</g, '><')
     .replace(/\r?\n/g, ' ');
 };
 
 const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ssrRelatedBlogs = [], hasPyq = false }) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const { slug } = router.query;
   const [blog, setBlog] = useState(initialBlog);
@@ -98,10 +100,10 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
       <div className="min-h-screen bg-background-page">
         <div className="py-8 text-gray-900 dark:text-white text-center">
           <div className="text-6xl mb-4">📝</div>
-          <h1 className="text-2xl font-bold mb-2">Blog Not Found</h1>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">The blog you're looking for doesn't exist or has been removed.</p>
+          <h1 className="text-2xl font-bold mb-2">{translate('Blog Not Found')}</h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">{translate('The blog you\'re looking for doesn\'t exist or has been removed.')}</p>
           <Link href="/blog" className="bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-600 transition-colors">
-            Browse All Blogs
+            {translate('Browse All Blogs')}
           </Link>
         </div>
       </div>
@@ -114,9 +116,9 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Breadcrumb */}
         <nav className="mb-6">
           <ol className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-            <li><Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">Home</Link></li>
+            <li><Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">{translate('Home')}</Link></li>
             <li>•</li>
-            <li><Link href="/blog" className="hover:text-primary-600 dark:hover:text-primary-400">Blog</Link></li>
+            <li><Link href="/blog" className="hover:text-primary-600 dark:hover:text-primary-400">{translate('Blog')}</Link></li>
             <li>•</li>
             <li className="text-gray-900 dark:text-white truncate max-w-[200px] md:max-w-none md:overflow-visible md:text-clip md:whitespace-normal">{blog.title}</li>
           </ol>
@@ -125,8 +127,8 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            {blog.isFeatured && <span className="flex items-center gap-1 text-black dark:text-white text-sm font-bold"><Star className="w-4 h-4 fill-black dark:fill-white" /> Featured</span>}
-            {blog.isPinned && <span className="flex items-center gap-1 text-black dark:text-white text-sm font-bold"><Pin className="w-4 h-4 fill-black dark:fill-white" /> Pinned</span>}
+            {blog.isFeatured && <span className="flex items-center gap-1 text-black dark:text-white text-sm font-bold"><Star className="w-4 h-4 fill-black dark:fill-white" /> {translate('Featured')}</span>}
+            {blog.isPinned && <span className="flex items-center gap-1 text-black dark:text-white text-sm font-bold"><Pin className="w-4 h-4 fill-black dark:fill-white" /> {translate('Pinned')}</span>}
             <span className="text-gray-500 dark:text-gray-400 text-sm">{formatDate(blog.publishedAt || blog.createdAt)}</span>
           </div>
 
@@ -144,14 +146,14 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 <span className="text-white font-bold text-sm">{blog.author?.name?.charAt(0) || 'A'}</span>
               </div>
               <div>
-                <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">{blog.author?.name || 'AajExam Team'}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Author</p>
+                <p className="font-bold text-gray-900 dark:text-gray-100 text-sm">{blog.author?.name || translate('AajExam Team')}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{translate('Author')}</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
               <span className="flex items-center gap-1"><Eye className="w-4 h-4" /> {blog.views || 0}</span>
               <span className="flex items-center gap-1"><Heart className="w-4 h-4" /> {blog.likes || 0}</span>
-              <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {blog.readingTime || 5} min</span>
+              <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {translate('{count} min', { count: blog.readingTime || 5 })}</span>
             </div>
           </div>
         </header>
@@ -177,7 +179,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                 ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '
                 : 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-slate-100 hover:text-black dark:hover:text-white'}`}>
               <Heart className={`w-4 h-4 ${liked ? 'fill-black dark:fill-white' : ''}`} />
-              {liked ? 'Liked' : 'Like'}
+              {liked ? translate('Liked') : translate('Like')}
             </button>
 
             {canNativeShare ? (
@@ -198,7 +200,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
 
           {blog.exam && (
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500 dark:text-gray-400">Exam:</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{translate('Exam:')}</span>
               <Link href={blog.exam.slug ? `/govt-exams/exam/${blog.exam.slug}` : '/govt-exams'}
                 className="bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-sm px-3 py-1 rounded-full font-bold hover:bg-primary-100 dark:hover:bg-primary-800/30">
                 {blog.exam.name}
@@ -210,7 +212,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Next steps — contextual internal links */}
         <section className="mb-8 rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 xl:py-8">
           <h2 className="text-lg xl:text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
-            Prepare for {blog.exam?.name || 'this exam'} on AajExam
+            {translate('Prepare for {name} on AajExam', { name: blog.exam?.name || translate('this exam') })}
           </h2>
           <p className="text-sm xl:text-base text-gray-600 dark:text-gray-300 mb-5 leading-relaxed">
             Reading the notification is step one. Start free practice with topic-wise quizzes,
@@ -226,16 +228,16 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
             {hasPyq && blog.exam?.slug && (
               <Link href={`/pyq/${blog.exam.slug}`}
                 className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
-                Previous year question papers
+                {translate('Previous year question papers')}
               </Link>
             )}
             <Link href="/quizzes"
               className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
-              Free practice quizzes
+              {translate('Free practice quizzes')}
             </Link>
             <Link href="/govt-exams"
               className="bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-200 dark:border-primary-600 px-4 py-2.5 rounded-lg xl:rounded-xl font-bold text-sm hover:border-primary-400 transition-colors">
-              All government exams
+              {translate('All government exams')}
             </Link>
           </div>
         </section>
@@ -243,7 +245,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Tags */}
         {blog.tags && blog.tags.length > 0 && (
           <div className="mb-8">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Tags</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{translate('Tags')}</h3>
             <div className="flex flex-wrap gap-2">
               {blog.tags.map((tag, index) => (
                 <span key={index} className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm px-3 py-1 rounded-full font-medium">
@@ -257,7 +259,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
         {/* Related Blogs */}
         {relatedBlogs?.filter(r => r._id !== blog._id).length > 0 && (
           <div className="mb-8">
-            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">Related Blogs</h3>
+            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">{translate('Related Blogs')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {relatedBlogs.filter(r => r._id !== blog._id).slice(0, 6).map((related) => (
                 <Link key={related._id} href={`/blog/${related.slug}`}
@@ -274,7 +276,7 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
                     </p>
                     <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                       <span>{formatDate(related.publishedAt || related.createdAt)}</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {related.readingTime || 5} min</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {translate('{count} min', { count: related.readingTime || 5 })}</span>
                     </div>
                   </div>
                 </Link>

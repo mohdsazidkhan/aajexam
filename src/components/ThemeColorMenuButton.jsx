@@ -15,6 +15,8 @@ import { setThemeId } from '../store/themeColorSlice';
 import { setDarkMode } from '../store/darkModeSlice';
 import { setFontFamily } from '../store/fontSlice';
 import { setTextSize } from '../store/textSizeSlice';
+import { setLanguage } from '../store/languageSlice';
+import useTranslate from '../hooks/useTranslate';
 
 // Every theme x mode combination, e.g. "AajExam Green" (light) / "AajExam Dark" (dark).
 const THEME_OPTIONS = THEME_PRESETS.flatMap((theme) => [
@@ -27,6 +29,15 @@ const TABS = [
   { id: 'theme', label: 'Themes' },
   { id: 'font', label: 'Font Family' },
   { id: 'size', label: 'Text Size' },
+  { id: 'language', label: 'Language' },
+];
+// Hindi needs a font with proper Devanagari glyphs: switching to Hindi selects
+// Hind and remembers the previous font, which comes back on switching to English.
+const HINDI_FONT = 'Hind';
+const FONT_BEFORE_HINDI_KEY = 'fontBeforeHindi';
+const LANGUAGE_OPTIONS = [
+  { code: 'en', label: 'English', native: 'English' },
+  { code: 'hi', label: 'Hindi', native: 'हिन्दी' },
 ];
 
 // Drop-in replacement for the header's Sun/Moon dark-mode icon button.
@@ -34,6 +45,7 @@ const TABS = [
 // tabs: theme/mode combinations, and the site's font family.
 const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const dispatch = useDispatch();
+  const { translate, lang } = useTranslate();
   const themeId = useSelector((state) => state.themeColor?.themeId ?? 'green');
   const isDark = useSelector((state) => state.darkMode?.isDark ?? false);
   const fontFamily = useSelector((state) => state.font?.fontFamily ?? 'Lato');
@@ -98,7 +110,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
         const stored = getCurrentUser();
         if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, ...res.user }));
         notifyTargetExamsChanged();
-        toast.success('Target exams updated.');
+        toast.success(translate('Target exams updated.'));
         setOpen(false);
         setSearch('');
       }
@@ -124,6 +136,23 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     dispatch(setFontFamily(font));
     setOpen(false);
     setSearch('');
+  };
+
+  const handleSelectLanguage = (code) => {
+    try {
+      if (code === 'hi' && fontFamily !== HINDI_FONT) {
+        localStorage.setItem(FONT_BEFORE_HINDI_KEY, fontFamily);
+        dispatch(setFontFamily(HINDI_FONT));
+      } else if (code === 'en' && fontFamily === HINDI_FONT) {
+        const previous = localStorage.getItem(FONT_BEFORE_HINDI_KEY);
+        if (previous && previous !== HINDI_FONT) dispatch(setFontFamily(previous));
+        localStorage.removeItem(FONT_BEFORE_HINDI_KEY);
+      }
+    } catch {
+      // storage blocked: still switch the language, just skip the font swap
+    }
+    dispatch(setLanguage(code));
+    setOpen(false);
   };
 
   const handleSelectTextSize = (sizeId) => {
@@ -159,7 +188,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        aria-label="Theme settings"
+        aria-label={translate('Theme settings')}
         aria-expanded={open}
         className={`border-2 ${buttonClassName}`}
         style={{ borderColor: activeHex }}
@@ -185,31 +214,31 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
             >
               <div className="flex-shrink-0 p-4 pb-2">
                 <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
-                  {tabs.map((t) => (
+                  {tabs.map((tabItem) => (
                     <button
-                      key={t.id}
+                      key={tabItem.id}
                       type="button"
-                      onClick={() => { setTab(t.id); setSearch(''); }}
-                      style={tab === t.id ? { backgroundColor: activeHex } : undefined}
+                      onClick={() => { setTab(tabItem.id); setSearch(''); }}
+                      style={tab === tabItem.id ? { backgroundColor: activeHex } : undefined}
                       className={`flex-1 text-center text-xs font-black uppercase tracking-wide py-2 rounded-lg transition-all ${
-                        tab === t.id
+                        tab === tabItem.id
                           ? 'text-white shadow-sm'
                           : 'text-slate-500 dark:text-slate-400'
                       }`}
                     >
-                      {t.label}
+                      {translate(tabItem.label)}
                     </button>
                   ))}
                 </div>
 
-                {tab !== 'size' && (
+                {tab !== 'size' && tab !== 'language' && (
                   <div className="relative px-1">
                     <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
-                      placeholder={tab === 'theme' ? 'Search theme...' : tab === 'targets' ? 'Search exam...' : 'Search font...'}
+                      placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : translate('Search font...')}
                       className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
                     />
                   </div>
@@ -220,10 +249,10 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                 <>
                   <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-4">
                     <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
-                      Select the exams you are preparing for. {selectedExamIds.length ? `${selectedExamIds.length} selected.` : 'Nothing selected means all exams.'}
+                      {translate('Select the exams you are preparing for.')} {selectedExamIds.length ? translate('{count} selected.', { count: selectedExamIds.length }) : translate('Nothing selected means all exams.')}
                     </p>
                     {filteredExams.length === 0 && (
-                      <p className="text-sm text-slate-400 text-center py-4">{exams.length ? 'No exam found' : 'Loading exams...'}</p>
+                      <p className="text-sm text-slate-400 text-center py-4">{exams.length ? translate('No exam found') : translate('Loading exams...')}</p>
                     )}
                     <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
                       {filteredExams.map((exam, index) => {
@@ -253,7 +282,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       disabled={!selectedExamIds.length}
                       className="px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-40"
                     >
-                      Clear
+                      {translate('Clear')}
                     </button>
                     <button
                       type="button"
@@ -262,7 +291,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       style={{ backgroundColor: activeHex }}
                       className="flex-1 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wide text-white disabled:opacity-60"
                     >
-                      {savingTargets ? 'Saving...' : 'Save target exams'}
+                      {savingTargets ? translate('Saving...') : translate('Save target exams')}
                     </button>
                   </div>
                 </>
@@ -271,7 +300,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               {tab === 'theme' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
                   {filteredThemeOptions.length === 0 && (
-                    <p className="col-span-full text-sm text-slate-400 text-center py-4">No theme found</p>
+                    <p className="col-span-full text-sm text-slate-400 text-center py-4">{translate('No theme found')}</p>
                   )}
                   {filteredThemeOptions.map((option, index) => {
                     const isSelected = option.themeId === themeId && option.isDark === isDark;
@@ -308,7 +337,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               {tab === 'font' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
                   {filteredFonts.length === 0 && (
-                    <p className="col-span-full text-sm text-slate-400 text-center py-4">No font found</p>
+                    <p className="col-span-full text-sm text-slate-400 text-center py-4">{translate('No font found')}</p>
                   )}
                   {filteredFonts.map((font, index) => {
                     const isSelected = font === fontFamily;
@@ -334,6 +363,42 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                 </div>
               )}
 
+              {tab === 'language' && (
+                <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
+                  <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                    {translate('Choose the language for menus, buttons and pages.')}{' '}
+                    {translate('Quiz and test questions have their own EN / हिं switch.')}
+                  </p>
+                  <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
+                    {LANGUAGE_OPTIONS.map((option, index) => {
+                      const isSelected = option.code === lang;
+                      return (
+                        <button
+                          key={option.code}
+                          type="button"
+                          onClick={() => handleSelectLanguage(option.code)}
+                          style={isSelected ? { backgroundColor: activeHex } : undefined}
+                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
+                            isSelected
+                              ? 'text-white'
+                              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                          }`}
+                        >
+                          <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
+                          <span className="flex-1 text-left">
+                            <span className="block text-sm font-semibold">{option.native}</span>
+                            {option.native !== option.label && (
+                              <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>{option.label}</span>
+                            )}
+                          </span>
+                          {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               {tab === 'size' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
                   {TEXT_SIZE_PRESETS.map((preset, index) => {
@@ -352,7 +417,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                       >
                         <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
                         <span className="w-8 text-center font-black leading-none flex-shrink-0" style={{ fontSize: `${preset.px}px` }}>
-                          Aa
+                          {translate('Aa')}
                         </span>
                         <span className="flex-1 text-left">
                           <span className="block text-sm font-semibold">{preset.shortLabel} — {preset.label}</span>

@@ -26,10 +26,12 @@ import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import API from '../../lib/api';
 import Image from "next/image";
 import ThemeColorMenuButton from '../ThemeColorMenuButton';
+import useTranslate from '../../hooks/useTranslate';
 
 const StudentNavbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { translate } = useTranslate();
   const isClient = useClientSide();
   const { user } = useAuthStatus();
   const isSidebarOpen = useSelector((state) => state.sidebar?.isOpen ?? false);
@@ -72,7 +74,7 @@ const StudentNavbar = () => {
             {/* Hamburger — desktop only (mobile version sits at the right end) */}
             <button
               onClick={() => dispatch(toggleSidebar())}
-              aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
               className={`hidden xl:flex w-12 h-12 rounded-xl xl:rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
@@ -86,10 +88,10 @@ const StudentNavbar = () => {
             <Link href="/home" className="relative hidden xl:flex items-start gap-1">
               <span className="flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                  AAJ<span className="text-primary-600">EXAM</span>
+                  AAJ<span className="text-primary-600">{translate('EXAM')}</span>
                 </span>
                 <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.1em] uppercase mt-0.5">
-                  Prepare Your Exam Today
+                  {translate('Prepare Your Exam Today')}
                 </span>
               </span>
               <span className={planBadgeClassWeb}>{plan}</span>
@@ -98,7 +100,7 @@ const StudentNavbar = () => {
             {/* Logo — mobile, smaller, left-aligned */}
             <Link href="/home" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
               <span className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
-                AAJ<span className="text-primary-600">EXAM</span>
+                AAJ<span className="text-primary-600">{translate('EXAM')}</span>
               </span>
               <span className={planBadgeClassMobile}>{plan}</span>
             </Link>
@@ -107,7 +109,7 @@ const StudentNavbar = () => {
           {/* Center — logged-in user's name on desktop */}
           <div className="hidden xl:block absolute left-1/2 -translate-x-1/2">
             <span className="uppercase text-lg font-black text-slate-700 dark:text-slate-300 truncate max-w-xs">
-              Welcome back, <span className="text-primary-600">{user.name}</span>
+              {translate('Welcome back,')} <span className="text-primary-600">{user.name}</span>
             </span>
           </div>
 
@@ -116,7 +118,7 @@ const StudentNavbar = () => {
             {/* Notifications */}
             <Link
               href="/notifications"
-              aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
+              aria-label={unreadCount > 0 ? translate('Notifications, {count} unread', { count: unreadCount }) : translate('Notifications')}
               className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
             >
               <Bell className="w-4 h-4 xl:w-5 xl:h-5" />
@@ -134,9 +136,9 @@ const StudentNavbar = () => {
                 badge next to the logo instead of floating on the avatar. */}
             <button
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              aria-label={`${plan} plan – Profile menu`}
+              aria-label={translate('{plan} plan – Profile menu', { plan })}
               aria-expanded={showProfileMenu}
-              title={isExpired ? 'PRO plan expired' : `${plan} plan`}
+              title={isExpired ? translate('PRO plan expired') : translate('{plan} plan', { plan })}
               className="p-0.5 rounded-full"
             >
               <div className="relative w-8 h-8 xl:w-10 xl:h-10">
@@ -163,7 +165,7 @@ const StudentNavbar = () => {
             {/* Hamburger — mobile only, right end */}
             <button
               onClick={() => dispatch(toggleSidebar())}
-              aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
               className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
@@ -195,9 +197,9 @@ const StudentNavbar = () => {
               </div>
 
               {[
-                { label: 'Profile', icon: User, path: '/profile' },
-                { label: 'Referral Rewards', icon: Gift, path: '/referral-history', showBalance: true },
-                { label: 'Settings', icon: Settings, path: '/settings' },
+                { label: translate('Profile'), icon: User, path: '/profile' },
+                { label: translate('Referral Rewards'), icon: Gift, path: '/referral-history', showBalance: true },
+                { label: translate('Settings'), icon: Settings, path: '/settings' },
               ].map(item => (
                 <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
                   <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
@@ -217,7 +219,7 @@ const StudentNavbar = () => {
                 onClick={handleLogout}
                 className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold bg-red-500 hover:bg-red-600 text-white transition-all"
               >
-                <LogOut className="w-4 h-4" /> Log out
+                <LogOut className="w-4 h-4" /> {translate('Log out')}
               </button>
             </motion.div>
           </>

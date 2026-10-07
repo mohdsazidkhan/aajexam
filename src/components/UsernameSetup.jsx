@@ -1,7 +1,9 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useTranslate from '../hooks/useTranslate';
 
 const UsernameSetup = ({ currentUsername, onUpdate }) => {
+  const { translate } = useTranslate();
   const [username, setUsername] = useState(currentUsername || '');
   const [checking, setChecking] = useState(false);
   const [available, setAvailable] = useState(null);
@@ -38,7 +40,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       }
     } catch (error) {
       console.error('Failed to check username:', error);
-      setMessage('Failed to check username availability');
+      setMessage(translate('Failed to check username availability'));
       setAvailable(false);
     } finally {
       setChecking(false);
@@ -54,12 +56,12 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
 
   const handleSave = async () => {
     if (!username || username.length < 3 || username.length > 20) {
-      setMessage('Username must be 3-20 characters');
+      setMessage(translate('Username must be 3-20 characters'));
       return;
     }
 
     if (!available && username !== currentUsername) {
-      setMessage('Please choose an available username');
+      setMessage(translate('Please choose an available username'));
       return;
     }
 
@@ -75,12 +77,12 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
       );
 
       if (response.data.success) {
-        setMessage('Username updated successfully! ✓');
+        setMessage(translate('Username updated successfully! ✓'));
         onUpdate && onUpdate(response.data.username);
       }
     } catch (error) {
       console.error('Failed to update username:', error);
-      setMessage(error.response?.data?.message || 'Failed to update username');
+      setMessage(error.response?.data?.message || translate('Failed to update username'));
     } finally {
       setSaving(false);
     }
@@ -91,9 +93,9 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
 
   return (
     <div className="username-setup bg-white dark:bg-slate-800 rounded-[2rem] p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 shadow-sm max-w-[500px] mx-auto font-outfit">
-      <h3 className="m-0 mb-2 text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Set Your Username</h3>
+      <h3 className="m-0 mb-2 text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">{translate('Set Your Username')}</h3>
       <p className="username-info m-0 mb-8 text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
-        Choose a unique username that others can use to find and follow you.
+        {translate('Choose a unique username that others can use to find and follow you.')}
       </p>
 
       <div className="username-input-group flex items-center border-2 border-slate-100 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900 transition-all relative focus-within:border-primary-700 shadow-sm">
@@ -102,7 +104,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
           type="text"
           value={username}
           onChange={handleUsernameChange}
-          placeholder="username"
+          placeholder={translate('username')}
           maxLength={20}
           className={`username-input flex-1 border-none outline-none text-base font-black bg-transparent text-slate-900 dark:text-white placeholder:text-slate-300 ${username && username !== currentUsername
             ? (available === true ? 'text-primary-600' : available === false ? 'text-primary-600' : '')
@@ -122,9 +124,9 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
 
       <div className="username-rules my-6 p-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-widest leading-loose shadow-sm">
         <ul className="list-none p-0 m-0 space-y-1">
-          <li>• 3-20 characters</li>
-          <li>• Letters, numbers, underscores</li>
-          <li>• No spaces or special chars</li>
+          <li>{translate('• 3-20 characters')}</li>
+          <li>{translate('• Letters, numbers, underscores')}</li>
+          <li>{translate('• No spaces or special chars')}</li>
         </ul>
       </div>
 
@@ -144,7 +146,7 @@ const UsernameSetup = ({ currentUsername, onUpdate }) => {
         disabled={!canSave || saving}
         className="save-username-btn w-full p-5 bg-primary-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest cursor-pointer transition-all active:translate-y-1 shadow-sm disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"
       >
-        {saving ? 'Saving student...' : 'Save Student Identity'}
+        {saving ? translate('Saving student...') : translate('Save Student Identity')}
       </button>
     </div>
   );

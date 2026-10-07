@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import useTranslate from '../../hooks/useTranslate';
 
 // Legacy /subcategories/<anything> — return 410 Gone.
 //
@@ -10,12 +11,13 @@ import Link from 'next/link';
 // 1-2 weeks instead of waiting for soft-404 expiry.
 
 export default function SubcategoriesGone() {
+  const { translate, rich } = useTranslate();
     return (
         <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
             <div style={{ maxWidth: 520 }}>
-                <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>This page has moved</h1>
+                <h1 style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>{translate('This page has moved')}</h1>
                 <p className="text-slate-600 dark:text-slate-300" style={{ lineHeight: 1.6 }}>
-                    Browse our <Link href="/topics" style={{ color: '#58cc02', textDecoration: 'underline' }}>topics catalogue</Link> or <Link href="/subjects" style={{ color: '#58cc02', textDecoration: 'underline' }}>subjects catalogue</Link> for the resource you were looking for.
+                    {rich('Browse our <0>topics catalogue</0> or <1>subjects catalogue</1> for the resource you were looking for.', [(c) => <Link href="/topics" style={{ color: '#58cc02', textDecoration: 'underline' }}>{c}</Link>, (c) => <Link href="/subjects" style={{ color: '#58cc02', textDecoration: 'underline' }}>{c}</Link>])}
                 </p>
             </div>
         </div>

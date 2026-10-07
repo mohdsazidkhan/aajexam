@@ -5,8 +5,10 @@ import AuthorBio from '../components/AuthorBio';
 import Seo from '../components/Seo';
 import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
 import config from '../lib/config/appConfig';
+import useTranslate from '../hooks/useTranslate';
 
 const FAQ = () => {
+  const { translate } = useTranslate();
     const router = useRouter();
 
     const faqs = [
@@ -104,7 +106,7 @@ const FAQ = () => {
                 },
                 {
                     q: 'Can I delete my account?',
-                    a: `Yes. You can request account deletion by contacting our support team at ${config.CONTACT.EMAIL}. Note that some data may be retained for legal compliance and fraud prevention as outlined in our Privacy Policy.`
+                    a: translate('Yes. You can request account deletion by contacting our support team at {email}. Note that some data may be retained for legal compliance and fraud prevention as outlined in our Privacy Policy.', { email: config.CONTACT.EMAIL })
                 },
                 {
                     q: 'How do I reset my password?',
@@ -148,11 +150,11 @@ const FAQ = () => {
                 },
                 {
                     q: 'I\'m experiencing technical issues. What should I do?',
-                    a: `First, try clearing your browser cache and cookies, or try a different browser. If issues persist, contact our support team at ${config.CONTACT.EMAIL} with details about the problem, your device, and browser information.`
+                    a: translate('First, try clearing your browser cache and cookies, or try a different browser. If issues persist, contact our support team at {email} with details about the problem, your device, and browser information.', { email: config.CONTACT.EMAIL })
                 },
                 {
                     q: 'How do I report a test error or incorrect answer?',
-                    a: `If you encounter an error in a test question or believe an answer is incorrect, please report it through the feedback option available after test completion, or email us at ${config.CONTACT.EMAIL} with the test name and question details.`
+                    a: translate('If you encounter an error in a test question or believe an answer is incorrect, please report it through the feedback option available after test completion, or email us at {email} with the test name and question details.', { email: config.CONTACT.EMAIL })
                 }
             ]
         }
@@ -168,7 +170,7 @@ const FAQ = () => {
     ]);
 
     return (
-        <MobileAppWrapper title="Frequently Asked Questions">
+        <MobileAppWrapper title={translate('Frequently Asked Questions')}>
             <Seo
                 title="FAQ – Government Exam Preparation Help Center | AajExam"
                 description="Answers to common questions about AajExam: SSC/UPSC/Banking/Railway exam preparation, practice tests, PYQs, subscription plans, payments, refunds and the refer & earn program."
@@ -196,10 +198,10 @@ const FAQ = () => {
                             <FaQuestionCircle className="text-white text-3xl" />
                         </div>
                         <h1 className="text-2xl xl:text-3xl xl:text-5xl font-bold text-primary-600 mb-4">
-                            Frequently Asked Questions
+                            {translate('Frequently Asked Questions')}
                         </h1>
                         <p className="text-md xl:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Find answers to common questions about AajExam platform, subscriptions, and exam preparation
+                            {translate('Find answers to common questions about AajExam platform, subscriptions, and exam preparation')}
                         </p>
                     </div>
 
@@ -213,7 +215,7 @@ const FAQ = () => {
                                         <Icon className="text-white text-xl" />
                                     </div>
                                     <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white">
-                                        {category.category}
+                                        {translate(category.category)}
                                     </h2>
                                 </div>
 
@@ -224,11 +226,11 @@ const FAQ = () => {
                                             className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 xl:p-6 border border-white/20 hover:shadow-sm transition-all duration-300"
                                         >
                                             <h3 className="text-lg xl:text-xl font-semibold text-gray-800 dark:text-white mb-3 flex items-start gap-3">
-                                                <span className="text-primary-600 flex-shrink-0">Q:</span>
-                                                <span>{faq.q}</span>
+                                                <span className="text-primary-600 flex-shrink-0">{translate('Q:')}</span>
+                                                <span>{translate(faq.q)}</span>
                                             </h3>
                                             <p className="text-md xl:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-8">
-                                                <span className="text-primary-600 font-semibold">A:</span> {faq.a}
+                                                <span className="text-primary-600 font-semibold">{translate('A:')}</span> {translate(faq.a)}
                                             </p>
                                         </div>
                                     ))}
@@ -244,13 +246,13 @@ const FAQ = () => {
                                 Still Have Questions?
                             </h2>
                             <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
-                                Can&apos;t find the answer you&apos;re looking for? Our support team is here to help!
+                                {translate('Can\'t find the answer you\'re looking for? Our support team is here to help!')}
                             </p>
                             <button
                                 onClick={() => router.push('/contact')}
                                 className="bg-gray-800 text-white px-8 py-3 rounded-lg xl:rounded-xl font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105"
                             >
-                                Contact Support
+                                {translate('Contact Support')}
                             </button>
                         </div>
                     </div>
@@ -260,7 +262,7 @@ const FAQ = () => {
 
                     {/* Last Updated */}
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center">
-                        Last Updated: March 19, 2026
+                        {translate('Last Updated: March 19, 2026')}
                     </p>
 
                 </div>

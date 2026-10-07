@@ -4,6 +4,103 @@ import React from 'react';
 import { RefreshCcw, Home, Terminal, ShieldAlert, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { reportWebError } from '../lib/errorReporter';
+import useTranslate from '../hooks/useTranslate';
+
+const ErrorFallback = ({ error, errorInfo }) => {
+  const { translate } = useTranslate();
+  return (
+        <div className="min-h-screen flex items-center justify-center bg-background-page p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="max-w-xl w-full"
+          >
+            {/* Dynamic HUD Header */}
+            <div className="relative mb-12 text-center">
+              <motion.div
+                animate={{
+                  opacity: [0.2, 0.5, 0.2],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 xl:w-48 h-24 xl:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
+              />
+
+              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-sm mb-10 group overflow-hidden">
+                <div className="absolute inset-0 bg-black/10 dark:bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <ShieldAlert className="w-16 h-16 text-black dark:text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
+              </div>
+
+              <h1 className="text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white mb-4 drop-shadow-sm">
+                {translate('Oops! Something Went Wrong')}
+              </h1>
+              <p className="text-[11px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] leading-relaxed">
+                {translate("Don't worry — your progress is safe.")} <br /> {translate("Let's get you back on track.")}
+              </p>
+            </div>
+
+            {/* Action Console Area */}
+            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 p-10 shadow-sm space-y-8 relative overflow-hidden">
+              {/* Secondary Decorative Glow */}
+              <div className="absolute -right-20 -bottom-20 w-40 h-40 bg-primary-500/5 rounded-full blur-[60px] pointer-events-none" />
+
+              <div className="flex flex-col sm:flex-row gap-5 relative z-10">
+                <motion.button
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  whileTap={{ y: 0, scale: 0.98 }}
+                  onClick={() => window.location.reload()}
+                  className="flex-1 px-8 py-5 bg-primary-600 text-white rounded-3xl border-b-[8px] border-primary-600 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
+                >
+                  <RefreshCcw className="w-5 h-5" /> {translate('Try Again')}
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  whileTap={{ y: 0, scale: 0.98 }}
+                  onClick={() => window.location.href = '/'}
+                  className="flex-1 px-8 py-5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 dark:text-slate-300 rounded-3xl border-b-[8px] border-slate-200 dark:border-slate-700 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white dark:hover:bg-slate-750"
+                >
+                  <Home className="w-5 h-5" /> {translate('Go Home')}
+                </motion.button>
+              </div>
+
+              {/* Secure Log Display for Development */}
+              {process.env.NODE_ENV === 'development' && (
+                <details className="group border-2 border-slate-50 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300">
+                  <summary className="cursor-pointer px-8 py-5 bg-slate-50/50 dark:bg-slate-800/40 text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    <div className="flex items-center gap-2.5">
+                      <Terminal className="w-3.5 h-3.5" /> {translate('Error Details')}
+                    </div>
+                    <div className="w-4 h-4 group-open:rotate-180 transition-transform duration-300">
+                      <RefreshCcw className="w-3.5 h-3.5 rotate-90" />
+                    </div>
+                  </summary>
+                  <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center gap-2 mb-4 text-black dark:text-white border-b border-black/30 dark:border-white/30 pb-2">
+                      <AlertCircle className="w-4 h-4" /> <span>{translate('Error Info')}</span>
+                    </div>
+                    <span className="text-black/80 dark:text-white/80"># Error:</span> {error?.toString()}
+                    <br /><br />
+                    <span className="text-black/80 dark:text-white/80"># Component Stack:</span>
+                    <br />
+                    <div className="mt-2 text-slate-600 dark:text-slate-400/80">
+                      {errorInfo?.componentStack}
+                    </div>
+                  </div>
+                </details>
+              )}
+            </div>
+
+            {/* Bottom Metadata */}
+            <div className="mt-12 text-center relative z-10">
+              <p className="text-[9px] font-black text-slate-300 dark:text-slate-800 uppercase tracking-[0.5em] mix-blend-difference">
+                {translate('AajExam — Your exam prep journey continues')}
+              </p>
+            </div>
+          </motion.div>
+        </div>
+  );
+};
 
 /**
  * Premium Critical Failure (ErrorBoundary) Component
@@ -34,98 +131,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return (
-        <div className="min-h-screen flex items-center justify-center bg-background-page p-6 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="max-w-xl w-full"
-          >
-            {/* Dynamic HUD Header */}
-            <div className="relative mb-12 text-center">
-              <motion.div
-                animate={{
-                  opacity: [0.2, 0.5, 0.2],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-24 left-1/2 -translate-x-1/2 w-24 xl:w-48 h-24 xl:h-48 bg-black/10 dark:bg-white/10 blur-[90px] rounded-full pointer-events-none"
-              />
-
-              <div className="relative inline-flex items-center justify-center p-10 bg-white dark:bg-slate-900 rounded-[3.5rem] border-2 border-black/20 dark:border-white/20 shadow-sm mb-10 group overflow-hidden">
-                <div className="absolute inset-0 bg-black/10 dark:bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <ShieldAlert className="w-16 h-16 text-black dark:text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-pulse" />
-              </div>
-
-              <h1 className="text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white mb-4 drop-shadow-sm">
-                Oops! Something Went Wrong
-              </h1>
-              <p className="text-[11px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] leading-relaxed">
-                Don&apos;t worry — your progress is safe. <br /> Let&apos;s get you back on track.
-              </p>
-            </div>
-
-            {/* Action Console Area */}
-            <div className="bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 p-10 shadow-sm space-y-8 relative overflow-hidden">
-              {/* Secondary Decorative Glow */}
-              <div className="absolute -right-20 -bottom-20 w-40 h-40 bg-primary-500/5 rounded-full blur-[60px] pointer-events-none" />
-
-              <div className="flex flex-col sm:flex-row gap-5 relative z-10">
-                <motion.button
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  whileTap={{ y: 0, scale: 0.98 }}
-                  onClick={() => window.location.reload()}
-                  className="flex-1 px-8 py-5 bg-primary-600 text-white rounded-3xl border-b-[8px] border-primary-600 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300"
-                >
-                  <RefreshCcw className="w-5 h-5" /> Try Again
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  whileTap={{ y: 0, scale: 0.98 }}
-                  onClick={() => window.location.href = '/'}
-                  className="flex-1 px-8 py-5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 dark:text-slate-300 rounded-3xl border-b-[8px] border-slate-200 dark:border-slate-700 shadow-sm font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white dark:hover:bg-slate-750"
-                >
-                  <Home className="w-5 h-5" /> Go Home
-                </motion.button>
-              </div>
-
-              {/* Secure Log Display for Development */}
-              {process.env.NODE_ENV === 'development' && (
-                <details className="group border-2 border-slate-50 dark:border-slate-800 rounded-3xl overflow-hidden transition-all duration-300">
-                  <summary className="cursor-pointer px-8 py-5 bg-slate-50/50 dark:bg-slate-800/40 text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                    <div className="flex items-center gap-2.5">
-                      <Terminal className="w-3.5 h-3.5" /> Error Details
-                    </div>
-                    <div className="w-4 h-4 group-open:rotate-180 transition-transform duration-300">
-                      <RefreshCcw className="w-3.5 h-3.5 rotate-90" />
-                    </div>
-                  </summary>
-                  <div className="p-8 bg-slate-950 text-primary-400 font-mono text-[10px] whitespace-pre-wrap overflow-auto max-h-[350px] leading-relaxed border-t-2 border-slate-100 dark:border-slate-800">
-                    <div className="flex items-center gap-2 mb-4 text-black dark:text-white border-b border-black/30 dark:border-white/30 pb-2">
-                      <AlertCircle className="w-4 h-4" /> <span>Error Info</span>
-                    </div>
-                    <span className="text-black/80 dark:text-white/80"># Error:</span> {this.state.error?.toString()}
-                    <br /><br />
-                    <span className="text-black/80 dark:text-white/80"># Component Stack:</span>
-                    <br />
-                    <div className="mt-2 text-slate-600 dark:text-slate-400/80">
-                      {this.state.errorInfo?.componentStack}
-                    </div>
-                  </div>
-                </details>
-              )}
-            </div>
-
-            {/* Bottom Metadata */}
-            <div className="mt-12 text-center relative z-10">
-              <p className="text-[9px] font-black text-slate-300 dark:text-slate-800 uppercase tracking-[0.5em] mix-blend-difference">
-                AajExam &mdash; Your exam prep journey continues
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      );
+      return <ErrorFallback error={this.state.error} errorInfo={this.state.errorInfo} />;
     }
 
     return this.props.children;

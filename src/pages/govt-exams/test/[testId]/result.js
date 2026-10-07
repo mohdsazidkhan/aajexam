@@ -31,8 +31,10 @@ import ProgressBar from '../../../../components/ui/ProgressBar';
 import Skeleton from '../../../../components/Skeleton';
 import ShareComponent from '../../../../components/ShareComponent';
 import DiscussionThread from '../../../../components/discussions/DiscussionThread';
+import useTranslate from '../../../../hooks/useTranslate';
 
 const TestResult = ({ resolvedId } = {}) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const { attempt } = router.query;
   const testId = resolvedId || router.query.testId;
@@ -83,7 +85,7 @@ const TestResult = ({ resolvedId } = {}) => {
         }
       } catch (err) {
         console.error(err);
-        setError('Failed to load results.');
+        setError(translate('Failed to load results.'));
       } finally {
         setLoading(false);
       }
@@ -151,29 +153,29 @@ const TestResult = ({ resolvedId } = {}) => {
               className="space-y-2"
             >
               <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">
-                {isGreat ? 'Excellent Result!' : 'Good Effort!'}
+                {isGreat ? translate('Excellent Result!') : translate('Good Effort!')}
               </h1>
               <p className="text-xl font-bold opacity-80 uppercase tracking-widest">
-                Test: {result?.testTitle}
+                {translate('Test: {title}', { title: result?.testTitle })}
               </p>
             </motion.div>
 
             <div className="flex justify-center items-center gap-6 xl:gap-12 py-4">
               <div className="flex flex-col items-center">
                 <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{fmtNum(result?.score)}</span>
-                <span className="text-sm font-black uppercase opacity-60">Score</span>
+                <span className="text-sm font-black uppercase opacity-60">{translate('Score')}</span>
               </div>
               <div className="h-20 w-1 bg-white/20 rounded-full" />
               <div className="flex flex-col items-center">
                 <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{accuracy.toFixed(0)}%</span>
-                <span className="text-sm font-black uppercase opacity-60">Accuracy</span>
+                <span className="text-sm font-black uppercase opacity-60">{translate('Accuracy')}</span>
               </div>
             </div>
 
             <div className="max-w-md mx-auto">
               <ProgressBar progress={accuracy} color="white" height="h-4" />
               <p className="mt-4 text-sm font-black uppercase tracking-widest opacity-80">
-                {accuracy >= 90 ? 'Outstanding Performance' : accuracy >= 80 ? 'Strong Performance' : 'Keep Practicing'}
+                {accuracy >= 90 ? translate('Outstanding Performance') : accuracy >= 80 ? translate('Strong Performance') : translate('Keep Practicing')}
               </p>
             </div>
 
@@ -185,11 +187,11 @@ const TestResult = ({ resolvedId } = {}) => {
                 className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm"
               >
                 <span className="text-base xl:text-lg font-black tracking-wide">
-                  All India Rank <span className="text-black dark:text-white">#{result.rank}</span> of {lbStats.totalParticipants.toLocaleString('en-IN')}
+                  {translate('All India Rank')} <span className="text-black dark:text-white">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
                 </span>
                 <span className="hidden sm:inline h-5 w-px bg-white/30" />
                 <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
-                  {percentileBand} · Beat {beatPct}% candidates
+                  {translate('{band} · Beat {pct}% candidates', { band: translate(percentileBand), pct: beatPct })}
                 </span>
               </motion.div>
             )}
@@ -208,28 +210,28 @@ const TestResult = ({ resolvedId } = {}) => {
           {
             label: 'All India Rank',
             value: result?.rank ? `#${result.rank}` : 'N/A',
-            sub: lbStats.totalParticipants > 0 ? `of ${lbStats.totalParticipants.toLocaleString('en-IN')}` : null,
+            sub: lbStats.totalParticipants > 0 ? translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') }) : null,
             icon: Award,
             color: 'text-black dark:text-white'
           },
           {
             label: 'Percentile',
             value: result?.percentile != null ? `${percentile.toFixed(1)}` : 'N/A',
-            sub: result?.percentile != null ? `Beat ${beatPct}%` : null,
+            sub: result?.percentile != null ? translate('Beat {pct}%', { pct: beatPct }) : null,
             icon: TrendingUp,
             color: 'text-primary-600'
           },
           {
             label: 'Top Score',
             value: lbStats.topScore ? fmtNum(lbStats.topScore) : '—',
-            sub: result?.score != null ? `You: ${fmtNum(result.score)}` : null,
+            sub: result?.score != null ? translate('You: {score}', { score: fmtNum(result.score) }) : null,
             icon: Crown,
             color: 'text-black dark:text-white'
           },
           {
             label: 'Time',
             value: formatTime(result?.totalTime),
-            sub: `Avg: ${formatTime(lbStats.avgTime)}`,
+            sub: translate('Avg: {time}', { time: formatTime(lbStats.avgTime) }),
             icon: Clock,
             color: 'text-black dark:text-white'
           }
@@ -239,7 +241,7 @@ const TestResult = ({ resolvedId } = {}) => {
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
-            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.label}</span>
+            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{translate(item.label)}</span>
             {item.sub && <span className="text-[10px] font-bold text-gray-500 dark:text-gray-400">{item.sub}</span>}
           </Card>
         ))}
@@ -257,7 +259,7 @@ const TestResult = ({ resolvedId } = {}) => {
                  ${activeTab === tab ? 'bg-primary-600 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}
                `}
             >
-              {tab}
+              {translate(tab)}
             </button>
           ))}
         </div>
@@ -274,7 +276,7 @@ const TestResult = ({ resolvedId } = {}) => {
               {/* Leaderboard */}
               <div className="space-y-2 xl:space-y-4">
                 <div className="flex items-end justify-between px-2 gap-2 flex-wrap">
-                  <h3 className="text-xl font-black font-outfit uppercase">Leaderboard</h3>
+                  <h3 className="text-xl font-black font-outfit uppercase">{translate('Leaderboard')}</h3>
                   {lbStats.totalParticipants > 0 && (
                     <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">
                       {lbStats.totalParticipants.toLocaleString('en-IN')} candidates · Top {Math.min(leaderboard.length, lbStats.totalParticipants)}
@@ -285,9 +287,9 @@ const TestResult = ({ resolvedId } = {}) => {
                   <table className="w-full">
                     <thead className="bg-gray-50 dark:bg-slate-800/50 text-xs font-black uppercase text-gray-400 border-b">
                       <tr>
-                        <th className="px-6 py-4 text-left">Player</th>
-                        <th className="px-6 py-4 text-center">Score</th>
-                        <th className="px-6 py-4 text-right">Rank</th>
+                        <th className="px-6 py-4 text-left">{translate('Player')}</th>
+                        <th className="px-6 py-4 text-center">{translate('Score')}</th>
+                        <th className="px-6 py-4 text-right">{translate('Rank')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -301,8 +303,8 @@ const TestResult = ({ resolvedId } = {}) => {
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ?'bg-primary-600 text-white':'bg-gray-100 dark:bg-slate-700'}`}>
                                   {displayRank === 1 ? <Crown className="w-4 h-4" /> : displayRank}
                                 </div>
-                                <span className="font-bold text-sm">{entry.user?.name || 'Anonymous Player'}</span>
-                                {isUser && <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">YOU</span>}
+                                <span className="font-bold text-sm">{entry.user?.name || translate('Anonymous Player')}</span>
+                                {isUser && <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">{translate('YOU')}</span>}
                               </div>
                             </td>
                             <td className="px-6 py-4 text-center font-black">{fmtNum(entry.score)}</td>
@@ -318,8 +320,8 @@ const TestResult = ({ resolvedId } = {}) => {
                               <div className="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs bg-primary-600 text-white">
                                 {result.rank}
                               </div>
-                              <span className="font-bold text-sm">{user?.name || 'You'}</span>
-                              <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">YOUR POSITION</span>
+                              <span className="font-bold text-sm">{user?.name || translate('You')}</span>
+                              <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-black uppercase">{translate('YOUR POSITION')}</span>
                             </div>
                           </td>
                           <td className="px-6 py-4 text-center font-black">{fmtNum(result.score)}</td>
@@ -333,21 +335,21 @@ const TestResult = ({ resolvedId } = {}) => {
 
               {/* Section breakdown */}
               <div className="space-y-2 xl:space-y-4">
-                <h3 className="text-xl font-black font-outfit uppercase px-2">Section Performance</h3>
+                <h3 className="text-xl font-black font-outfit uppercase px-2">{translate('Section Performance')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
                     <Card key={idx} className="border-2">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
-                        <span className="font-black text-primary-600">{fmtNum(stats.score)} pts</span>
+                        <span className="font-black text-primary-600">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
                         <div className="bg-primary-600 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
                         <div className="bg-primary-600 h-full flex-1"/>
                       </div>
                       <div className="flex justify-between text-[10px] font-black mt-2 text-gray-400 uppercase">
-                        <span>{stats.correct} Correct</span>
-                        <span>{stats.wrong} Wrong</span>
+                        <span>{translate('{count} Correct', { count: stats.correct })}</span>
+                        <span>{translate('{count} Wrong', { count: stats.wrong })}</span>
                       </div>
                     </Card>
                   ))}
@@ -372,7 +374,7 @@ const TestResult = ({ resolvedId } = {}) => {
                     <div className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-black/5 dark:bg-white/5'}`}>
                       <div className="space-y-1">
                         <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-black dark:text-white'}`}>
-                          {isCorrect ? 'PERFECT' : isSkipped ? 'SKIPPED' : 'INCORRECT'}
+                          {isCorrect ? translate('PERFECT') : isSkipped ? translate('SKIPPED') : translate('INCORRECT')}
                         </span>
                         <h4 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h4>
                       </div>
@@ -410,7 +412,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
                       {(q.explanation || q.explanationImage) && (
                         <div className="p-4 bg-primary-100/50 dark:bg-primary-900/10 rounded-2xl border-l-4 border-primary-600">
-                          <p className="text-xs font-black text-primary-600 uppercase mb-1">Explanation</p>
+                          <p className="text-xs font-black text-primary-600 uppercase mb-1">{translate('Explanation')}</p>
                           {q.explanation && <p className="text-sm font-medium leading-relaxed">{q.explanation}</p>}
                           {q.explanationImage && (
                             <img src={q.explanationImage} alt="Solution diagram" loading="lazy" className="max-h-72 mt-2 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 object-contain bg-white" />
@@ -437,11 +439,11 @@ const TestResult = ({ resolvedId } = {}) => {
         <section className="px-0 py-4 xl:py-8">
           <Card className="border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
-              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">Flex your result</h3>
+              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Flex your result')}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
                 {result.rank && lbStats.totalParticipants > 0
-                  ? `Share your All India Rank #${result.rank} of ${lbStats.totalParticipants.toLocaleString('en-IN')} with friends`
-                  : 'Share your score and challenge friends to beat it'}
+                  ? translate('Share your All India Rank #{rank} of {total} with friends', { rank: result.rank, total: lbStats.totalParticipants.toLocaleString('en-IN') })
+                  : translate('Share your score and challenge friends to beat it')}
               </p>
             </div>
             <ShareComponent

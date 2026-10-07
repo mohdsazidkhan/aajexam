@@ -42,6 +42,7 @@ import Card from '../ui/Card';
 import ProgressBar from '../ui/ProgressBar';
 import ReferralBanner from '../ReferralBanner';
 import { ProfileSkeleton } from '../skeletons/PrivateSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 const formatCurrency = (value) => `Rs.${Number(value || 0).toLocaleString('en-IN')}`;
 
@@ -71,6 +72,7 @@ const Avatar = ({ student, sizeClass }) => (
 );
 
 const ProfilePage = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [student, setStudent] = useState(null);
   const [bankDetails, setBankDetails] = useState(null);
@@ -124,13 +126,13 @@ const ProfilePage = () => {
     localStorage.clear();
     sessionStorage.clear();
     router.push('/login');
-    toast.success('Logged out successfully.');
+    toast.success(translate('Logged out successfully.'));
   };
 
   const copyReferralCode = () => {
     if (!student?.referralCode) return;
     navigator.clipboard.writeText(student.referralCode);
-    toast.success('Referral code copied!');
+    toast.success(translate('Referral code copied!'));
   };
 
   const socialLinks = useMemo(
@@ -159,14 +161,14 @@ const ProfilePage = () => {
   );
 
   const accountDetails = [
-    { label: 'Email', value: student?.email || 'Not added', icon: Mail },
-    { label: 'Phone', value: student?.phone || 'Not added', icon: Phone },
-    { label: 'City', value: student?.city ? `${student.city}${student.state ? `, ${student.state}` : ''}` : 'Not added', icon: MapPin },
-    { label: 'Target exams', value: student?.primaryTargetExam || 'All Exams', icon: Target },
+    { label: 'Email', value: student?.email || translate('Not added'), icon: Mail },
+    { label: 'Phone', value: student?.phone || translate('Not added'), icon: Phone },
+    { label: 'City', value: student?.city ? `${student.city}${student.state ? `, ${student.state}` : ''}` : translate('Not added'), icon: MapPin },
+    { label: 'Target exams', value: student?.primaryTargetExam || translate('All Exams'), icon: Target },
     { label: 'Current Plan', value: student?.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE', icon: ShieldCheck },
     {
       label: 'Joined',
-      value: student?.createdAt ? new Date(student.createdAt).toLocaleDateString() : 'Unknown',
+      value: student?.createdAt ? new Date(student.createdAt).toLocaleDateString() : translate('Unknown'),
       icon: Clock,
     },
   ];
@@ -185,7 +187,7 @@ const ProfilePage = () => {
   return (
     <div className="min-h-screen animate-fade-in pb-8 xl:pb-12 selection:bg-primary-600 selection:text-white">
       <Head>
-        <title>My Profile | {student?.name || 'Student'}</title>
+        <title>{`${translate('My Profile')} | ${student?.name || translate('Student')}`}</title>
       </Head>
 
       <div className="container mx-auto space-y-2 xl:space-y-4 mt-4 mb-4 xl:mb-4">
@@ -199,14 +201,14 @@ const ProfilePage = () => {
             <div className="flex-1 min-w-0 space-y-3 xl:space-y-4">
               <div className="flex flex-wrap items-center gap-2 xl:gap-3">
                 <h1 className="text-md xl:text-4xl font-black font-outfit tracking-tight leading-none text-content-primary">
-                  {student?.name || 'Student'}
+                  {student?.name || translate('Student')}
                 </h1>
                 <span className={`px-2.5 py-1 rounded-full text-[10px] xl:text-xs font-black uppercase ${isPro ?'bg-primary-600 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
-                  {isPro ? 'PRO' : 'FREE'}
+                  {isPro ? 'PRO' : translate('FREE')}
                 </span>
                 {isPro && student?.subscriptionExpiry && (
                   <span className="text-xs font-semibold text-content-secondary">
-                    till {new Date(student.subscriptionExpiry).toLocaleDateString()}
+                    {translate('till {date}', { date: new Date(student.subscriptionExpiry).toLocaleDateString() })}
                   </span>
                 )}
               </div>
@@ -228,11 +230,11 @@ const ProfilePage = () => {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
                 {student?.username && (
                   <Button variant="secondary" size="sm" icon={Eye} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
-                    Public profile
+                    {translate('Public profile')}
                   </Button>
                 )}
                 <Button variant="primary" size="sm" icon={Settings} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/settings')}>
-                  Account settings
+                  {translate('Account settings')}
                 </Button>
               </div>
               {student?.bio && <p className="text-xs xl:text-sm font-medium text-content-secondary leading-relaxed xl:text-right">{student.bio}</p>}
@@ -258,24 +260,24 @@ const ProfilePage = () => {
             <div className="flex items-center gap-4">
               <Trophy className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
               <div>
-                <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">All India Rank</h2>
-                <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">Your rank among all active students.</p>
+                <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('All India Rank')}</h2>
+                <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('Your rank among all active students.')}</p>
               </div>
             </div>
             <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/leaderboard')}>
-              View leaderboard
+              {translate('View leaderboard')}
             </Button>
           </div>
           <div className="grid grid-cols-2 gap-3 xl:gap-6">
             <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 xl:p-6 text-center">
-              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</p>
+              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{translate('Exam AIR')}</p>
               <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
-              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? `of ${student.examAIR.total}` : 'No exams yet'}</p>
+              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}</p>
             </div>
             <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-6 text-center">
-              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">Quiz AIR</p>
+              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">{translate('Quiz AIR')}</p>
               <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
-              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? `of ${student.quizAIR.total}` : 'No quizzes yet'}</p>
+              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}</p>
             </div>
           </div>
         </Card>
@@ -288,7 +290,7 @@ const ProfilePage = () => {
                 <item.icon className="w-4 h-4 xl:w-5 xl:h-5" />
               </div>
               <p className="text-sm xl:text-xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
-              <p className="text-[8px] xl:text-[10px] font-bold uppercase tracking-wide text-content-secondary">{item.label}</p>
+              <p className="text-[8px] xl:text-[10px] font-bold uppercase tracking-wide text-content-secondary">{translate(item.label)}</p>
             </Card>
           ))}
         </div>
@@ -306,7 +308,7 @@ const ProfilePage = () => {
               className={`flex items-center gap-2 px-6 py-2.5 rounded-lg xl:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
             >
               <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
-              {tab.label}
+              {translate(tab.label)}
             </button>
           ))}
         </div>
@@ -327,8 +329,8 @@ const ProfilePage = () => {
                   <div className="flex items-center gap-4">
                     <Target className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
                     <div>
-                      <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Complete your profile</h2>
-                      <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">A complete profile helps you stand out and unlocks rewards.</p>
+                      <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Complete your profile')}</h2>
+                      <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('A complete profile helps you stand out and unlocks rewards.')}</p>
                     </div>
                   </div>
                   <ProgressBar progress={completion.percentage} variant="primary" height="md" />
@@ -348,8 +350,8 @@ const ProfilePage = () => {
                 <div className="flex items-center gap-4">
                   <TrendingUp className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
                   <div>
-                    <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Exam performance</h2>
-                    <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">Preparing for {student?.primaryTargetExam || 'All Exams'}.</p>
+                    <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Exam performance')}</h2>
+                    <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('Preparing for {exam}.', { exam: student?.primaryTargetExam || translate('All Exams') })}</p>
                   </div>
                 </div>
 
@@ -362,7 +364,7 @@ const ProfilePage = () => {
                   ].map((item) => (
                     <div key={item.label} className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-5 text-center">
                       <p className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
-                      <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{item.label}</p>
+                      <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{translate(item.label)}</p>
                     </div>
                   ))}
                 </div>
@@ -387,8 +389,8 @@ const ProfilePage = () => {
                   <div className="flex items-center gap-4">
                     <Award className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
                     <div>
-                      <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Badges</h2>
-                      <p className="text-xs font-medium text-content-secondary pb-1">Earned through activity and achievements.</p>
+                      <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Badges')}</h2>
+                      <p className="text-xs font-medium text-content-secondary pb-1">{translate('Earned through activity and achievements.')}</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-3 xl:justify-end xl:flex-shrink-0">
@@ -405,7 +407,7 @@ const ProfilePage = () => {
               <Card className="space-y-6" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-600" />
-                  <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Account details</h3>
+                  <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">{translate('Account details')}</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
                   {accountDetails.map((item) => (
@@ -414,7 +416,7 @@ const ProfilePage = () => {
                         <item.icon className="w-4 h-4" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium text-content-secondary">{item.label}</p>
+                        <p className="text-[10px] font-medium text-content-secondary">{translate(item.label)}</p>
                         <p className="text-sm font-semibold text-content-primary truncate">{item.value}</p>
                       </div>
                     </div>
@@ -427,7 +429,7 @@ const ProfilePage = () => {
                 <Card className="space-y-2 xl:space-y-4" radius="3xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="w-5 h-5 text-primary-600" />
-                    <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">Your referral code</h3>
+                    <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">{translate('Your referral code')}</h3>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 select-all text-content-primary">
@@ -437,7 +439,7 @@ const ProfilePage = () => {
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>
-                  <p className="text-sm font-medium text-content-secondary leading-relaxed">{student.referralCount || 0} friends joined using your code.</p>
+                  <p className="text-sm font-medium text-content-secondary leading-relaxed">{translate('{count} friends joined using your code.', { count: student.referralCount || 0 })}</p>
                 </Card>
               )}
 
@@ -456,10 +458,10 @@ const ProfilePage = () => {
               <Card className="p-4 xl:p-10 space-y-2 xl:space-y-4 xl:space-y-8 relative overflow-hidden" radius="3xl">
                 <div className="flex items-center justify-between gap-4 relative z-10">
                   <div>
-                    <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Payout details</h2>
-                    <p className="text-sm font-medium text-content-secondary pb-1">Add your bank details to receive prize money.</p>
+                    <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Payout details')}</h2>
+                    <p className="text-sm font-medium text-content-secondary pb-1">{translate('Add your bank details to receive prize money.')}</p>
                   </div>
-                  {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold">Linked</span>}
+                  {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold">{translate('Linked')}</span>}
                 </div>
 
                 {bankDetails ? (
@@ -471,11 +473,11 @@ const ProfilePage = () => {
                       <div className="flex-1">
                         <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight">{bankDetails.bankName}</h3>
                         <p className="text-sm font-medium text-content-secondary mt-1">
-                          {bankDetails.accountHolderName || 'Account holder'} · Account ending {bankDetails.accountNumber?.slice(-4) || '----'}
+                          {translate('{name} · Account ending {last4}', { name: bankDetails.accountHolderName || translate('Account holder'), last4: bankDetails.accountNumber?.slice(-4) || '----' })}
                         </p>
                       </div>
                       <Button variant="primary" className="px-6 py-3 rounded-lg xl:rounded-xl text-sm font-semibold" onClick={() => router.push('/settings')}>
-                        Update
+                        {translate('Update')}
                       </Button>
                     </div>
                   </div>
@@ -485,13 +487,13 @@ const ProfilePage = () => {
                       <CreditCard className="w-10 h-10 text-content-secondary" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">No bank account linked</h3>
+                      <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">{translate('No bank account linked')}</h3>
                       <p className="text-sm font-medium text-content-secondary max-w-md mx-auto">
-                        Add your bank details to receive rewards without delays.
+                        {translate('Add your bank details to receive rewards without delays.')}
                       </p>
                     </div>
                     <Button variant="primary" className="px-10 py-4 rounded-2xl text-sm font-black" onClick={() => router.push('/settings')}>
-                      Add bank details
+                      {translate('Add bank details')}
                     </Button>
                   </div>
                 )}
@@ -512,8 +514,8 @@ const ProfilePage = () => {
             >
               <Card className="space-y-6" radius="3xl">
                 <div className="space-y-1">
-                  <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">Quick actions</h2>
-                  <p className="text-sm font-medium text-content-secondary pb-1">Jump to the places you are most likely to need next.</p>
+                  <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Quick actions')}</h2>
+                  <p className="text-sm font-medium text-content-secondary pb-1">{translate('Jump to the places you are most likely to need next.')}</p>
                 </div>
 
                 <div className="space-y-3">
@@ -526,7 +528,7 @@ const ProfilePage = () => {
                       onClick={item.onClick}
                       className="w-full flex items-center justify-between px-5 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-left hover:border-primary-500/30 transition-colors"
                     >
-                      <span className="text-sm font-semibold text-content-primary">{item.label}</span>
+                      <span className="text-sm font-semibold text-content-primary">{translate(item.label)}</span>
                       <ArrowRight className="w-4 h-4 text-slate-400" />
                     </button>
                   ))}
@@ -536,10 +538,10 @@ const ProfilePage = () => {
               <Card className="space-y-2 xl:space-y-4" radius="3xl">
                 <div className="flex items-center gap-3">
                   <ShieldCheck className="w-5 h-5 text-primary-600" />
-                  <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">Account safety</h2>
+                  <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Account safety')}</h2>
                 </div>
                 <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
-                  Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.
+                  {translate('Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.')}
                 </p>
                 <button
                   onClick={secureLogout}

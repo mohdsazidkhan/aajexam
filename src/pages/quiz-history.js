@@ -16,8 +16,10 @@ import Button from '../components/ui/Button';
 import ProgressBar from '../components/ui/ProgressBar';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
+import useTranslate from '../hooks/useTranslate';
 
 const QuizHistoryPage = () => {
+  const { translate, translateData } = useTranslate();
    const [attempts, setAttempts] = useState([]);
    const [loading, setLoading] = useState(true);
    const [currentPage, setCurrentPage] = useState(1);
@@ -34,7 +36,7 @@ const QuizHistoryPage = () => {
             setTotalPages(res.pagination?.totalPages || 1);
          }
       } catch (e) {
-         toast.error("Could not load quiz history");
+         toast.error(translate('Could not load quiz history'));
       } finally { setLoading(false); }
    };
 
@@ -67,17 +69,17 @@ const QuizHistoryPage = () => {
                {/* Header */}
                <div className="flex items-center justify-between gap-6">
                   <div className="space-y-1">
-                     <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Quiz History</h1>
-                     <p className="text-sm font-bold text-slate-400">All quizzes you have attempted</p>
+                     <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white">{translate('Quiz History')}</h1>
+                     <p className="text-sm font-bold text-slate-400">{translate('All quizzes you have attempted')}</p>
                   </div>
                   <div className="flex gap-3">
                      <select
                         className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
                      >
-                        <option value="">All</option>
-                        <option value="Completed">Completed</option>
-                        <option value="InProgress">In Progress</option>
+                        <option value="">{translate('All')}</option>
+                        <option value="Completed">{translate('Completed')}</option>
+                        <option value="InProgress">{translate('In Progress')}</option>
                      </select>
                   </div>
                </div>
@@ -88,8 +90,8 @@ const QuizHistoryPage = () => {
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <BrainCircuit className="w-10 h-10 text-slate-300" />
                      </div>
-                     <h3 className="text-xl font-black text-slate-400">No quizzes attempted yet</h3>
-                     <Button variant="primary" onClick={() => router.push('/quizzes')}>Start a Quiz</Button>
+                     <h3 className="text-xl font-black text-slate-400">{translate('No quizzes attempted yet')}</h3>
+                     <Button variant="primary" onClick={() => router.push('/quizzes')}>{translate('Start a Quiz')}</Button>
                   </div>
                ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
@@ -113,13 +115,13 @@ const QuizHistoryPage = () => {
                                           </div>
                                        )}
                                        {!isCompleted && (
-                                          <span className="text-[10px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">In Progress</span>
+                                          <span className="text-[10px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">{translate('In Progress')}</span>
                                        )}
                                     </div>
 
                                     {/* Title */}
                                     <div className="space-y-1">
-                                       <h4 className="text-base font-black tracking-tight text-slate-900 dark:text-white line-clamp-1">{quiz?.title || 'Quiz'}</h4>
+                                       <h4 className="text-base font-black tracking-tight text-slate-900 dark:text-white line-clamp-1">{translateData(quiz?.title) || translate('Quiz')}</h4>
                                        <p className="text-[10px] font-bold text-slate-400">
                                           {quiz?.applicableExams?.map(e => e.name).join(', ') || ''}{quiz?.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz?.topic?.name ? ` · ${quiz.topic.name}` : ''}
                                        </p>
@@ -130,7 +132,7 @@ const QuizHistoryPage = () => {
                                        <>
                                           <div className="space-y-2">
                                              <div className="flex justify-between items-end">
-                                                <span className="text-[10px] font-black text-slate-400">Accuracy</span>
+                                                <span className="text-[10px] font-black text-slate-400">{translate('Accuracy')}</span>
                                                 <span className="text-sm font-black text-primary-600">{Math.round(attempt.accuracy || 0)}%</span>
                                              </div>
                                              <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" />
@@ -138,15 +140,15 @@ const QuizHistoryPage = () => {
 
                                           <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
                                              <div className="text-center">
-                                                <span className="text-[9px] font-black text-slate-400 block">Score</span>
+                                                <span className="text-[9px] font-black text-slate-400 block">{translate('Score')}</span>
                                                 <p className="text-sm font-black text-slate-900 dark:text-white">{Math.round(attempt.percentage || 0)}%</p>
                                              </div>
                                              <div className="text-center">
-                                                <span className="text-[9px] font-black text-slate-400 block">Correct</span>
+                                                <span className="text-[9px] font-black text-slate-400 block">{translate('Correct')}</span>
                                                 <p className="text-sm font-black text-primary-600">{attempt.correctCount}/{attempt.correctCount + attempt.wrongCount + (attempt.skippedCount || 0)}</p>
                                              </div>
                                              <div className="text-center">
-                                                <span className="text-[9px] font-black text-slate-400 block">Rank</span>
+                                                <span className="text-[9px] font-black text-slate-400 block">{translate('Rank')}</span>
                                                 <p className="text-sm font-black text-primary-600">#{attempt.rank || '-'}</p>
                                              </div>
                                           </div>
@@ -171,7 +173,7 @@ const QuizHistoryPage = () => {
                                              onClick={() => router.push(`/quiz/${quiz?.slug}/attempt`)}
                                              className="text-[10px] font-black text-primary-600 bg-primary-50 px-3 py-1.5 rounded-lg"
                                           >
-                                             Resume
+                                             {translate('Resume')}
                                           </button>
                                        )}
                                     </div>
@@ -186,9 +188,9 @@ const QuizHistoryPage = () => {
                {/* Pagination */}
                {totalPages > 1 && (
                   <div className="flex justify-center items-center gap-4 pt-6">
-                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
-                     <span className="text-sm font-bold text-slate-500">Page {currentPage} of {totalPages}</span>
-                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Prev')}</button>
+                     <span className="text-sm font-bold text-slate-500">{translate('Page {page} of {total}', { page: currentPage, total: totalPages })}</span>
+                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Next')}</button>
                   </div>
                )}
             </SubscriptionGuard>

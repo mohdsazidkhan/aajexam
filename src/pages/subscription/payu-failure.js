@@ -6,6 +6,7 @@ import { ArrowLeft, CircleAlert, LoaderCircle, RefreshCcw } from 'lucide-react';
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
 import Seo from '../../components/Seo';
+import useTranslate from '../../hooks/useTranslate';
 
 const safeLocalStorage = {
   getItem: (key) => {
@@ -35,6 +36,7 @@ const formatCurrency = (amount, currency = 'INR') => {
 };
 
 const PayuFailure = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [paymentData, setPaymentData] = useState(null);
@@ -61,27 +63,27 @@ const PayuFailure = () => {
 
         if (!txnid) {
           const queryError = router.query.error ? decodeURIComponent(router.query.error) : '';
-          setError(queryError || 'We could not find the payment reference. Please try again from the subscription page.');
+          setError(queryError || translate('We could not find the payment reference. Please try again from the subscription page.'));
           return;
         }
 
         const paymentDataRes = await API.getPaymentData(txnid);
         if (!paymentDataRes?.success) {
-          throw new Error(paymentDataRes?.message || 'Failed to fetch payment details.');
+          throw new Error(paymentDataRes?.message || translate('Failed to fetch payment details.'));
         }
 
         const data = paymentDataRes.data;
         setPaymentData(data);
 
         if (data?.status === 'pending') {
-          toast.error('This payment is still pending.');
-          setError('Your payment is still pending. Please wait a little longer or check again from the subscription page.');
+          toast.error(translate('This payment is still pending.'));
+          setError(translate('Your payment is still pending. Please wait a little longer or check again from the subscription page.'));
         } else {
-          toast.error('Payment failed. Please try again.');
+          toast.error(translate('Payment failed. Please try again.'));
         }
       } catch (fetchError) {
-        setError(fetchError?.message || 'Failed to load payment information.');
-        toast.error(fetchError?.message || 'Failed to load payment information.');
+        setError(fetchError?.message || translate('Failed to load payment information.'));
+        toast.error(fetchError?.message || translate('Failed to load payment information.'));
       } finally {
         safeLocalStorage.removeItem('payu_txnid');
         safeLocalStorage.removeItem('payu_txnid_timestamp');
@@ -94,23 +96,23 @@ const PayuFailure = () => {
 
   const detailRows = paymentData
     ? [
-      { label: 'Plan', value: paymentData.planName || 'N/A' },
-      { label: 'Amount', value: formatCurrency(paymentData.amount, paymentData.currency) },
-      { label: 'Status', value: paymentData.status || 'failed' },
-      { label: 'Transaction ID', value: paymentData.txnid || 'N/A' },
-      { label: 'Receipt', value: paymentData.receipt || 'N/A' },
-      { label: 'Name', value: paymentData.user?.name || 'N/A' },
-      { label: 'Email', value: paymentData.user?.email || 'N/A' },
+      { label: translate('Plan'), value: paymentData.planName || translate('N/A') },
+      { label: translate('Amount'), value: formatCurrency(paymentData.amount, paymentData.currency) },
+      { label: translate('Status'), value: paymentData.status || 'failed' },
+      { label: translate('Transaction ID'), value: paymentData.txnid || translate('N/A') },
+      { label: translate('Receipt'), value: paymentData.receipt || translate('N/A') },
+      { label: translate('Name'), value: paymentData.user?.name || translate('N/A') },
+      { label: translate('Email'), value: paymentData.user?.email || translate('N/A') },
       {
-        label: 'Payment date',
-        value: paymentData.createdAt ? new Date(paymentData.createdAt).toLocaleDateString() : 'N/A',
+        label: translate('Payment date'),
+        value: paymentData.createdAt ? new Date(paymentData.createdAt).toLocaleDateString() : translate('N/A'),
       },
     ]
     : [];
 
   if (loading) {
     return (
-      <MobileAppWrapper title="Checking payment">
+      <MobileAppWrapper title={translate('Checking payment')}>
         <Seo title="Checking Payment Status - AajExam" description="We are checking your failed payment attempt." noIndex={true} />
         <div className="min-h-screen flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
@@ -118,9 +120,9 @@ const PayuFailure = () => {
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Checking your payment</h1>
+              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Checking your payment')}</h1>
               <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                We are gathering the latest payment details so you know what happened.
+                {translate('We are gathering the latest payment details so you know what happened.')}
               </p>
             </div>
           </div>
@@ -130,7 +132,7 @@ const PayuFailure = () => {
   }
 
   return (
-    <MobileAppWrapper title="Payment failed">
+    <MobileAppWrapper title={translate('Payment failed')}>
       <Seo
         title="Payment Failed - AajExam Platform"
         description="Your payment attempt was not successful. Please try again or contact support."
@@ -144,16 +146,16 @@ const PayuFailure = () => {
                 <CircleAlert className="w-12 h-12" />
               </div>
               <div className="space-y-2">
-                <h1 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment failed</h1>
+                <h1 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Payment failed')}</h1>
                 <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-                  {error || 'The payment could not be completed. Please try again or use a different payment method.'}
+                  {error || translate('The payment could not be completed. Please try again or use a different payment method.')}
                 </p>
               </div>
             </div>
 
             {detailRows.length > 0 && (
               <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
-                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Payment details</h2>
+                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Payment details')}</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (
                     <div key={item.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
@@ -166,7 +168,7 @@ const PayuFailure = () => {
             )}
 
             <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
-              <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">What to try next</h2>
+              <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('What to try next')}</h2>
               <ul className="space-y-3">
                 {[
                   'Check that your card or bank account has enough balance.',
@@ -188,20 +190,20 @@ const PayuFailure = () => {
                 className="w-full bg-primary-600 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-3"
               >
                 <RefreshCcw className="w-5 h-5" />
-                Try again
+                {translate('Try again')}
               </button>
               <button
                 onClick={() => router.push('/')}
                 className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
               >
                 <ArrowLeft className="w-5 h-5" />
-                Go home
+                {translate('Go home')}
               </button>
             </div>
 
             <div className="rounded-2xl bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-600 p-4">
               <p className="text-sm font-medium text-primary-600 dark:text-primary-100">
-                If the amount was deducted but your plan was not activated, keep the transaction ID handy and contact support.
+                {translate('If the amount was deducted but your plan was not activated, keep the transaction ID handy and contact support.')}
               </p>
             </div>
           </div>

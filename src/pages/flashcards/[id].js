@@ -6,8 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import API from '../../lib/api';
 import Seo from '../../components/Seo';
 import toast from 'react-hot-toast';
+import useTranslate from '../../hooks/useTranslate';
 
 export default function FlashcardDeck() {
+  const { translate } = useTranslate();
     const router = useRouter();
     const { id } = router.query;
     const [deck, setDeck] = useState(null);
@@ -20,15 +22,15 @@ export default function FlashcardDeck() {
         API.request(`/api/flashcards/${id}`)
             .then(res => {
                 if (res?.success) setDeck(res.data);
-                else toast.error('Flashcards not found');
+                else toast.error(translate('Flashcards not found'));
             })
-            .catch(() => toast.error('Failed to load flashcards'))
+            .catch(() => toast.error(translate('Failed to load flashcards')))
             .finally(() => setLoading(false));
     }, [id]);
 
     const handleNext = useCallback(() => {
         if (!deck || currentIndex >= deck.cards.length - 1) {
-            toast.success("Deck completed! 🎉");
+            toast.success(translate('Deck completed! 🎉'));
             setTimeout(() => router.back(), 1500);
             return;
         }
@@ -68,8 +70,8 @@ export default function FlashcardDeck() {
     if (!deck || !deck.cards || deck.cards.length === 0) {
         return (
             <div className="fixed inset-0 bg-slate-900 flex flex-col items-center justify-center z-50 text-white">
-                <p className="text-xl mb-4">No cards found in this deck.</p>
-                <button onClick={() => router.back()} className="px-6 py-2 bg-slate-800 rounded-full font-bold">Go Back</button>
+                <p className="text-xl mb-4">{translate('No cards found in this deck.')}</p>
+                <button onClick={() => router.back()} className="px-6 py-2 bg-slate-800 rounded-full font-bold">{translate('Go Back')}</button>
             </div>
         );
     }
@@ -157,7 +159,7 @@ export default function FlashcardDeck() {
                             
                             <div className="mt-8 text-white/50 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2">
                                 <span className="w-8 h-[1px] bg-white/20" />
-                                Tap right to next
+                                {translate('Tap right to next')}
                                 <span className="w-8 h-[1px] bg-white/20" />
                             </div>
                         </motion.div>

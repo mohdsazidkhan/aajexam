@@ -6,6 +6,7 @@ import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import { Gift, X, CheckCircle2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
+import useTranslate from '../../hooks/useTranslate';
 
 const PROMO_FEATURES = [
   'Unlimited Practice Tests',
@@ -16,6 +17,7 @@ const PROMO_FEATURES = [
 ];
 
 const WelcomePromoModalInner = ({ onClose }) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -38,18 +40,18 @@ const WelcomePromoModalInner = ({ onClose }) => {
           localStorage.setItem('userInfo', JSON.stringify(authRes.user));
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
-          toast.success('Welcome to AajExam! 🎉 Your free PRO access is unlocked.');
+          toast.success(translate('Welcome to AajExam! 🎉 Your free PRO access is unlocked.'));
           onClose();
           router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
         }
       } catch (error) {
-        toast.error('Google sign-up failed. Please try again.');
+        toast.error(translate('Google sign-up failed. Please try again.'));
       } finally {
         setIsGoogleLoading(false);
       }
     },
     onError: () => {
-      toast.error('Google sign-up was cancelled.');
+      toast.error(translate('Google sign-up was cancelled.'));
       setIsGoogleLoading(false);
     },
   });
@@ -87,13 +89,13 @@ const WelcomePromoModalInner = ({ onClose }) => {
             </div>
 
             <h2 className="text-lg xl:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
-              Sabke Liye PRO Ab FREE Hai!
+              {translate('Sabke Liye PRO Ab FREE Hai!')}
             </h2>
             <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2 max-w-sm mx-auto">
-              Pehle se Register hain? Aapko PRO already FREE mil chuka hai, bas Login karein. Naye Hain? Sign Up karein aur turant PRO FREE paayein.
+              {translate('Pehle se Register hain? Aapko PRO already FREE mil chuka hai, bas Login karein. Naye Hain? Sign Up karein aur turant PRO FREE paayein.')}
             </p>
             <p className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-primary-600 mb-4">
-              31 Dec 2026 Tak FREE
+              {translate('31 Dec 2026 Tak FREE')}
             </p>
 
             <div className="space-y-1.5 mb-4 text-left max-w-sm mx-auto">
@@ -122,9 +124,9 @@ const WelcomePromoModalInner = ({ onClose }) => {
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
               )}
-              {isGoogleLoading ? 'Signing in...' : 'Get PRO Free Now'}
+              {isGoogleLoading ? translate('Signing in...') : translate('Get PRO Free Now')}
             </button>
-            <p className="mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-widest">Offer 31 Dec 2026 Tak Valid Hai</p>
+            <p className="mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-widest">{translate('Offer 31 Dec 2026 Tak Valid Hai')}</p>
           </div>
         </div>
       </motion.div>

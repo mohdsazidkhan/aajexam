@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, CircleAlert, LayoutDashboard, LoaderCircle } 
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
 import Seo from '../../components/Seo';
+import useTranslate from '../../hooks/useTranslate';
 
 const safeLocalStorage = {
   getItem: (key) => {
@@ -35,6 +36,7 @@ const formatCurrency = (amount, currency = 'INR') => {
 };
 
 const PayuSuccess = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [verifying, setVerifying] = useState(true);
   const [verificationResult, setVerificationResult] = useState(null);
@@ -61,25 +63,25 @@ const PayuSuccess = () => {
         if (!txnid) {
           setVerificationResult({
             success: false,
-            message: 'We could not find your payment reference. Please open the subscription page to confirm your status.',
+            message: translate('We could not find your payment reference. Please open the subscription page to confirm your status.'),
           });
           return;
         }
 
         const paymentDataRes = await API.getPaymentData(txnid);
         if (!paymentDataRes?.success) {
-          throw new Error(paymentDataRes?.message || 'Failed to fetch payment details.');
+          throw new Error(paymentDataRes?.message || translate('Failed to fetch payment details.'));
         }
 
         const paymentData = paymentDataRes.data;
         if (!paymentData?.txnid || !paymentData?.status) {
-          throw new Error('Payment details are incomplete. Please check your subscription status.');
+          throw new Error(translate('Payment details are incomplete. Please check your subscription status.'));
         }
 
         if (paymentData.status === 'success') {
           setVerificationResult({
             success: true,
-            message: 'Your payment was verified and your membership is now active.',
+            message: translate('Your payment was verified and your membership is now active.'),
             subscription: {
               planName: paymentData.planName,
               amount: paymentData.amount,
@@ -91,20 +93,20 @@ const PayuSuccess = () => {
               createdAt: paymentData.createdAt,
             },
           });
-          toast.success('Payment verified successfully.');
+          toast.success(translate('Payment verified successfully.'));
         } else {
           setVerificationResult({
             success: false,
-            message: `Your payment is currently marked as ${paymentData.status}. Please check your subscription page or try again.`,
+            message: translate('Your payment is currently marked as {status}. Please check your subscription page or try again.', { status: paymentData.status }),
           });
-          toast.error(`Payment status: ${paymentData.status}`);
+          toast.error(translate('Payment status: {status}', { status: paymentData.status }));
         }
       } catch (error) {
         setVerificationResult({
           success: false,
-          message: error?.message || 'Payment verification failed.',
+          message: error?.message || translate('Payment verification failed.'),
         });
-        toast.error(error?.message || 'Payment verification failed.');
+        toast.error(error?.message || translate('Payment verification failed.'));
       } finally {
         safeLocalStorage.removeItem('payu_txnid');
         safeLocalStorage.removeItem('payu_txnid_timestamp');
@@ -117,25 +119,25 @@ const PayuSuccess = () => {
 
   const detailRows = verificationResult?.subscription
     ? [
-      { label: 'Plan', value: verificationResult.subscription.planName || 'N/A' },
-      { label: 'Amount', value: formatCurrency(verificationResult.subscription.amount, verificationResult.subscription.currency) },
-      { label: 'Status', value: verificationResult.subscription.status || 'active' },
-      { label: 'Transaction ID', value: verificationResult.subscription.txnid || 'N/A' },
-      { label: 'Receipt', value: verificationResult.subscription.receipt || 'N/A' },
-      { label: 'Name', value: verificationResult.subscription.user?.name || 'N/A' },
-      { label: 'Email', value: verificationResult.subscription.user?.email || 'N/A' },
+      { label: translate('Plan'), value: verificationResult.subscription.planName || translate('N/A') },
+      { label: translate('Amount'), value: formatCurrency(verificationResult.subscription.amount, verificationResult.subscription.currency) },
+      { label: translate('Status'), value: verificationResult.subscription.status || 'active' },
+      { label: translate('Transaction ID'), value: verificationResult.subscription.txnid || translate('N/A') },
+      { label: translate('Receipt'), value: verificationResult.subscription.receipt || translate('N/A') },
+      { label: translate('Name'), value: verificationResult.subscription.user?.name || translate('N/A') },
+      { label: translate('Email'), value: verificationResult.subscription.user?.email || translate('N/A') },
       {
-        label: 'Payment date',
+        label: translate('Payment date'),
         value: verificationResult.subscription.createdAt
           ? new Date(verificationResult.subscription.createdAt).toLocaleDateString()
-          : 'N/A',
+          : translate('N/A'),
       },
     ]
     : [];
 
   if (verifying) {
     return (
-      <MobileAppWrapper title="Verifying payment">
+      <MobileAppWrapper title={translate('Verifying payment')}>
         <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
         <div className="min-h-screen flex items-center justify-center p-6">
           <div className="max-w-md w-full text-center bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
@@ -143,9 +145,9 @@ const PayuSuccess = () => {
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Verifying your payment</h1>
+              <h1 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Verifying your payment')}</h1>
               <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                This only takes a moment. Keep this page open while we confirm your transaction.
+                {translate('This only takes a moment. Keep this page open while we confirm your transaction.')}
               </p>
             </div>
           </div>
@@ -157,7 +159,7 @@ const PayuSuccess = () => {
   const success = verificationResult?.success;
 
   return (
-    <MobileAppWrapper title={success ? "Payment success" : "Payment status"}>
+    <MobileAppWrapper title={success ? translate('Payment success') : translate('Payment status')}>
       <Seo
         title="Payment Status - AajExam Platform"
         description="Check the status of your recent payment and subscription."
@@ -172,7 +174,7 @@ const PayuSuccess = () => {
               </div>
               <div className="space-y-2">
                 <h1 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">
-                  {success ? 'Payment successful' : 'We could not confirm the payment'}
+                  {success ? translate('Payment successful') : translate('We could not confirm the payment')}
                 </h1>
                 <p className="text-base font-medium text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
                   {verificationResult?.message}
@@ -182,7 +184,7 @@ const PayuSuccess = () => {
 
             {success && detailRows.length > 0 && (
               <div className="rounded-[2.5rem] border-2 border-slate-200 dark:border-slate-800 p-4 xl:p-8 space-y-2 xl:space-y-4">
-                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">Transaction details</h2>
+                <h2 className="text-xl font-black font-outfit tracking-tight text-slate-900 dark:text-white">{translate('Transaction details')}</h2>
                 <div className="space-y-3">
                   {detailRows.map((item) => (
                     <div key={item.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3 border-b border-slate-200 dark:border-slate-800 last:border-b-0">
@@ -202,14 +204,14 @@ const PayuSuccess = () => {
                     className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-3"
                   >
                     <LayoutDashboard className="w-5 h-5" />
-                    Go to Dashboard
+                    {translate('Go to Dashboard')}
                   </button>
                   <button
                     onClick={() => router.push('/subscription')}
                     className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
                   >
                     <ArrowRight className="w-5 h-5" />
-                    Back to plans
+                    {translate('Back to plans')}
                   </button>
                 </>
               ) : (
@@ -218,13 +220,13 @@ const PayuSuccess = () => {
                     onClick={() => router.push('/subscription')}
                     className="w-full bg-primary-600 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm"
                   >
-                    Try payment again
+                    {translate('Try payment again')}
                   </button>
                   <button
                     onClick={() => router.push('/')}
                     className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300"
                   >
-                    Go home
+                    {translate('Go home')}
                   </button>
                 </>
               )}

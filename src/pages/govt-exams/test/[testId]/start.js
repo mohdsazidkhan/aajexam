@@ -32,8 +32,10 @@ import Skeleton from "../../../../components/Skeleton";
 import TestStartModal from "../../../../components/TestStartModal";
 import LanguageToggle from "../../../../components/LanguageToggle";
 import useQuestionTranslation from "../../../../hooks/useQuestionTranslation";
+import useTranslate from '../../../../hooks/useTranslate';
 
 const TestStart = ({ resolvedId } = {}) => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const testId = resolvedId || router.query.testId;
   const user = getCurrentUser();
@@ -95,11 +97,11 @@ const TestStart = ({ resolvedId } = {}) => {
           setStarted(true);
         }
       } else {
-        toast.error(res?.message || res?.error || "Failed to load test.");
+        toast.error(res?.message || res?.error || translate('Failed to load test.'));
         router.back();
       }
     } catch (err) {
-      toast.error("Failed to load test.");
+      toast.error(translate('Failed to load test.'));
       router.back();
     } finally {
       setLoading(false);
@@ -154,7 +156,7 @@ const TestStart = ({ resolvedId } = {}) => {
         localStorage.removeItem(`test_${testId}`);
         router.push(`/govt-exams/test/${testId}/result?attempt=${res.data.attemptId}`);
       }
-    } catch (err) { toast.error("Submission failed."); setSubmitting(false); }
+    } catch (err) { toast.error(translate('Submission failed.')); setSubmitting(false); }
   };
 
   const handleAnswer = (idx) => {
@@ -223,7 +225,7 @@ const TestStart = ({ resolvedId } = {}) => {
   if (loading) return (
     <div className="min-h-screen bg-background-page flex flex-col items-center justify-center space-y-2 xl:space-y-4">
       <Skeleton width="100px" height="100px" borderRadius="100%" />
-      <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">Preparing Your Test...</p>
+      <p className="text-primary-400 font-black animate-pulse uppercase tracking-widest">{translate('Preparing Your Test...')}</p>
     </div>
   );
 
@@ -293,29 +295,29 @@ const TestStart = ({ resolvedId } = {}) => {
           {/* Questions panel toggle */}
           <button
             onClick={() => setShowPalette(true)}
-            title="Questions"
-            aria-label="Open questions"
+            title={translate('Questions')}
+            aria-label={translate('Open questions')}
             className="xl:hidden shrink-0 p-2.5 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 transition-all active:scale-95"
           >
             <Menu className="w-5 h-5" />
           </button>
           <button
             onClick={() => setShowSidebar(v => !v)}
-            title={showSidebar ? "Hide questions" : "Show questions"}
-            aria-label="Toggle questions panel"
+            title={showSidebar ? translate('Hide questions') : translate('Show questions')}
+            aria-label={translate('Toggle questions panel')}
             className={`hidden xl:flex shrink-0 p-3 rounded-xl shadow-sm border-2 transition-all active:scale-95 ${showSidebar ? "bg-primary-500/10 text-primary-600 border-primary-500/30" : "bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 border-slate-200 dark:border-slate-800"}`}
           >
             <LayoutGrid className="w-6 h-6" />
           </button>
           <p className="hidden xl:block shrink-0 text-xs 2xl:text-[13px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-            <span className="font-black uppercase tracking-widest">Status:</span>{" "}
-            Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>,{" "}
-            Answered: <span className="text-primary-600">{answeredCount}</span>,{" "}
-            Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>,{" "}
-            Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span>
+            <span className="font-black uppercase tracking-widest">{translate('Status:')}</span>{" "}
+            {translate('Questions:')} <span className="text-slate-900 dark:text-white">{questions.length}</span>,{" "}
+            {translate('Answered:')} <span className="text-primary-600">{answeredCount}</span>,{" "}
+            {translate('Not Answered:')} <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>,{" "}
+            {translate('Mark For Review:')} <span className="text-slate-900 dark:text-white">{marked.size}</span>
           </p>
           <div className="flex-1 min-w-0 md:hidden xl:hidden">
-            <p className="break-words text-[11px] font-black text-slate-500 uppercase tracking-wide leading-tight">{test?.title}</p>
+            <p className="break-words text-[11px] font-black text-slate-500 uppercase tracking-wide leading-tight">{translateData(test?.title)}</p>
             <p className="text-xs font-black text-primary-600 leading-tight">Q {currentQIndex + 1} / {questions.length}</p>
           </div>
           
@@ -323,7 +325,7 @@ const TestStart = ({ resolvedId } = {}) => {
           <div className="flex-1 max-w-xl bg-white/90 dark:bg-slate-900/90 rounded-2xl px-5 py-2.5 xl:px-6 xl:py-3 shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md pointer-events-auto hidden md:block">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-center text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">
-                <span className="pr-4">{test?.title}</span>
+                <span className="pr-4">{translateData(test?.title)}</span>
                 <span className="shrink-0">{currentQIndex + 1} / {questions.length}</span>
               </div>
               <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
@@ -349,7 +351,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <button
               onClick={toggleFullscreen}
               className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-slate-500 hover:text-primary-600 rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
-              title="Toggle Focus Mode"
+              title={translate('Toggle Focus Mode')}
             >
               {isFullscreen ? <Minimize className="w-5 h-5 xl:w-6 xl:h-6" /> : <Maximize className="w-5 h-5 xl:w-6 xl:h-6" />}
             </button>
@@ -357,7 +359,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <button
               onClick={() => setShowSubmitModal(true)}
               className="p-2.5 xl:p-3 bg-white/90 dark:bg-slate-900/90 text-slate-400 hover:text-black dark:hover:text-white rounded-xl shadow-sm border-2 border-slate-200 dark:border-slate-800 backdrop-blur-md transition-all active:scale-95 group"
-              title="Exit Test"
+              title={translate('Exit Test')}
             >
               <X className="w-5 h-5 xl:w-6 xl:h-6 group-hover:rotate-90 transition-transform" />
             </button>
@@ -384,7 +386,7 @@ const TestStart = ({ resolvedId } = {}) => {
           >
           <div className="flex flex-col gap-6 flex-1 min-h-0">
             <div className="flex flex-col gap-2 xl:gap-4 flex-1 min-h-0">
-              <h3 className="shrink-0 text-xs font-black text-slate-400 uppercase tracking-widest">Questions</h3>
+              <h3 className="shrink-0 text-xs font-black text-slate-400 uppercase tracking-widest">{translate('Questions')}</h3>
               <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain space-y-2 xl:space-y-4 pr-1 pb-6">
               {sectionNames.map((secName) => {
                 const group = sectionGroups[secName];
@@ -454,7 +456,7 @@ const TestStart = ({ resolvedId } = {}) => {
               {translatingQ && (
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-[11px] font-black text-black dark:text-white uppercase tracking-widest">
                   <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
-                  Translating to हिंदी…
+                  {translate('Translating to हिंदी…')}
                 </div>
               )}
 
@@ -501,7 +503,7 @@ const TestStart = ({ resolvedId } = {}) => {
                   onClick={toggleMark}
                 >
                   <Flag className={`w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
-                  {marked.has(currentQ._id) ? 'MARKED' : <><span className="sm:hidden">MARK</span><span className="hidden sm:inline">MARK FOR REVIEW</span></>}
+                  {marked.has(currentQ._id) ? translate('MARKED') : <><span className="sm:hidden">{translate('MARK')}</span><span className="hidden sm:inline">{translate('MARK FOR REVIEW')}</span></>}
                 </Button>
                 <Button
                   variant="secondary"
@@ -510,7 +512,7 @@ const TestStart = ({ resolvedId } = {}) => {
                   onClick={clearAnswer}
                 >
                   <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0 text-slate-400" />
-                  <span className="sm:hidden">CLEAR</span><span className="hidden sm:inline">CLEAR ANSWER</span>
+                  <span className="sm:hidden">{translate('CLEAR')}</span><span className="hidden sm:inline">{translate('CLEAR ANSWER')}</span>
                 </Button>
               </div>
             </motion.div>
@@ -527,7 +529,7 @@ const TestStart = ({ resolvedId } = {}) => {
           onClick={() => setCurrentQIndex(prev => prev - 1)}
           className="font-black h-12 sm:h-14 !px-3 sm:!px-8 sm:min-w-[10rem]"
         >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 sm:mr-2" /> <span className="hidden sm:inline">PREVIOUS</span><span className="sm:hidden text-xs">PREV</span>
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 sm:mr-2" /> <span className="hidden sm:inline">{translate('PREVIOUS')}</span><span className="sm:hidden text-xs">{translate('PREV')}</span>
         </Button>
 
         {/* Mark / Clear — web only, centred between Previous and Next */}
@@ -538,7 +540,7 @@ const TestStart = ({ resolvedId } = {}) => {
             onClick={toggleMark}
           >
             <Flag className={`w-5 h-5 mr-2 shrink-0 ${marked.has(currentQ._id) ? 'fill-black dark:fill-white text-black dark:text-white' : 'text-slate-400'}`} />
-            {marked.has(currentQ._id) ? 'MARKED' : <>MARK FOR REVIEW</>}
+            {marked.has(currentQ._id) ? translate('MARKED') : <>{translate('MARK FOR REVIEW')}</>}
           </Button>
           <Button
             variant="secondary"
@@ -547,7 +549,7 @@ const TestStart = ({ resolvedId } = {}) => {
             onClick={clearAnswer}
           >
             <Trash2 className="w-5 h-5 mr-2 shrink-0 text-slate-400" />
-            CLEAR ANSWER
+            {translate('CLEAR ANSWER')}
           </Button>
         </div>
 
@@ -566,7 +568,7 @@ const TestStart = ({ resolvedId } = {}) => {
               className="bg-primary-600 hover:bg-primary-600 h-12 sm:h-14 !px-4 sm:!px-12 sm:min-w-[10rem] text-xs sm:text-base"
               onClick={() => setShowSubmitModal(true)}
             >
-              FINISH <span className="hidden sm:inline">&nbsp;TEST</span> <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />
+              {translate('FINISH')} <span className="hidden sm:inline">&nbsp;{translate('TEST')}</span> <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-1.5 sm:ml-2" />
             </Button>
           ) : (
             <Button
@@ -575,7 +577,7 @@ const TestStart = ({ resolvedId } = {}) => {
               className="h-12 sm:h-14 !px-5 sm:!px-12 sm:min-w-[10rem]"
               onClick={() => setCurrentQIndex(prev => prev + 1)}
             >
-              NEXT <ChevronRight className="w-6 h-6 ml-2" />
+              {translate('NEXT')} <ChevronRight className="w-6 h-6 ml-2" />
             </Button>
           )}
         </div>
@@ -588,7 +590,7 @@ const TestStart = ({ resolvedId } = {}) => {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowPalette(false)} className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
             <motion.div initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }} className="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-t-[3rem] px-5 sm:px-8 pt-4 sm:pt-6 flex flex-col overflow-hidden z-50 max-h-[80vh]" style={{ maxHeight: '80dvh' }}>
               <div className="w-12 h-1.5 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-4 sm:mb-6" />
-              <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase">Questions</h3>
+              <h3 className="shrink-0 text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Questions')}</h3>
               <p className="shrink-0 text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 pb-3 sm:pb-4 border-b border-slate-100 dark:border-slate-800 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">Questions: <span className="text-slate-900 dark:text-white">{questions.length}</span>, Answered: <span className="text-primary-600">{answeredCount}</span>, Not Answered: <span className="text-slate-900 dark:text-white">{questions.length - answeredCount}</span>, Mark For Review: <span className="text-slate-900 dark:text-white">{marked.size}</span></p>
               <div className="space-y-5 flex-1 min-h-0 overflow-y-auto overscroll-contain pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
                 {sectionNames.map((secName) => {
@@ -641,15 +643,15 @@ const TestStart = ({ resolvedId } = {}) => {
               <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                 <CircleAlert className="w-7 h-7 sm:w-10 sm:h-10" />
               </div>
-              <h2 className="text-xl xl:text-2xl font-black font-outfit text-center uppercase mb-2">Ready to finish?</h2>
+              <h2 className="text-xl xl:text-2xl font-black font-outfit text-center uppercase mb-2">{translate('Ready to finish?')}</h2>
               <p className="text-center text-slate-500 mb-5 sm:mb-8 font-bold leading-relaxed text-sm sm:text-base px-1 sm:px-4">
                 You&apos;ve answered <span className="text-primary-600">{answeredCount}</span> out of <span className="font-black">{questions.length}</span> questions. Once you submit, you can&apos;t go back!
               </p>
               <div className="space-y-3">
                 <Button variant="primary" fullWidth size="lg" className="py-4 sm:py-6 text-lg sm:text-xl" onClick={handleAutoSubmit} disabled={submitting}>
-                  {submitting ? 'SUBMITTING...' : 'YES, I\'M DONE!'}
+                  {submitting ? translate('SUBMITTING...') : translate("YES, I'M DONE!")}
                 </Button>
-                <Button variant="secondary" fullWidth size="lg" onClick={() => setShowSubmitModal(false)}>CONTINUE TEST</Button>
+                <Button variant="secondary" fullWidth size="lg" onClick={() => setShowSubmitModal(false)}>{translate('CONTINUE TEST')}</Button>
               </div>
             </motion.div>
           </div>

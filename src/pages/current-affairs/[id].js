@@ -8,8 +8,10 @@ import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
+import useTranslate from '../../hooks/useTranslate';
 
 const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
+  const { translate } = useTranslate();
   const [affair, setAffair] = useState(initialAffair || null);
   const [loading, setLoading] = useState(!initialAffair);
   const router = useRouter();
@@ -67,7 +69,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
         ]}
       />
       <div className="py-0 xl:py-6">
-        <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back</button>
+        <button onClick={() => router.push('/current-affairs')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> {translate('Back')}</button>
 
         <div className="space-y-2">
           <div className="flex items-center gap-2">
@@ -84,7 +86,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
 
         {affair.keyPoints?.length > 0 && (
           <Card className="space-y-2">
-            <h3 className="text-sm font-black text-slate-900 dark:text-white">Key Points</h3>
+            <h3 className="text-sm font-black text-slate-900 dark:text-white">{translate('Key Points')}</h3>
             <ul className="space-y-1">
               {affair.keyPoints.map((kp, i) => (
                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
@@ -97,7 +99,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
 
         {affair.questions?.length > 0 && (
           <Card className="space-y-2 xl:space-y-4">
-            <h3 className="text-sm font-black text-slate-900 dark:text-white">Practice Questions</h3>
+            <h3 className="text-sm font-black text-slate-900 dark:text-white">{translate('Practice Questions')}</h3>
             {affair.questions.map((q, i) => (
               <div key={i} className="space-y-2 pb-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
                 <p className="text-xs font-bold text-slate-700 dark:text-slate-300">Q{i + 1}. {q.questionText}</p>

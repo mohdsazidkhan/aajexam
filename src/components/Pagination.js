@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PAGE_SIZE_OPTIONS } from '../lib/constants/pagination';
 import StyledSelect from './ui/StyledSelect';
+import useTranslate from '../hooks/useTranslate';
 
 /**
  * Premium 3D Pagination Component
@@ -21,6 +22,7 @@ const Pagination = ({
   showInfo = true,
   compact = false
 }) => {
+  const { translate, rich } = useTranslate();
   const startItem = (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
@@ -63,13 +65,13 @@ const Pagination = ({
 
   const infoBlock = showInfo && (
     <div className="text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.15em] font-outfit">
-       Result: <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span> of <span className="text-primary-600 font-black">{totalItems}</span>
+       {rich('Result: <0></0> of <1></1>', [() => <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 font-black">{totalItems}</span>])}
     </div>
   );
 
   const pageSizeBlock = onItemsPerPageChange && (
     <div className="flex items-center gap-2">
-      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">Page Size</span>
+      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">{translate('Page Size')}</span>
       <StyledSelect
         value={itemsPerPage}
         onChange={(val) => onItemsPerPageChange(Number(val))}

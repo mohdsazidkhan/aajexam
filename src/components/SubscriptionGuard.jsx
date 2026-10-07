@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { hasProSubscription, getSubscriptionStatusTextWithTheme } from '../lib/utils/subscriptionUtils';
+import useTranslate from '../hooks/useTranslate';
 
 /**
  * Component that shows subscription prompt for non-subscribed users
@@ -13,6 +14,7 @@ const SubscriptionGuard = ({
   message = "This feature requires a PRO subscription to access.", 
   showUpgradeButton = true 
 }) => {
+  const { translate } = useTranslate();
   if (hasProSubscription()) {
     return children;
   }
@@ -24,7 +26,7 @@ const SubscriptionGuard = ({
       <div className="text-center">
         <div className="text-6xl mb-4">🔒</div>
         <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-          Subscription Required
+          {translate('Subscription Required')}
         </h3>
         <p className="text-gray-600 dark:text-gray-300 mb-4 max-w-md">
           {message}
@@ -45,12 +47,12 @@ const SubscriptionGuard = ({
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >
             <span className="mr-2">💳</span>
-            Upgrade to PRO
+            {translate('Upgrade to PRO')}
           </Link>
         )}
 
         <div className="mt-4 text-sm text-slate-700 dark:text-gray-400">
-          <p>Already have a subscription? <Link href="/subscription" className="text-primary-600 hover:underline">Check your status</Link></p>
+          <p>Already have a subscription? <Link href="/subscription" className="text-primary-600 hover:underline">{translate('Check your status')}</Link></p>
         </div>
       </div>
     </div>

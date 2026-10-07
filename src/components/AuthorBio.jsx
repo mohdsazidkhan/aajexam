@@ -1,6 +1,8 @@
 ﻿import Link from 'next/link';
+import useTranslate from '../hooks/useTranslate';
 
 const AuthorBio = () => {
+  const { translate, rich } = useTranslate();
     return (
         <div className="mt-12 p-4 md:p-8 xl:p-12 bg-white dark:bg-slate-800 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
             {/* Decorative background */}
@@ -8,23 +10,21 @@ const AuthorBio = () => {
 
             <div className="flex flex-col xl:flex-row items-center xl:items-start gap-8 relative z-10">
                 <div className="w-20 h-20 rounded-2xl bg-primary-600 shrink-0 flex items-center justify-center text-white text-xl xl:text-3xl font-black shadow-sm border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform">
-                    S
+                    {translate('S')}
                 </div>
 
                 <div className="flex-1 text-center xl:text-left">
                     <h3 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mb-4">
-                        Curator Intelligence
+                        {translate('Curator Intelligence')}
                     </h3>
                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl">
-                        Content strictly reviewed and curated by <span className="text-primary-600">Mohd Sazid Khan</span>,
-                        founder of AajExam and educational technology expert with extensive
-                        experience in government exam preparation systems.
+                        {rich('Content strictly reviewed and curated by <0>Mohd Sazid Khan</0>, founder of AajExam and educational technology expert with extensive experience in government exam preparation systems.', [(c) => <span className="text-primary-600">{c}</span>])}
                     </p>
                     <Link
                         href="/about-founder"
                         className="inline-flex items-center gap-3 px-8 py-4 bg-white dark:bg-slate-900 text-primary-600 font-black uppercase tracking-widest text-[10px] rounded-2xl border-2 border-slate-100 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:translate-y-1 shadow-sm"
                     >
-                        Meet the Founder
+                        {translate('Meet the Founder')}
                     </Link>
                 </div>
             </div>

@@ -14,8 +14,10 @@ import {
   X,
   CheckCircle
 } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 const AskQuestionPage = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const authenticated = isAuthenticated();
 
@@ -95,7 +97,7 @@ const AskQuestionPage = () => {
     if (!file) return;
 
     if (file.size > 5 * 1024 * 1024) {
-      setError('Image must be under 5MB');
+      setError(translate('Image must be under 5MB'));
       return;
     }
 
@@ -115,7 +117,7 @@ const AskQuestionPage = () => {
       }
     } catch (err) {
       console.error('Image upload error:', err);
-      setError('Failed to upload image');
+      setError(translate('Failed to upload image'));
     } finally {
       setUploadingImage(false);
     }
@@ -126,11 +128,11 @@ const AskQuestionPage = () => {
     setError('');
 
     if (!form.question.trim()) {
-      setError('Please enter your question');
+      setError(translate('Please enter your question'));
       return;
     }
     if (!form.exam) {
-      setError('Please select an exam');
+      setError(translate('Please select an exam'));
       return;
     }
 
@@ -155,7 +157,7 @@ const AskQuestionPage = () => {
       }
     } catch (err) {
       console.error('Error posting question:', err);
-      setError(err.message || 'Failed to post question');
+      setError(err.message || translate('Failed to post question'));
     } finally {
       setSubmitting(false);
     }
@@ -166,8 +168,8 @@ const AskQuestionPage = () => {
       <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
         <Card className="text-center max-w-md w-full" radius="2xl">
           <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
-          <h2 className="text-xl font-black text-content-primary uppercase mb-2">Question Posted!</h2>
-          <p className="text-sm text-content-muted">Redirecting to community questions...</p>
+          <h2 className="text-xl font-black text-content-primary uppercase mb-2">{translate('Question Posted!')}</h2>
+          <p className="text-sm text-content-muted">{translate('Redirecting to community questions...')}</p>
         </Card>
       </div>
     );
@@ -180,9 +182,9 @@ const AskQuestionPage = () => {
         <div className="flex items-center gap-3 mb-6">
           <div>
             <h1 className="text-xl xl:text-2xl font-black text-content-primary uppercase tracking-tight">
-              Post a Question
+              {translate('Post a Question')}
             </h1>
-            <p className="text-xs text-content-muted mt-0.5">Share with the community</p>
+            <p className="text-xs text-content-muted mt-0.5">{translate('Share with the community')}</p>
           </div>
         </div>
 
@@ -196,14 +198,14 @@ const AskQuestionPage = () => {
 
           {/* Exam Selection */}
           <Card className="mb-4" radius="2xl">
-            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">Select Exam</h3>
+            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Select Exam')}</h3>
             <select
               value={form.exam}
               onChange={(e) => handleChange('exam', e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
               required
             >
-              <option value="">Select Exam</option>
+              <option value="">{translate('Select Exam')}</option>
               {exams.map(exam => (
                 <option key={exam._id} value={exam._id}>
                   {exam.name}
@@ -214,11 +216,11 @@ const AskQuestionPage = () => {
 
           {/* Question */}
           <Card className="mb-4" radius="2xl">
-            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">Your Question</h3>
+            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Your Question')}</h3>
             <textarea
               value={form.question}
               onChange={(e) => handleChange('question', e.target.value)}
-              placeholder="Type your question here..."
+              placeholder={translate('Type your question here...')}
               rows={4}
               maxLength={2000}
               required
@@ -244,7 +246,7 @@ const AskQuestionPage = () => {
               ) : (
                 <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
                   <ImageIcon className="w-4 h-4" />
-                  {uploadingImage ? 'Uploading...' : 'Add Image (optional)'}
+                  {uploadingImage ? translate('Uploading...') : translate('Add Image (optional)')}
                   <input
                     type="file"
                     accept="image/*"
@@ -260,7 +262,7 @@ const AskQuestionPage = () => {
           {/* Options (MCQ) */}
           <Card className="mb-4" radius="2xl">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-xs font-black text-content-muted uppercase tracking-wider">Options (Optional)</h3>
+              <h3 className="text-xs font-black text-content-muted uppercase tracking-wider">{translate('Options (Optional)')}</h3>
               {form.options.length < 6 && (
                 <button
                   type="button"
@@ -290,7 +292,7 @@ const AskQuestionPage = () => {
                         ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
                         : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
                     }`}
-                    title="Mark as correct answer"
+                    title={translate('Mark as correct answer')}
                   >
                     <CheckCircle className="w-4 h-4" />
                   </button>
@@ -310,11 +312,11 @@ const AskQuestionPage = () => {
 
           {/* Explanation */}
           <Card className="mb-6" radius="2xl">
-            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">Explanation (Optional)</h3>
+            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Explanation (Optional)')}</h3>
             <textarea
               value={form.explanation}
               onChange={(e) => handleChange('explanation', e.target.value)}
-              placeholder="Add an explanation for the answer..."
+              placeholder={translate('Add an explanation for the answer...')}
               rows={3}
               maxLength={3000}
               className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
@@ -330,7 +332,7 @@ const AskQuestionPage = () => {
             disabled={submitting || !form.question.trim() || !form.exam}
             onClick={handleSubmit}
           >
-            {submitting ? 'Posting...' : 'Post Question'}
+            {submitting ? translate('Posting...') : translate('Post Question')}
           </Button>
         </form>
         </div>

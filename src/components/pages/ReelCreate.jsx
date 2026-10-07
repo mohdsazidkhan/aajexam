@@ -13,6 +13,7 @@ import {
   ArrowLeft, Flame, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Plus, Trash2,
   Music, Clock, Play, Pause, Search, Volume2, VolumeX
 } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 const TYPES = [
   { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'MCQ with explanation' },
@@ -26,6 +27,7 @@ const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-slate-50 dark
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const ReelCreate = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState('');
@@ -172,8 +174,8 @@ const ReelCreate = () => {
       <MobileAppWrapper>
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
-            <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">Login required to create reels</p>
-            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-primary-600 text-white text-sm font-semibold">Login</Link>
+            <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">{translate('Login required to create reels')}</p>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-primary-600 text-white text-sm font-semibold">{translate('Login')}</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -182,7 +184,7 @@ const ReelCreate = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!type) { toast.error('Select card type'); return; }
+    if (!type) { toast.error(translate('Select card type')); return; }
     setLoading(true);
     try {
       const data = { type, title, content, subject, topic, examType, difficulty, tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [], audioFile, duration: duration ? parseInt(duration) : 0 };
@@ -193,9 +195,9 @@ const ReelCreate = () => {
       if (type === 'poll') Object.assign(data, { pollQuestion, pollOptions: pollOptions.filter(o => o.text) });
 
       const res = await API.createReel(data);
-      if (res?.success) { toast.success(res.message || 'Submitted!'); router.push('/my-reels'); }
-      else toast.error(res?.message || 'Failed');
-    } catch (err) { toast.error('Error'); }
+      if (res?.success) { toast.success(res.message || translate('Submitted!')); router.push('/my-reels'); }
+      else toast.error(res?.message || translate('Failed'));
+    } catch (err) { toast.error(translate('Error')); }
     finally { setLoading(false); }
   };
 
@@ -207,7 +209,7 @@ const ReelCreate = () => {
             <h1 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Flame className="w-5 h-5 text-black dark:text-white" /> Create Reel
             </h1>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Choose Card Type</p>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{translate('Choose Card Type')}</p>
           </div>
         </div>
 
@@ -215,12 +217,12 @@ const ReelCreate = () => {
           {!type ? (
             <div className="space-y-2 xl:space-y-4">
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3">
-                {TYPES.map(t => (
-                  <motion.button key={t.value} onClick={() => setType(t.value)}
-                    className={`p-2.5 xl:p-5 rounded-xl xl:rounded-2xl border-2 text-left transition-all ${t.color}`}>
-                    <t.icon className="w-8 h-8 mb-3 opacity-70" />
-                    <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{t.label}</h3>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{t.desc}</p>
+                {TYPES.map(rt => (
+                  <motion.button key={rt.value} onClick={() => setType(rt.value)}
+                    className={`p-2.5 xl:p-5 rounded-xl xl:rounded-2xl border-2 text-left transition-all ${rt.color}`}>
+                    <rt.icon className="w-8 h-8 mb-3 opacity-70" />
+                    <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{translate(rt.label)}</h3>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{translate(rt.desc)}</p>
                   </motion.button>
                 ))}
               </div>
@@ -230,45 +232,45 @@ const ReelCreate = () => {
               <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
                   <span className="px-3 py-1 rounded-full text-[10px] font-black bg-primary-600 text-white uppercase tracking-widest">{type === 'current_affairs' ? 'CA' : type}</span>
-                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">New Reel</p>
+                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">{translate('New Reel')}</p>
                 </div>
-                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">Change Type</button>
+                <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">{translate('Change Type')}</button>
               </div>
 
               {/* Common */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <div><label className={labelClass}>Exam</label>
+                  <div><label className={labelClass}>{translate('Exam')}</label>
                     <select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
-                      <option value="">Select Exam</option>
+                      <option value="">{translate('Select Exam')}</option>
                       {examsList.map(ex => <option key={ex._id} value={ex.name}>{ex.name}</option>)}
                     </select>
                   </div>
-                  <div><label className={labelClass}>Subject</label>
+                  <div><label className={labelClass}>{translate('Subject')}</label>
                     <select value={subject} onChange={e => { setSubject(e.target.value); setTopic(''); }} className={inputClass}>
-                      <option value="">Select Subject</option>
+                      <option value="">{translate('Select Subject')}</option>
                       {subjectsList.map(s => <option key={s._id} value={s.name}>{s.name}</option>)}
                     </select>
                   </div>
-                  <div><label className={labelClass}>Topic</label>
+                  <div><label className={labelClass}>{translate('Topic')}</label>
                     <select value={topic} onChange={e => setTopic(e.target.value)} className={inputClass}>
-                      <option value="">Select Topic</option>
+                      <option value="">{translate('Select Topic')}</option>
                       {topicsList.filter(t => !subject || t.subject?.name === subject).map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
                     </select>
                   </div>
-                  <div><label className={labelClass}>Difficulty</label>
+                  <div><label className={labelClass}>{translate('Difficulty')}</label>
                     <select value={difficulty} onChange={e => setDifficulty(e.target.value)} className={inputClass}>
-                      <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option>
+                      <option value="easy">{translate('Easy')}</option><option value="medium">{translate('Medium')}</option><option value="hard">{translate('Hard')}</option>
                     </select>
                   </div>
                 </div>
-                <div><label className={labelClass}>Title</label><input value={title} onChange={e => setTitle(e.target.value)} placeholder="Card title" className={inputClass} /></div>
+                <div><label className={labelClass}>{translate('Title')}</label><input value={title} onChange={e => setTitle(e.target.value)} placeholder={translate('Card title')} className={inputClass} /></div>
               </div>
 
               {/* Question */}
               {type === 'question' && (
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
-                  <div><label className={labelClass}>Question *</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
+                  <div><label className={labelClass}>{translate('Question *')}</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
                   <div className="space-y-2">
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
@@ -276,29 +278,29 @@ const ReelCreate = () => {
                           className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-600 bg-primary-600 text-white' : 'border-slate-300 text-slate-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
-                        <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={`Option ${String.fromCharCode(65 + i)}`} className={`flex-1 ${inputClass}`} required />
+                        <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={translate('Option {letter}', { letter: String.fromCharCode(65 + i) })} className={`flex-1 ${inputClass}`} required />
                       </div>
                     ))}
                   </div>
-                  <div><label className={labelClass}>Explanation</label><textarea value={explanation} onChange={e => setExplanation(e.target.value)} rows={2} className={inputClass} /></div>
-                  <div><label className={labelClass}>Trick</label><input value={shortcutTrick} onChange={e => setShortcutTrick(e.target.value)} className={inputClass} /></div>
+                  <div><label className={labelClass}>{translate('Explanation')}</label><textarea value={explanation} onChange={e => setExplanation(e.target.value)} rows={2} className={inputClass} /></div>
+                  <div><label className={labelClass}>{translate('Trick')}</label><input value={shortcutTrick} onChange={e => setShortcutTrick(e.target.value)} className={inputClass} /></div>
                 </div>
               )}
 
               {/* Fact */}
               {type === 'fact' && (
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
-                  <div><label className={labelClass}>Highlight Text</label><input value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} /></div>
-                  <div><label className={labelClass}>Content</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
+                  <div><label className={labelClass}>{translate('Highlight Text')}</label><input value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} /></div>
+                  <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
-                    <label className={labelClass}>Key Points</label>
+                    <label className={labelClass}>{translate('Key Points')}</label>
                     {keyPoints.map((kp, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={kp} onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }} className={`flex-1 ${inputClass}`} />
                         {keyPoints.length > 1 && <button type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
-                    <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> Add</button>
+                    <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
                   </div>
                 </div>
               )}
@@ -306,18 +308,18 @@ const ReelCreate = () => {
               {/* Tip */}
               {type === 'tip' && (
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
-                  <div><label className={labelClass}>Formula</label><input value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} /></div>
-                  <div><label className={labelClass}>Content</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
+                  <div><label className={labelClass}>{translate('Formula')}</label><input value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} /></div>
+                  <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
-                    <label className={labelClass}>Steps</label>
+                    <label className={labelClass}>{translate('Steps')}</label>
                     {steps.map((s, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
-                        <span className="text-xs text-slate-400 w-10">Step {i + 1}</span>
+                        <span className="text-xs text-slate-400 w-10">{translate('Step {n}', { n: i + 1 })}</span>
                         <input value={s} onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }} className={`flex-1 ${inputClass}`} />
                         {steps.length > 1 && <button type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
-                    <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> Add</button>
+                    <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
                   </div>
                 </div>
               )}
@@ -325,15 +327,15 @@ const ReelCreate = () => {
               {/* Poll */}
               {type === 'poll' && (
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-3">
-                  <div><label className={labelClass}>Poll Question *</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
+                  <div><label className={labelClass}>{translate('Poll Question *')}</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
                   <div>
                     {pollOptions.map((o, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
-                        <input value={o.text} onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }} placeholder={`Option ${i + 1}`} className={`flex-1 ${inputClass}`} required={i < 2} />
+                        <input value={o.text} onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }} placeholder={translate('Option {n}', { n: i + 1 })} className={`flex-1 ${inputClass}`} required={i < 2} />
                         {pollOptions.length > 2 && <button type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
-                    {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> Add option</button>}
+                    {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add option')}</button>}
                   </div>
                 </div>
               )}
@@ -341,8 +343,8 @@ const ReelCreate = () => {
               {/* CA */}
               {type === 'current_affairs' && (
                 <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
-                  <div><label className={labelClass}>Title *</label><input value={title} onChange={e => setTitle(e.target.value)} className={inputClass} required /></div>
-                  <div><label className={labelClass}>Content *</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
+                  <div><label className={labelClass}>{translate('Title *')}</label><input value={title} onChange={e => setTitle(e.target.value)} className={inputClass} required /></div>
+                  <div><label className={labelClass}>{translate('Content *')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
                 </div>
               )}
 
@@ -354,14 +356,14 @@ const ReelCreate = () => {
                   </h3>
                   {audioFile && (
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
-                      className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider">Remove</button>
+                      className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider">{translate('Remove')}</button>
                   )}
                 </div>
 
                 {/* Search */}
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder="Search audio..." className={`${inputClass} pl-9`} />
+                  <input value={audioSearch} onChange={e => setAudioSearch(e.target.value)} placeholder={translate('Search audio...')} className={`${inputClass} pl-9`} />
                 </div>
 
                 {/* Audio List */}
@@ -398,7 +400,7 @@ const ReelCreate = () => {
                     </div>
                   ))}
                   {filteredAudios.length === 0 && (
-                    <p className="text-xs text-slate-400 text-center py-3">No audio found</p>
+                    <p className="text-xs text-slate-400 text-center py-3">{translate('No audio found')}</p>
                   )}
                 </div>
 
@@ -407,7 +409,7 @@ const ReelCreate = () => {
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-primary-600 animate-pulse"/>
-                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Now Playing</span>
+                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">{translate('Now Playing')}</span>
                     </div>
                     <button type="button" onClick={toggleAudioMute} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
                       {audioMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-black dark:text-white" />}
@@ -417,16 +419,16 @@ const ReelCreate = () => {
 
                 {/* Duration */}
                 <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
-                  <label className={labelClass}>Duration (seconds)</label>
+                  <label className={labelClass}>{translate('Duration (seconds)')}</label>
                   <div className="relative">
-                    <input type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder="e.g. 15" min="5" max="120" className={inputClass} />
+                    <input type="number" value={duration} onChange={e => setDuration(e.target.value)} placeholder={translate('e.g. 15')} min="5" max="120" className={inputClass} />
                     <Clock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                   </div>
-                  <p className="text-[10px] text-slate-400 mt-1">Reel will auto-scroll after this time (5-120 sec)</p>
+                  <p className="text-[10px] text-slate-400 mt-1">{translate('Reel will auto-scroll after this time (5-120 sec)')}</p>
                 </div>
               </div>
 
-              <Button type="submit" disabled={loading} className="w-full">{loading ? 'Submitting...' : 'Submit Reel'}</Button>
+              <Button type="submit" disabled={loading} className="w-full">{loading ? translate('Submitting...') : translate('Submit Reel')}</Button>
             </form>
           )}
         </div>

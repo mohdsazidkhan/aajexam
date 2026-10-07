@@ -4,8 +4,10 @@ import { Trophy, Play, Users, ArrowLeft, Swords, Crown, Medal } from 'lucide-rea
 import API from '../../lib/api';
 import Seo from '../../components/Seo';
 import toast from 'react-hot-toast';
+import useTranslate from '../../hooks/useTranslate';
 
 export default function ChallengePage() {
+  const { translate, rich } = useTranslate();
     const router = useRouter();
     const { code } = router.query;
     
@@ -21,11 +23,11 @@ export default function ChallengePage() {
                     setChallenge(res.challenge);
                     setLeaderboard(res.leaderboard);
                 } else {
-                    toast.error('Challenge not found or expired');
+                    toast.error(translate('Challenge not found or expired'));
                     setTimeout(() => router.push('/'), 2000);
                 }
             })
-            .catch(() => toast.error('Error loading challenge'))
+            .catch(() => toast.error(translate('Error loading challenge')))
             .finally(() => setLoading(false));
     }, [code, router]);
 
@@ -79,14 +81,14 @@ export default function ChallengePage() {
                         </div>
                         
                         <h1 className="text-white text-3xl font-black mb-2 uppercase tracking-wide">
-                            {challenge.host?.name || 'Someone'} Challenged You!
+                            {translate('{name} Challenged You!', { name: challenge.host?.name || translate('Someone') })}
                         </h1>
                         <p className="text-black dark:text-white font-medium mb-6 text-lg">
-                            Quiz: <span className="text-white font-bold">{challenge.quiz?.title || 'Unknown'}</span>
+                            {rich('Quiz: <0></0>', [() => <span className="text-white font-bold">{challenge.quiz?.title || translate('Unknown')}</span>])}
                         </p>
 
                         <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-lg xl:rounded-xl px-6 py-3 mb-6">
-                            <p className="text-black dark:text-white text-xs font-bold uppercase tracking-wider mb-1">Target to beat</p>
+                            <p className="text-black dark:text-white text-xs font-bold uppercase tracking-wider mb-1">{translate('Target to beat')}</p>
                             <p className="text-white text-4xl font-black">{Math.round(hostScore?.percentage || 0)}%</p>
                         </div>
 
@@ -112,7 +114,7 @@ export default function ChallengePage() {
                             <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg xl:rounded-xl">
                                 <Users className="w-6 h-6 text-black dark:text-white" />
                             </div>
-                            <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">Challenge Leaderboard</h2>
+                            <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">{translate('Challenge Leaderboard')}</h2>
                         </div>
 
                         <div className="space-y-3">
@@ -130,8 +132,8 @@ export default function ChallengePage() {
                                     
                                     <div className="flex-grow min-w-0">
                                         <h3 className="font-bold text-slate-800 dark:text-white truncate text-lg">
-                                            {entry.user?.name || 'Anonymous'}
-                                            {entry.isHost && <span className="ml-2 text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-2 py-0.5 rounded-full uppercase tracking-wider">Host</span>}
+                                            {entry.user?.name || translate('Anonymous')}
+                                            {entry.isHost && <span className="ml-2 text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-2 py-0.5 rounded-full uppercase tracking-wider">{translate('Host')}</span>}
                                         </h3>
                                     </div>
 

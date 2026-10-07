@@ -1,7 +1,9 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
+import useTranslate from '../hooks/useTranslate';
 
 const ScrollToTopButton = () => {
+  const { translate } = useTranslate();
   const [isVisible, setIsVisible] = useState(false);
 
   // Show button when page is scrolled down
@@ -32,8 +34,8 @@ const ScrollToTopButton = () => {
         <button
           onClick={scrollToTop}
           className="scroll-to-top-btn"
-          aria-label="Scroll to top"
-          title="Scroll to top"
+          aria-label={translate('Scroll to top')}
+          title={translate('Scroll to top')}
         >
           <FaArrowUp className="scroll-to-top-icon" />
         </button>

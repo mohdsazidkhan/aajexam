@@ -7,6 +7,7 @@ import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import useTranslate from '../hooks/useTranslate';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -70,6 +71,7 @@ const CategoryCard = ({ category, index, TypeIcon, typeLabel }) => {
 };
 
 const InterviewQuestionsPage = () => {
+  const { translate } = useTranslate();
   const [type, setType] = useState('all');
   const [language, setLanguage] = useState('en');
   const [categories, setCategories] = useState([]);
@@ -145,13 +147,13 @@ const InterviewQuestionsPage = () => {
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
-            <TrendingUp className="w-3.5 h-3.5" /> {totalQuestions} Questions Available
+            <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Questions Available', { count: totalQuestions })}
           </motion.div>
-          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Interview Questions</h1>
+          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Interview Questions')}</h1>
           <div className="w-full max-w-lg px-2 xl:px-0">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input type="text" placeholder="Search categories or questions..." value={search} onChange={e => { setSearch(e.target.value); setQPage(1); }}
+              <input type="text" placeholder={translate('Search categories or questions...')} value={search} onChange={e => { setSearch(e.target.value); setQPage(1); }}
                 className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
             </div>
           </div>
@@ -178,13 +180,13 @@ const InterviewQuestionsPage = () => {
         <section className="space-y-2 xl:space-y-4">
           <div className="flex items-center gap-2 px-1">
             <Search className="w-4 h-4 text-primary-600 shrink-0" />
-            <h2 className="text-xs font-black uppercase tracking-wide text-content-primary">Matching Questions</h2>
+            <h2 className="text-xs font-black uppercase tracking-wide text-content-primary">{translate('Matching Questions')}</h2>
           </div>
 
           {loadingQuestions && questions.length === 0 ? (
-            <div className="py-10 text-center text-sm font-bold text-content-muted">Searching…</div>
+            <div className="py-10 text-center text-sm font-bold text-content-muted">{translate('Searching…')}</div>
           ) : questions.length === 0 ? (
-            <div className="py-10 text-center text-sm font-bold text-content-muted">No questions match your search.</div>
+            <div className="py-10 text-center text-sm font-bold text-content-muted">{translate('No questions match your search.')}</div>
           ) : (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
@@ -229,10 +231,10 @@ const InterviewQuestionsPage = () => {
               {qTotalPages > 1 && (
                 <div className="flex justify-center items-center gap-4 pt-2">
                   <button disabled={qPage === 1} onClick={() => setQPage(qPage - 1)}
-                    className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
-                  <span className="text-sm font-black text-slate-500">Page {qPage} of {qTotalPages}</span>
+                    className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Prev')}</button>
+                  <span className="text-sm font-black text-slate-500">{translate('Page {page} of {total}', { page: qPage, total: qTotalPages })}</span>
                   <button disabled={qPage === qTotalPages} onClick={() => setQPage(qPage + 1)}
-                    className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
+                    className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Next')}</button>
                 </div>
               )}
             </>
@@ -245,7 +247,7 @@ const InterviewQuestionsPage = () => {
         <div className="flex items-center justify-between gap-2 px-1">
           <div className="flex items-center gap-2 min-w-0">
             <ListFilter className="w-4 h-4 text-primary-600 shrink-0" />
-            <h2 className="text-xs font-black uppercase tracking-wide text-content-primary truncate">Browse by Category</h2>
+            <h2 className="text-xs font-black uppercase tracking-wide text-content-primary truncate">{translate('Browse by Category')}</h2>
           </div>
           <div className="flex rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700 shrink-0">
             {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (
@@ -265,11 +267,11 @@ const InterviewQuestionsPage = () => {
           <div className="py-16 text-center space-y-3">
             <MessageCircleQuestion className="w-16 h-16 text-slate-200 mx-auto" />
             <p className="text-sm font-bold text-content-muted">
-              {search ? 'No categories match your search.' : 'No categories yet.'}
+              {search ? translate('No categories match your search.') : translate('No categories yet.')}
             </p>
             {search && (
               <button onClick={() => setSearch('')}
-                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">Clear Search</button>
+                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('Clear Search')}</button>
             )}
           </div>
         ) : (

@@ -10,8 +10,10 @@ import PublicNavbar from '../../components/navbars/PublicNavbar';
 import UnifiedFooter from '../../components/UnifiedFooter';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
+import useTranslate from '../../hooks/useTranslate';
 
 export default function SharedResult({ stats }) {
+  const { translate, rich } = useTranslate();
   const router = useRouter();
   const { rank, total, pct, score, accuracy, testTitle, user } = stats;
 
@@ -69,12 +71,12 @@ export default function SharedResult({ stats }) {
               <div className="relative z-10 space-y-6">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white text-xs font-black uppercase tracking-widest">
                   <Crown className="w-4 h-4" />
-                  {band}
+                  {translate(band)}
                 </div>
 
                 <div className="space-y-2">
                   <p className="text-sm xl:text-base font-black uppercase tracking-widest opacity-80">
-                    {user} scored
+                    {translate('{user} scored', { user })}
                   </p>
                   <h1 className="text-3xl xl:text-5xl font-black font-outfit tracking-tight">
                     {testTitle}
@@ -87,14 +89,14 @@ export default function SharedResult({ stats }) {
                       #{rank}
                     </span>
                     <span className="text-xl xl:text-2xl font-bold opacity-80">
-                      of {Number(total).toLocaleString('en-IN')} candidates
+                      {translate('of {total} candidates', { total: Number(total).toLocaleString('en-IN') })}
                     </span>
                   </div>
                 )}
 
                 {pctNum > 0 && (
                   <p className="text-lg xl:text-xl font-bold opacity-90">
-                    Beat <span className="text-black dark:text-white">{pctNum.toFixed(1)}%</span> of candidates on AajExam
+                    {rich('Beat <0></0> of candidates on AajExam', [() => <span className="text-black dark:text-white">{pctNum.toFixed(1)}%</span>])}
                   </p>
                 )}
               </div>
@@ -113,7 +115,7 @@ export default function SharedResult({ stats }) {
                   <item.icon className="w-6 h-6" />
                 </div>
                 <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
-                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.label}</span>
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{translate(item.label)}</span>
               </Card>
             ))}
           </section>
@@ -123,7 +125,7 @@ export default function SharedResult({ stats }) {
               Think you can beat this?
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-              Free unlimited mock tests for SSC, RRB, Banking, and State Police exams. Track your All India Rank live.
+              {translate('Free unlimited mock tests for SSC, RRB, Banking, and State Police exams. Track your All India Rank live.')}
             </p>
             <div className="flex flex-col xl:flex-row justify-center gap-3 pt-2">
               <Button
@@ -132,7 +134,7 @@ export default function SharedResult({ stats }) {
                 onClick={() => router.push('/govt-exams')}
                 className="px-10 py-5 text-lg"
               >
-                Take this test <ArrowRight className="w-5 h-5 ml-2" />
+                {translate('Take this test')} <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <Button
                 variant="secondary"
@@ -140,7 +142,7 @@ export default function SharedResult({ stats }) {
                 onClick={() => router.push('/register')}
                 className="px-10 py-5 text-lg"
               >
-                Sign up free
+                {translate('Sign up free')}
               </Button>
             </div>
           </Card>

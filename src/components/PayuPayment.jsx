@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { CheckCircle2, CreditCard, LoaderCircle, ShieldCheck } from 'lucide-react';
 
 import { launchPayuCheckout } from '../lib/utils/payu';
+import useTranslate from '../hooks/useTranslate';
 
 const PayuPayment = ({ plan, userInfo, onError }) => {
+  const { translate } = useTranslate();
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState(null);
 
@@ -29,12 +31,12 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
           {loading ? (
             <>
               <LoaderCircle className="w-5 h-5 animate-spin" />
-              <span>Preparing payment</span>
+              <span>{translate('Preparing payment')}</span>
             </>
           ) : (
             <>
               <CreditCard className="w-5 h-5" />
-              <span>Continue to secure payment</span>
+              <span>{translate('Continue to secure payment')}</span>
             </>
           )}
         </span>
@@ -44,7 +46,7 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
         <div className="flex items-start gap-3">
           <ShieldCheck className="w-5 h-5 shrink-0 text-primary-600 mt-0.5" />
           <p className="font-medium">
-            A secure PayU window will open in a new tab. Keep this page open until your payment is completed.
+            {translate('A secure PayU window will open in a new tab. Keep this page open until your payment is completed.')}
           </p>
         </div>
       </div>
@@ -56,8 +58,8 @@ const PayuPayment = ({ plan, userInfo, onError }) => {
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-sm font-semibold">Payment session created</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">Reference: {paymentData.txnid.slice(0, 16)}...</p>
+              <p className="text-sm font-semibold">{translate('Payment session created')}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">{translate('Reference: {ref}', { ref: paymentData.txnid.slice(0, 16) })}...</p>
             </div>
           </div>
         </div>

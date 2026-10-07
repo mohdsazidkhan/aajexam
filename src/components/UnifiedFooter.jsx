@@ -26,8 +26,10 @@ import config from '../lib/config/appConfig';
 import Card from './ui/Card';
 import { FaEnvelope, FaPinterest } from 'react-icons/fa';
 import { isAdmin } from '../lib/utils/adminUtils';
+import useTranslate from '../hooks/useTranslate';
 
 const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
+  const { translate } = useTranslate();
   const isUserAdmin = isAdmin();
   const legalLinks = config.LEGAL;
 
@@ -71,13 +73,13 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="xl:col-span-1 space-y-8">
             <div className="space-y-2 xl:space-y-4">
               <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-content-primary">
-                AAJ<span className="text-primary-600 text-glow-primary">EXAM</span>
+                AAJ<span className="text-primary-600 text-glow-primary">{translate('EXAM')}</span>
               </h2>
               <div className="h-1 w-12 bg-primary-600 rounded-full" />
             </div>
 
             <p className="text-sm font-bold text-content-secondary leading-relaxed max-w-xs">
-              Practice smarter, prepare with confidence, and track your progress in one place.
+              {translate('Practice smarter, prepare with confidence, and track your progress in one place.')}
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -89,7 +91,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Follow us on ${social.icon.name || 'social media'}`}
+                  aria-label={translate('Follow us on {name}', { name: social.icon.name || translate('social media') })}
                   className="w-10 h-10 xl:w-11 xl:h-11 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-600 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
                 >
                   <social.icon className="w-4 h-4" />
@@ -101,7 +103,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="space-y-8">
             <h4 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
-              Explore
+              {translate('Explore')}
             </h4>
             <ul className="grid grid-cols-1 gap-4">
               {operationalLinks.map((link) => (
@@ -110,7 +112,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                     <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-600 group-hover:border-primary-500/30 transition-all shadow-sm">
                       <link.icon className="w-4 h-4" />
                     </div>
-                    <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
+                    <span className="group-hover:translate-x-1 transition-transform">{translate(link.name)}</span>
                   </Link>
                 </li>
               ))}
@@ -120,7 +122,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="space-y-8">
             <h4 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
-              Legal
+              {translate('Legal')}
             </h4>
             <ul className="grid grid-cols-1 gap-4">
               {legalLinksMap.map((link) => (
@@ -129,7 +131,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                     <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:bg-primary-500/10 group-hover:text-primary-600 group-hover:border-primary-500/30 transition-all shadow-sm">
                       <link.icon className="w-4 h-4" />
                     </div>
-                    <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
+                    <span className="group-hover:translate-x-1 transition-transform">{translate(link.name)}</span>
                   </Link>
                 </li>
               ))}
@@ -139,20 +141,20 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           <div className="space-y-8">
             <h4 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
-              Support
+              {translate('Support')}
             </h4>
             <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-sm backdrop-blur-xl max-w-xs xl:max-w-none mx-auto sm:mx-0">
               <div className="p-5 space-y-5">
                 <a
                   href={`mailto:${config.CONTACT.EMAIL}`}
-                  aria-label="Send us an email"
+                  aria-label={translate('Send us an email')}
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
                   <div className="w-11 h-11 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-2xl flex items-center justify-center group-hover/item:bg-black dark:group-hover/item:bg-white group-hover/item:text-white dark:group-hover/item:text-black transition-all shadow-sm">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">Email support</p>
+                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-black dark:group-hover/item:text-white transition-colors">{translate('Email support')}</p>
                     <p className="text-xs font-bold text-content-secondary break-all line-clamp-1">{config.CONTACT.EMAIL}</p>
                   </div>
                 </a>
@@ -163,14 +165,14 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   href={`https://wa.me/${formattedPhone}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Contact us on WhatsApp"
+                  aria-label={translate('Contact us on WhatsApp')}
                   className="flex items-center gap-3 group/item hover:translate-x-1 transition-all duration-300"
                 >
                   <div className="w-11 h-11 bg-primary-500/10 text-primary-600 rounded-2xl flex items-center justify-center group-hover/item:bg-primary-600 group-hover/item:text-white transition-all shadow-sm">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-primary-600 transition-colors">WhatsApp</p>
+                    <p className="text-xs font-black text-content-primary tracking-[0.08em] mb-0.5 group-hover/item:text-primary-600 transition-colors">{translate('WhatsApp')}</p>
                     <p className="text-xs font-bold text-content-secondary">{config.CONTACT.PHONE}</p>
                   </div>
                 </a>
@@ -179,11 +181,11 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               <div className="px-5 py-3 bg-slate-50 dark:bg-white/5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-                  <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">System status</span>
+                  <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">{translate('System status')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Zap className="w-3 h-3 text-black dark:text-white" />
-                  <span className="text-[11px] font-black text-primary-600 tracking-[0.08em]">Stable</span>
+                  <span className="text-[11px] font-black text-primary-600 tracking-[0.08em]">{translate('Stable')}</span>
                 </div>
               </div>
             </Card>
@@ -196,12 +198,12 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
             <div className="hidden xl:block h-4 w-px bg-slate-300 dark:bg-slate-700" />
             <div className="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
-              <span>Version {config.APP_VERSION}</span>
+              <span>{translate('Version {version}', { version: config.APP_VERSION })}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 text-sm font-black text-content-secondary tracking-[0.04em]">
-            Built by
+            {translate('Built by')}
             <a href={config.APP_DEVELOPER_URL} target="_blank" rel="noreferrer" className="text-content-primary hover:text-primary-600 transition-all border-b border-slate-300 dark:border-white/10 hover:border-primary-500/50 pb-0.5">
               {config.APP_AUTHOR}
             </a>
@@ -209,7 +211,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
 
           <div className="flex items-center gap-2 text-sm font-black text-content-secondary tracking-[0.04em]">
             <Heart className="w-3.5 h-3.5 text-black dark:text-white fill-black/20 dark:fill-white/20" />
-            Built for students
+            {translate('Built for students')}
           </div>
         </div>
       </div>

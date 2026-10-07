@@ -25,8 +25,10 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
 import Seo from '../components/Seo';
+import useTranslate from '../hooks/useTranslate';
 
 const NotificationsPage = () => {
+  const { translate } = useTranslate();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [markingId, setMarkingId] = useState(null);
@@ -54,16 +56,16 @@ const NotificationsPage = () => {
     try {
       await API.request('/api/student/notifications/mark-all-read', { method: 'PUT' });
       setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
-      toast.success("Inbox caught up!");
+      toast.success(translate('Inbox caught up!'));
     } catch (e) { }
   };
 
   const clearAll = async () => {
-    if (!confirm("Clear your entire inbox?")) return;
+    if (!confirm(translate('Clear your entire inbox?'))) return;
     try {
       await API.request('/api/student/notifications/clear-all', { method: 'DELETE' });
       setNotifications([]);
-      toast.success("Inbox cleared");
+      toast.success(translate('Inbox cleared'));
     } catch (e) { }
   };
 
@@ -75,7 +77,7 @@ const NotificationsPage = () => {
   };
 
   if (loading) return (
-    <MobileAppWrapper title="Notifications">
+    <MobileAppWrapper title={translate('Notifications')}>
       <div className="py-8"><ListSkeleton rows={7} /></div>
     </MobileAppWrapper>
   );
@@ -100,7 +102,7 @@ const NotificationsPage = () => {
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <MobileAppWrapper title="Notifications">
+    <MobileAppWrapper title={translate('Notifications')}>
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
       <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
@@ -108,14 +110,14 @@ const NotificationsPage = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center xl:text-left">
             <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center xl:justify-start">
-              Notifications {unreadCount > 0 && <span className="bg-primary-600 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
+              {translate('Notifications')} {unreadCount > 0 && <span className="bg-primary-600 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
             </h1>
-            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Updates and reminders from AajExam</p>
+            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">{translate('Updates and reminders from AajExam')}</p>
           </div>
 
           <div className="flex gap-2">
-            {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>MARK ALL READ</Button>}
-            {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-black tracking-widest" onClick={clearAll}>CLEAR ALL</Button>}
+            {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>{translate('MARK ALL READ')}</Button>}
+            {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-black tracking-widest" onClick={clearAll}>{translate('CLEAR ALL')}</Button>}
           </div>
         </div>
 
@@ -127,8 +129,8 @@ const NotificationsPage = () => {
                   <Inbox className="w-10 h-10 text-gray-400" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">Inbox Empty</h3>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">You&apos;re all caught up with your academic updates!</p>
+                  <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Inbox Empty')}</h3>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{translate('You\'re all caught up with your academic updates!')}</p>
                 </div>
               </motion.div>
             ) : (
@@ -157,8 +159,8 @@ const NotificationsPage = () => {
                     </div>
 
                     <div className="flex items-center gap-1 shrink-0">
-                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" aria-label="Mark as read"><Eye className="w-4 h-4" /></button>}
-                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label="Delete notification"><Trash2 className="w-4 h-4" /></button>
+                      {!n.isRead && <button onClick={() => markRead(n.id)} className="p-2 text-primary-600 hover:bg-primary-500/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Mark as read')}><Eye className="w-4 h-4" /></button>}
+                      <button onClick={() => deleteOne(n.id)} className="p-2 text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors" aria-label={translate('Delete notification')}><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </motion.div>
                 ))}

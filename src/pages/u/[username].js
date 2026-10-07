@@ -10,8 +10,10 @@ import User from '../../models/User';
 import FollowButton from '../../components/FollowButton';
 import MobileAppWrapper from '../../components/MobileAppWrapper';
 import Seo from '../../components/Seo';
+import useTranslate from '../../hooks/useTranslate';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const { username = ssrUsername } = router.query || {};
   const [profile, setProfile] = useState(null);
@@ -34,10 +36,10 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         setIsFollowing(!!res.isFollowing);
         setIsOwnProfile(!!res.isOwnProfile);
       } else {
-        setError(res?.message || 'Failed to load profile');
+        setError(res?.message || translate('Failed to load profile'));
       }
     } catch (e) {
-      setError(e?.response?.data?.message || e?.message || 'Failed to load profile');
+      setError(e?.response?.data?.message || e?.message || translate('Failed to load profile'));
     } finally {
       setLoading(false);
     }
@@ -90,13 +92,13 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 font-outfit">
-        <h2 className="text-lg xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Profile Not Found</h2>
+        <h2 className="text-lg xl:text-3xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">{translate('Profile Not Found')}</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
         <button
           onClick={() => router.back()}
           className="px-6 py-2 bg-primary-600 hover:bg-primary-800 text-white font-semibold rounded-lg transition-colors"
         >
-          Go Back
+          {translate('Go Back')}
         </button>
       </div>
     );
@@ -105,7 +107,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
   if (!profile) return null;
 
   return (
-    <MobileAppWrapper title={profile.name || 'Profile'}>
+    <MobileAppWrapper title={profile.name || translate('Profile')}>
       <div className="max-w-full mx-auto min-h-screen font-outfit">
         <Seo
           title={seo?.title || 'Profile - AajExam'}
@@ -168,7 +170,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                     className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
                     onClick={() => router.push('/settings')}
                   >
-                    Edit Profile
+                    {translate('Edit Profile')}
                   </button>
                 )}
               </div>
@@ -201,22 +203,22 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/followers`)}
                 >
                   <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followersCount || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Followers</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Followers')}</span>
                 </div>
                 <div
                   className="cursor-pointer group"
                   onClick={() => router.push(`/u/${encodeURIComponent(profile.username)}/following`)}
                 >
                   <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">{profile.followingCount || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Following</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Following')}</span>
                 </div>
                 <div>
                   <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white">{profile.reelsCount || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Reels</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Reels')}</span>
                 </div>
                 <div>
                   <span className="text-base sm:text-lg xl:text-xl font-black text-slate-900 dark:text-white">{profile.profileViews || 0}</span>
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">Views</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 ml-1">{translate('Views')}</span>
                 </div>
               </div>
             </div>
@@ -230,18 +232,18 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                All India Rank
+                {translate('All India Rank')}
               </h2>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-primary-600 rounded-lg xl:rounded-xl sm:rounded-2xl text-white">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">Exam AIR</span>
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{translate('Exam AIR')}</span>
                   <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight">{profile.examAIR ? `#${profile.examAIR.rank}` : '—'}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1 text-center">{profile.examAIR ? `of ${profile.examAIR.total}` : 'No exams yet'}</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1 text-center">{profile.examAIR ? translate('of {total}', { total: profile.examAIR.total }) : translate('No exams yet')}</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">Quiz AIR</span>
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">{translate('Quiz AIR')}</span>
                   <span className="text-xl sm:text-2xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{profile.quizAIR ? `#${profile.quizAIR.rank}` : '—'}</span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 text-center">{profile.quizAIR ? `of ${profile.quizAIR.total}` : 'No quizzes yet'}</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 text-center">{profile.quizAIR ? translate('of {total}', { total: profile.quizAIR.total }) : translate('No quizzes yet')}</span>
                 </div>
               </div>
             </div>
@@ -252,7 +254,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                Badges
+                {translate('Badges')}
               </h2>
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 {profile.badges.map((badge, index) => (
@@ -272,26 +274,26 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
             <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl p-4 sm:p-6 border-2 border-slate-200 dark:border-slate-800 shadow-sm">
               <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
-                Exam Statistics
+                {translate('Exam Statistics')}
               </h2>
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600">
                     {profile.performanceMetrics?.examStats?.mockTestsAttempted || 0}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Tests</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Tests')}</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-primary-600">
                     {profile.performanceMetrics?.examStats?.overallReadiness || 0}%
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Readiness</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Readiness')}</span>
                 </div>
                 <div className="flex flex-col items-center p-3 sm:p-5 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
                   <span className="text-2xl sm:text-3xl xl:text-4xl font-black text-black dark:text-white">
                     {profile.performanceMetrics?.examStats?.averageMockScore || 0}%
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">Average</span>
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-1 sm:mt-2 text-center">{translate('Average')}</span>
                 </div>
               </div>
             </div>
@@ -303,7 +305,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <h2 className="text-sm sm:text-base xl:text-lg font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-2">
                 <div className="w-1.5 h-6 bg-primary-600 rounded-full" />
                 <PlayCircle className="w-5 h-5" />
-                Reels
+                {translate('Reels')}
                 <span className="text-xs font-bold text-slate-400 dark:text-slate-500 ml-1">{reelsTotal}</span>
               </h2>
               <div className="grid grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 gap-1.5 sm:gap-2">
@@ -327,11 +329,11 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                           {/* Type badge */}
                           <div className="flex items-center gap-1">
                             <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/80" />
-                            <span className="text-[8px] sm:text-[9px] font-black text-white/70 uppercase tracking-wider">{config.label}</span>
+                            <span className="text-[8px] sm:text-[9px] font-black text-white/70 uppercase tracking-wider">{translate(config.label)}</span>
                           </div>
                           {/* Title */}
                           <p className="text-[10px] sm:text-xs font-bold text-white leading-tight line-clamp-3">
-                            {displayTitle || 'Untitled'}
+                            {displayTitle || translate('Untitled')}
                           </p>
                         </div>
                         {/* Bottom overlay with views */}
@@ -357,7 +359,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                   disabled={reelsLoading}
                   className="w-full mt-4 py-2.5 text-[11px] font-black uppercase tracking-wider text-primary-600 bg-slate-50 dark:bg-slate-800 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all disabled:opacity-50"
                 >
-                  {reelsLoading ? 'Loading...' : 'Load More Reels'}
+                  {reelsLoading ? translate('Loading...') : translate('Load More Reels')}
                 </button>
               )}
             </div>
@@ -369,8 +371,8 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
               <div className="w-14 h-14 sm:w-16 sm:h-16 bg-slate-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
                 🔒
               </div>
-              <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white uppercase tracking-tight">This profile is private</p>
-              <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Only the user can view their full stats.</p>
+              <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('This profile is private')}</p>
+              <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">{translate('Only the user can view their full stats.')}</p>
             </div>
           )}
         </div>

@@ -7,6 +7,7 @@ import Card from '../../components/ui/Card';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
 import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 // Module-level dedup: when the auth-state-driven layout switch in _app.js
 // remounts this page during hydration, both mounts await the same in-flight
@@ -14,6 +15,7 @@ import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 const inflightQuestionRequests = new Map();
 
 const InterviewQuestionDetailPage = () => {
+  const { translate } = useTranslate();
   const [question, setQuestion] = useState(null);
   const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState('en');
@@ -109,19 +111,19 @@ const InterviewQuestionDetailPage = () => {
 
         <div className="space-y-2">
           <div className="flex items-center gap-2 flex-wrap">
-            {question.category?.type && <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{question.category.type} job</span>}
-            {question.category?.name && <span className="text-[10px] font-bold text-slate-400">{question.category.name} Interview Questions</span>}
+            {question.category?.type && <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{translate('{type} job', { type: question.category.type })}</span>}
+            {question.category?.name && <span className="text-[10px] font-bold text-slate-400">{translate('{name} Interview Questions', { name: question.category.name })}</span>}
           </div>
           <h1 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white">{displayQuestion}</h1>
           <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
-            <span><Eye className="w-3 h-3 inline" /> {question.views} views</span>
+            <span><Eye className="w-3 h-3 inline" /> {translate('{count} views', { count: question.views })}</span>
           </div>
         </div>
 
         <Card>
           <div className="flex items-center gap-2 mb-2">
             <MessageCircleQuestion className="w-4 h-4 text-primary-600" />
-            <h2 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400">Sample Answer</h2>
+            <h2 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400">{translate('Sample Answer')}</h2>
           </div>
           <div className="prose prose-sm dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: displayAnswer }} />
         </Card>
@@ -130,7 +132,7 @@ const InterviewQuestionDetailPage = () => {
           <Card className="border-2 border-primary-600/20 dark:border-primary-900/30">
             <div className="flex items-center gap-2 mb-2">
               <Lightbulb className="w-4 h-4 text-primary-600" />
-              <h2 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400">Tips &amp; Expert Advice</h2>
+              <h2 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400">{translate('Tips & Expert Advice')}</h2>
             </div>
             <div className="prose prose-sm dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: displayTips }} />
           </Card>

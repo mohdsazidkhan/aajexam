@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import useTranslate from '../hooks/useTranslate';
 
 const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
+  const { translate } = useTranslate();
   const [isFollowing, setIsFollowing] = useState(initialFollowing);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -39,7 +41,7 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
       }
     } catch (error) {
       console.error('Follow action failed:', error);
-      alert(error.response?.data?.message || 'Failed to perform action');
+      alert(error.response?.data?.message || translate('Failed to perform action'));
     } finally {
       setLoading(false);
     }
@@ -61,9 +63,9 @@ const FollowButton = ({ userId, initialFollowing = false, onFollowChange }) => {
       {loading ? (
         <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
       ) : isFollowing ? (
-        'Following'
+        translate('Following')
       ) : (
-        'Follow'
+        translate('Follow')
       )}
     </button>
   );

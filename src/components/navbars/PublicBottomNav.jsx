@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -11,9 +11,11 @@ import {
   BookOpen
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import useTranslate from '../../hooks/useTranslate';
 
 const PublicBottomNav = () => {
   const router = useRouter();
+  const { translate } = useTranslate();
   const currentPath = router.pathname;
 
   const navItems = [
@@ -35,7 +37,7 @@ const PublicBottomNav = () => {
               ${isActive ? 'text-primary-600' : 'text-slate-600 dark:text-slate-400'}
             `}>
               <item.icon className={`w-6 h-6 mb-1 ${isActive ? 'scale-110' : ''}`} />
-              <span className="text-[11px] font-black uppercase tracking-[0.1em]">{item.name}</span>
+              <span className="text-[11px] font-black uppercase tracking-[0.1em]">{translate(item.name)}</span>
               {isActive && (
                 <motion.div
                   layoutId="public-bottom-nav-pill"

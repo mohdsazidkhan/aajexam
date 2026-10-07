@@ -31,6 +31,7 @@ import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
+import useTranslate from '../hooks/useTranslate';
 
 const TYPE_CONFIG = {
    question: { label: 'Question', icon: HelpCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800' },
@@ -49,6 +50,7 @@ const STATUS_CONFIG = {
 };
 
 const MyReelsPage = () => {
+  const { translate } = useTranslate();
    const [reels, setReels] = useState([]);
    const [loading, setLoading] = useState(true);
    const [currentPage, setCurrentPage] = useState(1);
@@ -68,10 +70,10 @@ const MyReelsPage = () => {
             setTotalPages(res.pagination?.totalPages || 1);
             setTotal(res.pagination?.total || 0);
          } else {
-            toast.error('Could not load reels');
+            toast.error(translate('Could not load reels'));
          }
       } catch (e) {
-         toast.error('Could not load reels');
+         toast.error(translate('Could not load reels'));
       } finally {
          setLoading(false);
       }
@@ -89,22 +91,22 @@ const MyReelsPage = () => {
    };
 
    if (loading && reels.length === 0) return (
-      <MobileAppWrapper title="My Reels">
+      <MobileAppWrapper title={translate('My Reels')}>
          <div className="py-8"><GridSkeleton count={8} /></div>
       </MobileAppWrapper>
    );
 
    return (
-      <MobileAppWrapper title="My Reels">
+      <MobileAppWrapper title={translate('My Reels')}>
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="My Reels - AajExam" noIndex={true} />
             <div className="py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6 xl:space-y-4 mt-0">
                {/* Header */}
                <div className="flex flex-col xl:flex-row items-center justify-between gap-3 xl:gap-6">
                   <div className="flex gap-4 justify-between items-center">
-                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">My Reels</h1>
+                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{translate('My Reels')}</h1>
                      <p className="text-sm font-bold text-gray-400">
-                        {total > 0 ? `${total} reel${total > 1 ? 's' : ''} created` : 'Not created'}
+                        {total > 0 ? translate(total > 1 ? '{count} reels created' : '{count} reel created', { count: total }) : translate('Not created')}
                      </p>
                   </div>
 
@@ -113,11 +115,11 @@ const MyReelsPage = () => {
                         className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
                      >
-                        <option value="">All Status</option>
-                        <option value="published">Published</option>
-                        <option value="pending">Pending</option>
-                        <option value="rejected">Rejected</option>
-                        <option value="draft">Draft</option>
+                        <option value="">{translate('All Status')}</option>
+                        <option value="published">{translate('Published')}</option>
+                        <option value="pending">{translate('Pending')}</option>
+                        <option value="rejected">{translate('Rejected')}</option>
+                        <option value="draft">{translate('Draft')}</option>
                      </select>
                      <Button variant="primary" className="text-xs" onClick={() => router.push('/reels/create')}>
                         <Plus className="w-4 h-4 mr-1" /> Create Reel
@@ -131,9 +133,9 @@ const MyReelsPage = () => {
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <PlayCircle className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl xl:text-2xl font-black font-outfit">No reels yet</h3>
-                     <p className="text-sm font-bold text-gray-400">Create your first reel and share knowledge!</p>
-                     <Button variant="primary" className="mx-auto" onClick={() => router.push('/reels/create')}>Create Reel</Button>
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit">{translate('No reels yet')}</h3>
+                     <p className="text-sm font-bold text-gray-400">{translate('Create your first reel and share knowledge!')}</p>
+                     <Button variant="primary" className="mx-auto" onClick={() => router.push('/reels/create')}>{translate('Create Reel')}</Button>
                   </div>
                ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
@@ -151,11 +153,11 @@ const MyReelsPage = () => {
                                     <div className="flex items-center justify-between">
                                        <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${typeConfig.bg} ${typeConfig.color}`}>
                                           <TypeIcon className="w-3 h-3" />
-                                          {typeConfig.label}
+                                          {translate(typeConfig.label)}
                                        </div>
                                        <div className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase ${statusConfig.bg} ${statusConfig.color}`}>
                                           <StatusIcon className="w-3 h-3" />
-                                          {statusConfig.label}
+                                          {translate(statusConfig.label)}
                                        </div>
                                     </div>
 
@@ -184,7 +186,7 @@ const MyReelsPage = () => {
                                     {/* Rejected reason */}
                                     {reel.status === 'rejected' && reel.adminNotes && (
                                        <p className="text-[11px] font-bold text-black dark:text-white bg-slate-100 dark:bg-slate-800 p-2 rounded-lg xl:rounded-xl">
-                                          Reason: {reel.adminNotes}
+                                          {translate('Reason: {note}', { note: reel.adminNotes })}
                                        </p>
                                     )}
                                  </div>

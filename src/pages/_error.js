@@ -2,8 +2,10 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { safeLocalStorage } from '../lib/utils/storage'
+import useTranslate from '../hooks/useTranslate';
 
 function Error({ statusCode }) {
+  const { translate } = useTranslate();
   const router = useRouter()
 
   const handleGoHome = () => {
@@ -35,15 +37,15 @@ function Error({ statusCode }) {
           </div>
 
           <h1 className="text-2xl xl:text-5xl font-black text-slate-900 dark:text-white mb-2 uppercase tracking-tighter">
-            {statusCode ? `Error ${statusCode}` : 'Something Went Wrong'}
+            {statusCode ? translate('Error {code}', { code: statusCode }) : translate('Something Went Wrong')}
           </h1>
 
           <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-loose mb-10">
             {statusCode === 404
-              ? "Sorry, this page does not exist or has been moved."
+              ? translate('Sorry, this page does not exist or has been moved.')
               : statusCode === 500
-                ? "Our server ran into a problem. Please try again later."
-                : "Something unexpected happened. Please try again."
+                ? translate('Our server ran into a problem. Please try again later.')
+                : translate('Something unexpected happened. Please try again.')
             }
           </p>
 
@@ -52,21 +54,21 @@ function Error({ statusCode }) {
               onClick={handleGoHome}
               className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
             >
-              Go to Home
+              {translate('Go to Home')}
             </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleGoBack}
                 className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
               >
-                Go Back
+                {translate('Go Back')}
               </button>
               {statusCode !== 404 && (
                 <button
                   onClick={() => window.location.reload()}
                   className="flex-1 bg-primary-600 hover:bg-primary-600 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 active:border-b-2 uppercase tracking-widest text-[10px]"
                 >
-                  Try Again
+                  {translate('Try Again')}
                 </button>
               )}
             </div>
@@ -75,12 +77,12 @@ function Error({ statusCode }) {
           {process.env.NODE_ENV === 'development' && (
             <details className="mt-6">
               <summary className="cursor-pointer text-sm text-gray-500 dark:text-gray-400">
-                Error Details (Development)
+                {translate('Error Details (Development)')}
               </summary>
               <pre className="mt-2 text-xs bg-gray-100 dark:bg-gray-700 p-3 rounded overflow-auto">
-                Status Code: {statusCode || 'Unknown'}
+                {translate('Status Code: {code}', { code: statusCode || translate('Unknown') })}
                 <br />
-                URL: {typeof window !== 'undefined' ? window.location.href : 'Server-side'}
+                {translate('URL: {url}', { url: typeof window !== 'undefined' ? window.location.href : 'Server-side' })}
               </pre>
             </details>
           )}

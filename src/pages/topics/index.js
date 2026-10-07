@@ -7,10 +7,12 @@ import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema } from '../../utils/schema';
 import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 const TopicListPage = dynamic(() => import('../../components/pages/TopicListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
 
 export default function Topics(props) {
+  const { translate } = useTranslate();
   // Static HTML lists the full catalogue (SEO). Logged-in users with target exams get the
   // index limited to those exams, on mount and right after they change them.
   const [scoped, setScoped] = useState(null);
@@ -52,7 +54,7 @@ export default function Topics(props) {
 
       <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection
-          title="All topics by subject"
+          title={translate('All topics by subject')}
           intro="Every topic we host, grouped under its subject. Each topic page carries free MCQs with explanations, study notes and previous-year question highlights."
           groups={groups}
           columns="sm:grid-cols-2 xl:grid-cols-4"

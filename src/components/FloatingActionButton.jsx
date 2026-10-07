@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { FaPlus } from "react-icons/fa";
 import CreateActionModal from './CreateActionModal';
+import useTranslate from '../hooks/useTranslate';
 
 const FloatingActionButton = () => {
+  const { translate } = useTranslate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
@@ -52,7 +54,7 @@ const FloatingActionButton = () => {
         <button
           onClick={() => setIsModalOpen(true)}
           className="fab-button shadow-sm border-2 border-white dark:border-slate-800"
-          aria-label="Create Quiz or Question"
+          aria-label={translate('Create Quiz or Question')}
         >
           <FaPlus className="text-xl" />
         </button>

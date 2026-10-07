@@ -1,5 +1,6 @@
 import { getStoredTargetExamIds } from './utils/targetExams';
 import { reportApiFailure } from './errorReporter';
+import { translateNow } from '../hooks/useTranslate';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ||
   (process.env.NODE_ENV === 'production' ? 'https://aajexam.com' : 'http://localhost:3000');
@@ -136,13 +137,13 @@ class ApiService {
       }
 
       if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        const networkError = new Error('Network error: Unable to connect to server. Please check your internet connection.');
+        const networkError = new Error(translateNow('Network error: Unable to connect to server. Please check your internet connection.'));
         networkError.isNetworkError = true;
         throw networkError;
       }
 
       if (!error.message) {
-        error.message = 'An unexpected error occurred. Please try again.';
+        error.message = translateNow('An unexpected error occurred. Please try again.');
       }
 
       throw error;

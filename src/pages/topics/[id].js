@@ -6,10 +6,16 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '../../utils/schema';
+import useTranslate from '../../hooks/useTranslate';
+
+const ContentLoading = () => {
+  const { translate, translateData } = useTranslate();
+  return <div className="py-10 text-center text-sm font-bold text-slate-400">{translate('Loading topic content…')}</div>;
+};
 
 const TopicDetailPage = dynamic(() => import('../../components/pages/TopicDetailPage'), {
   ssr: false,
-  loading: () => <div className="py-10 text-center text-sm font-bold text-slate-400">Loading topic content…</div>,
+  loading: () => <ContentLoading />,
 });
 
 export default function TopicDetail({
@@ -21,6 +27,7 @@ export default function TopicDetail({
   faqs = [],
   robotsMeta = 'index, follow',
 }) {
+  const { translate, translateData } = useTranslate();
   const topicName = topic?.name || 'Topic';
   const subjectName = topic?.subject?.name || '';
   const canonical = `/topics/${topic?.slug || resolvedId}`;
@@ -70,25 +77,25 @@ export default function TopicDetail({
 
         <div className="py-4 xl:py-6 relative space-y-8">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
-            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
+          <nav aria-label={translate('Breadcrumb')} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
+            <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
             <span className="text-slate-400">/</span>
-            <Link href="/topics" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Topics</Link>
+            <Link href="/topics" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Topics')}</Link>
             {subjectName && topic?.subject?.slug && (
               <>
                 <span className="text-slate-400">/</span>
-                <Link href={`/subjects/${topic.subject.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{subjectName}</Link>
+                <Link href={`/subjects/${topic.subject.slug}`} className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translateData(subjectName)}</Link>
               </>
             )}
             <span className="text-slate-400">/</span>
-            <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{topicName}</span>
+            <span className="text-slate-600 dark:text-slate-400 truncate max-w-[60%]">{translateData(topicName)}</span>
           </nav>
 
           {/* Hero — server-rendered for crawlers */}
           <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
-            <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">{subjectName ? `Topic · ${subjectName}` : 'Topic'}</span>
+            <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">{subjectName ? translate('Topic · {name}', { name: translateData(subjectName) }) : translate('Topic')}</span>
             <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
-              {topicName}
+              {translateData(topicName)}
             </h1>
             <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
               {topic?.description ? topic.description.slice(0, 220) : `Free ${topicName} practice MCQs and study notes for government competitive exams.`}
@@ -99,7 +106,7 @@ export default function TopicDetail({
           {aboutText && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                About {topicName}
+                {translate('About {name}', { name: translateData(topicName) })}
               </h2>
               <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-base xl:text-lg whitespace-pre-line">
                 {aboutText}
@@ -114,7 +121,7 @@ export default function TopicDetail({
           {faqs.length > 0 && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                Frequently Asked Questions
+                {translate('Frequently Asked Questions')}
               </h2>
               <div className="space-y-2 xl:space-y-4">
                 {faqs.map((f, i) => (
@@ -132,12 +139,12 @@ export default function TopicDetail({
           {relatedQuizzes.length > 0 && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                {topicName} Practice Quizzes
+                {translate('{name} Practice Quizzes', { name: translateData(topicName) })}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {relatedQuizzes.map((q) => (
                   <Link key={q.slug} href={`/quiz/${q.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-snug">{q.title}</div>
+                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-snug">{translateData(q.title)}</div>
                   </Link>
                 ))}
               </div>
@@ -148,12 +155,12 @@ export default function TopicDetail({
           {siblingTopics.length > 0 && (
             <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
               <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                More {subjectName || 'Related'} Topics
+                {translate('More {name} Topics', { name: translateData(subjectName) || translate('Related') })}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
                 {siblingTopics.map((t) => (
                   <Link key={t.slug} href={`/topics/${t.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition">
-                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{t.name}</div>
+                    <div className="text-sm font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition leading-tight">{translateData(t.name)}</div>
                   </Link>
                 ))}
               </div>

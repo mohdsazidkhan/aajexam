@@ -10,6 +10,7 @@ import Seo from '../components/Seo';
 import { RevisionSkeleton } from '../components/skeletons/PrivateSkeletons';
 import LanguageToggle from '../components/LanguageToggle';
 import useStoredTranslations from '../hooks/useStoredTranslations';
+import useTranslate from '../hooks/useTranslate';
 
 const SOURCE_TABS = [
   { key: 'all', label: 'All', icon: Layers },
@@ -20,6 +21,7 @@ const SOURCE_TABS = [
 ];
 
 const RevisionPage = () => {
+  const { translate } = useTranslate();
   const [dueItems, setDueItems] = useState([]);
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -61,12 +63,12 @@ const RevisionPage = () => {
         body: JSON.stringify({ itemId: dueItems[currentIdx]._id, quality })
       });
       if (res?.success) {
-        toast.success(quality >= 3 ? 'Correct! Next review: ' + new Date(res.data.nextReviewDate).toLocaleDateString() : 'Will review again tomorrow');
+        toast.success(quality >= 3 ? translate('Correct! Next review: {date}', { date: new Date(res.data.nextReviewDate).toLocaleDateString() }) : translate('Will review again tomorrow'));
         setShowAnswer(false);
         if (currentIdx < dueItems.length - 1) setCurrentIdx(currentIdx + 1);
-        else { setDueItems([]); toast.success('All reviews done for today!'); }
+        else { setDueItems([]); toast.success(translate('All reviews done for today!')); }
       }
-    } catch (e) { toast.error('Failed'); } finally { setReviewing(false); }
+    } catch (e) { toast.error(translate('Failed')); } finally { setReviewing(false); }
   };
 
   if (loading) return (
@@ -83,17 +85,17 @@ const RevisionPage = () => {
       <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
           <div className="space-y-1">
-            <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-6 h-6 text-primary-600" /> Revision Queue</h1>
-            <p className="text-sm font-bold text-slate-400">Spaced repetition - review your weak questions</p>
+            <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-6 h-6 text-primary-600" /> {translate('Revision Queue')}</h1>
+            <p className="text-sm font-bold text-slate-400">{translate('Spaced repetition - review your weak questions')}</p>
           </div>
 
           {/* Stats */}
           {stats && (
             <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Due Today</p></Card>
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">This Week</p></Card>
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-primary-600">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Accuracy</p></Card>
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Total Items</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Due Today')}</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('This Week')}</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-primary-600">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Accuracy')}</p></Card>
+              <Card className="text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Total Items')}</p></Card>
             </div>
           )}
 
@@ -107,7 +109,7 @@ const RevisionPage = () => {
                 <button key={tab.key} onClick={() => setActiveTab(tab.key)}
                   className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl text-[11px] font-black transition ${isActive ? 'bg-primary-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
                   <Icon className="w-3.5 h-3.5" />
-                  <span>{tab.label}</span>
+                  <span>{translate(tab.label)}</span>
                   <span className={`px-1.5 py-0.5 rounded-full text-[9px] ${isActive ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>{count}</span>
                 </button>
               );
@@ -118,8 +120,8 @@ const RevisionPage = () => {
           {currentItem ? (
             <Card className="space-y-5">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-bold text-slate-400">Card {currentIdx + 1} of {dueItems.length}</span>
-                <span className="text-[10px] font-bold text-slate-400">Reviews: {currentItem.totalReviews || 0}</span>
+                <span className="text-[10px] font-bold text-slate-400">{translate('Card {current} of {total}', { current: currentIdx + 1, total: dueItems.length })}</span>
+                <span className="text-[10px] font-bold text-slate-400">{translate('Reviews: {count}', { count: currentItem.totalReviews || 0 })}</span>
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
@@ -141,7 +143,7 @@ const RevisionPage = () => {
                       <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt}
                     </div>
                   ))}
-                  <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-600 hover:bg-primary-600 transition text-white rounded-lg xl:rounded-xl text-sm font-bold mt-2">Show Answer</button>
+                  <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-600 hover:bg-primary-600 transition text-white rounded-lg xl:rounded-xl text-sm font-bold mt-2">{translate('Show Answer')}</button>
                 </div>
               ) : (
                 <div className="space-y-2 xl:space-y-4">
@@ -159,11 +161,11 @@ const RevisionPage = () => {
                     <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl text-xs leading-relaxed text-black dark:text-white">{currentItem.questionSnapshot.explanation}</div>
                   )}
                   <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider text-center">How well did you know this?</p>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider text-center">{translate('How well did you know this?')}</p>
                     <div className="grid grid-cols-3 gap-3">
-                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />Wrong</button>
-                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />Hard</button>
-                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 rounded-lg xl:rounded-xl text-xs font-bold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />Easy</button>
+                      <button onClick={() => submitReview(1)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><XCircle className="w-4 h-4 mx-auto mb-1" />{translate('Wrong')}</button>
+                      <button onClick={() => submitReview(3)} disabled={reviewing} className="py-3 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-slate-100 dark:hover:bg-white/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><Brain className="w-4 h-4 mx-auto mb-1" />{translate('Hard')}</button>
+                      <button onClick={() => submitReview(5)} disabled={reviewing} className="py-3 bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 rounded-lg xl:rounded-xl text-xs font-bold hover:bg-primary-100 dark:hover:bg-primary-900/30 transition disabled:opacity-50 disabled:cursor-not-allowed"><CheckCircle className="w-4 h-4 mx-auto mb-1" />{translate('Easy')}</button>
                     </div>
                   </div>
                 </div>
@@ -172,11 +174,11 @@ const RevisionPage = () => {
           ) : (
             <Card className="text-center space-y-2 xl:space-y-4">
               <Zap className="w-12 h-12 text-primary-600 mx-auto" />
-              <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? 'All Caught Up!' : 'Koi item nahi'}</h2>
+              <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? translate('All Caught Up!') : translate('No items here')}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {activeTab === 'all'
-                  ? 'No reviews pending. Questions you get wrong in quizzes, tests, daily challenges, or reels will appear here automatically.'
-                  : `Is category (${SOURCE_TABS.find(t => t.key === activeTab)?.label}) me abhi koi wrong answer nahi hai.`}
+                  ? translate('No reviews pending. Questions you get wrong in quizzes, tests, daily challenges, or reels will appear here automatically.')
+                  : translate('No wrong answers in this category ({name}) yet.', { name: translate(SOURCE_TABS.find(s => s.key === activeTab)?.label || '') })}
               </p>
             </Card>
           )}

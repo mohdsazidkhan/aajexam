@@ -26,6 +26,7 @@ import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
+import useTranslate from '../hooks/useTranslate';
 
 const STATUS_CONFIG = {
    approved: { label: 'Approved', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20' },
@@ -34,6 +35,7 @@ const STATUS_CONFIG = {
 };
 
 const MyQuestionsPage = () => {
+  const { translate, translateData } = useTranslate();
    const [questions, setQuestions] = useState([]);
    const [loading, setLoading] = useState(true);
    const [currentPage, setCurrentPage] = useState(1);
@@ -51,10 +53,10 @@ const MyQuestionsPage = () => {
             setTotalPages(payload.pagination?.totalPages || 1);
             setTotal(payload.pagination?.total || 0);
          } else {
-            toast.error('Could not load questions');
+            toast.error(translate('Could not load questions'));
          }
       } catch (e) {
-         toast.error('Could not load questions');
+         toast.error(translate('Could not load questions'));
       } finally {
          setLoading(false);
       }
@@ -64,29 +66,29 @@ const MyQuestionsPage = () => {
    useEffect(() => { fetchQuestions(); }, [currentPage]);
 
    const handleDelete = async (id) => {
-      if (!window.confirm('Are you sure you want to delete this question?')) return;
+      if (!window.confirm(translate('Are you sure you want to delete this question?'))) return;
       try {
          const res = await API.deleteCommunityQuestion(id);
          if (res?.success) {
             setQuestions(prev => prev.filter(q => q._id !== id));
             setTotal(prev => prev - 1);
-            toast.success('Question deleted');
+            toast.success(translate('Question deleted'));
          } else {
-            toast.error('Failed to delete');
+            toast.error(translate('Failed to delete'));
          }
       } catch (e) {
-         toast.error('Failed to delete');
+         toast.error(translate('Failed to delete'));
       }
    };
 
    if (loading && questions.length === 0) return (
-      <MobileAppWrapper title="My Questions">
+      <MobileAppWrapper title={translate('My Questions')}>
          <div className="py-8"><GridSkeleton count={6} /></div>
       </MobileAppWrapper>
    );
 
    return (
-      <MobileAppWrapper title="My Q&A">
+      <MobileAppWrapper title={translate('My Q&A')}>
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="My Q&A - AajExam" noIndex={true} />
 
@@ -94,9 +96,9 @@ const MyQuestionsPage = () => {
                {/* Header */}
                <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
                   <div className="flex justify-between items-center gap-4">
-                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">My Q&A</h1>
+                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{translate('My Q&A')}</h1>
                      <p className="text-sm font-bold text-gray-400">
-                        {total > 0 ? `${total} question${total > 1 ? 's' : ''} posted` : 'Questions you have posted'}
+                        {total > 0 ? translate(total > 1 ? '{count} questions posted' : '{count} question posted', { count: total }) : translate('Questions you have posted')}
                      </p>
                   </div>
 
@@ -111,9 +113,9 @@ const MyQuestionsPage = () => {
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <MessageSquare className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl xl:text-2xl font-black font-outfit">No questions yet</h3>
-                     <p className="text-sm font-bold text-gray-400">Ask your first question to the community!</p>
-                     <Button variant="primary" className="mx-auto" onClick={() => router.push('/community-questions/ask')}>Ask Question</Button>
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit">{translate('No questions yet')}</h3>
+                     <p className="text-sm font-bold text-gray-400">{translate('Ask your first question to the community!')}</p>
+                     <Button variant="primary" className="mx-auto" onClick={() => router.push('/community-questions/ask')}>{translate('Ask Question')}</Button>
                   </div>
                ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
@@ -136,7 +138,7 @@ const MyQuestionsPage = () => {
                                        <button
                                           onClick={(e) => { e.stopPropagation(); handleDelete(q._id); }}
                                           className="p-1.5 text-gray-400 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-colors"
-                                          title="Delete question"
+                                          title={translate('Delete question')}
                                        >
                                           <Trash2 className="w-4 h-4" />
                                        </button>
@@ -147,7 +149,7 @@ const MyQuestionsPage = () => {
                                        <div className="flex items-center gap-1.5">
                                           <span className="px-2 py-0.5 rounded-md text-[9px] font-bold bg-primary-50 dark:bg-primary-900/20 text-primary-600 uppercase">
                                              <GraduationCap className="w-3 h-3 inline mr-1" />
-                                             {q.exam.name || q.exam.code || 'Exam'}
+                                             {translateData(q.exam.name) || q.exam.code || translate('Exam')}
                                           </span>
                                        </div>
                                     )}

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { WifiOff, RefreshCcw, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import API from '../lib/api';
+import useTranslate from '../hooks/useTranslate';
 
 /**
  * Premium Stats Status Banner
@@ -11,6 +12,7 @@ import API from '../lib/api';
  * Designed to provide critical feedback while maintaining a high-tech/gamified aesthetic.
  */
 const BackendStatusBanner = () => {
+  const { translate } = useTranslate();
   const [status, setStatus] = useState('checking'); // 'checking', 'online', 'offline'
   const [showBanner, setShowBanner] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -69,10 +71,10 @@ const BackendStatusBanner = () => {
               <div className="flex-1 text-center xl:text-left space-y-2">
                 <h3 className="text-base font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white flex items-center justify-center xl:justify-start gap-2.5">
                   <AlertCircle className="w-5 h-5 text-black dark:text-white" />
-                  Station Uplink Interrupted
+                  {translate('Station Uplink Interrupted')}
                 </h3>
                 <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] leading-relaxed">
-                  REAL-TIME DATA SYNC IS OFFLINE.<br /> Restore link to resume operations.
+                  {translate('REAL-TIME DATA SYNC IS OFFLINE.')}<br /> {translate('Restore link to resume operations.')}
                 </p>
               </div>
 
@@ -85,7 +87,7 @@ const BackendStatusBanner = () => {
                 className="flex-shrink-0 px-8 py-4 bg-primary-600 text-white rounded-2xl border-b-[6px] border-primary-600 shadow-sm font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <RefreshCcw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                {isRefreshing ? 'LINKING...' : 'RE-LINK'}
+                {isRefreshing ? translate('LINKING...') : translate('RE-LINK')}
               </motion.button>
             </div>
 

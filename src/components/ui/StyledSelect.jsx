@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Search } from 'lucide-react';
+import useTranslate from '../../hooks/useTranslate';
 
 /**
  * Local-options dropdown matching SearchableDropdown's visual language
@@ -17,6 +18,7 @@ const StyledSelect = ({
   disabled = false,
   className = ''
 }) => {
+  const { translate } = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const ref = useRef(null);
@@ -72,7 +74,7 @@ const StyledSelect = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onClick={(e) => e.stopPropagation()}
-              placeholder="Search..."
+              placeholder={translate('Search...')}
               className="w-full pl-8 pr-2 py-1.5 bg-transparent outline-none text-[10px] font-black uppercase tracking-widest placeholder:text-slate-300 dark:placeholder:text-slate-600"
             />
           </div>
@@ -86,7 +88,7 @@ const StyledSelect = ({
                 {option.label}
               </li>
             )) : (
-              <li className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">No results</li>
+              <li className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">{translate('No results')}</li>
             )}
           </ul>
         </div>

@@ -17,6 +17,7 @@ import Skeleton from '../Skeleton';
 import { SubscriptionSkeleton } from '../skeletons/PrivateSkeletons';
 import PaymentTransactions from "../PaymentTransactions";
 import { launchPayuCheckout } from '../../lib/utils/payu';
+import useTranslate from '../../hooks/useTranslate';
 
 const PLAN_THEMES = {
   primary: {
@@ -38,6 +39,7 @@ const PLAN_THEMES = {
 };
 
 const SubscriptionPage = () => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -70,7 +72,7 @@ const SubscriptionPage = () => {
         setSubscription(res.data);
       }
     } catch {
-      toast.error("Failed to load subscription status");
+      toast.error(translate('Failed to load subscription status'));
     } finally {
       setLoading(false);
     }
@@ -88,7 +90,7 @@ const SubscriptionPage = () => {
       ...plan,
       icon: isPro ? Crown : Rocket,
       tone: isPro ? 'primary' : 'secondary',
-      eyebrow: isPro ? 'Most popular' : 'Start practicing',
+      eyebrow: isPro ? translate('Most popular') : translate('Start practicing'),
       features: isPro ? PRO_PLAN_FEATURES : FREE_PLAN_FEATURES,
     };
   });
@@ -120,18 +122,18 @@ const SubscriptionPage = () => {
                   <ShieldCheck className="w-5 h-5 xl:w-8 xl:h-8" />
                 </div>
                 <div className="space-y-1 xl:space-y-2">
-                  <p className="text-[10px] xl:text-sm font-semibold opacity-80">Your current plan</p>
+                  <p className="text-[10px] xl:text-sm font-semibold opacity-80">{translate('Your current plan')}</p>
                   <h1 className="text-sm xl:text-3xl font-black font-outfit leading-tight uppercase">
                     {subscription.planName} plan {subscription.status === 'active' ? 'is active' : 'has expired'}
                   </h1>
                   <p className="text-[11px] xl:text-base font-medium opacity-90">
                     {subscription.expiryDate
                       ? subscription.status === 'active'
-                        ? `Valid until ${new Date(subscription.expiryDate).toLocaleDateString()}`
-                        : `Expired on ${new Date(subscription.expiryDate).toLocaleDateString()} — renew to regain PRO access.`
+                        ? translate('Valid until {date}', { date: new Date(subscription.expiryDate).toLocaleDateString() })
+                        : translate('Expired on {date} — renew to regain PRO access.', { date: new Date(subscription.expiryDate).toLocaleDateString() })
                       : (subscription.planName || '').toUpperCase() === 'FREE'
-                        ? 'PRO is free for everyone till 31 Dec 2026 — refresh this page to see it applied.'
-                        : 'Pick a plan below to unlock all exam practice tests.'}
+                        ? translate('PRO is free for everyone till 31 Dec 2026 — refresh this page to see it applied.')
+                        : translate('Pick a plan below to unlock all exam practice tests.')}
                   </p>
                 </div>
               </div>
@@ -153,10 +155,10 @@ const SubscriptionPage = () => {
                       {isBuying ? (
                         <>
                           <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
-                          Opening PayU…
+                          {translate('Opening PayU…')}
                         </>
                       ) : (
-                        `Buy PRO ₹${proPlan.price} Plan`
+                        translate('Buy PRO ₹{price} Plan', { price: proPlan.price })
                       )}
                     </Button>
                   );
@@ -169,12 +171,12 @@ const SubscriptionPage = () => {
 
         <section className="space-y-5 xl:space-y-10">
           <div className="text-center space-y-2 xl:space-y-4 max-w-3xl mx-auto px-2">
-            <h2 className="text-lg xl:text-5xl font-black font-outfit tracking-tight">Choose your exam prep plan</h2>
+            <h2 className="text-lg xl:text-5xl font-black font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
             <p className="text-xs xl:text-lg font-medium text-content-secondary">
-              🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.
+              {translate('🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.')}
             </p>
             <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 hover:text-primary-600 underline underline-offset-4">
-              See the full feature comparison
+              {translate('See the full feature comparison')}
             </Link>
           </div>
 
@@ -199,23 +201,23 @@ const SubscriptionPage = () => {
 
                     <div className="space-y-1.5 xl:space-y-3">
                       <div>
-                        <h3 className="text-base xl:text-3xl font-black font-outfit tracking-tight">{plan.name}</h3>
-                        <p className="text-[11px] xl:text-sm font-medium text-content-secondary mt-1">{isCurrent ? 'This is your current plan.' : 'You can upgrade anytime.'}</p>
+                        <h3 className="text-base xl:text-3xl font-black font-outfit tracking-tight">{translate(plan.name)}</h3>
+                        <p className="text-[11px] xl:text-sm font-medium text-content-secondary mt-1">{isCurrent ? translate('This is your current plan.') : translate('You can upgrade anytime.')}</p>
                       </div>
 
                       <div className="flex items-end gap-2">
                         <span className="text-3xl xl:text-5xl font-black font-outfit leading-none">Rs.{plan.price}</span>
-                        <span className="text-xs xl:text-sm font-medium text-content-secondary pb-1">per {plan.duration}</span>
+                        <span className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('per {duration}', { duration: translate(plan.duration) })}</span>
                       </div>
                     </div>
 
                     <div className="space-y-2.5 xl:space-y-4">
-                      <p className="text-xs xl:text-sm font-semibold text-content-secondary">What you get with this plan</p>
+                      <p className="text-xs xl:text-sm font-semibold text-content-secondary">{translate('What you get with this plan')}</p>
                       <ul className="space-y-1.5 xl:space-y-3">
                         {plan.features.map((feature) => (
                           <li key={feature} className="flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-medium text-content-secondary">
                             <CircleCheck className={`w-3.5 h-3.5 xl:w-5 xl:h-5 shrink-0 ${theme.check}`} />
-                            <span>{feature}</span>
+                            <span>{translate(feature)}</span>
                           </li>
                         ))}
                       </ul>
@@ -226,11 +228,11 @@ const SubscriptionPage = () => {
                     {isCurrent ? (
                       <div className="flex items-center justify-center gap-2 text-primary-600 font-semibold text-xs xl:text-sm bg-primary-500/5 py-3 xl:py-4 rounded-2xl w-full border-2 border-primary-500/20">
                         <CircleCheck className="w-4 h-4" />
-                        Current plan
+                        {translate('Current plan')}
                       </div>
                     ) : isFree ? (
                       <div className="flex items-center justify-center gap-2 text-content-secondary font-semibold text-xs xl:text-sm bg-slate-50 dark:bg-slate-800/50 py-3 xl:py-4 rounded-2xl w-full border-2 border-slate-200 dark:border-slate-800">
-                        Free for everyone
+                        {translate('Free for everyone')}
                       </div>
                     ) : (
                       <Button
@@ -244,11 +246,11 @@ const SubscriptionPage = () => {
                         {isBuying ? (
                           <>
                             <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
-                            Opening PayU…
+                            {translate('Opening PayU…')}
                           </>
                         ) : (
                           <>
-                            Buy {plan.name} <ArrowRight className="ml-2 w-4 h-4" />
+                            {translate('Buy {name}', { name: translate(plan.name) })} <ArrowRight className="ml-2 w-4 h-4" />
                           </>
                         )}
                       </Button>

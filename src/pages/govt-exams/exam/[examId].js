@@ -24,8 +24,10 @@ import {
   generateItemListSchema
 } from '../../../utils/schema';
 import { EXAM_SEO_FACTS, EXAM_FACTS_SOURCED_DATE } from '../../../lib/data/examSeoFacts';
+import useTranslate from '../../../hooks/useTranslate';
 
 const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialSubjects = [], initialTopics = [], initialQuestionCount = 0, initialError = '', seo, examId, aboutText = '', robotsMeta = 'index, follow' }) => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const [exam, setExam] = useState(initialExam);
   const [activeTab, setActiveTab] = useState('subjects');
@@ -55,7 +57,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       if (patternsRes?.exam) setExam(patternsRes.exam);
     } catch (err) {
       console.error('Error:', err);
-      setError('An error occurred.');
+      setError(translate('An error occurred.'));
     } finally {
       setLoading(false);
     }
@@ -182,32 +184,32 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
-          <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{examName} Preparation</h1>
-          <p className="text-primary-100 font-bold text-sm xl:text-base opacity-90">PYQ, Practice Tests &amp; Online Questions</p>
-          {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">Code: {exam.code}</p>}
+          <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
+          <p className="text-primary-100 font-bold text-sm xl:text-base opacity-90">{translate('PYQ, Practice Tests & Online Questions')}</p>
+          {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">{translate('Code: {code}', { code: exam.code })}</p>}
           <div className="flex flex-wrap gap-2 pt-2">
             {subjects.length > 0 && (
               <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
-                <BookOpen className="w-3.5 h-3.5" /> {subjects.length} Subjects
+                <BookOpen className="w-3.5 h-3.5" /> {translate('{count} Subjects', { count: subjects.length })}
               </span>
             )}
             {topics.length > 0 && (
               <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
-                <FolderOpen className="w-3.5 h-3.5" /> {topics.length} Topics
+                <FolderOpen className="w-3.5 h-3.5" /> {translate('{count} Topics', { count: topics.length })}
               </span>
             )}
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
-              <FileText className="w-3.5 h-3.5" /> {practiceTests.length} Tests
+              <FileText className="w-3.5 h-3.5" /> {translate('{count} Tests', { count: practiceTests.length })}
             </span>
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
               <History className="w-3.5 h-3.5" /> {pyqs.length} PYQ&apos;s
             </span>
             <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
-              <BrainCircuit className="w-3.5 h-3.5" /> {quizzes.length} Quizzes
+              <BrainCircuit className="w-3.5 h-3.5" /> {translate('{count} Quizzes', { count: quizzes.length })}
             </span>
             {questionCount > 0 && (
               <span className="flex items-center gap-1.5 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg">
-                <ListChecks className="w-3.5 h-3.5" /> {questionCount} Questions
+                <ListChecks className="w-3.5 h-3.5" /> {translate('{count} Questions', { count: questionCount })}
               </span>
             )}
           </div>
@@ -220,7 +222,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <FileText className="w-5 h-5 text-primary-600" />
-            About {examName}
+            {translate('About {name}', { name: translateData(examName) })}
           </h2>
           <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 font-medium leading-relaxed text-sm xl:text-base whitespace-pre-line">
             {aboutText}
@@ -233,26 +235,26 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight flex items-center gap-3">
             <Info className="w-5 h-5 text-primary-600" />
-            {examName} Exam Information
+            {translate('{name} Exam Information', { name: translateData(examName) })}
           </h2>
           <p className="text-[11px] font-bold text-black dark:text-white mb-4 uppercase tracking-wide">
-            Sourced {EXAM_FACTS_SOURCED_DATE} — verify against the official notification before relying on this to apply
+            {translate('Sourced {date} — verify against the official notification before relying on this to apply', { date: EXAM_FACTS_SOURCED_DATE })}
           </p>
           <dl className="grid sm:grid-cols-2 gap-4 text-sm">
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">Age Limit</dt>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Age Limit')}</dt>
               <dd className="font-medium text-content-primary">{facts.age}</dd>
             </div>
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">Eligibility / Qualification</dt>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Eligibility / Qualification')}</dt>
               <dd className="font-medium text-content-primary">{facts.qualification}</dd>
             </div>
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">Selection Process</dt>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Selection Process')}</dt>
               <dd className="font-medium text-content-primary">{facts.selection}</dd>
             </div>
             <div>
-              <dt className="font-black text-content-muted text-xs uppercase mb-1">Salary</dt>
+              <dt className="font-black text-content-muted text-xs uppercase mb-1">{translate('Salary')}</dt>
               <dd className="font-medium text-content-primary">{facts.salary}</dd>
             </div>
           </dl>
@@ -264,22 +266,22 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         <Card className="border-2 border-slate-100 dark:border-slate-800">
           <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
             <ListChecks className="w-5 h-5 text-primary-600" />
-            {examName} Syllabus &amp; Subjects
+            {translate('{name} Syllabus & Subjects', { name: translateData(examName) })}
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {subjects.length > 0 ? subjects.map((subject) => (
               <div key={subject._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-3 p-3 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                <span className="text-sm font-bold text-content-primary">{subject.name}</span>
+                <span className="text-sm font-bold text-content-primary">{translateData(subject.name)}</span>
                 {subject.slug ? (
                   <button
                     onClick={() => router.push(subject.hasSeries ? `/practice/${exam.slug}/${subject.slug}` : `/subjects/${subject.slug}`)}
                     className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                   >
-                    Practice {subject.name} Questions →
+                    {translate('Practice {name} Questions →', { name: translateData(subject.name) })}
                   </button>
                 ) : (
                   <button onClick={() => setActiveTab('quizzes')} className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap">
-                    Practice Questions →
+                    {translate('Practice Questions →')}
                   </button>
                 )}
               </div>
@@ -290,7 +292,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   onClick={() => setActiveTab('quizzes')}
                   className="text-[10px] font-black text-primary-600 uppercase text-left self-start sm:self-auto sm:whitespace-nowrap"
                 >
-                  Practice {subject} Questions →
+                  {translate('Practice {name} Questions →', { name: subject })}
                 </button>
               </div>
             ))}
@@ -311,7 +313,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             }`}
           >
             <tab.icon className="w-3.5 h-3.5" />
-            {tab.label}
+            {translate(tab.label)}
             <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${activeTab === tab.key ? 'bg-white/20' : 'bg-slate-200 dark:bg-slate-700'}`}>
               {tab.count}
             </span>
@@ -325,7 +327,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           {subjects.length === 0 ? (
             <div className="col-span-full py-16 text-center space-y-3">
               <BookOpen className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">No subjects available yet</p>
+              <p className="text-sm font-bold text-slate-400">{translate('No subjects available yet')}</p>
             </div>
           ) : (
             subjects.map((subject, idx) => (
@@ -343,14 +345,14 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       <BookOpen className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{subject.name}</h3>
+                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(subject.name)}</h3>
                       <p className="text-xs font-bold text-content-muted">
                         {subject.quizCount} {subject.quizCount === 1 ? 'set' : 'sets'} · {subject.questionCount} Qs
                       </p>
                     </div>
                   </div>
                   <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
-                    Practice {subject.name} →
+                    {translate('Practice {name} →', { name: translateData(subject.name) })}
                   </span>
                 </Card>
               </motion.div>
@@ -364,7 +366,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           {topics.length === 0 ? (
             <div className="col-span-full py-16 text-center space-y-3">
               <FolderOpen className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">No topics available yet</p>
+              <p className="text-sm font-bold text-slate-400">{translate('No topics available yet')}</p>
             </div>
           ) : (
             topics.map((topic, idx) => (
@@ -382,13 +384,13 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                       <FolderOpen className="w-5 h-5 text-white dark:text-black" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{topic.name}</h3>
+                      <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(topic.name)}</h3>
                       <p className="text-xs font-bold text-content-muted truncate">{topic.subjectName}</p>
                     </div>
                   </div>
-                  <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? 'set' : 'sets'} · {topic.questionCount} Qs</p>
+                  <p className="text-xs font-bold text-content-muted">{topic.quizCount} {topic.quizCount === 1 ? translate('set') : translate('sets')} · {topic.questionCount} {translate('Qs')}</p>
                   <span className="mt-auto text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
-                    Practice {topic.name} →
+                    {translate('Practice {name} →', { name: translateData(topic.name) })}
                   </span>
                 </Card>
               </motion.div>
@@ -401,7 +403,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         const isPyqTab = activeTab === 'pyqs';
         const list = isPyqTab ? pyqs : practiceTests;
         const EmptyIcon = isPyqTab ? History : FileText;
-        const emptyText = isPyqTab ? "No PYQ's available yet" : 'No practice tests available yet';
+        const emptyText = isPyqTab ? translate("No PYQ's available yet") : translate('No practice tests available yet');
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {list.length === 0 ? (
@@ -421,7 +423,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                           {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-black text-content-primary uppercase truncate">{test.title}</h3>
+                          <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(test.title)}</h3>
                           <p className="text-xs font-bold text-content-muted">
                             {test.questionCount || 0} Q · {test.totalMarks || 0} marks · {formatDuration(test.duration || 60)}
                           </p>
@@ -438,7 +440,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                         )}
                         {isCompleted && test.userAttempt && (
                           <p className="text-xs font-bold text-primary-600">
-                            Score: {fmtNum(test.userAttempt.score)} · Accuracy: {Math.round(test.userAttempt.accuracy || 0)}%
+                            {translate('Score: {score} · Accuracy: {accuracy}%', { score: fmtNum(test.userAttempt.score), accuracy: Math.round(test.userAttempt.accuracy || 0) })}
                           </p>
                         )}
                       </div>
@@ -446,12 +448,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                         {isCompleted && (
                           <button onClick={() => router.push(`/govt-exams/test/${test.slug}/result?attempt=${test.userAttempt._id}`)}
                             className="flex-1 text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">
-                            Results
+                            {translate('Results')}
                           </button>
                         )}
                         <button onClick={() => router.push(`/govt-exams/test/${test.slug || test._id}/start`)}
                           className={`flex-1 text-[10px] font-black px-4 py-2 rounded-lg xl:rounded-xl uppercase ${isCompleted ? 'text-slate-600 bg-slate-100 dark:bg-slate-800' : 'text-white bg-primary-600'}`}>
-                          {isCompleted ? 'Retake' : 'Start'}
+                          {isCompleted ? translate('Retake') : translate('Start')}
                         </button>
                       </div>
                     </Card>
@@ -468,7 +470,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           {quizzes.length === 0 ? (
             <div className="col-span-full py-16 text-center space-y-3">
               <BrainCircuit className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">No quizzes available yet</p>
+              <p className="text-sm font-bold text-slate-400">{translate('No quizzes available yet')}</p>
             </div>
           ) : (
             quizzes.map((quiz, idx) => {
@@ -485,16 +487,16 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                         <BrainCircuit className="w-4 xl:w-6 h-4 xl:h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-black text-content-primary uppercase truncate">{quiz.title}</h3>
+                        <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(quiz.title)}</h3>
                         <p className="text-xs font-bold text-content-muted truncate">
-                          {quiz.subject?.name || ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}
+                          {translateData(quiz.subject?.name) || ''}{quiz.topic?.name ? ` · ${translateData(quiz.topic.name)}` : ''}
                         </p>
                       </div>
                     </div>
-                    <p className="text-xs font-bold text-content-muted">{quiz.duration} min · {quiz.totalMarks} marks</p>
+                    <p className="text-xs font-bold text-content-muted">{translate('{duration} min · {marks} marks', { duration: quiz.duration, marks: quiz.totalMarks })}</p>
                     <div className="flex items-center gap-2 mt-auto">
                         <span className={`text-[10px] font-black px-2 py-1 rounded-lg capitalize ${diffColor}`}>{quiz.difficulty}</span>
-                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">Start</span>
+                        <span className="flex-1 text-center text-[10px] font-black text-primary-600 bg-primary-50 dark:bg-primary-900/30 px-3 py-2 rounded-lg xl:rounded-xl uppercase">{translate('Start')}</span>
                       </div>
                   </Card>
                 </motion.div>
@@ -508,17 +510,17 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <GraduationCap className="w-5 h-5 text-primary-600" />
-          How to Prepare for {examName}
+          {translate('How to Prepare for {name}', { name: translateData(examName) })}
         </h2>
         <ol className="space-y-2 text-sm font-medium text-content-primary list-decimal list-inside">
-          <li>Understand the {examName} syllabus and exam pattern above.</li>
-          {subjectAreas[0] && <li>Study each subject, starting with {subjectAreas[0]}.</li>}
-          <li>Practice topic-wise questions across every available topic.</li>
-          <li>Solve {examName} previous year papers to learn the real difficulty level.</li>
-          <li>Attempt full-length practice tests under timed conditions.</li>
-          <li>Take short quizzes to revise between full attempts.</li>
-          <li>Review every incorrect answer&apos;s explanation, not just the score.</li>
-          <li>Repeat quizzes for your weakest topics before your next mock.</li>
+          <li>{translate('Understand the {name} syllabus and exam pattern above.', { name: translateData(examName) })}</li>
+          {subjectAreas[0] && <li>{translate('Study each subject, starting with {name}.', { name: subjectAreas[0] })}</li>}
+          <li>{translate('Practice topic-wise questions across every available topic.')}</li>
+          <li>{translate('Solve {name} previous year papers to learn the real difficulty level.', { name: translateData(examName) })}</li>
+          <li>{translate('Attempt full-length practice tests under timed conditions.')}</li>
+          <li>{translate('Take short quizzes to revise between full attempts.')}</li>
+          <li>{translate('Review every incorrect answer\'s explanation, not just the score.')}</li>
+          <li>{translate('Repeat quizzes for your weakest topics before your next mock.')}</li>
         </ol>
       </Card>
 
@@ -526,7 +528,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <Search className="w-5 h-5 text-primary-600" />
-          Related Searches
+          {translate('Related Searches')}
         </h2>
         <p className="text-sm font-medium text-content-muted leading-relaxed">
           {[
@@ -544,7 +546,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       <Card className="border-2 border-slate-100 dark:border-slate-800">
         <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
           <HelpCircle className="w-5 h-5 text-primary-600" />
-          Frequently Asked Questions
+          {translate('Frequently Asked Questions')}
         </h2>
         <div className="space-y-2 xl:space-y-4">
           {faqItems.map((item) => (
@@ -562,12 +564,12 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>
-              <h3 className="text-base xl:text-lg font-black uppercase tracking-tight mb-1">Want to save your progress?</h3>
+              <h3 className="text-base xl:text-lg font-black uppercase tracking-tight mb-1">{translate('Want to save your progress?')}</h3>
               <p className="text-sm font-medium text-white/90 mb-4">
-                Create a free AajExam account to save your {examName} practice history, track your accuracy over time, and pick up any test where you left off.
+                {translate('Create a free AajExam account to save your {name} practice history, track your accuracy over time, and pick up any test where you left off.', { name: translateData(examName) })}
               </p>
               <Button variant="secondary" size="sm" onClick={() => router.push('/register')} className="font-black">
-                Create Free Account
+                {translate('Create Free Account')}
               </Button>
             </div>
           </div>

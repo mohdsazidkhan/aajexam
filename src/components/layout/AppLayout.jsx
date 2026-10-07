@@ -36,8 +36,10 @@ import Sidebar from '../Sidebar';
 import UnifiedFooter from '../UnifiedFooter';
 import AdminMobileFilterDrawer from '../admin/MobileFilterDrawer';
 import { AdminMobileHeaderProvider } from '../../contexts/AdminMobileHeaderContext';
+import useTranslate from '../../hooks/useTranslate';
 
 const AppLayout = ({ children }) => {
+  const { translate } = useTranslate();
   const router = useRouter();
   const dispatch = useDispatch();
   const { isAuthenticated, isClient } = useAuthStatus();
@@ -96,9 +98,9 @@ const AppLayout = ({ children }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">Admin Only</h2>
+          <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">{translate('Admin Only')}</h2>
           <p className="text-slate-600 dark:text-slate-400 uppercase tracking-widest text-[10px] font-black leading-relaxed">
-            Redirecting you back home...
+            {translate('Redirecting you back home...')}
           </p>
         </div>
       </div>

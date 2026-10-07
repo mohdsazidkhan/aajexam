@@ -7,11 +7,13 @@ import API from '../../lib/api';
 import { getCurrentUser } from '../../lib/utils/authUtils';
 import StateCitySelect from '../StateCitySelect';
 import { notifyTargetExamsChanged } from '../../lib/utils/targetExams';
+import useTranslate from '../../hooks/useTranslate';
 
 // Nudges any logged-in user with no city on file to add one, and asks (once, ever)
 // for their target exams — shown once per browser session (not every page load)
 // so it's a gentle reminder, not a wall.
 const CityPromptModal = () => {
+  const { translate, translateData } = useTranslate();
   const [show, setShow] = useState(false);
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
@@ -71,11 +73,11 @@ const CityPromptModal = () => {
   const handleSave = async () => {
     const hasLocation = state.trim() || city.trim();
     if (needCity && hasLocation) {
-      if (!state.trim()) { toast.error('Please select your state'); return; }
-      if (!city.trim()) { toast.error('Please select your city'); return; }
+      if (!state.trim()) { toast.error(translate('Please select your state')); return; }
+      if (!city.trim()) { toast.error(translate('Please select your city')); return; }
     }
     if (needCity && !hasLocation && !needExams) {
-      toast.error('Please select your state');
+      toast.error(translate('Please select your state'));
       return;
     }
     setSaving(true);
@@ -94,13 +96,13 @@ const CityPromptModal = () => {
           }));
         }
         if (needExams) notifyTargetExamsChanged();
-        toast.success(needExams ? 'Preferences saved!' : 'City added! This helps rank you against students near you.');
+        toast.success(needExams ? translate('Preferences saved!') : translate('City added! This helps rank you against students near you.'));
         setShow(false);
       } else {
-        toast.error(res?.message || 'Failed to save');
+        toast.error(res?.message || translate('Failed to save'));
       }
     } catch (err) {
-      toast.error(err?.message || 'Failed to save');
+      toast.error(err?.message || translate('Failed to save'));
     } finally {
       setSaving(false);
     }
@@ -137,13 +139,13 @@ const CityPromptModal = () => {
           </div>
 
           <h2 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1 text-center">
-            {needCity && needExams ? 'Complete Your Profile' : needCity ? 'Add Your City' : 'Your Target Exams'}
+            {needCity && needExams ? translate('Complete Your Profile') : needCity ? translate('Add Your City') : translate('Your Target Exams')}
           </h2>
 
           {needCity && (
             <>
               <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-4 text-center">
-                Show up on your city&apos;s leaderboard and compete with students near you.
+                {translate('Show up on your city\'s leaderboard and compete with students near you.')}
               </p>
               <StateCitySelect
                 state={state}
@@ -157,7 +159,7 @@ const CityPromptModal = () => {
           {needExams && (
             <div className={needCity ? 'mt-5' : ''}>
               <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-3 text-center">
-                Which exams are you preparing for? We&apos;ll show only their content. Pick one or more, or keep All Exams.
+                {translate('Which exams are you preparing for? We\'ll show only their content. Pick one or more, or keep All Exams.')}
               </p>
               <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto p-1">
                 <button
@@ -178,7 +180,7 @@ const CityPromptModal = () => {
                       className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${active ? 'bg-primary-600 border-primary-600 text-white' : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary-500'}`}
                     >
                       {active && <Check className="w-3 h-3" />}
-                      {exam.name}
+                      {translateData(exam.name)}
                     </button>
                   );
                 })}
@@ -191,13 +193,13 @@ const CityPromptModal = () => {
             disabled={saving}
             className="w-full mt-4 flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl hover:bg-primary-700 transition shadow-sm disabled:opacity-70 border-b-2 border-primary-800 active:border-b-0 active:translate-y-1"
           >
-            {saving ? 'Saving...' : needExams ? 'Save' : 'Save City'}
+            {saving ? translate('Saving...') : needExams ? translate('Save') : translate('Save City')}
           </button>
           <button
             onClick={handleSkip}
             className="w-full mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-slate-600 dark:hover:text-slate-300 transition"
           >
-            Skip
+            {translate('Skip')}
           </button>
         </motion.div>
       </div>

@@ -9,6 +9,7 @@ import Seo from '../components/Seo';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 import { motion, AnimatePresence } from 'framer-motion';
+import useTranslate from '../hooks/useTranslate';
 
 // --- Tracker Skeleton (matches the loaded data view) ---
 const Sh = ({ className = '' }) => (
@@ -45,6 +46,7 @@ const TrackerSkeleton = () => (
 
 // --- Subject Accordion Item ---
 const SubjectAccordion = ({ subject }) => {
+  const { translate, translateData } = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const isAllDone = subject.completedTopics === subject.totalTopics && subject.totalTopics > 0;
 
@@ -59,9 +61,9 @@ const SubjectAccordion = ({ subject }) => {
             <BookOpen className="w-6 h-6" />
           </div>
           <div className="text-left">
-            <h3 className="text-sm sm:text-base font-black text-content-primary">{subject.name}</h3>
+            <h3 className="text-sm sm:text-base font-black text-content-primary">{translateData(subject.name)}</h3>
             <p className="text-xs font-bold text-content-muted mt-0.5">
-              {subject.completedTopics} of {subject.totalTopics} topics completed
+              {translate('{done} of {total} topics completed', { done: subject.completedTopics, total: subject.totalTopics })}
             </p>
           </div>
         </div>
@@ -82,7 +84,7 @@ const SubjectAccordion = ({ subject }) => {
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="border-t border-slate-200 dark:border-slate-800">
             <div className="p-2 sm:p-4 bg-slate-50/50 dark:bg-slate-900/20">
               {subject.topics.length === 0 ? (
-                <p className="text-sm text-content-muted text-center py-4 font-bold">No topics mapped yet.</p>
+                <p className="text-sm text-content-muted text-center py-4 font-bold">{translate('No topics mapped yet.')}</p>
               ) : (
                 <div className="space-y-1.5">
                   {subject.topics.map(topic => (
@@ -94,7 +96,7 @@ const SubjectAccordion = ({ subject }) => {
                           <Circle className="w-5 h-5 text-slate-300 dark:text-slate-600 flex-shrink-0" />
                         )}
                         <span className={`text-sm font-bold ${topic.isCompleted ? 'text-primary-600 dark:text-primary-400 line-through decoration-primary-300 dark:decoration-primary-700/50' : 'text-content-primary'}`}>
-                          {topic.name}
+                          {translateData(topic.name)}
                         </span>
                       </div>
 
@@ -119,6 +121,7 @@ const SubjectAccordion = ({ subject }) => {
 
 
 const SyllabusTrackerPage = () => {
+  const { translate, rich, translateData } = useTranslate();
   const [exams, setExams] = useState([]);
   const [selectedExam, setSelectedExam] = useState('');
   const [trackerData, setTrackerData] = useState(null);
@@ -189,7 +192,7 @@ const SyllabusTrackerPage = () => {
               <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-content-primary flex items-center gap-2">
                 <Layers className="w-6 h-6 text-black dark:text-white" /> Syllabus Tracker
               </h1>
-              <p className="text-sm font-bold text-content-muted">Auto-tracks topics as you complete quizzes!</p>
+              <p className="text-sm font-bold text-content-muted">{translate('Auto-tracks topics as you complete quizzes!')}</p>
             </div>
 
             {/* ── Exam Selection ── */}
@@ -202,7 +205,7 @@ const SyllabusTrackerPage = () => {
                 onChange={e => setSelectedExam(e.target.value)}
                 className="w-full appearance-none bg-background-surface border border-slate-300 dark:border-slate-700 text-content-primary text-sm font-bold rounded-lg xl:rounded-xl py-3 pl-10 pr-10 outline-none focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/10 dark:focus:ring-white/10 cursor-pointer"
               >
-                <option value="">Select Exam to Track</option>
+                <option value="">{translate('Select Exam to Track')}</option>
                 {exams.map(e => <option key={e._id} value={e._id}>{e.name}</option>)}
               </select>
               <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
@@ -229,9 +232,9 @@ const SyllabusTrackerPage = () => {
                   </div>
                 </div>
                 <div className="text-center md:text-left flex-1">
-                  <h2 className="text-xl sm:text-2xl font-black text-content-primary mb-1">Overall Progress</h2>
+                  <h2 className="text-xl sm:text-2xl font-black text-content-primary mb-1">{translate('Overall Progress')}</h2>
                   <p className="text-sm font-bold text-content-muted">
-                    You have mastered <strong className="text-primary-600">{trackerData.completedTopics}</strong> out of <strong>{trackerData.totalTopics}</strong> topics for this exam.
+                    {rich('You have mastered <0></0> out of <1></1> topics for this exam.', [() => <strong className="text-primary-600">{trackerData.completedTopics}</strong>, () => <strong>{trackerData.totalTopics}</strong>])}
                   </p>
                   {trackerData.overallProgress === 100 && (
                     <div className="mt-3 inline-flex items-center gap-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-3 py-1.5 rounded-lg text-xs font-black uppercase">
@@ -243,10 +246,10 @@ const SyllabusTrackerPage = () => {
 
               {/* Accordions */}
               <div>
-                <h3 className="text-sm font-black text-content-primary uppercase mb-3 px-1">Subjects</h3>
+                <h3 className="text-sm font-black text-content-primary uppercase mb-3 px-1">{translate('Subjects')}</h3>
                 {trackerData.syllabus.length === 0 ? (
                   <div className="text-center py-10 bg-background-surface rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800">
-                    <p className="text-sm font-bold text-content-muted">No syllabus data found for this exam.</p>
+                    <p className="text-sm font-bold text-content-muted">{translate('No syllabus data found for this exam.')}</p>
                   </div>
                 ) : (
                   trackerData.syllabus.map(subject => (
@@ -259,7 +262,7 @@ const SyllabusTrackerPage = () => {
           ) : !selectedExam ? (
             <div className="py-20 text-center space-y-2 xl:space-y-4">
               <Layers className="w-16 h-16 text-slate-200 dark:text-slate-700 mx-auto" />
-              <p className="text-sm font-bold text-content-muted">Select an exam above to view its syllabus tracker.</p>
+              <p className="text-sm font-bold text-content-muted">{translate('Select an exam above to view its syllabus tracker.')}</p>
             </div>
           ) : null}
 

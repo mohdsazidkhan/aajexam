@@ -8,8 +8,10 @@ import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import { generateBlogPostingSchema, generateBreadcrumbSchema } from '../../utils/schema';
+import useTranslate from '../../hooks/useTranslate';
 
 const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
+  const { translate } = useTranslate();
   const [news, setNews] = useState(initialNews || null);
   const [loading, setLoading] = useState(!initialNews);
   const router = useRouter();
@@ -79,7 +81,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
 
         {news.importantDates?.length > 0 && (
           <Card className="space-y-2 bg-slate-100 dark:bg-slate-800">
-            <h3 className="text-sm font-black text-black dark:text-white">Important Dates</h3>
+            <h3 className="text-sm font-black text-black dark:text-white">{translate('Important Dates')}</h3>
             {news.importantDates.map((d, i) => (
               <div key={i} className="flex justify-between text-xs">
                 <span className="font-bold text-slate-600">{d.label}</span>

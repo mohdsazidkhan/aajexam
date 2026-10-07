@@ -12,6 +12,7 @@ import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import { formatTimeSpent } from '../lib/utils/timeFormat';
+import useTranslate from '../hooks/useTranslate';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -115,6 +116,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 
 // ─── Top 3 Podium ─────────────────────────────────────────────────────────────
 const Podium = ({ top3, currentUserId, type }) => {
+  const { translate } = useTranslate();
   // Reorder: 2nd | 1st | 3rd
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
   const podiumH = { 1: 'h-20 xl:h-24', 2: 'h-14 xl:h-16', 3: 'h-10 xl:h-12' };
@@ -148,11 +150,11 @@ const Podium = ({ top3, currentUserId, type }) => {
               {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
               <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
               {isMe && (
-                <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">You</span>
+                <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">{translate('You')}</span>
               )}
               <div className="text-center max-w-[76px] sm:max-w-[96px]">
                 <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
-                  {entry.name || entry.username || 'User'}
+                  {entry.name || entry.username || translate('User')}
                 </p>
                 <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'}</p>
               </div>
@@ -173,6 +175,7 @@ const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_84px_
 
 // ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
 const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
+  const { translate } = useTranslate();
   const rc = rankConfig[entry.rank];
   const isMe = String(entry.userId) === String(currentUserId);
   const isTop3 = entry.rank <= 3;
@@ -190,13 +193,13 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
     <div className="min-w-0">
       <div className="flex items-center gap-1.5 flex-wrap">
         <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white' : 'text-content-primary'}`}>
-          {entry.name || entry.username || 'Anonymous'}
+          {entry.name || entry.username || translate('Anonymous')}
         </p>
         {isMe && (
-          <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">You</span>
+          <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('You')}</span>
         )}
         {entry.subscriptionStatus === 'PRO' && (
-          <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">PRO</span>
+          <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('PRO')}</span>
         )}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -261,7 +264,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
               {identity}
               {entry.currentStreak > 0 && (
                 <span className="text-[10px] font-bold text-black dark:text-white flex items-center gap-1 mt-0.5">
-                  <Flame className="w-3 h-3" />{entry.currentStreak} day streak
+                  <Flame className="w-3 h-3" />{translate('{count} day streak', { count: entry.currentStreak })}
                 </span>
               )}
             </div>
@@ -270,35 +273,35 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
 
           <div className="grid grid-cols-3 gap-2 pl-[52px]">
             <div>
-              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide whitespace-nowrap">Total Time Spent</p>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide whitespace-nowrap">{translate('Total Time Spent')}</p>
               <p className="text-sm font-black text-content-primary">{formatTimeSpent(entry.totalTimeSpent, type)}</p>
             </div>
             <div>
-              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{type === 'quiz' ? 'Quizzes' : 'Exams'}</p>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{type === 'quiz' ? translate('Quizzes') : translate('Exams')}</p>
               <p className="text-sm font-black text-content-primary">{entry.totalQuizzes}</p>
             </div>
             {type === 'quiz' && (
               <>
                 <div>
-                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Marks</p>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Marks')}</p>
                   <p className="text-sm font-black text-content-primary">{entry.totalMarks ?? 0}</p>
                 </div>
                 <div>
-                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Correct</p>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Correct')}</p>
                   <p className="text-sm font-black text-content-primary">{entry.totalCorrect ?? 0}</p>
                 </div>
                 <div>
-                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Score</p>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Score')}</p>
                   <p className="text-sm font-black text-content-primary">{entry.totalScore ?? 0}</p>
                 </div>
               </>
             )}
             <div>
-              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Accuracy</p>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Accuracy')}</p>
               <p className={`text-sm font-black ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
             </div>
             <div>
-              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">Avg Score</p>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Avg Score')}</p>
               <p className="text-sm font-black text-content-primary">{entry.avgPercentage}%</p>
             </div>
           </div>
@@ -310,6 +313,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
 
 // ─── My Rank Sticky Card ──────────────────────────────────────────────────────
 const MyRankCard = ({ entry, type }) => {
+  const { translate } = useTranslate();
   if (!entry) return null;
   return (
     <motion.div
@@ -324,8 +328,8 @@ const MyRankCard = ({ entry, type }) => {
           </div>
           <Avatar entry={entry} size="md" />
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-black text-white truncate">Your Rank</p>
-            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'} · {entry.avgPercentage}% avg score · {formatTimeSpent(entry.totalTimeSpent, type)} spent</p>
+            <p className="text-sm font-black text-white truncate">{translate('Your Rank')}</p>
+            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? translate('quizzes') : translate('exams')} · {translate('{score}% avg score · {time} spent', { score: entry.avgPercentage, time: formatTimeSpent(entry.totalTimeSpent, type) })}</p>
           </div>
           <div className="text-right flex-shrink-0">
             <p className="text-xl font-black text-white">#{entry.rank}</p>
@@ -338,6 +342,7 @@ const MyRankCard = ({ entry, type }) => {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 const LeaderboardPage = () => {
+  const { translate } = useTranslate();
   const [type, setType] = useState('quiz'); // 'quiz' or 'exam'
   const [period, setPeriod] = useState('all-time');
   const [data, setData] = useState([]);
@@ -398,7 +403,7 @@ const LeaderboardPage = () => {
               <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-sm">
                 <button
                   onClick={() => setType('quiz')}
-                  title="Ranked by: Quizzes Attempted, then Accuracy, then Total Score"
+                  title={translate('Ranked by: Quizzes Attempted, then Accuracy, then Total Score')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
                     type === 'quiz' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
@@ -407,7 +412,7 @@ const LeaderboardPage = () => {
                 </button>
                 <button
                   onClick={() => setType('exam')}
-                  title="Ranked by: Exams Attempted, then Accuracy, then Total Score"
+                  title={translate('Ranked by: Exams Attempted, then Accuracy, then Total Score')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
                     type === 'exam' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
@@ -436,7 +441,7 @@ const LeaderboardPage = () => {
                       `}
                     >
                       <Icon className="w-3.5 h-3.5" />
-                      <span>{p.label}</span>
+                      <span>{translate(p.label)}</span>
                     </button>
                   );
                 })}
@@ -445,7 +450,7 @@ const LeaderboardPage = () => {
               <button
                 onClick={() => fetchLeaderboard(true)}
                 disabled={refreshing || loading}
-                title="Refresh"
+                title={translate('Refresh')}
                 className="absolute right-0 top-0 shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
@@ -462,9 +467,9 @@ const LeaderboardPage = () => {
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
               className="text-2xl sm:text-3xl xl:text-4xl font-black uppercase text-black dark:text-white tracking-tight"
             >
-              Leaderboard
+              {translate('Leaderboard')}
             </motion.h1>
-            <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">Ranked by: {type === 'quiz' ? 'Quizzes' : 'Exams'} Attempted, then Accuracy, then Total Score</p>
+            <p className="text-black/60 dark:text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">{translate('Ranked by: {what} Attempted, then Accuracy, then Total Score', { what: type === 'quiz' ? translate('Quizzes') : translate('Exams') })}</p>
 
             {/* Podium */}
             {loading ? (
@@ -493,7 +498,7 @@ const LeaderboardPage = () => {
               <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
                 <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
                 <p className="text-base sm:text-lg font-black text-content-primary">{stat.value}</p>
-                <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase">{stat.label}</p>
+                <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase">{translate(stat.label)}</p>
               </Card>
             ))}
           </motion.div>
@@ -505,11 +510,11 @@ const LeaderboardPage = () => {
         ) : data.length === 0 ? (
           <div className="py-16 sm:py-20 text-center space-y-2 xl:space-y-4">
             <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
-            <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">No data yet for this period</h3>
-            <p className="text-sm text-content-muted font-bold">Attempt quizzes to appear on the leaderboard!</p>
+            <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">{translate('No data yet for this period')}</h3>
+            <p className="text-sm text-content-muted font-bold">{translate('Attempt quizzes to appear on the leaderboard!')}</p>
             <Link href="/quizzes">
               <button className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
-                Start a Quiz
+                {translate('Start a Quiz')}
               </button>
             </Link>
           </div>
@@ -525,14 +530,14 @@ const LeaderboardPage = () => {
               {/* Column header — desktop table only; mobile list has no header row */}
               <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
                 <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
-                <p className="text-[10px] font-black text-content-muted uppercase">Player</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">Total Time Spent</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center">{type === 'quiz' ? 'Quizzes' : 'Exams'}</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center">Marks</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center">Correct</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center">Score</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center">Accuracy</p>
-                <p className="text-[10px] font-black text-content-muted uppercase text-center">Avg Score</p>
+                <p className="text-[10px] font-black text-content-muted uppercase">{translate('Player')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">{translate('Total Time Spent')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{type === 'quiz' ? translate('Quizzes') : translate('Exams')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Marks')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Correct')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Score')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Accuracy')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Avg Score')}</p>
                 <div />
               </div>
 
@@ -557,7 +562,7 @@ const LeaderboardPage = () => {
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
-                  <span className="text-xs font-black text-content-muted uppercase">Page {page} of {totalPages}</span>
+                  <span className="text-xs font-black text-content-muted uppercase">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}

@@ -29,10 +29,12 @@ import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import Pagination from '../components/Pagination';
 import ResponsiveTable from '../components/ResponsiveTable';
+import useTranslate from '../hooks/useTranslate';
 
 const PAGE_LIMIT = 12;
 
 const PaymentHistoryPage = () => {
+  const { translate } = useTranslate();
    const [transactions, setTransactions] = useState([]);
    const [loading, setLoading] = useState(true);
    const [currentPage, setCurrentPage] = useState(1);
@@ -62,7 +64,7 @@ const PaymentHistoryPage = () => {
          setTotalCount(payload.pagination?.totalCount || 0);
          if (payload.summary) setSummary(payload.summary);
       } catch (e) {
-         toast.error('Could not load payment history');
+         toast.error(translate('Could not load payment history'));
       } finally {
          setLoading(false);
       }
@@ -83,11 +85,11 @@ const PaymentHistoryPage = () => {
 
    const getStatusConfig = (status) => {
       switch (status) {
-         case 'success': return { label: 'Success', icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-600' };
-         case 'pending': return { label: 'Pending', icon: AlertCircle, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800' };
-         case 'failed': return { label: 'Failed', icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
-         case 'refunded': return { label: 'Refunded', icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
-         default: return { label: status || 'Unknown', icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
+         case 'success': return { label: translate('Success'), icon: CheckCircle, color: 'text-primary-600', bg: 'bg-primary-50 dark:bg-primary-900/20', border: 'border-primary-200 dark:border-primary-600' };
+         case 'pending': return { label: translate('Pending'), icon: AlertCircle, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800' };
+         case 'failed': return { label: translate('Failed'), icon: XCircle, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
+         case 'refunded': return { label: translate('Refunded'), icon: RefreshCw, color: 'text-black dark:text-white', bg: 'bg-slate-100 dark:bg-slate-800', border: 'border-slate-200 dark:border-slate-800 dark:border-white' };
+         default: return { label: status || translate('Unknown'), icon: AlertCircle, color: 'text-gray-500', bg: 'bg-white dark:bg-slate-900/20', border: 'border-gray-200 dark:border-gray-800' };
       }
    };
 
@@ -111,12 +113,12 @@ const PaymentHistoryPage = () => {
    // the current user, so repeating their name/email/phone on every card
    // (unlike the admin page, which lists many different users) is redundant.
    const getDetailItems = (txn) => ([
-      { label: 'Product Info', value: txn.productInfo, icon: Receipt },
-      { label: 'Payment Mode', value: txn.paymentMode, icon: CreditCard },
-      { label: 'UPI ID', value: txn.upiId, icon: Smartphone },
-      { label: 'UPI App / Channel', value: txn.upiChannel, icon: Smartphone },
-      { label: 'Bank Code', value: txn.bankCode, icon: Landmark },
-      { label: 'Bank Ref. No.', value: txn.bankRefNum, icon: Hash },
+      { label: translate('Product Info'), value: txn.productInfo, icon: Receipt },
+      { label: translate('Payment Mode'), value: txn.paymentMode, icon: CreditCard },
+      { label: translate('UPI ID'), value: txn.upiId, icon: Smartphone },
+      { label: translate('UPI App / Channel'), value: txn.upiChannel, icon: Smartphone },
+      { label: translate('Bank Code'), value: txn.bankCode, icon: Landmark },
+      { label: translate('Bank Ref. No.'), value: txn.bankRefNum, icon: Hash },
    ].filter(item => item.value));
 
    const clearFilters = () => {
@@ -127,7 +129,7 @@ const PaymentHistoryPage = () => {
 
    const transactionColumns = [
       {
-         key: 'date', header: 'Date', render: (_, txn) => (
+         key: 'date', header: translate('Date'), render: (_, txn) => (
             <>
                <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{formatDate(txn.date)}</div>
                <div className="text-[9px] font-bold text-slate-400 uppercase">{formatTime(txn.date)}</div>
@@ -135,7 +137,7 @@ const PaymentHistoryPage = () => {
          )
       },
       {
-         key: 'description', header: 'Plan', render: (_, txn) => (
+         key: 'description', header: translate('Plan'), render: (_, txn) => (
             <>
                <div className="text-sm font-black text-slate-900 dark:text-white truncate max-w-[200px]">{txn.description}</div>
                {txn.subscription && (
@@ -145,14 +147,14 @@ const PaymentHistoryPage = () => {
          )
       },
       {
-         key: 'amount', header: 'Amount', render: (_, txn) => (
+         key: 'amount', header: translate('Amount'), render: (_, txn) => (
             <div className="text-right tabular-nums font-black text-slate-900 dark:text-white">
                {formatCurrency(txn.amount)} <span className="text-[9px] font-bold text-slate-400">{txn.currency || 'INR'}</span>
             </div>
          )
       },
       {
-         key: 'status', header: 'Status', align: 'center', render: (_, txn) => {
+         key: 'status', header: translate('Status'), align: 'center', render: (_, txn) => {
             const cfg = getStatusConfig(txn.status);
             const StatusIcon = cfg.icon;
             return (
@@ -164,19 +166,19 @@ const PaymentHistoryPage = () => {
             );
          }
       },
-      { key: 'paymentMode', header: 'Payment Mode', render: (_, txn) => txn.paymentMode || 'N/A' },
-      { key: 'upiId', header: 'UPI ID', render: (_, txn) => txn.upiId || 'N/A' },
-      { key: 'upiChannel', header: 'UPI App / Channel', render: (_, txn) => txn.upiChannel || txn.bankCode || 'N/A' },
-      { key: 'productInfo', header: 'Product Info', render: (_, txn) => txn.productInfo || 'N/A' },
-      { key: 'bankRefNum', header: 'Bank Ref. No.', render: (_, txn) => txn.bankRefNum || 'N/A' }
+      { key: 'paymentMode', header: translate('Payment Mode'), render: (_, txn) => txn.paymentMode || translate('N/A') },
+      { key: 'upiId', header: translate('UPI ID'), render: (_, txn) => txn.upiId || translate('N/A') },
+      { key: 'upiChannel', header: translate('UPI App / Channel'), render: (_, txn) => txn.upiChannel || txn.bankCode || translate('N/A') },
+      { key: 'productInfo', header: translate('Product Info'), render: (_, txn) => txn.productInfo || translate('N/A') },
+      { key: 'bankRefNum', header: translate('Bank Ref. No.'), render: (_, txn) => txn.bankRefNum || translate('N/A') }
    ];
 
    const viewToggleButtons = (
       <div className="flex items-center gap-1 p-2 w-full bg-slate-100/50 dark:bg-slate-800/40 rounded-2xl border-2 border-slate-200/40 dark:border-slate-700/40">
          {[
-            { icon: TableIcon, id: 'table', label: 'Table' },
-            { icon: LayoutGrid, id: 'grid', label: 'Grid' },
-            { icon: List, id: 'list', label: 'List' }
+            { icon: TableIcon, id: 'table', label: translate('Table') },
+            { icon: LayoutGrid, id: 'grid', label: translate('Grid') },
+            { icon: List, id: 'list', label: translate('List') }
          ].map((mode) => (
             <button
                key={mode.id}
@@ -194,10 +196,10 @@ const PaymentHistoryPage = () => {
    const statsBar = (
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
          {[
-            { label: 'Total Spent', val: summary.totalSpent || 0, icon: IndianRupee, isCurrency: true },
-            { label: 'Total Transactions', val: summary.totalTransactions || 0, icon: Receipt },
-            { label: 'Successful', val: summary.successCount || 0, icon: TrendingUp },
-            { label: 'Pending Amount', val: summary.pendingAmount || 0, icon: AlertCircle, isCurrency: true }
+            { label: translate('Total Spent'), val: summary.totalSpent || 0, icon: IndianRupee, isCurrency: true },
+            { label: translate('Total Transactions'), val: summary.totalTransactions || 0, icon: Receipt },
+            { label: translate('Successful'), val: summary.successCount || 0, icon: TrendingUp },
+            { label: translate('Pending Amount'), val: summary.pendingAmount || 0, icon: AlertCircle, isCurrency: true }
          ].map((stat) => (
             <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
                <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
@@ -217,7 +219,7 @@ const PaymentHistoryPage = () => {
                className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                value={filterMonth} onChange={e => { setFilterMonth(e.target.value); setCurrentPage(1); }}
             >
-               <option value="">All Months</option>
+               <option value="">{translate('All Months')}</option>
                {filterOptions.months.map(m => (
                   <option key={m.value} value={m.value}>{m.label}</option>
                ))}
@@ -228,7 +230,7 @@ const PaymentHistoryPage = () => {
                className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                value={filterYear} onChange={e => { setFilterYear(e.target.value); setCurrentPage(1); }}
             >
-               <option value="">All Years</option>
+               <option value="">{translate('All Years')}</option>
                {filterOptions.years.map(y => (
                   <option key={y} value={y}>{y}</option>
                ))}
@@ -236,20 +238,20 @@ const PaymentHistoryPage = () => {
          )}
          {(filterMonth || filterYear) && (
             <button onClick={clearFilters} className="px-4 py-3 text-xs font-black text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-2xl transition-colors">
-               Clear
+               {translate('Clear')}
             </button>
          )}
       </div>
    );
 
    if (loading && transactions.length === 0) return (
-      <MobileAppWrapper title="Payment History">
+      <MobileAppWrapper title={translate('Payment History')}>
          <div className="py-8"><ListSkeleton rows={6} /></div>
       </MobileAppWrapper>
    );
 
    return (
-      <MobileAppWrapper title="Payment History">
+      <MobileAppWrapper title={translate('Payment History')}>
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="Payment History - AajExam" noIndex={true} />
 
@@ -258,7 +260,7 @@ const PaymentHistoryPage = () => {
                <div className="flex flex-col gap-3 xl:hidden">
                   <div className="flex items-center justify-between gap-3">
                      <h1 className="text-xl font-black font-outfit tracking-tight truncate min-w-0">
-                        Payment History{totalCount > 0 ? ` (${totalCount})` : ''}
+                        {translate('Payment History')}{totalCount > 0 ? ` (${totalCount})` : ''}
                      </h1>
                      <div className="shrink-0">{filtersGroup}</div>
                   </div>
@@ -269,7 +271,7 @@ const PaymentHistoryPage = () => {
                {/* Desktop header: heading, stats, view toggle, filters share a single row */}
                <div className="hidden xl:flex xl:items-center gap-4">
                   <h1 className="text-3xl font-black font-outfit tracking-tight truncate shrink-0">
-                     Payment History{totalCount > 0 ? ` (${totalCount})` : ''}
+                     {translate('Payment History')}{totalCount > 0 ? ` (${totalCount})` : ''}
                   </h1>
                   <div className="flex-1">{statsBar}</div>
                   <div className="shrink-0">{viewToggleButtons}</div>
@@ -282,8 +284,8 @@ const PaymentHistoryPage = () => {
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <Receipt className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl xl:text-2xl font-black font-outfit">No payments yet</h3>
-                     <p className="text-sm font-bold text-gray-400">Your payment transactions will appear here</p>
+                     <h3 className="text-xl xl:text-2xl font-black font-outfit">{translate('No payments yet')}</h3>
+                     <p className="text-sm font-bold text-gray-400">{translate('Your payment transactions will appear here')}</p>
                   </div>
                ) : (
                   <>
@@ -332,7 +334,7 @@ const PaymentHistoryPage = () => {
                                                 )}
                                              </div>
                                              <div className="text-right shrink-0">
-                                                <p className="text-[10px] font-black text-gray-400 uppercase">Amount</p>
+                                                <p className="text-[10px] font-black text-gray-400 uppercase">{translate('Amount')}</p>
                                                 <div className="flex items-center justify-end gap-1">
                                                    <IndianRupee className="w-4 h-4 text-content-primary" />
                                                    <span className="text-xl font-black font-outfit">{txn.amount?.toLocaleString('en-IN')}</span>
@@ -344,7 +346,7 @@ const PaymentHistoryPage = () => {
                                           {/* Transaction ID */}
                                           {txn.transactionId && (
                                              <div className="pt-2 border-t-2 border-slate-50 dark:border-slate-800">
-                                                <p className="text-[8px] font-black text-gray-400 uppercase">Transaction ID</p>
+                                                <p className="text-[8px] font-black text-gray-400 uppercase">{translate('Transaction ID')}</p>
                                                 <p className="text-[11px] font-bold text-content-secondary font-mono truncate">{txn.transactionId}</p>
                                              </div>
                                           )}
@@ -402,7 +404,7 @@ const PaymentHistoryPage = () => {
                                           </div>
                                        </div>
                                        <div className="text-right shrink-0">
-                                          <div className="text-[9px] font-bold text-slate-400 uppercase">Amount</div>
+                                          <div className="text-[9px] font-bold text-slate-400 uppercase">{translate('Amount')}</div>
                                           <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{formatCurrency(txn.amount)} <span className="text-[9px] font-bold text-slate-400">{txn.currency || 'INR'}</span></div>
                                        </div>
                                     </div>

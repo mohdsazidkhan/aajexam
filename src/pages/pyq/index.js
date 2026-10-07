@@ -19,10 +19,12 @@ import dbConnect from '../../lib/db';
 import Exam from '../../models/Exam';
 import ExamPattern from '../../models/ExamPattern';
 import PracticeTest from '../../models/PracticeTest';
+import useTranslate from '../../hooks/useTranslate';
 
 const PAGE_SIZE = 20;
 
 export default function PYQIndexPage({ tests, totalPages, page, year, examId, examIdsFilter, exams, examsWithPYQ, totalPYQs, intro, faqs, years }) {
+  const { translate, rich, translateData } = useTranslate();
     const router = useRouter();
     const [filterYear, setFilterYear] = useState(year || '');
     const [filterExam, setFilterExam] = useState(examId || '');
@@ -132,20 +134,20 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                 <div className="py-4 xl:py-8 space-y-4 xl:space-y-8 relative">
                     {/* Header / breadcrumb */}
-                    <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
-                        <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">Home</Link>
+                    <nav aria-label={translate('Breadcrumb')} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest">
+                        <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
                         <span className="text-slate-400">/</span>
-                        <span className="text-slate-600 dark:text-slate-400">Previous Year Papers</span>
+                        <span className="text-slate-600 dark:text-slate-400">{translate('Previous Year Papers')}</span>
                     </nav>
 
                     {/* Hero */}
                     <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
                         <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-6 mb-2 md:mb-4 xl:mb-8">
                             <div className="space-y-2">
-                                <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest">PYQ Library</span>
+                                <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest">{translate('PYQ Library')}</span>
                                 <h1 className="text-2xl xl:text-5xl font-black tracking-tighter text-slate-900 dark:text-white uppercase flex items-center gap-3">
                                     <FileText className="w-7 h-7 xl:w-10 xl:h-10 text-primary-600" />
-                                    Previous Year Papers
+                                    {translate('Previous Year Papers')}
                                 </h1>
                                 <p className="text-sm xl:text-lg font-bold text-slate-500 dark:text-slate-400 max-w-2xl">
                                     {totalPYQs} verified PYQ {totalPYQs === 1 ? 'paper' : 'papers'} across {examsWithPYQ.length} {examsWithPYQ.length === 1 ? 'exam' : 'exams'} — practise with real questions, real timing, and detailed solutions.
@@ -158,7 +160,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                         onClick={() => updateQuery({ examIds: '', all: '1', page: 1 })}
                                         className="px-3 py-2 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-wider bg-primary-600 text-white whitespace-nowrap"
                                     >
-                                        Your target exams · Show all
+                                        {translate('Your target exams · Show all')}
                                     </button>
                                 )}
                                 <select
@@ -166,15 +168,15 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     onChange={onExamChange}
                                     className="w-1/2 xl:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none truncate"
                                 >
-                                    <option value="">All Exams</option>
-                                    {exams.map((e) => <option key={e._id} value={e._id}>{e.name}</option>)}
+                                    <option value="">{translate('All Exams')}</option>
+                                    {exams.map((e) => <option key={e._id} value={e._id}>{translateData(e.name)}</option>)}
                                 </select>
                                 <select
                                     value={filterYear}
                                     onChange={onYearChange}
                                     className="w-1/2 xl:w-auto max-w-[170px] px-4 py-2 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none truncate"
                                 >
-                                    <option value="">All Years</option>
+                                    <option value="">{translate('All Years')}</option>
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
                                 </select>
                             </div>
@@ -188,7 +190,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 <FaGraduationCap className="text-primary-600 mr-3" /> Browse PYQs by Exam
                             </h2>
                             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-6">
-                                Pick an exam to view its complete PYQ archive year-wise and shift-wise.
+                                {translate('Pick an exam to view its complete PYQ archive year-wise and shift-wise.')}
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-3">
                                 {examsWithPYQ.map((e) => {
@@ -199,7 +201,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                     return (
                                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="group block bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 xl:p-5 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700 transition relative overflow-hidden">
                                         <div className="relative z-10">
-                                            <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{e.name}</div>
+                                            <div className="text-sm xl:text-base font-black text-slate-900 dark:text-white group-hover:text-primary-600 transition mb-1 leading-tight">{translateData(e.name)}</div>
                                             <div className="text-[10px] font-bold text-slate-500 flex items-center justify-between mb-3">
                                                 <span>{e.paperCount} {e.paperCount === 1 ? 'paper' : 'papers'}</span>
                                                 <FaArrowRight className="text-[10px] opacity-0 group-hover:opacity-100 transition" />
@@ -209,7 +211,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             <div className="space-y-1.5 mt-auto">
                                                 <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-widest">
                                                     <span className={completed > 0 ? 'text-primary-600' : 'text-slate-400'}>
-                                                        {completed > 0 ? 'In Progress' : 'Start Now'}
+                                                        {completed > 0 ? translate('In Progress') : translate('Start Now')}
                                                     </span>
                                                     <span className="text-slate-500">{completed}/{total}</span>
                                                 </div>
@@ -241,17 +243,17 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
                         <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
                             <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
-                                {filterExam || filterYear ? 'Filtered Papers' : 'Latest PYQ Papers'}
+                                {filterExam || filterYear ? translate('Filtered Papers') : translate('Latest PYQ Papers')}
                             </h2>
                             <span className="text-xs font-black text-slate-500 uppercase tracking-widest">
-                                {tests.length} of {totalPYQs} shown
+                                {translate('{shown} of {total} shown', { shown: tests.length, total: totalPYQs })}
                             </span>
                         </div>
 
                         {tests.length === 0 ? (
                             <div className="text-center py-12">
                                 <FileText className="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto mb-3" />
-                                <p className="text-slate-400 font-bold">No PYQ papers match the current filters.</p>
+                                <p className="text-slate-400 font-bold">{translate('No PYQ papers match the current filters.')}</p>
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -272,17 +274,17 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             <div className="space-y-3">
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-2">
-                                                        <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{test.pyqYear || 'PYQ'}</span>
-                                                        {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">LATEST</span>}
+                                                        <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{test.pyqYear || translate('PYQ')}</span>
+                                                        {test.isLastYear && <span className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 rounded-lg text-[10px] font-black text-primary-600">{translate('LATEST')}</span>}
                                                     </div>
                                                     {test.pyqShift && <span className="text-[10px] font-bold text-slate-400">{test.pyqShift}</span>}
                                                 </div>
-                                                <h3 className="text-sm font-black text-slate-900 dark:text-white line-clamp-2">{test.title}</h3>
-                                                {test.examName && <p className="text-[10px] font-bold text-slate-400">{test.examName}</p>}
+                                                <h3 className="text-sm font-black text-slate-900 dark:text-white line-clamp-2">{translateData(test.title)}</h3>
+                                                {test.examName && <p className="text-[10px] font-bold text-slate-400">{translateData(test.examName)}</p>}
                                                 <div className="flex items-center gap-4 text-[10px] text-slate-400 font-bold">
-                                                    <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" />{test.questionCount || 0} Q</span>
-                                                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{test.duration} min</span>
-                                                    <span className="flex items-center gap-1"><Trophy className="w-3 h-3" />{test.totalMarks} marks</span>
+                                                    <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" />{translate('{count} Q', { count: test.questionCount || 0 })}</span>
+                                                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{translate('{count} min', { count: test.duration })}</span>
+                                                    <span className="flex items-center gap-1"><Trophy className="w-3 h-3" />{translate('{count} marks', { count: test.totalMarks })}</span>
                                                 </div>
                                                 <div className="pt-2 flex items-center justify-between">
                                                     {isPro ? (
@@ -291,10 +293,10 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                                             {!hasAccess && <Lock className="w-3 h-3 text-slate-400" />}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-wider">Free Access</span>
+                                                        <span className="text-[10px] font-black text-primary-600 uppercase tracking-wider">{translate('Free Access')}</span>
                                                     )}
                                                     <div className="flex items-center gap-1 text-[10px] font-black text-primary-600">
-                                                        {hasAccess ? 'Practice Now' : 'Unlock with PRO'} <ChevronRight className="w-3 h-3" />
+                                                        {hasAccess ? translate('Practice Now') : translate('Unlock with PRO')} <ChevronRight className="w-3 h-3" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -306,9 +308,9 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
 
                         {totalPages > 1 && (
                             <div className="flex justify-center items-center gap-4 mt-8">
-                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Prev</button>
-                                <span className="text-sm font-bold text-slate-500">Page {page} of {totalPages}</span>
-                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">Next</button>
+                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Prev')}</button>
+                                <span className="text-sm font-bold text-slate-500">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
+                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Next')}</button>
                             </div>
                         )}
                     </section>
@@ -336,10 +338,10 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                                 <Lock className="w-3 h-3" /> PRO Only
                                             </div>
                                             <h3 className="text-lg font-black font-outfit uppercase tracking-tight leading-tight">
-                                                {proModalTest.title}
+                                                {translateData(proModalTest.title)}
                                             </h3>
                                             <p className="text-xs font-bold text-slate-400">
-                                                {proModalTest.examName} &bull; {proModalTest.pyqYear} &bull; {proModalTest.questionCount || 0} Questions &bull; {proModalTest.duration} min
+                                                {translateData(proModalTest.examName)} &bull; {proModalTest.pyqYear} &bull; {translate('{count} Questions', { count: proModalTest.questionCount || 0 })} &bull; {translate('{count} min', { count: proModalTest.duration })}
                                             </p>
                                         </div>
                                         <button
@@ -354,7 +356,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                 {/* Body */}
                                 <div className="p-6 space-y-5">
                                     <p className="text-sm font-bold text-slate-600 dark:text-slate-400">
-                                        This paper is part of the <span className="text-primary-600 font-black">AajExam PRO</span> plan. Upgrade to attempt all older PYQ shifts with full analytics.
+                                        {rich('This paper is part of the <0>AajExam PRO</0> plan. Upgrade to attempt all older PYQ shifts with full analytics.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
                                     </p>
 
                                     {/* What you unlock */}
@@ -368,7 +370,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             { icon: '🚀', text: 'Unlimited mock tests' },
                                         ].map((item) => (
                                             <div key={item.text} className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl px-3 py-2">
-                                                <span>{item.icon}</span> {item.text}
+                                                <span>{item.icon}</span> {translate(item.text)}
                                             </div>
                                         ))}
                                     </div>
@@ -379,13 +381,13 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                                             onClick={() => router.push('/subscription')}
                                             className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
                                         >
-                                            Get PRO — Unlock All PYQs →
+                                            {translate('Get PRO — Unlock All PYQs →')}
                                         </button>
                                         <button
                                             onClick={() => setProModalTest(null)}
                                             className="w-full py-3 text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest text-xs hover:text-slate-700 dark:hover:text-slate-200 transition"
                                         >
-                                            Continue with Free Plan
+                                            {translate('Continue with Free Plan')}
                                         </button>
                                     </div>
                                 </div>
@@ -396,7 +398,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                     {/* FAQ */}
                     <section className="rounded-[3rem] shadow-sm px-0 py-4 xl:py-8">
                         <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                            Frequently Asked Questions
+                            {translate('Frequently Asked Questions')}
                         </h2>
                         <div className="space-y-2 xl:space-y-4">
                             {faqs.map((f, i) => (

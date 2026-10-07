@@ -4,8 +4,10 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { isAuthenticated, isStudent } from '@/lib/utils/authUtils'
 import { useGlobalError } from '@/contexts/GlobalErrorContext'
+import useTranslate from '../../hooks/useTranslate';
 
 export default function StudentRoute({ children }) {
+  const { translate } = useTranslate();
   const router = useRouter()
   const { showError } = useGlobalError()
 
@@ -40,16 +42,16 @@ export default function StudentRoute({ children }) {
             </svg>
           </div>
           <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-4">
-            Students Only
+            {translate('Students Only')}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 uppercase tracking-widest text-[10px] font-black leading-relaxed mb-8">
-            This page is only for students. Please log in with a student account.
+            {translate('This page is only for students. Please log in with a student account.')}
           </p>
           <button
             onClick={() => router.push('/home')}
             className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
           >
-            Go to Home
+            {translate('Go to Home')}
           </button>
         </div>
       </div>

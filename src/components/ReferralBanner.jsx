@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import { Target, Copy, Share2, Smartphone, Send, User, Lightbulb } from 'lucide-react';
 import config from '../lib/config/appConfig';
+import useTranslate from '../hooks/useTranslate';
 
 const ReferralBanner = ({ user }) => {
+  const { translate, rich } = useTranslate();
   const [showShareOptions, setShowShareOptions] = useState(false);
 
   const referralCode = user?.referralCode;
@@ -22,7 +24,7 @@ const ReferralBanner = ({ user }) => {
   const copyReferralCode = () => {
     if (referralCode) {
       navigator.clipboard.writeText(referralCode);
-      toast.success('Code copied to clipboard!', {
+      toast.success(translate('Code copied to clipboard!'), {
         position: "top-center",
         duration: 2000,
       });
@@ -31,7 +33,7 @@ const ReferralBanner = ({ user }) => {
 
   const copyReferralMessage = () => {
     navigator.clipboard.writeText(message);
-    toast.success('Message copied to clipboard!', {
+    toast.success(translate('Message copied to clipboard!'), {
       position: "top-center",
       duration: 2000,
     });
@@ -59,10 +61,10 @@ const ReferralBanner = ({ user }) => {
           <Target className="w-10 h-10 text-primary-600" />
         </div>
         <h3 className="text-xl md:text-2xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
-          Invite <span className="text-primary-600">& Earn!</span>
+          {rich('Invite <0>& Earn!</0>', [(c) => <span className="text-primary-600">{c}</span>])}
         </h3>
         <p className="text-slate-700 dark:text-gray-400 text-sm font-bold uppercase tracking-widest">
-          Share with friends and unlock rewards
+          {translate('Share with friends and unlock rewards')}
         </p>
       </div>
 
@@ -72,7 +74,7 @@ const ReferralBanner = ({ user }) => {
             {referralCount}
           </div>
           <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">
-            Friends Joined
+            {translate('Friends Joined')}
           </div>
         </div>
       </div>
@@ -81,7 +83,7 @@ const ReferralBanner = ({ user }) => {
       <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700 shadow-sm">
         <div className="text-center">
           <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mb-6">
-            Your Invitation Code
+            {translate('Your Invitation Code')}
           </h4>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -93,7 +95,7 @@ const ReferralBanner = ({ user }) => {
               onClick={copyReferralCode}
             >
               <Copy className="w-5 h-5" />
-              Copy
+              {translate('Copy')}
             </button>
           </div>
         </div>
@@ -107,7 +109,7 @@ const ReferralBanner = ({ user }) => {
           className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-sm transition-all active:translate-y-1 flex items-center justify-center gap-3"
         >
           <Share2 className="w-5 h-5" />
-          Share with Friends
+          {translate('Share with Friends')}
         </button>
 
         {showShareOptions && (
@@ -117,28 +119,28 @@ const ReferralBanner = ({ user }) => {
               className="bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
             >
               <Smartphone className="w-5 h-5" />
-              WhatsApp
+              {translate('WhatsApp')}
             </button>
             <button
               onClick={shareOnTelegram}
               className="bg-primary-600 hover:opacity-90 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
             >
               <Send className="w-5 h-5" />
-              Telegram
+              {translate('Telegram')}
             </button>
             <button
               onClick={copyReferralMessage}
               className="bg-primary-600 hover:bg-primary-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
             >
               <Copy className="w-5 h-5" />
-              Copy Text
+              {translate('Copy Text')}
             </button>
             <Link
               href="/profile"
               className="bg-slate-700 hover:bg-slate-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3 w-full"
             >
               <User className="w-5 h-5" />
-              My Profile
+              {translate('My Profile')}
             </Link>
           </div>
         )}
@@ -148,7 +150,7 @@ const ReferralBanner = ({ user }) => {
       <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-700">
         <p className="text-slate-700 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed flex items-center justify-center gap-2">
           <Lightbulb className="w-4 h-4 text-black dark:text-white flex-shrink-0" />
-          TIP: Share on WhatsApp & Telegram to get rewards faster!
+          {translate('TIP: Share on WhatsApp & Telegram to get rewards faster!')}
         </p>
       </div>
     </div >

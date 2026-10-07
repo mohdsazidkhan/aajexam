@@ -8,6 +8,7 @@ import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
+import useTranslate from '../hooks/useTranslate';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -55,6 +56,7 @@ const CURRENT_YEAR = now.getFullYear();
 const YEAR_OPTIONS = Array.from({ length: 5 }, (_, i) => CURRENT_YEAR - i);
 
 const CurrentAffairsPage = () => {
+  const { translate } = useTranslate();
   const [affairs, setAffairs] = useState([]);
   const [todayAffairs, setTodayAffairs] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -110,14 +112,14 @@ const CurrentAffairsPage = () => {
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
-            <TrendingUp className="w-3.5 h-3.5" /> {affairs.length} Updates Available
+            <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Updates Available', { count: affairs.length })}
           </motion.div>
-          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">Current Affairs</h1>
+          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Current Affairs')}</h1>
           {/* Search + Date */}
           <div className="w-full max-w-lg px-2 xl:px-0 flex flex-col xl:flex-row justify-between items-center gap-2 xl:gap-4">
             <div className="w-full relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input type="text" placeholder="Search current affairs..." value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
+              <input type="text" placeholder={translate('Search current affairs...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
                 className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
             </div>
             <div className="relative flex gap-2 mt-2 xl:mt-0">
@@ -153,7 +155,7 @@ const CurrentAffairsPage = () => {
                     ? 'bg-primary-600 text-white border-primary-600'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
-                <f.icon className="w-3.5 h-3.5" /> {f.label}
+                <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
               </button>
             ))}
           </div>
@@ -163,13 +165,13 @@ const CurrentAffairsPage = () => {
         {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
           <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 dark:border-white/30">
             <h2 className="text-sm font-black text-black dark:text-white mb-2 flex items-center gap-2">
-              <Flame className="w-4 h-4" /> Today — {todayAffairs.total} Updates
+              <Flame className="w-4 h-4" /> {translate('Today — {count} Updates', { count: todayAffairs.total })}
             </h2>
             <div className="flex flex-wrap gap-2">
               {Object.entries(todayAffairs.grouped || {}).map(([cat, items]) => (
                 <button key={cat} onClick={() => setCategory(cat)}
                   className="px-3 py-1 bg-white dark:bg-slate-800 rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 capitalize hover:bg-slate-100 transition-colors">
-                  {cat}: {items.length}
+                  {translate(cat.charAt(0).toUpperCase() + cat.slice(1))}: {items.length}
                 </button>
               ))}
             </div>
@@ -207,7 +209,7 @@ const CurrentAffairsPage = () => {
                   <div className="flex items-center flex-wrap gap-2 pt-1">
                     <div className={`flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1.5 rounded-lg xl:rounded-xl border ${cfg.chip}`}>
                       <Tag className="w-3 h-3" />
-                      {affair.category}
+                      {translate((affair.category || '').charAt(0).toUpperCase() + (affair.category || '').slice(1))}
                     </div>
                     <div className="flex items-center gap-1.5 text-[10px] font-black text-slate-500 uppercase bg-slate-50 dark:bg-slate-700 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-600">
                       <Eye className="w-3 h-3" />
@@ -228,9 +230,9 @@ const CurrentAffairsPage = () => {
           {affairs.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Newspaper className="w-20 h-20 text-slate-200 mx-auto" />
-              <h3 className="text-xl font-black text-slate-400 uppercase">No current affairs found</h3>
+              <h3 className="text-xl font-black text-slate-400 uppercase">{translate('No current affairs found')}</h3>
               <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); }}
-                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">View All</button>
+                className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('View All')}</button>
             </div>
           )}
         </div>
@@ -239,10 +241,10 @@ const CurrentAffairsPage = () => {
         {totalPages > 1 && (
           <div className="flex justify-center items-center gap-4 pt-6">
             <button disabled={page === 1} onClick={() => setPage(page - 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">Prev</button>
-            <span className="text-sm font-black text-slate-500">Page {page} of {totalPages}</span>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Prev')}</button>
+            <span className="text-sm font-black text-slate-500">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
             <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">Next</button>
+              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Next')}</button>
           </div>
         )}
       </section>

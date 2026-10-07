@@ -7,6 +7,7 @@ import Card from '../../../components/ui/Card';
 import Seo from '../../../components/Seo';
 import { generateBreadcrumbSchema } from '../../../utils/schema';
 import { DetailSkeleton } from '../../../components/skeletons/PrivateSkeletons';
+import useTranslate from '../../../hooks/useTranslate';
 
 const typeConfig = {
   government: { icon: Landmark, label: 'Govt. Jobs' },
@@ -14,6 +15,7 @@ const typeConfig = {
 };
 
 const CategoryDetailPage = () => {
+  const { translate } = useTranslate();
   const [category, setCategory] = useState(null);
   const [loadingCategory, setLoadingCategory] = useState(true);
   const [language, setLanguage] = useState('en');
@@ -142,9 +144,9 @@ const CategoryDetailPage = () => {
 
         <div className="space-y-2">
           {loadingItems && items.length === 0 ? (
-            <div className="py-10 text-center text-sm font-bold text-content-muted">Loading questions…</div>
+            <div className="py-10 text-center text-sm font-bold text-content-muted">{translate('Loading questions…')}</div>
           ) : items.length === 0 ? (
-            <div className="py-10 text-center text-sm font-bold text-content-muted">No questions yet.</div>
+            <div className="py-10 text-center text-sm font-bold text-content-muted">{translate('No questions yet.')}</div>
           ) : (
             items.map((q, idx) => (
               <Card key={q._id} hoverable padded={false} onClick={() => router.push(`/interview-questions/${q.slug}`)}
@@ -168,7 +170,7 @@ const CategoryDetailPage = () => {
           {itemsPage < itemsTotalPages && (
             <button onClick={loadMore} disabled={loadingItems}
               className="w-full py-3 text-center text-xs font-black uppercase text-primary-600 hover:underline disabled:opacity-50">
-              {loadingItems ? 'Loading…' : 'Load more'}
+              {loadingItems ? translate('Loading…') : translate('Load more')}
             </button>
           )}
         </div>

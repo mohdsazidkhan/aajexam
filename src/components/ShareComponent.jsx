@@ -11,8 +11,10 @@
   FaEnvelope,
   FaSms,
 } from "react-icons/fa";
+import useTranslate from '../hooks/useTranslate';
 
 const ShareComponent = ({ url, text, imageUrl }) => {
+  const { translate } = useTranslate();
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(text);
   const telegramTextFirst = encodeURIComponent(`${text}\n\n${url}`);
@@ -32,7 +34,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
     navigator.clipboard
       .writeText(`${text}\n\n${url}`)
       .then(() => {
-        alert("Referral message copied! Paste it into your Instagram post or story.");
+        alert(translate('Referral message copied! Paste it into your Instagram post or story.'));
         window.open("https://www.instagram.com/", "_blank");
       })
       .catch(() => {
@@ -44,7 +46,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
     <div className="share-wrapper font-outfit">
       <div className="flex justify-center mt-4">
         <span className="text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em]">
-          Spread the knowledge
+          {translate('Spread the knowledge')}
         </span>
       </div>
 
@@ -55,7 +57,7 @@ const ShareComponent = ({ url, text, imageUrl }) => {
             className="px-8 py-4 bg-primary-600 text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-sm flex items-center gap-3 active:translate-y-1 transition-all"
           >
             <FaShare className="text-sm" />
-            Share With Friends
+            {translate('Share With Friends')}
           </button>
         ) : (
           <>

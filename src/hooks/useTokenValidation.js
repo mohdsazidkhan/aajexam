@@ -7,6 +7,7 @@ import {
   handleTokenExpiration 
 } from '../lib/utils/tokenUtils';
 import { safeLocalStorage } from '../lib/utils/storage';
+import { translateNow } from './useTranslate';
 
 export const useTokenValidation = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ export const useTokenValidation = () => {
         // Optionally show a modal or notification
         if (minutesLeft <= 1) {
           // Show urgent warning
-          alert(`⚠️ Your session will expire in ${minutesLeft} minute(s). Please save your work and login again.`);
+          alert(translateNow('⚠️ Your session will expire in {minutes} minute(s). Please save your work and login again.', { minutes: minutesLeft }));
         }
       }
       

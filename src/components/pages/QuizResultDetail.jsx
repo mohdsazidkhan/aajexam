@@ -11,6 +11,7 @@ import API from '../../lib/api';
 import Loading from '../Loading';
 import DiscussionThread from '../discussions/DiscussionThread';
 import { useAuthStatus } from '../../hooks/useClientSide';
+import useTranslate from '../../hooks/useTranslate';
 
 // Format seconds → "1m 23s" or "45s"
 const formatTime = (sec) => {
@@ -40,6 +41,7 @@ const getSpeedBadge = (sec, totalQ) => {
 };
 
 const QuizResultDetail = () => {
+  const { translate, translateData } = useTranslate();
   const router = useRouter();
   const { user } = useAuthStatus();
   const { id: attemptId } = router.query;
@@ -63,10 +65,10 @@ const QuizResultDetail = () => {
             const lbRes = await API.getQuizLeaderboard(quizId, 20);
             if (lbRes.success) setLeaderboard(lbRes.data || []);
           }
-        } else toast.error('Result not found');
+        } else toast.error(translate('Result not found'));
       } catch (err) {
         console.error(err);
-        toast.error('Error loading result');
+        toast.error(translate('Error loading result'));
       } finally { setLoading(false); }
     };
     fetch();
@@ -77,7 +79,7 @@ const QuizResultDetail = () => {
       <div className="container mx-auto py-6"><QuizResultSkeleton /></div>
     </div>
   );
-  if (!attempt) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">Result not found</p></div>;
+  if (!attempt) return <div className="min-h-screen flex items-center justify-center"><p className="text-slate-500">{translate('Result not found')}</p></div>;
 
   const quiz = attempt.quiz;
   const totalTimeTakenSec = attempt.answers?.reduce((sum, a) => sum + (a.timeTaken || 0), 0) || 0;
@@ -85,7 +87,7 @@ const QuizResultDetail = () => {
   const handleChallenge = async () => {
     const isPro = user?.subscriptionStatus?.toUpperCase() === 'PRO' || user?.role === 'admin';
     if (!isPro) {
-      toast.error('Only PRO users can challenge friends!');
+      toast.error(translate('Only PRO users can challenge friends!'));
       router.push('/subscription');
       return;
     }
@@ -100,8 +102,8 @@ const QuizResultDetail = () => {
       if (res.success && res.challengeCode) {
         const link = `${window.location.origin}/challenge/${res.challengeCode}`;
         const shareData = {
-          title: 'Can you beat my score?',
-          text: `I scored ${Math.round(attempt.percentage)}% on this quiz. I challenge you to beat me!`,
+          title: translate('Can you beat my score?'),
+          text: translate('I scored {score}% on this quiz. I challenge you to beat me!', { score: Math.round(attempt.percentage) }),
           url: link
         };
         
@@ -109,13 +111,13 @@ const QuizResultDetail = () => {
           await navigator.share(shareData);
         } else {
           await navigator.clipboard.writeText(link);
-          toast.success('Challenge link copied to clipboard!');
+          toast.success(translate('Challenge link copied to clipboard!'));
         }
       } else {
-        toast.error(res.message || 'Failed to create challenge');
+        toast.error(res.message || translate('Failed to create challenge'));
       }
     } catch (err) {
-      toast.error('Something went wrong');
+      toast.error(translate('Something went wrong'));
     } finally {
       setIsGeneratingChallenge(false);
     }
@@ -135,42 +137,42 @@ const QuizResultDetail = () => {
             </div>
             {/* Score-based feedback */}
             <p className={`text-xl xl:text-2xl font-black mb-1 ${getScoreMessage(attempt.percentage || 0).cls}`}>
-              {getScoreMessage(attempt.percentage || 0).text}
+              {translate(getScoreMessage(attempt.percentage || 0).text)}
             </p>
-            {quiz && <h2 className="text-lg xl:text-xl font-bold text-slate-800 dark:text-white mb-1">{quiz.title || 'Quiz'}</h2>}
+            {quiz && <h2 className="text-lg xl:text-xl font-bold text-slate-800 dark:text-white mb-1">{translateData(quiz.title) || translate('Quiz')}</h2>}
             {quiz?.subject && <p className="text-sm text-slate-500 mb-4">{quiz.applicableExams?.map(e => e.name).join(', ') || ''}{quiz.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz.topic?.name ? ` · ${quiz.topic.name}` : ''}</p>}
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-primary-600">{attempt.correctCount}</div>
-                <div className="text-xs text-slate-500">Correct</div>
+                <div className="text-xs text-slate-500">{translate('Correct')}</div>
               </div>
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{attempt.wrongCount}</div>
-                <div className="text-xs text-slate-500">Wrong</div>
+                <div className="text-xs text-slate-500">{translate('Wrong')}</div>
               </div>
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{Math.round(attempt.percentage || 0)}%</div>
-                <div className="text-xs text-slate-500">Score</div>
+                <div className="text-xs text-slate-500">{translate('Score')}</div>
               </div>
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{Math.round(attempt.accuracy || 0)}%</div>
-                <div className="text-xs text-slate-500">Accuracy</div>
+                <div className="text-xs text-slate-500">{translate('Accuracy')}</div>
               </div>
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{quiz?.duration ? `${quiz.duration}m` : '—'}</div>
-                <div className="text-xs text-slate-500">Quiz Total Time</div>
+                <div className="text-xs text-slate-500">{translate('Quiz Total Time')}</div>
               </div>
               <div className="bg-white/60 dark:bg-slate-700/60 rounded-lg xl:rounded-xl p-3 border border-white/20">
                 <div className="text-xl font-bold text-black dark:text-white">{formatTime(totalTimeTakenSec) || '0s'}</div>
-                <div className="text-xs text-slate-500">Total Time Taken</div>
+                <div className="text-xs text-slate-500">{translate('Total Time Taken')}</div>
               </div>
             </div>
 
             {attempt.rank && (
               <div className="bg-slate-100 dark:bg-slate-800 text-black dark:text-white dark:text-black px-4 py-2 rounded-lg xl:rounded-xl inline-flex items-center gap-2">
                 <Crown className="w-4 h-4" />
-                <span className="font-semibold text-sm">Rank #{attempt.rank} · Top {Math.round(attempt.percentile || 0)}%</span>
+                <span className="font-semibold text-sm">{translate('Rank #{rank} · Top {percentile}%', { rank: attempt.rank, percentile: Math.round(attempt.percentile || 0) })}</span>
               </div>
             )}
           </div>
@@ -182,7 +184,7 @@ const QuizResultDetail = () => {
             <div className="w-10 h-10 bg-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center">
               <Brain className="w-5 h-5 text-white" />
             </div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-white">Question Review</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-white">{translate('Question Review')}</h2>
           </div>
 
           <div className="space-y-5">
@@ -210,13 +212,13 @@ const QuizResultDetail = () => {
                         <div className="flex items-center gap-2 mt-1.5">
                           <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${speedBadge?.cls || 'bg-slate-100 text-slate-500'}`}>
                             <Clock className="w-3 h-3" />
-                            Time Taken: {timeLabel}
+                            {translate('Time Taken: {time}', { time: timeLabel })}
                           </span>
                           {speedBadge && (
                             <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${speedBadge.cls}`}>
                               {speedBadge.label === 'Fast' && <Zap className="w-3 h-3" />}
                               {speedBadge.label === 'Slow' && <AlertCircle className="w-3 h-3" />}
-                              {speedBadge.label}
+                              {translate(speedBadge.label)}
                             </span>
                           )}
                         </div>
@@ -245,7 +247,7 @@ const QuizResultDetail = () => {
 
                   {question.explanation && (
                     <div className="ml-0 xl:ml-11 mt-2 p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                      <p className="text-xs text-black dark:text-white"><span className="font-semibold">Explanation:</span> {question.explanation}</p>
+                      <p className="text-xs text-black dark:text-white"><span className="font-semibold">{translate('Explanation:')}</span> {question.explanation}</p>
                     </div>
                   )}
 
@@ -267,7 +269,7 @@ const QuizResultDetail = () => {
           <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl shadow-sm p-4 xl:p-6 border border-white/20 mb-6">
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="w-5 h-5 text-black dark:text-white" />
-              <h2 className="text-lg font-bold text-slate-800 dark:text-white">Leaderboard</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-white">{translate('Leaderboard')}</h2>
             </div>
             <div className="space-y-2">
               {leaderboard.slice(0, 10).map((entry, i) => (
@@ -276,7 +278,7 @@ const QuizResultDetail = () => {
                     i === 0 ?'bg-primary-600': i === 1 ?'bg-slate-400': i === 2 ?'bg-primary-600':'bg-slate-300 dark:bg-slate-600 text-slate-600 dark:text-slate-300'
                   }`}>{i + 1}</div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{entry.user?.name || 'Anonymous'}</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{entry.user?.name || translate('Anonymous')}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-bold text-slate-900 dark:text-white">{Math.round(entry.percentage || 0)}%</p>
@@ -297,7 +299,7 @@ const QuizResultDetail = () => {
             {isGeneratingChallenge ? (
               <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
             ) : (
-              <><Users className="w-6 h-6" /> CHALLENGE FRIENDS TO BEAT THIS SCORE</>
+              <><Users className="w-6 h-6" /> {translate('CHALLENGE FRIENDS TO BEAT THIS SCORE')}</>
             )}
           </button>
 

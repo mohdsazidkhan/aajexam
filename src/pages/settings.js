@@ -14,6 +14,7 @@ import Button from '../components/ui/Button';
 import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 import { ProfileSkeleton } from '../components/skeletons/PrivateSkeletons';
+import useTranslate from '../hooks/useTranslate';
 
 const FIELD_CLASSNAME = 'w-full px-4 py-4 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold outline-none focus:border-primary-700 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
 
@@ -25,6 +26,7 @@ const SOCIAL_FIELDS = [
 ];
 
 const SettingsPage = () => {
+  const { translate } = useTranslate();
   const [activeTab, setActiveTab] = useState('profile');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -70,7 +72,7 @@ const SettingsPage = () => {
         const stored = getCurrentUser();
         if (stored) localStorage.setItem('userInfo', JSON.stringify({ ...stored, ...res.user }));
       }
-      toast.success('Profile updated.');
+      toast.success(translate('Profile updated.'));
     } finally {
       setSaving(false);
     }
@@ -81,7 +83,7 @@ const SettingsPage = () => {
     setSaving(true);
     try {
       await API.saveBankDetails(bank);
-      toast.success('Bank details saved.');
+      toast.success(translate('Bank details saved.'));
     } finally {
       setSaving(false);
     }
@@ -91,19 +93,19 @@ const SettingsPage = () => {
     event.preventDefault();
 
     if (!passwordData.old || !passwordData.new || !passwordData.confirm) {
-      toast.error('Please fill in all password fields.');
+      toast.error(translate('Please fill in all password fields.'));
       return;
     }
 
     if (passwordData.new !== passwordData.confirm) {
-      toast.error('New password and confirmation do not match.');
+      toast.error(translate('New password and confirmation do not match.'));
       return;
     }
 
     setSaving(true);
     try {
       await API.changePassword({ oldPassword: passwordData.old, newPassword: passwordData.new });
-      toast.success('Password updated.');
+      toast.success(translate('Password updated.'));
       setPasswordData({ old: '', new: '', confirm: '' });
     } finally {
       setSaving(false);
@@ -118,23 +120,23 @@ const SettingsPage = () => {
 
   if (loading) {
     return (
-      <MobileAppWrapper title="Account Settings">
+      <MobileAppWrapper title={translate('Account Settings')}>
         <div className="container mx-auto mt-4 py-0 xl:py-8"><ProfileSkeleton /></div>
       </MobileAppWrapper>
     );
   }
 
   return (
-    <MobileAppWrapper title="Account Settings">
+    <MobileAppWrapper title={translate('Account Settings')}>
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
         <div className="container mx-auto mt-4 space-y-6 xl:space-y-12">
           <div className="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-4 xl:gap-6">
             <div className="space-y-2 xl:space-y-4">
-              <h1 className="text-3xl xl:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">Settings</h1>
+              <h1 className="text-3xl xl:text-3xl xl:text-5xl font-black font-outfit tracking-tighter leading-none text-content-primary">{translate('Settings')}</h1>
               <p className="text-sm xl:text-base font-bold text-content-secondary max-w-xl">
-                Update your profile, add bank details and change your password.
+                {translate('Update your profile, add bank details and change your password.')}
               </p>
             </div>
 
@@ -149,7 +151,7 @@ const SettingsPage = () => {
                     }`}
                 >
                   <tab.icon className={`w-3.5 h-3.5 ${activeTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
-                  {tab.label}
+                  {translate(tab.label)}
                 </button>
               ))}
             </div>
@@ -169,8 +171,8 @@ const SettingsPage = () => {
                     <div className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
-                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Your Profile</h2>
-                          <p className="text-sm font-bold text-content-secondary">Keep your details up to date.</p>
+                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">{translate('Your Profile')}</h2>
+                          <p className="text-sm font-bold text-content-secondary">{translate('Keep your details up to date.')}</p>
                         </div>
                         <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
                           <User className="w-6 h-6" />
@@ -180,27 +182,27 @@ const SettingsPage = () => {
                       <form onSubmit={handleUpdateProfile} className="space-y-6">
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Full name</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Full name')}</label>
                             <input className={FIELD_CLASSNAME} value={profile.name || ''} onChange={(event) => setProfile({ ...profile, name: event.target.value })} />
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Email</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Email')}</label>
                             <input disabled className={`${FIELD_CLASSNAME} opacity-60 cursor-not-allowed`} value={profile.email || ''} />
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Phone number</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Phone number')}</label>
                             <input className={FIELD_CLASSNAME} value={profile.phone || ''} onChange={(event) => setProfile({ ...profile, phone: event.target.value })} />
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Username</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Username')}</label>
                             <input disabled className={`${FIELD_CLASSNAME} opacity-60 cursor-not-allowed`} value={profile.username ? `@${profile.username}` : ''} />
                           </div>
 
                           <div className="space-y-2 xl:col-span-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">State & City</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('State & City')}</label>
                             <StateCitySelect
                               state={profile.state || ''}
                               city={profile.city || ''}
@@ -211,12 +213,12 @@ const SettingsPage = () => {
                         </div>
 
                         <div className="space-y-2">
-                          <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Bio</label>
+                          <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Bio')}</label>
                           <textarea
                             rows={3}
                             maxLength={100}
                             className={`${FIELD_CLASSNAME} resize-none`}
-                            placeholder="Tell others a little about yourself..."
+                            placeholder={translate('Tell others a little about yourself...')}
                             value={profile.bio || ''}
                             onChange={(event) => setProfile({ ...profile, bio: event.target.value })}
                           />
@@ -256,7 +258,7 @@ const SettingsPage = () => {
                         </label>
 
                         <Button fullWidth size="lg" className="py-5 text-sm font-black shadow-sm" type="submit" disabled={saving}>
-                          {saving ? 'Saving changes...' : 'Save profile changes'}
+                          {saving ? translate('Saving changes...') : translate('Save profile changes')}
                         </Button>
                       </form>
                     </div>
@@ -266,10 +268,10 @@ const SettingsPage = () => {
                     <Card className="bg-slate-900 border-none text-white rounded-[2.5rem] space-y-2 xl:space-y-4">
                       <div className="flex items-center gap-3">
                         <Info className="w-5 h-5 text-primary-400" />
-                        <h3 className="font-outfit font-black tracking-tight text-lg">Why this matters</h3>
+                        <h3 className="font-outfit font-black tracking-tight text-lg">{translate('Why this matters')}</h3>
                       </div>
                       <p className="text-sm font-medium text-slate-300 leading-relaxed">
-                        Correct details help us send rewards and support you when needed.
+                        {translate('Correct details help us send rewards and support you when needed.')}
                       </p>
                     </Card>
                   </div>
@@ -282,8 +284,8 @@ const SettingsPage = () => {
                     <div padded={false} className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                       <div className="flex items-center justify-between gap-4">
                         <div className="space-y-1">
-                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Bank Details</h2>
-                          <p className="text-sm font-bold text-content-secondary">Add your bank account to receive reward money.</p>
+                          <h2 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">{translate('Bank Details')}</h2>
+                          <p className="text-sm font-bold text-content-secondary">{translate('Add your bank account to receive reward money.')}</p>
                         </div>
                         <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
                           <Building2 className="w-6 h-6" />
@@ -293,28 +295,28 @@ const SettingsPage = () => {
                       <form onSubmit={handleUpdateBank} className="space-y-6">
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Account holder name</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Account holder name')}</label>
                             <input className={FIELD_CLASSNAME} value={bank.accountHolderName || ''} onChange={(event) => setBank({ ...bank, accountHolderName: event.target.value })} />
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Account number</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Account number')}</label>
                             <input className={FIELD_CLASSNAME} value={bank.accountNumber || ''} onChange={(event) => setBank({ ...bank, accountNumber: event.target.value })} />
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">Bank name</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Bank name')}</label>
                             <input className={FIELD_CLASSNAME} value={bank.bankName || ''} onChange={(event) => setBank({ ...bank, bankName: event.target.value })} />
                           </div>
 
                           <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">IFSC code</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('IFSC code')}</label>
                             <input className={FIELD_CLASSNAME} value={bank.ifscCode || ''} onChange={(event) => setBank({ ...bank, ifscCode: event.target.value })} />
                           </div>
                         </div>
 
                         <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black shadow-sm" type="submit" disabled={saving}>
-                          {saving ? 'Saving details...' : 'Save bank details'}
+                          {saving ? translate('Saving details...') : translate('Save bank details')}
                         </Button>
                       </form>
                     </div>
@@ -323,9 +325,9 @@ const SettingsPage = () => {
                   <div className="xl:col-span-4 space-y-6">
                     <Card className="rounded-[2.5rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2 xl:space-y-4">
                       <CreditCard className="w-10 h-10 mx-auto text-primary-600" />
-                      <h3 className="font-outfit font-black tracking-tight text-lg">Secure handling</h3>
+                      <h3 className="font-outfit font-black tracking-tight text-lg">{translate('Secure handling')}</h3>
                       <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Your bank details are only used to send your reward money. They are kept safe.
+                        {translate('Your bank details are only used to send your reward money. They are kept safe.')}
                       </p>
                     </Card>
                   </div>
@@ -337,8 +339,8 @@ const SettingsPage = () => {
                   <div className="p-4 xl:p-8 space-y-4 xl:space-y-8 rounded-[3rem] border-none shadow-sm bg-background-surface">
                     <div className="flex items-center justify-between gap-4 relative z-10">
                       <div className="space-y-1">
-                        <h2 className="text-xl md:text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">Change password</h2>
-                        <p className="text-sm font-bold text-content-secondary">Use a strong password to keep your account safe.</p>
+                        <h2 className="text-xl md:text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">{translate('Change password')}</h2>
+                        <p className="text-sm font-bold text-content-secondary">{translate('Use a strong password to keep your account safe.')}</p>
                       </div>
                       <div className="p-4 bg-primary-600 text-white rounded-3xl shadow-sm">
                         <ShieldCheck className="w-6 h-6" />
@@ -353,7 +355,7 @@ const SettingsPage = () => {
                           { id: 'confirm', label: 'Confirm new password' },
                         ].map((item) => (
                           <div key={item.id} className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{item.label}</label>
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate(item.label)}</label>
                             <div className="relative">
                               <input
                                 type={showPass[item.id] ? 'text' : 'password'}
@@ -374,7 +376,7 @@ const SettingsPage = () => {
                       </div>
 
                       <Button variant="primary" fullWidth size="lg" className="py-5 text-sm font-black shadow-sm" type="submit" disabled={saving}>
-                        {saving ? 'Updating password...' : 'Update password'}
+                        {saving ? translate('Updating password...') : translate('Update password')}
                       </Button>
                     </form>
                   </div>

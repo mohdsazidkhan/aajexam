@@ -9,6 +9,7 @@ import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
 import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import useTranslate from '../../hooks/useTranslate';
 
 // Module-level dedup: when the auth-state-driven layout switch in _app.js
 // remounts this page during hydration, both mounts await the same in-flight
@@ -16,6 +17,7 @@ import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 const inflightNoteRequests = new Map();
 
 const NoteDetailPage = () => {
+  const { translate } = useTranslate();
   const [note, setNote] = useState(null);
   const [loading, setLoading] = useState(true);
   const [bookmarked, setBookmarked] = useState(false);
@@ -54,8 +56,8 @@ const NoteDetailPage = () => {
   const toggleBookmark = async () => {
     try {
       const res = await API.request(`/api/notes/${slug}/bookmark`, { method: 'POST' });
-      if (res?.success) { setBookmarked(res.data.bookmarked); toast.success(res.data.bookmarked ? 'Bookmarked!' : 'Removed'); }
-    } catch (e) { toast.error('Login required'); }
+      if (res?.success) { setBookmarked(res.data.bookmarked); toast.success(res.data.bookmarked ? translate('Bookmarked!') : translate('Removed')); }
+    } catch (e) { toast.error(translate('Login required')); }
   };
 
   if (loading) return (
@@ -98,7 +100,7 @@ const NoteDetailPage = () => {
         ]}
       />
       <div className="py-0 xl:py-6">
-        <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to Notes</button>
+        <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> {translate('Back to Notes')}</button>
 
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
@@ -109,9 +111,9 @@ const NoteDetailPage = () => {
             </div>
             <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{note.title}</h1>
             <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
-              <span><Eye className="w-3 h-3 inline" /> {note.views} views</span>
-              <span><Bookmark className="w-3 h-3 inline" /> {note.bookmarks} saved</span>
-              {note.contributor?.name && <span>By {note.contributor.name}</span>}
+              <span><Eye className="w-3 h-3 inline" /> {translate('{count} views', { count: note.views })}</span>
+              <span><Bookmark className="w-3 h-3 inline" /> {translate('{count} saved', { count: note.bookmarks })}</span>
+              {note.contributor?.name && <span>{translate('By {name}', { name: note.contributor.name })}</span>}
             </div>
           </div>
           <button onClick={toggleBookmark} className={`p-2 rounded-lg xl:rounded-xl transition-colors ${bookmarked ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200'}`}>
