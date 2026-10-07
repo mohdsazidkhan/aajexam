@@ -82,13 +82,7 @@ const RevisionPage = () => {
       <Seo title="Revision Queue – AajExam" description="Spaced-repetition revision queue for your AajExam practice." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
-          <div className="space-y-1 relative">
-            <LanguageToggle
-              language={language}
-              onToggle={toggleLanguage}
-              translating={translating}
-              className="absolute top-0 right-0 flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
-            />
+          <div className="space-y-1">
             <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-6 h-6 text-primary-600" /> Revision Queue</h1>
             <p className="text-sm font-bold text-slate-400">Spaced repetition - review your weak questions</p>
           </div>
@@ -131,6 +125,12 @@ const RevisionPage = () => {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300">{(currentItem.source || '').replace('_', ' ')}</span>
                 {currentItem.sourceTitle && <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 truncate max-w-[70%]">{currentItem.sourceTitle}</span>}
+              <LanguageToggle
+                language={language}
+                onToggle={toggleLanguage}
+                translating={translating}
+                className="ml-auto flex shrink-0 items-center justify-center gap-1.5 min-w-[40px] px-2.5 py-1 rounded-lg font-bold text-[11px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+              />
               </div>
               <h3 className="text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed">{getHindi(currentItem.questionRef)?.questionText || currentItem.questionSnapshot?.questionText}</h3>
 
