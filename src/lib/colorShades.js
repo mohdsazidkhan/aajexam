@@ -5,7 +5,7 @@
 // Curated theme presets — each has a light-mode hex and a dark-mode hex,
 // so switching dark/light mode keeps the chosen theme legible on both backgrounds.
 export const THEME_PRESETS = [
-  { id: 'green', name: 'AajExam Green', darkName: 'AajExam Dark', light: '#45B800', dark: '#45B800' },
+  { id: 'green', name: 'AajExam Default Light', darkName: 'AajExam Default Dark', light: '#45B800', dark: '#45B800' },
   { id: 'blue', name: 'Ocean Blue', darkName: 'Midnight Blue', light: '#2563EB', dark: '#60A5FA' },
   { id: 'indigo', name: 'Indigo Premium', darkName: 'Violet Night', light: '#6366F1', dark: '#A78BFA' },
   { id: 'orange', name: 'Orange Energy', darkName: 'Ember Dark', light: '#EA580C', dark: '#FB923C' },
@@ -31,6 +31,43 @@ export const THEME_PRESETS = [
   { id: 'steel', name: 'Steel Blue', darkName: 'Steel Night', light: '#3B82A0', dark: '#7DD3FC' },
   { id: 'mustard', name: 'Mustard', darkName: 'Mustard Night', light: '#A16207', dark: '#FACC15' },
 ];
+
+// One theme per UI language (light + dark variant). English reuses the default 'green' preset.
+const LANGUAGE_THEME_DEFS = [
+  ['hi', 'Saffron Green', 'India Green Night', '#EA7B0C', '#22C55E'],
+  ['bn', 'Bengal Blue', 'Bengal Midnight', '#1D4ED8', '#60A5FA'],
+  ['mr', 'Maharashtra Orange', 'Maratha Dark', '#F26B0F', '#D08A52'],
+  ['te', 'Telugu Teal', 'Telugu Ocean', '#0E8F9A', '#2BB8D9'],
+  ['ta', 'Tamil Maroon', 'Tamil Ruby Night', '#9F1239', '#F43F5E'],
+  ['gu', 'Gujarat Blue', 'Gujarat Deep Blue', '#2563EB', '#5B8DEF'],
+  ['ur', 'Royal Emerald', 'Emerald Night', '#059669', '#34D399'],
+  ['kn', 'Karnataka Red', 'Karnataka Crimson', '#DC2626', '#FF5A6E'],
+  ['or', 'Odisha Blue', 'Odisha Navy', '#1E40AF', '#6B8DE8'],
+  ['ml', 'Kerala Green', 'Kerala Forest', '#16A34A', '#3FAE6A'],
+  ['pa', 'Punjab Gold', 'Punjab Dark Gold', '#CA8A04', '#E0A82E'],
+  ['as', 'Assam Red', 'Assam Burgundy', '#B91C1C', '#E0556B'],
+  ['mai', 'Mithila Purple', 'Mithila Violet Night', '#7E22CE', '#A78BFA'],
+  ['sat', 'Ol Chiki Green', 'Ol Chiki Forest', '#0F8F4A', '#2FBF71'],
+  ['ks', 'Kashmir Sky', 'Kashmir Midnight', '#0EA5E9', '#6D8CFF'],
+  ['ne', 'Himalayan Blue', 'Himalayan Night', '#1D5FB8', '#5AA0F0'],
+  ['sd', 'Sindhi Turquoise', 'Sindhi Deep Teal', '#0D9488', '#1FA89A'],
+  ['doi', 'Dogri Orange', 'Dogri Ember', '#EA580C', '#FF6B35'],
+  ['kok', 'Konkan Coral', 'Konkan Deep Coral', '#E5533D', '#F07A66'],
+  ['mni', 'Meitei Royal Blue', 'Meitei Royal Night', '#2F4FD6', '#7A8CFF'],
+  ['brx', 'Bodo Forest', 'Bodo Deep Forest', '#1B7A3E', '#52C07A'],
+  ['sa', 'Sanskrit Gold', 'Sanskrit Dark Gold', '#B8860B', '#E5B83A'],
+  ['hinglish', 'AajExam Purple', 'AajExam Violet Night', '#7C3AED', '#A78BFA'],
+];
+
+export const LANGUAGE_THEME_PRESETS = LANGUAGE_THEME_DEFS.map(([lang, name, darkName, light, dark]) => (
+  { id: `lang-${lang}`, lang, name, darkName, light, dark }
+));
+THEME_PRESETS.push(...LANGUAGE_THEME_PRESETS);
+
+// Theme id that belongs to a UI language (English -> the default green).
+export const themeIdForLanguage = (code) => (
+  LANGUAGE_THEME_PRESETS.some((t) => t.lang === code) ? `lang-${code}` : DEFAULT_THEME_ID
+);
 
 export const DEFAULT_THEME_ID = 'green';
 

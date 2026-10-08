@@ -1921,6 +1921,10 @@ const HINGLISH = {
   '{name} Syllabus & Subjects': '{name} Syllabus aur Subjects',
   'English fonts': 'English fonts',
   'Hindi fonts': 'Hindi fonts',
+  // Landing hero
+  'Prepare Today.': 'Aaj Taiyari Karo.',
+  'Succeed Tomorrow.': 'Kal Safal Bano.',
+  'Practice smarter. Prepare better. Crack your exam.': 'Smart practice karo. Behtar taiyari karo. Apna exam crack karo.',
 };
 
 export default HINGLISH;

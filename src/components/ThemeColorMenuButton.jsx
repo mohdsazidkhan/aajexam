@@ -8,8 +8,9 @@ import { toast } from 'react-hot-toast';
 import API from '../lib/api';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import { getStoredTargetExamIds, notifyTargetExamsChanged } from '../lib/utils/targetExams';
-import { THEME_PRESETS } from '../lib/colorShades';
-import { ENGLISH_FONTS, HINDI_FONTS, DEFAULT_FONT, HINDI_FONT } from '../lib/googleFonts';
+import { THEME_PRESETS, LANGUAGE_THEME_PRESETS } from '../lib/colorShades';
+import { ENGLISH_FONTS, SCRIPT_FONTS, LANGUAGE_FONTS, DEFAULT_FONT, GOOGLE_FONTS, defaultFontForScript } from '../lib/googleFonts';
+import { LANGUAGES, getLanguage } from '../lib/i18n/languages';
 import { TEXT_SIZE_PRESETS } from '../lib/textSize';
 import { setThemeId } from '../store/themeColorSlice';
 import { setDarkMode } from '../store/darkModeSlice';
@@ -31,6 +32,14 @@ const THEME_OPTIONS = [
     { key: `${theme.id}-dark`, themeId: theme.id, isDark: true, label: theme.darkName, hex: theme.dark }
   )),
 ];
+const LANGUAGE_THEME_OPTIONS = [
+  ...LANGUAGE_THEME_PRESETS.map((theme) => (
+    { key: `${theme.id}-light`, themeId: theme.id, isDark: false, label: theme.name, hex: theme.light }
+  )),
+  ...LANGUAGE_THEME_PRESETS.map((theme) => (
+    { key: `${theme.id}-dark`, themeId: theme.id, isDark: true, label: theme.darkName, hex: theme.dark }
+  )),
+];
 
 const TARGET_TAB = { id: 'targets', label: 'Target Exams' };
 const TABS = [
@@ -39,15 +48,11 @@ const TABS = [
   { id: 'size', label: 'Text Size' },
   { id: 'language', label: 'Language' },
 ];
-// Hindi needs a font with proper Devanagari glyphs: switching to Hindi selects
-// Hind (unless a Hindi font is already chosen) and remembers the previous font,
-// which comes back on switching to English.
+// Indian scripts need a font with proper glyphs: switching to such a language selects that
+// script's font (unless one of its fonts is already chosen) and remembers the previous English
+// font, which comes back on switching to English or Hinglish.
 const FONT_BEFORE_HINDI_KEY = 'fontBeforeHindi';
-const LANGUAGE_OPTIONS = [
-  { code: 'en', label: 'English', native: 'English' },
-  { code: 'hi', label: 'Hindi', native: 'हिन्दी' },
-  { code: 'hinglish', label: 'Hinglish', native: 'Hinglish' },
-];
+const LANGUAGE_OPTIONS = LANGUAGES;
 
 // Drop-in replacement for the header's Sun/Moon dark-mode icon button.
 // Shows a swatch of the active theme+mode; clicking it opens a panel with two
@@ -57,7 +62,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const { translate, lang } = useTranslate();
   const themeId = useSelector((state) => state.themeColor?.themeId ?? 'green');
   const isDark = useSelector((state) => state.darkMode?.isDark ?? false);
-  const fontFamily = useSelector((state) => state.font?.fontFamily ?? 'Lato');
+  const fontFamily = useSelector((state) => state.font?.fontFamily ?? DEFAULT_FONT);
   const textSizeId = useSelector((state) => state.textSize?.sizeId ?? 'm');
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState('theme');
@@ -72,20 +77,23 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const activeTheme = THEME_PRESETS.find((t) => t.id === themeId) || THEME_PRESETS[0];
   const activeHex = isDark ? activeTheme.dark : activeTheme.light;
 
+  // All themes (general + per-language), sorted A to Z by name.
   const filteredThemeOptions = useMemo(() => {
     const query = search.trim().toLowerCase();
-    if (!query) return THEME_OPTIONS;
-    return THEME_OPTIONS.filter((option) => option.label.toLowerCase().includes(query));
+    const seen = new Set();
+    const all = [...THEME_OPTIONS, ...LANGUAGE_THEME_OPTIONS]
+      .filter((o) => !seen.has(o.key) && seen.add(o.key))
+      .sort((a, b) => a.label.localeCompare(b.label));
+    if (!query) return all;
+    return all.filter((option) => option.label.toLowerCase().includes(query));
   }, [search]);
 
-  const filteredFontGroups = useMemo(() => {
+  // One best font per language, shown as "Font - Language"; the current language's font first.
+  const filteredFonts = useMemo(() => {
     const query = search.trim().toLowerCase();
-    const match = (font) => !query || font.toLowerCase().includes(query);
-    return [
-      { id: 'en', label: 'English fonts', fonts: ENGLISH_FONTS.filter(match) },
-      { id: 'hi', label: 'Hindi fonts', fonts: HINDI_FONTS.filter(match) },
-    ].filter((group) => group.fonts.length);
-  }, [search]);
+    const list = LANGUAGE_FONTS.filter((f) => !query || f.font.toLowerCase().includes(query) || f.label.toLowerCase().includes(query));
+    return [...list].sort((x, y) => (y.code === lang) - (x.code === lang));
+  }, [search, lang]);
 
   // On open (logged-in users): load exams + current selection for the Target Exams tab.
   useEffect(() => {
@@ -144,20 +152,29 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
     setSearch('');
   };
 
-  const handleSelectFont = (font) => {
-    dispatch(setFontFamily(font));
+  // Picking a "Font - Language" entry also switches the site to that language (and keeps exactly that font).
+  const handleSelectFont = (item) => {
+    if (item.code !== lang) dispatch(setLanguage(item.code));
+    dispatch(setFontFamily(item.font));
     setOpen(false);
     setSearch('');
   };
 
   const handleSelectLanguage = (code) => {
     try {
-      if (code === 'hi' && !HINDI_FONTS.includes(fontFamily)) {
-        localStorage.setItem(FONT_BEFORE_HINDI_KEY, fontFamily);
-        dispatch(setFontFamily(HINDI_FONT));
-      } else if (code !== 'hi' && HINDI_FONTS.includes(fontFamily)) {
+      const next = getLanguage(code);
+      const current = getLanguage(lang);
+      const script = next.script;
+      const customised = fontFamily !== current.font; // the reader picked a font of their own
+      if (script !== 'latin') {
+        if (!SCRIPT_FONTS[script].includes(fontFamily) || (code !== lang && !customised)) {
+          // remember the English font only, so hopping between two Indian languages keeps it
+          if (ENGLISH_FONTS.includes(fontFamily)) localStorage.setItem(FONT_BEFORE_HINDI_KEY, fontFamily);
+          dispatch(setFontFamily(next.font || defaultFontForScript(script)));
+        }
+      } else if (GOOGLE_FONTS.includes(fontFamily) && !ENGLISH_FONTS.includes(fontFamily)) {
         const previous = localStorage.getItem(FONT_BEFORE_HINDI_KEY);
-        dispatch(setFontFamily(ENGLISH_FONTS.includes(previous) ? previous : DEFAULT_FONT));
+        dispatch(setFontFamily(ENGLISH_FONTS.includes(previous) ? previous : next.font || DEFAULT_FONT));
         localStorage.removeItem(FONT_BEFORE_HINDI_KEY);
       }
     } catch {
@@ -348,39 +365,36 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'font' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
-                  {filteredFontGroups.length === 0 && (
+                  {filteredFonts.length === 0 && (
                     <p className="text-sm text-slate-400 text-center py-4">{translate('No font found')}</p>
                   )}
-                  {filteredFontGroups.map((group) => (
-                    <div key={group.id} className="pb-3">
-                      <p className="text-[11px] font-black uppercase tracking-wide text-slate-400 px-1 pb-2">{translate(group.label)}</p>
-                      <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
-                        {group.fonts.map((font, index) => {
-                          const isSelected = font === fontFamily;
-                          return (
-                            <button
-                              key={font}
-                              type="button"
-                              onClick={() => handleSelectFont(font)}
-                              style={isSelected ? { backgroundColor: activeHex } : undefined}
-                              className={`w-full flex items-center gap-2 px-2 py-2 rounded-xl text-sm font-semibold transition-all ${
-                                isSelected
-                                  ? 'text-white'
-                                  : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                              }`}
-                            >
-                              <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
-                              <Type className={`w-4 h-4 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
-                              <span className="flex-1 text-left truncate">{font}</span>
-                              {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
+                  <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
+                    {filteredFonts.map((item, index) => {
+                      // fonts are shared between languages of one script, so the row of the active language is the selected one
+                      const isSelected = item.code === lang;
+                      return (
+                        <button
+                          key={item.code}
+                          type="button"
+                          onClick={() => handleSelectFont(item)}
+                          style={isSelected ? { backgroundColor: activeHex } : undefined}
+                          className={`w-full flex items-center gap-2 px-2 py-2 rounded-xl text-sm font-semibold transition-all ${
+                            isSelected
+                              ? 'text-white'
+                              : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                          }`}
+                        >
+                          <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
+                          <Type className={`w-4 h-4 flex-shrink-0 ${isSelected ? 'text-white/90' : 'text-slate-400'}`} />
+                          <span className="flex-1 text-left truncate">{item.font} - {item.label}</span>
+                          {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
+
 
               {tab === 'language' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
@@ -406,8 +420,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                           <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
                           <span className="flex-1 text-left">
                             <span className="block text-sm font-semibold">{option.native}</span>
-                            {option.native !== option.label && (
-                              <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>{option.label}</span>
+                            {(option.native !== option.label || option.speakers) && (
+                              <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
+                                {option.native !== option.label ? option.label : ''}
+                                {option.speakers ? `${option.native !== option.label ? ' · ' : ''}${option.speakers} Avg. Population` : ''}
+                              </span>
                             )}
                           </span>
                           {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}

@@ -332,3 +332,28 @@ html[lang="hi"] .btn-label {
   position: relative;
   top: 0.12em;
 }
+
+/* Urdu (Noto Nastaliq Urdu): the script has very tall stacked letter shapes, so on a two-line heading the lines
+   collided at the tight line-heights of the English design. Give every text line generous room while the
+   language is Urdu (html[lang="ur"]). Titles that wrap to two lines need the most. */
+html[lang="ur"] body {
+  line-height: 2;
+}
+html[lang="ur"] :is(p, li, span, a, label, button) {
+  line-height: 2;
+}
+html[lang="ur"] :is(h1, h2, h3, h4, h5, h6),
+html[lang="ur"] [class*="leading-"] {
+  line-height: 2.2 !important;
+}
+html[lang="ur"] :is(h1, h2) {
+  line-height: 2.5 !important;
+  padding-block: 0.1em;
+}
+html[lang="ur"] .tracking-tighter,
+html[lang="ur"] .tracking-tight,
+html[lang="ur"] .tracking-wide,
+html[lang="ur"] .tracking-wider,
+html[lang="ur"] .tracking-widest {
+  letter-spacing: 0 !important; /* letter-spacing breaks the joined Arabic-script letters */
+}

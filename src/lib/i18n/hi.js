@@ -1933,6 +1933,10 @@ const HI = {
   '{name} Syllabus & Subjects': '{name} सिलेबस और विषय',
   'English fonts': 'अंग्रेज़ी फ़ॉन्ट',
   'Hindi fonts': 'हिंदी फ़ॉन्ट',
+  // Landing hero
+  'Prepare Today.': 'आज तैयारी करें।',
+  'Succeed Tomorrow.': 'कल सफल बनें।',
+  'Practice smarter. Prepare better. Crack your exam.': 'समझदारी से अभ्यास करें। बेहतर तैयारी करें। अपनी परीक्षा निकालें।',
 };
 
 export default HI;

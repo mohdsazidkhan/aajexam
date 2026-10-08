@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { applyFont, DEFAULT_FONT, sanitizeFont } from '../lib/googleFonts';
+import { getLanguage } from '../lib/i18n/languages';
+
+// Script of the saved site language, so an unknown saved font falls back to a font that can show it.
+const savedScript = () => getLanguage(localStorage.getItem('pageLanguage')).script;
 
 const getInitialFont = () => {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem('fontFamily');
-    if (saved) return sanitizeFont(saved, localStorage.getItem('pageLanguage'));
+    if (saved) return sanitizeFont(saved, savedScript());
   }
   return DEFAULT_FONT;
 };
@@ -26,7 +30,7 @@ const fontSlice = createSlice({
       // Re-read from localStorage on client to fix SSR hydration mismatch,
       // same rationale as initializeDarkMode/initializeThemeColor.
       if (typeof window !== 'undefined') {
-        const saved = sanitizeFont(localStorage.getItem('fontFamily') || DEFAULT_FONT, localStorage.getItem('pageLanguage'));
+        const saved = sanitizeFont(localStorage.getItem('fontFamily') || DEFAULT_FONT, savedScript());
         state.fontFamily = saved;
         applyFont(saved);
       }

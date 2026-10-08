@@ -183,9 +183,8 @@ export const useTheme = () => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) return savedTheme;
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
     }
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {
@@ -199,7 +198,7 @@ export const useTheme = () => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleMediaChange = (e) => {
       if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light');
+        setTheme('dark'); // dark stays the default, whatever the system says
       }
     };
 
@@ -224,12 +223,11 @@ export const getCurrentTheme = () => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) return savedTheme;
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
     }
-    return 'light';
+    return 'dark';
   } catch (error) {
     console.error('Error getting current theme:', error);
-    return 'light';
+    return 'dark';
   }
 };
 

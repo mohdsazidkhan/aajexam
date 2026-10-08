@@ -119,16 +119,16 @@ const ModernLandingPage = () => {
 
                   <div className="space-y-2 xl:space-y-4">
                      <h1
-                        className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.9] xl:leading-[0.85] text-slate-900 dark:text-white"
+                        className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[1.05] xl:leading-[1] text-slate-900 dark:text-white"
                      >
-                        {rich('Practice for <0>Exams</0>', [(c) => <span className="text-primary-600">{c}</span>])}
-                        <p className="text-primary-600">{translate('You Study. You Win.')}</p>
+                        {translate('Prepare Today.')}
+                        <p className="text-primary-600">{translate('Succeed Tomorrow.')}</p>
                      </h1>
 
                      <p
                         className="text-base xl:text-xl xl:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 xl:px-4"
                      >
-                        {translate('Practice daily for government exams and track your improvement.')}
+                        {translate('Practice smarter. Prepare better. Crack your exam.')}
 
                      </p>
                   </div>

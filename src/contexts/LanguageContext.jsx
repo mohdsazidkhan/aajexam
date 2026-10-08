@@ -5,7 +5,9 @@ import {
   setTranslations,
   setIsTranslating,
   initializeLanguage,
+  setLoadedLanguage,
 } from "../store/languageSlice";
+import { getLanguage, loadDictionary } from "../lib/i18n/languages";
 
 const LanguageContext = createContext();
 
@@ -25,8 +27,19 @@ export const LanguageProvider = ({ children }) => {
 
   // Keep <html lang> in step with the chosen UI language (screen readers, fonts).
   React.useEffect(() => {
-    document.documentElement.lang = currentLanguage === 'hi' ? 'hi' : currentLanguage === 'hinglish' ? 'hi-Latn' : 'en';
+    const current = getLanguage(currentLanguage);
+    document.documentElement.lang = current.htmlLang;
+    document.documentElement.dir = current.dir === 'rtl' ? 'rtl' : 'ltr';
   }, [currentLanguage]);
+
+  // Download the chosen language's dictionary; useTranslate re-renders once it is ready.
+  React.useEffect(() => {
+    let cancelled = false;
+    loadDictionary(currentLanguage).then(() => {
+      if (!cancelled) dispatch(setLoadedLanguage(currentLanguage));
+    });
+    return () => { cancelled = true; };
+  }, [currentLanguage, dispatch]);
   const isTranslating = useSelector((state) => state.language.isTranslating);
 
   React.useEffect(() => {

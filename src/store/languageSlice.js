@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { isSupportedLanguage } from '../lib/i18n/languages';
 
-// English, Hindi and Hinglish (Hindi in Roman script) are supported; older saved codes fall back to English.
-const normalizeLanguage = (lang) => (lang === 'hi' || lang === 'hinglish' ? lang : 'en');
+// Supported UI languages live in lib/i18n/languages.js; older or unknown saved codes fall back to English.
+const normalizeLanguage = (lang) => (isSupportedLanguage(lang) ? lang : 'en');
 
 const languageSlice = createSlice({
   name: 'language',
@@ -9,6 +10,8 @@ const languageSlice = createSlice({
     // Always 'en' on the first render so SSR and hydration match; the saved
     // choice is applied right after mount by initializeLanguage().
     currentLanguage: 'en',
+    // Language whose dictionary has finished downloading; useTranslate re-renders when it changes.
+    loadedLanguage: 'en',
     translations: {},
     isTranslating: false,
   },
@@ -18,6 +21,9 @@ const languageSlice = createSlice({
       if (typeof window !== 'undefined') {
         localStorage.setItem('pageLanguage', state.currentLanguage);
       }
+    },
+    setLoadedLanguage: (state, action) => {
+      state.loadedLanguage = action.payload;
     },
     setTranslations: (state, action) => {
       state.translations = action.payload;
@@ -37,6 +43,5 @@ const languageSlice = createSlice({
   },
 });
 
-export const { setLanguage, setTranslations, setIsTranslating, initializeLanguage } = languageSlice.actions;
+export const { setLanguage, setLoadedLanguage, setTranslations, setIsTranslating, initializeLanguage } = languageSlice.actions;
 export default languageSlice.reducer;
-

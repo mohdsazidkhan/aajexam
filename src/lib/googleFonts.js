@@ -1,23 +1,33 @@
-// Fonts offered in the Font Family tab: five English and five Hindi (Devanagari) fonts, all
-// with the bold/black (700-900) weights the site's design language relies on.
-export const DEFAULT_FONT = 'Lato';
-export const HINDI_FONT = 'Hind';
+import { LANGUAGES } from './i18n/languages';
 
-export const ENGLISH_FONTS = ['Lato', 'Inter', 'Poppins', 'Roboto', 'Open Sans'];
-export const HINDI_FONTS = ['Hind', 'Mukta', 'Noto Sans Devanagari', 'Baloo 2', 'Yantramanav'];
-export const GOOGLE_FONTS = [...ENGLISH_FONTS, ...HINDI_FONTS];
+// Font Family tab: one best font per site language, shown as "Font - Language" (Lato - English, Inter - Hinglish,
+// Hind - Hindi, ...). The font of each language is declared in lib/i18n/languages.js; choosing a language selects
+// it, and any other font in the list can still be picked by hand. All have the bold/black (700-900) weights the
+// site's design language relies on (a family without them just falls back to its heaviest weight).
+export const DEFAULT_FONT = 'Inter';
 
-// A font saved before the list was trimmed falls back to one that is still offered
-// (a Hindi font when the site language is Hindi).
-export function sanitizeFont(fontName, language) {
+export const LANGUAGE_FONTS = LANGUAGES.map((l) => ({ font: l.font, label: l.label, code: l.code, script: l.script }));
+export const GOOGLE_FONTS = [...new Set([DEFAULT_FONT, ...LANGUAGE_FONTS.map((f) => f.font)])];
+export const ENGLISH_FONTS = [...new Set([DEFAULT_FONT, ...LANGUAGE_FONTS.filter((f) => f.script === 'latin').map((f) => f.font)])];
+
+// Fonts that can show a script, in language order (the first one is the script's default).
+export const SCRIPT_FONTS = LANGUAGE_FONTS.reduce((acc, f) => {
+  if (f.script !== 'latin') (acc[f.script] ||= []).includes(f.font) || acc[f.script].push(f.font);
+  return acc;
+}, { latin: ENGLISH_FONTS });
+
+export const defaultFontForScript = (script) => (SCRIPT_FONTS[script] || ENGLISH_FONTS)[0];
+
+// A saved font that is no longer offered falls back to the font of the saved language's script.
+export function sanitizeFont(fontName, script) {
   if (GOOGLE_FONTS.includes(fontName)) return fontName;
-  return language === 'hi' ? HINDI_FONT : DEFAULT_FONT;
+  return defaultFontForScript(script);
 }
 
 const FONT_LINK_ID = 'dynamic-google-font';
 
 function loadGoogleFont(fontName) {
-  if (typeof document === 'undefined' || fontName === DEFAULT_FONT) return;
+  if (typeof document === 'undefined') return;
   const href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fontName).replace(/%20/g, '+')}:wght@400;500;600;700;800;900&display=swap`;
   let link = document.getElementById(FONT_LINK_ID);
   if (!link) {

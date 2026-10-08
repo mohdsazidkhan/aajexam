@@ -14,9 +14,8 @@ const getInitialDarkMode = () => {
   if (typeof window !== 'undefined') {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) return savedTheme === 'dark';
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return true;
   }
-  return process.env.NEXT_PUBLIC_DEFAULT_THEME === 'dark';
+  return true; // dark is the default until the user picks a mode
 };
 
 const darkModeSlice = createSlice({
@@ -60,8 +59,7 @@ const darkModeSlice = createSlice({
       // and re-reads the real preference before syncing the DOM.
       if (typeof window !== 'undefined') {
         const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        const shouldBeDark = savedTheme ? savedTheme === 'dark' : true;
         state.isDark = shouldBeDark;
         const root = window.document.documentElement;
         if (shouldBeDark) {
