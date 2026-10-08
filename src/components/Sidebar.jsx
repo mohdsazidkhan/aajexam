@@ -44,7 +44,6 @@ import {
   Award,
   MessageCircleQuestion,
   FolderTree,
-  Home,
   Landmark,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -114,7 +113,6 @@ const Sidebar = () => {
         { path: '/admin/interview-categories', icon: FolderTree, label: 'Interview Categories', key: 'interview-categories' },
         { path: '/admin/interview-questions', icon: MessageCircleQuestion, label: 'Interview Questions', key: 'interview-questions' },
         { path: '/admin/pyq', icon: FileText, label: 'PYQ Papers', key: 'pyq', isPro: true },
-        { path: '/admin/homepage-content', icon: Home, label: 'Homepage Content', key: 'homepage-content' },
       ]
     },
     {
