@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Only English ⇄ Hindi is supported; older saved codes fall back to English.
-const normalizeLanguage = (lang) => (lang === 'hi' ? 'hi' : 'en');
+// English, Hindi and Hinglish (Hindi in Roman script) are supported; older saved codes fall back to English.
+const normalizeLanguage = (lang) => (lang === 'hi' || lang === 'hinglish' ? lang : 'en');
 
 const languageSlice = createSlice({
   name: 'language',

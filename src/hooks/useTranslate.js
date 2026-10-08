@@ -3,6 +3,7 @@
 import { createElement, Fragment, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import HI from '../lib/i18n/hi';
+import HINGLISH from '../lib/i18n/hinglish';
 import { translateName } from '../lib/i18n/hiNames';
 
 // Looks up `text` (the English source string) in the Hindi dictionary.
@@ -12,7 +13,10 @@ import { translateName } from '../lib/i18n/hiNames';
 // substituted after the lookup, so the dictionary keys keep the {name} token.
 export const translateText = (lang, text, vars) => {
   let out = text;
-  if (lang === 'hi' && typeof text === 'string') out = HI[text] || text;
+  if (typeof text === 'string') {
+    if (lang === 'hi') out = HI[text] || text;
+    else if (lang === 'hinglish') out = HINGLISH[text] || text;
+  }
   if (vars && typeof out === 'string') {
     out = out.replace(/\{(\w+)\}/g, (m, k) => (vars[k] === undefined ? m : vars[k]));
   }
@@ -24,7 +28,10 @@ export const translateText = (lang, text, vars) => {
 export const translateNow = (text, vars) => {
   let lang = 'en';
   try {
-    if (typeof window !== 'undefined') lang = localStorage.getItem('pageLanguage') === 'hi' ? 'hi' : 'en';
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('pageLanguage');
+      if (saved === 'hi' || saved === 'hinglish') lang = saved;
+    }
   } catch {
     // storage blocked: stay on English
   }

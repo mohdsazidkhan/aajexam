@@ -46,6 +46,7 @@ const FONT_BEFORE_HINDI_KEY = 'fontBeforeHindi';
 const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English', native: 'English' },
   { code: 'hi', label: 'Hindi', native: 'हिन्दी' },
+  { code: 'hinglish', label: 'Hinglish', native: 'Hinglish' },
 ];
 
 // Drop-in replacement for the header's Sun/Moon dark-mode icon button.
@@ -154,7 +155,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
       if (code === 'hi' && !HINDI_FONTS.includes(fontFamily)) {
         localStorage.setItem(FONT_BEFORE_HINDI_KEY, fontFamily);
         dispatch(setFontFamily(HINDI_FONT));
-      } else if (code === 'en' && HINDI_FONTS.includes(fontFamily)) {
+      } else if (code !== 'hi' && HINDI_FONTS.includes(fontFamily)) {
         const previous = localStorage.getItem(FONT_BEFORE_HINDI_KEY);
         dispatch(setFontFamily(ENGLISH_FONTS.includes(previous) ? previous : DEFAULT_FONT));
         localStorage.removeItem(FONT_BEFORE_HINDI_KEY);
