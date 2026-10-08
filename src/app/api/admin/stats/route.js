@@ -39,7 +39,9 @@ export async function GET(req) {
 
         const now = new Date();
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const startOfYesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+        const last30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+        const startOfMonth =new Date(now.getFullYear(), now.getMonth(), 1);
 
         const [
             // Users
@@ -98,6 +100,8 @@ export async function GET(req) {
             bankDetails,
             walletBalanceAgg,
             expenseAgg,
+            newStudentsYesterday,
+            newStudentsLast30Days,
         ] = await Promise.all([
             // Users
             User.countDocuments({ role: 'student' }),
@@ -171,12 +175,16 @@ export async function GET(req) {
             Expense.aggregate([
                 { $group: { _id: null, total: { $sum: '$amount' } } },
             ]),
+            User.countDocuments({ role: 'student', createdAt: { $gte: startOfYesterday, $lt: startOfDay } }),
+            User.countDocuments({ role: 'student', createdAt: { $gte: last30Days } }),
         ]);
 
         return NextResponse.json({
             // Users
             students,
             newStudentsToday,
+            newStudentsYesterday,
+            newStudentsLast30Days,
             newStudentsThisMonth,
             activeUsersToday,
             activeUsersCurrentMonth: activeUsersToday, // backwards compat

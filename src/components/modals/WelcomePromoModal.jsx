@@ -12,6 +12,7 @@ const PROMO_FEATURES = [
   'Unlimited Practice Tests',
   'All Previous Year Papers (PYQs)',
   'Full-Length Mock Tests',
+  'All India Rank in All Exams & Quizzes',
   'All Quizzes, Subjects & Topics',
   'Daily Challenges & Revisions & Bookmarks',
 ];
@@ -89,13 +90,13 @@ const WelcomePromoModalInner = ({ onClose }) => {
             </div>
 
             <h2 className="text-lg xl:text-xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-1">
-              {translate('Sabke Liye PRO Ab FREE Hai!')}
+              {translate('PRO is now FREE for everyone!')}
             </h2>
             <p className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2 max-w-sm mx-auto">
-              {translate('Pehle se Register hain? Aapko PRO already FREE mil chuka hai, bas Login karein. Naye Hain? Sign Up karein aur turant PRO FREE paayein.')}
+              {translate('Already registered? You already have PRO for free, just log in. New here? Sign up and get PRO free instantly.')}
             </p>
             <p className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-primary-600 mb-4">
-              {translate('31 Dec 2026 Tak FREE')}
+              {translate('FREE till 31 Dec 2026')}
             </p>
 
             <div className="space-y-1.5 mb-4 text-left max-w-sm mx-auto">
@@ -104,7 +105,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
                   <div className="w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                   </div>
-                  {feature}
+                  {translate(feature)}
                 </div>
               ))}
             </div>
@@ -126,7 +127,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
               )}
               {isGoogleLoading ? translate('Signing in...') : translate('Get PRO Free Now')}
             </button>
-            <p className="mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-widest">{translate('Offer 31 Dec 2026 Tak Valid Hai')}</p>
+            <p className="mt-2 text-[9px] text-red-600 dark:text-red-500 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
           </div>
         </div>
       </motion.div>

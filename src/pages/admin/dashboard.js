@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { AdminDashboardSkeleton } from '../../components/admin/Skeletons';
+import { AdminMainDashboardSkeleton } from '../../components/admin/Skeletons';
 
 const DashboardPage = dynamic(() => import('../../components/pages/admin/DashboardPage'), {
   ssr: false,
-  loading: () => <AdminDashboardSkeleton />
+  loading: () => <div className="my-4"><AdminMainDashboardSkeleton /></div>
 });
 
 export default function Dashboard() {

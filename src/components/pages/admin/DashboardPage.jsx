@@ -40,7 +40,7 @@ import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import { getUserRole } from '../../../lib/utils/authUtils';
-import { AdminDashboardSkeleton } from '../../admin/Skeletons';
+import { AdminMainDashboardSkeleton } from '../../admin/Skeletons';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const formatINR = (n) => `₹${(n || 0).toLocaleString('en-IN')}`;
@@ -94,7 +94,8 @@ const DashboardPage = () => {
       accent: 'text-primary-600',
       cards: [
         { title: 'Total Students', count: stats.students || 0, link: '/admin/students', icon: Users, subtitle: `${stats.newStudentsThisMonth || 0} new this month` },
-        { title: 'New Today', count: stats.newStudentsToday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups today' },
+        { title: 'Yesterday Users', count: stats.newStudentsYesterday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups yesterday' },
+        { title: 'Today Users', count: stats.newStudentsToday || 0, link: '/admin/students', icon: UserPlus, subtitle: 'Signups today' },
         { title: 'Active Today', count: stats.activeUsersToday || 0, link: '/admin/analytics', icon: Activity, subtitle: 'Logged in today' },
         { title: 'Active PRO Users', count: stats.activeProUsers || 0, link: '/admin/subscriptions', icon: Crown, subtitle: 'Paid & not expired' },
         { title: 'Mentors', count: stats.mentors || 0, link: '/admin/mentors', icon: UserCheck, subtitle: `${stats.pendingMentors || 0} pending approval` },
@@ -157,9 +158,7 @@ const DashboardPage = () => {
   if (loading) {
     return (
       <div className="w-full text-slate-900 dark:text-white font-outfit my-4">
-        <div className="flex items-center justify-center h-64">
-          <AdminDashboardSkeleton />
-        </div>
+        <AdminMainDashboardSkeleton sectionCards={sections.map((s) => s.cards.length)} />
       </div>
     );
   }
@@ -184,15 +183,16 @@ const DashboardPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-8"
+        className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-5 gap-4 xl:gap-5 mb-8"
       >
         {[
           { label: 'TOTAL REVENUE', value: formatINR(stats.totalRevenue), subtitle: `${formatINR(stats.revenueThisMonth)} this month`, icon: Banknote, color: 'primary' },
           { label: 'TOTAL STUDENTS', value: (stats.students || 0).toLocaleString('en-IN'), subtitle: `${stats.activeUsersToday || 0} active today`, icon: Users, color: 'primary' },
-          { label: 'ACTIVE PRO', value: (stats.activeProUsers || 0).toLocaleString('en-IN'), subtitle: `${stats.activeSubscriptions || 0} active subscriptions`, icon: Crown, color: 'primary' },
+          { label: 'TOTAL ACTIVE PRO', value: (stats.activeProUsers || 0).toLocaleString('en-IN'), subtitle: `${stats.activeSubscriptions || 0} active subscriptions`, icon: Crown, color: 'primary' },
           { label: 'TEST COMPLETION', value: `${stats.testAttempts > 0 ? Math.round((stats.completedAttempts / stats.testAttempts) * 100) : 0}%`, subtitle: `${stats.completedAttempts || 0} of ${stats.testAttempts || 0} attempts`, icon: Sparkles, color: 'primary' },
+          { label: 'LAST 30 DAYS USERS', value: (stats.newStudentsLast30Days || 0).toLocaleString('en-IN'), subtitle: 'Signups in last 30 days', icon: UserPlus, color: 'primary' },
         ].map((item, idx) => (
-          <Card key={idx} variant="white" className="border-2 border-slate-100 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 xl:p-10 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
+          <Card key={idx} variant="white" className="border-2 border-slate-100 dark:border-white/5 shadow-sm bg-white/80 dark:bg-white/5 backdrop-blur-3xl p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-[2.5rem] group hover:border-primary-600/30 transition-all overflow-hidden relative">
             <div className="flex items-center justify-between relative z-10">
               <div>
                 <p className="text-primary-600 text-[10px] font-black uppercase tracking-[0.3em] mb-2">{item.label}</p>

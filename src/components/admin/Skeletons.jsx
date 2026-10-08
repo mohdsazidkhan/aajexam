@@ -44,6 +44,63 @@ export const AdminTableSkeleton = ({ rows = 8, columns = 6, showHeader = true, s
   </div>
 );
 
+// Main admin dashboard (/admin/dashboard): mirrors DashboardPage — 5 headline
+// KPI cards, sectioned metric-card grids, then the Quick Links panel.
+export const AdminMainDashboardSkeleton = ({ sectionCards = [8, 5, 9] }) => (
+  <div className="w-full font-outfit">
+    <div className="grid grid-cols-2 xl:grid-cols-5 gap-4 xl:gap-5 mb-8">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <div key={i} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-white/5 shadow-sm p-3 xl:p-6 rounded-lg xl:rounded-[2.5rem]">
+          <div className="flex items-center justify-between">
+            <div className="space-y-3">
+              <Sh className="h-2.5 w-24 rounded-full" />
+              <Sh className="h-8 xl:h-10 w-20 rounded-lg" />
+              <Sh className="h-2.5 w-28 rounded-full mt-6" />
+            </div>
+            <Sh className="w-10 h-10 xl:w-20 xl:h-20 rounded-lg xl:rounded-2xl" />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {sectionCards.map((count, s) => (
+      <div key={s} className="mb-8">
+        <div className="flex items-center gap-3 mb-3">
+          <Sh className="h-2.5 w-40 rounded-full" />
+          <div className="flex-1 h-px bg-slate-200 dark:bg-white/10" />
+        </div>
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6">
+          {Array.from({ length: count }).map((_, i) => (
+            <div key={i} className="bg-white dark:bg-slate-800 border-2 border-slate-100 dark:border-white/5 shadow-sm rounded-lg xl:rounded-[2rem] p-3 xl:p-5">
+              <div className="flex items-center justify-between mb-3">
+                <Sh className="w-10 h-10 xl:w-14 xl:h-14 rounded-2xl" />
+                <Sh className="h-6 w-12 rounded-lg" />
+              </div>
+              <Sh className="h-2 w-28 rounded-full mb-2" />
+              <Sh className="h-4 w-32 rounded-lg" />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div className="bg-white dark:bg-slate-900/40 rounded-lg xl:rounded-[3rem] p-3 xl:p-4 shadow-sm">
+      <div className="flex items-center gap-3 xl:gap-6 mb-4 px-3 xl:px-6 py-2 xl:py-4">
+        <Sh className="w-14 h-14 rounded-2xl" />
+        <div className="space-y-2">
+          <Sh className="h-2.5 w-24 rounded-full" />
+          <Sh className="h-8 w-48 rounded-lg" />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 xl:gap-6">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Sh key={i} className="h-20 w-full rounded-2xl" />
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 // Admin dashboard/analytics page: stat cards + chart area.
 export const AdminDashboardSkeleton = () => (
   <div className="space-y-6 xl:space-y-8 font-outfit w-full">
