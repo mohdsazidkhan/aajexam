@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import API from '../lib/api';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import { getStoredTargetExamIds, notifyTargetExamsChanged } from '../lib/utils/targetExams';
-import { THEME_PRESETS, LANGUAGE_THEME_PRESETS } from '../lib/colorShades';
+import { THEME_PRESETS } from '../lib/colorShades';
 import { ENGLISH_FONTS, SCRIPT_FONTS, LANGUAGE_FONTS, DEFAULT_FONT, GOOGLE_FONTS, defaultFontForScript } from '../lib/googleFonts';
 import { LANGUAGES, getLanguage } from '../lib/i18n/languages';
 import { TEXT_SIZE_PRESETS } from '../lib/textSize';
@@ -19,27 +19,15 @@ import { setTextSize } from '../store/textSizeSlice';
 import { setLanguage } from '../store/languageSlice';
 import useTranslate from '../hooks/useTranslate';
 
-// The ten offered themes: five light and five dark. Other presets stay defined (a saved
-// choice keeps working) but are not listed.
-const LIGHT_THEME_IDS = ['green', 'blue', 'indigo', 'teal', 'orange'];
-const DARK_THEME_IDS = ['green', 'blue', 'indigo', 'cyan', 'orange'];
+// The 24 offered themes: 12 light and 12 dark (AajExam Default Light / Default Dark first).
+// Other presets stay defined (a saved choice keeps working) but are not listed.
+const OFFERED_THEME_IDS = ['green', 'blue', 'indigo', 'orange', 'cyan', 'red', 'rose', 'emerald', 'amber', 'teal', 'purple', 'magenta'];
 const presetById = (id) => THEME_PRESETS.find((theme) => theme.id === id);
-const THEME_OPTIONS = [
-  ...LIGHT_THEME_IDS.map((id) => presetById(id)).filter(Boolean).map((theme) => (
-    { key: `${theme.id}-light`, themeId: theme.id, isDark: false, label: theme.name, hex: theme.light }
-  )),
-  ...DARK_THEME_IDS.map((id) => presetById(id)).filter(Boolean).map((theme) => (
-    { key: `${theme.id}-dark`, themeId: theme.id, isDark: true, label: theme.darkName, hex: theme.dark }
-  )),
-];
-const LANGUAGE_THEME_OPTIONS = [
-  ...LANGUAGE_THEME_PRESETS.map((theme) => (
-    { key: `${theme.id}-light`, themeId: theme.id, isDark: false, label: theme.name, hex: theme.light }
-  )),
-  ...LANGUAGE_THEME_PRESETS.map((theme) => (
-    { key: `${theme.id}-dark`, themeId: theme.id, isDark: true, label: theme.darkName, hex: theme.dark }
-  )),
-];
+const OFFERED_PRESETS = OFFERED_THEME_IDS.map(presetById).filter(Boolean);
+const lightOption = (theme) => ({ key: `${theme.id}-light`, themeId: theme.id, isDark: false, label: theme.name, hex: theme.light });
+const darkOption = (theme) => ({ key: `${theme.id}-dark`, themeId: theme.id, isDark: true, label: theme.darkName, hex: theme.dark });
+// Each colour's Dark and Light sit side by side, the default green pair first.
+const THEME_OPTIONS = OFFERED_PRESETS.flatMap((theme) => [darkOption(theme), lightOption(theme)]);
 
 const TARGET_TAB = { id: 'targets', label: 'Target Exams' };
 const TABS = [
@@ -77,15 +65,11 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const activeTheme = THEME_PRESETS.find((t) => t.id === themeId) || THEME_PRESETS[0];
   const activeHex = isDark ? activeTheme.dark : activeTheme.light;
 
-  // All themes (general + per-language), sorted A to Z by name.
+  // The 24 themes, in the fixed order defined above (defaults first).
   const filteredThemeOptions = useMemo(() => {
     const query = search.trim().toLowerCase();
-    const seen = new Set();
-    const all = [...THEME_OPTIONS, ...LANGUAGE_THEME_OPTIONS]
-      .filter((o) => !seen.has(o.key) && seen.add(o.key))
-      .sort((a, b) => a.label.localeCompare(b.label));
-    if (!query) return all;
-    return all.filter((option) => option.label.toLowerCase().includes(query));
+    if (!query) return THEME_OPTIONS;
+    return THEME_OPTIONS.filter((option) => option.label.toLowerCase().includes(query));
   }, [search]);
 
   // One best font per language, shown as "Font - Language"; the current language's font first.
