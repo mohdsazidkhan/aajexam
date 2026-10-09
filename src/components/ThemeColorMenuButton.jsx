@@ -13,7 +13,7 @@ import { ENGLISH_FONTS, SCRIPT_FONTS, LANGUAGE_FONTS, DEFAULT_FONT, GOOGLE_FONTS
 import { LANGUAGES, getLanguage } from '../lib/i18n/languages';
 import { TEXT_SIZE_PRESETS } from '../lib/textSize';
 import { setThemeId } from '../store/themeColorSlice';
-import { setDarkMode } from '../store/darkModeSlice';
+import { setDarkMode, setFollowSystem } from '../store/darkModeSlice';
 import { setFontFamily } from '../store/fontSlice';
 import { setTextSize } from '../store/textSizeSlice';
 import { setLanguage } from '../store/languageSlice';
@@ -50,6 +50,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const { translate, lang } = useTranslate();
   const themeId = useSelector((state) => state.themeColor?.themeId ?? 'green');
   const isDark = useSelector((state) => state.darkMode?.isDark ?? false);
+  const followSystem = useSelector((state) => state.darkMode?.followSystem ?? false);
   const fontFamily = useSelector((state) => state.font?.fontFamily ?? DEFAULT_FONT);
   const textSizeId = useSelector((state) => state.textSize?.sizeId ?? 'm');
   const [open, setOpen] = useState(false);
@@ -131,7 +132,8 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
   const handleSelectTheme = (option) => {
     dispatch(setThemeId(option.themeId));
-    dispatch(setDarkMode(option.isDark));
+    // with "follow system" on, only the colour changes; the device decides Dark or Light
+    if (!followSystem) dispatch(setDarkMode(option.isDark));
     setOpen(false);
     setSearch('');
   };
@@ -223,7 +225,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               exit={{ y: '100%' }}
               transition={{ type: 'tween', duration: 0.25, ease: 'easeOut' }}
               role="menu"
-              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[70vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
+              className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
                 <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
@@ -245,15 +247,35 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                 </div>
 
                 {tab !== 'size' && tab !== 'language' && (
-                  <div className="relative px-1">
-                    <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : translate('Search font...')}
-                      className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
-                    />
+                  <div className="flex items-center gap-2 px-1">
+                    <div className="relative flex-1 min-w-0">
+                      <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder={tab === 'theme' ? translate('Search theme...') : tab === 'targets' ? translate('Search exam...') : translate('Search font...')}
+                        className="w-full pl-9 pr-3 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-normal outline-none focus:ring-2 focus:ring-primary-500/50"
+                      />
+                    </div>
+                    {tab === 'theme' && (
+                      <button
+                        type="button"
+                        role="switch"
+                        aria-checked={followSystem}
+                        onClick={() => dispatch(setFollowSystem(!followSystem))}
+                        title={translate('Follow your device setting')}
+                        className="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-black text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800"
+                      >
+                        <span className="whitespace-nowrap">{translate('Auto Dark / Light')}</span>
+                        <span
+                          className="relative w-9 h-5 rounded-full flex-shrink-0 transition-colors"
+                          style={{ backgroundColor: followSystem ? activeHex : '#94a3b8' }}
+                        >
+                          <span className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${followSystem ? 'translate-x-4' : ''}`} />
+                        </span>
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
@@ -323,7 +345,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         type="button"
                         onClick={() => handleSelectTheme(option)}
                         style={isSelected ? { backgroundColor: option.hex } : undefined}
-                        className={`w-full flex items-center gap-2 px-2 py-2 rounded-xl text-sm font-semibold transition-all ${
+                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                           isSelected
                             ? 'text-white'
                             : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -362,7 +384,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                           type="button"
                           onClick={() => handleSelectFont(item)}
                           style={isSelected ? { backgroundColor: activeHex } : undefined}
-                          className={`w-full flex items-center gap-2 px-2 py-2 rounded-xl text-sm font-semibold transition-all ${
+                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                             isSelected
                               ? 'text-white'
                               : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -383,8 +405,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               {tab === 'language' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
                   <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
-                    {translate('Choose the language for menus, buttons and pages.')}{' '}
-                    {translate('Quiz and test questions have their own EN / हिं switch.')}
+                    {translate('Choose your website language. Tests and quizzes are available in English and Hindi only.')}
                   </p>
                   <div className="grid grid-cols-1 xl:grid-cols-4 gap-2">
                     {LANGUAGE_OPTIONS.map((option, index) => {
@@ -403,11 +424,12 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                         >
                           <span className="w-6 text-[10px] font-black opacity-60 flex-shrink-0 text-left">{index + 1}.</span>
                           <span className="flex-1 text-left">
-                            <span className="block text-sm font-semibold">{option.native}</span>
+                            <span className="block text-sm font-semibold">
+                              {option.native}{option.speakers ? ' - Avg. Population' : ''}
+                            </span>
                             {(option.native !== option.label || option.speakers) && (
                               <span className={`block text-xs ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
-                                {option.native !== option.label ? option.label : ''}
-                                {option.speakers ? `${option.native !== option.label ? ' · ' : ''}${option.speakers} Avg. Population` : ''}
+                                {option.label}{option.speakers ? ` - ${option.speakers}` : ''}
                               </span>
                             )}
                           </span>

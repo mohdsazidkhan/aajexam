@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import store from '../store';
-import { initializeDarkMode } from '../store/darkModeSlice';
+import { initializeDarkMode, syncSystemTheme } from '../store/darkModeSlice';
 import { initializeThemeColor } from '../store/themeColorSlice';
 import { initializeFont } from '../store/fontSlice';
 import { initializeTextSize } from '../store/textSizeSlice';
@@ -117,6 +117,14 @@ function AppContent({ Component, pageProps }) {
     dispatch(initializeTextSize());
   }, [dispatch]);
 
+  // Auto Dark/Light: follow the device setting live while "follow system" is on.
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const onChange = () => dispatch(syncSystemTheme());
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, [dispatch]);
+
   useEffect(() => {
     const handleRouteChange = (url) => gtag.pageview(url);
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -194,6 +202,10 @@ function AppContent({ Component, pageProps }) {
           (function() {
             try {
               var theme = localStorage.getItem('theme');
+              var follow = localStorage.getItem('themeFollowSystem');
+              if (follow === '1' || (follow === null && !theme)) {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+              }
               if (theme === 'dark' || !theme) {
                 document.documentElement.classList.add('dark');
               } else {
