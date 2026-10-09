@@ -334,6 +334,9 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'theme' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
+                  <p className="col-span-full text-xs font-semibold text-slate-400 px-1 pb-1">
+                    {translate('Pick a colour with Dark or Light mode, or turn on Auto to follow your device.')}
+                  </p>
                   {filteredThemeOptions.length === 0 && (
                     <p className="col-span-full text-sm text-slate-400 text-center py-4">{translate('No theme found')}</p>
                   )}
@@ -371,6 +374,9 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'font' && (
                 <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
+                  <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                    {translate('Choose a font for the whole website. Picking one also switches to that language.')}
+                  </p>
                   {filteredFonts.length === 0 && (
                     <p className="text-sm text-slate-400 text-center py-4">{translate('No font found')}</p>
                   )}
@@ -443,6 +449,9 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
 
               {tab === 'size' && (
                 <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 xl:grid-cols-4 gap-2 content-start px-4 pb-6">
+                  <p className="col-span-full text-xs font-semibold text-slate-400 px-1 pb-1">
+                    {translate('Choose how large the text appears across the website.')}
+                  </p>
                   {TEXT_SIZE_PRESETS.map((preset, index) => {
                     const isSelected = preset.id === textSizeId;
                     return (
