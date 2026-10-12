@@ -86,9 +86,9 @@ const PublicNavbar = () => {
                   const isActive = router.pathname === link.href;
                   return (
                     <Link title={translate(link.title)} key={link.href} href={link.href}>
-                      <button className={`relative px-2.5 py-2 rounded-lg xl:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                      <button className={`relative px-2.5 py-2 rounded-lg xl:rounded-xl text-sm font-black uppercase tracking-[0.06em] transition-all group ${isActive ? 'text-white' : 'text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
                         {isActive && (
-                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-white dark:bg-slate-900 rounded-lg xl:rounded-xl shadow-sm border border-slate-200/50 dark:border-slate-700/50" />
+                          <motion.div layoutId="nav-glow" className="absolute inset-0 bg-primary-600 rounded-lg xl:rounded-xl shadow-sm" />
                         )}
                         <span className="relative z-10 flex items-center gap-2">
                           {translate(link.label)}
