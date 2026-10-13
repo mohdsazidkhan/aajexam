@@ -1,16 +1,11 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 
-import LandingPageSkeleton from '../components/LandingPageSkeleton';
 import { generateOrganizationSchema, generateWebsiteSchema } from '../utils/schema';
 
 import Seo from '../components/Seo';
 import dbConnect from '../lib/db';
 
-const LandingPage = dynamic(() => import('../components/pages/ModernLandingPage'), {
-  ssr: false,
-  loading: () => <LandingPageSkeleton />
-});
+import LandingPage from '../components/pages/ModernLandingPage';
 
 export default function Index({ educationalContent, isAuthenticated }) {
   return (

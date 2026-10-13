@@ -66,7 +66,7 @@ const ForgotPasswordPage = () => {
                     <CircleCheck className="w-10 h-10" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-black uppercase">Link Sent!</h3>
+                    <h2 className="text-xl font-black uppercase">Link Sent!</h2>
                     <p className="text-sm font-bold text-gray-500">Check your inbox for instructions to reset your password.</p>
                   </div>
                   <Link href="/login" className="block">

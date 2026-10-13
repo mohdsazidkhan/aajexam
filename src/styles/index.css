@@ -18,7 +18,7 @@
 @layer base {
   :root {
     /* Font tokens */
-    --font-primary: var(--font-lato), Lato, 'Noto Sans', sans-serif;
+    --font-primary: var(--font-inter), 'Inter', var(--font-lato), Lato, 'Noto Sans', sans-serif;
 
     /* Central Theme Tokens - Light Mode */
     --bg-page: #f1f1f1;
@@ -26,7 +26,7 @@
     --bg-surface-secondary: #f1f5f9;
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --text-muted: #94a3b8;
+    --text-muted: #5b6b7f;
     --border-primary: #f1f5f9; /* border-slate-100 — single section-separator border */
     --border-secondary: #cbd5e1;
 
@@ -41,11 +41,11 @@
     --color-primary-300: #abdf8c;
     --color-primary-400: #79cc47;
     --color-primary-500: #45b800;
-    --color-primary-600: #3ca000;
-    --color-primary-700: #328400;
-    --color-primary-800: #286b00;
-    --color-primary-900: #1f5300;
-    --color-primary-950: #153700;
+    --color-primary-600: #328600;
+    --color-primary-700: #2a7000;
+    --color-primary-800: #225a00;
+    --color-primary-900: #1b4800;
+    --color-primary-950: #143500;
   }
 
   .dark {

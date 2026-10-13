@@ -45,7 +45,7 @@ const SystemUpdateModal = ({ isOpen, onClose }) => {
                 <p className="text-[10px] font-black uppercase tracking-widest text-primary-100 opacity-80 mt-1">{translate('Dedicated Exam Preparation Platform')}</p>
               </div>
             </div>
-            <button
+            <button aria-label={translate('Close')}
               onClick={handleClose}
               className="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-2xl flex items-center justify-center transition-all active:translate-y-1"
             >

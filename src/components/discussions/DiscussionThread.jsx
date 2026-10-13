@@ -143,12 +143,12 @@ function CommentItem({ item, onVote, onReply, onDelete, onFlag, isReply = false,
               </button>
             )}
             {!isOwner && (
-              <button onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Report')} onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
                 <Flag className="w-3.5 h-3.5" />
               </button>
             )}
             {isOwner && (
-              <button onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Delete')} onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             )}

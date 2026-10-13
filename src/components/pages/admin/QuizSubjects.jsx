@@ -94,8 +94,8 @@ const AdminQuizSubjects = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, sub) => (
         <div className="text-right">
-          <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button aria-label="Edit" onClick={() => openEdit(sub)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
+          <button aria-label="Delete" onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -208,8 +208,8 @@ const AdminQuizSubjects = () => {
               </div>
               <span className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${sub.isActive ? 'bg-primary-100 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white'}`}>{sub.isActive ? 'Active' : 'Inactive'}</span>
               <div className="flex gap-1 shrink-0">
-                <button onClick={() => openEdit(sub)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                <button onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                <button aria-label="Edit" onClick={() => openEdit(sub)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                <button aria-label="Delete" onClick={() => handleDelete(sub._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
               </div>
             </div>
           ))}
@@ -226,7 +226,7 @@ const AdminQuizSubjects = () => {
           <div className="p-6 w-full h-full overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Subject</h2>
-              <button onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
+              <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-4">
               <input required placeholder="Subject Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />

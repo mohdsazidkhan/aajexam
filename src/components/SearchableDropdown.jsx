@@ -95,7 +95,7 @@ const SearchableDropdown = ({
         />
         <div className="flex items-center gap-2 text-slate-400 flex-shrink-0">
           {value && !disabled && (
-            <button type="button" onClick={handleClear} className="hover:text-slate-600 dark:hover:text-slate-200">
+            <button aria-label={translate('Close')} type="button" onClick={handleClear} className="hover:text-slate-600 dark:hover:text-slate-200">
               <X className="w-4 h-4" />
             </button>
           )}

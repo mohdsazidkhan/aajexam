@@ -66,7 +66,7 @@ const ExitIntentModalInner = ({ onClose }) => {
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-primary-500/20 overflow-hidden"
       >
-        <button
+        <button aria-label={translate('Close')}
           onClick={onClose}
           className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition"
         >

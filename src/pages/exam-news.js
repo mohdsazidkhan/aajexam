@@ -138,7 +138,7 @@ const ExamNewsPage = () => {
                         {item.isPinned && <Pin className="w-3 h-3 text-black dark:text-white absolute -top-1 -right-1" />}
                       </div>
                       <div>
-                        <h3 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{item.title}</h3>
+                        <h2 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{item.title}</h2>
                         {item.exam?.name && <p className="text-[10px] font-bold text-content-muted uppercase mt-0.5">{item.exam.name}</p>}
                       </div>
                     </div>
@@ -171,7 +171,7 @@ const ExamNewsPage = () => {
           {news.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Megaphone className="w-20 h-20 text-slate-200 mx-auto" />
-              <h3 className="text-xl font-black text-slate-400 uppercase">{translate('No news found')}</h3>
+              <h2 className="text-xl font-black text-slate-400 uppercase">{translate('No news found')}</h2>
               <button onClick={() => { setType('all'); setSearch(''); setPage(1); }}
                 className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('View All')}</button>
             </div>

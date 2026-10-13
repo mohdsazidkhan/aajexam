@@ -203,7 +203,7 @@ const AdminBlogs = () => {
           <button onClick={() => handleTogglePinned(blog._id)} title="Toggle Pinned">
             <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
           </button>
-          <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white">
+          <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="text-black dark:text-white hover:text-black dark:hover:text-white">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
@@ -258,7 +258,7 @@ const AdminBlogs = () => {
             <button onClick={() => handleTogglePinned(blog._id)}>
               <Pin className={`w-4 h-4 ${blog.isPinned ? 'text-black dark:text-white fill-black dark:fill-white' : 'text-gray-400'}`} />
             </button>
-            <button onClick={() => handleDelete(blog._id)} className="text-black dark:text-white">
+            <button aria-label="Delete" onClick={() => handleDelete(blog._id)} className="text-black dark:text-white">
               <Trash2 className="w-4 h-4" />
             </button>
           </div>

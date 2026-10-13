@@ -241,7 +241,7 @@ const AdminCurrentAffairs = () => {
                       <h2 className="text-base font-bold text-slate-900 dark:text-white">{editId ? 'Edit Current Affair' : 'Add New Current Affair'}</h2>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Fill in the details below</p>
                     </div>
-                    <button onClick={() => { setShowForm(false); setEditId(null); }} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
+                    <button aria-label="Close" onClick={() => { setShowForm(false); setEditId(null); }} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
                   </div>
                   <div className="p-5 space-y-2 xl:space-y-4 overflow-y-auto flex-1">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

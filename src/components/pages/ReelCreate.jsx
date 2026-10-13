@@ -221,7 +221,7 @@ const ReelCreate = () => {
                   <motion.button key={rt.value} onClick={() => setType(rt.value)}
                     className={`p-2.5 xl:p-5 rounded-xl xl:rounded-2xl border-2 text-left transition-all ${rt.color}`}>
                     <rt.icon className="w-8 h-8 mb-3 opacity-70" />
-                    <h3 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{translate(rt.label)}</h3>
+                    <h2 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{translate(rt.label)}</h2>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{translate(rt.desc)}</p>
                   </motion.button>
                 ))}
@@ -297,7 +297,7 @@ const ReelCreate = () => {
                     {keyPoints.map((kp, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={kp} onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }} className={`flex-1 ${inputClass}`} />
-                        {keyPoints.length > 1 && <button type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
+                        {keyPoints.length > 1 && <button aria-label={translate('Delete')} type="button" onClick={() => setKeyPoints(keyPoints.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
                     <button type="button" onClick={() => setKeyPoints([...keyPoints, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
@@ -316,7 +316,7 @@ const ReelCreate = () => {
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <span className="text-xs text-slate-400 w-10">{translate('Step {n}', { n: i + 1 })}</span>
                         <input value={s} onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }} className={`flex-1 ${inputClass}`} />
-                        {steps.length > 1 && <button type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
+                        {steps.length > 1 && <button aria-label={translate('Delete')} type="button" onClick={() => setSteps(steps.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
                     <button type="button" onClick={() => setSteps([...steps, ''])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add')}</button>
@@ -332,7 +332,7 @@ const ReelCreate = () => {
                     {pollOptions.map((o, i) => (
                       <div key={i} className="flex items-center gap-2 mb-2">
                         <input value={o.text} onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }} placeholder={translate('Option {n}', { n: i + 1 })} className={`flex-1 ${inputClass}`} required={i < 2} />
-                        {pollOptions.length > 2 && <button type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
+                        {pollOptions.length > 2 && <button aria-label={translate('Delete')} type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}><Trash2 className="w-4 h-4 text-black dark:text-white" /></button>}
                       </div>
                     ))}
                     {pollOptions.length < 6 && <button type="button" onClick={() => setPollOptions([...pollOptions, { text: '' }])} className="text-xs text-black dark:text-white flex items-center gap-1"><Plus className="w-3 h-3" /> {translate('Add option')}</button>}
@@ -351,9 +351,9 @@ const ReelCreate = () => {
               {/* Audio & Duration — Instagram Style */}
               <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                  <h2 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
                     <Music className="w-4 h-4 text-black dark:text-white" /> Add Audio
-                  </h3>
+                  </h2>
                   {audioFile && (
                     <button type="button" onClick={() => { setAudioFile(''); if (audioPreviewRef.current) { audioPreviewRef.current.pause(); audioPreviewRef.current = null; } setAudioPlaying(null); }}
                       className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider">{translate('Remove')}</button>

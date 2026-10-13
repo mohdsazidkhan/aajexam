@@ -284,7 +284,7 @@ const PaymentHistoryPage = () => {
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <Receipt className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl xl:text-2xl font-black font-outfit">{translate('No payments yet')}</h3>
+                     <h2 className="text-xl xl:text-2xl font-black font-outfit">{translate('No payments yet')}</h2>
                      <p className="text-sm font-bold text-gray-400">{translate('Your payment transactions will appear here')}</p>
                   </div>
                ) : (

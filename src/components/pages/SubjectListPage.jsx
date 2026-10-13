@@ -136,7 +136,7 @@ const SubjectListPage = () => {
                       <BookMarked className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(sub.name)}</h3>
+                      <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(sub.name)}</h2>
                       {sub.description && <p className="text-[10px] font-bold text-content-muted line-clamp-1">{sub.description}</p>}
                     </div>
                   </div>
@@ -167,7 +167,7 @@ const SubjectListPage = () => {
           {filtered.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <BookOpen className="w-20 h-20 text-slate-200 mx-auto" />
-              <h3 className="text-xl font-black text-slate-400 uppercase">{translate('No subjects found')}</h3>
+              <h2 className="text-xl font-black text-slate-400 uppercase">{translate('No subjects found')}</h2>
               <button onClick={() => { setActiveFilter('all'); setSearch(''); }}
                 className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('View All')}</button>
             </div>

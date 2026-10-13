@@ -101,10 +101,10 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h3 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
               {translate('Explore')}
-            </h4>
+            </h3>
             <ul className="grid grid-cols-1 gap-4">
               {operationalLinks.map((link) => (
                 <li key={link.name}>
@@ -120,10 +120,10 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
+            <h3 className="text-xs font-black text-primary-600 uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse" />
               {translate('Legal')}
-            </h4>
+            </h3>
             <ul className="grid grid-cols-1 gap-4">
               {legalLinksMap.map((link) => (
                 <li key={link.name}>
@@ -139,10 +139,10 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
           </div>
 
           <div className="space-y-8">
-            <h4 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
+            <h3 className="text-xs font-black text-black dark:text-white uppercase tracking-[0.25em] flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
               {translate('Support')}
-            </h4>
+            </h3>
             <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-sm backdrop-blur-xl max-w-xs xl:max-w-none mx-auto sm:mx-0">
               <div className="p-5 space-y-5">
                 <a

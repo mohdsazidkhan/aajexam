@@ -190,8 +190,8 @@ const LocationsPage = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, s) => (
         <div className="text-right">
-          <button onClick={() => openEditState(s)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDeleteState(s)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button aria-label="Edit" onClick={() => openEditState(s)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
+          <button aria-label="Delete" onClick={() => handleDeleteState(s)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -210,8 +210,8 @@ const LocationsPage = () => {
     {
       key: 'actions', header: 'Actions', align: 'right', render: (_, c) => (
         <div className="text-right">
-          <button onClick={() => openEditCity(c)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDeleteCity(c)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button aria-label="Edit" onClick={() => openEditCity(c)} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg mr-1"><Edit3 className="w-4 h-4" /></button>
+          <button aria-label="Delete" onClick={() => handleDeleteCity(c)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -346,8 +346,8 @@ const LocationsPage = () => {
       </div>
       <StatusBadge isActive={item.isActive} />
       <div className="flex gap-1 shrink-0">
-        <button onClick={onEdit} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-        <button onClick={onDelete} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+        <button aria-label="Edit" onClick={onEdit} className="p-1.5 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+        <button aria-label="Delete" onClick={onDelete} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
       </div>
     </div>
   );
@@ -431,7 +431,7 @@ const LocationsPage = () => {
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                 <div className="p-6 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingState ? 'Edit' : 'Add'} State</h2>
-                  <button onClick={() => setStateModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
+                  <button aria-label="Close" onClick={() => setStateModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
                 </div>
                 <form onSubmit={handleStateSubmit} className="p-6 space-y-4">
                   <input required placeholder="State name" value={stateForm.name} onChange={e => setStateForm({ name: e.target.value })} className="w-full px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />
@@ -452,7 +452,7 @@ const LocationsPage = () => {
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ type: 'tween', duration: 0.2 }} className="relative w-full max-w-md bg-white dark:bg-[#0A0F1E] rounded-3xl border-2 border-slate-100 dark:border-white/10 shadow-2xl overflow-hidden">
                 <div className="p-6 border-b-2 border-slate-100 dark:border-white/5 flex items-center justify-between bg-slate-50/50 dark:bg-white/5">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">{editingCity ? 'Edit' : 'Add'} City</h2>
-                  <button onClick={() => setCityModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
+                  <button aria-label="Close" onClick={() => setCityModal(false)} className="p-3 bg-slate-100 dark:bg-white/5 text-slate-400 hover:text-black dark:hover:text-white rounded-xl transition-colors"><X className="w-5 h-5" /></button>
                 </div>
                 <form onSubmit={handleCitySubmit} className="p-6 space-y-4">
                   <input required placeholder="City name" value={cityForm.name} onChange={e => setCityForm({ ...cityForm, name: e.target.value })} className="w-full px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-sm font-semibold" />

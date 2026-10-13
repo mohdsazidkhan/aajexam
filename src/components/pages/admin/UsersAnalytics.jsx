@@ -334,7 +334,7 @@ const AdminUsersAnalytics = () => {
                                                     <div className="text-sm font-black text-primary-600">₹{(s.totalEarnings || 0).toLocaleString('en-IN')}</div>
                                                     <div className="text-[9px] font-bold text-slate-400 uppercase">Earnings</div>
                                                 </div>
-                                                <button onClick={() => goToUser(s._id)} className="p-2 bg-slate-100 dark:bg-slate-700 text-primary-600 rounded-lg shrink-0"><ArrowUpRight className="w-4 h-4" /></button>
+                                                <button aria-label="Open" onClick={() => goToUser(s._id)} className="p-2 bg-slate-100 dark:bg-slate-700 text-primary-600 rounded-lg shrink-0"><ArrowUpRight className="w-4 h-4" /></button>
                                             </div>
                                         ))}
                                     </div>

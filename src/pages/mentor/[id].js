@@ -242,7 +242,7 @@ export default function MentorProfilePage() {
             <input type="text" placeholder={translate('Ask a question...')} value={question} onChange={e => setQuestion(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAskQuestion()}
               className="flex-1 bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-700" />
-            <button onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
+            <button aria-label={translate('Send')} onClick={handleAskQuestion} disabled={askingQuestion || !question.trim()}
               className="px-4 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
               <Send className="w-4 h-4" />
             </button>
@@ -268,7 +268,7 @@ export default function MentorProfilePage() {
                         <input type="text" placeholder={translate('Write your answer...')} value={answerText} onChange={e => setAnswerText(e.target.value)}
                           onKeyDown={e => e.key === 'Enter' && handleAnswer(thread._id)}
                           className="flex-1 bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2 px-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none border border-slate-300 dark:border-slate-700" />
-                        <button onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
+                        <button aria-label={translate('Send')} onClick={() => handleAnswer(thread._id)} disabled={submittingAnswer || !answerText.trim()}
                           className="px-3 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold disabled:opacity-50 shrink-0">
                           <Send className="w-4 h-4" />
                         </button>

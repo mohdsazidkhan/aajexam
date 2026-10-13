@@ -554,7 +554,7 @@ const TestStart = ({ resolvedId } = {}) => {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          <button
+          <button aria-label={translate('Open menu')}
             className="xl:hidden p-3 sm:p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl"
             onClick={() => setShowPalette(true)}
           >

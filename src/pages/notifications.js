@@ -129,7 +129,7 @@ const NotificationsPage = () => {
                   <Inbox className="w-10 h-10 text-gray-400" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Inbox Empty')}</h3>
+                  <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Inbox Empty')}</h2>
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">{translate('You\'re all caught up with your academic updates!')}</p>
                 </div>
               </motion.div>
@@ -148,7 +148,7 @@ const NotificationsPage = () => {
 
                     <div className="flex-1 min-w-0 space-y-1">
                       <div className="flex items-center gap-2">
-                        {n.title && <h4 className={`text-sm font-black uppercase tracking-tight ${!n.isRead ? 'text-slate-900 dark:text-white' : 'text-gray-500'}`}>{n.title}</h4>}
+                        {n.title && <h3 className={`text-sm font-black uppercase tracking-tight ${!n.isRead ? 'text-slate-900 dark:text-white' : 'text-gray-500'}`}>{n.title}</h3>}
                         {!n.isRead && <span className="w-1.5 h-1.5 bg-primary-600 rounded-full animate-pulse shrink-0" />}
                       </div>
                       <p className={`text-xs font-bold leading-relaxed ${!n.isRead ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400'}`}>{n.description}</p>

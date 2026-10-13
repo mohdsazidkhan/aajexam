@@ -553,7 +553,7 @@ const AdminGovtExamResults = () => {
                         <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1.5 leading-none italic">{selectedAttempt.user?.name} // {selectedAttempt.practiceTest?.title}</p>
                       </div>
                     </div>
-                    <button onClick={() => setShowDetails(false)} className="p-2.5 bg-red-500/10 hover:bg-red-500/20 rounded-xl text-red-600 dark:text-red-400 transition-colors shadow-sm shrink-0"><X className="w-5 h-5" /></button>
+                    <button aria-label="Close" onClick={() => setShowDetails(false)} className="p-2.5 bg-red-500/10 hover:bg-red-500/20 rounded-xl text-red-600 dark:text-red-400 transition-colors shadow-sm shrink-0"><X className="w-5 h-5" /></button>
                   </div>
 
                   <div className="flex-1 overflow-y-auto p-3 xl:p-5 custom-scrollbar space-y-3 xl:space-y-5">

@@ -534,7 +534,7 @@ const SearchPage = () => {
                         }}
                      />
                      {query && (
-                        <button type="button" onClick={resetToBrowse} className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 rounded-full bg-slate-300 dark:bg-slate-600">
+                        <button aria-label={translate('Close')} type="button" onClick={resetToBrowse} className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 rounded-full bg-slate-300 dark:bg-slate-600">
                            <X className="w-3 h-3 text-white" />
                         </button>
                      )}

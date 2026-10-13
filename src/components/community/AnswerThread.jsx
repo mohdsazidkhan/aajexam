@@ -94,14 +94,14 @@ function AnswerItem({
       )}
       <div className="flex items-start gap-3">
         <div className="flex flex-col items-center gap-0.5 shrink-0">
-          <button
+          <button aria-label={translate('Like')}
             onClick={() => handleVote('up')}
             className={`p-1 rounded hover:bg-primary-100 dark:hover:bg-primary-900/30 transition ${myVote === 'up' ? 'text-primary-600' : 'text-slate-400'}`}
           >
             <ThumbsUp className="w-4 h-4" />
           </button>
           <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{upvotes - downvotes}</span>
-          <button
+          <button aria-label={translate('Dislike')}
             onClick={() => handleVote('down')}
             className={`p-1 rounded hover:bg-slate-100 dark:hover:bg-white/30 transition ${myVote === 'down' ? 'text-black dark:text-white' : 'text-slate-400'}`}
           >
@@ -153,12 +153,12 @@ function AnswerItem({
               </button>
             )}
             {!isOwner && (
-              <button onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Report')} onClick={() => onFlag(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
                 <Flag className="w-3.5 h-3.5" />
               </button>
             )}
             {isOwner && (
-              <button onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
+              <button aria-label={translate('Delete')} onClick={() => onDelete(item._id)} className="text-slate-400 hover:text-black dark:hover:text-white transition">
                 <Trash2 className="w-3.5 h-3.5" />
               </button>
             )}

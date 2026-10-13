@@ -84,7 +84,7 @@ const MentorsPage = () => {
                       {mentor.user?.name?.charAt(0) || 'M'}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h3>
+                      <h2 className="text-sm font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h2>
                       {mentor.isVerified && <span className="text-[9px] font-bold text-primary-600 flex items-center gap-1"><Shield className="w-3 h-3" /> {translate('Verified')}</span>}
                     </div>
                     <div className="flex items-center gap-1">

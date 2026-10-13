@@ -90,7 +90,7 @@ const QuizHistoryPage = () => {
                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto">
                         <BrainCircuit className="w-10 h-10 text-slate-300" />
                      </div>
-                     <h3 className="text-xl font-black text-slate-400">{translate('No quizzes attempted yet')}</h3>
+                     <h2 className="text-xl font-black text-slate-400">{translate('No quizzes attempted yet')}</h2>
                      <Button variant="primary" onClick={() => router.push('/quizzes')}>{translate('Start a Quiz')}</Button>
                   </div>
                ) : (
@@ -121,7 +121,7 @@ const QuizHistoryPage = () => {
 
                                     {/* Title */}
                                     <div className="space-y-1">
-                                       <h4 className="text-base font-black tracking-tight text-slate-900 dark:text-white line-clamp-1">{translateData(quiz?.title) || translate('Quiz')}</h4>
+                                       <h3 className="text-base font-black tracking-tight text-slate-900 dark:text-white line-clamp-1">{translateData(quiz?.title) || translate('Quiz')}</h3>
                                        <p className="text-[10px] font-bold text-slate-400">
                                           {quiz?.applicableExams?.map(e => e.name).join(', ') || ''}{quiz?.subject?.name ? ` · ${quiz.subject.name}` : ''}{quiz?.topic?.name ? ` · ${quiz.topic.name}` : ''}
                                        </p>

@@ -122,7 +122,7 @@ const ContactUs = ({ contactInfo = {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="relative z-10 space-y-6">
                            <div className="space-y-1">
-                              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">{translate('Follow Us')}</h4>
+                              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">{translate('Follow Us')}</h3>
                               <p className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Find Us on Social Media')}</p>
                            </div>
                            <div className="flex flex-wrap gap-4">
@@ -143,7 +143,7 @@ const ContactUs = ({ contactInfo = {
                               <Headset className="w-8 h-8" />
                            </div>
                            <div className="space-y-1">
-                              <h4 className="text-xl font-black font-outfit uppercase tracking-tight leading-none">{translate('We Are Here For You')}</h4>
+                              <h3 className="text-xl font-black font-outfit uppercase tracking-tight leading-none">{translate('We Are Here For You')}</h3>
                               <p className="text-xs font-medium opacity-90">{translate('Students always come first. We are ready to help.')}</p>
                            </div>
                         </div>
@@ -157,7 +157,7 @@ const ContactUs = ({ contactInfo = {
                         <div className="absolute top-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -ml-32 -mt-32" />
 
                         <div className="space-y-6 relative z-10">
-                           <h3 className="text-2xl xl:text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Send a Message')}</h3>
+                           <h2 className="text-2xl xl:text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Send a Message')}</h2>
                            <p className="text-xs xl:text-sm font-medium text-slate-500 dark:text-slate-400">{translate('We usually reply within 24 hours. Write to us anytime.')}</p>
                         </div>
 
@@ -246,7 +246,7 @@ const ContactUs = ({ contactInfo = {
                            <f.icon className="w-6 h-6" />
                         </div>
                         <div className="space-y-3">
-                           <h4 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">{translate(f.title)}</h4>
+                           <h3 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">{translate(f.title)}</h3>
                            <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed max-w-[200px] mx-auto">{translate(f.desc)}</p>
                         </div>
                      </Card>

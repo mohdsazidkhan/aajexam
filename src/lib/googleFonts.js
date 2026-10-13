@@ -41,6 +41,11 @@ function loadGoogleFont(fontName) {
 
 export function applyFont(fontName) {
   if (typeof document === 'undefined') return;
+  if (fontName === DEFAULT_FONT) {
+    // Self-hosted by next/font (lib/fonts.js): the stylesheet default already applies it.
+    document.documentElement.style.removeProperty('--font-primary');
+    return;
+  }
   loadGoogleFont(fontName);
-  document.documentElement.style.setProperty('--font-primary', `'${fontName}', var(--font-lato), sans-serif`);
+  document.documentElement.style.setProperty('--font-primary', `'${fontName}', var(--font-inter), var(--font-lato), sans-serif`);
 }

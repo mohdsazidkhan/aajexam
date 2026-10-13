@@ -409,7 +409,7 @@ const PaymentTransactions = () => {
                       </div>
                     </div>
 
-                    <button
+                    <button aria-label={translate('Toggle visibility')}
                       onClick={() => toggleTransactionDetails(transaction.id)}
                       className="self-end xl:self-auto p-2.5 xl:p-4 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1 transition-all"
                     >
@@ -424,10 +424,10 @@ const PaymentTransactions = () => {
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-8">
                       {/* Payment Details */}
                       <div className="bg-white dark:bg-slate-800 p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
-                        <h4 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
+                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
                           <FaCreditCard className="text-primary-600" />
                           {translate('Payment Details')}
-                        </h4>
+                        </h3>
                         <div className="space-y-2 xl:space-y-4">
                           {transaction.subscriptionName && (
                             <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
@@ -446,10 +446,10 @@ const PaymentTransactions = () => {
 
                       {/* Info Details */}
                       <div className="bg-white dark:bg-slate-800 p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
-                        <h4 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
+                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
                           <FaReceipt className="text-primary-600" />
                           {translate('Transaction Details')}
-                        </h4>
+                        </h3>
                         <div className="space-y-2 xl:space-y-4">
                           <div className="flex justify-between items-center text-[9px] xl:text-[10px] uppercase font-black tracking-widest">
                             <span className="text-slate-600 dark:text-slate-400">{translate('Type')}</span>
@@ -476,7 +476,7 @@ const PaymentTransactions = () => {
               {translate('Records {from}-{to} of {total}', { from: ((pagination.currentPage - 1) * filters.limit) + 1, to: Math.min(pagination.currentPage * filters.limit, pagination.totalCount), total: pagination.totalCount })}
             </div>
             <div className="flex items-center gap-2 xl:gap-3">
-              <button
+              <button aria-label={translate('Previous')}
                 onClick={() => handlePageChange(pagination.currentPage - 1)}
                 disabled={!pagination.hasPrev}
                 className="w-9 h-9 xl:w-12 xl:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
@@ -502,7 +502,7 @@ const PaymentTransactions = () => {
                 })}
               </div>
 
-              <button
+              <button aria-label={translate('Next')}
                 onClick={() => handlePageChange(pagination.currentPage + 1)}
                 disabled={!pagination.hasNext}
                 className="w-9 h-9 xl:w-12 xl:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"

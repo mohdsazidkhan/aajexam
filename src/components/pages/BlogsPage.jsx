@@ -115,9 +115,9 @@ const BlogsPage = () => {
               {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
               <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
             </div>
-            <h3 className="text-base xl:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
+            <h2 className="text-base xl:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
               {blog.title}
-            </h3>
+            </h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
               {truncateText(blog.excerpt || blog.content, 120)}
             </p>
@@ -160,9 +160,9 @@ const BlogsPage = () => {
                 </span>
               )}
             </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
               {blog.title}
-            </h3>
+            </h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">{truncateText(blog.excerpt || blog.content, 200)}</p>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
@@ -228,7 +228,7 @@ const BlogsPage = () => {
             <form onSubmit={handleSearch} className="relative">
               <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder={translate('Search blogs...')}
                 className="w-full xl:w-64 px-4 py-2 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
-              <button type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-600 text-white rounded-r-lg">
+              <button aria-label={translate('Search')} type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-600 text-white rounded-r-lg">
                 <Search className="w-4 h-4" />
               </button>
             </form>
@@ -241,7 +241,7 @@ const BlogsPage = () => {
         ) : (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">📝</div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{translate('No blogs found')}</h3>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{translate('No blogs found')}</h2>
             <p className="text-gray-600 dark:text-gray-300">{translate('Try adjusting your filters or check back later.')}</p>
           </div>
         )}

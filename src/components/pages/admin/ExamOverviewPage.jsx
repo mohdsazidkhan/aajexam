@@ -427,7 +427,7 @@ const ExamOverviewPage = () => {
                             )}
                           </td>
                           <td className="p-4 text-center">
-                            <button
+                            <button aria-label="Show"
                               onClick={() => router.push(`/admin/govt-exams/patterns?examId=${exam._id}`)}
                               className="p-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors tooltip"
                               data-tip="Manage Patterns"

@@ -452,7 +452,7 @@ const AdminGovtExamTests = () => {
                               <button onClick={() => setUploadMode(!uploadMode)} className={`px-3 xl:px-6 py-2 rounded-lg xl:rounded-xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${uploadMode ? 'bg-primary-600 text-white border-primary-600 shadow-sm' : 'bg-slate-100 dark:bg-white/5 text-slate-400 border-transparent hover:border-primary-500/30'}`}>
                                  {uploadMode ? 'Manual Entry' : 'Bulk JSON Upload'}
                               </button>
-                              <button onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
+                              <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
                            </div>
                         </div>
 
@@ -522,7 +522,7 @@ const AdminGovtExamTests = () => {
                                                          <span className="text-[8px] font-black text-white px-2 py-0.5 bg-slate-900 rounded-md uppercase tracking-tighter">Ans: {q.correctAnswerIndex + 1}</span>
                                                       </div>
                                                    </div>
-                                                   <button type="button" onClick={() => handleRemoveQuestion(i)} className="p-3 text-slate-300 hover:text-black dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-all opacity-0 group-hover:opacity-100"><Trash2 className="w-5 h-5" /></button>
+                                                   <button aria-label="Delete" type="button" onClick={() => handleRemoveQuestion(i)} className="p-3 text-slate-300 hover:text-black dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10 rounded-lg xl:rounded-xl transition-all opacity-0 group-hover:opacity-100"><Trash2 className="w-5 h-5" /></button>
                                                 </motion.div>
                                              ))}
                                           </AnimatePresence>

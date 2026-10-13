@@ -284,7 +284,7 @@ const AdminReelEdit = () => {
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <button onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
+              <button aria-label="Back" onClick={() => router.push('/admin/reels')} className="p-2 rounded-lg xl:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700">
                 <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
               </button>
               <div className="flex-1">
@@ -408,7 +408,7 @@ const AdminReelEdit = () => {
                         <input type="text" value={kp}
                           onChange={e => { const n = [...keyPoints]; n[i] = e.target.value; setKeyPoints(n); }}
                           className={`flex-1 ${inputClass}`} />
-                        <button type="button" onClick={() => { if (keyPoints.length > 1) setKeyPoints(keyPoints.filter((_, j) => j !== i)); }}
+                        <button aria-label="Delete" type="button" onClick={() => { if (keyPoints.length > 1) setKeyPoints(keyPoints.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
@@ -434,7 +434,7 @@ const AdminReelEdit = () => {
                         <input type="text" value={s}
                           onChange={e => { const n = [...steps]; n[i] = e.target.value; setSteps(n); }}
                           className={`flex-1 ${inputClass}`} />
-                        <button type="button" onClick={() => { if (steps.length > 1) setSteps(steps.filter((_, j) => j !== i)); }}
+                        <button aria-label="Delete" type="button" onClick={() => { if (steps.length > 1) setSteps(steps.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
@@ -448,7 +448,7 @@ const AdminReelEdit = () => {
                         <input type="text" value={t}
                           onChange={e => { const n = [...tryYourself]; n[i] = e.target.value; setTryYourself(n); }}
                           className={`flex-1 ${inputClass}`} />
-                        <button type="button" onClick={() => { if (tryYourself.length > 1) setTryYourself(tryYourself.filter((_, j) => j !== i)); }}
+                        <button aria-label="Delete" type="button" onClick={() => { if (tryYourself.length > 1) setTryYourself(tryYourself.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
@@ -493,7 +493,7 @@ const AdminReelEdit = () => {
                         <input type="text" value={row.value}
                           onChange={e => { const n = [...tableData]; n[i] = { ...n[i], value: e.target.value }; setTableData(n); }}
                           placeholder="Value" className={`flex-1 ${inputClass}`} />
-                        <button type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }}
+                        <button aria-label="Delete" type="button" onClick={() => { if (tableData.length > 1) setTableData(tableData.filter((_, j) => j !== i)); }}
                           className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                       </div>
                     ))}
@@ -524,7 +524,7 @@ const AdminReelEdit = () => {
                           onChange={e => { const n = [...pollOptions]; n[i] = { text: e.target.value }; setPollOptions(n); }}
                           placeholder={`Option ${i + 1}`} className={`flex-1 ${inputClass}`} />
                         {pollOptions.length > 2 && (
-                          <button type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}
+                          <button aria-label="Delete" type="button" onClick={() => setPollOptions(pollOptions.filter((_, j) => j !== i))}
                             className="p-1 text-black dark:text-white hover:text-black dark:hover:text-white"><Trash2 className="w-4 h-4" /></button>
                         )}
                       </div>

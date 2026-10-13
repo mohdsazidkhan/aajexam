@@ -276,7 +276,7 @@ const TestResult = ({ resolvedId } = {}) => {
               {/* Leaderboard */}
               <div className="space-y-2 xl:space-y-4">
                 <div className="flex items-end justify-between px-2 gap-2 flex-wrap">
-                  <h3 className="text-xl font-black font-outfit uppercase">{translate('Leaderboard')}</h3>
+                  <h2 className="text-xl font-black font-outfit uppercase">{translate('Leaderboard')}</h2>
                   {lbStats.totalParticipants > 0 && (
                     <span className="text-[11px] font-black text-gray-500 uppercase tracking-widest">
                       {lbStats.totalParticipants.toLocaleString('en-IN')} candidates · Top {Math.min(leaderboard.length, lbStats.totalParticipants)}
@@ -335,7 +335,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
               {/* Section breakdown */}
               <div className="space-y-2 xl:space-y-4">
-                <h3 className="text-xl font-black font-outfit uppercase px-2">{translate('Section Performance')}</h3>
+                <h2 className="text-xl font-black font-outfit uppercase px-2">{translate('Section Performance')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
                     <Card key={idx} className="border-2">
@@ -376,7 +376,7 @@ const TestResult = ({ resolvedId } = {}) => {
                         <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-black dark:text-white'}`}>
                           {isCorrect ? translate('PERFECT') : isSkipped ? translate('SKIPPED') : translate('INCORRECT')}
                         </span>
-                        <h4 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h4>
+                        <h3 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h3>
                       </div>
                       {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-black dark:text-white w-8 h-8" />}
                     </div>
@@ -439,7 +439,7 @@ const TestResult = ({ resolvedId } = {}) => {
         <section className="px-0 py-4 xl:py-8">
           <Card className="border-2 bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
-              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Flex your result')}</h3>
+              <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Flex your result')}</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
                 {result.rank && lbStats.totalParticipants > 0
                   ? translate('Share your All India Rank #{rank} of {total} with friends', { rank: result.rank, total: lbStats.totalParticipants.toLocaleString('en-IN') })

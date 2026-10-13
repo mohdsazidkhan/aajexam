@@ -94,11 +94,11 @@ const RefundPolicy = () => {
                            </div>
                            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                               <div className="p-4 xl:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-2 xl:space-y-4">
-                                 <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">No Refund Condition</h4>
+                                 <h3 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">No Refund Condition</h3>
                                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Access to the platform is provided regardless of your test performance or leaderboard rank.</p>
                               </div>
                               <div className="p-4 xl:p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 space-y-2 xl:space-y-4">
-                                 <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Content Access</h4>
+                                 <h3 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Content Access</h3>
                                  <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">Subscription fees cover access to study materials and practice tests, not guaranteed rewards.</p>
                               </div>
                            </div>
@@ -126,7 +126,7 @@ const RefundPolicy = () => {
                                     <item.icon className={`w-6 h-6 text-${item.color === 'primary' ? 'primary' : item.color}-500`} />
                                  </div>
                                  <div className="space-y-1">
-                                    <h4 className="text-[11px] font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h4>
+                                    <h3 className="text-[11px] font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h3>
                                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{item.body}</p>
                                  </div>
                               </div>
@@ -154,14 +154,14 @@ const RefundPolicy = () => {
                               <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-2 xl:space-y-4 hover:border-primary-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-primary-600">
                                     <TriangleAlert className="w-5 h-5" />
-                                    <h4 className="text-xs font-black uppercase tracking-widest">Double Payment</h4>
+                                    <h3 className="text-xs font-black uppercase tracking-widest">Double Payment</h3>
                                  </div>
                                  <p className="text-xs font-medium text-slate-400 leading-relaxed">When you are accidentally charged twice for the same plan.</p>
                               </div>
                               <div className="p-8 bg-white/5 rounded-[3rem] border-2 border-white/10 space-y-2 xl:space-y-4 hover:border-primary-500/30 transition-all">
                                  <div className="flex items-center gap-4 text-primary-600">
                                     <Zap className="w-5 h-5" />
-                                    <h4 className="text-xs font-black uppercase tracking-widest">Activation Failure</h4>
+                                    <h3 className="text-xs font-black uppercase tracking-widest">Activation Failure</h3>
                                  </div>
                                  <p className="text-xs font-medium text-slate-400 leading-relaxed">When payment is successful but features are not activated on your account.</p>
                               </div>

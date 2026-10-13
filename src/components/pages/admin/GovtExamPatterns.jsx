@@ -418,7 +418,7 @@ const AdminGovtExamPatterns = () => {
                   <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{editingPattern ? `Editing: ${editingPattern.title}` : 'Create a new exam pattern'}</p>
                 </div>
               </div>
-              <button onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
+              <button aria-label="Close" onClick={() => setShowModal(false)} className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg xl:rounded-xl transition-colors"><X className="w-6 h-6" /></button>
             </div>
             <div className="flex flex-col xl:flex-row flex-1 overflow-hidden">
               <div className="w-full xl:w-2/5 p-3 xl:p-8 border-r border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
@@ -461,7 +461,7 @@ const AdminGovtExamPatterns = () => {
                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{sec.totalQuestions} Qs x {sec.marksPerQuestion} pts | Neg: -{sec.negativePerQuestion}</p>
                           </div>
                         </div>
-                        <button onClick={() => handleRemoveSection(i)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"><Trash2 className="w-4 h-4" /></button>
+                        <button aria-label="Delete" onClick={() => handleRemoveSection(i)} className="p-3 bg-black/10 dark:bg-white/10 text-black dark:text-white rounded-lg xl:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"><Trash2 className="w-4 h-4" /></button>
                       </motion.div>
                     ))}
                   </div>

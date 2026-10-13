@@ -197,7 +197,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
                       <ShieldCheck className="w-4 xl:w-6 h-4 xl:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-md font-black text-content-primary uppercase tracking-tight">{translateData(exam.name)}</h3>
+                      <h2 className="text-md font-black text-content-primary uppercase tracking-tight">{translateData(exam.name)}</h2>
                       {exam.code && <p className="text-[10px] font-bold text-content-muted uppercase">{exam.code}</p>}
                     </div>
                   </div>
@@ -236,7 +236,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           {filteredExams.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Search className="w-20 h-20 text-gray-300 mx-auto" />
-              <h3 className="text-xl font-black text-gray-400 uppercase">{translate('No exams found')}</h3>
+              <h2 className="text-xl font-black text-gray-400 uppercase">{translate('No exams found')}</h2>
               <Button variant="primary" onClick={() => { setActiveFilter('all'); setSearchQuery(''); }}>{translate('View All')}</Button>
             </div>
           )}

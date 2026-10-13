@@ -93,7 +93,7 @@ const AdminBottomNav = () => {
                 </div>
                 <div className="flex items-center justify-between px-5 pb-3">
                   <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">Create</h3>
-                  <button onClick={() => setShowCreate(false)} className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800">
+                  <button aria-label="Close" onClick={() => setShowCreate(false)} className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800">
                     <X className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   </button>
                 </div>

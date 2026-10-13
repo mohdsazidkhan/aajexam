@@ -372,7 +372,7 @@ const AdminExpenses = () => {
                                         <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tighter italic mb-1 font-outfit leading-none">{isEditing ? 'Edit Expense' : 'Add Expense'}</h2>
                                         <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Enter the expense details below</p>
                                     </div>
-                                    <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+                                    <button aria-label="Close" onClick={() => setShowModal(false)} className="absolute top-2 right-2 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
                                         <X className="w-5 h-5" />
                                     </button>
                                 </div>

@@ -80,7 +80,7 @@ const ResetPasswordPage = () => {
                     <ShieldCheck className="w-10 h-10" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-black uppercase">Success!</h3>
+                    <h2 className="text-xl font-black uppercase">Success!</h2>
                     <p className="text-sm font-bold text-gray-500">Your security credentials have been updated. Redirecting you to the login gateway...</p>
                   </div>
                 </motion.div>

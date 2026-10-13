@@ -139,7 +139,7 @@ const NotesPage = () => {
                         <Icon className="w-6 h-6 text-white dark:text-black" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{note.title}</h3>
+                        <h2 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{note.title}</h2>
                         {note.subject?.name && (
                           <p className="text-[10px] font-bold text-content-muted uppercase mt-0.5">
                             {note.subject.name}{note.topic?.name ? ` › ${note.topic.name}` : ''}
@@ -173,7 +173,7 @@ const NotesPage = () => {
           {filtered.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <StickyNote className="w-20 h-20 text-slate-200 mx-auto" />
-              <h3 className="text-xl font-black text-slate-400 uppercase">{translate('No notes found')}</h3>
+              <h2 className="text-xl font-black text-slate-400 uppercase">{translate('No notes found')}</h2>
               <button onClick={() => { setType('all'); setSearch(''); }}
                 className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('View All')}</button>
             </div>

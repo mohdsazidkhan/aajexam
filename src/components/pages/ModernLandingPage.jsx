@@ -122,7 +122,7 @@ const ModernLandingPage = () => {
                         className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[1.05] xl:leading-[1] text-slate-900 dark:text-white"
                      >
                         {translate('Prepare Today.')}
-                        <p className="text-primary-600">{translate('Succeed Tomorrow.')}</p>
+                        <span className="block text-primary-600">{translate('Succeed Tomorrow.')}</span>
                      </h1>
 
                      <p
@@ -237,9 +237,9 @@ const ModernLandingPage = () => {
                            <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-2 xl:mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
                               <item.icon className={`w-8 h-8 ${item.color}`} />
                            </div>
-                           <h3 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
+                           <h2 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
                               {translate('Step {step}: {title}', { step: item.step, title: translate(item.title) })}
-                           </h3>
+                           </h2>
                            <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
                               {translate(item.desc)}
                            </p>

@@ -81,7 +81,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
 
         {news.importantDates?.length > 0 && (
           <Card className="space-y-2 bg-slate-100 dark:bg-slate-800">
-            <h3 className="text-sm font-black text-black dark:text-white">{translate('Important Dates')}</h3>
+            <h2 className="text-sm font-black text-black dark:text-white">{translate('Important Dates')}</h2>
             {news.importantDates.map((d, i) => (
               <div key={i} className="flex justify-between text-xs">
                 <span className="font-bold text-slate-600">{d.label}</span>

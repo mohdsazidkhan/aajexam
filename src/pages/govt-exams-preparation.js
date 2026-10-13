@@ -115,7 +115,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             {/* Pagination */}
                             {pagination.totalPages > 1 && (
                                 <div className="mt-8 xl:mt-16 flex items-center justify-center gap-3">
-                                    <button
+                                    <button aria-label={translate('Previous')}
                                         onClick={() => handlePageChange(pagination.currentPage - 1)}
                                         disabled={pagination.currentPage <= 1}
                                         className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-sm active:translate-y-1 active:border-b-0"
@@ -148,7 +148,7 @@ export default function GovtExamsPreparation({ initialData }) {
                                         })}
                                     </div>
 
-                                    <button
+                                    <button aria-label={translate('Next')}
                                         onClick={() => handlePageChange(pagination.currentPage + 1)}
                                         disabled={!pagination.hasMore}
                                         className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-sm active:translate-y-1 active:border-b-0"

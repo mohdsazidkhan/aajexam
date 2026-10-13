@@ -451,7 +451,7 @@ const AllIndiaRankPage = () => {
 
                   {totalPages > 1 && (
                     <div className="flex items-center justify-center gap-3 pt-4">
-                      <button
+                      <button aria-label={translate('Previous')}
                         onClick={() => setPage(p => Math.max(1, p - 1))}
                         disabled={page === 1}
                         className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
@@ -459,7 +459,7 @@ const AllIndiaRankPage = () => {
                         <ChevronLeft className="w-4 h-4" />
                       </button>
                       <span className="text-xs font-black text-content-muted uppercase">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
-                      <button
+                      <button aria-label={translate('Next')}
                         onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                         disabled={page === totalPages}
                         className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"

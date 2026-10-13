@@ -91,7 +91,7 @@ export default function MentorApply() {
                   <input type="number" placeholder={translate('Rank')} value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />
                   <input type="number" placeholder={translate('Score')} value={exam.score} onChange={e => updateExam(i, 'score', e.target.value)} className={`${inputClass} w-24`} />
                   {form.examsCleared.length > 1 && (
-                    <button type="button" onClick={() => removeExam(i)} className="p-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
+                    <button aria-label={translate('Close')} type="button" onClick={() => removeExam(i)} className="p-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><X className="w-4 h-4" /></button>
                   )}
                 </div>
               ))}
@@ -125,7 +125,7 @@ export default function MentorApply() {
             {form.tips.map((tip, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`Tip ${i + 1}`} value={tip} onChange={e => updateField('tips', i, e.target.value)} className={`${inputClass} flex-1`} />
-                {form.tips.length > 1 && <button type="button" onClick={() => removeField('tips', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
+                {form.tips.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('tips', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
             <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add tip')}</button>
@@ -137,7 +137,7 @@ export default function MentorApply() {
             {form.booksRecommended.map((book, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`Book ${i + 1}`} value={book} onChange={e => updateField('booksRecommended', i, e.target.value)} className={`${inputClass} flex-1`} />
-                {form.booksRecommended.length > 1 && <button type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
+                {form.booksRecommended.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
             <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add book')}</button>
@@ -149,7 +149,7 @@ export default function MentorApply() {
             {form.specialization.map((spec, i) => (
               <div key={i} className="flex gap-2 mb-2">
                 <input placeholder={`e.g. Mathematics, Reasoning`} value={spec} onChange={e => updateField('specialization', i, e.target.value)} className={`${inputClass} flex-1`} />
-                {form.specialization.length > 1 && <button type="button" onClick={() => removeField('specialization', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
+                {form.specialization.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('specialization', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
             <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add specialization')}</button>

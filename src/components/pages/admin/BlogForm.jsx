@@ -178,7 +178,7 @@ const AdminBlogForm = () => {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
           <div className="flex items-center gap-4 mb-4">
-            <button onClick={() => router.push('/admin/blogs')} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700">
+            <button aria-label="Back" onClick={() => router.push('/admin/blogs')} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700">
               <ArrowLeft className="w-5 h-5" />
             </button>
           </div>

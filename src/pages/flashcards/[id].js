@@ -110,7 +110,7 @@ export default function FlashcardDeck() {
                     {/* Header */}
                     <div className="flex items-center justify-between text-white">
                         <div className="flex items-center gap-3">
-                            <button onClick={() => router.back()} className="p-2 hover:bg-white/20 rounded-full transition">
+                            <button aria-label={translate('Back')} onClick={() => router.back()} className="p-2 hover:bg-white/20 rounded-full transition">
                                 <ArrowLeft className="w-5 h-5" />
                             </button>
                             <div>
@@ -118,7 +118,7 @@ export default function FlashcardDeck() {
                                 <p className="text-[10px] opacity-70 uppercase tracking-widest">{currentIndex + 1} / {deck.cards.length}</p>
                             </div>
                         </div>
-                        <button onClick={() => {
+                        <button aria-label={translate('Share')} onClick={() => {
                             navigator.share && navigator.share({ title: deck.title, url: window.location.href }).catch(() => {});
                         }} className="p-2 hover:bg-white/20 rounded-full transition">
                             <Share2 className="w-5 h-5" />

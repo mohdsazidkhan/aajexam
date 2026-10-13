@@ -435,7 +435,7 @@ const ProfilePage = () => {
                     <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 select-all text-content-primary">
                       {student.referralCode}
                     </span>
-                    <button onClick={copyReferralCode} className="p-3 bg-primary-600 hover:bg-primary-600 text-white rounded-xl transition-colors">
+                    <button aria-label={translate('Copy')} onClick={copyReferralCode} className="p-3 bg-primary-600 hover:bg-primary-600 text-white rounded-xl transition-colors">
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>

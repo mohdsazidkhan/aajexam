@@ -199,7 +199,7 @@ const AdminNotificationsPage = () => {
 
   const paginationControl = totalPages > 1 && (
     <div className="flex justify-center items-center gap-4 text-[10px] font-black uppercase tracking-widest">
-      <button
+      <button aria-label="Previous"
         onClick={handlePrev}
         disabled={page <= 1}
         className="p-3 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-600 disabled:opacity-20 transition-all shadow-sm active:scale-90"
@@ -211,7 +211,7 @@ const AdminNotificationsPage = () => {
          Page {page} <span className="text-slate-500 ml-2">of</span> {totalPages}
       </div>
 
-      <button
+      <button aria-label="Next"
         onClick={handleNext}
         disabled={page >= totalPages}
         className="p-3 bg-white dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-full text-slate-400 hover:text-primary-600 disabled:opacity-20 transition-all shadow-sm active:scale-90"

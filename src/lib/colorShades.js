@@ -117,10 +117,39 @@ function mix(rgb, target, weight) {
   };
 }
 
-export function generatePrimaryShades(baseHex) {
+// WCAG relative luminance / contrast ratio against white.
+function luminance({ r, g, b }) {
+  const lin = (v) => {
+    const c = v / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+
+const contrastOnWhite = (rgb) => 1.05 / (luminance(rgb) + 0.05);
+const MIN_TEXT_CONTRAST = 4.5;
+
+// In light mode `text-primary-600` / `bg-primary-600 text-white` carry small text, so the 600 stop (and
+// the darker ones) must reach 4.5:1 against white. Light base colors are darkened further to get there;
+// bases that already pass keep the standard weights.
+function darkWeights(base, enforceContrast) {
+  const w = { ...SHADE_WEIGHTS };
+  if (!enforceContrast) return w;
+  let w600 = SHADE_WEIGHTS[600];
+  while (w600 < 0.6 && contrastOnWhite(mix(base, BLACK, w600)) < MIN_TEXT_CONTRAST) w600 += 0.01;
+  w[600] = w600;
+  w[700] = Math.max(w[700], w600 + 0.12);
+  w[800] = Math.max(w[800], w[700] + 0.12);
+  w[900] = Math.max(w[900], w[800] + 0.1);
+  w[950] = Math.min(0.95, Math.max(w[950], w[900] + 0.1));
+  return w;
+}
+
+export function generatePrimaryShades(baseHex, enforceContrast = false) {
   const base = hexToRgb(baseHex);
+  const weights = darkWeights(base, enforceContrast);
   const shades = {};
-  Object.entries(SHADE_WEIGHTS).forEach(([stop, weight]) => {
+  Object.entries(weights).forEach(([stop, weight]) => {
     const num = Number(stop);
     if (num < 500) shades[stop] = rgbToHex(mix(base, WHITE, weight));
     else if (num === 500) shades[stop] = rgbToHex(base);
@@ -129,14 +158,14 @@ export function generatePrimaryShades(baseHex) {
   return shades;
 }
 
-export function applyPrimaryColor(hex) {
+export function applyPrimaryColor(hex, enforceContrast = false) {
   if (typeof document === 'undefined') return;
   const root = document.documentElement;
-  Object.entries(generatePrimaryShades(hex)).forEach(([stop, value]) => {
+  Object.entries(generatePrimaryShades(hex, enforceContrast)).forEach(([stop, value]) => {
     root.style.setProperty(`--color-primary-${stop}`, value);
   });
 }
 
 export function applyThemeForMode(themeId, isDark) {
-  applyPrimaryColor(getThemeHex(themeId, isDark));
+  applyPrimaryColor(getThemeHex(themeId, isDark), !isDark);
 }

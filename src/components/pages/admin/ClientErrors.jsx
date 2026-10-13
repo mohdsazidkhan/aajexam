@@ -317,7 +317,7 @@ export default function ClientErrors({ kind = 'mobile' }) {
                   <StatusBadge status={selected.status} />
                   <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{selected.type}{selected.statusCode ? ` · HTTP ${selected.statusCode}` : ''}</span>
                 </div>
-                <button onClick={() => setSelected(null)} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10"><X className="w-5 h-5" /></button>
+                <button aria-label="Close" onClick={() => setSelected(null)} className="p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10"><X className="w-5 h-5" /></button>
               </div>
               <h2 className="text-base font-black leading-snug mb-3 break-words">{selected.message}</h2>
 

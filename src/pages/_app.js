@@ -1,7 +1,7 @@
 import '../styles/index.css';
 import { Provider, useDispatch } from 'react-redux';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import store from '../store';
@@ -50,6 +50,23 @@ const TargetExamPrompt = dynamic(() => import('../components/TargetExamPrompt'),
 const CityPromptModal = dynamic(() => import('../components/modals/CityPromptModal'), {
   ssr: false,
 });
+
+// Mounts its children only once the browser is idle (or after `timeout` ms at the latest), so the
+// chunks of non-essential widgets (promo modals, cookie banner) do not compete with the first paint.
+function AfterIdle({ children, timeout = 4000 }) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    const run = () => { if (!cancelled) setReady(true); };
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(run, { timeout });
+      return () => { cancelled = true; window.cancelIdleCallback(id); };
+    }
+    const id = setTimeout(run, 2000);
+    return () => { cancelled = true; clearTimeout(id); };
+  }, [timeout]);
+  return ready ? children : null;
+}
 
 // Global styles for mobile optimization
 const globalStyles = `
@@ -182,9 +199,11 @@ function AppContent({ Component, pageProps }) {
         </div>
         <UnifiedFooter />
         <PublicBottomNav />
-        <WelcomePromoModal />
-        <ExitIntentModal />
-        <PageViewNudge />
+        <AfterIdle>
+          <WelcomePromoModal />
+          <ExitIntentModal />
+          <PageViewNudge />
+        </AfterIdle>
       </main>
     );
   };
@@ -248,7 +267,7 @@ export default function App({ Component, pageProps }) {
       <GlobalErrorProvider>
         <LanguageProvider>
           <AppContent Component={Component} pageProps={pageProps} />
-          <CookieConsent />
+          <AfterIdle><CookieConsent /></AfterIdle>
         </LanguageProvider>
         <Toaster position="top-right" containerStyle={{ top: 80 }} toastOptions={toastOptions} />
       </GlobalErrorProvider>

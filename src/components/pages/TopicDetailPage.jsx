@@ -135,7 +135,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-white dark:text-black font-black text-lg leading-tight group-hover:scale-105 transition-transform origin-left">{deck.title}</h3>
+                    <h2 className="text-white dark:text-black font-black text-lg leading-tight group-hover:scale-105 transition-transform origin-left">{deck.title}</h2>
                     <p className="text-white/70 dark:text-black/70 text-xs font-medium mt-1 line-clamp-2">{deck.description}</p>
                   </div>
                 </div>

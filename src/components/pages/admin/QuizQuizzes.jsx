@@ -166,8 +166,8 @@ const AdminQuizQuizzes = () => {
         <div className="flex justify-end gap-1">
           <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
           <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-          <button onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-          <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+          <button aria-label="Edit" onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+          <button aria-label="Delete" onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
         </div>
       )
     }
@@ -286,8 +286,8 @@ const AdminQuizQuizzes = () => {
                   <div className="flex gap-1 mt-auto pt-2 border-t border-slate-100 dark:border-slate-700">
                     <button onClick={() => openAddQuestions(q)} title="Add Questions" className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Plus className="w-4 h-4" /></button>
                     <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="flex-1 flex items-center justify-center py-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                    <button onClick={() => openEdit(q)} className="flex-1 flex items-center justify-center py-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                    <button onClick={() => handleDelete(q._id)} className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                    <button aria-label="Edit" onClick={() => openEdit(q)} className="flex-1 flex items-center justify-center py-2 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                    <button aria-label="Delete" onClick={() => handleDelete(q._id)} className="flex-1 flex items-center justify-center py-2 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
               ))}
@@ -312,8 +312,8 @@ const AdminQuizQuizzes = () => {
                     <div className="flex gap-1 shrink-0">
                       <button onClick={() => openAddQuestions(q)} title="Add Questions" className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Plus className="w-4 h-4" /></button>
                       <button onClick={() => handlePublish(q._id)} title={q.status === 'published' ? 'Unpublish' : 'Publish'} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg">{q.status === 'published' ? <GlobeLock className="w-4 h-4" /> : <Globe className="w-4 h-4" />}</button>
-                      <button onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
-                      <button onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+                      <button aria-label="Edit" onClick={() => openEdit(q)} className="p-1.5 text-primary-600 hover:bg-primary-50 rounded-lg"><Edit3 className="w-4 h-4" /></button>
+                      <button aria-label="Delete" onClick={() => handleDelete(q._id)} className="p-1.5 text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </div>
                 </div>
@@ -335,7 +335,7 @@ const AdminQuizQuizzes = () => {
           <div className="p-6 w-full h-full overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">{editing ? 'Edit' : 'Create'} Quiz</h2>
-              <button onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
+              <button aria-label="Close" onClick={() => setShowModal(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input required placeholder="Quiz Title" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} className="w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm" />
@@ -373,7 +373,7 @@ const AdminQuizQuizzes = () => {
           <div className="p-6 w-full h-full flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-black text-slate-900 dark:text-white">Add Questions to "{selectedQuiz.title}"</h2>
-              <button onClick={() => setShowAddQ(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
+              <button aria-label="Close" onClick={() => setShowAddQ(false)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors"><X className="w-5 h-5 text-red-600 dark:text-red-400" /></button>
             </div>
             <p className="text-xs text-slate-500 mb-3">Current: {selectedQuiz.questions?.length || 0} questions | Selected: {selectedQIds.length}</p>
             <div className="flex-1 overflow-y-auto space-y-2">

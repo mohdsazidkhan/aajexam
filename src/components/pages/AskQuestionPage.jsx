@@ -235,7 +235,7 @@ const AskQuestionPage = () => {
               {form.image ? (
                 <div className="relative inline-block">
                   <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800" />
-                  <button
+                  <button aria-label={translate('Close')}
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, image: null }))}
                     className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-600 text-white shadow-sm"
@@ -297,7 +297,7 @@ const AskQuestionPage = () => {
                     <CheckCircle className="w-4 h-4" />
                   </button>
                   {form.options.length > 2 && (
-                    <button
+                    <button aria-label={translate('Delete')}
                       type="button"
                       onClick={() => removeOption(i)}
                       className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"

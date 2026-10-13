@@ -61,7 +61,7 @@ const NudgeInner = ({ onClose }) => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
         
         {/* close button */}
-        <button 
+        <button aria-label={translate('Close')} 
           onClick={onClose} 
           className="absolute top-3 right-3 md:top-1/2 md:-translate-y-1/2 md:right-4 w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 transition z-10 text-slate-400 hover:text-white"
         >

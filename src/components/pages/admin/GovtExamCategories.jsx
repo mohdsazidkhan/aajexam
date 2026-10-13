@@ -191,10 +191,10 @@ const AdminGovtExamCategories = () => {
     {
       key: 'actions', header: 'ACTIONS', align: 'center', render: (_, category) => (
         <div className="flex justify-center gap-3">
-          <button onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg xl:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all shadow-sm">
+          <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg xl:rounded-xl hover:text-primary-600 hover:border-primary-500/30 transition-all shadow-sm">
             <Edit className="w-4 h-4" />
           </button>
-          <button onClick={() => handleDelete(category._id)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg xl:rounded-xl hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all shadow-sm">
+          <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-3 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-100 dark:border-white/10 rounded-lg xl:rounded-xl hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 transition-all shadow-sm">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
@@ -332,10 +332,10 @@ const AdminGovtExamCategories = () => {
                       </div>
 
                       <div className="flex gap-2 xl:gap-4">
-                        <button onClick={() => handleEdit(category)} className="p-2 xl:p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-primary-600 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                        <button aria-label="Edit" onClick={() => handleEdit(category)} className="p-2 xl:p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-primary-600 hover:border-primary-500/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
                           <Edit className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                         </button>
-                        <button onClick={() => handleDelete(category._id)} className="p-2 xl:p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
+                        <button aria-label="Delete" onClick={() => handleDelete(category._id)} className="p-2 xl:p-6 bg-white dark:bg-white/5 text-slate-400 border-2 border-slate-50 dark:border-white/10 rounded-lg xl:rounded-[2rem] hover:text-black dark:hover:text-white hover:border-black/30 dark:hover:border-white/30 hover:scale-105 active:scale-95 transition-all shadow-sm">
                           <Trash2 className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
                         </button>
                       </div>
@@ -410,7 +410,7 @@ const AdminGovtExamCategories = () => {
                       {editingCategory ? "UPDATE CATEGORY" : "NEW CATEGORY"}
                     </h2>
                   </div>
-                  <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-black dark:hover:text-white transition-colors">
+                  <button aria-label="Close" onClick={() => setShowModal(false)} className="text-slate-400 hover:text-black dark:hover:text-white transition-colors">
                     <XCircle className="w-8 h-8" />
                   </button>
                 </div>

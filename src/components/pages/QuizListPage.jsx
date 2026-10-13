@@ -167,7 +167,7 @@ const QuizListPage = () => {
                       <BrainCircuit className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h3>
+                      <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
                       {quiz.subject?.name && <p className="text-[10px] font-bold text-content-muted uppercase">{translateData(quiz.subject.name)}</p>}
                     </div>
                   </div>
@@ -206,7 +206,7 @@ const QuizListPage = () => {
           {filtered.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <BrainCircuit className="w-20 h-20 text-slate-200 mx-auto" />
-              <h3 className="text-xl font-black text-slate-400 uppercase">{translate('No quizzes found')}</h3>
+              <h2 className="text-xl font-black text-slate-400 uppercase">{translate('No quizzes found')}</h2>
               <button onClick={() => { setActiveFilter('all'); setSearch(''); }}
                 className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('View All')}</button>
             </div>

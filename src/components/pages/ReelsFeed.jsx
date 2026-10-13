@@ -405,7 +405,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => {
           <Filter className="w-5 h-5 text-white/70" />
           <h3 className="text-sm font-black text-white uppercase tracking-widest">{translate('Filters')}</h3>
         </div>
-        <button onClick={onClose} className="p-1.5 rounded-full bg-white/10">
+        <button aria-label={translate('Close')} onClick={onClose} className="p-1.5 rounded-full bg-white/10">
           <X className="w-4 h-4 text-white/60" />
         </button>
       </div>
@@ -904,10 +904,10 @@ const ReelsFeed = () => {
                 <Link href="/search" className="p-2">
                   <Search className="w-5 h-5 text-white" />
                 </Link>
-                <button onClick={() => setShowCreateDrawer(true)} className="p-2">
+                <button aria-label={translate('Add')} onClick={() => setShowCreateDrawer(true)} className="p-2">
                   <Plus className="w-5 h-5 text-white" />
                 </button>
-                <button onClick={() => setShowFilters(!showFilters)} className="p-2">
+                <button aria-label={translate('Filter')} onClick={() => setShowFilters(!showFilters)} className="p-2">
                   <Filter className="w-5 h-5 text-white" />
                 </button>
               </div>
@@ -964,11 +964,11 @@ const ReelsFeed = () => {
             <div className="absolute right-3 bottom-5 flex flex-col items-center gap-3 z-20" style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
               {/* Desktop: nav arrows (above profile avatar) */}
               <div className="hidden xl:flex flex-col gap-3">
-                <button onClick={goPrev} disabled={currentIndex === 0}
+                <button aria-label={translate('Collapse')} onClick={goPrev} disabled={currentIndex === 0}
                   className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
                   <ChevronUp className="w-5 h-5" />
                 </button>
-                <button onClick={goNext} disabled={currentIndex >= reels.length - 1 && !hasMore}
+                <button aria-label={translate('Expand')} onClick={goNext} disabled={currentIndex >= reels.length - 1 && !hasMore}
                   className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm text-white/60 hover:bg-white/20 disabled:opacity-20 transition-all">
                   <ChevronDown className="w-5 h-5" />
                 </button>
@@ -1155,7 +1155,7 @@ const ReelsFeed = () => {
                           {currentReel.type === 'question' ? translate('Explanation') : translate('More Details')}
                         </span>
                       </div>
-                      <button onClick={() => setShowExplanation(false)} className="p-1.5 rounded-full bg-white/10">
+                      <button aria-label={translate('Close')} onClick={() => setShowExplanation(false)} className="p-1.5 rounded-full bg-white/10">
                         <X className="w-4 h-4 text-white/60" />
                       </button>
                     </div>
@@ -1336,7 +1336,7 @@ const ReelsFeed = () => {
               <div className="px-5 pb-24 pt-2">
                 <div className="flex items-center justify-between mb-5">
                   <h3 className="text-sm font-black text-white uppercase tracking-wider">{translate('Create Reel')}</h3>
-                  <button onClick={() => setShowCreateDrawer(false)} className="p-1.5 rounded-full bg-white/10">
+                  <button aria-label={translate('Close')} onClick={() => setShowCreateDrawer(false)} className="p-1.5 rounded-full bg-white/10">
                     <X className="w-4 h-4 text-white/60" />
                   </button>
                 </div>

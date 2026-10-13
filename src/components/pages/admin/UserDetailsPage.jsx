@@ -274,7 +274,7 @@ export default function UserDetailsPage() {
                           <div className={`px-4 py-1 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>
-                      <button className="p-6 bg-slate-100 dark:bg-white/5 text-primary-600 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"><ChevronRight className="w-6 h-6" /></button>
+                      <button aria-label="Next" className="p-6 bg-slate-100 dark:bg-white/5 text-primary-600 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"><ChevronRight className="w-6 h-6" /></button>
                     </motion.div>
                   ))}
                 </div>

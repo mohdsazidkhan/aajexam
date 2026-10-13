@@ -695,7 +695,7 @@ const AdminSubscriptions = () => {
                       <div className="flex items-center justify-between gap-2">
                         <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase ${getPlanColor(subscription.planName)}`}>{subscription.planName || 'FREE'}</span>
                         <div className="flex items-center gap-1.5">
-                          <button onClick={() => openExtendModal(subscription)} className="p-1.5 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg"><Plus className="w-3.5 h-3.5" /></button>
+                          <button aria-label="Add" onClick={() => openExtendModal(subscription)} className="p-1.5 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg"><Plus className="w-3.5 h-3.5" /></button>
                           <span className={`px-2.5 py-1 rounded-lg border text-[9px] font-black uppercase ${getStatusColor(subscription.status)}`}>{subscription.status || 'UNKNOWN'}</span>
                         </div>
                       </div>
@@ -758,7 +758,7 @@ const AdminSubscriptions = () => {
                           <span className="text-xs font-black text-slate-900 dark:text-white tabular-nums">{formatDate(subscription.createdAt)}</span>
                         </div>
                         <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums">{subscription.amount ? formatCurrency(subscription.amount) : "₹0"}</div>
-                        <button onClick={() => openExtendModal(subscription)} className="p-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg">
+                        <button aria-label="Add" onClick={() => openExtendModal(subscription)} className="p-2 bg-primary-50 dark:bg-primary-950/30 text-primary-600 rounded-lg">
                           <Plus className="w-4 h-4" />
                         </button>
                       </div>

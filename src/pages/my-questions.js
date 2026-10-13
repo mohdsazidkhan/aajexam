@@ -113,7 +113,7 @@ const MyQuestionsPage = () => {
                      <div className="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem] flex items-center justify-center mx-auto opacity-50">
                         <MessageSquare className="w-10 h-10 text-gray-400" />
                      </div>
-                     <h3 className="text-xl xl:text-2xl font-black font-outfit">{translate('No questions yet')}</h3>
+                     <h2 className="text-xl xl:text-2xl font-black font-outfit">{translate('No questions yet')}</h2>
                      <p className="text-sm font-bold text-gray-400">{translate('Ask your first question to the community!')}</p>
                      <Button variant="primary" className="mx-auto" onClick={() => router.push('/community-questions/ask')}>{translate('Ask Question')}</Button>
                   </div>

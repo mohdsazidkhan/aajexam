@@ -212,7 +212,7 @@ const CommunityQuestionsPage = () => {
         ) : questions.length === 0 ? (
           <Card className="text-center py-2 xl:py-4">
             <MessageSquarePlus className="w-12 h-12 text-content-muted mx-auto mb-3 opacity-50" />
-            <h3 className="text-lg font-bold text-content-primary mb-1">{translate('No Questions Yet')}</h3>
+            <h2 className="text-lg font-bold text-content-primary mb-1">{translate('No Questions Yet')}</h2>
             <p className="text-sm text-content-muted mb-4">{translate('Be the first to share a question with the community!')}</p>
             {authenticated && (
               <Link href="/community-questions/ask">
@@ -339,7 +339,7 @@ const CommunityQuestionsPage = () => {
         {/* Pagination */}
         {pagination.totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-8">
-            <button
+            <button aria-label={translate('Previous')}
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage <= 1}
               className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
@@ -349,7 +349,7 @@ const CommunityQuestionsPage = () => {
             <span className="px-4 py-2 text-sm font-bold text-content-primary">
               {translate('Page {page} of {total}', { page: currentPage, total: pagination.totalPages })}
             </span>
-            <button
+            <button aria-label={translate('Next')}
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage >= pagination.totalPages}
               className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"

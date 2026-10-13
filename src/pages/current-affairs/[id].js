@@ -86,7 +86,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
 
         {affair.keyPoints?.length > 0 && (
           <Card className="space-y-2">
-            <h3 className="text-sm font-black text-slate-900 dark:text-white">{translate('Key Points')}</h3>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white">{translate('Key Points')}</h2>
             <ul className="space-y-1">
               {affair.keyPoints.map((kp, i) => (
                 <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
@@ -99,7 +99,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
 
         {affair.questions?.length > 0 && (
           <Card className="space-y-2 xl:space-y-4">
-            <h3 className="text-sm font-black text-slate-900 dark:text-white">{translate('Practice Questions')}</h3>
+            <h2 className="text-sm font-black text-slate-900 dark:text-white">{translate('Practice Questions')}</h2>
             {affair.questions.map((q, i) => (
               <div key={i} className="space-y-2 pb-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
                 <p className="text-xs font-bold text-slate-700 dark:text-slate-300">Q{i + 1}. {q.questionText}</p>

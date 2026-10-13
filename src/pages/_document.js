@@ -1,9 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { lato } from '../lib/fonts';
+import { inter, lato } from '../lib/fonts';
 
 export default function Document() {
   return (
-    <Html lang="en" dir="ltr" className={lato.variable}>
+    <Html lang="en" dir="ltr" className={`${inter.variable} ${lato.variable}`}>
       <Head>
         <meta charSet="UTF-8" />
         <link rel="icon" href="/favicon.ico" />

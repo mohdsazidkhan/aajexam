@@ -69,7 +69,7 @@ const UserSearchPicker = ({ multiple = false, value, onChange, placeholder = 'Se
             <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{value.name}</div>
             <div className="text-xs text-slate-400 truncate">{value.email}</div>
           </div>
-          <button type="button" onClick={() => handleRemove(value)} className="p-1 text-slate-400 hover:text-red-500 shrink-0">
+          <button aria-label="Close" type="button" onClick={() => handleRemove(value)} className="p-1 text-slate-400 hover:text-red-500 shrink-0">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -115,7 +115,7 @@ const UserSearchPicker = ({ multiple = false, value, onChange, placeholder = 'Se
           {selected.map((u) => (
             <span key={u._id} className="flex items-center gap-1 pl-2.5 pr-1.5 py-1 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs font-bold">
               {u.email}
-              <button type="button" onClick={() => handleRemove(u)} className="p-0.5 hover:text-red-500">
+              <button aria-label="Close" type="button" onClick={() => handleRemove(u)} className="p-0.5 hover:text-red-500">
                 <X className="w-3 h-3" />
               </button>
             </span>
