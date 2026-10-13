@@ -130,7 +130,7 @@ const HowItWorks = () => {
                               </span>
                            </div>
                            <div className="space-y-3">
-                              <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate(step.title)}</h3>
+                              <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate(step.title)}</h2>
                               <p className="text-sm font-bold text-slate-700 dark:text-slate-400 leading-relaxed uppercase tracking-wide">{translate(step.desc)}</p>
                            </div>
 

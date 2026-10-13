@@ -129,7 +129,7 @@ const TermsAndConditions = () => {
                                     <item.icon className="w-6 h-6 text-slate-500 dark:text-slate-400 group-hover:text-primary-600" />
                                  </div>
                                  <div className="space-y-2">
-                                    <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h4>
+                                    <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h3>
                                     <p className="text-xs font-medium text-slate-600 dark:text-slate-400 leading-relaxed">{item.body}</p>
                                  </div>
                               </div>
@@ -150,7 +150,7 @@ const TermsAndConditions = () => {
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 relative z-10">
                            <div className="p-8 bg-white/5 rounded-[2.5rem] border-2 border-white/10 space-y-2 xl:space-y-4">
-                              <h4 className="text-primary-600 font-black uppercase tracking-widest text-xs">Free Plan</h4>
+                              <h3 className="text-primary-600 font-black uppercase tracking-widest text-xs">Free Plan</h3>
                               <p className="text-sm font-medium text-slate-400">Unlimited topic-wise practice, 2 subject tests/day, first full mock test free, and latest-year PYQs for every exam.</p>
                            </div>
                            <div className="p-8 bg-primary-500/10 rounded-[2.5rem] border-2 border-primary-500/20 space-y-2 xl:space-y-4 shadow-sm group hover:scale-[1.02] transition-transform">
@@ -180,7 +180,7 @@ const TermsAndConditions = () => {
 
                         <div className="space-y-10">
                            <div className="p-4 xl:p-8 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
-                              <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h4>
+                              <h3 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white px-2">How Rewards Work</h3>
                               <ul className="space-y-8">
                                  <li className="flex gap-6">
                                     <div className="w-2.5 h-10 bg-primary-600 rounded-full shrink-0"/>

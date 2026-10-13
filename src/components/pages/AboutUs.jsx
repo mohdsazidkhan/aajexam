@@ -140,7 +140,7 @@ const AboutUs = () => {
                            <f.icon className="w-6 h-6" />
                         </div>
                         <div className="space-y-2">
-                           <h4 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{translate(f.title)}</h4>
+                           <h3 className="text-xl font-black font-outfit uppercase group-hover:text-primary-600 transition-colors">{translate(f.title)}</h3>
                            <p className="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed">{translate(f.desc)}</p>
                         </div>
                      </Card>

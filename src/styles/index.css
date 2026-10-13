@@ -32,6 +32,12 @@
 
     --navbar-height: 5rem;
 
+    /* Secondary text greys, darkened in light mode for 4.5:1 contrast (RGB channels; see tailwind.config.js) */
+    --slate-400: 91 107 127;
+    --slate-500: 80 94 113;
+    --gray-400: 91 107 127;
+    --gray-500: 80 94 113;
+
     /* Primary (brand/theme) color scale — default AajExam Green (#45B800).
        ThemeColorMenuButton overrides these on document.documentElement via JS
        when the user picks a different theme; these are just the SSR/no-JS defaults. */
@@ -41,14 +47,19 @@
     --color-primary-300: #abdf8c;
     --color-primary-400: #79cc47;
     --color-primary-500: #45b800;
-    --color-primary-600: #328600;
-    --color-primary-700: #2a7000;
-    --color-primary-800: #225a00;
-    --color-primary-900: #1b4800;
-    --color-primary-950: #143500;
+    --color-primary-600: #2c7600;
+    --color-primary-700: #246000;
+    --color-primary-800: #1c4a00;
+    --color-primary-900: #153700;
+    --color-primary-950: #0e2500;
   }
 
   .dark {
+    --slate-400: 148 163 184;
+    --slate-500: 100 116 139;
+    --gray-400: 156 163 175;
+    --gray-500: 107 114 128;
+
     /* Central Theme Tokens - Dark Mode (AajExam Inspired) */
     --bg-page: #131f24; /* bg-slate-900 */
     --bg-surface: #131f24; /* Slate 900 for dark mode background */
@@ -356,4 +367,25 @@ html[lang="ur"] .tracking-wide,
 html[lang="ur"] .tracking-wider,
 html[lang="ur"] .tracking-widest {
   letter-spacing: 0 !important; /* letter-spacing breaks the joined Arabic-script letters */
+}
+
+/* ── Contrast scoping ──────────────────────────────────────────────────────────
+   Light mode darkens the secondary greys and the primary-600 text (see :root above). Panels that are dark in
+   light mode too (plain bg-slate-900 / bg-black ...) get the original light greys back, and their primary-600
+   text uses the lighter primary-400 so it stays readable on the dark surface. */
+.bg-slate-800, .bg-slate-900, .bg-slate-950, .bg-gray-800, .bg-gray-900, .bg-black,
+[class^="bg-slate-900/"], [class*=" bg-slate-900/"], [class^="bg-slate-950/"], [class*=" bg-slate-950/"],
+[class^="bg-slate-800/"], [class*=" bg-slate-800/"], [class^="bg-black/"], [class*=" bg-black/"] {
+  --slate-400: 148 163 184;
+  --slate-500: 100 116 139;
+  --gray-400: 156 163 175;
+  --gray-500: 107 114 128;
+}
+.bg-slate-800 .text-primary-600, .bg-slate-900 .text-primary-600, .bg-slate-950 .text-primary-600,
+.bg-gray-800 .text-primary-600, .bg-gray-900 .text-primary-600, .bg-black .text-primary-600 {
+  color: var(--color-primary-400);
+}
+/* Tinted "chip" badges: primary-500 text on a primary-500/10 wash is only ~2.3:1 in light mode */
+html:not(.dark) .bg-primary-500\/10.text-primary-500 {
+  color: var(--color-primary-700);
 }

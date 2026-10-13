@@ -33,8 +33,14 @@ module.exports = {
           800: '#1c2d35', // AajExam Dark Card (matches --bg-surface in dark mode)
           700: '#344955', // (matches --border-primary in dark mode)
           600: '#455a64',
-          500: '#64748b',
-          400: '#94a3b8',
+          // Light mode text on white / #f1f1f1 / tinted chips needs >= 4.5:1, so 400 and 500 darken in light mode
+          // and keep the original slate values in dark mode (channels defined in src/styles/index.css).
+          500: 'rgb(var(--slate-500) / <alpha-value>)',
+          400: 'rgb(var(--slate-400) / <alpha-value>)',
+        },
+        gray: {
+          500: 'rgb(var(--gray-500) / <alpha-value>)',
+          400: 'rgb(var(--gray-400) / <alpha-value>)',
         },
         // Semantic Theme Tokens
         background: {

@@ -132,7 +132,7 @@ const PrivacyPolicy = () => {
                                        <item.icon className="w-6 h-6" />
                                     </div>
                                     <div className="space-y-2">
-                                       <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h4>
+                                       <h3 className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white">{item.title}</h3>
                                        <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed">{item.body}</p>
                                     </div>
                                  </div>
@@ -167,7 +167,7 @@ const PrivacyPolicy = () => {
                            <div className="ml-0 xl:ml-8 p-4 xl:p-10 bg-white/5 rounded-[1rem] xl:rounded-[3rem] border-l-8 border-primary-600 space-y-6">
                               <div className="flex items-center gap-4 text-primary-600">
                                  <Zap className="w-6 h-6" />
-                                 <h4 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h4>
+                                 <h3 className="text-sm font-black uppercase tracking-widest">Referral Rewards</h3>
                               </div>
                               <p className="text-sm font-medium text-slate-400 leading-relaxed">
                                  Users who invite friends to AajExam receive a cash reward each time an invited friend upgrades to a paid PRO subscription for the first time. Rewards are credited to your wallet and can be withdrawn to your bank account.
@@ -193,7 +193,7 @@ const PrivacyPolicy = () => {
                            <div className="grid grid-cols-1 gap-6">
                               <div className="p-4 xl:p-10 bg-white dark:bg-slate-900/50 rounded-[3rem] space-y-6 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
                                  <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h4>
+                                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-slate-900 dark:text-white">How Ads Work</h3>
                                     <div className="px-4 py-1.5 bg-primary-600 text-white text-[9px] font-black uppercase tracking-widest rounded-full shadow-sm">GOOGLE ADSENSE</div>
                                  </div>
                                  <ul className="grid grid-cols-1 xl:grid-cols-2 gap-6 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">

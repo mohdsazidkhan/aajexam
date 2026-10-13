@@ -89,9 +89,9 @@ export default function GovtExamsPreparation({ initialData }) {
                                                     <FaGraduationCap className="text-primary-600 text-2xl" />
                                                 
                                                 </div>
-                                                <h3 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
+                                                <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary-600 transition-colors">
                                                     {translateData(exam.name)}
-                                                </h3>
+                                                </h2>
                                                 </div>
                                                 <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 xl:mb-6 line-clamp-3 leading-relaxed">
                                                     {exam.description || translate('Comprehensive exam preparation materials and practice tests.')}

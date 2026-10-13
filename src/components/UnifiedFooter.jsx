@@ -50,15 +50,15 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '#' },
-    { icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL || '#' },
-    { icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL || '#' },
-    { icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL || '#' },
-    { icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL || '#' },
-    { icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL || '#' },
-    { icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL || '#' },
-    { icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL || '#' },
-    { icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL || '#' },
+    { name: 'Instagram', icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '#' },
+    { name: 'Facebook', icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL || '#' },
+    { name: 'X', icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL || '#' },
+    { name: 'YouTube', icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL || '#' },
+    { name: 'LinkedIn', icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL || '#' },
+    { name: 'WhatsApp', icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL || '#' },
+    { name: 'Discord', icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL || '#' },
+    { name: 'Telegram', icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL || '#' },
+    { name: 'Pinterest', icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL || '#' },
   ];
 
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');
@@ -91,7 +91,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={translate('Follow us on {name}', { name: social.icon.name || translate('social media') })}
+                  aria-label={translate('Follow us on {name}', { name: social.name })}
                   className="w-10 h-10 xl:w-11 xl:h-11 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-content-secondary hover:text-primary-600 dark:hover:text-white hover:border-primary-500/50 flex items-center justify-center transition-all hover:shadow-[0_0_20px_rgba(88,204,2,0.2)] backdrop-blur-md"
                 >
                   <social.icon className="w-4 h-4" />

@@ -127,10 +127,12 @@ function luminance({ r, g, b }) {
 }
 
 const contrastOnWhite = (rgb) => 1.05 / (luminance(rgb) + 0.05);
-const MIN_TEXT_CONTRAST = 4.5;
+// 4.5:1 is needed on white, but the same text also sits on tinted surfaces (page #f1f1f1, primary-100/200
+// chips), which lower the ratio by ~1: aim for 5.6:1 against white so those still reach 4.5:1.
+const MIN_TEXT_CONTRAST = 5.6;
 
 // In light mode `text-primary-600` / `bg-primary-600 text-white` carry small text, so the 600 stop (and
-// the darker ones) must reach 4.5:1 against white. Light base colors are darkened further to get there;
+// the darker ones) must reach 5.6:1 against white. Light base colors are darkened further to get there;
 // bases that already pass keep the standard weights.
 function darkWeights(base, enforceContrast) {
   const w = { ...SHADE_WEIGHTS };

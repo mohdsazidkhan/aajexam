@@ -67,15 +67,15 @@ const ContactUs = ({ contactInfo = {
    };
 
    const socialLinks = [
-      { icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL, color: 'pink-600' },
-      { icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL, color: 'blue-600' },
-      { icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL, color: 'slate-800' },
-      { icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL, color: 'red-600' },
-      { icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL, color: 'blue-700' },
-      { icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL, color: 'primary-500' },
-      { icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL, color: 'indigo-500' },
-      { icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL, color: 'sky-500' },
-      { icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL, color: 'red-500' },
+      { name: 'Instagram', icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL, color: 'pink-600' },
+      { name: 'Facebook', icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL, color: 'blue-600' },
+      { name: 'X', icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL, color: 'slate-800' },
+      { name: 'YouTube', icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL, color: 'red-600' },
+      { name: 'LinkedIn', icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL, color: 'blue-700' },
+      { name: 'WhatsApp', icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL, color: 'primary-500' },
+      { name: 'Discord', icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL, color: 'indigo-500' },
+      { name: 'Telegram', icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL, color: 'sky-500' },
+      { name: 'Pinterest', icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL, color: 'red-500' },
    ];
 
    return (
@@ -122,12 +122,12 @@ const ContactUs = ({ contactInfo = {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                         <div className="relative z-10 space-y-6">
                            <div className="space-y-1">
-                              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">{translate('Follow Us')}</h3>
+                              <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">{translate('Follow Us')}</h2>
                               <p className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Find Us on Social Media')}</p>
                            </div>
                            <div className="flex flex-wrap gap-4">
                               {socialLinks.map((s, i) => (
-                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg xl:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
+                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg xl:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
                                     <s.icon className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
                                  </a>
                               ))}

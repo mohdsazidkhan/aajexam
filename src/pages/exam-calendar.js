@@ -267,6 +267,7 @@ const ExamCalendarPage = () => {
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
+            aria-label={translate('Previous month')}
             className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -289,6 +290,7 @@ const ExamCalendarPage = () => {
 
           <button
             onClick={nextMonth}
+            aria-label={translate('Next month')}
             className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">{translate('Next')}</span>
@@ -323,7 +325,7 @@ const ExamCalendarPage = () => {
                       : 'bg-background-surface border-slate-200 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700'}
                 `}
               >
-                <span className={`text-[9px] font-black uppercase tracking-wide ${isToday ? 'text-white/80' : 'text-content-muted'}`}>
+                <span className={`text-[9px] font-black uppercase tracking-wide ${isToday ? 'text-white' : 'text-content-muted'}`}>
                   {dayName}
                 </span>
                 <span className={`text-base sm:text-lg font-black ${isToday ? 'text-white' : 'text-content-primary'}`}>
@@ -333,7 +335,7 @@ const ExamCalendarPage = () => {
                   {hasEvents && (
                     <>
                       <EventDot event={eventsForDay[0]} />
-                      <span className={`text-[8px] font-black ${isToday ? 'text-white/80' : 'text-content-muted'}`}>{eventsForDay.length}</span>
+                      <span className={`text-[8px] font-black ${isToday ? 'text-white' : 'text-content-muted'}`}>{eventsForDay.length}</span>
                     </>
                   )}
                 </div>

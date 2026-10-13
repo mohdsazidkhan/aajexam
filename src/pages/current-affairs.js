@@ -193,7 +193,7 @@ const CurrentAffairsPage = () => {
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{affair.title}</h3>
+                        <h2 className="text-sm font-black text-content-primary tracking-tight line-clamp-2 leading-tight">{affair.title}</h2>
                         <p className="text-[10px] font-bold text-content-muted uppercase mt-0.5">
                           {new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                         </p>
