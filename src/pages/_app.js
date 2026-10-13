@@ -87,7 +87,6 @@ const globalStyles = `
 `;
 
 // App Layout Component that can use router
-import AppLayout from '../components/layout/AppLayout';
 import PublicNavbar from '../components/navbars/PublicNavbar';
 import PublicBottomNav from '../components/navbars/PublicBottomNav';
 import UnifiedFooter from '../components/UnifiedFooter';
@@ -123,6 +122,8 @@ const toastOptions = {
 function AppContent({ Component, pageProps }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  // The signed-in layout (navbars, sidebars, bottom navs) is only downloaded for signed-in visitors.
+  const [AppLayout, setAppLayout] = useState(null);
 
   useEffect(() => {
     installGlobalErrorReporting();
@@ -153,6 +154,13 @@ function AppContent({ Component, pageProps }) {
   const { isAuthenticated, isClient, authChecked } = useAuthStatus();
   const isAdminRoute = router.pathname.startsWith('/admin');
 
+  useEffect(() => {
+    if (!isAuthenticated || AppLayout) return undefined;
+    let cancelled = false;
+    import('../components/layout/AppLayout').then((m) => { if (!cancelled) setAppLayout(() => m.default); });
+    return () => { cancelled = true; };
+  }, [isAuthenticated, AppLayout]);
+
   const renderContent = () => {
     // Until the client has mounted AND finished checking auth state, render a
     // minimal layout-agnostic shell. Gating on authChecked (not just isClient)
@@ -163,7 +171,8 @@ function AppContent({ Component, pageProps }) {
     // <footer> or <nav> inside <main> that differ from what the client will
     // render after hydration — otherwise React throws a hydration mismatch
     // error.
-    if (!isClient || !authChecked) {
+    // (A signed-in visitor stays in this shell for the moment it takes the layout chunk to arrive.)
+    if (!isClient || !authChecked || (isAuthenticated && !AppLayout)) {
       // Admin routes are noindex and always require auth, so there's no SEO/UX
       // reason to eagerly mount Component here — doing so mounts it once now
       // and again inside AppLayout once auth resolves, double-firing its data

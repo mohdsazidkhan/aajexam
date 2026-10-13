@@ -28,13 +28,16 @@ import { isAdmin } from '../../lib/utils/adminUtils';
 
 // New Navbars
 import StudentNavbar from '../student/Navbar';
-import AdminNavbar from '../admin/Navbar';
+import dynamic from 'next/dynamic';
 import StudentBottomNav from '../student/BottomNav';
-import AdminBottomNav from '../admin/BottomNav';
 import StudentSidebar from '../student/Sidebar';
-import Sidebar from '../Sidebar';
 import UnifiedFooter from '../UnifiedFooter';
-import AdminMobileFilterDrawer from '../admin/MobileFilterDrawer';
+
+// Admin-only chrome: students never download it. This layout only renders on the client, after the auth check.
+const AdminNavbar = dynamic(() => import('../admin/Navbar'), { ssr: false });
+const AdminBottomNav = dynamic(() => import('../admin/BottomNav'), { ssr: false });
+const Sidebar = dynamic(() => import('../Sidebar'), { ssr: false });
+const AdminMobileFilterDrawer = dynamic(() => import('../admin/MobileFilterDrawer'), { ssr: false });
 import { AdminMobileHeaderProvider } from '../../contexts/AdminMobileHeaderContext';
 import useTranslate from '../../hooks/useTranslate';
 

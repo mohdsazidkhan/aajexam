@@ -1,3 +1,41 @@
+const PUBLIC_CACHED_API_PATHS = [
+  '/api/quiz/subjects',
+  '/api/quiz/subjects/all',
+  '/api/quiz/subjects/index',
+  '/api/quiz/subjects/:id/detail',
+  '/api/quiz/topics',
+  '/api/quiz/topics/index',
+  '/api/quiz/topics/:id/detail',
+  '/api/quiz/index',
+  '/api/quiz/quizzes',
+  '/api/real-exams/categories',
+  '/api/real-exams/all-exams',
+  '/api/real-exams/categories/:id/exams',
+  '/api/real-exams/exams/:id/patterns',
+  '/api/public/exams',
+  '/api/public/exams/:examId/preview',
+  '/api/interview-categories',
+  '/api/interview-categories/:slug',
+  '/api/interview-questions',
+  '/api/interview-questions/:slug',
+  '/api/locations',
+  '/api/notes',
+  '/api/notes/:slug',
+  '/api/pyq/exams',
+  '/api/pyq',
+  '/api/flashcards',
+  '/api/flashcards/:id',
+  '/api/current-affairs',
+  '/api/current-affairs/today',
+  '/api/current-affairs/monthly',
+  '/api/current-affairs/:id((?!today$|monthly$)[^/]+)',
+  '/api/exam-news',
+  '/api/exam-news/:id((?!calendar$)[^/]+)',
+  '/api/exam-news/calendar',
+  '/api/real-exams/web/exams/by-slug/:slug/content',
+  '/api/real-exams/web/exams/:id/content',
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Page generation timeout
@@ -81,6 +119,14 @@ const nextConfig = {
           },
         ],
       },
+      // Public catalogue GETs: the response depends only on the URL (no auth, cookies or headers read),
+      // so the CDN can serve it for a minute and refresh in the background. Bodies are unchanged.
+      // Routes that already set their own Cache-Control (quiz/topics/all, public/landing-stats,
+      // public/blogs) are left out.
+      ...PUBLIC_CACHED_API_PATHS.map((source) => ({
+        source,
+        headers: [{ key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=300' }],
+      })),
       // Cache static assets aggressively for better Core Web Vitals
       {
         source: '/(.*)\\.(jpg|jpeg|png|gif|ico|svg|webp|woff|woff2)',
