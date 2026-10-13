@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, m as motion } from 'framer-motion';
 import { Building2, CreditCard, Eye, EyeOff, Facebook, Globe, Info, Instagram, Lock, ShieldCheck, Twitter, User, Youtube } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -15,6 +15,8 @@ import Loading from '../components/Loading';
 import Seo from '../components/Seo';
 import { ProfileSkeleton } from '../components/skeletons/PrivateSkeletons';
 import useTranslate from '../hooks/useTranslate';
+import { QUALIFICATIONS, GENDERS, HEARD_FROM, MIN_AGE_YEARS, MAX_AGE_YEARS } from '../lib/constants/profileOptions';
+import { calcAge } from '../lib/utils/age';
 
 const FIELD_CLASSNAME = 'w-full px-4 py-4 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold outline-none focus:border-primary-700 focus:bg-primary-500/5 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600';
 
@@ -24,6 +26,9 @@ const SOCIAL_FIELDS = [
   { key: 'x', label: 'X (Twitter)', icon: Twitter, placeholder: 'https://x.com/username' },
   { key: 'youtube', label: 'YouTube', icon: Youtube, placeholder: 'https://youtube.com/@username' },
 ];
+
+// 'YYYY-MM-DD' for <input type="date"> bounds, in the visitor's local calendar.
+const toDateInput = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
 const SettingsPage = () => {
   const { translate } = useTranslate();
@@ -35,6 +40,16 @@ const SettingsPage = () => {
   const [passwordData, setPasswordData] = useState({ old: '', new: '', confirm: '' });
   const [showPass, setShowPass] = useState({ old: false, new: false, confirm: false });
 
+  // Age is derived from the date of birth, never stored.
+  const age = useMemo(() => calcAge(profile.dateOfBirth), [profile.dateOfBirth]);
+  const dobBounds = useMemo(() => {
+    const now = new Date();
+    return {
+      min: toDateInput(new Date(now.getFullYear() - MAX_AGE_YEARS, now.getMonth(), now.getDate())),
+      max: toDateInput(new Date(now.getFullYear() - MIN_AGE_YEARS, now.getMonth(), now.getDate())),
+    };
+  }, []);
+
   useEffect(() => {
     const init = async () => {
       try {
@@ -44,7 +59,9 @@ const SettingsPage = () => {
         ]);
 
         if (profileResult.status === 'fulfilled') {
-          setProfile(profileResult.value?.user || {});
+          const loaded = profileResult.value?.user || {};
+          // The date comes back as an ISO timestamp; the date input wants YYYY-MM-DD.
+          setProfile({ ...loaded, dateOfBirth: typeof loaded.dateOfBirth === 'string' ? loaded.dateOfBirth.slice(0, 10) : '' });
         }
 
         if (bankResult.status === 'fulfilled' && bankResult.value?.success) {
@@ -208,6 +225,80 @@ const SettingsPage = () => {
                               city={profile.city || ''}
                               onChange={({ state, city }) => setProfile({ ...profile, state, city })}
                             />
+                          </div>
+
+                          <div className="space-y-2">
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Qualification')}</label>
+                            <select
+                              className={FIELD_CLASSNAME}
+                              value={profile.qualification || ''}
+                              onChange={(event) => setProfile({ ...profile, qualification: event.target.value })}
+                            >
+                              <option value="">{translate('Select qualification')}</option>
+                              {QUALIFICATIONS.map((option) => (
+                                <option key={option.value} value={option.value}>{translate(option.label)}</option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="space-y-2">
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Gender')}</label>
+                            <select
+                              className={FIELD_CLASSNAME}
+                              value={profile.gender || ''}
+                              onChange={(event) => setProfile({ ...profile, gender: event.target.value })}
+                            >
+                              <option value="">{translate('Select gender')}</option>
+                              {GENDERS.map((option) => (
+                                <option key={option.value} value={option.value}>{translate(option.label)}</option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="space-y-2">
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Date of birth')}</label>
+                            <input
+                              type="date"
+                              className={FIELD_CLASSNAME}
+                              min={dobBounds.min}
+                              max={dobBounds.max}
+                              value={profile.dateOfBirth || ''}
+                              onChange={(event) => setProfile({ ...profile, dateOfBirth: event.target.value })}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('Age')}</label>
+                            {age ? (
+                              <div className="grid grid-cols-3 gap-2">
+                                {[
+                                  { value: age.years, label: 'Years' },
+                                  { value: age.months, label: 'Months' },
+                                  { value: age.days, label: 'Days' },
+                                ].map((part) => (
+                                  <div key={part.label} className="px-2 py-2.5 rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 text-center">
+                                    <div className="text-xl font-black text-content-primary leading-none">{part.value}</div>
+                                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">{translate(part.label)}</div>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className={`${FIELD_CLASSNAME} opacity-60 text-sm`}>{translate('Add your date of birth to see your age.')}</div>
+                            )}
+                          </div>
+
+                          <div className="space-y-2 xl:col-span-2">
+                            <label className="text-sm font-semibold text-slate-600 dark:text-slate-400 px-1">{translate('How did you hear about us?')}</label>
+                            <select
+                              className={FIELD_CLASSNAME}
+                              value={profile.heardFrom || ''}
+                              onChange={(event) => setProfile({ ...profile, heardFrom: event.target.value })}
+                            >
+                              <option value="">{translate('Select an option')}</option>
+                              {HEARD_FROM.map((option) => (
+                                <option key={option.value} value={option.value}>{option.brand ? option.label : translate(option.label)}</option>
+                              ))}
+                            </select>
                           </div>
 
                         </div>

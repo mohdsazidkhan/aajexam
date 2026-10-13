@@ -3,6 +3,21 @@ import User from '@/models/User';
 import Exam from '@/models/Exam';
 import { protect } from '@/middleware/auth';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
+import { QUALIFICATION_VALUES, GENDER_VALUES, HEARD_FROM_VALUES, MIN_AGE_YEARS, MAX_AGE_YEARS } from '@/lib/constants/profileOptions';
+import { parseDobParts, calcAge } from '@/lib/utils/age';
+
+// '' clears the field; a value outside the allowed list is ignored (the field is left as it was).
+const pickOption = (value, allowed) => (value === '' || allowed.includes(value) ? value : undefined);
+
+// 'YYYY-MM-DD' -> Date at UTC midnight; '' / null clears it; anything invalid or outside 10-100 years old -> undefined.
+function parseDateOfBirth(value) {
+    if (value === '' || value === null) return null;
+    const parts = parseDobParts(value);
+    if (!parts) return undefined;
+    const age = calcAge(value);
+    if (!age || age.years < MIN_AGE_YEARS || age.years > MAX_AGE_YEARS) return undefined;
+    return new Date(Date.UTC(parts.y, parts.m - 1, parts.d));
+}
 
 export async function PUT(req) {
     try {
@@ -16,7 +31,7 @@ export async function PUT(req) {
         const userId = auth.user._id;
 
         // Fields allowed to be updated
-        const { name, phone, bio, city, state, isPublicProfile, primaryTargetExam, targetExams, targetExamsPrompted, socialLinks } = body;
+        const { name, phone, bio, city, state, isPublicProfile, primaryTargetExam, targetExams, targetExamsPrompted, socialLinks, qualification, dateOfBirth, gender, heardFrom } = body;
 
         const user = await User.findById(userId);
         if (!user) {
@@ -29,6 +44,17 @@ export async function PUT(req) {
         if (city !== undefined) user.city = city;
         if (state !== undefined) user.state = state;
         if (isPublicProfile !== undefined) user.isPublicProfile = !!isPublicProfile;
+        const qualificationValue = pickOption(qualification, QUALIFICATION_VALUES);
+        if (qualificationValue !== undefined) user.qualification = qualificationValue;
+        const genderValue = pickOption(gender, GENDER_VALUES);
+        if (genderValue !== undefined) user.gender = genderValue;
+        const heardFromValue = pickOption(heardFrom, HEARD_FROM_VALUES);
+        if (heardFromValue !== undefined) user.heardFrom = heardFromValue;
+        if (dateOfBirth !== undefined) {
+            const dob = parseDateOfBirth(dateOfBirth);
+            if (dob === undefined) return errorResponse(new Error('Please enter a valid date of birth.'), 400);
+            user.dateOfBirth = dob;
+        }
         if (Array.isArray(targetExams)) {
             // Exam's query hook drops actualExam:false docs, so fake/placeholder exams can't be selected.
             const ids = [...new Set(targetExams.map(String))];
@@ -59,6 +85,10 @@ export async function PUT(req) {
                 bio: user.bio,
                 city: user.city,
                 state: user.state,
+                qualification: user.qualification,
+                dateOfBirth: user.dateOfBirth,
+                gender: user.gender,
+                heardFrom: user.heardFrom,
                 isPublicProfile: user.isPublicProfile,
                 primaryTargetExam: user.primaryTargetExam,
                 targetExams: user.targetExams,

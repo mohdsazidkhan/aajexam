@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
   city: { type: String, trim: true, default: '' },
   state: { type: String, trim: true, default: '' },
 
+  // Optional "About you" fields from Settings -> Profile. Allowed values live in
+  // lib/constants/profileOptions.js (the update-profile route validates against them). Age is never
+  // stored: it is worked out from dateOfBirth wherever it is shown.
+  qualification: { type: String, default: '' },
+  dateOfBirth: { type: Date, default: null },
+  gender: { type: String, default: '' },
+  heardFrom: { type: String, default: '' }, // "How did you hear about us?"
+
   // Display preferences synced across devices (theme, dark mode, font, text size, language).
   // Empty until the user first signs in on a device that pushes its local choices up.
   preferences: {
