@@ -40,7 +40,7 @@ export const getUserId = () => {
 
   try {
     const decoded = jwtDecode(token)
-    return decoded.userId
+    return decoded.id ?? decoded.userId
   } catch (error) {
     console.error('Error decoding token:', error)
     return null
