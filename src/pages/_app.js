@@ -21,7 +21,7 @@ import '../styles/App.css';
 import '../styles/darkMode.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
-import { lato } from '../lib/fonts';
+import { inter, lato } from '../lib/fonts';
 import { installGlobalErrorReporting } from '../lib/errorReporter';
 
 const Toaster = dynamic(
@@ -275,7 +275,8 @@ function AppContent({ Component, pageProps }) {
       ) : null}
 
       <ErrorBoundary>
-        <div className={lato.variable}>
+        {/* inter is referenced here (not only in _document) so next/font emits its @font-face in the production CSS */}
+        <div className={`${inter.variable} ${lato.variable}`}>
           {renderContent()}
         </div>
       </ErrorBoundary>
