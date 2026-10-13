@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { X, ShieldAlert } from 'lucide-react';
 import Button from './Button';
 

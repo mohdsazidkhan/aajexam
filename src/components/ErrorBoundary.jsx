@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { RefreshCcw, Home, Terminal, ShieldAlert, AlertCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { reportWebError } from '../lib/errorReporter';
 import useTranslate from '../hooks/useTranslate';
 

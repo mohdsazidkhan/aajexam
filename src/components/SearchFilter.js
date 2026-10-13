@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Search, X, Filter } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../hooks/useTranslate';
 
 /**

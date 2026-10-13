@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { Check, Sun, Moon, Search, Type, Settings } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../lib/api';

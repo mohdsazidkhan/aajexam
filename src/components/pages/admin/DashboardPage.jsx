@@ -35,7 +35,7 @@ import {
 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import Card from '../../ui/Card';
 import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';

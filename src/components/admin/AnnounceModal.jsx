@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { Megaphone, Send, X as XIcon } from 'lucide-react';
 import API from '../../lib/api';

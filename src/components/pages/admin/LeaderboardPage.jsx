@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Search, Flame, Target, BrainCircuit, GraduationCap, LayoutGrid, List, Table as TableIcon, MapPin } from 'lucide-react';
 import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';

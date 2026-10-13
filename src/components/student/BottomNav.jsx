@@ -17,7 +17,7 @@ import {
   MessageCircle,
   BrainCircuit
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../../hooks/useTranslate';
 
 const REEL_TYPES = [

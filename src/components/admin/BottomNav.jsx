@@ -20,7 +20,7 @@ import {
   FileText,
   Bell,
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 
 const REEL_TYPES = [
   { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'MCQ with explanation' },

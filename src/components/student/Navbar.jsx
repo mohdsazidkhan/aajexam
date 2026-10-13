@@ -17,7 +17,7 @@ import {
   Bell,
   Gift
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 
 import { useClientSide, useAuthStatus } from '../../hooks/useClientSide';
 import { secureLogout } from '../../lib/utils/authUtils';

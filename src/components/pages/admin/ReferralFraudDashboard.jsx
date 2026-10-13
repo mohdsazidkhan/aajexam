@@ -6,7 +6,7 @@ import Sidebar from '../../Sidebar';
 import Pagination from '../../Pagination';
 import useDebounce from '../../../hooks/useDebounce';
 import { useSSR } from '../../../hooks/useSSR';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import ResponsiveTable from '../../ResponsiveTable';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';

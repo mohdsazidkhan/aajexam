@@ -9,7 +9,7 @@ import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-hot-toast';
 import { ArrowLeft, Save } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import Sidebar from "../../Sidebar";
 import { AdminFormSkeleton } from '../../admin/Skeletons';

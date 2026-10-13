@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { StickyNote, Bookmark, Eye, Search, BookOpen, Hash, Sparkles, Calculator, ChevronRight, TrendingUp, Zap } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';

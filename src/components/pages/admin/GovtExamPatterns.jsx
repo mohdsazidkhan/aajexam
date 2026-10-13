@@ -31,7 +31,7 @@ import {
   Compass,
   FileText
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';

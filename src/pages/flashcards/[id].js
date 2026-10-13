@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { ArrowLeft, Share2, Expand, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import API from '../../lib/api';
 import Seo from '../../components/Seo';
 import toast from 'react-hot-toast';

@@ -17,7 +17,7 @@ import {
   Sparkles,
   MessageCircleQuestion,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import { useClientSide } from '../../hooks/useClientSide';
 import { initializeDarkMode } from '../../store/darkModeSlice';

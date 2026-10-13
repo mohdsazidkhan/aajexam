@@ -11,7 +11,7 @@ import {
   ShieldQuestion,
   Lock
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
 import API from '../lib/api';

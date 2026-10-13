@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { toast } from 'react-hot-toast';
 import { ShieldCheck, ShieldOff, User, Mail, Phone, Search } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 
 import API from '../../../lib/api';
 import Sidebar from '../../Sidebar';

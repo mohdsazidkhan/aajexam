@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { WifiOff, RefreshCcw, AlertCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import API from '../lib/api';
 import useTranslate from '../hooks/useTranslate';
 

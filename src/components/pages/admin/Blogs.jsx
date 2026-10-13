@@ -11,7 +11,7 @@ import { getCurrentUser } from '../../../utils/authUtils';
 import { useSSR } from '../../../hooks/useSSR';
 import { toast } from 'react-hot-toast';
 import { Plus, Eye, Heart, Pin, Star, Trash2, Edit3 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';

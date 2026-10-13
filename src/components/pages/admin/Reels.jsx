@@ -7,7 +7,7 @@ import { getCurrentUser } from "../../../utils/authUtils";
 import Pagination from '../../Pagination';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import {
   Flame, Plus, CheckCircle2, XCircle, Clock, Filter, LayoutGrid, List,
   Table as TableIcon, Search, Eye, Heart, Bookmark, MessageCircle,

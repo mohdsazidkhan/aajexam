@@ -7,7 +7,7 @@ import { AdminTableSkeleton } from '../../admin/Skeletons';
 import Button from '../../ui/Button';
 import StyledSelect from '../../ui/StyledSelect';
 import { useSSR } from '../../../hooks/useSSR';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import {
   Bell,
   Trash2,

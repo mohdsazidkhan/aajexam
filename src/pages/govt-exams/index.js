@@ -16,7 +16,7 @@ import {
   ChevronRight,
   History
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';

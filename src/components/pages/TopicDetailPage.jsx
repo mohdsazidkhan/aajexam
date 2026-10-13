@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ArrowLeft, Layers, FileText, BrainCircuit, Play, Trophy, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import { TopicDetailSkeleton } from '../skeletons/PublicSkeletons';
 import TestStartModal from '../TestStartModal';

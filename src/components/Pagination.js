@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { PAGE_SIZE_OPTIONS } from '../lib/constants/pagination';
 import StyledSelect from './ui/StyledSelect';
 import useTranslate from '../hooks/useTranslate';

@@ -26,7 +26,7 @@ import {
 
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { AdminDashboardSkeleton } from '../../admin/Skeletons';
 import ResponsiveTable from '../../ResponsiveTable';
 import StyledSelect from '../../ui/StyledSelect';

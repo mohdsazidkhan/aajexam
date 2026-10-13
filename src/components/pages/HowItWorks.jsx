@@ -18,7 +18,7 @@ import {
    Zap,
    Target
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import Card from '../ui/Card';
 import Button from '../ui/Button';

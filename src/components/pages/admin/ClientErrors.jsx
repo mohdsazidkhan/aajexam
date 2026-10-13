@@ -7,7 +7,7 @@ import {
   Bug, Server, Monitor, Smartphone, Globe, Trash2, CheckCircle2, Eye, EyeOff, RotateCcw,
   LayoutGrid, Table as TableIcon, Search, X, Clock, Users
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Pagination from '../../Pagination';
 import ResponsiveTable from '../../ResponsiveTable';
 import Sidebar from '../../Sidebar';

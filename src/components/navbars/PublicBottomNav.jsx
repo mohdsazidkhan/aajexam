@@ -10,7 +10,7 @@ import {
   Gamepad2,
   BookOpen
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import useTranslate from '../../hooks/useTranslate';
 
 const PublicBottomNav = () => {

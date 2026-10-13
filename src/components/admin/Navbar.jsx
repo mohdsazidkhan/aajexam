@@ -13,7 +13,7 @@ import {
   UserCircle,
   Bell,
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from '../../store/sidebarSlice';
 import { initializeDarkMode } from '../../store/darkModeSlice';

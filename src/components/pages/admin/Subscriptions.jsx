@@ -13,7 +13,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';

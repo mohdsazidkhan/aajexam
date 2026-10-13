@@ -31,7 +31,7 @@ import ViewToggle from '../../ViewToggle';
 import { isMobile } from 'react-device-detect';
 import API from '../../../lib/api';
 import { useSSR } from '../../../hooks/useSSR';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';
 import { AdminDashboardSkeleton, AdminTableSkeleton } from '../../admin/Skeletons';

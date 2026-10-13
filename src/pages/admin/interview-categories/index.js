@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { FolderTree, Plus, Pencil, Trash2, X, Search, Table2, List, LayoutGrid } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';

@@ -5,7 +5,7 @@ import API from "../../../lib/api";
 import { toast } from 'react-hot-toast';
 import { getCurrentUser } from "../../../utils/authUtils";
 import { useSSR } from "../../../hooks/useSSR";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import Sidebar from "../../Sidebar";
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import {

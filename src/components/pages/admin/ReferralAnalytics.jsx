@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { AdminDashboardSkeleton } from '../../admin/Skeletons';
 import { isMobile } from 'react-device-detect';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';

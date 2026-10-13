@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircleQuestion, Landmark, Briefcase, Sparkles, Search, ChevronRight, Eye, TrendingUp, ListFilter } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';

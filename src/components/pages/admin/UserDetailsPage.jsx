@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import {
   User, Mail, Calendar, Phone, Crown, Instagram, Facebook,
   Youtube, Search, LayoutGrid, List, Table as TableIcon,

@@ -11,7 +11,7 @@ import ViewToggle from "../../ViewToggle";
 import Button from "../../ui/Button";
 import ResponsiveTable from "../../ResponsiveTable";
 import Pagination from "../../Pagination";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import Sidebar from "../../Sidebar";
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';

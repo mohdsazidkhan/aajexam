@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import {
     Search, Download, BarChart3, Users, Eye, Filter, RefreshCcw, IndianRupee,
     TrendingUp, TrendingDown, LayoutGrid, List, Table as TableIcon, Tag,

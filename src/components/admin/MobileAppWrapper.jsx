@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   ChevronLeft
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { secureLogout, getCurrentUser } from '../../lib/utils/authUtils';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';

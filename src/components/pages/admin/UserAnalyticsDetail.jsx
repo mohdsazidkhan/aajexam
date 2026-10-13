@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useSSR } from '../../../hooks/useSSR';
 import { AdminDashboardSkeleton } from '../../admin/Skeletons';
 import API from '../../../lib/api';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Sidebar from "../../Sidebar";
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 

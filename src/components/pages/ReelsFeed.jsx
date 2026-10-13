@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform, useAnimation } from 'framer-motion';
+import { m as motion, AnimatePresence, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

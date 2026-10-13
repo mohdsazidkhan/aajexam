@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import API from '../../../lib/api';
 import ResponsiveTable from '../../ResponsiveTable';
 import Pagination from '../../Pagination';

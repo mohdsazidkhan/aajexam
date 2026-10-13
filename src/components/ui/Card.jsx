@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 /**
  * Card - A friendly, AajExam-inspired 3D card container for the gamified learning experience.

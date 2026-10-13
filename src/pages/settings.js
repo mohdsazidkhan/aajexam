@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import { Building2, CreditCard, Eye, EyeOff, Facebook, Globe, Info, Instagram, Lock, ShieldCheck, Twitter, User, Youtube } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 

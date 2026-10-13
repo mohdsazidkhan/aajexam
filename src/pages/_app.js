@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
+import { LazyMotion } from 'framer-motion';
 import store from '../store';
 import { initializeDarkMode, syncSystemTheme } from '../store/darkModeSlice';
 import { initializeThemeColor } from '../store/themeColorSlice';
@@ -50,6 +51,10 @@ const TargetExamPrompt = dynamic(() => import('../components/TargetExamPrompt'),
 const CityPromptModal = dynamic(() => import('../components/modals/CityPromptModal'), {
   ssr: false,
 });
+
+// Animation features download after first paint (see lib/motionFeatures.js); until then <m.*> elements render in
+// their initial state.
+const loadMotionFeatures = () => import('../lib/motionFeatures').then((mod) => mod.default);
 
 // Mounts its children only once the browser is idle (or after `timeout` ms at the latest), so the
 // chunks of non-essential widgets (promo modals, cookie banner) do not compete with the first paint.
@@ -273,6 +278,7 @@ function AppContent({ Component, pageProps }) {
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <LazyMotion features={loadMotionFeatures}>
       <GlobalErrorProvider>
         <LanguageProvider>
           <AppContent Component={Component} pageProps={pageProps} />
@@ -280,6 +286,7 @@ export default function App({ Component, pageProps }) {
         </LanguageProvider>
         <Toaster position="top-right" containerStyle={{ top: 80 }} toastOptions={toastOptions} />
       </GlobalErrorProvider>
+      </LazyMotion>
     </Provider>
   );
 }

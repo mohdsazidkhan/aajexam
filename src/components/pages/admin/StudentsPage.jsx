@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import {
   Users, UserPlus, Search, Filter, LayoutGrid, List, Table as TableIcon,
   Shield, Zap, Award, Mail, Calendar, MoreVertical, Trash2, Edit3,

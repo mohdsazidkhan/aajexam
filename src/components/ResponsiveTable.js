@@ -18,7 +18,7 @@ import {
   Activity,
   User
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Pagination from './Pagination';
 import ViewToggle from './ViewToggle';
 import { AdminTableSkeleton } from './admin/Skeletons';

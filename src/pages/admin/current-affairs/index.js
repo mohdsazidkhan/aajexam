@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { Newspaper, Plus, Pencil, Trash2, Eye, LayoutGrid, List, Table2, Calendar, Tag, X, Search } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';

@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { CircleAlert, CircleCheck, ChevronRight, Info } from 'lucide-react';
 import useTranslate from '../../hooks/useTranslate';
 

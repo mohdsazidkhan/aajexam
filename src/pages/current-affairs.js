@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X, TrendingUp, Sparkles, Globe, Flame, Trophy, Sword, Leaf } from 'lucide-react';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';

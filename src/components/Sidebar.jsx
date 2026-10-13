@@ -46,7 +46,7 @@ import {
   FolderTree,
   Landmark,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import { useSSR } from '../hooks/useSSR';
 import { isAdmin, hasAdminPrivileges, logAdminAction } from '../lib/utils/adminUtils';

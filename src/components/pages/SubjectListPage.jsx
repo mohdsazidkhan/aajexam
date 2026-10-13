@@ -5,7 +5,7 @@ import {
   BookMarked, Search, Sparkles, BookOpen, Globe2,
   TrendingUp, ChevronRight, BrainCircuit, Layers
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';

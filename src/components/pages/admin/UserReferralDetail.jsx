@@ -8,7 +8,7 @@ import API from '../../../lib/api';
 import { AdminDetailSkeleton } from "../../admin/Skeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';

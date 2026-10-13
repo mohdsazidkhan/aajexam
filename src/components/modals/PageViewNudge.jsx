@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import { Sparkles, X, ArrowRight } from 'lucide-react';
 import { toast } from 'react-hot-toast';

@@ -8,7 +8,7 @@ import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../hooks/useTranslate';
 
 // --- Tracker Skeleton (matches the loaded data view) ---

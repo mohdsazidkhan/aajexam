@@ -5,7 +5,7 @@ import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 import {

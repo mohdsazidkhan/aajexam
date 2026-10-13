@@ -20,7 +20,7 @@ import {
    Mail,
    Scale
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import MobileAppWrapper from '../MobileAppWrapper';
 import config from '../../lib/config/appConfig';

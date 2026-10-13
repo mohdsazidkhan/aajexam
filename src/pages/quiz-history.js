@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
    History, Search, Clock, Trophy, BrainCircuit, Eye, Calendar, Target
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';

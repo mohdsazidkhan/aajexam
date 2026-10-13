@@ -5,7 +5,7 @@ import API from '../../../lib/api';
 import { toast } from 'react-hot-toast';
 import Button from '../../ui/Button';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import {
   Flame, ArrowLeft, HelpCircle, BookOpen, Zap, Newspaper, BarChart3,
   Plus, Trash2, ChevronDown, Music, Clock, Play, Pause, Search, Volume2, VolumeX

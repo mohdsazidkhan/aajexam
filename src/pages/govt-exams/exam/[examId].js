@@ -8,7 +8,7 @@ import {
   ChevronRight, Play, Eye, Lock, Unlock, History,
   GraduationCap, HelpCircle, ListChecks, Search, UserPlus, Info, BookOpen, FolderOpen
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import API from '../../../lib/api';
 import { isAuthenticated } from '../../../lib/auth';

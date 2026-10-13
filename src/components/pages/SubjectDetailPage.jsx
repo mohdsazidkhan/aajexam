@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ArrowLeft, BookMarked, BrainCircuit } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import { SubjectDetailSkeleton } from '../skeletons/PublicSkeletons';
 import useTranslate from '../../hooks/useTranslate';

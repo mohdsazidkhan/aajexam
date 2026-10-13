@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import MobileAppWrapper from '../MobileAppWrapper';
 import Button from '../ui/Button';

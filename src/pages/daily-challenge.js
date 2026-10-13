@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Target, Clock, Trophy, CheckCircle, XCircle, SkipForward, Flame, ArrowRight, Zap } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import API from '../lib/api';
 import Card from '../components/ui/Card';

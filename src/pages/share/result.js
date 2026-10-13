@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Trophy, Target, Crown, TrendingUp, Award, ArrowRight, Zap } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 import Seo from '../../components/Seo';
 import PublicNavbar from '../../components/navbars/PublicNavbar';

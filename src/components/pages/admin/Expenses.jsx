@@ -9,7 +9,7 @@ import {
     Calendar, Tag, Receipt, PieChart, TrendingDown,
     PlusCircle, X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Sidebar from '../../Sidebar';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import ResponsiveTable from '../../ResponsiveTable';

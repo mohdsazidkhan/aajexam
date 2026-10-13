@@ -31,7 +31,7 @@ import {
    ChevronDown,
    ChevronUp
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 
 import API from '../../lib/api';
 import Card from '../ui/Card';

@@ -13,7 +13,7 @@ import ResponsiveTable from '../../ResponsiveTable';
 import SearchFilter from '../../SearchFilter';
 import ViewToggle from '../../ViewToggle';
 import { useSSR } from '../../../hooks/useSSR';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Sidebar from "../../Sidebar";
 

@@ -5,7 +5,7 @@ import {
   BarChart2, Key, Users, AlertTriangle, Megaphone, Clock,
   ExternalLink, MapPin, ChevronDown, ChevronUp
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';

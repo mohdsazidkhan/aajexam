@@ -5,7 +5,7 @@ import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
   Star, Zap, ChevronRight, ChevronLeft, Users, RefreshCw, FileText, BrainCircuit, Clock, MapPin
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import API from '../lib/api';
 import Card from '../components/ui/Card';

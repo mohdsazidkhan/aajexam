@@ -40,7 +40,7 @@ import {
   MessageCircleQuestion,
   Bell
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import { secureLogout, getCurrentUser, isAuthenticated } from '../../lib/utils/authUtils';
 import { useSSR } from '../../hooks/useSSR';

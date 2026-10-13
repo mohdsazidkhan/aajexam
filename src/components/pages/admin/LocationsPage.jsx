@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { Landmark, MapPin, Plus, Search, Edit3, Trash2, X, Table as TableIcon, LayoutGrid, List } from 'lucide-react';
 import { isMobile } from 'react-device-detect';
 import API from '../../../lib/api';
