@@ -30,7 +30,26 @@ class ApiService {
     return qp.toString();
   }
 
-  async request(endpoint, options = {}) {
+  // Identical GETs fired while one is already in flight share a single network call: React
+  // StrictMode (dev) and the post-hydration layout switch mount components twice, and several
+  // components (city prompt, target-exam sync, profile details) ask for the same profile on load.
+  // Nothing is cached once the call settles, and every caller gets its own copy of the data.
+  request(endpoint, options = {}) {
+    const method = String(options.method || 'GET').toUpperCase();
+    if (typeof window === 'undefined' || method !== 'GET' || options.body || options.signal) {
+      return this._requestOnce(endpoint, options);
+    }
+    if (!this._inflight) this._inflight = new Map();
+    const key = `${localStorage.getItem('token') || ''}|${endpoint}|${JSON.stringify(options.headers || {})}`;
+    let pending = this._inflight.get(key);
+    if (!pending) {
+      pending = this._requestOnce(endpoint, options).finally(() => this._inflight.delete(key));
+      this._inflight.set(key, pending);
+    }
+    return pending.then((data) => (data !== null && typeof data === 'object' ? JSON.parse(JSON.stringify(data)) : data));
+  }
+
+  async _requestOnce(endpoint, options = {}) {
     // Determine the effective base URL
     let effectiveBaseURL = this.baseURL;
 

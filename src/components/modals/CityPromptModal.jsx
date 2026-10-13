@@ -48,6 +48,7 @@ const CityPromptModal = () => {
         }
         timer = setTimeout(() => {
           setShow(true);
+          window.__cityPromptOpen = true; // read by ProfileDetailsModal so it waits instead of stacking
           sessionStorage.setItem('cityPromptShown', 'true');
         }, 1500);
       }
@@ -56,7 +57,14 @@ const CityPromptModal = () => {
     return () => { cancelled = true; clearTimeout(timer); };
   }, []);
 
-  const handleClose = () => setShow(false);
+  // Hides the modal and lets ProfileDetailsModal (which waits for this one) know it may open.
+  const hide = () => {
+    setShow(false);
+    window.__cityPromptOpen = false;
+    window.dispatchEvent(new Event('cityPrompt:closed'));
+  };
+
+  const handleClose = () => hide();
 
   const toggleExam = (id) => {
     setSelectedExamIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
@@ -67,7 +75,7 @@ const CityPromptModal = () => {
     if (needExams) {
       try { await API.updateProfile({ targetExamsPrompted: true }); } catch (e) { /* asked again next session */ }
     }
-    setShow(false);
+    hide();
   };
 
   const handleSave = async () => {
@@ -97,7 +105,7 @@ const CityPromptModal = () => {
         }
         if (needExams) notifyTargetExamsChanged();
         toast.success(needExams ? translate('Preferences saved!') : translate('City added! This helps rank you against students near you.'));
-        setShow(false);
+        hide();
       } else {
         toast.error(res?.message || translate('Failed to save'));
       }

@@ -53,6 +53,10 @@ const CityPromptModal = dynamic(() => import('../components/modals/CityPromptMod
   ssr: false,
 });
 
+const ProfileDetailsModal = dynamic(() => import('../components/modals/ProfileDetailsModal'), {
+  ssr: false,
+});
+
 // Animation features download after first paint (see lib/motionFeatures.js); until then <m.*> elements render in
 // their initial state.
 const loadMotionFeatures = () => import('../lib/motionFeatures').then((mod) => mod.default);
@@ -203,6 +207,7 @@ function AppContent({ Component, pageProps }) {
           </AppLayout>
           <TargetExamPrompt />
           <CityPromptModal />
+          <ProfileDetailsModal />
         </>
       );
     }
