@@ -211,7 +211,15 @@ function AppContent({ Component, pageProps }) {
       <main id="main-content" className="min-h-screen pt-16">
         <PublicNavbar />
         <div className="appContainer px-4 xxl:px-8">
-          {Component && <Component {...pageProps} />}
+          {/* Every public page sits in the centred container column. The landing page ('/') is built from
+              full-width bands that each carry their own inner container, so it is left unwrapped. */}
+          {router.pathname === '/' ? (
+            Component && <Component {...pageProps} />
+          ) : (
+            <div className="container mx-auto">
+              {Component && <Component {...pageProps} />}
+            </div>
+          )}
         </div>
         <UnifiedFooter />
         <PublicBottomNav />

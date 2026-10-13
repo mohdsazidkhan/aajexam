@@ -475,7 +475,7 @@ const ModernLandingPage = () => {
             </div>
          </section>
 
-         <section className="px-0 py-4 xl:py-8">
+         <section className="container mx-auto px-3 xl:px-6 py-4 xl:py-8">
             <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-sm p-12 xl:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
                <div className="relative z-10 space-y-4 xl:space-y-8 py-4 xl:py-8">
                   <motion.h2
