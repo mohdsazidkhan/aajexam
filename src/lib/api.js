@@ -205,6 +205,17 @@ class ApiService {
     return this.request('/api/student/profile');
   }
 
+  async getPreferences() {
+    return this.request('/api/student/preferences');
+  }
+
+  async updatePreferences(preferences) {
+    return this.request('/api/student/preferences', {
+      method: 'PUT',
+      body: JSON.stringify(preferences),
+    });
+  }
+
   async getAnalytics() {
     return this.request('/api/student/analytics');
   }

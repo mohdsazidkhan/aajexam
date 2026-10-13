@@ -11,6 +11,7 @@ import { initializeFont } from '../store/fontSlice';
 import { initializeTextSize } from '../store/textSizeSlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
+import PreferencesSync from '../components/PreferencesSync';
 import { useRouter } from 'next/router';
 import ClientOnly from '../components/ClientOnly';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -190,6 +191,7 @@ function AppContent({ Component, pageProps }) {
 
   return (
     <>
+      <PreferencesSync />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />

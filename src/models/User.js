@@ -19,6 +19,18 @@ const userSchema = new mongoose.Schema({
   city: { type: String, trim: true, default: '' },
   state: { type: String, trim: true, default: '' },
 
+  // Display preferences synced across devices (theme, dark mode, font, text size, language).
+  // Empty until the user first signs in on a device that pushes its local choices up.
+  preferences: {
+    themeId: { type: String, maxlength: 40 },
+    isDark: { type: Boolean },
+    followSystem: { type: Boolean },
+    fontFamily: { type: String, maxlength: 60 },
+    textSizeId: { type: String, maxlength: 10 },
+    language: { type: String, maxlength: 12 },
+    updatedAt: { type: Date }
+  },
+
   // Social media links (optional)
   socialLinks: {
     instagram: { type: String, default: null },
