@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { m as motion, AnimatePresence, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import { toast } from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import API from '../../lib/api';
@@ -476,6 +477,7 @@ const FilterBar = ({ filters, selected, onChange, onClose }) => {
 const ReelsFeed = () => {
   const { translate } = useTranslate();
   const router = useRouter();
+  const liteMode = useSelector((s) => s.display?.liteMode);
   const [reels, setReels] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -537,17 +539,19 @@ const ReelsFeed = () => {
     setTimeRemaining(dur);
     setTotalDuration(dur);
 
-    // Create and play audio
-    const audio = new Audio(`/reel_audio/${reel.audioFile}`);
-    audio.loop = true;
-    audio.volume = isMuted ? 0 : 0.5;
-    audioRef.current = audio;
+    // Lite mode: no background music (saves the audio download); the countdown below still runs.
+    const audio = liteMode ? null : new Audio(`/reel_audio/${reel.audioFile}`);
+    if (audio) {
+      audio.loop = true;
+      audio.volume = isMuted ? 0 : 0.5;
+      audioRef.current = audio;
 
-    audio.play().then(() => {
-      setIsAudioPlaying(true);
-    }).catch(() => {
-      setIsAudioPlaying(false);
-    });
+      audio.play().then(() => {
+        setIsAudioPlaying(true);
+      }).catch(() => {
+        setIsAudioPlaying(false);
+      });
+    }
 
     // Countdown timer — auto-scroll on end
     let remaining = dur;
@@ -579,7 +583,7 @@ const ReelsFeed = () => {
         timerIntervalRef.current = null;
       }
     };
-  }, [currentIndex, reels]);
+  }, [currentIndex, reels, liteMode]);
 
   // Sync mute state
   useEffect(() => {

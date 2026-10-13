@@ -409,6 +409,7 @@ const TestStart = ({ resolvedId } = {}) => {
                         return (
                           <button
                             key={idx}
+                            data-q-state={isMarked ? 'marked' : isAnswered ? 'answered' : undefined}
                             onClick={() => setCurrentQIndex(idx)}
                             className={`
                               h-10 rounded-lg xl:rounded-xl font-black text-xs transition-all border-b-2
@@ -614,6 +615,7 @@ const TestStart = ({ resolvedId } = {}) => {
                           return (
                             <button
                               key={idx}
+                              data-q-state={isMarked ? 'marked' : isAnswered ? 'answered' : undefined}
                               onClick={() => { setCurrentQIndex(idx); setShowPalette(false); }}
                               className={`h-11 sm:h-14 rounded-xl sm:rounded-2xl font-black border-b-2 ${isCurrent ? 'bg-primary-600 text-white border-primary-600' :
                                 isMarked ?'bg-primary-600 text-white border-primary-600':

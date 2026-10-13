@@ -14,9 +14,11 @@ import { setDarkMode, setFollowSystem } from '../store/darkModeSlice';
 import { setFontFamily } from '../store/fontSlice';
 import { setTextSize } from '../store/textSizeSlice';
 import { setLanguage } from '../store/languageSlice';
+import { setDisplayPref } from '../store/displaySlice';
+import { DISPLAY_PREF_KEYS } from '../lib/displayPrefs';
 
 const PUSH_DELAY_MS = 1200;
-const KEYS = ['themeId', 'isDark', 'followSystem', 'fontFamily', 'textSizeId', 'language'];
+const KEYS = ['themeId', 'isDark', 'followSystem', 'fontFamily', 'textSizeId', 'language', ...DISPLAY_PREF_KEYS];
 
 const knownThemeIds = new Set([...THEME_PRESETS, ...(LANGUAGE_THEME_PRESETS || [])].map((t) => t.id));
 const knownSizeIds = new Set(TEXT_SIZE_PRESETS.map((p) => p.id));
@@ -24,7 +26,7 @@ const knownSizeIds = new Set(TEXT_SIZE_PRESETS.map((p) => p.id));
 const pick = (obj) => KEYS.reduce((acc, key) => (obj[key] === undefined ? acc : { ...acc, [key]: obj[key] }), {});
 const sameValues = (a, b) => KEYS.every((key) => a[key] === b[key]);
 
-// Keeps theme, dark mode, font, text size and language in step with the signed-in account.
+// Keeps theme, dark mode, font, text size, language and the Display switches in step with the signed-in account.
 // On sign-in the saved account preferences win and are applied on this device; an account that
 // has none yet takes this device's current choices. After that every change is pushed (debounced).
 // Signed-out visitors are untouched: their choices stay in this browser only.
@@ -37,8 +39,13 @@ export default function PreferencesSync() {
   const fontFamily = useSelector((s) => s.font?.fontFamily);
   const textSizeId = useSelector((s) => s.textSize?.sizeId);
   const language = useSelector((s) => s.language?.currentLanguage);
+  const liteMode = useSelector((s) => s.display?.liteMode);
+  const reduceMotion = useSelector((s) => s.display?.reduceMotion);
+  const eyeComfort = useSelector((s) => s.display?.eyeComfort);
+  const pureBlack = useSelector((s) => s.display?.pureBlack);
+  const colorBlind = useSelector((s) => s.display?.colorBlind);
 
-  const current = { themeId, isDark, followSystem, fontFamily, textSizeId, language };
+  const current = { themeId, isDark, followSystem, fontFamily, textSizeId, language, liteMode, reduceMotion, eyeComfort, pureBlack, colorBlind };
   const currentRef = useRef(current);
   currentRef.current = current;
 
@@ -82,6 +89,11 @@ export default function PreferencesSync() {
             dispatch(setDarkMode(saved.isDark));
           }
           if (typeof saved.followSystem === 'boolean') dispatch(setFollowSystem(saved.followSystem));
+          DISPLAY_PREF_KEYS.forEach((key) => {
+            if (typeof saved[key] === 'boolean' && saved[key] !== currentRef.current[key]) {
+              dispatch(setDisplayPref({ key, value: saved[key] }));
+            }
+          });
           lastSyncedRef.current = { ...pick(currentRef.current), ...pick(saved) };
         }
         syncedUserRef.current = userId;
@@ -119,7 +131,7 @@ export default function PreferencesSync() {
       }
     }, PUSH_DELAY_MS);
     return () => clearTimeout(timerRef.current);
-  }, [userId, themeId, isDark, followSystem, fontFamily, textSizeId, language]);
+  }, [userId, themeId, isDark, followSystem, fontFamily, textSizeId, language, liteMode, reduceMotion, eyeComfort, pureBlack, colorBlind]);
 
   return null;
 }

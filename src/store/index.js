@@ -5,6 +5,7 @@ import languageReducer from './languageSlice';
 import themeColorReducer from './themeColorSlice';
 import fontReducer from './fontSlice';
 import textSizeReducer from './textSizeSlice';
+import displayReducer from './displaySlice';
 
 const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
     language: languageReducer,
     themeColor: themeColorReducer,
     font: fontReducer,
-    textSize: textSizeReducer
+    textSize: textSizeReducer,
+    display: displayReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

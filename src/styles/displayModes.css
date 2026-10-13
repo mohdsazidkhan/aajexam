@@ -1,0 +1,160 @@
+/* Display switches from the settings drawer's "Display" tab.
+   Each is a data-* attribute on <html>, set by store/displaySlice.js (and by the anti-FOUC script
+   in pages/_app.js before first paint). See lib/displayPrefs.js. */
+
+/* ── Reduce motion (manual) + Lite mode ── */
+/* Same rules as the OS-level prefers-reduced-motion block in index.css, but user-chosen.
+   Spinners keep turning so a loading state still reads as "working". */
+html[data-reduce-motion="1"],
+html[data-lite="1"] {
+  scroll-behavior: auto;
+}
+
+html[data-reduce-motion="1"] :not(.animate-spin),
+html[data-reduce-motion="1"] :not(.animate-spin)::before,
+html[data-reduce-motion="1"] :not(.animate-spin)::after,
+html[data-lite="1"] :not(.animate-spin),
+html[data-lite="1"] :not(.animate-spin)::before,
+html[data-lite="1"] :not(.animate-spin)::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ── Lite mode: drop the effects that cost the most on low-end phones ── */
+/* Frosted-glass blur is the most expensive paint in the app. */
+html[data-lite="1"] [class*="backdrop-blur"],
+html[data-lite="1"] .glass,
+html[data-lite="1"] .glass-dark {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Big decorative glow blobs (absolute rounded-full + blur-xl/2xl/3xl) are pure decoration. */
+html[data-lite="1"] .absolute.rounded-full:is(.blur-xl, .blur-2xl, .blur-3xl) {
+  display: none !important;
+}
+
+/* ── Eye comfort: warm, low-blue tint over the whole page ── */
+/* A fixed multiply layer: white becomes a soft cream, black stays black (so it also works with
+   Pure black). pointer-events none keeps every control clickable. */
+html[data-eye-comfort="1"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  background: #ffd9a3;
+  mix-blend-mode: multiply;
+}
+
+/* Lite mode on a weak phone: skip the blend and use a plain light overlay instead. */
+html[data-eye-comfort="1"][data-lite="1"]::after {
+  mix-blend-mode: normal;
+  background: rgba(255, 170, 60, 0.12);
+}
+
+/* ── Pure black (AMOLED) dark mode ── */
+/* Only when dark mode is on. Re-points the central dark tokens, then the hardcoded
+   dark:bg-slate-* shades that many components use directly. */
+html.dark[data-pure-black="1"] {
+  --bg-page: #000000;
+  --bg-surface: #000000;
+  --bg-surface-secondary: #0a0a0a;
+  --border-primary: #1a1a1a;
+  --border-secondary: #2e2e2e;
+}
+
+html.dark[data-pure-black="1"],
+html.dark[data-pure-black="1"] body {
+  background-color: #000000;
+}
+
+html.dark[data-pure-black="1"] .dark\:bg-slate-950,
+html.dark[data-pure-black="1"] .dark\:bg-slate-900,
+html.dark[data-pure-black="1"] .dark\:bg-gray-900,
+html.dark[data-pure-black="1"] .dark\:bg-gray-950 {
+  background-color: #000000 !important;
+}
+
+html.dark[data-pure-black="1"] .dark\:bg-slate-800,
+html.dark[data-pure-black="1"] .dark\:bg-gray-800 {
+  background-color: #0a0a0a !important;
+}
+
+html.dark[data-pure-black="1"] .dark\:bg-slate-900\/40,
+html.dark[data-pure-black="1"] .dark\:bg-slate-900\/60 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ── Colour-blind friendly answers ── */
+/* Right/wrong is never left to red-vs-green alone: a ✓ / ✗ mark is added, and the pair is
+   switched to blue / orange, which stay apart for every common kind of colour blindness.
+   Components opt in with data-opt-state="correct|wrong" and data-q-state="answered|marked|current". */
+html[data-color-blind="1"] [data-opt-state="correct"] {
+  background-color: rgba(0, 114, 178, 0.14) !important;
+  border-color: #0072b2 !important;
+  color: #0072b2 !important;
+}
+
+html[data-color-blind="1"] [data-opt-state="wrong"] {
+  background-color: rgba(213, 94, 0, 0.14) !important;
+  border-color: #d55e00 !important;
+  color: #d55e00 !important;
+}
+
+html[data-color-blind="1"].dark [data-opt-state="correct"] {
+  color: #56b4e9 !important;
+  border-color: #56b4e9 !important;
+}
+
+html[data-color-blind="1"].dark [data-opt-state="wrong"] {
+  color: #f0a060 !important;
+  border-color: #f0a060 !important;
+}
+
+html[data-color-blind="1"] [data-opt-state]::after {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+html[data-color-blind="1"] [data-opt-state="correct"]::after {
+  content: "\2713";
+}
+
+html[data-color-blind="1"] [data-opt-state="wrong"]::after {
+  content: "\2717";
+}
+
+/* Question palette: answered gets a ✓, marked-for-review a flag, so state is not colour-only
+   (the current question and a marked one otherwise look identical). */
+html[data-color-blind="1"] [data-q-state] {
+  position: relative;
+}
+
+html[data-color-blind="1"] [data-q-state="answered"]::after,
+html[data-color-blind="1"] [data-q-state="marked"]::after {
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+html[data-color-blind="1"] [data-q-state="answered"]::after {
+  content: "\2713";
+}
+
+html[data-color-blind="1"] [data-q-state="marked"]::after {
+  content: "\2691";
+}
+
+html[data-color-blind="1"] [data-q-state="marked"] {
+  outline: 2px dashed currentColor;
+  outline-offset: -4px;
+}

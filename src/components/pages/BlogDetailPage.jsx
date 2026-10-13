@@ -27,6 +27,7 @@ const renderContent = (html) => {
 };
 
 const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ssrRelatedBlogs = [], hasPyq = false }) => {
+  const liteMode = useSelector((state) => state.display?.liteMode);
   const { translate } = useTranslate();
   const router = useRouter();
   const { slug } = router.query;
@@ -264,9 +265,11 @@ const BlogDetailPage = ({ blog: initialBlog, slug: initialSlug, relatedBlogs: ss
               {relatedBlogs.filter(r => r._id !== blog._id).slice(0, 6).map((related) => (
                 <Link key={related._id} href={`/blog/${related.slug}`}
                   className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all overflow-hidden border border-gray-200 dark:border-gray-700">
-                  <img src={optimizedImage(related.featuredImage, 480) || '/default_banner.png'} alt={related.title}
-                    width={480} height={256} loading="lazy" decoding="async"
-                    className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  {!liteMode && (
+                    <img src={optimizedImage(related.featuredImage, 480) || '/default_banner.png'} alt={related.title}
+                      width={480} height={256} loading="lazy" decoding="async"
+                      className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  )}
                   <div className="p-4">
                     <h4 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 mb-2 line-clamp-2">
                       {related.title}

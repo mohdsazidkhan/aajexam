@@ -3,13 +3,14 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect } from '@/middleware/auth';
 
-// Display preferences (theme, dark mode, font, text size, language) kept per account so they
+// Display preferences (theme, dark mode, font, text size, language, comfort switches) kept per account so they
 // follow the user across devices. The client validates against its own registries; here we only
 // bound the shape so nothing odd gets stored.
 const ID_RE = /^[A-Za-z0-9_-]{1,40}$/;
 const FONT_RE = /^[A-Za-z0-9 ]{1,60}$/;
 const SIZE_RE = /^[a-z]{1,10}$/;
 const LANG_RE = /^[A-Za-z]{2,4}(-[A-Za-z]{2,8})?$/;
+const FLAG_KEYS = ['liteMode', 'reduceMotion', 'eyeComfort', 'pureBlack', 'colorBlind'];
 
 function clean(body) {
     const out = {};
@@ -19,6 +20,9 @@ function clean(body) {
     if (typeof body.fontFamily === 'string' && FONT_RE.test(body.fontFamily)) out.fontFamily = body.fontFamily;
     if (typeof body.textSizeId === 'string' && SIZE_RE.test(body.textSizeId)) out.textSizeId = body.textSizeId;
     if (typeof body.language === 'string' && LANG_RE.test(body.language)) out.language = body.language;
+    for (const key of FLAG_KEYS) {
+        if (typeof body[key] === 'boolean') out[key] = body[key];
+    }
     return out;
 }
 

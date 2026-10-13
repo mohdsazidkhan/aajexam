@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import API from '../lib/api';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
@@ -47,13 +48,14 @@ const rankConfig = {
 const AVATAR_COLORS = ['bg-primary-600', 'bg-blue-600', 'bg-rose-600', 'bg-amber-600', 'bg-violet-600', 'bg-cyan-600', 'bg-orange-600', 'bg-emerald-600'];
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
+  const liteMode = useSelector((s) => s.display?.liteMode);
   const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
   const colorIdx = initial.charCodeAt(0) % AVATAR_COLORS.length;
   const rc = rankConfig[entry?.rank];
   const ringClass = ring && rc ? `ring-4 ${rc.ringColor} ring-offset-2 ring-offset-background-surface` : '';
 
-  return entry?.profilePicture ? (
+  return entry?.profilePicture && !liteMode ? (
     <img src={entry.profilePicture} alt={entry.name || 'User'} className={`${sizes[size]} rounded-full object-cover flex-shrink-0 ${ringClass}`} />
   ) : (
     <div className={`${sizes[size]} ${AVATAR_COLORS[colorIdx]} rounded-full flex items-center justify-center font-black text-white flex-shrink-0 ${ringClass}`}>

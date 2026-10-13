@@ -392,7 +392,7 @@ const TestResult = ({ resolvedId } = {}) => {
                           const optImg = q.optionImages?.[oIdx] || '';
 
                           return (
-                            <div key={oIdx} className={`
+                            <div key={oIdx} data-opt-state={isAnswer ? 'correct' : isSelected ? 'wrong' : undefined} className={`
                                   p-3 rounded-2xl flex items-center gap-3 border-2 text-sm
                                   ${isAnswer ? 'bg-primary-100 dark:bg-primary-900/20 border-primary-600 text-primary-600 dark:text-primary-400' :
                                 isSelected ? 'bg-red-50 dark:bg-red-900/20 border-red-400 dark:border-red-600 text-red-700 dark:text-red-400' :

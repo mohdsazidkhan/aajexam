@@ -1,15 +1,16 @@
 import '../styles/index.css';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
-import { LazyMotion } from 'framer-motion';
+import { LazyMotion, MotionConfig } from 'framer-motion';
 import store from '../store';
 import { initializeDarkMode, syncSystemTheme } from '../store/darkModeSlice';
 import { initializeThemeColor } from '../store/themeColorSlice';
 import { initializeFont } from '../store/fontSlice';
 import { initializeTextSize } from '../store/textSizeSlice';
+import { initializeDisplay } from '../store/displaySlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import PreferencesSync from '../components/PreferencesSync';
@@ -139,6 +140,7 @@ function AppContent({ Component, pageProps }) {
     dispatch(initializeThemeColor());
     dispatch(initializeFont());
     dispatch(initializeTextSize());
+    dispatch(initializeDisplay());
   }, [dispatch]);
 
   // Auto Dark/Light: follow the device setting live while "follow system" is on.
@@ -247,6 +249,12 @@ function AppContent({ Component, pageProps }) {
                 document.documentElement.classList.remove('dark');
               }
             } catch(e) {}
+            try {
+              var flags = { liteMode: 'data-lite', reduceMotion: 'data-reduce-motion', eyeComfort: 'data-eye-comfort', pureBlack: 'data-pure-black', colorBlind: 'data-color-blind' };
+              for (var key in flags) {
+                if (localStorage.getItem(key) === '1') document.documentElement.setAttribute(flags[key], '1');
+              }
+            } catch(e) {}
           })();
         `}} />
       </Head>
@@ -275,10 +283,23 @@ function AppContent({ Component, pageProps }) {
   );
 }
 
+// Reduce motion / Lite mode switch off framer-motion's movement for the whole app. Otherwise it
+// follows the device's own "reduce motion" setting.
+function MotionSettings({ children }) {
+  const reduceMotion = useSelector((s) => s.display?.reduceMotion);
+  const liteMode = useSelector((s) => s.display?.liteMode);
+  return (
+    <MotionConfig reducedMotion={reduceMotion || liteMode ? 'always' : 'user'}>
+      {children}
+    </MotionConfig>
+  );
+}
+
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <LazyMotion features={loadMotionFeatures}>
+      <MotionSettings>
       <GlobalErrorProvider>
         <LanguageProvider>
           <AppContent Component={Component} pageProps={pageProps} />
@@ -286,6 +307,7 @@ export default function App({ Component, pageProps }) {
         </LanguageProvider>
         <Toaster position="top-right" containerStyle={{ top: 80 }} toastOptions={toastOptions} />
       </GlobalErrorProvider>
+      </MotionSettings>
       </LazyMotion>
     </Provider>
   );

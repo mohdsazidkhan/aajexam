@@ -28,6 +28,12 @@ const userSchema = new mongoose.Schema({
     fontFamily: { type: String, maxlength: 60 },
     textSizeId: { type: String, maxlength: 10 },
     language: { type: String, maxlength: 12 },
+    // Display tab switches
+    liteMode: { type: Boolean },
+    reduceMotion: { type: Boolean },
+    eyeComfort: { type: Boolean },
+    pureBlack: { type: Boolean },
+    colorBlind: { type: Boolean },
     updatedAt: { type: Date }
   },
 

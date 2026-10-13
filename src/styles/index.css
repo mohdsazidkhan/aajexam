@@ -4,6 +4,8 @@
 
 /* Import dark mode variables/utilities */
 @import './darkMode.css';
+/* Display switches (lite mode, reduce motion, eye comfort, pure black, colour-blind marks) */
+@import './displayModes.css';
 
 /* ── Reel Audio Animations ── */
 @keyframes marquee {

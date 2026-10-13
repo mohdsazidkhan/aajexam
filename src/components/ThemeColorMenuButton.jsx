@@ -17,6 +17,7 @@ import { setDarkMode, setFollowSystem } from '../store/darkModeSlice';
 import { setFontFamily } from '../store/fontSlice';
 import { setTextSize } from '../store/textSizeSlice';
 import { setLanguage } from '../store/languageSlice';
+import { setDisplayPref } from '../store/displaySlice';
 import useTranslate from '../hooks/useTranslate';
 
 // The 24 offered themes: 12 light and 12 dark (AajExam Default Light / Default Dark first).
@@ -35,6 +36,16 @@ const TABS = [
   { id: 'font', label: 'Font Family' },
   { id: 'size', label: 'Text Size' },
   { id: 'language', label: 'Language' },
+  { id: 'display', label: 'Display' },
+];
+
+// On/off comfort switches in the Display tab (see lib/displayPrefs.js and styles/displayModes.css).
+const DISPLAY_SWITCHES = [
+  { key: 'liteMode', label: 'Lite mode', hint: 'Saves data and runs faster on slow phones: no blur effects, no animations, no reel music and fewer pictures.' },
+  { key: 'reduceMotion', label: 'Reduce motion', hint: 'Stops sliding and fading animations. It also follows the reduce-motion setting of your device.' },
+  { key: 'eyeComfort', label: 'Eye comfort', hint: 'Adds a soft warm tint that cuts blue light, easier on the eyes at night.' },
+  { key: 'pureBlack', label: 'Pure black dark mode', hint: 'A true black background in dark mode. Saves battery on OLED screens.', needsDark: true },
+  { key: 'colorBlind', label: 'Colour-blind friendly', hint: 'Adds a tick or cross mark to answers and uses blue and orange instead of green and red.' },
 ];
 // Indian scripts need a font with proper glyphs: switching to such a language selects that
 // script's font (unless one of its fonts is already chosen) and remembers the previous English
@@ -53,6 +64,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
   const followSystem = useSelector((state) => state.darkMode?.followSystem ?? false);
   const fontFamily = useSelector((state) => state.font?.fontFamily ?? DEFAULT_FONT);
   const textSizeId = useSelector((state) => state.textSize?.sizeId ?? 'm');
+  const display = useSelector((state) => state.display) || {};
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState('theme');
   const [search, setSearch] = useState('');
@@ -228,14 +240,14 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
               className="fixed inset-x-0 bottom-0 z-[170] w-full h-[75vh] bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 rounded-t-3xl shadow-lg flex flex-col"
             >
               <div className="flex-shrink-0 p-4 pb-2">
-                <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 rounded-xl p-1">
+                <div className="flex items-center gap-1 mb-3 bg-slate-100 dark:bg-slate-800 rounded-xl p-1 overflow-x-auto no-scrollbar">
                   {tabs.map((tabItem) => (
                     <button
                       key={tabItem.id}
                       type="button"
                       onClick={() => { setTab(tabItem.id); setSearch(''); }}
                       style={tab === tabItem.id ? { backgroundColor: activeHex } : undefined}
-                      className={`flex-1 text-center text-xs font-black uppercase tracking-wide py-2 rounded-lg transition-all ${
+                      className={`flex-1 whitespace-nowrap text-center text-xs font-black uppercase tracking-wide px-2.5 py-2 rounded-lg transition-all ${
                         tab === tabItem.id
                           ? 'text-white shadow-sm'
                           : 'text-slate-500 dark:text-slate-400'
@@ -246,7 +258,7 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                   ))}
                 </div>
 
-                {tab !== 'size' && tab !== 'language' && (
+                {tab !== 'size' && tab !== 'language' && tab !== 'display' && (
                   <div className="flex items-center gap-2 px-1">
                     <div className="relative flex-1 min-w-0">
                       <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -440,6 +452,43 @@ const ThemeColorMenuButton = ({ buttonClassName = '' }) => {
                             )}
                           </span>
                           {isSelected && <Check className="w-4 h-4 text-white flex-shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {tab === 'display' && (
+                <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-6">
+                  <p className="text-xs font-semibold text-slate-400 px-1 pb-3">
+                    {translate('Make the site lighter, calmer and easier to read. Each switch applies right away.')}
+                  </p>
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
+                    {DISPLAY_SWITCHES.map((item) => {
+                      const on = !!display[item.key];
+                      return (
+                        <button
+                          key={item.key}
+                          type="button"
+                          role="switch"
+                          aria-checked={on}
+                          onClick={() => dispatch(setDisplayPref({ key: item.key, value: !on }))}
+                          className="w-full flex items-center gap-3 px-3 py-3 rounded-xl text-left bg-slate-50 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                        >
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-sm font-bold text-slate-800 dark:text-slate-100">{translate(item.label)}</span>
+                            <span className="block text-xs font-medium text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
+                              {translate(item.hint)}
+                              {item.needsDark && !isDark ? ` ${translate('Turn on a dark theme to see it.')}` : ''}
+                            </span>
+                          </span>
+                          <span
+                            className="relative w-10 h-6 rounded-full flex-shrink-0 transition-colors"
+                            style={{ backgroundColor: on ? activeHex : '#94a3b8' }}
+                          >
+                            <span className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-white shadow transition-transform ${on ? 'translate-x-4' : ''}`} />
+                          </span>
                         </button>
                       );
                     })}
