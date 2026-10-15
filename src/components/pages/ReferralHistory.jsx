@@ -174,7 +174,7 @@ export default function ReferralHistory() {
    if (!isMounted) return null;
 
    const rewardLabels = {
-      'plan99': '₹99 PLAN ACTIVATED',
+      'plan99': 'PRO PLAN ACTIVATED',
    };
 
    const rewardColors = {
@@ -380,7 +380,7 @@ export default function ReferralHistory() {
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
                         {[
-                           { label: 'Friend Buys ₹99 Plan', type: 'plan99', color: 'primary' }
+                           { label: 'Friend Buys PRO Plan', type: 'plan99', color: 'primary' }
                         ].map((b, i) => {
                            const amount = user?.referralRewards?.filter(r => r.type === b.type).reduce((s, r) => s + (r.amount || 0), 0) || 0;
                            const count = user?.referralRewards?.filter(r => r.type === b.type).length || 0;

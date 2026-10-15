@@ -4,6 +4,7 @@ import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
 import { getPayuConfig, payuHelpers } from '@/lib/payu';
 import { protect } from '@/middleware/auth';
+import { getPlan } from '@/lib/plans';
 
 export async function POST(req) {
     try {
@@ -19,18 +20,12 @@ export async function POST(req) {
         const user = await User.findById(userId);
         if (!user) return NextResponse.json({ success: false, message: "User not found" }, { status: 404 });
 
-        const plans = {
-            basic: { amount: 9, name: 'Basic Plan (Monthly)' },
-            premium: { amount: 49, name: 'Premium Plan (Monthly)' },
-            pro: { amount: 99, name: 'Pro Plan (Monthly)' }
-        };
-
-        const plan = plans[planId];
+        const plan = getPlan(planId);
         if (!plan) return NextResponse.json({ success: false, message: "Invalid plan" }, { status: 400 });
 
         const payuConfig = getPayuConfig();
         const transactionId = `TXN_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
-        const receipt = `sub_${planId}_${Date.now()}`;
+        const receipt = `sub_${plan.id}_${Date.now()}`;
 
         const host = req.headers.get('host');
         const protocol = host.includes('localhost') ? 'http' : 'https';
@@ -44,17 +39,17 @@ export async function POST(req) {
             key: payuConfig.merchantKey,
             txnid: transactionId,
             amount: payuHelpers.formatAmountForPayU(plan.amount),
-            productinfo: `${plan.name} - 1 month`,
+            productinfo: `${plan.name} - ${plan.label}`,
             firstname: user.name || 'User',
             email: user.email,
             phone: user.phone || '9999999999',
             surl,
             furl,
             udf1: userId,
-            udf2: planId,
+            udf2: plan.id,
             udf3: receipt,
             udf4: 'subscription',
-            udf5: 'monthly'
+            udf5: plan.cycle
         };
 
         payuParams.hash = payuHelpers.generateRequestHash(payuParams, payuConfig.merchantSalt);
@@ -65,7 +60,7 @@ export async function POST(req) {
             currency: 'INR',
             receipt,
             user: userId,
-            planId,
+            planId: plan.id,
             paymentMethod: 'payu',
             payuTransactionId: transactionId,
             status: 'created'

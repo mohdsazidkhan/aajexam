@@ -111,7 +111,7 @@ export default function UserReferralDetail() {
 
     const getRewardTypeLabel = (type) => {
         const labels = {
-            'plan99': '₹99 Plan Reward',
+            'plan99': 'PRO Plan Reward',
         };
         return labels[type] || type.toUpperCase();
     };

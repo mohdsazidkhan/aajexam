@@ -4,25 +4,36 @@ import Subscription from '@/models/Subscription';
 import WalletTransaction from '@/models/WalletTransaction';
 import { applyReferralRewards } from '@/utils/rewards';
 import { createNotification } from '@/utils/notifications';
+import { getPlan } from '@/lib/plans';
 
 /**
  * Activates a subscription for a user after successful payment.
  * Shared between webhooks and manual verification routes.
  */
 export async function activateSubscription({ userId, planId, amount, txnid, paymentOrder }) {
+    // planId is a catalogue id ('pro', 'pro_3m', ...); the stored plan is always the tier ('PRO').
+    const plan = getPlan(planId);
+    if (!plan) throw new Error(`Unknown plan "${planId}" during activation`);
     const startDate = new Date();
-    const endDate = new Date(startDate.getTime() + 30 * 24 * 60 * 60 * 1000);
-    const normalizedPlan = (planId || '').toUpperCase();
+    const normalizedPlan = plan.tier;
 
     const user = await User.findById(userId);
     if (!user) throw new Error("User not found during activation");
 
+    // Stack on top of any PRO time the user still has (e.g. the free-PRO promo
+    // running to 31 Dec) instead of overwriting it with a shorter expiry.
+    const currentExpiry = user.subscriptionExpiry ? new Date(user.subscriptionExpiry) : null;
+    const stillPro = (user.subscriptionStatus || '').toUpperCase() === 'PRO' && currentExpiry && currentExpiry > startDate;
+    const baseDate = stillPro ? currentExpiry : startDate;
+    const endDate = new Date(baseDate.getTime() + plan.days * 24 * 60 * 60 * 1000);
+
     let subscription = await Subscription.findOne({ user: userId });
     if (subscription) {
         subscription.plan = normalizedPlan;
-        subscription.billingCycle = 'monthly';
+        subscription.billingCycle = plan.cycle;
+        subscription.duration = plan.label;
         subscription.status = 'active';
-        subscription.startDate = startDate;
+        subscription.startDate = baseDate;
         subscription.endDate = endDate;
         subscription.amount = amount;
         await subscription.save();
@@ -30,9 +41,10 @@ export async function activateSubscription({ userId, planId, amount, txnid, paym
         subscription = new Subscription({
             user: userId,
             plan: normalizedPlan,
-            billingCycle: 'monthly',
+            billingCycle: plan.cycle,
+            duration: plan.label,
             status: 'active',
-            startDate,
+            startDate: baseDate,
             endDate,
             amount: amount
         });
@@ -82,7 +94,7 @@ export async function activateSubscription({ userId, planId, amount, txnid, paym
         userId,
         type: 'subscription',
         title: 'New subscription purchase',
-        description: `${normalizedPlan} (monthly) - ₹${amount}`,
+        description: `${normalizedPlan} (${plan.label}) - ₹${amount}`,
         meta: { subscriptionId: subscription._id, plan: normalizedPlan }
     });
 

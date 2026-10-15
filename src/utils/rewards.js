@@ -8,7 +8,8 @@ export async function applyReferralRewards(user, planId, planPrice) {
             'pro': { type: 'plan99', inviterReward: parseInt(process.env.NEXT_PUBLIC_REFERRAL_REWARD_PRO) || 33, price: 99 }
         };
 
-        const reward = rewardMap[planId];
+        // Callers pass the stored tier ('PRO'); the map is keyed lowercase.
+        const reward = rewardMap[String(planId || '').toLowerCase()];
         if (!reward) return;
 
         const subscriptionHistory = user.subscriptionHistory || [];

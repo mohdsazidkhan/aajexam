@@ -4,6 +4,7 @@ import User from '@/models/User';
 import WalletTransaction from '@/models/WalletTransaction';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import { protect } from '@/middleware/auth';
+import { getPlan } from '@/lib/plans';
 
 const MIN_WITHDRAW_AMOUNT = parseInt(process.env.MIN_WITHDRAW_AMOUNT || '1000', 10);
 
@@ -71,7 +72,7 @@ export async function GET(req) {
         // Upgrade prompt: shown when free user has earned rewards
         const showUpgradePrompt = !isPro && walletBalance > 0;
         const upgradeMessage = showUpgradePrompt
-            ? `₹${walletBalance} waiting in your wallet. Upgrade to PRO for ₹99 to withdraw your earnings!`
+            ? `₹${walletBalance} waiting in your wallet. Upgrade to PRO (plans from ₹${getPlan('pro').price}) to withdraw your earnings!`
             : null;
 
         return NextResponse.json({

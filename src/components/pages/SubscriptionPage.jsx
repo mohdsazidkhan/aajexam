@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 import { toast } from "react-hot-toast";
-import { ArrowRight, CircleCheck, Crown, LoaderCircle, Rocket, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CircleCheck, Crown, LoaderCircle, ShieldCheck, Sparkles } from 'lucide-react';
 
 import Link from 'next/link';
 import API from '../../lib/api';
-import config from '../../lib/config/appConfig';
-import { FREE_PLAN_FEATURES, PRO_PLAN_FEATURES } from '../../lib/config/planFeatures';
+import { PRO_PLANS } from '../../lib/plans';
+import { PRO_PLAN_FEATURES } from '../../lib/config/planFeatures';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import UnifiedFooter from '../UnifiedFooter';
@@ -18,25 +18,6 @@ import { SubscriptionSkeleton } from '../skeletons/PrivateSkeletons';
 import PaymentTransactions from "../PaymentTransactions";
 import { launchPayuCheckout } from '../../lib/utils/payu';
 import useTranslate from '../../hooks/useTranslate';
-
-const PLAN_THEMES = {
-  primary: {
-    card: 'border-primary-500/30 shadow-sm',
-    iconWrap: 'bg-primary-500/10 text-primary-600',
-    badge: 'bg-primary-600 text-white shadow-sm',
-    check: 'text-primary-600',
-    button: 'primary',
-    buttonClass: 'shadow-sm',
-  },
-  secondary: {
-    card: 'border-primary-500/20',
-    iconWrap: 'bg-primary-500/10 text-primary-600',
-    badge: 'bg-primary-500/10 text-primary-600',
-    check: 'text-primary-600',
-    button: 'secondary',
-    buttonClass: '',
-  },
-};
 
 const SubscriptionPage = () => {
   const { translate } = useTranslate();
@@ -82,26 +63,19 @@ const SubscriptionPage = () => {
     fetchSubscriptionData();
   }, []);
 
-  const plans = Object.entries(config.SUBSCRIPTION_PLANS || {}).map(([key, plan]) => {
-    const isPro = key.toLowerCase() === 'pro';
-
-    return {
-      key,
-      ...plan,
-      icon: isPro ? Crown : Rocket,
-      tone: isPro ? 'primary' : 'secondary',
-      eyebrow: isPro ? translate('Most popular') : translate('Start practicing'),
-      features: isPro ? PRO_PLAN_FEATURES : FREE_PLAN_FEATURES,
-    };
-  });
+  // Prices/durations come from .env via lib/plans; the server re-reads them to charge.
+  const plans = PRO_PLANS.map((plan) => ({ ...plan, key: plan.id }));
+  const fmtMoney = (n) => (Number.isInteger(n) ? String(n) : n.toFixed(2));
 
   if (loading) {
     return (
       <div className="space-y-8 mx-auto">
         <Skeleton height="200px" borderRadius="2.5rem" />
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-          <Skeleton height="500px" borderRadius="2rem" />
-          <Skeleton height="500px" borderRadius="2rem" />
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-8">
+          <Skeleton height="300px" borderRadius="2rem" />
+          <Skeleton height="300px" borderRadius="2rem" />
+          <Skeleton height="300px" borderRadius="2rem" />
+          <Skeleton height="300px" borderRadius="2rem" />
         </div>
       </div>
     );
@@ -139,30 +113,17 @@ const SubscriptionPage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 w-full xl:w-auto">
-                {(subscription.planName || '').toUpperCase() === 'FREE' && (() => {
-                  const proPlan = plans.find((plan) => plan.key.toUpperCase() === 'PRO');
-                  if (!proPlan) return null;
-                  const isBuying = buyingPlan === proPlan.key;
-                  return (
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      disabled={isBuying}
-                      fullWidth
-                      className="xl:w-auto rounded-2xl px-6 py-3 xl:px-8 xl:py-4"
-                      onClick={() => handleBuy(proPlan)}
-                    >
-                      {isBuying ? (
-                        <>
-                          <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
-                          {translate('Opening PayU…')}
-                        </>
-                      ) : (
-                        translate('Buy PRO ₹{price} Plan', { price: proPlan.price })
-                      )}
-                    </Button>
-                  );
-                })()}
+                {(subscription.planName || '').toUpperCase() === 'FREE' && (
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    fullWidth
+                    className="xl:w-auto rounded-2xl px-6 py-3 xl:px-8 xl:py-4"
+                    onClick={() => document.getElementById('pro-plans')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    {translate('View PRO plans')}
+                  </Button>
+                )}
               </div>
             </div>
             <Sparkles className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 opacity-10" />
@@ -180,90 +141,83 @@ const SubscriptionPage = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-12 pt-2 xl:pt-6">
+          <div id="pro-plans" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 pt-2 xl:pt-6">
             {plans.map((plan) => {
-              const theme = PLAN_THEMES[plan.tone];
-              const isCurrent = (subscription?.planName || '').toUpperCase() === (plan.key || '').toUpperCase() && subscription.status === 'active';
-              const isFree = (plan.key || '').toUpperCase() === 'FREE';
               const isBuying = buyingPlan === plan.key;
+              const highlighted = !!plan.badge;
 
               return (
-                <Card key={plan.key} className={`p-4 xl:p-10 flex flex-col justify-between group transition-all duration-300 h-full relative rounded-2xl xl:rounded-[3.5rem] border-2 ${theme.card} ${isCurrent ? 'ring-2 ring-primary-500/40' : ''}`}>
-                  <div className="space-y-2 xl:space-y-4 xl:space-y-8 relative z-10">
-                    <div className="flex justify-between items-start gap-3 xl:gap-4">
-                      <div className={`p-2.5 xl:p-4 rounded-2xl xl:rounded-3xl ${theme.iconWrap}`}>
-                        <plan.icon className="w-6 h-6 xl:w-10 xl:h-10" />
-                      </div>
-                      <span className={`text-[10px] xl:text-xs font-semibold px-2.5 xl:px-4 py-1 xl:py-1.5 rounded-full ${theme.badge}`}>
-                        {plan.eyebrow}
-                      </span>
+                <Card key={plan.key} className={`p-4 xl:p-8 flex flex-col justify-between h-full relative rounded-2xl xl:rounded-[2.5rem] border-2 ${highlighted ? 'border-primary-500/60 shadow-sm' : 'border-primary-500/20'}`}>
+                  <div className="space-y-3 xl:space-y-5 relative z-10">
+                    <div className="flex justify-between items-center gap-2 min-h-[28px]">
+                      <h3 className="text-base xl:text-2xl font-black font-outfit tracking-tight">{translate(plan.label)}</h3>
+                      {plan.badge && (
+                        <span className="text-[10px] xl:text-xs font-semibold px-2.5 xl:px-3 py-1 rounded-full bg-primary-600 text-white shadow-sm whitespace-nowrap">
+                          {translate(plan.badge)}
+                        </span>
+                      )}
                     </div>
 
-                    <div className="space-y-1.5 xl:space-y-3">
-                      <div>
-                        <h3 className="text-base xl:text-3xl font-black font-outfit tracking-tight">{translate(plan.name)}</h3>
-                        <p className="text-[11px] xl:text-sm font-medium text-content-secondary mt-1">{isCurrent ? translate('This is your current plan.') : translate('You can upgrade anytime.')}</p>
-                      </div>
-
+                    <div className="space-y-1">
                       <div className="flex items-end gap-2">
-                        <span className="text-3xl xl:text-5xl font-black font-outfit leading-none">Rs.{plan.price}</span>
-                        <span className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('per {duration}', { duration: translate(plan.duration) })}</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2.5 xl:space-y-4">
-                      <p className="text-xs xl:text-sm font-semibold text-content-secondary">{translate('What you get with this plan')}</p>
-                      <ul className="space-y-1.5 xl:space-y-3">
-                        {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-medium text-content-secondary">
-                            <CircleCheck className={`w-3.5 h-3.5 xl:w-5 xl:h-5 shrink-0 ${theme.check}`} />
-                            <span>{translate(feature)}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="pt-5 xl:pt-10 relative z-10">
-                    {isCurrent ? (
-                      <div className="flex items-center justify-center gap-2 text-primary-600 font-semibold text-xs xl:text-sm bg-primary-500/5 py-3 xl:py-4 rounded-2xl w-full border-2 border-primary-500/20">
-                        <CircleCheck className="w-4 h-4" />
-                        {translate('Current plan')}
-                      </div>
-                    ) : isFree ? (
-                      <div className="flex items-center justify-center gap-2 text-content-secondary font-semibold text-xs xl:text-sm bg-slate-50 dark:bg-slate-800/50 py-3 xl:py-4 rounded-2xl w-full border-2 border-slate-200 dark:border-slate-800">
-                        {translate('Free for everyone')}
-                      </div>
-                    ) : (
-                      <Button
-                        variant={theme.button}
-                        size="md"
-                        fullWidth
-                        disabled={isBuying}
-                        className={`py-3.5 xl:py-6 text-xs xl:text-sm font-black rounded-2xl ${theme.buttonClass}`}
-                        onClick={() => handleBuy(plan)}
-                      >
-                        {isBuying ? (
-                          <>
-                            <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
-                            {translate('Opening PayU…')}
-                          </>
-                        ) : (
-                          <>
-                            {translate('Buy {name}', { name: translate(plan.name) })} <ArrowRight className="ml-2 w-4 h-4" />
-                          </>
+                        <span className="text-3xl xl:text-5xl font-black font-outfit leading-none">₹{plan.price}</span>
+                        {plan.saving > 0 && (
+                          <span className="text-xs xl:text-sm font-medium text-content-secondary line-through pb-1">₹{plan.normalPrice}</span>
                         )}
-                      </Button>
-                    )}
+                      </div>
+                      <p className="text-xs xl:text-sm font-medium text-content-secondary">
+                        ₹{fmtMoney(plan.perMonth)}{translate('/month')}
+                        {plan.saving > 0 && <> · {translate('Save ₹{amount}', { amount: plan.saving })}</>}
+                      </p>
+                      {plan.discountPct > 0 && (
+                        <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-600">
+                          {plan.discountPct}% OFF
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  {plan.tone === 'primary' && (
-                    <Crown className="absolute -bottom-10 -right-10 w-64 h-64 opacity-5 pointer-events-none" />
-                  )}
+                  <div className="pt-5 xl:pt-8 relative z-10">
+                    <Button
+                      variant={highlighted ? 'primary' : 'secondary'}
+                      size="md"
+                      fullWidth
+                      disabled={!!buyingPlan}
+                      className="py-3.5 xl:py-5 text-xs xl:text-sm font-black rounded-2xl"
+                      onClick={() => handleBuy(plan)}
+                    >
+                      {isBuying ? (
+                        <>
+                          <LoaderCircle className="mr-2 w-4 h-4 animate-spin" />
+                          {translate('Opening PayU…')}
+                        </>
+                      ) : (
+                        <>
+                          {translate('Buy {name}', { name: translate(plan.label) })} <ArrowRight className="ml-2 w-4 h-4" />
+                        </>
+                      )}
+                    </Button>
+                  </div>
                 </Card>
               );
             })}
           </div>
+
+          <Card className="p-4 xl:p-8 rounded-2xl xl:rounded-[2.5rem] border-2 border-primary-500/20">
+            <div className="flex items-center gap-3 mb-3 xl:mb-5">
+              <div className="p-2.5 rounded-2xl bg-primary-500/10 text-primary-600"><Crown className="w-6 h-6 xl:w-8 xl:h-8" /></div>
+              <p className="text-sm xl:text-xl font-black font-outfit">{translate('What you get with every PRO plan')}</p>
+            </div>
+            <ul className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-1.5 xl:gap-y-3">
+              {PRO_PLAN_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-center gap-2 xl:gap-3 text-xs xl:text-base font-medium text-content-secondary">
+                  <CircleCheck className="w-3.5 h-3.5 xl:w-5 xl:h-5 shrink-0 text-primary-600" />
+                  <span>{translate(feature)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs xl:text-sm font-medium text-content-secondary mt-4 xl:mt-6">{translate('Free plan stays free — practice tests, daily challenge and more at no cost.')}</p>
+          </Card>
         </section>
 
         <section className="space-y-3 xl:space-y-6">

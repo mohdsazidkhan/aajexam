@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PaymentOrder from '@/models/PaymentOrder';
 import User from '@/models/User';
+import { getPlan } from '@/lib/plans';
 
 export async function GET(req, { params }) {
     try {
@@ -23,11 +24,7 @@ export async function GET(req, { params }) {
             return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
         }
 
-        const plans = {
-            pro: { amount: Number(process.env.PRO_PLAN_PRICE || 99), duration: 30, name: 'Pro Plan (Monthly)' }
-        };
-
-        const plan = plans[paymentOrder.planId];
+        const plan = getPlan(paymentOrder.planId);
         if (!plan) {
             return NextResponse.json({ success: false, message: 'Plan not found' }, { status: 404 });
         }
@@ -40,7 +37,7 @@ export async function GET(req, { params }) {
             receipt: paymentOrder.receipt,
             planId: paymentOrder.planId,
             planName: plan.name,
-            planPrice: plan.amount,
+            planPrice: plan.price,
             user: {
                 name: user.name,
                 email: user.email,

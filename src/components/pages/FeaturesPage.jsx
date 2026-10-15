@@ -33,12 +33,12 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import ProBadge from '../ui/ProBadge';
 import UnifiedFooter from '../UnifiedFooter';
-import config from '../../lib/config/appConfig';
 import { FREE_PLAN_FEATURES, PRO_PLAN_FEATURES } from '../../lib/config/planFeatures';
 import { useAdminMobileHeader } from '../../contexts/AdminMobileHeaderContext';
 import useTranslate from '../../hooks/useTranslate';
+import { PRO_PLANS } from '../../lib/plans';
 
-const proPrice = config?.SUBSCRIPTION_PLANS?.PRO?.price ?? 99;
+const lowestPerMonth = Math.min(...PRO_PLANS.map((p) => p.perMonth));
 
 const FEATURE_GROUPS = [
   {
@@ -203,7 +203,7 @@ const FeaturesPage = () => {
             </div>
             <div className="relative z-10">
               <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('PRO')}</h2>
-              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('₹{price}/month — unlock the full exam-prep engine.', { price: proPrice })}</p>
+              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month — unlock the full exam-prep engine.', { price: lowestPerMonth })}</p>
             </div>
             <ul className="space-y-1.5 xl:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
@@ -281,7 +281,7 @@ const FeaturesPage = () => {
             <div className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
               <h2 className="text-lg xl:text-4xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-400">{c}</span>])}</h2>
               <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-1">
-                Two tiers only — Free and PRO at ₹{proPrice}/month. No confusing add-ons.
+                Two tiers only — Free and PRO from ₹{lowestPerMonth}/month. No confusing add-ons.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 items-center justify-center">
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/subscription')}>{translate('Upgrade to PRO')}</Button>
