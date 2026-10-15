@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
@@ -31,6 +31,7 @@ import AuthorBio from '../AuthorBio';
 import { generateBreadcrumbSchema } from '../../utils/schema';
 import { getCanonicalUrl } from '../../utils/seo';
 import useTranslate from '../../hooks/useTranslate';
+import API from '../../lib/api';
 
 const AboutUs = () => {
   const { translate, rich } = useTranslate();
@@ -41,10 +42,22 @@ const AboutUs = () => {
       { name: 'About Us' }
    ]);
 
+   const [counts, setCounts] = useState(null);
+   useEffect(() => {
+      let alive = true;
+      API.getPublicLandingStats()
+         .then((res) => { if (alive && res?.success) setCounts(res.data); })
+         .catch(() => {});
+      return () => { alive = false; };
+   }, []);
+
+   const show = (n) => (typeof n === 'number' ? n.toLocaleString('en-IN') : '—');
    const stats = [
-      { label: 'QUIZZES', value: '2,000+', icon: Scroll, color: 'primary' },
-      { label: 'EXAMS', value: '20+', icon: Zap, color: 'primary' },
-      { label: 'STUDENTS', value: '1,000+', icon: Users, color: 'primary' }
+      { label: 'STUDENTS', value: show(counts?.activeStudents), icon: Users, color: 'primary' },
+      { label: 'PRACTICE TESTS', value: show(counts?.totalPracticeTests), icon: Scroll, color: 'primary' },
+      { label: 'QUIZZES', value: show(counts?.totalQuizzes), icon: Zap, color: 'primary' },
+      { label: 'SUBJECTS', value: show(counts?.totalSubjects), icon: BookOpen, color: 'primary' },
+      { label: 'TOPICS', value: show(counts?.totalTopics), icon: GraduationCap, color: 'primary' }
    ];
 
    const features = [
@@ -77,9 +90,9 @@ const AboutUs = () => {
                </div>
 
                {/* Stats Ribbon */}
-               <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pt-12 max-w-4xl mx-auto">
+               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 xl:gap-4 pt-12 max-w-6xl mx-auto">
                   {stats.map((stat, i) => (
-                     <Card key={i} className="flex items-center justify-center gap-6 border-2 border-slate-100 dark:border-slate-800">
+                     <Card key={i} className="flex items-center justify-center gap-3 xl:gap-4 border-2 border-slate-100 dark:border-slate-800">
                         <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl`}>
                            <stat.icon className="w-6 h-6" />
                         </div>
