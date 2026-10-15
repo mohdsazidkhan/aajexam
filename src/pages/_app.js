@@ -18,6 +18,7 @@ import { useRouter } from 'next/router';
 import ClientOnly from '../components/ClientOnly';
 import ErrorBoundary from '../components/ErrorBoundary';
 import '../styles/App.css';
+import '../styles/couponDatepicker.css';
 import '../styles/darkMode.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
@@ -237,6 +238,7 @@ function AppContent({ Component, pageProps }) {
           <WelcomePromoModal />
           <ExitIntentModal />
           <PageViewNudge />
+          <CouponOfferModal />
         </AfterIdle>
       </main>
     );

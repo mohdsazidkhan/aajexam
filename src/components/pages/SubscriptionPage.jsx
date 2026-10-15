@@ -73,7 +73,14 @@ const SubscriptionPage = () => {
 
   // Shared links look like /subscription?coupon=DIWALI50 and apply themselves.
   useEffect(() => {
-    const code = router.query?.coupon;
+    let code = router.query?.coupon;
+    if (!code && router.isReady && !loading && userInfo?._id) {
+      // Code picked from the public offer pop-up before signing up.
+      try {
+        code = localStorage.getItem('pendingCoupon') || undefined;
+        if (code) localStorage.removeItem('pendingCoupon');
+      } catch { /* storage blocked */ }
+    }
     if (router.isReady && typeof code === 'string' && code && !loading && userInfo?._id) applyCoupon(code);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query?.coupon, loading, userInfo?._id]);

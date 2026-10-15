@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Tag, Plus, Pencil, Trash2, Copy, Link2, Megaphone, X } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../../lib/api';
 import { PRO_PLANS } from '../../../lib/plans';
+import { computeDiscount } from '../../../lib/couponPricing';
 import { useSSR } from '../../../hooks/useSSR';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import Sidebar from '../../Sidebar';
@@ -25,6 +28,38 @@ const toLocalInput = (d) => {
   const dt = new Date(d);
   const pad = (n) => String(n).padStart(2, '0');
   return `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+};
+
+// Calendar + time picker. Works on the same "YYYY-MM-DDTHH:mm" strings the form already keeps.
+// Picking a date for the first time defaults the time (start 00:00, expiry 23:59).
+const DateTimeField = ({ value, onChange, defaultTime = [0, 0], placeholder, clearable, minDate, required }) => {
+  const selected = value ? new Date(value) : null;
+  const handle = (d) => {
+    if (!d) return onChange('');
+    const next = new Date(d);
+    if (!selected && d.getHours() === 0 && d.getMinutes() === 0) next.setHours(defaultTime[0], defaultTime[1], 0, 0);
+    onChange(toLocalInput(next));
+  };
+  return (
+    <DatePicker
+      selected={selected}
+      onChange={handle}
+      showTimeSelect
+      timeIntervals={15}
+      timeCaption="Time"
+      dateFormat="dd MMM yyyy, h:mm aa"
+      placeholderText={placeholder}
+      isClearable={clearable}
+      minDate={minDate}
+      required={required}
+      autoComplete="off"
+      className={inputCls}
+      calendarClassName="coupon-datepicker"
+      popperClassName="coupon-datepicker-popper"
+      popperPlacement="bottom-start"
+      popperContainer={({ children }) => createPortal(children, document.body)}
+    />
+  );
 };
 
 const fmtDate = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -49,6 +84,53 @@ const Field = ({ label, hint, children }) => (
 );
 
 const inputCls = 'mt-1 w-full px-3 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm';
+
+// Live "what will the user pay" calculation, priced with the same formula the server uses at checkout.
+const rs = (n) => `₹${Number(n.toFixed(2))}`;
+
+const PricePreview = ({ form }) => {
+  const value = Number(form.discountValue);
+  const valid = Number.isFinite(value) && value > 0;
+  const coupon = { discountType: form.discountType, discountValue: value, maxDiscount: Number(form.maxDiscount) || 0 };
+  const plans = PRO_PLANS.filter((p) => !form.applicablePlans.length || form.applicablePlans.includes(p.id));
+
+  // One-line working for a plan, e.g. "50% of ₹99 = ₹49.5 (capped at ₹40)".
+  const working = (price, discount) => {
+    const isPct = coupon.discountType === 'percentage';
+    const raw = isPct ? (price * value) / 100 : value;
+    let text = isPct ? `${value}% of ${rs(price)} = ${rs(raw)}` : `Flat ${rs(value)} off`;
+    if (isPct && coupon.maxDiscount > 0 && raw > coupon.maxDiscount) text += `, capped at ${rs(coupon.maxDiscount)}`;
+    if (discount < Math.min(raw, isPct && coupon.maxDiscount > 0 ? coupon.maxDiscount : raw)) text += `, limited so user pays at least ₹1`;
+    return text;
+  };
+
+  return (
+    <div className="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-black/40">Calculation - what the user will pay</div>
+      {!valid ? (
+        <p className="px-3 py-3 text-xs text-slate-500 dark:text-slate-400">Enter the discount value above to see the price of each plan.</p>
+      ) : (
+        <div className="divide-y divide-slate-100 dark:divide-slate-700">
+          {plans.map((p) => {
+            const { discount, finalAmount } = computeDiscount(coupon, p.price);
+            return (
+              <div key={p.id} className="px-3 py-2 flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="text-sm font-bold text-slate-700 dark:text-slate-200">{p.label} <span className="font-medium text-slate-400">({rs(p.price)})</span></div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">{discount > 0 ? `${working(p.price, discount)} → ${rs(p.price)} - ${rs(discount)}` : 'No discount on this plan'}</div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="text-base font-black text-primary-600">{rs(finalAmount)}</div>
+                  {discount > 0 && <div className="text-[11px] font-bold text-red-500">save {rs(discount)}</div>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const CouponFormModal = ({ coupon, onClose, onSaved }) => {
   const editing = !!coupon?._id;
@@ -137,10 +219,10 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
 
         <div className="grid grid-cols-2 gap-3">
           <Field label="Starts (optional)">
-            <input className={inputCls} type="datetime-local" value={form.startDate} onChange={(e) => set('startDate', e.target.value)} />
+            <DateTimeField value={form.startDate} onChange={(v) => set('startDate', v)} defaultTime={[0, 0]} placeholder="Starts immediately" clearable />
           </Field>
           <Field label="Expiry date">
-            <input className={inputCls} type="datetime-local" value={form.expiryDate} onChange={(e) => set('expiryDate', e.target.value)} required />
+            <DateTimeField value={form.expiryDate} onChange={(v) => set('expiryDate', v)} defaultTime={[23, 59]} placeholder="Select expiry" minDate={new Date()} required />
           </Field>
         </div>
 
@@ -164,9 +246,11 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           </div>
         </Field>
 
+        <PricePreview form={form} />
+
         <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
           <input type="checkbox" checked={form.showInModal} onChange={(e) => set('showInModal', e.target.checked)} />
-          Show this coupon in the offer pop-up for logged-in students
+          Show this coupon in the offer pop-up (logged-in students and public visitors)
         </label>
         <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
           <input type="checkbox" checked={form.isActive} onChange={(e) => set('isActive', e.target.checked)} />

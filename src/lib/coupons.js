@@ -1,22 +1,9 @@
 import Coupon from '@/models/Coupon';
 import PaymentOrder from '@/models/PaymentOrder';
 
-// PayU rejects amounts below Rs 1, so a coupon can never take a plan to zero.
-const MIN_PAYABLE = 1;
+import { computeDiscount } from './couponPricing';
 
 export const normalizeCouponCode = (code) => String(code || '').trim().toUpperCase();
-
-export const computeDiscount = (coupon, price) => {
-    let discount = coupon.discountType === 'percentage'
-        ? (price * coupon.discountValue) / 100
-        : coupon.discountValue;
-    if (coupon.discountType === 'percentage' && coupon.maxDiscount > 0) {
-        discount = Math.min(discount, coupon.maxDiscount);
-    }
-    discount = Math.min(Math.round(discount * 100) / 100, price - MIN_PAYABLE);
-    discount = Math.max(0, discount);
-    return { discount, finalAmount: Math.round((price - discount) * 100) / 100 };
-};
 
 // Is this coupon currently redeemable (ignoring who is buying what)?
 export const isCouponLive = (coupon, now = new Date()) => {

@@ -11,6 +11,7 @@ const dismissKey = (code) => `couponModalDismissed:${code}`;
 
 const safeGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
 const safeSet = (k, v) => { try { localStorage.setItem(k, v); } catch { /* storage blocked */ } };
+const isLoggedIn = () => !!safeGet('token');
 
 // Shows the newest admin-flagged coupon once per browser (until a new coupon is flagged).
 const CouponOfferModal = () => {
@@ -23,12 +24,15 @@ const CouponOfferModal = () => {
   useEffect(() => {
     if (hidden || coupon) return;
     let cancelled = false;
-    API.getFeaturedCoupons().then((res) => {
-      if (cancelled || !res?.success) return;
-      const next = (res.data || []).find((c) => !safeGet(dismissKey(c.code)));
-      if (next) setCoupon(next);
-    }).catch(() => {});
-    return () => { cancelled = true; };
+    // Logged-out visitors get a short delay so the page (and the welcome pop-up) settle first.
+    const timer = setTimeout(() => {
+      API.getFeaturedCoupons().then((res) => {
+        if (cancelled || !res?.success) return;
+        const next = (res.data || []).find((c) => !safeGet(dismissKey(c.code)));
+        if (next) setCoupon(next);
+      }).catch(() => {});
+    }, isLoggedIn() ? 0 : 6000);
+    return () => { cancelled = true; clearTimeout(timer); };
   }, [hidden, coupon]);
 
   if (hidden || !coupon) return null;
@@ -53,12 +57,18 @@ const CouponOfferModal = () => {
     safeSet(dismissKey(coupon.code), '1');
     const code = coupon.code;
     setCoupon(null);
+    if (!isLoggedIn()) {
+      // Visitors must sign up first; the subscription page applies this code after login.
+      safeSet('pendingCoupon', code);
+      router.push('/register');
+      return;
+    }
     router.push(`/subscription?coupon=${encodeURIComponent(code)}`);
   };
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={close} />
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
