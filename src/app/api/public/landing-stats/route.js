@@ -34,6 +34,7 @@ export async function GET() {
             pyqAttemptsLast30Days,
             practiceTestAttemptsLast30Days,
             quizAttemptsLast30Days,
+            totalPracticeTests,
         ] = await Promise.all([
             User.countDocuments({ role: 'student' }),
             Exam.countDocuments({ isActive: true }),
@@ -49,6 +50,7 @@ export async function GET() {
             UserTestAttempt.countDocuments({ practiceTest: { $in: pyqTestIds }, createdAt: { $gte: since30d } }),
             UserTestAttempt.countDocuments({ practiceTest: { $nin: pyqTestIds }, createdAt: { $gte: since30d } }),
             QuizAttempt.countDocuments({ createdAt: { $gte: since30d } }),
+            PracticeTest.countDocuments(),
         ]);
 
         // Fetch stats for specific requested exams
@@ -101,6 +103,7 @@ export async function GET() {
                 activeStudents,
                 totalExams,
                 totalQuizzes,
+                totalPracticeTests,
                 totalSubjects,
                 totalTopics,
                 totalQuestions: quizQuestions + practiceTestQuestions,
