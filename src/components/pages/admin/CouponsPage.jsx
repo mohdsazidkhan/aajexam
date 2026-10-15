@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Tag, Plus, Pencil, Trash2, Copy, Link2, Megaphone, X } from 'lucide-react';
+import { Tag, Plus, Pencil, Trash2, Copy, Link2, Megaphone, X, Eye, List, LayoutGrid, Table as TableIcon } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../../lib/api';
 import { PRO_PLANS } from '../../../lib/plans';
@@ -12,6 +12,7 @@ import { computeDiscount } from '../../../lib/couponPricing';
 import { useSSR } from '../../../hooks/useSSR';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import Sidebar from '../../Sidebar';
+import ResponsiveTable from '../../ResponsiveTable';
 import AnnounceModal from '../../admin/AnnounceModal';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
@@ -105,30 +106,124 @@ const PricePreview = ({ form }) => {
   };
 
   return (
-    <div className="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+    <div className="shrink-0 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
       <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-black/40">Calculation - what the user will pay</div>
       {!valid ? (
         <p className="px-3 py-3 text-xs text-slate-500 dark:text-slate-400">Enter the discount value above to see the price of each plan.</p>
       ) : (
-        <div className="divide-y divide-slate-100 dark:divide-slate-700">
-          {plans.map((p) => {
-            const { discount, finalAmount } = computeDiscount(coupon, p.price);
-            return (
-              <div key={p.id} className="px-3 py-2 flex items-center justify-between gap-3">
-                <div className="min-w-0">
-                  <div className="text-sm font-bold text-slate-700 dark:text-slate-200">{p.label} <span className="font-medium text-slate-400">({rs(p.price)})</span></div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400">{discount > 0 ? `${working(p.price, discount)} → ${rs(p.price)} - ${rs(discount)}` : 'No discount on this plan'}</div>
+        <>
+          <div className="sm:hidden divide-y divide-slate-100 dark:divide-slate-700">
+            {plans.map((p) => {
+              const { discount, finalAmount } = computeDiscount(coupon, p.price);
+              const line = (k, v, cls = '') => (
+                <div className="flex items-center justify-between gap-3 text-xs">
+                  <span className="text-slate-400">{k}</span>
+                  <span className={`font-bold text-right ${cls || 'text-slate-600 dark:text-slate-300'}`}>{v}</span>
                 </div>
-                <div className="text-right shrink-0">
-                  <div className="text-base font-black text-primary-600">{rs(finalAmount)}</div>
-                  {discount > 0 && <div className="text-[11px] font-bold text-red-500">save {rs(discount)}</div>}
+              );
+              return (
+                <div key={p.id} className="px-3 py-3 space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-black text-slate-800 dark:text-slate-100">{p.label}</span>
+                    <span className="text-base font-black text-primary-600">{rs(finalAmount)}</span>
+                  </div>
+                  {line('Price', rs(p.normalPrice))}
+                  {line('Normal off', p.saving > 0 ? `-${rs(p.saving)}` : '-')}
+                  {line('After normal off', rs(p.price))}
+                  {line('Coupon off', discount > 0 ? `-${rs(discount)}` : 'No discount', discount > 0 ? 'text-red-500' : '')}
+                  {discount > 0 && <div className="text-[10px] text-slate-400 text-right">{working(p.price, discount)}</div>}
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+          <div className="hidden sm:block overflow-x-auto">
+          <table className="w-full text-sm whitespace-nowrap">
+            <thead>
+              <tr className="text-[10px] font-bold uppercase tracking-wider text-slate-400 text-right">
+                <th className="px-3 py-2 text-left">Plan</th>
+                <th className="px-3 py-2">Price</th>
+                <th className="px-3 py-2">Normal off</th>
+                <th className="px-3 py-2">After normal off</th>
+                <th className="px-3 py-2">Coupon off</th>
+                <th className="px-3 py-2">Final value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {plans.map((p) => {
+                const { discount, finalAmount } = computeDiscount(coupon, p.price);
+                return (
+                  <tr key={p.id} className="border-t border-slate-100 dark:border-slate-700 text-right align-top">
+                    <td className="px-3 py-2 text-left font-bold text-slate-700 dark:text-slate-200">{p.label}</td>
+                    <td className="px-3 py-2 text-slate-500 dark:text-slate-400">{rs(p.normalPrice)}</td>
+                    <td className="px-3 py-2 text-slate-500 dark:text-slate-400">{p.saving > 0 ? `-${rs(p.saving)}` : '-'}</td>
+                    <td className="px-3 py-2 font-bold text-slate-700 dark:text-slate-200">{rs(p.price)}</td>
+                    <td className="px-3 py-2">
+                      {discount > 0 ? (
+                        <>
+                          <div className="font-bold text-red-500">-{rs(discount)}</div>
+                          <div className="text-[10px] text-slate-400">{working(p.price, discount)}</div>
+                        </>
+                      ) : <span className="text-xs text-slate-400">No discount</span>}
+                    </td>
+                    <td className="px-3 py-2 text-base font-black text-primary-600">{rs(finalAmount)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          </div>
+          <p className="px-3 py-2 text-[10px] text-slate-400 border-t border-slate-100 dark:border-slate-700">Price - Normal off = After normal off (plan price); the coupon is applied on that. Final value = what the user pays.</p>
+        </>
       )}
     </div>
+  );
+};
+
+const fmtDateTime = (d) => new Date(d).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+
+// Read-only coupon details + the per-plan price calculation.
+const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
+  const st = statusOf(c);
+  const plans = c.applicablePlans?.length ? c.applicablePlans.map((id) => PRO_PLANS.find((p) => p.id === id)?.label || id).join(', ') : 'All plans';
+  const rows = [
+    ['Discount', `${offerLabel(c)}${c.discountType === 'percentage' && c.maxDiscount > 0 ? ` (max ₹${c.maxDiscount})` : ''}`],
+    ['Starts', c.startDate ? fmtDateTime(c.startDate) : 'Immediately'],
+    ['Expires', fmtDateTime(c.expiryDate)],
+    ['Used', `${c.usedCount}${c.usageLimit > 0 ? ` / ${c.usageLimit}` : ' (no total limit)'}`],
+    ['Per user', c.perUserLimit > 0 ? `${c.perUserLimit} time(s)` : 'Unlimited'],
+    ['Valid on', plans],
+    ['Offer pop-up', c.showInModal ? 'Shown' : 'Not shown'],
+    ['Created', fmtDateTime(c.createdAt)]
+  ];
+  return createPortal(
+    <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
+      <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col">
+        <div className="shrink-0 flex items-start justify-between gap-3 p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-700">
+          <div className="min-w-0">
+            <div className="text-2xl font-black tracking-widest text-primary-600">{c.code}</div>
+            <span className={`inline-block mt-1 px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>
+          </div>
+          <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
+        </div>
+        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 flex flex-col gap-4">
+        <p className="text-sm text-slate-600 dark:text-slate-300">{c.description}</p>
+        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm">
+          {rows.map(([k, v]) => (
+            <div key={k} className="flex justify-between sm:block gap-3">
+              <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{k}</dt>
+              <dd className="font-bold text-slate-800 dark:text-slate-100 text-right sm:text-left">{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <PricePreview form={c} />
+        </div>
+        <div className="shrink-0 px-4 sm:px-5 py-3 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-2">
+          <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 sm:border-0">Close</button>
+          <button type="button" onClick={() => onEdit(c)} className="flex-1 sm:flex-none px-5 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700">Edit</button>
+        </div>
+      </div>
+    </div>,
+    document.body
   );
 };
 
@@ -184,8 +279,8 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
 
   // Portal to <body>: inside the admin layout, `fixed` is clipped under the top header.
   return createPortal(
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
-      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-xl max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col gap-4">
+    <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
+      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sm:p-5 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-lg text-slate-900 dark:text-white">{editing ? `Edit ${coupon.code}` : 'New coupon'}</h3>
           <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
@@ -199,7 +294,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           <textarea className={inputCls} rows={2} maxLength={300} value={form.description} onChange={(e) => set('description', e.target.value)} required placeholder="Diwali special: flat 50% off on every PRO plan" />
         </Field>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Field label="Discount type">
             <select className={inputCls} value={form.discountType} onChange={(e) => set('discountType', e.target.value)}>
               <option value="percentage">Percentage (%)</option>
@@ -217,7 +312,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           </Field>
         )}
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Field label="Starts (optional)">
             <DateTimeField value={form.startDate} onChange={(v) => set('startDate', v)} defaultTime={[0, 0]} placeholder="Starts immediately" clearable />
           </Field>
@@ -226,7 +321,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           </Field>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Field label="Total uses" hint="0 / empty = unlimited">
             <input className={inputCls} type="number" min="0" value={form.usageLimit} onChange={(e) => set('usageLimit', e.target.value)} />
           </Field>
@@ -257,9 +352,9 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           Active
         </label>
 
-        <div className="flex justify-end gap-2 pt-2">
-          <button type="button" onClick={onClose} className="px-4 py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300">Cancel</button>
-          <button type="submit" disabled={saving} className="px-5 py-2 rounded-xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50">
+        <div className="sticky bottom-0 -mx-4 sm:mx-0 -mb-4 sm:mb-0 px-4 sm:px-0 py-3 sm:py-0 sm:pt-2 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700 sm:border-0 flex justify-end gap-2">
+          <button type="button" onClick={onClose} className="flex-1 sm:flex-none px-4 py-2.5 sm:py-2 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 sm:border-0">Cancel</button>
+          <button type="submit" disabled={saving} className="flex-1 sm:flex-none px-5 py-2.5 sm:py-2 rounded-xl text-sm font-bold bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50">
             {saving ? 'Saving…' : editing ? 'Save changes' : 'Create coupon'}
           </button>
         </div>
@@ -275,6 +370,16 @@ const CouponsPage = () => {
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(null); // null = closed, {} = new, coupon = edit
   const [announcing, setAnnouncing] = useState(null);
+  const [viewing, setViewing] = useState(null);
+  const [viewMode, setViewMode] = useState('table');
+
+  // Phones get the list view (a wide table does not fit), desktop defaults to the table.
+  useEffect(() => {
+    const sync = () => setViewMode((m) => (window.innerWidth < 768 ? (m === 'table' ? 'list' : m) : (m === 'list' ? 'table' : m)));
+    sync();
+    window.addEventListener('resize', sync);
+    return () => window.removeEventListener('resize', sync);
+  }, []);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -314,13 +419,58 @@ const CouponsPage = () => {
     };
   }, [announcing]);
 
+  // Icon-only actions; the native tooltip (title) appears on hover.
+  const iconBtn = 'p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-white/5 text-slate-500 dark:text-slate-300 transition-all hover:scale-105 active:scale-95';
+  const hoverPrimary = 'hover:text-primary-600 hover:border-primary-500/40';
+  const renderActions = (c) => (
+    <div className="flex items-center gap-1.5">
+      <button type="button" title="View" aria-label="View" onClick={() => setViewing(c)} className={`${iconBtn} ${hoverPrimary}`}><Eye className="w-4 h-4" /></button>
+      <button type="button" title="Edit" aria-label="Edit" onClick={() => setEditing(c)} className={`${iconBtn} ${hoverPrimary}`}><Pencil className="w-4 h-4" /></button>
+      <button type="button" title="Copy code" aria-label="Copy code" onClick={() => copy(c.code, 'Code copied')} className={`${iconBtn} ${hoverPrimary}`}><Copy className="w-4 h-4" /></button>
+      <button type="button" title="Copy share text" aria-label="Copy share text" onClick={() => copy(`Use code ${c.code} for ${offerLabel(c)} on AajExam PRO! ${shareLink(c)}`, 'Social post text copied')} className={`${iconBtn} ${hoverPrimary}`}><Link2 className="w-4 h-4" /></button>
+      <button type="button" title="Announce" aria-label="Announce" onClick={() => setAnnouncing(c)} className={`${iconBtn} ${hoverPrimary}`}><Megaphone className="w-4 h-4" /></button>
+      <button type="button" title="Delete" aria-label="Delete" onClick={() => remove(c)} className={`${iconBtn} hover:text-red-600 hover:border-red-500/40`}><Trash2 className="w-4 h-4" /></button>
+    </div>
+  );
+
+  const plansText = (c) => (c.applicablePlans?.length ? c.applicablePlans.map((id) => PRO_PLANS.find((p) => p.id === id)?.label || id).join(', ') : 'All');
+  const discountText = (c) => `${offerLabel(c)}${c.discountType === 'percentage' && c.maxDiscount > 0 ? ` (max ₹${c.maxDiscount})` : ''}`;
+  const usedText = (c) => `${c.usedCount}${c.usageLimit > 0 ? ` / ${c.usageLimit}` : ''}`;
+  const statusBadge = (c) => { const st = statusOf(c); return <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>; };
+
+  const tableColumns = [
+    { key: 'code', header: 'CODE', render: (_, c) => <span className="font-black tracking-widest text-primary-600 text-sm">{c.code}</span> },
+    { key: 'discount', header: 'DISCOUNT', render: (_, c) => discountText(c) },
+    { key: 'status', header: 'STATUS', render: (_, c) => statusBadge(c) },
+    { key: 'expires', header: 'EXPIRES', render: (_, c) => fmtDate(c.expiryDate) },
+    { key: 'used', header: 'USED', render: (_, c) => usedText(c) },
+    { key: 'plans', header: 'PLANS', render: (_, c) => plansText(c) },
+    { key: 'actions', header: 'ACTIONS', align: 'center', render: (_, c) => renderActions(c) }
+  ];
+
+  const viewToggle = (
+    <div className="flex items-center gap-1 w-full xl:w-auto">
+      {[
+        { icon: TableIcon, id: 'table', label: 'Table View' },
+        { icon: List, id: 'list', label: 'List View' },
+        { icon: LayoutGrid, id: 'grid', label: 'Grid View' }
+      ].map((mode) => (
+        <button key={mode.id} type="button" onClick={() => setViewMode(mode.id)} title={mode.label}
+          className={`flex-1 xl:flex-none flex items-center justify-center gap-1.5 p-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}>
+          <mode.icon className="w-4 h-4" />
+          <span className="text-[9px] font-black uppercase tracking-widest">{mode.label.replace(' View', '')}</span>
+        </button>
+      ))}
+    </div>
+  );
+
   const newButton = (
     <button onClick={() => setEditing({})} className="w-full xl:w-auto flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg xl:rounded-xl font-bold text-sm hover:bg-primary-700">
       <Plus className="w-4 h-4" /> New coupon
     </button>
   );
 
-  useAdminMobileHeader({ title: 'Coupons', count: coupons.length, filters: newButton });
+  useAdminMobileHeader({ title: 'Coupons', count: coupons.length, filters: <>{viewToggle}{newButton}</> });
 
   if (!isMounted) return null;
 
@@ -328,11 +478,7 @@ const CouponsPage = () => {
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-4">
-        <div className="hidden xl:flex items-center justify-between">
-          <h1 className="text-xl font-black flex items-center gap-2"><Tag className="w-5 h-5 text-primary-600" /> Coupons <span className="text-sm text-slate-400 font-bold">({coupons.length})</span></h1>
-          {newButton}
-        </div>
-
+        {/* Title + view toggle + New coupon live in the navbar (title/count) and the filter drawer, like the other admin pages */}
         {loading ? (
           <AdminTableSkeleton showHeader={false} showFilters={false} />
         ) : coupons.length === 0 ? (
@@ -342,38 +488,67 @@ const CouponsPage = () => {
             <p className="text-sm text-slate-400 mt-2">Create one like DIWALI50 to offer a discount on PRO plans.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-3 pb-6">
-            {coupons.map((c) => {
-              const st = statusOf(c);
-              return (
-                <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
+          <>
+            {viewMode === 'table' && (
+              <div className="bg-white/80 dark:bg-white/5 rounded-2xl border-2 border-slate-100 dark:border-white/10 overflow-hidden shadow-sm flex-1 min-h-0 overflow-auto flex flex-col">
+                <ResponsiveTable data={coupons} columns={tableColumns} viewModes={['table']} defaultView="table" showPagination={false} showViewToggle={false} fillHeight />
+              </div>
+            )}
+
+            {viewMode === 'list' && (
+              <div className="flex flex-col gap-3 pb-6">
+                {coupons.map((c) => (
+                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-6">
+                    <div className="xl:w-48 shrink-0">
                       <div className="text-lg font-black tracking-widest text-primary-600">{c.code}</div>
-                      <div className="text-sm font-bold">{offerLabel(c)}{c.discountType === 'percentage' && c.maxDiscount > 0 ? ` (max ₹${c.maxDiscount})` : ''}</div>
+                      <div className="text-sm font-bold">{discountText(c)}</div>
                     </div>
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.description}</p>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 flex flex-wrap gap-x-4 gap-y-0.5">
+                        <span>Expires: <b>{fmtDate(c.expiryDate)}</b></span>
+                        <span>Used: <b>{usedText(c)}</b></span>
+                        <span>Plans: <b>{plansText(c)}</b></span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between xl:justify-end gap-3">
+                      {statusBadge(c)}
+                      {renderActions(c)}
+                    </div>
                   </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.description}</p>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 space-y-0.5">
-                    <div>Expires: <b>{fmtDate(c.expiryDate)}</b></div>
-                    <div>Used: <b>{c.usedCount}</b>{c.usageLimit > 0 ? ` / ${c.usageLimit}` : ''} · {c.perUserLimit > 0 ? `${c.perUserLimit}/user` : 'unlimited per user'}</div>
-                    <div>Plans: <b>{c.applicablePlans?.length ? c.applicablePlans.map((id) => PRO_PLANS.find((p) => p.id === id)?.label || id).join(', ') : 'All'}</b>{c.showInModal ? ' · in pop-up' : ''}</div>
+                ))}
+              </div>
+            )}
+
+            {viewMode === 'grid' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 pb-6">
+                {coupons.map((c) => (
+                  <div key={c._id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 flex flex-col gap-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <div className="text-lg font-black tracking-widest text-primary-600">{c.code}</div>
+                        <div className="text-sm font-bold">{discountText(c)}</div>
+                      </div>
+                      {statusBadge(c)}
+                    </div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.description}</p>
+                    <div className="text-xs text-slate-500 dark:text-slate-400 space-y-0.5">
+                      <div>Expires: <b>{fmtDate(c.expiryDate)}</b></div>
+                      <div>Used: <b>{usedText(c)}</b> · {c.perUserLimit > 0 ? `${c.perUserLimit}/user` : 'unlimited per user'}</div>
+                      <div>Plans: <b>{plansText(c)}</b>{c.showInModal ? ' · in pop-up' : ''}</div>
+                    </div>
+                    <div className="pt-2 border-t border-slate-100 dark:border-slate-700">{renderActions(c)}</div>
                   </div>
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700">
-                    <button onClick={() => copy(c.code, 'Code copied')} className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-700"><Copy className="w-3.5 h-3.5" /> Code</button>
-                    <button onClick={() => copy(`Use code ${c.code} for ${offerLabel(c)} on AajExam PRO! ${shareLink(c)}`, 'Social post text copied')} className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-700"><Link2 className="w-3.5 h-3.5" /> Share text</button>
-                    <button onClick={() => setAnnouncing(c)} className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400"><Megaphone className="w-3.5 h-3.5" /> Announce</button>
-                    <button onClick={() => setEditing(c)} className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-700"><Pencil className="w-3.5 h-3.5" /> Edit</button>
-                    <button onClick={() => remove(c)} className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
 
+      {viewing && (
+        <CouponViewModal coupon={viewing} onClose={() => setViewing(null)} onEdit={(c) => { setViewing(null); setEditing(c); }} />
+      )}
       {editing && (
         <CouponFormModal coupon={editing} onClose={() => setEditing(null)} onSaved={() => { setEditing(null); load(); }} />
       )}
