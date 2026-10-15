@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { Tag, Plus, Pencil, Trash2, Copy, Link2, Megaphone, X } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../../lib/api';
@@ -99,9 +100,10 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
-      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-xl max-h-[90vh] overflow-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col gap-4">
+  // Portal to <body>: inside the admin layout, `fixed` is clipped under the top header.
+  return createPortal(
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/60" onClick={onClose}>
+      <form onSubmit={submit} onClick={(e) => e.stopPropagation()} className="w-full max-w-xl max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-lg text-slate-900 dark:text-white">{editing ? `Edit ${coupon.code}` : 'New coupon'}</h3>
           <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
@@ -178,7 +180,8 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           </button>
         </div>
       </form>
-    </div>
+    </div>,
+    document.body
   );
 };
 
