@@ -1969,6 +1969,25 @@ const DogriDict = {
   'Prepare Today.': 'अज्ज तैयारी करो।',
   'Succeed Tomorrow.': 'कल्ल कामयाब होओ।',
   'Practice smarter. Prepare better. Crack your exam.': 'समझदारी कन्नै अभ्यास करो। बधिया तैयारी करो। अपनी परीक्षा पास करो।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लान दिक्खो',
+  '/month': '/मीना',
+  'Save ₹{amount}': '₹{amount} बचाओ',
+  'What you get with every PRO plan': 'हर PRO प्लान च तुसेंगी के मिलदा ऐ',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लान हमेशा मुफ्त रौहग — प्रैक्टिस टैस्ट, डेली चैलेंज ते होर बड़ा किश बिना कुसै खर्चे दे।',
+  '1 Month': '1 मीना',
+  '3 Months': '3 मीने',
+  '6 Months': '6 मीने',
+  '1 Year': '1 साल',
+  'Best Value': 'सब्भ थमां बधिया वैल्यू',
+  'Compare PRO plans': 'PRO प्लानें दी तुलना करो',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'हर प्लान च इक्को जेह्ए PRO फीचर — जित्ता लम्मा प्लान, उन्ना बद्ध बचत',
+  'Choose plan': 'प्लान चुनो',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लान कन्नै ₹{price}/मीने थमां शुरू — पूरा परीक्षा-तैयारी इंजन अनलॉक करो।',
+  'Plans: {durations}': 'प्लान: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'सिर्फ दो टियर — फ्री ते PRO, ₹{price}/मीने थमां शुरू ({plan} प्लान)। कोई उलझाने आले ऐड-ऑन नेईं।',
+  'Friend Buys PRO Plan': 'दोस्त PRO प्लान खरीदै',
+  'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
 };
 
 export default DogriDict;

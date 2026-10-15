@@ -1969,6 +1969,25 @@ const KS = {
   'Prepare Today.': 'اَز تیاری کٔرِو۔',
   'Succeed Tomorrow.': 'پگاہ کامیاب گژھِو۔',
   'Practice smarter. Prepare better. Crack your exam.': 'سمجھداری سٕتۍ پریکٹس کٔرِو۔ بہتر تیاری کٔرِو۔ پننۍ امتحان پاس کٔرِو۔',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO پلان وُچھِو',
+  '/month': '/مَہینہ',
+  'Save ₹{amount}': '₹{amount} بچٔت کٔرِو',
+  'What you get with every PRO plan': 'ہر PRO پلانس منٛز توٚہی کیا چھُ میلان',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'فری پلان چھُ ہمیشہ مفت روزان — پریکٹس ٹیسٹ، ڈیلی چیلنج تہٕ بوٚڈ کُنہِ کینہہ بغیر کنہِ قیمتکھ۔',
+  '1 Month': '1 مَہینہ',
+  '3 Months': '3 مَہینہٕ',
+  '6 Months': '6 مَہینہٕ',
+  '1 Year': '1 ؤری',
+  'Best Value': 'بہترین ویلیو',
+  'Compare PRO plans': 'PRO پلانن ہند موازنہ کٔرِو',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ہر پلانس منٛز چھِ یِمہٕ PRO فیچرز — یتھ لمہٕ پلان، تتھ زیادہ بچٔت',
+  'Choose plan': 'پلان ژارِو',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} پلانچ سیتۍ ₹{price}/مَہینہٕ پیٹھۍ شروع — مکمل اِمتحان-تیاری انجن اَنلاک کٔرِو۔',
+  'Plans: {durations}': 'پلان: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'صرف دۅن درجہ — فری تہٕ PRO، ₹{price}/مَہینہٕ پیٹھۍ شروع ({plan} پلان)۔ کانہہ الجھاونہ وول ایڈ آن چھُنہ۔',
+  'Friend Buys PRO Plan': 'دوست خریدِ PRO پلان',
+  'PRO PLAN ACTIVATED': 'PRO پلان فعال',
 };
 
 export default KS;

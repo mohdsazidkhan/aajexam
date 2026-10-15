@@ -1969,6 +1969,25 @@ const KOK = {
   'Prepare Today.': 'आयज तयारी करात.',
   'Succeed Tomorrow.': 'फाल्यां यशस्वी जायात.',
   'Practice smarter. Prepare better. Crack your exam.': 'शाणपणान अभ्यास करात. चांगली तयारी करात. तुमची परिक्षा पास जायात.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लॅन पळयात',
+  '/month': '/म्हयनो',
+  'Save ₹{amount}': '₹{amount} वाचयात',
+  'What you get with every PRO plan': 'दर PRO प्लॅनांत तुमकां कितें मेळटा',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लॅन सदांच फुकट उरतलो — प्रॅक्टिस टेस्ट, डेली चॅलेंज आनी चड कितेंच कसलोय खर्च ना.',
+  '1 Month': '1 म्हयनो',
+  '3 Months': '3 म्हयने',
+  '6 Months': '6 म्हयने',
+  '1 Year': '1 वर्स',
+  'Best Value': 'सगळ्यांत बरी व्हॅल्यू',
+  'Compare PRO plans': 'PRO प्लॅनांची तुळा करात',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'दर प्लॅनांत थंय तेच PRO फीचर्स — जितलो लांब प्लॅन, तितली चड बचत',
+  'Choose plan': 'प्लॅन वेंचात',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लॅनाक ₹{price}/म्हयन्यासावन — पुराय परिक्षा-तयारीचें इंजिन अनलॉक करात.',
+  'Plans: {durations}': 'प्लॅन: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'फकत दोन थर — फ्री आनी PRO, ₹{price}/म्हयन्यासावन ({plan} प्लॅन). गोंदळ घालपी ऍड-ऑन ना.',
+  'Friend Buys PRO Plan': 'इश्टान PRO प्लॅन घेतलो जाल्यार',
+  'PRO PLAN ACTIVATED': 'PRO प्लॅन सक्रिय',
 };
 
 export default KOK;

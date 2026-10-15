@@ -1969,6 +1969,25 @@ const OR_ = {
   'Prepare Today.': 'ଆଜି ପ୍ରସ୍ତୁତ ହୁଅନ୍ତୁ।',
   'Succeed Tomorrow.': 'କାଲି ସଫଳ ହୁଅନ୍ତୁ।',
   'Practice smarter. Prepare better. Crack your exam.': 'ବୁଦ୍ଧିମାନ ଭାବେ ଅଭ୍ୟାସ କରନ୍ତୁ। ଭଲ ଭାବେ ପ୍ରସ୍ତୁତ ହୁଅନ୍ତୁ। ଆପଣଙ୍କ ପରୀକ୍ଷା ଜିତନ୍ତୁ।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO ପ୍ଲାନ୍ ଦେଖନ୍ତୁ',
+  '/month': '/ମାସ',
+  'Save ₹{amount}': '₹{amount} ବଞ୍ଚାନ୍ତୁ',
+  'What you get with every PRO plan': 'ପ୍ରତ୍ୟେକ PRO ପ୍ଲାନ୍‌ରେ ଆପଣ କ’ଣ ପାଆନ୍ତି',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ଫ୍ରି ପ୍ଲାନ୍ ସବୁବେଳେ ମାଗଣା ରହିବ — ପ୍ରାକ୍ଟିସ୍ ଟେଷ୍ଟ, ଡେଲି ଚ୍ୟାଲେଞ୍ଜ ଏବଂ ଆହୁରି ଅନେକ କିଛି କୌଣସି ଶୁଳ୍କ ବିନା।',
+  '1 Month': '1 ମାସ',
+  '3 Months': '3 ମାସ',
+  '6 Months': '6 ମାସ',
+  '1 Year': '1 ବର୍ଷ',
+  'Best Value': 'ସର୍ବୋତ୍ତମ ମୂଲ୍ୟ',
+  'Compare PRO plans': 'PRO ପ୍ଲାନ୍ ତୁଳନା କରନ୍ତୁ',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ପ୍ରତ୍ୟେକ ପ୍ଲାନ୍‌ରେ ସମାନ PRO ଫିଚର୍ — ଯେତେ ଲମ୍ବା ପ୍ଲାନ୍, ସେତେ ଅଧିକ ସଞ୍ଚୟ',
+  'Choose plan': 'ପ୍ଲାନ୍ ବାଛନ୍ତୁ',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} ପ୍ଲାନ୍ ସହିତ ₹{price}/ମାସରୁ — ସମ୍ପୂର୍ଣ୍ଣ ପରୀକ୍ଷା-ପ୍ରସ୍ତୁତି ଇଞ୍ଜିନ୍ ଅନଲକ୍ କରନ୍ତୁ।',
+  'Plans: {durations}': 'ପ୍ଲାନ୍: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'କେବଳ ଦୁଇଟି ସ୍ତର — ଫ୍ରି ଏବଂ PRO, ₹{price}/ମାସରୁ ({plan} ପ୍ଲାନ୍)। କୌଣସି ଦ୍ୱନ୍ଦ୍ୱ ସୃଷ୍ଟିକାରୀ ଆଡ୍-ଅନ୍ ନାହିଁ।',
+  'Friend Buys PRO Plan': 'ବନ୍ଧୁ PRO ପ୍ଲାନ୍ କିଣିଲେ',
+  'PRO PLAN ACTIVATED': 'PRO ପ୍ଲାନ୍ ସକ୍ରିୟ',
 };
 
 export default OR_;

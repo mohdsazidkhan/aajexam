@@ -1969,6 +1969,25 @@ const MAI = {
   'Prepare Today.': 'आइ तैयारी करू।',
   'Succeed Tomorrow.': 'काल्हि सफल होउ।',
   'Practice smarter. Prepare better. Crack your exam.': 'बुद्धिमानी सँ अभ्यास करू। नीक तैयारी करू। अपन परीक्षा निकालू।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लान देखू',
+  '/month': '/मास',
+  'Save ₹{amount}': '₹{amount} बचाउ',
+  'What you get with every PRO plan': 'हर PRO प्लान मे अहाँ केँ की भेटैत अछि',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लान सदिखन मुफ्त रहत — प्रैक्टिस टेस्ट, डेली चैलेंज आ बहुत किछु बिना कोनो शुल्कक।',
+  '1 Month': '1 मास',
+  '3 Months': '3 मास',
+  '6 Months': '6 मास',
+  '1 Year': '1 वर्ष',
+  'Best Value': 'सभ सँ नीक वैल्यू',
+  'Compare PRO plans': 'PRO प्लानक तुलना करू',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'हर प्लान मे एके रंगक PRO फीचर — जते लंबा प्लान, ततेक बेसी बचत',
+  'Choose plan': 'प्लान चुनू',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लानक संग ₹{price}/मास सँ शुरू — पूरा परीक्षा-तैयारी इंजन अनलॉक करू।',
+  'Plans: {durations}': 'प्लान: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'मात्र दू टियर — फ्री आ PRO, ₹{price}/मास सँ शुरू ({plan} प्लान)। कोनो भ्रम पैदा करयबला ऐड-ऑन नहि।',
+  'Friend Buys PRO Plan': 'संगी PRO प्लान किनय',
+  'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
 };
 
 export default MAI;

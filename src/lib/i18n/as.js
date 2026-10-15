@@ -1969,6 +1969,25 @@ const AS = {
   'Prepare Today.': 'আজি প্ৰস্তুতি লওক।',
   'Succeed Tomorrow.': 'কাইলৈ সফল হওক।',
   'Practice smarter. Prepare better. Crack your exam.': 'বুদ্ধিমানৰূপে অনুশীলন কৰক। ভালদৰে প্ৰস্তুতি লওক। আপোনাৰ পৰীক্ষা উত্তীৰ্ণ কৰক।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO প্ল্যান চাওক',
+  '/month': '/মাহ',
+  'Save ₹{amount}': '₹{amount} সঞ্চয় কৰক',
+  'What you get with every PRO plan': 'প্ৰতিটো PRO প্ল্যানত আপুনি কি পায়',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ফ্ৰী প্ল্যান সদায় বিনামূলীয়া থাকিব — প্ৰেক্টিচ টেষ্ট, ডেইলী চেলেঞ্জ আৰু আৰু বহুত কিবা কোনো মাচুল নোহোৱাকৈ।',
+  '1 Month': '1 মাহ',
+  '3 Months': '3 মাহ',
+  '6 Months': '6 মাহ',
+  '1 Year': '1 বছৰ',
+  'Best Value': 'আটাইতকৈ ভাল মূল্য',
+  'Compare PRO plans': 'PRO প্ল্যান তুলনা কৰক',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'প্ৰতিটো প্ল্যানতে একেই PRO ফিচাৰ — যিমান দীঘলীয়া প্ল্যান, সিমান বেছি সঞ্চয়',
+  'Choose plan': 'প্ল্যান বাছনি কৰক',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} প্ল্যানৰ সৈতে ₹{price}/মাহৰ পৰা — সম্পূৰ্ণ পৰীক্ষা-প্ৰস্তুতি ইঞ্জিন আনলক কৰক।',
+  'Plans: {durations}': 'প্ল্যান: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'মাত্ৰ দুটা স্তৰ — ফ্ৰী আৰু PRO, ₹{price}/মাহৰ পৰা ({plan} প্ল্যান)। কোনো বিমোৰত পেলোৱা এড-অন নাই।',
+  'Friend Buys PRO Plan': 'বন্ধুৱে PRO প্ল্যান কিনিলে',
+  'PRO PLAN ACTIVATED': 'PRO প্ল্যান সক্ৰিয়',
 };
 
 export default AS;

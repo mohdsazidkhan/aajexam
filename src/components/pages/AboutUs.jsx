@@ -53,11 +53,11 @@ const AboutUs = () => {
 
    const show = (n) => (typeof n === 'number' ? n.toLocaleString('en-IN') : '—');
    const stats = [
-      { label: 'STUDENTS', value: show(counts?.activeStudents), icon: Users, color: 'primary' },
-      { label: 'PRACTICE TESTS', value: show(counts?.totalPracticeTests), icon: Scroll, color: 'primary' },
-      { label: 'QUIZZES', value: show(counts?.totalQuizzes), icon: Zap, color: 'primary' },
-      { label: 'SUBJECTS', value: show(counts?.totalSubjects), icon: BookOpen, color: 'primary' },
-      { label: 'TOPICS', value: show(counts?.totalTopics), icon: GraduationCap, color: 'primary' }
+      { label: 'Students', value: show(counts?.activeStudents), icon: Users, color: 'primary' },
+      { label: 'Practice Tests', value: show(counts?.totalPracticeTests), icon: Scroll, color: 'primary' },
+      { label: 'Quizzes', value: show(counts?.totalQuizzes), icon: Zap, color: 'primary' },
+      { label: 'Subjects', value: show(counts?.totalSubjects), icon: BookOpen, color: 'primary' },
+      { label: 'Topics', value: show(counts?.totalTopics), icon: GraduationCap, color: 'primary' }
    ];
 
    const features = [

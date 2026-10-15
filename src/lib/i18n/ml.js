@@ -1969,6 +1969,25 @@ const ML = {
   'Prepare Today.': 'ഇന്ന് തയ്യാറെടുക്കൂ.',
   'Succeed Tomorrow.': 'നാളെ വിജയിക്കൂ.',
   'Practice smarter. Prepare better. Crack your exam.': 'ബുദ്ധിപൂർവം പരിശീലിക്കൂ. മികച്ച രീതിയിൽ തയ്യാറെടുക്കൂ. നിങ്ങളുടെ പരീക്ഷ ജയിക്കൂ.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO പ്ലാനുകൾ കാണുക',
+  '/month': '/മാസം',
+  'Save ₹{amount}': '₹{amount} ലാഭിക്കൂ',
+  'What you get with every PRO plan': 'ഓരോ PRO പ്ലാനിലും നിങ്ങൾക്ക് ലഭിക്കുന്നത്',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ഫ്രീ പ്ലാൻ എന്നും സൗജന്യമായിരിക്കും — പ്രാക്ടീസ് ടെസ്റ്റുകൾ, ഡെയ്‌ലി ചലഞ്ച് തുടങ്ങി പലതും ഒരു ചെലവുമില്ലാതെ.',
+  '1 Month': '1 മാസം',
+  '3 Months': '3 മാസം',
+  '6 Months': '6 മാസം',
+  '1 Year': '1 വർഷം',
+  'Best Value': 'മികച്ച മൂല്യം',
+  'Compare PRO plans': 'PRO പ്ലാനുകൾ താരതമ്യം ചെയ്യുക',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'എല്ലാ പ്ലാനിലും ഒരേ PRO ഫീച്ചറുകൾ — പ്ലാൻ നീണ്ടാൽ ലാഭവും കൂടും',
+  'Choose plan': 'പ്ലാൻ തിരഞ്ഞെടുക്കുക',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} പ്ലാനിൽ ₹{price}/മാസം മുതൽ — പൂർണ്ണ പരീക്ഷാ-തയ്യാറെടുപ്പ് എഞ്ചിൻ അൺലോക്ക് ചെയ്യുക.',
+  'Plans: {durations}': 'പ്ലാനുകൾ: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'രണ്ട് തട്ടുകൾ മാത്രം — ഫ്രീയും PRO യും, ₹{price}/മാസം മുതൽ ({plan} പ്ലാൻ). ആശയക്കുഴപ്പമുണ്ടാക്കുന്ന ആഡ്-ഓണുകളില്ല.',
+  'Friend Buys PRO Plan': 'സുഹൃത്ത് PRO പ്ലാൻ വാങ്ങുമ്പോൾ',
+  'PRO PLAN ACTIVATED': 'PRO പ്ലാൻ സജീവമായി',
 };
 
 export default ML;

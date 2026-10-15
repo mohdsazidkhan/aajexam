@@ -458,7 +458,7 @@ export default function ReferralHistory() {
                                              </td>
                                              <td className="px-8 py-6">
                                                 <span className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border border-current bg-current opacity-10 text-${rewardColors[tx.rewardType]}-500`}>
-                                                   {rewardLabels[tx.rewardType]}
+                                                   {translate(rewardLabels[tx.rewardType] || '')}
                                                 </span>
                                              </td>
                                              <td className="px-8 py-6">

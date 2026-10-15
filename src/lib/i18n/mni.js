@@ -1969,6 +1969,25 @@ const MANIPURI = {
   'Prepare Today.': 'ꯉꯁꯤ ꯊꯤꯔꯥꯏ ꯇꯧꯕꯤꯌꯨ꯫',
   'Succeed Tomorrow.': 'ꯈꯨꯃꯥꯡꯗꯥ ꯃꯊꯧ ꯐꯪꯕꯤꯌꯨ꯫',
   'Practice smarter. Prepare better. Crack your exam.': 'ꯈꯪꯍꯟꯅꯥ ꯄ꯭ꯔꯥꯛꯇꯤꯁ ꯇꯧꯕꯤꯌꯨ꯫ ꯍꯦꯟꯅꯥ ꯐꯕ ꯊꯤꯔꯥꯏ ꯇꯧꯕꯤꯌꯨ꯫ ꯅꯪꯒꯤ ꯏꯒꯖꯥꯃ ꯀ꯭ꯔꯦꯛ ꯇꯧꯕꯤꯌꯨ꯫',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO ꯄ꯭ꯂꯥꯅꯁꯤꯡ ꯌꯦꯡꯕꯤꯌꯨ',
+  '/month': '/ꯊꯥ',
+  'Save ₹{amount}': '₹{amount} ꯁꯦꯚ ꯇꯧꯕꯤꯌꯨ',
+  'What you get with every PRO plan': 'PRO ꯄ꯭ꯂꯥꯟ ꯈꯨꯗꯤꯡꯃꯛꯇꯥ ꯅꯍꯥꯛꯅꯥ ꯀꯔꯤ ꯐꯪꯒꯅꯤ',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ꯐ꯭ꯔꯤ ꯄ꯭ꯂꯥꯟ ꯑꯁꯤ ꯃꯇꯝ ꯈꯨꯗꯤꯡꯃꯛꯇꯥ ꯐ꯭ꯔꯤ ꯑꯣꯏꯅꯥ ꯂꯩꯒꯅꯤ — ꯄ꯭ꯔꯥꯛꯇꯤꯁ ꯇꯦꯁꯇꯁꯤꯡ, ꯗꯦꯂꯤ ꯆꯦꯂꯦꯟꯖ ꯑꯃꯁꯨꯡ ꯑꯇꯩ ꯀꯌꯥ ꯁꯦꯟ ꯑꯃꯠꯇꯥ ꯄꯤꯗꯅꯥ꯫',
+  '1 Month': '1 ꯊꯥ',
+  '3 Months': '3 ꯊꯥ',
+  '6 Months': '6 ꯊꯥ',
+  '1 Year': '1 ꯆꯍꯤ',
+  'Best Value': 'ꯍꯦꯟꯅꯥ ꯐꯕ ꯚꯦꯂꯨ',
+  'Compare PRO plans': 'PRO ꯄ꯭ꯂꯥꯟꯁꯤꯡ ꯀꯝꯄꯦꯌꯔ ꯇꯧꯕꯤꯌꯨ',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ꯄ꯭ꯂꯥꯟ ꯈꯨꯗꯤꯡꯃꯛꯇꯥ PRO ꯐꯤꯆꯔ ꯃꯥꯟꯅꯕꯥ ꯂꯩ — ꯄ꯭ꯂꯥꯟ ꯁꯥꯡꯂꯕꯥ ꯃꯇꯧꯅꯥ ꯁꯦꯚ ꯍꯦꯟꯅꯥ ꯌꯥꯝꯕ ꯑꯣꯏ',
+  'Choose plan': 'ꯄ꯭ꯂꯥꯟ ꯈꯟꯕꯤꯌꯨ',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} ꯄ꯭ꯂꯥꯟꯅꯥ ₹{price}/ꯊꯥꯗꯒꯤ ꯍꯧꯔꯀꯏ — ꯏꯒꯖꯥꯝ-ꯇꯦꯌꯥꯔꯤ ꯏꯟꯖꯤꯟ ꯃꯄꯨꯟ ꯑꯅꯂꯣꯛ ꯇꯧꯕꯤꯌꯨ꯫',
+  'Plans: {durations}': 'ꯄ꯭ꯂꯥꯟ: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ꯇꯤꯌꯥꯔ ꯅꯤ ꯈꯛꯇꯅꯤ — ꯐ꯭ꯔꯤ ꯑꯃꯁꯨꯡ PRO, ₹{price}/ꯊꯥꯗꯒꯤ ꯍꯧꯔꯀꯏ ({plan} ꯄ꯭ꯂꯥꯟ)꯫ ꯑꯦꯗ-ꯑꯣꯟ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫',
+  'Friend Buys PRO Plan': 'ꯃꯔꯨꯞ PRO ꯄ꯭ꯂꯥꯟ ꯂꯧꯔꯀꯄ ꯃꯇꯃꯗꯥ',
+  'PRO PLAN ACTIVATED': 'PRO ꯄ꯭ꯂꯥꯟ ꯑꯦꯛꯇꯤꯚ ꯑꯣꯏꯔꯦ',
 };
 
 export default MANIPURI;

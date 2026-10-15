@@ -1982,6 +1982,25 @@ const HI = {
   'Prepare Today.': 'आज तैयारी करें।',
   'Succeed Tomorrow.': 'कल सफल बनें।',
   'Practice smarter. Prepare better. Crack your exam.': 'समझदारी से अभ्यास करें। बेहतर तैयारी करें। अपनी परीक्षा निकालें।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लान देखें',
+  '/month': '/माह',
+  'Save ₹{amount}': '₹{amount} बचाएँ',
+  'What you get with every PRO plan': 'हर PRO प्लान में आपको क्या मिलता है',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लान हमेशा फ्री रहेगा — प्रैक्टिस टेस्ट, डेली चैलेंज और बहुत कुछ बिना किसी शुल्क के।',
+  '1 Month': '1 माह',
+  '3 Months': '3 माह',
+  '6 Months': '6 माह',
+  '1 Year': '1 वर्ष',
+  'Best Value': 'सबसे बेहतरीन वैल्यू',
+  'Compare PRO plans': 'PRO प्लान की तुलना करें',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'हर प्लान में PRO फीचर्स एक जैसे — जितना लंबा प्लान, उतनी ज़्यादा बचत',
+  'Choose plan': 'प्लान चुनें',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लान के साथ ₹{price}/माह से शुरू — पूरी एग्ज़ाम-प्रेप ताकत अनलॉक करें।',
+  'Plans: {durations}': 'प्लान: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'सिर्फ़ दो टियर — फ्री और PRO, ₹{price}/माह से शुरू ({plan} प्लान)। कोई उलझाने वाले ऐड-ऑन नहीं।',
+  'Friend Buys PRO Plan': 'दोस्त PRO प्लान खरीदे',
+  'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
 };
 
 export default HI;

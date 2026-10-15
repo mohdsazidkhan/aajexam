@@ -1969,6 +1969,25 @@ const UrduDict = {
   'Prepare Today.': 'آج تیاری کریں۔',
   'Succeed Tomorrow.': 'کل کامیاب ہوں۔',
   'Practice smarter. Prepare better. Crack your exam.': 'سمجھداری سے مشق کریں۔ بہتر تیاری کریں۔ اپنا امتحان نکالیں۔',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO پلان دیکھیں',
+  '/month': '/ماہ',
+  'Save ₹{amount}': '₹{amount} بچائیں',
+  'What you get with every PRO plan': 'ہر PRO پلان میں آپ کو کیا ملتا ہے',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'فری پلان ہمیشہ مفت رہے گا — پریکٹس ٹیسٹ، ڈیلی چیلنج اور بہت کچھ بغیر کسی قیمت کے۔',
+  '1 Month': '1 ماہ',
+  '3 Months': '3 ماہ',
+  '6 Months': '6 ماہ',
+  '1 Year': '1 سال',
+  'Best Value': 'بہترین ویلیو',
+  'Compare PRO plans': 'PRO پلانز کا موازنہ کریں',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ہر پلان میں ایک جیسے PRO فیچرز — جتنا لمبا پلان، اتنی زیادہ بچت',
+  'Choose plan': 'پلان منتخب کریں',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} پلان کے ساتھ ₹{price}/ماہ سے شروع — مکمل امتحانی تیاری کا انجن کھولیں۔',
+  'Plans: {durations}': 'پلان: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'صرف دو درجے — فری اور PRO، ₹{price}/ماہ سے شروع ({plan} پلان)۔ کوئی الجھانے والے ایڈ آن نہیں۔',
+  'Friend Buys PRO Plan': 'دوست PRO پلان خریدے',
+  'PRO PLAN ACTIVATED': 'PRO پلان فعال',
 };
 
 export default UrduDict;

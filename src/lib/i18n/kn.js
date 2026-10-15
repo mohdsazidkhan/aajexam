@@ -1969,6 +1969,25 @@ const KN = {
   'Prepare Today.': 'ಇಂದು ಸಿದ್ಧರಾಗಿ.',
   'Succeed Tomorrow.': 'ನಾಳೆ ಯಶಸ್ವಿಯಾಗಿ.',
   'Practice smarter. Prepare better. Crack your exam.': 'ಜಾಣ್ಮೆಯಿಂದ ಅಭ್ಯಾಸ ಮಾಡಿ. ಉತ್ತಮವಾಗಿ ಸಿದ್ಧರಾಗಿ. ನಿಮ್ಮ ಪರೀಕ್ಷೆಯನ್ನು ಗೆಲ್ಲಿರಿ.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO ಪ್ಲಾನ್‌ಗಳನ್ನು ನೋಡಿ',
+  '/month': '/ತಿಂಗಳು',
+  'Save ₹{amount}': '₹{amount} ಉಳಿಸಿ',
+  'What you get with every PRO plan': 'ಪ್ರತಿ PRO ಪ್ಲಾನ್‌ನಲ್ಲಿ ನಿಮಗೆ ಸಿಗುವುದು',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ಉಚಿತ ಪ್ಲಾನ್ ಯಾವಾಗಲೂ ಉಚಿತವೇ — ಅಭ್ಯಾಸ ಟೆಸ್ಟ್‌ಗಳು, ಡೈಲಿ ಚಾಲೆಂಜ್ ಮತ್ತು ಇನ್ನಷ್ಟು ಯಾವುದೇ ಶುಲ್ಕವಿಲ್ಲದೆ.',
+  '1 Month': '1 ತಿಂಗಳು',
+  '3 Months': '3 ತಿಂಗಳು',
+  '6 Months': '6 ತಿಂಗಳು',
+  '1 Year': '1 ವರ್ಷ',
+  'Best Value': 'ಅತ್ಯುತ್ತಮ ಮೌಲ್ಯ',
+  'Compare PRO plans': 'PRO ಪ್ಲಾನ್‌ಗಳನ್ನು ಹೋಲಿಸಿ',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ಪ್ರತಿ ಪ್ಲಾನ್‌ನಲ್ಲೂ ಅದೇ PRO ವೈಶಿಷ್ಟ್ಯಗಳು — ಹೆಚ್ಚು ಅವಧಿಯ ಪ್ಲಾನ್, ಹೆಚ್ಚು ಉಳಿತಾಯ',
+  'Choose plan': 'ಪ್ಲಾನ್ ಆರಿಸಿ',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} ಪ್ಲಾನ್‌ನೊಂದಿಗೆ ₹{price}/ತಿಂಗಳಿನಿಂದ — ಸಂಪೂರ್ಣ ಪರೀಕ್ಷಾ-ತಯಾರಿ ಎಂಜಿನ್ ಅನ್‌ಲಾಕ್ ಮಾಡಿ.',
+  'Plans: {durations}': 'ಪ್ಲಾನ್‌ಗಳು: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ಕೇವಲ ಎರಡು ಹಂತಗಳು — ಉಚಿತ ಮತ್ತು PRO, ₹{price}/ತಿಂಗಳಿನಿಂದ ({plan} ಪ್ಲಾನ್). ಗೊಂದಲದ ಆ್ಯಡ್-ಆನ್‌ಗಳಿಲ್ಲ.',
+  'Friend Buys PRO Plan': 'ಸ್ನೇಹಿತ PRO ಪ್ಲಾನ್ ಖರೀದಿಸಿದಾಗ',
+  'PRO PLAN ACTIVATED': 'PRO ಪ್ಲಾನ್ ಸಕ್ರಿಯ',
 };
 
 export default KN;

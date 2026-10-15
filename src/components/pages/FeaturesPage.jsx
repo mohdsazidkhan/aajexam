@@ -38,7 +38,8 @@ import { useAdminMobileHeader } from '../../contexts/AdminMobileHeaderContext';
 import useTranslate from '../../hooks/useTranslate';
 import { PRO_PLANS } from '../../lib/plans';
 
-const lowestPerMonth = Math.min(...PRO_PLANS.map((p) => p.perMonth));
+const cheapestPlan = PRO_PLANS.reduce((a, b) => (b.perMonth < a.perMonth ? b : a));
+const lowestPerMonth = cheapestPlan.perMonth;
 
 const FEATURE_GROUPS = [
   {
@@ -203,7 +204,7 @@ const FeaturesPage = () => {
             </div>
             <div className="relative z-10">
               <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('PRO')}</h2>
-              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month — unlock the full exam-prep engine.', { price: lowestPerMonth })}</p>
+              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })} <span className="block mt-1 text-primary-600">{translate('Plans: {durations}', { durations: PRO_PLANS.map((p) => translate(p.label)).join(' · ') })}</span></p>
             </div>
             <ul className="space-y-1.5 xl:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
@@ -217,6 +218,40 @@ const FeaturesPage = () => {
               <Button variant="primary" size="sm" fullWidth icon={ArrowRight} iconPosition="right" onClick={() => router.push('/subscription')}>{translate('Upgrade to PRO')}</Button>
             </div>
           </Card>
+        </section>
+
+        {/* --- PRO plan comparison (prices/durations come from .env via lib/plans) --- */}
+        <section className="space-y-3 xl:space-y-6">
+          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto">
+            <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Compare PRO plans')}</h2>
+            <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Same PRO features in every plan — the longer you commit, the more you save')}</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
+            {PRO_PLANS.map((plan) => (
+              <Card key={plan.id} className={`p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 border-2 ${plan.badge ? 'border-primary-500/60' : ''}`}>
+                <div className="space-y-2 xl:space-y-4">
+                  <div className="flex items-center justify-between gap-2 min-h-[24px]">
+                    <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate(plan.label)}</h3>
+                    {plan.badge && (
+                      <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-primary-600 text-white whitespace-nowrap">{translate(plan.badge)}</span>
+                    )}
+                  </div>
+                  <div className="flex items-end gap-2">
+                    <span className="text-3xl xl:text-4xl font-black font-outfit leading-none">₹{plan.price}</span>
+                    {plan.saving > 0 && <span className="text-xs xl:text-sm font-bold text-slate-500 line-through pb-0.5">₹{plan.normalPrice}</span>}
+                  </div>
+                  <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400">
+                    ₹{Number.isInteger(plan.perMonth) ? plan.perMonth : plan.perMonth.toFixed(2)}{translate('/month')}
+                    {plan.saving > 0 && <> · {translate('Save ₹{amount}', { amount: plan.saving })}</>}
+                  </p>
+                  {plan.discountPct > 0 && (
+                    <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-600">{plan.discountPct}% OFF</span>
+                  )}
+                </div>
+                <Button variant={plan.badge ? 'primary' : 'secondary'} size="sm" fullWidth icon={ArrowRight} iconPosition="right" onClick={() => router.push('/subscription')}>{translate('Choose plan')}</Button>
+              </Card>
+            ))}
+          </div>
         </section>
 
         {/* --- Highlights --- */}
@@ -281,7 +316,7 @@ const FeaturesPage = () => {
             <div className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
               <h2 className="text-lg xl:text-4xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-400">{c}</span>])}</h2>
               <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-1">
-                Two tiers only — Free and PRO from ₹{lowestPerMonth}/month. No confusing add-ons.
+                {translate('Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 items-center justify-center">
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/subscription')}>{translate('Upgrade to PRO')}</Button>

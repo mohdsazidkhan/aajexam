@@ -1969,6 +1969,25 @@ const TA = {
   'Prepare Today.': 'இன்றே தயாராகுங்கள்.',
   'Succeed Tomorrow.': 'நாளை வெற்றி பெறுங்கள்.',
   'Practice smarter. Prepare better. Crack your exam.': 'புத்திசாலித்தனமாகப் பயிற்சி செய்யுங்கள். சிறப்பாகத் தயாராகுங்கள். உங்கள் தேர்வில் வெல்லுங்கள்.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO திட்டங்களைப் பாருங்கள்',
+  '/month': '/மாதம்',
+  'Save ₹{amount}': '₹{amount} சேமியுங்கள்',
+  'What you get with every PRO plan': 'ஒவ்வொரு PRO திட்டத்திலும் நீங்கள் பெறுவது',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'இலவசத் திட்டம் எப்போதும் இலவசமே — பயிற்சி டெஸ்ட்கள், தினசரி சவால் மற்றும் பலவும் கட்டணமின்றி.',
+  '1 Month': '1 மாதம்',
+  '3 Months': '3 மாதங்கள்',
+  '6 Months': '6 மாதங்கள்',
+  '1 Year': '1 ஆண்டு',
+  'Best Value': 'சிறந்த மதிப்பு',
+  'Compare PRO plans': 'PRO திட்டங்களை ஒப்பிடுங்கள்',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ஒவ்வொரு திட்டத்திலும் ஒரே PRO அம்சங்கள் — நீண்ட திட்டம், அதிக சேமிப்பு',
+  'Choose plan': 'திட்டத்தைத் தேர்ந்தெடுங்கள்',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} திட்டத்துடன் ₹{price}/மாதம் முதல் — முழு தேர்வுத் தயாரிப்பு எஞ்சினையும் திறக்கவும்.',
+  'Plans: {durations}': 'திட்டங்கள்: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'இரண்டு அடுக்குகள் மட்டுமே — இலவசம் மற்றும் PRO, ₹{price}/மாதம் முதல் ({plan} திட்டம்). குழப்பும் கூடுதல் இணைப்புகள் எதுவும் இல்லை.',
+  'Friend Buys PRO Plan': 'நண்பர் PRO திட்டம் வாங்கினால்',
+  'PRO PLAN ACTIVATED': 'PRO திட்டம் செயல்படுத்தப்பட்டது',
 };
 
 export default TA;

@@ -1969,6 +1969,25 @@ const PA = {
   'Prepare Today.': 'ਅੱਜ ਤਿਆਰੀ ਕਰੋ।',
   'Succeed Tomorrow.': 'ਕੱਲ੍ਹ ਸਫਲ ਹੋਵੋ।',
   'Practice smarter. Prepare better. Crack your exam.': 'ਸਮਝਦਾਰੀ ਨਾਲ ਅਭਿਆਸ ਕਰੋ। ਬਿਹਤਰ ਤਿਆਰੀ ਕਰੋ। ਆਪਣੀ ਪ੍ਰੀਖਿਆ ਪਾਸ ਕਰੋ।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO ਪਲਾਨ ਵੇਖੋ',
+  '/month': '/ਮਹੀਨਾ',
+  'Save ₹{amount}': '₹{amount} ਬਚਾਓ',
+  'What you get with every PRO plan': 'ਹਰ PRO ਪਲਾਨ ਵਿੱਚ ਤੁਹਾਨੂੰ ਕੀ ਮਿਲਦਾ ਹੈ',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ਫ੍ਰੀ ਪਲਾਨ ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ ਰਹੇਗਾ — ਪ੍ਰੈਕਟਿਸ ਟੈਸਟ, ਡੇਲੀ ਚੈਲੇਂਜ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ ਬਿਨਾਂ ਕਿਸੇ ਖ਼ਰਚ ਦੇ।',
+  '1 Month': '1 ਮਹੀਨਾ',
+  '3 Months': '3 ਮਹੀਨੇ',
+  '6 Months': '6 ਮਹੀਨੇ',
+  '1 Year': '1 ਸਾਲ',
+  'Best Value': 'ਸਭ ਤੋਂ ਵਧੀਆ ਵੈਲਿਊ',
+  'Compare PRO plans': 'PRO ਪਲਾਨਾਂ ਦੀ ਤੁਲਨਾ ਕਰੋ',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ਹਰ ਪਲਾਨ ਵਿੱਚ ਇੱਕੋ ਜਿਹੇ PRO ਫੀਚਰ — ਜਿੰਨਾ ਲੰਮਾ ਪਲਾਨ, ਓਨੀ ਵੱਧ ਬੱਚਤ',
+  'Choose plan': 'ਪਲਾਨ ਚੁਣੋ',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} ਪਲਾਨ ਨਾਲ ₹{price}/ਮਹੀਨੇ ਤੋਂ ਸ਼ੁਰੂ — ਪੂਰਾ ਪ੍ਰੀਖਿਆ-ਤਿਆਰੀ ਇੰਜਣ ਅਨਲੌਕ ਕਰੋ।',
+  'Plans: {durations}': 'ਪਲਾਨ: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ਸਿਰਫ਼ ਦੋ ਪੱਧਰ — ਫ੍ਰੀ ਅਤੇ PRO, ₹{price}/ਮਹੀਨੇ ਤੋਂ ਸ਼ੁਰੂ ({plan} ਪਲਾਨ)। ਕੋਈ ਉਲਝਾਉਣ ਵਾਲੇ ਐਡ-ਆਨ ਨਹੀਂ।',
+  'Friend Buys PRO Plan': 'ਦੋਸਤ PRO ਪਲਾਨ ਖਰੀਦੇ',
+  'PRO PLAN ACTIVATED': 'PRO ਪਲਾਨ ਚਾਲੂ',
 };
 
 export default PA;

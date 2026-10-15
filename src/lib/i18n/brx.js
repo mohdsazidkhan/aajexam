@@ -1969,6 +1969,25 @@ const BODO = {
   'Prepare Today.': 'दानि थियारि खालाम।',
   'Succeed Tomorrow.': 'फैसायाव जाफुंसारि जा।',
   'Practice smarter. Prepare better. Crack your exam.': 'सोलोमोनै प्राक्टिस खालाम। साबसिनै थियारि खालाम। नोंथांनि एग्जाम क्रेक खालाम।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लान नु',
+  '/month': '/महिना',
+  'Save ₹{amount}': '₹{amount} बचत खालाम',
+  'What you get with every PRO plan': 'जेबो PRO प्लानाव नां मा मोनो',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लान सदा बिनामूल्य दं — प्रैक्टिस टेस्ट, डेली चैलेंज आरो गोबां बेसेबो खर्च गैयै।',
+  '1 Month': '1 महिना',
+  '3 Months': '3 महिना',
+  '6 Months': '6 महिना',
+  '1 Year': '1 बोसोर',
+  'Best Value': 'सायाव मोजां भेल्यू',
+  'Compare PRO plans': 'PRO प्लानफोरखौ तुलना खालाम',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'जेबो प्लानाव PRO फिचारफोर उनदिं — गोजाम प्लान, गोजाम बचत',
+  'Choose plan': 'प्लान चुनाव खालाम',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लान सोलोंगा ₹{price}/महिनानिफ्राय सुरु — गासै परीक्षा-तैयारि इंजिन अनलक खालाम।',
+  'Plans: {durations}': 'प्लान: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'खाली दुइ टियार — फ्री आरो PRO, ₹{price}/महिनानिफ्राय सुरु ({plan} प्लान)। गोलमाल जायो एड-अनफोर गैयै।',
+  'Friend Buys PRO Plan': 'लोगोफोरा PRO प्लान बेसाद खालामाव',
+  'PRO PLAN ACTIVATED': 'PRO प्लान चालु',
 };
 
 export default BODO;

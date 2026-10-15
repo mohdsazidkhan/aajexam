@@ -1969,6 +1969,25 @@ const SA = {
   'Prepare Today.': 'अद्य सज्जीभवत।',
   'Succeed Tomorrow.': 'श्वः सफलाः भवत।',
   'Practice smarter. Prepare better. Crack your exam.': 'प्रज्ञया अभ्यासं कुरुत। उत्तमां सज्जतां कुरुत। स्वपरीक्षां उत्तीर्णां कुरुत।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO योजनाः पश्यत',
+  '/month': '/मासः',
+  'Save ₹{amount}': '₹{amount} रक्षत',
+  'What you get with every PRO plan': 'प्रत्येकस्यां PRO योजनायां भवान् किं लभते',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'निःशुल्कयोजना सर्वदा निःशुल्का एव तिष्ठति — अभ्यासपरीक्षाः, दैनन्दिनचुनौती अन्यच्च बहु किमपि शुल्कं विना।',
+  '1 Month': '1 मासः',
+  '3 Months': '3 मासाः',
+  '6 Months': '6 मासाः',
+  '1 Year': '1 वर्षम्',
+  'Best Value': 'सर्वोत्तममूल्यम्',
+  'Compare PRO plans': 'PRO योजनानां तुलनां कुरुत',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'सर्वासु योजनासु समानाः PRO विशेषताः — यावती दीर्घा योजना तावती अधिका बचतः',
+  'Choose plan': 'योजनां चिनुत',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} योजनया सह ₹{price}/मासतः आरभ्य — सम्पूर्णं परीक्षासज्जतायन्त्रम् उद्घाटयत।',
+  'Plans: {durations}': 'योजनाः: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'द्वौ एव स्तरौ — निःशुल्कः PRO च, ₹{price}/मासतः आरभ्य ({plan} योजना)। भ्रमजनकं किमपि अतिरिक्तं नास्ति।',
+  'Friend Buys PRO Plan': 'मित्रं PRO योजनां क्रीणाति चेत्',
+  'PRO PLAN ACTIVATED': 'PRO योजना सक्रिया',
 };
 
 export default SA;

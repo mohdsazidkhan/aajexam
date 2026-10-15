@@ -1969,6 +1969,25 @@ const GU = {
   'Prepare Today.': 'આજે તૈયારી કરો.',
   'Succeed Tomorrow.': 'કાલે સફળ થાઓ.',
   'Practice smarter. Prepare better. Crack your exam.': 'સમજદારીથી પ્રેક્ટિસ કરો. વધુ સારી તૈયારી કરો. તમારી પરીક્ષા પાસ કરો.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO પ્લાન જુઓ',
+  '/month': '/મહિનો',
+  'Save ₹{amount}': '₹{amount} બચાવો',
+  'What you get with every PRO plan': 'દરેક PRO પ્લાનમાં તમને શું મળે છે',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ફ્રી પ્લાન હંમેશા મફત રહેશે — પ્રેક્ટિસ ટેસ્ટ, ડેઇલી ચેલેન્જ અને ઘણું બધું કોઈ ખર્ચ વિના.',
+  '1 Month': '1 મહિનો',
+  '3 Months': '3 મહિના',
+  '6 Months': '6 મહિના',
+  '1 Year': '1 વર્ષ',
+  'Best Value': 'શ્રેષ્ઠ વેલ્યુ',
+  'Compare PRO plans': 'PRO પ્લાનની સરખામણી કરો',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'દરેક પ્લાનમાં સમાન PRO ફીચર્સ — જેટલો લાંબો પ્લાન, તેટલી વધુ બચત',
+  'Choose plan': 'પ્લાન પસંદ કરો',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} પ્લાન સાથે ₹{price}/મહિનાથી શરૂ — સંપૂર્ણ પરીક્ષા-તૈયારી એન્જિન અનલૉક કરો.',
+  'Plans: {durations}': 'પ્લાન: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ફક્ત બે સ્તર — ફ્રી અને PRO, ₹{price}/મહિનાથી શરૂ ({plan} પ્લાન). કોઈ ગૂંચવણભર્યા એડ-ઓન નથી.',
+  'Friend Buys PRO Plan': 'મિત્ર PRO પ્લાન ખરીદે ત્યારે',
+  'PRO PLAN ACTIVATED': 'PRO પ્લાન સક્રિય',
 };
 
 export default GU;

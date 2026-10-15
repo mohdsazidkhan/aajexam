@@ -1969,6 +1969,25 @@ const SAT = {
   'Prepare Today.': 'ᱱᱤᱛᱚᱜ ᱛᱤᱭᱟᱨ ᱢᱮ.',
   'Succeed Tomorrow.': 'ᱥᱟᱵᱟᱭ ᱡᱤᱛ ᱢᱮ.',
   'Practice smarter. Prepare better. Crack your exam.': 'ᱵᱩᱫᱷᱤ ᱥᱟᱶᱛᱮ ᱯᱨᱮᱠᱴᱤᱥ ᱢᱮ. ᱵᱷᱟᱞᱮ ᱛᱤᱭᱟᱨ ᱢᱮ. ᱟᱢᱟᱜ ᱯᱨᱤᱠᱷᱟ ᱯᱟᱥ ᱢᱮ.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO ᱯᱞᱟᱱ ᱧᱮᱞ ᱢᱮ',
+  '/month': '/ᱪᱟᱸᱫᱚ',
+  'Save ₹{amount}': '₹{amount} ᱵᱟᱪᱟᱣ ᱢᱮ',
+  'What you get with every PRO plan': 'ᱢᱤᱫ ᱢᱤᱫ PRO ᱯᱞᱟᱱ ᱨᱮ ᱟᱢ ᱪᱮᱫ ᱧᱟᱢᱚᱜ-ᱟ',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ᱯᱷᱨᱤ ᱯᱞᱟᱱ ᱥᱤᱫᱚ ᱵᱷᱟᱲᱟᱣ ᱵᱟᱝ ᱜᱮ ᱛᱟᱦᱮᱸᱱᱟ — ᱯᱨᱮᱠᱴᱤᱥ ᱴᱮᱥᱴ, ᱰᱮᱞᱤ ᱪᱮᱞᱮᱱᱡ ᱟᱨ ᱵᱟᱹᱲᱛᱤ ᱥᱟᱱᱟᱢ ᱵᱷᱟᱲᱟᱣ ᱵᱟᱝᱛᱮ।',
+  '1 Month': '1 ᱪᱟᱸᱫᱚ',
+  '3 Months': '3 ᱪᱟᱸᱫᱚ',
+  '6 Months': '6 ᱪᱟᱸᱫᱚ',
+  '1 Year': '1 ᱥᱮᱨᱮᱢ',
+  'Best Value': 'ᱪᱤᱠᱤ ᱵᱷᱟᱞᱮ ᱵᱷᱮᱞᱩ',
+  'Compare PRO plans': 'PRO ᱯᱞᱟᱱ ᱛᱩᱞᱱᱟ ᱢᱮ',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ᱡᱷᱚᱛᱚ ᱯᱞᱟᱱ ᱨᱮ ᱥᱚᱢᱟᱱ PRO ᱯᱷᱤᱪᱟᱨ — ᱞᱟᱢᱟᱛ ᱯᱞᱟᱱ ᱟᱨᱦᱚᱸ ᱵᱟᱹᱲᱛᱤ ᱵᱟᱪᱟᱣ',
+  'Choose plan': 'ᱯᱞᱟᱱ ᱵᱟᱪᱷᱟᱣ ᱢᱮ',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} ᱯᱞᱟᱱ ᱥᱟᱶᱛᱮ ₹{price}/ᱪᱟᱸᱫᱚ ᱠᱷᱚᱱ — ᱯᱩᱨᱟ ᱮᱜᱚᱡᱮᱢ-ᱛᱮᱭᱟᱨ ᱤᱱᱡᱤᱱ ᱟᱱᱞᱚᱠ ᱢᱮ।',
+  'Plans: {durations}': 'ᱯᱞᱟᱱ: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ᱵᱟᱨᱭᱟ ᱴᱤᱭᱟᱨ ᱜᱮ — ᱯᱷᱨᱤ ᱟᱨ PRO, ₹{price}/ᱪᱟᱸᱫᱚ ᱠᱷᱚᱱ ({plan} ᱯᱞᱟᱱ)। ᱵᱟᱝ ᱵᱩᱡᱷᱟᱹᱣ ᱮᱰᱰ-ᱚᱱ ᱵᱟᱝ ᱛᱟᱦᱮᱸᱱᱟ।',
+  'Friend Buys PRO Plan': 'ᱥᱟᱶᱛᱟᱹ PRO ᱯᱞᱟᱱ ᱠᱤᱱᱮᱜ ᱥᱮᱱᱚᱜ',
+  'PRO PLAN ACTIVATED': 'PRO ᱯᱞᱟᱱ ᱪᱟᱞᱩ',
 };
 
 export default SAT;

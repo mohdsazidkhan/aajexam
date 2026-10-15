@@ -1969,6 +1969,25 @@ const BN = {
   'Prepare Today.': 'আজ প্রস্তুতি নিন।',
   'Succeed Tomorrow.': 'আগামীকাল সফল হোন।',
   'Practice smarter. Prepare better. Crack your exam.': 'বুদ্ধিমানের মতো অনুশীলন করুন। আরও ভালো প্রস্তুতি নিন। পরীক্ষায় সফল হোন।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO প্ল্যান দেখুন',
+  '/month': '/মাস',
+  'Save ₹{amount}': '₹{amount} সাশ্রয় করুন',
+  'What you get with every PRO plan': 'প্রতিটি PRO প্ল্যানে আপনি কী পাবেন',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ফ্রি প্ল্যান ফ্রি-ই থাকবে — প্র্যাকটিস টেস্ট, ডেইলি চ্যালেঞ্জ এবং আরও অনেক কিছু বিনামূল্যে।',
+  '1 Month': '1 মাস',
+  '3 Months': '3 মাস',
+  '6 Months': '6 মাস',
+  '1 Year': '1 বছর',
+  'Best Value': 'সেরা মূল্য',
+  'Compare PRO plans': 'PRO প্ল্যান তুলনা করুন',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'প্রতিটি প্ল্যানে একই PRO ফিচার — যত দীর্ঘ প্ল্যান, তত বেশি সাশ্রয়',
+  'Choose plan': 'প্ল্যান বেছে নিন',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} প্ল্যানে ₹{price}/মাস থেকে শুরু — সম্পূর্ণ এক্সাম-প্রিপ ইঞ্জিন আনলক করুন।',
+  'Plans: {durations}': 'প্ল্যান: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'মাত্র দুটি স্তর — ফ্রি এবং PRO, ₹{price}/মাস থেকে শুরু ({plan} প্ল্যান)। কোনো জটিল অ্যাড-অন নেই।',
+  'Friend Buys PRO Plan': 'বন্ধু PRO প্ল্যান কিনলে',
+  'PRO PLAN ACTIVATED': 'PRO প্ল্যান সক্রিয়',
 };
 
 export default BN;

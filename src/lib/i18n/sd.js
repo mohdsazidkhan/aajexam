@@ -1969,6 +1969,25 @@ const SD = {
   'Prepare Today.': 'अॼु तैयारी कयो.',
   'Succeed Tomorrow.': 'सुभाणे कामयाब थियो.',
   'Practice smarter. Prepare better. Crack your exam.': 'समझ सां प्रैक्टिस कयो. बेहतर तैयारी कयो. पहिंजो इम्तिहान पास कयो.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लान दिसो',
+  '/month': '/महिनो',
+  'Save ₹{amount}': '₹{amount} बचायो',
+  'What you get with every PRO plan': 'हर PRO प्लान में तव्हां खे छा मिले थो',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लान हमेशा मुफ़्त रहंदो — प्रैक्टिस टेस्ट, डेली चैलेंज ऐं बियो घणो कुझु बिना कंहिं खर्च जे।',
+  '1 Month': '1 महिनो',
+  '3 Months': '3 महिना',
+  '6 Months': '6 महिना',
+  '1 Year': '1 साल',
+  'Best Value': 'सभ खां वधीक वैल्यू',
+  'Compare PRO plans': 'PRO प्लान जी तुलना कयो',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'हर प्लान में उहे PRO फीचर — जेतरो वडो प्लान, ओतिरी वधीक बचत',
+  'Choose plan': 'प्लान चुनो',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लान सां गडु ₹{price}/महिने खां शुरू — पूरो इम्तिहान-तैयारीअ जो इंजन अनलॉक कयो।',
+  'Plans: {durations}': 'प्लान: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'फक्त बे टियर — फ्री ऐं PRO, ₹{price}/महिने खां शुरू ({plan} प्लान)। कोई उलझाईंदड़ ऐड-ऑन कोन्हे।',
+  'Friend Buys PRO Plan': 'दोस्त PRO प्लान खरीद करे',
+  'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
 };
 
 export default SD;

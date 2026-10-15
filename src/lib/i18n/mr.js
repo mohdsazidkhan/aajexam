@@ -1969,6 +1969,25 @@ const MR = {
   'Prepare Today.': 'आज तयारी करा.',
   'Succeed Tomorrow.': 'उद्या यशस्वी व्हा.',
   'Practice smarter. Prepare better. Crack your exam.': 'हुशारीने सराव करा. उत्तम तयारी करा. तुमची परीक्षा जिंका.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लॅन पहा',
+  '/month': '/महिना',
+  'Save ₹{amount}': '₹{amount} वाचवा',
+  'What you get with every PRO plan': 'प्रत्येक PRO प्लॅनमध्ये तुम्हाला काय मिळते',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लॅन कायम मोफत राहील — सराव टेस्ट, डेली चॅलेंज आणि बरेच काही कोणत्याही शुल्काशिवाय.',
+  '1 Month': '1 महिना',
+  '3 Months': '3 महिने',
+  '6 Months': '6 महिने',
+  '1 Year': '1 वर्ष',
+  'Best Value': 'सर्वोत्तम व्हॅल्यू',
+  'Compare PRO plans': 'PRO प्लॅनची तुलना करा',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'प्रत्येक प्लॅनमध्ये समान PRO फीचर्स — जितका मोठा प्लॅन, तितकी जास्त बचत',
+  'Choose plan': 'प्लॅन निवडा',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लॅनसह ₹{price}/महिना पासून — संपूर्ण परीक्षा-तयारी इंजिन अनलॉक करा.',
+  'Plans: {durations}': 'प्लॅन: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'फक्त दोन स्तर — फ्री आणि PRO, ₹{price}/महिना पासून ({plan} प्लॅन). कोणतेही गोंधळात टाकणारे ॲड-ऑन नाहीत.',
+  'Friend Buys PRO Plan': 'मित्राने PRO प्लॅन खरेदी केल्यास',
+  'PRO PLAN ACTIVATED': 'PRO प्लॅन सक्रिय',
 };
 
 export default MR;

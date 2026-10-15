@@ -1969,6 +1969,25 @@ const TE = {
   'Prepare Today.': 'ఈరోజు సిద్ధం అవ్వండి.',
   'Succeed Tomorrow.': 'రేపు విజయం సాధించండి.',
   'Practice smarter. Prepare better. Crack your exam.': 'తెలివిగా సాధన చేయండి. మెరుగ్గా సిద్ధం అవ్వండి. మీ పరీక్షను ఛేదించండి.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO ప్లాన్‌లు చూడండి',
+  '/month': '/నెల',
+  'Save ₹{amount}': '₹{amount} ఆదా చేయండి',
+  'What you get with every PRO plan': 'ప్రతి PRO ప్లాన్‌తో మీకు లభించేవి',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'ఫ్రీ ప్లాన్ ఎప్పటికీ ఉచితమే — ప్రాక్టీస్ టెస్ట్‌లు, డైలీ ఛాలెంజ్ మరియు మరెన్నో ఎటువంటి ఖర్చు లేకుండా.',
+  '1 Month': '1 నెల',
+  '3 Months': '3 నెలలు',
+  '6 Months': '6 నెలలు',
+  '1 Year': '1 సంవత్సరం',
+  'Best Value': 'ఉత్తమ విలువ',
+  'Compare PRO plans': 'PRO ప్లాన్‌లను పోల్చండి',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'ప్రతి ప్లాన్‌లో అవే PRO ఫీచర్లు — ఎక్కువ కాలం ప్లాన్ తీసుకుంటే అంత ఎక్కువ ఆదా',
+  'Choose plan': 'ప్లాన్ ఎంచుకోండి',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} ప్లాన్‌తో ₹{price}/నెల నుండి — పూర్తి పరీక్ష-తయారీ ఇంజిన్‌ను అన్‌లాక్ చేయండి.',
+  'Plans: {durations}': 'ప్లాన్‌లు: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'రెండు శ్రేణులు మాత్రమే — ఫ్రీ మరియు PRO, ₹{price}/నెల నుండి ({plan} ప్లాన్). గందరగోళపరిచే యాడ్-ఆన్‌లు లేవు.',
+  'Friend Buys PRO Plan': 'స్నేహితుడు PRO ప్లాన్ కొంటే',
+  'PRO PLAN ACTIVATED': 'PRO ప్లాన్ యాక్టివేట్ అయింది',
 };
 
 export default TE;

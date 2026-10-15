@@ -1969,6 +1969,25 @@ const NE = {
   'Prepare Today.': 'आज तयारी गर्नुहोस्।',
   'Succeed Tomorrow.': 'भोलि सफल हुनुहोस्।',
   'Practice smarter. Prepare better. Crack your exam.': 'बुद्धिमानीपूर्वक अभ्यास गर्नुहोस्। राम्रो तयारी गर्नुहोस्। आफ्नो परीक्षा पास गर्नुहोस्।',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO प्लान हेर्नुहोस्',
+  '/month': '/महिना',
+  'Save ₹{amount}': '₹{amount} बचत गर्नुहोस्',
+  'What you get with every PRO plan': 'प्रत्येक PRO प्लानमा तपाईंले के पाउनुहुन्छ',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'फ्री प्लान सधैँ निःशुल्क रहन्छ — प्र्याक्टिस टेस्ट, डेली च्यालेन्ज र धेरै कुरा कुनै शुल्क बिना।',
+  '1 Month': '1 महिना',
+  '3 Months': '3 महिना',
+  '6 Months': '6 महिना',
+  '1 Year': '1 वर्ष',
+  'Best Value': 'उत्कृष्ट मूल्य',
+  'Compare PRO plans': 'PRO प्लानको तुलना गर्नुहोस्',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'हरेक प्लानमा उही PRO सुविधाहरू — जति लामो प्लान, उति धेरै बचत',
+  'Choose plan': 'प्लान छान्नुहोस्',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} प्लानसँग ₹{price}/महिनादेखि — पूर्ण परीक्षा-तयारी इन्जिन अनलक गर्नुहोस्।',
+  'Plans: {durations}': 'प्लान: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'केवल दुई तह — फ्री र PRO, ₹{price}/महिनादेखि ({plan} प्लान)। अलमल पार्ने कुनै एड-अन छैन।',
+  'Friend Buys PRO Plan': 'साथीले PRO प्लान किन्दा',
+  'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
 };
 
 export default NE;

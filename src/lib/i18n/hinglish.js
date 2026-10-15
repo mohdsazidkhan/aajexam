@@ -1970,6 +1970,25 @@ const HINGLISH = {
   'Prepare Today.': 'Aaj Taiyari Karo.',
   'Succeed Tomorrow.': 'Kal Safal Bano.',
   'Practice smarter. Prepare better. Crack your exam.': 'Smart practice karo. Behtar taiyari karo. Apna exam crack karo.',
+  // Plans & pricing (3/6/12-month PRO)
+  'View PRO plans': 'PRO plans dekhein',
+  '/month': '/month',
+  'Save ₹{amount}': '₹{amount} bachayein',
+  'What you get with every PRO plan': 'Har PRO plan mein aapko kya milta hai',
+  'Free plan stays free — practice tests, daily challenge and more at no cost.': 'Free plan hamesha free rahega — practice tests, daily challenge aur bahut kuch bina kisi charge ke.',
+  '1 Month': '1 Month',
+  '3 Months': '3 Months',
+  '6 Months': '6 Months',
+  '1 Year': '1 Year',
+  'Best Value': 'Best Value',
+  'Compare PRO plans': 'PRO plans compare karein',
+  'Same PRO features in every plan — the longer you commit, the more you save': 'Har plan mein PRO features same — jitna lamba plan, utni zyada bachat',
+  'Choose plan': 'Plan chunein',
+  'From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.': '{plan} plan ke saath ₹{price}/month se shuru — poora exam-prep engine unlock karein.',
+  'Plans: {durations}': 'Plans: {durations}',
+  'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'Sirf do tiers — Free aur PRO, ₹{price}/month se shuru ({plan} plan). Koi confusing add-on nahi.',
+  'Friend Buys PRO Plan': 'Friend PRO Plan kharide',
+  'PRO PLAN ACTIVATED': 'PRO PLAN ACTIVATED',
 };
 
 export default HINGLISH;
