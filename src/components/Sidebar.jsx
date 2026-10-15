@@ -34,6 +34,7 @@ import {
   Target,
   Newspaper,
   Megaphone,
+  Tag,
   StickyNote,
   CalendarDays,
   RotateCcw,
@@ -79,6 +80,7 @@ const Sidebar = () => {
         { path: '/features', icon: ClipboardList, label: 'Features', key: 'features' },
         { path: '/admin/notifications', icon: Bell, label: 'Notifications', key: 'notifications' },
         { path: '/admin/announcements', icon: Megaphone, label: 'Announcements', key: 'announcements' },
+        { path: '/admin/coupons', icon: Tag, label: 'Coupons', key: 'coupons' },
         { path: '/admin/email-campaigns', icon: Mail, label: 'Campaigns', key: 'emails-campaigns' },
       ]
     },

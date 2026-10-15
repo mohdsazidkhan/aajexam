@@ -24,6 +24,10 @@ const subscriptionSchema = new mongoose.Schema({
   autoRenew: { type: Boolean, default: false },
   paymentMethod: { type: String },
   amount: { type: Number },
+  // Coupon used for the purchase behind this subscription period (null = none)
+  couponId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coupon', default: null },
+  couponCode: { type: String, default: null },
+  discountAmount: { type: Number, default: 0 },
   currency: { type: String, default: 'INR' },
   features: {
     unlimitedQuizzes: { type: Boolean, default: false },

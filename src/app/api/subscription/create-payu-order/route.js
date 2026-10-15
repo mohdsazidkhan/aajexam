@@ -5,6 +5,7 @@ import PaymentOrder from '@/models/PaymentOrder';
 import { getPayuConfig, payuHelpers } from '@/lib/payu';
 import { protect } from '@/middleware/auth';
 import { getPlan } from '@/lib/plans';
+import { validateCoupon, normalizeCouponCode } from '@/lib/coupons';
 
 export async function POST(req) {
     try {
@@ -12,7 +13,7 @@ export async function POST(req) {
         if (!auth.authenticated) return NextResponse.json({ message: auth.message }, { status: 401 });
 
         await dbConnect();
-        const { planId } = await req.json();
+        const { planId, couponCode } = await req.json();
         const userId = auth.user.id;
 
         if (!planId) return NextResponse.json({ success: false, message: "Missing planId" }, { status: 400 });
@@ -22,6 +23,16 @@ export async function POST(req) {
 
         const plan = getPlan(planId);
         if (!plan) return NextResponse.json({ success: false, message: "Invalid plan" }, { status: 400 });
+
+        // Optional coupon: re-validated and re-priced here, never trusted from the client.
+        let payable = plan.price;
+        let appliedCoupon = null;
+        if (normalizeCouponCode(couponCode)) {
+            const result = await validateCoupon({ code: couponCode, plan: { id: plan.id, price: plan.price }, userId });
+            if (!result.valid) return NextResponse.json({ success: false, message: result.message }, { status: 400 });
+            payable = result.finalAmount;
+            appliedCoupon = { id: result.coupon._id, code: result.coupon.code, originalAmount: result.originalAmount, discountAmount: result.discount };
+        }
 
         const payuConfig = getPayuConfig();
         const transactionId = `TXN_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
@@ -38,7 +49,7 @@ export async function POST(req) {
         const payuParams = {
             key: payuConfig.merchantKey,
             txnid: transactionId,
-            amount: payuHelpers.formatAmountForPayU(plan.amount),
+            amount: payuHelpers.formatAmountForPayU(payable),
             productinfo: `${plan.name} - ${plan.label}`,
             firstname: user.name || 'User',
             email: user.email,
@@ -56,7 +67,8 @@ export async function POST(req) {
 
         const paymentOrder = new PaymentOrder({
             orderId: transactionId,
-            amount: plan.amount,
+            amount: payable,
+            ...(appliedCoupon ? { couponId: appliedCoupon.id, couponCode: appliedCoupon.code, originalAmount: appliedCoupon.originalAmount, discountAmount: appliedCoupon.discountAmount } : {}),
             currency: 'INR',
             receipt,
             user: userId,
@@ -71,7 +83,7 @@ export async function POST(req) {
         return NextResponse.json({
             success: true,
             orderId: transactionId,
-            amount: plan.amount,
+            amount: payable,
             paymentUrl: payuConfig.paymentUrl,
             paymentParams: payuParams
         });

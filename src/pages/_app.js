@@ -45,6 +45,10 @@ const WelcomePromoModal = dynamic(() => import('../components/modals/WelcomeProm
   ssr: false,
 });
 
+const CouponOfferModal = dynamic(() => import('../components/modals/CouponOfferModal'), {
+  ssr: false,
+});
+
 const TargetExamPrompt = dynamic(() => import('../components/TargetExamPrompt'), {
   ssr: false,
 });
@@ -208,6 +212,7 @@ function AppContent({ Component, pageProps }) {
           <TargetExamPrompt />
           <CityPromptModal />
           <ProfileDetailsModal />
+          <CouponOfferModal />
         </>
       );
     }

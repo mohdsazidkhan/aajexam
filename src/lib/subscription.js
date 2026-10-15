@@ -5,6 +5,7 @@ import WalletTransaction from '@/models/WalletTransaction';
 import { applyReferralRewards } from '@/utils/rewards';
 import { createNotification } from '@/utils/notifications';
 import { getPlan } from '@/lib/plans';
+import Coupon from '@/models/Coupon';
 
 /**
  * Activates a subscription for a user after successful payment.
@@ -36,6 +37,9 @@ export async function activateSubscription({ userId, planId, amount, txnid, paym
         subscription.startDate = baseDate;
         subscription.endDate = endDate;
         subscription.amount = amount;
+        subscription.couponId = paymentOrder?.couponId || null;
+        subscription.couponCode = paymentOrder?.couponCode || null;
+        subscription.discountAmount = paymentOrder?.discountAmount || 0;
         await subscription.save();
     } else {
         subscription = new Subscription({
@@ -46,7 +50,10 @@ export async function activateSubscription({ userId, planId, amount, txnid, paym
             status: 'active',
             startDate: baseDate,
             endDate,
-            amount: amount
+            amount: amount,
+            couponId: paymentOrder?.couponId || null,
+            couponCode: paymentOrder?.couponCode || null,
+            discountAmount: paymentOrder?.discountAmount || 0
         });
         await subscription.save();
     }
@@ -84,6 +91,11 @@ export async function activateSubscription({ userId, planId, amount, txnid, paym
     } catch (e) {
         if (e && e.code === 11000) return subscription; // already activated for this txn
         throw e;
+    }
+
+    // Count the coupon redemption (runs once per txn thanks to the lock above)
+    if (paymentOrder?.couponCode) {
+        await Coupon.updateOne(paymentOrder.couponId ? { _id: paymentOrder.couponId } : { code: paymentOrder.couponCode }, { $inc: { usedCount: 1 } }).catch(() => {});
     }
 
     // Apply rewards

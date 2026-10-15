@@ -121,7 +121,7 @@ const submitForm = ({ paymentUrl, paymentParams, targetWindow }) => {
     return true;
 };
 
-export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = true } = {}) => {
+export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = true, couponCode } = {}) => {
     const resolvedUser = resolveCurrentUser(userInfo);
     if (!resolvedUser?._id) {
         toast.error(translateNow('Please log in to continue with payment.'));
@@ -150,7 +150,8 @@ export const launchPayuCheckout = async ({ plan, userInfo, onError, newTab = tru
     try {
         const orderRes = await API.createPayuSubscriptionOrder({
             planId: (plan?.key || '').toLowerCase(),
-            userId: resolvedUser._id
+            userId: resolvedUser._id,
+            ...(couponCode ? { couponCode } : {})
         });
 
         if (!orderRes?.success) {

@@ -9,6 +9,11 @@ const paymentOrderSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' }, // associated subscription (optional)
   planId: { type: String }, // for subscription orders
+  // Coupon applied at checkout (amount above is already the discounted price)
+  couponId: { type: mongoose.Schema.Types.ObjectId, ref: 'Coupon' },
+  couponCode: { type: String },
+  originalAmount: { type: Number },
+  discountAmount: { type: Number },
   paymentMethod: { type: String, enum: ['payu'], default: 'payu' },
   // PayU fields
   payuTransactionId: { type: String },

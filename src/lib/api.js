@@ -434,6 +434,19 @@ class ApiService {
     });
   }
 
+  async validateCoupon(data) {
+    return this.request('/api/subscription/validate-coupon', { method: 'POST', body: JSON.stringify(data) });
+  }
+
+  async getFeaturedCoupons() {
+    return this.request('/api/coupons/featured');
+  }
+
+  async getAdminCoupons() { return this.request('/api/admin/coupons'); }
+  async createCoupon(data) { return this.request('/api/admin/coupons', { method: 'POST', body: JSON.stringify(data) }); }
+  async updateCoupon(id, data) { return this.request(`/api/admin/coupons/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
+  async deleteCoupon(id) { return this.request(`/api/admin/coupons/${id}`, { method: 'DELETE' }); }
+
   async verifyPayuSubscription(verificationData) {
     return this.request('/api/subscription/verify-payu', {
       method: 'POST',

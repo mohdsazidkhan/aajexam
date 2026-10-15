@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { Megaphone, Send, X as XIcon } from 'lucide-react';
@@ -12,8 +12,13 @@ const EMPTY_FORM = { title: '', description: '', target: 'all' };
 // Shared "Announce" compose modal — used by both the Notifications page's
 // quick-send button and the dedicated Announcements page, so the send logic
 // (and its specific/selected-user picker) lives in one place.
-const AnnounceModal = ({ isOpen, onClose, onSent }) => {
+const AnnounceModal = ({ isOpen, onClose, onSent, initialForm }) => {
   const [composeForm, setComposeForm] = useState(EMPTY_FORM);
+
+  // Lets a caller (e.g. the Coupons page) open the modal with a prefilled message.
+  useEffect(() => {
+    if (isOpen && initialForm) setComposeForm({ ...EMPTY_FORM, ...initialForm });
+  }, [isOpen, initialForm]);
   const [specificUser, setSpecificUser] = useState(null);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [sending, setSending] = useState(false);

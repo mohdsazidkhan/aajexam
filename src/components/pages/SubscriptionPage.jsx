@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from 'next/router';
 import { toast } from "react-hot-toast";
-import { ArrowRight, CircleCheck, Crown, LoaderCircle, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CircleCheck, Crown, LoaderCircle, ShieldCheck, Sparkles, Tag, X } from 'lucide-react';
 
 import Link from 'next/link';
 import API from '../../lib/api';
@@ -26,6 +26,9 @@ const SubscriptionPage = () => {
   const [loading, setLoading] = useState(true);
   const [buyingPlan, setBuyingPlan] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const [couponInput, setCouponInput] = useState('');
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [appliedCoupon, setAppliedCoupon] = useState(null); // { code, description, prices }
 
   const handleBuy = async (plan) => {
     if (buyingPlan) return;
@@ -33,12 +36,47 @@ const SubscriptionPage = () => {
     // New-tab flow: PayU checkout opens in a fresh tab; this tab stays put.
     // Refresh subscription status after a short delay so the user's plan
     // flips to PRO once PayU posts back, even before they switch tabs.
-    const res = await launchPayuCheckout({ plan, userInfo, newTab: true });
+    const couponCode = appliedCoupon?.prices?.[plan.id] ? appliedCoupon.code : undefined;
+    const res = await launchPayuCheckout({ plan, userInfo, newTab: true, couponCode });
     setBuyingPlan(null);
     if (res?.success) {
       setTimeout(fetchSubscriptionData, 5000);
     }
   };
+
+  const applyCoupon = async (rawCode) => {
+    const code = String(rawCode ?? couponInput).trim().toUpperCase();
+    if (!code || couponLoading) return;
+    setCouponLoading(true);
+    try {
+      const res = await API.validateCoupon({ code });
+      if (res?.success) {
+        setAppliedCoupon({ code: res.code, description: res.description, prices: res.prices });
+        setCouponInput(res.code);
+        toast.success(translate('Coupon {code} applied', { code: res.code }));
+      } else {
+        setAppliedCoupon(null);
+        toast.error(translate(res?.message || 'Invalid coupon code'));
+      }
+    } catch (e) {
+      setAppliedCoupon(null);
+      toast.error(e?.message || translate('Could not check the coupon. Try again.'));
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+  const removeCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponInput('');
+  };
+
+  // Shared links look like /subscription?coupon=DIWALI50 and apply themselves.
+  useEffect(() => {
+    const code = router.query?.coupon;
+    if (router.isReady && typeof code === 'string' && code && !loading && userInfo?._id) applyCoupon(code);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady, router.query?.coupon, loading, userInfo?._id]);
 
   const fetchSubscriptionData = async () => {
     try {
@@ -141,10 +179,41 @@ const SubscriptionPage = () => {
             </Link>
           </div>
 
+          <div className="max-w-xl mx-auto w-full px-2">
+            {appliedCoupon ? (
+              <div className="flex items-center justify-between gap-3 rounded-2xl border-2 border-primary-500/40 bg-primary-500/10 px-4 py-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <Tag className="w-5 h-5 shrink-0 text-primary-600" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-black text-primary-600">{appliedCoupon.code} {translate('applied')}</p>
+                    <p className="text-xs font-medium text-content-secondary truncate">{appliedCoupon.description}</p>
+                  </div>
+                </div>
+                <button type="button" onClick={removeCoupon} aria-label={translate('Remove coupon')} className="p-1.5 rounded-lg text-content-secondary hover:bg-black/5 dark:hover:bg-white/5">
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={(e) => { e.preventDefault(); applyCoupon(); }} className="flex gap-2">
+                <input
+                  value={couponInput}
+                  onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
+                  placeholder={translate('Have a coupon code?')}
+                  maxLength={30}
+                  className="flex-1 min-w-0 rounded-2xl border-2 border-primary-500/20 bg-transparent px-4 py-3 text-sm font-bold uppercase tracking-wide outline-none focus:border-primary-500"
+                />
+                <Button type="submit" variant="secondary" size="md" disabled={couponLoading || !couponInput.trim()} className="rounded-2xl px-5 text-sm font-black">
+                  {couponLoading ? <LoaderCircle className="w-4 h-4 animate-spin" /> : translate('Apply')}
+                </Button>
+              </form>
+            )}
+          </div>
+
           <div id="pro-plans" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 pt-2 xl:pt-6">
             {plans.map((plan) => {
               const isBuying = buyingPlan === plan.key;
               const highlighted = !!plan.badge;
+              const couponPrice = appliedCoupon?.prices?.[plan.id];
 
               return (
                 <Card key={plan.key} className={`p-4 xl:p-8 flex flex-col justify-between h-full relative rounded-2xl xl:rounded-[2.5rem] border-2 ${highlighted ? 'border-primary-500/60 shadow-sm' : 'border-primary-500/20'}`}>
@@ -160,8 +229,11 @@ const SubscriptionPage = () => {
 
                     <div className="space-y-1">
                       <div className="flex items-end gap-2">
-                        <span className="text-3xl xl:text-5xl font-black font-outfit leading-none">₹{plan.price}</span>
-                        {plan.saving > 0 && (
+                        <span className="text-3xl xl:text-5xl font-black font-outfit leading-none">₹{fmtMoney(couponPrice ? couponPrice.finalAmount : plan.price)}</span>
+                        {couponPrice && (
+                          <span className="text-xs xl:text-sm font-medium text-content-secondary line-through pb-1">₹{plan.price}</span>
+                        )}
+                        {!couponPrice && plan.saving > 0 && (
                           <span className="text-xs xl:text-sm font-medium text-content-secondary line-through pb-1">₹{plan.normalPrice}</span>
                         )}
                       </div>
@@ -169,6 +241,11 @@ const SubscriptionPage = () => {
                         ₹{fmtMoney(plan.perMonth)}{translate('/month')}
                         {plan.saving > 0 && <> · {translate('Save ₹{amount}', { amount: plan.saving })}</>}
                       </p>
+                      {couponPrice && (
+                        <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 rounded-full bg-green-500/10 text-green-600 mr-2">
+                          {translate('Coupon saves ₹{amount}', { amount: fmtMoney(couponPrice.discount) })}
+                        </span>
+                      )}
                       {plan.discountPct > 0 && (
                         <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-600">
                           {plan.discountPct}% OFF
