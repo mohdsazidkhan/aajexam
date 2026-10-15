@@ -6,8 +6,6 @@ import { Trophy, Target, Crown, TrendingUp, Award, ArrowRight, Zap } from 'lucid
 import { m as motion } from 'framer-motion';
 
 import Seo from '../../components/Seo';
-import PublicNavbar from '../../components/navbars/PublicNavbar';
-import UnifiedFooter from '../../components/UnifiedFooter';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import useTranslate from '../../hooks/useTranslate';
@@ -52,8 +50,6 @@ export default function SharedResult({ stats }) {
         image={ogImage}
         type="article"
       />
-
-      <PublicNavbar />
 
       <main className="min-h-screen bg-background-page py-12">
         <div className="container mx-auto space-y-10">
@@ -150,7 +146,6 @@ export default function SharedResult({ stats }) {
         </div>
       </main>
 
-      <UnifiedFooter />
     </>
   );
 }

@@ -27,7 +27,6 @@ import { ListSkeleton } from "../skeletons/PrivateSkeletons";
 import { useSSR } from '../../hooks/useSSR';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
-import UnifiedFooter from '../UnifiedFooter';
 import useTranslate from '../../hooks/useTranslate';
 
 const PAGE_LIMIT = 20;
@@ -497,7 +496,6 @@ export default function ReferralHistory() {
 
          </div>
 
-         <UnifiedFooter />
       </div>
    );
 }

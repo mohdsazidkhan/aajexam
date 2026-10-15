@@ -22,7 +22,6 @@ import { m as motion } from 'framer-motion';
 
 import Card from '../ui/Card';
 import Button from '../ui/Button';
-import UnifiedFooter from '../UnifiedFooter';
 import config from '../../lib/config/appConfig';
 import useTranslate from '../../hooks/useTranslate';
 
@@ -219,7 +218,6 @@ const HowItWorks = () => {
 
          </div>
 
-         <UnifiedFooter />
       </div>
    );
 };

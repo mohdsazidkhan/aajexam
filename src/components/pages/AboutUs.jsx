@@ -26,7 +26,6 @@ import { m as motion } from 'framer-motion';
 
 import Card from '../ui/Card';
 import Button from '../ui/Button';
-import UnifiedFooter from '../UnifiedFooter';
 import AuthorBio from '../AuthorBio';
 import { generateBreadcrumbSchema } from '../../utils/schema';
 import { getCanonicalUrl } from '../../utils/seo';
@@ -203,7 +202,6 @@ const AboutUs = () => {
             </section>
          </div>
 
-         <UnifiedFooter />
       </div>
    );
 };
