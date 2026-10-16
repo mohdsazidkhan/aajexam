@@ -63,7 +63,7 @@ const DateTimeField = ({ value, onChange, defaultTime = [0, 0], placeholder, cle
   );
 };
 
-const fmtDate = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+const fmtDate = (d) => new Date(d).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', year: 'numeric' });
 const offerLabel = (c) => (c.discountType === 'percentage' ? `${c.discountValue}% OFF` : `₹${c.discountValue} OFF`);
 const shareLink = (c) => `${SITE_URL}/subscription?coupon=${encodeURIComponent(c.code)}`;
 
@@ -179,40 +179,60 @@ const PricePreview = ({ form }) => {
   );
 };
 
-const fmtDateTime = (d) => new Date(d).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+// IST (Asia/Kolkata) whatever the admin's browser timezone is, shown as:
+//   25-12-2026
+//   at 11:59 PM IST
+const fmtDateTime = (d) => {
+  const dt = new Date(d);
+  const date = dt.toLocaleDateString('en-GB', { timeZone: 'Asia/Kolkata', day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-');
+  const time = dt.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', hour12: true });
+  return (
+    <span className="inline-block align-top leading-tight">
+      <span className="block">{date}</span>
+      <span className="block text-[0.85em] font-medium opacity-70">at {time} IST</span>
+    </span>
+  );
+};
+
+// Plan count (hover for names). No plans picked = every plan applies.
+const PlansCount = ({ ids }) => {
+  const list = ids?.length ? ids : PRO_PLANS.map((p) => p.id);
+  const names = list.map((id) => PRO_PLANS.find((p) => p.id === id)?.label || id).join(', ');
+  return <span title={names} className="cursor-help underline decoration-dotted underline-offset-4">{list.length} {list.length === 1 ? 'Plan' : 'Plans'}</span>;
+};
 
 // Read-only coupon details + the per-plan price calculation.
 const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
   const st = statusOf(c);
-  const plans = c.applicablePlans?.length ? c.applicablePlans.map((id) => PRO_PLANS.find((p) => p.id === id)?.label || id).join(', ') : 'All plans';
   const rows = [
     ['Discount', `${offerLabel(c)}${c.discountType === 'percentage' && c.maxDiscount > 0 ? ` (max ₹${c.maxDiscount})` : ''}`],
-    ['Starts', c.startDate ? fmtDateTime(c.startDate) : 'Immediately'],
     ['Display date', c.displayDate ? fmtDateTime(c.displayDate) : 'No teaser'],
+    ['Starts', c.startDate ? fmtDateTime(c.startDate) : 'Immediately'],
     ['Expires', fmtDateTime(c.expiryDate)],
-    ['Used', `${c.usedCount}${c.usageLimit > 0 ? ` / ${c.usageLimit}` : ' (no total limit)'}`],
+    ['Used', c.usedCount],
+    ['Max uses', c.usageLimit > 0 ? c.usageLimit : 'Unlimited'],
     ['Per user', c.perUserLimit > 0 ? `${c.perUserLimit} time(s)` : 'Unlimited'],
-    ['Valid on', plans],
+    ['Valid on', <PlansCount key="plans" ids={c.applicablePlans} />],
     ['Offer pop-up', c.showInModal ? 'Shown' : 'Not shown'],
     ['Created', fmtDateTime(c.createdAt)]
   ];
   return createPortal(
     <div className="fixed inset-0 z-[1000] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60" onClick={onClose}>
       <div onClick={(e) => e.stopPropagation()} className="w-full max-w-4xl max-h-[92dvh] sm:max-h-[calc(100dvh-2rem)] overflow-hidden bg-white dark:bg-slate-800 rounded-t-2xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col">
-        <div className="shrink-0 flex items-start justify-between gap-3 p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-700">
-          <div className="min-w-0">
-            <div className="text-2xl font-black tracking-widest text-primary-600">{c.code}</div>
-            <span className={`inline-block mt-1 px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>
+        <div className="shrink-0 flex items-center justify-between gap-3 p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-700">
+          <div className="min-w-0 text-2xl font-black tracking-widest text-primary-600">{c.code}</div>
+          <div className="shrink-0 flex items-center gap-2">
+            <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>
+            <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
           </div>
-          <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
         </div>
         <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 flex flex-col gap-4">
         <p className="text-sm text-slate-600 dark:text-slate-300">{c.description}</p>
-        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm">
+        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-3 text-sm">
           {rows.map(([k, v]) => (
-            <div key={k} className="flex justify-between sm:block gap-3">
+            <div key={k}>
               <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{k}</dt>
-              <dd className="font-bold text-slate-800 dark:text-slate-100 text-right sm:text-left">{v}</dd>
+              <dd className="font-bold text-slate-800 dark:text-slate-100">{v}</dd>
             </div>
           ))}
         </dl>
@@ -289,15 +309,23 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           <button type="button" onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5"><X className="w-5 h-5" /></button>
         </div>
 
-        <Field label="Coupon name (code)" hint={editing ? 'The code cannot be changed after creation.' : 'Letters, numbers, - and _ (e.g. DIWALI50). Saved in capitals.'}>
-          <input className={`${inputCls} uppercase font-bold tracking-wide`} value={form.code} onChange={(e) => set('code', e.target.value.toUpperCase())} disabled={editing} maxLength={30} required placeholder="DIWALI50" />
-        </Field>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
+          <Field label="Coupon name (code)" hint={editing ? 'Cannot be changed after creation.' : 'Letters, numbers, - and _ (saved in capitals).'}>
+            <input className={`${inputCls} uppercase font-bold tracking-wide`} value={form.code} onChange={(e) => set('code', e.target.value.toUpperCase())} disabled={editing} maxLength={30} required placeholder="DIWALI50" />
+          </Field>
+          <Field label="Total uses" hint="0 / empty = unlimited">
+            <input className={inputCls} type="number" min="0" value={form.usageLimit} onChange={(e) => set('usageLimit', e.target.value)} />
+          </Field>
+          <Field label="Uses per user" hint="0 = unlimited">
+            <input className={inputCls} type="number" min="0" value={form.perUserLimit} onChange={(e) => set('perUserLimit', e.target.value)} />
+          </Field>
+        </div>
 
         <Field label="Description" hint="Shown to students in the offer modal and at checkout.">
           <textarea className={inputCls} rows={2} maxLength={300} value={form.description} onChange={(e) => set('description', e.target.value)} required placeholder="Diwali special: flat 50% off on every PRO plan" />
         </Field>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className={`grid grid-cols-1 gap-3 items-start ${form.discountType === 'percentage' ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
           <Field label="Discount type">
             <select className={inputCls} value={form.discountType} onChange={(e) => set('discountType', e.target.value)}>
               <option value="percentage">Percentage (%)</option>
@@ -307,33 +335,22 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
           <Field label={form.discountType === 'percentage' ? 'Percent off' : 'Rupees off'}>
             <input className={inputCls} type="number" min="1" max={form.discountType === 'percentage' ? 99 : undefined} step="any" value={form.discountValue} onChange={(e) => set('discountValue', e.target.value)} required />
           </Field>
+          {form.discountType === 'percentage' && (
+            <Field label="Max discount (₹)" hint="Optional cap on rupees off. Empty = no cap.">
+              <input className={inputCls} type="number" min="0" value={form.maxDiscount} onChange={(e) => set('maxDiscount', e.target.value)} />
+            </Field>
+          )}
         </div>
 
-        {form.discountType === 'percentage' && (
-          <Field label="Max discount (₹)" hint="Optional cap on the rupees taken off. Leave empty for no cap.">
-            <input className={inputCls} type="number" min="0" value={form.maxDiscount} onChange={(e) => set('maxDiscount', e.target.value)} />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
+          <Field label="Display date (optional)" hint="Coming soon teaser starts here (needs Starts date + pop-up tick). Code stays hidden until Starts.">
+            <DateTimeField value={form.displayDate} onChange={(v) => set('displayDate', v)} defaultTime={[0, 0]} placeholder="No teaser" clearable />
           </Field>
-        )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Field label="Starts (optional)">
             <DateTimeField value={form.startDate} onChange={(v) => set('startDate', v)} defaultTime={[0, 0]} placeholder="Starts immediately" clearable />
           </Field>
           <Field label="Expiry date">
             <DateTimeField value={form.expiryDate} onChange={(v) => set('expiryDate', v)} defaultTime={[23, 59]} placeholder="Select expiry" minDate={new Date()} required />
-          </Field>
-        </div>
-
-        <Field label="Display date (optional)" hint="Needs a start date and the 'Show this coupon in the offer pop-up' tick. From this date the pop-up shows a Coming soon teaser with a countdown. The coupon code stays hidden until the start date.">
-          <DateTimeField value={form.displayDate} onChange={(v) => set('displayDate', v)} defaultTime={[0, 0]} placeholder="No teaser" clearable />
-        </Field>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <Field label="Total uses" hint="0 / empty = unlimited">
-            <input className={inputCls} type="number" min="0" value={form.usageLimit} onChange={(e) => set('usageLimit', e.target.value)} />
-          </Field>
-          <Field label="Uses per user" hint="0 = unlimited">
-            <input className={inputCls} type="number" min="0" value={form.perUserLimit} onChange={(e) => set('perUserLimit', e.target.value)} />
           </Field>
         </div>
 
@@ -440,8 +457,11 @@ const CouponsPage = () => {
     </div>
   );
 
-  const plansText = (c) => (c.applicablePlans?.length ? c.applicablePlans.map((id) => PRO_PLANS.find((p) => p.id === id)?.label || id).join(', ') : 'All');
+  const plansText = (c) => <PlansCount ids={c.applicablePlans} />;
   const discountText = (c) => `${offerLabel(c)}${c.discountType === 'percentage' && c.maxDiscount > 0 ? ` (max ₹${c.maxDiscount})` : ''}`;
+  const startText = (c) => (c.startDate ? fmtDateTime(c.startDate) : 'Immediately');
+  const displayText = (c) => (c.displayDate ? fmtDateTime(c.displayDate) : 'No teaser');
+  const expiryText = (c) => fmtDateTime(c.expiryDate);
   const usedText = (c) => `${c.usedCount}${c.usageLimit > 0 ? ` / ${c.usageLimit}` : ''}`;
   const statusBadge = (c) => { const st = statusOf(c); return <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${st.cls}`}>{st.label}</span>; };
 
@@ -449,8 +469,12 @@ const CouponsPage = () => {
     { key: 'code', header: 'CODE', render: (_, c) => <span className="font-black tracking-widest text-primary-600 text-sm">{c.code}</span> },
     { key: 'discount', header: 'DISCOUNT', render: (_, c) => discountText(c) },
     { key: 'status', header: 'STATUS', render: (_, c) => statusBadge(c) },
-    { key: 'expires', header: 'EXPIRES', render: (_, c) => fmtDate(c.expiryDate) },
-    { key: 'used', header: 'USED', render: (_, c) => usedText(c) },
+    { key: 'displayDate', header: 'DISPLAY DATE', render: (_, c) => displayText(c) },
+    { key: 'startDate', header: 'START DATE', render: (_, c) => startText(c) },
+    { key: 'expires', header: 'EXPIRES', render: (_, c) => expiryText(c) },
+    { key: 'used', header: 'USED', align: 'center', render: (_, c) => c.usedCount },
+    { key: 'maxUses', header: 'MAX USES', align: 'center', render: (_, c) => (c.usageLimit > 0 ? c.usageLimit : 'Unlimited') },
+    { key: 'perUser', header: 'PER USER', align: 'center', render: (_, c) => (c.perUserLimit > 0 ? c.perUserLimit : 'Unlimited') },
     { key: 'plans', header: 'PLANS', render: (_, c) => plansText(c) },
     { key: 'actions', header: 'ACTIONS', align: 'center', render: (_, c) => renderActions(c) }
   ];
@@ -513,7 +537,9 @@ const CouponsPage = () => {
                     <div className="flex-1 min-w-0 space-y-1">
                       <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.description}</p>
                       <div className="text-xs text-slate-500 dark:text-slate-400 flex flex-wrap gap-x-4 gap-y-0.5">
-                        <span>Expires: <b>{fmtDate(c.expiryDate)}</b></span>
+                        <span>Display: <b>{displayText(c)}</b></span>
+                        <span>Starts: <b>{startText(c)}</b></span>
+                        <span>Expires: <b>{expiryText(c)}</b></span>
                         <span>Used: <b>{usedText(c)}</b></span>
                         <span>Plans: <b>{plansText(c)}</b></span>
                       </div>
@@ -540,7 +566,9 @@ const CouponsPage = () => {
                     </div>
                     <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.description}</p>
                     <div className="text-xs text-slate-500 dark:text-slate-400 space-y-0.5">
-                      <div>Expires: <b>{fmtDate(c.expiryDate)}</b></div>
+                      <div>Display: <b>{displayText(c)}</b></div>
+                      <div>Starts: <b>{startText(c)}</b></div>
+                      <div>Expires: <b>{expiryText(c)}</b></div>
                       <div>Used: <b>{usedText(c)}</b> · {c.perUserLimit > 0 ? `${c.perUserLimit}/user` : 'unlimited per user'}</div>
                       <div>Plans: <b>{plansText(c)}</b>{c.showInModal ? ' · in pop-up' : ''}</div>
                     </div>
