@@ -22,6 +22,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const period = searchParams.get('period') || 'all-time';
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
 
         const range = getISTRange(period);
         const dateFilter = range ? { createdAt: range } : {};
@@ -66,7 +67,8 @@ export async function GET(req) {
         const activeList = timed
             .filter((u) => validIds.has(String(u.userId)))
             .map((u) => ({ ...u, totalActivities: u.quizzes + u.exams }))
-            .sort((a, b) => b.totalTimeSpent - a.totalTimeSpent || b.totalActivities - a.totalActivities);
+            .sort((a, b) => b.totalTimeSpent - a.totalTimeSpent || b.totalActivities - a.totalActivities)
+            .map((u, idx) => ({ ...u, rank: idx + 1 })); // global rank, kept even when searching
 
         const summary = activeList.reduce(
             (acc, u) => ({
@@ -81,10 +83,25 @@ export async function GET(req) {
         summary.totalActiveUsers = activeList.length;
         summary.totalTimeSpent = Math.round(summary.totalTimeSpent);
 
-        const candidates = activeList.slice(0, 100);
+        // Search (name / username / email / phone) narrows the ranked list but keeps each
+        // student's global rank. Summary cards above stay unfiltered.
+        let ranked = activeList;
+        if (search) {
+            const rx = new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+            const matched = await User.find({
+                _id: { $in: activeList.map((u) => u.userId) },
+                $or: [{ name: rx }, { username: rx }, { email: rx }, { phone: rx }],
+            })
+                .select('_id')
+                .lean();
+            const matchedIds = new Set(matched.map((d) => String(d._id)));
+            ranked = activeList.filter((u) => matchedIds.has(String(u.userId)));
+        }
+
+        const candidates = ranked.slice(0, 150);
 
         const users = await User.find({ _id: { $in: candidates.map((c) => c.userId) } })
-            .select('name username email profilePicture city subscriptionStatus')
+            .select('name username email phone profilePicture city subscriptionStatus')
             .lean();
         const userMap = new Map(users.map((u) => [String(u._id), u]));
 
@@ -96,15 +113,16 @@ export async function GET(req) {
         const data = candidates
             .filter((c) => userMap.has(String(c.userId)))
             .slice(0, 100)
-            .map((c, idx) => {
+            .map((c) => {
                 const u = userMap.get(String(c.userId));
                 const s = streakMap.get(String(c.userId));
                 return {
-                    rank: idx + 1,
+                    rank: c.rank,
                     userId: c.userId,
                     name: u.name,
                     username: u.username,
                     email: u.email,
+                    phone: u.phone,
                     profilePicture: u.profilePicture,
                     city: u.city,
                     subscriptionStatus: u.subscriptionStatus,
@@ -118,7 +136,7 @@ export async function GET(req) {
                 };
             });
 
-        return NextResponse.json({ success: true, data, summary, period });
+        return NextResponse.json({ success: true, data, summary, period, search });
     } catch (error) {
         console.error('Admin most-active-users API error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

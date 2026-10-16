@@ -17,7 +17,8 @@ import {
     BookOpen,
     FileText,
     Trophy,
-    Eye
+    Eye,
+    Search
 } from 'lucide-react';
 import { AdminDashboardSkeleton } from '../../admin/Skeletons';
 import { isMobile } from 'react-device-detect';
@@ -62,6 +63,7 @@ const AdminMostActiveUsers = () => {
     const [detailTab, setDetailTab] = useState('quizzes');
     const [loading, setLoading] = useState(true);
     const [period, setPeriod] = useState('monthly');
+    const [searchTerm, setSearchTerm] = useState('');
     const [viewMode, setViewMode] = useState(isMobile ? 'grid' : 'table');
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(DEFAULT_PAGE_SIZE);
@@ -69,7 +71,7 @@ const AdminMostActiveUsers = () => {
     const fetchUsers = useCallback(async () => {
         try {
             setLoading(true);
-            const response = await API.getAdminMostActiveUsers({ period });
+            const response = await API.getAdminMostActiveUsers({ period, ...(searchTerm.trim() && { search: searchTerm.trim() }) });
             setUsers(response.data || []);
             setSummary(response.summary || {});
             setPage(1);
@@ -79,10 +81,11 @@ const AdminMostActiveUsers = () => {
         } finally {
             setLoading(false);
         }
-    }, [period]);
+    }, [period, searchTerm]);
 
     useEffect(() => {
-        fetchUsers();
+        const timer = setTimeout(fetchUsers, 300);
+        return () => clearTimeout(timer);
     }, [fetchUsers]);
 
     const totalPages = Math.max(1, Math.ceil(users.length / limit));
@@ -206,6 +209,19 @@ const AdminMostActiveUsers = () => {
         }
     ];
 
+    const searchInput = (
+        <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+                type="text"
+                placeholder="Search name, username, email, phone..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm"
+            />
+        </div>
+    );
+
     const periodSelect = (
         <StyledSelect
             value={period}
@@ -262,6 +278,7 @@ const AdminMostActiveUsers = () => {
         count: users.length,
         filters: (
             <>
+                {searchInput}
                 {periodSelect}
                 {viewToggleButtons}
                 {exportButton}
