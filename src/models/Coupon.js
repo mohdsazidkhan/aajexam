@@ -12,6 +12,8 @@ const couponSchema = new mongoose.Schema({
   // percentage coupons only: cap on the rupee discount (0 = no cap)
   maxDiscount: { type: Number, default: 0, min: 0 },
   startDate: { type: Date, default: null },
+  // optional: from this date the offer pop-up shows a "Coming soon" teaser (code hidden) until startDate
+  displayDate: { type: Date, default: null },
   expiryDate: { type: Date, required: true },
   isActive: { type: Boolean, default: true },
   // total redemptions allowed across all users (0 = unlimited)

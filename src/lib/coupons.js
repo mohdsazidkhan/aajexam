@@ -46,6 +46,18 @@ export async function validateCoupon({ code, plan, userId }) {
     return { valid: true, coupon, originalAmount: plan.price, discount, finalAmount };
 }
 
+// Teaser shape for a coupon that has not started yet: deliberately has NO code.
+export const publicUpcomingCoupon = (c) => ({
+    upcoming: true,
+    description: c.description,
+    discountType: c.discountType,
+    discountValue: c.discountValue,
+    maxDiscount: c.maxDiscount || 0,
+    startDate: c.startDate,
+    expiryDate: c.expiryDate,
+    applicablePlans: c.applicablePlans || []
+});
+
 // Public-safe shape of a coupon (no internal counters).
 export const publicCoupon = (c) => ({
     code: c.code,

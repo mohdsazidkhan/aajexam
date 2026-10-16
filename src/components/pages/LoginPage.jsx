@@ -24,6 +24,7 @@ import Card from '../ui/Card';
 import UnifiedFooter from '../UnifiedFooter';
 import MobileAppWrapper from '../MobileAppWrapper';
 import useTranslate from '../../hooks/useTranslate';
+import { getPostLoginPath } from '../../lib/utils/authUtils';
 
 const LoginPage = () => {
   const { translate } = useTranslate();
@@ -54,7 +55,7 @@ const LoginPage = () => {
           localStorage.setItem('userInfo', JSON.stringify(userInfo));
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
-          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
+          router.push(getPostLoginPath(authRes.user));
           toast.success(translate('Welcome to AajExam!'));
         }
       } catch (error) {
@@ -76,7 +77,7 @@ const LoginPage = () => {
         localStorage.setItem('userInfo', JSON.stringify(userInfo));
         localStorage.setItem('token', res.token);
         window.dispatchEvent(new CustomEvent('authStateChanged'));
-        router.push(res.user.role === 'admin' ? '/admin/dashboard' : '/home');
+        router.push(getPostLoginPath(res.user));
         toast.success(translate('Welcome back!'));
       }
     } catch (err) {

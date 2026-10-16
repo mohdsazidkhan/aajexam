@@ -20,7 +20,7 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com').rep
 
 const EMPTY_FORM = {
   code: '', description: '', discountType: 'percentage', discountValue: '', maxDiscount: '',
-  startDate: '', expiryDate: '', usageLimit: '', perUserLimit: '1', applicablePlans: [], showInModal: false, isActive: true
+  startDate: '', displayDate: '', expiryDate: '', usageLimit: '', perUserLimit: '1', applicablePlans: [], showInModal: false, isActive: true
 };
 
 // <input type="datetime-local"> wants local "YYYY-MM-DDTHH:mm"
@@ -188,6 +188,7 @@ const CouponViewModal = ({ coupon: c, onClose, onEdit }) => {
   const rows = [
     ['Discount', `${offerLabel(c)}${c.discountType === 'percentage' && c.maxDiscount > 0 ? ` (max ₹${c.maxDiscount})` : ''}`],
     ['Starts', c.startDate ? fmtDateTime(c.startDate) : 'Immediately'],
+    ['Display date', c.displayDate ? fmtDateTime(c.displayDate) : 'No teaser'],
     ['Expires', fmtDateTime(c.expiryDate)],
     ['Used', `${c.usedCount}${c.usageLimit > 0 ? ` / ${c.usageLimit}` : ' (no total limit)'}`],
     ['Per user', c.perUserLimit > 0 ? `${c.perUserLimit} time(s)` : 'Unlimited'],
@@ -238,6 +239,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
       usageLimit: coupon.usageLimit ? String(coupon.usageLimit) : '',
       perUserLimit: String(coupon.perUserLimit ?? 1),
       startDate: toLocalInput(coupon.startDate),
+      displayDate: toLocalInput(coupon.displayDate),
       expiryDate: toLocalInput(coupon.expiryDate)
     }
     : EMPTY_FORM));
@@ -259,6 +261,7 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
       usageLimit: Number(form.usageLimit) || 0,
       perUserLimit: form.perUserLimit === '' ? 1 : Number(form.perUserLimit),
       startDate: form.startDate ? new Date(form.startDate).toISOString() : null,
+      displayDate: form.displayDate ? new Date(form.displayDate).toISOString() : null,
       expiryDate: form.expiryDate ? new Date(form.expiryDate).toISOString() : ''
     };
     setSaving(true);
@@ -320,6 +323,10 @@ const CouponFormModal = ({ coupon, onClose, onSaved }) => {
             <DateTimeField value={form.expiryDate} onChange={(v) => set('expiryDate', v)} defaultTime={[23, 59]} placeholder="Select expiry" minDate={new Date()} required />
           </Field>
         </div>
+
+        <Field label="Display date (optional)" hint="Needs a start date and the 'Show this coupon in the offer pop-up' tick. From this date the pop-up shows a Coming soon teaser with a countdown. The coupon code stays hidden until the start date.">
+          <DateTimeField value={form.displayDate} onChange={(v) => set('displayDate', v)} defaultTime={[0, 0]} placeholder="No teaser" clearable />
+        </Field>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Field label="Total uses" hint="0 / empty = unlimited">

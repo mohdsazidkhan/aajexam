@@ -206,3 +206,13 @@ export const handleAuthError = (error, router) => {
     secureLogout(router, false);
   }
 };
+
+// Where a signed-in user lands. A coupon picked from the public offer pop-up (stored as
+// `pendingCoupon`) sends students to the subscription page, which applies it automatically.
+export const getPostLoginPath = (user) => {
+  if (user?.role === 'admin') return '/admin/dashboard'
+  try {
+    if (localStorage.getItem('pendingCoupon')) return '/subscription'
+  } catch { /* storage blocked */ }
+  return '/home'
+}

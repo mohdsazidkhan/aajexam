@@ -26,6 +26,7 @@ import ProgressBar from '../ui/ProgressBar';
 import MobileAppWrapper from '../MobileAppWrapper';
 import useTranslate from '../../hooks/useTranslate';
 import { useFreePromoActive } from '../../lib/freePromo';
+import { getPostLoginPath } from '../../lib/utils/authUtils';
 
 const RegisterPageInner = () => {
   const { translate, rich } = useTranslate();
@@ -88,7 +89,7 @@ const RegisterPageInner = () => {
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
           toast.success(translate('Welcome to AajExam! 🎉'));
-          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
+          router.push(getPostLoginPath(authRes.user));
         }
       } catch (error) {
         toast.error(translate('Google sign-up failed. Please try again.'));

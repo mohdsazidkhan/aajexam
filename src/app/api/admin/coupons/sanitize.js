@@ -20,6 +20,14 @@ export function sanitizeCouponInput(body) {
         if (startDate >= expiryDate) return { message: 'Start date must be before expiry date' };
     }
 
+    let displayDate = null;
+    if (body.displayDate) {
+        displayDate = new Date(body.displayDate);
+        if (Number.isNaN(displayDate.getTime())) return { message: 'Invalid display date' };
+        if (!startDate) return { message: 'Set a start date to use a display date' };
+        if (displayDate > startDate) return { message: 'Display date must be on or before the start date' };
+    }
+
     const nonNeg = (v) => (Number.isFinite(Number(v)) && Number(v) >= 0 ? Math.floor(Number(v)) : 0);
 
     return {
@@ -29,6 +37,7 @@ export function sanitizeCouponInput(body) {
             discountValue,
             maxDiscount: body.discountType === 'percentage' ? nonNeg(body.maxDiscount) : 0,
             startDate,
+            displayDate,
             expiryDate,
             isActive: body.isActive !== false,
             usageLimit: nonNeg(body.usageLimit),

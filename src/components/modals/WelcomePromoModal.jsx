@@ -159,6 +159,13 @@ const WelcomePromoModal = () => {
     return () => { cancelled = true; clearTimeout(timer); };
   }, []);
 
+  // The coupon "Coming soon" teaser waits for this pop-up so the two never stack.
+  useEffect(() => {
+    window.__welcomePromoOpen = show;
+    if (!show) window.dispatchEvent(new Event('welcomePromoClosed'));
+    return () => { window.__welcomePromoOpen = false; };
+  }, [show]);
+
   const handleClose = () => setShow(false);
 
   if (!show) return null;
