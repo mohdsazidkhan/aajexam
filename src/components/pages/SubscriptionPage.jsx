@@ -17,9 +17,11 @@ import { SubscriptionSkeleton } from '../skeletons/PrivateSkeletons';
 import PaymentTransactions from "../PaymentTransactions";
 import { launchPayuCheckout } from '../../lib/utils/payu';
 import useTranslate from '../../hooks/useTranslate';
+import { useFreePromoActive } from '../../lib/freePromo';
 
 const SubscriptionPage = () => {
   const { translate } = useTranslate();
+  const freePromoActive = useFreePromoActive();
   const router = useRouter();
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -149,7 +151,7 @@ const SubscriptionPage = () => {
                       ? subscription.status === 'active'
                         ? translate('Valid until {date}', { date: new Date(subscription.expiryDate).toLocaleDateString() })
                         : translate('Expired on {date} — renew to regain PRO access.', { date: new Date(subscription.expiryDate).toLocaleDateString() })
-                      : (subscription.planName || '').toUpperCase() === 'FREE'
+                      : (subscription.planName || '').toUpperCase() === 'FREE' && freePromoActive
                         ? translate('PRO is free for everyone till 31 Dec 2026 — refresh this page to see it applied.')
                         : translate('Pick a plan below to unlock all exam practice tests.')}
                   </p>
@@ -177,9 +179,11 @@ const SubscriptionPage = () => {
         <section className="space-y-5 xl:space-y-10">
           <div className="text-center space-y-2 xl:space-y-4 max-w-3xl mx-auto px-2">
             <h2 className="text-lg xl:text-5xl font-black font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
-            <p className="text-xs xl:text-lg font-medium text-content-secondary">
-              {translate('🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.')}
-            </p>
+            {freePromoActive && (
+              <p className="text-xs xl:text-lg font-medium text-content-secondary">
+                {translate('🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.')}
+              </p>
+            )}
             <Link href="/features" className="inline-block text-xs xl:text-sm font-bold text-primary-600 hover:text-primary-600 underline underline-offset-4">
               {translate('See the full feature comparison')}
             </Link>

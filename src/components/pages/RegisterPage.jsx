@@ -25,9 +25,11 @@ import Button from '../ui/Button';
 import ProgressBar from '../ui/ProgressBar';
 import MobileAppWrapper from '../MobileAppWrapper';
 import useTranslate from '../../hooks/useTranslate';
+import { useFreePromoActive } from '../../lib/freePromo';
 
 const RegisterPageInner = () => {
   const { translate, rich } = useTranslate();
+  const freePromoActive = useFreePromoActive();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -138,9 +140,11 @@ const RegisterPageInner = () => {
         <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <div className="space-y-2 xl:space-y-4">
-              <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-full">
-                {translate('🎁 Register now — Get PRO Free till 31 Dec 2026')}
-              </span>
+              {freePromoActive && (
+                <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-full">
+                  {translate('🎁 Register now — Get PRO Free till 31 Dec 2026')}
+                </span>
+              )}
               <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
                 {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}
               </h1>

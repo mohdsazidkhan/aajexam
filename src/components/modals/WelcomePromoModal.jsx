@@ -7,6 +7,7 @@ import { Gift, X, CheckCircle2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import useTranslate from '../../hooks/useTranslate';
+import { getFreePromoEnd } from '../../lib/freePromo';
 
 const PROMO_FEATURES = [
   'Unlimited Practice Tests',
@@ -144,12 +145,18 @@ const WelcomePromoModal = () => {
 
     // Intentionally no "already shown" check — this modal is scoped to the
     // landing page only, and should reappear on every visit/refresh.
-    const timer = setTimeout(() => {
-      setShow(true);
-      sessionStorage.setItem('welcomePromoShown', 'true');
-    }, 1200);
+    // Free promo ends when the next pop-up coupon starts (31 Dec 2026 11:59 PM IST by default).
+    let cancelled = false;
+    let timer;
+    getFreePromoEnd().then((end) => {
+      if (cancelled || Date.now() >= end.getTime()) return;
+      timer = setTimeout(() => {
+        setShow(true);
+        sessionStorage.setItem('welcomePromoShown', 'true');
+      }, 1200);
+    });
 
-    return () => clearTimeout(timer);
+    return () => { cancelled = true; clearTimeout(timer); };
   }, []);
 
   const handleClose = () => setShow(false);

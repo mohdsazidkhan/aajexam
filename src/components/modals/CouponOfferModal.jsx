@@ -6,39 +6,50 @@ import { Tag, X, Copy } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import useTranslate from '../../hooks/useTranslate';
-
-const dismissKey = (code) => `couponModalDismissed:${code}`;
+import { getCurrentUser } from '../../lib/utils/authUtils';
 
 const safeGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
 const safeSet = (k, v) => { try { localStorage.setItem(k, v); } catch { /* storage blocked */ } };
 const isLoggedIn = () => !!safeGet('token');
 
-// Shows the newest admin-flagged coupon once per browser (until a new coupon is flagged).
+// Shows the newest live admin-flagged coupon on every full page load / refresh (it replaces the
+// free-promo welcome pop-up once that ends). Closing it only hides it until the next refresh.
 const CouponOfferModal = () => {
   const { translate } = useTranslate();
   const router = useRouter();
   const [coupon, setCoupon] = useState(null);
+  const [dismissed, setDismissed] = useState(false);
 
   const hidden = router.pathname.startsWith('/admin') || router.pathname.startsWith('/subscription');
 
   useEffect(() => {
-    if (hidden || coupon) return;
+    if (hidden || coupon || dismissed) return;
+    if (getCurrentUser()?.role === 'admin') return; // admins never see the offer pop-up
     let cancelled = false;
     // Logged-out visitors get a short delay so the page (and the welcome pop-up) settle first.
     const timer = setTimeout(() => {
       API.getFeaturedCoupons().then((res) => {
         if (cancelled || !res?.success) return;
-        const next = (res.data || []).find((c) => !safeGet(dismissKey(c.code)));
+        // The API response can be cached for a few minutes, so re-check expiry here too.
+        const next = (res.data || []).find((c) => new Date(c.expiryDate).getTime() > Date.now());
         if (next) setCoupon(next);
       }).catch(() => {});
-    }, isLoggedIn() ? 0 : 6000);
+    }, 1200);
     return () => { cancelled = true; clearTimeout(timer); };
-  }, [hidden, coupon]);
+  }, [hidden, coupon, dismissed]);
+
+  // Auto-hide the moment the open coupon expires.
+  useEffect(() => {
+    if (!coupon) return undefined;
+    const ms = new Date(coupon.expiryDate).getTime() - Date.now();
+    const timer = setTimeout(() => { setDismissed(true); setCoupon(null); }, Math.min(Math.max(ms, 0), 2147483647));
+    return () => clearTimeout(timer);
+  }, [coupon]);
 
   if (hidden || !coupon) return null;
 
   const close = () => {
-    safeSet(dismissKey(coupon.code), '1');
+    setDismissed(true);
     setCoupon(null);
   };
 
@@ -54,8 +65,8 @@ const CouponOfferModal = () => {
   };
 
   const useNow = () => {
-    safeSet(dismissKey(coupon.code), '1');
     const code = coupon.code;
+    setDismissed(true);
     setCoupon(null);
     if (!isLoggedIn()) {
       // Visitors must sign up first; the subscription page applies this code after login.
@@ -89,7 +100,7 @@ const CouponOfferModal = () => {
             {coupon.code} <Copy className="w-4 h-4" />
           </button>
           <p className="mt-2 text-[11px] font-medium text-content-secondary">
-            {translate('Valid till {date}', { date: new Date(coupon.expiryDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) })}
+            {translate('Valid till {date}', { date: new Date(coupon.expiryDate).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', year: 'numeric' }) })}
           </p>
 
           <button type="button" onClick={useNow} className="mt-4 w-full rounded-2xl bg-primary-600 py-3 text-sm font-black text-white">
