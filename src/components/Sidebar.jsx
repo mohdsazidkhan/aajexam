@@ -77,6 +77,7 @@ const Sidebar = () => {
       title: 'MAIN',
       items: [
         { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' },
+        { path: '/admin/most-active-users', icon: Flame, label: 'Top Active Students', key: 'most-active-users' },
         { path: '/features', icon: ClipboardList, label: 'Features', key: 'features' },
         { path: '/admin/notifications', icon: Bell, label: 'Notifications', key: 'notifications' },
         { path: '/admin/announcements', icon: Megaphone, label: 'Announcements', key: 'announcements' },

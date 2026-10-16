@@ -1,0 +1,20 @@
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import { AdminDashboardSkeleton } from '../../components/admin/Skeletons';
+
+const AdminMostActiveUsers = dynamic(() => import('../../components/pages/admin/MostActiveUsers'), {
+    ssr: false,
+    loading: () => <AdminDashboardSkeleton />
+});
+
+export default function AdminMostActiveUsersPage() {
+    return (
+        <>
+            <Head>
+                <title>Admin Top Active Students - SUBG</title>
+                <meta name="robots" content="noindex,nofollow" />
+            </Head>
+            <AdminMostActiveUsers />
+        </>
+    );
+}

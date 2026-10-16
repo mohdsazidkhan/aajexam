@@ -578,6 +578,16 @@ class ApiService {
     return this.request(`/api/admin/leaderboard?${queryString}`);
   }
 
+  async getAdminMostActiveUsers(params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/most-active-users?${queryString}`);
+  }
+
+  async getAdminMostActiveUserDetail(userId, params = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/api/admin/most-active-users/${userId}?${queryString}`);
+  }
+
   async getAdminAIR(params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/api/admin/air?${queryString}`);

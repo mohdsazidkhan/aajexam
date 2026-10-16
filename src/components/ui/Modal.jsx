@@ -19,6 +19,9 @@ const Modal = ({
   closeOnBackdrop = true,
   className = '',
   titleClassName = '',
+  bodyClassName = 'p-10 xl:p-14 pt-8 xl:pt-10',
+  headerClassName = 'p-10 xl:p-14 pb-6 xl:pb-8',
+  bodyMaxHeight = 'max-h-[75vh]',
   animationType = 'spring',
   icon: Icon,
   ...props
@@ -117,7 +120,7 @@ const Modal = ({
           >
             {/* Header Stats */}
             {(title || showCloseButton) && (
-              <div className="flex items-center justify-between p-10 xl:p-14 pb-6 xl:pb-8 border-b-2 border-slate-100 dark:border-slate-700/50">
+              <div className={`flex items-center justify-between ${headerClassName} border-b-2 border-slate-100 dark:border-slate-700/50`}>
                 <div className="flex items-center gap-6">
                   {Icon && (
                     <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[1.5rem] flex items-center justify-center border-2 border-primary-500/20">
@@ -143,7 +146,7 @@ const Modal = ({
             )}
 
             {/* Modal Content */}
-            <div className={`p-10 xl:p-14 pt-8 xl:pt-10 overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : 'max-h-[75vh]'}`}>
+            <div className={`${bodyClassName} overflow-y-auto ${size === 'fullscreen' ? 'h-[calc(100vh-140px)]' : bodyMaxHeight}`}>
               {children}
             </div>
 
