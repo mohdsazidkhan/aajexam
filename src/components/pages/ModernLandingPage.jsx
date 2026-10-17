@@ -176,7 +176,7 @@ const ModernLandingPage = () => {
          </section>
 
          {/* ── Ticker Stats ── */}
-         <section className="border-y border-slate-200 dark:border-slate-700 overflow-hidden relative flex px-0 py-4 xl:py-8">
+         <section className="bg-white dark:bg-black border-y border-slate-200 dark:border-slate-700 overflow-hidden relative flex px-0 py-4 xl:py-8">
             <style>{`
                @keyframes marquee {
                   0% { transform: translateX(0); }
