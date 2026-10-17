@@ -1980,6 +1980,15 @@ const SD = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'फक्त बे टियर — फ्री ऐं PRO, ₹{price}/महिने खां शुरू ({plan} प्लान)। कोई उलझाईंदड़ ऐड-ऑन कोन्हे।',
   'Friend Buys PRO Plan': 'दोस्त PRO प्लान खरीद करे',
   'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC جا گذريل سالن جا پيپر — ٽائمر، نيگيٽو مارڪنگ ۽ تفصيلي حل سان اصل امتحان جهڙي ماحول ۾ حل ڪريو.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC جا گذريل سالن جا پيپر — ٽائمر، نيگيٽو مارڪنگ ۽ تفصيلي حل سان اصل امتحان جهڙي ماحول ۾ حل ڪريو.',
+  'View all {name} PYQ papers →': '{name} جا سڀ PYQ پيپر ڏسو ←',
+  'marks': 'نمبر',
+  '{name} Exam Pattern': '{name} امتحان جو پيٽرن',
+  '{name} Latest Updates': '{name} تازا اپڊيٽ',
+  '{name} Previous Year Papers': '{name} جا گذريل سالن جا پيپر',
+  'Try another category or search again.': 'ٻي ڪيٽيگري آزمايو يا ٻيهر ڳوليو.',
+  'Papers / shifts': 'پيپر / شفٽ',
 };
 
 export default SD;

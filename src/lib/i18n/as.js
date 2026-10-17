@@ -1980,6 +1980,15 @@ const AS = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'মাত্ৰ দুটা স্তৰ — ফ্ৰী আৰু PRO, ₹{price}/মাহৰ পৰা ({plan} প্ল্যান)। কোনো বিমোৰত পেলোৱা এড-অন নাই।',
   'Friend Buys PRO Plan': 'বন্ধুৱে PRO প্ল্যান কিনিলে',
   'PRO PLAN ACTIVATED': 'PRO প্ল্যান সক্ৰিয়',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ৰ আগৰ বছৰৰ প্ৰশ্নকাকত — টাইমাৰ, নেগেটিভ মাৰ্কিং আৰু বিশদ সমাধানৰ সৈতে প্ৰকৃত পৰীক্ষাৰ দৰে পৰিৱেশত সমাধান কৰক।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ৰ আগৰ বছৰৰ প্ৰশ্নকাকত — টাইমাৰ, নেগেটিভ মাৰ্কিং আৰু বিশদ সমাধানৰ সৈতে প্ৰকৃত পৰীক্ষাৰ দৰে পৰিৱেশত সমাধান কৰক।',
+  'View all {name} PYQ papers →': '{name} ৰ সকলো PYQ প্ৰশ্নকাকত চাওক →',
+  'marks': 'নম্বৰ',
+  '{name} Exam Pattern': '{name} পৰীক্ষাৰ পেটাৰ্ন',
+  '{name} Latest Updates': '{name} শেহতীয়া আপডেট',
+  '{name} Previous Year Papers': '{name} আগৰ বছৰৰ প্ৰশ্নকাকত',
+  'Try another category or search again.': 'আন শ্ৰেণী চেষ্টা কৰক বা পুনৰ সন্ধান কৰক।',
+  'Papers / shifts': 'প্ৰশ্নকাকত / শিফ্ট',
 };
 
 export default AS;

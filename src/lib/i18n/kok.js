@@ -1980,6 +1980,15 @@ const KOK = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'फकत दोन थर — फ्री आनी PRO, ₹{price}/म्हयन्यासावन ({plan} प्लॅन). गोंदळ घालपी ऍड-ऑन ना.',
   'Friend Buys PRO Plan': 'इश्टान PRO प्लॅन घेतलो जाल्यार',
   'PRO PLAN ACTIVATED': 'PRO प्लॅन सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC चे फाटल्या वर्सांचे प्रश्नपत्रिका — टायमर, नेगेटिव्ह मार्किंग आनी तपशीलवार सोडवणुकेभशेन खरे परिक्षेच्या वातावरणांत सोडोवचें.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC चे फाटल्या वर्सांचे प्रश्नपत्रिका — टायमर, नेगेटिव्ह मार्किंग आनी तपशीलवार सोडवणुकेभशेन खरे परिक्षेच्या वातावरणांत सोडोवचें.',
+  'View all {name} PYQ papers →': '{name} चे सगळे PYQ प्रश्नपत्रिका पळोवचे →',
+  'marks': 'गुण',
+  '{name} Exam Pattern': '{name} परिक्षा पॅटर्न',
+  '{name} Latest Updates': '{name} ताजे अपडेट',
+  '{name} Previous Year Papers': '{name} फाटल्या वर्सांचे प्रश्नपत्रिका',
+  'Try another category or search again.': 'दुसरी वर्ग वापरून पळोवचो वा परत सोदचें.',
+  'Papers / shifts': 'प्रश्नपत्रिका / शिफ्ट',
 };
 
 export default KOK;

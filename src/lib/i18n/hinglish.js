@@ -1982,6 +1982,14 @@ const HINGLISH = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'Sirf do tiers — Free aur PRO, ₹{price}/month se shuru ({plan} plan). Koi confusing add-on nahi.',
   'Friend Buys PRO Plan': 'Friend PRO Plan kharide',
   'PRO PLAN ACTIVATED': 'PRO PLAN ACTIVATED',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ke pichhle saalon ke papers — timer, negative marking aur detailed solutions ke saath real exam jaise mahaul mein solve karein.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ke pichhle saalon ke papers — timer, negative marking aur detailed solutions ke saath real exam jaise mahaul mein solve karein.',
+  'View all {name} PYQ papers →': '{name} ke saare PYQ papers dekhein →',
+  'marks': 'marks',
+  '{name} Exam Pattern': '{name} Exam Pattern',
+  '{name} Latest Updates': '{name} Latest Updates',
+  '{name} Previous Year Papers': '{name} ke Previous Year Papers',
+  'Papers / shifts': 'Papers / shifts',
 };
 
 export default HINGLISH;

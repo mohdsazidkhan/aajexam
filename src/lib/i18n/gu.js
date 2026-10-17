@@ -1980,6 +1980,15 @@ const GU = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ફક્ત બે સ્તર — ફ્રી અને PRO, ₹{price}/મહિનાથી શરૂ ({plan} પ્લાન). કોઈ ગૂંચવણભર્યા એડ-ઓન નથી.',
   'Friend Buys PRO Plan': 'મિત્ર PRO પ્લાન ખરીદે ત્યારે',
   'PRO PLAN ACTIVATED': 'PRO પ્લાન સક્રિય',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ના પાછલા વર્ષોના પેપર — ટાઇમર, નેગેટિવ માર્કિંગ અને વિગતવાર ઉકેલ સાથે વાસ્તવિક પરીક્ષા જેવા વાતાવરણમાં ઉકેલો.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ના પાછલા વર્ષોના પેપર — ટાઇમર, નેગેટિવ માર્કિંગ અને વિગતવાર ઉકેલ સાથે વાસ્તવિક પરીક્ષા જેવા વાતાવરણમાં ઉકેલો.',
+  'View all {name} PYQ papers →': '{name} ના બધા PYQ પેપર જુઓ →',
+  'marks': 'ગુણ',
+  '{name} Exam Pattern': '{name} પરીક્ષા પેટર્ન',
+  '{name} Latest Updates': '{name} તાજા અપડેટ',
+  '{name} Previous Year Papers': '{name} પાછલા વર્ષોના પેપર',
+  'Try another category or search again.': 'બીજી શ્રેણી અજમાવો અથવા ફરી શોધો.',
+  'Papers / shifts': 'પેપર / શિફ્ટ',
 };
 
 export default GU;

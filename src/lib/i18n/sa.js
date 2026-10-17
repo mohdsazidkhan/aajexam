@@ -1980,6 +1980,15 @@ const SA = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'द्वौ एव स्तरौ — निःशुल्कः PRO च, ₹{price}/मासतः आरभ्य ({plan} योजना)। भ्रमजनकं किमपि अतिरिक्तं नास्ति।',
   'Friend Buys PRO Plan': 'मित्रं PRO योजनां क्रीणाति चेत्',
   'PRO PLAN ACTIVATED': 'PRO योजना सक्रिया',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC इत्येतेषां पूर्ववर्षप्रश्नपत्राणि — समयमापकेन, ऋणात्मकाङ्कनेन, विस्तृतसमाधानैः च सह यथार्थपरीक्षावत् वातावरणे समाधत्त।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC इत्येतेषां पूर्ववर्षप्रश्नपत्राणि — समयमापकेन, ऋणात्मकाङ्कनेन, विस्तृतसमाधानैः च सह यथार्थपरीक्षावत् वातावरणे समाधत्त।',
+  'View all {name} PYQ papers →': '{name} इत्यस्य सर्वाणि PYQ प्रश्नपत्राणि पश्यत →',
+  'marks': 'अङ्काः',
+  '{name} Exam Pattern': '{name} परीक्षास्वरूपम्',
+  '{name} Latest Updates': '{name} नवीनसूचनाः',
+  '{name} Previous Year Papers': '{name} पूर्ववर्षप्रश्नपत्राणि',
+  'Try another category or search again.': 'अन्यां श्रेणीं प्रयतस्व अथवा पुनः अन्विष्यताम्।',
+  'Papers / shifts': 'प्रश्नपत्राणि / पाळ्यः',
 };
 
 export default SA;

@@ -1980,6 +1980,15 @@ const BODO = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'खाली दुइ टियार — फ्री आरो PRO, ₹{price}/महिनानिफ्राय सुरु ({plan} प्लान)। गोलमाल जायो एड-अनफोर गैयै।',
   'Friend Buys PRO Plan': 'लोगोफोरा PRO प्लान बेसाद खालामाव',
   'PRO PLAN ACTIVATED': 'PRO प्लान चालु',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC नि सिगां बोसोरनि फेपार — टाइमार, नेगेटिभ मार्किं आरो गोजोन समाधानजों नैथाव सिनायथि फरीक्षा थाखाय बाहागोआव समाधान खालाम।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC नि सिगां बोसोरनि फेपार — टाइमार, नेगेटिभ मार्किं आरो गोजोन समाधानजों नैथाव सिनायथि फरीक्षा थाखाय बाहागोआव समाधान खालाम।',
+  'View all {name} PYQ papers →': '{name} नि गासैबो PYQ फेपार नायो →',
+  'marks': 'नम्बर',
+  '{name} Exam Pattern': '{name} फरीक्षानि पेटार्न',
+  '{name} Latest Updates': '{name} गासैबो अपडेट',
+  '{name} Previous Year Papers': '{name} सिगां बोसोरनि फेपार',
+  'Try another category or search again.': 'सायख्रै सोर नायनाय नाथाय फिन्नै खोजाब खालाम।',
+  'Papers / shifts': 'फेपार / सिफ्ट',
 };
 
 export default BODO;

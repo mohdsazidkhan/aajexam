@@ -1980,6 +1980,15 @@ const KS = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'صرف دۅن درجہ — فری تہٕ PRO، ₹{price}/مَہینہٕ پیٹھۍ شروع ({plan} پلان)۔ کانہہ الجھاونہ وول ایڈ آن چھُنہ۔',
   'Friend Buys PRO Plan': 'دوست خریدِ PRO پلان',
   'PRO PLAN ACTIVATED': 'PRO پلان فعال',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ہُنٛد پتھ سالن ہُنٛد پیپر — ٹایمر، نیگیٹو مارکنگ تہ تفصیلی حل سیتۍ اصل امتحان کتھ ماحولس منز حل کرو۔',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ہُنٛد پتھ سالن ہُنٛد پیپر — ٹایمر، نیگیٹو مارکنگ تہ تفصیلی حل سیتۍ اصل امتحان کتھ ماحولس منز حل کرو۔',
+  'View all {name} PYQ papers →': '{name} ہُنٛد سارے PYQ پیپر وچھو ←',
+  'marks': 'نمبر',
+  '{name} Exam Pattern': '{name} امتحانچ پیٹرن',
+  '{name} Latest Updates': '{name} تازہ اپڈیٹ',
+  '{name} Previous Year Papers': '{name} پتھ سالن ہُنٛد پیپر',
+  'Try another category or search again.': 'بییہ زمرہ آزماو یا دوبارہ ژارو۔',
+  'Papers / shifts': 'پیپر / شفٹ',
 };
 
 export default KS;

@@ -1980,6 +1980,15 @@ const DogriDict = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'सिर्फ दो टियर — फ्री ते PRO, ₹{price}/मीने थमां शुरू ({plan} प्लान)। कोई उलझाने आले ऐड-ऑन नेईं।',
   'Friend Buys PRO Plan': 'दोस्त PRO प्लान खरीदै',
   'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC दे पिछले सालें दे पेपर — टाइमर, नेगेटिव मार्किंग ते विस्तृत हलें सोइयां असली परीक्षा आंगर माहौल च हल करो।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC दे पिछले सालें दे पेपर — टाइमर, नेगेटिव मार्किंग ते विस्तृत हलें सोइयां असली परीक्षा आंगर माहौल च हल करो।',
+  'View all {name} PYQ papers →': '{name} दे सारे PYQ पेपर दिक्खो →',
+  'marks': 'अंक',
+  '{name} Exam Pattern': '{name} परीक्षा पैटर्न',
+  '{name} Latest Updates': '{name} ताजा अपडेट',
+  '{name} Previous Year Papers': '{name} दे पिछले सालें दे पेपर',
+  'Try another category or search again.': 'होर श्रेणी अजमाओ जां फरी ढूंढो।',
+  'Papers / shifts': 'पेपर / शिफ्ट',
 };
 
 export default DogriDict;

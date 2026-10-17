@@ -1980,6 +1980,15 @@ const MANIPURI = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ꯇꯤꯌꯥꯔ ꯅꯤ ꯈꯛꯇꯅꯤ — ꯐ꯭ꯔꯤ ꯑꯃꯁꯨꯡ PRO, ₹{price}/ꯊꯥꯗꯒꯤ ꯍꯧꯔꯀꯏ ({plan} ꯄ꯭ꯂꯥꯟ)꯫ ꯑꯦꯗ-ꯑꯣꯟ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ꯫',
   'Friend Buys PRO Plan': 'ꯃꯔꯨꯞ PRO ꯄ꯭ꯂꯥꯟ ꯂꯧꯔꯀꯄ ꯃꯇꯃꯗꯥ',
   'PRO PLAN ACTIVATED': 'PRO ꯄ꯭ꯂꯥꯟ ꯑꯦꯛꯇꯤꯚ ꯑꯣꯏꯔꯦ',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ꯒꯤ ꯃꯃꯥꯡꯒꯤ ꯆꯍꯤꯒꯤ ꯄꯦꯄꯔꯁꯤꯡ — ꯇꯥꯏꯃꯔ, ꯅꯦꯒꯦꯇꯤꯕ ꯃꯥꯔꯀꯤꯡ ꯑꯃꯁꯨꯡ ꯃꯍꯧꯁꯥ ꯌꯥꯎꯕ ꯁꯣꯂꯨꯁꯅꯁꯤꯡꯒꯥ ꯎꯅꯁꯤꯟꯅꯥ ꯇꯧꯕꯤꯌꯨ꯫',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ꯒꯤ ꯃꯃꯥꯡꯒꯤ ꯆꯍꯤꯒꯤ ꯄꯦꯄꯔꯁꯤꯡ — ꯇꯥꯏꯃꯔ, ꯅꯦꯒꯦꯇꯤꯕ ꯃꯥꯔꯀꯤꯡ ꯑꯃꯁꯨꯡ ꯃꯍꯧꯁꯥ ꯌꯥꯎꯕ ꯁꯣꯂꯨꯁꯅꯁꯤꯡꯒꯥ ꯎꯅꯁꯤꯟꯅꯥ ꯇꯧꯕꯤꯌꯨ꯫',
+  'View all {name} PYQ papers →': '{name} ꯒꯤ PYQ ꯄꯦꯄꯔ ꯄꯨꯝꯅꯃꯛ ꯌꯦꯡꯕꯤꯌꯨ →',
+  'marks': 'ꯃꯥꯔꯛ',
+  '{name} Exam Pattern': '{name} ꯏꯄꯥꯔꯤꯛꯁꯥ ꯄꯦꯇꯔꯟ',
+  '{name} Latest Updates': '{name} ꯑꯅꯧꯕꯥ ꯑꯄꯗꯦꯠ',
+  '{name} Previous Year Papers': '{name} ꯃꯃꯥꯡꯒꯤ ꯆꯍꯤꯒꯤ ꯄꯦꯄꯔ',
+  'Try another category or search again.': 'ꯑꯇꯣꯞꯄꯥ ꯀꯦꯇꯦꯒꯣꯔꯤ ꯍꯧꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯕꯗꯤ ꯑꯃꯨꯛ ꯊꯤꯕꯤꯌꯨ꯫',
+  'Papers / shifts': 'ꯄꯦꯄꯔ / ꯁꯤꯐꯇ',
 };
 
 export default MANIPURI;

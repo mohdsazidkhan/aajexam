@@ -1980,6 +1980,15 @@ const ML = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'രണ്ട് തട്ടുകൾ മാത്രം — ഫ്രീയും PRO യും, ₹{price}/മാസം മുതൽ ({plan} പ്ലാൻ). ആശയക്കുഴപ്പമുണ്ടാക്കുന്ന ആഡ്-ഓണുകളില്ല.',
   'Friend Buys PRO Plan': 'സുഹൃത്ത് PRO പ്ലാൻ വാങ്ങുമ്പോൾ',
   'PRO PLAN ACTIVATED': 'PRO പ്ലാൻ സജീവമായി',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC മുൻ വർഷ ചോദ്യപേപ്പറുകൾ — ടൈമർ, നെഗറ്റീവ് മാർക്കിംഗ്, വിശദമായ പരിഹാരങ്ങൾ എന്നിവയോടെ യഥാർത്ഥ പരീക്ഷാ സാഹചര്യത്തിൽ എഴുതൂ.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC മുൻ വർഷ ചോദ്യപേപ്പറുകൾ — ടൈമർ, നെഗറ്റീവ് മാർക്കിംഗ്, വിശദമായ പരിഹാരങ്ങൾ എന്നിവയോടെ യഥാർത്ഥ പരീക്ഷാ സാഹചര്യത്തിൽ എഴുതൂ.',
+  'View all {name} PYQ papers →': '{name} എല്ലാ PYQ ചോദ്യപേപ്പറുകളും കാണുക →',
+  'marks': 'മാർക്ക്',
+  '{name} Exam Pattern': '{name} പരീക്ഷാ പാറ്റേൺ',
+  '{name} Latest Updates': '{name} ഏറ്റവും പുതിയ അപ്‌ഡേറ്റുകൾ',
+  '{name} Previous Year Papers': '{name} മുൻ വർഷ ചോദ്യപേപ്പറുകൾ',
+  'Try another category or search again.': 'മറ്റൊരു വിഭാഗം പരീക്ഷിക്കുക അല്ലെങ്കിൽ വീണ്ടും തിരയുക.',
+  'Papers / shifts': 'ചോദ്യപേപ്പറുകൾ / ഷിഫ്റ്റുകൾ',
 };
 
 export default ML;

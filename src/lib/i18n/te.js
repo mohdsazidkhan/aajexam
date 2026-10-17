@@ -1980,6 +1980,15 @@ const TE = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'రెండు శ్రేణులు మాత్రమే — ఫ్రీ మరియు PRO, ₹{price}/నెల నుండి ({plan} ప్లాన్). గందరగోళపరిచే యాడ్-ఆన్‌లు లేవు.',
   'Friend Buys PRO Plan': 'స్నేహితుడు PRO ప్లాన్ కొంటే',
   'PRO PLAN ACTIVATED': 'PRO ప్లాన్ యాక్టివేట్ అయింది',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC గత సంవత్సరాల ప్రశ్నపత్రాలు — టైమర్, నెగెటివ్ మార్కింగ్ మరియు వివరమైన సమాధానాలతో అసలు పరీక్ష వాతావరణంలో రాయండి.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC గత సంవత్సరాల ప్రశ్నపత్రాలు — టైమర్, నెగెటివ్ మార్కింగ్ మరియు వివరమైన సమాధానాలతో అసలు పరీక్ష వాతావరణంలో రాయండి.',
+  'View all {name} PYQ papers →': '{name} అన్ని PYQ ప్రశ్నపత్రాలను చూడండి →',
+  'marks': 'మార్కులు',
+  '{name} Exam Pattern': '{name} పరీక్షా విధానం',
+  '{name} Latest Updates': '{name} తాజా అప్‌డేట్‌లు',
+  '{name} Previous Year Papers': '{name} గత సంవత్సరాల ప్రశ్నపత్రాలు',
+  'Try another category or search again.': 'మరొక వర్గాన్ని ప్రయత్నించండి లేదా మళ్లీ వెతకండి.',
+  'Papers / shifts': 'ప్రశ్నపత్రాలు / షిఫ్ట్‌లు',
 };
 
 export default TE;

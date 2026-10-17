@@ -1980,6 +1980,15 @@ const KN = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ಕೇವಲ ಎರಡು ಹಂತಗಳು — ಉಚಿತ ಮತ್ತು PRO, ₹{price}/ತಿಂಗಳಿನಿಂದ ({plan} ಪ್ಲಾನ್). ಗೊಂದಲದ ಆ್ಯಡ್-ಆನ್‌ಗಳಿಲ್ಲ.',
   'Friend Buys PRO Plan': 'ಸ್ನೇಹಿತ PRO ಪ್ಲಾನ್ ಖರೀದಿಸಿದಾಗ',
   'PRO PLAN ACTIVATED': 'PRO ಪ್ಲಾನ್ ಸಕ್ರಿಯ',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು — ಟೈಮರ್, ಋಣಾತ್ಮಕ ಅಂಕ ಮತ್ತು ವಿವರವಾದ ಪರಿಹಾರಗಳೊಂದಿಗೆ ನಿಜವಾದ ಪರೀಕ್ಷೆಯ ವಾತಾವರಣದಲ್ಲಿ ಬರೆಯಿರಿ.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು — ಟೈಮರ್, ಋಣಾತ್ಮಕ ಅಂಕ ಮತ್ತು ವಿವರವಾದ ಪರಿಹಾರಗಳೊಂದಿಗೆ ನಿಜವಾದ ಪರೀಕ್ಷೆಯ ವಾತಾವರಣದಲ್ಲಿ ಬರೆಯಿರಿ.',
+  'View all {name} PYQ papers →': '{name} ಎಲ್ಲಾ PYQ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳನ್ನು ನೋಡಿ →',
+  'marks': 'ಅಂಕಗಳು',
+  '{name} Exam Pattern': '{name} ಪರೀಕ್ಷಾ ಮಾದರಿ',
+  '{name} Latest Updates': '{name} ಇತ್ತೀಚಿನ ಅಪ್‌ಡೇಟ್‌ಗಳು',
+  '{name} Previous Year Papers': '{name} ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು',
+  'Try another category or search again.': 'ಬೇರೆ ವರ್ಗವನ್ನು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಮತ್ತೆ ಹುಡುಕಿ.',
+  'Papers / shifts': 'ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು / ಶಿಫ್ಟ್‌ಗಳು',
 };
 
 export default KN;

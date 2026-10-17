@@ -1980,6 +1980,15 @@ const MR = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'फक्त दोन स्तर — फ्री आणि PRO, ₹{price}/महिना पासून ({plan} प्लॅन). कोणतेही गोंधळात टाकणारे ॲड-ऑन नाहीत.',
   'Friend Buys PRO Plan': 'मित्राने PRO प्लॅन खरेदी केल्यास',
   'PRO PLAN ACTIVATED': 'PRO प्लॅन सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC च्या मागील वर्षांच्या प्रश्नपत्रिका — टायमर, निगेटिव्ह मार्किंग आणि सविस्तर उत्तरांसह प्रत्यक्ष परीक्षेसारख्या वातावरणात सोडवा.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC च्या मागील वर्षांच्या प्रश्नपत्रिका — टायमर, निगेटिव्ह मार्किंग आणि सविस्तर उत्तरांसह प्रत्यक्ष परीक्षेसारख्या वातावरणात सोडवा.',
+  'View all {name} PYQ papers →': '{name} च्या सर्व PYQ प्रश्नपत्रिका पहा →',
+  'marks': 'गुण',
+  '{name} Exam Pattern': '{name} परीक्षा पॅटर्न',
+  '{name} Latest Updates': '{name} ताजे अपडेट',
+  '{name} Previous Year Papers': '{name} मागील वर्षांच्या प्रश्नपत्रिका',
+  'Try another category or search again.': 'दुसरी श्रेणी वापरून पहा किंवा पुन्हा शोधा.',
+  'Papers / shifts': 'प्रश्नपत्रिका / शिफ्ट',
 };
 
 export default MR;

@@ -1980,6 +1980,15 @@ const BN = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'মাত্র দুটি স্তর — ফ্রি এবং PRO, ₹{price}/মাস থেকে শুরু ({plan} প্ল্যান)। কোনো জটিল অ্যাড-অন নেই।',
   'Friend Buys PRO Plan': 'বন্ধু PRO প্ল্যান কিনলে',
   'PRO PLAN ACTIVATED': 'PRO প্ল্যান সক্রিয়',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC-এর আগের বছরের প্রশ্নপত্র — টাইমার, নেগেটিভ মার্কিং ও বিস্তারিত সমাধানসহ আসল পরীক্ষার মতো পরিবেশে সমাধান করুন।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC-এর আগের বছরের প্রশ্নপত্র — টাইমার, নেগেটিভ মার্কিং ও বিস্তারিত সমাধানসহ আসল পরীক্ষার মতো পরিবেশে সমাধান করুন।',
+  'View all {name} PYQ papers →': '{name}-এর সব PYQ প্রশ্নপত্র দেখুন →',
+  'marks': 'নম্বর',
+  '{name} Exam Pattern': '{name} পরীক্ষার প্যাটার্ন',
+  '{name} Latest Updates': '{name} সর্বশেষ আপডেট',
+  '{name} Previous Year Papers': '{name} আগের বছরের প্রশ্নপত্র',
+  'Try another category or search again.': 'অন্য বিভাগ চেষ্টা করুন বা আবার খুঁজুন।',
+  'Papers / shifts': 'প্রশ্নপত্র / শিফট',
 };
 
 export default BN;

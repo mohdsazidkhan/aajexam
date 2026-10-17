@@ -1980,6 +1980,15 @@ const NE = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'केवल दुई तह — फ्री र PRO, ₹{price}/महिनादेखि ({plan} प्लान)। अलमल पार्ने कुनै एड-अन छैन।',
   'Friend Buys PRO Plan': 'साथीले PRO प्लान किन्दा',
   'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC का अघिल्ला वर्षका प्रश्नपत्र — टाइमर, नेगेटिभ मार्किङ र विस्तृत समाधानसहित वास्तविक परीक्षाजस्तै वातावरणमा हल गर्नुहोस्।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC का अघिल्ला वर्षका प्रश्नपत्र — टाइमर, नेगेटिभ मार्किङ र विस्तृत समाधानसहित वास्तविक परीक्षाजस्तै वातावरणमा हल गर्नुहोस्।',
+  'View all {name} PYQ papers →': '{name} का सबै PYQ प्रश्नपत्र हेर्नुहोस् →',
+  'marks': 'अङ्क',
+  '{name} Exam Pattern': '{name} परीक्षा ढाँचा',
+  '{name} Latest Updates': '{name} पछिल्ला अपडेट',
+  '{name} Previous Year Papers': '{name} का अघिल्ला वर्षका प्रश्नपत्र',
+  'Try another category or search again.': 'अर्को श्रेणी प्रयास गर्नुहोस् वा फेरि खोज्नुहोस्।',
+  'Papers / shifts': 'प्रश्नपत्र / शिफ्ट',
 };
 
 export default NE;

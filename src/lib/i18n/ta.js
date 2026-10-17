@@ -1980,6 +1980,15 @@ const TA = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'இரண்டு அடுக்குகள் மட்டுமே — இலவசம் மற்றும் PRO, ₹{price}/மாதம் முதல் ({plan} திட்டம்). குழப்பும் கூடுதல் இணைப்புகள் எதுவும் இல்லை.',
   'Friend Buys PRO Plan': 'நண்பர் PRO திட்டம் வாங்கினால்',
   'PRO PLAN ACTIVATED': 'PRO திட்டம் செயல்படுத்தப்பட்டது',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC முந்தைய ஆண்டு வினாத்தாள்கள் — டைமர், எதிர்மறை மதிப்பெண் மற்றும் விரிவான தீர்வுகளுடன் உண்மையான தேர்வு சூழலில் எழுதுங்கள்.',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC முந்தைய ஆண்டு வினாத்தாள்கள் — டைமர், எதிர்மறை மதிப்பெண் மற்றும் விரிவான தீர்வுகளுடன் உண்மையான தேர்வு சூழலில் எழுதுங்கள்.',
+  'View all {name} PYQ papers →': '{name} அனைத்து PYQ வினாத்தாள்களையும் பார்க்கவும் →',
+  'marks': 'மதிப்பெண்கள்',
+  '{name} Exam Pattern': '{name} தேர்வு முறை',
+  '{name} Latest Updates': '{name} சமீபத்திய அறிவிப்புகள்',
+  '{name} Previous Year Papers': '{name} முந்தைய ஆண்டு வினாத்தாள்கள்',
+  'Try another category or search again.': 'வேறு வகையை முயற்சிக்கவும் அல்லது மீண்டும் தேடவும்.',
+  'Papers / shifts': 'வினாத்தாள்கள் / ஷிஃப்ட்',
 };
 
 export default TA;

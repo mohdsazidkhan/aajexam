@@ -1994,6 +1994,14 @@ const HI = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'सिर्फ़ दो टियर — फ्री और PRO, ₹{price}/माह से शुरू ({plan} प्लान)। कोई उलझाने वाले ऐड-ऑन नहीं।',
   'Friend Buys PRO Plan': 'दोस्त PRO प्लान खरीदे',
   'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC के पिछले वर्षों के पेपर — टाइमर, नेगेटिव मार्किंग और विस्तृत समाधान के साथ असली परीक्षा जैसे माहौल में हल करें।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC के पिछले वर्षों के पेपर — टाइमर, नेगेटिव मार्किंग और विस्तृत समाधान के साथ असली परीक्षा जैसे माहौल में हल करें।',
+  'View all {name} PYQ papers →': '{name} के सभी PYQ पेपर देखें →',
+  'marks': 'अंक',
+  '{name} Exam Pattern': '{name} परीक्षा पैटर्न',
+  '{name} Latest Updates': '{name} ताज़ा अपडेट',
+  '{name} Previous Year Papers': '{name} के पिछले वर्षों के पेपर',
+  'Papers / shifts': 'पेपर / शिफ्ट',
 };
 
 export default HI;

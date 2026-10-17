@@ -1980,6 +1980,15 @@ const UrduDict = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'صرف دو درجے — فری اور PRO، ₹{price}/ماہ سے شروع ({plan} پلان)۔ کوئی الجھانے والے ایڈ آن نہیں۔',
   'Friend Buys PRO Plan': 'دوست PRO پلان خریدے',
   'PRO PLAN ACTIVATED': 'PRO پلان فعال',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC کے پچھلے سالوں کے پرچے — ٹائمر، نیگیٹو مارکنگ اور تفصیلی حل کے ساتھ اصل امتحان جیسے ماحول میں حل کریں۔',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC کے پچھلے سالوں کے پرچے — ٹائمر، نیگیٹو مارکنگ اور تفصیلی حل کے ساتھ اصل امتحان جیسے ماحول میں حل کریں۔',
+  'View all {name} PYQ papers →': '{name} کے تمام PYQ پرچے دیکھیں ←',
+  'marks': 'نمبر',
+  '{name} Exam Pattern': '{name} امتحان کا پیٹرن',
+  '{name} Latest Updates': '{name} تازہ ترین اپڈیٹس',
+  '{name} Previous Year Papers': '{name} کے پچھلے سالوں کے پرچے',
+  'Try another category or search again.': 'کوئی اور زمرہ آزمائیں یا دوبارہ تلاش کریں۔',
+  'Papers / shifts': 'پرچے / شفٹ',
 };
 
 export default UrduDict;

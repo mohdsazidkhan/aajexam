@@ -1980,6 +1980,15 @@ const SAT = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'ᱵᱟᱨᱭᱟ ᱴᱤᱭᱟᱨ ᱜᱮ — ᱯᱷᱨᱤ ᱟᱨ PRO, ₹{price}/ᱪᱟᱸᱫᱚ ᱠᱷᱚᱱ ({plan} ᱯᱞᱟᱱ)। ᱵᱟᱝ ᱵᱩᱡᱷᱟᱹᱣ ᱮᱰᱰ-ᱚᱱ ᱵᱟᱝ ᱛᱟᱦᱮᱸᱱᱟ।',
   'Friend Buys PRO Plan': 'ᱥᱟᱶᱛᱟᱹ PRO ᱯᱞᱟᱱ ᱠᱤᱱᱮᱜ ᱥᱮᱱᱚᱜ',
   'PRO PLAN ACTIVATED': 'PRO ᱯᱞᱟᱱ ᱪᱟᱞᱩ',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ᱤᱭᱟᱜ ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ — ᱴᱟᱭᱢᱟᱨ, ᱱᱮᱜᱮᱴᱤᱵ ᱢᱟᱨᱠᱤᱝ ᱟᱨ ᱯᱩᱨᱟᱹ ᱥᱚᱞᱩᱥᱚᱱ ᱥᱟᱶᱛᱮ ᱱᱟᱣᱟ ᱯᱚᱨᱤᱠᱷᱟ ᱞᱮᱠᱟ ᱵᱷᱟᱣᱟᱹ ᱛᱮ ᱥᱚᱞᱩᱥᱚᱱ ᱢᱮ᱾',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ᱤᱭᱟᱜ ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ — ᱴᱟᱭᱢᱟᱨ, ᱱᱮᱜᱮᱴᱤᱵ ᱢᱟᱨᱠᱤᱝ ᱟᱨ ᱯᱩᱨᱟᱹ ᱥᱚᱞᱩᱥᱚᱱ ᱥᱟᱶᱛᱮ ᱱᱟᱣᱟ ᱯᱚᱨᱤᱠᱷᱟ ᱞᱮᱠᱟ ᱵᱷᱟᱣᱟᱹ ᱛᱮ ᱥᱚᱞᱩᱥᱚᱱ ᱢᱮ᱾',
+  'View all {name} PYQ papers →': '{name} ᱨᱮᱱᱟᱜ ᱡᱚᱛᱚ PYQ ᱯᱮᱯᱟᱨ ᱧᱮᱞ ᱢᱮ →',
+  'marks': 'ᱱᱚᱢᱵᱚᱨ',
+  '{name} Exam Pattern': '{name} ᱯᱚᱨᱤᱠᱷᱟ ᱯᱮᱴᱟᱨᱱ',
+  '{name} Latest Updates': '{name} ᱱᱟᱣᱟ ᱟᱯᱰᱮᱴ',
+  '{name} Previous Year Papers': '{name} ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ',
+  'Try another category or search again.': 'ᱮᱴᱟᱜ ᱠᱟᱴᱷᱟᱜᱚᱨᱤ ᱠᱩᱨᱩᱢᱩᱴᱩᱭ ᱢᱮ ᱥᱮ ᱫᱚᱦᱲᱟ ᱥᱮᱸᱫᱽᱨᱟ ᱢᱮ᱾',
+  'Papers / shifts': 'ᱯᱮᱯᱟᱨ / ᱥᱤᱯᱴ',
 };
 
 export default SAT;

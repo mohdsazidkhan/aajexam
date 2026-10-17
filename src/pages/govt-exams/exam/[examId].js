@@ -373,7 +373,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left border border-slate-200 dark:border-slate-800">
               <thead className="bg-slate-50 dark:bg-slate-800/50 text-xs uppercase">
-                <tr><th className="p-2">Year</th><th className="p-2">Papers / shifts</th><th className="p-2">Questions</th></tr>
+                <tr><th className="p-2">{translate('Year')}</th><th className="p-2">{translate('Papers / shifts')}</th><th className="p-2">{translate('Questions')}</th></tr>
               </thead>
               <tbody>
                 {pyqYears.map((y) => (

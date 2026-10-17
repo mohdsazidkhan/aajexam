@@ -1980,6 +1980,15 @@ const OR_ = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'କେବଳ ଦୁଇଟି ସ୍ତର — ଫ୍ରି ଏବଂ PRO, ₹{price}/ମାସରୁ ({plan} ପ୍ଲାନ୍)। କୌଣସି ଦ୍ୱନ୍ଦ୍ୱ ସୃଷ୍ଟିକାରୀ ଆଡ୍-ଅନ୍ ନାହିଁ।',
   'Friend Buys PRO Plan': 'ବନ୍ଧୁ PRO ପ୍ଲାନ୍ କିଣିଲେ',
   'PRO PLAN ACTIVATED': 'PRO ପ୍ଲାନ୍ ସକ୍ରିୟ',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC ର ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର — ଟାଇମର, ନେଗେଟିଭ ମାର୍କିଂ ଓ ବିସ୍ତୃତ ସମାଧାନ ସହ ପ୍ରକୃତ ପରୀକ୍ଷା ପରି ପରିବେଶରେ ସମାଧାନ କରନ୍ତୁ।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC ର ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର — ଟାଇମର, ନେଗେଟିଭ ମାର୍କିଂ ଓ ବିସ୍ତୃତ ସମାଧାନ ସହ ପ୍ରକୃତ ପରୀକ୍ଷା ପରି ପରିବେଶରେ ସମାଧାନ କରନ୍ତୁ।',
+  'View all {name} PYQ papers →': '{name} ର ସମସ୍ତ PYQ ପ୍ରଶ୍ନପତ୍ର ଦେଖନ୍ତୁ →',
+  'marks': 'ନମ୍ବର',
+  '{name} Exam Pattern': '{name} ପରୀକ୍ଷା ପ୍ୟାଟର୍ନ',
+  '{name} Latest Updates': '{name} ନୂତନ ଅପଡେଟ',
+  '{name} Previous Year Papers': '{name} ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର',
+  'Try another category or search again.': 'ଅନ୍ୟ ବର୍ଗ ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା ପୁଣି ଖୋଜନ୍ତୁ।',
+  'Papers / shifts': 'ପ୍ରଶ୍ନପତ୍ର / ଶିଫ୍ଟ',
 };
 
 export default OR_;

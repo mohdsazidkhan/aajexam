@@ -1980,6 +1980,15 @@ const MAI = {
   'Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.': 'मात्र दू टियर — फ्री आ PRO, ₹{price}/मास सँ शुरू ({plan} प्लान)। कोनो भ्रम पैदा करयबला ऐड-ऑन नहि।',
   'Friend Buys PRO Plan': 'संगी PRO प्लान किनय',
   'PRO PLAN ACTIVATED': 'PRO प्लान सक्रिय',
+  'Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': 'SSC, RRB, IBPS, UPSC के पछिला बरखक प्रश्नपत्र — टाइमर, नेगेटिव मार्किंग आ विस्तृत समाधानक संग असली परीक्षा जकाँ माहौल मे हल करू।',
+  '{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.': '{count} SSC, RRB, IBPS, UPSC के पछिला बरखक प्रश्नपत्र — टाइमर, नेगेटिव मार्किंग आ विस्तृत समाधानक संग असली परीक्षा जकाँ माहौल मे हल करू।',
+  'View all {name} PYQ papers →': '{name} के सभ PYQ प्रश्नपत्र देखू →',
+  'marks': 'अंक',
+  '{name} Exam Pattern': '{name} परीक्षा पैटर्न',
+  '{name} Latest Updates': '{name} ताजा अपडेट',
+  '{name} Previous Year Papers': '{name} के पछिला बरखक प्रश्नपत्र',
+  'Try another category or search again.': 'दोसर श्रेणी आजमाउ वा फेर तकू।',
+  'Papers / shifts': 'प्रश्नपत्र / शिफ्ट',
 };
 
 export default MAI;
