@@ -9,18 +9,19 @@ import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';
+import PagedNav from '../ui/PagedNav';
 import { ProBadge } from '../ui';
 import Seo from '../Seo';
 import useTranslate from '../../hooks/useTranslate';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const QuizListSkeleton = () => (
   <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-    <Sh className="h-40 xl:h-52 w-full rounded-[2.5rem]" />
+    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/20 dark:bg-slate-800 border-b-2 border-primary-600/30" />
     <div className="flex gap-2 px-1">
       {[1,2,3].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}
     </div>
@@ -55,6 +56,8 @@ const diffChip = (d) => {
   return 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white/50';
 };
 
+const PAGE_SIZE = 24;
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const QuizListPage = () => {
   const { translate, translateData } = useTranslate();
@@ -70,7 +73,7 @@ const QuizListPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    const params = { page, limit: 30 };
+    const params = { page, limit: PAGE_SIZE };
     if (activeFilter !== 'all') params.difficulty = activeFilter;
     API.getQuizzes(params).then(res => {
       if (res.success) {
@@ -89,7 +92,7 @@ const QuizListPage = () => {
   }, [activeFilter]);
 
   const filters = [
-    { id: 'all', label: 'All Quizzes', icon: Sparkles },
+    { id: 'all', label: 'All', icon: Sparkles },
     { id: 'easy', label: 'Easy', icon: Zap },
     { id: 'medium', label: 'Medium', icon: BarChart2 },
     { id: 'hard', label: 'Hard', icon: Star },
@@ -126,7 +129,7 @@ const QuizListPage = () => {
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
             <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Quizzes Available', { count: totalCount })}
           </motion.div>
-          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Quizzes Hub')}</h1>
+          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Quizzes')}</h1>
           <div className="w-full max-w-lg px-2 xl:px-0">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -163,8 +166,8 @@ const QuizListPage = () => {
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
-                      <BrainCircuit className="w-6 h-6 text-white" />
+                    <div className="min-w-8 xl:min-w-12 h-8 xl:h-12 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                      {(page - 1) * PAGE_SIZE + idx + 1}
                     </div>
                     <div>
                       <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
@@ -214,15 +217,7 @@ const QuizListPage = () => {
         </div>
 
         {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-4 pt-6">
-            <button disabled={page === 1} onClick={() => setPage(page - 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Prev')}</button>
-            <span className="text-sm font-black text-slate-500">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
-            <button disabled={page === totalPages} onClick={() => setPage(page + 1)}
-              className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Next')}</button>
-          </div>
-        )}
+        <PagedNav page={page} totalPages={totalPages} onChange={setPage} />
       </section>
     </div>
   );

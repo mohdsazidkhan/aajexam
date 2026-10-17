@@ -9,17 +9,18 @@ import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';
+import PagedNav from '../ui/PagedNav';
 import Seo from '../Seo';
 import useTranslate from '../../hooks/useTranslate';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const SubjectListSkeleton = () => (
   <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-    <Sh className="h-40 xl:h-52 w-full rounded-[2.5rem] mt-4 xl:mt-8" />
+    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/20 dark:bg-slate-800 border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
     <div className="flex gap-2 px-1">
       {[1,2,3].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}
     </div>
@@ -44,6 +45,8 @@ const SubjectListSkeleton = () => (
   </div>
 );
 
+const PAGE_SIZE = 24;
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const SubjectListPage = () => {
   const { translate, translateData } = useTranslate();
@@ -52,6 +55,7 @@ const SubjectListPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
+  const [page, setPage] = useState(1);
   const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
@@ -61,7 +65,7 @@ const SubjectListPage = () => {
   }, [targetVersion]);
 
   const filters = [
-    { id: 'all', label: 'All Subjects', icon: Sparkles },
+    { id: 'all', label: 'All', icon: Sparkles },
     { id: 'quiz', label: 'Has Quizzes', icon: BrainCircuit },
     { id: 'topic', label: 'Has Topics', icon: Layers },
   ];
@@ -76,6 +80,15 @@ const SubjectListPage = () => {
     }
     return list;
   }, [subjects, activeFilter, search]);
+
+  // Client-side pagination; filter/search/list changes restart from page 1.
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const pageItems = useMemo(
+    () => filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
+    [filtered, currentPage]
+  );
+  useEffect(() => { setPage(1); }, [activeFilter, search, targetVersion]);
 
   if (loading) return <SubjectListSkeleton />;
 
@@ -95,7 +108,7 @@ const SubjectListPage = () => {
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
             <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Subjects Available', { count: subjects.length })}
           </motion.div>
-          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Subjects Hub')}</h1>
+          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Subjects')}</h1>
           <div className="w-full max-w-lg px-2 xl:px-0">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -126,14 +139,14 @@ const SubjectListPage = () => {
 
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6 pt-2">
-          {filtered.map((sub, idx) => (
+          {pageItems.map((sub, idx) => (
             <motion.div key={sub._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
               <Card hoverable onClick={() => router.push(`/subjects/${sub.slug}`)}
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
-                      <BookMarked className="w-6 h-6 text-white" />
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                      {(currentPage - 1) * PAGE_SIZE + idx + 1}
                     </div>
                     <div>
                       <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(sub.name)}</h2>
@@ -173,6 +186,9 @@ const SubjectListPage = () => {
             </div>
           )}
         </div>
+
+        {/* Pagination */}
+        <PagedNav page={currentPage} totalPages={totalPages} onChange={setPage} />
       </section>
     </div>
   );
