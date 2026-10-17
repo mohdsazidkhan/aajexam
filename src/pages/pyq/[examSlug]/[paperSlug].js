@@ -380,7 +380,7 @@ function buildIntro({ exam, paper, pattern }) {
     const negative = pattern?.negativeMarking || (pattern?.sections?.[0]?.negativePerQuestion ?? 0);
     const examDescription = exam.description ? exam.description.trim() + '\n\n' : '';
 
-    return `${examDescription}This page hosts the official ${paper.title} — the ${examName} previous year question paper from${yearStr}${shiftStr}. AajExam has reconstructed this paper into a fully timed online mock test so candidates preparing for ${examName} can experience the real exam pattern, attempt every question with answer keys verified by our expert panel, and analyse their performance section-wise.
+    return `${examDescription}This page hosts the official ${paper.title} — the ${examName} previous year question paper from${yearStr}${shiftStr}. AajExam has turned this paper into a fully timed online mock test so candidates preparing for ${examName} can experience the real exam pattern, attempt every question, and analyse their performance section-wise.
 
 The paper contains ${paper.questionCount || 0} multiple-choice questions to be attempted in ${paper.duration} minutes for a total of ${paper.totalMarks} marks. The exam uses ${totalSections > 0 ? `${totalSections} sections — ${sectionList}` : sectionList}${negative ? ` with ${negative} negative marking per wrong answer` : ' with no negative marking'}. Use this paper to practise question selection, sectional time management, and accuracy under real exam conditions.
 

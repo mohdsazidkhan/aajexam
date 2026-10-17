@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { fmtNum } from '../../../lib/utils/formatNumber';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
   ChevronRight, Play, Eye, Lock, Unlock, History,
-  GraduationCap, HelpCircle, ListChecks, Search, UserPlus, Info, BookOpen, FolderOpen
+  GraduationCap, HelpCircle, ListChecks, Search, UserPlus, Info, BookOpen, FolderOpen, Calendar, Newspaper
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 
@@ -26,7 +27,7 @@ import {
 import { EXAM_SEO_FACTS, EXAM_FACTS_SOURCED_DATE } from '../../../lib/data/examSeoFacts';
 import useTranslate from '../../../hooks/useTranslate';
 
-const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialSubjects = [], initialTopics = [], initialQuestionCount = 0, initialError = '', seo, examId, aboutText = '', robotsMeta = 'index, follow' }) => {
+const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyqs = [], initialQuizzes = [], initialSubjects = [], initialTopics = [], initialQuestionCount = 0, initialError = '', seo, examId, aboutText = '', robotsMeta = 'index, follow', patterns = [], pyqYears = [], examNews = [] }) => {
   const { translate, translateData } = useTranslate();
   const router = useRouter();
   const [exam, setExam] = useState(initialExam);
@@ -150,6 +151,26 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         : `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName} across all its subjects.`
     }
   ];
+  const mainPattern = patterns[0];
+  if (mainPattern) {
+    const totalQs = (mainPattern.sections || []).reduce((n, sec) => n + (sec.totalQuestions || 0), 0);
+    faqItems.push({
+      question: `What is the ${examName} exam pattern?`,
+      answer: `The ${mainPattern.title} pattern on AajExam has ${totalQs || 'multiple'} questions for ${mainPattern.totalMarks} marks in ${mainPattern.duration} minutes${mainPattern.sections?.length ? `, across ${mainPattern.sections.length} sections (${mainPattern.sections.map((sec) => sec.name).join(', ')})` : ''}.`
+    });
+    faqItems.push({
+      question: `Is there negative marking in ${examName}?`,
+      answer: mainPattern.negativeMarking > 0
+        ? `Yes. The ${mainPattern.title} pattern deducts ${mainPattern.negativeMarking} mark for each wrong answer.`
+        : `The ${mainPattern.title} pattern on AajExam has no negative marking. Check the official notification for the current rule.`
+    });
+  }
+  if (pyqYears.length > 0) {
+    faqItems.push({
+      question: `Which years of ${examName} previous year papers are available?`,
+      answer: `AajExam has ${examName} PYQ papers for ${pyqYears.map((y) => y.year).join(', ')}.`
+    });
+  }
   if (facts) {
     faqItems.push(
       { question: `What is the eligibility for ${examName}?`, answer: facts.qualification },
@@ -172,7 +193,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       />
 
       {/* Back */}
-      <section className="hidden xl:flex items-center justify-end">
+      <section className="hidden xl:flex items-center justify-end pt-4">
         <Button variant="primary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" /> GO BACK
         </Button>
@@ -258,6 +279,106 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <dd className="font-medium text-content-primary">{facts.salary}</dd>
             </div>
           </dl>
+        </Card>
+      )}
+
+      {/* Exam Pattern - straight from the exam's real test patterns */}
+      {patterns.length > 0 && (
+        <Card className="border-2 border-slate-100 dark:border-slate-800">
+          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+            <Clock className="w-5 h-5 text-primary-600" />
+            {translate('{name} Exam Pattern', { name: translateData(examName) })}
+          </h2>
+          <div className="space-y-6">
+            {patterns.map((pt) => (
+              <div key={pt._id} className="space-y-2">
+                <h3 className="text-base font-black text-content-primary">{pt.title}</h3>
+                <p className="text-sm font-medium text-content-muted">
+                  {pt.duration} min · {pt.totalMarks} marks · {pt.negativeMarking > 0 ? `${pt.negativeMarking} negative marking per wrong answer` : 'no negative marking'}
+                </p>
+                {pt.sections?.length > 0 && (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left border border-slate-200 dark:border-slate-800">
+                      <thead className="bg-slate-50 dark:bg-slate-800/50 text-xs uppercase">
+                        <tr>
+                          <th className="p-2">Section</th>
+                          <th className="p-2">Questions</th>
+                          <th className="p-2">Marks / Q</th>
+                          <th className="p-2">Negative / Q</th>
+                          <th className="p-2">Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pt.sections.map((sec, i) => (
+                          <tr key={i} className="border-t border-slate-200 dark:border-slate-800">
+                            <td className="p-2 font-bold">{sec.name}</td>
+                            <td className="p-2">{sec.totalQuestions}</td>
+                            <td className="p-2">{sec.marksPerQuestion}</td>
+                            <td className="p-2">{sec.negativePerQuestion || 0}</td>
+                            <td className="p-2">{sec.sectionDuration ? `${sec.sectionDuration} min` : '-'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+
+      {/* Latest updates and important dates - from published exam news */}
+      {examNews.length > 0 && (
+        <Card className="border-2 border-slate-100 dark:border-slate-800">
+          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+            <Newspaper className="w-5 h-5 text-primary-600" />
+            {translate('{name} Latest Updates', { name: translateData(examName) })}
+          </h2>
+          <ul className="space-y-4">
+            {examNews.map((n) => (
+              <li key={n.slug} className="space-y-1">
+                <Link href={`/exam-news/${n.slug}`} className="text-sm font-black text-primary-600 hover:underline">{n.title}</Link>
+                <p className="text-[11px] font-bold text-content-muted uppercase">{n.type.replace('_', ' ')} · {new Date(n.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</p>
+                {n.importantDates?.length > 0 && (
+                  <ul className="text-xs font-medium text-content-primary flex flex-wrap gap-x-4 gap-y-1">
+                    {n.importantDates.map((d, i) => (
+                      <li key={i} className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {d.label}: {new Date(d.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
+
+      {/* Previous year papers by year */}
+      {pyqYears.length > 0 && exam?.slug && (
+        <Card className="border-2 border-slate-100 dark:border-slate-800">
+          <h2 className="text-lg xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight flex items-center gap-3">
+            <History className="w-5 h-5 text-primary-600" />
+            {translate('{name} Previous Year Papers', { name: translateData(examName) })}
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left border border-slate-200 dark:border-slate-800">
+              <thead className="bg-slate-50 dark:bg-slate-800/50 text-xs uppercase">
+                <tr><th className="p-2">Year</th><th className="p-2">Papers / shifts</th><th className="p-2">Questions</th></tr>
+              </thead>
+              <tbody>
+                {pyqYears.map((y) => (
+                  <tr key={y.year} className="border-t border-slate-200 dark:border-slate-800">
+                    <td className="p-2 font-bold">{y.year}</td>
+                    <td className="p-2">{y.papers}</td>
+                    <td className="p-2">{y.questions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Link href={`/pyq/${exam.slug}`} className="inline-block mt-3 text-sm font-black text-primary-600 hover:underline">
+            {translate('View all {name} PYQ papers →', { name: translateData(examName) })}
+          </Link>
         </Card>
       )}
 
@@ -610,9 +731,9 @@ ${patternLine}
 
 ${contentLine}
 
-Why prepare for ${examName} on AajExam: every test on this platform is reconstructed from the official paper or built directly off the latest ${examName} syllabus, with answer keys verified by our subject-expert review panel. Solutions are written in plain English (and Hindi where the original source was bilingual) with step-by-step working for quantitative problems, grammar rules for English questions and direct reference statements for general awareness items. Each test attempt is followed by a detailed analytics report covering section-wise accuracy, attempt rate, time spent per question, and an estimated all-India percentile so you can identify your weak sections with surgical precision.
+Why prepare for ${examName} on AajExam: tests on this platform are built from previous year papers or from the ${examName} syllabus. Solutions are written in plain English (and Hindi where the original source was bilingual) with step-by-step working for quantitative problems, grammar rules for English questions and direct reference statements for general awareness items. Each test attempt is followed by a detailed analytics report covering section-wise accuracy, attempt rate, time spent per question, so you can identify your weak sections.
 
-Suggested ${examName} preparation strategy using AajExam: start with the most recent ${examName} previous year paper to establish a baseline. Identify your two weakest sections from the analytics, then spend 7-10 days revising those sections from notes and topic-wise quizzes. After that, alternate one PYQ shift per day with full-length practice tests until you have solved every available paper. The week before the actual ${examName} exam, re-attempt 4-5 of your weakest tests — second attempts should consistently be 15-20% faster with measurably better accuracy. This PYQ-driven, analytics-led approach has been validated by thousands of selected candidates across SSC, RRB, IBPS, SBI, UPSC and State PSC exams.
+Suggested ${examName} preparation strategy using AajExam: start with the most recent ${examName} previous year paper to establish a baseline. Identify your two weakest sections from the analytics, then spend 7-10 days revising those sections from notes and topic-wise quizzes. After that, alternate one PYQ shift per day with full-length practice tests until you have solved every available paper. The week before the actual ${examName} exam, re-attempt 4-5 of your weakest tests — second attempts should consistently be 15-20% faster with measurably better accuracy. Practising previous year papers under timed conditions is a widely used way to prepare for SSC, RRB, IBPS, SBI, UPSC and State PSC exams.
 
 All ${examName} content on AajExam is mobile-friendly, free to start, and designed for serious aspirants who want exam-replicating practice rather than passive reading. Bookmark this page and revisit it weekly — new ${examName} mock tests, PYQs and current-affairs notes are added on a continuous basis.`;
 }
@@ -644,7 +765,7 @@ export async function getServerSideProps({ params }) {
 
     const examId = exam._id;
     const [patternDocs, quizDocs] = await Promise.all([
-      ExamPattern.find({ exam: examId }).select('_id title duration totalMarks sections').lean(),
+      ExamPattern.find({ exam: examId }).select('_id title duration totalMarks negativeMarking sections').lean(),
       Quiz.find({ applicableExams: examId, status: 'published' })
         .populate('subject', 'name slug')
         .populate('topic', 'name slug')
@@ -715,6 +836,30 @@ export async function getServerSideProps({ params }) {
         ])
       : [[], []];
 
+    // Year-wise PYQ summary (dynamic, for the PYQ table on the page)
+    const yearMap = new Map();
+    for (const t of pyqDocs) {
+      if (!t.pyqYear) continue;
+      const e = yearMap.get(t.pyqYear) || { year: t.pyqYear, papers: 0, questions: 0 };
+      e.papers += 1;
+      e.questions += t.questions?.length || 0;
+      yearMap.set(t.pyqYear, e);
+    }
+    const pyqYears = Array.from(yearMap.values()).sort((a, b) => b.year - a.year);
+
+    // Latest published news / important dates for this exam
+    let examNews = [];
+    try {
+      const ExamNews = (await import('../../../models/ExamNews')).default;
+      examNews = JSON.parse(JSON.stringify(await ExamNews.find({ exam: examId, status: 'published', slug: { $exists: true, $ne: null } })
+        .select('title slug type importantDates createdAt')
+        .sort({ isPinned: -1, createdAt: -1 })
+        .limit(6)
+        .lean()));
+    } catch (e) {
+      console.error('exam hub news failed:', e);
+    }
+
     const decorate = (t) => ({
       ...JSON.parse(JSON.stringify(t)),
       questionCount: t.questions?.length || 0
@@ -754,7 +899,10 @@ export async function getServerSideProps({ params }) {
         initialSubjects: subjects,
         initialTopics: topics,
         initialQuestionCount: questionCount,
-        seo: { title: `${exam.name} - Practice | AajExam` },
+        seo: { title: `${exam.name}${exam.code ? ` (${exam.code})` : ''} ${new Date().getFullYear()} – Syllabus, Exam Pattern, PYQ Papers & Free Mock Tests | AajExam` },
+        patterns: JSON.parse(JSON.stringify(patternDocs)),
+        pyqYears,
+        examNews,
         aboutText,
         robotsMeta: robots.robots,
       }

@@ -138,7 +138,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         ])}
       />
 
-      <section className="hidden xl:flex items-center justify-end">
+      <section className="hidden xl:flex items-center justify-end pt-4">
         <Button variant="secondary" size="sm" onClick={() => router.back()} className="font-black">
           <ArrowLeft className="w-5 h-5" />
           {translate('GO BACK')}

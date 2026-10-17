@@ -360,7 +360,7 @@ function buildFaqs({ exam, totalPapers }) {
         },
         {
             question: `Are these papers the actual ${examName} questions or sample-based?`,
-            answer: `Every paper here is reconstructed from the official ${examName} question paper for the specified date and shift. Answer keys are verified against the official key released by the conducting body, with subject-expert overrides for any disputed questions.`,
+            answer: `Every paper here is prepared from the ${examName} question paper for the specified date and shift. Answer keys follow the official key where one was released; for some papers the answers were worked out by us, so compare with the official key before relying on them.`,
         },
         {
             question: `Can I download these PYQs as a PDF?`,
