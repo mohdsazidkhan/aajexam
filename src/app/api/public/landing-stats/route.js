@@ -37,7 +37,15 @@ export async function GET() {
             totalPracticeTests,
         ] = await Promise.all([
             User.countDocuments({ role: 'student' }),
-            Exam.countDocuments({ isActive: true }),
+            // Real exams = active exams that actually have PYQ papers (matches the PYQ page);
+            // the placeholder CBSE exam doc is not real and is always excluded.
+            PracticeTest.distinct('examPattern', { isPYQ: true })
+                .then(patternIds => ExamPattern.distinct('exam', { _id: { $in: patternIds } }))
+                .then(examIds => Exam.countDocuments({
+                    _id: { $in: examIds },
+                    isActive: true,
+                    name: { $not: /Central Board of Secondary Education|\bCBSE\b/i },
+                })),
             Quiz.countDocuments(),
             Subject.countDocuments({ isActive: true }),
             Topic.countDocuments({ isActive: true }),
@@ -104,6 +112,7 @@ export async function GET() {
                 totalExams,
                 totalQuizzes,
                 totalPracticeTests,
+                totalPyqPapers: pyqTests.length,
                 totalSubjects,
                 totalTopics,
                 totalQuestions: quizQuestions + practiceTestQuestions,

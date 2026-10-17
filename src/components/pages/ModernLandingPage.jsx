@@ -30,12 +30,13 @@ import useTranslate from '../../hooks/useTranslate';
 const ModernLandingPage = () => {
    const { translate, rich } = useTranslate();
    const [stats, setStats] = useState({
-      activeStudents: "250+",
-      totalExams: "10+",
-      totalQuizzes: "50+",
-      totalSubjects: "10+",
-      totalTopics: "50+",
-      totalQuestions: "12K+",
+      activeStudents: "—",
+      totalExams: "—",
+      totalQuizzes: "—",
+      totalSubjects: "—",
+      totalTopics: "—",
+      totalQuestions: "—",
+      totalPyqPapers: 0,
       registeredLast30Days: "0",
       practiceTestAttemptsLast30Days: "0",
       pyqAttemptsLast30Days: "0",
@@ -58,14 +59,16 @@ const ModernLandingPage = () => {
       try {
          const res = await API.getPublicLandingStats();
          if (res.success) {
-            const formatNum = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}K+` : `${n}+`);
+            // Real DB counts, shown exactly (no inflated fallbacks, no rounding up)
+            const formatNum = (n) => (n >= 1000 ? `${(Math.floor(n / 100) / 10).toFixed(1)}K` : `${n || 0}`);
             setStats({
-               activeStudents: formatNum(res.data?.activeStudents || 250),
-               totalExams: formatNum(res.data?.totalExams || 10),
-               totalQuizzes: formatNum(res.data?.totalQuizzes || 50),
-               totalSubjects: formatNum(res.data?.totalSubjects || 10),
-               totalTopics: formatNum(res.data?.totalTopics || 50),
-               totalQuestions: formatNum(res.data?.totalQuestions || 12500),
+               activeStudents: formatNum(res.data?.activeStudents),
+               totalExams: formatNum(res.data?.totalExams),
+               totalQuizzes: formatNum(res.data?.totalQuizzes),
+               totalSubjects: formatNum(res.data?.totalSubjects),
+               totalTopics: formatNum(res.data?.totalTopics),
+               totalQuestions: formatNum(res.data?.totalQuestions),
+               totalPyqPapers: res.data?.totalPyqPapers || 0,
                registeredLast30Days: res.data?.registeredLast30Days || 0,
                practiceTestAttemptsLast30Days: res.data?.practiceTestAttemptsLast30Days || 0,
                pyqAttemptsLast30Days: res.data?.pyqAttemptsLast30Days || 0,
@@ -289,7 +292,9 @@ const ModernLandingPage = () => {
                      {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                   </h2>
                   <p className="text-base xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                     {translate('500+ Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.')}
+                     {stats.totalPyqPapers > 0
+                        ? translate('{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.', { count: stats.totalPyqPapers })
+                        : translate('Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.')}
                   </p>
                </div>
 
@@ -311,25 +316,7 @@ const ModernLandingPage = () => {
                            <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">{translate('Latest Free')}</span>
                         </motion.div>
                      );
-                  }) : [
-                     { name: 'SSC CGL Tier 1', papers: '28+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
-                     { name: 'SSC CHSL Tier 1', papers: '24+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
-                     { name: 'RRB GROUP D', papers: '18+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
-                     { name: 'SSC CPO', papers: '17+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
-                     { name: 'UPSC Prelims', papers: '14+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
-                     { name: 'SSC GD Constable', papers: '25+', color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' },
-                  ].map((exam) => (
-                     <motion.div
-                        key={exam.name}
-                        whileHover={{ scale: 1.04, y: -4 }}
-                        onClick={() => router.push('/pyq')}
-                        className={`cursor-pointer p-4 xl:p-8 rounded-2xl ${exam.color} border ${exam.border} flex flex-col items-center text-center gap-2 group`}
-                     >
-                        <span className={`text-sm xl:text-base font-black ${exam.text}`}>{exam.name}</span>
-                        <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">{translate('{count} papers', { count: exam.papers })}</span>
-                        <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">{translate('Latest Free')}</span>
-                     </motion.div>
-                  ))}
+                  }) : null}
                </div>
 
                {/* CTA row */}
