@@ -85,11 +85,11 @@ const ModernLandingPage = () => {
 
    return (
       <MobileAppWrapper showHeader={true} title={translate('Home')}>
-         <section className="relative overflow-hidden -mx-4 xl:-mx-8">
+         <section className="relative overflow-hidden -mx-4 xl:-mx-8 bg-white dark:bg-black">
             <div className="absolute inset-0 pointer-events-none">
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-primary-500/20 blur-[120px] opacity-70" />
-               <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/15 rounded-full blur-[100px] animate-pulse" />
-               <div className="absolute bottom-1/4 left-[5%] w-80 h-80 bg-primary-500/15 rounded-full blur-[100px]" />
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-primary-500/[0.07] dark:bg-primary-500/[0.14] blur-[120px]" />
+               <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/[0.05] dark:bg-primary-500/[0.12] rounded-full blur-[100px]" />
+               <div className="absolute bottom-1/4 left-[5%] w-80 h-80 bg-primary-500/[0.05] dark:bg-primary-500/[0.12] rounded-full blur-[100px]" />
             </div>
 
             <div className="container mx-auto px-3 xl:px-6 relative z-10">
