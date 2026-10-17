@@ -1989,6 +1989,18 @@ const BODO = {
   '{name} Previous Year Papers': '{name} सिगां बोसोरनि फेपार',
   'Try another category or search again.': 'सायख्रै सोर नायनाय नाथाय फिन्नै खोजाब खालाम।',
   'Papers / shifts': 'फेपार / सिफ्ट',
+  'How many practice tests are available for {name}?': '{name} आयदाव खौसे अनजिमा फरीक्षा दं?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam आव {name}{code} आयदाव {tests} फुल-लेंथ अनजिमा फरीक्षा आरो {pyqs} सिगां बोसोरनि फेपार (PYQ) गोजोन समाधान आरो सेक्सन-बाहागो सायाव खेवसंजों दं।',
+  'Are {name} previous year question papers free?': '{name} नि सिगां बोसोरनि फेपारफोर मुफ्त नामा?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'नंगौ, {name} नि गुबुन बोसोरनि PYQ AajExam आव मुफ्त। सिगां सिफ्टफोर AajExam Pro प्लानजों दं।',
+  'Can I practise {name} topic-wise on AajExam?': 'आं AajExam आव {name} खौ बिसोरजों अनजिमा खालामनो हागोन?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'नंगौ, AajExam {name} आयदाव {count} बिसोर-बाहागो क्विज फोनां, बेनि गिदिंआव {list} दं।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'नंगौ, AajExam {name} नि बिजिरनाय बिसोरआव {count} बिसोर-बाहागो क्विज फोनां।',
+  'Is there negative marking in {name}?': '{name} आव नेगेटिभ मार्किं दं नामा?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'नंगौ। {title} पेटार्नआव गुबुन गासै फिन्नायनि आयदाव {n} नम्बर खेदा जों।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam आव {title} पेटार्नआव नेगेटिभ मार्किं नङा। गावनि नियम आयदाव सरकारि फोरमायथिखौ नायो।',
+  'Which years of {name} previous year papers are available?': '{name} नि सिगां बोसोरनि फेपारफोर माबोरनि बोसोरनि दं?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam आव {name} नि PYQ फेपारफोर {years} आयदाव दं।',
 };
 
 export default BODO;

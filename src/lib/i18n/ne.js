@@ -1989,6 +1989,18 @@ const NE = {
   '{name} Previous Year Papers': '{name} का अघिल्ला वर्षका प्रश्नपत्र',
   'Try another category or search again.': 'अर्को श्रेणी प्रयास गर्नुहोस् वा फेरि खोज्नुहोस्।',
   'Papers / shifts': 'प्रश्नपत्र / शिफ्ट',
+  'How many practice tests are available for {name}?': '{name} का लागि कति अभ्यास परीक्षा उपलब्ध छन्?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam मा {name}{code} का लागि {tests} फुल-लेन्थ अभ्यास परीक्षा र {pyqs} अघिल्ला वर्षका प्रश्नपत्र (PYQ) विस्तृत समाधान र खण्डगत विश्लेषणसहित उपलब्ध छन्।',
+  'Are {name} previous year question papers free?': '{name} का अघिल्ला वर्षका प्रश्नपत्र निःशुल्क छन्?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'हो, {name} को पछिल्लो वर्षको PYQ AajExam मा निःशुल्क छ। पुराना शिफ्ट AajExam Pro योजनासँग उपलब्ध छन्।',
+  'Can I practise {name} topic-wise on AajExam?': 'के म AajExam मा {name} विषयगत अभ्यास गर्न सक्छु?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'हो, AajExam ले {name} का लागि {count} विषयगत क्विज दिन्छ, जसमा {list} समावेश छन्।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'हो, AajExam ले {name} का सबै विषयमा {count} विषयगत क्विज दिन्छ।',
+  'Is there negative marking in {name}?': '{name} मा नेगेटिभ मार्किङ छ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'हो। {title} ढाँचामा हरेक गलत उत्तरका लागि {n} अङ्क कटौती हुन्छ।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam मा {title} ढाँचामा नेगेटिभ मार्किङ छैन। हालको नियमका लागि आधिकारिक सूचना हेर्नुहोस्।',
+  'Which years of {name} previous year papers are available?': '{name} का अघिल्ला वर्षका प्रश्नपत्र कुन कुन वर्षका उपलब्ध छन्?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam मा {name} का PYQ प्रश्नपत्र {years} का लागि उपलब्ध छन्।',
 };
 
 export default NE;

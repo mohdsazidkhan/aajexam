@@ -148,17 +148,25 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
   const faqItems = [
     {
       question: `How many practice tests are available for ${examName}?`,
-      answer: `${practiceTests.length} full-length practice tests and ${pyqs.length} previous year question papers (PYQs) are available for ${examName}${examCode} on AajExam, with detailed solutions and sectional analysis.`
+      answer: `${practiceTests.length} full-length practice tests and ${pyqs.length} previous year question papers (PYQs) are available for ${examName}${examCode} on AajExam, with detailed solutions and sectional analysis.`,
+      tq: translate('How many practice tests are available for {name}?', { name: translateData(examName) }),
+      ta: translate('{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.', { tests: practiceTests.length, pyqs: pyqs.length, name: translateData(examName), code: examCode })
     },
     {
       question: `Are ${examName} previous year question papers free?`,
-      answer: `Yes, the latest year ${examName} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.`
+      answer: `Yes, the latest year ${examName} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.`,
+      tq: translate('Are {name} previous year question papers free?', { name: translateData(examName) }),
+      ta: translate('Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.', { name: translateData(examName) })
     },
     {
       question: `Can I practise ${examName} topic-wise on AajExam?`,
       answer: subjectAreas.length
         ? `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName}, covering ${subjectAreas.slice(0, 4).join(', ')}.`
-        : `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName} across all its subjects.`
+        : `Yes, AajExam offers ${quizzes.length} topic-wise quizzes for ${examName} across all its subjects.`,
+      tq: translate('Can I practise {name} topic-wise on AajExam?', { name: translateData(examName) }),
+      ta: subjectAreas.length
+        ? translate('Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.', { count: quizzes.length, name: translateData(examName), list: subjectAreas.slice(0, 4).join(', ') })
+        : translate('Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.', { count: quizzes.length, name: translateData(examName) })
     }
   ];
   const mainPattern = patterns[0];
@@ -172,13 +180,19 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       question: `Is there negative marking in ${examName}?`,
       answer: mainPattern.negativeMarking > 0
         ? `Yes. The ${mainPattern.title} pattern deducts ${mainPattern.negativeMarking} mark for each wrong answer.`
-        : `The ${mainPattern.title} pattern on AajExam has no negative marking. Check the official notification for the current rule.`
+        : `The ${mainPattern.title} pattern on AajExam has no negative marking. Check the official notification for the current rule.`,
+      tq: translate('Is there negative marking in {name}?', { name: translateData(examName) }),
+      ta: mainPattern.negativeMarking > 0
+        ? translate('Yes. The {title} pattern deducts {n} mark for each wrong answer.', { title: mainPattern.title, n: mainPattern.negativeMarking })
+        : translate('The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.', { title: mainPattern.title })
     });
   }
   if (pyqYears.length > 0) {
     faqItems.push({
       question: `Which years of ${examName} previous year papers are available?`,
-      answer: `AajExam has ${examName} PYQ papers for ${pyqYears.map((y) => y.year).join(', ')}.`
+      answer: `AajExam has ${examName} PYQ papers for ${pyqYears.map((y) => y.year).join(', ')}.`,
+      tq: translate('Which years of {name} previous year papers are available?', { name: translateData(examName) }),
+      ta: translate('AajExam has {name} PYQ papers for {years}.', { name: translateData(examName), years: pyqYears.map((y) => y.year).join(', ') })
     });
   }
   if (facts) {
@@ -678,8 +692,8 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
         <div className="space-y-2 xl:space-y-4">
           {faqItems.map((item) => (
             <div key={item.question} className="border-b border-slate-100 dark:border-slate-800 pb-4 last:border-0 last:pb-0">
-              <p className="text-sm font-black text-content-primary mb-1">{item.question}</p>
-              <p className="text-sm font-medium text-content-muted leading-relaxed">{item.answer}</p>
+              <p className="text-sm font-black text-content-primary mb-1">{item.tq || item.question}</p>
+              <p className="text-sm font-medium text-content-muted leading-relaxed">{item.ta || item.answer}</p>
             </div>
           ))}
         </div>

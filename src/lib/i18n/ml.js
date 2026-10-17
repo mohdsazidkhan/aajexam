@@ -1989,6 +1989,18 @@ const ML = {
   '{name} Previous Year Papers': '{name} മുൻ വർഷ ചോദ്യപേപ്പറുകൾ',
   'Try another category or search again.': 'മറ്റൊരു വിഭാഗം പരീക്ഷിക്കുക അല്ലെങ്കിൽ വീണ്ടും തിരയുക.',
   'Papers / shifts': 'ചോദ്യപേപ്പറുകൾ / ഷിഫ്റ്റുകൾ',
+  'How many practice tests are available for {name}?': '{name} ന് എത്ര പരിശീലന പരീക്ഷകൾ ലഭ്യമാണ്?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ൽ {name}{code} ന് {tests} ഫുൾ-ലെങ്ത് പരിശീലന പരീക്ഷകളും {pyqs} മുൻ വർഷ ചോദ്യപേപ്പറുകളും (PYQ) വിശദമായ പരിഹാരങ്ങളോടും വിഭാഗം തിരിച്ചുള്ള വിശകലനത്തോടും കൂടി ലഭ്യമാണ്.',
+  'Are {name} previous year question papers free?': '{name} മുൻ വർഷ ചോദ്യപേപ്പറുകൾ സൗജന്യമാണോ?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'അതെ, {name} ന്റെ ഏറ്റവും പുതിയ വർഷത്തെ PYQ AajExam ൽ സൗജന്യമാണ്. പഴയ ഷിഫ്റ്റുകൾ AajExam Pro പ്ലാനിൽ ലഭ്യമാണ്.',
+  'Can I practise {name} topic-wise on AajExam?': 'AajExam ൽ {name} വിഷയാടിസ്ഥാനത്തിൽ പരിശീലിക്കാമോ?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'അതെ, AajExam {name} ന് {count} വിഷയാടിസ്ഥാനത്തിലുള്ള ക്വിസുകൾ നൽകുന്നു; അവയിൽ {list} ഉൾപ്പെടുന്നു.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'അതെ, AajExam {name} ന്റെ എല്ലാ വിഷയങ്ങളിലും {count} വിഷയാടിസ്ഥാനത്തിലുള്ള ക്വിസുകൾ നൽകുന്നു.',
+  'Is there negative marking in {name}?': '{name} ൽ നെഗറ്റീവ് മാർക്കിംഗ് ഉണ്ടോ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'അതെ. {title} പാറ്റേണിൽ ഓരോ തെറ്റായ ഉത്തരത്തിനും {n} മാർക്ക് കുറയ്ക്കും.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ലെ {title} പാറ്റേണിൽ നെഗറ്റീവ് മാർക്കിംഗ് ഇല്ല. നിലവിലെ നിയമത്തിന് ഔദ്യോഗിക വിജ്ഞാപനം പരിശോധിക്കുക.',
+  'Which years of {name} previous year papers are available?': '{name} മുൻ വർഷ ചോദ്യപേപ്പറുകൾ ഏതെല്ലാം വർഷങ്ങളിലേതാണ് ലഭ്യം?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ൽ {name} PYQ ചോദ്യപേപ്പറുകൾ {years} വർഷങ്ങളിലേതായി ലഭ്യമാണ്.',
 };
 
 export default ML;

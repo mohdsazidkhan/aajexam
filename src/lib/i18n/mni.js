@@ -1989,6 +1989,18 @@ const MANIPURI = {
   '{name} Previous Year Papers': '{name} ꯃꯃꯥꯡꯒꯤ ꯆꯍꯤꯒꯤ ꯄꯦꯄꯔ',
   'Try another category or search again.': 'ꯑꯇꯣꯞꯄꯥ ꯀꯦꯇꯦꯒꯣꯔꯤ ꯍꯧꯕꯤꯌꯨ ꯅꯠꯇ꯭ꯔꯕꯗꯤ ꯑꯃꯨꯛ ꯊꯤꯕꯤꯌꯨ꯫',
   'Papers / shifts': 'ꯄꯦꯄꯔ / ꯁꯤꯐꯇ',
+  'How many practice tests are available for {name}?': '{name} ꯒꯤꯗꯃꯛ ꯄ꯭ꯔꯦꯀꯇꯤꯁ ꯇꯦꯁ꯭ꯇ ꯀꯌꯥ ꯐꯪꯕꯒꯦ?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ꯗꯥ {name}{code} ꯒꯤꯗꯃꯛ ꯐꯨꯜ-ꯂꯦꯡꯊ ꯄ꯭ꯔꯦꯀꯇꯤꯁ ꯇꯦꯁ꯭ꯇ {tests} ꯑꯃꯁꯨꯡ ꯃꯃꯥꯡꯒꯤ ꯆꯍꯤꯒꯤ ꯄꯦꯄꯔ (PYQ) {pyqs} ꯃꯇꯧ ꯁꯟꯅꯥ ꯁꯣꯂꯨꯁꯟ ꯑꯃꯁꯨꯡ ꯁꯦꯛꯁꯟ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯔꯤꯄꯣꯔꯇꯀꯥ ꯎꯅꯁꯤꯟꯅꯥ ꯐꯪꯏ꯫',
+  'Are {name} previous year question papers free?': '{name} ꯒꯤ ꯃꯃꯥꯡꯒꯤ ꯆꯍꯤꯒꯤ ꯄꯦꯄꯔꯁꯤꯡ ꯐ꯭ꯔꯤ ꯄꯤꯕꯔꯥ?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ꯍꯣꯌ, {name} ꯒꯤ ꯑꯅꯧꯕꯥ ꯆꯍꯤꯒꯤ PYQ AajExam ꯗꯥ ꯐ꯭ꯔꯤ ꯑꯣꯢ꯫ ꯑꯔꯤꯕꯥ ꯁꯤꯐꯇꯁꯤꯡ AajExam Pro ꯄ꯭ꯂꯥꯅꯗꯥ ꯐꯪꯏ꯫',
+  'Can I practise {name} topic-wise on AajExam?': 'ꯑꯩꯅꯥ AajExam ꯗꯥ {name} ꯀꯥꯟꯅꯕꯥ ꯇꯧꯅꯥ ꯄ꯭ꯔꯦꯀꯇꯤꯁ ꯇꯧꯕꯥ ꯌꯥꯕꯔꯥ?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ꯍꯣꯌ, AajExam ꯅꯥ {name} ꯒꯤꯗꯃꯛ ꯀꯥꯟꯅꯕꯥ ꯈꯨꯗꯤꯡꯃꯛꯀꯤ ꯀ꯭ꯕꯤꯖ {count} ꯄꯤ, ꯃꯗꯨꯗꯥ {list} ꯌꯥꯎ꯫',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ꯍꯣꯌ, AajExam ꯅꯥ {name} ꯒꯤ ꯀꯥꯟꯅꯕꯥ ꯄꯨꯝꯅꯃꯛꯇꯥ ꯀ꯭ꯕꯤꯖ {count} ꯄꯤ꯫',
+  'Is there negative marking in {name}?': '{name} ꯗꯥ ꯅꯦꯒꯦꯇꯤꯕ ꯃꯥꯔꯀꯤꯡ ꯂꯩꯕꯔꯥ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ꯍꯣꯌ꯫ {title} ꯄꯦꯇꯔꯅꯗꯥ ꯁꯣꯀꯄꯥ ꯄꯥꯎꯈꯨꯝ ꯈꯨꯗꯤꯡꯃꯛꯀꯤꯗꯃꯛ ꯃꯥꯔꯛ {n} ꯀꯛꯅꯤ꯫',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ꯒꯤ {title} ꯄꯦꯇꯔꯅꯗꯥ ꯅꯦꯒꯦꯇꯤꯕ ꯃꯥꯔꯀꯤꯡ ꯂꯩꯇꯦ꯫ ꯍꯧꯖꯤꯀꯒꯤ ꯑꯣꯏꯕꯥ ꯅꯤꯌꯃꯒꯤꯗꯃꯛ ꯑꯣꯐꯤꯁꯤꯌꯦꯜ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯌꯦꯡꯕꯤꯌꯨ꯫',
+  'Which years of {name} previous year papers are available?': '{name} ꯒꯤ ꯃꯃꯥꯡꯒꯤ ꯄꯦꯄꯔ ꯀꯃꯨꯒꯤ ꯆꯍꯤꯒꯤ ꯐꯪꯕꯒꯦ?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ꯗꯥ {name} ꯒꯤ PYQ ꯄꯦꯄꯔ {years} ꯒꯤ ꯐꯪꯏ꯫',
 };
 
 export default MANIPURI;

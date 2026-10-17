@@ -1989,6 +1989,18 @@ const SD = {
   '{name} Previous Year Papers': '{name} جا گذريل سالن جا پيپر',
   'Try another category or search again.': 'ٻي ڪيٽيگري آزمايو يا ٻيهر ڳوليو.',
   'Papers / shifts': 'پيپر / شفٽ',
+  'How many practice tests are available for {name}?': '{name} لاءِ ڪيترا پريڪٽس ٽيسٽ موجود آهن؟',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam تي {name}{code} لاءِ {tests} فل-لينٿ پريڪٽس ٽيسٽ ۽ {pyqs} گذريل سالن جا پيپر (PYQ) تفصيلي حل ۽ سيڪشن وار تجزيي سان موجود آهن.',
+  'Are {name} previous year question papers free?': 'ڇا {name} جا گذريل سالن جا پيپر مفت آهن؟',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ها، {name} جي تازي سال جا PYQ AajExam تي مفت آهن. پراڻيون شفٽون AajExam Pro پلان سان موجود آهن.',
+  'Can I practise {name} topic-wise on AajExam?': 'ڇا آئون AajExam تي {name} موضوع وار مشق ڪري سگهان ٿو؟',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ها، AajExam {name} لاءِ {count} موضوع وار ڪوئز ڏئي ٿو، جن ۾ {list} شامل آهن.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ها، AajExam {name} جي سڀني مضمونن ۾ {count} موضوع وار ڪوئز ڏئي ٿو.',
+  'Is there negative marking in {name}?': 'ڇا {name} ۾ نيگيٽو مارڪنگ آهي؟',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ها. {title} پيٽرن ۾ هر غلط جواب تي {n} نمبر ڪٽيا وڃن ٿا.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam تي {title} پيٽرن ۾ نيگيٽو مارڪنگ ناهي. موجوده قاعدي لاءِ سرڪاري اطلاع ڏسو.',
+  'Which years of {name} previous year papers are available?': '{name} جا گذريل سالن جا پيپر ڪهڙن سالن جا موجود آهن؟',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam تي {name} جا PYQ پيپر {years} لاءِ موجود آهن.',
 };
 
 export default SD;

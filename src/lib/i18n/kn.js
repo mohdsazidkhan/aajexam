@@ -1989,6 +1989,18 @@ const KN = {
   '{name} Previous Year Papers': '{name} ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು',
   'Try another category or search again.': 'ಬೇರೆ ವರ್ಗವನ್ನು ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಮತ್ತೆ ಹುಡುಕಿ.',
   'Papers / shifts': 'ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು / ಶಿಫ್ಟ್‌ಗಳು',
+  'How many practice tests are available for {name}?': '{name} ಗೆ ಎಷ್ಟು ಅಭ್ಯಾಸ ಪರೀಕ್ಷೆಗಳು ಲಭ್ಯವಿವೆ?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ನಲ್ಲಿ {name}{code} ಗೆ {tests} ಪೂರ್ಣ ಅಭ್ಯಾಸ ಪರೀಕ್ಷೆಗಳು ಮತ್ತು {pyqs} ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು (PYQ) ವಿವರವಾದ ಪರಿಹಾರ ಮತ್ತು ವಿಭಾಗವಾರು ವಿಶ್ಲೇಷಣೆಯೊಂದಿಗೆ ಲಭ್ಯವಿವೆ.',
+  'Are {name} previous year question papers free?': '{name} ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು ಉಚಿತವೇ?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ಹೌದು, {name} ಇತ್ತೀಚಿನ ವರ್ಷದ PYQ AajExam ನಲ್ಲಿ ಉಚಿತ. ಹಳೆಯ ಶಿಫ್ಟ್‌ಗಳು AajExam Pro ಯೋಜನೆಯಲ್ಲಿ ಲಭ್ಯ.',
+  'Can I practise {name} topic-wise on AajExam?': 'AajExam ನಲ್ಲಿ {name} ಅನ್ನು ವಿಷಯವಾರು ಅಭ್ಯಾಸ ಮಾಡಬಹುದೇ?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ಹೌದು, AajExam {name} ಗೆ {count} ವಿಷಯವಾರು ರಸಪ್ರಶ್ನೆಗಳನ್ನು ನೀಡುತ್ತದೆ; ಅವುಗಳಲ್ಲಿ {list} ಸೇರಿವೆ.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ಹೌದು, AajExam {name} ನ ಎಲ್ಲಾ ವಿಷಯಗಳಲ್ಲಿ {count} ವಿಷಯವಾರು ರಸಪ್ರಶ್ನೆಗಳನ್ನು ನೀಡುತ್ತದೆ.',
+  'Is there negative marking in {name}?': '{name} ನಲ್ಲಿ ಋಣಾತ್ಮಕ ಅಂಕ ಇದೆಯೇ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ಹೌದು. {title} ಮಾದರಿಯಲ್ಲಿ ಪ್ರತಿ ತಪ್ಪು ಉತ್ತರಕ್ಕೆ {n} ಅಂಕ ಕಡಿತವಾಗುತ್ತದೆ.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ನಲ್ಲಿ {title} ಮಾದರಿಯಲ್ಲಿ ಋಣಾತ್ಮಕ ಅಂಕ ಇಲ್ಲ. ಪ್ರಸ್ತುತ ನಿಯಮಕ್ಕಾಗಿ ಅಧಿಕೃತ ಅಧಿಸೂಚನೆ ನೋಡಿ.',
+  'Which years of {name} previous year papers are available?': '{name} ಹಿಂದಿನ ವರ್ಷಗಳ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು ಯಾವ ವರ್ಷಗಳಿಗೆ ಲಭ್ಯವಿವೆ?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ನಲ್ಲಿ {name} PYQ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು {years} ವರ್ಷಗಳಿಗೆ ಲಭ್ಯವಿವೆ.',
 };
 
 export default KN;

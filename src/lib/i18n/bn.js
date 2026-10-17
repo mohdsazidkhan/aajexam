@@ -1989,6 +1989,18 @@ const BN = {
   '{name} Previous Year Papers': '{name} আগের বছরের প্রশ্নপত্র',
   'Try another category or search again.': 'অন্য বিভাগ চেষ্টা করুন বা আবার খুঁজুন।',
   'Papers / shifts': 'প্রশ্নপত্র / শিফট',
+  'How many practice tests are available for {name}?': '{name}-এর জন্য কতগুলি প্র্যাকটিস টেস্ট আছে?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam-এ {name}{code}-এর জন্য {tests}টি ফুল-লেংথ প্র্যাকটিস টেস্ট ও {pyqs}টি আগের বছরের প্রশ্নপত্র (PYQ) আছে, বিস্তারিত সমাধান ও সেকশন-ভিত্তিক বিশ্লেষণসহ।',
+  'Are {name} previous year question papers free?': '{name}-এর আগের বছরের প্রশ্নপত্র কি বিনামূল্যে?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'হ্যাঁ, {name}-এর সর্বশেষ বছরের PYQ AajExam-এ বিনামূল্যে। পুরোনো শিফটগুলি AajExam Pro প্ল্যানে পাওয়া যায়।',
+  'Can I practise {name} topic-wise on AajExam?': 'আমি কি AajExam-এ {name} টপিক-ভিত্তিক অনুশীলন করতে পারি?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'হ্যাঁ, AajExam {name}-এর জন্য {count}টি টপিক-ভিত্তিক কুইজ দেয়, যার মধ্যে {list} রয়েছে।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'হ্যাঁ, AajExam {name}-এর সব বিষয়ে {count}টি টপিক-ভিত্তিক কুইজ দেয়।',
+  'Is there negative marking in {name}?': '{name}-এ কি নেগেটিভ মার্কিং আছে?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'হ্যাঁ। {title} প্যাটার্নে প্রতিটি ভুল উত্তরের জন্য {n} নম্বর কাটা হয়।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam-এ {title} প্যাটার্নে নেগেটিভ মার্কিং নেই। বর্তমান নিয়মের জন্য অফিসিয়াল বিজ্ঞপ্তি দেখুন।',
+  'Which years of {name} previous year papers are available?': '{name}-এর আগের বছরের কোন কোন বছরের প্রশ্নপত্র আছে?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam-এ {name}-এর PYQ প্রশ্নপত্র আছে: {years}।',
 };
 
 export default BN;

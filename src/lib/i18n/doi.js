@@ -1989,6 +1989,18 @@ const DogriDict = {
   '{name} Previous Year Papers': '{name} दे पिछले सालें दे पेपर',
   'Try another category or search again.': 'होर श्रेणी अजमाओ जां फरी ढूंढो।',
   'Papers / shifts': 'पेपर / शिफ्ट',
+  'How many practice tests are available for {name}?': '{name} आस्तै कुन्नें अभ्यास परीक्षा उपलब्ध न?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam उप्पर {name}{code} आस्तै {tests} फुल-लेंथ अभ्यास परीक्षा ते {pyqs} पिछले सालें दे प्रश्नपत्र (PYQ) विस्तृत हल ते सेक्शन-वार विश्लेषण सोइयां उपलब्ध न।',
+  'Are {name} previous year question papers free?': 'के {name} दे पिछले सालें दे प्रश्नपत्र मुफ्त न?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'हां, {name} दे नमें साल दे PYQ AajExam उप्पर मुफ्त न। पुराने शिफ्ट AajExam Pro योजना सोइयां उपलब्ध न।',
+  'Can I practise {name} topic-wise on AajExam?': 'के मैं AajExam उप्पर {name} विषय-वार अभ्यास करी सकना?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'हां, AajExam {name} आस्तै {count} विषय-वार क्विज दिंदा ऐ, जिंदे च {list} शामल न।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'हां, AajExam {name} दे सारे विषयें च {count} विषय-वार क्विज दिंदा ऐ।',
+  'Is there negative marking in {name}?': 'के {name} च नेगेटिव मार्किंग ऐ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'हां। {title} पैटर्न च हर गलत जवाब आस्तै {n} अंक कटदे न।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam उप्पर {title} पैटर्न च नेगेटिव मार्किंग नेईं ऐ। मौजूदा नियम आस्तै आधिकारिक अधिसूचना दिक्खो।',
+  'Which years of {name} previous year papers are available?': '{name} दे पिछले सालें दे प्रश्नपत्र कुन्नें सालें दे उपलब्ध न?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam उप्पर {name} दे PYQ प्रश्नपत्र {years} आस्तै उपलब्ध न।',
 };
 
 export default DogriDict;

@@ -1989,6 +1989,18 @@ const TA = {
   '{name} Previous Year Papers': '{name} முந்தைய ஆண்டு வினாத்தாள்கள்',
   'Try another category or search again.': 'வேறு வகையை முயற்சிக்கவும் அல்லது மீண்டும் தேடவும்.',
   'Papers / shifts': 'வினாத்தாள்கள் / ஷிஃப்ட்',
+  'How many practice tests are available for {name}?': '{name} க்கு எத்தனை பயிற்சித் தேர்வுகள் உள்ளன?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam இல் {name}{code} க்கு {tests} முழு நீள பயிற்சித் தேர்வுகளும் {pyqs} முந்தைய ஆண்டு வினாத்தாள்களும் (PYQ) விரிவான தீர்வுகள் மற்றும் பிரிவு வாரியான பகுப்பாய்வுடன் உள்ளன.',
+  'Are {name} previous year question papers free?': '{name} முந்தைய ஆண்டு வினாத்தாள்கள் இலவசமா?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ஆம், {name} இன் சமீபத்திய ஆண்டு PYQ AajExam இல் இலவசம். பழைய ஷிஃப்ட்கள் AajExam Pro திட்டத்தில் கிடைக்கும்.',
+  'Can I practise {name} topic-wise on AajExam?': 'AajExam இல் {name} ஐ தலைப்பு வாரியாகப் பயிற்சி செய்யலாமா?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ஆம், AajExam {name} க்கு {count} தலைப்பு வாரியான வினாடி வினாக்களை வழங்குகிறது; அவை {list} ஆகியவற்றை உள்ளடக்கியவை.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ஆம், AajExam {name} இன் அனைத்துப் பாடங்களிலும் {count} தலைப்பு வாரியான வினாடி வினாக்களை வழங்குகிறது.',
+  'Is there negative marking in {name}?': '{name} இல் எதிர்மறை மதிப்பெண் உண்டா?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ஆம். {title} முறையில் ஒவ்வொரு தவறான விடைக்கும் {n} மதிப்பெண் கழிக்கப்படும்.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam இல் {title} முறையில் எதிர்மறை மதிப்பெண் இல்லை. தற்போதைய விதிக்கு அதிகாரப்பூர்வ அறிவிப்பைப் பார்க்கவும்.',
+  'Which years of {name} previous year papers are available?': '{name} முந்தைய ஆண்டு வினாத்தாள்கள் எந்த ஆண்டுகளுக்குக் கிடைக்கின்றன?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam இல் {name} PYQ வினாத்தாள்கள் {years} ஆண்டுகளுக்குக் கிடைக்கின்றன.',
 };
 
 export default TA;

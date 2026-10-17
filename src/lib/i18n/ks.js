@@ -1989,6 +1989,18 @@ const KS = {
   '{name} Previous Year Papers': '{name} پتھ سالن ہُنٛد پیپر',
   'Try another category or search again.': 'بییہ زمرہ آزماو یا دوبارہ ژارو۔',
   'Papers / shifts': 'پیپر / شفٹ',
+  'How many practice tests are available for {name}?': '{name} خاطرٕ کتھ پریکٹس ٹیسٹ دستیاب چھ؟',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam پیٹھ {name}{code} خاطرٕ {tests} فل-لینتھ پریکٹس ٹیسٹ تہ {pyqs} پتھ سالن ہُنٛد پیپر (PYQ) تفصیلی حل تہ سیکشن وار تجزیہ سیتۍ دستیاب چھ۔',
+  'Are {name} previous year question papers free?': 'کیا {name} ہُنٛد پتھ سالن ہُنٛد پیپر مفت چھ؟',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'آ، {name} ہُنٛد تازہ سالچ PYQ AajExam پیٹھ مفت چھ۔ پرانی شفٹ AajExam Pro پلان سیتۍ دستیاب چھ۔',
+  'Can I practise {name} topic-wise on AajExam?': 'کیا بہ AajExam پیٹھ {name} موضوع وار مشق کٔرتھ سکان؟',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'آ، AajExam چھ {name} خاطرٕ {count} موضوع وار کوئز دِوان، یمن منز {list} شامل چھ۔',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'آ، AajExam چھ {name} ہُنٛد سارے مضمون منز {count} موضوع وار کوئز دِوان۔',
+  'Is there negative marking in {name}?': 'کیا {name} منز چھ نیگیٹو مارکنگ؟',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'آ۔ {title} پیٹرن منز چھ ہر غلط جوابس {n} نمبر کاٹان۔',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam پیٹھ {title} پیٹرن منز چھ نہ نیگیٹو مارکنگ۔ موجودہ اصولن خاطرٕ سرکاری اعلامیہ وچھو۔',
+  'Which years of {name} previous year papers are available?': '{name} ہُنٛد پتھ سالن ہُنٛد پیپر کم سالن ہُنٛد دستیاب چھ؟',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam پیٹھ {name} ہُنٛد PYQ پیپر {years} خاطرٕ دستیاب چھ۔',
 };
 
 export default KS;

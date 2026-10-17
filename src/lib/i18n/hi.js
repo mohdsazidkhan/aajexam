@@ -2002,6 +2002,18 @@ const HI = {
   '{name} Latest Updates': '{name} ताज़ा अपडेट',
   '{name} Previous Year Papers': '{name} के पिछले वर्षों के पेपर',
   'Papers / shifts': 'पेपर / शिफ्ट',
+  'How many practice tests are available for {name}?': '{name} के लिए कितने प्रैक्टिस टेस्ट उपलब्ध हैं?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam पर {name}{code} के लिए {tests} फुल-लेंथ प्रैक्टिस टेस्ट और {pyqs} पिछले वर्षों के प्रश्नपत्र (PYQ) उपलब्ध हैं, विस्तृत समाधान और सेक्शन-वार विश्लेषण के साथ।',
+  'Are {name} previous year question papers free?': 'क्या {name} के पिछले वर्षों के प्रश्नपत्र मुफ़्त हैं?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'हाँ, {name} के नवीनतम वर्ष के PYQ AajExam पर मुफ़्त हैं। पुरानी शिफ्ट AajExam Pro प्लान के साथ उपलब्ध हैं।',
+  'Can I practise {name} topic-wise on AajExam?': 'क्या मैं AajExam पर {name} टॉपिक-वार अभ्यास कर सकता हूँ?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'हाँ, AajExam {name} के लिए {count} टॉपिक-वार क्विज़ देता है, जिनमें {list} शामिल हैं।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'हाँ, AajExam {name} के सभी विषयों में {count} टॉपिक-वार क्विज़ देता है।',
+  'Is there negative marking in {name}?': 'क्या {name} में नेगेटिव मार्किंग है?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'हाँ। {title} पैटर्न में हर गलत उत्तर पर {n} अंक कटते हैं।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam पर {title} पैटर्न में नेगेटिव मार्किंग नहीं है। मौजूदा नियम के लिए आधिकारिक अधिसूचना देखें।',
+  'Which years of {name} previous year papers are available?': '{name} के पिछले वर्षों के प्रश्नपत्र किन वर्षों के उपलब्ध हैं?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam पर {name} के PYQ पेपर {years} के लिए उपलब्ध हैं।',
 };
 
 export default HI;

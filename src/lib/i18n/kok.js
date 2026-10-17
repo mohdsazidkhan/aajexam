@@ -1989,6 +1989,18 @@ const KOK = {
   '{name} Previous Year Papers': '{name} फाटल्या वर्सांचे प्रश्नपत्रिका',
   'Try another category or search again.': 'दुसरी वर्ग वापरून पळोवचो वा परत सोदचें.',
   'Papers / shifts': 'प्रश्नपत्रिका / शिफ्ट',
+  'How many practice tests are available for {name}?': '{name} खातीर किदे सराव परिक्षा उपलब्ध आसात?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam वयल्यान {name}{code} खातीर {tests} फुल-लेंथ सराव परिक्षा आनी {pyqs} फाटल्या वर्सांचे प्रश्नपत्रिका (PYQ) तपशीलवार सोडवणूक आनी विभागवार विश्लेशणासयत उपलब्ध आसात.',
+  'Are {name} previous year question papers free?': '{name} चे फाटल्या वर्सांचे प्रश्नपत्रिका फुकट आसात?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'होय, {name} चे नवे वर्साचे PYQ AajExam वयल्यान फुकट आसात. जुने शिफ्ट AajExam Pro योजनेंत उपलब्ध आसात.',
+  'Can I practise {name} topic-wise on AajExam?': 'हांव AajExam वयल्यान {name} विशयवार सराव करूं शकता?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'होय, AajExam {name} खातीर {count} विशयवार क्विझ दिता, तातूंत {list} आसा.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'होय, AajExam {name} चे सगळे विशयांनी {count} विशयवार क्विझ दिता.',
+  'Is there negative marking in {name}?': '{name} त नेगेटिव्ह मार्किंग आसा?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'होय. {title} पॅटर्नांत दर चुकीच्या जाप्येखातीर {n} गूण कमी जातात.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam वयल्या {title} पॅटर्नांत नेगेटिव्ह मार्किंग ना. सद्याच्या नेमा खातीर अधिकृत सुचोवणी पळोवची.',
+  'Which years of {name} previous year papers are available?': '{name} चे फाटल्या वर्सांचे प्रश्नपत्रिका खंयच्या वर्सांचे उपलब्ध आसात?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam वयल्यान {name} चे PYQ प्रश्नपत्रिका {years} खातीर उपलब्ध आसात.',
 };
 
 export default KOK;

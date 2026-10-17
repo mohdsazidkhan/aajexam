@@ -1990,6 +1990,18 @@ const HINGLISH = {
   '{name} Latest Updates': '{name} Latest Updates',
   '{name} Previous Year Papers': '{name} ke Previous Year Papers',
   'Papers / shifts': 'Papers / shifts',
+  'How many practice tests are available for {name}?': '{name} ke liye kitne practice tests available hain?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam par {name}{code} ke liye {tests} full-length practice tests aur {pyqs} previous year question papers (PYQs) available hain, detailed solutions aur sectional analysis ke saath.',
+  'Are {name} previous year question papers free?': 'Kya {name} ke previous year question papers free hain?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'Haan, {name} ke latest year ke PYQs AajExam par free hain. Purani shifts AajExam Pro plan ke saath available hain.',
+  'Can I practise {name} topic-wise on AajExam?': 'Kya main AajExam par {name} topic-wise practice kar sakta hoon?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'Haan, AajExam {name} ke liye {count} topic-wise quizzes deta hai, jinme {list} shamil hain.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'Haan, AajExam {name} ke saare subjects me {count} topic-wise quizzes deta hai.',
+  'Is there negative marking in {name}?': 'Kya {name} me negative marking hai?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'Haan. {title} pattern me har galat answer par {n} mark kata jata hai.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam par {title} pattern me negative marking nahi hai. Current rule ke liye official notification dekhein.',
+  'Which years of {name} previous year papers are available?': '{name} ke previous year papers kin saalon ke available hain?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam par {name} ke PYQ papers {years} ke liye available hain.',
 };
 
 export default HINGLISH;

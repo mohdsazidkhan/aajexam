@@ -1989,6 +1989,18 @@ const OR_ = {
   '{name} Previous Year Papers': '{name} ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର',
   'Try another category or search again.': 'ଅନ୍ୟ ବର୍ଗ ଚେଷ୍ଟା କରନ୍ତୁ କିମ୍ବା ପୁଣି ଖୋଜନ୍ତୁ।',
   'Papers / shifts': 'ପ୍ରଶ୍ନପତ୍ର / ଶିଫ୍ଟ',
+  'How many practice tests are available for {name}?': '{name} ପାଇଁ କେତେ ଅଭ୍ୟାସ ପରୀକ୍ଷା ଉପଲବ୍ଧ?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ରେ {name}{code} ପାଇଁ {tests} ଫୁଲ-ଲେଙ୍ଗଥ ଅଭ୍ୟାସ ପରୀକ୍ଷା ଏବଂ {pyqs} ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର (PYQ) ବିସ୍ତୃତ ସମାଧାନ ଓ ବିଭାଗ-ଭିତ୍ତିକ ବିଶ୍ଳେଷଣ ସହ ଉପଲବ୍ଧ।',
+  'Are {name} previous year question papers free?': '{name} ର ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର ମାଗଣା କି?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ହଁ, {name} ର ନୂଆ ବର୍ଷର PYQ AajExam ରେ ମାଗଣା। ପୁରୁଣା ଶିଫ୍ଟ AajExam Pro ଯୋଜନାରେ ଉପଲବ୍ଧ।',
+  'Can I practise {name} topic-wise on AajExam?': 'ମୁଁ AajExam ରେ {name} ବିଷୟ-ଭିତ୍ତିକ ଅଭ୍ୟାସ କରିପାରିବି କି?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ହଁ, AajExam {name} ପାଇଁ {count} ବିଷୟ-ଭିତ୍ତିକ କୁଇଜ୍ ଦିଏ, ଯେଉଁଥିରେ {list} ଅନ୍ତର୍ଭୁକ୍ତ।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ହଁ, AajExam {name} ର ସମସ୍ତ ବିଷୟରେ {count} ବିଷୟ-ଭିତ୍ତିକ କୁଇଜ୍ ଦିଏ।',
+  'Is there negative marking in {name}?': '{name} ରେ ନେଗେଟିଭ ମାର୍କିଂ ଅଛି କି?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ହଁ। {title} ପ୍ୟାଟର୍ନରେ ପ୍ରତ୍ୟେକ ଭୁଲ ଉତ୍ତର ପାଇଁ {n} ନମ୍ବର କଟାଯାଏ।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ରେ {title} ପ୍ୟାଟର୍ନରେ ନେଗେଟିଭ ମାର୍କିଂ ନାହିଁ। ବର୍ତ୍ତମାନର ନିୟମ ପାଇଁ ସରକାରୀ ବିଜ୍ଞପ୍ତି ଦେଖନ୍ତୁ।',
+  'Which years of {name} previous year papers are available?': '{name} ର ପୂର୍ବ ବର୍ଷର ପ୍ରଶ୍ନପତ୍ର କେଉଁ ବର୍ଷର ଉପଲବ୍ଧ?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ରେ {name} ର PYQ ପ୍ରଶ୍ନପତ୍ର {years} ପାଇଁ ଉପଲବ୍ଧ।',
 };
 
 export default OR_;

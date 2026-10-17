@@ -1989,6 +1989,18 @@ const PA = {
   '{name} Previous Year Papers': '{name} ਪਿਛਲੇ ਸਾਲਾਂ ਦੇ ਪੇਪਰ',
   'Try another category or search again.': 'ਹੋਰ ਸ਼੍ਰੇਣੀ ਅਜ਼ਮਾਓ ਜਾਂ ਦੁਬਾਰਾ ਖੋਜੋ।',
   'Papers / shifts': 'ਪੇਪਰ / ਸ਼ਿਫਟ',
+  'How many practice tests are available for {name}?': '{name} ਲਈ ਕਿੰਨੇ ਪ੍ਰੈਕਟਿਸ ਟੈਸਟ ਉਪਲਬਧ ਹਨ?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ਉੱਤੇ {name}{code} ਲਈ {tests} ਫੁੱਲ-ਲੈਂਥ ਪ੍ਰੈਕਟਿਸ ਟੈਸਟ ਅਤੇ {pyqs} ਪਿਛਲੇ ਸਾਲਾਂ ਦੇ ਪ੍ਰਸ਼ਨ ਪੱਤਰ (PYQ) ਵਿਸਤ੍ਰਿਤ ਹੱਲਾਂ ਅਤੇ ਸੈਕਸ਼ਨ-ਵਾਰ ਵਿਸ਼ਲੇਸ਼ਣ ਨਾਲ ਉਪਲਬਧ ਹਨ।',
+  'Are {name} previous year question papers free?': 'ਕੀ {name} ਦੇ ਪਿਛਲੇ ਸਾਲਾਂ ਦੇ ਪ੍ਰਸ਼ਨ ਪੱਤਰ ਮੁਫ਼ਤ ਹਨ?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ਹਾਂ, {name} ਦੇ ਨਵੀਨਤਮ ਸਾਲ ਦੇ PYQ AajExam ਉੱਤੇ ਮੁਫ਼ਤ ਹਨ। ਪੁਰਾਣੀਆਂ ਸ਼ਿਫਟਾਂ AajExam Pro ਪਲਾਨ ਨਾਲ ਉਪਲਬਧ ਹਨ।',
+  'Can I practise {name} topic-wise on AajExam?': 'ਕੀ ਮੈਂ AajExam ਉੱਤੇ {name} ਵਿਸ਼ਾ-ਵਾਰ ਅਭਿਆਸ ਕਰ ਸਕਦਾ ਹਾਂ?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ਹਾਂ, AajExam {name} ਲਈ {count} ਵਿਸ਼ਾ-ਵਾਰ ਕੁਇਜ਼ ਦਿੰਦਾ ਹੈ, ਜਿਨ੍ਹਾਂ ਵਿੱਚ {list} ਸ਼ਾਮਲ ਹਨ।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ਹਾਂ, AajExam {name} ਦੇ ਸਾਰੇ ਵਿਸ਼ਿਆਂ ਵਿੱਚ {count} ਵਿਸ਼ਾ-ਵਾਰ ਕੁਇਜ਼ ਦਿੰਦਾ ਹੈ।',
+  'Is there negative marking in {name}?': 'ਕੀ {name} ਵਿੱਚ ਨੈਗੇਟਿਵ ਮਾਰਕਿੰਗ ਹੈ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ਹਾਂ। {title} ਪੈਟਰਨ ਵਿੱਚ ਹਰ ਗਲਤ ਜਵਾਬ ਲਈ {n} ਅੰਕ ਕੱਟੇ ਜਾਂਦੇ ਹਨ।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ਉੱਤੇ {title} ਪੈਟਰਨ ਵਿੱਚ ਨੈਗੇਟਿਵ ਮਾਰਕਿੰਗ ਨਹੀਂ ਹੈ। ਮੌਜੂਦਾ ਨਿਯਮ ਲਈ ਅਧਿਕਾਰਤ ਸੂਚਨਾ ਵੇਖੋ।',
+  'Which years of {name} previous year papers are available?': '{name} ਦੇ ਪਿਛਲੇ ਸਾਲਾਂ ਦੇ ਪ੍ਰਸ਼ਨ ਪੱਤਰ ਕਿਹੜੇ ਸਾਲਾਂ ਦੇ ਉਪਲਬਧ ਹਨ?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ਉੱਤੇ {name} ਦੇ PYQ ਪੇਪਰ {years} ਲਈ ਉਪਲਬਧ ਹਨ।',
 };
 
 export default PA;

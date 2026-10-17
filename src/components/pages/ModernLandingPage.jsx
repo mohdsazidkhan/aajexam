@@ -44,6 +44,15 @@ const POPULAR_PYQ_EXAMS = [
    { slug: 'delhi-police-constable-ssc', name: 'Delhi Police Constable' },
    { slug: 'central-teacher-eligibility-test', name: 'CTET' },
    { slug: 'neet-2', name: 'NEET' },
+   { slug: 'ibps-clerk-prelims', name: 'IBPS Clerk' },
+   { slug: 'ssc-selection-post-matriculation-level', name: 'SSC Selection Post Matriculation' },
+   { slug: 'ssc-selection-post-higher-secondary-level', name: 'SSC Selection Post Higher Secondary' },
+   { slug: 'haryana-police-constable', name: 'Haryana Police Constable' },
+   { slug: 'rajasthan-police-constable', name: 'Rajasthan Police Constable' },
+   { slug: 'up-police-constable', name: 'UP Police Constable' },
+   { slug: 'cil-coal-india-limited', name: 'Coal India CIL' },
+   { slug: 'rssb-computer-instructor', name: 'RSSB Computer Instructor' },
+   { slug: 'esic-udc-prelims', name: 'ESIC UDC' },
 ];
 
 const ModernLandingPage = () => {

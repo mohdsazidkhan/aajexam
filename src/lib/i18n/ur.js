@@ -1989,6 +1989,18 @@ const UrduDict = {
   '{name} Previous Year Papers': '{name} کے پچھلے سالوں کے پرچے',
   'Try another category or search again.': 'کوئی اور زمرہ آزمائیں یا دوبارہ تلاش کریں۔',
   'Papers / shifts': 'پرچے / شفٹ',
+  'How many practice tests are available for {name}?': '{name} کے لیے کتنے پریکٹس ٹیسٹ دستیاب ہیں؟',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam پر {name}{code} کے لیے {tests} فل-لینتھ پریکٹس ٹیسٹ اور {pyqs} پچھلے سالوں کے پرچے (PYQ) تفصیلی حل اور سیکشن وار تجزیے کے ساتھ دستیاب ہیں۔',
+  'Are {name} previous year question papers free?': 'کیا {name} کے پچھلے سالوں کے پرچے مفت ہیں؟',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'جی ہاں، {name} کے تازہ ترین سال کے PYQ AajExam پر مفت ہیں۔ پرانی شفٹیں AajExam Pro پلان کے ساتھ دستیاب ہیں۔',
+  'Can I practise {name} topic-wise on AajExam?': 'کیا میں AajExam پر {name} موضوع وار مشق کر سکتا ہوں؟',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'جی ہاں، AajExam {name} کے لیے {count} موضوع وار کوئز فراہم کرتا ہے، جن میں {list} شامل ہیں۔',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'جی ہاں، AajExam {name} کے تمام مضامین میں {count} موضوع وار کوئز فراہم کرتا ہے۔',
+  'Is there negative marking in {name}?': 'کیا {name} میں نیگیٹو مارکنگ ہے؟',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'جی ہاں۔ {title} پیٹرن میں ہر غلط جواب پر {n} نمبر کاٹے جاتے ہیں۔',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam پر {title} پیٹرن میں نیگیٹو مارکنگ نہیں ہے۔ موجودہ اصول کے لیے سرکاری اعلامیہ دیکھیں۔',
+  'Which years of {name} previous year papers are available?': '{name} کے پچھلے سالوں کے پرچے کن سالوں کے دستیاب ہیں؟',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam پر {name} کے PYQ پرچے {years} کے لیے دستیاب ہیں۔',
 };
 
 export default UrduDict;

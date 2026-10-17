@@ -1989,6 +1989,18 @@ const GU = {
   '{name} Previous Year Papers': '{name} પાછલા વર્ષોના પેપર',
   'Try another category or search again.': 'બીજી શ્રેણી અજમાવો અથવા ફરી શોધો.',
   'Papers / shifts': 'પેપર / શિફ્ટ',
+  'How many practice tests are available for {name}?': '{name} માટે કેટલી પ્રેક્ટિસ ટેસ્ટ ઉપલબ્ધ છે?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam પર {name}{code} માટે {tests} ફુલ-લેન્થ પ્રેક્ટિસ ટેસ્ટ અને {pyqs} પાછલા વર્ષોના પ્રશ્નપત્રો (PYQ) વિગતવાર ઉકેલ અને વિભાગવાર વિશ્લેષણ સાથે ઉપલબ્ધ છે.',
+  'Are {name} previous year question papers free?': 'શું {name} ના પાછલા વર્ષોના પ્રશ્નપત્રો મફત છે?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'હા, {name} ના નવીનતમ વર્ષના PYQ AajExam પર મફત છે. જૂની શિફ્ટ AajExam Pro પ્લાન સાથે ઉપલબ્ધ છે.',
+  'Can I practise {name} topic-wise on AajExam?': 'શું હું AajExam પર {name} વિષયવાર પ્રેક્ટિસ કરી શકું?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'હા, AajExam {name} માટે {count} વિષયવાર ક્વિઝ આપે છે, જેમાં {list} શામેલ છે.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'હા, AajExam {name} ના બધા વિષયોમાં {count} વિષયવાર ક્વિઝ આપે છે.',
+  'Is there negative marking in {name}?': 'શું {name} માં નેગેટિવ માર્કિંગ છે?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'હા. {title} પેટર્નમાં દરેક ખોટા જવાબ માટે {n} ગુણ કપાય છે.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam પર {title} પેટર્નમાં નેગેટિવ માર્કિંગ નથી. વર્તમાન નિયમ માટે સત્તાવાર જાહેરાત જુઓ.',
+  'Which years of {name} previous year papers are available?': '{name} ના પાછલા વર્ષોના પ્રશ્નપત્રો કયા વર્ષોના ઉપલબ્ધ છે?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam પર {name} ના PYQ પેપર {years} માટે ઉપલબ્ધ છે.',
 };
 
 export default GU;

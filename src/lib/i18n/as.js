@@ -1989,6 +1989,18 @@ const AS = {
   '{name} Previous Year Papers': '{name} আগৰ বছৰৰ প্ৰশ্নকাকত',
   'Try another category or search again.': 'আন শ্ৰেণী চেষ্টা কৰক বা পুনৰ সন্ধান কৰক।',
   'Papers / shifts': 'প্ৰশ্নকাকত / শিফ্ট',
+  'How many practice tests are available for {name}?': '{name}ৰ বাবে কিমান অনুশীলন পৰীক্ষা উপলব্ধ?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ত {name}{code}ৰ বাবে {tests}টা ফুল-লেংথ অনুশীলন পৰীক্ষা আৰু {pyqs}খন আগৰ বছৰৰ প্ৰশ্নকাকত (PYQ) বিশদ সমাধান আৰু বিভাগ-ভিত্তিক বিশ্লেষণসহ উপলব্ধ।',
+  'Are {name} previous year question papers free?': '{name}ৰ আগৰ বছৰৰ প্ৰশ্নকাকত বিনামূলীয়া নে?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'হয়, {name}ৰ শেহতীয়া বছৰৰ PYQ AajExam ত বিনামূলীয়া। পুৰণি শ্বিফ্টবোৰ AajExam Pro পৰিকল্পনাত উপলব্ধ।',
+  'Can I practise {name} topic-wise on AajExam?': 'মই AajExam ত {name} বিষয়-ভিত্তিকভাৱে অনুশীলন কৰিব পাৰোনে?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'হয়, AajExam এ {name}ৰ বাবে {count}টা বিষয়-ভিত্তিক কুইজ দিয়ে, য’ত {list} সামৰি আছে।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'হয়, AajExam এ {name}ৰ সকলো বিষয়ত {count}টা বিষয়-ভিত্তিক কুইজ দিয়ে।',
+  'Is there negative marking in {name}?': '{name}ত নেগেটিভ মাৰ্কিং আছেনে?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'হয়। {title} পেটাৰ্নত প্ৰতিটো ভুল উত্তৰৰ বাবে {n} নম্বৰ কটা হয়।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ত {title} পেটাৰ্নত নেগেটিভ মাৰ্কিং নাই। বৰ্তমানৰ নিয়মৰ বাবে অফিচিয়াল বিজ্ঞপ্তি চাওক।',
+  'Which years of {name} previous year papers are available?': '{name}ৰ আগৰ বছৰৰ প্ৰশ্নকাকত কোনকোন বছৰৰ উপলব্ধ?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ত {name}ৰ PYQ প্ৰশ্নকাকত {years}ৰ বাবে উপলব্ধ।',
 };
 
 export default AS;

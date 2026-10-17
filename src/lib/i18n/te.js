@@ -1989,6 +1989,18 @@ const TE = {
   '{name} Previous Year Papers': '{name} గత సంవత్సరాల ప్రశ్నపత్రాలు',
   'Try another category or search again.': 'మరొక వర్గాన్ని ప్రయత్నించండి లేదా మళ్లీ వెతకండి.',
   'Papers / shifts': 'ప్రశ్నపత్రాలు / షిఫ్ట్‌లు',
+  'How many practice tests are available for {name}?': '{name} కోసం ఎన్ని ప్రాక్టీస్ టెస్టులు ఉన్నాయి?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam లో {name}{code} కోసం {tests} ఫుల్-లెంగ్త్ ప్రాక్టీస్ టెస్టులు మరియు {pyqs} గత సంవత్సరాల ప్రశ్నపత్రాలు (PYQ) వివరమైన సమాధానాలు, సెక్షన్ వారీ విశ్లేషణతో అందుబాటులో ఉన్నాయి.',
+  'Are {name} previous year question papers free?': '{name} గత సంవత్సరాల ప్రశ్నపత్రాలు ఉచితమా?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'అవును, {name} తాజా సంవత్సరపు PYQ AajExam లో ఉచితం. పాత షిఫ్ట్‌లు AajExam Pro ప్లాన్‌తో అందుబాటులో ఉంటాయి.',
+  'Can I practise {name} topic-wise on AajExam?': 'AajExam లో {name} ను టాపిక్ వారీగా ప్రాక్టీస్ చేయవచ్చా?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'అవును, AajExam {name} కోసం {count} టాపిక్ వారీ క్విజ్‌లను అందిస్తుంది; వాటిలో {list} ఉన్నాయి.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'అవును, AajExam {name} యొక్క అన్ని సబ్జెక్టులలో {count} టాపిక్ వారీ క్విజ్‌లను అందిస్తుంది.',
+  'Is there negative marking in {name}?': '{name} లో నెగెటివ్ మార్కింగ్ ఉందా?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'అవును. {title} విధానంలో ప్రతి తప్పు సమాధానానికి {n} మార్కు తగ్గించబడుతుంది.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam లో {title} విధానంలో నెగెటివ్ మార్కింగ్ లేదు. ప్రస్తుత నియమం కోసం అధికారిక నోటిఫికేషన్ చూడండి.',
+  'Which years of {name} previous year papers are available?': '{name} గత సంవత్సరాల ప్రశ్నపత్రాలు ఏ సంవత్సరాలకు అందుబాటులో ఉన్నాయి?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam లో {name} PYQ ప్రశ్నపత్రాలు {years} సంవత్సరాలకు అందుబాటులో ఉన్నాయి.',
 };
 
 export default TE;

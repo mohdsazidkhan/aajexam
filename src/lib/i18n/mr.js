@@ -1989,6 +1989,18 @@ const MR = {
   '{name} Previous Year Papers': '{name} मागील वर्षांच्या प्रश्नपत्रिका',
   'Try another category or search again.': 'दुसरी श्रेणी वापरून पहा किंवा पुन्हा शोधा.',
   'Papers / shifts': 'प्रश्नपत्रिका / शिफ्ट',
+  'How many practice tests are available for {name}?': '{name} साठी किती सराव चाचण्या उपलब्ध आहेत?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam वर {name}{code} साठी {tests} पूर्ण-लांबीच्या सराव चाचण्या आणि {pyqs} मागील वर्षांच्या प्रश्नपत्रिका (PYQ) सविस्तर उत्तरे व विभागवार विश्लेषणासह उपलब्ध आहेत.',
+  'Are {name} previous year question papers free?': '{name} च्या मागील वर्षांच्या प्रश्नपत्रिका मोफत आहेत का?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'होय, {name} च्या नवीनतम वर्षाचे PYQ AajExam वर मोफत आहेत. जुन्या शिफ्ट AajExam Pro प्लॅनसह उपलब्ध आहेत.',
+  'Can I practise {name} topic-wise on AajExam?': 'मी AajExam वर {name} विषयवार सराव करू शकतो का?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'होय, AajExam {name} साठी {count} विषयवार क्विझ देते, ज्यात {list} समाविष्ट आहेत.',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'होय, AajExam {name} च्या सर्व विषयांमध्ये {count} विषयवार क्विझ देते.',
+  'Is there negative marking in {name}?': '{name} मध्ये निगेटिव्ह मार्किंग आहे का?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'होय. {title} पॅटर्नमध्ये प्रत्येक चुकीच्या उत्तरासाठी {n} गुण वजा होतात.',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam वरील {title} पॅटर्नमध्ये निगेटिव्ह मार्किंग नाही. सध्याच्या नियमासाठी अधिकृत अधिसूचना पहा.',
+  'Which years of {name} previous year papers are available?': '{name} च्या मागील वर्षांच्या प्रश्नपत्रिका कोणत्या वर्षांच्या उपलब्ध आहेत?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam वर {name} चे PYQ पेपर {years} साठी उपलब्ध आहेत.',
 };
 
 export default MR;

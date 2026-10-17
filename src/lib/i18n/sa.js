@@ -1989,6 +1989,18 @@ const SA = {
   '{name} Previous Year Papers': '{name} पूर्ववर्षप्रश्नपत्राणि',
   'Try another category or search again.': 'अन्यां श्रेणीं प्रयतस्व अथवा पुनः अन्विष्यताम्।',
   'Papers / shifts': 'प्रश्नपत्राणि / पाळ्यः',
+  'How many practice tests are available for {name}?': '{name} कृते कति अभ्यासपरीक्षाः उपलभ्यन्ते?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam मध्ये {name}{code} कृते {tests} पूर्णदैर्घ्याभ्यासपरीक्षाः {pyqs} पूर्ववर्षप्रश्नपत्राणि (PYQ) च विस्तृतसमाधानैः विभागशः विश्लेषणेन च सह उपलभ्यन्ते।',
+  'Are {name} previous year question papers free?': 'किं {name} इत्यस्य पूर्ववर्षप्रश्नपत्राणि निःशुल्कानि?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'आम्, {name} इत्यस्य नवीनतमवर्षस्य PYQ AajExam मध्ये निःशुल्कम्। प्राचीनाः शिफ्टाः AajExam Pro योजनया उपलभ्यन्ते।',
+  'Can I practise {name} topic-wise on AajExam?': 'किम् अहं AajExam मध्ये {name} विषयशः अभ्यसितुं शक्नोमि?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'आम्, AajExam {name} कृते {count} विषयशः प्रश्नोत्तरीः ददाति, यासु {list} अन्तर्भवन्ति।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'आम्, AajExam {name} इत्यस्य सर्वेषु विषयेषु {count} विषयशः प्रश्नोत्तरीः ददाति।',
+  'Is there negative marking in {name}?': 'किं {name} मध्ये ऋणात्मकाङ्कनम् अस्ति?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'आम्। {title} स्वरूपे प्रत्येकस्य दोषपूर्णोत्तरस्य कृते {n} अङ्कः न्यूनीक्रियते।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam मध्ये {title} स्वरूपे ऋणात्मकाङ्कनं नास्ति। वर्तमाननियमाय आधिकारिकां सूचनां पश्यत।',
+  'Which years of {name} previous year papers are available?': '{name} इत्यस्य पूर्ववर्षप्रश्नपत्राणि केषां वर्षाणाम् उपलभ्यन्ते?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam मध्ये {name} इत्यस्य PYQ प्रश्नपत्राणि {years} वर्षाणां कृते उपलभ्यन्ते।',
 };
 
 export default SA;

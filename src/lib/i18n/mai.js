@@ -1989,6 +1989,18 @@ const MAI = {
   '{name} Previous Year Papers': '{name} के पछिला बरखक प्रश्नपत्र',
   'Try another category or search again.': 'दोसर श्रेणी आजमाउ वा फेर तकू।',
   'Papers / shifts': 'प्रश्नपत्र / शिफ्ट',
+  'How many practice tests are available for {name}?': '{name} लेल कतेक अभ्यास परीक्षा उपलब्ध अछि?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam पर {name}{code} लेल {tests} फुल-लेंथ अभ्यास परीक्षा आ {pyqs} पछिला बरखक प्रश्नपत्र (PYQ) विस्तृत समाधान आ सेक्शन-वार विश्लेषणक संग उपलब्ध अछि।',
+  'Are {name} previous year question papers free?': 'की {name} क पछिला बरखक प्रश्नपत्र निःशुल्क अछि?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'हँ, {name} क नवीनतम बरखक PYQ AajExam पर निःशुल्क अछि। पुरान शिफ्ट AajExam Pro योजनाक संग उपलब्ध अछि।',
+  'Can I practise {name} topic-wise on AajExam?': 'की हम AajExam पर {name} विषय-वार अभ्यास कए सकैत छी?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'हँ, AajExam {name} लेल {count} विषय-वार क्विज दैत अछि, जाहि मे {list} शामिल अछि।',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'हँ, AajExam {name} क सभ विषय मे {count} विषय-वार क्विज दैत अछि।',
+  'Is there negative marking in {name}?': 'की {name} मे नेगेटिव मार्किंग अछि?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'हँ। {title} पैटर्न मे प्रत्येक गलत उत्तर पर {n} अंक कटैत अछि।',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam पर {title} पैटर्न मे नेगेटिव मार्किंग नहि अछि। वर्तमान नियमक लेल आधिकारिक अधिसूचना देखू।',
+  'Which years of {name} previous year papers are available?': '{name} क पछिला बरखक प्रश्नपत्र कोन-कोन बरखक उपलब्ध अछि?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam पर {name} क PYQ प्रश्नपत्र {years} क लेल उपलब्ध अछि।',
 };
 
 export default MAI;

@@ -49,8 +49,8 @@ export default function PYQPaperPage({ exam, paper, pattern, sampleQuestions, re
     const examName = exam.name || exam.code || 'Government Exam';
     const yearLabel = paper.pyqYear ? ` ${paper.pyqYear}` : '';
     const shiftLabel = paper.pyqShift ? ` ${paper.pyqShift}` : '';
-    const seoTitle = `${paper.title} – ${examName} Previous Year Question Paper${yearLabel} with Answers | AajExam`;
-    const seoDesc = `Practice ${paper.title} (${examName}${yearLabel}${shiftLabel}) — ${paper.questionCount || 0} questions, ${paper.totalMarks} marks, ${paper.duration} min. Free PYQ mock test with detailed solutions.`.slice(0, 160);
+    const seoTitle = `${paper.title} Question Paper with Answers | AajExam`;
+    const seoDesc = `${paper.title} question paper with answer key and solutions — ${paper.questionCount || 0} questions, ${paper.totalMarks} marks, ${paper.duration} min. Attempt free as a timed mock test on AajExam.`.slice(0, 160);
 
     const canonical = `/pyq/${exam.slug}/${paper.slug}`;
     const breadcrumbItems = [

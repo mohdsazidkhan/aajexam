@@ -1989,6 +1989,18 @@ const SAT = {
   '{name} Previous Year Papers': '{name} ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ',
   'Try another category or search again.': 'ᱮᱴᱟᱜ ᱠᱟᱴᱷᱟᱜᱚᱨᱤ ᱠᱩᱨᱩᱢᱩᱴᱩᱭ ᱢᱮ ᱥᱮ ᱫᱚᱦᱲᱟ ᱥᱮᱸᱫᱽᱨᱟ ᱢᱮ᱾',
   'Papers / shifts': 'ᱯᱮᱯᱟᱨ / ᱥᱤᱯᱴ',
+  'How many practice tests are available for {name}?': '{name} ᱞᱟᱹᱜᱤᱫ ᱪᱮᱫ ᱜᱷᱟᱭ ᱯᱨᱮᱠᱴᱤᱥ ᱴᱮᱥᱴ ᱢᱮᱱᱟᱜᱼᱟ?',
+  '{tests} full-length practice tests and {pyqs} previous year question papers (PYQs) are available for {name}{code} on AajExam, with detailed solutions and sectional analysis.': 'AajExam ᱨᱮ {name}{code} ᱞᱟᱹᱜᱤᱫ {tests} ᱯᱩᱨᱟᱹ ᱯᱨᱮᱠᱴᱤᱥ ᱴᱮᱥᱴ ᱟᱨ {pyqs} ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ (PYQ) ᱯᱩᱨᱟᱹ ᱥᱚᱞᱩᱥᱚᱱ ᱟᱨ ᱥᱮᱠᱥᱚᱱ ᱥᱮᱞᱮᱫ ᱠᱷᱚᱵᱚᱨ ᱥᱟᱶᱛᱮ ᱢᱮᱱᱟᱜᱼᱟ᱾',
+  'Are {name} previous year question papers free?': '{name} ᱨᱮᱱᱟᱜ ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ ᱢᱩᱯᱷᱛ ᱥᱮ?',
+  'Yes, the latest year {name} PYQs are free on AajExam. Older shifts are available with the AajExam Pro plan.': 'ᱦᱮᱸ, {name} ᱨᱮᱱᱟᱜ ᱱᱟᱣᱟ ᱥᱟᱞ PYQ AajExam ᱨᱮ ᱢᱩᱯᱷᱛ᱾ ᱯᱩᱨᱟᱹᱱᱤ ᱥᱤᱯᱴ AajExam Pro ᱯᱞᱟᱱ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ᱾',
+  'Can I practise {name} topic-wise on AajExam?': 'ᱤᱧ AajExam ᱨᱮ {name} ᱵᱤᱥᱚᱭ ᱞᱮᱠᱟ ᱯᱨᱮᱠᱴᱤᱥ ᱫᱚᱨᱠᱟᱨ ᱫᱟᱲᱮᱭᱟᱜ-ᱟ ᱥᱮ?',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name}, covering {list}.': 'ᱦᱮᱸ, AajExam {name} ᱞᱟᱹᱜᱤᱫ {count} ᱵᱤᱥᱚᱭ ᱞᱮᱠᱟ ᱠᱩᱭᱤᱡ ᱮᱢᱚᱜ-ᱟ, ᱚᱸᱰᱮ {list} ᱢᱮᱱᱟᱜᱼᱟ᱾',
+  'Yes, AajExam offers {count} topic-wise quizzes for {name} across all its subjects.': 'ᱦᱮᱸ, AajExam {name} ᱨᱮᱱᱟᱜ ᱡᱚᱛᱚ ᱵᱤᱥᱚᱭ ᱨᱮ {count} ᱵᱤᱥᱚᱭ ᱞᱮᱠᱟ ᱠᱩᱭᱤᱡ ᱮᱢᱚᱜ-ᱟ᱾',
+  'Is there negative marking in {name}?': '{name} ᱨᱮ ᱱᱮᱜᱮᱴᱤᱵ ᱢᱟᱨᱠᱤᱝ ᱢᱮᱱᱟᱜᱼᱟ ᱥᱮ?',
+  'Yes. The {title} pattern deducts {n} mark for each wrong answer.': 'ᱦᱮᱸ᱾ {title} ᱯᱮᱴᱟᱨᱱ ᱨᱮ ᱥᱟᱱᱟᱢ ᱠᱷᱟᱛᱟ ᱡᱚᱵᱟᱵ ᱞᱟᱹᱜᱤᱫ {n} ᱱᱚᱢᱵᱚᱨ ᱠᱚᱢ ᱠᱟᱱᱟ᱾',
+  'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ᱨᱮ {title} ᱯᱮᱴᱟᱨᱱ ᱨᱮ ᱱᱮᱜᱮᱴᱤᱵ ᱢᱟᱨᱠᱤᱝ ᱵᱟᱝ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱱᱤᱛᱚᱜ ᱱᱤᱭᱚᱢ ᱞᱟᱹᱜᱤᱫ ᱮᱥᱠᱟᱨᱤ ᱵᱷᱮᱜᱟᱨ ᱧᱮᱞ ᱢᱮ᱾',
+  'Which years of {name} previous year papers are available?': '{name} ᱨᱮᱱᱟᱜ ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ ᱪᱮᱫ ᱥᱟᱞ ᱨᱮᱱᱟᱜ ᱢᱮᱱᱟᱜᱼᱟ?',
+  'AajExam has {name} PYQ papers for {years}.': 'AajExam ᱨᱮ {name} ᱨᱮᱱᱟᱜ PYQ ᱯᱮᱯᱟᱨ {years} ᱞᱟᱹᱜᱤᱫ ᱢᱮᱱᱟᱜᱼᱟ᱾',
 };
 
 export default SAT;
