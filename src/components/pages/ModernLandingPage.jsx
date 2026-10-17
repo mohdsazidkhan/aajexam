@@ -113,7 +113,7 @@ const ModernLandingPage = () => {
                   <div
                      className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-600 border-2 border-primary-500/10 shadow-sm"
                   >
-                     <Sparkles className="w-4 h-4 text-primary-600" />
+                     <Sparkles className="uppercase w-4 h-4 text-primary-600" />
                      {translate('Trusted by students across India')}
                   </div>
 
