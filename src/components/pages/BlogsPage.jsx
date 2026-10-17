@@ -13,12 +13,12 @@ import useTranslate from '../../hooks/useTranslate';
 import Pagination from '../Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
-const BlogsPage = () => {
+const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   const { translate } = useTranslate();
   const router = useRouter();
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState(initialBlogs);
   const [exams, setExams] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(initialBlogs.length === 0);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
@@ -27,7 +27,7 @@ const BlogsPage = () => {
     featured: true,
   });
   const [searchInput, setSearchInput] = useState('');
-  const [pagination, setPagination] = useState({});
+  const [pagination, setPagination] = useState(initialBlogs.length ? { total: initialTotal } : {});
   const currentPage = parseInt(router.query.page || '1', 10);
   const [viewMode, setViewMode] = useState('grid');
 
@@ -181,7 +181,7 @@ const BlogsPage = () => {
     </div>
   );
 
-  if (loading) {
+  if (loading && blogs.length === 0) {
     return <BlogListSkeleton />;
   }
 

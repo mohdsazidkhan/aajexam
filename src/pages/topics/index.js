@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema } from '../../utils/schema';
-import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
+import TopicListPage from '../../components/pages/TopicListPage';
 import useTranslate from '../../hooks/useTranslate';
-
-const TopicListPage = dynamic(() => import('../../components/pages/TopicListPage'), { ssr: false, loading: () => (<><h1 className="sr-only">Topics</h1><PageLoadingFallback /></>) });
 
 export default function Topics(props) {
   const { translate } = useTranslate();
@@ -50,7 +47,7 @@ export default function Topics(props) {
           { name: 'Topics', url: '/topics' }
         ])}
       />
-      <TopicListPage />
+      <TopicListPage initialTopics={(props.groups || []).flatMap((g) => (g.items || []).map((i) => ({ _id: i.href, slug: String(i.href).replace('/topics/', ''), name: i.name, subject: g.heading && g.heading !== 'Other topics' ? { name: g.heading } : null })))} />
 
       <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection

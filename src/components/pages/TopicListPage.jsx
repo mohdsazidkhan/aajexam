@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState, useMemo } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
   Layers, Search, Sparkles, BrainCircuit,
@@ -47,11 +48,11 @@ const TopicListSkeleton = () => (
 );
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-const TopicListPage = () => {
+const TopicListPage = ({ initialTopics = [] } = {}) => {
   const { translate, translateData } = useTranslate();
   const router = useRouter();
-  const [topics, setTopics] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [topics, setTopics] = useState(initialTopics);
+  const [loading, setLoading] = useState(initialTopics.length === 0);
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
   const [page, setPage] = useState(1);
@@ -143,8 +144,9 @@ const TopicListPage = () => {
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6 pt-2">
           {pageItems.map((topic, idx) => (
-            <motion.div key={topic._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
-              <Card hoverable onClick={() => router.push(`/topics/${topic.slug}`)}
+            <motion.div key={topic._id || topic.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
+              <Link href={`/topics/${topic.slug}`} className="block">
+<Card hoverable
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -168,7 +170,7 @@ const TopicListPage = () => {
                 </div>
 
                 {/* Stat chips */}
-                <div className="flex items-center gap-2 shrink-0 ml-auto">
+                <div className={`flex items-center gap-2 shrink-0 ml-auto ${topic.quizCount === undefined ? 'hidden' : ''}`}>
                   <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: topic.quizCount || 0 })}
@@ -180,6 +182,7 @@ const TopicListPage = () => {
                 </div>
                 </div>
               </Card>
+              </Link>
             </motion.div>
           ))}
 

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState, useMemo } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
   BookMarked, Search, Sparkles, BookOpen, Globe2,
@@ -47,11 +48,11 @@ const SubjectListSkeleton = () => (
 );
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-const SubjectListPage = () => {
+const SubjectListPage = ({ initialSubjects = [] } = {}) => {
   const { translate, translateData } = useTranslate();
   const router = useRouter();
-  const [subjects, setSubjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [subjects, setSubjects] = useState(initialSubjects);
+  const [loading, setLoading] = useState(initialSubjects.length === 0);
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
   const [page, setPage] = useState(1);
@@ -140,8 +141,9 @@ const SubjectListPage = () => {
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6 pt-2">
           {pageItems.map((sub, idx) => (
-            <motion.div key={sub._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
-              <Card hoverable onClick={() => router.push(`/subjects/${sub.slug}`)}
+            <motion.div key={sub._id || sub.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
+              <Link href={`/subjects/${sub.slug}`} className="block">
+<Card hoverable
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -164,7 +166,7 @@ const SubjectListPage = () => {
 
                 {/* Stat chips */}
                 <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
-                  <div className="flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50">
+                  <div className={`flex items-center gap-1.5 text-[10px] font-black text-primary-600 uppercase bg-primary-50 dark:bg-primary-900/30 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-primary-100 dark:border-primary-800/50 ${sub.quizCount === undefined ? 'hidden' : ''}`}>
                     <BrainCircuit className="w-3 h-3" />
                     {translate('{count} Quizzes', { count: sub.quizCount || 0 })}
                   </div>
@@ -174,6 +176,7 @@ const SubjectListPage = () => {
                   </div>
                 </div>
               </Card>
+              </Link>
             </motion.div>
           ))}
 

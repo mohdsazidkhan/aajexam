@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
-import { BlogListSkeleton } from '../../components/skeletons/PublicSkeletons';
+import BlogsPage from '../../components/pages/BlogsPage';
 import useTranslate from '../../hooks/useTranslate';
-
-const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
-  ssr: false,
-  loading: () => (<><h1 className="sr-only">Blog</h1><BlogListSkeleton /></>)
-});
 
 export default function Blog(props) {
   const { translate } = useTranslate();
@@ -59,7 +53,7 @@ export default function Blog(props) {
           })
         ].filter(Boolean)}
       />
-      <BlogsPage />
+      <BlogsPage initialBlogs={props.initialBlogs || []} initialTotal={props.initialTotal || 0} />
 
       {/* Server-rendered index — the interactive list above is client-only, so
           without this every article is an orphan for crawlers. */}

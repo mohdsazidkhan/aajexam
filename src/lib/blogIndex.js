@@ -31,5 +31,19 @@ export async function buildBlogIndex(examIds = []) {
   }
 
   const groups = Array.from(byExam.values()).sort((a, b) => b.items.length - a.items.length);
-  return { groups, allPosts };
+
+  // First page of the default (featured) list, so the interactive list is server-rendered too.
+  const featuredQuery = { status: 'published', isFeatured: true, ...(examIds.length ? { exam: { $in: examIds } } : {}) };
+  const [cards, initialTotal] = await Promise.all([
+    Blog.find(featuredQuery)
+      .select('slug title excerpt featuredImage publishedAt createdAt readingTime views likes isFeatured isPinned exam')
+      .populate('exam', 'name code')
+      .sort({ createdAt: -1 })
+      .limit(24)
+      .lean(),
+    Blog.countDocuments(featuredQuery),
+  ]);
+  const initialBlogs = JSON.parse(JSON.stringify(cards.filter((c) => c?.slug)));
+
+  return { groups, allPosts, initialBlogs, initialTotal };
 }

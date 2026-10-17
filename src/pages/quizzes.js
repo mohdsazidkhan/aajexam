@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../lib/utils/targetExams';
 import Seo from '../components/Seo';
 import LinkIndexSection from '../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
-import { PageLoadingFallback } from '../components/skeletons/PublicSkeletons';
-
-const QuizListPage = dynamic(() => import('../components/pages/QuizListPage'), { ssr: false, loading: () => (<><h1 className="sr-only">Quizzes</h1><PageLoadingFallback /></>) });
+import QuizListPage from '../components/pages/QuizListPage';
 
 export default function Quizzes(props) {
   // Static HTML carries the full catalogue (SEO). Logged-in users with target exams get the
@@ -55,7 +52,7 @@ export default function Quizzes(props) {
           })
         ].filter(Boolean)}
       />
-      <QuizListPage />
+      <QuizListPage initialQuizzes={(props.latestQuizzes || []).map((q) => ({ _id: q.slug, slug: q.slug, title: q.title, difficulty: q.meta || undefined }))} />
 
       <div className="px-3 xl:px-0 pb-10 space-y-6">
         <LinkIndexSection

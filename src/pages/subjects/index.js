@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import Seo from '../../components/Seo';
 import LinkIndexSection from '../../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/schema';
-import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
+import SubjectListPage from '../../components/pages/SubjectListPage';
 import useTranslate from '../../hooks/useTranslate';
-
-const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => (<><h1 className="sr-only">Subjects</h1><PageLoadingFallback /></>) });
 
 export default function Subjects(props) {
   const { translate } = useTranslate();
@@ -56,7 +53,7 @@ export default function Subjects(props) {
           })
         ].filter(Boolean)}
       />
-      <SubjectListPage />
+      <SubjectListPage initialSubjects={props.subjects || []} />
 
       <div className="px-3 xl:px-0 pb-10">
         <LinkIndexSection

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState, useMemo } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
   BrainCircuit, Search, Sparkles, Zap, TrendingUp,
@@ -58,10 +59,10 @@ const diffChip = (d) => {
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-const QuizListPage = () => {
+const QuizListPage = ({ initialQuizzes = [] } = {}) => {
   const { translate, translateData } = useTranslate();
   const router = useRouter();
-  const [quizzes, setQuizzes] = useState([]);
+  const [quizzes, setQuizzes] = useState(initialQuizzes);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
@@ -111,7 +112,7 @@ const QuizListPage = () => {
     return list;
   }, [quizzes, activeFilter, search]);
 
-  if (loading && page === 1) return <QuizListSkeleton />;
+  if (loading && page === 1 && quizzes.length === 0) return <QuizListSkeleton />;
 
   return (
     <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
@@ -161,8 +162,9 @@ const QuizListPage = () => {
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6 pt-2">
           {filtered.map((quiz, idx) => (
-            <motion.div key={quiz._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
-              <Card hoverable onClick={() => router.push(`/quiz/${quiz.slug}`)}
+            <motion.div key={quiz._id || quiz.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
+              <Link href={`/quiz/${quiz.slug}`} className="block">
+<Card hoverable
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -186,7 +188,7 @@ const QuizListPage = () => {
                 </div>
 
                 {/* Stat chips */}
-                <div className="flex items-center justify-between flex-wrap gap-2 pt-1">
+                <div className={`flex items-center justify-between flex-wrap gap-2 pt-1 ${quiz.totalQuestions === undefined ? 'hidden' : ''}`}>
                   <div className="flex items-center gap-1.5 text-[10px] font-black text-black dark:text-white uppercase bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-800 dark:border-white/50">
                     <HelpCircle className="w-3 h-3" />
                     {quiz.totalQuestions || 0} Qs
@@ -203,6 +205,7 @@ const QuizListPage = () => {
                   )}
                 </div>
               </Card>
+              </Link>
             </motion.div>
           ))}
 
