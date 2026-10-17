@@ -111,9 +111,9 @@ const ModernLandingPage = () => {
                   </motion.div>
 
                   <div
-                     className="inline-flex items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-600 border-2 border-primary-500/10 shadow-sm"
+                     className="inline-flex uppercase items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-600 border-2 border-primary-500/10 shadow-sm"
                   >
-                     <Sparkles className="uppercase w-4 h-4 text-primary-600" />
+                     <Sparkles className="w-4 h-4 text-primary-600" />
                      {translate('Trusted by students across India')}
                   </div>
 
@@ -126,7 +126,7 @@ const ModernLandingPage = () => {
                      </h1>
 
                      <p
-                        className="text-base xl:text-xl xl:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 xl:px-4"
+                        className="text-base xl:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 xl:px-4"
                      >
                         {translate('Practice smarter. Prepare better. Crack your exam.')}
 
