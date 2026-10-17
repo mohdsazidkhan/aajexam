@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import {
    Trophy,
    Star,
@@ -26,6 +27,24 @@ import API from '../../lib/api';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import useTranslate from '../../hooks/useTranslate';
+
+const POPULAR_PYQ_EXAMS = [
+   { slug: 'ssc-cgl', name: 'SSC CGL' },
+   { slug: 'ssc-chsl-tier-i', name: 'SSC CHSL' },
+   { slug: 'ssc-mts', name: 'SSC MTS' },
+   { slug: 'ssc-gd-constable', name: 'SSC GD' },
+   { slug: 'ssc-selection-post', name: 'SSC Selection Post' },
+   { slug: 'ssc-cpo-si-delhi-police-capf', name: 'SSC CPO' },
+   { slug: 'ssc-stenographer-grade-c-d', name: 'SSC Stenographer' },
+   { slug: 'rrb-ntpc', name: 'RRB NTPC' },
+   { slug: 'rrb-group-d', name: 'RRB Group D' },
+   { slug: 'ibps-po-probationary-officer-prelims', name: 'IBPS PO' },
+   { slug: 'sbi-clerk-prelims', name: 'SBI Clerk' },
+   { slug: 'upsc-prelims', name: 'UPSC Prelims' },
+   { slug: 'delhi-police-constable-ssc', name: 'Delhi Police Constable' },
+   { slug: 'central-teacher-eligibility-test', name: 'CTET' },
+   { slug: 'neet-2', name: 'NEET' },
+];
 
 const ModernLandingPage = () => {
    const { translate, rich } = useTranslate();
@@ -306,9 +325,9 @@ const ModernLandingPage = () => {
                         <motion.div
                            key={exam._id}
                            whileHover={{ scale: 1.04, y: -4 }}
-                           onClick={() => router.push('/pyq')}
-                           className={`cursor-pointer p-4 xl:p-8 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
+                           className={`relative cursor-pointer p-4 xl:p-8 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
                         >
+                           <Link href={exam.slug ? `/pyq/${exam.slug}` : '/pyq'} className="absolute inset-0 z-10 rounded-2xl" aria-label={`${exam.name} Previous Year Question Papers`} />
                            <span className={`text-sm xl:text-base font-black ${theme.text} mb-1`}>{exam.name}</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{translate('{count} PYQs', { count: exam.pyqCount })}</span>
                            <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{translate('{count} Practice Tests', { count: exam.practiceTestCount })}</span>
@@ -318,6 +337,15 @@ const ModernLandingPage = () => {
                      );
                   }) : null}
                </div>
+
+               {/* Crawlable PYQ links (server-rendered, one per exam) */}
+               <nav aria-label="Previous year papers by exam" className="flex flex-wrap items-center justify-center gap-2 mb-10">
+                  {POPULAR_PYQ_EXAMS.map((e) => (
+                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:border-primary-600 transition">
+                        {e.name} {translate('Previous Year Papers')}
+                     </Link>
+                  ))}
+               </nav>
 
                {/* CTA row */}
                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -98,6 +98,7 @@ export async function GET() {
             return {
                 _id: exam._id.toString(),
                 name: exam.name,
+                slug: exam.slug,
                 code: exam.code,
                 pyqCount,
                 practiceTestCount,

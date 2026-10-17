@@ -110,7 +110,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                             <div>
                                 <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{translate('Previous Year Papers')}</span>
                                 <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-                                    {translate('{name} PYQ', { name: translateData(examName) })}
+                                    {translate('{name} Previous Year Papers', { name: translateData(examName) })}
                                 </h1>
                             </div>
                         </div>
