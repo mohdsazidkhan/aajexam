@@ -107,6 +107,7 @@ const DailyChallengePage = () => {
         title="Daily Challenge – Free Daily Quiz for Government Exams | AajExam"
         description="Attempt a fresh daily challenge quiz on AajExam every day. Climb the leaderboard, build your streak and revise high-yield MCQs for SSC, UPSC, Banking and Railway exam preparation."
         canonical="/daily-challenge"
+        noIndex
         keywords={[
           'daily quiz',
           'daily challenge',
@@ -136,6 +137,7 @@ const DailyChallengePage = () => {
         title="Daily Challenge – Free Daily Quiz for Government Exams | AajExam"
         description="Attempt a fresh daily challenge quiz on AajExam every day. Climb the leaderboard, build your streak and revise high-yield MCQs for SSC, UPSC, Banking and Railway exam preparation."
         canonical="/daily-challenge"
+        noIndex
         keywords={[
           'daily quiz',
           'daily challenge',

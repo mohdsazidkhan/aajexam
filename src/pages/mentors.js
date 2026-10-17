@@ -48,6 +48,7 @@ const MentorsPage = () => {
         title="Mentors – Connect with Government Exam Toppers | AajExam"
         description="Connect with verified mentors who have cracked SSC, UPSC, Banking, Railway and State PSC exams. Get personalised study plans, doubt-clearing and exam strategy guidance on AajExam Pro."
         canonical="/mentors"
+        noIndex
         keywords={[
           'government exam mentor',
           'SSC mentor',

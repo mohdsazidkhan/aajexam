@@ -15,6 +15,7 @@ export default function CommunityQuestions() {
         title="Community Q&A – Crowdsourced Government Exam MCQs | AajExam"
         description="Browse and answer thousands of community-contributed MCQs for SSC, UPSC, Banking, Railway and State PSC exams on AajExam. Filter by exam, subject and topic."
         canonical="/community-questions"
+        noIndex
         keywords={[
           'government exam community',
           'crowdsourced mcq',

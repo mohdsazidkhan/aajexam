@@ -31,6 +31,7 @@ export default function Subscription() {
         title="AajExam Pro – Unlock All Practice Tests, PYQs & Analytics"
         description="Upgrade to AajExam Pro for unlimited practice tests, full PYQ archive, sectional analytics, ad-free practice and Pro mentor access. Affordable monthly plans for SSC, UPSC, Banking, Railway and State PSC aspirants."
         canonical="/subscription"
+        noIndex
         keywords={[
           'aajexam pro',
           'aajexam subscription',
