@@ -1,57 +1,54 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StickyNote, Bookmark, Eye, ArrowLeft, Tag } from 'lucide-react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import Card from '../../components/ui/Card';
-import Loading from '../../components/Loading';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
-import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
-// Module-level dedup: when the auth-state-driven layout switch in _app.js
-// remounts this page during hydration, both mounts await the same in-flight
-// request instead of firing the API (and incrementing views) twice.
-const inflightNoteRequests = new Map();
+// Server-rendered so crawlers get the title, canonical, h1 and note body in the
+// initial HTML (the page used to be a client-only shell that Google skipped).
+export async function getServerSideProps({ params, res }) {
+  const slug = params?.slug;
+  if (!slug) return { notFound: true };
 
-const NoteDetailPage = () => {
+  try {
+    const dbConnect = (await import('../../lib/db')).default;
+    const StudyNote = (await import('../../models/StudyNote')).default;
+    await import('../../models/Subject');
+    await import('../../models/Topic');
+    await import('../../models/Exam');
+    await import('../../models/User');
+    await dbConnect();
+
+    const note = await StudyNote.findOne({ slug: String(slug), status: 'published' })
+      .populate('subject', 'name')
+      .populate('topic', 'name')
+      .populate('exam', 'name code')
+      .populate('contributor', 'name username')
+      .lean();
+    if (!note) return { notFound: true };
+
+    // Fire-and-forget view count, same as the old /api/notes/[slug] GET did.
+    StudyNote.updateOne({ _id: note._id }, { $inc: { views: 1 } }).catch((e) => console.error('View increment failed:', e));
+    note.views = (note.views || 0) + 1;
+
+    if (res) res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
+    return { props: { note: JSON.parse(JSON.stringify(note)) } };
+  } catch (e) {
+    console.error('note ssr error', e);
+    return { notFound: true };
+  }
+}
+
+const NoteDetailPage = ({ note }) => {
   const { translate } = useTranslate();
-  const [note, setNote] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [bookmarked, setBookmarked] = useState(false);
   const router = useRouter();
-  const { slug } = router.query;
-
-  useEffect(() => {
-    if (!slug) return;
-    let cancelled = false;
-
-    const fetchNote = async () => {
-      let promise = inflightNoteRequests.get(slug);
-      if (!promise) {
-        promise = API.request(`/api/notes/${slug}`).finally(() => {
-          if (inflightNoteRequests.get(slug) === promise) inflightNoteRequests.delete(slug);
-        });
-        inflightNoteRequests.set(slug, promise);
-      }
-      try {
-        const res = await promise;
-        if (cancelled) return;
-        if (res?.success) setNote(res.data);
-        else router.push('/notes');
-      } catch (e) {
-        if (!cancelled) router.push('/notes');
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    };
-    fetchNote();
-
-    return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
+  const slug = note?.slug;
 
   const toggleBookmark = async () => {
     try {
@@ -60,11 +57,6 @@ const NoteDetailPage = () => {
     } catch (e) { toast.error(translate('Login required')); }
   };
 
-  if (loading) return (
-    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
-      <div className="py-8"><DetailSkeleton /></div>
-    </div>
-  );
   if (!note) return null;
 
   return (
