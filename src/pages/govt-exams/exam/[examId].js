@@ -905,7 +905,7 @@ export async function getServerSideProps({ params }) {
         initialSubjects: subjects,
         initialTopics: topics,
         initialQuestionCount: questionCount,
-        seo: { title: `${exam.name}${exam.code ? ` (${exam.code})` : ''} ${new Date().getFullYear()} – Syllabus, Exam Pattern, PYQ Papers & Free Mock Tests | AajExam` },
+        seo: { title: `${exam.name} ${new Date().getFullYear()}: Syllabus, Pattern, PYQ Papers & Mock Tests | AajExam` },
         patterns: JSON.parse(JSON.stringify(patternDocs)),
         pyqYears,
         examNews,
