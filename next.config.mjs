@@ -152,6 +152,11 @@ const nextConfig = {
         source: '/:slug-interview-questions',
         destination: '/interview-questions/category/:slug',
       },
+      // Per-section sitemaps, listed by the /sitemap.xml index.
+      {
+        source: '/sitemap-:section.xml',
+        destination: '/sitemap.xml?section=:section',
+      },
     ];
   },
 

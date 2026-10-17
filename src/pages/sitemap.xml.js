@@ -1,5 +1,6 @@
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
+import { DIGEST_MIN_ITEMS } from '../lib/web/currentAffairsDigest';
 
 let EXTERNAL_DATA_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aajexam.com';
 
@@ -33,7 +34,7 @@ const xmlUrl = ({ loc, lastmod, changefreq, priority }) => {
    </url>`;
 };
 
-function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [] }) {
+function generateSiteMap({ includeStatic = true, exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [] }) {
     // Only PUBLIC, non-login pages here. Login-gated pages (profile, history,
     // dashboards, etc.) and admin pages are excluded by design and are also
     // disallowed in robots.txt + carry noIndex meta on the page itself.
@@ -63,19 +64,15 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         { path: '/mentors', priority: '0.6', changefreq: 'weekly' },
         { path: '/daily-challenge', priority: '0.7', changefreq: 'daily' },
         { path: '/subscription', priority: '0.6', changefreq: 'monthly' },
-        { path: '/editorial-policy', priority: '0.3', changefreq: 'yearly' },
-        { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
-        { path: '/terms', priority: '0.3', changefreq: 'yearly' },
-        { path: '/refund', priority: '0.3', changefreq: 'yearly' },
-        { path: '/disclaimer', priority: '0.3', changefreq: 'yearly' },
-        { path: '/halal-disclaimer', priority: '0.3', changefreq: 'yearly' }
+        { path: '/editorial-policy', priority: '0.3', changefreq: 'yearly' }
+        // Legal pages (privacy, terms, refund, disclaimer) are intentionally not submitted: no search value.
     ];
 
     // Sitemap is slug-only by design — every record has a slug post-backfill,
     // and any future record without one is skipped here so we never expose a
     // legacy ObjectId URL to Google.
     const sections = [
-        staticPages.map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}${p.path}`, priority: p.priority, changefreq: p.changefreq })).join(''),
+        (includeStatic ? staticPages : []).map(p => xmlUrl({ loc: `${EXTERNAL_DATA_URL}${p.path}`, priority: p.priority, changefreq: p.changefreq })).join(''),
         categoryIds.filter(c => c?.slug).map(c => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/govt-exams/category/${c.slug}`, lastmod: c.updatedAt, changefreq: 'weekly', priority: '0.7' })).join(''),
         // Canonical exam URL is /govt-exams/exam/<slug>. /exams/<slug> still exists
         // as a route but is intentionally NOT in the sitemap to avoid content
@@ -87,7 +84,8 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
         blogs.filter(b => b?.slug).map(b => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/blog/${b.slug}`, lastmod: b.updatedAt || b.publishedAt || b.createdAt, changefreq: 'monthly', priority: '0.7' })).join(''),
         notes.filter(n => n?.slug).map(n => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/notes/${n.slug}`, lastmod: n.updatedAt || n.publishedAt || n.createdAt, changefreq: 'monthly', priority: '0.6' })).join(''),
         examNews.filter(n => n?.slug).map(n => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exam-news/${n.slug}`, lastmod: n.updatedAt || n.createdAt, changefreq: 'weekly', priority: '0.7' })).join(''),
-        currentAffairs.filter(a => a?.slug).map(a => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/${a.slug}`, lastmod: a.updatedAt || a.date || a.createdAt, changefreq: 'weekly', priority: '0.65' })).join(''),
+        // Monthly digests only: the daily items are thin and noindex.
+        currentAffairs.filter(m => m?.key).map(m => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/month/${m.key}`, lastmod: m.lastmod, changefreq: 'weekly', priority: '0.7' })).join(''),
         // /pyq/<examSlug> — per-exam PYQ archive index
         pyqExamIndexes.filter(e => e?.slug).map(e => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/pyq/${e.slug}`, lastmod: e.updatedAt, changefreq: 'weekly', priority: '0.85' })).join(''),
         // /pyq/<examSlug>/<paperSlug> — individual PYQ paper landing pages
@@ -112,6 +110,19 @@ function generateSiteMap({ exams = [], categoryIds = [], blogs = [], notes = [],
 
 function SiteMap() {}
 
+// The sitemap is split per content type so Search Console reports indexed vs
+// submitted counts for each one separately. /sitemap.xml is the index;
+// /sitemap-<name>.xml (rewritten to /sitemap.xml?section=<name> in next.config.mjs)
+// serves a single section.
+const SECTIONS = ['core', 'quizzes', 'notes', 'pyq', 'practice', 'current-affairs', 'exam-news', 'blog', 'interview-questions'];
+
+const generateSitemapIndex = () => `<?xml version="1.0" encoding="UTF-8"?>
+   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${SECTIONS.map((name) => `
+   <sitemap>
+       <loc>${EXTERNAL_DATA_URL}/sitemap-${name}.xml</loc>
+   </sitemap>`).join('')}
+   </sitemapindex>`;
+
 const safeFind = async (importer, projection, filter = {}, limit = 25000, sort = {}) => {
     try {
         const Model = (await importer()).default;
@@ -121,7 +132,23 @@ const safeFind = async (importer, projection, filter = {}, limit = 25000, sort =
     }
 };
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res, query }) {
+    const section = typeof query?.section === 'string' ? query.section : null;
+    if (section && !SECTIONS.includes(section)) {
+        res.statusCode = 404;
+        res.end();
+        return { props: {} };
+    }
+    if (!section) {
+        res.setHeader('Content-Type', 'text/xml');
+        res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');
+        res.write(generateSitemapIndex());
+        res.end();
+        return { props: {} };
+    }
+    // Only query the collections this section needs.
+    const gate = (name, run) => (section === name ? run() : Promise.resolve([]));
+
     try {
         await dbConnect();
 
@@ -139,20 +166,34 @@ export async function getServerSideProps({ res }) {
             interviewCategories,
             interviewQuestions,
         ] = await Promise.all([
-            Exam.find({ isActive: true }).select('_id slug updatedAt createdAt').lean(),
-            safeFind(() => import('../models/ExamCategory'), '_id slug updatedAt'),
-            safeFind(() => import('../models/Blog'), 'slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 }),
-            safeFind(() => import('../models/StudyNote'), 'slug updatedAt publishedAt createdAt', {}, 5000, { publishedAt: -1 }),
-            safeFind(() => import('../models/ExamNews'), '_id slug updatedAt createdAt', {}, 5000, { createdAt: -1 }),
-            safeFind(() => import('../models/CurrentAffair'), '_id slug updatedAt date createdAt', {}, 5000, { date: -1 }),
-            safeFind(() => import('../models/Subject'), '_id slug updatedAt createdAt', { isActive: { $ne: false } }, 5000),
-            safeFind(() => import('../models/Topic'), '_id slug updatedAt createdAt', { isActive: { $ne: false } }, 5000),
-            safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt',
+            gate('core', () => Exam.find({ isActive: true }).select('_id slug updatedAt createdAt').lean()),
+            gate('core', () => safeFind(() => import('../models/ExamCategory'), '_id slug updatedAt')),
+            gate('blog', () => safeFind(() => import('../models/Blog'), 'slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 })),
+            gate('notes', () => safeFind(() => import('../models/StudyNote'), 'slug updatedAt publishedAt createdAt', {}, 5000, { publishedAt: -1 })),
+            gate('exam-news', () => safeFind(() => import('../models/ExamNews'), '_id slug updatedAt createdAt', {}, 5000, { createdAt: -1 })),
+            gate('current-affairs', async () => {
+                try {
+                    const CurrentAffair = (await import('../models/CurrentAffair')).default;
+                    const months = await CurrentAffair.aggregate([
+                        { $match: { status: 'published', slug: { $exists: true, $ne: null } } },
+                        { $group: { _id: { $dateToString: { format: '%Y-%m', date: '$date' } }, n: { $sum: 1 }, lastmod: { $max: '$updatedAt' } } },
+                        { $match: { n: { $gte: DIGEST_MIN_ITEMS } } },
+                        { $sort: { _id: -1 } },
+                    ]);
+                    return months.map(m => ({ key: m._id, lastmod: m.lastmod }));
+                } catch (e) {
+                    console.error('Sitemap: current-affairs digest section failed:', e);
+                    return [];
+                }
+            }),
+            gate('core', () => safeFind(() => import('../models/Subject'), '_id slug updatedAt createdAt', { isActive: { $ne: false } }, 5000)),
+            gate('core', () => safeFind(() => import('../models/Topic'), '_id slug updatedAt createdAt', { isActive: { $ne: false } }, 5000)),
+            gate('quizzes', () => safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt',
                 // The auto-sliced quiz series carries noindexOverride, so submitting
                 // it would just pad the sitemap with URLs Google is told not to index.
-                { status: 'published', noindexOverride: { $ne: true } }, 25000, { publishedAt: -1 }),
+                { status: 'published', noindexOverride: { $ne: true } }, 25000, { publishedAt: -1 })),
             // PYQ papers — populate examPattern.exam for slug, scope to PYQ docs with slugs
-            (async () => {
+            gate('pyq', async () => {
                 try {
                     const PracticeTest = (await import('../models/PracticeTest')).default;
                     await import('../models/ExamPattern');
@@ -183,15 +224,15 @@ export async function getServerSideProps({ res }) {
                     console.error('Sitemap: PYQ section failed:', e);
                     return [];
                 }
-            })(),
-            safeFind(() => import('../models/InterviewCategory'), '_id slug updatedAt', { isActive: true }, 5000),
-            safeFind(() => import('../models/InterviewQuestion'), 'slug updatedAt createdAt', { status: 'published' }, 25000),
+            }),
+            gate('interview-questions', () => safeFind(() => import('../models/InterviewCategory'), '_id slug updatedAt', { isActive: true }, 5000)),
+            gate('interview-questions', () => safeFind(() => import('../models/InterviewQuestion'), 'slug updatedAt createdAt', { status: 'published' }, 25000)),
         ]);
 
         // Consolidated /practice/<exam>/<subject> pages — only the series with
         // enough questions to stand on their own get submitted.
         let practiceSeries = [];
-        try {
+        if (section === 'practice') try {
             const Quiz = (await import('../models/Quiz')).default;
             const Subject = (await import('../models/Subject')).default;
             const groups = await Quiz.aggregate([
@@ -218,7 +259,7 @@ export async function getServerSideProps({ res }) {
         // group, and the subject must have 2+ distinct qualifying topics for the
         // exam (otherwise the topic page would just duplicate its subject page).
         let practiceTopics = [];
-        try {
+        if (section === 'practice') try {
             const Quiz = (await import('../models/Quiz')).default;
             const Topic = (await import('../models/Topic')).default;
             const Subject = (await import('../models/Subject')).default;
@@ -264,7 +305,7 @@ export async function getServerSideProps({ res }) {
         });
         const pyqExamIndexes = Array.from(pyqExamIndexMap.values());
 
-        const sitemap = generateSiteMap({ exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions });
+        const sitemap = generateSiteMap({ includeStatic: section === 'core', exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions });
 
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');
@@ -272,7 +313,7 @@ export async function getServerSideProps({ res }) {
         res.end();
     } catch (e) {
         console.error('Error generating sitemap:', e);
-        const sitemap = generateSiteMap({});
+        const sitemap = generateSiteMap({ includeStatic: false });
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');
         res.write(sitemap);

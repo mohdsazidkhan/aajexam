@@ -42,6 +42,8 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
         title={`${affair.title} – Current Affairs ${new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })} | AajExam`}
         description={(affair.keyPoints?.[0] || affair.content || '').slice(0, 160) || `${affair.title}: daily current affairs for SSC, UPSC, Banking and Railway exam preparation on AajExam.`}
         canonical={`/current-affairs/${affair.slug || lookupId}`}
+        // Daily items are 1-2 sentences (thin); the monthly digest page is the indexable unit.
+        noIndex
         type="article"
         publishedTime={affair.date}
         keywords={[
