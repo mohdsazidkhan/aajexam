@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { MessageCircleQuestion, Landmark, Briefcase, Sparkles, Search, ChevronRight, Eye, TrendingUp, ListFilter } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { m as motion } from 'framer-motion';
 import API from '../lib/api';
@@ -45,9 +46,9 @@ const typeConfig = {
 // Clicking a card navigates straight to that category's own detail page
 // (/interview-questions/category/[slug]) instead of expanding inline.
 const CategoryCard = ({ category, index, typeLabel }) => {
-  const router = useRouter();
   return (
-    <Card padded={false} hoverable onClick={() => router.push(`/${category.slug}-interview-questions`)}
+    <Link href={`/${category.slug}-interview-questions`} className="block">
+    <Card padded={false} hoverable
       className="overflow-hidden border-2 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] cursor-pointer">
       <div className="w-full flex items-center justify-between gap-2 sm:gap-3 p-3 sm:p-5 bg-background-surface">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -66,15 +67,16 @@ const CategoryCard = ({ category, index, typeLabel }) => {
         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-content-muted shrink-0" />
       </div>
     </Card>
+    </Link>
   );
 };
 
-const InterviewQuestionsPage = () => {
+const InterviewQuestionsPage = ({ initialCategories = [] } = {}) => {
   const { translate } = useTranslate();
   const [type, setType] = useState('all');
   const [language, setLanguage] = useState('en');
-  const [categories, setCategories] = useState([]);
-  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [categories, setCategories] = useState(initialCategories);
+  const [loadingCategories, setLoadingCategories] = useState(initialCategories.length === 0);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [search, setSearch] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -275,3 +277,20 @@ const InterviewQuestionsPage = () => {
 };
 
 export default InterviewQuestionsPage;
+
+export async function getServerSideProps({ res }) {
+  try {
+    const dbConnect = (await import('../lib/db')).default;
+    const InterviewCategory = (await import('../models/InterviewCategory')).default;
+    await dbConnect();
+    const categories = await InterviewCategory.find({ isActive: true })
+      .select('name slug type order')
+      .sort({ order: 1, name: 1 })
+      .lean();
+    if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
+    return { props: { initialCategories: JSON.parse(JSON.stringify(categories)) } };
+  } catch (e) {
+    console.error('interview questions hub ssr error', e);
+    return { props: { initialCategories: [] } };
+  }
+}

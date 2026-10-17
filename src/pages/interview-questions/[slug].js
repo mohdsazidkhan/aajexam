@@ -1,61 +1,47 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MessageCircleQuestion, Lightbulb, Eye, ArrowLeft, Tag } from 'lucide-react';
 import { useRouter } from 'next/router';
-import API from '../../lib/api';
 import Card from '../../components/ui/Card';
 import Seo from '../../components/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
-import { DetailSkeleton } from '../../components/skeletons/PrivateSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
-// Module-level dedup: when the auth-state-driven layout switch in _app.js
-// remounts this page during hydration, both mounts await the same in-flight
-// request instead of firing the API (and incrementing views) twice.
-const inflightQuestionRequests = new Map();
+// Server-rendered so crawlers get the title, canonical, h1 and answer in the
+// initial HTML (the page used to be a client-only shell that Google skipped).
+export async function getServerSideProps({ params, res }) {
+  const slug = params?.slug;
+  if (!slug) return { notFound: true };
 
-const InterviewQuestionDetailPage = () => {
+  try {
+    const dbConnect = (await import('../../lib/db')).default;
+    const InterviewQuestion = (await import('../../models/InterviewQuestion')).default;
+    await import('../../models/InterviewCategory');
+    await dbConnect();
+
+    const question = await InterviewQuestion.findOne({ slug: String(slug), status: 'published' })
+      .populate('category', 'name slug type')
+      .lean();
+    if (!question) return { notFound: true };
+
+    // Fire-and-forget view count, same as the old /api/interview-questions/[slug] GET did.
+    InterviewQuestion.updateOne({ _id: question._id }, { $inc: { views: 1 } }).catch((e) => console.error('View increment failed:', e));
+    question.views = (question.views || 0) + 1;
+
+    if (res) res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400');
+    return { props: { question: JSON.parse(JSON.stringify(question)) } };
+  } catch (e) {
+    console.error('interview question ssr error', e);
+    return { notFound: true };
+  }
+}
+
+const InterviewQuestionDetailPage = ({ question }) => {
   const { translate } = useTranslate();
-  const [question, setQuestion] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState('en');
   const router = useRouter();
-  const { slug } = router.query;
+  const slug = question?.slug;
 
-  useEffect(() => {
-    if (!slug) return;
-    let cancelled = false;
-
-    const fetchQuestion = async () => {
-      let promise = inflightQuestionRequests.get(slug);
-      if (!promise) {
-        promise = API.request(`/api/interview-questions/${slug}`).finally(() => {
-          if (inflightQuestionRequests.get(slug) === promise) inflightQuestionRequests.delete(slug);
-        });
-        inflightQuestionRequests.set(slug, promise);
-      }
-      try {
-        const res = await promise;
-        if (cancelled) return;
-        if (res?.success) setQuestion(res.data);
-        else router.push('/interview-questions');
-      } catch (e) {
-        if (!cancelled) router.push('/interview-questions');
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    };
-    fetchQuestion();
-
-    return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
-
-  if (loading) return (
-    <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
-      <div className="py-8"><DetailSkeleton /></div>
-    </div>
-  );
   if (!question) return null;
 
   const hasHindi = Boolean(question.questionHi || question.answerHi);
@@ -94,7 +80,7 @@ const InterviewQuestionDetailPage = () => {
       />
       <div className="py-0 xl:py-6">
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <button onClick={() => router.push(question.category?.slug ? `/${question.category.slug}-interview-questions` : '/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to <span className="capitalize text-black dark:text-white">{question.category.name}</span></button>
+          <button onClick={() => router.push(question.category?.slug ? `/${question.category.slug}-interview-questions` : '/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to <span className="capitalize text-black dark:text-white">{question.category?.name || 'Interview Questions'}</span></button>
           {hasHindi && (
             <div className="flex rounded-full overflow-auto border-2 border-slate-200 dark:border-slate-700 shrink-0">
               {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (

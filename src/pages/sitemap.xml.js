@@ -34,7 +34,7 @@ const xmlUrl = ({ loc, lastmod, changefreq, priority }) => {
    </url>`;
 };
 
-function generateSiteMap({ includeStatic = true, exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [] }) {
+function generateSiteMap({ includeStatic = true, currentAffairItems = [], exams = [], categoryIds = [], blogs = [], notes = [], examNews = [], currentAffairs = [], subjects = [], topics = [], quizzes = [], pyqPapers = [], pyqExamIndexes = [], practiceSeries = [], practiceTopics = [], interviewCategories = [], interviewQuestions = [] }) {
     // Only PUBLIC, non-login pages here. Login-gated pages (profile, history,
     // dashboards, etc.) and admin pages are excluded by design and are also
     // disallowed in robots.txt + carry noIndex meta on the page itself.
@@ -64,8 +64,12 @@ function generateSiteMap({ includeStatic = true, exams = [], categoryIds = [], b
         { path: '/mentors', priority: '0.6', changefreq: 'weekly' },
         { path: '/daily-challenge', priority: '0.7', changefreq: 'daily' },
         { path: '/subscription', priority: '0.6', changefreq: 'monthly' },
-        { path: '/editorial-policy', priority: '0.3', changefreq: 'yearly' }
-        // Legal pages (privacy, terms, refund, disclaimer) are intentionally not submitted: no search value.
+        { path: '/editorial-policy', priority: '0.3', changefreq: 'yearly' },
+        { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+        { path: '/terms', priority: '0.3', changefreq: 'yearly' },
+        { path: '/refund', priority: '0.3', changefreq: 'yearly' },
+        { path: '/disclaimer', priority: '0.3', changefreq: 'yearly' },
+        { path: '/halal-disclaimer', priority: '0.3', changefreq: 'yearly' }
     ];
 
     // Sitemap is slug-only by design — every record has a slug post-backfill,
@@ -84,8 +88,9 @@ function generateSiteMap({ includeStatic = true, exams = [], categoryIds = [], b
         blogs.filter(b => b?.slug).map(b => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/blog/${b.slug}`, lastmod: b.updatedAt || b.publishedAt || b.createdAt, changefreq: 'monthly', priority: '0.7' })).join(''),
         notes.filter(n => n?.slug).map(n => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/notes/${n.slug}`, lastmod: n.updatedAt || n.publishedAt || n.createdAt, changefreq: 'monthly', priority: '0.6' })).join(''),
         examNews.filter(n => n?.slug).map(n => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/exam-news/${n.slug}`, lastmod: n.updatedAt || n.createdAt, changefreq: 'weekly', priority: '0.7' })).join(''),
-        // Monthly digests only: the daily items are thin and noindex.
+        // Monthly digests plus every individual daily item (all public pages are indexable).
         currentAffairs.filter(m => m?.key).map(m => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/month/${m.key}`, lastmod: m.lastmod, changefreq: 'weekly', priority: '0.7' })).join(''),
+        currentAffairItems.filter(a => a?.slug).map(a => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/current-affairs/${a.slug}`, lastmod: a.updatedAt || a.date || a.createdAt, changefreq: 'weekly', priority: '0.65' })).join(''),
         // /pyq/<examSlug> — per-exam PYQ archive index
         pyqExamIndexes.filter(e => e?.slug).map(e => xmlUrl({ loc: `${EXTERNAL_DATA_URL}/pyq/${e.slug}`, lastmod: e.updatedAt, changefreq: 'weekly', priority: '0.85' })).join(''),
         // /pyq/<examSlug>/<paperSlug> — individual PYQ paper landing pages
@@ -158,6 +163,7 @@ export async function getServerSideProps({ res, query }) {
             blogs,
             notes,
             examNews,
+            currentAffairItems,
             currentAffairs,
             subjects,
             topics,
@@ -171,6 +177,7 @@ export async function getServerSideProps({ res, query }) {
             gate('blog', () => safeFind(() => import('../models/Blog'), 'slug updatedAt publishedAt createdAt', { status: 'published' }, 5000, { publishedAt: -1 })),
             gate('notes', () => safeFind(() => import('../models/StudyNote'), 'slug updatedAt publishedAt createdAt', {}, 5000, { publishedAt: -1 })),
             gate('exam-news', () => safeFind(() => import('../models/ExamNews'), '_id slug updatedAt createdAt', {}, 5000, { createdAt: -1 })),
+            gate('current-affairs', () => safeFind(() => import('../models/CurrentAffair'), '_id slug updatedAt date createdAt', { status: 'published' }, 25000, { date: -1 })),
             gate('current-affairs', async () => {
                 try {
                     const CurrentAffair = (await import('../models/CurrentAffair')).default;
@@ -305,7 +312,7 @@ export async function getServerSideProps({ res, query }) {
         });
         const pyqExamIndexes = Array.from(pyqExamIndexMap.values());
 
-        const sitemap = generateSiteMap({ includeStatic: section === 'core', exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions });
+        const sitemap = generateSiteMap({ includeStatic: section === 'core', currentAffairItems, exams, categoryIds, blogs, notes, examNews, currentAffairs, subjects, topics, quizzes, pyqPapers, pyqExamIndexes, practiceSeries, practiceTopics, interviewCategories, interviewQuestions });
 
         res.setHeader('Content-Type', 'text/xml');
         res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=600');

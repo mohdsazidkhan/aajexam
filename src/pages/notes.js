@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
 import { StickyNote, Bookmark, Eye, Search, BookOpen, Hash, Sparkles, Calculator, ChevronRight, TrendingUp, Zap } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { m as motion } from 'framer-motion';
 import API from '../lib/api';
@@ -51,15 +52,15 @@ const noteFilters = [
   ...Object.entries(noteTypeConfig).map(([id, c]) => ({ id, label: c.label, icon: c.icon }))
 ];
 
-const NotesPage = () => {
+const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
   const { translate } = useTranslate();
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [notes, setNotes] = useState(initialItems);
+  const [loading, setLoading] = useState(initialItems.length === 0);
   const [type, setType] = useState('all');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(initialTotalPages);
   const router = useRouter();
   const targetVersion = useTargetExamsVersion();
 
@@ -134,7 +135,8 @@ const NotesPage = () => {
             const Icon = cfg.icon;
             return (
               <motion.div key={note._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
-                <Card hoverable onClick={() => router.push(`/notes/${note.slug}`)}
+                <Link href={`/notes/${note.slug}`} className="block">
+                <Card hoverable
                   className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
@@ -169,6 +171,7 @@ const NotesPage = () => {
                     </div>
                   </div>
                 </Card>
+                </Link>
               </motion.div>
             );
           })}
@@ -190,3 +193,30 @@ const NotesPage = () => {
 };
 
 export default NotesPage;
+
+export async function getServerSideProps({ res }) {
+  try {
+    const dbConnect = (await import('../lib/db')).default;
+    const StudyNote = (await import('../models/StudyNote')).default;
+    await import('../models/Subject');
+    await import('../models/Topic');
+    await dbConnect();
+    const query = { status: 'published' };
+    const [notes, total] = await Promise.all([
+      StudyNote.find(query)
+        .populate('subject', 'name')
+        .populate('topic', 'name')
+        .select('title slug noteType subject topic difficulty views bookmarks tags createdAt')
+        .sort({ views: -1 })
+        .limit(PUBLIC_DEFAULT_PAGE_SIZE)
+        .lean(),
+      StudyNote.countDocuments(query),
+    ]);
+    if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
+    return { props: { initialItems: JSON.parse(JSON.stringify(notes)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1 } };
+  } catch (e) {
+    console.error('notes hub ssr error', e);
+    return { props: { initialItems: [], initialTotalPages: 1 } };
+  }
+}
+

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
 import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X, TrendingUp, Sparkles, Globe, Flame, Trophy, Sword, Leaf } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { m as motion } from 'framer-motion';
 import API from '../lib/api';
@@ -57,18 +58,18 @@ const now = new Date();
 const CURRENT_YEAR = now.getFullYear();
 const YEAR_OPTIONS = Array.from({ length: 5 }, (_, i) => CURRENT_YEAR - i);
 
-const CurrentAffairsPage = () => {
+const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
   const { translate } = useTranslate();
-  const [affairs, setAffairs] = useState([]);
+  const [affairs, setAffairs] = useState(initialItems);
   const [todayAffairs, setTodayAffairs] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(initialItems.length === 0);
   const [category, setCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR);
   const [selectedMonth, setSelectedMonth] = useState(now.getMonth() + 1);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(initialTotalPages);
   const router = useRouter();
   const targetVersion = useTargetExamsVersion();
 
@@ -187,7 +188,8 @@ const CurrentAffairsPage = () => {
             const cfg = catConfig[affair.category] || defaultCat;
             return (
               <motion.div key={affair._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
-                <Card hoverable onClick={() => router.push(`/current-affairs/${affair.slug}`)}
+                <Link href={`/current-affairs/${affair.slug}`} className="block">
+                <Card hoverable
                   className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
@@ -225,6 +227,7 @@ const CurrentAffairsPage = () => {
                     )}
                   </div>
                 </Card>
+                </Link>
               </motion.div>
             );
           })}
@@ -247,3 +250,29 @@ const CurrentAffairsPage = () => {
 };
 
 export default CurrentAffairsPage;
+
+export async function getServerSideProps({ res }) {
+  try {
+    const dbConnect = (await import('../lib/db')).default;
+    const CurrentAffair = (await import('../models/CurrentAffair')).default;
+    await dbConnect();
+    const now = new Date();
+    const select = 'title slug category date keyPoints tags views questions.length';
+    // Same default view as the client: the current month, newest first.
+    let query = {
+      status: 'published',
+      date: { $gte: new Date(now.getFullYear(), now.getMonth(), 1), $lte: new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59) },
+    };
+    if ((await CurrentAffair.countDocuments(query)) === 0) query = { status: 'published' };
+    const [affairs, total] = await Promise.all([
+      CurrentAffair.find(query).select(select).sort({ date: -1 }).limit(PUBLIC_DEFAULT_PAGE_SIZE).lean(),
+      CurrentAffair.countDocuments(query),
+    ]);
+    if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
+    return { props: { initialItems: JSON.parse(JSON.stringify(affairs)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1 } };
+  } catch (e) {
+    console.error('current affairs hub ssr error', e);
+    return { props: { initialItems: [], initialTotalPages: 1 } };
+  }
+}
+

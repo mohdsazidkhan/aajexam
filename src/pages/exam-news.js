@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Megaphone, Calendar, Pin, Eye, ChevronRight, TrendingUp, Sparkles, Bell, CreditCard, BarChart2, Key, Users, Clock, AlertTriangle, Search } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { m as motion } from 'framer-motion';
 import API from '../lib/api';
@@ -51,15 +52,15 @@ const typeFilters = [
   ...Object.entries(typeConfig).map(([id, c]) => ({ id, label: c.label, icon: c.icon }))
 ];
 
-const ExamNewsPage = () => {
+const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
   const { translate } = useTranslate();
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [news, setNews] = useState(initialItems);
+  const [loading, setLoading] = useState(initialItems.length === 0);
   const [type, setType] = useState('all');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(initialTotalPages);
   const router = useRouter();
   const targetVersion = useTargetExamsVersion();
 
@@ -132,7 +133,8 @@ const ExamNewsPage = () => {
             const Icon = cfg.icon;
             return (
               <motion.div key={item._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
-                <Card hoverable onClick={() => router.push(`/exam-news/${item.slug}`)}
+                <Link href={`/exam-news/${item.slug}`} className="block">
+                <Card hoverable
                   className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
@@ -166,6 +168,7 @@ const ExamNewsPage = () => {
                     )}
                   </div>
                 </Card>
+                </Link>
               </motion.div>
             );
           })}
@@ -187,3 +190,27 @@ const ExamNewsPage = () => {
 };
 
 export default ExamNewsPage;
+
+export async function getServerSideProps({ res }) {
+  try {
+    const dbConnect = (await import('../lib/db')).default;
+    const ExamNews = (await import('../models/ExamNews')).default;
+    await import('../models/Exam');
+    await dbConnect();
+    const query = { status: 'published' };
+    const [news, total] = await Promise.all([
+      ExamNews.find(query)
+        .populate('exam', 'name code')
+        .sort({ isPinned: -1, createdAt: -1 })
+        .limit(PUBLIC_DEFAULT_PAGE_SIZE)
+        .lean(),
+      ExamNews.countDocuments(query),
+    ]);
+    if (res) res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600');
+    return { props: { initialItems: JSON.parse(JSON.stringify(news)), initialTotalPages: Math.ceil(total / PUBLIC_DEFAULT_PAGE_SIZE) || 1 } };
+  } catch (e) {
+    console.error('exam news hub ssr error', e);
+    return { props: { initialItems: [], initialTotalPages: 1 } };
+  }
+}
+

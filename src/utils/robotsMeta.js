@@ -23,7 +23,8 @@ const normalizeThreshold = (raw) => {
 };
 
 const ENV = {
-    enabled: toBool(process.env.QUIZ_NOINDEX_ENABLED ?? 'true'),
+    // Default OFF: every public page is meant to be indexable. Set QUIZ_NOINDEX_ENABLED=true to re-enable the content-score noindex gate.
+    enabled: toBool(process.env.QUIZ_NOINDEX_ENABLED ?? 'false'),
     threshold: normalizeThreshold(process.env.QUIZ_CONTENT_SCORE_THRESHOLD ?? '0.5'),
     minIntroWords: parseInt(process.env.QUIZ_MIN_INTRO_WORDS ?? '300', 10),
     safeMode: toBool(process.env.QUIZ_SAFE_MODE ?? 'true'),
