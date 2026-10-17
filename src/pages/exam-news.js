@@ -84,8 +84,8 @@ const ExamNewsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
 
   return (
     <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-      <Seo title="Exam News & Job Alerts – Notifications, Admit Cards, Results | AajExam"
-        description="Stay updated with the latest government exam notifications, admit cards, results, answer keys and vacancies."
+      <Seo title="Govt Exam News 2026: Job Alerts, Admit Cards, Results | AajExam"
+        description="Latest government exam news 2026: SSC, UPSC, Railway, Banking and Police recruitment notifications, admit cards, results, answer keys and vacancies."
         canonical="/exam-news"
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Exam News', url: '/exam-news' }])} />
 

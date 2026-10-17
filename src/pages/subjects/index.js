@@ -30,7 +30,7 @@ export default function Subjects(props) {
   return (
     <>
       <Seo
-        title="Subjects – Reasoning, Maths, English, GA & GK Practice | AajExam"
+        title="Reasoning, Maths, English & GK Practice for SSC, UPSC | AajExam"
         description="Browse subject-wise practice on AajExam: Reasoning, Quantitative Aptitude, English Language, General Awareness, General Knowledge and Current Affairs for SSC, UPSC, Banking and Railway exams."
         canonical="/subjects"
         keywords={[

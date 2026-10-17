@@ -28,7 +28,7 @@ export default function Quizzes(props) {
   return (
     <>
       <Seo
-        title="Free Quizzes – Topic-wise Government Exam Practice | AajExam"
+        title="Free Quizzes for SSC, UPSC, Banking & Railway Exams | AajExam"
         description="Practise 1000+ topic-wise free quizzes on AajExam: Reasoning, Quantitative Aptitude, English, General Awareness and Current Affairs for SSC, UPSC, Banking and Railway exams."
         canonical="/quizzes"
         keywords={[
