@@ -90,7 +90,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     () => (exams || []).slice(0, 8).map(e => e.name).filter(Boolean).join(', '),
     [exams]
   );
-  const seoDescription = seo?.description || `Browse ${exams.length || 20}+ government exam preparation hubs on AajExam${examNamesPreview ? ` – ${examNamesPreview} and more` : ''}. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams.`;
+  const seoDescription = seo?.description || `Browse ${exams.length || 20}+ government exam preparation pages on AajExam${examNamesPreview ? ` – ${examNamesPreview} and more` : ''}. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams.`;
 
   const itemListSchema = useMemo(() => generateItemListSchema({
     name: 'Government Exam Preparation',
@@ -133,7 +133,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
           'banking exam',
           'railway exam',
           'state PSC',
-          'aajexam exams hub'
+          'aajexam exams'
         ]}
         canonical="/govt-exams"
         schemas={[itemListSchema, breadcrumbSchema]}

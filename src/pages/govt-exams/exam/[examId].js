@@ -99,7 +99,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
   const facts = exam?.slug ? EXAM_SEO_FACTS[exam.slug] : null;
   const subjectAreas = subjects.length ? subjects.map((s) => s.name) : (facts?.subjectAreas || []);
   const seoTitle = seo?.title || `${examName}${examCode} – Syllabus, Pattern, Free Practice Tests & Previous Year Papers | AajExam`;
-  const seoDescription = seo?.description || `${examName}${examCode} preparation hub on AajExam — syllabus, exam pattern, ${practiceTests.length} free practice tests, ${pyqs.length} previous year question papers (PYQs) and ${quizzes.length} topic-wise quizzes with detailed solutions and sectional analysis.`.slice(0, 160);
+  const seoDescription = seo?.description || `${examName}${examCode} preparation on AajExam — syllabus, exam pattern, ${practiceTests.length} free practice tests, ${pyqs.length} previous year question papers (PYQs) and ${quizzes.length} topic-wise quizzes with detailed solutions and sectional analysis.`.slice(0, 160);
   const seoKeywords = [
     `${examName} preparation`,
     `${examName} practice test`,
@@ -604,7 +604,7 @@ function buildExamAbout({ exam, patterns = [], practiceTestCount = 0, pyqCount =
 
   const contentLine = `AajExam currently hosts ${practiceTestCount} ${practiceTestCount === 1 ? 'full-length practice test' : 'full-length practice tests'}, ${pyqCount} ${pyqCount === 1 ? 'previous year question paper (PYQ)' : 'previous year question papers (PYQs)'} and ${quizCount} topic-wise ${quizCount === 1 ? 'quiz' : 'quizzes'} for ${examName}, all with detailed step-by-step solutions, instant scoring and section-wise analytics on every attempt.`;
 
-  return `${dbDescription}${examName}${examCode}${examCategory ? ` is a ${examCategory} government competitive exam` : ' is a government competitive exam'} preparation hub on AajExam. Aspirants targeting ${examName} can use this page as the single source of truth for the exam — covering the latest exam pattern, syllabus structure, full-length practice tests, the complete previous-year-paper archive and topic-wise quizzes mapped to the official syllabus.
+  return `${dbDescription}${examName}${examCode}${examCategory ? ` is a ${examCategory} government competitive exam` : ' is a government competitive exam'} preparation on AajExam. Aspirants targeting ${examName} can use this page as the single source of truth for the exam — covering the latest exam pattern, syllabus structure, full-length practice tests, the complete previous-year-paper archive and topic-wise quizzes mapped to the official syllabus.
 
 ${patternLine}
 

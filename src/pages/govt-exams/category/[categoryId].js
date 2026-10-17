@@ -71,7 +71,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
     <div className="space-y-10 animate-fade-in font-outfit">
       <Seo
         title={seo?.title || `${categoryName} – Practice Tests, PYQs & Quizzes | AajExam`}
-        description={seo?.description || `Browse ${exams.length || ''} ${categoryName} exam preparation hubs on AajExam. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes with detailed solutions.`}
+        description={seo?.description || `Browse ${exams.length || ''} ${categoryName} exam preparation pages on AajExam. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes with detailed solutions.`}
         canonical={`/govt-exams/category/${category?.slug || categoryId}`}
         keywords={[
           `${categoryName} exams`,
@@ -101,7 +101,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 active:translate-y-1 active:border-b-0 transition-all w-fit"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          {translate('Back to Hub')}
+          {translate('Back')}
         </button>
 
         <div className="bg-slate-950 rounded-[2rem] xl:rounded-[3rem] p-6 xl:p-14 shadow-sm relative overflow-hidden border-2 border-slate-800">
@@ -179,7 +179,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
             </div>
             <div>
               <h3 className="text-xl xl:text-2xl font-black text-slate-400 uppercase tracking-tight">{translate('No exams found')}</h3>
-              <p className="text-slate-400 font-bold mt-2">{translate('Try another category or search in the Study Hub.')}</p>
+              <p className="text-slate-400 font-bold mt-2">{translate('Try another category or search again.')}</p>
             </div>
           </div>
         )}

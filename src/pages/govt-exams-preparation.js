@@ -45,7 +45,7 @@ export default function GovtExamsPreparation({ initialData }) {
                     { name: 'Government Exams Preparation', url: '/govt-exams-preparation' }
                   ]),
                   generateItemListSchema({
-                    name: 'Government Exam Preparation Hub',
+                    name: 'Government Exam Preparation',
                     items: (exams || []).filter(e => e?.slug).slice(0, 30).map(e => ({ name: e.name, url: `/govt-exams/exam/${e.slug}` }))
                   })
                 ]}
