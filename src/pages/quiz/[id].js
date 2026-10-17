@@ -372,7 +372,8 @@ export async function getServerSideProps({ params, res }) {
         relatedQuizzes,
         aboutText,
         faqs,
-        robotsMeta: robots.robots,
+        // Adaptive quizzes are generated per user (slug adaptive-<userId>-<ts>); never index them.
+        robotsMeta: String(quiz.slug || '').startsWith('adaptive-') ? 'noindex, follow' : robots.robots,
       },
     };
   } catch (e) {

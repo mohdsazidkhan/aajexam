@@ -60,10 +60,6 @@ function generateSiteMap({ currentAffairDigests = [], exams = [], categoryIds = 
         { path: '/current-affairs', priority: '0.85', changefreq: 'daily' },
         { path: '/exam-news', priority: '0.85', changefreq: 'daily' },
         { path: '/blog', priority: '0.8', changefreq: 'daily' },
-        { path: '/community-questions', priority: '0.6', changefreq: 'daily' },
-        { path: '/mentors', priority: '0.6', changefreq: 'weekly' },
-        { path: '/daily-challenge', priority: '0.7', changefreq: 'daily' },
-        { path: '/subscription', priority: '0.6', changefreq: 'monthly' },
         { path: '/editorial-policy', priority: '0.3', changefreq: 'yearly' },
         { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
         { path: '/terms', priority: '0.3', changefreq: 'yearly' },
@@ -153,7 +149,7 @@ export async function getServerSideProps({ res }) {
             safeFind(() => import('../models/Quiz'), '_id slug updatedAt publishedAt createdAt',
                 // The auto-sliced quiz series carries noindexOverride, so submitting
                 // it would just pad the sitemap with URLs Google is told not to index.
-                { status: 'published', noindexOverride: { $ne: true } }, 25000, { publishedAt: -1 }),
+                { status: 'published', noindexOverride: { $ne: true }, slug: { $not: /^adaptive-/ } }, 25000, { publishedAt: -1 }),
             // PYQ papers — populate examPattern.exam for slug, scope to PYQ docs with slugs
             (async () => {
                 try {
