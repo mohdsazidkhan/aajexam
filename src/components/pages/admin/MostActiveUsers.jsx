@@ -305,7 +305,7 @@ const AdminMostActiveUsers = () => {
                 subtitle={`${selected?.email || ''} · ${PERIODS.find((p) => p.value === period)?.label || ''}`}
                 size="xl"
                 bodyClassName="p-2 xl:p-4 pt-2 xl:pt-4"
-                bodyMaxHeight="min-h-[80vh] max-h-[80vh]"
+                bodyMaxHeight="min-h-[70vh] max-h-[70vh]"
                 headerClassName="p-2 xl:p-4 pb-4 xl:pb-4"
             >
                 {detailLoading || !detail ? (
