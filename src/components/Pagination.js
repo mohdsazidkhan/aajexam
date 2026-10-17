@@ -20,56 +20,43 @@ const Pagination = ({
   onItemsPerPageChange,
   itemsPerPageOptions = PAGE_SIZE_OPTIONS,
   showInfo = true,
-  compact = false
+  compact = false,
+  sticky = true
 }) => {
   const { translate, rich } = useTranslate();
   const startItem = (currentPage - 1) * itemsPerPage + 1;
   const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
+  // Always a window of 5 page numbers (fewer only when there are fewer than 5 pages).
   const getPageNumbers = () => {
-    const pages = [];
-    const maxVisiblePages = 5;
-
-    if (totalPages <= maxVisiblePages) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      if (currentPage <= 3) {
-        for (let i = 1; i <= 4; i++) {
-          pages.push(i);
-        }
-        pages.push('...');
-        pages.push(totalPages);
-      } else if (currentPage >= totalPages - 2) {
-        pages.push(1);
-        pages.push('...');
-        for (let i = totalPages - 3; i <= totalPages; i++) {
-          pages.push(i);
-        }
-      } else {
-        pages.push(1);
-        pages.push('...');
-        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-          pages.push(i);
-        }
-        pages.push('...');
-        pages.push(totalPages);
-      }
-    }
-
-    return pages;
+    const windowSize = 5;
+    const count = Math.min(windowSize, totalPages);
+    const first = Math.min(Math.max(1, currentPage - 2), Math.max(1, totalPages - windowSize + 1));
+    return Array.from({ length: count }, (_, i) => first + i);
   };
 
   if (totalPages <= 1 && !onItemsPerPageChange) return null;
 
+  const hasTotals = Number.isFinite(totalItems) && Number.isFinite(itemsPerPage) && itemsPerPage > 0;
   const infoBlock = showInfo && (
-    <div className="text-[9px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-[0.15em] font-outfit">
-       {rich('Result: <0></0> of <1></1>', [() => <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 font-black">{totalItems}</span>])}
+    <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.15em] font-outfit">
+      <span>{translate('Page {page} of {total}', { page: currentPage, total: Math.max(1, totalPages) })}</span>
+      {hasTotals && (
+        <span>
+          {rich('Result: <0></0> of <1></1>', [() => <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md mx-1 font-bold">{startItem} — {endItem}</span>, () => <span className="text-primary-600 font-black">{totalItems}</span>])}
+        </span>
+      )}
     </div>
   );
 
-  const pageSizeBlock = onItemsPerPageChange && (
+  const pageSizeBlock = !onItemsPerPageChange ? (
+    Number.isFinite(itemsPerPage) && itemsPerPage > 0 && (
+      <div className="flex items-center gap-2 text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">
+        {translate('Page Size')}
+        <span className="text-slate-900 dark:text-white px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-md font-bold">{itemsPerPage}</span>
+      </div>
+    )
+  ) : (
     <div className="flex items-center gap-2">
       <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">{translate('Page Size')}</span>
       <StyledSelect
@@ -157,10 +144,10 @@ const Pagination = ({
   }
 
   return (
-    <div className="sticky bottom-0 z-20 grid grid-cols-1 sm:grid-cols-3 items-center gap-2 sm:gap-4 px-4 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)] transition-colors duration-300">
-      <div className="sm:col-start-1 flex justify-center sm:justify-start">{infoBlock}</div>
-      <div className="sm:col-start-2 flex justify-center">{pageSizeBlock}</div>
-      <div className="sm:col-start-3 flex justify-center sm:justify-end">{navBlock}</div>
+    <div className={`${sticky ? 'sticky bottom-0 z-20 rounded-b-2xl shadow-[0_-4px_12px_rgba(0,0,0,0.04)]' : 'rounded-2xl shadow-sm border-2'} flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5 bg-white dark:bg-slate-900 border-t-2 border-slate-100 dark:border-slate-800 transition-colors duration-300`}>
+      <div className="flex justify-start">{infoBlock}</div>
+      <div className="flex justify-center">{pageSizeBlock}</div>
+      <div className="flex justify-end">{navBlock}</div>
     </div>
   );
 };

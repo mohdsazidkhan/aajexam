@@ -8,8 +8,10 @@ import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import { BlogListSkeleton } from '../skeletons/PublicSkeletons';
 import { useSelector } from 'react-redux';
-import { Search, Eye, Heart, Clock, Star, Pin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Eye, Heart, Clock, Star, Pin } from 'lucide-react';
 import useTranslate from '../../hooks/useTranslate';
+import Pagination from '../Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
 const BlogsPage = () => {
   const { translate } = useTranslate();
@@ -17,6 +19,7 @@ const BlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     search: '',
@@ -39,7 +42,7 @@ const BlogsPage = () => {
       setError(null);
       const params = {
         page: currentPage,
-        limit: 9,
+        limit: pageSize,
         search: filters.search,
         // '' = default (target exams if any); 'all' = explicit "All Exams", no target filter.
         exam: filters.exam === 'all' ? undefined : filters.exam,
@@ -60,7 +63,7 @@ const BlogsPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, filters.search, filters.exam, filters.featured, targetVersion]);
+  }, [currentPage, pageSize, filters.search, filters.exam, filters.featured, targetVersion]);
 
   const fetchExams = async () => {
     try {
@@ -247,23 +250,7 @@ const BlogsPage = () => {
         )}
 
         {/* Pagination */}
-        {pagination.totalPages > 1 && (
-          <div className="flex justify-center mt-8">
-            <nav className="flex items-center gap-2">
-              <button onClick={() => goToPage(Math.max(currentPage - 1, 1))} disabled={!pagination.hasPrev}
-                className="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1">
-                <ChevronLeft className="w-4 h-4" /> Previous
-              </button>
-              <span className="px-4 py-2 text-sm font-bold text-gray-700 dark:text-gray-300">
-                {translate('Page {page} of {total}', { page: pagination.page, total: pagination.totalPages })}
-              </span>
-              <button onClick={() => goToPage(Math.min(currentPage + 1, pagination.totalPages))} disabled={!pagination.hasNext}
-                className="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1">
-                {translate('Next')} <ChevronRight className="w-4 h-4" />
-              </button>
-            </nav>
-          </div>
-        )}
+        <div className="mt-8"><Pagination currentPage={currentPage} totalPages={pagination.totalPages} onPageChange={goToPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); goToPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
 
         {error && (
           <div className="mt-4 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white rounded-md p-4">

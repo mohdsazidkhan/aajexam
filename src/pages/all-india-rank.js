@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  ChevronRight, ChevronLeft, Users, RefreshCw, Globe, ChevronDown, MapPin, Sparkles, Clock
+  ChevronRight, Users, RefreshCw, Globe, ChevronDown, MapPin, Sparkles, Clock
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -15,10 +15,12 @@ import SubscriptionGuard from '../components/SubscriptionGuard';
 import { getCurrentUser } from '../lib/utils/authUtils';
 import { formatTimeSpent, formatSecondsSpent } from '../lib/utils/timeFormat';
 import useTranslate from '../hooks/useTranslate';
+import Pagination from '../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const LeaderboardSkeleton = () => (
@@ -254,7 +256,8 @@ const AllIndiaRankPage = () => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [page, setPage] = useState(1);
-  const ROWS_PER_PAGE = 10;
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
+  const ROWS_PER_PAGE = pageSize;
 
   const currentUser = typeof window !== 'undefined' ? getCurrentUser() : null;
   const currentUserId = currentUser?._id || currentUser?.id;
@@ -279,7 +282,7 @@ const AllIndiaRankPage = () => {
     try {
       if (isRefresh) setRefreshing(true);
       else setLoading(true);
-      const url = `/api/air?limit=20${selectedExamId ? `&examId=${selectedExamId}` : ''}`;
+      const url = `/api/air?limit=100${selectedExamId ? `&examId=${selectedExamId}` : ''}`;
       const res = await API.request(url);
       if (res?.success) {
         setData(res.data || []);
@@ -451,25 +454,7 @@ const AllIndiaRankPage = () => {
                     <LeaderboardRow key={entry.userId} entry={entry} index={(page - 1) * ROWS_PER_PAGE + i} currentUserId={currentUserId} />
                   ))}
 
-                  {totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-3 pt-4">
-                      <button aria-label={translate('Previous')}
-                        onClick={() => setPage(p => Math.max(1, p - 1))}
-                        disabled={page === 1}
-                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                      </button>
-                      <span className="text-xs font-black text-content-muted uppercase">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
-                      <button aria-label={translate('Next')}
-                        onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                        disabled={page === totalPages}
-                        className="w-9 h-9 rounded-full border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted flex items-center justify-center disabled:opacity-40 hover:border-slate-200 dark:hover:border-white transition-all"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  )}
+                  <div className="pt-4"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} itemsPerPage={ROWS_PER_PAGE} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} totalItems={data.length} sticky={false} /></div>
                 </motion.div>
               </AnimatePresence>
             )}

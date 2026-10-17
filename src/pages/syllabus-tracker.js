@@ -13,7 +13,7 @@ import useTranslate from '../hooks/useTranslate';
 
 // --- Tracker Skeleton (matches the loaded data view) ---
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const TrackerSkeleton = () => (

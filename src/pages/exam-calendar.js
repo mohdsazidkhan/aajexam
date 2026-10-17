@@ -30,7 +30,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`animate-pulse bg-slate-100 dark:bg-slate-800 rounded-lg ${className}`} />
+  <div className={`animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg ${className}`} />
 );
 const CalendarSkeleton = () => (
   <div className="space-y-2 xl:space-y-4">

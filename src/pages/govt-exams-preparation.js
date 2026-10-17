@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import MobileAppWrapper from '../components/MobileAppWrapper';
-import { FaGraduationCap, FaChartLine, FaChevronLeft, FaChevronRight, FaQuestionCircle } from 'react-icons/fa';
+import { FaGraduationCap, FaChartLine, FaQuestionCircle } from 'react-icons/fa';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
 import { ExamCardSkeleton } from '../components/skeletons/PublicSkeletons';
 import useTranslate from '../hooks/useTranslate';
+import Pagination from '../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 export default function GovtExamsPreparation({ initialData }) {
   const { translate, rich, translateData } = useTranslate();
@@ -21,6 +23,14 @@ export default function GovtExamsPreparation({ initialData }) {
         router.push({
             pathname: router.pathname,
             query: { ...router.query, page: newPage },
+        }, undefined, { scroll: true });
+    };
+
+    const handlePageSizeChange = (n) => {
+        setLoading(true);
+        router.push({
+            pathname: router.pathname,
+            query: { ...router.query, limit: n, page: 1 },
         }, undefined, { scroll: true });
     };
 
@@ -113,50 +123,7 @@ export default function GovtExamsPreparation({ initialData }) {
                             </div>
 
                             {/* Pagination */}
-                            {pagination.totalPages > 1 && (
-                                <div className="mt-8 xl:mt-16 flex items-center justify-center gap-3">
-                                    <button aria-label={translate('Previous')}
-                                        onClick={() => handlePageChange(pagination.currentPage - 1)}
-                                        disabled={pagination.currentPage <= 1}
-                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-sm active:translate-y-1 active:border-b-0"
-                                    >
-                                        <FaChevronLeft className="w-4 h-4" />
-                                    </button>
-
-                                    <div className="flex items-center gap-3">
-                                        {[...Array(Math.min(5, pagination.totalPages))].map((_, idx) => {
-                                            const pageNum = pagination.currentPage <= 3
-                                                ? idx + 1
-                                                : pagination.currentPage + idx - 2;
-
-                                            if (pageNum > pagination.totalPages || pageNum <= 0) return null;
-
-                                            const isActive = pageNum === pagination.currentPage;
-
-                                            return (
-                                                <button
-                                                    key={pageNum}
-                                                    onClick={() => handlePageChange(pageNum)}
-                                                    className={`w-12 h-12 rounded-2xl font-black transition-all shadow-sm border-2 ${isActive
-                                                        ? 'bg-primary-600 border-primary-600 text-white active:translate-y-1 active:border-b-0'
-                                                        : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 active:translate-y-1 active:border-b-0'
-                                                        }`}
-                                                >
-                                                    {pageNum}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-
-                                    <button aria-label={translate('Next')}
-                                        onClick={() => handlePageChange(pagination.currentPage + 1)}
-                                        disabled={!pagination.hasMore}
-                                        className="w-12 h-12 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl font-black text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center shadow-sm active:translate-y-1 active:border-b-0"
-                                    >
-                                        <FaChevronRight className="w-4 h-4" />
-                                    </button>
-                                </div>
-                            )}
+                            <div className="mt-8 xl:mt-16"><Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} onPageChange={handlePageChange} itemsPerPage={pagination.limit || PUBLIC_DEFAULT_PAGE_SIZE} onItemsPerPageChange={handlePageSizeChange} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
                         </>
                     )}
 
@@ -185,9 +152,9 @@ export default function GovtExamsPreparation({ initialData }) {
 
 export async function getServerSideProps(context) {
     try {
-        const { page = 1, limit = 9 } = context.query;
+        const { page = 1 } = context.query;
         const pageNum = parseInt(page, 10);
-        const limitNum = parseInt(limit, 10);
+        const limitNum = PUBLIC_PAGE_SIZE_OPTIONS.includes(parseInt(context.query.limit, 10)) ? parseInt(context.query.limit, 10) : PUBLIC_DEFAULT_PAGE_SIZE;
         const skip = (pageNum - 1) * limitNum;
 
         await dbConnect();
@@ -209,6 +176,7 @@ export async function getServerSideProps(context) {
                     pagination: {
                         currentPage: pageNum,
                         totalPages,
+                        limit: limitNum,
                         totalExams: total,
                         hasMore: pageNum < totalPages
                     }

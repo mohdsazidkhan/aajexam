@@ -8,15 +8,17 @@ import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import useTranslate from '../hooks/useTranslate';
+import Pagination from '../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const InterviewQuestionsSkeleton = () => (
   <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/20 dark:bg-slate-800 border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
+    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/25 dark:bg-primary-500/25 border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
     <div className="flex gap-2 px-1">{[1, 2].map(i => <Sh key={i} className="h-10 w-32 rounded-full" />)}</div>
     <div className="flex gap-2 px-1">{[1, 2, 3, 4].map(i => <Sh key={i} className="h-9 w-24 rounded-full" />)}</div>
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
@@ -42,18 +44,15 @@ const typeConfig = {
 // ─── Category Card ──────────────────────────────────────────────────────────
 // Clicking a card navigates straight to that category's own detail page
 // (/interview-questions/category/[slug]) instead of expanding inline.
-const CategoryCard = ({ category, index, TypeIcon, typeLabel }) => {
+const CategoryCard = ({ category, index, typeLabel }) => {
   const router = useRouter();
   return (
     <Card padded={false} hoverable onClick={() => router.push(`/${category.slug}-interview-questions`)}
       className="overflow-hidden border-2 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] cursor-pointer">
       <div className="w-full flex items-center justify-between gap-2 sm:gap-3 p-3 sm:p-5 bg-background-surface">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[9px] sm:text-[10px] font-black flex items-center justify-center shrink-0">
+          <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-xl sm:rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs sm:text-base font-black tabular-nums">
             {index + 1}
-          </span>
-          <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
-            <TypeIcon className="w-4 h-4 sm:w-5 sm:h-5 text-white dark:text-black" />
           </div>
           <div className="min-w-0 text-left">
             <h3 className="text-xs sm:text-sm font-black text-content-primary truncate">{category.name}</h3>
@@ -81,6 +80,7 @@ const InterviewQuestionsPage = () => {
   const [questions, setQuestions] = useState([]);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [qPage, setQPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [qTotalPages, setQTotalPages] = useState(1);
   const router = useRouter();
 
@@ -119,14 +119,14 @@ const InterviewQuestionsPage = () => {
     const fetchMatchingQuestions = async () => {
       try {
         setLoadingQuestions(true);
-        const params = new URLSearchParams({ search: search.trim(), page: qPage, limit: 30 });
+        const params = new URLSearchParams({ search: search.trim(), page: qPage, limit: pageSize });
         if (type !== 'all') params.set('type', type);
         const res = await API.request(`/api/interview-questions?${params}`);
         if (res?.success) { setQuestions(res.data || []); setQTotalPages(res.pagination?.totalPages || 1); }
       } catch (e) { } finally { setLoadingQuestions(false); }
     };
     fetchMatchingQuestions();
-  }, [search, type, qPage]);
+  }, [search, type, qPage, pageSize]);
 
   const filteredCategories = search.trim()
     ? categories.filter(c => c.name.toLowerCase().includes(search.trim().toLowerCase()))
@@ -191,19 +191,14 @@ const InterviewQuestionsPage = () => {
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
                 {questions.map((q, idx) => {
-                  const cfg = typeConfig[q.category?.type] || typeConfig.government;
-                  const Icon = cfg.icon;
                   return (
                     <motion.div key={q._id || idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                       <Card hoverable onClick={() => router.push(`/interview-questions/${q.slug}`)}
                         className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-black dark:hover:border-white transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-3">
-                            <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-black flex items-center justify-center shrink-0">
-                              {(qPage - 1) * 30 + idx + 1}
-                            </span>
-                            <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm">
-                              <Icon className="w-6 h-6 text-white dark:text-black" />
+                            <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                              {(qPage - 1) * pageSize + idx + 1}
                             </div>
                             <div>
                               <h3 className={`text-sm font-black text-content-primary tracking-tight line-clamp-2 ${language === 'hi' && q.questionHi ? 'leading-relaxed' : 'leading-tight'}`}>
@@ -228,15 +223,7 @@ const InterviewQuestionsPage = () => {
                 })}
               </div>
 
-              {qTotalPages > 1 && (
-                <div className="flex justify-center items-center gap-4 pt-2">
-                  <button disabled={qPage === 1} onClick={() => setQPage(qPage - 1)}
-                    className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Prev')}</button>
-                  <span className="text-sm font-black text-slate-500">{translate('Page {page} of {total}', { page: qPage, total: qTotalPages })}</span>
-                  <button disabled={qPage === qTotalPages} onClick={() => setQPage(qPage + 1)}
-                    className="px-5 py-2.5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm font-black disabled:opacity-30">{translate('Next')}</button>
-                </div>
-              )}
+              <div className="pt-6"><Pagination currentPage={qPage} totalPages={qTotalPages} onPageChange={setQPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setQPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
             </>
           )}
         </section>
@@ -278,7 +265,6 @@ const InterviewQuestionsPage = () => {
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-4 items-start">
             {filteredCategories.map((c, idx) => (
               <CategoryCard key={c._id} category={c} index={idx}
-                TypeIcon={(typeConfig[c.type] || typeConfig.government).icon}
                 typeLabel={type === 'all' ? (typeConfig[c.type]?.label || null) : null} />
             ))}
           </div>

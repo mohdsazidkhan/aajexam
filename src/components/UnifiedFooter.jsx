@@ -23,7 +23,6 @@ import {
 import { m as motion } from 'framer-motion';
 
 import config from '../lib/config/appConfig';
-import Card from './ui/Card';
 import { FaEnvelope, FaPinterest } from 'react-icons/fa';
 import { isAdmin } from '../lib/utils/adminUtils';
 import useTranslate from '../hooks/useTranslate';
@@ -64,9 +63,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');
 
   return (
-    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden dark: border-t border-slate-200 dark:border-slate-800/50 font-outfit">
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-white dark:bg-black border-t border-slate-200 dark:border-slate-800/50 font-outfit">
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-4 xl:mb-8">
@@ -143,8 +140,8 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
               <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse"/>
               {translate('Support')}
             </h3>
-            <Card variant="glass" className="relative p-0 !bg-white/90 dark:!bg-slate-900/70 !border-slate-200 dark:!border-white/10 !rounded-[2rem] overflow-hidden group shadow-sm backdrop-blur-xl max-w-xs xl:max-w-none mx-auto sm:mx-0">
-              <div className="p-5 space-y-5">
+            <div className="space-y-5 max-w-xs xl:max-w-none mx-auto sm:mx-0">
+              <div className="space-y-5">
                 <a
                   href={`mailto:${config.CONTACT.EMAIL}`}
                   aria-label={translate('Send us an email')}
@@ -178,7 +175,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                 </a>
               </div>
 
-              <div className="px-5 py-3 bg-slate-50 dark:bg-white/5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary-600 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
                   <span className="text-[11px] font-black text-content-secondary tracking-[0.08em]">{translate('System status')}</span>
@@ -188,7 +185,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
                   <span className="text-[11px] font-black text-primary-600 tracking-[0.08em]">{translate('Stable')}</span>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
 

@@ -152,7 +152,7 @@ const AdminBottomNav = () => {
       </AnimatePresence>
 
       {/* Bottom Nav */}
-      <nav aria-label="Admin navigation" className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
+      <nav aria-label="Admin navigation" className="xl:hidden fixed bottom-0 left-0 right-0 h-14 bg-white dark:bg-black border-t-2 border-slate-200 dark:border-slate-800 flex items-stretch justify-around px-1 pb-[env(safe-area-inset-bottom)] z-[135]">
         {navItems.map((item) => {
           // Create — its own flex slot like every other item, just lifted up
           // by translate so it floats half above / half inside the bar.

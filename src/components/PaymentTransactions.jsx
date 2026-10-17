@@ -1,8 +1,10 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { FaFilter, FaDownload, FaEye, FaEyeSlash, FaChevronLeft, FaChevronRight, FaRupeeSign, FaCheckCircle, FaTimesCircle, FaClock, FaExclamationTriangle, FaCreditCard, FaReceipt, FaTag, FaCalendar, FaGlobe, FaSearch, FaTimes } from 'react-icons/fa';
+import { FaFilter, FaDownload, FaEye, FaEyeSlash, FaRupeeSign, FaCheckCircle, FaTimesCircle, FaClock, FaExclamationTriangle, FaCreditCard, FaReceipt, FaTag, FaCalendar, FaGlobe, FaSearch, FaTimes } from 'react-icons/fa';
 import API from '../lib/api';
 import { ListSkeleton } from './skeletons/PrivateSkeletons';
 import useTranslate from '../hooks/useTranslate';
+import Pagination from './Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 const PaymentTransactions = () => {
   const { translate, rich } = useTranslate();
@@ -15,7 +17,7 @@ const PaymentTransactions = () => {
     type: 'all',
     status: 'all',
     page: 1,
-    limit: 10
+    limit: PUBLIC_DEFAULT_PAGE_SIZE
   });
   const [pagination, setPagination] = useState({});
   const [summary, setSummary] = useState({});
@@ -194,7 +196,7 @@ const PaymentTransactions = () => {
       type: 'all',
       status: 'all',
       page: 1,
-      limit: 10
+      limit: PUBLIC_DEFAULT_PAGE_SIZE
     });
     setSearchTerm('');
   };
@@ -470,48 +472,7 @@ const PaymentTransactions = () => {
         )}
 
         {/* Pagination */}
-        {pagination.totalPages > 1 && (
-          <div className="mt-6 xl:mt-12 flex flex-col xl:flex-row items-center justify-between gap-3 xl:gap-6">
-            <div className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
-              {translate('Records {from}-{to} of {total}', { from: ((pagination.currentPage - 1) * filters.limit) + 1, to: Math.min(pagination.currentPage * filters.limit, pagination.totalCount), total: pagination.totalCount })}
-            </div>
-            <div className="flex items-center gap-2 xl:gap-3">
-              <button aria-label={translate('Previous')}
-                onClick={() => handlePageChange(pagination.currentPage - 1)}
-                disabled={!pagination.hasPrev}
-                className="w-9 h-9 xl:w-12 xl:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
-              >
-                <FaChevronLeft className="text-xs xl:text-sm" />
-              </button>
-
-              <div className="flex gap-1.5 xl:gap-2">
-                {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
-                  const page = i + 1;
-                  return (
-                    <button
-                      key={page}
-                      onClick={() => handlePageChange(page)}
-                      className={`w-9 h-9 xl:w-12 xl:h-12 rounded-lg xl:rounded-xl xl:rounded-2xl text-[9px] xl:text-[10px] font-black uppercase tracking-widest transition-all ${page === pagination.currentPage
-                        ? 'bg-primary-600 text-white shadow-sm border-2 border-white'
-                        : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shadow-sm border-2 border-slate-200 dark:border-slate-600 active:translate-y-1'
-                        }`}
-                    >
-                      {page}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <button aria-label={translate('Next')}
-                onClick={() => handlePageChange(pagination.currentPage + 1)}
-                disabled={!pagination.hasNext}
-                className="w-9 h-9 xl:w-12 xl:h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-lg xl:rounded-xl xl:rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-600 disabled:opacity-50 disabled:translate-y-0 transition-all active:translate-y-1 flex items-center justify-center"
-              >
-                <FaChevronRight className="text-xs xl:text-sm" />
-              </button>
-            </div>
-          </div>
-        )}
+        <div className="mt-6 xl:mt-12"><Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} onPageChange={handlePageChange} itemsPerPage={filters.limit} onItemsPerPageChange={(n) => setFilters(prev => ({ ...prev, limit: n, page: 1 }))} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} totalItems={pagination.totalCount} sticky={false} /></div>
       </div>
     </div>
   );

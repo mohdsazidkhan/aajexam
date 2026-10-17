@@ -15,14 +15,14 @@ import {
   Heart,
   Eye,
   Filter,
-  ChevronLeft,
-  ChevronRight,
   Calendar,
   Trash2,
   MessageCircle,
   ArrowRight
 } from 'lucide-react';
 import useTranslate from '../../hooks/useTranslate';
+import Pagination from '../Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
 const CommunityQuestionsPage = () => {
   const { translate } = useTranslate();
@@ -35,6 +35,7 @@ const CommunityQuestionsPage = () => {
   const [error, setError] = useState(null);
   const [exams, setExams] = useState([]);
   const [pagination, setPagination] = useState({});
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [deletingId, setDeletingId] = useState(null);
 
   const [filters, setFilters] = useState({
@@ -55,7 +56,7 @@ const CommunityQuestionsPage = () => {
       setError(null);
       const params = {
         page: currentPage,
-        limit: 15,
+        limit: pageSize,
         sort: filters.sort,
         // '' = default (target exams if any); 'all' = explicit "All Exams", no target filter.
         ...(filters.exam === 'all' ? { examIds: 'all' } : filters.exam && { exam: filters.exam })
@@ -71,7 +72,7 @@ const CommunityQuestionsPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, filters.sort, filters.exam, targetVersion]);
+  }, [currentPage, pageSize, filters.sort, filters.exam, targetVersion]);
 
   const fetchExams = async () => {
     try {
@@ -337,27 +338,7 @@ const CommunityQuestionsPage = () => {
         )}
 
         {/* Pagination */}
-        {pagination.totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-8">
-            <button aria-label={translate('Previous')}
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage <= 1}
-              className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <span className="px-4 py-2 text-sm font-bold text-content-primary">
-              {translate('Page {page} of {total}', { page: currentPage, total: pagination.totalPages })}
-            </span>
-            <button aria-label={translate('Next')}
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage >= pagination.totalPages}
-              className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-700 hover:text-primary-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        )}
+        <div className="mt-8"><Pagination currentPage={currentPage} totalPages={pagination.totalPages} onPageChange={handlePageChange} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); handlePageChange(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
 
         {/* Login prompt for unauthenticated users */}
         {!authenticated && (

@@ -20,10 +20,10 @@ import Exam from '../../models/Exam';
 import ExamPattern from '../../models/ExamPattern';
 import PracticeTest from '../../models/PracticeTest';
 import useTranslate from '../../hooks/useTranslate';
+import Pagination from '../../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
-const PAGE_SIZE = 20;
-
-export default function PYQIndexPage({ tests, totalPages, page, year, examId, examIdsFilter, exams, examsWithPYQ, totalPYQs, intro, faqs, years }) {
+export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, examId, examIdsFilter, exams, examsWithPYQ, totalPYQs, intro, faqs, years }) {
   const { translate, rich, translateData } = useTranslate();
     const router = useRouter();
     const [filterYear, setFilterYear] = useState(year || '');
@@ -306,13 +306,7 @@ export default function PYQIndexPage({ tests, totalPages, page, year, examId, ex
                             </div>
                         )}
 
-                        {totalPages > 1 && (
-                            <div className="flex justify-center items-center gap-4 mt-8">
-                                <button disabled={page === 1} onClick={() => updateQuery({ page: page - 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Prev')}</button>
-                                <span className="text-sm font-bold text-slate-500">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
-                                <button disabled={page === totalPages} onClick={() => updateQuery({ page: page + 1 })} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Next')}</button>
-                            </div>
-                        )}
+                        <div className="mt-8"><Pagination currentPage={page} totalPages={totalPages} onPageChange={(p) => updateQuery({ page: p })} itemsPerPage={pageSize} onItemsPerPageChange={(n) => updateQuery({ limit: n === PUBLIC_DEFAULT_PAGE_SIZE ? '' : n, page: 1 })} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
                     </section>
 
                     {/* ── PRO Unlock Modal ── */}
@@ -462,6 +456,7 @@ export async function getServerSideProps({ query, res }) {
         await dbConnect();
 
         const page = Math.max(1, parseInt(query.page, 10) || 1);
+        const PAGE_SIZE = PUBLIC_PAGE_SIZE_OPTIONS.includes(parseInt(query.limit, 10)) ? parseInt(query.limit, 10) : PUBLIC_DEFAULT_PAGE_SIZE;
         const yearFilter = query.year ? parseInt(query.year, 10) || null : null;
         const examIdFilter = query.examId && /^[a-f0-9]{24}$/i.test(query.examId) ? query.examId : null;
         const examIdsFilter = examIdFilter ? [] : parseExamIds(query.examIds);
@@ -573,6 +568,7 @@ export async function getServerSideProps({ query, res }) {
                 tests,
                 totalPages,
                 page,
+                pageSize: PAGE_SIZE,
                 year: yearFilter || '',
                 examId: examIdFilter || '',
                 examIdsFilter: examIdsFilter.join(','),

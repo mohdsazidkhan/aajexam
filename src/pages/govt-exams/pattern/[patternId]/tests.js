@@ -28,6 +28,8 @@ import ProgressBar from '../../../../components/ui/ProgressBar';
 import Skeleton from '../../../../components/Skeleton';
 import { ProBadge } from '../../../../components/ui';
 import useTranslate from '../../../../hooks/useTranslate';
+import Pagination from '../../../../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../../lib/constants/pagination';
 
 const PatternTests = ({ patternId, initialPattern = null, initialTests = [], initialPagination = null, initialError = '', seo }) => {
   const { translate, translateData } = useTranslate();
@@ -38,13 +40,15 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
   const [error, setError] = useState(initialError);
   const [page, setPage] = useState(initialPagination?.page || 1);
   const [totalPages, setTotalPages] = useState(initialPagination?.pages || 1);
+  const [pageSize, setPageSize] = useState(initialPagination?.limit || PUBLIC_DEFAULT_PAGE_SIZE);
+  const firstRun = useRef(true);
   const [user, setUser] = useState(null);
 
   const fetchTests = useCallback(async (targetPage) => {
     if (!patternId) return;
     try {
       setLoading(true);
-      const res = await API.getTestsByPattern(patternId, { page: targetPage, limit: 10 });
+      const res = await API.getTestsByPattern(patternId, { page: targetPage, limit: pageSize });
       if (res?.success) {
         let fetchedTests = res.data || [];
         const activeUser = getCurrentUser();
@@ -74,12 +78,15 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
     } finally {
       setLoading(false);
     }
-  }, [patternId]);
+  }, [patternId, pageSize]);
 
   useEffect(() => {
     setUser(getCurrentUser());
-    if (!initialTests.length && !initialError) fetchTests(page);
-  }, [patternId, page, fetchTests, initialTests.length, initialError]);
+    // The server already rendered the first page; refetch only when page/size change afterwards.
+    const skipInitial = firstRun.current && (initialTests.length || initialError);
+    firstRun.current = false;
+    if (!skipInitial) fetchTests(page);
+  }, [patternId, page, pageSize, fetchTests, initialTests.length, initialError]);
 
   const handleStartTest = (test) => {
     if (!user) {
@@ -237,13 +244,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
         )}
 
         {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-4 pt-8">
-            <Button variant="secondary" disabled={page === 1} onClick={() => setPage(page - 1)}>{translate('Prev')}</Button>
-            <span className="font-black text-gray-400">{translate('PAGE {page} OF {total}', { page, total: totalPages })}</span>
-            <Button variant="primary" disabled={page === totalPages} onClick={() => setPage(page + 1)}>{translate('Next')}</Button>
-          </div>
-        )}
+        <div className="pt-8"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
       </section>
     </div>
   );
@@ -257,7 +258,7 @@ export async function getServerSideProps({ params, query }) {
   const ExamPattern = (await import('../../../../models/ExamPattern')).default;
   const patternId = params?.patternId;
   const page = parseInt(query.page) || 1;
-  const limit = 10;
+  const limit = [12, 24, 50, 100, 200, 500].includes(parseInt(query.limit, 10)) ? parseInt(query.limit, 10) : 24;
   const skip = (page - 1) * limit;
 
   try {
@@ -278,7 +279,7 @@ export async function getServerSideProps({ params, query }) {
           ...t,
           questionCount: t.questionCount || t.questions?.length || 0
         })))),
-        initialPagination: { page, pages: Math.ceil(total / limit) }
+        initialPagination: { page, pages: Math.ceil(total / limit), limit }
       }
     };
   } catch (error) {

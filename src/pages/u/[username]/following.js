@@ -6,6 +6,8 @@ import axios from 'axios';
 import { ListSkeleton } from '../../../components/skeletons/PrivateSkeletons';
 import MobileAppWrapper from '../../../components/MobileAppWrapper';
 import useTranslate from '../../../hooks/useTranslate';
+import Pagination from '../../../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 export default function FollowingListPage() {
   const { translate } = useTranslate();
@@ -15,13 +17,14 @@ export default function FollowingListPage() {
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
 
   useEffect(() => {
     if (username) {
       fetchFollowing();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username, page]);
+  }, [username, page, pageSize]);
 
   const fetchFollowing = async () => {
     try {
@@ -42,7 +45,7 @@ export default function FollowingListPage() {
 
         // Then fetch following
         const response = await axios.get(
-          `/api/users/following/${userId}?page=${page}&limit=20`,
+          `/api/users/following/${userId}?page=${page}&limit=${pageSize}`,
           config
         );
 
@@ -126,27 +129,7 @@ export default function FollowingListPage() {
           )}
 
           {/* Pagination */}
-          {pagination.totalPages > 1 && (
-            <div className="flex justify-center items-center gap-4 mt-12 pb-12">
-              <button
-                onClick={() => setPage(p => Math.max(1, p - 1))}
-                disabled={page === 1}
-                className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
-              >
-                {translate('Previous')}
-              </button>
-              <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                {translate('Page {page} of {total}', { page, total: pagination.totalPages })}
-              </span>
-              <button
-                onClick={() => setPage(p => Math.min(pagination.totalPages, p + 1))}
-                disabled={page === pagination.totalPages}
-                className="px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 disabled:opacity-50 active:translate-y-1 active:border-b-0 transition-all"
-              >
-                {translate('Next')}
-              </button>
-            </div>
-          )}
+          <div className="mt-12 pb-12"><Pagination currentPage={page} totalPages={pagination.totalPages} onPageChange={setPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
         </div>
       </div>
     </MobileAppWrapper>

@@ -9,18 +9,19 @@ import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';
-import PagedNav from '../ui/PagedNav';
+import Pagination from '../Pagination';
 import Seo from '../Seo';
 import useTranslate from '../../hooks/useTranslate';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const TopicListSkeleton = () => (
   <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/20 dark:bg-slate-800 border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
+    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/25 dark:bg-primary-500/25 border-b-2 border-primary-600/30 mt-4 xl:mt-8" />
     <div className="flex gap-2 px-1">
       {[1,2,3].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}
     </div>
@@ -45,8 +46,6 @@ const TopicListSkeleton = () => (
   </div>
 );
 
-const PAGE_SIZE = 24;
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const TopicListPage = () => {
   const { translate, translateData } = useTranslate();
@@ -56,6 +55,7 @@ const TopicListPage = () => {
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
@@ -85,11 +85,11 @@ const TopicListPage = () => {
   }, [topics, activeFilter, search]);
 
   // Client-side pagination; filter/search/list changes restart from page 1.
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const currentPage = Math.min(page, totalPages);
   const pageItems = useMemo(
-    () => filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
-    [filtered, currentPage]
+    () => filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+    [filtered, currentPage, pageSize]
   );
   useEffect(() => { setPage(1); }, [activeFilter, search, targetVersion]);
 
@@ -149,7 +149,7 @@ const TopicListPage = () => {
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
-                      {(currentPage - 1) * PAGE_SIZE + idx + 1}
+                      {(currentPage - 1) * pageSize + idx + 1}
                     </div>
                     <div>
                       <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(topic.name)}</h2>
@@ -194,7 +194,7 @@ const TopicListPage = () => {
         </div>
 
         {/* Pagination */}
-        <PagedNav page={currentPage} totalPages={totalPages} onChange={setPage} />
+        <div className="pt-6"><Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setPage} totalItems={filtered.length} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
       </section>
     </div>
   );

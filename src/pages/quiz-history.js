@@ -17,12 +17,15 @@ import ProgressBar from '../components/ui/ProgressBar';
 import Loading from '../components/Loading';
 import SubscriptionGuard from '../components/SubscriptionGuard';
 import useTranslate from '../hooks/useTranslate';
+import Pagination from '../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 const QuizHistoryPage = () => {
   const { translate, translateData } = useTranslate();
    const [attempts, setAttempts] = useState([]);
    const [loading, setLoading] = useState(true);
    const [currentPage, setCurrentPage] = useState(1);
+   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
    const [totalPages, setTotalPages] = useState(1);
    const [filter, setFilter] = useState('');
    const router = useRouter();
@@ -30,7 +33,7 @@ const QuizHistoryPage = () => {
    const fetchHistory = async () => {
       try {
          setLoading(true);
-         const res = await API.getMyQuizAttempts({ page: currentPage, limit: 12, status: filter || undefined });
+         const res = await API.getMyQuizAttempts({ page: currentPage, limit: pageSize, status: filter || undefined });
          if (res?.success) {
             setAttempts(res.data || []);
             setTotalPages(res.pagination?.totalPages || 1);
@@ -41,7 +44,7 @@ const QuizHistoryPage = () => {
    };
 
    // eslint-disable-next-line react-hooks/exhaustive-deps
-   useEffect(() => { fetchHistory(); }, [currentPage, filter]);
+   useEffect(() => { fetchHistory(); }, [currentPage, pageSize, filter]);
 
    const getRankBadge = (acc) => {
       if (acc >= 90) return { label: 'S', color: 'primary' };
@@ -186,13 +189,7 @@ const QuizHistoryPage = () => {
                )}
 
                {/* Pagination */}
-               {totalPages > 1 && (
-                  <div className="flex justify-center items-center gap-4 pt-6">
-                     <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Prev')}</button>
-                     <span className="text-sm font-bold text-slate-500">{translate('Page {page} of {total}', { page: currentPage, total: totalPages })}</span>
-                     <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Next')}</button>
-                  </div>
-               )}
+               <div className="pt-6"><Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setCurrentPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
             </SubscriptionGuard>
          </div>
       </div>

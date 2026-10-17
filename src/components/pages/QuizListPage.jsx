@@ -9,19 +9,20 @@ import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../ui/Card';
-import PagedNav from '../ui/PagedNav';
+import Pagination from '../Pagination';
 import { ProBadge } from '../ui';
 import Seo from '../Seo';
 import useTranslate from '../../hooks/useTranslate';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
-  <div className={`container mx-auto animate-pulse bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl ${className}`} />
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
 );
 
 const QuizListSkeleton = () => (
   <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
-    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/20 dark:bg-slate-800 border-b-2 border-primary-600/30" />
+    <div className="h-40 xl:h-52 w-full rounded-[2.5rem] animate-pulse bg-primary-600/25 dark:bg-primary-500/25 border-b-2 border-primary-600/30" />
     <div className="flex gap-2 px-1">
       {[1,2,3].map(i => <Sh key={i} className="h-10 w-28 rounded-full" />)}
     </div>
@@ -56,8 +57,6 @@ const diffChip = (d) => {
   return 'text-black dark:text-white bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-800 dark:border-white/50';
 };
 
-const PAGE_SIZE = 24;
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const QuizListPage = () => {
   const { translate, translateData } = useTranslate();
@@ -67,13 +66,14 @@ const QuizListPage = () => {
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const targetVersion = useTargetExamsVersion();
 
   useEffect(() => {
     setLoading(true);
-    const params = { page, limit: PAGE_SIZE };
+    const params = { page, limit: pageSize };
     if (activeFilter !== 'all') params.difficulty = activeFilter;
     API.getQuizzes(params).then(res => {
       if (res.success) {
@@ -82,7 +82,7 @@ const QuizListPage = () => {
         setTotalCount(res.pagination?.total || res.data?.length || 0);
       }
     }).finally(() => setLoading(false));
-  }, [page, activeFilter, targetVersion]);
+  }, [page, pageSize, activeFilter, targetVersion]);
 
   // Difficulty is now filtered server-side (see effect above) — switching
   // tabs must restart from page 1, since the old page number may not exist
@@ -166,8 +166,8 @@ const QuizListPage = () => {
                 className="group flex flex-col gap-4 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all rounded-[1.5rem] bg-background-surface shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="min-w-8 xl:min-w-12 h-8 xl:h-12 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
-                      {(page - 1) * PAGE_SIZE + idx + 1}
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">
+                      {(page - 1) * pageSize + idx + 1}
                     </div>
                     <div>
                       <h2 className="text-base font-black text-content-primary uppercase tracking-tight line-clamp-2 leading-tight">{translateData(quiz.title)}</h2>
@@ -217,7 +217,7 @@ const QuizListPage = () => {
         </div>
 
         {/* Pagination */}
-        <PagedNav page={page} totalPages={totalPages} onChange={setPage} />
+        <div className="pt-6"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} totalItems={totalCount} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
       </section>
     </div>
   );

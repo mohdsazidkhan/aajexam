@@ -10,6 +10,8 @@ import Seo from '../components/Seo';
 import { GridSkeleton } from '../components/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import useTranslate from '../hooks/useTranslate';
+import Pagination from '../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 const MentorsPage = () => {
   const { translate } = useTranslate();
@@ -17,6 +19,7 @@ const MentorsPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
 
@@ -24,14 +27,14 @@ const MentorsPage = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const params = new URLSearchParams({ page, limit: 20 });
+        const params = new URLSearchParams({ page, limit: pageSize });
         if (search) params.set('exam', search);
         const res = await API.request(`/api/mentor?${params}`);
         if (res?.success) { setMentors(res.data || []); setTotalPages(res.pagination?.totalPages || 1); }
       } catch (e) { } finally { setLoading(false); }
     };
     fetchData();
-  }, [search, page]);
+  }, [search, page, pageSize]);
 
   if (loading) return (
     <div className="min-h-screen pb-8 xl:pb-16">
@@ -122,13 +125,7 @@ const MentorsPage = () => {
 
           {mentors.length === 0 && <div className="text-center py-12"><Users className="w-12 h-12 text-slate-300 mx-auto mb-4" /><p className="text-slate-400 font-bold">{translate('No mentors yet. Be the first!')}</p></div>}
 
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-4">
-              <button disabled={page === 1} onClick={() => setPage(page - 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Prev')}</button>
-              <span className="text-sm font-bold text-slate-500">{translate('Page {page} of {total}', { page, total: totalPages })}</span>
-              <button disabled={page === totalPages} onClick={() => setPage(page + 1)} className="px-4 py-2 bg-slate-200 dark:bg-slate-700 rounded-lg xl:rounded-xl text-sm font-bold disabled:opacity-30">{translate('Next')}</button>
-            </div>
-          )}
+          <div className="pt-6"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
         </SubscriptionGuard>
       </div>
     </div>

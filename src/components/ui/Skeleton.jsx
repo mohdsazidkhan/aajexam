@@ -42,7 +42,7 @@ const Skeleton = ({
 
   return (
     <div 
-      className={`relative overflow-hidden bg-slate-200 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800/50 ${className}`}
+      className={`relative overflow-hidden bg-primary-500/15 dark:bg-primary-500/20 border border-primary-500/20 ${className}`}
       style={baseStyles}
     >
       {animate && (
