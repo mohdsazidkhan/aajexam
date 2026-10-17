@@ -60,7 +60,7 @@ const NoteDetailPage = ({ note }) => {
   if (!note) return null;
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title={`${note.title} – ${note.subject?.name ? note.subject.name + ' Notes' : 'Quick Revision Notes'} | AajExam`}
         description={`${note.title}${note.subject?.name ? ' – ' + note.subject.name : ''}${note.topic?.name ? ' (' + note.topic.name + ')' : ''}. Free quick revision notes, formulas and shortcuts for government exam aspirants on AajExam.`}

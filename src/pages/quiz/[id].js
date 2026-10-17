@@ -96,7 +96,7 @@ export default function QuizPreview({
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="py-4 xl:py-6 relative space-y-8">
+        <div className="py-4 xl:py-6 relative space-y-2">
           {/* Breadcrumb */}
           <nav aria-label={translate('Breadcrumb')} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
@@ -163,6 +163,9 @@ export default function QuizPreview({
             </section>
           )}
 
+          {/* Start section - directly after About */}
+          <QuizPreviewPage resolvedId={resolvedId} initialQuiz={quiz} />
+
           {seriesHref && (
             <section className="rounded-2xl border-2 border-primary-100 dark:border-primary-900/40 px-0 py-4 xl:py-8">
               <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
@@ -181,9 +184,6 @@ export default function QuizPreview({
             title={`${quizTitle} — Questions with Solutions`}
             intro={`All ${questions.length} questions from this quiz with the correct answer and explanation. Attempt them yourself first, then open each solution to check your reasoning.`}
           />
-
-          {/* Interactive preview */}
-          <QuizPreviewPage resolvedId={resolvedId} initialQuiz={quiz} />
 
           {/* FAQ */}
           {faqs.length > 0 && (

@@ -50,7 +50,7 @@ const InterviewQuestionDetailPage = ({ question }) => {
   const displayTips = (language === 'hi' && question.tipsHi) || question.tips;
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title={`${question.question} – Interview Question | AajExam`}
         description={`${question.question}${question.category?.name ? ' – ' + question.category.name : ''}. Sample answer and expert tips for government and private job interviews on AajExam.`}

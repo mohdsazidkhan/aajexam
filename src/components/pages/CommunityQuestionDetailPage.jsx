@@ -71,7 +71,7 @@ export default function CommunityQuestionDetailPage() {
   const canRevealAnswer = !hasOptions || attempted;
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <div className="container mx-auto py-6 space-y-5">
         {/* Back */}
         <button onClick={() => router.push('/community-questions')} className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-primary-600">

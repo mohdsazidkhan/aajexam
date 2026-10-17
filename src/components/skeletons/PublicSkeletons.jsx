@@ -177,7 +177,7 @@ export const AuthFormSkeleton = () => (
 
 // ─── Subject/Topic detail skeleton ────────────────────────────────────────────
 const DetailPageSkeleton = ({ color ='bg-primary-600'}) => (
-  <div className="min-h-screen pb-24 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       {/* Back button */}
       <Sh className="h-4 w-16 rounded-full mb-4" />
@@ -210,7 +210,7 @@ const DetailPageSkeleton = ({ color ='bg-primary-600'}) => (
 
 /** Skeleton for /topics (TopicListPage) */
 export const TopicListSkeleton = () => (
-  <div className="min-h-screen pb-24 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       <ListHeaderSkeleton />
       <div className="space-y-3">
@@ -222,7 +222,7 @@ export const TopicListSkeleton = () => (
 
 /** Skeleton for /subjects (SubjectListPage) */
 export const SubjectListSkeleton = () => (
-  <div className="min-h-screen pb-24 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       <ListHeaderSkeleton />
       <div className="space-y-3">
@@ -234,7 +234,7 @@ export const SubjectListSkeleton = () => (
 
 /** Skeleton for /quizzes (QuizListPage) */
 export const QuizListSkeleton = () => (
-  <div className="min-h-screen pb-24 animate-pulse">
+  <div className="min-h-screen pb-6 xl:pb-12 animate-pulse">
     <div className="container mx-auto px-0 xl:px-4 py-0 xl:py-6">
       <ListHeaderSkeleton />
       <div className="flex flex-col gap-2 xl:gap-3">

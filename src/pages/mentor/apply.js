@@ -62,7 +62,7 @@ export default function MentorApply() {
   const labelClass = "text-xs font-black text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1.5 block";
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title="Become a Mentor – Help Aspirants on AajExam"
         description="Cleared a government exam? Apply to become an AajExam mentor and help fellow aspirants with strategy, study plans and doubt-clearing."

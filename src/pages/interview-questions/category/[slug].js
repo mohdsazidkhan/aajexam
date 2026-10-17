@@ -100,7 +100,7 @@ const CategoryDetailPage = () => {
   const canonical = `/${category.slug}-interview-questions`;
 
   return (
-    <div className="min-h-screen pb-24 font-outfit">
+    <div className="min-h-screen pb-6 xl:pb-12 font-outfit">
       <Seo
         title={`${pageTitle} | AajExam`}
         description={`${pageTitle} with sample answers and expert tips for ${category.type === 'government' ? 'government' : 'private sector'} job interviews on AajExam.`}

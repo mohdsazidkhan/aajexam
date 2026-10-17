@@ -37,7 +37,7 @@ const CurrentAffairDetail = ({ resolvedId, initialAffair } = {}) => {
   if (!affair) return null;
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title={`${affair.title} – Current Affairs ${new Date(affair.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })} | AajExam`}
         description={(affair.keyPoints?.[0] || affair.content || '').slice(0, 160) || `${affair.title}: daily current affairs for SSC, UPSC, Banking and Railway exam preparation on AajExam.`}

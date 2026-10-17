@@ -96,7 +96,7 @@ const DailyChallengePage = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <div className="py-4 xl:py-6"><ChallengeSkeleton /></div>
     </div>
   );
@@ -131,7 +131,7 @@ const DailyChallengePage = () => {
   const formatTime = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title="Daily Challenge – Free Daily Quiz for Government Exams | AajExam"
         description="Attempt a fresh daily challenge quiz on AajExam every day. Climb the leaderboard, build your streak and revise high-yield MCQs for SSC, UPSC, Banking and Railway exam preparation."

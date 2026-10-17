@@ -244,7 +244,7 @@ export default function AdminPYQForm({ mode = 'create', pyqId = null }) {
     if (loading) return <div className="min-h-screen flex items-center justify-center"><AdminFormSkeleton /></div>;
 
     return (
-        <div className="min-h-screen pb-24">
+        <div className="min-h-screen pb-6 xl:pb-12">
             <div className="py-4 xl:py-6 space-y-6">
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">

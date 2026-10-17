@@ -37,7 +37,7 @@ const ExamNewsDetail = ({ resolvedId, initialNews } = {}) => {
   if (!news) return null;
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title={`${news.title}${news.exam?.name ? ' – ' + news.exam.name : ''} | AajExam Exam News`}
         description={(news.content || `${news.title} – latest ${news.type?.replace('_', ' ') || 'notification'} for ${news.exam?.name || 'government exam'} aspirants on AajExam.`).slice(0, 160)}

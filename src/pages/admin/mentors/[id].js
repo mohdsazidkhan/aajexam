@@ -38,7 +38,7 @@ const AdminMentorDetail = () => {
 
   if (loading) return (
     <AdminRoute>
-      <div className="min-h-screen pb-24">
+      <div className="min-h-screen pb-6 xl:pb-12">
         <AdminTableSkeleton />
       </div>
     </AdminRoute>
@@ -47,7 +47,7 @@ const AdminMentorDetail = () => {
 
   return (
     <AdminRoute>
-      <div className="min-h-screen pb-24">
+      <div className="min-h-screen pb-6 xl:pb-12">
         <Head><title>{mentor.user?.name || 'Mentor'} - Admin</title></Head>
         <div className="py-0 xl:py-6 space-y-2 xl:space-y-4">
           <Link href="/admin/mentors" className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline w-fit">

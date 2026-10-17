@@ -63,7 +63,7 @@ const MyChallengesPage = () => {
    );
 
    return (
-      <div className="min-h-screen pb-24">
+      <div className="min-h-screen pb-6 xl:pb-12">
          <Head>
             <title>My Challenges - AajExam</title>
             {/* Private dashboard — never index, even if the robots.txt rule changes. */}

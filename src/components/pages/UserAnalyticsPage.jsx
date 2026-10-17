@@ -128,7 +128,7 @@ const MyAnalyticsPage = () => {
    };
 
    if (loading) return (
-      <div className="min-h-screen pb-24">
+      <div className="min-h-screen pb-6 xl:pb-12">
          <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
       </div>
    );

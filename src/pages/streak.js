@@ -42,13 +42,13 @@ const StreakPage = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
     </div>
   );
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo title="Your Streak – AajExam" description="Track your daily AajExam streak." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
         <div className="text-center space-y-2">

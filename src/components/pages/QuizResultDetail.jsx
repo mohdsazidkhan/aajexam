@@ -124,7 +124,7 @@ const QuizResultDetail = () => {
   };
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <div className="container mx-auto py-6">
 
         {/* Score Card */}

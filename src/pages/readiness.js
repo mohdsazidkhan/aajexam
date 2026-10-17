@@ -77,7 +77,7 @@ const ReadinessPage = () => {
   };
 
   if (loading) return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
     </div>
   );
@@ -85,7 +85,7 @@ const ReadinessPage = () => {
   const readinessColor = (r) => r >= 70 ? 'emerald' : r >= 40 ? 'yellow' : 'red';
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">

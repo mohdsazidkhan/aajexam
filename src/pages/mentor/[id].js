@@ -120,7 +120,7 @@ export default function MentorProfilePage() {
   );
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-6 xl:pb-12">
       <Seo
         title={`${mentor.user?.name || 'Mentor'} – Government Exam Mentor on AajExam`}
         description={`Connect with ${mentor.user?.name || 'a verified mentor'} on AajExam for personalised guidance on ${mentor.targetExams?.map(e => e.name).join(', ') || 'government exams'}. Ask questions, get strategy and study plans from a verified topper.`}

@@ -15,6 +15,8 @@ import API from '../../../lib/api';
 import { isAuthenticated } from '../../../lib/auth';
 import Button from '../../../components/ui/Button';
 import Card from '../../../components/ui/Card';
+import Pagination from '../../../components/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import Skeleton from '../../../components/Skeleton';
 import TestStartModal from '../../../components/TestStartModal';
 import Seo from '../../../components/Seo';
@@ -32,6 +34,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
   const router = useRouter();
   const [exam, setExam] = useState(initialExam);
   const [activeTab, setActiveTab] = useState('subjects');
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
+  useEffect(() => { setPage(1); }, [activeTab]);
   const [practiceTests, setPracticeTests] = useState(initialPracticeTests);
   const [pyqs, setPyqs] = useState(initialPyqs);
   const [quizzes, setQuizzes] = useState(initialQuizzes);
@@ -94,6 +99,11 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     { key: 'quizzes', label: 'Quizzes', icon: BrainCircuit, count: quizzes.length },
   ];
 
+  const activeList = activeTab === 'subjects' ? subjects : activeTab === 'topics' ? topics : activeTab === 'tests' ? practiceTests : activeTab === 'pyqs' ? pyqs : quizzes;
+  const totalPages = Math.max(1, Math.ceil(activeList.length / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const paged = (list) => list.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const sno = (idx) => (currentPage - 1) * pageSize + idx + 1;
   const examUrl = `/govt-exams/exam/${exam?.slug || ''}`;
   const examCode = exam?.code ? ` (${exam.code})` : '';
   const examCategory = exam?.category?.name;
@@ -451,7 +461,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <p className="text-sm font-bold text-slate-400">{translate('No subjects available yet')}</p>
             </div>
           ) : (
-            subjects.map((subject, idx) => (
+            paged(subjects).map((subject, idx) => (
               <motion.div key={subject._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card
                   hoverable
@@ -462,9 +472,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0">
-                      <BookOpen className="w-5 h-5 text-white" />
-                    </div>
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(subject.name)}</h3>
                       <p className="text-xs font-bold text-content-muted">
@@ -490,7 +498,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <p className="text-sm font-bold text-slate-400">{translate('No topics available yet')}</p>
             </div>
           ) : (
-            topics.map((topic, idx) => (
+            paged(topics).map((topic, idx) => (
               <motion.div key={topic._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                 <Card
                   hoverable
@@ -501,9 +509,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                   className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0">
-                      <FolderOpen className="w-5 h-5 text-white dark:text-black" />
-                    </div>
+                    <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(topic.name)}</h3>
                       <p className="text-xs font-bold text-content-muted truncate">{topic.subjectName}</p>
@@ -533,16 +539,14 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                 <p className="text-sm font-bold text-slate-400">{emptyText}</p>
               </div>
             ) : (
-              list.map((test, idx) => {
+              paged(list).map((test, idx) => {
                 const isCompleted = test.userAttempt?.status === 'Completed';
                 const pyqMeta = isPyqTab && (test.pyqYear || test.pyqShift || test.pyqExamName);
                 return (
                   <motion.div key={test._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
                     <Card className={`group h-full border-2 transition-all p-4 overflow-hidden flex flex-col gap-3 ${isCompleted ? 'border-primary-200 dark:border-primary-600' : 'border-slate-200 dark:border-slate-800 hover:border-primary-700'}`}>
                       <div className="flex items-center gap-3">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isCompleted ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : isPyqTab ? 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-400'}`}>
-                          {isCompleted ? <Trophy className="w-6 h-6" /> : isPyqTab ? <History className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                        </div>
+                        <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(test.title)}</h3>
                           <p className="text-xs font-bold text-content-muted">
@@ -594,7 +598,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
               <p className="text-sm font-bold text-slate-400">{translate('No quizzes available yet')}</p>
             </div>
           ) : (
-            quizzes.map((quiz, idx) => {
+            paged(quizzes).map((quiz, idx) => {
               const diffColor = quiz.difficulty === 'easy' ? 'text-primary-600 bg-primary-50' : quiz.difficulty === 'hard' ? 'text-black dark:text-white bg-slate-100 dark:bg-slate-800' : 'text-black dark:text-white bg-slate-100 dark:bg-slate-800';
               return (
                 <motion.div key={quiz._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
@@ -604,9 +608,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
                     className="group h-full border-2 border-slate-200 dark:border-slate-800 hover:border-primary-700 transition-all p-4 flex flex-col gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0">
-                        <BrainCircuit className="w-4 xl:w-6 h-4 xl:h-6 text-white" />
-                      </div>
+                      <div className="w-8 xl:w-10 h-8 xl:h-10 px-1 rounded-2xl bg-primary-600 flex items-center justify-center shrink-0 shadow-sm text-white text-xs xl:text-base font-black tabular-nums">{sno(idx)}</div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-black text-content-primary uppercase truncate">{translateData(quiz.title)}</h3>
                         <p className="text-xs font-bold text-content-muted truncate">
@@ -625,6 +627,10 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             })
           )}
         </div>
+      )}
+
+      {activeList.length > 0 && (
+        <div className="pt-2"><Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setPage} totalItems={activeList.length} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
       )}
 
       {/* How to Prepare */}
