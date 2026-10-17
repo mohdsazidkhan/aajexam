@@ -9,7 +9,9 @@ const examSchema = new mongoose.Schema({
     description: { type: String, trim: true },
     isActive: { type: Boolean, default: true },
     actualExam: { type: Boolean, default: true },
-    logo: { type: String }
+    logo: { type: String },
+    seoTitle: { type: String, trim: true },
+    seoDescription: { type: String, trim: true }
 }, { timestamps: true });
 
 examSchema.index({ category: 1 });

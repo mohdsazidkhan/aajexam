@@ -36,8 +36,8 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
     const examName = exam.name || exam.code || 'Government Exam';
     const canonical = `/pyq/${exam.slug}`;
-    const seoTitle = `${examName} Previous Year Question Papers (PYQ) – All Years with Solutions | AajExam`;
-    const seoDesc = `Free ${examName} previous year question papers (PYQ) — ${totalPapers} solved papers across all shifts and years with detailed solutions, timer-based mock test mode, and instant scoring on AajExam.`.slice(0, 160);
+    const seoTitle = exam.seoTitle || `${examName} Previous Year Question Papers with Solutions | AajExam`;
+    const seoDesc = exam.seoDescription || `${examName} PYQ: ${totalPapers} previous year question papers with solutions, all shifts & years. Free, with and without answers, timed mock test and instant score.`.slice(0, 160);
 
     const years = Object.keys(papersByYear).sort((a, b) => Number(b) - Number(a));
 
@@ -397,7 +397,7 @@ export async function getServerSideProps({ params, res }) {
         }
 
         const exam = await Exam.findOne(examQuery)
-            .select('name code slug description')
+            .select('name code slug description seoTitle seoDescription')
             .lean();
         if (!exam) return { notFound: true };
 
