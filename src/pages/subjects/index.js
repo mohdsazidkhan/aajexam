@@ -9,7 +9,7 @@ import { generateBreadcrumbSchema, generateItemListSchema } from '../../utils/sc
 import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
-const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
+const SubjectListPage = dynamic(() => import('../../components/pages/SubjectListPage'), { ssr: false, loading: () => (<><h1 className="sr-only">Subjects</h1><PageLoadingFallback /></>) });
 
 export default function Subjects(props) {
   const { translate } = useTranslate();

@@ -9,7 +9,7 @@ import { generateBreadcrumbSchema } from '../../utils/schema';
 import { PageLoadingFallback } from '../../components/skeletons/PublicSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
-const TopicListPage = dynamic(() => import('../../components/pages/TopicListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
+const TopicListPage = dynamic(() => import('../../components/pages/TopicListPage'), { ssr: false, loading: () => (<><h1 className="sr-only">Topics</h1><PageLoadingFallback /></>) });
 
 export default function Topics(props) {
   const { translate } = useTranslate();

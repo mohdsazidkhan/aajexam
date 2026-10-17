@@ -17,6 +17,7 @@ import { formatTimeSpent, formatSecondsSpent } from '../lib/utils/timeFormat';
 import useTranslate from '../hooks/useTranslate';
 import Pagination from '../components/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
+import useRequireLogin from '../hooks/useRequireLogin';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -246,6 +247,7 @@ const MyRankCard = ({ entry }) => {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 const AllIndiaRankPage = () => {
+  useRequireLogin();
   const { translate, translateData } = useTranslate();
   const [exams, setExams] = useState([]);
   const [selectedExamId, setSelectedExamId] = useState('');

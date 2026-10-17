@@ -15,6 +15,7 @@ import { formatTimeSpent } from '../lib/utils/timeFormat';
 import useTranslate from '../hooks/useTranslate';
 import Pagination from '../components/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
+import useRequireLogin from '../hooks/useRequireLogin';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -344,6 +345,7 @@ const MyRankCard = ({ entry, type }) => {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 const LeaderboardPage = () => {
+  useRequireLogin();
   const { translate } = useTranslate();
   const [type, setType] = useState('quiz'); // 'quiz' or 'exam'
   const [period, setPeriod] = useState('all-time');
@@ -388,7 +390,7 @@ const LeaderboardPage = () => {
         title="Leaderboard – Top Rankers | AajExam"
         description="See who is topping the AajExam leaderboard. Compete with thousands of students preparing for govt exams."
         canonical="/leaderboard"
-        noIndex={false}
+        noIndex={true}
       />
 
       <div className="space-y-5 xl:space-y-8">

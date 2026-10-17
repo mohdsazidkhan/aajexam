@@ -32,6 +32,10 @@ Disallow: /readiness
 Disallow: /revision
 Disallow: /streak
 Disallow: /study-plan
+Disallow: /all-india-rank
+Disallow: /syllabus-tracker
+Disallow: /exam-calendar
+Disallow: /leaderboard
 
 # History pages (user-private)
 Disallow: /exam-history

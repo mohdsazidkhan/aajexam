@@ -12,6 +12,7 @@ import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import Card from '../components/ui/Card';
 import Seo from '../components/Seo';
 import useTranslate from '../hooks/useTranslate';
+import useRequireLogin from '../hooks/useRequireLogin';
 
 // ─── Type Config (matches exam-news.js style) ──────────────────────────────────
 const typeConfig = {
@@ -145,6 +146,7 @@ const DayPanel = ({ date, events, onClose }) => {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
 const ExamCalendarPage = () => {
+  useRequireLogin();
   const { translate, locale } = useTranslate();
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
@@ -218,7 +220,7 @@ const ExamCalendarPage = () => {
         title="Exam Calendar – Important Dates & Deadlines | AajExam"
         description="Track all government exam important dates — admit cards, results, vacancies, notifications — on AajExam's Exam Calendar."
         canonical="/exam-calendar"
-        noIndex={false}
+        noIndex={true}
       />
 
       <div className="space-y-5 xl:space-y-8">

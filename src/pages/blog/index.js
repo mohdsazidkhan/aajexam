@@ -11,7 +11,7 @@ import useTranslate from '../../hooks/useTranslate';
 
 const BlogsPage = dynamic(() => import('../../components/pages/BlogsPage'), {
   ssr: false,
-  loading: () => <BlogListSkeleton />
+  loading: () => (<><h1 className="sr-only">Blog</h1><BlogListSkeleton /></>)
 });
 
 export default function Blog(props) {

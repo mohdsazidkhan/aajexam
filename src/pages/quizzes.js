@@ -8,7 +8,7 @@ import LinkIndexSection from '../components/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
 import { PageLoadingFallback } from '../components/skeletons/PublicSkeletons';
 
-const QuizListPage = dynamic(() => import('../components/pages/QuizListPage'), { ssr: false, loading: () => <PageLoadingFallback /> });
+const QuizListPage = dynamic(() => import('../components/pages/QuizListPage'), { ssr: false, loading: () => (<><h1 className="sr-only">Quizzes</h1><PageLoadingFallback /></>) });
 
 export default function Quizzes(props) {
   // Static HTML carries the full catalogue (SEO). Logged-in users with target exams get the

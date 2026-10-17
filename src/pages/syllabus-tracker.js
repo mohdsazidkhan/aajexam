@@ -10,6 +10,7 @@ import SubscriptionGuard from '../components/SubscriptionGuard';
 import { DashboardSkeleton } from '../components/skeletons/PrivateSkeletons';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../hooks/useTranslate';
+import useRequireLogin from '../hooks/useRequireLogin';
 
 // --- Tracker Skeleton (matches the loaded data view) ---
 const Sh = ({ className = '' }) => (
@@ -121,6 +122,7 @@ const SubjectAccordion = ({ subject }) => {
 
 
 const SyllabusTrackerPage = () => {
+  useRequireLogin();
   const { translate, rich, translateData } = useTranslate();
   const [exams, setExams] = useState([]);
   const [selectedExam, setSelectedExam] = useState('');
