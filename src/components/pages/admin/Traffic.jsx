@@ -76,7 +76,7 @@ export default function Traffic() {
 
   useEffect(() => { load(); }, [load]);
 
-  useAdminMobileHeader({ title: 'Traffic', count: data?.days?.length || 0, filters: null });
+  useAdminMobileHeader({ title: 'Traffic', count: data?.summary?.current?.visitors || 0, filters: null });
 
   if (loading && !data && !error) {
     return <div className="min-h-screen p-3 xl:p-8"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
