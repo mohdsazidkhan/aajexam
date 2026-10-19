@@ -76,7 +76,7 @@ export default function Traffic() {
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
-            <Activity className="w-4 h-4" /> Traffic · website visitors, IST days
+            <Activity className="w-4 h-4" /> Traffic
           </div>
           <select
             value={rangeId}
