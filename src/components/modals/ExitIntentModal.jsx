@@ -7,11 +7,13 @@ import { Gift, X, BookOpen, Target } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import useTranslate from '../../hooks/useTranslate';
+import { useFreePromoActive } from '../../lib/freePromo';
 
 const ExitIntentModalInner = ({ onClose }) => {
   const { translate, rich } = useTranslate();
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const promoActive = useFreePromoActive();
 
   const googleSignup = useGoogleLogin({
     onSuccess: async (response) => {
@@ -82,29 +84,39 @@ const ExitIntentModalInner = ({ onClose }) => {
               <Gift className="w-10 h-10 text-primary-600" />
             </div>
 
-            <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
-              {translate('Wait! Don\'t Leave Empty Handed.')}
+            <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-3">
+              {translate(promoActive ? 'Wait! Your FREE PRO is waiting.' : 'Wait! Don\'t Leave Empty Handed.')}
             </h2>
+            {promoActive && (
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500 text-white text-xs sm:text-sm font-black uppercase tracking-widest shadow-lg shadow-primary-500/30 ring-4 ring-primary-500/20 animate-pulse">
+                  <Gift className="w-4 h-4" />
+                  {translate('PRO FREE till 31 Dec 2026')}
+                </span>
+              </div>
+            )}
             <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              {rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
+              {promoActive
+                ? translate('Sign up in 10 seconds and unlock full PRO access. No card, no payment.')
+                : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
             </p>
 
             <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
-                {translate('Free Latest PYQ\'s & Practice Tests')}
+                {translate('All PYQs & full-length mock tests, FREE')}
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                {translate('Subjects, Topics wise Quizzes')}
+                {translate('Subject & topic-wise quizzes to fix weak areas')}
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                {translate('Daily Challenges & Revisions & Bookmarks')}
+                {translate('Daily challenges to build a study habit')}
               </div>
               <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                {translate('Personalized Weakness Analysis')}
+                {translate('Smart analysis that shows exactly what to improve')}
               </div>
             </div>
 
@@ -123,9 +135,13 @@ const ExitIntentModalInner = ({ onClose }) => {
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
               )}
-              {isGoogleLoading ? translate('Signing in...') : translate('Claim Free Account')}
+              {isGoogleLoading ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
             </button>
-            <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
+            {promoActive ? (
+              <p className="mt-4 text-[10px] text-red-600 dark:text-red-500 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
+            ) : (
+              <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
+            )}
           </div>
         </div>
       </motion.div>
@@ -148,26 +164,92 @@ const ExitIntentModal = () => {
     // Has it been shown already in this session?
     const hasShown = sessionStorage.getItem('exitIntentShown');
     if (hasShown) return;
-    // Avoid stacking on top of the welcome promo modal
-    if (sessionStorage.getItem('welcomePromoShown')) return;
 
-    const handleMouseLeave = (e) => {
-      // Trigger if mouse leaves top of viewport (y <= 0)
-      if (e.clientY <= 0) {
-        setShow(true);
-        sessionStorage.setItem('exitIntentShown', 'true');
-        document.removeEventListener('mouseleave', handleMouseLeave);
-      }
+    let armed = false;
+    let fired = false;
+    let idleTimer;
+    let tabHidden = false;
+    let lastY = window.scrollY;
+    let upFrom = null;
+    const cleanups = [];
+
+    const fire = () => {
+      if (fired || !armed) return;
+      // Never stack on top of the welcome promo modal; the next signal will retry.
+      if (window.__welcomePromoOpen) return;
+      fired = true;
+      setShow(true);
+      sessionStorage.setItem('exitIntentShown', 'true');
+      teardown();
     };
 
-    // Small delay before arming it, so it doesn't trigger immediately on load
-    const timer = setTimeout(() => {
-      document.addEventListener('mouseleave', handleMouseLeave);
+    // Desktop: mouse leaves the top of the viewport (towards tabs / close button)
+    const onMouseLeave = (e) => { if (e.clientY <= 0) fire(); };
+
+    // Desktop + mobile: user switches tab / app away and comes back
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') tabHidden = true;
+      else if (tabHidden) fire();
+    };
+
+    // Mobile: back button. One dummy history entry, same URL, so the first Back shows the modal.
+    const onPopState = () => fire();
+
+    // Mobile: a quick scroll back up towards the address bar / menu
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y < lastY) {
+        if (upFrom === null) upFrom = lastY;
+        if (upFrom - y >= 300 && upFrom > 600) fire();
+      } else {
+        upFrom = null;
+      }
+      lastY = y;
+    };
+
+    // Everyone: gone quiet for 30 seconds
+    const resetIdle = () => {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(fire, 30000);
+    };
+    const idleEvents = ['mousemove', 'keydown', 'touchstart', 'scroll', 'click'];
+
+    function teardown() {
+      clearTimeout(idleTimer);
+      cleanups.forEach((fn) => fn());
+      cleanups.length = 0;
+    }
+
+    const isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+    // Small delay before arming, so it doesn't trigger immediately on load
+    const armTimer = setTimeout(() => {
+      armed = true;
+      document.addEventListener('mouseleave', onMouseLeave);
+      document.addEventListener('visibilitychange', onVisibility);
+      idleEvents.forEach((ev) => window.addEventListener(ev, resetIdle, { passive: true }));
+      cleanups.push(() => {
+        document.removeEventListener('mouseleave', onMouseLeave);
+        document.removeEventListener('visibilitychange', onVisibility);
+        idleEvents.forEach((ev) => window.removeEventListener(ev, resetIdle));
+      });
+      resetIdle();
+      if (isTouch) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('popstate', onPopState);
+        cleanups.push(() => {
+          window.removeEventListener('scroll', onScroll);
+          window.removeEventListener('popstate', onPopState);
+        });
+        try {
+          window.history.pushState({ exitIntentTrap: true }, '', window.location.href);
+        } catch (e) { /* history unavailable */ }
+      }
     }, 2000);
 
     return () => {
-      clearTimeout(timer);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      clearTimeout(armTimer);
+      teardown();
     };
   }, [isAuthenticated]);
 
