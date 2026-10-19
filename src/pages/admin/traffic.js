@@ -11,7 +11,7 @@ export default function TrafficPage() {
   return (
     <>
       <Head>
-        <title>Admin Traffic Funnel - AajExam</title>
+        <title>Admin Traffic - AajExam</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Traffic />

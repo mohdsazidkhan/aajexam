@@ -49,14 +49,13 @@ export default function Traffic() {
 
   useEffect(() => { load(); }, [load]);
 
-  useAdminMobileHeader({ title: 'Traffic Funnel', count: data?.days?.length || 0, filters: null });
+  useAdminMobileHeader({ title: 'Traffic', count: data?.days?.length || 0, filters: null });
 
   if (loading && !data && !error) {
     return <div className="min-h-screen p-3 xl:p-8"><AdminTableSkeleton showHeader={false} showFilters={false} /></div>;
   }
 
   const rows = data?.days || [];
-  const today = rows[0] || {};
   const sum = (k) => rows.reduce((t, r) => t + (r[k] || 0), 0);
   const th = 'px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right whitespace-nowrap';
   const td = 'px-3 py-2 text-sm tabular-nums text-right whitespace-nowrap';
@@ -67,7 +66,7 @@ export default function Traffic() {
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
-            <Activity className="w-4 h-4" /> Traffic funnel · website visitors, IST days
+            <Activity className="w-4 h-4" /> Traffic · website visitors, IST days
           </div>
           <div className="flex gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl">
             {RANGES.map((n) => (
@@ -90,14 +89,21 @@ export default function Traffic() {
           </div>
         )}
 
-        <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Today ({today.day ? fmtDay(today.day) : '—'})</div>
-        <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
-          <Stat label="Visitors" value={today.visitors ?? 0} sub={`${today.alreadyLoggedIn || 0} already logged in`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
-          <Stat label="Opened login / register" value={today.sawAuthPage ?? 0} sub={`${pct(today.sawAuthPage, today.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
-          <Stat label="Left without login/signup" value={today.leftWithoutAuth ?? 0} sub={`${pct(today.leftWithoutAuth, today.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
-          <Stat label="Signups" value={(today.signupGoogle || 0) + (today.signupPassword || 0)} sub={`Google ${today.signupGoogle || 0} · Normal ${today.signupPassword || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" />
-          <Stat label="Logins" value={(today.loginGoogle || 0) + (today.loginPassword || 0)} sub={`Google ${today.loginGoogle || 0} · Normal ${today.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" />
-        </div>
+        {[['Today', rows[0]], ['Yesterday', rows[1]]].map(([label, r]) => {
+          const x = r || {};
+          return (
+            <div key={label} className="flex flex-col gap-2">
+              <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{label} ({x.day ? fmtDay(x.day) : '—'})</div>
+              <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
+                <Stat label="Visitors" value={x.visitors ?? 0} sub={`${x.alreadyLoggedIn || 0} already logged in`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
+                <Stat label="Opened login / register" value={x.sawAuthPage ?? 0} sub={`${pct(x.sawAuthPage, x.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
+                <Stat label="Left without login/signup" value={x.leftWithoutAuth ?? 0} sub={`${pct(x.leftWithoutAuth, x.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
+                <Stat label="Signups" value={(x.signupGoogle || 0) + (x.signupPassword || 0)} sub={`Google ${x.signupGoogle || 0} · Normal ${x.signupPassword || 0} · DB ${x.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" />
+                <Stat label="Logins" value={(x.loginGoogle || 0) + (x.loginPassword || 0)} sub={`Google ${x.loginGoogle || 0} · Normal ${x.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" />
+              </div>
+            </div>
+          );
+        })}
 
         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-x-auto">
           <table className="min-w-full">

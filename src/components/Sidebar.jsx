@@ -78,6 +78,7 @@ const Sidebar = () => {
       items: [
         { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard', key: 'dashboard' },
         { path: '/admin/most-active-users', icon: Flame, label: 'Top Active Students', key: 'most-active-users' },
+        { path: '/admin/traffic', icon: Activity, label: 'Traffic', key: 'traffic' },
         { path: '/features', icon: ClipboardList, label: 'Features', key: 'features' },
         { path: '/admin/notifications', icon: Bell, label: 'Notifications', key: 'notifications' },
         { path: '/admin/announcements', icon: Megaphone, label: 'Announcements', key: 'announcements' },
@@ -158,7 +159,6 @@ const Sidebar = () => {
         { path: '/admin/analytics/financial', icon: Banknote, label: 'Financial', key: 'analytics-financial' },
         { path: '/admin/referral-analytics', icon: Globe, label: 'Referrals', key: 'referral-analytics' },
         { path: '/admin/referral-fraud', icon: ShieldAlert, label: 'Referral Fraud', key: 'referral-fraud' },
-        { path: '/admin/traffic', icon: Activity, label: 'Traffic Funnel', key: 'traffic' },
         { path: '/admin/app-errors', icon: Bug, label: 'App Errors', key: 'app-errors' },
         { path: '/admin/web-errors', icon: Bug, label: 'Web Errors', key: 'web-errors' },
       ]
