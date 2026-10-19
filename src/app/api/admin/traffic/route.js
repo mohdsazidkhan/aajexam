@@ -5,6 +5,10 @@ import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
 import { istDay } from '@/lib/utils/traffic';
 
+const SUM_KEYS = ['visitors', 'pageViews', 'alreadyLoggedIn', 'newVisitors', 'sawAuthPage', 'leftWithoutAuth', 'leftAfterAuthPage',
+    'signupGoogle', 'signupPassword', 'loginGoogle', 'loginPassword', 'dbSignups', 'dbSignupsGoogle', 'dbSignupsPassword'];
+const sumRows = (list) => Object.fromEntries(SUM_KEYS.map((k) => [k, list.reduce((t, r) => t + (r[k] || 0), 0)]));
+
 const count = (cond) => ({ $sum: { $cond: [cond, 1, 0] } });
 const anon = { $not: ['$wasLoggedIn'] };
 
@@ -22,8 +26,8 @@ export async function GET(req) {
         const sp = new URL(req.url).searchParams;
         const days = Math.min(1095, Math.max(1, parseInt(sp.get('days')) || 14));
         const offset = parseInt(sp.get('offset')) === 1 ? 1 : 0;
-        // Always load enough days to also fill the Today / Yesterday cards.
-        const total = Math.max(days + offset, 2);
+        // Also load the equally long period before the range, for the vs-previous comparison on the cards.
+        const total = offset + 2 * days;
         const fromDate = new Date(Date.now() - (total - 1) * 86400000);
         const fromDay = istDay(fromDate);
         // The selected range (sources / devices / table) covers [rangeFrom, rangeTo].
@@ -101,8 +105,10 @@ export async function GET(req) {
         return NextResponse.json({
             success: true,
             data: {
-                today: rows[0],
-                yesterday: rows[1],
+                summary: {
+                    current: sumRows(rows.slice(offset, offset + days)),
+                    previous: sumRows(rows.slice(offset + days, offset + 2 * days)),
+                },
                 days: rows.slice(offset, offset + days),
                 sources: sources.map((s) => ({ source: s._id || 'Direct', visitors: s.visitors, signups: s.signups })),
                 devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),

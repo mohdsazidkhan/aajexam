@@ -22,12 +22,29 @@ const RANGES = [
 const fmtDay = (d) => new Date(`${d}T00:00:00+05:30`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', weekday: 'short' });
 const pct = (a, b) => (b ? `${Math.round((a / b) * 100)}%` : '—');
 
-const Stat = ({ label, value, sub, Icon, tone }) => (
+// GA-style change vs the previous period. `inverse`: a rise is bad (e.g. people leaving), so up = red.
+const Delta = ({ cur, prev, inverse }) => {
+  if (!cur && !prev) return <span className="text-[10px] font-black text-slate-400">— vs prev</span>;
+  const up = cur >= prev;
+  const flat = cur === prev;
+  const good = flat ? null : up !== !!inverse;
+  const color = flat ? 'text-slate-400' : good ? 'text-emerald-600' : 'text-rose-600';
+  const text = !prev ? 'new' : `${Math.abs(((cur - prev) / prev) * 100).toFixed(1)}%`;
+  return (
+    <span className={`text-[10px] font-black ${color}`}>
+      {flat ? '→' : up ? '▲' : '▼'} {flat ? '0.0%' : text}
+      <span className="text-slate-400 font-bold"> vs {prev}</span>
+    </span>
+  );
+};
+
+const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse }) => (
   <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3">
     <div className={`p-2 rounded-lg ${tone}`}><Icon className="w-4 h-4" /></div>
     <div>
       <div className="text-lg font-black tabular-nums text-slate-900 dark:text-white leading-none">{value}</div>
       <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-1">{label}</div>
+      {cur !== undefined ? <div className="mt-0.5"><Delta cur={cur} prev={prev} inverse={inverse} /></div> : null}
       {sub ? <div className="text-[10px] text-slate-400 mt-0.5">{sub}</div> : null}
     </div>
   </div>
@@ -90,21 +107,25 @@ export default function Traffic() {
 
         {error ? <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{error}</div> : null}
 
-        {[['Today', data?.today], ['Yesterday', data?.yesterday]].map(([label, r]) => {
-          const x = r || {};
+        {(() => {
+          const c = data?.summary?.current || {};
+          const p = data?.summary?.previous || {};
+          const prevLabel = range.days === 1 ? (range.offset === 1 ? 'day before' : 'yesterday') : `previous ${range.days} days`;
+          const signups = (o) => (o.signupGoogle || 0) + (o.signupPassword || 0);
+          const logins = (o) => (o.loginGoogle || 0) + (o.loginPassword || 0);
           return (
-            <div key={label} className="flex flex-col gap-2">
-              <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{label} ({x.day ? fmtDay(x.day) : '—'})</div>
+            <div className="flex flex-col gap-2">
+              <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{range.label} · change vs {prevLabel}</div>
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
-                <Stat label="Visitors" value={x.visitors ?? 0} sub={`${x.alreadyLoggedIn || 0} already logged in`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
-                <Stat label="Opened login / register" value={x.sawAuthPage ?? 0} sub={`${pct(x.sawAuthPage, x.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
-                <Stat label="Left without login/signup" value={x.leftWithoutAuth ?? 0} sub={`${pct(x.leftWithoutAuth, x.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
-                <Stat label="Signups" value={(x.signupGoogle || 0) + (x.signupPassword || 0)} sub={`Google ${x.signupGoogle || 0} · Normal ${x.signupPassword || 0} · DB ${x.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" />
-                <Stat label="Logins" value={(x.loginGoogle || 0) + (x.loginPassword || 0)} sub={`Google ${x.loginGoogle || 0} · Normal ${x.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" />
+                <Stat label="Visitors" value={c.visitors ?? 0} cur={c.visitors || 0} prev={p.visitors || 0} sub={`${c.alreadyLoggedIn || 0} already logged in`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
+                <Stat label="Opened login / register" value={c.sawAuthPage ?? 0} cur={c.sawAuthPage || 0} prev={p.sawAuthPage || 0} sub={`${pct(c.sawAuthPage, c.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
+                <Stat label="Left without login/signup" value={c.leftWithoutAuth ?? 0} cur={c.leftWithoutAuth || 0} prev={p.leftWithoutAuth || 0} inverse sub={`${pct(c.leftWithoutAuth, c.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
+                <Stat label="Signups" value={signups(c)} cur={signups(c)} prev={signups(p)} sub={`Google ${c.signupGoogle || 0} · Normal ${c.signupPassword || 0} · DB ${c.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" />
+                <Stat label="Logins" value={logins(c)} cur={logins(c)} prev={logins(p)} sub={`Google ${c.loginGoogle || 0} · Normal ${c.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" />
               </div>
             </div>
           );
-        })}
+        })()}
 
         <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-auto max-h-[60vh]">
           <table className="min-w-full">
