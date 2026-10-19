@@ -42,7 +42,7 @@ async function generateUniqueUsername(email) {
 
 // Free-PRO-for-everyone promo — new signups get PRO through this date instead
 // of the usual 7-day trial. Remove this block once the promo ends.
-const PROMO_END_DATE = new Date('2026-12-31T23:59:59.999Z');
+const PROMO_END_DATE = new Date('2026-12-31T23:59:00+05:30');
 
 const createFreeSubscription = async (userId, isAdmin = false) => {
     try {

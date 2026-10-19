@@ -39,12 +39,18 @@ async function generateUniqueUsername(email) {
     return username;
 }
 
+// Free-PRO-for-everyone promo — must match PROMO_END_DATE in auth/register/route.js.
+// Remove this block once the promo ends.
+const PROMO_END_DATE = new Date('2026-12-31T23:59:00+05:30');
+
 const createFreeSubscription = async (userId, isAdmin = false) => {
     try {
         const startDate = new Date();
         let endDate = new Date();
         if (isAdmin) {
             endDate.setFullYear(2099);
+        } else if (startDate < PROMO_END_DATE) {
+            endDate = new Date(PROMO_END_DATE);
         } else {
             // 7-Day PRO Trial
             endDate.setDate(endDate.getDate() + 7);
