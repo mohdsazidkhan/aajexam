@@ -39,8 +39,8 @@ const Stat = ({ label, value, sub, Icon, tone }) => (
  */
 export default function Traffic() {
   const { isMounted } = useSSR();
-  const [rangeId, setRangeId] = useState('7');
-  const range = RANGES.find((r) => r.id === rangeId) || RANGES[2];
+  const [rangeId, setRangeId] = useState('today');
+  const range = RANGES.find((r) => r.id === rangeId) || RANGES[0];
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
