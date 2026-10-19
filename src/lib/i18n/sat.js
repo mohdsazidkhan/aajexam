@@ -2001,6 +2001,10 @@ const SAT = {
   'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ᱨᱮ {title} ᱯᱮᱴᱟᱨᱱ ᱨᱮ ᱱᱮᱜᱮᱴᱤᱵ ᱢᱟᱨᱠᱤᱝ ᱵᱟᱝ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱱᱤᱛᱚᱜ ᱱᱤᱭᱚᱢ ᱞᱟᱹᱜᱤᱫ ᱮᱥᱠᱟᱨᱤ ᱵᱷᱮᱜᱟᱨ ᱧᱮᱞ ᱢᱮ᱾',
   'Which years of {name} previous year papers are available?': '{name} ᱨᱮᱱᱟᱜ ᱯᱟᱦᱤᱞ ᱥᱟᱞᱟᱜ ᱯᱮᱯᱟᱨ ᱪᱮᱫ ᱥᱟᱞ ᱨᱮᱱᱟᱜ ᱢᱮᱱᱟᱜᱼᱟ?',
   'AajExam has {name} PYQ papers for {years}.': 'AajExam ᱨᱮ {name} ᱨᱮᱱᱟᱜ PYQ ᱯᱮᱯᱟᱨ {years} ᱞᱟᱹᱜᱤᱫ ᱢᱮᱱᱟᱜᱼᱟ᱾',
+  'Your email': 'ᱟᱢᱟᱜ ᱤᱢᱮᱞ',
+  'Start the quiz': 'ᱠᱣᱤᱡ ᱮᱛᱦᱚᱵ ᱢᱮ',
+  'Your score': 'ᱟᱢᱟᱜ ᱥᱠᱳᱨ',
+  'Your mobile number': 'ᱟᱢᱟᱜ ᱢᱚᱵᱟᱭᱤᱞ ᱱᱚᱢᱵᱚᱨ',
 };
 
 export default SAT;

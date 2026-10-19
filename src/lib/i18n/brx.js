@@ -2001,6 +2001,10 @@ const BODO = {
   'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam आव {title} पेटार्नआव नेगेटिभ मार्किं नङा। गावनि नियम आयदाव सरकारि फोरमायथिखौ नायो।',
   'Which years of {name} previous year papers are available?': '{name} नि सिगां बोसोरनि फेपारफोर माबोरनि बोसोरनि दं?',
   'AajExam has {name} PYQ papers for {years}.': 'AajExam आव {name} नि PYQ फेपारफोर {years} आयदाव दं।',
+  'Your email': 'नोंनि इमेल',
+  'Start the quiz': 'क्विज जागाय',
+  'Your score': 'नोंनि स्कोर',
+  'Your mobile number': 'नोंनि मोबाइल नम्बर',
 };
 
 export default BODO;

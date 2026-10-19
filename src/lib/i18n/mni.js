@@ -2001,6 +2001,10 @@ const MANIPURI = {
   'The {title} pattern on AajExam has no negative marking. Check the official notification for the current rule.': 'AajExam ꯒꯤ {title} ꯄꯦꯇꯔꯅꯗꯥ ꯅꯦꯒꯦꯇꯤꯕ ꯃꯥꯔꯀꯤꯡ ꯂꯩꯇꯦ꯫ ꯍꯧꯖꯤꯀꯒꯤ ꯑꯣꯏꯕꯥ ꯅꯤꯌꯃꯒꯤꯗꯃꯛ ꯑꯣꯐꯤꯁꯤꯌꯦꯜ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ ꯌꯦꯡꯕꯤꯌꯨ꯫',
   'Which years of {name} previous year papers are available?': '{name} ꯒꯤ ꯃꯃꯥꯡꯒꯤ ꯄꯦꯄꯔ ꯀꯃꯨꯒꯤ ꯆꯍꯤꯒꯤ ꯐꯪꯕꯒꯦ?',
   'AajExam has {name} PYQ papers for {years}.': 'AajExam ꯗꯥ {name} ꯒꯤ PYQ ꯄꯦꯄꯔ {years} ꯒꯤ ꯐꯪꯏ꯫',
+  'Your email': 'ꯅꯪꯒꯤ ꯏꯃꯦꯜ',
+  'Start the quiz': 'ꯀ꯭ꯋꯤꯖ ꯍꯧꯎ',
+  'Your score': 'ꯅꯪꯒꯤ ꯁ꯭ꯀꯣꯔ',
+  'Your mobile number': 'ꯅꯪꯒꯤ ꯃꯣꯕꯥꯏꯜ ꯅꯝꯕꯔ',
 };
 
 export default MANIPURI;

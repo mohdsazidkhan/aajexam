@@ -115,6 +115,7 @@ import PublicNavbar from '../components/navbars/PublicNavbar';
 import PublicBottomNav from '../components/navbars/PublicBottomNav';
 import UnifiedFooter from '../components/UnifiedFooter';
 import { useAuthStatus } from '../hooks/useClientSide';
+import { usePromoBarVisible } from '../lib/freePromo';
 
 const toastOptions = {
   duration: 5000,
@@ -145,6 +146,7 @@ const toastOptions = {
 
 function AppContent({ Component, pageProps }) {
   const router = useRouter();
+  const promoActive = usePromoBarVisible();
   const dispatch = useDispatch();
   // The signed-in layout (navbars, sidebars, bottom navs) is only downloaded for signed-in visitors.
   const [AppLayout, setAppLayout] = useState(null);
@@ -231,7 +233,7 @@ function AppContent({ Component, pageProps }) {
     }
 
     return (
-      <main id="main-content" className="min-h-screen pt-16">
+      <main id="main-content" className={`min-h-screen ${promoActive ? 'pt-24' : 'pt-16'}`}>
         <PublicNavbar />
         <div className="appContainer px-4 xxl:px-8">
           {/* Every public page sits in the centred container column. The landing page ('/') is built from

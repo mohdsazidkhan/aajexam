@@ -12,6 +12,14 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+/* Light sweep across the red promo strip above the public navbar */
+@keyframes promoShine {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  60%, 100% { transform: translateX(520%) skewX(-20deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-shine { animation: none !important; display: none; }
+}
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -16,6 +16,25 @@ export const getFreePromoEnd = () => {
   return endPromise;
 };
 
+// The red strip above the public navbar: visible while the promo runs, until the visitor closes it
+// (remembered for the rest of the browser session, so it comes back on their next visit).
+const BAR_KEY = 'promoBarDismissed';
+export const dismissPromoBar = () => {
+  try { sessionStorage.setItem(BAR_KEY, '1'); } catch (e) { /* storage unavailable */ }
+  window.dispatchEvent(new Event('promoBarDismissed'));
+};
+export const usePromoBarVisible = () => {
+  const active = useFreePromoActive();
+  const [dismissed, setDismissed] = useState(false);
+  useEffect(() => {
+    try { if (sessionStorage.getItem(BAR_KEY)) setDismissed(true); } catch (e) { /* ignore */ }
+    const on = () => setDismissed(true);
+    window.addEventListener('promoBarDismissed', on);
+    return () => window.removeEventListener('promoBarDismissed', on);
+  }, []);
+  return active && !dismissed;
+};
+
 export const isFreePromoActive = () => Date.now() < FREE_PROMO_END.getTime();
 
 // true while the free promo should be shown. Starts from the fallback date, then follows the coupon.

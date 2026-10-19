@@ -16,6 +16,9 @@ import {
   FolderOpen,
   Sparkles,
   MessageCircleQuestion,
+  X,
+  Gift,
+  ArrowRight,
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 
@@ -24,6 +27,60 @@ import { initializeDarkMode } from '../../store/darkModeSlice';
 import Button from '../ui/Button';
 import ThemeColorMenuButton from '../ThemeColorMenuButton';
 import useTranslate from '../../hooks/useTranslate';
+import { usePromoBarVisible, dismissPromoBar } from '../../lib/freePromo';
+
+// Red strip above the navbar while the free-PRO promo runs: static line on desktop, scrolling line on phones.
+const PromoTopBar = () => {
+  const { translate } = useTranslate();
+  const text = translate('AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.');
+  const login = (
+    <Link
+      href="/login"
+      className="shrink-0 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white hover:bg-slate-100 text-black text-[11px] font-black uppercase tracking-wider whitespace-nowrap shadow-md shadow-black/20 transition"
+    >
+      {translate('Login Now')}
+      <ArrowRight className="w-3 h-3" />
+    </Link>
+  );
+  const gift = (
+    <span className="shrink-0 w-5 h-5 rounded-full bg-white/20 ring-1 ring-white/40 flex items-center justify-center animate-pulse">
+      <Gift className="w-3 h-3" />
+    </span>
+  );
+  return (
+    <div role="status" className="fixed top-0 left-0 right-0 z-[101] h-8 bg-red-600 text-white flex items-center overflow-hidden border-b border-white/10 shadow-md">
+      {/* moving light sweep */}
+      <span aria-hidden="true" className="promo-shine pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-transparent via-white/25 to-transparent" style={{ animation: 'promoShine 4s ease-in-out infinite' }} />
+
+      <div className="relative flex-1 min-w-0 overflow-hidden">
+        {/* desktop: gift, the line, a small gap, then the Login Now link */}
+        <div className="hidden sm:flex items-center justify-center gap-3 px-3">
+          {gift}
+          <p className="text-xs font-black uppercase tracking-widest truncate drop-shadow">{text}</p>
+          {login}
+        </div>
+        {/* phones: the same line scrolls, with the link right after each copy of the text */}
+        <div className="sm:hidden flex w-max whitespace-nowrap" style={{ animation: 'marquee 18s linear infinite' }}>
+          {[0, 1].map((i) => (
+            <span key={i} className="px-6 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-wider">
+              {gift}
+              {text}
+              {login}
+            </span>
+          ))}
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={dismissPromoBar}
+        aria-label={translate('Close')}
+        className="relative shrink-0 mx-1.5 w-6 h-6 flex items-center justify-center rounded-full bg-black/15 hover:bg-black/30 transition"
+      >
+        <X className="w-4 h-4" />
+      </button>
+    </div>
+  );
+};
 
 const PublicNavbar = () => {
   const router = useRouter();
@@ -31,6 +88,7 @@ const PublicNavbar = () => {
   const { translate } = useTranslate();
   const isClient = useClientSide();
   const [scrolled, setScrolled] = useState(false);
+  const promoActive = usePromoBarVisible();
 
   useEffect(() => {
     if (isClient) {
@@ -57,8 +115,9 @@ const PublicNavbar = () => {
 
   return (
     <>
+      {promoActive && <PromoTopBar />}
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
+        className={`fixed ${promoActive ? 'top-8' : 'top-0'} left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
           ? 'py-2.5 bg-white dark:bg-black border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
           : 'py-2.5 bg-white dark:bg-black border-b-2 border-slate-100 dark:border-slate-800 shadow-sm'
           }`}
