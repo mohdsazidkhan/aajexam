@@ -7,9 +7,11 @@ import { Sparkles, X, ArrowRight } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import useTranslate from '../../hooks/useTranslate';
+import { trackPrompt } from '../../lib/tracker';
 
 const NudgeInner = ({ onClose }) => {
   const { translate } = useTranslate();
+  useEffect(() => { trackPrompt('nudge', 'shown'); }, []);
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -85,7 +87,7 @@ const NudgeInner = ({ onClose }) => {
         
         {/* CTA */}
         <button
-           onClick={() => googleSignup()}
+           onClick={() => { trackPrompt('nudge', 'click'); googleSignup(); }}
            disabled={isGoogleLoading}
            className="w-full md:w-auto shrink-0 px-6 py-3.5 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest text-xs rounded-lg xl:rounded-xl shadow-sm border-b-2 border-primary-600 active:border-b-0 active:translate-y-1 transition-all disabled:opacity-70 flex items-center justify-center gap-2 z-10"
         >

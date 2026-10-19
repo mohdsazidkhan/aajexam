@@ -27,6 +27,28 @@ const getVid = () => {
   return vid;
 };
 
+/**
+ * Signup-prompt funnel: trackPrompt('exit', 'shown') when a prompt appears, trackPrompt('exit', 'click')
+ * when the visitor presses its signup button. Shown once per prompt per page load. Best effort.
+ */
+const sentPrompts = new Set();
+export function trackPrompt(name, evt) {
+  try {
+    if (typeof window === 'undefined') return;
+    const key = `${name}:${evt}`;
+    if (sentPrompts.has(key)) return;
+    sentPrompts.add(key);
+    const body = JSON.stringify({ vid: getVid(), evt, name });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'application/json' }));
+    } else {
+      fetch(ENDPOINT, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body });
+    }
+  } catch (e) {
+    // analytics must never affect the visitor
+  }
+}
+
 export function trackPageView(path) {
   try {
     if (typeof window === 'undefined') return;
@@ -38,6 +60,7 @@ export function trackPageView(path) {
       vid: getVid(),
       path: clean,
       ref: firstViewOfLoad ? document.referrer : '',
+      utm: firstViewOfLoad ? new URLSearchParams(location.search).get('utm_source') || '' : '',
       loggedIn: !!localStorage.getItem('token'),
     });
     firstViewOfLoad = false;

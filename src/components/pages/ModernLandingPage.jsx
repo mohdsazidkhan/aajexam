@@ -26,7 +26,10 @@ import MobileAppWrapper from "../MobileAppWrapper";
 import API from '../../lib/api';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
+import dynamic from 'next/dynamic';
 import useTranslate from '../../hooks/useTranslate';
+
+const SampleQuiz = dynamic(() => import('../SampleQuiz'), { ssr: false });
 
 const POPULAR_PYQ_EXAMS = [
    { slug: 'ssc-cgl', name: 'SSC CGL' },
@@ -251,6 +254,9 @@ const ModernLandingPage = () => {
                ))}
             </div>
          </section>
+
+         {/* ── Try before signup ── */}
+         <SampleQuiz />
 
          {/* ── 3-Step How It Works ── */}
          <section className="border-t-2 border-slate-100 dark:border-slate-800 px-0 py-4 xl:py-8">

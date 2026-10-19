@@ -20,10 +20,14 @@ const visitorDaySchema = new mongoose.Schema({
     browserVersion: { type: String, default: '' },  // major version
     country: { type: String, default: '' },         // ISO code, from Vercel's edge headers
     region: { type: String, default: '' },
+    state: { type: String, default: '' },          // state name, e.g. 'Uttar Pradesh' (derived from `region`)
     city: { type: String, default: '' },
     ipHash: { type: String, default: '' },          // salted SHA-256 prefix; the raw IP is never stored
     wasLoggedIn: { type: Boolean, default: false }, // already had a login token on the first view of the day
     sawAuth: { type: Boolean, default: false },     // opened /login or /register
+    lastPath: { type: String, default: '' },        // most recent page seen that day = the exit page
+    prompts: { type: [String], default: [] },       // signup prompts shown: exit | welcome | nudge | sticky | onetap
+    clicks: { type: [String], default: [] },        // signup prompts the visitor clicked
     signup: { type: String, default: '' },          // '' | google | password
     login: { type: String, default: '' },           // '' | google | password
     createdAt: { type: Date, default: Date.now },

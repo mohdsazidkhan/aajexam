@@ -7,6 +7,7 @@ import { Gift, X, CheckCircle2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import useTranslate from '../../hooks/useTranslate';
+import { trackPrompt } from '../../lib/tracker';
 import { getFreePromoEnd } from '../../lib/freePromo';
 
 const PROMO_FEATURES = [
@@ -20,6 +21,7 @@ const PROMO_FEATURES = [
 
 const WelcomePromoModalInner = ({ onClose }) => {
   const { translate } = useTranslate();
+  useEffect(() => { trackPrompt('welcome', 'shown'); }, []);
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
@@ -112,7 +114,7 @@ const WelcomePromoModalInner = ({ onClose }) => {
             </div>
 
             <button
-              onClick={() => googleSignup()}
+              onClick={() => { trackPrompt('welcome', 'click'); googleSignup(); }}
               disabled={isGoogleLoading}
               className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-sm disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
             >

@@ -3,11 +3,14 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import VisitorDay from '@/models/VisitorDay';
 import { enforceRateLimit, getClientIp } from '@/lib/rateLimit';
+import { stateNameOf } from '@/lib/utils/regionNames';
 
 export const VID_COOKIE = 'aj_vid';
 const VID_RX = /^[a-f0-9]{16,32}$/;
 const BOT_RX = /bot|crawl|spider|slurp|facebookexternalhit|preview|headless|lighthouse|pingdom|uptime|monitor|python-requests|curl\/|wget|axios|node-fetch|go-http/i;
 const AUTH_PATH_RX = /^\/(login|register)(\/|$)/;
+
+export const PROMPT_NAMES = ['exit', 'welcome', 'nudge', 'sticky', 'onetap', 'email', 'sample'];
 
 export const isBotUa = (ua) => !ua || BOT_RX.test(ua);
 
@@ -46,18 +49,43 @@ const hashIp = (ip) => (ip
 
 const safeDecode = (v) => { try { return decodeURIComponent(v || ''); } catch (e) { return v || ''; } };
 
-const sourceOf = (ref, ownHost) => {
+// Traffic sources: Direct | Google Search | Yahoo Search | Bing Search | ChatGPT | Gemini | Grok | DeepSeek | Claude | Other
+export const SOURCES = ['Direct', 'Google Search', 'Yahoo Search', 'Bing Search', 'ChatGPT', 'Gemini', 'Grok', 'DeepSeek', 'Claude', 'Other'];
+
+// AI assistants often tag outgoing links with ?utm_source=<name>, which survives even when the referrer is stripped.
+const AI_HOSTS = [
+    ['ChatGPT', /(^|\.)(chatgpt\.com|openai\.com)$/],
+    ['Gemini', /^(gemini|bard)\.google\.com$/],
+    ['Grok', /(^|\.)(grok\.com|x\.ai)$/],
+    ['DeepSeek', /(^|\.)deepseek\.com$/],
+    ['Claude', /(^|\.)(claude\.ai|anthropic\.com)$/],
+];
+const AI_UTM = [
+    ['ChatGPT', /chatgpt|openai/i], ['Gemini', /gemini|bard/i], ['Grok', /grok/i], ['DeepSeek', /deepseek/i], ['Claude', /claude|anthropic/i],
+];
+
+export const sourceOf = (ref, ownHost, utm = '') => {
+    const u = String(utm || '');
+    const fromUtm = u && AI_UTM.find(([, rx]) => rx.test(u));
+    if (fromUtm) return fromUtm[0];
+
     if (!ref) return 'Direct';
+    // Android Google app / quick search box
+    if (/^android-app:\/\/com\.google\.android\.googlequicksearchbox/.test(ref)) return 'Google Search';
     let host = '';
     try { host = new URL(ref).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { return 'Direct'; }
     if (!host || host === ownHost) return 'Direct';
-    if (/(^|\.)google\./.test(host)) return 'Google';
-    if (/bing\.|duckduckgo\.|yahoo\.|yandex\.|ecosia\.|baidu\./.test(host)) return 'Search';
-    if (/whatsapp\./.test(host)) return 'WhatsApp';
-    if (/(^|\.)t\.me$|telegram\./.test(host)) return 'Telegram';
-    if (/facebook\.|fb\.|instagram\.|twitter\.|(^|\.)x\.com$|(^|\.)t\.co$|linkedin\.|youtube\.|(^|\.)youtu\.be$|reddit\./.test(host)) return 'Social';
-    return 'Referral';
+
+    const ai = AI_HOSTS.find(([, rx]) => rx.test(host));
+    if (ai) return ai[0];
+    if (/^google\.[a-z.]+$/.test(host)) return 'Google Search';
+    if (/(^|\.)yahoo\./.test(host)) return 'Yahoo Search';
+    if (/(^|\.)bing\.com$/.test(host)) return 'Bing Search';
+    return 'Other';
 };
+
+// Rows stored before this list existed used the older names; fold them into the current ones for display.
+export const LEGACY_SOURCE = { Google: 'Google Search', Search: 'Other', Social: 'Other', WhatsApp: 'Other', Telegram: 'Other', Referral: 'Other' };
 
 /**
  * POST /api/track  { vid, path, ref, loggedIn }
@@ -77,25 +105,40 @@ export async function recordPageView(req) {
         const b = JSON.parse(raw);
 
         const vid = typeof b.vid === 'string' && VID_RX.test(b.vid) ? b.vid : null;
+
+        // Signup-prompt events: { vid, evt: 'shown' | 'click', name }
+        if (b.evt) {
+            if (!vid || !['shown', 'click'].includes(b.evt) || !PROMPT_NAMES.includes(b.name)) return ok();
+            await dbConnect();
+            await VisitorDay.updateOne(
+                { day: istDay(), vid },
+                { $addToSet: { [b.evt === 'click' ? 'clicks' : 'prompts']: b.name }, $set: { lastAt: new Date() }, $setOnInsert: { createdAt: new Date() } },
+                { upsert: true }
+            );
+            return ok();
+        }
+
         const path = typeof b.path === 'string' ? b.path.split('?')[0].split('#')[0].slice(0, 200) : '';
         if (!vid || !path.startsWith('/') || path.startsWith('/admin') || path.startsWith('/api')) return ok();
 
         const ownHost = (req.headers.get('host') || '').replace(/^www\./, '').toLowerCase();
         const ref = typeof b.ref === 'string' ? b.ref.slice(0, 300) : '';
+        const utm = typeof b.utm === 'string' ? b.utm.slice(0, 40) : '';
 
         await dbConnect();
         await VisitorDay.updateOne(
             { day: istDay(), vid },
             {
                 $inc: { pages: 1 },
-                $set: { lastAt: new Date(), ...(AUTH_PATH_RX.test(path) ? { sawAuth: true } : {}) },
+                $set: { lastAt: new Date(), lastPath: path, ...(AUTH_PATH_RX.test(path) ? { sawAuth: true } : {}) },
                 $setOnInsert: {
                     firstPath: path,
-                    source: sourceOf(ref, ownHost),
+                    source: sourceOf(ref, ownHost, utm),
                     device: deviceOf(ua),
                     ...parseUa(ua),
                     country: (req.headers.get('x-vercel-ip-country') || '').slice(0, 2).toUpperCase(),
                     region: safeDecode(req.headers.get('x-vercel-ip-country-region')).slice(0, 40),
+                    state: stateNameOf(req.headers.get('x-vercel-ip-country'), safeDecode(req.headers.get('x-vercel-ip-country-region'))).slice(0, 60),
                     city: safeDecode(req.headers.get('x-vercel-ip-city')).slice(0, 60),
                     ipHash: hashIp(getClientIp(req)),
                     wasLoggedIn: b.loggedIn === true,

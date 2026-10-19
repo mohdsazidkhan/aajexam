@@ -43,6 +43,10 @@ const ExitIntentModal = dynamic(() => import('../components/modals/ExitIntentMod
   ssr: false,
 });
 
+const SignupBoost = dynamic(() => import('../components/modals/SignupBoost'), {
+  ssr: false,
+});
+
 const PageViewNudge = dynamic(() => import('../components/modals/PageViewNudge'), {
   ssr: false,
 });
@@ -246,6 +250,7 @@ function AppContent({ Component, pageProps }) {
           <WelcomePromoModal />
           <ExitIntentModal />
           <PageViewNudge />
+          <SignupBoost />
           <CouponOfferModal />
         </AfterIdle>
       </main>

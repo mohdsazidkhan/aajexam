@@ -3,16 +3,47 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
-import { Gift, X, BookOpen, Target } from 'lucide-react';
+import { Gift, X, CheckCircle2, ChevronDown } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
 import useTranslate from '../../hooks/useTranslate';
+import { trackPrompt } from '../../lib/tracker';
 import { useFreePromoActive } from '../../lib/freePromo';
 
 const ExitIntentModalInner = ({ onClose }) => {
   const { translate, rich } = useTranslate();
+  useEffect(() => { trackPrompt('exit', 'shown'); }, []);
   const router = useRouter();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [showLead, setShowLead] = useState(false);
+  const [emailBusy, setEmailBusy] = useState(false);
+  const [emailDone, setEmailDone] = useState(false);
+
+  const submitEmail = async (e) => {
+    e.preventDefault();
+    if (emailBusy || !email.trim() || !phone.trim()) return;
+    setEmailBusy(true);
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), phone: phone.trim(), source: 'exit', path: window.location.pathname }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        trackPrompt('email', 'click');
+        setEmailDone(true);
+      } else {
+        toast.error(translate(data.message || 'Please enter a valid email.'));
+      }
+    } catch (err) {
+      toast.error(translate('Something went wrong. Please try again.'));
+    } finally {
+      setEmailBusy(false);
+    }
+  };
   const promoActive = useFreePromoActive();
 
   const googleSignup = useGoogleLogin({
@@ -66,81 +97,121 @@ const ExitIntentModalInner = ({ onClose }) => {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm border-2 border-primary-500/20 overflow-hidden"
+        className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-primary-500/30 overflow-hidden max-h-[70vh] flex flex-col"
       >
-        <button aria-label={translate('Close')}
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        {/* Header: gradient band with the offer */}
+        <div className="relative shrink-0 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-400 px-5 pt-5 pb-5 text-center text-white overflow-hidden">
+          <div className="absolute -top-10 -left-10 w-36 h-36 rounded-full bg-white/10 pointer-events-none" />
+          <div className="absolute -bottom-12 -right-8 w-40 h-40 rounded-full bg-white/10 pointer-events-none" />
 
-        <div className="p-8 text-center relative overflow-hidden">
-          <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+          <button aria-label={translate('Close')}
+            onClick={onClose}
+            className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white transition"
+          >
+            <X className="w-5 h-5" />
+          </button>
 
           <div className="relative z-10">
-            <div className="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-800">
-              <Gift className="w-10 h-10 text-primary-600" />
+            <div className="w-12 h-12 mx-auto mb-2 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center ring-4 ring-white/20">
+              <Gift className="w-6 h-6 text-white" />
             </div>
-
-            <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-3">
+            <h2 className="text-lg sm:text-xl font-black font-outfit uppercase tracking-tight leading-tight mb-2">
               {translate(promoActive ? 'Wait! Your FREE PRO is waiting.' : 'Wait! Don\'t Leave Empty Handed.')}
             </h2>
             {promoActive && (
-              <div className="mb-4">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500 text-white text-xs sm:text-sm font-black uppercase tracking-widest shadow-lg shadow-primary-500/30 ring-4 ring-primary-500/20 animate-pulse">
-                  <Gift className="w-4 h-4" />
-                  {translate('PRO FREE till 31 Dec 2026')}
-                </span>
-              </div>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-primary-700 text-[11px] sm:text-xs font-black uppercase tracking-widest shadow-lg animate-pulse">
+                <Gift className="w-3.5 h-3.5" />
+                {translate('PRO FREE till 31 Dec 2026')}
+              </span>
             )}
-            <p className="text-sm font-bold text-slate-600 dark:text-slate-400 mb-8 max-w-sm mx-auto">
-              {promoActive
-                ? translate('Sign up in 10 seconds and unlock full PRO access. No card, no payment.')
-                : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="p-4 sm:p-5 text-center overflow-y-auto min-h-0 flex-1">
+          <p className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 mb-3 max-w-xs mx-auto">
+            {promoActive
+              ? translate('Sign up in 10 seconds and unlock full PRO access. No card, no payment.')
+              : rich('Sign up in 10 seconds to unlock a <0>Free Premium Mock Test</0> and personalized progress tracking.', [(c) => <span className="text-primary-600 font-black">{c}</span>])}
+          </p>
+
+          <div className="mb-3 flex items-center justify-center gap-2 rounded-2xl bg-primary-50 dark:bg-primary-900/20 border border-primary-500/30 px-3 py-2.5">
+            <CheckCircle2 className="w-5 h-5 text-primary-600 shrink-0" />
+            <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white leading-snug">
+              {translate('Everything in Unlimited FREE')}
             </p>
+          </div>
 
-            <div className="space-y-3 mb-8 text-left max-w-sm mx-auto">
-              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 shrink-0"><BookOpen className="w-4 h-4" /></div>
-                {translate('All PYQs & full-length mock tests, FREE')}
-              </div>
-              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                {translate('Subject & topic-wise quizzes to fix weak areas')}
-              </div>
-              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                {translate('Daily challenges to build a study habit')}
-              </div>
-              <div className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-300">
-                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-black dark:text-white shrink-0"><Target className="w-4 h-4" /></div>
-                {translate('Smart analysis that shows exactly what to improve')}
-              </div>
-            </div>
-
-            <button
-              onClick={() => googleSignup()}
-              disabled={isGoogleLoading}
-              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-sm disabled:opacity-70 group border-b-2 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
-            >
-              {isGoogleLoading ? (
-                <div className="w-5 h-5 border-2 border-slate-500 border-t-transparent rounded-full animate-spin" />
-              ) : (
-                <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                </svg>
-              )}
-              {isGoogleLoading ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
-            </button>
-            {promoActive ? (
-              <p className="mt-4 text-[10px] text-red-600 dark:text-red-500 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
+          <button
+            onClick={() => { trackPrompt('exit', 'click'); googleSignup(); }}
+            disabled={isGoogleLoading}
+            className="w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black uppercase tracking-widest text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-slate-100 transition shadow-lg disabled:opacity-70 border-b-4 border-slate-700 dark:border-slate-300 active:border-b-0 active:translate-y-1"
+          >
+            {isGoogleLoading ? (
+              <div className="w-5 h-5 border-2 border-slate-500 border-t-transparent rounded-full animate-spin" />
             ) : (
-              <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
+              <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+            )}
+            {isGoogleLoading ? translate('Signing in...') : translate(promoActive ? 'Get PRO Free Now' : 'Claim Free Account')}
+          </button>
+          {promoActive ? (
+            <p className="mt-2 text-[10px] text-red-600 dark:text-red-500 font-bold uppercase tracking-widest">{translate('Offer valid till 31 Dec 2026')}</p>
+          ) : (
+            <p className="mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-widest">{translate('Takes only 10 seconds')}</p>
+          )}
+
+          {/* Not ready for Google yet: keep the visitor with an email + mobile number instead of losing them */}
+          <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+            {emailDone ? (
+              <p className="text-xs font-bold text-primary-600">{translate('Thanks! We will contact you before the free PRO offer ends.')}</p>
+            ) : !showLead ? (
+              <button
+                type="button"
+                onClick={() => setShowLead(true)}
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 hover:text-primary-600 underline underline-offset-2"
+              >
+                {translate('Not ready yet? Share your email & mobile number for free test updates and offer reminders.')}
+                <ChevronDown className="w-3.5 h-3.5 shrink-0" />
+              </button>
+            ) : (
+              <form onSubmit={submitEmail} className="max-w-sm mx-auto space-y-2">
+                <input
+                  type="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={translate('Your email')}
+                  aria-label={translate('Your email')}
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  autoComplete="tel-national"
+                  required
+                  maxLength={14}
+                  pattern="[0-9+ ]{10,14}"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/[^0-9+ ]/g, ''))}
+                  placeholder={translate('Your mobile number')}
+                  aria-label={translate('Your mobile number')}
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+                <button
+                  type="submit"
+                  disabled={emailBusy}
+                  className="w-full px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-white text-xs font-black uppercase tracking-widest disabled:opacity-70"
+                >
+                  {emailBusy ? '...' : translate('Notify me')}
+                </button>
+              </form>
             )}
           </div>
         </div>

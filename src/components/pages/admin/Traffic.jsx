@@ -55,14 +55,16 @@ const countryName = (code) => {
 };
 
 const List = ({ title, rows }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 max-h-48 overflow-y-auto">
-    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{title}</div>
-    {rows.length === 0 ? <div className="text-xs text-slate-400">No data yet</div> : rows.map((r) => (
-      <div key={r.k} className="flex justify-between gap-3 text-xs py-0.5">
-        <span className={`font-bold ${r.cap ? 'capitalize' : ''}`}>{r.k}</span>
-        <span className="tabular-nums text-right">{r.v}</span>
-      </div>
-    ))}
+  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 h-48 flex flex-col">
+    <div className="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{title}</div>
+    <div className="min-h-0 flex-1 overflow-y-auto">
+      {rows.length === 0 ? <div className="text-xs text-slate-400">No data yet</div> : rows.map((r) => (
+        <div key={r.k} className="flex justify-between gap-3 text-xs py-0.5">
+          <span className={`font-bold ${r.cap ? 'capitalize' : ''}`}>{r.k}</span>
+          <span className="tabular-nums text-right">{r.v}</span>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
@@ -78,18 +80,19 @@ export default function Traffic() {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [hideSuspect, setHideSuspect] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await API.getAdminTraffic(range.days, range.offset);
+      const res = await API.getAdminTraffic(range.days, range.offset, hideSuspect);
       setData(res.data);
     } catch (e) {
       setError(e?.message || 'Failed to load traffic');
     }
     setLoading(false);
-  }, [range]);
+  }, [range, hideSuspect]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -112,6 +115,10 @@ export default function Traffic() {
           <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
             <Activity className="w-4 h-4" /> Traffic <span className="mx-1 text-slate-300 dark:text-slate-600">-</span><span className="text-[10px] font-bold normal-case tracking-normal text-primary-600 dark:text-primary-400">{range.label} · change vs {prevLabel}</span>
           </div>
+          <label className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400 cursor-pointer select-none" title="Hides single-page direct visits from outside India (likely bots)">
+            <input type="checkbox" checked={hideSuspect} onChange={(e) => setHideSuspect(e.target.checked)} className="accent-primary-600" />
+            Hide suspected bots
+          </label>
           <select
             value={rangeId}
             onChange={(e) => setRangeId(e.target.value)}
@@ -203,8 +210,12 @@ export default function Traffic() {
           <List title={`New visitors by source (${range.label})`} rows={(data?.sources || []).map((x) => ({ k: x.source, v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
           <List title={`Devices (${range.label})`} rows={(data?.devices || []).map((x) => ({ k: x.device, v: x.visitors, cap: true }))} />
           <List title={`Top countries (${range.label})`} rows={(data?.countries || []).map((x) => ({ k: countryName(x.code), v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
+          <List title={`Top states (${range.label})`} rows={(data?.states || []).map((x) => ({ k: `${x.name}${x.country ? `, ${x.country}` : ''}`, v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
           <List title={`Top cities (${range.label})`} rows={(data?.cities || []).map((x) => ({ k: `${x.city}${x.country ? `, ${x.country}` : ''}`, v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
           <List title={`Operating systems (${range.label})`} rows={(data?.oses || []).map((x) => ({ k: x.name, v: x.visitors }))} />
+          <List title={`Last page before leaving, no signup (${range.label})`} rows={(data?.exitPages || []).map((x) => ({ k: x.path, v: `${x.visitors} visitors` }))} />
+          <List title={`Signup prompts (${range.label}): shown → clicked → signed up`} rows={(data?.prompts || []).filter((x) => x.shown || x.clicked).map((x) => ({ k: x.name, v: `${x.shown} shown · ${x.clicked} clicked (${pct(x.clicked, x.shown)}) · ${x.signups} signed up`, cap: true }))} />
+          <List title={`Email leads (${range.label})`} rows={[{ k: 'Emails captured', v: data?.leads ?? 0 }]} />
           <List title={`Browsers (${range.label})`} rows={(data?.browsers || []).map((x) => ({ k: x.name, v: x.visitors }))} />
         </div>
       </div>
