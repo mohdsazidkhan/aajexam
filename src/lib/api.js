@@ -641,6 +641,11 @@ class ApiService {
     });
   }
 
+  // Everything about one user (admin /admin/user-details/:id)
+  async getAdminUserFullDetail(id) {
+    return this.request(`/api/admin/user-details/${id}`);
+  }
+
   // First-party visitor funnel (admin /admin/traffic)
   async getAdminTraffic(days = 7, offset = 0) {
     return this.request(`/api/admin/traffic?days=${days}&offset=${offset}`);

@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { m as motion, AnimatePresence } from "framer-motion";
 import {
-  User, Mail, Calendar, Phone, Crown, Instagram, Facebook,
-  Youtube, Search, LayoutGrid, List, Table as TableIcon,
-  MailWarning, ChevronRight, Users, DownloadCloud
+  User, Mail, Calendar, Phone, Crown,
+  Search, LayoutGrid, List, Table as TableIcon,
+  MailWarning, Users, DownloadCloud, Eye
 } from "lucide-react";
 
 import Pagination from "../../Pagination";
@@ -118,18 +118,11 @@ export default function UserDetailsPage() {
       )
     },
     {
-      key: 'social', header: 'Social Links', align: 'right', render: (_, u) => (
-        <div className="flex justify-end gap-2">
-          {[
-            { icon: Instagram, link: u.socialLinks?.instagram, color: 'text-black dark:text-white' },
-            { icon: Facebook, link: u.socialLinks?.facebook, color: 'text-black dark:text-white' },
-            { icon: Youtube, link: u.socialLinks?.youtube, color: 'text-black dark:text-white' }
-          ].map((s, idx) => (
-            s.link ? (
-              <a key={idx} href={s.link} target="_blank" className={`p-2 bg-slate-50 dark:bg-white/5 rounded-lg hover:scale-110 transition-all ${s.color}`}><s.icon className="w-4 h-4" /></a>
-            ) : null
-          ))}
-          {!u.socialLinks && <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest italic">None linked</span>}
+      key: 'action', header: 'Action', align: 'right', render: (_, u) => (
+        <div className="flex justify-end">
+          <Link href={`/admin/user-details/${u.username || u._id}`} title="View full user details" aria-label="View full user details" className="p-2 bg-primary-600/10 text-primary-600 rounded-lg hover:bg-primary-600 hover:text-white transition-all">
+            <Eye className="w-4 h-4" />
+          </Link>
         </div>
       )
     }
@@ -245,7 +238,7 @@ export default function UserDetailsPage() {
                         <div className="flex items-center gap-3 text-[9px] font-black text-slate-400 bg-slate-50/50 dark:bg-white/5 p-3 rounded-lg xl:rounded-xl border border-slate-100 dark:border-white/5"><Calendar className="w-4 text-primary-500/50 shrink-0" /> {formatDate(u.createdAt)}</div>
                       </div>
 
-                      <Link href={`/u/${u.username}`} target="_blank" className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-sm group-hover:bg-primary-700 group-hover:text-white transition-all text-center block">View Full Profile</Link>
+                      <Link href={`/admin/user-details/${u.username || u._id}`} className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-sm group-hover:bg-primary-700 group-hover:text-white transition-all text-center flex items-center justify-center gap-2"><Eye className="w-4 h-4" /> View Full Details</Link>
                     </motion.div>
                   ))}
                 </div>
@@ -274,7 +267,7 @@ export default function UserDetailsPage() {
                           <div className={`px-4 py-1 rounded-lg xl:rounded-xl text-[9px] font-black uppercase tracking-widest border ${u.subscriptionStatus === 'PRO' ? 'bg-black/10 dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20' : 'bg-slate-100 text-slate-400 border-slate-200'}`}>{u.subscriptionStatus || 'FREE'} Member</div>
                         </div>
                       </div>
-                      <button aria-label="Next" className="p-6 bg-slate-100 dark:bg-white/5 text-primary-600 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"><ChevronRight className="w-6 h-6" /></button>
+                      <Link href={`/admin/user-details/${u.username || u._id}`} aria-label="View full user details" title="View full user details" className="p-6 bg-slate-100 dark:bg-white/5 text-primary-600 rounded-3xl hover:bg-primary-700 hover:text-white transition-all shadow-sm"><Eye className="w-6 h-6" /></Link>
                     </motion.div>
                   ))}
                 </div>
