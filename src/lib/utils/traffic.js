@@ -9,6 +9,8 @@ const VID_RX = /^[a-f0-9]{16,32}$/;
 const BOT_RX = /bot|crawl|spider|slurp|facebookexternalhit|preview|headless|lighthouse|pingdom|uptime|monitor|python-requests|curl\/|wget|axios|node-fetch|go-http/i;
 const AUTH_PATH_RX = /^\/(login|register)(\/|$)/;
 
+export const isBotUa = (ua) => !ua || BOT_RX.test(ua);
+
 // IST calendar day, 'YYYY-MM-DD'
 export const istDay = (d = new Date()) => new Date(d.getTime() + 330 * 60000).toISOString().slice(0, 10);
 

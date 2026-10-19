@@ -36,7 +36,7 @@ export async function GET(req) {
 
         const inRange = { day: { $gte: rangeFrom, $lte: rangeTo } };
         const top = (field, extra = {}) => VisitorDay.aggregate([
-            { $match: { ...inRange, [field]: { $ne: '' }, ...extra } },
+            { $match: { ...inRange, [field]: { $nin: ['', null] }, ...extra } },
             { $group: { _id: field === 'city' ? { city: '$city', country: '$country' } : `$${field}`, visitors: { $sum: 1 }, signups: count({ $ne: ['$signup', ''] }) } },
             { $sort: { visitors: -1 } },
             { $limit: 10 },
@@ -87,7 +87,7 @@ export async function GET(req) {
             top('os'),
             top('browser'),
             VisitorDay.aggregate([
-                { $match: { ...inRange, ipHash: { $ne: '' } } },
+                { $match: { ...inRange, ipHash: { $nin: ['', null] } } },
                 { $group: { _id: '$ipHash' } },
                 { $count: 'n' },
             ]),

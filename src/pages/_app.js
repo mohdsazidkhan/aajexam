@@ -35,6 +35,10 @@ const CookieConsent = dynamic(() => import('../components/CookieConsent'), {
   ssr: false,
 });
 
+const IndiaOnlyNotice = dynamic(() => import('../components/IndiaOnlyNotice'), {
+  ssr: false,
+});
+
 const ExitIntentModal = dynamic(() => import('../components/modals/ExitIntentModal'), {
   ssr: false,
 });
@@ -329,6 +333,7 @@ export default function App({ Component, pageProps }) {
         <LanguageProvider>
           <AppContent Component={Component} pageProps={pageProps} />
           <AfterIdle><CookieConsent /></AfterIdle>
+          <IndiaOnlyNotice />
         </LanguageProvider>
         <Toaster position="top-right" containerStyle={{ top: 80 }} toastOptions={toastOptions} />
       </GlobalErrorProvider>
