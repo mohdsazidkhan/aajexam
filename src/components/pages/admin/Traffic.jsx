@@ -50,6 +50,22 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse }) => (
   </div>
 );
 
+const countryName = (code) => {
+  try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code; } catch (e) { return code; }
+};
+
+const List = ({ title, rows }) => (
+  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
+    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{title}</div>
+    {rows.length === 0 ? <div className="text-sm text-slate-400">No data yet</div> : rows.map((r) => (
+      <div key={r.k} className="flex justify-between gap-3 text-sm py-1">
+        <span className={`font-bold ${r.cap ? 'capitalize' : ''}`}>{r.k}</span>
+        <span className="tabular-nums text-right">{r.v}</span>
+      </div>
+    ))}
+  </div>
+);
+
 /**
  * Daily visitor funnel measured by our own first-party tracker (src/lib/tracker.js -> /api/track).
  * "New" visitors = people who were NOT logged in when they arrived.
@@ -117,7 +133,7 @@ export default function Traffic() {
             <div className="flex flex-col gap-2">
               <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{range.label} · change vs {prevLabel}</div>
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
-                <Stat label="Visitors" value={c.visitors ?? 0} cur={c.visitors || 0} prev={p.visitors || 0} sub={`${c.alreadyLoggedIn || 0} already logged in`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
+                <Stat label="Visitors" value={c.visitors ?? 0} cur={c.visitors || 0} prev={p.visitors || 0} sub={`${c.alreadyLoggedIn || 0} already logged in · ${data?.uniqueIps || 0} unique IPs`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
                 <Stat label="Opened login / register" value={c.sawAuthPage ?? 0} cur={c.sawAuthPage || 0} prev={p.sawAuthPage || 0} sub={`${pct(c.sawAuthPage, c.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
                 <Stat label="Left without login/signup" value={c.leftWithoutAuth ?? 0} cur={c.leftWithoutAuth || 0} prev={p.leftWithoutAuth || 0} inverse sub={`${pct(c.leftWithoutAuth, c.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
                 <Stat label="Signups" value={signups(c)} cur={signups(c)} prev={signups(p)} sub={`Google ${c.signupGoogle || 0} · Normal ${c.signupPassword || 0} · DB ${c.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" />
@@ -181,24 +197,12 @@ export default function Traffic() {
         </div>
 
         <div className="grid xl:grid-cols-2 gap-3">
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">New visitors by source ({range.label})</div>
-            {(data?.sources || []).length === 0 ? <div className="text-sm text-slate-400">No data yet</div> : (data.sources.map((s) => (
-              <div key={s.source} className="flex justify-between text-sm py-1">
-                <span className="font-bold">{s.source}</span>
-                <span className="tabular-nums">{s.visitors} visitors · {s.signups} signed up</span>
-              </div>
-            )))}
-          </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Devices ({range.label})</div>
-            {(data?.devices || []).length === 0 ? <div className="text-sm text-slate-400">No data yet</div> : (data.devices.map((s) => (
-              <div key={s.device} className="flex justify-between text-sm py-1">
-                <span className="font-bold capitalize">{s.device}</span>
-                <span className="tabular-nums">{s.visitors}</span>
-              </div>
-            )))}
-          </div>
+          <List title={`New visitors by source (${range.label})`} rows={(data?.sources || []).map((x) => ({ k: x.source, v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
+          <List title={`Devices (${range.label})`} rows={(data?.devices || []).map((x) => ({ k: x.device, v: x.visitors, cap: true }))} />
+          <List title={`Top countries (${range.label})`} rows={(data?.countries || []).map((x) => ({ k: countryName(x.code), v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
+          <List title={`Top cities (${range.label})`} rows={(data?.cities || []).map((x) => ({ k: `${x.city}${x.country ? `, ${x.country}` : ''}`, v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
+          <List title={`Operating systems (${range.label})`} rows={(data?.oses || []).map((x) => ({ k: x.name, v: x.visitors }))} />
+          <List title={`Browsers (${range.label})`} rows={(data?.browsers || []).map((x) => ({ k: x.name, v: x.visitors }))} />
         </div>
       </div>
     </div>

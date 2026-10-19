@@ -1,7 +1,8 @@
+import crypto from 'crypto';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import VisitorDay from '@/models/VisitorDay';
-import { enforceRateLimit } from '@/lib/rateLimit';
+import { enforceRateLimit, getClientIp } from '@/lib/rateLimit';
 
 export const VID_COOKIE = 'aj_vid';
 const VID_RX = /^[a-f0-9]{16,32}$/;
@@ -17,6 +18,31 @@ const readVid = (req) => {
 };
 
 const deviceOf = (ua) => (/ipad|tablet/i.test(ua) ? 'tablet' : /mobi|android|iphone/i.test(ua) ? 'mobile' : 'desktop');
+
+// Small user-agent parser: OS, browser (major version) and Android device model.
+const parseUa = (ua) => {
+    let os = ''; let osVersion = ''; let m;
+    if ((m = ua.match(/Android ([\d.]+)/))) { os = 'Android'; osVersion = m[1]; }
+    else if ((m = ua.match(/(?:iPhone|CPU) OS ([\d_]+)/)) && /iPhone|iPad|iPod/.test(ua)) { os = 'iOS'; osVersion = m[1].replace(/_/g, '.'); }
+    else if (/Windows NT/.test(ua)) { os = 'Windows'; osVersion = (ua.match(/Windows NT ([\d.]+)/) || [])[1] === '10.0' ? '10/11' : (ua.match(/Windows NT ([\d.]+)/) || [])[1] || ''; }
+    else if (/Mac OS X/.test(ua)) { os = 'macOS'; }
+    else if (/CrOS/.test(ua)) { os = 'ChromeOS'; }
+    else if (/Linux/.test(ua)) { os = 'Linux'; }
+
+    let browser = ''; let browserVersion = '';
+    const pick = (rx, name) => { const r = ua.match(rx); if (r) { browser = name; browserVersion = r[1].split('.')[0]; return true; } return false; };
+    pick(/Edg(?:e|A|iOS)?\/([\d.]+)/, 'Edge') || pick(/OPR\/([\d.]+)/, 'Opera') || pick(/SamsungBrowser\/([\d.]+)/, 'Samsung Internet')
+        || pick(/(?:Firefox|FxiOS)\/([\d.]+)/, 'Firefox') || pick(/(?:Chrome|CriOS)\/([\d.]+)/, 'Chrome') || pick(/Version\/([\d.]+).*Safari/, 'Safari');
+
+    const model = ((ua.match(/Android [\d.]+; ([^;)]+)/) || [])[1] || '').trim();
+    return { os, osVersion, browser, browserVersion, deviceModel: model === 'K' ? '' : model.slice(0, 40) };
+};
+
+const hashIp = (ip) => (ip
+    ? crypto.createHash('sha256').update(`${process.env.JWT_SECRET || 'aajexam'}|${ip}`).digest('hex').slice(0, 16)
+    : '');
+
+const safeDecode = (v) => { try { return decodeURIComponent(v || ''); } catch (e) { return v || ''; } };
 
 const sourceOf = (ref, ownHost) => {
     if (!ref) return 'Direct';
@@ -65,6 +91,11 @@ export async function recordPageView(req) {
                     firstPath: path,
                     source: sourceOf(ref, ownHost),
                     device: deviceOf(ua),
+                    ...parseUa(ua),
+                    country: (req.headers.get('x-vercel-ip-country') || '').slice(0, 2).toUpperCase(),
+                    region: safeDecode(req.headers.get('x-vercel-ip-country-region')).slice(0, 40),
+                    city: safeDecode(req.headers.get('x-vercel-ip-city')).slice(0, 60),
+                    ipHash: hashIp(getClientIp(req)),
                     wasLoggedIn: b.loggedIn === true,
                     createdAt: new Date(),
                 },

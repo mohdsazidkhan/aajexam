@@ -34,7 +34,15 @@ export async function GET(req) {
         const rangeTo = istDay(new Date(Date.now() - offset * 86400000));
         const rangeFrom = istDay(new Date(Date.now() - (offset + days - 1) * 86400000));
 
-        const [perDay, sources, devices, dbSignups] = await Promise.all([
+        const inRange = { day: { $gte: rangeFrom, $lte: rangeTo } };
+        const top = (field, extra = {}) => VisitorDay.aggregate([
+            { $match: { ...inRange, [field]: { $ne: '' }, ...extra } },
+            { $group: { _id: field === 'city' ? { city: '$city', country: '$country' } : `$${field}`, visitors: { $sum: 1 }, signups: count({ $ne: ['$signup', ''] }) } },
+            { $sort: { visitors: -1 } },
+            { $limit: 10 },
+        ]);
+
+        const [perDay, sources, devices, dbSignups, countries, cities, oses, browsers, ips] = await Promise.all([
             VisitorDay.aggregate([
                 { $match: { day: { $gte: fromDay } } },
                 {
@@ -74,6 +82,15 @@ export async function GET(req) {
                     },
                 },
             ]),
+            top('country'),
+            top('city'),
+            top('os'),
+            top('browser'),
+            VisitorDay.aggregate([
+                { $match: { ...inRange, ipHash: { $ne: '' } } },
+                { $group: { _id: '$ipHash' } },
+                { $count: 'n' },
+            ]),
         ]);
 
         const byDay = new Map(perDay.map((d) => [d._id, d]));
@@ -111,6 +128,11 @@ export async function GET(req) {
                 },
                 days: rows.slice(offset, offset + days),
                 sources: sources.map((s) => ({ source: s._id || 'Direct', visitors: s.visitors, signups: s.signups })),
+                countries: countries.map((s) => ({ code: s._id, visitors: s.visitors, signups: s.signups })),
+                cities: cities.map((s) => ({ city: s._id.city, country: s._id.country, visitors: s.visitors, signups: s.signups })),
+                oses: oses.map((s) => ({ name: s._id, visitors: s.visitors })),
+                browsers: browsers.map((s) => ({ name: s._id, visitors: s.visitors })),
+                uniqueIps: ips[0]?.n || 0,
                 devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),
                 trackingSince: (await VisitorDay.findOne().sort({ createdAt: 1 }).select('day').lean())?.day || null,
             },

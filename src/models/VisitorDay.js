@@ -13,6 +13,15 @@ const visitorDaySchema = new mongoose.Schema({
     firstPath: { type: String, default: '' },
     source: { type: String, default: 'Direct' },    // Google | Search | Social | WhatsApp | Telegram | Referral | Direct
     device: { type: String, default: 'desktop' },   // mobile | tablet | desktop
+    deviceModel: { type: String, default: '' },     // e.g. 'SM-M315F' (Android only, when the browser exposes it)
+    os: { type: String, default: '' },              // Android | iOS | Windows | macOS | Linux
+    osVersion: { type: String, default: '' },
+    browser: { type: String, default: '' },
+    browserVersion: { type: String, default: '' },  // major version
+    country: { type: String, default: '' },         // ISO code, from Vercel's edge headers
+    region: { type: String, default: '' },
+    city: { type: String, default: '' },
+    ipHash: { type: String, default: '' },          // salted SHA-256 prefix; the raw IP is never stored
     wasLoggedIn: { type: Boolean, default: false }, // already had a login token on the first view of the day
     sawAuth: { type: Boolean, default: false },     // opened /login or /register
     signup: { type: String, default: '' },          // '' | google | password
