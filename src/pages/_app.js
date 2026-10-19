@@ -22,6 +22,7 @@ import '../styles/couponDatepicker.css';
 import '../styles/darkMode.css';
 import '../styles/studentLayout.css';
 import * as gtag from '../lib/gtag';
+import { trackPageView } from '../lib/tracker';
 import { inter, lato } from '../lib/fonts';
 import { installGlobalErrorReporting } from '../lib/errorReporter';
 
@@ -161,7 +162,10 @@ function AppContent({ Component, pageProps }) {
   }, [dispatch]);
 
   useEffect(() => {
-    const handleRouteChange = (url) => gtag.pageview(url);
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+      trackPageView(url);
+    };
     router.events.on('routeChangeComplete', handleRouteChange);
     handleRouteChange(router.asPath);
     return () => router.events.off('routeChangeComplete', handleRouteChange);

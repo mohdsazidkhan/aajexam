@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import { enforceRateLimit } from '@/lib/rateLimit';
+import { trackAuth } from '@/lib/utils/traffic';
 
 export async function POST(req) {
     try {
@@ -96,6 +97,8 @@ export async function POST(req) {
         await user.save({ validateModifiedOnly: true });
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
+
+        await trackAuth(req, 'login', 'password');
 
         return successResponse({
             token,

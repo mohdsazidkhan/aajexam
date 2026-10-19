@@ -641,6 +641,11 @@ class ApiService {
     });
   }
 
+  // First-party visitor funnel (admin /admin/traffic)
+  async getAdminTraffic(days = 14) {
+    return this.request(`/api/admin/traffic?days=${days}`);
+  }
+
   // Client error reports (kind: 'mobile' -> /admin/app-errors, 'web' -> /admin/web-errors)
   async getClientErrors(kind, params = {}) {
     const queryString = new URLSearchParams(params).toString();

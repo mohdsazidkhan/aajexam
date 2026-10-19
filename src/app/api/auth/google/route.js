@@ -9,6 +9,7 @@ import { successResponse, errorResponse } from '@/lib/utils/apiResponse';
 import WalletTransaction from '@/models/WalletTransaction';
 import { sendBrevoEmail, sendNewRegistrationAlert } from '@/utils/email';
 import { enforceRateLimit } from '@/lib/rateLimit';
+import { trackAuth } from '@/lib/utils/traffic';
 
 async function getUniqueReferralCode() {
     let code;
@@ -86,6 +87,7 @@ export async function POST(req) {
         }
 
         let user = await User.findOne({ email });
+        const isNewGoogleUser = !user;
 
         if (!user) {
             // New User Registration via Google
@@ -185,6 +187,8 @@ export async function POST(req) {
         await user.save({ validateModifiedOnly: true });
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
+
+        await trackAuth(req, isNewGoogleUser ? 'signup' : 'login', 'google');
 
         return successResponse({
             token,

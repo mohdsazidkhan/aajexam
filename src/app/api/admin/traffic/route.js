@@ -1,0 +1,107 @@
+import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/db';
+import VisitorDay from '@/models/VisitorDay';
+import User from '@/models/User';
+import { protect, admin } from '@/middleware/auth';
+import { istDay } from '@/lib/utils/traffic';
+
+const count = (cond) => ({ $sum: { $cond: [cond, 1, 0] } });
+const anon = { $not: ['$wasLoggedIn'] };
+
+// GET /api/admin/traffic?days=14
+// Per IST day: visitors, how many were already logged in, how many opened /login or /register,
+// how many left without signing up or logging in, and the google vs password split.
+export async function GET(req) {
+    try {
+        const auth = await protect(req);
+        if (!auth.authenticated || !admin(auth.user)) {
+            return NextResponse.json({ message: 'Admin access required' }, { status: 403 });
+        }
+        await dbConnect();
+
+        const days = Math.min(90, Math.max(1, parseInt(new URL(req.url).searchParams.get('days')) || 14));
+        const fromDate = new Date(Date.now() - (days - 1) * 86400000);
+        const fromDay = istDay(fromDate);
+
+        const [perDay, sources, devices, dbSignups] = await Promise.all([
+            VisitorDay.aggregate([
+                { $match: { day: { $gte: fromDay } } },
+                {
+                    $group: {
+                        _id: '$day',
+                        visitors: { $sum: 1 },
+                        pageViews: { $sum: '$pages' },
+                        alreadyLoggedIn: count('$wasLoggedIn'),
+                        newVisitors: count(anon),
+                        sawAuthPage: count({ $and: [anon, '$sawAuth'] }),
+                        leftWithoutAuth: count({ $and: [anon, { $eq: ['$signup', ''] }, { $eq: ['$login', ''] }] }),
+                        leftAfterAuthPage: count({ $and: [anon, '$sawAuth', { $eq: ['$signup', ''] }, { $eq: ['$login', ''] }] }),
+                        signupGoogle: count({ $eq: ['$signup', 'google'] }),
+                        signupPassword: count({ $eq: ['$signup', 'password'] }),
+                        loginGoogle: count({ $eq: ['$login', 'google'] }),
+                        loginPassword: count({ $eq: ['$login', 'password'] }),
+                    },
+                },
+            ]),
+            VisitorDay.aggregate([
+                { $match: { day: { $gte: fromDay }, wasLoggedIn: false } },
+                { $group: { _id: '$source', visitors: { $sum: 1 }, signups: count({ $ne: ['$signup', ''] }) } },
+                { $sort: { visitors: -1 } },
+            ]),
+            VisitorDay.aggregate([
+                { $match: { day: { $gte: fromDay } } },
+                { $group: { _id: '$device', visitors: { $sum: 1 } } },
+            ]),
+            // Ground truth from the users collection (includes mobile app signups, which the web beacon cannot see)
+            User.aggregate([
+                { $match: { createdAt: { $gte: new Date(fromDate.getTime() - 86400000) } } },
+                {
+                    $group: {
+                        _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt', timezone: 'Asia/Kolkata' } },
+                        total: { $sum: 1 },
+                        google: count({ $ifNull: ['$googleId', false] }),
+                    },
+                },
+            ]),
+        ]);
+
+        const byDay = new Map(perDay.map((d) => [d._id, d]));
+        const dbByDay = new Map(dbSignups.map((d) => [d._id, d]));
+        const rows = [];
+        for (let i = 0; i < days; i += 1) {
+            const day = istDay(new Date(Date.now() - i * 86400000));
+            const d = byDay.get(day) || {};
+            const db = dbByDay.get(day) || { total: 0, google: 0 };
+            rows.push({
+                day,
+                visitors: d.visitors || 0,
+                pageViews: d.pageViews || 0,
+                alreadyLoggedIn: d.alreadyLoggedIn || 0,
+                newVisitors: d.newVisitors || 0,
+                sawAuthPage: d.sawAuthPage || 0,
+                leftWithoutAuth: d.leftWithoutAuth || 0,
+                leftAfterAuthPage: d.leftAfterAuthPage || 0,
+                signupGoogle: d.signupGoogle || 0,
+                signupPassword: d.signupPassword || 0,
+                loginGoogle: d.loginGoogle || 0,
+                loginPassword: d.loginPassword || 0,
+                dbSignups: db.total,
+                dbSignupsGoogle: db.google,
+                dbSignupsPassword: db.total - db.google,
+            });
+        }
+
+        return NextResponse.json({
+            success: true,
+            data: {
+                days: rows,
+                sources: sources.map((s) => ({ source: s._id || 'Direct', visitors: s.visitors, signups: s.signups })),
+                devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),
+                trackingSince: (await VisitorDay.findOne().sort({ createdAt: 1 }).select('day').lean())?.day || null,
+            },
+        });
+    } catch (error) {
+        console.error('admin traffic error:', error);
+        return NextResponse.json({ message: 'Failed to load traffic' }, { status: 500 });
+    }
+}

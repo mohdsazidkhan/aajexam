@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { createNotification } from '@/utils/notifications';
 import { sendBrevoEmail, sendNewRegistrationAlert } from '@/utils/email';
 import { enforceRateLimit } from '@/lib/rateLimit';
+import { trackAuth } from '@/lib/utils/traffic';
 
 async function getUniqueReferralCode() {
     let code;
@@ -223,6 +224,8 @@ export async function POST(req) {
                 : 'Welcome to AajExam! Your 7-Day PRO Trial is inside 🎁',
             html: welcomeHtml
         }).catch(err => console.error('Failed to send welcome email:', err));
+
+        await trackAuth(req, 'signup', 'password');
 
         return NextResponse.json({
             success: true,
