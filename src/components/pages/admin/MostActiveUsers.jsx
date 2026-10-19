@@ -274,7 +274,7 @@ const AdminMostActiveUsers = () => {
     );
 
     useAdminMobileHeader({
-        title: `Top Active Students - ${PERIODS.find((p) => p.value === period)?.label || ''}`,
+        title: `Most Active - ${PERIODS.find((p) => p.value === period)?.label || ''}`,
         count: users.length,
         filters: (
             <>

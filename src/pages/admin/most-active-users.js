@@ -11,7 +11,7 @@ export default function AdminMostActiveUsersPage() {
     return (
         <>
             <Head>
-                <title>Admin Top Active Students - SUBG</title>
+                <title>Admin Most Active - AajExam</title>
                 <meta name="robots" content="noindex,nofollow" />
             </Head>
             <AdminMostActiveUsers />
