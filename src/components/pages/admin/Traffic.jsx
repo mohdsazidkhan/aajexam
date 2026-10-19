@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { Users, MousePointerClick, LogOut, UserPlus, LogIn, Activity, Info } from 'lucide-react';
+import { Users, MousePointerClick, LogOut, UserPlus, LogIn, Activity } from 'lucide-react';
 import Sidebar from '../../Sidebar';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
@@ -89,18 +89,6 @@ export default function Traffic() {
         </div>
 
         {error ? <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{error}</div> : null}
-
-        {data?.trackingSince ? (
-          <div className="flex items-start gap-2 text-xs text-slate-500 bg-slate-100 dark:bg-white/5 rounded-xl p-3">
-            <Info className="w-4 h-4 mt-0.5 shrink-0" />
-            <span>Tracking started on <b>{data.trackingSince}</b>; earlier days show 0. Bots are filtered out. Google signup and normal signup are counted from the website only; "DB signups" counts every new account including the mobile app.</span>
-          </div>
-        ) : (
-          <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-500/10 rounded-xl p-3">
-            <Info className="w-4 h-4 mt-0.5 shrink-0" />
-            <span>No visits recorded yet. Data appears once this version is live and people browse the site.</span>
-          </div>
-        )}
 
         {[['Today', data?.today], ['Yesterday', data?.yesterday]].map(([label, r]) => {
           const x = r || {};
