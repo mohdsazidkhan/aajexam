@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { isMobile } from 'react-device-detect';
 import Link from 'next/link';
 import {
   ArrowLeft, User as UserIcon, Mail, Phone, MapPin, Calendar, Crown, ShieldCheck, Flame,
-  GraduationCap, ListChecks, Trophy, Film, CreditCard, Users, Settings, MessageSquare, ExternalLink
+  GraduationCap, ListChecks, Trophy, Film, CreditCard, Users, Settings, MessageSquare, ExternalLink,
+  Table as TableIcon, List as ListIcon, LayoutGrid
 } from 'lucide-react';
 import Sidebar from '../../Sidebar';
 import { AdminDetailSkeleton } from '../../admin/Skeletons';
@@ -39,10 +41,10 @@ const dur = (sec) => {
 const num = (v, d = 0) => (v == null || Number.isNaN(Number(v)) ? '—' : Number(v).toFixed(d).replace(/\.0+$/, ''));
 const inr = (v) => `₹${Number(v || 0).toLocaleString('en-IN')}`;
 
-const Card = ({ title, children, right }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+const Card = ({ title, children, right, fill, className = '' }) => (
+  <div className={`bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden  ${className}`}>
     {title ? (
-      <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 dark:border-slate-700">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 dark:border-slate-700 shrink-0">
         <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{title}</div>
         {right}
       </div>
@@ -52,17 +54,19 @@ const Card = ({ title, children, right }) => (
 );
 
 const Stat = ({ label, value, sub }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
-    <div className="text-xl font-black tabular-nums leading-none">{value}</div>
-    <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-1">{label}</div>
-    {sub ? <div className="text-[10px] text-slate-400 mt-0.5">{sub}</div> : null}
+  <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 px-2.5 py-1.5 min-w-0">
+    <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 truncate">{label}</div>
+    <div className="flex items-baseline gap-1.5 min-w-0">
+      <span className="text-base font-black tabular-nums leading-tight">{value}</span>
+      {sub ? <span className="text-[10px] text-slate-400 truncate">{sub}</span> : null}
+    </div>
   </div>
 );
 
 const Field = ({ label, value }) => (
   <div className="flex justify-between gap-3 py-1 text-xs border-b border-slate-50 dark:border-slate-700/40 last:border-0">
     <span className="text-slate-400 font-bold">{label}</span>
-    <span className="font-bold text-right break-words max-w-[65%]">{value === '' || value == null ? '—' : String(value)}</span>
+    <span className="font-bold text-right break-all sm:break-words max-w-[65%]">{value === '' || value == null ? '—' : String(value)}</span>
   </div>
 );
 
@@ -77,27 +81,109 @@ const Pill = ({ children, tone = 'slate' }) => {
   return <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider border ${tones[tone]}`}>{children}</span>;
 };
 
-const statusTone = (s) => (['Completed', 'active', 'paid', 'completed', 'mastered'].includes(s) ? 'green' : ['InProgress', 'pending', 'created'].includes(s) ? 'amber' : ['Abandoned', 'failed', 'cancelled', 'expired', 'refunded'].includes(s) ? 'rose' : 'slate');
+const statusTone = (s) => (['Completed', 'active', 'paid', 'completed', 'mastered', 'success'].includes(s) ? 'green' : ['InProgress', 'pending', 'created'].includes(s) ? 'amber' : ['Abandoned', 'failed', 'cancelled', 'expired', 'refunded'].includes(s) ? 'rose' : 'slate');
 
 // Generic compact table; `cols` = [{ h, r: (row) => node, right }]
-const Table = ({ rows, cols, empty = 'Nothing yet' }) => (
-  rows && rows.length ? (
-    <div className="overflow-auto max-h-[60vh]">
+const ViewContext = createContext('table');
+
+// Value that renders as nothing (used to skip empty fields in the grid / list views)
+const isBlank = (v) => v === '' || v == null || v === false;
+
+const SNo = ({ n }) => (
+  <span className="w-6 h-6 rounded-full bg-primary-600 text-white text-[10px] font-black flex items-center justify-center shrink-0">{n}</span>
+);
+
+// Generic data view: Table / List / Grid, chosen once for the whole page. cols = [{ h, r: (row) => node, right }]
+// The first column is the "title" of a row in the grid / list views.
+const Table = ({ rows, cols, empty = 'Nothing yet' }) => {
+  const view = useContext(ViewContext);
+  if (!rows || !rows.length) return <div className="text-sm text-slate-400 py-2">{empty}</div>;
+
+  if (view === 'grid') {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+        {rows.map((row, i) => (
+          <div key={row._id || i} className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-white/5 p-3">
+            <div className="flex items-start gap-2">
+              <SNo n={i + 1} />
+              <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
+            </div>
+            <div className="mt-2 space-y-1">
+              {cols.slice(1).map((c) => {
+                const v = c.r(row, i);
+                return isBlank(v) ? null : (
+                  <div key={c.h} className="flex justify-between gap-3 text-xs">
+                    <span className="text-slate-400 font-bold shrink-0">{c.h}</span>
+                    <span className="text-right break-words min-w-0">{v}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (view === 'list') {
+    return (
+      <div className="flex flex-col gap-2">
+        {rows.map((row, i) => (
+          <div key={row._id || i} className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-white/5 px-3 py-2 flex flex-wrap items-center gap-x-5 gap-y-1">
+            <div className="flex items-center gap-2 min-w-0 sm:min-w-[220px] flex-1 basis-full sm:basis-auto">
+              <SNo n={i + 1} />
+              <div className="min-w-0 text-sm font-bold break-words">{cols[0].r(row, i)}</div>
+            </div>
+            {cols.slice(1).map((c) => {
+              const v = c.r(row, i);
+              return isBlank(v) ? null : (
+                <div key={c.h} className="text-xs">
+                  <span className="text-slate-400 font-bold">{c.h}: </span>
+                  <span className="font-semibold">{v}</span>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="overflow-x-auto">
       <table className="w-full text-xs">
         <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 z-10">
-          <tr>{cols.map((c) => <th key={c.h} className={`px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 whitespace-nowrap ${c.right ? 'text-right' : 'text-left'}`}>{c.h}</th>)}</tr>
+          <tr><th className="px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 text-left whitespace-nowrap w-12">S.No</th>{cols.map((c) => <th key={c.h} className={`px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 whitespace-nowrap ${c.right ? 'text-right' : 'text-left'}`}>{c.h}</th>)}</tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={row._id || i} className="border-b border-slate-100 dark:border-slate-700/50 last:border-0">
-              {cols.map((c) => <td key={c.h} className={`px-2 py-1.5 ${c.right ? 'text-right tabular-nums' : ''}`}>{c.r(row, i)}</td>)}
+              <td className="px-2 py-1.5 align-middle text-slate-400 font-bold tabular-nums">{i + 1}</td>
+              {cols.map((c) => <td key={c.h} className={`px-2 py-1.5 align-middle ${c.right ? 'text-right tabular-nums whitespace-nowrap' : ''}`}>{c.r(row, i)}</td>)}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  ) : <div className="text-sm text-slate-400 py-2">{empty}</div>
+  );
+};
+
+const VIEWS = [
+  { id: 'table', label: 'Table', Icon: TableIcon },
+  { id: 'list', label: 'List', Icon: ListIcon },
+  { id: 'grid', label: 'Grid', Icon: LayoutGrid },
+];
+
+const ViewSwitch = ({ view, setView, className = '' }) => (
+  <div className={`flex shrink-0 gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl ${className}`}>
+    {VIEWS.map(({ id: vid, label, Icon }) => (
+      <button key={vid} onClick={() => setView(vid)} title={`${label} view`} aria-label={`${label} view`} className={`p-1.5 rounded-lg transition ${view === vid ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:bg-white dark:hover:bg-white/10'}`}>
+        <Icon className="w-4 h-4" />
+      </button>
+    ))}
+  </div>
 );
+
 
 export default function UserFullDetail() {
   const { isMounted, isRouterReady, router } = useSSR();
@@ -106,6 +192,7 @@ export default function UserFullDetail() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState('overview');
+  const [view, setView] = useState(isMobile ? 'grid' : 'table');
 
   const load = useCallback(async () => {
     if (!id) return;
@@ -131,7 +218,7 @@ export default function UserFullDetail() {
   const shell = (children) => (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       <Sidebar />
-      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">{children}</div>
+      <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-y-auto xl:overflow-hidden flex flex-col gap-3 max-xl:[&>*]:shrink-0">{children}</div>
     </div>
   );
 
@@ -152,8 +239,8 @@ export default function UserFullDetail() {
   const quizAll = Object.values(s.quizzes || {}).reduce((t, x) => t + x.count, 0);
 
   return shell(
-    <>
-      <div className="flex flex-wrap items-center justify-between gap-2">
+    <ViewContext.Provider value={view}>
+      <div className="flex flex-wrap items-center justify-between gap-2 shrink-0">
         <Link href="/admin/user-details" className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary-600">
           <ArrowLeft className="w-4 h-4" /> All users
         </Link>
@@ -165,23 +252,26 @@ export default function UserFullDetail() {
       </div>
 
       {/* Header */}
-      <Card>
-        <div className="flex flex-wrap items-center gap-4">
-          {p.profilePicture ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={p.profilePicture} alt="" className="w-16 h-16 rounded-2xl object-cover" referrerPolicy="no-referrer" />
-          ) : (
-            <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
-          )}
+      <Card className="shrink-0">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <div className="flex items-start justify-between gap-3">
+            {p.profilePicture ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={p.profilePicture} alt="" className="w-16 h-16 rounded-2xl object-cover" referrerPolicy="no-referrer" />
+            ) : (
+              <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl flex items-center justify-center font-black text-2xl uppercase">{p.name?.[0] || 'U'}</div>
+            )}
+            {tab !== 'settings' && <ViewSwitch view={view} setView={setView} className="sm:hidden" />}
+          </div>
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <h1 className="text-xl font-black leading-tight">{p.name || 'Anonymous'}</h1>
+              <h1 className="text-lg sm:text-xl font-black leading-tight break-words">{p.name || 'Anonymous'}</h1>
               <Pill tone={p.subscriptionStatus === 'PRO' ? 'amber' : 'slate'}>{p.subscriptionStatus === 'PRO' ? <><Crown className="inline w-3 h-3 -mt-0.5" /> PRO</> : 'FREE'}</Pill>
               <Pill tone={statusTone(p.status === 'active' ? 'active' : 'failed')}>{p.status}</Pill>
               {p.role === 'admin' ? <Pill tone="sky"><ShieldCheck className="inline w-3 h-3 -mt-0.5" /> Admin</Pill> : null}
               {p.hasGoogle ? <Pill tone="sky">Google</Pill> : null}
             </div>
-            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 font-bold">
+            <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 font-bold break-all sm:break-normal">
               <span className="inline-flex items-center gap-1"><Mail className="w-3.5 h-3.5" />{p.email}</span>
               {p.phone ? <span className="inline-flex items-center gap-1"><Phone className="w-3.5 h-3.5" />{p.phone}</span> : null}
               {p.city || p.state ? <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{[p.city, p.state].filter(Boolean).join(', ')}</span> : null}
@@ -192,36 +282,54 @@ export default function UserFullDetail() {
         </div>
       </Card>
 
-      {/* Tabs */}
-      <div className="flex gap-1 overflow-x-auto bg-slate-100 dark:bg-white/5 p-1 rounded-xl">
-        {TABS.map(({ id: tid, label, Icon }) => (
-          <button key={tid} onClick={() => setTab(tid)} className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider transition ${tab === tid ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>
-            <Icon className="w-3.5 h-3.5" /> {label}
-          </button>
-        ))}
+      {/* Tabs + view switch */}
+      <div className="flex shrink-0 items-center gap-2">
+        <div className="flex gap-1 overflow-x-auto min-w-0 flex-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {TABS.map(({ id: tid, label, Icon }) => (
+            <button key={tid} onClick={() => setTab(tid)} className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-black uppercase tracking-wider transition ${tab === tid ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>
+              <Icon className="w-3.5 h-3.5" /> {label}
+            </button>
+          ))}
+        </div>
+        {tab !== 'settings' && <ViewSwitch view={view} setView={setView} className="hidden sm:flex" />}
       </div>
 
+      <div className="xl:flex-1 xl:min-h-0 xl:overflow-auto flex flex-col gap-3 [&>*]:shrink-0 pb-4 xl:pb-0">
       {tab === 'overview' && (
-        <>
-          <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2">
-            <Stat label="Exam attempts" value={examAll} sub={`${examDone} completed`} />
-            <Stat label="Quiz attempts" value={quizAll} sub={`${quizDone} completed`} />
-            <Stat label="Daily challenges" value={s.dailyChallenges} />
-            <Stat label="Reels viewed" value={s.reels.viewed} sub={`${s.reels.answered} answered · ${s.reels.correct} correct`} />
-            <Stat label="Current streak" value={data.streak?.currentStreak ?? 0} sub={`best ${data.streak?.longestStreak ?? 0} · ${data.streak?.totalActiveDays ?? 0} active days`} />
-            <Stat label="Paid" value={inr(s.paid.total)} sub={`${s.paid.orders} orders`} />
-            <Stat label="Wallet" value={inr(p.walletBalance)} />
-            <Stat label="Referrals" value={s.referrals} sub={`code ${p.referralCode || '—'}`} />
-            <Stat label="Community" value={s.communityQuestions + s.communityAnswers} sub={`${s.communityQuestions} Q · ${s.communityAnswers} A`} />
-            <Stat label="Followers" value={p.followersCount || 0} sub={`${p.followingCount || 0} following`} />
-            <Stat label="Profile views" value={p.profileViews || 0} />
-            <Stat label="Profile complete" value={p.profileCompleted ? 'Yes' : 'No'} />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-1.5 shrink-0">
+        <Stat label="Exam attempts" value={examAll} sub={`${examDone} completed`} />
+        <Stat label="Quiz attempts" value={quizAll} sub={`${quizDone} completed`} />
+        <Stat label="Daily challenges" value={s.dailyChallenges} />
+        <Stat label="Reels viewed" value={s.reels.viewed} sub={`${s.reels.answered} answered · ${s.reels.correct} correct`} />
+        <Stat label="Current streak" value={data.streak?.currentStreak ?? 0} sub={`best ${data.streak?.longestStreak ?? 0} · ${data.streak?.totalActiveDays ?? 0} active days`} />
+        <Stat label="Paid" value={inr(s.paid.total)} sub={`${s.paid.orders} orders`} />
+        <Stat label="Wallet" value={inr(p.walletBalance)} />
+        <Stat label="Referrals" value={s.referrals} sub={`code ${p.referralCode || '—'}`} />
+        <Stat label="Community" value={s.communityQuestions + s.communityAnswers} sub={`${s.communityQuestions} Q · ${s.communityAnswers} A`} />
+        <Stat label="Followers" value={p.followersCount || 0} sub={`${p.followingCount || 0} following`} />
+        <Stat label="Profile views" value={p.profileViews || 0} />
+        <Stat label="Profile complete" value={p.profileCompleted ? 'Yes' : 'No'} />
+      </div>
+      )}
+
+      {tab === 'reels' && (
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-1.5 shrink-0">
+        <Stat label="Viewed" value={s.reels.viewed} />
+        <Stat label="Liked" value={s.reels.liked} />
+        <Stat label="Bookmarked" value={s.reels.bookmarked} />
+        <Stat label="Shared" value={s.reels.shared} />
+        <Stat label="Answered" value={s.reels.answered} sub={`${s.reels.correct} correct`} />
+        <Stat label="Time on reels" value={dur(s.reels.seconds)} />
+      </div>
+      )}
+
+      {tab === 'overview' && (
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3">
+            <Card fill title="Recent exam attempts"><ExamTable fill rows={(data.examAttempts || []).slice(0, 3)} /></Card>
+            <Card fill title="Recent quiz attempts"><QuizTable fill rows={(data.quizAttempts || []).slice(0, 3)} /></Card>
           </div>
-          <div className="grid xl:grid-cols-2 gap-3">
-            <Card title="Recent exam attempts"><ExamTable rows={(data.examAttempts || []).slice(0, 5)} /></Card>
-            <Card title="Recent quiz attempts"><QuizTable rows={(data.quizAttempts || []).slice(0, 5)} /></Card>
-          </div>
-        </>
+        </div>
       )}
 
       {tab === 'settings' && (
@@ -287,20 +395,21 @@ export default function UserFullDetail() {
       )}
 
       {tab === 'exams' && (
-        <Card title={`Exam attempts (latest ${Math.min(data.limit, examAll)} of ${examAll})`}>
-          <ExamTable rows={data.examAttempts} />
+        <Card fill title={`Exam attempts (latest ${Math.min(data.limit, examAll)} of ${examAll})`}>
+          <ExamTable fill rows={data.examAttempts} />
         </Card>
       )}
 
       {tab === 'quizzes' && (
-        <Card title={`Quiz attempts (latest ${Math.min(data.limit, quizAll)} of ${quizAll})`}>
-          <QuizTable rows={data.quizAttempts} />
+        <Card fill title={`Quiz attempts (latest ${Math.min(data.limit, quizAll)} of ${quizAll})`}>
+          <QuizTable fill rows={data.quizAttempts} />
         </Card>
       )}
 
       {tab === 'daily' && (
-        <Card title={`Daily challenges (latest ${Math.min(data.limit, s.dailyChallenges)} of ${s.dailyChallenges})`}>
+        <Card fill title={`Daily challenges (latest ${Math.min(data.limit, s.dailyChallenges)} of ${s.dailyChallenges})`}>
           <Table
+            fill
             rows={data.dailyAttempts}
             empty="No daily challenge attempts"
             cols={[
@@ -319,17 +428,10 @@ export default function UserFullDetail() {
       )}
 
       {tab === 'reels' && (
-        <>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
-            <Stat label="Viewed" value={s.reels.viewed} />
-            <Stat label="Liked" value={s.reels.liked} />
-            <Stat label="Bookmarked" value={s.reels.bookmarked} />
-            <Stat label="Shared" value={s.reels.shared} />
-            <Stat label="Answered" value={s.reels.answered} sub={`${s.reels.correct} correct`} />
-            <Stat label="Time on reels" value={dur(s.reels.seconds)} />
-          </div>
-          <Card title={`Reel activity (latest ${Math.min(data.limit, s.reels.viewed)} of ${s.reels.viewed})`}>
+        <div className="flex flex-col gap-3">
+          <Card fill title={`Reel activity (latest ${Math.min(data.limit, s.reels.viewed)} of ${s.reels.viewed})`}>
             <Table
+              fill
               rows={data.reelInteractions}
               empty="No reel activity"
               cols={[
@@ -345,12 +447,12 @@ export default function UserFullDetail() {
               ]}
             />
           </Card>
-        </>
+        </div>
       )}
 
       {tab === 'billing' && (
-        <div className="grid xl:grid-cols-2 gap-3">
-          <Card title="Subscriptions">
+        <div className="grid grid-cols-1 2xl:grid-cols-2 gap-3">
+          <Card title="Subscriptions" className="2xl:col-span-2">
             <Table
               rows={data.subscriptions}
               empty="No subscriptions"
@@ -364,17 +466,36 @@ export default function UserFullDetail() {
               ]}
             />
           </Card>
-          <Card title="Payment orders">
+          <Card title={`Payment orders (latest ${Math.min(data.limit, data.payments.length)})`} className="2xl:col-span-2">
             <Table
               rows={data.payments}
               empty="No payments"
               cols={[
-                { h: 'Order', r: (r) => <span className="font-mono text-[10px]">{r.orderId}</span> },
+                { h: 'Date', r: (r) => <span className="whitespace-nowrap">{fmt(r.date)}</span> },
+                {
+                  h: 'Plan', r: (r) => (
+                    <div className="min-w-[160px]">
+                      <div className="font-bold">{r.description}</div>
+                      {r.subscription ? <div className="text-[10px] uppercase text-slate-400">{r.subscription.plan} &bull; {r.subscription.status}</div> : null}
+                      <div className="font-mono text-[10px] text-slate-400 break-all">{r.orderId}</div>
+                    </div>
+                  ),
+                },
+                {
+                  h: 'Amount', right: true, r: (r) => (
+                    <div>
+                      <div className="font-black">{inr(r.amount)} <span className="text-[9px] font-bold text-slate-400">{r.currency}</span></div>
+                      {r.discountAmount ? <div className="text-[10px] text-slate-400">{inr(r.originalAmount)} − {inr(r.discountAmount)}{r.couponCode ? ` (${r.couponCode})` : ''}</div> : null}
+                      {r.refundAmount ? <div className="text-[10px] text-rose-600">Refunded {inr(r.refundAmount)}</div> : null}
+                    </div>
+                  ),
+                },
                 { h: 'Status', r: (r) => <Pill tone={statusTone(r.status)}>{r.status}</Pill> },
-                { h: 'Plan', r: (r) => r.planId || '—' },
-                { h: 'Amount', right: true, r: (r) => inr(r.amount) },
-                { h: 'Coupon', r: (r) => r.couponCode || '—' },
-                { h: 'Date', right: true, r: (r) => fmt(r.createdAt) },
+                { h: 'Payment mode', r: (r) => r.paymentMode || 'N/A' },
+                { h: 'UPI ID', r: (r) => r.upiId || 'N/A' },
+                { h: 'UPI app / channel', r: (r) => r.upiChannel || r.bankCode || 'N/A' },
+                { h: 'Product info', r: (r) => r.productInfo || 'N/A' },
+                { h: 'Bank ref. no.', r: (r) => r.bankRefNum || 'N/A' },
               ]}
             />
           </Card>
@@ -407,7 +528,7 @@ export default function UserFullDetail() {
       )}
 
       {tab === 'activity' && (
-        <div className="grid xl:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 2xl:grid-cols-2 gap-3">
           <Card title="Streak">
             {data.streak ? (
               <>
@@ -458,17 +579,19 @@ export default function UserFullDetail() {
           </div>
         </div>
       )}
-    </>
+      </div>
+    </ViewContext.Provider>
   );
 }
 
-function ExamTable({ rows }) {
+function ExamTable({ rows, fill }) {
   return (
     <Table
+      fill={fill}
       rows={rows}
       empty="No exam attempts"
       cols={[
-        { h: 'Test', r: (r) => <span className="font-bold">{r.practiceTest?.title || 'Deleted test'}</span> },
+        { h: 'Test', r: (r) => <span className="font-bold inline-block min-w-[200px]">{r.practiceTest?.title || 'Deleted test'}</span> },
         { h: 'Status', r: (r) => <Pill tone={statusTone(r.status)}>{r.status}</Pill> },
         { h: 'Score', right: true, r: (r) => `${num(r.score, 1)}${r.practiceTest?.totalMarks ? ` / ${r.practiceTest.totalMarks}` : ''}` },
         { h: 'Correct', right: true, r: (r) => r.correctCount },
@@ -482,13 +605,14 @@ function ExamTable({ rows }) {
   );
 }
 
-function QuizTable({ rows }) {
+function QuizTable({ rows, fill }) {
   return (
     <Table
+      fill={fill}
       rows={rows}
       empty="No quiz attempts"
       cols={[
-        { h: 'Quiz', r: (r) => <span className="font-bold">{r.quiz?.title || 'Deleted quiz'}</span> },
+        { h: 'Quiz', r: (r) => <span className="font-bold inline-block min-w-[200px]">{r.quiz?.title || 'Deleted quiz'}</span> },
         { h: 'Status', r: (r) => <Pill tone={statusTone(r.status)}>{r.status}</Pill> },
         { h: 'Score', right: true, r: (r) => `${num(r.score, 1)} / ${r.totalMarks || r.quiz?.totalMarks || 0}` },
         { h: 'Correct', right: true, r: (r) => r.correctCount },

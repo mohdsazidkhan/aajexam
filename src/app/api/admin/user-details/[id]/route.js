@@ -22,6 +22,50 @@ import { protect, admin } from '@/middleware/auth';
 
 export const dynamic = 'force-dynamic';
 
+// Same bucketing / field extraction as the student's own payment history (api/subscription/payment-transactions),
+// so the admin sees exactly what the user sees there.
+const deriveStatus = (order) => {
+    if (order.status === 'refunded') return 'refunded';
+    if (order.payuStatus) {
+        const s = String(order.payuStatus).toLowerCase();
+        if (s === 'success') return 'success';
+        if (s === 'failure' || s === 'failed') return 'failed';
+        if (s === 'pending') return 'pending';
+    }
+    if (order.status === 'paid' || order.status === 'authorized') return 'success';
+    if (order.status === 'failed') return 'failed';
+    return 'pending';
+};
+
+const toTransaction = (order) => {
+    const pr = order.payuResponse || {};
+    const paymentMode = pr.mode || null;
+    const isUpi = paymentMode === 'UPI';
+    return {
+        _id: order._id,
+        orderId: order.orderId,
+        transactionId: order.payuTransactionId || order.orderId,
+        date: order.createdAt,
+        description: `Payment for ${order.planId || 'plan'} subscription`,
+        planId: order.planId || null,
+        subscription: order.subscriptionId || null,
+        amount: order.amount,
+        originalAmount: order.originalAmount,
+        discountAmount: order.discountAmount,
+        couponCode: order.couponCode || null,
+        currency: order.currency || 'INR',
+        status: deriveStatus(order),
+        paymentMode,
+        upiId: isUpi && pr.field3 && pr.field3.includes('@') ? pr.field3 : null,
+        upiChannel: isUpi ? [pr.bankcode, pr.field8].filter(Boolean).join(' · ') || null : null,
+        bankCode: !isUpi ? (pr.bankcode || null) : null,
+        bankRefNum: pr.bank_ref_num || null,
+        productInfo: pr.productinfo || null,
+        refundAmount: order.refundAmount || 0,
+        refundReason: order.refundReason || null,
+    };
+};
+
 const LIST = 50; // most recent rows per section; totals come from separate counts
 
 // GET /api/admin/user-details/:idOrUsername
@@ -74,8 +118,9 @@ export async function GET(req, { params }) {
             UserStreak.findOne({ user: uid }).lean(),
             Subscription.find({ user: uid }).sort({ createdAt: -1 }).limit(20)
                 .select('plan status duration startDate endDate amount discountAmount couponCode paymentMethod createdAt cancelledAt cancellationReason').lean(),
-            PaymentOrder.find({ user: uid }).sort({ createdAt: -1 }).limit(20)
-                .select('orderId amount originalAmount discountAmount couponCode status planId paymentMethod createdAt').lean(),
+            PaymentOrder.find({ user: uid }).sort({ createdAt: -1 }).limit(LIST)
+                .populate({ path: 'subscriptionId', model: Subscription, select: 'plan status' })
+                .select('orderId amount originalAmount discountAmount couponCode currency status payuStatus payuTransactionId payuResponse planId paymentMethod subscriptionId refundAmount refundReason createdAt').lean(),
             WalletTransaction.find({ user: uid }).sort({ createdAt: -1 }).limit(20)
                 .select('type amount balance description status processedAt createdAt').lean(),
             CommunityQuestion.find({ author: uid }).sort({ createdAt: -1 }).limit(10).select('question createdAt').lean(),
@@ -144,7 +189,7 @@ export async function GET(req, { params }) {
                     history: (streak.streakHistory || []).slice(-30).reverse(),
                 } : null,
                 subscriptions,
-                payments,
+                payments: payments.map(toTransaction),
                 walletTxns,
                 questions,
                 answers,
