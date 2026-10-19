@@ -98,7 +98,7 @@ export async function POST(req) {
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
-        await trackAuth(req, 'login', 'password');
+        if (user.role !== 'admin') await trackAuth(req, 'login', 'password');
 
         return successResponse({
             token,

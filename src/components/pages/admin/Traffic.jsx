@@ -55,10 +55,10 @@ const countryName = (code) => {
 };
 
 const List = ({ title, rows }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
-    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{title}</div>
-    {rows.length === 0 ? <div className="text-sm text-slate-400">No data yet</div> : rows.map((r) => (
-      <div key={r.k} className="flex justify-between gap-3 text-sm py-1">
+  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 max-h-48 overflow-y-auto">
+    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{title}</div>
+    {rows.length === 0 ? <div className="text-xs text-slate-400">No data yet</div> : rows.map((r) => (
+      <div key={r.k} className="flex justify-between gap-3 text-xs py-0.5">
         <span className={`font-bold ${r.cap ? 'capitalize' : ''}`}>{r.k}</span>
         <span className="tabular-nums text-right">{r.v}</span>
       </div>
@@ -74,6 +74,7 @@ export default function Traffic() {
   const { isMounted } = useSSR();
   const [rangeId, setRangeId] = useState('today');
   const range = RANGES.find((r) => r.id === rangeId) || RANGES[0];
+  const prevLabel = range.days === 1 ? (range.offset === 1 ? 'day before' : 'yesterday') : `previous ${range.days} days`;
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -100,8 +101,8 @@ export default function Traffic() {
 
   const rows = data?.days || [];
   const sum = (k) => rows.reduce((t, r) => t + (r[k] || 0), 0);
-  const th = 'px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right whitespace-nowrap';
-  const td = 'px-3 py-2 text-sm tabular-nums text-right whitespace-nowrap';
+  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 text-right leading-tight';
+  const td = 'px-2 py-1.5 text-xs tabular-nums text-right';
 
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
@@ -109,7 +110,7 @@ export default function Traffic() {
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
-            <Activity className="w-4 h-4" /> Traffic
+            <Activity className="w-4 h-4" /> Traffic <span className="mx-1 text-slate-300 dark:text-slate-600">-</span><span className="text-[10px] font-bold normal-case tracking-normal text-primary-600 dark:text-primary-400">{range.label} · change vs {prevLabel}</span>
           </div>
           <select
             value={rangeId}
@@ -126,12 +127,10 @@ export default function Traffic() {
         {(() => {
           const c = data?.summary?.current || {};
           const p = data?.summary?.previous || {};
-          const prevLabel = range.days === 1 ? (range.offset === 1 ? 'day before' : 'yesterday') : `previous ${range.days} days`;
           const signups = (o) => (o.signupGoogle || 0) + (o.signupPassword || 0);
           const logins = (o) => (o.loginGoogle || 0) + (o.loginPassword || 0);
           return (
             <div className="flex flex-col gap-2">
-              <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">{range.label} · change vs {prevLabel}</div>
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
                 <Stat label="Visitors" value={c.visitors ?? 0} cur={c.visitors || 0} prev={p.visitors || 0} sub={`${c.alreadyLoggedIn || 0} already logged in · ${data?.uniqueIps || 0} unique IPs`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
                 <Stat label="Opened login / register" value={c.sawAuthPage ?? 0} cur={c.sawAuthPage || 0} prev={p.sawAuthPage || 0} sub={`${pct(c.sawAuthPage, c.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
@@ -143,22 +142,26 @@ export default function Traffic() {
           );
         })()}
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-auto max-h-[60vh]">
-          <table className="min-w-full">
-            <thead className="sticky top-0 bg-white dark:bg-slate-800 z-10">
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-y-auto max-h-[42vh]">
+          <table className="w-full table-fixed">
+            <colgroup>
+              <col className="w-[13%]" />
+              <col className="w-[8%]" /><col className="w-[8%]" /><col className="w-[9%]" /><col className="w-[8%]" />
+              <col className="w-[11%]" /><col className="w-[11%]" />
+              <col className="w-[10%]" /><col className="w-[10%]" /><col className="w-[12%]" />
+            </colgroup>
+            <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 z-10">
               <tr className="border-b border-slate-200 dark:border-slate-700">
                 <th className={`${th} text-left`}>Day</th>
                 <th className={th}>Visitors</th>
-                <th className={th}>Page views</th>
-                <th className={th}>Already logged in</th>
-                <th className={th}>New (not logged in)</th>
-                <th className={th}>Opened login/register</th>
-                <th className={th}>Left w/o login-signup</th>
-                <th className={th}>Signup Google</th>
-                <th className={th}>Signup Normal</th>
-                <th className={th}>Login Google</th>
-                <th className={th}>Login Normal</th>
-                <th className={th}>DB signups (G / N)</th>
+                <th className={th}>Views</th>
+                <th className={th}>Logged in</th>
+                <th className={th}>New</th>
+                <th className={th}>Opened login</th>
+                <th className={th}>Left</th>
+                <th className={th}>Signup G / N</th>
+                <th className={th}>Login G / N</th>
+                <th className={th}>DB signups G / N</th>
               </tr>
             </thead>
             <tbody>
@@ -169,34 +172,34 @@ export default function Traffic() {
                   <td className={td}>{r.pageViews}</td>
                   <td className={td}>{r.alreadyLoggedIn}</td>
                   <td className={td}>{r.newVisitors}</td>
-                  <td className={td}>{r.sawAuthPage} <span className="text-slate-400 text-xs">({pct(r.sawAuthPage, r.newVisitors)})</span></td>
-                  <td className={`${td} text-rose-600`}>{r.leftWithoutAuth} <span className="text-slate-400 text-xs">({pct(r.leftWithoutAuth, r.newVisitors)})</span></td>
-                  <td className={td}>{r.signupGoogle}</td>
-                  <td className={td}>{r.signupPassword}</td>
-                  <td className={td}>{r.loginGoogle}</td>
-                  <td className={td}>{r.loginPassword}</td>
-                  <td className={td}>{r.dbSignups} <span className="text-slate-400 text-xs">({r.dbSignupsGoogle} / {r.dbSignupsPassword})</span></td>
+                  <td className={td}>{r.sawAuthPage} <span className="text-slate-400">({pct(r.sawAuthPage, r.newVisitors)})</span></td>
+                  <td className={`${td} text-rose-600`}>{r.leftWithoutAuth} <span className="text-slate-400">({pct(r.leftWithoutAuth, r.newVisitors)})</span></td>
+                  <td className={td}>{r.signupGoogle} / {r.signupPassword}</td>
+                  <td className={td}>{r.loginGoogle} / {r.loginPassword}</td>
+                  <td className={td}>{r.dbSignups} <span className="text-slate-400">({r.dbSignupsGoogle} / {r.dbSignupsPassword})</span></td>
                 </tr>
               ))}
-              <tr className="bg-slate-50 dark:bg-white/5 font-black">
-                <td className={`${td} text-left`}>Total</td>
-                <td className={td}>{sum('visitors')}</td>
-                <td className={td}>{sum('pageViews')}</td>
-                <td className={td}>{sum('alreadyLoggedIn')}</td>
-                <td className={td}>{sum('newVisitors')}</td>
-                <td className={td}>{sum('sawAuthPage')}</td>
-                <td className={td}>{sum('leftWithoutAuth')}</td>
-                <td className={td}>{sum('signupGoogle')}</td>
-                <td className={td}>{sum('signupPassword')}</td>
-                <td className={td}>{sum('loginGoogle')}</td>
-                <td className={td}>{sum('loginPassword')}</td>
-                <td className={td}>{sum('dbSignups')}</td>
-              </tr>
             </tbody>
+            {rows.length > 1 ? (
+              <tfoot className="sticky bottom-0 bg-slate-50 dark:bg-slate-900 font-black">
+                <tr className="border-t border-slate-200 dark:border-slate-700">
+                  <td className={`${td} text-left`}>Total</td>
+                  <td className={td}>{sum('visitors')}</td>
+                  <td className={td}>{sum('pageViews')}</td>
+                  <td className={td}>{sum('alreadyLoggedIn')}</td>
+                  <td className={td}>{sum('newVisitors')}</td>
+                  <td className={td}>{sum('sawAuthPage')}</td>
+                  <td className={td}>{sum('leftWithoutAuth')}</td>
+                  <td className={td}>{sum('signupGoogle')} / {sum('signupPassword')}</td>
+                  <td className={td}>{sum('loginGoogle')} / {sum('loginPassword')}</td>
+                  <td className={td}>{sum('dbSignups')}</td>
+                </tr>
+              </tfoot>
+            ) : null}
           </table>
         </div>
 
-        <div className="grid xl:grid-cols-2 gap-3">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-2">
           <List title={`New visitors by source (${range.label})`} rows={(data?.sources || []).map((x) => ({ k: x.source, v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
           <List title={`Devices (${range.label})`} rows={(data?.devices || []).map((x) => ({ k: x.device, v: x.visitors, cap: true }))} />
           <List title={`Top countries (${range.label})`} rows={(data?.countries || []).map((x) => ({ k: countryName(x.code), v: `${x.visitors} visitors · ${x.signups} signed up` }))} />
