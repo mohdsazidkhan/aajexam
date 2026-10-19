@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
  * One document per (IST day, anonymous visitor id). Powers /admin/traffic.
  * Deliberately tiny and PII free: `vid` is a random id kept in a first-party cookie, never an email/user id.
  * Raw page views are NOT stored, only a counter, so the collection stays small on the M0 cluster;
- * the TTL index drops rows after 180 days.
+ * the TTL index drops rows after 3 years.
  */
 const visitorDaySchema = new mongoose.Schema({
     day: { type: String, required: true },          // 'YYYY-MM-DD' in IST
@@ -22,6 +22,6 @@ const visitorDaySchema = new mongoose.Schema({
 }, { versionKey: false });
 
 visitorDaySchema.index({ day: 1, vid: 1 }, { unique: true });
-visitorDaySchema.index({ createdAt: 1 }, { expireAfterSeconds: 180 * 24 * 3600 });
+visitorDaySchema.index({ createdAt: 1 }, { expireAfterSeconds: 1095 * 24 * 3600 });
 
 export default mongoose.models.VisitorDay || mongoose.model('VisitorDay', visitorDaySchema);

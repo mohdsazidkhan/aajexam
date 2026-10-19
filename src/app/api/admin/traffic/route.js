@@ -8,7 +8,7 @@ import { istDay } from '@/lib/utils/traffic';
 const count = (cond) => ({ $sum: { $cond: [cond, 1, 0] } });
 const anon = { $not: ['$wasLoggedIn'] };
 
-// GET /api/admin/traffic?days=14
+// GET /api/admin/traffic?days=14&offset=0   (offset 1 + days 1 = yesterday only)
 // Per IST day: visitors, how many were already logged in, how many opened /login or /register,
 // how many left without signing up or logging in, and the google vs password split.
 export async function GET(req) {
@@ -19,9 +19,16 @@ export async function GET(req) {
         }
         await dbConnect();
 
-        const days = Math.min(90, Math.max(1, parseInt(new URL(req.url).searchParams.get('days')) || 14));
-        const fromDate = new Date(Date.now() - (days - 1) * 86400000);
+        const sp = new URL(req.url).searchParams;
+        const days = Math.min(1095, Math.max(1, parseInt(sp.get('days')) || 14));
+        const offset = parseInt(sp.get('offset')) === 1 ? 1 : 0;
+        // Always load enough days to also fill the Today / Yesterday cards.
+        const total = Math.max(days + offset, 2);
+        const fromDate = new Date(Date.now() - (total - 1) * 86400000);
         const fromDay = istDay(fromDate);
+        // The selected range (sources / devices / table) covers [rangeFrom, rangeTo].
+        const rangeTo = istDay(new Date(Date.now() - offset * 86400000));
+        const rangeFrom = istDay(new Date(Date.now() - (offset + days - 1) * 86400000));
 
         const [perDay, sources, devices, dbSignups] = await Promise.all([
             VisitorDay.aggregate([
@@ -44,12 +51,12 @@ export async function GET(req) {
                 },
             ]),
             VisitorDay.aggregate([
-                { $match: { day: { $gte: fromDay }, wasLoggedIn: false } },
+                { $match: { day: { $gte: rangeFrom, $lte: rangeTo }, wasLoggedIn: false } },
                 { $group: { _id: '$source', visitors: { $sum: 1 }, signups: count({ $ne: ['$signup', ''] }) } },
                 { $sort: { visitors: -1 } },
             ]),
             VisitorDay.aggregate([
-                { $match: { day: { $gte: fromDay } } },
+                { $match: { day: { $gte: rangeFrom, $lte: rangeTo } } },
                 { $group: { _id: '$device', visitors: { $sum: 1 } } },
             ]),
             // Ground truth from the users collection (includes mobile app signups, which the web beacon cannot see)
@@ -68,7 +75,7 @@ export async function GET(req) {
         const byDay = new Map(perDay.map((d) => [d._id, d]));
         const dbByDay = new Map(dbSignups.map((d) => [d._id, d]));
         const rows = [];
-        for (let i = 0; i < days; i += 1) {
+        for (let i = 0; i < total; i += 1) {
             const day = istDay(new Date(Date.now() - i * 86400000));
             const d = byDay.get(day) || {};
             const db = dbByDay.get(day) || { total: 0, google: 0 };
@@ -94,7 +101,9 @@ export async function GET(req) {
         return NextResponse.json({
             success: true,
             data: {
-                days: rows,
+                today: rows[0],
+                yesterday: rows[1],
+                days: rows.slice(offset, offset + days),
                 sources: sources.map((s) => ({ source: s._id || 'Direct', visitors: s.visitors, signups: s.signups })),
                 devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),
                 trackingSince: (await VisitorDay.findOne().sort({ createdAt: 1 }).select('day').lean())?.day || null,

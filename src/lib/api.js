@@ -642,8 +642,8 @@ class ApiService {
   }
 
   // First-party visitor funnel (admin /admin/traffic)
-  async getAdminTraffic(days = 14) {
-    return this.request(`/api/admin/traffic?days=${days}`);
+  async getAdminTraffic(days = 7, offset = 0) {
+    return this.request(`/api/admin/traffic?days=${days}&offset=${offset}`);
   }
 
   // Client error reports (kind: 'mobile' -> /admin/app-errors, 'web' -> /admin/web-errors)

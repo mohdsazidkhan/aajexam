@@ -8,7 +8,16 @@ import { useSSR } from '../../../hooks/useSSR';
 import API from '../../../lib/api';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
-const RANGES = [7, 14, 30, 90];
+const RANGES = [
+  { id: 'today', label: 'Today', days: 1, offset: 0 },
+  { id: 'yesterday', label: 'Yesterday', days: 1, offset: 1 },
+  { id: '7', label: 'Last 7 Days', days: 7, offset: 0 },
+  { id: '30', label: 'Last 30 Days', days: 30, offset: 0 },
+  { id: '90', label: 'Last 90 Days', days: 90, offset: 0 },
+  { id: '180', label: 'Last 180 Days', days: 180, offset: 0 },
+  { id: '365', label: 'Last 1 Year', days: 365, offset: 0 },
+  { id: '1095', label: 'Last 3 Years', days: 1095, offset: 0 },
+];
 
 const fmtDay = (d) => new Date(`${d}T00:00:00+05:30`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', weekday: 'short' });
 const pct = (a, b) => (b ? `${Math.round((a / b) * 100)}%` : '—');
@@ -30,7 +39,8 @@ const Stat = ({ label, value, sub, Icon, tone }) => (
  */
 export default function Traffic() {
   const { isMounted } = useSSR();
-  const [days, setDays] = useState(14);
+  const [rangeId, setRangeId] = useState('7');
+  const range = RANGES.find((r) => r.id === rangeId) || RANGES[2];
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -39,13 +49,13 @@ export default function Traffic() {
     setLoading(true);
     setError('');
     try {
-      const res = await API.getAdminTraffic(days);
+      const res = await API.getAdminTraffic(range.days, range.offset);
       setData(res.data);
     } catch (e) {
       setError(e?.message || 'Failed to load traffic');
     }
     setLoading(false);
-  }, [days]);
+  }, [range]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -68,11 +78,14 @@ export default function Traffic() {
           <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
             <Activity className="w-4 h-4" /> Traffic · website visitors, IST days
           </div>
-          <div className="flex gap-1 bg-slate-100 dark:bg-white/5 p-1 rounded-xl">
-            {RANGES.map((n) => (
-              <button key={n} onClick={() => setDays(n)} className={`px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider transition ${days === n ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-500 hover:bg-white dark:hover:bg-white/10'}`}>{n}d</button>
-            ))}
-          </div>
+          <select
+            value={rangeId}
+            onChange={(e) => setRangeId(e.target.value)}
+            aria-label="Date range"
+            className="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          >
+            {RANGES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
+          </select>
         </div>
 
         {error ? <div className="p-4 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{error}</div> : null}
@@ -89,7 +102,7 @@ export default function Traffic() {
           </div>
         )}
 
-        {[['Today', rows[0]], ['Yesterday', rows[1]]].map(([label, r]) => {
+        {[['Today', data?.today], ['Yesterday', data?.yesterday]].map(([label, r]) => {
           const x = r || {};
           return (
             <div key={label} className="flex flex-col gap-2">
@@ -105,9 +118,9 @@ export default function Traffic() {
           );
         })}
 
-        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-x-auto">
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-auto max-h-[60vh]">
           <table className="min-w-full">
-            <thead>
+            <thead className="sticky top-0 bg-white dark:bg-slate-800 z-10">
               <tr className="border-b border-slate-200 dark:border-slate-700">
                 <th className={`${th} text-left`}>Day</th>
                 <th className={th}>Visitors</th>
@@ -160,7 +173,7 @@ export default function Traffic() {
 
         <div className="grid xl:grid-cols-2 gap-3">
           <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">New visitors by source ({days}d)</div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">New visitors by source ({range.label})</div>
             {(data?.sources || []).length === 0 ? <div className="text-sm text-slate-400">No data yet</div> : (data.sources.map((s) => (
               <div key={s.source} className="flex justify-between text-sm py-1">
                 <span className="font-bold">{s.source}</span>
@@ -169,7 +182,7 @@ export default function Traffic() {
             )))}
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3">
-            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Devices ({days}d)</div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Devices ({range.label})</div>
             {(data?.devices || []).length === 0 ? <div className="text-sm text-slate-400">No data yet</div> : (data.devices.map((s) => (
               <div key={s.device} className="flex justify-between text-sm py-1">
                 <span className="font-bold capitalize">{s.device}</span>
