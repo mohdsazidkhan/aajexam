@@ -50,6 +50,27 @@ const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse }) => (
   </div>
 );
 
+// Readable names for the signup entry points (the data-cta names and prompt names stored with each signup)
+const CTA_LABELS = {
+  exit: 'Exit-intent popup',
+  welcome: 'Welcome popup (landing)',
+  nudge: 'Page-view nudge bar',
+  sticky: 'Sticky signup bar',
+  onetap: 'Google One Tap',
+  sample: 'Sample quiz result',
+  promo_bar_login: 'Red strip: Login Now',
+  navbar_get_started: 'Navbar: Get Started',
+  bottom_nav_login: 'Mobile bottom nav: Login',
+  landing_hero_start: 'Landing: Start practicing now',
+  landing_pyq_start: 'Landing: Start Free PYQ Practice',
+  landing_progress_card: 'Landing: Check your progress',
+  landing_referral_card: 'Landing: Start referring',
+  landing_final_cta: 'Landing: Join Now For Free',
+  auth_page: 'Opened login / register page directly',
+  untracked: 'Not tracked (before this update)',
+};
+const ctaLabel = (k) => CTA_LABELS[k] || k;
+
 const countryName = (code) => {
   try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(code) || code; } catch (e) { return code; }
 };
@@ -215,6 +236,8 @@ export default function Traffic() {
           <List title={`Operating systems (${range.label})`} rows={(data?.oses || []).map((x) => ({ k: x.name, v: x.visitors }))} />
           <List title={`Last page before leaving, no signup (${range.label})`} rows={(data?.exitPages || []).map((x) => ({ k: x.path, v: `${x.visitors} visitors` }))} />
           <List title={`Signup prompts (${range.label}): shown → clicked → signed up`} rows={(data?.prompts || []).filter((x) => x.shown || x.clicked).map((x) => ({ k: x.name, v: `${x.shown} shown · ${x.clicked} clicked (${pct(x.clicked, x.shown)}) · ${x.signups} signed up`, cap: true }))} />
+          <List title={`Signups: which button / popup (${range.label})`} rows={(data?.signupFrom || []).map((x) => ({ k: ctaLabel(x.from), v: `${x.signups} signed up · Google ${x.google} · Normal ${x.password}` }))} />
+          <List title={`Signups: page they clicked on (${range.label})`} rows={(data?.signupPaths || []).map((x) => ({ k: x.path, v: `${x.signups} signed up` }))} />
           <List title={`Email leads (${range.label})`} rows={[{ k: 'Emails captured', v: data?.leads ?? 0 }]} />
           <List title={`Browsers (${range.label})`} rows={(data?.browsers || []).map((x) => ({ k: x.name, v: x.visitors }))} />
         </div>

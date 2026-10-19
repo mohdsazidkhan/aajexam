@@ -28,6 +28,8 @@ const visitorDaySchema = new mongoose.Schema({
     lastPath: { type: String, default: '' },        // most recent page seen that day = the exit page
     prompts: { type: [String], default: [] },       // signup prompts shown: exit | welcome | nudge | sticky | onetap
     clicks: { type: [String], default: [] },        // signup prompts the visitor clicked
+    signupFrom: { type: String, default: '' },      // CTA pressed before signing up (see lib/tracker.js markCta), 'auth_page' = no CTA
+    signupPath: { type: String, default: '' },      // page that CTA was on
     signup: { type: String, default: '' },          // '' | google | password
     login: { type: String, default: '' },           // '' | google | password
     createdAt: { type: Date, default: Date.now },

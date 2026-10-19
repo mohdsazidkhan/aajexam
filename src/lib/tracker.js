@@ -31,10 +31,37 @@ const getVid = () => {
  * Signup-prompt funnel: trackPrompt('exit', 'shown') when a prompt appears, trackPrompt('exit', 'click')
  * when the visitor presses its signup button. Shown once per prompt per page load. Best effort.
  */
+/**
+ * Remembers which signup button the visitor pressed last, in a 7-day cookie (`aj_cta` = "<name>|<page>").
+ * The auth routes read it when the account is created, so /admin/traffic can say where signups came from.
+ * Called automatically for every prompt click (trackPrompt) and for any element tagged data-cta="name".
+ */
+const CTA_COOKIE = 'aj_cta';
+export function markCta(name) {
+  try {
+    if (typeof window === 'undefined' || !/^[a-z0-9_]{1,40}$/.test(name)) return;
+    const value = encodeURIComponent(`${name}|${location.pathname.slice(0, 100)}`);
+    document.cookie = `${CTA_COOKIE}=${value}; Path=/; Max-Age=604800; SameSite=Lax${location.protocol === 'https:' ? '; Secure' : ''}`;
+  } catch (e) {
+    // analytics must never affect the visitor
+  }
+}
+
+let ctaListening = false;
+const listenForCtas = () => {
+  if (ctaListening || typeof document === 'undefined') return;
+  ctaListening = true;
+  document.addEventListener('click', (e) => {
+    const el = e.target && e.target.closest ? e.target.closest('[data-cta]') : null;
+    if (el) markCta(el.getAttribute('data-cta') || '');
+  }, true);
+};
+
 const sentPrompts = new Set();
 export function trackPrompt(name, evt) {
   try {
     if (typeof window === 'undefined') return;
+    if (evt === 'click') markCta(name);
     const key = `${name}:${evt}`;
     if (sentPrompts.has(key)) return;
     sentPrompts.add(key);
@@ -52,6 +79,7 @@ export function trackPrompt(name, evt) {
 export function trackPageView(path) {
   try {
     if (typeof window === 'undefined') return;
+    listenForCtas();
     const clean = String(path || '').split('?')[0].split('#')[0];
     if (!clean.startsWith('/') || clean.startsWith('/admin') || clean === lastPath) return;
     lastPath = clean;

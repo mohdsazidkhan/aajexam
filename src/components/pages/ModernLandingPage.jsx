@@ -176,6 +176,7 @@ const ModernLandingPage = () => {
                         icon={ArrowRight}
                         iconPosition="right"
                         className="w-full sm:w-auto"
+                        cta="landing_hero_start"
                         onClick={() => router.push('/login')}
                      >
                         {translate('Start practicing now')}
@@ -367,6 +368,7 @@ const ModernLandingPage = () => {
                   <motion.button
                      whileHover={{ scale: 1.03 }}
                      whileTap={{ scale: 0.97 }}
+                     data-cta="landing_pyq_start"
                      onClick={() => router.push('/register')}
                      className="w-full sm:w-auto px-10 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm"
                   >
@@ -400,7 +402,7 @@ const ModernLandingPage = () => {
                         <h3 className="text-xl xl:text-5xl font-black font-outfit uppercase leading-[0.9]">{translate('See your progress')}</h3>
                         <p className="text-base xl:text-md xl:text-xl font-bold opacity-80 leading-relaxed">{translate('Know how well you are doing. Get a clear report after every exam and move up as you improve.')}</p>
                         <div className="pt-4 xl:pt-8">
-                           <Button variant="secondary" size="lg" className="rounded-[1.5rem] xl:rounded-[2rem] px-6 xl:px-8 font-black tracking-[0.08em] text-sm py-4 xl:py-6" onClick={() => router.push('/register')}>
+                           <Button variant="secondary" size="lg" className="rounded-[1.5rem] xl:rounded-[2rem] px-6 xl:px-8 font-black tracking-[0.08em] text-sm py-4 xl:py-6" cta="landing_progress_card" onClick={() => router.push('/register')}>
                               {translate('Check your progress')}
                            </Button>
                         </div>
@@ -459,7 +461,7 @@ const ModernLandingPage = () => {
                         <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
                         <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 xl:px-0">{translate('Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.')}</p>
                         <div className="pt-2 xl:pt-4">
-                           <Button variant="primary" size="lg" className="w-full xl:w-auto shadow-sm rounded-lg xl:rounded-xl xl:rounded-2xl px-8 xl:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 xl:py-6" onClick={() => router.push('/login')}>
+                           <Button variant="primary" size="lg" className="w-full xl:w-auto shadow-sm rounded-lg xl:rounded-xl xl:rounded-2xl px-8 xl:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 xl:py-6" cta="landing_referral_card" onClick={() => router.push('/login')}>
                               {translate('Start referring')}
                            </Button>
                         </div>
@@ -522,6 +524,7 @@ const ModernLandingPage = () => {
                         icon={ArrowRight}
                         iconPosition="right"
                         className="w-full sm:w-auto shadow-sm rounded-2xl font-outfit font-black text-sm tracking-[0.08em] transition-transform active:scale-95"
+                        cta="landing_final_cta"
                         onClick={() => router.push('/register')}
                      >
                         {translate('Join Now For Free')}

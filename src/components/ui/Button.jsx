@@ -17,7 +17,8 @@ const Button = ({
   fullWidth = false,
   size = 'md',
   icon: Icon,
-  iconPosition = 'left'
+  iconPosition = 'left',
+  cta,
 }) => {
   // Brand system: exactly two variants, everywhere.
   // primary   -> brand green bg, white text (identical in light & dark)
@@ -51,6 +52,7 @@ const Button = ({
       whileTap={disabled ? {} : { y: 2, scale: 0.98 }}
       whileHover={disabled ? {} : { y: -2 }}
       onClick={disabled ? undefined : onClick}
+      data-cta={cta}
       disabled={disabled}
       className={`
         ${variants[variant] || variants.primary}

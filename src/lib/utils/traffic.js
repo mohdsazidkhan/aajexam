@@ -22,6 +22,20 @@ const readVid = (req) => {
     return m && VID_RX.test(m[1]) ? m[1] : null;
 };
 
+// aj_cta cookie = "<cta name>|<page path>"; no cookie means the visitor reached /login or /register on their own.
+const readCta = (req) => {
+    const m = (req.headers.get('cookie') || '').match(/(?:^|;\s*)aj_cta=([^;]+)/);
+    let name = 'auth_page';
+    let path = '';
+    if (m) {
+        try {
+            const [n, p] = decodeURIComponent(m[1]).split('|');
+            if (/^[a-z0-9_]{1,40}$/.test(n || '')) { name = n; path = String(p || '').slice(0, 100); }
+        } catch (e) { /* keep defaults */ }
+    }
+    return { name, path };
+};
+
 const deviceOf = (ua) => (/ipad|tablet/i.test(ua) ? 'tablet' : /mobi|android|iphone/i.test(ua) ? 'mobile' : 'desktop');
 
 // Small user-agent parser: OS, browser (major version) and Android device model.
@@ -161,11 +175,12 @@ export async function recordPageView(req) {
 export async function trackAuth(req, kind, method) {
     try {
         const vid = readVid(req);
+        const cta = kind === 'signup' ? readCta(req) : null;
         if (!vid || !['signup', 'login'].includes(kind) || !['google', 'password'].includes(method)) return;
         await dbConnect();
         await VisitorDay.updateOne(
             { day: istDay(), vid },
-            { $set: { [kind]: method, lastAt: new Date() }, $setOnInsert: { createdAt: new Date() } },
+            { $set: { [kind]: method, lastAt: new Date(), ...(cta ? { signupFrom: cta.name, signupPath: cta.path } : {}) }, $setOnInsert: { createdAt: new Date() } },
             { upsert: true }
         );
     } catch (e) { /* ignore */ }

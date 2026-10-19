@@ -31,7 +31,7 @@ const PublicBottomNav = () => {
       {navItems.map((item) => {
         const isActive = currentPath === item.path;
         return (
-          <Link key={item.path} href={item.path} className="flex-1">
+          <Link key={item.path} href={item.path} data-cta={item.path === '/login' ? 'bottom_nav_login' : undefined} className="flex-1">
             <div className={`
               flex flex-col items-center justify-center py-3 rounded-2xl transition-all relative
               ${isActive ? 'text-primary-600' : 'text-slate-600 dark:text-slate-400'}

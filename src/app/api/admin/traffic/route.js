@@ -62,7 +62,8 @@ export async function GET(req) {
             { $limit: 10 },
         ]);
 
-        const [perDay, sources, devices, dbSignups, countries, cities, states, oses, browsers, ips, exitPages, promptRows, leadCount] = await Promise.all([
+        const [perDay, sources, devices, dbSignups, countries, cities, states, oses, browsers, ips, exitPages, promptRows, leadCount, signupFromRows, signupPathRows] = await Promise.all([
+
             VisitorDay.aggregate([
                 { $match: { day: { $gte: fromDay }, ...suspectFilter } },
                 {
@@ -129,6 +130,19 @@ export async function GET(req) {
                 ]])) },
             ]),
             Lead.countDocuments({ day: { $gte: rangeFrom, $lte: rangeTo } }),
+            // Which button / popup the visitor pressed before creating their account
+            VisitorDay.aggregate([
+                { $match: { ...inRange, signup: { $ne: '' } } },
+                { $group: { _id: { $ifNull: ['$signupFrom', ''] }, signups: { $sum: 1 }, google: count({ $eq: ['$signup', 'google'] }), password: count({ $eq: ['$signup', 'password'] }) } },
+                { $sort: { signups: -1 } },
+            ]),
+            // ...and the page that button was on
+            VisitorDay.aggregate([
+                { $match: { ...inRange, signup: { $ne: '' }, signupPath: { $nin: ['', null] } } },
+                { $group: { _id: '$signupPath', signups: { $sum: 1 } } },
+                { $sort: { signups: -1 } },
+                { $limit: 10 },
+            ]),
         ]);
 
         const byDay = new Map(perDay.map((d) => [d._id, d]));
@@ -178,6 +192,8 @@ export async function GET(req) {
                     return { name: n, shown: r.shown || 0, clicked: r.clicked || 0, signups: r.signups || 0 };
                 }),
                 leads: leadCount,
+                signupFrom: signupFromRows.map((r) => ({ from: r._id || 'untracked', signups: r.signups, google: r.google, password: r.password })),
+                signupPaths: signupPathRows.map((r) => ({ path: r._id, signups: r.signups })),
                 hideSuspect,
                 devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),
                 trackingSince: (await VisitorDay.findOne().sort({ createdAt: 1 }).select('day').lean())?.day || null,

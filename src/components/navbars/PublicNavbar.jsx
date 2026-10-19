@@ -36,6 +36,7 @@ const PromoTopBar = () => {
   const login = (
     <Link
       href="/login"
+      data-cta="promo_bar_login"
       className="shrink-0 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white hover:bg-slate-100 text-black text-[11px] font-black uppercase tracking-wider whitespace-nowrap shadow-md shadow-black/20 transition"
     >
       {translate('Login Now')}
@@ -163,7 +164,7 @@ const PublicNavbar = () => {
             <div className="flex items-center gap-3 relative z-10">
               <ThemeColorMenuButton buttonClassName="w-10 h-10 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center text-slate-700 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 shadow-sm transition-all" />
 
-              <Link href="/login">
+              <Link href="/login" data-cta="navbar_get_started">
                 <Button variant="primary" size="sm" className="px-6 py-2 sm:py-3 rounded-2xl font-black uppercase tracking-widest text-xs">{translate('Get Started')}</Button>
               </Link>
             </div>
