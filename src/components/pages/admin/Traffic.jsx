@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { Users, MousePointerClick, LogOut, UserPlus, LogIn, Activity } from 'lucide-react';
+import { Users, MousePointerClick, LogOut, UserPlus, LogIn, Activity, X } from 'lucide-react';
 import Sidebar from '../../Sidebar';
 import { AdminTableSkeleton } from '../../admin/Skeletons';
 import { useSSR } from '../../../hooks/useSSR';
@@ -45,17 +45,127 @@ const Delta = ({ cur, prev, inverse }) => {
   );
 };
 
-const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3">
-    <div className={`p-2 rounded-lg ${tone}`}><Icon className="w-4 h-4" /></div>
-    <div>
-      <div className="text-lg font-black tabular-nums text-slate-900 dark:text-white leading-none">{value}</div>
-      <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-1">{label}</div>
-      {cur !== undefined ? <div className="mt-0.5"><Delta cur={cur} prev={prev} inverse={inverse} /></div> : null}
-      {sub ? <div className="text-[10px] text-slate-400 mt-0.5">{sub}</div> : null}
+const Stat = ({ label, value, sub, Icon, tone, cur, prev, inverse, onClick }) => {
+  const Wrap = onClick ? 'button' : 'div';
+  return (
+    <Wrap
+      {...(onClick ? { type: 'button', onClick, title: 'Click to see who' } : {})}
+      className={`bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-3 max-md:p-2 w-full flex items-center gap-3 max-md:gap-2 text-left ${onClick ? 'cursor-pointer hover:border-primary-500 transition-colors' : ''}`}
+    >
+      <div className={`p-2 max-md:p-1.5 rounded-lg shrink-0 ${tone}`}><Icon className="w-4 h-4" /></div>
+      <div className="min-w-0 max-md:flex max-md:flex-wrap max-md:items-baseline max-md:gap-x-2 max-md:gap-y-0">
+        <div className="text-lg max-md:text-base font-black tabular-nums text-slate-900 dark:text-white leading-none">{value}</div>
+        <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-1 max-md:mt-0">{label}</div>
+        {cur !== undefined ? <div className="mt-0.5 max-md:mt-0"><Delta cur={cur} prev={prev} inverse={inverse} /></div> : null}
+        {sub ? <div className="text-[10px] text-slate-400 mt-0.5 max-md:mt-0">{sub}</div> : null}
+      </div>
+    </Wrap>
+  );
+};
+
+const fmtWhen = (d) => (d ? new Date(d).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true }) : '—');
+
+// Logins recorded before we started saving the user id can't be matched to an account.
+const UserName = ({ u, prefix = '', className = '' }) => (u.id
+  ? <a href={`/admin/user-details/${u.id}`} className={`text-primary-600 dark:text-primary-400 ${className}`}>{prefix}{u.name || '—'}</a>
+  : <span className={`text-slate-400 italic ${className}`}>{prefix}Not recorded (earlier login)</span>);
+
+// Who signed up / logged in during the selected period (accounts from the users collection, web + app).
+const UsersModal = ({ kind, range, segment, onClose }) => {
+  const [state, setState] = useState({ loading: true, error: '', data: null });
+
+  useEffect(() => {
+    let alive = true;
+    setState({ loading: true, error: '', data: null });
+    API.getAdminTrafficUsers(kind, range.days, range.offset, segment)
+      .then((res) => { if (alive) setState({ loading: false, error: '', data: res.data }); })
+      .catch((e) => { if (alive) setState({ loading: false, error: e?.message || 'Failed to load users', data: null }); });
+    return () => { alive = false; };
+  }, [kind, range, segment]);
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  const isSignup = kind === 'signup';
+  const users = state.data?.users || [];
+  const th = 'px-2 py-1.5 text-[9px] font-black uppercase tracking-wider text-slate-400 text-left whitespace-nowrap';
+  const td = 'px-2 py-1.5 text-xs whitespace-nowrap';
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-3" onClick={onClose}>
+      <div className="w-full max-w-4xl h-[70vh] min-h-[70vh] max-h-[70vh] flex flex-col overflow-hidden bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xl" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
+        <div className="flex items-start justify-between gap-3 p-4 border-b border-slate-200 dark:border-slate-700">
+          <div>
+            <div className="text-sm font-black text-slate-900 dark:text-white">{isSignup ? 'Signed up' : 'Logged in'} · {range.label}</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">
+              {state.data ? `${state.data.total} user${state.data.total === 1 ? '' : 's'}${state.data.total > users.length ? ` (showing latest ${users.length})` : ''}` : 'Loading…'}
+              {isSignup ? ' · all new accounts incl. mobile app' : ' · same logins the card counts'}
+            </div>
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close" className="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"><X className="w-4 h-4" /></button>
+        </div>
+        <div className="min-h-0 flex-1 overflow-y-auto overflow-x-auto overscroll-contain touch-pan-y [-webkit-overflow-scrolling:touch]">
+          {state.error ? <div className="m-4 p-3 rounded-xl bg-rose-500/10 text-rose-600 text-sm font-bold">{state.error}</div> : null}
+          {state.loading ? <div className="p-6 text-xs text-slate-400">Loading…</div> : null}
+          {!state.loading && !state.error && users.length === 0 ? <div className="p-6 text-xs text-slate-400">No users in this period.</div> : null}
+          {users.length > 0 ? (
+            <div className="md:hidden grid grid-cols-1 gap-2 p-2">
+              {users.map((u, i) => (
+                <div key={`${u.id}-${i}`} className="min-w-0 p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60">
+                  <div className="flex flex-col gap-0.5">
+                    <UserName u={u} prefix={`${i + 1}. `} className="font-black break-words min-w-0" />
+                    <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">{u.method}{u.referred ? ' · referred' : ''}</span>
+                  </div>
+                  <div className="text-slate-600 dark:text-slate-300 break-all mt-0.5">{u.email}</div>
+                  <div className="flex flex-col gap-0.5 mt-1 text-[10px] text-slate-400">
+                    {u.phone ? <span>{u.phone}</span> : null}
+                    {[u.city, u.state].filter(Boolean).length ? <span>{[u.city, u.state].filter(Boolean).join(', ')}</span> : null}
+                    {isSignup && u.heardFrom ? <span>Heard: {u.heardFrom}</span> : null}
+                    {!isSignup ? <span>Joined {fmtWhen(u.createdAt)}</span> : null}
+                    <span>{isSignup ? 'Signed up' : 'Last login'} {fmtWhen(isSignup ? u.createdAt : u.lastLoginDate)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
+          {users.length > 0 ? (
+            <table className="w-full max-md:hidden">
+              <thead className="sticky top-0 bg-slate-50 dark:bg-slate-800 z-10">
+                <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <th className={th}>#</th>
+                  <th className={th}>Name</th>
+                  <th className={th}>Email</th>
+                  <th className={th}>Phone</th>
+                  <th className={th}>Via</th>
+                  <th className={th}>Location</th>
+                  {isSignup ? <th className={th}>Heard from</th> : <th className={th}>Joined</th>}
+                  <th className={th}>{isSignup ? 'Signed up' : 'Last login'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((u, i) => (
+                  <tr key={`${u.id}-${i}`} className="border-b border-slate-100 dark:border-slate-700/50 last:border-0">
+                    <td className={`${td} text-slate-400`}>{i + 1}</td>
+                    <td className={`${td} font-bold`}><UserName u={u} className="hover:underline" /></td>
+                    <td className={td}>{u.email}</td>
+                    <td className={td}>{u.phone || '—'}</td>
+                    <td className={`${td} capitalize`}>{u.method}{u.referred ? ' · referred' : ''}</td>
+                    <td className={td}>{[u.city, u.state].filter(Boolean).join(', ') || '—'}</td>
+                    {isSignup ? <td className={td}>{u.heardFrom || '—'}</td> : <td className={td}>{fmtWhen(u.createdAt)}</td>}
+                    <td className={td}>{fmtWhen(isSignup ? u.createdAt : u.lastLoginDate)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Readable names for the signup entry points (the data-cta names and prompt names stored with each signup)
 const CTA_LABELS = {
@@ -83,9 +193,9 @@ const countryName = (code) => {
 };
 
 const List = ({ title, rows }) => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 h-48 flex flex-col">
+  <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-2.5 h-48 max-lg:h-auto flex flex-col">
     <div className="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{title}</div>
-    <div className="min-h-0 flex-1 overflow-y-auto">
+    <div className="min-h-0 flex-1 overflow-y-auto max-lg:overflow-visible">
       {rows.length === 0 ? <div className="text-xs text-slate-400">No data yet</div> : rows.map((r) => (
         <div key={r.k} className="flex justify-between gap-3 text-xs py-0.5">
           <span className={`font-bold ${r.cap ? 'capitalize' : ''}`}>{r.k}</span>
@@ -108,6 +218,7 @@ export default function Traffic() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [segment, setSegment] = useState('total');
+  const [usersModal, setUsersModal] = useState(null); // 'signup' | 'login' | null
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -137,11 +248,12 @@ export default function Traffic() {
   return (
     <div className="h-[calc(100dvh-64px)] max-md:h-[calc(100dvh-112px)] overflow-hidden flex flex-col font-outfit text-slate-900 dark:text-white">
       {isMounted && <Sidebar />}
+      {usersModal ? <UsersModal kind={usersModal} range={range} segment={segment} onClose={() => setUsersModal(null)} /> : null}
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
+          <div className="order-1 flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
             <Activity className="w-4 h-4" /> Traffic          </div>
-          <div className="flex gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 max-w-full overflow-x-auto" role="tablist">
+          <div className="order-3 md:order-2 w-full md:w-auto flex gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 max-w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist">
             {SEGMENTS.map((s) => (
               <button
                 key={s.id}
@@ -160,7 +272,7 @@ export default function Traffic() {
             value={rangeId}
             onChange={(e) => setRangeId(e.target.value)}
             aria-label="Date range"
-            className="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="order-2 md:order-3 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             {RANGES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
           </select>
@@ -175,12 +287,12 @@ export default function Traffic() {
           const logins = (o) => (o.loginGoogle || 0) + (o.loginPassword || 0);
           return (
             <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-2 xl:grid-cols-5 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-2">
                 <Stat label="Visitors" value={c.visitors ?? 0} cur={c.visitors || 0} prev={p.visitors || 0} sub={`${c.alreadyLoggedIn || 0} already logged in · ${data?.uniqueIps || 0} unique IPs`} Icon={Users} tone="bg-sky-500/10 text-sky-600" />
                 <Stat label="Opened login / register" value={c.sawAuthPage ?? 0} cur={c.sawAuthPage || 0} prev={p.sawAuthPage || 0} sub={`${pct(c.sawAuthPage, c.newVisitors)} of new`} Icon={MousePointerClick} tone="bg-violet-500/10 text-violet-600" />
                 <Stat label="Left without login/signup" value={c.leftWithoutAuth ?? 0} cur={c.leftWithoutAuth || 0} prev={p.leftWithoutAuth || 0} inverse sub={`${pct(c.leftWithoutAuth, c.newVisitors)} of new`} Icon={LogOut} tone="bg-rose-500/10 text-rose-600" />
-                <Stat label="Signups" value={signups(c)} cur={signups(c)} prev={signups(p)} sub={`Google ${c.signupGoogle || 0} · Normal ${c.signupPassword || 0} · DB ${c.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" />
-                <Stat label="Logins" value={logins(c)} cur={logins(c)} prev={logins(p)} sub={`Google ${c.loginGoogle || 0} · Normal ${c.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" />
+                <Stat label="Signups" value={signups(c)} cur={signups(c)} prev={signups(p)} sub={`Google ${c.signupGoogle || 0} · Normal ${c.signupPassword || 0} · DB ${c.dbSignups || 0}`} Icon={UserPlus} tone="bg-emerald-500/10 text-emerald-600" onClick={() => setUsersModal('signup')} />
+                <Stat label="Logins" value={logins(c)} cur={logins(c)} prev={logins(p)} sub={`Google ${c.loginGoogle || 0} · Normal ${c.loginPassword || 0}`} Icon={LogIn} tone="bg-amber-500/10 text-amber-600" onClick={() => setUsersModal('login')} />
               </div>
             </div>
           );

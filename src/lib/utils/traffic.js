@@ -14,6 +14,17 @@ export const PROMPT_NAMES = ['exit', 'welcome', 'nudge', 'sticky', 'onetap', 'em
 
 export const isBotUa = (ua) => !ua || BOT_RX.test(ua);
 
+export const SEGMENTS = ['total', 'real', 'india', 'outside'];
+
+// VisitorDay filter for an admin Traffic tab. A suspected bot = single page, direct, from outside India.
+export const segmentFilter = (segment) => {
+    const notSuspect = { $nor: [{ pages: { $lte: 1 }, source: 'Direct', country: { $nin: ['IN', ''] } }] };
+    if (segment === 'real') return notSuspect;
+    if (segment === 'india') return { $and: [notSuspect, { country: 'IN' }] };
+    if (segment === 'outside') return { $and: [notSuspect, { country: { $ne: 'IN' } }] };
+    return {};
+};
+
 // IST calendar day, 'YYYY-MM-DD'
 export const istDay = (d = new Date()) => new Date(d.getTime() + 330 * 60000).toISOString().slice(0, 10);
 
@@ -172,7 +183,7 @@ export async function recordPageView(req) {
  * Awaited by the callers (a serverless function may be frozen right after it responds), but it never
  * throws and silently does nothing for requests without the visitor cookie (e.g. the mobile app).
  */
-export async function trackAuth(req, kind, method) {
+export async function trackAuth(req, kind, method, userId) {
     try {
         const vid = readVid(req);
         const cta = kind === 'signup' ? readCta(req) : null;
@@ -180,7 +191,7 @@ export async function trackAuth(req, kind, method) {
         await dbConnect();
         await VisitorDay.updateOne(
             { day: istDay(), vid },
-            { $set: { [kind]: method, lastAt: new Date(), ...(cta ? { signupFrom: cta.name, signupPath: cta.path } : {}) }, $setOnInsert: { createdAt: new Date() } },
+            { $set: { [kind]: method, ...(userId ? { [`${kind}Uid`]: String(userId) } : {}), lastAt: new Date(), ...(cta ? { signupFrom: cta.name, signupPath: cta.path } : {}) }, $setOnInsert: { createdAt: new Date() } },
             { upsert: true }
         );
     } catch (e) { /* ignore */ }

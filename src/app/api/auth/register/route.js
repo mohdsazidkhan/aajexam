@@ -225,7 +225,7 @@ export async function POST(req) {
             html: welcomeHtml
         }).catch(err => console.error('Failed to send welcome email:', err));
 
-        await trackAuth(req, 'signup', 'password');
+        await trackAuth(req, 'signup', 'password', user._id);
 
         return NextResponse.json({
             success: true,

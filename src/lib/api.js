@@ -646,6 +646,11 @@ class ApiService {
     return this.request(`/api/admin/user-details/${id}`);
   }
 
+  // Who signed up / logged in during a traffic period (kind: 'signup' | 'login')
+  async getAdminTrafficUsers(kind, days = 1, offset = 0, segment = 'total') {
+    return this.request(`/api/admin/traffic/users?kind=${kind}&days=${days}&offset=${offset}&segment=${segment}`);
+  }
+
   // First-party visitor funnel (admin /admin/traffic)
   async getAdminTraffic(days = 7, offset = 0, segment = 'total') {
     return this.request(`/api/admin/traffic?days=${days}&offset=${offset}&segment=${segment}`);

@@ -194,7 +194,7 @@ export async function POST(req) {
 
         const updatedProfileDetails = user.getProfileCompletionDetails();
 
-        if (user.role !== 'admin') await trackAuth(req, isNewGoogleUser ? 'signup' : 'login', 'google');
+        if (user.role !== 'admin') await trackAuth(req, isNewGoogleUser ? 'signup' : 'login', 'google', user._id);
 
         return successResponse({
             token,

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 /**
  * One document per (IST day, anonymous visitor id). Powers /admin/traffic.
- * Deliberately tiny and PII free: `vid` is a random id kept in a first-party cookie, never an email/user id.
+ * Deliberately tiny: `vid` is a random id kept in a first-party cookie, never an email. Only a login/signup row also keeps the user id (loginUid/signupUid).
  * Raw page views are NOT stored, only a counter, so the collection stays small on the M0 cluster;
  * the TTL index drops rows after 3 years.
  */
@@ -32,6 +32,8 @@ const visitorDaySchema = new mongoose.Schema({
     signupPath: { type: String, default: '' },      // page that CTA was on
     signup: { type: String, default: '' },          // '' | google | password
     login: { type: String, default: '' },           // '' | google | password
+    loginUid: { type: String, default: '' },        // who logged in / signed up, so the admin Traffic modal can list them (rows before this field have none)
+    signupUid: { type: String, default: '' },
     createdAt: { type: Date, default: Date.now },
     lastAt: { type: Date, default: Date.now },
 }, { versionKey: false });

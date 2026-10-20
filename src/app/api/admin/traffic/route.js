@@ -4,7 +4,7 @@ import VisitorDay from '@/models/VisitorDay';
 import User from '@/models/User';
 import Lead from '@/models/Lead';
 import { protect, admin } from '@/middleware/auth';
-import { istDay, PROMPT_NAMES, SOURCES, LEGACY_SOURCE } from '@/lib/utils/traffic';
+import { istDay, SEGMENTS, segmentFilter, PROMPT_NAMES, SOURCES, LEGACY_SOURCE } from '@/lib/utils/traffic';
 
 const SUM_KEYS = ['visitors', 'pageViews', 'alreadyLoggedIn', 'newVisitors', 'sawAuthPage', 'leftWithoutAuth', 'leftAfterAuthPage',
     'signupGoogle', 'signupPassword', 'loginGoogle', 'loginPassword', 'dbSignups', 'dbSignupsGoogle', 'dbSignupsPassword'];
@@ -49,12 +49,8 @@ export async function GET(req) {
         const rangeFrom = istDay(new Date(Date.now() - (offset + days - 1) * 86400000));
 
         // Tab: total (everything stored, bots included) | real (suspected bots removed) | india | outside (both real only).
-        // A suspected bot = single page, direct, from outside India.
-        const segment = ['total', 'real', 'india', 'outside'].includes(sp.get('segment')) ? sp.get('segment') : 'total';
-        const notSuspect = { $nor: [{ pages: { $lte: 1 }, source: 'Direct', country: { $nin: ['IN', ''] } }] };
-        const suspectFilter = segment === 'total' ? {}
-            : segment === 'real' ? notSuspect
-            : { $and: [notSuspect, segment === 'india' ? { country: 'IN' } : { country: { $ne: 'IN' } }] };
+        const segment = SEGMENTS.includes(sp.get('segment')) ? sp.get('segment') : 'total';
+        const suspectFilter = segmentFilter(segment);
 
         const inRange = { day: { $gte: rangeFrom, $lte: rangeTo }, ...suspectFilter };
         const top = (field, extra = {}) => VisitorDay.aggregate([
