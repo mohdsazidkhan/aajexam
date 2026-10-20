@@ -19,7 +19,14 @@ const RANGES = [
   { id: '1095', label: 'Last 3 Years', days: 1095, offset: 0 },
 ];
 
-const fmtDay = (d) => new Date(`${d}T00:00:00+05:30`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', weekday: 'short' });
+const SEGMENTS = [
+  { id: 'total', label: 'Total Traffic', hint: 'Real users and bots, from everywhere' },
+  { id: 'real', label: 'Real Users', hint: 'Suspected bots removed, whole world' },
+  { id: 'india', label: 'From India', hint: 'Real users in India only' },
+  { id: 'outside', label: 'Outside India', hint: 'Real users outside India only' },
+];
+
+const fmtDay =(d) => new Date(`${d}T00:00:00+05:30`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', weekday: 'short' });
 const pct = (a, b) => (b ? `${Math.round((a / b) * 100)}%` : '—');
 
 // GA-style change vs the previous period. `inverse`: a rise is bad (e.g. people leaving), so up = red.
@@ -97,23 +104,22 @@ export default function Traffic() {
   const { isMounted } = useSSR();
   const [rangeId, setRangeId] = useState('today');
   const range = RANGES.find((r) => r.id === rangeId) || RANGES[0];
-  const prevLabel = range.days === 1 ? (range.offset === 1 ? 'day before' : 'yesterday') : `previous ${range.days} days`;
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
-  const [hideSuspect, setHideSuspect] = useState(false);
+  const [segment, setSegment] = useState('total');
 
   const load = useCallback(async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await API.getAdminTraffic(range.days, range.offset, hideSuspect);
+      const res = await API.getAdminTraffic(range.days, range.offset, segment);
       setData(res.data);
     } catch (e) {
       setError(e?.message || 'Failed to load traffic');
     }
     setLoading(false);
-  }, [range, hideSuspect]);
+  }, [range, segment]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -134,12 +140,22 @@ export default function Traffic() {
       <div className="adminContent w-full mx-auto flex-1 min-h-0 overflow-auto flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-400">
-            <Activity className="w-4 h-4" /> Traffic <span className="mx-1 text-slate-300 dark:text-slate-600">-</span><span className="text-[10px] font-bold normal-case tracking-normal text-primary-600 dark:text-primary-400">{range.label} · change vs {prevLabel}</span>
+            <Activity className="w-4 h-4" /> Traffic          </div>
+          <div className="flex gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 max-w-full overflow-x-auto" role="tablist">
+            {SEGMENTS.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                role="tab"
+                aria-selected={segment === s.id}
+                title={s.hint}
+                onClick={() => setSegment(s.id)}
+                className={`px-3 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider whitespace-nowrap transition-colors ${segment === s.id ? 'bg-primary-600 text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+              >
+                {s.label}
+              </button>
+            ))}
           </div>
-          <label className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 dark:text-slate-400 cursor-pointer select-none" title="Hides single-page direct visits from outside India (likely bots)">
-            <input type="checkbox" checked={hideSuspect} onChange={(e) => setHideSuspect(e.target.checked)} className="accent-primary-600" />
-            Hide suspected bots
-          </label>
           <select
             value={rangeId}
             onChange={(e) => setRangeId(e.target.value)}

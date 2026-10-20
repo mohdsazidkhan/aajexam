@@ -48,11 +48,13 @@ export async function GET(req) {
         const rangeTo = istDay(new Date(Date.now() - offset * 86400000));
         const rangeFrom = istDay(new Date(Date.now() - (offset + days - 1) * 86400000));
 
-        // Optional: hide visits that look automated (single page, direct, from outside India).
-        const hideSuspect = sp.get('hideSuspect') === '1';
-        const suspectFilter = hideSuspect
-            ? { $nor: [{ pages: { $lte: 1 }, source: 'Direct', country: { $nin: ['IN', ''] } }] }
-            : {};
+        // Tab: total (everything stored, bots included) | real (suspected bots removed) | india | outside (both real only).
+        // A suspected bot = single page, direct, from outside India.
+        const segment = ['total', 'real', 'india', 'outside'].includes(sp.get('segment')) ? sp.get('segment') : 'total';
+        const notSuspect = { $nor: [{ pages: { $lte: 1 }, source: 'Direct', country: { $nin: ['IN', ''] } }] };
+        const suspectFilter = segment === 'total' ? {}
+            : segment === 'real' ? notSuspect
+            : { $and: [notSuspect, segment === 'india' ? { country: 'IN' } : { country: { $ne: 'IN' } }] };
 
         const inRange = { day: { $gte: rangeFrom, $lte: rangeTo }, ...suspectFilter };
         const top = (field, extra = {}) => VisitorDay.aggregate([
@@ -194,7 +196,7 @@ export async function GET(req) {
                 leads: leadCount,
                 signupFrom: signupFromRows.map((r) => ({ from: r._id || 'untracked', signups: r.signups, google: r.google, password: r.password })),
                 signupPaths: signupPathRows.map((r) => ({ path: r._id, signups: r.signups })),
-                hideSuspect,
+                segment,
                 devices: devices.map((s) => ({ device: s._id || 'desktop', visitors: s.visitors })),
                 trackingSince: (await VisitorDay.findOne().sort({ createdAt: 1 }).select('day').lean())?.day || null,
             },
