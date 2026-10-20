@@ -48,7 +48,12 @@ async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-      maxPoolSize: 10,
+      // Serverless: every warm instance holds its own pool, and the M0 cap is
+      // 500 connections cluster-wide, so keep each pool small and let idle
+      // sockets go quickly.
+      maxPoolSize: 3,
+      minPoolSize: 0,
+      maxIdleTimeMS: 10000,
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     };
