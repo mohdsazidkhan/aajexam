@@ -145,8 +145,8 @@ const WelcomePromoModal = () => {
     const token = localStorage.getItem('token');
     if (token) return; // Authenticated users don't see this
 
-    // Intentionally no "already shown" check — this modal is scoped to the
-    // landing page only, and should reappear on every visit/refresh.
+    // Once per browser session: refreshing the landing page must not re-nag.
+    try { if (sessionStorage.getItem('welcomePromoShown')) return; } catch (e) { /* ignore */ }
     // Free promo ends when the next pop-up coupon starts (31 Dec 2026 11:59 PM IST by default).
     let cancelled = false;
     let timer;

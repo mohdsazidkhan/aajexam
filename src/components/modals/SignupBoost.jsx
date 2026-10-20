@@ -104,7 +104,14 @@ const Inner = () => {
   const [oneTapOn, setOneTapOn] = useState(false);
   useEffect(() => {
     if (NO_ONE_TAP.test(router.pathname)) return undefined;
-    const t = setTimeout(() => setOneTapOn(true), 4000);
+    // One Tap never stacks on the welcome modal, and is offered once per session.
+    const t = setTimeout(() => {
+      try {
+        if (window.__welcomePromoOpen || sessionStorage.getItem('oneTapTried')) return;
+        sessionStorage.setItem('oneTapTried', '1');
+      } catch (e) { /* ignore */ }
+      setOneTapOn(true);
+    }, 4000);
     return () => clearTimeout(t);
   }, [router.pathname]);
 

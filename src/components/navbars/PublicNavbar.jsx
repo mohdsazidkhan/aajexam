@@ -18,7 +18,6 @@ import {
   MessageCircleQuestion,
   X,
   Gift,
-  ArrowRight,
 } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 
@@ -33,16 +32,6 @@ import { usePromoBarVisible, dismissPromoBar } from '../../lib/freePromo';
 const PromoTopBar = () => {
   const { translate } = useTranslate();
   const text = translate('AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.');
-  const login = (
-    <Link
-      href="/login"
-      data-cta="promo_bar_login"
-      className="shrink-0 inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-white hover:bg-slate-100 text-black text-[11px] font-black uppercase tracking-wider whitespace-nowrap shadow-md shadow-black/20 transition"
-    >
-      {translate('Login Now')}
-      <ArrowRight className="w-3 h-3" />
-    </Link>
-  );
   const gift = (
     <span className="shrink-0 w-5 h-5 rounded-full bg-white/20 ring-1 ring-white/40 flex items-center justify-center animate-pulse">
       <Gift className="w-3 h-3" />
@@ -58,7 +47,6 @@ const PromoTopBar = () => {
         <div className="hidden sm:flex items-center justify-center gap-3 px-3">
           {gift}
           <p className="text-xs font-black uppercase tracking-widest truncate drop-shadow">{text}</p>
-          {login}
         </div>
         {/* phones: the same line scrolls, with the link right after each copy of the text */}
         <div className="sm:hidden flex w-max whitespace-nowrap" style={{ animation: 'marquee 18s linear infinite' }}>
@@ -66,7 +54,6 @@ const PromoTopBar = () => {
             <span key={i} className="px-6 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-wider">
               {gift}
               {text}
-              {login}
             </span>
           ))}
         </div>
