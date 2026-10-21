@@ -22,9 +22,9 @@ const RANGES = [
 const SEGMENTS = [
   { id: 'total', label: 'Total Traffic', hint: 'Real users and bots, from everywhere' },
   { id: 'real', label: 'Real Users', hint: 'Suspected bots removed, whole world' },
+  { id: 'bots', label: 'Bots', hint: 'Suspected bots only: single-page direct visits from outside India' },
   { id: 'india', label: 'From India', hint: 'Real users in India only' },
-  { id: 'outside', label: 'Outside India', hint: 'Real users outside India only' },
-];
+  { id: 'outside', label: 'Outside India', hint: 'Real users outside India only' },];
 
 const fmtDay =(d) => new Date(`${d}T00:00:00+05:30`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', weekday: 'short' });
 const pct = (a, b) => (b ? `${Math.round((a / b) * 100)}%` : '—');

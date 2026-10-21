@@ -14,11 +14,13 @@ export const PROMPT_NAMES = ['exit', 'welcome', 'nudge', 'sticky', 'onetap', 'em
 
 export const isBotUa = (ua) => !ua || BOT_RX.test(ua);
 
-export const SEGMENTS = ['total', 'real', 'india', 'outside'];
+export const SEGMENTS = ['total', 'real', 'india', 'outside', 'bots'];
 
 // VisitorDay filter for an admin Traffic tab. A suspected bot = single page, direct, from outside India.
 export const segmentFilter = (segment) => {
-    const notSuspect = { $nor: [{ pages: { $lte: 1 }, source: 'Direct', country: { $nin: ['IN', ''] } }] };
+    const suspect = { pages: { $lte: 1 }, source: 'Direct', country: { $nin: ['IN', ''] } };
+    const notSuspect = { $nor: [suspect] };
+    if (segment === 'bots') return suspect;
     if (segment === 'real') return notSuspect;
     if (segment === 'india') return { $and: [notSuspect, { country: 'IN' }] };
     if (segment === 'outside') return { $and: [notSuspect, { country: { $ne: 'IN' } }] };
