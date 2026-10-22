@@ -2036,6 +2036,7 @@ const SD = {
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग फ़क़त मथांहें 1000 रांदीगरनि तां सीमित आहे.',
   'Top 1000 students ranking based on total time spent': 'कुल गुज़ारियल वक़्त जे आधार ते मथांहें 1000 विद्यार्थियुनि जी रैंकिंग',
   'Top {percent}% of {total} ranked students': '{total} रैंक वारा विद्यार्थियुनि मां मथांहें {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड हिकु PRO फीचर आहे. मथांहें रैंकर्स डिसण ऐं पंहिंजी स्थिति जाणण लाइ अपग्रेड करियो!',
 };
 
 export default SD;

@@ -2036,6 +2036,7 @@ const ML = {
   'Ranked pool is capped at the top 1000 players.': 'റാങ്കിംഗ് ആദ്യ 1000 കളിക്കാർക്ക് മാത്രമായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു.',
   'Top 1000 students ranking based on total time spent': 'ആകെ ചെലവഴിച്ച സമയത്തിന്റെ അടിസ്ഥാനത്തിൽ മികച്ച 1000 വിദ്യാർത്ഥികളുടെ റാങ്കിംഗ്',
   'Top {percent}% of {total} ranked students': '{total} റാങ്ക് ചെയ്ത വിദ്യാർത്ഥികളിൽ മികച്ച {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ലീഡർബോർഡ് ഒരു PRO ഫീച്ചറാണ്. മുൻനിര റാങ്കർമാരെ കാണാനും നിങ്ങളുടെ സ്ഥാനം അറിയാനും അപ്ഗ്രേഡ് ചെയ്യൂ!',
 };
 
 export default ML;

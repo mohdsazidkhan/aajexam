@@ -2036,6 +2036,7 @@ const PA = {
   'Ranked pool is capped at the top 1000 players.': 'ਰੈਂਕਿੰਗ ਸਿਰਫ਼ ਚੋਟੀ ਦੇ 1000 ਖਿਡਾਰੀਆਂ ਤੱਕ ਸੀਮਿਤ ਹੈ।',
   'Top 1000 students ranking based on total time spent': 'ਕੁੱਲ ਬਿਤਾਏ ਸਮੇਂ ਦੇ ਆਧਾਰ ਤੇ ਚੋਟੀ ਦੇ 1000 ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਰੈਂਕਿੰਗ',
   'Top {percent}% of {total} ranked students': '{total} ਰੈਂਕ ਵਾਲੇ ਵਿਦਿਆਰਥੀਆਂ ਵਿੱਚੋਂ ਚੋਟੀ ਦੇ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ਲੀਡਰਬੋਰਡ ਇੱਕ PRO ਫੀਚਰ ਹੈ। ਟੌਪ ਰੈਂਕਰ ਦੇਖਣ ਅਤੇ ਆਪਣੀ ਸਥਿਤੀ ਜਾਣਨ ਲਈ ਅੱਪਗ੍ਰੇਡ ਕਰੋ!',
 };
 
 export default PA;

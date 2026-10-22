@@ -2010,6 +2010,7 @@ const BODO = {
   'Ranked pool is capped at the top 1000 players.': 'रैंकिं बिबां 1000 खेलायारि सोमजों सिमांनायनाय।',
   'Top 1000 students ranking based on total time spent': 'फुरायनाय समयनि गोनां 1000 सिख्लायारिनि रैंकिं',
   'Top {percent}% of {total} ranked students': '{total} रैंक खालामनाय सिख्लायारिनि गेजेरजों गोजौ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लिडारबोर्ड PRO फिचार। गेजेरथाव रैंकारफोरखौ नुनो आरो गावनि थानाय सायनो अपग्रेड खालाम!',
 };
 
 export default BODO;

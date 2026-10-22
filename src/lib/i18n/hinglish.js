@@ -2045,6 +2045,7 @@ const HINGLISH = {
   'Ranked pool is capped at the top 1000 players.': 'Ranking sirf top 1000 players tak limited hai.',
   'Top 1000 students ranking based on total time spent': 'Total time spent ke aadhar par top 1000 students ki ranking',
   'Top {percent}% of {total} ranked students': '{total} ranked students me top {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'Leaderboard ek PRO feature hai. Top rankers dekhne aur apni position jaanne ke liye upgrade karein!',
 };
 
 export default HINGLISH;

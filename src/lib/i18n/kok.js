@@ -2036,6 +2036,7 @@ const KOK = {
   'Ranked pool is capped at the top 1000 players.': 'रँकिंग फकत वयल्या 1000 खेळगड्यां मेरेन मर्यादित आसा.',
   'Top 1000 students ranking based on total time spent': 'एकूण घालयिल्या वेळाच्या आधारान वयल्या 1000 विद्यार्थ्यांची रँकिंग',
   'Top {percent}% of {total} ranked students': '{total} रँक मेळिल्ल्या विद्यार्थ्यांमदीं वयले {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड हें एक PRO फीचर. वयले रँकर पळोवपाक आनी तुमची जागा जाणून घेवपाक अपग्रेड करात!',
 };
 
 export default KOK;

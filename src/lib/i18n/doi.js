@@ -2036,6 +2036,7 @@ const DogriDict = {
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग सिर्फ शीर्ष 1000 खिलाड़ियें तकर सीमत ऐ।',
   'Top 1000 students ranking based on total time spent': 'कुल बिताए गेदे समें दे आधार उप्पर शीर्ष 1000 छात्रें दी रैंकिंग',
   'Top {percent}% of {total} ranked students': '{total} रैंक पाने आले छात्रें च शीर्ष {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड इक PRO फीचर ऐ। टॉप रैंकर दिखने ते अपनी स्थिति जानने लेई अपग्रेड करो!',
 };
 
 export default DogriDict;

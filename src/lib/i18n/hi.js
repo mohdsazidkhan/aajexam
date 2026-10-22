@@ -2057,6 +2057,7 @@ const HI = {
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग केवल शीर्ष 1000 खिलाड़ियों तक सीमित है।',
   'Top 1000 students ranking based on total time spent': 'कुल बिताए गए समय के आधार पर शीर्ष 1000 छात्रों की रैंकिंग',
   'Top {percent}% of {total} ranked students': 'शीर्ष {percent}% — कुल {total} रैंक किए गए छात्रों में',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड एक PRO फ़ीचर है। टॉप रैंकर्स देखने और अपनी स्थिति जानने के लिए अपग्रेड करें!',
 };
 
 export default HI;

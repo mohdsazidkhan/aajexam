@@ -2036,6 +2036,7 @@ const TE = {
   'Ranked pool is capped at the top 1000 players.': 'ర్యాంకింగ్ మొదటి 1000 ఆటగాళ్లకు మాత్రమే పరిమితం.',
   'Top 1000 students ranking based on total time spent': 'మొత్తం గడిపిన సమయం ఆధారంగా టాప్ 1000 విద్యార్థుల ర్యాంకింగ్',
   'Top {percent}% of {total} ranked students': '{total} ర్యాంక్ పొందిన విద్యార్థులలో టాప్ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'లీడర్‌బోర్డ్ ఒక PRO ఫీచర్. టాప్ ర్యాంకర్లను చూడటానికి మరియు మీ స్థానం తెలుసుకోవడానికి అప్‌గ్రేడ్ చేయండి!',
 };
 
 export default TE;

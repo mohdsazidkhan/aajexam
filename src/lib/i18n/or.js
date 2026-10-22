@@ -2036,6 +2036,7 @@ const OR_ = {
   'Ranked pool is capped at the top 1000 players.': 'ର‍୍ୟାଙ୍କିଂ କେବଳ ଶୀର୍ଷ ୧୦୦୦ ଖେଳାଳି ପର୍ଯ୍ୟନ୍ତ ସୀମିତ।',
   'Top 1000 students ranking based on total time spent': 'ମୋଟ ବିତାଇଥିବା ସମୟ ଆଧାରରେ ଶୀର୍ଷ ୧୦୦୦ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ର‍୍ୟାଙ୍କିଂ',
   'Top {percent}% of {total} ranked students': '{total} ର‍୍ୟାଙ୍କ୍ ପାଇଥିବା ଛାତ୍ରଛାତ୍ରୀଙ୍କ ମଧ୍ୟରେ ଶୀର୍ଷ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ଲିଡରବୋର୍ଡ ଏକ PRO ଫିଚର। ଶୀର୍ଷ ର‍୍ୟାଙ୍କରଙ୍କୁ ଦେଖିବା ଓ ନିଜର ସ୍ଥାନ ଜାଣିବା ପାଇଁ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ!',
 };
 
 export default OR_;

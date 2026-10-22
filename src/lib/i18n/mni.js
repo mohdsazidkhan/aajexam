@@ -2010,6 +2010,7 @@ const MANIPURI = {
   'Ranked pool is capped at the top 1000 players.': 'ꯔꯦꯟꯀꯤꯡ ꯑꯁꯤ ꯊꯥꯗꯣꯀꯄꯥ 1000 ꯐꯥꯎꯕꯥ ꯃꯤꯑꯣꯏꯁꯤꯡꯗꯥ ꯈꯛꯇꯥ ꯆꯦꯛꯁꯤꯟꯅꯕꯥ ꯂꯩ꯫',
   'Top 1000 students ranking based on total time spent': 'ꯃꯄꯨꯡ ꯆꯥꯕꯥ ꯃꯇꯝꯒꯤ ꯃꯇꯦꯡꯗꯥ ꯊꯥꯗꯣꯀꯄꯥ 1000 ꯁ꯭ꯇꯨꯗꯦꯟꯇꯁꯤꯡꯒꯤ ꯔꯦꯟꯀꯤꯡ꯫',
   'Top {percent}% of {total} ranked students': 'ꯔꯦꯟꯀ ꯐꯪꯈꯤꯕꯥ ꯁ꯭ꯇꯨꯗꯦꯟꯇ {total} ꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯊꯥꯗꯣꯛꯄꯥ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ꯂꯤꯗꯔꯕꯣꯔꯗ ꯑꯁꯤ PRO ꯐꯤꯆꯔ ꯑꯃꯅꯤ꯫ ꯊꯥꯗꯣꯀꯄꯥ ꯔꯦꯟꯀꯔꯁꯤꯡ ꯌꯦꯡꯅꯕꯥ ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯀꯤ ꯃꯐꯝ ꯈꯉꯅꯕꯥ ꯑꯞꯒ꯭ꯔꯦꯗ ꯇꯧꯕꯤꯌꯨ!',
 };
 
 export default MANIPURI;

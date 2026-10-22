@@ -2036,6 +2036,7 @@ const NE = {
   'Ranked pool is capped at the top 1000 players.': 'र्याङ्किङ शीर्ष १००० खेलाडीसम्म मात्र सीमित छ।',
   'Top 1000 students ranking based on total time spent': 'कुल बिताएको समयका आधारमा शीर्ष १००० विद्यार्थीको र्याङ्किङ',
   'Top {percent}% of {total} ranked students': '{total} र्याङ्क पाएका विद्यार्थीमध्ये शीर्ष {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लिडरबोर्ड एक PRO सुविधा हो। शीर्ष र्याङ्करहरू हेर्न र आफ्नो स्थान जान्न अपग्रेड गर्नुहोस्!',
 };
 
 export default NE;

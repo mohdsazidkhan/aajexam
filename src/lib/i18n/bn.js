@@ -2036,6 +2036,7 @@ const BN = {
   'Ranked pool is capped at the top 1000 players.': 'র‍্যাঙ্কিং শুধুমাত্র শীর্ষ ১০০০ খেলোয়াড় পর্যন্ত সীমাবদ্ধ।',
   'Top 1000 students ranking based on total time spent': 'মোট ব্যয়িত সময়ের ভিত্তিতে শীর্ষ ১০০০ শিক্ষার্থীর র‍্যাঙ্কিং',
   'Top {percent}% of {total} ranked students': '{total} জন র‍্যাঙ্কড শিক্ষার্থীর মধ্যে শীর্ষ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'লিডারবোর্ড একটি PRO ফিচার। শীর্ষ র‍্যাঙ্কারদের দেখতে ও নিজের অবস্থান জানতে আপগ্রেড করুন!',
 };
 
 export default BN;

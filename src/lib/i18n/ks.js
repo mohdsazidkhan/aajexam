@@ -2036,6 +2036,7 @@ const KS = {
   'Ranked pool is capped at the top 1000 players.': 'رینکنگ چھُ صرف ٹاپ 1000 کھیلنہ وٲلین تام محدود۔',
   'Top 1000 students ranking based on total time spent': 'کل گژھرومت وقتکی بنیادس پیٹھ ٹاپ 1000 طالب علمن ہند رینکنگ',
   'Top {percent}% of {total} ranked students': '{total} رینک شدہ طالب علمن منز ٹاپ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'لیڈربورڈ چھُ اکھ PRO فیچر۔ ٹاپ رینکر وچھنہ تہٕ پنُن پوزیشن زاننہ خاطرٕ اپ گریڈ کرو!',
 };
 
 export default KS;

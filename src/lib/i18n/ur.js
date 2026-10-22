@@ -2036,6 +2036,7 @@ const UrduDict = {
   'Ranked pool is capped at the top 1000 players.': 'رینکنگ صرف سرفہرست 1000 کھلاڑیوں تک محدود ہے۔',
   'Top 1000 students ranking based on total time spent': 'کل گزارے گئے وقت کی بنیاد پر سرفہرست 1000 طلبہ کی رینکنگ',
   'Top {percent}% of {total} ranked students': '{total} رینک شدہ طلبہ میں سرفہرست {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'لیڈر بورڈ ایک PRO فیچر ہے۔ ٹاپ رینکرز دیکھنے اور اپنی پوزیشن جاننے کے لیے اپ گریڈ کریں!',
 };
 
 export default UrduDict;

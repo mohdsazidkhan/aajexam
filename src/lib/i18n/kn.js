@@ -2036,6 +2036,7 @@ const KN = {
   'Ranked pool is capped at the top 1000 players.': 'ರ‍್ಯಾಂಕಿಂಗ್ ಕೇವಲ ಅಗ್ರ 1000 ಆಟಗಾರರಿಗೆ ಸೀಮಿತವಾಗಿದೆ.',
   'Top 1000 students ranking based on total time spent': 'ಒಟ್ಟು ಕಳೆದ ಸಮಯದ ಆಧಾರದ ಮೇಲೆ ಅಗ್ರ 1000 ವಿದ್ಯಾರ್ಥಿಗಳ ರ‍್ಯಾಂಕಿಂಗ್',
   'Top {percent}% of {total} ranked students': '{total} ರ‍್ಯಾಂಕ್ ಪಡೆದ ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಅಗ್ರ {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ಲೀಡರ್‌ಬೋರ್ಡ್ ಒಂದು PRO ವೈಶಿಷ್ಟ್ಯ. ಅಗ್ರ ರ‍್ಯಾಂಕರ್‌ಗಳನ್ನು ನೋಡಲು ಮತ್ತು ನಿಮ್ಮ ಸ್ಥಾನ ತಿಳಿಯಲು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ!',
 };
 
 export default KN;

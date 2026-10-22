@@ -2036,6 +2036,7 @@ const MAI = {
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग मात्र शीर्ष 1000 खिलाड़ी धरि सीमित अछि।',
   'Top 1000 students ranking based on total time spent': 'कुल बितायल समयक आधार पर शीर्ष 1000 विद्यार्थीक रैंकिंग',
   'Top {percent}% of {total} ranked students': '{total} रैंक पओनिहार विद्यार्थीमे शीर्ष {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड एकटा PRO फीचर अछि। टॉप रैंकर सभ देखबाक आ अपन स्थिति जानबाक लेल अपग्रेड करू!',
 };
 
 export default MAI;

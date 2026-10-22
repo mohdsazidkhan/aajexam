@@ -145,7 +145,7 @@ const StudentSidebar = () => {
     {
       title: 'PROGRESS',
       items: [
-        { path: '/student/leaderboard', icon: Trophy, label: 'Leaderboard' },
+        { path: '/student/leaderboard', icon: Trophy, label: 'Leaderboard', isPro: true },
         { path: '/student/all-india-rank', icon: Globe, label: 'All India Rank', isPro: true },
         { path: '/student/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
         { path: '/student/readiness', icon: Target, label: 'Exam Readiness', isPro: true },

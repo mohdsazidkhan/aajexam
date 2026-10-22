@@ -20,7 +20,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const type = searchParams.get('type') || 'quiz'; // 'quiz' or 'exam'
         const period = searchParams.get('period') || 'all-time';
-        const limit = Math.min(Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200), 100);
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), RANK_POOL);
 
         const auth = await protect(req);
         const currentUserId = auth.authenticated ? auth.user._id.toString() : null;

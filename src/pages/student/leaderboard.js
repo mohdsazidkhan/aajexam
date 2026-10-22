@@ -2,13 +2,12 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Trophy, Medal, Crown, Flame, Target, TrendingUp,
-  Star, Zap, ChevronRight, Users, RefreshCw, FileText, BrainCircuit, Clock, MapPin
+  Trophy, Crown, Flame, Target, TrendingUp,
+  Star, Zap, ChevronRight, Users, RefreshCw, FileText, BrainCircuit, Clock, MapPin, Sparkles
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import Link from '@/components/common/AppLink';
 import API from '../../lib/api';
-import Card from '../../components/common/ui/Card';
 import Seo from '../../components/common/Seo';
 import { getCurrentUser } from '../../lib/utils/authUtils';
 import { formatTimeSpent } from '../../lib/utils/timeFormat';
@@ -16,6 +15,7 @@ import useTranslate from '../../hooks/useTranslate';
 import Pagination from '../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 import useRequireLogin from '../../hooks/useRequireLogin';
+import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
 const Sh = ({ className = '' }) => (
@@ -47,33 +47,9 @@ const PERIODS = [
 
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
-  1: {
-    gradient: 'bg-primary-600',
-    numberText: 'text-white',
-    ringColor: 'ring-primary-700/10',
-    textColor: 'text-primary-600',
-    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
-    pillBg: 'bg-primary-600 text-white',
-    icon: Crown,
-  },
-  2: {
-    gradient: 'bg-slate-400',
-    numberText: 'text-white',
-    ringColor: 'ring-slate-400 dark:ring-slate-500',
-    textColor: 'text-slate-500 dark:text-slate-400',
-    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300',
-    pillBg: 'bg-slate-300 text-white',
-    icon: Medal,
-  },
-  3: {
-    gradient: 'bg-slate-100 dark:bg-slate-800',
-    numberText: 'text-slate-900 dark:text-white',
-    ringColor: 'ring-black/10 dark:ring-white/10',
-    textColor: 'text-black dark:text-white',
-    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
-    pillBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
-    icon: Medal,
-  },
+  1: { gradient: 'bg-gradient-to-br from-amber-300 to-amber-500', ringColor: 'ring-amber-300', textColor: 'text-amber-600 dark:text-amber-400', accent: 'border-l-amber-400', badgeText: 'text-amber-950', rowBg: 'border-amber-300 dark:border-amber-500/50 bg-gradient-to-r from-amber-200 via-amber-100 to-amber-50 dark:from-amber-500/30 dark:via-amber-500/15 dark:to-amber-500/5 hover:shadow-md' },
+  2: { gradient: 'bg-gradient-to-br from-slate-200 to-slate-400', ringColor: 'ring-slate-200', textColor: 'text-slate-500 dark:text-slate-300', accent: 'border-l-slate-400', badgeText: 'text-slate-800', rowBg: 'border-slate-300 dark:border-slate-400/50 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-50 dark:from-slate-400/30 dark:via-slate-400/15 dark:to-slate-400/5 hover:shadow-md' },
+  3: { gradient: 'bg-gradient-to-br from-orange-300 to-orange-500', ringColor: 'ring-orange-300', textColor: 'text-orange-600 dark:text-orange-400', accent: 'border-l-orange-400', badgeText: 'text-orange-950', rowBg: 'border-orange-300 dark:border-orange-500/50 bg-gradient-to-r from-orange-200 via-orange-100 to-orange-50 dark:from-orange-500/30 dark:via-orange-500/15 dark:to-orange-500/5 hover:shadow-md' },
 };
 
 // ─── Avatar ────────────────────────────────────────────────────────────────────
@@ -93,7 +69,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
   const sizes = {
     sm: 'w-8 h-8 text-[11px]',
     md: 'w-10 h-10 text-sm',
-    lg: 'w-14 h-14 text-lg',
+    lg: 'w-9 h-9 sm:w-11 sm:h-11 text-sm sm:text-base',
     xl: 'w-16 h-16 text-xl',
   };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
@@ -101,7 +77,7 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
   const avatarStyle = AVATAR_COLORS[colorIdx];
   const rc = rankConfig[entry?.rank];
 
-  const ringClass = ring && rc ? `ring-4 ${rc.ringColor} ring-offset-2 ring-offset-background-surface` : '';
+  const ringClass = ring && rc ? `ring-2 ${rc.ringColor} shadow-md` : '';
 
   return entry?.profilePicture && !imgFailed ? (
     <img
@@ -120,22 +96,13 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 // ─── Top 3 Podium ─────────────────────────────────────────────────────────────
 const Podium = ({ top3, currentUserId, type }) => {
   const { translate } = useTranslate();
-  // Reorder: 2nd | 1st | 3rd
-  const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
-  const podiumH = { 1: 'h-20 xl:h-24', 2: 'h-14 xl:h-16', 3: 'h-10 xl:h-12' };
-  const podiumGradient = {
-    1: 'bg-primary-600',
-    2: 'bg-slate-400',
-    3: 'bg-slate-100 dark:bg-slate-800',
-  };
-  const podiumTextColor = {
-    1: 'text-white',
-    2: 'text-white',
-    3: 'text-black dark:text-white',
-  };
+  // #1, #2, #3 left to right: equal-height steps with a small gap between them.
+  // NB: the step has no `rounded-*` class on purpose — styles/index.css forces every
+  // [class*="rounded"] to a flat 8px radius with !important, which would round the bottom corners.
+  const ordered = [top3[0], top3[1], top3[2]].filter(Boolean);
 
   return (
-    <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
+    <div className="flex items-end justify-center gap-1.5 sm:gap-2 pt-0 px-2">
       {ordered.map((entry) => {
         if (!entry) return null;
         const rc = rankConfig[entry.rank] || {};
@@ -148,21 +115,24 @@ const Podium = ({ top3, currentUserId, type }) => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
-              className={`flex flex-col items-center gap-1.5 ${isFirst ? 'scale-105 sm:scale-110 -mb-1' : ''}`}
+              className="flex flex-col items-center gap-0.5"
             >
-              {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
-              <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
+              {isFirst && <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300 drop-shadow-[0_0_10px_rgba(252,211,77,0.8)] animate-bounce" />}
+              <Avatar entry={entry} size="lg" ring />
               {isMe && (
-                <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">{translate('You')}</span>
+                <span className="text-[9px] font-black uppercase bg-white text-primary-700 px-1.5 py-0.5 rounded-full">{translate('You')}</span>
               )}
-              <div className="text-center max-w-[76px] sm:max-w-[96px]">
-                <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
+              <div className="text-center w-[76px] sm:w-24 px-1 mt-1.5 mb-1">
+                <p className="text-[10px] sm:text-[11px] font-black leading-tight break-words text-white">
                   {entry.name || entry.username || translate('User')}
                 </p>
-                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'}</p>
               </div>
-              <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
-                <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
+              <div
+                className={`w-[76px] sm:w-24 h-9 sm:h-10 ${rc.gradient || 'bg-slate-400'} flex flex-col items-center justify-center shadow-[0_-4px_24px_rgba(0,0,0,0.18)]`}
+                style={{ borderRadius: '8px 8px 0 0' }}
+              >
+                <span className={`font-black text-xs sm:text-sm leading-none ${rc.badgeText || 'text-white'}`}>#{entry.rank}</span>
+                <span className={`mt-0.5 text-[9px] sm:text-[10px] font-black uppercase leading-none opacity-80 ${rc.badgeText || 'text-white'}`}>{formatTimeSpent(entry.totalTimeSpent, type)}</span>
               </div>
             </motion.div>
           </Link>
@@ -185,8 +155,8 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
 
   const rankBadge = (
     <div className={`
-      w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
-      ${isTop3 ? `${rc.gradient} ${rc.numberText} shadow-sm` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
+      w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
+      ${isTop3 ? `${rc.gradient} ${rc.badgeText} shadow-md ring-2 ring-white/70 dark:ring-white/10` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
     `}>
       {entry.rank}
     </div>
@@ -228,9 +198,9 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
         {/* ── Desktop: table row ── */}
         <div className={`
           hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isMe
+          ${isTop3 ? `${rc.rowBg} border-l-4 ${rc.accent}` : isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600'
-            : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
+            : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700 hover:shadow-md'
           }
         `}>
           {rankBadge}
@@ -255,7 +225,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
         {/* ── Mobile: stacked card — every stat carries its own heading ── */}
         <div className={`
           flex xl:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
-          ${isMe
+          ${isTop3 ? `${rc.rowBg} border-l-4 ${rc.accent}` : isMe
             ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600'
             : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
           }
@@ -314,38 +284,44 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
   );
 };
 
-// ─── My Rank Sticky Card ──────────────────────────────────────────────────────
+// ─── My Rank Card ─────────────────────────────────────────────────────────────
 const MyRankCard = ({ entry, type }) => {
   const { translate } = useTranslate();
   if (!entry) return null;
+  const chips = [
+    { label: type === 'quiz' ? translate('Quizzes') : translate('Exams'), value: entry.totalQuizzes },
+    { label: translate('Accuracy'), value: `${entry.avgAccuracy}%` },
+    { label: translate('Avg Score'), value: `${entry.avgPercentage}%` },
+    { label: translate('Total Time Spent'), value: formatTimeSpent(entry.totalTimeSpent, type) },
+  ];
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="px-1"
-    >
-      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">
-            #{entry.rank}
+    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="px-1">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-800 via-primary-700 to-primary-600 text-white shadow-lg ring-1 ring-white/20 px-3 py-2">
+        <Trophy className="pointer-events-none absolute -right-2 -bottom-4 w-20 h-20 text-white/10 -rotate-12" />
+        {/* One row on desktop (rank · avatar · name · stats); wraps on small screens */}
+        <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          <div className="flex items-baseline gap-1.5 rounded-xl bg-white/15 px-2.5 py-1 ring-1 ring-white/25">
+            <span className="text-sm sm:text-base font-black uppercase tracking-wide text-white">{translate('Your Rank')}</span>
+            <span className="text-xl sm:text-2xl font-black leading-none text-amber-200">#{entry.rank}</span>
           </div>
-          <Avatar entry={entry} size="md" />
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-black text-white truncate">{translate('Your Rank')}</p>
-            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? translate('quizzes') : translate('exams')} · {translate('{score}% avg score · {time} spent', { score: entry.avgPercentage, time: formatTimeSpent(entry.totalTimeSpent, type) })}</p>
-          </div>
-          <div className="text-right flex-shrink-0">
-            <p className="text-xl font-black text-white">#{entry.rank}</p>
+          <Avatar entry={entry} size="sm" />
+          <p className="text-sm font-black truncate min-w-0">{entry.name || entry.username}</p>
+          <div className="flex flex-wrap gap-1.5 xl:ml-auto">
+            {chips.map((c) => (
+              <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-black/30 ring-1 ring-white/25 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
+                <span className="text-white/90">{c.label}</span>
+                <span className="font-black text-amber-200">{c.value}</span>
+              </span>
+            ))}
           </div>
         </div>
-      </Card>
+      </div>
     </motion.div>
   );
 };
 
 // ─── Main Page ─────────────────────────────────────────────────────────────────
-const LeaderboardPage = () => {
-  useRequireLogin();
+const LeaderboardContent = () => {
   const { translate } = useTranslate();
   const [type, setType] = useState('quiz'); // 'quiz' or 'exam'
   const [period, setPeriod] = useState('all-time');
@@ -363,7 +339,7 @@ const LeaderboardPage = () => {
     try {
       if (isRefresh) setRefreshing(true);
       else setLoading(true);
-      const res = await API.request(`/api/leaderboard?type=${type}&period=${period}&limit=100`);
+      const res = await API.request(`/api/leaderboard?type=${type}&period=${period}&limit=1000`);
       if (res?.success) {
         setData(res.data || []);
         setMyEntry(res.myEntry || null);
@@ -386,101 +362,89 @@ const LeaderboardPage = () => {
 
   return (
     <div className="min-h-screen pb-32 font-outfit">
-      <Seo
-        title="Leaderboard – Top Rankers | AajExam"
-        description="See who is topping the AajExam leaderboard. Compete with thousands of students preparing for govt exams."
-        canonical="/student/leaderboard"
-        noIndex={true}
-      />
+      <div className="space-y-3 xl:space-y-4">
 
-      <div className="space-y-5 xl:space-y-8">
+        {/* ── Hero Banner — green gradient with gold podium (same look as All India Rank) ── */}
+        <section className="relative rounded-2xl overflow-hidden shadow-md bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white">
+          <div className="pointer-events-none absolute -top-24 -left-16 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
+          <div className="pointer-events-none absolute -bottom-32 right-8 w-96 h-96 rounded-full bg-amber-300/20 blur-3xl" />
+          <Trophy className="pointer-events-none absolute right-3 top-2 w-28 h-28 text-white/5 rotate-12" />
 
-        {/* ── Hero Banner ── */}
-        <section className="relative rounded-[2rem] xl:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20">
-          <div className="absolute inset-0 bg-white dark:bg-black" />
-          <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 dark:bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
-
-          <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
-
-            {/* Type Toggle */}
-            <div className="flex justify-center mb-6">
-              <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-sm">
-                <button
-                  onClick={() => setType('quiz')}
-                  title={translate('Ranked by: Total Time Spent')}
-                  className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'quiz' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
-                  }`}
+          <div className="relative z-10 grid grid-cols-1 xl:grid-cols-2 items-end gap-2 xl:gap-6 px-3 xl:px-6 pt-3 xl:pt-4 pb-0">
+            <div className="space-y-2 xl:space-y-2.5 text-center xl:text-left pb-3 xl:pb-4">
+              <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
+                <motion.h1
+                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+                  className="text-xl xl:text-3xl font-black uppercase text-white tracking-tight leading-tight"
                 >
-                  <BrainCircuit className="w-4 h-4" /> Quizzes
-                </button>
-                <button
-                  onClick={() => setType('exam')}
-                  title={translate('Ranked by: Total Time Spent')}
-                  className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
-                    type === 'exam' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
-                  }`}
+                  {translate('Leaderboard')}
+                </motion.h1>
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
                 >
-                  <FileText className="w-4 h-4" /> Exams
-                </button>
+                  <Sparkles className="w-3.5 h-3.5" />
+                  {translate('PRO Exclusive')}
+                </motion.div>
               </div>
-            </div>
 
-            {/* ── Period Tabs ── */}
-            <div className="relative flex justify-center mb-6">
-              <div className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
-                {PERIODS.map(p => {
-                  const Icon = p.icon;
-                  const isActive = period === p.id;
-                  return (
+              <p className="text-[11px] xl:text-xs font-bold text-white/80 max-w-md mx-auto xl:mx-0 flex items-center justify-center xl:justify-start gap-1.5">
+                <Trophy className="w-3.5 h-3.5 shrink-0 text-amber-300" />
+                {translate('Top 1000 students ranking based on total time spent')}
+              </p>
+
+              {/* Controls: type + period + refresh, one compact row */}
+              <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2">
+                <div className="flex p-0.5 bg-black/25 ring-1 ring-white/25 rounded-xl">
+                  {[
+                    { id: 'quiz', label: 'Quizzes', icon: BrainCircuit },
+                    { id: 'exam', label: 'Exams', icon: FileText },
+                  ].map((t) => (
                     <button
-                      key={p.id}
-                      onClick={() => setPeriod(p.id)}
-                      className={`
-                        shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
-                        ${isActive
-                          ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
-                          : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:hover:border-white'
-                        }
-                      `}
+                      key={t.id}
+                      onClick={() => setType(t.id)}
+                      title={translate('Ranked by: Total Time Spent')}
+                      className={`flex items-center gap-1 px-3 h-8 rounded-lg text-[11px] font-black uppercase transition-all ${
+                        type === t.id ? 'bg-white text-primary-700 shadow-sm' : 'text-white/90 hover:bg-white/15'
+                      }`}
                     >
-                      <Icon className="w-3.5 h-3.5" />
-                      <span>{translate(p.label)}</span>
+                      <t.icon className="w-3.5 h-3.5" /> {t.label}
                     </button>
-                  );
-                })}
+                  ))}
+                </div>
+                <div className="flex p-0.5 bg-black/25 ring-1 ring-white/25 rounded-xl">
+                  {PERIODS.map((pd) => {
+                    const Icon = pd.icon;
+                    return (
+                      <button
+                        key={pd.id}
+                        onClick={() => setPeriod(pd.id)}
+                        className={`flex items-center gap-1 px-3 h-8 rounded-lg text-[11px] font-black uppercase whitespace-nowrap transition-all ${
+                          period === pd.id ? 'bg-white text-primary-700 shadow-sm' : 'text-white/90 hover:bg-white/15'
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5" /> {translate(pd.label)}
+                      </button>
+                    );
+                  })}
+                </div>
+                <button
+                  onClick={() => fetchLeaderboard(true)}
+                  disabled={refreshing || loading}
+                  title={translate('Refresh')}
+                  className="h-9 w-9 flex items-center justify-center bg-black/25 ring-1 ring-white/25 hover:bg-white/15 text-white transition-all disabled:opacity-40"
+                >
+                  <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+                </button>
               </div>
-              {/* Refresh button */}
-              <button
-                onClick={() => fetchLeaderboard(true)}
-                disabled={refreshing || loading}
-                title={translate('Refresh')}
-                className="absolute right-0 top-0 shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
-              >
-                <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
-              </button>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/15 border border-black/20 dark:border-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
-            >
-              <Trophy className="w-3.5 h-3.5 text-black dark:text-white" /> Hall of Fame
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-xl xl:text-3xl font-black uppercase text-black dark:text-white tracking-tight"
-            >
-              {translate('Leaderboard')}
-            </motion.h1>
 
             {/* Podium */}
             {loading ? (
-              <div className="h-36 flex items-end justify-center gap-4 animate-pulse">
-                <div className="w-16 h-24 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
-                <div className="w-16 h-32 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
-                <div className="w-16 h-20 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+              <div className="h-24 flex items-end justify-center gap-3 animate-pulse">
+                <div className="w-16 h-14 bg-white/15 rounded-t-xl" />
+                <div className="w-16 h-20 bg-white/20 rounded-t-xl" />
+                <div className="w-16 h-10 bg-white/15 rounded-t-xl" />
               </div>
             ) : top3.length > 0 ? (
               <Podium top3={top3} currentUserId={currentUserId} type={type} />
@@ -493,17 +457,21 @@ const LeaderboardPage = () => {
 
         {/* ── Quick Stats ── */}
         {!loading && data.length > 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 xl:gap-3">
             {[
-              { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-black dark:text-white' },
-              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-600 dark:text-primary-400' },
-              { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
+              { label: 'Players', value: `${data.length}+`, icon: Users, tile: 'bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300' },
+              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, tile: 'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-amber-300' },
+              { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, tile: 'bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-300' },
             ].map((stat, i) => (
-              <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
-                <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
-                <p className="text-base sm:text-lg font-black text-content-primary">{stat.value}</p>
-                <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase">{translate(stat.label)}</p>
-              </Card>
+              <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow min-w-0">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${stat.tile}`}>
+                  <stat.icon className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-base sm:text-xl font-black text-content-primary leading-tight truncate">{stat.value}</p>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase leading-tight truncate">{translate(stat.label)}</p>
+                </div>
+              </div>
             ))}
           </motion.div>
         )}
@@ -566,6 +534,25 @@ const LeaderboardPage = () => {
       </div>
 
     </div>
+  );
+};
+
+// PRO-only, like All India Rank. The guard wraps the content component so non-PRO users
+// never trigger the leaderboard fetch.
+const LeaderboardPage = () => {
+  useRequireLogin();
+  return (
+    <>
+      <Seo
+        title="Leaderboard – Top Rankers | AajExam"
+        description="See who is topping the AajExam leaderboard. Compete with thousands of students preparing for govt exams."
+        canonical="/student/leaderboard"
+        noIndex={true}
+      />
+      <SubscriptionGuard message="Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!">
+        <LeaderboardContent />
+      </SubscriptionGuard>
+    </>
   );
 };
 

@@ -2036,6 +2036,7 @@ const TA = {
   'Ranked pool is capped at the top 1000 players.': 'தரவரிசை முதல் 1000 வீரர்களுக்கு மட்டுமே வரையறுக்கப்பட்டுள்ளது.',
   'Top 1000 students ranking based on total time spent': 'மொத்தமாக செலவிட்ட நேரத்தின் அடிப்படையில் முதல் 1000 மாணவர்களின் தரவரிசை',
   'Top {percent}% of {total} ranked students': '{total} தரவரிசை பெற்ற மாணவர்களில் முதல் {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'லீடர்போர்டு ஒரு PRO அம்சம். முன்னணி ரேங்கர்களைப் பார்க்கவும் உங்கள் நிலையை அறியவும் மேம்படுத்தவும்!',
 };
 
 export default TA;

@@ -2036,6 +2036,7 @@ const GU = {
   'Ranked pool is capped at the top 1000 players.': 'રેન્કિંગ ફક્ત ટોચના 1000 ખેલાડીઓ સુધી મર્યાદિત છે.',
   'Top 1000 students ranking based on total time spent': 'કુલ વિતાવેલા સમયના આધારે ટોચના 1000 વિદ્યાર્થીઓનું રેન્કિંગ',
   'Top {percent}% of {total} ranked students': '{total} રેન્ક્ડ વિદ્યાર્થીઓમાં ટોચના {percent}%',
+  'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'લીડરબોર્ડ એક PRO ફીચર છે. ટોચના રેન્કર્સ જોવા અને તમારી સ્થિતિ જાણવા અપગ્રેડ કરો!',
 };
 
 export default GU;
