@@ -586,6 +586,7 @@ const PA = {
   'Active Days': 'ਸਰਗਰਮ ਦਿਨ',
   'Add bank details': 'ਬੈਂਕ ਵੇਰਵੇ ਸ਼ਾਮਲ ਕਰੋ',
   'Add your bank account to receive reward money.': 'ਰਿਵਾਰਡ ਦੀ ਰਕਮ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਆਪਣਾ ਬੈਂਕ ਖਾਤਾ ਸ਼ਾਮਲ ਕਰੋ।',
+  'Add your bank details to receive Referral Rewards': 'ਰੈਫਰਲ ਰਿਵਾਰਡ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਆਪਣੇ ਬੈਂਕ ਵੇਰਵੇ ਸ਼ਾਮਲ ਕਰੋ।',
   'Add your bank details to receive prize money.': 'ਇਨਾਮੀ ਰਕਮ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਆਪਣੇ ਬੈਂਕ ਵੇਰਵੇ ਸ਼ਾਮਲ ਕਰੋ।',
   'Add your bank details to receive rewards without delays.': 'ਬਿਨਾਂ ਦੇਰੀ ਰਿਵਾਰਡ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਆਪਣੇ ਬੈਂਕ ਵੇਰਵੇ ਸ਼ਾਮਲ ਕਰੋ।',
   'All Caught Up!': 'ਸਭ ਪੂਰਾ!',

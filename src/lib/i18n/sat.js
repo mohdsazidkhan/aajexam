@@ -586,6 +586,7 @@ const SAT = {
   'Active Days': 'ᱪᱟᱞᱟᱜ ᱥᱮᱨᱢᱟ',
   'Add bank details': 'ᱵᱮᱸᱠ ᱵᱤᱵᱨᱚᱬ ᱥᱮᱞᱮᱫ ᱢᱮ',
   'Add your bank account to receive reward money.': 'ᱨᱤᱣᱟᱨᱰ ᱯᱩᱭᱥᱟ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱵᱮᱸᱠ ᱮᱠᱟᱣᱱᱴ ᱥᱮᱞᱮᱫ ᱢᱮ.',
+  'Add your bank details to receive Referral Rewards': 'ᱨᱮᱯᱷᱮᱨᱟᱞ ᱨᱤᱣᱟᱨᱰ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱵᱮᱸᱠ ᱵᱤᱵᱨᱚᱬ ᱥᱮᱞᱮᱫ ᱢᱮ.',
   'Add your bank details to receive prize money.': 'ᱤᱱᱟᱢ ᱯᱩᱭᱥᱟ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱵᱮᱸᱠ ᱵᱤᱵᱨᱚᱬ ᱥᱮᱞᱮᱫ ᱢᱮ.',
   'Add your bank details to receive rewards without delays.': 'ᱫᱷᱤᱢᱤ ᱵᱟᱝ ᱨᱤᱣᱟᱨᱰ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱵᱮᱸᱠ ᱵᱤᱵᱨᱚᱬ ᱥᱮᱞᱮᱫ ᱢᱮ.',
   'All Caught Up!': 'ᱡᱷᱚᱛᱚ ᱯᱩᱨᱟᱹ!',

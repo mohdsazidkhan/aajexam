@@ -586,6 +586,7 @@ const DogriDict = {
   'Active Days': 'सक्रिय दिन',
   'Add bank details': 'बैंक जानकारी जोड़ो',
   'Add your bank account to receive reward money.': 'इनाम दी रकम लैने लेई अपना बैंक खाता जोड़ो।',
+  'Add your bank details to receive Referral Rewards': 'रेफरल इनाम लैने लेई अपनी बैंक जानकारी जोड़ो।',
   'Add your bank details to receive prize money.': 'इनाम दी रकम लैने लेई अपनी बैंक जानकारी जोड़ो।',
   'Add your bank details to receive rewards without delays.': 'बिना देरी इनाम लैने लेई अपनी बैंक जानकारी जोड़ो।',
   'All Caught Up!': 'सब किश खत्म!',

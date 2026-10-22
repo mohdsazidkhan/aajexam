@@ -586,6 +586,7 @@ const BODO = {
   'Active Days': 'मावग्रा दिनफोर',
   'Add bank details': 'बैंकनि रोंखाथि दाजाबदेर',
   'Add your bank account to receive reward money.': 'रिवार्डनि दाम मोननो नोंनि बैंक खाता दाजाबदेर।',
+  'Add your bank details to receive Referral Rewards': 'रेफरल रिवार्डफोर मोननो नोंनि बैंकनि रोंखाथि दाजाबदेर।',
   'Add your bank details to receive prize money.': 'पुरस्कारनि दाम मोननो नोंनि बैंकनि रोंखाथि दाजाबदेर।',
   'Add your bank details to receive rewards without delays.': 'रिवार्ड गोग्लैनाय मोननो नोंनि बैंकनि रोंखाथि दाजाबदेर।',
   'All Caught Up!': 'गासै जोबथा जादों!',

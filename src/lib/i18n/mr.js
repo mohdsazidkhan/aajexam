@@ -586,6 +586,7 @@ const MR = {
   'Active Days': 'सक्रिय दिवस',
   'Add bank details': 'बँक तपशील जोडा',
   'Add your bank account to receive reward money.': 'रिवॉर्डची रक्कम मिळवण्यासाठी तुमचे बँक खाते जोडा.',
+  'Add your bank details to receive Referral Rewards': 'रेफरल रिवॉर्ड्स मिळवण्यासाठी तुमचे बँक तपशील जोडा.',
   'Add your bank details to receive prize money.': 'बक्षिसाची रक्कम मिळवण्यासाठी तुमचे बँक तपशील जोडा.',
   'Add your bank details to receive rewards without delays.': 'विलंबाशिवाय रिवॉर्ड्स मिळवण्यासाठी तुमचे बँक तपशील जोडा.',
   'All Caught Up!': 'सर्व पूर्ण झाले!',

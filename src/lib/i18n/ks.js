@@ -586,6 +586,7 @@ const KS = {
   'Active Days': 'فعال دن',
   'Add bank details': 'بینک کی تفصیلات شامل کٔرِو',
   'Add your bank account to receive reward money.': 'انعامی رقم حاصل کرنے خاطرٕ پنُن بینک اکاؤنٹ شامل کٔرِو۔',
+  'Add your bank details to receive Referral Rewards': 'ریفرل انعام حاصل کرنے خاطرٕ پننۍ بینک تفصیلات شامل کٔرِو۔',
   'Add your bank details to receive prize money.': 'انعامی رقم حاصل کرنے خاطرٕ پننۍ بینک تفصیلات شامل کٔرِو۔',
   'Add your bank details to receive rewards without delays.': 'بغیر تاخیر انعامات حاصل کرنے خاطرٕ پننۍ بینک تفصیلات شامل کٔرِو۔',
   'All Caught Up!': 'سب مکمل!',

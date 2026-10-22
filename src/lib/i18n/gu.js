@@ -586,6 +586,7 @@ const GU = {
   'Active Days': 'સક્રિય દિવસો',
   'Add bank details': 'બેંક વિગતો ઉમેરો',
   'Add your bank account to receive reward money.': 'રિવૉર્ડની રકમ મેળવવા તમારું બેંક ખાતું ઉમેરો.',
+  'Add your bank details to receive Referral Rewards': 'રેફરલ રિવૉર્ડ્સ મેળવવા તમારી બેંક વિગતો ઉમેરો.',
   'Add your bank details to receive prize money.': 'ઇનામની રકમ મેળવવા તમારી બેંક વિગતો ઉમેરો.',
   'Add your bank details to receive rewards without delays.': 'વિલંબ વગર રિવૉર્ડ્સ મેળવવા તમારી બેંક વિગતો ઉમેરો.',
   'All Caught Up!': 'બધું પૂરું!',

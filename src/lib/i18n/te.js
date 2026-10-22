@@ -586,6 +586,7 @@ const TE = {
   'Active Days': 'యాక్టివ్ రోజులు',
   'Add bank details': 'బ్యాంక్ వివరాలు జోడించండి',
   'Add your bank account to receive reward money.': 'రివార్డ్ డబ్బు పొందడానికి మీ బ్యాంక్ ఖాతా జోడించండి.',
+  'Add your bank details to receive Referral Rewards': 'రెఫరల్ రివార్డ్స్ పొందడానికి మీ బ్యాంక్ వివరాలు జోడించండి.',
   'Add your bank details to receive prize money.': 'ప్రైజ్ మనీ పొందడానికి మీ బ్యాంక్ వివరాలు జోడించండి.',
   'Add your bank details to receive rewards without delays.': 'ఆలస్యం లేకుండా రివార్డ్స్ పొందడానికి మీ బ్యాంక్ వివరాలు జోడించండి.',
   'All Caught Up!': 'అన్నీ పూర్తయ్యాయి!',

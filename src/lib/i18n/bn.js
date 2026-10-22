@@ -586,6 +586,7 @@ const BN = {
   'Active Days': 'সক্রিয় দিন',
   'Add bank details': 'ব্যাংকের তথ্য যোগ করুন',
   'Add your bank account to receive reward money.': 'রিওয়ার্ডের টাকা পেতে আপনার ব্যাংক অ্যাকাউন্ট যোগ করুন।',
+  'Add your bank details to receive Referral Rewards': 'রেফারেল রিওয়ার্ড পেতে আপনার ব্যাংকের তথ্য যোগ করুন।',
   'Add your bank details to receive prize money.': 'পুরস্কারের টাকা পেতে আপনার ব্যাংকের তথ্য যোগ করুন।',
   'Add your bank details to receive rewards without delays.': 'দেরি ছাড়া রিওয়ার্ড পেতে আপনার ব্যাংকের তথ্য যোগ করুন।',
   'All Caught Up!': 'সব শেষ!',

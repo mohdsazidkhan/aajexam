@@ -586,6 +586,7 @@ const NE = {
   'Active Days': 'सक्रिय दिन',
   'Add bank details': 'बैंक विवरण थप्नुहोस्',
   'Add your bank account to receive reward money.': 'पुरस्कारको रकम पाउन आफ्नो बैंक खाता थप्नुहोस्।',
+  'Add your bank details to receive Referral Rewards': 'रेफरल पुरस्कार पाउन आफ्नो बैंक विवरण थप्नुहोस्।',
   'Add your bank details to receive prize money.': 'इनामको रकम पाउन आफ्नो बैंक विवरण थप्नुहोस्।',
   'Add your bank details to receive rewards without delays.': 'ढिलाइबिना पुरस्कार पाउन आफ्नो बैंक विवरण थप्नुहोस्।',
   'All Caught Up!': 'सबै पूरा भयो!',

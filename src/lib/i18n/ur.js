@@ -586,6 +586,7 @@ const UrduDict = {
   'Active Days': 'فعال دن',
   'Add bank details': 'بینک کی معلومات شامل کریں',
   'Add your bank account to receive reward money.': 'انعامی رقم وصول کرنے کے لیے اپنا بینک اکاؤنٹ شامل کریں۔',
+  'Add your bank details to receive Referral Rewards': 'ریفرل انعامات وصول کرنے کے لیے اپنی بینک کی معلومات شامل کریں۔',
   'Add your bank details to receive prize money.': 'انعامی رقم وصول کرنے کے لیے اپنی بینک کی معلومات شامل کریں۔',
   'Add your bank details to receive rewards without delays.': 'بغیر تاخیر انعامات پانے کے لیے اپنی بینک کی معلومات شامل کریں۔',
   'All Caught Up!': 'سب مکمل ہو گیا!',

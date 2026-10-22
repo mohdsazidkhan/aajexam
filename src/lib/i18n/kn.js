@@ -586,6 +586,7 @@ const KN = {
   'Active Days': 'ಸಕ್ರಿಯ ದಿನಗಳು',
   'Add bank details': 'ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಸೇರಿಸಿ',
   'Add your bank account to receive reward money.': 'ರಿವಾರ್ಡ್ ಹಣ ಪಡೆಯಲು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಖಾತೆಯನ್ನು ಸೇರಿಸಿ.',
+  'Add your bank details to receive Referral Rewards': 'ರೆಫರಲ್ ರಿವಾರ್ಡ್‌ಗಳನ್ನು ಪಡೆಯಲು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಸೇರಿಸಿ.',
   'Add your bank details to receive prize money.': 'ಬಹುಮಾನದ ಹಣ ಪಡೆಯಲು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಸೇರಿಸಿ.',
   'Add your bank details to receive rewards without delays.': 'ವಿಳಂಬವಿಲ್ಲದೆ ರಿವಾರ್ಡ್‌ಗಳನ್ನು ಪಡೆಯಲು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಸೇರಿಸಿ.',
   'All Caught Up!': 'ಎಲ್ಲವೂ ಮುಗಿಯಿತು!',

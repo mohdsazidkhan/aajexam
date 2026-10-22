@@ -586,6 +586,7 @@ const SA = {
   'Active Days': 'सक्रियदिनानि',
   'Add bank details': 'बैङ्कविवरणं योजयत',
   'Add your bank account to receive reward money.': 'पुरस्कारधनं प्राप्तुं स्वबैङ्कखातं योजयत।',
+  'Add your bank details to receive Referral Rewards': 'निर्देशपुरस्कारान् प्राप्तुं स्वबैङ्कविवरणं योजयत।',
   'Add your bank details to receive prize money.': 'पारितोषिकधनं प्राप्तुं स्वबैङ्कविवरणं योजयत।',
   'Add your bank details to receive rewards without delays.': 'विलम्बं विना पुरस्कारान् प्राप्तुं स्वबैङ्कविवरणं योजयत।',
   'All Caught Up!': 'सर्वं पूर्णम्!',

@@ -586,6 +586,7 @@ const KOK = {
   'Active Days': 'सक्रिय दिस',
   'Add bank details': 'बँकेचो तपशील जोडात',
   'Add your bank account to receive reward money.': 'इनामाची रक्कम मेळोवपाक तुमचें बँक खातें जोडात.',
+  'Add your bank details to receive Referral Rewards': 'रेफरल इनाम मेळोवपाक तुमचो बँक तपशील जोडात.',
   'Add your bank details to receive prize money.': 'बक्षिसाची रक्कम मेळोवपाक तुमचो बँक तपशील जोडात.',
   'Add your bank details to receive rewards without delays.': 'उशीर नासतना इनामां मेळोवपाक तुमचो बँक तपशील जोडात.',
   'All Caught Up!': 'सगळें पुराय!',

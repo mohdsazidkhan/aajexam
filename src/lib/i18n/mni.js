@@ -586,6 +586,7 @@ const MANIPURI = {
   'Active Days': 'ꯑꯦꯛꯇꯤꯚ ꯅꯨꯃꯤꯠꯁꯤꯡ',
   'Add bank details': 'ꯕꯦꯡꯀꯒꯤ ꯋꯥꯔꯣꯜ ꯍꯥꯞꯆꯤꯜꯂꯨ',
   'Add your bank account to receive reward money.': 'ꯔꯤꯋꯥꯔꯗ ꯃꯅꯤ ꯐꯪꯅꯕ ꯅꯣꯡꯒꯤ ꯕꯦꯡꯀ ꯈꯥꯇꯥ ꯍꯥꯞꯆꯤꯜꯂꯨ',
+  'Add your bank details to receive Referral Rewards': 'ꯔꯦꯐꯔꯦꯜ ꯔꯤꯋꯥꯔꯗꯁꯤꯡ ꯐꯪꯅꯕ ꯅꯣꯡꯒꯤ ꯕꯦꯡꯀꯒꯤ ꯋꯥꯔꯣꯜ ꯍꯥꯞꯆꯤꯜꯂꯨ',
   'Add your bank details to receive prize money.': 'ꯄ꯭ꯔꯥꯏꯖ ꯃꯅꯤ ꯐꯪꯅꯕ ꯅꯣꯡꯒꯤ ꯕꯦꯡꯀꯒꯤ ꯋꯥꯔꯣꯜ ꯍꯥꯞꯆꯤꯜꯂꯨ',
   'Add your bank details to receive rewards without delays.': 'ꯁꯤꯡꯊꯥ ꯂꯣꯏꯗꯅ ꯔꯤꯋꯥꯔꯗ ꯐꯪꯅꯕ ꯅꯣꯡꯒꯤ ꯕꯦꯡꯀꯒꯤ ꯋꯥꯔꯣꯜ ꯍꯥꯞꯆꯤꯜꯂꯨ',
   'All Caught Up!': 'ꯄꯨꯝꯅꯃꯛ ꯂꯣꯏꯁꯤꯟꯅꯔꯦ!',

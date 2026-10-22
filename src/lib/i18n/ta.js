@@ -586,6 +586,7 @@ const TA = {
   'Active Days': 'செயலில் இருந்த நாட்கள்',
   'Add bank details': 'வங்கி விவரங்களைச் சேருங்கள்',
   'Add your bank account to receive reward money.': 'வெகுமதிப் பணத்தைப் பெற உங்கள் வங்கிக் கணக்கைச் சேருங்கள்.',
+  'Add your bank details to receive Referral Rewards': 'பரிந்துரை வெகுமதிகளைப் பெற உங்கள் வங்கி விவரங்களைச் சேருங்கள்.',
   'Add your bank details to receive prize money.': 'பரிசுப் பணத்தைப் பெற உங்கள் வங்கி விவரங்களைச் சேருங்கள்.',
   'Add your bank details to receive rewards without delays.': 'தாமதம் இல்லாமல் வெகுமதிகளைப் பெற உங்கள் வங்கி விவரங்களைச் சேருங்கள்.',
   'All Caught Up!': 'அனைத்தும் முடிந்தது!',

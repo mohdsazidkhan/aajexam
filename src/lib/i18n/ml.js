@@ -586,6 +586,7 @@ const ML = {
   'Active Days': 'സജീവ ദിവസങ്ങൾ',
   'Add bank details': 'ബാങ്ക് വിവരങ്ങൾ ചേർക്കുക',
   'Add your bank account to receive reward money.': 'റിവാർഡ് തുക ലഭിക്കാൻ നിങ്ങളുടെ ബാങ്ക് അക്കൗണ്ട് ചേർക്കുക.',
+  'Add your bank details to receive Referral Rewards': 'റഫറൽ റിവാർഡുകൾ ലഭിക്കാൻ നിങ്ങളുടെ ബാങ്ക് വിവരങ്ങൾ ചേർക്കുക.',
   'Add your bank details to receive prize money.': 'സമ്മാനത്തുക ലഭിക്കാൻ നിങ്ങളുടെ ബാങ്ക് വിവരങ്ങൾ ചേർക്കുക.',
   'Add your bank details to receive rewards without delays.': 'കാലതാമസമില്ലാതെ റിവാർഡുകൾ ലഭിക്കാൻ നിങ്ങളുടെ ബാങ്ക് വിവരങ്ങൾ ചേർക്കുക.',
   'All Caught Up!': 'എല്ലാം പൂർത്തിയായി!',

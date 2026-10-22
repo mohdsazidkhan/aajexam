@@ -586,6 +586,7 @@ const SD = {
   'Active Days': 'सरगर्म ॾींहं',
   'Add bank details': 'बैंक जी तफ़्सील शामिल करियो',
   'Add your bank account to receive reward money.': 'इनाम जी रक़म वठण लाइ पंहिंजो बैंक अकाउंट शामिल करियो.',
+  'Add your bank details to receive Referral Rewards': 'रेफ़रल इनाम वठण लाइ पंहिंजी बैंक तफ़्सील शामिल करियो.',
   'Add your bank details to receive prize money.': 'इनामी रक़म वठण लाइ पंहिंजी बैंक तफ़्सील शामिल करियो.',
   'Add your bank details to receive rewards without delays.': 'देर कान सवाय इनाम वठण लाइ पंहिंजी बैंक तफ़्सील शामिल करियो.',
   'All Caught Up!': 'सभ पूरो!',

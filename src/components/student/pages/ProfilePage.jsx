@@ -256,32 +256,42 @@ const ProfilePage = () => {
         </Card>
 
         {/* All India Rank */}
-        <Card className="p-6 xl:p-10 space-y-6" radius="3xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <Trophy className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
-              <div>
-                <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('All India Rank')}</h2>
-                <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('Your rank among all active students.')}</p>
+        <Card className="p-3 xl:p-4" radius="2xl">
+          <div className="flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-4">
+            <div className="flex items-center justify-between xl:justify-start gap-3 xl:flex-1 min-w-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <Trophy className="w-5 h-5 xl:w-6 xl:h-6 text-primary-600 shrink-0" />
+                <h2 className="text-base xl:text-xl font-black font-outfit tracking-tight text-content-primary truncate">{translate('All India Rank')}</h2>
+              </div>
+              <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="xl:hidden rounded-xl text-xs font-black shrink-0" onClick={() => router.push('/student/leaderboard')}>
+                {translate('View leaderboard')}
+              </Button>
+            </div>
+            <div className="grid grid-cols-2 gap-2 xl:gap-3 xl:flex-[2]">
+              <div className="rounded-xl bg-primary-600 text-white px-3 py-2 flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="text-[9px] font-black uppercase tracking-widest opacity-80 leading-none">{translate('Exam AIR')}</p>
+                  <p className="text-lg xl:text-2xl font-black font-outfit tracking-tight leading-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
+                </div>
+                <div className="text-right min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-wider opacity-80 leading-tight truncate">{student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}</p>
+                  {student?.examAIR && <p className="text-[9px] font-black uppercase tracking-wider opacity-90 leading-tight truncate">{translate('{time} spent', { time: formatTimeSpent(student.examAIR.totalTimeSpent, 'exam') })}</p>}
+                </div>
+              </div>
+              <div className="rounded-xl bg-background-surface-secondary border border-slate-200 dark:border-slate-800 px-3 py-2 flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="text-[9px] font-black uppercase tracking-widest text-content-secondary leading-none">{translate('Quiz AIR')}</p>
+                  <p className="text-lg xl:text-2xl font-black font-outfit tracking-tight leading-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
+                </div>
+                <div className="text-right min-w-0">
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-content-secondary leading-tight truncate">{student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}</p>
+                  {student?.quizAIR && <p className="text-[9px] font-black uppercase tracking-wider text-content-primary leading-tight truncate">{translate('{time} spent', { time: formatTimeSpent(student.quizAIR.totalTimeSpent, 'quiz') })}</p>}
+                </div>
               </div>
             </div>
-            <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
+            <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="hidden xl:inline-flex rounded-xl text-xs font-black shrink-0" onClick={() => router.push('/student/leaderboard')}>
               {translate('View leaderboard')}
             </Button>
-          </div>
-          <div className="grid grid-cols-2 gap-3 xl:gap-6">
-            <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 xl:p-6 text-center">
-              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{translate('Exam AIR')}</p>
-              <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
-              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}</p>
-              {student?.examAIR && <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider opacity-90 mt-1">{translate('{time} spent', { time: formatTimeSpent(student.examAIR.totalTimeSpent, 'exam') })}</p>}
-            </div>
-            <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-6 text-center">
-              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">{translate('Quiz AIR')}</p>
-              <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
-              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}</p>
-              {student?.quizAIR && <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider text-content-primary mt-1">{translate('{time} spent', { time: formatTimeSpent(student.quizAIR.totalTimeSpent, 'quiz') })}</p>}
-            </div>
           </div>
         </Card>
 
@@ -462,7 +472,7 @@ const ProfilePage = () => {
                 <div className="flex items-center justify-between gap-4 relative z-10">
                   <div>
                     <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Payout details')}</h2>
-                    <p className="text-sm font-medium text-content-secondary pb-1">{translate('Add your bank details to receive prize money.')}</p>
+                    <p className="text-sm font-medium text-content-secondary pb-1">{translate('Add your bank details to receive Referral Rewards')}</p>
                   </div>
                   {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold">{translate('Linked')}</span>}
                 </div>
@@ -492,7 +502,7 @@ const ProfilePage = () => {
                     <div className="space-y-2">
                       <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">{translate('No bank account linked')}</h3>
                       <p className="text-sm font-medium text-content-secondary max-w-md mx-auto">
-                        {translate('Add your bank details to receive rewards without delays.')}
+                        {translate('Add your bank details to receive Referral Rewards')}
                       </p>
                     </div>
                     <Button variant="primary" className="px-10 py-4 rounded-2xl text-sm font-black" onClick={() => router.push('/student/settings')}>

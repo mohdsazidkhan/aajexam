@@ -586,6 +586,7 @@ const MAI = {
   'Active Days': 'सक्रिय दिन',
   'Add bank details': 'बैंकक जानकारी जोड़ू',
   'Add your bank account to receive reward money.': 'रिवॉर्डक रकम पाबय लेल अपन बैंक खाता जोड़ू।',
+  'Add your bank details to receive Referral Rewards': 'रेफरल रिवॉर्ड्स पाबय लेल अपन बैंकक जानकारी जोड़ू।',
   'Add your bank details to receive prize money.': 'पुरस्कारक रकम पाबय लेल अपन बैंकक जानकारी जोड़ू।',
   'Add your bank details to receive rewards without delays.': 'बिना देरी रिवॉर्ड पाबय लेल अपन बैंकक जानकारी जोड़ू।',
   'All Caught Up!': 'सभ पूरा भ\' गेल!',

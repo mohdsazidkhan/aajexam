@@ -586,6 +586,7 @@ const OR_ = {
   'Active Days': 'ସକ୍ରିୟ ଦିନ',
   'Add bank details': 'ବ୍ୟାଙ୍କ ବିବରଣୀ ଯୋଗ କରନ୍ତୁ',
   'Add your bank account to receive reward money.': 'ରିୱାର୍ଡ ଟଙ୍କା ପାଇବାକୁ ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ଆକାଉଣ୍ଟ ଯୋଗ କରନ୍ତୁ।',
+  'Add your bank details to receive Referral Rewards': 'ରେଫରାଲ୍ ରିୱାର୍ଡ ପାଇବାକୁ ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ବିବରଣୀ ଯୋଗ କରନ୍ତୁ।',
   'Add your bank details to receive prize money.': 'ପୁରସ୍କାର ଟଙ୍କା ପାଇବାକୁ ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ବିବରଣୀ ଯୋଗ କରନ୍ତୁ।',
   'Add your bank details to receive rewards without delays.': 'ବିଳମ୍ବ ବିନା ରିୱାର୍ଡ ପାଇବାକୁ ଆପଣଙ୍କ ବ୍ୟାଙ୍କ ବିବରଣୀ ଯୋଗ କରନ୍ତୁ।',
   'All Caught Up!': 'ସବୁ ସରିଲା!',

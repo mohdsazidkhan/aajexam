@@ -593,6 +593,7 @@ const HI = {
   'Active Days': 'सक्रिय दिन',
   'Add bank details': 'बैंक जानकारी जोड़ें',
   'Add your bank account to receive reward money.': 'रिवॉर्ड की रकम पाने के लिए अपना बैंक खाता जोड़ें।',
+  'Add your bank details to receive Referral Rewards': 'रेफरल रिवॉर्ड पाने के लिए अपनी बैंक डिटेल्स जोड़ें',
   'Add your bank details to receive prize money.': 'पुरस्कार की रकम पाने के लिए अपनी बैंक जानकारी जोड़ें।',
   'Add your bank details to receive rewards without delays.': 'बिना देरी रिवॉर्ड पाने के लिए अपनी बैंक जानकारी जोड़ें।',
   'All Caught Up!': 'सब पूरा हो गया!',

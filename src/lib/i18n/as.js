@@ -586,6 +586,7 @@ const AS = {
   'Active Days': 'সক্ৰিয় দিন',
   'Add bank details': 'বেংকৰ বিৱৰণ যোগ কৰক',
   'Add your bank account to receive reward money.': 'ৰিৱাৰ্ডৰ ধন পাবলৈ আপোনাৰ বেংক একাউণ্ট যোগ কৰক।',
+  'Add your bank details to receive Referral Rewards': 'ৰেফাৰেল ৰিৱাৰ্ড পাবলৈ আপোনাৰ বেংকৰ বিৱৰণ যোগ কৰক।',
   'Add your bank details to receive prize money.': 'বঁটাৰ ধন পাবলৈ আপোনাৰ বেংকৰ বিৱৰণ যোগ কৰক।',
   'Add your bank details to receive rewards without delays.': 'পলম নোহোৱাকৈ ৰিৱাৰ্ড পাবলৈ আপোনাৰ বেংকৰ বিৱৰণ যোগ কৰক।',
   'All Caught Up!': 'সকলো সম্পূৰ্ণ!',

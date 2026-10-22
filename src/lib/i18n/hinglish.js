@@ -588,6 +588,7 @@ const HINGLISH = {
   'Active Days': 'Active Days',
   'Add bank details': 'Bank details add karein',
   'Add your bank account to receive reward money.': 'Reward money paane ke liye apna bank account add karein.',
+  'Add your bank details to receive Referral Rewards': 'Referral Rewards paane ke liye apni bank details add karein',
   'Add your bank details to receive prize money.': 'Prize money paane ke liye apni bank details add karein.',
   'Add your bank details to receive rewards without delays.': 'Bina deri ke rewards paane ke liye apni bank details add karein.',
   'All Caught Up!': 'Sab Ho Gaya!',
