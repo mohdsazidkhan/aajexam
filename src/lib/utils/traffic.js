@@ -23,7 +23,9 @@ export const segmentFilter = (segment) => {
     if (segment === 'bots') return suspect;
     if (segment === 'real') return notSuspect;
     if (segment === 'india') return { $and: [notSuspect, { country: 'IN' }] };
-    if (segment === 'outside') return { $and: [notSuspect, { country: { $ne: 'IN' } }] };
+    // Outside India = a known country other than IN. Unknown country ('' / missing, e.g. localhost
+    // or no geo header) is not outside India.
+    if (segment === 'outside') return { $and: [notSuspect, { country: { $nin: ['IN', '', null] } }] };
     return {};
 };
 
