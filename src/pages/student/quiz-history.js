@@ -103,9 +103,9 @@ const QuizHistoryPage = () => {
                         const isCompleted = attempt.status === 'Completed';
 
                         return (
-                           <motion.div key={attempt._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
-                                 <div className="space-y-2 xl:space-y-4">
+                           <motion.div key={attempt._id || idx} className="h-full" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
+                              <Card className="group h-full flex flex-col hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700">
+                                 <div className="flex-1 flex flex-col gap-2 xl:gap-4">
                                     {/* Header */}
                                     <div className="flex justify-between items-start">
                                        <div className="p-2.5 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl">
@@ -137,7 +137,7 @@ const QuizHistoryPage = () => {
                                                 <span className="text-[10px] font-black text-slate-400">{translate('Accuracy')}</span>
                                                 <span className="text-sm font-black text-primary-600">{Math.round(attempt.accuracy || 0)}%</span>
                                              </div>
-                                             <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" />
+                                             <ProgressBar progress={attempt.accuracy || 0} color="emerald" height="h-1.5" showPercentage={false} />
                                           </div>
 
                                           <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
@@ -158,7 +158,7 @@ const QuizHistoryPage = () => {
                                     )}
 
                                     {/* Footer */}
-                                    <div className="flex items-center justify-between pt-2">
+                                    <div className="flex items-center justify-between pt-2 mt-auto">
                                        <div className="flex items-center gap-1 text-[9px] font-bold text-slate-400">
                                           <Calendar className="w-3 h-3" />
                                           {attempt.submittedAt ? new Date(attempt.submittedAt).toLocaleDateString() : new Date(attempt.createdAt).toLocaleDateString()}

@@ -90,7 +90,7 @@ const MyChallengesPage = () => {
                      <p className="text-sm text-slate-500">{translate('Take a quiz and challenge your friends to beat your score!')}</p>
                   </div>
                ) : (
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-4">
                      {challenges.map((challenge, idx) => {
                         const quiz = challenge.quiz || {};
                         const hostScore = challenge.hostAttempt?.score || 0;
@@ -98,8 +98,8 @@ const MyChallengesPage = () => {
                         const challengersCount = challenge.challengers?.length || 0;
 
                         return (
-                           <motion.div key={challenge._id || idx} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
-                              <Card className="p-0 overflow-hidden group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
+                           <motion.div key={challenge._id || idx} className="h-full" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.05 }}>
+                              <Card className="p-0 h-full overflow-hidden group hover:shadow-sm transition-all duration-300 border-2 border-slate-100 dark:border-slate-800">
                                  {/* Challenge Header */}
                                  <div className="p-5 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800 dark:border-white/30">
                                     <div className="flex justify-between items-start mb-4">
