@@ -51,7 +51,7 @@ async function flush(coll, ops) {
 async function load(coll, srcModel, pipeline, kind, scopeOf) {
     let written = 0;
     let ops = [];
-    const cursor = srcModel.aggregate(pipeline, { allowDiskUse: true }).cursor({ batchSize: BATCH });
+    const cursor = srcModel.aggregate(pipeline, { allowDiskUse: true, batchSize: BATCH });
     for await (const g of cursor) {
         const scope = scopeOf(g);
         if (!scope) continue;
