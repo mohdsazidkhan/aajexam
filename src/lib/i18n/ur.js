@@ -2044,6 +2044,11 @@ const UrduDict = {
   'Share your code': 'اپنا کوڈ شیئر کریں',
   'Friend signs up': 'دوست سائن اپ کرے',
   'You earn rewards': 'آپ انعام کمائیں',
+  'Membership pass': 'ممبرشپ پاس',
+  '{plan} plan is active': '{plan} پلان فعال ہے',
+  '{plan} plan has expired': '{plan} پلان کی مدت ختم ہو گئی ہے',
+  'Expired': 'میعاد ختم',
+  'Days left': 'دن باقی',
 };
 
 export default UrduDict;

@@ -2044,6 +2044,11 @@ const OR_ = {
   'Share your code': 'ଆପଣଙ୍କ କୋଡ୍ ସେୟାର କରନ୍ତୁ',
   'Friend signs up': 'ବନ୍ଧୁ ସାଇନ୍ ଅପ୍ କରିବେ',
   'You earn rewards': 'ଆପଣ ରିୱାର୍ଡ ପାଇବେ',
+  'Membership pass': 'ସଦସ୍ୟତା ପାସ୍',
+  '{plan} plan is active': '{plan} ପ୍ଲାନ୍ ସକ୍ରିୟ ଅଛି',
+  '{plan} plan has expired': '{plan} ପ୍ଲାନ୍ ମିଆଦ ସରିଛି',
+  'Expired': 'ମିଆଦ ସରିଛି',
+  'Days left': 'ଦିନ ବାକି',
 };
 
 export default OR_;

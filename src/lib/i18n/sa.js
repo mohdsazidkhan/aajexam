@@ -2044,6 +2044,11 @@ const SA = {
   'Share your code': 'स्वसङ्केतं साझां कुरुत',
   'Friend signs up': 'मित्रं पञ्जीकरणं करोति',
   'You earn rewards': 'भवान् पुरस्कारान् लभते',
+  'Membership pass': 'सदस्यताप्रवेशपत्रम्',
+  '{plan} plan is active': '{plan} योजना सक्रिया अस्ति',
+  '{plan} plan has expired': '{plan} योजना समाप्ता',
+  'Expired': 'समाप्तम्',
+  'Days left': 'अवशिष्टानि दिनानि',
 };
 
 export default SA;

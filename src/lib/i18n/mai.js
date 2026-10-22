@@ -2044,6 +2044,11 @@ const MAI = {
   'Share your code': 'अपन कोड शेयर करू',
   'Friend signs up': 'संगी साइन अप करत',
   'You earn rewards': 'अहाँ रिवॉर्ड कमायब',
+  'Membership pass': 'सदस्यता पास',
+  '{plan} plan is active': '{plan} प्लान सक्रिय अछि',
+  '{plan} plan has expired': '{plan} प्लान समाप्त भ गेल अछि',
+  'Expired': 'समाप्त',
+  'Days left': 'दिन बाकी',
 };
 
 export default MAI;

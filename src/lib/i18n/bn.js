@@ -2044,6 +2044,11 @@ const BN = {
   'Share your code': 'আপনার কোড শেয়ার করুন',
   'Friend signs up': 'বন্ধু সাইন আপ করবে',
   'You earn rewards': 'আপনি রিওয়ার্ড পাবেন',
+  'Membership pass': 'মেম্বারশিপ পাস',
+  '{plan} plan is active': '{plan} প্ল্যান সক্রিয় আছে',
+  '{plan} plan has expired': '{plan} প্ল্যানের মেয়াদ শেষ',
+  'Expired': 'মেয়াদোত্তীর্ণ',
+  'Days left': 'দিন বাকি',
 };
 
 export default BN;

@@ -2044,6 +2044,11 @@ const NE = {
   'Share your code': 'आफ्नो कोड सेयर गर्नुहोस्',
   'Friend signs up': 'साथीले साइन अप गर्छ',
   'You earn rewards': 'तपाईंले रिवार्ड कमाउनुहुन्छ',
+  'Membership pass': 'सदस्यता पास',
+  '{plan} plan is active': '{plan} प्लान सक्रिय छ',
+  '{plan} plan has expired': '{plan} प्लानको म्याद सकियो',
+  'Expired': 'म्याद सकियो',
+  'Days left': 'दिन बाँकी',
 };
 
 export default NE;

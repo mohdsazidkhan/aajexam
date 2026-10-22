@@ -2044,6 +2044,11 @@ const MR = {
   'Share your code': 'तुमचा कोड शेअर करा',
   'Friend signs up': 'मित्र साइन अप करतो',
   'You earn rewards': 'तुम्हाला रिवॉर्ड मिळतात',
+  'Membership pass': 'मेंबरशिप पास',
+  '{plan} plan is active': '{plan} प्लॅन सक्रिय आहे',
+  '{plan} plan has expired': '{plan} प्लॅनची मुदत संपली आहे',
+  'Expired': 'मुदत संपली',
+  'Days left': 'दिवस शिल्लक',
 };
 
 export default MR;

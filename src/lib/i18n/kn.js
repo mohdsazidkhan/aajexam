@@ -2044,6 +2044,11 @@ const KN = {
   'Share your code': 'ನಿಮ್ಮ ಕೋಡ್ ಹಂಚಿಕೊಳ್ಳಿ',
   'Friend signs up': 'ಸ್ನೇಹಿತ ಸೈನ್ ಅಪ್ ಮಾಡುತ್ತಾರೆ',
   'You earn rewards': 'ನೀವು ರಿವಾರ್ಡ್ ಗಳಿಸುತ್ತೀರಿ',
+  'Membership pass': 'ಸದಸ್ಯತ್ವ ಪಾಸ್',
+  '{plan} plan is active': '{plan} ಪ್ಲಾನ್ ಸಕ್ರಿಯವಾಗಿದೆ',
+  '{plan} plan has expired': '{plan} ಪ್ಲಾನ್ ಮುಗಿದಿದೆ',
+  'Expired': 'ಅವಧಿ ಮುಗಿದಿದೆ',
+  'Days left': 'ದಿನ ಬಾಕಿ',
 };
 
 export default KN;

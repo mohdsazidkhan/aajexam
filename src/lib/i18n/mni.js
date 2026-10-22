@@ -2018,6 +2018,11 @@ const MANIPURI = {
   'Share your code': 'ꯅꯍꯥꯛꯀꯤ ꯀꯣꯗ ꯁꯦꯌꯔ ꯇꯧꯕꯤꯌꯨ',
   'Friend signs up': 'ꯃꯔꯨꯞ ꯁꯥꯏꯟ ꯑꯞ ꯇꯧꯒꯅꯤ',
   'You earn rewards': 'ꯅꯍꯥꯛꯅ ꯔꯤꯕꯣꯔꯗ ꯐꯪꯒꯅꯤ',
+  'Membership pass': 'ꯃꯦꯝꯕꯔꯁꯤꯞ ꯄꯥꯁ',
+  '{plan} plan is active': '{plan} ꯄ꯭ꯂꯥꯟ ꯑꯦꯛꯇꯤꯕ ꯑꯣꯏꯔꯦ',
+  '{plan} plan has expired': '{plan} ꯄ꯭ꯂꯥꯟꯒꯤ ꯃꯇꯝ ꯂꯣꯏꯔꯦ',
+  'Expired': 'ꯃꯇꯝ ꯂꯣꯏꯔꯦ',
+  'Days left': 'ꯅꯨꯃꯤꯠ ꯑꯅꯤꯅ ꯂꯩ',
 };
 
 export default MANIPURI;

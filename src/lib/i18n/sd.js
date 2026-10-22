@@ -2044,6 +2044,11 @@ const SD = {
   'Share your code': 'पंहिंजो कोड शेयर करियो',
   'Friend signs up': 'दोस्त साइन अप करे',
   'You earn rewards': 'तव्हां इनाम कमायो',
+  'Membership pass': 'मेंबरशिप पास',
+  '{plan} plan is active': '{plan} प्लान सक्रिय आहे',
+  '{plan} plan has expired': '{plan} प्लान जी मुद्दत पूरी थी वेई आहे',
+  'Expired': 'मुद्दत पूरी',
+  'Days left': 'डींहं बाक़ी',
 };
 
 export default SD;

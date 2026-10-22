@@ -2044,6 +2044,11 @@ const DogriDict = {
   'Share your code': 'अपना कोड शेयर करो',
   'Friend signs up': 'दोस्त साइन अप करग',
   'You earn rewards': 'तुस रिवार्ड कमाओ',
+  'Membership pass': 'मेंबरशिप पास',
+  '{plan} plan is active': '{plan} प्लान चालू ऐ',
+  '{plan} plan has expired': '{plan} प्लान खत्म होई गेया ऐ',
+  'Expired': 'खत्म',
+  'Days left': 'दिन बचे',
 };
 
 export default DogriDict;

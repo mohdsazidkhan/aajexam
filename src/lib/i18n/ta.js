@@ -2044,6 +2044,11 @@ const TA = {
   'Share your code': 'உங்கள் குறியீட்டைப் பகிருங்கள்',
   'Friend signs up': 'நண்பர் பதிவு செய்கிறார்',
   'You earn rewards': 'நீங்கள் பரிசுகள் பெறுவீர்கள்',
+  'Membership pass': 'உறுப்பினர் பாஸ்',
+  '{plan} plan is active': '{plan} திட்டம் செயலில் உள்ளது',
+  '{plan} plan has expired': '{plan} திட்டம் காலாவதியாகிவிட்டது',
+  'Expired': 'காலாவதியானது',
+  'Days left': 'நாட்கள் மீதம்',
 };
 
 export default TA;

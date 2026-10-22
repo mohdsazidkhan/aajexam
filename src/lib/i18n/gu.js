@@ -2044,6 +2044,11 @@ const GU = {
   'Share your code': 'તમારો કોડ શેર કરો',
   'Friend signs up': 'મિત્ર સાઇન અપ કરે',
   'You earn rewards': 'તમને રિવોર્ડ મળે',
+  'Membership pass': 'મેમ્બરશિપ પાસ',
+  '{plan} plan is active': '{plan} પ્લાન સક્રિય છે',
+  '{plan} plan has expired': '{plan} પ્લાનની મુદત પૂરી થઈ છે',
+  'Expired': 'સમાપ્ત',
+  'Days left': 'દિવસ બાકી',
 };
 
 export default GU;

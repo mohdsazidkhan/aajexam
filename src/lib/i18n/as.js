@@ -2044,6 +2044,11 @@ const AS = {
   'Share your code': 'আপোনাৰ ক\'ড শ্বেয়াৰ কৰক',
   'Friend signs up': 'বন্ধুৱে ছাইন আপ কৰিব',
   'You earn rewards': 'আপুনি ৰিৱাৰ্ড পাব',
+  'Membership pass': 'মেম্বাৰশ্বিপ পাছ',
+  '{plan} plan is active': '{plan} প্লেন সক্ৰিয় আছে',
+  '{plan} plan has expired': '{plan} প্লেনৰ ম্যাদ শেষ হৈছে',
+  'Expired': 'ম্যাদ উকলিছে',
+  'Days left': 'দিন বাকী',
 };
 
 export default AS;

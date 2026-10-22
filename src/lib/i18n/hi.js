@@ -2065,6 +2065,11 @@ const HI = {
   'Share your code': 'अपना कोड शेयर करें',
   'Friend signs up': 'दोस्त साइन अप करे',
   'You earn rewards': 'आप रिवॉर्ड कमाएँ',
+  'Membership pass': 'मेंबरशिप पास',
+  '{plan} plan is active': '{plan} प्लान सक्रिय है',
+  '{plan} plan has expired': '{plan} प्लान समाप्त हो गया है',
+  'Expired': 'समाप्त',
+  'Days left': 'दिन शेष',
 };
 
 export default HI;

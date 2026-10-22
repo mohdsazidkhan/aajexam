@@ -2018,6 +2018,11 @@ const SAT = {
   'Share your code': 'ᱟᱢᱟᱜ ᱠᱳᱰ ᱥᱮᱭᱟᱨ ᱢᱮ',
   'Friend signs up': 'ᱜᱟᱛᱮ ᱥᱟᱭᱤᱱ ᱟᱯ ᱠᱟᱱᱟ',
   'You earn rewards': 'ᱟᱢ ᱨᱤᱣᱟᱨᱰ ᱛᱟᱢ',
+  'Membership pass': 'ᱢᱮᱢᱵᱟᱨᱥᱤᱯ ᱯᱟᱥ',
+  '{plan} plan is active': '{plan} ᱯᱞᱟᱱ ᱪᱟᱹᱞᱩ ᱢᱮᱱᱟᱭ',
+  '{plan} plan has expired': '{plan} ᱯᱞᱟᱱ ᱥᱟᱸᱠᱷᱟ ᱦᱩᱭ ᱟᱠᱟᱫ',
+  'Expired': 'ᱢᱟᱦᱟ ᱥᱟᱸᱠᱷᱟ',
+  'Days left': 'ᱥᱟᱸᱥᱟᱨ ᱢᱟᱦᱟ',
 };
 
 export default SAT;

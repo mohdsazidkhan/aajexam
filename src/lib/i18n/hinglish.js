@@ -2053,6 +2053,11 @@ const HINGLISH = {
   'Share your code': 'Apna code share karein',
   'Friend signs up': 'Dost sign up kare',
   'You earn rewards': 'Aap rewards kamayein',
+  'Membership pass': 'Membership pass',
+  '{plan} plan is active': '{plan} plan active hai',
+  '{plan} plan has expired': '{plan} plan expire ho gaya hai',
+  'Expired': 'Expired',
+  'Days left': 'Din bache',
 };
 
 export default HINGLISH;

@@ -2018,6 +2018,11 @@ const BODO = {
   'Share your code': 'गावनि कोड बाहायना',
   'Friend signs up': 'दावखौ साइन आप खालामो',
   'You earn rewards': 'नों रिवार्ड लाइयो',
+  'Membership pass': 'मेम्बारशिप पास',
+  '{plan} plan is active': '{plan} प्लान सक्रिय',
+  '{plan} plan has expired': '{plan} प्लाननि सोमोय जोबोदनो',
+  'Expired': 'सोमोय जोबोद',
+  'Days left': 'सान बाकि',
 };
 
 export default BODO;

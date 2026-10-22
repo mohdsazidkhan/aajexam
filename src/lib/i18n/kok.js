@@ -2044,6 +2044,11 @@ const KOK = {
   'Share your code': 'तुमचो कोड शेअर करात',
   'Friend signs up': 'इश्ट साइन अप करता',
   'You earn rewards': 'तुमकां रिवॉर्ड मेळटात',
+  'Membership pass': 'सदस्यत्व पास',
+  '{plan} plan is active': '{plan} प्लॅन सक्रिय आसा',
+  '{plan} plan has expired': '{plan} प्लॅनाची मुदत सोंपल्या',
+  'Expired': 'मुदत सोंपली',
+  'Days left': 'दीस उरले',
 };
 
 export default KOK;

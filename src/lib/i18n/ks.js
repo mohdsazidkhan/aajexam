@@ -2044,6 +2044,11 @@ const KS = {
   'Share your code': 'پننہ کوڈ شیئر کرو',
   'Friend signs up': 'دوست سائن اپ کرِ',
   'You earn rewards': 'توہہ چھوِ انعام ملان',
+  'Membership pass': 'ممبرشپ پاس',
+  '{plan} plan is active': '{plan} پلان چھُ فعال',
+  '{plan} plan has expired': '{plan} پلانچ میعاد چھ ختم گمت',
+  'Expired': 'میعاد ختم',
+  'Days left': 'دۄہ باقی',
 };
 
 export default KS;

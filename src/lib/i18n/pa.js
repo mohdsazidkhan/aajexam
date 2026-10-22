@@ -2044,6 +2044,11 @@ const PA = {
   'Share your code': 'ਆਪਣਾ ਕੋਡ ਸਾਂਝਾ ਕਰੋ',
   'Friend signs up': 'ਦੋਸਤ ਸਾਈਨ ਅੱਪ ਕਰੇ',
   'You earn rewards': 'ਤੁਸੀਂ ਇਨਾਮ ਕਮਾਓ',
+  'Membership pass': 'ਮੈਂਬਰਸ਼ਿਪ ਪਾਸ',
+  '{plan} plan is active': '{plan} ਪਲਾਨ ਚਾਲੂ ਹੈ',
+  '{plan} plan has expired': '{plan} ਪਲਾਨ ਦੀ ਮਿਆਦ ਖਤਮ ਹੋ ਗਈ ਹੈ',
+  'Expired': 'ਮਿਆਦ ਖਤਮ',
+  'Days left': 'ਦਿਨ ਬਾਕੀ',
 };
 
 export default PA;

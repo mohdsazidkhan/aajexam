@@ -2044,6 +2044,11 @@ const TE = {
   'Share your code': 'మీ కోడ్‌ను షేర్ చేయండి',
   'Friend signs up': 'స్నేహితుడు సైన్ అప్ చేస్తారు',
   'You earn rewards': 'మీరు రివార్డ్‌లు పొందుతారు',
+  'Membership pass': 'మెంబర్‌షిప్ పాస్',
+  '{plan} plan is active': '{plan} ప్లాన్ యాక్టివ్‌గా ఉంది',
+  '{plan} plan has expired': '{plan} ప్లాన్ గడువు ముగిసింది',
+  'Expired': 'గడువు ముగిసింది',
+  'Days left': 'రోజులు మిగిలి ఉన్నాయి',
 };
 
 export default TE;

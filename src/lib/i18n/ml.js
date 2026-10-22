@@ -2044,6 +2044,11 @@ const ML = {
   'Share your code': 'നിങ്ങളുടെ കോഡ് പങ്കിടൂ',
   'Friend signs up': 'സുഹൃത്ത് സൈൻ അപ്പ് ചെയ്യുന്നു',
   'You earn rewards': 'നിങ്ങൾക്ക് റിവാർഡ് ലഭിക്കുന്നു',
+  'Membership pass': 'മെംബർഷിപ്പ് പാസ്',
+  '{plan} plan is active': '{plan} പ്ലാൻ സജീവമാണ്',
+  '{plan} plan has expired': '{plan} പ്ലാൻ കാലഹരണപ്പെട്ടു',
+  'Expired': 'കാലഹരണപ്പെട്ടു',
+  'Days left': 'ദിവസം ബാക്കി',
 };
 
 export default ML;
