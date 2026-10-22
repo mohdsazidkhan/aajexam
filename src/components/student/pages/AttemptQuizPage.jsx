@@ -66,7 +66,8 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
       {/* Mobile List */}
       <div className="space-y-2">
         {leaderboard.map((entry, index) => {
-          const isCurrentUser = entry.user?._id === currentUser?.id;
+          const myId = currentUser?._id || currentUser?.id;
+          const isCurrentUser = !!myId && String(entry.user?._id) === String(myId);
           return (
             <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl ${isCurrentUser ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white' : 'bg-white/60 dark:bg-slate-700/60'}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${index === 0 ?'bg-primary-600':
