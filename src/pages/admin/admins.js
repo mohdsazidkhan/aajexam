@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 import AdminRoute from '../../components/admin/Route';
 
-const AdminsPage = dynamic(() => import('../../components/pages/admin/AdminsPage'), {
+const AdminsPage = dynamic(() => import('../../components/admin/pages/AdminsPage'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

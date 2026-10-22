@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 
 // Named export expected by many components
 export const useSSR = () => {

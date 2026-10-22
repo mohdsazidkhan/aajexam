@@ -1,0 +1,570 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
+import React, { useState, useEffect, useCallback } from 'react';
+import {
+  Trophy, Medal, Crown, Flame, Target, TrendingUp,
+  Star, Zap, ChevronRight, Users, RefreshCw, FileText, BrainCircuit, Clock, MapPin
+} from 'lucide-react';
+import { m as motion, AnimatePresence } from 'framer-motion';
+import Link from '@/components/common/AppLink';
+import API from '../../lib/api';
+import Card from '../../components/common/ui/Card';
+import Seo from '../../components/common/Seo';
+import { getCurrentUser } from '../../lib/utils/authUtils';
+import { formatTimeSpent } from '../../lib/utils/timeFormat';
+import useTranslate from '../../hooks/useTranslate';
+import Pagination from '../../components/common/Pagination';
+import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
+import useRequireLogin from '../../hooks/useRequireLogin';
+
+// ─── Skeleton ──────────────────────────────────────────────────────────────────
+const Sh = ({ className = '' }) => (
+  <div className={`container mx-auto animate-pulse bg-primary-500/15 dark:bg-primary-500/20 rounded-lg xl:rounded-xl ${className}`} />
+);
+
+const LeaderboardSkeleton = () => (
+  <div className="space-y-3">
+    {Array.from({ length: 8 }).map((_, i) => (
+      <div key={i} className="flex items-center gap-3 p-4 bg-background-surface rounded-2xl border-2 border-slate-200 dark:border-slate-800">
+        <Sh className="w-8 h-8 rounded-full flex-shrink-0" />
+        <Sh className="w-10 h-10 rounded-full flex-shrink-0" />
+        <div className="flex-1 space-y-2">
+          <Sh className="h-3.5 w-2/5 rounded" />
+          <Sh className="h-2.5 w-1/4 rounded" />
+        </div>
+        <Sh className="w-14 h-6 rounded-full" />
+      </div>
+    ))}
+  </div>
+);
+
+// ─── Period Tabs ───────────────────────────────────────────────────────────────
+const PERIODS = [
+  { id: 'all-time', label: 'All Time', icon: Crown },
+  { id: 'monthly', label: 'This Month', icon: Star },
+  { id: 'weekly', label: 'This Week', icon: Zap },
+];
+
+// ─── Rank visual config ────────────────────────────────────────────────────────
+const rankConfig = {
+  1: {
+    gradient: 'bg-primary-600',
+    numberText: 'text-white',
+    ringColor: 'ring-primary-700/10',
+    textColor: 'text-primary-600',
+    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
+    pillBg: 'bg-primary-600 text-white',
+    icon: Crown,
+  },
+  2: {
+    gradient: 'bg-slate-400',
+    numberText: 'text-white',
+    ringColor: 'ring-slate-400 dark:ring-slate-500',
+    textColor: 'text-slate-500 dark:text-slate-400',
+    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300',
+    pillBg: 'bg-slate-300 text-white',
+    icon: Medal,
+  },
+  3: {
+    gradient: 'bg-slate-100 dark:bg-slate-800',
+    numberText: 'text-slate-900 dark:text-white',
+    ringColor: 'ring-black/10 dark:ring-white/10',
+    textColor: 'text-black dark:text-white',
+    badgeBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
+    pillBg: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white',
+    icon: Medal,
+  },
+};
+
+// ─── Avatar ────────────────────────────────────────────────────────────────────
+const AVATAR_COLORS = [
+  { bg: 'bg-primary-600', text: 'text-white' },
+  { bg: 'bg-blue-600', text: 'text-white' },
+  { bg: 'bg-rose-600', text: 'text-white' },
+  { bg: 'bg-amber-600', text: 'text-white' },
+  { bg: 'bg-violet-600', text: 'text-white' },
+  { bg: 'bg-cyan-600', text: 'text-white' },
+  { bg: 'bg-orange-600', text: 'text-white' },
+  { bg: 'bg-emerald-600', text: 'text-white' },
+];
+
+const Avatar = ({ entry, size = 'md', ring = false }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const sizes = {
+    sm: 'w-8 h-8 text-[11px]',
+    md: 'w-10 h-10 text-sm',
+    lg: 'w-14 h-14 text-lg',
+    xl: 'w-16 h-16 text-xl',
+  };
+  const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
+  const colorIdx = initial.charCodeAt(0) % AVATAR_COLORS.length;
+  const avatarStyle = AVATAR_COLORS[colorIdx];
+  const rc = rankConfig[entry?.rank];
+
+  const ringClass = ring && rc ? `ring-4 ${rc.ringColor} ring-offset-2 ring-offset-background-surface` : '';
+
+  return entry?.profilePicture && !imgFailed ? (
+    <img
+      src={entry.profilePicture}
+      alt={entry.name || 'User'}
+      onError={() => setImgFailed(true)}
+      className={`${sizes[size]} rounded-full object-cover flex-shrink-0 ${ringClass}`}
+    />
+  ) : (
+    <div className={`${sizes[size]} ${avatarStyle.bg} rounded-full flex items-center justify-center font-black ${avatarStyle.text} flex-shrink-0 ${ringClass}`}>
+      {initial}
+    </div>
+  );
+};
+
+// ─── Top 3 Podium ─────────────────────────────────────────────────────────────
+const Podium = ({ top3, currentUserId, type }) => {
+  const { translate } = useTranslate();
+  // Reorder: 2nd | 1st | 3rd
+  const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
+  const podiumH = { 1: 'h-20 xl:h-24', 2: 'h-14 xl:h-16', 3: 'h-10 xl:h-12' };
+  const podiumGradient = {
+    1: 'bg-primary-600',
+    2: 'bg-slate-400',
+    3: 'bg-slate-100 dark:bg-slate-800',
+  };
+  const podiumTextColor = {
+    1: 'text-white',
+    2: 'text-white',
+    3: 'text-black dark:text-white',
+  };
+
+  return (
+    <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
+      {ordered.map((entry) => {
+        if (!entry) return null;
+        const rc = rankConfig[entry.rank] || {};
+        const isMe = String(entry.userId) === String(currentUserId);
+        const isFirst = entry.rank === 1;
+
+        return (
+          <Link href={entry.username ? `/u/${entry.username}` : '#'} key={entry.rank}>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
+              className={`flex flex-col items-center gap-1.5 ${isFirst ? 'scale-105 sm:scale-110 -mb-1' : ''}`}
+            >
+              {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
+              <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
+              {isMe && (
+                <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">{translate('You')}</span>
+              )}
+              <div className="text-center max-w-[76px] sm:max-w-[96px]">
+                <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
+                  {entry.name || entry.username || translate('User')}
+                </p>
+                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{entry.totalQuizzes} {type === 'quiz' ? 'quizzes' : 'exams'}</p>
+              </div>
+              <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
+                <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
+              </div>
+            </motion.div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
+// ─── Shared table column template (kept identical between header & rows so
+// everything lines up on desktop) — desktop only; mobile uses a stacked card. ──
+const TABLE_GRID_COLS = 'grid-cols-[40px_1fr_84px_84px_84px_84px_84px_84px_84px_20px]';
+
+// ─── List Row — table row on desktop (lg+), stacked card on mobile ────────────
+const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
+  const { translate } = useTranslate();
+  const rc = rankConfig[entry.rank];
+  const isMe = String(entry.userId) === String(currentUserId);
+  const isTop3 = entry.rank <= 3;
+
+  const rankBadge = (
+    <div className={`
+      w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-xs
+      ${isTop3 ? `${rc.gradient} ${rc.numberText} shadow-sm` : 'bg-slate-100 dark:bg-slate-800 text-content-muted'}
+    `}>
+      {entry.rank}
+    </div>
+  );
+
+  const identity = (
+    <div className="min-w-0">
+      <div className="flex items-center gap-1.5 flex-wrap">
+        <p className={`text-sm font-black truncate leading-tight ${isMe ? 'text-black dark:text-white' : 'text-content-primary'}`}>
+          {entry.name || entry.username || translate('Anonymous')}
+        </p>
+        {isMe && (
+          <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('You')}</span>
+        )}
+        {entry.subscriptionStatus === 'PRO' && (
+          <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('PRO')}</span>
+        )}
+      </div>
+      <div className="flex items-center gap-1.5 flex-wrap">
+        {entry.username && (
+          <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>
+        )}
+        {entry.city && (
+          <span className="text-[10px] font-bold text-primary-600 truncate flex items-center gap-0.5">
+            <MapPin className="w-2.5 h-2.5" />{entry.city}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -16 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: Math.min(index * 0.025, 0.5) }}
+    >
+      <Link href={entry.username ? `/u/${entry.username}` : '#'}>
+        {/* ── Desktop: table row ── */}
+        <div className={`
+          hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
+          ${isMe
+            ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600'
+            : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
+          }
+        `}>
+          {rankBadge}
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Avatar entry={entry} size="md" />
+            {identity}
+          </div>
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
+            <Clock className="w-3 h-3 text-content-muted" />{formatTimeSpent(entry.totalTimeSpent, type)}
+          </p>
+          <p className="text-xs font-black text-content-primary text-center flex items-center justify-center gap-1">
+            <Target className="w-3 h-3 text-content-muted" />{entry.totalQuizzes}
+          </p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalMarks ?? 0}</p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalCorrect ?? 0}</p>
+          <p className="text-xs font-black text-content-primary text-center">{entry.totalScore ?? 0}</p>
+          <p className={`text-sm font-black text-center ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
+          <p className="text-sm font-black text-center text-content-primary">{entry.avgPercentage}%</p>
+          <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+        </div>
+
+        {/* ── Mobile: stacked card — every stat carries its own heading ── */}
+        <div className={`
+          flex xl:hidden flex-col gap-3 px-3.5 py-3 rounded-2xl border-2 transition-all group cursor-pointer
+          ${isMe
+            ? 'border-slate-200 dark:border-slate-800 dark:border-white bg-slate-100 dark:bg-black border-b-primary-400 dark:border-b-primary-600'
+            : 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-300 dark:hover:border-primary-700'
+          }
+        `}>
+          <div className="flex items-center gap-3">
+            {rankBadge}
+            <Avatar entry={entry} size="md" />
+            <div className="flex-1 min-w-0">
+              {identity}
+              {entry.currentStreak > 0 && (
+                <span className="text-[10px] font-bold text-black dark:text-white flex items-center gap-1 mt-0.5">
+                  <Flame className="w-3 h-3" />{translate('{count} day streak', { count: entry.currentStreak })}
+                </span>
+              )}
+            </div>
+            <ChevronRight className="w-4 h-4 text-border-primary group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 pl-[52px]">
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide whitespace-nowrap">{translate('Total Time Spent')}</p>
+              <p className="text-sm font-black text-content-primary">{formatTimeSpent(entry.totalTimeSpent, type)}</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{type === 'quiz' ? translate('Quizzes') : translate('Exams')}</p>
+              <p className="text-sm font-black text-content-primary">{entry.totalQuizzes}</p>
+            </div>
+            {type === 'quiz' && (
+              <>
+                <div>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Marks')}</p>
+                  <p className="text-sm font-black text-content-primary">{entry.totalMarks ?? 0}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Correct')}</p>
+                  <p className="text-sm font-black text-content-primary">{entry.totalCorrect ?? 0}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Score')}</p>
+                  <p className="text-sm font-black text-content-primary">{entry.totalScore ?? 0}</p>
+                </div>
+              </>
+            )}
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Accuracy')}</p>
+              <p className={`text-sm font-black ${isTop3 ? rc?.textColor : 'text-content-primary'}`}>{entry.avgAccuracy}%</p>
+            </div>
+            <div>
+              <p className="text-[9px] font-black text-content-muted uppercase tracking-wide">{translate('Avg Score')}</p>
+              <p className="text-sm font-black text-content-primary">{entry.avgPercentage}%</p>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
+
+// ─── My Rank Sticky Card ──────────────────────────────────────────────────────
+const MyRankCard = ({ entry, type }) => {
+  const { translate } = useTranslate();
+  if (!entry) return null;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="px-1"
+    >
+      <Card variant="primary" padded={false} className="p-3 sm:p-4 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-white text-base flex-shrink-0">
+            #{entry.rank}
+          </div>
+          <Avatar entry={entry} size="md" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-black text-white truncate">{translate('Your Rank')}</p>
+            <p className="text-[10px] font-bold text-white/70">{entry.totalQuizzes} {type === 'quiz' ? translate('quizzes') : translate('exams')} · {translate('{score}% avg score · {time} spent', { score: entry.avgPercentage, time: formatTimeSpent(entry.totalTimeSpent, type) })}</p>
+          </div>
+          <div className="text-right flex-shrink-0">
+            <p className="text-xl font-black text-white">#{entry.rank}</p>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  );
+};
+
+// ─── Main Page ─────────────────────────────────────────────────────────────────
+const LeaderboardPage = () => {
+  useRequireLogin();
+  const { translate } = useTranslate();
+  const [type, setType] = useState('quiz'); // 'quiz' or 'exam'
+  const [period, setPeriod] = useState('all-time');
+  const [data, setData] = useState([]);
+  const [myEntry, setMyEntry] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
+  const ROWS_PER_PAGE = pageSize;
+  const currentUser = typeof window !== 'undefined' ? getCurrentUser() : null;
+  const currentUserId = currentUser?._id || currentUser?.id;
+
+  const fetchLeaderboard = useCallback(async (isRefresh = false) => {
+    try {
+      if (isRefresh) setRefreshing(true);
+      else setLoading(true);
+      const res = await API.request(`/api/leaderboard?type=${type}&period=${period}&limit=100`);
+      if (res?.success) {
+        setData(res.data || []);
+        setMyEntry(res.myEntry || null);
+      }
+    } catch (e) {
+      console.error('Leaderboard fetch error:', e);
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, [period, type]);
+
+  useEffect(() => { fetchLeaderboard(); }, [fetchLeaderboard]);
+  useEffect(() => { setPage(1); }, [type, period]);
+
+  const top3 = data.slice(0, 3);
+  // Table shows every ranked user, including the top 3 already on the podium above.
+  const totalPages = Math.max(1, Math.ceil(data.length / ROWS_PER_PAGE));
+  const pagedRest = data.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
+
+  return (
+    <div className="min-h-screen pb-32 font-outfit">
+      <Seo
+        title="Leaderboard – Top Rankers | AajExam"
+        description="See who is topping the AajExam leaderboard. Compete with thousands of students preparing for govt exams."
+        canonical="/student/leaderboard"
+        noIndex={true}
+      />
+
+      <div className="space-y-5 xl:space-y-8">
+
+        {/* ── Hero Banner ── */}
+        <section className="relative rounded-[2rem] xl:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20">
+          <div className="absolute inset-0 bg-white dark:bg-black" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 dark:bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+
+          <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
+
+            {/* Type Toggle */}
+            <div className="flex justify-center mb-6">
+              <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-sm">
+                <button
+                  onClick={() => setType('quiz')}
+                  title={translate('Ranked by: Quizzes Attempted, then Accuracy, then Total Score')}
+                  className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
+                    type === 'quiz' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  <BrainCircuit className="w-4 h-4" /> Quizzes
+                </button>
+                <button
+                  onClick={() => setType('exam')}
+                  title={translate('Ranked by: Exams Attempted, then Accuracy, then Total Score')}
+                  className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
+                    type === 'exam' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
+                  }`}
+                >
+                  <FileText className="w-4 h-4" /> Exams
+                </button>
+              </div>
+            </div>
+
+            {/* ── Period Tabs ── */}
+            <div className="relative flex justify-center mb-6">
+              <div className="flex gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
+                {PERIODS.map(p => {
+                  const Icon = p.icon;
+                  const isActive = period === p.id;
+                  return (
+                    <button
+                      key={p.id}
+                      onClick={() => setPeriod(p.id)}
+                      className={`
+                        shrink-0 flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-[11px] sm:text-xs uppercase tracking-wide whitespace-nowrap border-2 transition-all active:translate-y-0.5
+                        ${isActive
+                          ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
+                          : 'bg-background-surface text-content-muted border-slate-200 dark:border-slate-800 hover:border-slate-200 dark:hover:border-white'
+                        }
+                      `}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                      <span>{translate(p.label)}</span>
+                    </button>
+                  );
+                })}
+              </div>
+              {/* Refresh button */}
+              <button
+                onClick={() => fetchLeaderboard(true)}
+                disabled={refreshing || loading}
+                title={translate('Refresh')}
+                className="absolute right-0 top-0 shrink-0 px-3 py-2.5 rounded-2xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
+              >
+                <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+              </button>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/15 border border-black/20 dark:border-white/25 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
+            >
+              <Trophy className="w-3.5 h-3.5 text-black dark:text-white" /> Hall of Fame
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+              className="text-xl xl:text-3xl font-black uppercase text-black dark:text-white tracking-tight"
+            >
+              {translate('Leaderboard')}
+            </motion.h1>
+
+            {/* Podium */}
+            {loading ? (
+              <div className="h-36 flex items-end justify-center gap-4 animate-pulse">
+                <div className="w-16 h-24 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-32 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+                <div className="w-16 h-20 bg-black/10 dark:bg-white/20 rounded-t-2xl" />
+              </div>
+            ) : top3.length > 0 ? (
+              <Podium top3={top3} currentUserId={currentUserId} type={type} />
+            ) : null}
+          </div>
+        </section>
+
+        {/* ── My Rank ── */}
+        {!loading && myEntry && <MyRankCard entry={myEntry} type={type} />}
+
+        {/* ── Quick Stats ── */}
+        {!loading && data.length > 0 && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-3 gap-2 sm:gap-3">
+            {[
+              { label: 'Players', value: `${data.length}+`, icon: Users, color: 'text-black dark:text-white' },
+              { label: 'Top Score', value: `${data[0]?.avgPercentage ?? 0}%`, icon: TrendingUp, color: 'text-primary-600 dark:text-primary-400' },
+              { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
+            ].map((stat, i) => (
+              <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
+                <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
+                <p className="text-base sm:text-lg font-black text-content-primary">{stat.value}</p>
+                <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase">{translate(stat.label)}</p>
+              </Card>
+            ))}
+          </motion.div>
+        )}
+
+        {/* ── Leaderboard List ── */}
+        {loading ? (
+          <LeaderboardSkeleton />
+        ) : data.length === 0 ? (
+          <div className="py-16 sm:py-20 text-center space-y-2 xl:space-y-4">
+            <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-slate-200 dark:text-slate-700 mx-auto" />
+            <h3 className="text-lg sm:text-xl font-black text-content-muted uppercase">{translate('No data yet for this period')}</h3>
+            <p className="text-sm text-content-muted font-bold">{translate('Attempt quizzes to appear on the leaderboard!')}</p>
+            <Link href="/quizzes">
+              <button className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
+                {translate('Start a Quiz')}
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={period}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="space-y-2"
+            >
+              {/* Column header — desktop table only; mobile list has no header row */}
+              <div className={`hidden xl:grid ${TABLE_GRID_COLS} items-center gap-2 px-3.5 pb-1`}>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">#</p>
+                <p className="text-[10px] font-black text-content-muted uppercase">{translate('Player')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center whitespace-nowrap">{translate('Total Time Spent')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{type === 'quiz' ? translate('Quizzes') : translate('Exams')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Marks')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Correct')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Score')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Accuracy')}</p>
+                <p className="text-[10px] font-black text-content-muted uppercase text-center">{translate('Avg Score')}</p>
+                <div />
+              </div>
+
+              {/* Rows — includes ranks 1-3 too, even though they're already on the podium above */}
+              {pagedRest.map((entry, i) => (
+                <LeaderboardRow
+                  key={entry.userId}
+                  entry={entry}
+                  index={(page - 1) * ROWS_PER_PAGE + i}
+                  currentUserId={currentUserId}
+                  type={type}
+                />
+              ))}
+
+              {/* Pagination */}
+              <div className="pt-4"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} itemsPerPage={ROWS_PER_PAGE} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} totalItems={data.length} sticky={false} /></div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </div>
+
+    </div>
+  );
+};
+
+export default LeaderboardPage;

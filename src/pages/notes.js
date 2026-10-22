@@ -1,16 +1,16 @@
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
 import { StickyNote, Bookmark, Eye, Search, BookOpen, Hash, Sparkles, Calculator, ChevronRight, TrendingUp, Zap } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from '@/components/common/AppLink';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { m as motion } from 'framer-motion';
 import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
-import Card from '../components/ui/Card';
-import Seo from '../components/Seo';
+import Card from '../components/common/ui/Card';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import useTranslate from '../hooks/useTranslate';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────

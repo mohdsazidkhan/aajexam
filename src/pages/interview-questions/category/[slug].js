@@ -1,12 +1,12 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Landmark, Briefcase, Eye, ArrowLeft, ChevronRight } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import API from '../../../lib/api';
-import Card from '../../../components/ui/Card';
-import Seo from '../../../components/Seo';
+import Card from '../../../components/common/ui/Card';
+import Seo from '../../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../../utils/schema';
-import { DetailSkeleton } from '../../../components/skeletons/PrivateSkeletons';
+import { DetailSkeleton } from '../../../components/common/skeletons/PrivateSkeletons';
 import useTranslate from '../../../hooks/useTranslate';
 
 const typeConfig = {

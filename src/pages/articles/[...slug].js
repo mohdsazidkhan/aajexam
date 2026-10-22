@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/common/AppLink';
 import useTranslate from '../../hooks/useTranslate';
 
 // Legacy /articles/<anything> — return 410 Gone.

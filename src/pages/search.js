@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-import Seo from '../components/Seo';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
-import { PageLoadingFallback } from '../components/skeletons/PublicSkeletons';
+import { PageLoadingFallback } from '../components/common/skeletons/PublicSkeletons';
 
-const SearchPage = dynamic(() => import('../components/pages/SearchPage'), {
+const SearchPage = dynamic(() => import('../components/public/pages/SearchPage'), {
   ssr: false,
   loading: () => <PageLoadingFallback />
 });

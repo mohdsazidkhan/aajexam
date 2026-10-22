@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { toast } from 'react-hot-toast';
 import { ArrowLeft, CircleAlert, LoaderCircle, RefreshCcw } from 'lucide-react';
 
 import API from '../../lib/api';
-import MobileAppWrapper from '../../components/MobileAppWrapper';
-import Seo from '../../components/Seo';
+import MobileAppWrapper from '../../components/common/MobileAppWrapper';
+import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
 
 const safeLocalStorage = {
@@ -92,6 +92,7 @@ const PayuFailure = () => {
     };
 
     fetchPaymentData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [router.isReady, router.query.error, router.query.txnid]);
 
   const detailRows = paymentData
@@ -186,7 +187,7 @@ const PayuFailure = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
-                onClick={() => router.push('/subscription')}
+                onClick={() => router.push('/student/subscription')}
                 className="w-full bg-primary-600 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-3"
               >
                 <RefreshCcw className="w-5 h-5" />

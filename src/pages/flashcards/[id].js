@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { ArrowLeft, Share2, Expand, X } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import API from '../../lib/api';
-import Seo from '../../components/Seo';
+import Seo from '../../components/common/Seo';
 import toast from 'react-hot-toast';
 import useTranslate from '../../hooks/useTranslate';
 
@@ -26,6 +26,7 @@ export default function FlashcardDeck() {
             })
             .catch(() => toast.error(translate('Failed to load flashcards')))
             .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
     }, [id]);
 
     const handleNext = useCallback(() => {
@@ -35,6 +36,7 @@ export default function FlashcardDeck() {
             return;
         }
         setCurrentIndex(prev => prev + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
     }, [deck, currentIndex, router]);
 
     const handlePrev = useCallback(() => {

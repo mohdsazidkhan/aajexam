@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
-const AdminPaymentTransactions = dynamic(() => import('../../components/pages/admin/PaymentTransactions'), {
+const AdminPaymentTransactions = dynamic(() => import('../../components/admin/pages/PaymentTransactions'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

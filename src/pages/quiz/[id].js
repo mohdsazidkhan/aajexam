@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import Seo from '../../components/Seo';
-import QuestionList from '../../components/seo/QuestionList';
+import Link from '@/components/common/AppLink';
+import Seo from '../../components/common/Seo';
+import QuestionList from '../../components/common/seo/QuestionList';
 import {
   generateBreadcrumbSchema,
   generateQuizSchema,
@@ -15,7 +15,7 @@ const PreviewLoading = () => {
   return <div className="py-10 text-center text-sm font-bold text-slate-400">{translate('Loading quiz preview…')}</div>;
 };
 
-const QuizPreviewPage = dynamic(() => import('../../components/pages/QuizPreviewPage'), {
+const QuizPreviewPage = dynamic(() => import('../../components/public/pages/QuizPreviewPage'), {
   ssr: false,
   loading: () => <PreviewLoading />,
 });

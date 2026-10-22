@@ -1,5 +1,5 @@
-import PrivacyPolicy from '../components/pages/PrivacyPolicy';
-import Seo from '../components/Seo';
+import PrivacyPolicy from '../components/public/pages/PrivacyPolicy';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 const PrivacyPage = () => {

@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminFormSkeleton } from '../../../../components/admin/Skeletons';
 
-const AdminBlogForm = dynamic(() => import('../../../../components/pages/admin/BlogForm'), {
+const AdminBlogForm = dynamic(() => import('../../../../components/admin/pages/BlogForm'), {
   ssr: false,
   loading: () => <AdminFormSkeleton />
 });

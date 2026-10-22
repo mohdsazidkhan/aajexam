@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
-import Seo from '../../components/Seo';
-import { FormSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import Seo from '../../components/common/Seo';
+import { FormSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
-const AskQuestionPage = dynamic(() => import('../../components/pages/AskQuestionPage'), {
+const AskQuestionPage = dynamic(() => import('../../components/student/pages/AskQuestionPage'), {
   ssr: false,
   loading: () => <div className="px-4 py-6"><FormSkeleton fields={3} /></div>
 });

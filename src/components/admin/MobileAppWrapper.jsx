@@ -15,7 +15,7 @@ import { secureLogout, getCurrentUser } from '../../lib/utils/authUtils';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import { toggleDarkMode, initializeDarkMode } from '../../store/darkModeSlice';
-import ScrollToTopButton from '../ScrollToTopButton';
+import ScrollToTopButton from '../common/ScrollToTopButton';
 import { useSSR } from '../../hooks/useSSR';
 
 const AdminMobileAppWrapper = ({ children, title, showHeader = true }) => {

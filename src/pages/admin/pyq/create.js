@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import AdminRoute from '../../../components/admin/Route';
-import AdminPYQForm from '../../../components/pages/admin/PYQForm';
+import AdminPYQForm from '../../../components/admin/pages/PYQForm';
 
 export default function CreatePYQPage() {
     return (

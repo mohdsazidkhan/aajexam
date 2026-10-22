@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { fmtNum } from '../../../lib/utils/formatNumber';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from '@/components/common/AppLink';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
   ArrowLeft, Clock, Trophy, FileText, BrainCircuit, ShieldCheck, Target,
   ChevronRight, Play, Eye, Lock, Unlock, History,
@@ -13,13 +13,13 @@ import { m as motion } from 'framer-motion';
 
 import API from '../../../lib/api';
 import { isAuthenticated } from '../../../lib/auth';
-import Button from '../../../components/ui/Button';
-import Card from '../../../components/ui/Card';
-import Pagination from '../../../components/Pagination';
+import Button from '../../../components/common/ui/Button';
+import Card from '../../../components/common/ui/Card';
+import Pagination from '../../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
-import Skeleton from '../../../components/Skeleton';
-import TestStartModal from '../../../components/TestStartModal';
-import Seo from '../../../components/Seo';
+import Skeleton from '../../../components/common/Skeleton';
+import TestStartModal from '../../../components/student/TestStartModal';
+import Seo from '../../../components/common/Seo';
 import {
   generateBreadcrumbSchema,
   generateExamCourseSchema,
@@ -67,6 +67,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [examId]);
 
   useEffect(() => {
@@ -230,7 +231,6 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
           <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
-          <p className="text-primary-100 font-bold text-sm xl:text-base opacity-90">{translate('PYQ, Practice Tests & Online Questions')}</p>
           {exam?.code && <p className="text-primary-100 font-black text-lg opacity-80">{translate('Code: {code}', { code: exam.code })}</p>}
           <div className="flex flex-wrap gap-2 pt-2">
             {subjects.length > 0 && (

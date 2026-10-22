@@ -4,13 +4,13 @@ import { Target, Clock, Trophy, CheckCircle, XCircle, SkipForward, Flame, ArrowR
 import { m as motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import API from '../lib/api';
-import Card from '../components/ui/Card';
-import Loading from '../components/Loading';
-import DiscussionThread from '../components/discussions/DiscussionThread';
-import Seo from '../components/Seo';
+import Card from '../components/common/ui/Card';
+import Loading from '../components/common/Loading';
+import DiscussionThread from '../components/common/discussions/DiscussionThread';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
-import { ChallengeSkeleton } from '../components/skeletons/PrivateSkeletons';
-import LanguageToggle from '../components/LanguageToggle';
+import { ChallengeSkeleton } from '../components/common/skeletons/PrivateSkeletons';
+import LanguageToggle from '../components/common/LanguageToggle';
 import useStoredTranslations from '../hooks/useStoredTranslations';
 import useTranslate from '../hooks/useTranslate';
 

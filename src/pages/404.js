@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Head from 'next/head'
 import { safeLocalStorage } from '../lib/utils/storage'
 import useTranslate from '../hooks/useTranslate';
@@ -11,7 +11,7 @@ export default function Custom404() {
   const handleGoHome = () => {
     // Check if user is logged in, redirect to home if logged in, otherwise to landing page
     const token = safeLocalStorage.getItem('token')
-    router.push(token ? '/dashboard' : '/')
+    router.push(token ? '/student/dashboard' : '/')
   }
 
   const handleGoBack = () => {

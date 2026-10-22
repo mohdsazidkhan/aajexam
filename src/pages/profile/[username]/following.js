@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Seo from '../../../components/Seo';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Seo from '../../../components/common/Seo';
 
 // Legacy URL — following list now lives at /u/[username]/following.
 export default function FollowingRedirect() {

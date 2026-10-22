@@ -1,5 +1,5 @@
-import FeaturesPage from '../components/pages/FeaturesPage';
-import Seo from '../components/Seo';
+import FeaturesPage from '../components/public/pages/FeaturesPage';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 const Features = () => {

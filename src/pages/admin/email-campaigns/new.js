@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminFormSkeleton } from '../../../components/admin/Skeletons';
 
-const EmailCampaignBuilder = dynamic(() => import('../../../components/pages/admin/EmailCampaignBuilder'), {
+const EmailCampaignBuilder = dynamic(() => import('../../../components/admin/pages/EmailCampaignBuilder'), {
   ssr: false,
   loading: () => <AdminFormSkeleton />
 });

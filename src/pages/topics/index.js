@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
-import Seo from '../../components/Seo';
-import LinkIndexSection from '../../components/seo/LinkIndexSection';
+import Seo from '../../components/common/Seo';
+import LinkIndexSection from '../../components/common/seo/LinkIndexSection';
 import { generateBreadcrumbSchema } from '../../utils/schema';
-import TopicListPage from '../../components/pages/TopicListPage';
+import TopicListPage from '../../components/public/pages/TopicListPage';
 import useTranslate from '../../hooks/useTranslate';
 
 export default function Topics(props) {

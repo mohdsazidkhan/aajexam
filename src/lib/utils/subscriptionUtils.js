@@ -145,7 +145,7 @@ export const getDaysRemaining = () => {
  * @param {string} redirectTo - Where to redirect if no subscription
  * @returns {boolean} - true if has subscription, false otherwise
  */
-export const requireSubscription = (router, redirectTo = '/subscription') => {
+export const requireSubscription = (router, redirectTo = '/student/subscription') => {
   if (!hasActiveSubscription()) {
     toast.error(translateNow('This feature requires an active subscription!'));
     if (router) {
@@ -163,7 +163,7 @@ export const requireSubscription = (router, redirectTo = '/subscription') => {
  * @param {string} redirectTo - Where to redirect if no subscription
  * @returns {boolean} - true if has required plan, false otherwise
  */
-export const requireSubscriptionPlan = (planName, router, redirectTo = '/subscription') => {
+export const requireSubscriptionPlan = (planName, router, redirectTo = '/student/subscription') => {
   if (!hasSubscriptionPlan(planName)) {
     toast.error(translateNow('This feature requires a {plan} subscription!', { plan: planName }));
     if (router) {

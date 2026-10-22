@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic';
-import Seo from '../../components/Seo';
+import Seo from '../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../utils/schema';
-import { QAThreadSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import { QAThreadSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
 const CommunityQuestionDetailPage = dynamic(
-  () => import('../../components/pages/CommunityQuestionDetailPage'),
+  () => import('../../components/public/pages/CommunityQuestionDetailPage'),
   { ssr: false, loading: () => <div className="container mx-auto py-6"><QAThreadSkeleton /></div> }
 );
 

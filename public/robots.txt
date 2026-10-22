@@ -16,6 +16,7 @@ Disallow: /forgot-password
 Disallow: /reset-password
 
 # Authenticated user dashboards
+Disallow: /student/
 Disallow: /dashboard
 Disallow: /profile
 Disallow: /profile/

@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
-const UserReferralDetail = dynamic(() => import('../../components/pages/admin/UserReferralDetail'), {
+const UserReferralDetail = dynamic(() => import('../../components/admin/pages/UserReferralDetail'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

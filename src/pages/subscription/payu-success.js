@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { toast } from 'react-hot-toast';
 import { ArrowRight, CheckCircle2, CircleAlert, LayoutDashboard, LoaderCircle } from 'lucide-react';
 
 import API from '../../lib/api';
-import MobileAppWrapper from '../../components/MobileAppWrapper';
-import Seo from '../../components/Seo';
+import MobileAppWrapper from '../../components/common/MobileAppWrapper';
+import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
 
 const safeLocalStorage = {
@@ -115,6 +115,7 @@ const PayuSuccess = () => {
     };
 
     verifyPayment();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [router.isReady, router.query.txnid]);
 
   const detailRows = verificationResult?.subscription
@@ -200,14 +201,14 @@ const PayuSuccess = () => {
               {success ? (
                 <>
                   <button
-                    onClick={() => router.push('/dashboard')}
+                    onClick={() => router.push('/student/dashboard')}
                     className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-3"
                   >
                     <LayoutDashboard className="w-5 h-5" />
                     {translate('Go to Dashboard')}
                   </button>
                   <button
-                    onClick={() => router.push('/subscription')}
+                    onClick={() => router.push('/student/subscription')}
                     className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-3"
                   >
                     <ArrowRight className="w-5 h-5" />
@@ -217,7 +218,7 @@ const PayuSuccess = () => {
               ) : (
                 <>
                   <button
-                    onClick={() => router.push('/subscription')}
+                    onClick={() => router.push('/student/subscription')}
                     className="w-full bg-primary-600 hover:bg-primary-600 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm"
                   >
                     {translate('Try payment again')}

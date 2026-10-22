@@ -1,0 +1,266 @@
+'use client';
+
+import React, { useState } from 'react';
+import {
+   Mail,
+   Phone,
+   MapPin,
+   Clock,
+   Send,
+   Headset,
+   MessageSquare,
+   Rocket,
+   Facebook,
+   Twitter,
+   Instagram,
+   Youtube,
+   Linkedin,
+   CircleCheck,
+   CircleAlert,
+   Sparkles,
+   Link2,
+   GraduationCap,
+   ShieldCheck
+} from 'lucide-react';
+import { m as motion, AnimatePresence } from 'framer-motion';
+import { FaPinterest } from 'react-icons/fa';
+
+import MobileAppWrapper from '../../common/MobileAppWrapper';
+import Card from '../../common/ui/Card';
+import Button from '../../common/ui/Button';
+import config from '../../../lib/config/appConfig';
+import useTranslate from '../../../hooks/useTranslate';
+
+const ContactUs = ({ contactInfo = {
+   email: config.CONTACT.EMAIL,
+   phone: config.CONTACT.PHONE,
+   address: 'Badarpur, Delhi, India',
+   businessHours: '24/7'
+} }) => {
+  const { translate, rich } = useTranslate();
+   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+   const [status, setStatus] = useState(null);
+   const [loading, setLoading] = useState(false);
+
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setStatus(null);
+      try {
+         const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+         const response = await fetch(`${API_BASE_URL}/contacts`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+               name: formData.name,
+               email: formData.email,
+               message: `Subject: ${formData.subject}\n${formData.message}`,
+            }),
+         });
+         const data = await response.json();
+         if (data.success) {
+            setStatus("success");
+            setFormData({ name: "", email: "", subject: "", message: "" });
+         } else { setStatus("error"); }
+      } catch (error) { setStatus("error"); }
+      finally { setLoading(false); }
+   };
+
+   const socialLinks = [
+      { name: 'Instagram', icon: Instagram, url: process.env.NEXT_PUBLIC_INSTAGRAM_URL, color: 'pink-600' },
+      { name: 'Facebook', icon: Facebook, url: process.env.NEXT_PUBLIC_FACEBOOK_URL, color: 'blue-600' },
+      { name: 'X', icon: Twitter, url: process.env.NEXT_PUBLIC_X_URL, color: 'slate-800' },
+      { name: 'YouTube', icon: Youtube, url: process.env.NEXT_PUBLIC_YOUTUBE_URL, color: 'red-600' },
+      { name: 'LinkedIn', icon: Linkedin, url: process.env.NEXT_PUBLIC_LINKEDIN_URL, color: 'blue-700' },
+      { name: 'WhatsApp', icon: MessageSquare, url: process.env.NEXT_PUBLIC_WHATSAPP_URL, color: 'primary-500' },
+      { name: 'Discord', icon: MessageSquare, url: process.env.NEXT_PUBLIC_DISCORD_URL, color: 'indigo-500' },
+      { name: 'Telegram', icon: Send, url: process.env.NEXT_PUBLIC_TELEGRAM_URL, color: 'sky-500' },
+      { name: 'Pinterest', icon: FaPinterest, url: process.env.NEXT_PUBLIC_PINTEREST_URL, color: 'red-500' },
+   ];
+
+   return (
+      <MobileAppWrapper title={translate('Contact Support')}>
+         <div className="min-h-screen bg-background-page animate-fade-in selection:bg-primary-600 selection:text-white font-outfit mt-0">
+            <div className="py-10 xl:py-20 space-y-12 xl:space-y-20">
+
+               {/* --- Header Section --- */}
+               <section className="text-center space-y-6 relative overflow-hidden">
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
+                     <MessageSquare className="w-10 h-10" />
+                  </motion.div>
+                  <div className="space-y-2 xl:space-y-4">
+                     <h1 className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{rich('Contact <0>Support</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
+                  </div>
+               </section>
+
+               <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10 items-start">
+
+                  {/* --- Contact Details --- */}
+                  <div className="xl:col-span-6 space-y-8">
+                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        {[
+                           { label: 'Email Support', val: contactInfo.email, icon: Mail, color: 'primary' },
+                           { label: 'Phone Number', val: contactInfo.phone, icon: Phone, color: 'primary' },
+                           { label: 'Office Address', val: contactInfo.address, icon: MapPin, color: 'primary' },
+                           { label: 'Working Hours', val: contactInfo.businessHours, icon: Clock, color: 'primary' }
+                        ].map((item, i) => (
+                           <Card key={i} className="flex items-center gap-6 xl:gap-10 border-2 border-slate-200/60 dark:border-slate-800 hover:border-primary-500/30 transition-all rounded-[2rem] xl:rounded-[3rem] bg-white dark:bg-slate-900/40 group">
+                              <div className={`w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center bg-${item.color === 'primary' ? 'primary-500' : item.color + '-500'}/25 text-${item.color === 'primary' ? 'primary' : item.color}-500 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-transparent group-hover:border-current transition-all shrink-0`}>
+                                 <item.icon className="w-5 h-5 xl:w-6 xl:h-6" />
+                              </div>
+                              <div className="min-w-0">
+                                 <p className="text-[9px] xl:text-[10px] font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.2em] leading-none mb-1.5 xl:mb-2">{translate(item.label)}</p>
+                                 <p className="text-sm xl:text-base font-black text-slate-900 dark:text-white uppercase tracking-tight truncate">{item.val}</p>
+                              </div>
+                           </Card>
+                        ))}
+                     </div>
+
+                     {/* Social Links */}
+                     <Card className="space-y-6 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 overflow-hidden relative rounded-[3rem] shadow-sm">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                        <div className="relative z-10 space-y-6">
+                           <div className="space-y-1">
+                              <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary-600">{translate('Follow Us')}</h2>
+                              <p className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Find Us on Social Media')}</p>
+                           </div>
+                           <div className="flex flex-wrap gap-4">
+                              {socialLinks.map((s, i) => (
+                                 <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={translate('Follow us on {name}', { name: s.name })} className="w-11 h-11 bg-white dark:bg-slate-800 hover:bg-primary-700 hover:text-white dark:hover:text-white flex items-center justify-center rounded-lg xl:rounded-xl transition-all border-2 border-slate-200 dark:border-slate-700 shadow-sm text-slate-600 dark:text-slate-400 group/link">
+                                    <s.icon className="w-5 h-5 group-hover/link:scale-110 transition-transform" />
+                                 </a>
+                              ))}
+                           </div>
+                        </div>
+                        <Sparkles className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/5 -rotate-12" />
+                     </Card>
+
+                     {/* Support Info */}
+                     <Card className="border-none bg-primary-600 text-white shadow-sm rounded-[3rem] overflow-hidden group relative">
+                        <div className="flex items-center gap-5 relative z-10">
+                           <div className="w-14 h-14 bg-white/20 rounded-2xl backdrop-blur-md border-2 border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-sm">
+                              <Headset className="w-8 h-8" />
+                           </div>
+                           <div className="space-y-1">
+                              <h3 className="text-xl font-black font-outfit uppercase tracking-tight leading-none">{translate('We Are Here For You')}</h3>
+                              <p className="text-xs font-medium opacity-90">{translate('Students always come first. We are ready to help.')}</p>
+                           </div>
+                        </div>
+                        <Sparkles className="absolute top-0 right-0 w-20 xl:w-32 h-20 xl:h-32 text-white/10 pointer-events-none" />
+                     </Card>
+                  </div>
+
+                  {/* --- Contact Form --- */}
+                  <div className="xl:col-span-6">
+                     <Card className="space-y-8 border-2 border-slate-200/80 dark:border-slate-800 shadow-sm rounded-[3rem] xl:rounded-[4.5rem] bg-white dark:bg-slate-900/60 backdrop-blur-xl relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[80px] -ml-32 -mt-32" />
+
+                        <div className="space-y-6 relative z-10">
+                           <h2 className="text-2xl xl:text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{translate('Send a Message')}</h2>
+                           <p className="text-xs xl:text-sm font-medium text-slate-500 dark:text-slate-400">{translate('We usually reply within 24 hours. Write to us anytime.')}</p>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                              <div className="space-y-2 xl:space-y-4">
+                                 <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">{translate('Your Full Name')}</label>
+                                 <input
+                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                    placeholder={translate('e.g. John Doe')}
+                                    value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} required
+                                 />
+                              </div>
+                              <div className="space-y-2 xl:space-y-4">
+                                 <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">{translate('Email Address')}</label>
+                                 <input
+                                    type="email"
+                                    className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                    placeholder={translate('john@example.com')}
+                                    value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} required
+                                 />
+                              </div>
+                           </div>
+
+                           <div className="space-y-2 xl:space-y-4">
+                              <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">{translate('Subject')}</label>
+                              <input
+                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                 placeholder={translate('How can we help?')}
+                                 value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} required
+                              />
+                           </div>
+
+                           <div className="space-y-2 xl:space-y-4">
+                              <label className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em] px-2 block">{translate('Your Message')}</label>
+                              <textarea
+                                 rows="5"
+                                 className="w-full px-6 py-5 rounded-[1.5rem] border-2 border-slate-200/80 dark:border-slate-700 bg-slate-50 dark:bg-black font-bold text-slate-900 dark:text-white outline-none focus:border-primary-700 focus:ring-4 focus:ring-primary-500/5 transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-600 autofill:shadow-[0_0_0_1000px_#020617_inset] autofill:[-webkit-text-fill-color:white]"
+                                 placeholder={translate('Type your message here...')}
+                                 value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} required
+                              />
+                           </div>
+
+                           <AnimatePresence>
+                              {status === 'success' && (
+                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-primary-500/25 text-primary-600 rounded-2xl border-2 border-primary-500/20 flex items-center gap-3">
+                                    <CircleCheck className="w-5 h-5" />
+                                    <span className="text-xs font-black uppercase tracking-widest">{translate('Message Sent Successfully!')}</span>
+                                 </motion.div>
+                              )}
+                              {status === 'error' && (
+                                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-black/25 dark:bg-white/25 text-black dark:text-white rounded-2xl border-2 border-black/20 dark:border-white/20 flex items-center gap-3">
+                                    <CircleAlert className="w-5 h-5" />
+                                    <span className="text-xs font-black uppercase tracking-widest">{translate('Error sending message. Please try again.')}</span>
+                                 </motion.div>
+                              )}
+                           </AnimatePresence>
+
+                           <Button
+                              variant="primary"
+                              fullWidth
+                              className="bg-primary-600 hover:bg-primary-600 active:bg-primary-600 text-white py-6 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-base xl:text-lg shadow-sm border-b-[8px] active:border-b-0 border-primary-600 active:translate-y-1 transition-all flex items-center justify-center gap-4 backdrop-blur-sm"
+                              type="submit"
+                              disabled={loading}
+                           >
+                              {loading ? translate('SENDING...') : (
+                                 <div className='flex items-center gap-2'>
+                                    <Send className="w-5 h-5" /> {translate('SEND MESSAGE')}
+                                 </div>
+                              )}
+                           </Button>
+                        </form>
+                     </Card>
+                  </div>
+               </div>
+
+               {/* --- Feature Grid --- */}
+               <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {[
+                     { title: 'Fast Reply', desc: 'We reply to your question within 24 hours on working days.', icon: Rocket, color: 'primary' },
+                     { title: 'Always Available', desc: 'You can contact us any time. We are here to help.', icon: ShieldCheck, color: 'primary' },
+                     { title: 'Helpful Team', desc: 'Our team knows the platform well and can solve your problem quickly.', icon: GraduationCap, color: 'primary' }
+                  ].map((f, i) => (
+                     <Card key={i} className="text-center space-y-5 border-2 border-slate-200/60 dark:border-slate-800 rounded-[2.5rem] /40 hover:shadow-sm transition-all group relative overflow-hidden">
+                        <div className={`p-4 bg-${f.color === 'primary' ? 'primary' : f.color}-500/25 text-${f.color === 'primary' ? 'primary' : f.color}-500 rounded-2xl w-fit mx-auto border-2 border-transparent group-hover:border-current transition-all shadow-sm`}>
+                           <f.icon className="w-6 h-6" />
+                        </div>
+                        <div className="space-y-3">
+                           <h3 className="text-lg font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white leading-none">{translate(f.title)}</h3>
+                           <p className="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed max-w-[200px] mx-auto">{translate(f.desc)}</p>
+                        </div>
+                     </Card>
+                  ))}
+               </section>
+            </div>
+         </div>
+      </MobileAppWrapper>
+   );
+};
+
+export default ContactUs;
+
+
+
+
+
+

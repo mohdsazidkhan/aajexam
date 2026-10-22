@@ -1,14 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { Users, Star, Award, Shield, BookOpen, Clock, MessageCircle, ChevronRight, Send, ThumbsUp, Calendar } from 'lucide-react';
-import Link from 'next/link';
+import Link from '@/components/common/AppLink';
 import API from '../../lib/api';
-import Loading from '../../components/Loading';
-import Card from '../../components/ui/Card';
+import Loading from '../../components/common/Loading';
+import Card from '../../components/common/ui/Card';
 import { toast } from 'react-hot-toast';
-import Seo from '../../components/Seo';
-import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import Seo from '../../components/common/Seo';
+import { ProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../../utils/schema';
 import useTranslate from '../../hooks/useTranslate';
 

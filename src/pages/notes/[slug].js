@@ -1,11 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import { StickyNote, Bookmark, Eye, ArrowLeft, Tag } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { toast } from 'react-hot-toast';
 import API from '../../lib/api';
-import Card from '../../components/ui/Card';
-import Seo from '../../components/Seo';
+import Card from '../../components/common/ui/Card';
+import Seo from '../../components/common/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
 import useTranslate from '../../hooks/useTranslate';
 

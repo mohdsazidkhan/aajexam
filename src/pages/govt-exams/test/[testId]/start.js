@@ -2,8 +2,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useRouter } from "next/router";
-import Seo from "../../../../components/Seo";
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Seo from "../../../../components/common/Seo";
 import {
   Clock,
   ChevronLeft,
@@ -26,11 +26,11 @@ import { toast } from "react-hot-toast";
 
 import API from "../../../../lib/api";
 import { getCurrentUser } from "../../../../lib/utils/authUtils";
-import Button from "../../../../components/ui/Button";
-import Card from "../../../../components/ui/Card";
-import Skeleton from "../../../../components/Skeleton";
-import TestStartModal from "../../../../components/TestStartModal";
-import LanguageToggle from "../../../../components/LanguageToggle";
+import Button from "../../../../components/common/ui/Button";
+import Card from "../../../../components/common/ui/Card";
+import Skeleton from "../../../../components/common/Skeleton";
+import TestStartModal from "../../../../components/student/TestStartModal";
+import LanguageToggle from "../../../../components/common/LanguageToggle";
 import useQuestionTranslation from "../../../../hooks/useQuestionTranslation";
 import useTranslate from '../../../../hooks/useTranslate';
 
@@ -106,6 +106,7 @@ const TestStart = ({ resolvedId } = {}) => {
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [testId, router]);
 
   useEffect(() => { if (testId) loadTest(); }, [testId, loadTest]);

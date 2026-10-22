@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { Users, Plus, X, Send } from 'lucide-react';
 import API from '../../lib/api';
 import { toast } from 'react-hot-toast';
-import Seo from '../../components/Seo';
+import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
 
 export default function MentorApply() {
@@ -75,7 +75,6 @@ export default function MentorApply() {
           </div>
           <div>
             <h1 className="text-xl font-black text-slate-900 dark:text-white uppercase">{translate('Become a Mentor')}</h1>
-            <p className="text-xs text-slate-400 font-bold">{translate('Share your exam success story and help others')}</p>
           </div>
         </div>
 

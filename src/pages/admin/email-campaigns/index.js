@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
 
-const EmailCampaignsListPage = dynamic(() => import('../../../components/pages/admin/EmailCampaignsListPage'), {
+const EmailCampaignsListPage = dynamic(() => import('../../../components/admin/pages/EmailCampaignsListPage'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

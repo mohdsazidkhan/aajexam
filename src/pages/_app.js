@@ -13,10 +13,10 @@ import { initializeTextSize } from '../store/textSizeSlice';
 import { initializeDisplay } from '../store/displaySlice';
 import { GlobalErrorProvider } from '../contexts/GlobalErrorContext';
 import { LanguageProvider } from '../contexts/LanguageContext';
-import PreferencesSync from '../components/PreferencesSync';
+import PreferencesSync from '../components/common/PreferencesSync';
 import { useRouter } from 'next/router';
-import ClientOnly from '../components/ClientOnly';
-import ErrorBoundary from '../components/ErrorBoundary';
+import ClientOnly from '../components/common/ClientOnly';
+import ErrorBoundary from '../components/common/ErrorBoundary';
 import '../styles/App.css';
 import '../styles/couponDatepicker.css';
 import '../styles/darkMode.css';
@@ -31,43 +31,43 @@ const Toaster = dynamic(
   { ssr: false }
 );
 
-const CookieConsent = dynamic(() => import('../components/CookieConsent'), {
+const CookieConsent = dynamic(() => import('../components/common/CookieConsent'), {
   ssr: false,
 });
 
-const IndiaOnlyNotice = dynamic(() => import('../components/IndiaOnlyNotice'), {
+const IndiaOnlyNotice = dynamic(() => import('../components/common/IndiaOnlyNotice'), {
   ssr: false,
 });
 
-const ExitIntentModal = dynamic(() => import('../components/modals/ExitIntentModal'), {
+const ExitIntentModal = dynamic(() => import('../components/public/ExitIntentModal'), {
   ssr: false,
 });
 
-const SignupBoost = dynamic(() => import('../components/modals/SignupBoost'), {
+const SignupBoost = dynamic(() => import('../components/public/SignupBoost'), {
   ssr: false,
 });
 
-const PageViewNudge = dynamic(() => import('../components/modals/PageViewNudge'), {
+const PageViewNudge = dynamic(() => import('../components/public/PageViewNudge'), {
   ssr: false,
 });
 
-const WelcomePromoModal = dynamic(() => import('../components/modals/WelcomePromoModal'), {
+const WelcomePromoModal = dynamic(() => import('../components/public/WelcomePromoModal'), {
   ssr: false,
 });
 
-const CouponOfferModal = dynamic(() => import('../components/modals/CouponOfferModal'), {
+const CouponOfferModal = dynamic(() => import('../components/public/CouponOfferModal'), {
   ssr: false,
 });
 
-const TargetExamPrompt = dynamic(() => import('../components/TargetExamPrompt'), {
+const TargetExamPrompt = dynamic(() => import('../components/student/TargetExamPrompt'), {
   ssr: false,
 });
 
-const CityPromptModal = dynamic(() => import('../components/modals/CityPromptModal'), {
+const CityPromptModal = dynamic(() => import('../components/student/CityPromptModal'), {
   ssr: false,
 });
 
-const ProfileDetailsModal = dynamic(() => import('../components/modals/ProfileDetailsModal'), {
+const ProfileDetailsModal = dynamic(() => import('../components/student/ProfileDetailsModal'), {
   ssr: false,
 });
 
@@ -111,9 +111,9 @@ const globalStyles = `
 `;
 
 // App Layout Component that can use router
-import PublicNavbar from '../components/navbars/PublicNavbar';
-import PublicBottomNav from '../components/navbars/PublicBottomNav';
-import UnifiedFooter from '../components/UnifiedFooter';
+import PublicNavbar from '../components/public/Navbar';
+import PublicBottomNav from '../components/public/BottomNav';
+import UnifiedFooter from '../components/common/UnifiedFooter';
 import { useAuthStatus } from '../hooks/useClientSide';
 import { usePromoBarVisible } from '../lib/freePromo';
 
@@ -187,7 +187,7 @@ function AppContent({ Component, pageProps }) {
   useEffect(() => {
     if (!isAuthenticated || AppLayout) return undefined;
     let cancelled = false;
-    import('../components/layout/AppLayout').then((m) => { if (!cancelled) setAppLayout(() => m.default); });
+    import('../components/common/layout/AppLayout').then((m) => { if (!cancelled) setAppLayout(() => m.default); });
     return () => { cancelled = true; };
   }, [isAuthenticated, AppLayout]);
 

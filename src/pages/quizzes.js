@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import API from '../lib/api';
 import useTargetExamsVersion from '../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../lib/utils/targetExams';
-import Seo from '../components/Seo';
-import LinkIndexSection from '../components/seo/LinkIndexSection';
+import Seo from '../components/common/Seo';
+import LinkIndexSection from '../components/common/seo/LinkIndexSection';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
-import QuizListPage from '../components/pages/QuizListPage';
+import QuizListPage from '../components/public/pages/QuizListPage';
 
 export default function Quizzes(props) {
   // Static HTML carries the full catalogue (SEO). Logged-in users with target exams get the

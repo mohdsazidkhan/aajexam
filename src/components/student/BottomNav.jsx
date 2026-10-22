@@ -1,8 +1,9 @@
 'use client';
 
+import { stripStudent } from '../../lib/utils/appRoutes';
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from '@/components/common/AppLink';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
   Home,
   BookOpen,
@@ -31,17 +32,17 @@ const REEL_TYPES = [
 const StudentBottomNav = () => {
   const router = useRouter();
   const { translate } = useTranslate();
-  const currentPath = router.pathname;
+  const currentPath = stripStudent(router.pathname);
   const [showCreate, setShowCreate] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', path: '/dashboard', icon: Home },
+    { name: 'Dashboard', path: '/student/dashboard', icon: Home },
     { name: 'Blogs', path: '/blog', icon: Newspaper },
     { name: 'Exams', path: '/govt-exams', icon: BookOpen },
     { name: 'CREATE', path: null, icon: Plus },
     { name: 'Quizzes', path: '/quizzes', icon: BrainCircuit },
     { name: 'Search', path: '/search', icon: Search },
-    { name: 'Profile', path: '/profile', icon: User },
+    { name: 'Profile', path: '/student/profile', icon: User },
   ];
 
   return (
@@ -124,7 +125,8 @@ const StudentBottomNav = () => {
             );
           }
 
-          const isActive = currentPath === item.path || currentPath.startsWith(item.path + '/');
+          const itemPath = stripStudent(item.path);
+          const isActive = currentPath === itemPath || currentPath.startsWith(itemPath + '/');
           return (
             <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
               <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${

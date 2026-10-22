@@ -2,10 +2,10 @@ import React from 'react';
 
 import { generateOrganizationSchema, generateWebsiteSchema } from '../utils/schema';
 
-import Seo from '../components/Seo';
+import Seo from '../components/common/Seo';
 import dbConnect from '../lib/db';
 
-import LandingPage from '../components/pages/ModernLandingPage';
+import LandingPage from '../components/public/pages/ModernLandingPage';
 
 export default function Index({ educationalContent, isAuthenticated }) {
   return (
@@ -50,7 +50,7 @@ export async function getServerSideProps(context) {
 
       return {
         redirect: {
-          destination: isAdminUser ? '/admin/dashboard' : '/dashboard',
+          destination: isAdminUser ? '/admin/dashboard' : '/student/dashboard',
           permanent: false,
         },
       };

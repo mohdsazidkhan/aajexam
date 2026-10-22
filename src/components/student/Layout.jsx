@@ -7,7 +7,7 @@ import { initializeDarkMode } from '../../store/darkModeSlice';
 import { closeSidebar } from '../../lib/store/sidebarSlice';
 import { isAuthenticated, getCurrentUser } from '../../lib/utils/authUtils';
 import { useSSR } from '../../hooks/useSSR';
-import ClientOnly from '../ClientOnly';
+import ClientOnly from '../common/ClientOnly';
 
 const StudentLayout = ({ children }) => {
   const { isMounted, router } = useSSR();

@@ -1,5 +1,5 @@
-import BlogDetailPage from '../../components/pages/BlogDetailPage';
-import Seo from '../../components/Seo';
+import BlogDetailPage from '../../components/public/pages/BlogDetailPage';
+import Seo from '../../components/common/Seo';
 import { generateBlogPostingSchema, generateBreadcrumbSchema, generateFAQSchema, generateItemListSchema } from '../../utils/schema';
 
 export default function BlogDetail({ blog, slug, seo, relatedBlogs = [], faqs = [], hasPyq = false }) {

@@ -79,7 +79,6 @@ export async function GET(req) {
         const grouped = {};
         for (const ev of events) {
             if (!grouped[ev.date]) grouped[ev.date] = [];
-            // eslint-disable-next-line no-unused-vars
             const { dateObj, ...rest } = ev;
             grouped[ev.date].push(rest);
         }

@@ -12,7 +12,7 @@ export default function AdminRoute({ children }) {
   useEffect(() => {
     if (!isAdmin() || !hasAdminPrivileges()) {
       showError('Access denied. Admin privileges required.')
-      router.push('/dashboard')
+      router.push('/student/dashboard')
     }
   }, [router, showError])
 
@@ -32,7 +32,7 @@ export default function AdminRoute({ children }) {
             This page is only for admins. Please log in with an admin account to continue.
           </p>
           <button
-            onClick={() => router.push('/dashboard')}
+            onClick={() => router.push('/student/dashboard')}
             className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
           >
             Go to Home

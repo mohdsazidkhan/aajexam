@@ -20,7 +20,7 @@ export default function StudentRoute({ children }) {
 
     if (!isStudent()) {
       showError('Access denied. Student account required.')
-      router.push('/dashboard')
+      router.push('/student/dashboard')
     }
   }, [router, showError])
 
@@ -48,7 +48,7 @@ export default function StudentRoute({ children }) {
             {translate('This page is only for students. Please log in with a student account.')}
           </p>
           <button
-            onClick={() => router.push('/dashboard')}
+            onClick={() => router.push('/student/dashboard')}
             className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-5 px-8 rounded-3xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs"
           >
             {translate('Go to Home')}

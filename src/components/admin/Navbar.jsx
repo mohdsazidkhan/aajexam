@@ -21,7 +21,7 @@ import { secureLogout, getCurrentUser, getAuthToken } from '../../lib/utils/auth
 import { useSSR } from '../../hooks/useSSR';
 import { useAdminMobileHeaderContext } from '../../contexts/AdminMobileHeaderContext';
 import API from '../../lib/api';
-import ThemeColorMenuButton from '../ThemeColorMenuButton';
+import ThemeColorMenuButton from '../common/ThemeColorMenuButton';
 
 const AdminNavbar = () => {
   const { isMounted, router } = useSSR();

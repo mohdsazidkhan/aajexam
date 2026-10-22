@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { GridSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import { GridSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
-const ReelsSaved = dynamic(() => import('../../components/pages/ReelsSaved'), {
+const ReelsSaved = dynamic(() => import('../../components/student/pages/ReelsSaved'), {
   ssr: false,
   loading: () => <div className="px-4 py-6"><GridSkeleton count={6} /></div>
 });

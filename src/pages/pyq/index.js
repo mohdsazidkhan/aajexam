@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Link from '@/components/common/AppLink';
 import { FileText, Clock, Trophy, BookOpen, ChevronRight } from 'lucide-react';
 import { FaGraduationCap, FaArrowRight, FaBookOpen } from 'react-icons/fa';
-import Card from '../../components/ui/Card';
-import { ProBadge } from '../../components/ui';
+import Card from '../../components/common/ui/Card';
+import { ProBadge } from '../../components/common/ui';
 import { hasProSubscription } from '../../lib/utils/subscriptionUtils';
 import { Lock } from 'lucide-react';
-import Seo from '../../components/Seo';
+import Seo from '../../components/common/Seo';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { parseExamIds, getStoredTargetExamIds } from '../../lib/utils/targetExams';
 import {
@@ -20,7 +20,7 @@ import Exam from '../../models/Exam';
 import ExamPattern from '../../models/ExamPattern';
 import PracticeTest from '../../models/PracticeTest';
 import useTranslate from '../../hooks/useTranslate';
-import Pagination from '../../components/Pagination';
+import Pagination from '../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 
 export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, examId, examIdsFilter, exams, examsWithPYQ, totalPYQs, intro, faqs, years }) {
@@ -372,7 +372,7 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     {/* CTAs */}
                                     <div className="flex flex-col gap-3 pt-1">
                                         <button
-                                            onClick={() => router.push('/subscription')}
+                                            onClick={() => router.push('/student/subscription')}
                                             className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
                                         >
                                             {translate('Get PRO — Unlock All PYQs →')}

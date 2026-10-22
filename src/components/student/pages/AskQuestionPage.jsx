@@ -1,0 +1,342 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import API from '../../../lib/api';
+import Card from '../../common/ui/Card';
+import Button from '../../common/ui/Button';
+import { isAuthenticated } from '../../../lib/utils/authUtils';
+import {
+  Send,
+  Plus,
+  Trash2,
+  Image as ImageIcon,
+  X,
+  CheckCircle
+} from 'lucide-react';
+import useTranslate from '../../../hooks/useTranslate';
+
+const AskQuestionPage = () => {
+  const { translate } = useTranslate();
+  const router = useRouter();
+  const authenticated = isAuthenticated();
+
+  const [exams, setExams] = useState([]);
+  const [submitting, setSubmitting] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const [form, setForm] = useState({
+    question: '',
+    exam: '',
+    explanation: '',
+    image: null,
+    options: [
+      { text: '', isCorrect: false },
+      { text: '', isCorrect: false },
+      { text: '', isCorrect: false },
+      { text: '', isCorrect: false }
+    ]
+  });
+
+  useEffect(() => {
+    if (!authenticated) {
+      router.push('/login');
+      return;
+    }
+    fetchExams();
+  }, [authenticated]);
+
+  const fetchExams = async () => {
+    try {
+      const examRes = await API.getPublicExams({ limit: 500 });
+      setExams(examRes.data?.exams || examRes.data || []);
+    } catch (err) {
+      console.error('Error fetching exams:', err);
+    }
+  };
+
+  const handleChange = (field, value) => {
+    setForm(prev => ({ ...prev, [field]: value }));
+    setError('');
+  };
+
+  const handleOptionChange = (index, field, value) => {
+    setForm(prev => {
+      const options = [...prev.options];
+      options[index] = { ...options[index], [field]: value };
+      // If marking as correct, unmark others
+      if (field === 'isCorrect' && value) {
+        options.forEach((opt, i) => {
+          if (i !== index) opt.isCorrect = false;
+        });
+      }
+      return { ...prev, options };
+    });
+  };
+
+  const addOption = () => {
+    if (form.options.length >= 6) return;
+    setForm(prev => ({
+      ...prev,
+      options: [...prev.options, { text: '', isCorrect: false }]
+    }));
+  };
+
+  const removeOption = (index) => {
+    if (form.options.length <= 2) return;
+    setForm(prev => ({
+      ...prev,
+      options: prev.options.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError(translate('Image must be under 5MB'));
+      return;
+    }
+
+    try {
+      setUploadingImage(true);
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('folder', 'community-questions');
+
+      const res = await API.request('/api/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (res.success && res.url) {
+        setForm(prev => ({ ...prev, image: res.url }));
+      }
+    } catch (err) {
+      console.error('Image upload error:', err);
+      setError(translate('Failed to upload image'));
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!form.question.trim()) {
+      setError(translate('Please enter your question'));
+      return;
+    }
+    if (!form.exam) {
+      setError(translate('Please select an exam'));
+      return;
+    }
+
+    // Filter out empty options
+    const validOptions = form.options.filter(opt => opt.text.trim());
+
+    try {
+      setSubmitting(true);
+      const res = await API.createCommunityQuestion({
+        question: form.question.trim(),
+        exam: form.exam,
+        explanation: form.explanation.trim(),
+        image: form.image,
+        options: validOptions.length > 0 ? validOptions : []
+      });
+
+      if (res.success) {
+        setSuccess(true);
+        setTimeout(() => {
+          router.push('/community-questions');
+        }, 1500);
+      }
+    } catch (err) {
+      console.error('Error posting question:', err);
+      setError(err.message || translate('Failed to post question'));
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (success) {
+    return (
+      <div className="min-h-screen bg-background-primary flex items-center justify-center px-4">
+        <Card className="text-center max-w-md w-full" radius="2xl">
+          <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
+          <h2 className="text-xl font-black text-content-primary uppercase mb-2">{translate('Question Posted!')}</h2>
+          <p className="text-sm text-content-muted">{translate('Redirecting to community questions...')}</p>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-background-primary">
+      <div className="mx-auto py-4 xl:py-8">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-6">
+          <div>
+            <h1 className="text-xl xl:text-3xl font-black text-content-primary uppercase tracking-tight">
+              {translate('Post a Question')}
+            </h1>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          {/* Error */}
+          {error && (
+            <div className="mb-4 px-4 py-3 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-800 dark:border-white/20 text-black dark:text-white text-sm font-semibold">
+              {error}
+            </div>
+          )}
+
+          {/* Exam Selection */}
+          <Card className="mb-4" radius="2xl">
+            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Select Exam')}</h3>
+            <select
+              value={form.exam}
+              onChange={(e) => handleChange('exam', e.target.value)}
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
+              required
+            >
+              <option value="">{translate('Select Exam')}</option>
+              {exams.map(exam => (
+                <option key={exam._id} value={exam._id}>
+                  {exam.name}
+                </option>
+              ))}
+            </select>
+          </Card>
+
+          {/* Question */}
+          <Card className="mb-4" radius="2xl">
+            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Your Question')}</h3>
+            <textarea
+              value={form.question}
+              onChange={(e) => handleChange('question', e.target.value)}
+              placeholder={translate('Type your question here...')}
+              rows={4}
+              maxLength={2000}
+              required
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+            />
+            <p className="text-[10px] text-content-muted text-right mt-1">
+              {form.question.length}/2000
+            </p>
+
+            {/* Image Upload */}
+            <div className="mt-3">
+              {form.image ? (
+                <div className="relative inline-block">
+                  <img src={form.image} alt="Uploaded" className="max-h-40 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800" />
+                  <button aria-label={translate('Close')}
+                    type="button"
+                    onClick={() => setForm(prev => ({ ...prev, image: null }))}
+                    className="absolute -top-2 -right-2 p-1 rounded-full bg-primary-600 text-white shadow-sm"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                </div>
+              ) : (
+                <label className="inline-flex items-center gap-2 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-content-muted text-xs font-bold cursor-pointer hover:border-primary-700 hover:text-primary-600 transition-colors">
+                  <ImageIcon className="w-4 h-4" />
+                  {uploadingImage ? translate('Uploading...') : translate('Add Image (optional)')}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    disabled={uploadingImage}
+                  />
+                </label>
+              )}
+            </div>
+          </Card>
+
+          {/* Options (MCQ) */}
+          <Card className="mb-4" radius="2xl">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xs font-black text-content-muted uppercase tracking-wider">{translate('Options (Optional)')}</h3>
+              {form.options.length < 6 && (
+                <button
+                  type="button"
+                  onClick={addOption}
+                  className="flex items-center gap-1 text-xs font-bold text-primary-600 hover:text-primary-600 transition-colors"
+                >
+                  <Plus className="w-3.5 h-3.5" /> Add
+                </button>
+              )}
+            </div>
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
+              {form.options.map((opt, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="text-xs font-black text-content-muted w-5">{String.fromCharCode(65 + i)}.</span>
+                  <input
+                    type="text"
+                    value={opt.text}
+                    onChange={(e) => handleOptionChange(i, 'text', e.target.value)}
+                    placeholder={`Option ${String.fromCharCode(65 + i)}`}
+                    className="flex-1 px-3 py-2 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleOptionChange(i, 'isCorrect', !opt.isCorrect)}
+                    className={`p-2 rounded-lg xl:rounded-xl border-2 text-xs font-bold transition-colors ${
+                      opt.isCorrect
+                        ? 'border-primary-400 bg-primary-50 dark:bg-primary-500/10 text-primary-600'
+                        : 'border-slate-200 dark:border-slate-800 text-content-muted hover:border-primary-400'
+                    }`}
+                    title={translate('Mark as correct answer')}
+                  >
+                    <CheckCircle className="w-4 h-4" />
+                  </button>
+                  {form.options.length > 2 && (
+                    <button aria-label={translate('Delete')}
+                      type="button"
+                      onClick={() => removeOption(i)}
+                      className="p-2 rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-800 text-content-muted hover:border-black dark:hover:border-white hover:text-black dark:hover:text-white transition-colors"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          {/* Explanation */}
+          <Card className="mb-6" radius="2xl">
+            <h3 className="text-xs font-black text-content-muted uppercase tracking-wider mb-3">{translate('Explanation (Optional)')}</h3>
+            <textarea
+              value={form.explanation}
+              onChange={(e) => handleChange('explanation', e.target.value)}
+              placeholder={translate('Add an explanation for the answer...')}
+              rows={3}
+              maxLength={3000}
+              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary placeholder:text-content-muted focus:outline-none focus:border-primary-700 transition-colors resize-none"
+            />
+          </Card>
+
+          {/* Submit */}
+          <Button
+            variant="primary"
+            size="md"
+            fullWidth
+            icon={Send}
+            disabled={submitting || !form.question.trim() || !form.exam}
+            onClick={handleSubmit}
+          >
+            {submitting ? translate('Posting...') : translate('Post Question')}
+          </Button>
+        </form>
+        </div>
+    </div>
+  );
+};
+
+export default AskQuestionPage;

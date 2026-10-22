@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import MobileAppWrapper from '../components/MobileAppWrapper';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import { FaGraduationCap, FaChartLine, FaQuestionCircle } from 'react-icons/fa';
-import Seo from '../components/Seo';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../utils/schema';
 import dbConnect from '../lib/db';
 import Exam from '../models/Exam';
-import { ExamCardSkeleton } from '../components/skeletons/PublicSkeletons';
+import { ExamCardSkeleton } from '../components/common/skeletons/PublicSkeletons';
 import useTranslate from '../hooks/useTranslate';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 export default function GovtExamsPreparation({ initialData }) {
@@ -75,9 +75,6 @@ export default function GovtExamsPreparation({ initialData }) {
                         <h1 className="text-xl xl:text-5xl font-black text-slate-900 dark:text-white mb-3 xl:mb-6 uppercase tracking-tighter">
                             {rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600">{c}</span>])}
                         </h1>
-                        <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            {translate('Master your competitive exams with our structured quiz modules and real-time performance tracking.')}
-                        </p>
                     </div>
 
                     {loading ? (

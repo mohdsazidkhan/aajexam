@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-import Seo from '../../components/Seo';
+import Seo from '../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../utils/schema';
-import { ListSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import { ListSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
-const CommunityQuestionsPage = dynamic(() => import('../../components/pages/CommunityQuestionsPage'), {
+const CommunityQuestionsPage = dynamic(() => import('../../components/public/pages/CommunityQuestionsPage'), {
   ssr: false,
   loading: () => <div className="px-4 py-4"><ListSkeleton rows={6} /></div>
 });

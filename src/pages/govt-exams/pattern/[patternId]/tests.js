@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useRouter } from 'next/router';
-import Seo from '../../../../components/Seo';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Seo from '../../../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../../../utils/schema';
 import {
   ArrowLeft,
@@ -22,13 +22,13 @@ import { m as motion } from 'framer-motion';
 
 import API from '../../../../lib/api';
 import { getCurrentUser, isTokenValid, secureLogout } from '../../../../lib/utils/authUtils';
-import Button from '../../../../components/ui/Button';
-import Card from '../../../../components/ui/Card';
-import ProgressBar from '../../../../components/ui/ProgressBar';
-import Skeleton from '../../../../components/Skeleton';
-import { ProBadge } from '../../../../components/ui';
+import Button from '../../../../components/common/ui/Button';
+import Card from '../../../../components/common/ui/Card';
+import ProgressBar from '../../../../components/common/ui/ProgressBar';
+import Skeleton from '../../../../components/common/Skeleton';
+import { ProBadge } from '../../../../components/common/ui';
 import useTranslate from '../../../../hooks/useTranslate';
-import Pagination from '../../../../components/Pagination';
+import Pagination from '../../../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../../lib/constants/pagination';
 
 const PatternTests = ({ patternId, initialPattern = null, initialTests = [], initialPagination = null, initialError = '', seo }) => {
@@ -78,6 +78,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [patternId, pageSize]);
 
   useEffect(() => {
@@ -105,7 +106,7 @@ const PatternTests = ({ patternId, initialPattern = null, initialTests = [], ini
     }
 
     if (isLocked) {
-      router.push('/subscription');
+      router.push('/student/subscription');
       return;
     }
     router.push(`/govt-exams/test/${test.slug || test._id}/start`);

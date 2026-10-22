@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
-const ReferralHistory = dynamic(() => import('../../components/pages/admin/ReferralHistory'), {
+const ReferralHistory = dynamic(() => import('../../components/admin/pages/ReferralHistory'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

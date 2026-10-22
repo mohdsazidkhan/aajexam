@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import Seo from '../../components/Seo';
+import Link from '@/components/common/AppLink';
+import Seo from '../../components/common/Seo';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -13,7 +13,7 @@ const ContentLoading = () => {
   return <div className="py-10 text-center text-sm font-bold text-slate-400">{translate('Loading subject content…')}</div>;
 };
 
-const SubjectDetailPage = dynamic(() => import('../../components/pages/SubjectDetailPage'), {
+const SubjectDetailPage = dynamic(() => import('../../components/public/pages/SubjectDetailPage'), {
   ssr: false,
   loading: () => <ContentLoading />,
 });

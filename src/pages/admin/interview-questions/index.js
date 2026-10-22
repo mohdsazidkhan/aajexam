@@ -5,13 +5,13 @@ import { MessageCircleQuestion, Plus, Pencil, Trash2, Eye, Table2, List, LayoutG
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
-import Card from '../../../components/ui/Card';
-import ResponsiveTable from '../../../components/ResponsiveTable';
-import Pagination from '../../../components/Pagination';
-import Sidebar from '../../../components/Sidebar';
+import Card from '../../../components/common/ui/Card';
+import ResponsiveTable from '../../../components/common/ResponsiveTable';
+import Pagination from '../../../components/common/Pagination';
+import Sidebar from '../../../components/admin/Sidebar';
 import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
 import AdminRoute from '../../../components/admin/Route';
-import CustomEditor from '../../../components/CustomEditor';
+import CustomEditor from '../../../components/common/CustomEditor';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import useDebounce from '../../../hooks/useDebounce';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';

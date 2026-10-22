@@ -1,9 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import { MessageCircleQuestion, Lightbulb, Eye, ArrowLeft, Tag } from 'lucide-react';
-import { useRouter } from 'next/router';
-import Card from '../../components/ui/Card';
-import Seo from '../../components/Seo';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Card from '../../components/common/ui/Card';
+import Seo from '../../components/common/Seo';
 import { generateBreadcrumbSchema, generateBlogPostingSchema } from '../../utils/schema';
 import useTranslate from '../../hooks/useTranslate';
 

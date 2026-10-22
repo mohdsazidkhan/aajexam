@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
 
-const AdminReels = dynamic(() => import('../../../components/pages/admin/Reels'), {
+const AdminReels = dynamic(() => import('../../../components/admin/pages/Reels'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

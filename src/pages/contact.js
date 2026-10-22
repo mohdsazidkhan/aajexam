@@ -1,5 +1,5 @@
-import ContactUs from '../components/pages/ContactUs';
-import Seo from '../components/Seo';
+import ContactUs from '../components/public/pages/ContactUs';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import config from '../lib/config/appConfig';
 

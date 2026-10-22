@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
-import Seo from '../../../components/Seo';
+import Link from '@/components/common/AppLink';
+import Seo from '../../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../../utils/schema';
 import { DIGEST_MIN_ITEMS, MONTH_NAMES, digestKey, parseDigestMonth } from '../../../lib/web/currentAffairsDigest';
 

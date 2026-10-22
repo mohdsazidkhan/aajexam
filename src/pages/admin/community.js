@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 import AdminRoute from '../../components/admin/Route';
 
-const CommunityModeration = dynamic(() => import('../../components/pages/admin/CommunityModeration'), {
+const CommunityModeration = dynamic(() => import('../../components/admin/pages/CommunityModeration'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { Trophy, Target, Crown, TrendingUp, Award, ArrowRight, Zap } from 'lucide-react';
 import { m as motion } from 'framer-motion';
 
-import Seo from '../../components/Seo';
-import Button from '../../components/ui/Button';
-import Card from '../../components/ui/Card';
+import Seo from '../../components/common/Seo';
+import Button from '../../components/common/ui/Button';
+import Card from '../../components/common/ui/Card';
 import useTranslate from '../../hooks/useTranslate';
 
 export default function SharedResult({ stats }) {

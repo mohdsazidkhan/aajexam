@@ -1,0 +1,542 @@
+'use client';
+
+import React, { useState, useEffect } from "react";
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Link from '@/components/common/AppLink';
+import {
+   Trophy,
+   Star,
+   Brain,
+   Target,
+   Zap,
+   ChevronRight,
+   Users,
+   Flame,
+   ShieldCheck,
+   ArrowRight,
+   Sparkles,
+   Rocket,
+   Medal,
+   BookOpen,
+   Layers,
+   Gamepad2,
+} from 'lucide-react';
+import { m as motion } from 'framer-motion';
+import MobileAppWrapper from "../../common/MobileAppWrapper";
+import API from '../../../lib/api';
+import Button from '../../common/ui/Button';
+import Card from '../../common/ui/Card';
+import dynamic from 'next/dynamic';
+import useTranslate from '../../../hooks/useTranslate';
+
+const SampleQuiz = dynamic(() => import('../SampleQuiz'), { ssr: false });
+
+const POPULAR_PYQ_EXAMS = [
+   { slug: 'ssc-cgl', name: 'SSC CGL' },
+   { slug: 'ssc-chsl-tier-i', name: 'SSC CHSL' },
+   { slug: 'ssc-mts', name: 'SSC MTS' },
+   { slug: 'ssc-gd-constable', name: 'SSC GD' },
+   { slug: 'ssc-selection-post', name: 'SSC Selection Post' },
+   { slug: 'ssc-cpo-si-delhi-police-capf', name: 'SSC CPO' },
+   { slug: 'ssc-stenographer-grade-c-d', name: 'SSC Stenographer' },
+   { slug: 'rrb-ntpc', name: 'RRB NTPC' },
+   { slug: 'rrb-group-d', name: 'RRB Group D' },
+   { slug: 'ibps-po-probationary-officer-prelims', name: 'IBPS PO' },
+   { slug: 'sbi-clerk-prelims', name: 'SBI Clerk' },
+   { slug: 'upsc-prelims', name: 'UPSC Prelims' },
+   { slug: 'delhi-police-constable-ssc', name: 'Delhi Police Constable' },
+   { slug: 'central-teacher-eligibility-test', name: 'CTET' },
+   { slug: 'neet-2', name: 'NEET' },
+   { slug: 'ibps-clerk-prelims', name: 'IBPS Clerk' },
+   { slug: 'ssc-selection-post-matriculation-level', name: 'SSC Selection Post Matriculation' },
+   { slug: 'ssc-selection-post-higher-secondary-level', name: 'SSC Selection Post Higher Secondary' },
+   { slug: 'haryana-police-constable', name: 'Haryana Police Constable' },
+   { slug: 'rajasthan-police-constable', name: 'Rajasthan Police Constable' },
+   { slug: 'up-police-constable', name: 'UP Police Constable' },
+   { slug: 'cil-coal-india-limited', name: 'Coal India CIL' },
+   { slug: 'rssb-computer-instructor', name: 'RSSB Computer Instructor' },
+   { slug: 'esic-udc-prelims', name: 'ESIC UDC' },
+];
+
+const ModernLandingPage = () => {
+   const { translate, rich } = useTranslate();
+   const [stats, setStats] = useState({
+      activeStudents: "—",
+      totalExams: "—",
+      totalQuizzes: "—",
+      totalSubjects: "—",
+      totalTopics: "—",
+      totalQuestions: "—",
+      totalPyqPapers: 0,
+      registeredLast30Days: "0",
+      practiceTestAttemptsLast30Days: "0",
+      pyqAttemptsLast30Days: "0",
+      quizAttemptsLast30Days: "0",
+      examStats: [],
+   });
+   const [tickerIndex, setTickerIndex] = useState(0);
+   const router = useRouter();
+
+   useEffect(() => {
+      const token = localStorage.getItem("token");
+      if (token) {
+         router.push("/student/dashboard");
+         return;
+      }
+      fetchStats();
+   }, [router]);
+
+   const fetchStats = async () => {
+      try {
+         const res = await API.getPublicLandingStats();
+         if (res.success) {
+            // Real DB counts, shown exactly (no inflated fallbacks, no rounding up)
+            const formatNum = (n) => (n >= 1000 ? `${(Math.floor(n / 100) / 10).toFixed(1)}K` : `${n || 0}`);
+            setStats({
+               activeStudents: formatNum(res.data?.activeStudents),
+               totalExams: formatNum(res.data?.totalExams),
+               totalQuizzes: formatNum(res.data?.totalQuizzes),
+               totalSubjects: formatNum(res.data?.totalSubjects),
+               totalTopics: formatNum(res.data?.totalTopics),
+               totalQuestions: formatNum(res.data?.totalQuestions),
+               totalPyqPapers: res.data?.totalPyqPapers || 0,
+               registeredLast30Days: res.data?.registeredLast30Days || 0,
+               practiceTestAttemptsLast30Days: res.data?.practiceTestAttemptsLast30Days || 0,
+               pyqAttemptsLast30Days: res.data?.pyqAttemptsLast30Days || 0,
+               quizAttemptsLast30Days: res.data?.quizAttemptsLast30Days || 0,
+               examStats: res.data?.examStats || [],
+            });
+         }
+      } catch (e) {
+      }
+   };
+
+   // Auto-rotate ticker every 4 seconds
+   useEffect(() => {
+      const iv = setInterval(() => setTickerIndex((i) => (i + 1) % 2), 4000);
+      return () => clearInterval(iv);
+   }, []);
+
+   return (
+      <MobileAppWrapper showHeader={true} title={translate('Home')}>
+         <section className="relative overflow-hidden -mx-4 xl:-mx-8 bg-white dark:bg-black">
+            <div className="absolute inset-0 pointer-events-none">
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full container h-[800px] bg-primary-500/[0.07] dark:bg-primary-500/[0.14] blur-[120px]" />
+               <div className="absolute top-1/4 right-[5%] w-96 h-96 bg-primary-500/[0.05] dark:bg-primary-500/[0.12] rounded-full blur-[100px]" />
+               <div className="absolute bottom-1/4 left-[5%] w-80 h-80 bg-primary-500/[0.05] dark:bg-primary-500/[0.12] rounded-full blur-[100px]" />
+            </div>
+
+            <div className="container mx-auto px-3 xl:px-6 relative z-10">
+               <div className="max-w-5xl mx-auto text-center space-y-5 xl:space-y-6 py-4 xl:py-12">
+                  {/* Gamified Floating Elements */}
+                  <motion.div
+                     animate={{ y: [-15, 15, -15], rotate: [0, 10, -10, 0] }}
+                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                     className="absolute hidden xl:flex top-20 left-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-sm items-center justify-center border-2 border-primary-100 dark:border-primary-900/50"
+                  >
+                     <Trophy className="w-8 h-8 text-primary-600" />
+                  </motion.div>
+                  <motion.div
+                     animate={{ y: [15, -15, 15], rotate: [0, -10, 10, 0] }}
+                     transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                     className="absolute hidden xl:flex top-40 right-10 w-16 h-16 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-2 border-slate-200 dark:border-slate-800 dark:border-white/50 items-center justify-center"
+                  >
+                     <Star className="w-8 h-8 text-black dark:text-white" />
+                  </motion.div>
+
+                  <div
+                     className="inline-flex uppercase items-center gap-2.5 px-6 py-2.5 bg-white dark:bg-slate-800 backdrop-blur-md rounded-full text-xs font-black tracking-[0.12em] text-primary-600 border-2 border-primary-500/10 shadow-sm"
+                  >
+                     <Sparkles className="w-4 h-4 text-primary-600" />
+                     {translate('Trusted by students across India')}
+                  </div>
+
+                  <div className="space-y-2 xl:space-y-4">
+                     <h1
+                        className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[1.05] xl:leading-[1] text-slate-900 dark:text-white"
+                     >
+                        {translate('Prepare Today.')}
+                        <span className="block text-primary-600">{translate('Succeed Tomorrow.')}</span>
+                     </h1>
+
+                     <p
+                        className="text-base xl:text-2xl text-slate-700 dark:text-slate-400 font-bold max-w-3xl mx-auto leading-relaxed px-0 xl:px-4"
+                     >
+                        {translate('Practice smarter. Prepare better. Crack your exam.')}
+
+                     </p>
+                  </div>
+
+                  <div
+                     className="flex flex-col sm:flex-row items-center justify-center gap-3 xl:gap-6 pt-0 xl:pt-4"
+                  >
+                     <Button
+                        variant="primary"
+                        size="xl"
+                        icon={ArrowRight}
+                        iconPosition="right"
+                        className="w-full sm:w-auto"
+                        cta="landing_hero_start"
+                        onClick={() => router.push('/login')}
+                     >
+                        {translate('Start practicing now')}
+                     </Button>
+                     <Button
+                        variant="secondary"
+                        size="xl"
+                        icon={Zap}
+                        iconPosition="right"
+                        className="w-full sm:w-auto font-outfit tracking-[0.08em] text-sm py-3 xl:py-6"
+                        onClick={() => router.push('/govt-exams-preparation')}
+                     >
+                        {translate('Browse exams')}
+                     </Button>
+                  </div>
+
+                  <div
+                     className="flex flex-wrap items-center justify-center gap-x-6 xl:gap-x-12 gap-y-2 xl:gap-y-4 pt-2 xl:pt-4 xl:pt-6 border-t-2 border-slate-200/50 dark:border-slate-800/50"
+                  >
+                     <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
+                        <ShieldCheck className="w-5 h-5 text-primary-600" /> {translate('Questions by experts')}
+                     </div>
+                     <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
+                        <Flame className="w-5 h-5 text-primary-600" /> {translate('Thousands of questions')}
+                     </div>
+                     <div className="flex items-center gap-3 font-black text-xs tracking-[0.08em] text-slate-600 dark:text-slate-400">
+                        <Trophy className="w-5 h-5 text-black dark:text-white" /> {translate('Practice with topic-wise quizzes')}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         {/* ── Ticker Stats ── */}
+         <section className="bg-white dark:bg-black border-y border-slate-200 dark:border-slate-700 overflow-hidden relative flex px-0 py-4 xl:py-8">
+            <style>{`
+               @keyframes marquee {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+               }
+               .animate-marquee {
+                  animation: marquee 25s linear infinite;
+                  display: flex;
+                  white-space: nowrap;
+               }
+               .animate-marquee:hover {
+                  animation-play-state: paused;
+               }
+            `}</style>
+
+            <div className="animate-marquee w-max">
+               {/* Repeat content twice for seamless loop */}
+               {[0, 1].map((iteration) => (
+                  <div key={iteration} className="flex items-center gap-12 pr-12">
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
+                        <span className="text-primary-600 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
+                        {translate('Registered Users (Last 30 Days)')}
+                     </div>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
+                        <span className="text-black dark:text-white font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
+                        {translate('Practice Test Attempts (Last 30 Days)')}
+                     </div>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
+                        <span className="text-black dark:text-white font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
+                        {translate("PYQ's Attempts (Last 30 Days)")}
+                     </div>
+                     <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-300">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-600 animate-pulse"></span>
+                        <span className="text-black dark:text-white font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
+                        {translate('Quiz Attempts (Last 30 Days)')}
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </section>
+
+         {/* ── Try before signup ── */}
+         <SampleQuiz />
+
+         {/* ── 3-Step How It Works ── */}
+         <section className="border-t-2 border-slate-100 dark:border-slate-800 px-0 py-4 xl:py-8">
+            <div className="container mx-auto px-0 xl:px-8">
+               <div className="max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 xl:gap-6 relative">
+                     <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-1 bg-slate-100 dark:bg-slate-800 -translate-y-1/2 z-0" />
+
+                     {[
+                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" },
+                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-primary-600", bg: "bg-primary-50 dark:bg-primary-900/20" }
+                     ].map((item, i) => (
+                        <div key={i} className="relative z-10 flex flex-col items-center text-center p-3 xl:p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border-2 border-slate-200 dark:border-slate-700">
+                           <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-2 xl:mb-4 border-2 border-white dark:border-slate-700 shadow-sm`}>
+                              <item.icon className={`w-8 h-8 ${item.color}`} />
+                           </div>
+                           <h2 className="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight mb-2">
+                              {translate('Step {step}: {title}', { step: item.step, title: translate(item.title) })}
+                           </h2>
+                           <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
+                              {translate(item.desc)}
+                           </p>
+                        </div>
+                     ))}
+                  </div>
+               </div>
+            </div>
+         </section>
+
+
+         <section className="border-y-2 border-slate-100 dark:border-slate-800 px-0 py-4 xl:py-8">
+            <div className="container mx-auto px-0 xl:px-8">
+               <div className="grid grid-cols-3 xl:grid-cols-6 gap-4 xl:gap-8">
+                  {[
+                     { label: 'Students', val: stats.activeStudents, icon: Users, color: 'text-primary-600' },
+                     { label: 'Exams', val: stats.totalExams, icon: Target, color: 'text-primary-600' },
+                     { label: 'Quizzes', val: stats.totalQuizzes, icon: Gamepad2, color: 'text-primary-600' },
+                     { label: 'Subjects', val: stats.totalSubjects, icon: BookOpen, color: 'text-primary-600' },
+                     { label: 'Topics', val: stats.totalTopics, icon: Layers, color: 'text-primary-600' },
+                     { label: 'Questions', val: stats.totalQuestions, icon: Brain, color: 'text-primary-600' }
+                  ].map((stat, index) => (
+                     <div key={index} className="flex flex-col items-center text-center group">
+                        <div className={`p-3 xl:p-4 rounded-2xl xl:rounded-3xl bg-slate-50 dark:bg-slate-800 mb-3 xl:mb-4 group-hover:scale-110 transition-transform ${stat.color} border-2 border-transparent group-hover:border-current/10`}>
+                           <stat.icon className="w-6 h-6 xl:w-8 xl:h-8" />
+                        </div>
+                        <div className="text-2xl xl:text-5xl font-black font-outfit text-slate-900 dark:text-white mb-1 leading-none">{stat.val}</div>
+                        <div className="text-[10px] xl:text-xs font-black tracking-[0.08em] text-slate-600 dark:text-slate-400">{translate(stat.label)}</div>
+                     </div>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* ── PYQ Section ── */}
+         <section className="bg-slate-50 dark:bg-slate-950 relative overflow-hidden px-0 py-4 xl:py-8">
+            <div className="absolute inset-0 pointer-events-none">
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary-500/10 blur-[80px] opacity-60" />
+            </div>
+            <div className="container mx-auto px-4 xl:px-6 relative z-10">
+               <div className="text-center space-y-2 xl:space-y-4 mb-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs font-black tracking-[0.1em] text-primary-600 dark:text-primary-400 uppercase">
+                     <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
+                     {translate('Last Year PYQ — Always Free')}
+                  </div>
+                  <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
+                     {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                  </h2>
+                  <p className="text-base xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                     {stats.totalPyqPapers > 0
+                        ? translate('{count} Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.', { count: stats.totalPyqPapers })
+                        : translate('Previous Year Papers for SSC, RRB, IBPS, UPSC — attempt under real exam conditions with timer, negative marking & detailed solutions.')}
+                  </p>
+               </div>
+
+               {/* Exam tiles */}
+               <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 mb-10">
+                  {stats.examStats && stats.examStats.length > 0 ? stats.examStats.map((exam, idx) => {
+                     const theme = { color: 'bg-white dark:bg-slate-800', border: 'border-slate-100 dark:border-slate-700', text: 'text-black dark:text-white' };
+                     return (
+                        <motion.div
+                           key={exam._id}
+                           whileHover={{ scale: 1.04, y: -4 }}
+                           className={`relative cursor-pointer p-4 xl:p-8 rounded-2xl ${theme.color} border ${theme.border} flex flex-col items-center justify-between text-center gap-1 group`}
+                        >
+                           <Link href={exam.slug ? `/pyq/${exam.slug}` : '/pyq'} className="absolute inset-0 z-10 rounded-2xl" aria-label={`${exam.name} Previous Year Question Papers`} />
+                           <span className={`text-sm xl:text-base font-black ${theme.text} mb-1`}>{exam.name}</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{translate('{count} PYQs', { count: exam.pyqCount })}</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight">{translate('{count} Practice Tests', { count: exam.practiceTestCount })}</span>
+                           <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 leading-tight mb-1">{translate('{count} Quizzes', { count: exam.quizCount })}</span>
+                           <span className="text-[10px] font-black text-primary-600 dark:text-primary-400 bg-primary-100 dark:bg-primary-400/10 px-2 py-0.5 rounded-full">{translate('Latest Free')}</span>
+                        </motion.div>
+                     );
+                  }) : null}
+               </div>
+
+               {/* Crawlable PYQ links (server-rendered, one per exam) */}
+               <nav aria-label="Previous year papers by exam" className="flex flex-wrap items-center justify-center gap-2 mb-10">
+                  {POPULAR_PYQ_EXAMS.map((e) => (
+                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary-600 hover:border-primary-600 transition">
+                        {e.name} {translate('Previous Year Papers')}
+                     </Link>
+                  ))}
+               </nav>
+
+               {/* CTA row */}
+               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <motion.button
+                     whileHover={{ scale: 1.03 }}
+                     whileTap={{ scale: 0.97 }}
+                     data-cta="landing_pyq_start"
+                     onClick={() => router.push('/register')}
+                     className="w-full sm:w-auto px-10 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all text-sm"
+                  >
+                     {translate('Start Free PYQ Practice →')}
+                  </motion.button>
+                  <button
+                     onClick={() => router.push('/pyq')}
+                     className="w-full sm:w-auto px-8 py-4 bg-primary-600 hover:opacity-90 text-white font-black uppercase tracking-widest rounded-2xl border border-primary-600 transition-all text-sm"
+                  >
+                     {translate('Browse All PYQs')}
+                  </button>
+               </div>
+            </div>
+         </section>
+
+         {/* ── Features Section ── */}
+         <section id="features" className="py-10 xl:py-32 border-t-2 border-b-2 border-slate-100 dark:border-slate-800">
+            <div className="container mx-auto px-3 xl:px-6 space-y-10 xl:space-y-20">
+               <div className="text-center space-y-6 max-w-3xl mx-auto">
+                  <h2 className="text-xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">{translate('Study Smart.')} <br /> {translate('Pass Your Exam.')}</h2>
+                  <p className="text-xl font-bold text-slate-700 dark:text-slate-400 px-4">{translate('Everything you need to prepare for government exams, all in one place.')}</p>
+
+               </div>
+
+               <div className="grid grid-cols-1 xl:grid-cols-12 gap-4 xl:gap-8 xl:min-h-[800px]">
+                  <Card className="xl:col-span-8 p-6 xl:p-16 bg-primary-600 border-none shadow-sm text-white flex flex-col justify-between group overflow-hidden relative rounded-[2rem] xl:rounded-[4rem]">
+                     <div className="space-y-6 relative z-10 max-w-xl">
+                        <div className="p-4 xl:p-5 bg-white/20 backdrop-blur-md rounded-3xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-white/20">
+                           <Trophy className="w-10 h-10 xl:w-12 xl:h-12" />
+                        </div>
+                        <h3 className="text-xl xl:text-5xl font-black font-outfit uppercase leading-[0.9]">{translate('See your progress')}</h3>
+                        <p className="text-base xl:text-md xl:text-xl font-bold opacity-80 leading-relaxed">{translate('Know how well you are doing. Get a clear report after every exam and move up as you improve.')}</p>
+                        <div className="pt-4 xl:pt-8">
+                           <Button variant="secondary" size="lg" className="rounded-[1.5rem] xl:rounded-[2rem] px-6 xl:px-8 font-black tracking-[0.08em] text-sm py-4 xl:py-6" cta="landing_progress_card" onClick={() => router.push('/register')}>
+                              {translate('Check your progress')}
+                           </Button>
+                        </div>
+                     </div>
+                     <Rocket className="absolute -right-16 -bottom-16 w-[300px] xl:w-[400px] h-[300px] xl:h-[400px] opacity-10 rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
+                     <div className="absolute top-0 right-0 w-full h-full bg-white/10 pointer-events-none" />
+                  </Card>
+
+                  <Card className="xl:col-span-4 p-5 xl:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
+                     <div className="space-y-2 xl:space-y-4">
+                        <div className="p-3 xl:p-4 bg-primary-500/10 text-primary-600 rounded-2xl xl:rounded-[2rem] w-fit border-2 border-primary-500/10">
+                           <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
+                        </div>
+                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('Practice every day')}</h3>
+                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">{translate('Practice a little every day. This helps you remember more and climb higher on the student list.')}</p>
+                     </div>
+                     <div className="space-y-3 xl:space-y-4 pt-8 xl:pt-10">
+                        {[80, 60, 95].map((width, index) => (
+                           <div key={index} className="h-2 xl:h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                              <motion.div
+                                 initial={{ width: 0 }}
+                                 whileInView={{ width: `${width}%` }}
+                                 className="h-full bg-primary-600 shadow-sm"
+                              />
+                           </div>
+                        ))}
+                     </div>
+                  </Card>
+
+                  <Card className="xl:col-span-4 p-5 xl:p-10 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
+                     <div className="space-y-2 xl:space-y-4">
+                        <div className="p-3 xl:p-4 bg-primary-500/10 text-primary-600 rounded-2xl xl:rounded-[2rem] w-fit border-2 border-primary-500/10">
+                           <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
+                        </div>
+                        <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('See your test results')}</h3>
+                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400">{translate('After every test, see how many you got right and which topics need more practice.')}</p>
+                     </div>
+                     <div className="flex gap-3 xl:gap-4 pt-8 xl:pt-10">
+                        <div className="flex-1 h-24 xl:h-32 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
+                           <div className="absolute bottom-0 left-0 w-full bg-primary-500/20 h-1/2" />
+                        </div>
+                        <div className="flex-1 h-24 xl:h-32 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
+                           <div className="absolute bottom-0 left-0 w-full bg-primary-500/40 h-3/4" />
+                        </div>
+                        <div className="flex-1 h-24 xl:h-32 bg-slate-50 dark:bg-slate-800/50 rounded-2xl xl:rounded-3xl relative overflow-hidden border-2 border-slate-100 dark:border-slate-800">
+                           <div className="absolute bottom-0 left-0 w-full bg-primary-500/60 h-[90%]" />
+                        </div>
+                     </div>
+                  </Card>
+
+                  <Card className="xl:col-span-8 p-5 xl:p-16 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
+                     <div className="flex-1 space-y-2 xl:space-y-4 relative z-10 text-center xl:text-left">
+                        <div className="p-3 xl:p-4 bg-primary-500/10 dark:bg-primary-500/20 text-primary-600 rounded-2xl xl:rounded-[2.5rem] w-fit shadow-sm border-2 border-primary-500/5 mx-auto xl:mx-0">
+                           <Medal className="w-10 h-10 xl:w-12 xl:h-12" />
+                        </div>
+                        <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
+                        <p className="text-base xl:text-lg font-bold text-slate-600 dark:text-slate-400 max-w-sm px-2 xl:px-0">{translate('Invite your friends to AajExam. Earn cash rewards every time a friend upgrades to PRO.')}</p>
+                        <div className="pt-2 xl:pt-4">
+                           <Button variant="primary" size="lg" className="w-full xl:w-auto shadow-sm rounded-lg xl:rounded-xl xl:rounded-2xl px-8 xl:px-10 font-outfit font-black tracking-[0.08em] text-sm py-4 xl:py-6" cta="landing_referral_card" onClick={() => router.push('/login')}>
+                              {translate('Start referring')}
+                           </Button>
+                        </div>
+                     </div>
+                  </Card>
+               </div>
+            </div>
+         </section>
+
+         <section className="overflow-hidden relative px-0 py-4 xl:py-8">
+            <div className="container mx-auto px-3 xl:px-6 relative z-10">
+               <div className="flex flex-col gap-10 xl:gap-20">
+                  <div className="space-y-8 xl:space-y-16 text-center w-full">
+                     <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-3xl xl:text-9xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-[0.8] mb-8 xl:mb-12"
+                     >
+                        {translate('Study with')} <br /><span className="text-primary-600">{translate('Confidence.')}</span>
+                     </motion.h2>
+
+                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
+                        {[
+                           { title: "Daily Goals", desc: "Set a small goal for each day and complete it. Small steps lead to big results.", icon: Target },
+                           { title: "Study with Others", desc: "Study with thousands of students who want to pass the same exams as you.", icon: Users },
+                           { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
+                        ].map((item, index) => (
+                           <div key={index} className="flex flex-col items-center p-8 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-slate-100 dark:border-slate-800 shadow-sm group hover:-translate-y-2 transition-all">
+                              <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-3xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-primary-700 group-hover:text-white transition-all transform group-hover:rotate-6 border-2 border-transparent group-hover:border-primary-400/20 shadow-sm">
+                                 <item.icon className="w-8 h-8" />
+                              </div>
+                              <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{translate(item.title)}</h3>
+                              <p className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs mx-auto text-center px-4">{translate(item.desc)}</p>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+
+                  <div className="relative w-full mx-auto px-0 xl:px-4 xl:px-0">
+                     <div className="absolute -inset-20 bg-primary-500/10 blur-[120px] rounded-full opacity-50" />
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section className="container mx-auto px-3 xl:px-6 py-4 xl:py-8">
+            <Card className="mx-auto bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-2 border-slate-100 dark:border-white/5 shadow-sm p-12 xl:p-32 text-center space-y-12 relative overflow-hidden group rounded-[5rem]">
+               <div className="relative z-10 space-y-4 xl:space-y-8 py-4 xl:py-8">
+                  <motion.h2
+                     whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
+                     className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter leading-[0.85] text-slate-900 dark:text-white"
+                  >
+                     {translate('Your Dream Job')} <br /><span className="text-primary-600">{translate('Is Waiting.')}</span>
+                  </motion.h2>
+                  <p className="text-md md:text-xl xl:text-2xl font-bold text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed tracking-[0.04em] px-4">{translate('Start today. Join AajExam, practice every day, and get the government job you want.')}</p>
+                  <div className="pt-4 xl:pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
+                     <Button
+                        variant="primary"
+                        size="xl"
+                        icon={ArrowRight}
+                        iconPosition="right"
+                        className="w-full sm:w-auto shadow-sm rounded-2xl font-outfit font-black text-sm tracking-[0.08em] transition-transform active:scale-95"
+                        cta="landing_final_cta"
+                        onClick={() => router.push('/register')}
+                     >
+                        {translate('Join Now For Free')}
+                     </Button>
+                  </div>
+               </div>
+            </Card>
+         </section>
+      </MobileAppWrapper>
+   );
+};
+
+export default ModernLandingPage;
+
+

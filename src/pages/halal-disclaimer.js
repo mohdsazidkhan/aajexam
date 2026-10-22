@@ -1,9 +1,9 @@
 import React from 'react';
-import MobileAppWrapper from '../components/MobileAppWrapper';
-import UnifiedFooter from '../components/UnifiedFooter';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
+import UnifiedFooter from '../components/common/UnifiedFooter';
 import { FaMosque, FaCheckCircle, FaBookOpen } from 'react-icons/fa';
 import config from '../lib/config/appConfig';
-import Seo from '../components/Seo';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 export default function HalalDisclaimer() {
@@ -34,7 +34,6 @@ export default function HalalDisclaimer() {
                                 <FaMosque className="text-white text-3xl" />
                             </div>
                             <h1 className="text-2xl xl:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter leading-tight">Halal Disclaimer</h1>
-                            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">With Qur&apos;an & Hadith Evidence</p>
                         </div>
 
                         <div className="space-y-12 relative z-10">

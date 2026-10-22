@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import Seo from '../../../../components/Seo';
-import QuestionList from '../../../../components/seo/QuestionList';
-import LinkIndexSection from '../../../../components/seo/LinkIndexSection';
+import Link from '@/components/common/AppLink';
+import Seo from '../../../../components/common/Seo';
+import QuestionList from '../../../../components/common/seo/QuestionList';
+import LinkIndexSection from '../../../../components/common/seo/LinkIndexSection';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,

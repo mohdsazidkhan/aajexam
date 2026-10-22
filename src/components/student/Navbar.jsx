@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from '@/components/common/AppLink';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   LogOut,
@@ -25,7 +25,7 @@ import { initializeDarkMode } from '../../store/darkModeSlice';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import API from '../../lib/api';
 import Image from "next/image";
-import ThemeColorMenuButton from '../ThemeColorMenuButton';
+import ThemeColorMenuButton from '../common/ThemeColorMenuButton';
 import useTranslate from '../../hooks/useTranslate';
 
 const StudentNavbar = () => {
@@ -85,7 +85,7 @@ const StudentNavbar = () => {
             </button>
 
             {/* Logo — desktop */}
-            <Link href="/dashboard" className="relative hidden xl:flex items-start gap-1">
+            <Link href="/student/dashboard" className="relative hidden xl:flex items-start gap-1">
               <span className="flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                   AAJ<span className="text-primary-600">{translate('EXAM')}</span>
@@ -98,7 +98,7 @@ const StudentNavbar = () => {
             </Link>
 
             {/* Logo — mobile, smaller, left-aligned */}
-            <Link href="/dashboard" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
+            <Link href="/student/dashboard" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
               <span className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                 AAJ<span className="text-primary-600">{translate('EXAM')}</span>
               </span>
@@ -117,7 +117,7 @@ const StudentNavbar = () => {
           <div className="flex items-center gap-3 xl:gap-4">
             {/* Notifications */}
             <Link
-              href="/notifications"
+              href="/student/notifications"
               aria-label={unreadCount > 0 ? translate('Notifications, {count} unread', { count: unreadCount }) : translate('Notifications')}
               className="relative flex w-9 h-9 xl:w-10 xl:h-10 rounded-lg xl:rounded-2xl bg-slate-100 dark:bg-slate-800 items-center justify-center text-slate-500 hover:text-primary-600 transition-all flex-shrink-0"
             >
@@ -197,9 +197,9 @@ const StudentNavbar = () => {
               </div>
 
               {[
-                { label: translate('Profile'), icon: User, path: '/profile' },
-                { label: translate('Referral Rewards'), icon: Gift, path: '/referral-history', showBalance: true },
-                { label: translate('Settings'), icon: Settings, path: '/settings' },
+                { label: translate('Profile'), icon: User, path: '/student/profile' },
+                { label: translate('Referral Rewards'), icon: Gift, path: '/student/referral-history', showBalance: true },
+                { label: translate('Settings'), icon: Settings, path: '/student/settings' },
               ].map(item => (
                 <Link key={item.path} href={item.path} onClick={() => setShowProfileMenu(false)}>
                   <button className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg xl:rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">

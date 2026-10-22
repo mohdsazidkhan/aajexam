@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
 const AdminGenerateTestsComponent = dynamic(
-  () => import('../../components/pages/admin/GenerateTests'),
+  () => import('../../components/admin/pages/GenerateTests'),
   {
     ssr: false,
     loading: () => <AdminTableSkeleton />,

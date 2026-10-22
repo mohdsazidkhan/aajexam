@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
   GraduationCap,
   Building,
@@ -20,10 +20,10 @@ import { m as motion } from 'framer-motion';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import { getStoredTargetExamIds } from '../../lib/utils/targetExams';
-import Button from '../../components/ui/Button';
-import Card from '../../components/ui/Card';
-import Skeleton from '../../components/Skeleton';
-import Seo from '../../components/Seo';
+import Button from '../../components/common/ui/Button';
+import Card from '../../components/common/ui/Card';
+import Skeleton from '../../components/common/Skeleton';
+import Seo from '../../components/common/Seo';
 import {
   generateBreadcrumbSchema,
   generateItemListSchema
@@ -50,6 +50,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, []);
 
   const targetVersion = useTargetExamsVersion();

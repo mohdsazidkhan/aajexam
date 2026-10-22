@@ -1,16 +1,16 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Users, Star, Award, MessageCircle, ChevronRight, Shield, Search } from 'lucide-react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import API from '../lib/api';
-import Card from '../components/ui/Card';
-import Loading from '../components/Loading';
-import SubscriptionGuard from '../components/SubscriptionGuard';
-import Seo from '../components/Seo';
-import { GridSkeleton } from '../components/skeletons/PrivateSkeletons';
+import Card from '../components/common/ui/Card';
+import Loading from '../components/common/Loading';
+import SubscriptionGuard from '../components/student/SubscriptionGuard';
+import Seo from '../components/common/Seo';
+import { GridSkeleton } from '../components/common/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import useTranslate from '../hooks/useTranslate';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../lib/constants/pagination';
 
 const MentorsPage = () => {
@@ -67,7 +67,6 @@ const MentorsPage = () => {
           <div className="flex items-start justify-between">
             <div className="space-y-1">
               <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-600" /> {translate('Mentors')}</h1>
-              <p className="text-sm font-bold text-slate-400">{translate('Learn from students who cleared exams')}</p>
             </div>
             <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold">{translate('Become Mentor')}</button>
           </div>

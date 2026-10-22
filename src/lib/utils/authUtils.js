@@ -212,7 +212,7 @@ export const handleAuthError = (error, router) => {
 export const getPostLoginPath = (user) => {
   if (user?.role === 'admin') return '/admin/dashboard'
   try {
-    if (localStorage.getItem('pendingCoupon')) return '/subscription'
+    if (localStorage.getItem('pendingCoupon')) return '/student/subscription'
   } catch { /* storage blocked */ }
-  return '/dashboard'
+  return '/student/dashboard'
 }

@@ -1,0 +1,162 @@
+import React, { useState } from 'react';
+import Link from '@/components/common/AppLink';
+import { toast } from 'react-hot-toast';
+import { Target, Copy, Share2, Smartphone, Send, User, Lightbulb } from 'lucide-react';
+import config from '../../lib/config/appConfig';
+import useTranslate from '../../hooks/useTranslate';
+
+const ReferralBanner = ({ user }) => {
+  const { translate, rich } = useTranslate();
+  const [showShareOptions, setShowShareOptions] = useState(false);
+
+  const referralCode = user?.referralCode;
+  const referralCount = user?.referralCount || 0;
+
+  const message =
+    "🔥 Invite Your Friends & Earn Cash Rewards! 💰🔥\n\n" +
+    "Invite your friends to AajExam and earn real rewards you can withdraw anytime! 🚀\n\n" +
+    "Here's what you earn:\n\n" +
+    `💰 ₹${config.QUIZ_CONFIG.REFERRAL_REWARD_PRO} when your friend buys a PRO plan (first-time)\n\n` +
+    `🎁 Your Invitation Code: ${referralCode}\n\n` +
+    "🔗 Join here:\n\n" +
+    "https://aajexam.com/register";
+
+  const copyReferralCode = () => {
+    if (referralCode) {
+      navigator.clipboard.writeText(referralCode);
+      toast.success(translate('Code copied to clipboard!'), {
+        position: "top-center",
+        duration: 2000,
+      });
+    }
+  };
+
+  const copyReferralMessage = () => {
+    navigator.clipboard.writeText(message);
+    toast.success(translate('Message copied to clipboard!'), {
+      position: "top-center",
+      duration: 2000,
+    });
+  };
+
+  const shareOnWhatsApp = () => {
+    const whatsappMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/?text=${whatsappMessage}`, '_blank');
+  };
+
+  const shareOnTelegram = () => {
+    const telegramMessage = encodeURIComponent(message);
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.origin)}&text=${telegramMessage}`, '_blank');
+  };
+
+
+  return (
+    <div className="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-sm p-5 xl:p-10 border-2 border-slate-100 dark:border-slate-700 relative overflow-hidden mb-8 font-outfit">
+      {/* Decorative background */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none" />
+
+      {/* Header */}
+      <div className="text-center mb-10">
+        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-700 rounded-[2rem] flex items-center justify-center shadow-sm border-2 border-slate-100 dark:border-slate-600 mx-auto mb-6">
+          <Target className="w-10 h-10 text-primary-600" />
+        </div>
+        <h3 className="text-xl md:text-2xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-2">
+          {rich('Invite <0>& Earn!</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+        </h3>
+        <p className="text-slate-700 dark:text-gray-400 text-sm font-bold uppercase tracking-widest">
+          {translate('Share with friends and unlock rewards')}
+        </p>
+      </div>
+
+      <div className="bg-white dark:bg-slate-900/50 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700">
+        <div className="text-center">
+          <div className="text-5xl font-black text-primary-600 mb-1">
+            {referralCount}
+          </div>
+          <div className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.3em]">
+            {translate('Friends Joined')}
+          </div>
+        </div>
+      </div>
+
+      {/* Referral Code Section */}
+      <div className="bg-white dark:bg-slate-800 rounded-[2rem] p-8 mb-8 border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+        <div className="text-center">
+          <h4 className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-[0.4em] mb-6">
+            {translate('Your Invitation Code')}
+          </h4>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono font-black px-8 py-4 rounded-2xl tracking-[0.3em] border-2 border-slate-200 dark:border-slate-700 shadow-sm text-2xl select-all">
+              {referralCode}
+            </div>
+            <button
+              className="px-8 py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm transition-all active:translate-y-1 flex items-center gap-3"
+              onClick={copyReferralCode}
+            >
+              <Copy className="w-5 h-5" />
+              {translate('Copy')}
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Share Buttons */}
+      <div className="space-y-2 xl:space-y-4">
+        <button
+          onClick={() => setShowShareOptions(!showShareOptions)}
+          className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-6 px-8 rounded-[1.5rem] shadow-sm transition-all active:translate-y-1 flex items-center justify-center gap-3"
+        >
+          <Share2 className="w-5 h-5" />
+          {translate('Share with Friends')}
+        </button>
+
+        {showShareOptions && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
+            <button
+              onClick={shareOnWhatsApp}
+              className="bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
+            >
+              <Smartphone className="w-5 h-5" />
+              {translate('WhatsApp')}
+            </button>
+            <button
+              onClick={shareOnTelegram}
+              className="bg-primary-600 hover:opacity-90 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
+            >
+              <Send className="w-5 h-5" />
+              {translate('Telegram')}
+            </button>
+            <button
+              onClick={copyReferralMessage}
+              className="bg-primary-600 hover:bg-primary-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3"
+            >
+              <Copy className="w-5 h-5" />
+              {translate('Copy Text')}
+            </button>
+            <Link
+              href="/student/profile"
+              className="bg-slate-700 hover:bg-slate-800 text-white font-black uppercase tracking-widest py-4 px-6 rounded-2xl transition-all shadow-sm flex items-center justify-center gap-3 w-full"
+            >
+              <User className="w-5 h-5" />
+              {translate('My Profile')}
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {/* Footer Info */}
+      <div className="mt-8 text-center bg-white dark:bg-slate-900/50 p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-700">
+        <p className="text-slate-700 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] leading-relaxed flex items-center justify-center gap-2">
+          <Lightbulb className="w-4 h-4 text-black dark:text-white flex-shrink-0" />
+          {translate('TIP: Share on WhatsApp & Telegram to get rewards faster!')}
+        </p>
+      </div>
+    </div >
+  );
+};
+
+export default ReferralBanner;
+
+

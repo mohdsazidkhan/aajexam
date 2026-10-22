@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { FaQuestionCircle, FaGraduationCap, FaCreditCard, FaTrophy, FaUserShield, FaBook, FaChartLine } from 'react-icons/fa';
-import MobileAppWrapper from '../components/MobileAppWrapper';
-import AuthorBio from '../components/AuthorBio';
-import Seo from '../components/Seo';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
+import AuthorBio from '../components/common/AuthorBio';
+import Seo from '../components/common/Seo';
 import { generateFAQSchema, generateBreadcrumbSchema } from '../utils/schema';
 import config from '../lib/config/appConfig';
 import useTranslate from '../hooks/useTranslate';
@@ -200,9 +200,6 @@ const FAQ = () => {
                         <h1 className="text-2xl xl:text-3xl xl:text-5xl font-bold text-primary-600 mb-4">
                             {translate('Frequently Asked Questions')}
                         </h1>
-                        <p className="text-md xl:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            {translate('Find answers to common questions about AajExam platform, subscriptions, and exam preparation')}
-                        </p>
                     </div>
 
                     {/* FAQ Categories */}

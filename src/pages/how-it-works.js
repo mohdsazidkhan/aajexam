@@ -1,5 +1,5 @@
-import HowItWorks from '../components/pages/HowItWorks';
-import Seo from '../components/Seo';
+import HowItWorks from '../components/public/pages/HowItWorks';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 const HowItWorksPage = () => {

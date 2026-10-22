@@ -79,9 +79,18 @@ const nextConfig = {
       },
     ],
   },
-  // Student home moved from /home to /dashboard; keep old links and bookmarks working.
+  // Logged-in student pages now live under /student/*; keep old URLs, bookmarks and
+  // emailed links working. (/subscription/payu-* stay where they are — PayU return URLs.)
   async redirects() {
-    return [{ source: '/home', destination: '/dashboard', permanent: true }];
+    const studentPages = [
+      'dashboard', 'profile', 'settings', 'notifications', 'bookmarks', 'my-questions', 'my-reels', 'my-challenges', 'my-analytics', 'payment-history', 'readiness', 'revision', 'streak', 'study-plan', 'all-india-rank', 'syllabus-tracker', 'exam-calendar', 'leaderboard', 'exam-history', 'quiz-history', 'referral-history', 'subscription',
+    ];
+    return [
+      { source: '/home', destination: '/student/dashboard', permanent: true },
+      ...studentPages.map((name) => ({ source: `/${name}`, destination: `/student/${name}`, permanent: true })),
+      { source: '/quiz-result', destination: '/student/quiz-result', permanent: true },
+      { source: '/quiz-result/:id', destination: '/student/quiz-result/:id', permanent: true },
+    ];
   },
 
   async headers() {
@@ -132,6 +141,11 @@ const nextConfig = {
         source,
         headers: [{ key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=300' }],
       })),
+      // Logged-in student area: never index (public twins keep the SEO value).
+      {
+        source: '/student/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
       // Cache static assets aggressively for better Core Web Vitals
       {
         source: '/(.*)\\.(jpg|jpeg|png|gif|ico|svg|webp|woff|woff2)',

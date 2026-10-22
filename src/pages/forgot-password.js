@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/common/AppLink';
 import {
   Mail,
   ArrowLeft,
@@ -15,10 +15,10 @@ import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 
 import API from '../lib/api';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
-import MobileAppWrapper from '../components/MobileAppWrapper';
-import Seo from '../components/Seo';
+import Card from '../components/common/ui/Card';
+import Button from '../components/common/ui/Button';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
+import Seo from '../components/common/Seo';
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
@@ -56,7 +56,6 @@ const ForgotPasswordPage = () => {
                 <ShieldQuestion className="w-8 h-8" />
               </div>
               <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight">Forgot Password</h1>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Get back into your AajExam account</p>
             </div>
 
             <AnimatePresence mode="wait">

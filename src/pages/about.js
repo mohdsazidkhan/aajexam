@@ -1,5 +1,5 @@
-import AboutUs from '../components/pages/AboutUs';
-import Seo from '../components/Seo';
+import AboutUs from '../components/public/pages/AboutUs';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema, generateOrganizationSchema } from '../utils/schema';
 
 export default function About() {

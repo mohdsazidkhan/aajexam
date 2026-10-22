@@ -1,0 +1,561 @@
+'use client';
+
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import {
+  ArrowRight,
+  Award,
+  BookOpen,
+  Building2,
+  CheckCircle2,
+  Clock,
+  Copy,
+  CreditCard,
+  Eye,
+  Facebook,
+  Flame,
+  Instagram,
+  LogOut,
+  Mail,
+  MapPin,
+  Phone,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Trophy,
+  Twitter,
+  UserCheck,
+  Users,
+  Wallet,
+  Youtube,
+} from 'lucide-react';
+import { m as motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+import API from '../../../lib/api';
+import { handleAuthError } from '../../../lib/utils/authUtils';
+import Button from '../../common/ui/Button';
+import Card from '../../common/ui/Card';
+import ProgressBar from '../../common/ui/ProgressBar';
+import ReferralBanner from '../ReferralBanner';
+import { ProfileSkeleton } from '../../common/skeletons/PrivateSkeletons';
+import useTranslate from '../../../hooks/useTranslate';
+
+const formatCurrency = (value) => `Rs.${Number(value || 0).toLocaleString('en-IN')}`;
+
+const OBJECT_ID_RE = /^[a-f0-9]{24}$/i;
+
+const SOCIAL_ICONS = {
+  instagram: { icon: Instagram, color: 'text-black dark:text-white' },
+  facebook: { icon: Facebook, color: 'text-black dark:text-white' },
+  x: { icon: Twitter, color: 'text-black dark:text-white' },
+  youtube: { icon: Youtube, color: 'text-black dark:text-white' },
+};
+
+const Avatar = ({ student, sizeClass }) => (
+  student?.profilePicture ? (
+    <Image
+      src={student.profilePicture}
+      alt={student?.name || 'Profile'}
+      width={112}
+      height={112}
+      className={`${sizeClass} rounded-lg xl:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm object-cover bg-slate-200 dark:bg-slate-700 flex-shrink-0`}
+    />
+  ) : (
+    <div className={`${sizeClass} rounded-lg xl:rounded-2xl border-2 border-white dark:border-slate-900 shadow-sm flex items-center justify-center bg-slate-800 dark:bg-slate-700 text-primary-400 font-black flex-shrink-0`}>
+      {student?.name?.charAt(0)?.toUpperCase() || 'U'}
+    </div>
+  )
+);
+
+const ProfilePage = () => {
+  const { translate } = useTranslate();
+  const router = useRouter();
+  const [student, setStudent] = useState(null);
+  const [bankDetails, setBankDetails] = useState(null);
+  const [streak, setStreak] = useState(null);
+  const [quizzesAttempted, setQuizzesAttempted] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [activeSubTab, setActiveSubTab] = useState('profile'); // 'profile', 'bank', 'settings'
+
+  const fetchProfile = useCallback(async () => {
+    try {
+      setLoading(true);
+      const profileRes = await API.getProfile();
+      if (profileRes?.success) {
+        setStudent(profileRes.user);
+      }
+
+      try {
+        const bankRes = await API.getBankDetails();
+        if (bankRes?.success) {
+          setBankDetails(bankRes.bankDetail);
+        }
+      } catch {
+        setBankDetails(null);
+      }
+
+      try {
+        const streakRes = await API.request('/api/streak');
+        if (streakRes?.success) setStreak(streakRes.data);
+      } catch {
+        setStreak(null);
+      }
+
+      try {
+        const quizAttemptsRes = await API.getMyQuizAttempts({ status: 'Completed', limit: 1 });
+        if (quizAttemptsRes?.success) setQuizzesAttempted(quizAttemptsRes.pagination?.total || 0);
+      } catch {
+        setQuizzesAttempted(0);
+      }
+    } catch (error) {
+      handleAuthError(error, router);
+    } finally {
+      setLoading(false);
+    }
+  }, [router]);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
+
+  const secureLogout = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    router.push('/login');
+    toast.success(translate('Logged out successfully.'));
+  };
+
+  const copyReferralCode = () => {
+    if (!student?.referralCode) return;
+    navigator.clipboard.writeText(student.referralCode);
+    toast.success(translate('Referral code copied!'));
+  };
+
+  const socialLinks = useMemo(
+    () => Object.entries(student?.socialLinks || {}).filter(([key, url]) => SOCIAL_ICONS[key] && url),
+    [student?.socialLinks]
+  );
+
+  const subjectAccuracy = useMemo(() => {
+    const map = student?.performanceMetrics?.examStats?.subjectAccuracy || {};
+    return Object.entries(map)
+      .filter(([key, value]) => typeof value === 'number' && !OBJECT_ID_RE.test(key))
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5);
+  }, [student]);
+
+  const statTiles = useMemo(
+    () => [
+      { label: 'Day streak', value: streak?.currentStreak ?? 0, icon: Flame, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
+      { label: 'Followers', value: student?.followersCount || 0, icon: Users, tone: 'bg-primary-500/10 text-primary-600' },
+      { label: 'Following', value: student?.followingCount || 0, icon: UserCheck, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
+      { label: 'Profile views', value: student?.profileViews || 0, icon: Eye, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
+      { label: 'Referrals', value: student?.referralCount || 0, icon: Sparkles, tone: 'bg-black/10 dark:bg-white/10 text-black dark:text-white' },
+      { label: 'Wallet balance', value: formatCurrency(student?.walletBalance || 0), icon: Wallet, tone: 'bg-primary-500/10 text-primary-600' },
+    ],
+    [streak, student]
+  );
+
+  const accountDetails = [
+    { label: 'Email', value: student?.email || translate('Not added'), icon: Mail },
+    { label: 'Phone', value: student?.phone || translate('Not added'), icon: Phone },
+    { label: 'City', value: student?.city ? `${student.city}${student.state ? `, ${student.state}` : ''}` : translate('Not added'), icon: MapPin },
+    { label: 'Target exams', value: student?.primaryTargetExam || translate('All Exams'), icon: Target },
+    { label: 'Current Plan', value: student?.subscriptionStatus === 'PRO' ? 'PRO' : 'FREE', icon: ShieldCheck },
+    {
+      label: 'Joined',
+      value: student?.createdAt ? new Date(student.createdAt).toLocaleDateString() : translate('Unknown'),
+      icon: Clock,
+    },
+  ];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background-page font-outfit">
+        <div className="py-4 xl:py-12"><ProfileSkeleton /></div>
+      </div>
+    );
+  }
+
+  const isPro = student?.subscriptionStatus === 'PRO';
+  const completion = student?.profileCompletion;
+
+  return (
+    <div className="min-h-screen animate-fade-in pb-8 xl:pb-12 selection:bg-primary-600 selection:text-white">
+      <Head>
+        <title>{`${translate('My Profile')} | ${student?.name || translate('Student')}`}</title>
+      </Head>
+
+      <div className="container mx-auto space-y-2 xl:space-y-4 mt-4 mb-4 xl:mb-4">
+
+        {/* Hero — single full-width card, responsive from mobile to desktop */}
+        <Card className="p-5 xl:p-10 space-y-6" radius="3xl">
+          <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 xl:gap-8">
+          <div className="flex flex-row items-start gap-4 xl:gap-8">
+            <Avatar student={student} sizeClass="w-14 h-14 sm:w-20 sm:h-20 xl:w-28 xl:h-28 text-lg sm:text-2xl xl:text-5xl" />
+
+            <div className="flex-1 min-w-0 space-y-3 xl:space-y-4">
+              <div className="flex flex-wrap items-center gap-2 xl:gap-3">
+                <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight leading-none text-content-primary">
+                  {student?.name || translate('Student')}
+                </h1>
+                <span className={`px-2.5 py-1 rounded-full text-[10px] xl:text-xs font-black uppercase ${isPro ?'bg-primary-600 text-white shadow-sm':'bg-slate-100 dark:bg-slate-700 text-content-secondary'}`}>
+                  {isPro ? 'PRO' : translate('FREE')}
+                </span>
+                {isPro && student?.subscriptionExpiry && (
+                  <span className="text-xs font-semibold text-content-secondary">
+                    {translate('till {date}', { date: new Date(student.subscriptionExpiry).toLocaleDateString() })}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 flex-wrap">
+                <p className="text-sm xl:text-base font-semibold text-content-secondary">@{student?.username || 'guest'}</p>
+
+                {student?.city && (
+                  <p className="flex items-center gap-1.5 text-xs xl:text-sm font-medium text-content-secondary">
+                    <MapPin className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> {student.city}{student.state && `, ${student.state}`}
+                  </p>
+                )}
+              </div>
+
+            </div>
+          </div>
+
+            <div className="flex flex-col items-start xl:items-end gap-2 xl:gap-3 xl:flex-shrink-0 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+                {student?.username && (
+                  <Button variant="secondary" size="sm" icon={Eye} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push(`/u/${student.username}`)}>
+                    {translate('Public profile')}
+                  </Button>
+                )}
+                <Button variant="primary" size="sm" icon={Settings} className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/student/settings')}>
+                  {translate('Account settings')}
+                </Button>
+              </div>
+              {student?.bio && <p className="text-xs xl:text-sm font-medium text-content-secondary leading-relaxed xl:text-right">{student.bio}</p>}
+              {socialLinks.length > 0 && (
+                <div className="flex flex-wrap items-center gap-2 xl:gap-3">
+                  {socialLinks.map(([key, url]) => {
+                    const { icon: Icon, color } = SOCIAL_ICONS[key];
+                    return (
+                      <a key={key} href={url} target="_blank" rel="noopener noreferrer" className={`p-2.5 xl:p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 ${color}`}>
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+        </Card>
+
+        {/* All India Rank */}
+        <Card className="p-6 xl:p-10 space-y-6" radius="3xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <Trophy className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
+              <div>
+                <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('All India Rank')}</h2>
+                <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('Your rank among all active students.')}</p>
+              </div>
+            </div>
+            <Button variant="secondary" size="sm" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto rounded-xl text-xs font-black" onClick={() => router.push('/student/leaderboard')}>
+              {translate('View leaderboard')}
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 gap-3 xl:gap-6">
+            <div className="rounded-[1.5rem] bg-primary-600 text-white p-4 xl:p-6 text-center">
+              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{translate('Exam AIR')}</p>
+              <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
+              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}</p>
+            </div>
+            <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-6 text-center">
+              <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">{translate('Quiz AIR')}</p>
+              <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
+              <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}</p>
+            </div>
+          </div>
+        </Card>
+
+        {/* Stats row — full width, theme-aware tiles */}
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+          {statTiles.map((item) => (
+            <Card key={item.label} className="text-center space-y-2" radius="2xl">
+              <div className={`w-9 h-9 xl:w-11 xl:h-11 mx-auto rounded-xl xl:rounded-2xl flex items-center justify-center ${item.tone}`}>
+                <item.icon className="w-4 h-4 xl:w-5 xl:h-5" />
+              </div>
+              <p className="text-sm xl:text-xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
+              <p className="text-[8px] xl:text-[10px] font-bold uppercase tracking-wide text-content-secondary">{translate(item.label)}</p>
+            </Card>
+          ))}
+        </div>
+
+        {/* Sub-tab navigation */}
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-3 p-1.5 bg-background-surface-secondary dark:bg-slate-800/50 rounded-2xl w-fit border border-slate-200 dark:border-slate-800/50 shadow-sm relative z-20 max-w-full">
+          {[
+            { id: 'profile', label: 'My Profile', icon: Award },
+            { id: 'bank', label: 'Bank Details', icon: Wallet },
+            { id: 'settings', label: 'Account Settings', icon: Settings }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveSubTab(tab.id)}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-lg xl:rounded-xl font-black uppercase text-[10px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white shadow-sm scale-105' : 'text-content-secondary hover:bg-slate-100 dark:hover:bg-slate-700/50'}`}
+            >
+              <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white' : 'text-primary-600'}`} />
+              {translate(tab.label)}
+            </button>
+          ))}
+        </div>
+
+        <AnimatePresence mode="wait">
+          {activeSubTab === 'profile' && (
+            <motion.div
+              key="profile"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {/* Profile completion */}
+              {completion && !completion.isComplete && (
+                <Card className="p-6 xl:p-10 space-y-6" radius="3xl">
+                  <div className="flex items-center gap-4">
+                    <Target className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
+                    <div>
+                      <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Complete your profile')}</h2>
+                      <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('A complete profile helps you stand out and unlocks rewards.')}</p>
+                    </div>
+                  </div>
+                  <ProgressBar progress={completion.percentage} variant="primary" height="md" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {completion.fields.map((field) => (
+                      <div key={field.field} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                        <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${field.completed ? 'text-primary-600' : 'text-slate-300 dark:text-slate-600'}`} />
+                        <span className={`text-sm font-semibold ${field.completed ? 'text-content-primary' : 'text-content-secondary'}`}>{field.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              )}
+
+              {/* Exam performance */}
+              <Card className="p-6 xl:p-10 space-y-8" radius="3xl">
+                <div className="flex items-center gap-4">
+                  <TrendingUp className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
+                  <div>
+                    <h2 className="text-lg xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Exam performance')}</h2>
+                    <p className="text-xs xl:text-sm font-medium text-content-secondary pb-1">{translate('Preparing for {exam}.', { exam: student?.primaryTargetExam || translate('All Exams') })}</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
+                  {[
+                    { label: 'Overall readiness', value: `${student?.performanceMetrics?.examStats?.overallReadiness || 0}%` },
+                    { label: 'Quizzes attempted', value: quizzesAttempted },
+                    { label: 'Tests attempted', value: student?.performanceMetrics?.examStats?.mockTestsAttempted || 0 },
+                    { label: 'Avg score', value: `${student?.performanceMetrics?.examStats?.averageMockScore || 0}%` },
+                  ].map((item) => (
+                    <div key={item.label} className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-5 text-center">
+                      <p className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">{item.value}</p>
+                      <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{translate(item.label)}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {subjectAccuracy.length > 0 && (
+                  <div className="space-y-2 xl:space-y-4">
+                    <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-content-secondary">
+                      <BookOpen className="w-4 h-4" /> Subject-wise accuracy
+                    </p>
+                    <div className="space-y-2 xl:space-y-4">
+                      {subjectAccuracy.map(([subject, score]) => (
+                        <ProgressBar key={subject} progress={score} variant="primary" height="sm" label={subject} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </Card>
+
+              {/* Badges */}
+              <Card className="space-y-6" radius="3xl">
+                <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <Award className="w-7 h-7 xl:w-8 xl:h-8 text-primary-600" />
+                    <div>
+                      <h2 className="text-lg xl:text-xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Badges')}</h2>
+                      <p className="text-xs font-medium text-content-secondary pb-1">{translate('Earned through activity and achievements.')}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-3 xl:justify-end xl:flex-shrink-0">
+                    {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
+                      <span key={index} className="px-4 py-2.5 bg-background-surface-secondary text-content-primary rounded-xl text-xs font-black uppercase tracking-wider border border-slate-200 dark:border-slate-800">
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+
+              {/* Account details */}
+              <Card className="space-y-6" radius="3xl">
+                <div className="flex items-center gap-3">
+                  <ShieldCheck className="w-5 h-5 text-primary-600" />
+                  <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">{translate('Account details')}</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+                  {accountDetails.map((item) => (
+                    <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                      <div className="p-2 bg-background-surface-secondary rounded-lg shadow-sm text-content-secondary flex-shrink-0">
+                        <item.icon className="w-4 h-4" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-medium text-content-secondary">{translate(item.label)}</p>
+                        <p className="text-sm font-semibold text-content-primary truncate">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              {/* Referral code */}
+              {student?.referralCode && (
+                <Card className="space-y-2 xl:space-y-4" radius="3xl">
+                  <div className="flex items-center gap-3">
+                    <Sparkles className="w-5 h-5 text-primary-600" />
+                    <h3 className="font-outfit font-black tracking-tight text-lg text-content-primary pb-1">{translate('Your referral code')}</h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="flex-1 font-mono font-black text-lg tracking-[0.2em] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 select-all text-content-primary">
+                      {student.referralCode}
+                    </span>
+                    <button aria-label={translate('Copy')} onClick={copyReferralCode} className="p-3 bg-primary-600 hover:bg-primary-600 text-white rounded-xl transition-colors">
+                      <Copy className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <p className="text-sm font-medium text-content-secondary leading-relaxed">{translate('{count} friends joined using your code.', { count: student.referralCount || 0 })}</p>
+                </Card>
+              )}
+
+              <ReferralBanner user={student} />
+            </motion.div>
+          )}
+
+          {activeSubTab === 'bank' && (
+            <motion.div
+              key="bank"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="p-4 xl:p-10 space-y-2 xl:space-y-4 xl:space-y-8 relative overflow-hidden" radius="3xl">
+                <div className="flex items-center justify-between gap-4 relative z-10">
+                  <div>
+                    <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Payout details')}</h2>
+                    <p className="text-sm font-medium text-content-secondary pb-1">{translate('Add your bank details to receive prize money.')}</p>
+                  </div>
+                  {bankDetails && <span className="px-4 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold">{translate('Linked')}</span>}
+                </div>
+
+                {bankDetails ? (
+                  <div className="p-4 xl:p-8 bg-background-surface-secondary text-content-primary rounded-[2rem] xl:rounded-[3rem] border border-slate-200 dark:border-slate-800 relative z-10">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                      <div className="w-16 h-16 bg-primary-500/10 text-primary-600 rounded-[1.5rem] flex items-center justify-center border border-primary-500/20 flex-shrink-0">
+                        <Building2 className="w-8 h-8" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight">{bankDetails.bankName}</h3>
+                        <p className="text-sm font-medium text-content-secondary mt-1">
+                          {translate('{name} · Account ending {last4}', { name: bankDetails.accountHolderName || translate('Account holder'), last4: bankDetails.accountNumber?.slice(-4) || '----' })}
+                        </p>
+                      </div>
+                      <Button variant="primary" className="px-6 py-3 rounded-lg xl:rounded-xl text-sm font-semibold" onClick={() => router.push('/student/settings')}>
+                        {translate('Update')}
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-6 xl:p-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] xl:rounded-[3rem] text-center space-y-5 relative z-10">
+                    <div className="w-20 h-20 bg-background-surface-secondary rounded-full flex items-center justify-center mx-auto opacity-70">
+                      <CreditCard className="w-10 h-10 text-content-secondary" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary">{translate('No bank account linked')}</h3>
+                      <p className="text-sm font-medium text-content-secondary max-w-md mx-auto">
+                        {translate('Add your bank details to receive rewards without delays.')}
+                      </p>
+                    </div>
+                    <Button variant="primary" className="px-10 py-4 rounded-2xl text-sm font-black" onClick={() => router.push('/student/settings')}>
+                      {translate('Add bank details')}
+                    </Button>
+                  </div>
+                )}
+
+                <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-primary-500/5 rounded-full blur-3xl pointer-events-none" />
+              </Card>
+            </motion.div>
+          )}
+
+          {activeSubTab === 'settings' && (
+            <motion.div
+              key="settings"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              <Card className="space-y-6" radius="3xl">
+                <div className="space-y-1">
+                  <h2 className="text-xl xl:text-2xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Quick actions')}</h2>
+                  <p className="text-sm font-medium text-content-secondary pb-1">{translate('Jump to the places you are most likely to need next.')}</p>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    { label: 'Manage subscription', onClick: () => router.push('/student/subscription') },
+                    { label: 'Review account settings', onClick: () => router.push('/student/settings') },
+                  ].map((item) => (
+                    <button
+                      key={item.label}
+                      onClick={item.onClick}
+                      className="w-full flex items-center justify-between px-5 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-left hover:border-primary-500/30 transition-colors"
+                    >
+                      <span className="text-sm font-semibold text-content-primary">{translate(item.label)}</span>
+                      <ArrowRight className="w-4 h-4 text-slate-400" />
+                    </button>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="space-y-2 xl:space-y-4" radius="3xl">
+                <div className="flex items-center gap-3">
+                  <ShieldCheck className="w-5 h-5 text-primary-600" />
+                  <h2 className="text-xl font-black font-outfit tracking-tight text-content-primary pb-1">{translate('Account safety')}</h2>
+                </div>
+                <p className="text-sm font-medium text-content-secondary leading-relaxed pb-1">
+                  {translate('Keep your profile, bank details, and password up to date so your account stays secure and payouts go through smoothly.')}
+                </p>
+                <button
+                  onClick={secureLogout}
+                  className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-black uppercase tracking-wide bg-red-500 hover:bg-red-600 text-white shadow-sm transition-colors"
+                >
+                  <LogOut className="w-4 h-4" /> Log out
+                </button>
+              </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
+
+export default ProfilePage;

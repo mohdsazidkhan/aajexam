@@ -1,8 +1,8 @@
 import React from 'react';
-import MobileAppWrapper from '../components/MobileAppWrapper';
-import UnifiedFooter from '../components/UnifiedFooter';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
+import UnifiedFooter from '../components/common/UnifiedFooter';
 import { FaExclamationTriangle, FaInfoCircle, FaShieldAlt } from 'react-icons/fa';
-import Seo from '../components/Seo';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import config from '../lib/config/appConfig';
 

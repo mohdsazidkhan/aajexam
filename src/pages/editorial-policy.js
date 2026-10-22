@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { FaShieldAlt, FaCheckCircle, FaUserGraduate, FaBook, FaAward, FaHandshake } from 'react-icons/fa';
-import MobileAppWrapper from '../components/MobileAppWrapper';
-import UnifiedFooter from '../components/UnifiedFooter';
-import Seo from '../components/Seo';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
+import UnifiedFooter from '../components/common/UnifiedFooter';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import config from '../lib/config/appConfig';
 
@@ -32,9 +32,6 @@ export default function EditorialPolicy() {
                         <h1 className="text-2xl xl:text-5xl font-bold text-primary-600 mb-4">
                             Editorial Policy
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Our Commitment to Quality, Accuracy, and Educational Excellence
-                        </p>
                         <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                             Last Updated: 1st April 2026
                         </p>

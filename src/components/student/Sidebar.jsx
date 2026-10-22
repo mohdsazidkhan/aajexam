@@ -1,6 +1,7 @@
 'use client';
 
-import Link from 'next/link';
+import { stripStudent } from '../../lib/utils/appRoutes';
+import Link from '@/components/common/AppLink';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -45,7 +46,7 @@ import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import { secureLogout, getCurrentUser, isAuthenticated } from '../../lib/utils/authUtils';
 import { useSSR } from '../../hooks/useSSR';
 import API from '../../lib/api';
-import { ProBadge } from '../ui';
+import { ProBadge } from '../common/ui';
 import useTranslate from '../../hooks/useTranslate';
 
 const StudentSidebar = () => {
@@ -78,13 +79,14 @@ const StudentSidebar = () => {
   }, [authenticated, isMounted]);
 
   const isActiveRoute = (path) => {
-    const pathname = router?.pathname;
+    const pathname = stripStudent(router?.pathname);
     if (!pathname) return false;
+    path = stripStudent(path);
     if (path === '/dashboard') return pathname === '/dashboard' || pathname === '/';
     if (pathname === path) return true;
     if (!pathname.startsWith(path + '/')) return false;
     // Sibling-aware: if any other sidebar path is a longer prefix of pathname, this parent is NOT active
-    const allPaths = sidebarSections.flatMap(s => s.items.map(i => i.path));
+    const allPaths = sidebarSections.flatMap(s => s.items.map(i => stripStudent(i.path)));
     const longerMatch = allPaths.some(p => p !== path && p.length > path.length && (pathname === p || pathname.startsWith(p + '/')));
     return !longerMatch;
   };
@@ -97,14 +99,14 @@ const StudentSidebar = () => {
     {
       title: 'MAIN',
       items: [
-        { path: '/dashboard', icon: Home, label: 'Dashboard' },
-        { path: '/notifications', icon: Bell, label: 'Notifications' },
+        { path: '/student/dashboard', icon: Home, label: 'Dashboard' },
+        { path: '/student/notifications', icon: Bell, label: 'Notifications' },
         { path: '/features', icon: Sparkles, label: 'Features' },
         { path: '/search', icon: Search, label: 'Search' },
         { path: '/reels', icon: PlayCircle, label: 'Reels' },
         { path: '/reels/create', icon: PlusCircle, label: 'Create Reel' },
-        { path: '/my-reels', icon: PlayCircle, label: 'My Reels' },
-        { path: '/bookmarks', icon: Bookmark, label: 'Bookmarks' },
+        { path: '/student/my-reels', icon: PlayCircle, label: 'My Reels' },
+        { path: '/student/bookmarks', icon: Bookmark, label: 'Bookmarks' },
         { path: '/govt-exams', icon: GraduationCap, label: 'Govt. Exams' },
         { path: '/quizzes', icon: BrainCircuit, label: 'Quizzes' },
         { path: '/subjects', icon: BookMarked, label: 'Subjects' },
@@ -112,26 +114,26 @@ const StudentSidebar = () => {
         { path: '/blog', icon: PenSquare, label: 'Blog' },
         { path: '/community-questions', icon: MessageSquarePlus, label: 'Community Q&A' },
         { path: '/community-questions/ask', icon: PlusCircle, label: 'Create Q&A' },
-        { path: '/my-questions', icon: MessageSquarePlus, label: 'My Q&A' },
+        { path: '/student/my-questions', icon: MessageSquarePlus, label: 'My Q&A' },
       ]
     },
     {
       title: 'DAILY',
       items: [
         { path: '/daily-challenge', icon: Target, label: 'Daily Challenge' },
-        { path: '/streak', icon: Flame, label: 'Streak' },
+        { path: '/student/streak', icon: Flame, label: 'Streak' },
         { path: '/current-affairs', icon: Newspaper, label: 'Current Affairs' },
         { path: '/exam-news', icon: Megaphone, label: 'Exam News' },
-        { path: '/exam-calendar', icon: CalendarDays, label: 'Exam Calendar' },
+        { path: '/student/exam-calendar', icon: CalendarDays, label: 'Exam Calendar' },
       ]
     },
     {
       title: 'STUDY',
       items: [
         { path: '/pyq', icon: FileText, label: 'Previous Year Q', isPro: true },
-        { path: '/syllabus-tracker', icon: Layers, label: 'Syllabus Tracker', isPro: true },
-        { path: '/revision', icon: RotateCcw, label: 'Revision Queue', isPro: true },
-        { path: '/study-plan', icon: CalendarDays, label: 'Study Planner', isPro: true },
+        { path: '/student/syllabus-tracker', icon: Layers, label: 'Syllabus Tracker', isPro: true },
+        { path: '/student/revision', icon: RotateCcw, label: 'Revision Queue', isPro: true },
+        { path: '/student/study-plan', icon: CalendarDays, label: 'Study Planner', isPro: true },
         { path: '/notes', icon: StickyNote, label: 'Notes & Formulas' },
         { path: '/interview-questions', icon: MessageCircleQuestion, label: 'Interview Questions' },
         { path: '/mentors', icon: Users, label: 'Mentors', isPro: true },
@@ -140,23 +142,23 @@ const StudentSidebar = () => {
     {
       title: 'PROGRESS',
       items: [
-        { path: '/leaderboard', icon: Trophy, label: 'Leaderboard' },
-        { path: '/all-india-rank', icon: Globe, label: 'All India Rank', isPro: true },
-        { path: '/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
-        { path: '/readiness', icon: Target, label: 'Exam Readiness', isPro: true },
-        { path: '/exam-history', icon: History, label: 'Exam History', isPro: true },
-        { path: '/payment-history', icon: CreditCard, label: 'Payment History' },
-        { path: '/quiz-history', icon: BrainCircuit, label: 'Quiz History', isPro: true },
-        { path: '/my-challenges', icon: Swords, label: 'My Challenges', isPro: true },
-        { path: '/referral-history', icon: Globe, label: 'Referrals' },
+        { path: '/student/leaderboard', icon: Trophy, label: 'Leaderboard' },
+        { path: '/student/all-india-rank', icon: Globe, label: 'All India Rank', isPro: true },
+        { path: '/student/my-analytics', icon: TrendingUp, label: 'Performance', isPro: true },
+        { path: '/student/readiness', icon: Target, label: 'Exam Readiness', isPro: true },
+        { path: '/student/exam-history', icon: History, label: 'Exam History', isPro: true },
+        { path: '/student/payment-history', icon: CreditCard, label: 'Payment History' },
+        { path: '/student/quiz-history', icon: BrainCircuit, label: 'Quiz History', isPro: true },
+        { path: '/student/my-challenges', icon: Swords, label: 'My Challenges', isPro: true },
+        { path: '/student/referral-history', icon: Globe, label: 'Referrals' },
       ]
     },
     {
       title: 'ACCOUNT',
       items: [
-        { path: '/profile', icon: User, label: 'Profile' },
-        { path: '/subscription', icon: ShieldCheck, label: 'Subscription' },
-        { path: '/settings', icon: Settings, label: 'Settings' },
+        { path: '/student/profile', icon: User, label: 'Profile' },
+        { path: '/student/subscription', icon: ShieldCheck, label: 'Subscription' },
+        { path: '/student/settings', icon: Settings, label: 'Settings' },
       ]
     }
   ];

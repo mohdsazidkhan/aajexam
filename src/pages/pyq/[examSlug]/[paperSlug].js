@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from '@/components/common/AppLink';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { FaPlay, FaClock, FaTrophy, FaCheckCircle, FaCalendar, FaListOl, FaBookOpen, FaArrowRight } from 'react-icons/fa';
-import Seo from '../../../components/Seo';
+import Seo from '../../../components/common/Seo';
 import { requireAuthForAction } from '../../../lib/auth';
 import {
     generatePracticeTestSchema,

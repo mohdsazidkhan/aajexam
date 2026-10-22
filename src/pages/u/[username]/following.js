@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Head from 'next/head';
 import axios from 'axios';
-import { ListSkeleton } from '../../../components/skeletons/PrivateSkeletons';
-import MobileAppWrapper from '../../../components/MobileAppWrapper';
+import { ListSkeleton } from '../../../components/common/skeletons/PrivateSkeletons';
+import MobileAppWrapper from '../../../components/common/MobileAppWrapper';
 import useTranslate from '../../../hooks/useTranslate';
-import Pagination from '../../../components/Pagination';
+import Pagination from '../../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 
 export default function FollowingListPage() {

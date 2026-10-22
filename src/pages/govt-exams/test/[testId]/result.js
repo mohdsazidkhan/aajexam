@@ -3,8 +3,8 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { fmtNum } from '../../../../lib/utils/formatNumber';
-import { useRouter } from 'next/router';
-import Seo from '../../../../components/Seo';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Seo from '../../../../components/common/Seo';
 import {
   Trophy,
   Target,
@@ -25,12 +25,12 @@ import { m as motion, AnimatePresence } from 'framer-motion';
 
 import API from '../../../../lib/api';
 import { getCurrentUser } from '../../../../lib/utils/authUtils';
-import Button from '../../../../components/ui/Button';
-import Card from '../../../../components/ui/Card';
-import ProgressBar from '../../../../components/ui/ProgressBar';
-import Skeleton from '../../../../components/Skeleton';
-import ShareComponent from '../../../../components/ShareComponent';
-import DiscussionThread from '../../../../components/discussions/DiscussionThread';
+import Button from '../../../../components/common/ui/Button';
+import Card from '../../../../components/common/ui/Card';
+import ProgressBar from '../../../../components/common/ui/ProgressBar';
+import Skeleton from '../../../../components/common/Skeleton';
+import ShareComponent from '../../../../components/common/ShareComponent';
+import DiscussionThread from '../../../../components/common/discussions/DiscussionThread';
 import useTranslate from '../../../../hooks/useTranslate';
 
 const TestResult = ({ resolvedId } = {}) => {
@@ -92,6 +92,7 @@ const TestResult = ({ resolvedId } = {}) => {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [router.isReady, testId, attempt]);
 
   const formatTime = (val) => {

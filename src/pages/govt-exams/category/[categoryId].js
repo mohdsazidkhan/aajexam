@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
   ArrowLeft,
   GraduationCap,
@@ -15,11 +15,11 @@ import {
 import { m as motion } from 'framer-motion';
 
 import API from '../../../lib/api';
-import Button from '../../../components/ui/Button';
-import Card from '../../../components/ui/Card';
-import ProgressBar from '../../../components/ui/ProgressBar';
-import Skeleton from '../../../components/Skeleton';
-import Seo from '../../../components/Seo';
+import Button from '../../../components/common/ui/Button';
+import Card from '../../../components/common/ui/Card';
+import ProgressBar from '../../../components/common/ui/ProgressBar';
+import Skeleton from '../../../components/common/Skeleton';
+import Seo from '../../../components/common/Seo';
 import { generateBreadcrumbSchema, generateItemListSchema } from '../../../utils/schema';
 import useTranslate from '../../../hooks/useTranslate';
 
@@ -48,6 +48,7 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
     } finally {
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
   }, [categoryId]);
 
   useEffect(() => {

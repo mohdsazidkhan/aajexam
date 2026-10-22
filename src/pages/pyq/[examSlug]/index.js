@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import Link from '@/components/common/AppLink';
 import { FaCalendar, FaListOl, FaTrophy, FaClock, FaArrowRight, FaBookOpen, FaGraduationCap } from 'react-icons/fa';
 import { Lock } from 'lucide-react';
-import { ProBadge } from '../../../components/ui';
+import { ProBadge } from '../../../components/common/ui';
 import { hasProSubscription } from '../../../lib/utils/subscriptionUtils';
-import Seo from '../../../components/Seo';
+import Seo from '../../../components/common/Seo';
 import {
     generateBreadcrumbSchema,
     generateFAQSchema,
@@ -267,7 +267,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                     {/* CTAs */}
                                     <div className="flex flex-col gap-3 pt-1">
                                         <button
-                                            onClick={() => router.push('/subscription')}
+                                            onClick={() => router.push('/student/subscription')}
                                             className="w-full py-4 bg-primary-600 hover:bg-primary-600 text-white font-black uppercase tracking-widest rounded-2xl text-sm shadow-sm border-b-2 border-primary-600 active:translate-y-0.5 transition-all"
                                         >
                                             {translate('Get PRO — Unlock All PYQs →')}

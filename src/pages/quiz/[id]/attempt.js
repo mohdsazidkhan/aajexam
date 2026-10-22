@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
-import Seo from '../../../components/Seo';
-import { QuizAttemptSkeleton } from '../../../components/skeletons/PrivateSkeletons';
+import Seo from '../../../components/common/Seo';
+import { QuizAttemptSkeleton } from '../../../components/common/skeletons/PrivateSkeletons';
 
-const AttemptQuizPage = dynamic(() => import('../../../components/pages/AttemptQuizPage'), {
+const AttemptQuizPage = dynamic(() => import('../../../components/student/pages/AttemptQuizPage'), {
   ssr: false,
   loading: () => <QuizAttemptSkeleton />
 });

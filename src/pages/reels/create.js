@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { FormSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import { FormSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
-const ReelCreate = dynamic(() => import('../../components/pages/ReelCreate'), {
+const ReelCreate = dynamic(() => import('../../components/student/pages/ReelCreate'), {
   ssr: false,
   loading: () => <div className="px-4 py-6"><FormSkeleton fields={3} /></div>
 });

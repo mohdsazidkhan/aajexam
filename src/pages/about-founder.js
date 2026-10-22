@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { FaUserGraduate, FaTrophy, FaCode, FaChalkboardTeacher, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
-import MobileAppWrapper from '../components/MobileAppWrapper';
-import UnifiedFooter from '../components/UnifiedFooter';
-import Seo from '../components/Seo';
+import MobileAppWrapper from '../components/common/MobileAppWrapper';
+import UnifiedFooter from '../components/common/UnifiedFooter';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import config from '../lib/config/appConfig';
 import useTranslate from '../hooks/useTranslate';

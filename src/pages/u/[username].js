@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from '@/components/common/AppLink';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { PlayCircle, Eye, Heart, FileText, Lightbulb, Zap, Newspaper, BarChart3 } from 'lucide-react';
 import API from '../../lib/api';
-import { ProfileSkeleton } from '../../components/skeletons/PrivateSkeletons';
+import { ProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import dbConnect from '../../lib/db';
 import User from '../../models/User';
-import FollowButton from '../../components/FollowButton';
-import MobileAppWrapper from '../../components/MobileAppWrapper';
-import Seo from '../../components/Seo';
+import FollowButton from '../../components/common/FollowButton';
+import MobileAppWrapper from '../../components/common/MobileAppWrapper';
+import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
 
 const PublicProfilePage = ({ username: ssrUsername, seo }) => {
@@ -168,7 +168,7 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
                 {isOwnProfile && (
                   <button
                     className="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-wider text-[11px] rounded-lg xl:rounded-xl border-2 border-slate-200 dark:border-slate-700 active:translate-y-0.5 active:border-b-2 transition-all"
-                    onClick={() => router.push('/settings')}
+                    onClick={() => router.push('/student/settings')}
                   >
                     {translate('Edit Profile')}
                   </button>

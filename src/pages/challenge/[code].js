@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { Trophy, Play, Users, ArrowLeft, Swords, Crown, Medal } from 'lucide-react';
 import API from '../../lib/api';
-import Seo from '../../components/Seo';
+import Seo from '../../components/common/Seo';
 import toast from 'react-hot-toast';
 import useTranslate from '../../hooks/useTranslate';
 
@@ -29,6 +29,7 @@ export default function ChallengePage() {
             })
             .catch(() => toast.error(translate('Error loading challenge')))
             .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- translate/fetch helper only feed toasts; re-running on language change would refetch or repeat side effects
     }, [code, router]);
 
     const handleAcceptChallenge = () => {

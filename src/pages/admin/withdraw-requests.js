@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
-const AdminWithdrawRequests = dynamic(() => import('../../components/pages/admin/WithdrawRequests'), {
+const AdminWithdrawRequests = dynamic(() => import('../../components/admin/pages/WithdrawRequests'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

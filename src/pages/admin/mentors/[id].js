@@ -6,7 +6,7 @@ import { ArrowLeft, Shield, Star, Users, BookOpen, Clock, Award, MessageCircle }
 import { toast } from 'react-hot-toast';
 import Head from 'next/head';
 import API from '../../../lib/api';
-import Card from '../../../components/ui/Card';
+import Card from '../../../components/common/ui/Card';
 import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
 import AdminRoute from '../../../components/admin/Route';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';

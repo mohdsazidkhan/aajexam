@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminFormSkeleton } from '../../../../components/admin/Skeletons';
 
-const AdminReelEdit = dynamic(() => import('../../../../components/pages/admin/ReelEdit'), {
+const AdminReelEdit = dynamic(() => import('../../../../components/admin/pages/ReelEdit'), {
   ssr: false,
   loading: () => <AdminFormSkeleton />
 });

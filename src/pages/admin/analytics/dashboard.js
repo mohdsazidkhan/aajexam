@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminDashboardSkeleton } from '../../../components/admin/Skeletons';
 
-const DashboardAnalytics = dynamic(() => import('../../../components/pages/admin/DashboardAnalytics'), {
+const DashboardAnalytics = dynamic(() => import('../../../components/admin/pages/DashboardAnalytics'), {
   ssr: false,
   loading: () => <AdminDashboardSkeleton />
 });

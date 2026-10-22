@@ -1,5 +1,5 @@
-import TermsAndConditions from '../components/pages/TermsAndConditions';
-import Seo from '../components/Seo';
+import TermsAndConditions from '../components/public/pages/TermsAndConditions';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 const TermsPage = () => {

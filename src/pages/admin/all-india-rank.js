@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { AdminTableSkeleton } from '../../components/admin/Skeletons';
 
-const AllIndiaRankPage = dynamic(() => import('../../components/pages/admin/AllIndiaRankPage'), {
+const AllIndiaRankPage = dynamic(() => import('../../components/admin/pages/AllIndiaRankPage'), {
   ssr: false,
   loading: () => <AdminTableSkeleton />
 });

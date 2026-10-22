@@ -1,5 +1,5 @@
-import RefundPolicy from '../components/pages/RefundPolicy';
-import Seo from '../components/Seo';
+import RefundPolicy from '../components/public/pages/RefundPolicy';
+import Seo from '../components/common/Seo';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
 const RefundPage = () => {
