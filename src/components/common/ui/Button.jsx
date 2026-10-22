@@ -60,7 +60,7 @@ const Button = ({
         ${fullWidth ? 'w-full' : 'w-fit'}
         ${disabled ? 'opacity-40 grayscale cursor-not-allowed !shadow-none !border-none' : ''}
         relative transition-all duration-150 flex items-center justify-center gap-3
-        ${variant === 'secondary' ? 'border-b-2' : 'border-b-[6px] active:border-b-0'}
+        ${variant === 'secondary' ? 'border-b-2' : 'border-2'}
         group cursor-pointer font-outfit overflow-hidden
         ${extraClasses}
       `}

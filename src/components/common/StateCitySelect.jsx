@@ -8,7 +8,7 @@ import useTranslate from '../../hooks/useTranslate';
 // disabled until one is picked, since a city name alone can be ambiguous
 // across states (e.g. "Bilaspur" exists in both Chhattisgarh and Himachal
 // Pradesh) — the linked City data only disambiguates once a state is known.
-const StateCitySelect = ({ state, city, onChange, className = '', stacked = false }) => {
+const StateCitySelect = ({ state, city, onChange, className = '', stacked = false, compact = false }) => {
   const { translate } = useTranslate();
   const handleStateChange = (newState) => {
     onChange({ state: newState, city: newState === state ? city : '' });
@@ -22,12 +22,14 @@ const StateCitySelect = ({ state, city, onChange, className = '', stacked = fals
     <div className={`grid grid-cols-1 ${stacked ? '' : 'sm:grid-cols-2'} gap-3 ${className}`}>
       <SearchableDropdown
         type="state"
+        compact={compact}
         value={state}
         onChange={handleStateChange}
         placeholder={translate('Search your state...')}
       />
       <SearchableDropdown
         type="city"
+        compact={compact}
         value={city}
         onChange={handleCityChange}
         placeholder={state ? translate('Search your city...') : translate('Select a state first')}
