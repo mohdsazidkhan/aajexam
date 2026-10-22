@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Exam from '@/models/Exam';
@@ -11,9 +12,16 @@ export async function GET(request) {
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
         const skip = (page - 1) * limit;
 
-        const totalExams = await Exam.countDocuments({ isActive: true, actualExam: { $ne: false } });
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const filter = { isActive: true, actualExam: { $ne: false } };
+        if (search) {
+            const rx = new RegExp(escapeRegex(search), 'i');
+            filter.$or = [{ name: rx }, { code: rx }];
+        }
 
-        const exams = await Exam.find({ isActive: true, actualExam: { $ne: false } })
+        const totalExams = await Exam.countDocuments(filter);
+
+        const exams = await Exam.find(filter)
             .populate('category', 'name')
             .select('name code logo description')
             .skip(skip)

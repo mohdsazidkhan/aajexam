@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
@@ -25,6 +26,8 @@ export async function GET(req) {
 
         let query = { isPYQ: true, ...patternFilter };
         if (year) query.pyqYear = parseInt(year);
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        if (search) query.title = new RegExp(escapeRegex(search), 'i');
 
         const [tests, total] = await Promise.all([
             PracticeTest.find(query)

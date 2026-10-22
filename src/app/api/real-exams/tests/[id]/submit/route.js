@@ -1,3 +1,4 @@
+import { recordAttemptStat } from '@/lib/utils/leaderboardStats';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
@@ -70,6 +71,13 @@ export async function POST(req, { params }) {
         attempt.submittedAt = new Date();
         attempt.status = 'Completed';
         await attempt.save();
+
+        // Feed the precomputed leaderboard / All India Rank totals (never throws).
+        await recordAttemptStat('exam', {
+            user: attempt.user, examId: test.examPattern?.exam?._id, createdAt: attempt.createdAt,
+            accuracy: attempt.accuracy, percentage: attempt.accuracy, score: attempt.score,
+            marks: test.totalMarks, correct: attempt.correctCount, time: attempt.totalTime, best: attempt.score,
+        });
 
         const wrongRevisionItems = evaluation.answerDetails
             .map((ans, i) => ({ ans, q: test.questions[i] }))

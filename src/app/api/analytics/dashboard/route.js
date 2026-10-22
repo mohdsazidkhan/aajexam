@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, adminOnly } from '@/middleware/auth';
@@ -11,6 +12,10 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        const __ck = `analytics-dash:${new URL(req.url).searchParams.get('limit') || 20}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
         const { searchParams } = new URL(req.url);
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
 
@@ -34,7 +39,7 @@ export async function GET(req) {
             .sort({ createdAt: -1 })
             .limit(limit).lean();
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             data: {
                 overview: {
@@ -44,7 +49,9 @@ export async function GET(req) {
                 },
                 subscriptionDistribution, topUsers
             }
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 60);
+        return NextResponse.json(__body);
     } catch (error) {
         return NextResponse.json({ message: error.message }, { status: 500 });
     }

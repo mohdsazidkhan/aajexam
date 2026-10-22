@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Follow from '@/models/Follow';
@@ -12,11 +13,19 @@ export async function GET(req, { params }) {
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
         const skip = (page - 1) * limit;
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const baseFilter = { following: id, status: 'active' };
+        if (search) {
+            const rx = new RegExp(escapeRegex(search), 'i');
+            const matches = await User.find({ $or: [{ name: rx }, { username: rx }] }).select('_id').limit(500).lean();
+            baseFilter.follower = { $in: matches.map(u => u._id) };
+        }
+
         const [followers, total] = await Promise.all([
-            Follow.find({ following: id, status: 'active' })
+            Follow.find(baseFilter)
                 .populate('follower', 'name username profilePicture followersCount followingCount')
                 .skip(skip).limit(limit).sort({ createdAt: -1 }).lean(),
-            Follow.countDocuments({ following: id, status: 'active' })
+            Follow.countDocuments(baseFilter)
         ]);
 
         return NextResponse.json({

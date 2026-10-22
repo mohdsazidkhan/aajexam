@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Exam from '@/models/Exam';
@@ -15,6 +16,14 @@ import { notEmbedded } from '@/lib/utils/embeddedSource';
 export async function GET() {
     try {
         await dbConnect();
+
+        // Shared across instances so cold CDN edges don't each trigger the full-collection counts.
+        const __hit = await readCache('landing-stats');
+        if (__hit) {
+            const cachedRes = NextResponse.json(__hit);
+            cachedRes.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+            return cachedRes;
+        }
 
         const since30d = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
@@ -106,7 +115,7 @@ export async function GET() {
             };
         }));
 
-        const response = NextResponse.json({
+        const __body = {
             success: true,
             data: {
                 activeStudents,
@@ -123,8 +132,9 @@ export async function GET() {
                 quizAttemptsLast30Days,
                 examStats,
             }
-        });
-
+        };
+        await writeCache('landing-stats', JSON.parse(JSON.stringify(__body)), 300);
+        const response = NextResponse.json(__body);
         response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
         return response;
 

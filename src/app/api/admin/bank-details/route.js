@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
+import { escapeRegex } from '@/lib/utils/pagination';
 import dbConnect from '@/lib/db';
+import User from '@/models/User';
 import BankDetail from '@/models/BankDetail';
 import { protect, admin } from '@/middleware/auth';
 
@@ -16,14 +18,22 @@ export async function GET(req) {
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
         const skip = (page - 1) * limit;
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const filter = {};
+        if (search) {
+            const rx = new RegExp(escapeRegex(search), 'i');
+            const users = await User.find({ $or: [{ name: rx }, { email: rx }, { phone: rx }] }).select('_id').limit(500).lean();
+            filter.$or = [{ accountNumber: rx }, { user: { $in: users.map(u => u._id) } }];
+        }
+
         const [bankDetails, total] = await Promise.all([
-            BankDetail.find()
+            BankDetail.find(filter)
                 .populate('user', 'name email phone')
                 .sort({ createdAt: -1 })
                 .skip(skip)
                 .limit(limit)
                 .lean(),
-            BankDetail.countDocuments()
+            BankDetail.countDocuments(filter)
         ]);
 
         const totalPages = Math.ceil(total / limit);

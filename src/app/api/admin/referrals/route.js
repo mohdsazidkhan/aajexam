@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { escapeRegex } from '@/lib/utils/pagination';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, adminOnly } from '@/middleware/auth';
@@ -16,14 +17,21 @@ export async function GET(req) {
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
         const skip = (page - 1) * limit;
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const filter = { referralCount: { $gt: 0 } };
+        if (search) {
+            const rx = new RegExp(escapeRegex(search), 'i');
+            filter.$or = [{ name: rx }, { email: rx }, { username: rx }, { phone: rx }, { referralCode: rx }];
+        }
+
         const [items, total] = await Promise.all([
-            User.find({ referralCount: { $gt: 0 } })
+            User.find(filter)
                 .select('name email username phone referralCode referralCount')
                 .sort({ referralCount: -1 })
                 .skip(skip)
                 .limit(limit)
                 .lean(),
-            User.countDocuments({ referralCount: { $gt: 0 } })
+            User.countDocuments(filter)
         ]);
 
         return NextResponse.json({

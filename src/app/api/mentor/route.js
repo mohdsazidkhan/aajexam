@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import MentorProfile from '@/models/MentorProfile';
@@ -25,7 +26,7 @@ export async function GET(req) {
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
 
         let query = { status: 'active', isVerified: true };
-        if (examName) query['examsCleared.examName'] = { $regex: examName, $options: 'i' };
+        if (examName) query['examsCleared.examName'] = { $regex: escapeRegex(examName), $options: 'i' };
 
         const [mentors, total] = await Promise.all([
             MentorProfile.find(query)

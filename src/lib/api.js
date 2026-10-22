@@ -443,7 +443,10 @@ class ApiService {
     return this.request('/api/coupons/featured');
   }
 
-  async getAdminCoupons() { return this.request('/api/admin/coupons'); }
+  async getAdminCoupons(params = {}) {
+    const query = this.buildQuery(params);
+    return this.request(`/api/admin/coupons${query ? `?${query}` : ''}`);
+  }
   async createCoupon(data) { return this.request('/api/admin/coupons', { method: 'POST', body: JSON.stringify(data) }); }
   async updateCoupon(id, data) { return this.request(`/api/admin/coupons/${id}`, { method: 'PUT', body: JSON.stringify(data) }); }
   async deleteCoupon(id) { return this.request(`/api/admin/coupons/${id}`, { method: 'DELETE' }); }
@@ -548,9 +551,12 @@ class ApiService {
   }
 
   // Admin Notifications
-  async getAdminNotifications(page = 1, limit = 20, { unreadOnly = true } = {}) {
+  async getAdminNotifications(page = 1, limit = 20, { unreadOnly = true, type, search } = {}) {
     const u = unreadOnly ? '1' : '0';
-    const params = new URLSearchParams({ page, limit, unread: u }).toString();
+    const qs = new URLSearchParams({ page, limit, unread: u });
+    if (type) qs.set('type', type);
+    if (search) qs.set('search', search);
+    const params = qs.toString();
     return this.request(`/api/admin/notifications?${params}`);
   }
   async markAdminNotificationRead(id) {

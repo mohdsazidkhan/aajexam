@@ -11,6 +11,9 @@ import Sidebar from '../../../components/admin/Sidebar';
 import { AdminTableSkeleton } from '../../../components/admin/Skeletons';
 import AdminRoute from '../../../components/admin/Route';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
+import SearchFilter from '../../../components/common/SearchFilter';
+import StyledSelect from '../../../components/common/ui/StyledSelect';
+import useDebounce from '../../../hooks/useDebounce';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
 const AdminDailyChallenge = () => {
@@ -30,16 +33,19 @@ const AdminDailyChallenge = () => {
   const [bulkGenerating, setBulkGenerating] = useState(false);
   const [bulkProgress, setBulkProgress] = useState(null);
   const [viewMode, setViewMode] = useState('table');
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 500);
+  const [statusFilter, setStatusFilter] = useState('');
 
   useEffect(() => {
     if (window.innerWidth < 1024) setViewMode('grid');
   }, []);
 
   const fetchData = async () => {
-    try { setLoading(true); const res = await API.request(`/api/admin/daily-challenge?page=${page}&limit=${itemsPerPage}`); if (res?.success) { setChallenges(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); } } catch (e) { } finally { setLoading(false); }
+    try { setLoading(true); const res = await API.request(`/api/admin/daily-challenge?page=${page}&limit=${itemsPerPage}${debouncedSearch ? `&search=${encodeURIComponent(debouncedSearch)}` : ''}${statusFilter ? `&status=${statusFilter}` : ''}`); if (res?.success) { setChallenges(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); } } catch (e) { } finally { setLoading(false); }
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { fetchData(); }, [page, itemsPerPage]);
+  useEffect(() => { fetchData(); }, [page, itemsPerPage, debouncedSearch, statusFilter]);
 
   const autoGenerate = async () => {
     setGenerating(true);
@@ -200,11 +206,25 @@ const AdminDailyChallenge = () => {
     />
   );
 
+  const searchFilterInput = (
+    <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search challenges..." className="w-full xl:w-64" compact />
+  );
+  const statusFilterSelect = (
+    <StyledSelect
+      value={statusFilter}
+      onChange={(val) => { setStatusFilter(val); setPage(1); }}
+      options={[{ value: '', label: 'All Status' }, { value: 'published', label: 'Published' }, { value: 'draft', label: 'Draft' }]}
+      className="w-full xl:max-w-[160px]"
+    />
+  );
+
   useAdminMobileHeader({
     title: 'Daily Challenge',
     count: totalItems,
     filters: (
       <>
+        {searchFilterInput}
+        {statusFilterSelect}
         {bulkYearSelect}
         {bulkMonthSelect}
         {bulkCountSelect}

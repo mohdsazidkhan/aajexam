@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { escapeRegex } from '@/lib/utils/pagination';
 import dbConnect from '@/lib/db';
 import WithdrawRequest from '@/models/WithdrawRequest';
 import User from '@/models/User';
@@ -20,6 +21,12 @@ export async function GET(req) {
 
         const filter = {};
         if (status) filter.status = status;
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        if (search) {
+            const rx = new RegExp(escapeRegex(search), 'i');
+            const users = await User.find({ $or: [{ name: rx }, { email: rx }, { username: rx }, { phone: rx }] }).select('_id').limit(500).lean();
+            filter.userId = { $in: users.map(u => u._id) };
+        }
 
         const [items, total] = await Promise.all([
             WithdrawRequest.find(filter)

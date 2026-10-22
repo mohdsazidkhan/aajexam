@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Exam from '@/models/Exam';
@@ -23,14 +24,22 @@ export async function GET(req, { params }) {
             return NextResponse.json({ success: true, data: [], pagination: { page, limit, total: 0, pages: 0 } });
         }
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const testFilter = { examPattern: { $in: patternIds } };
+        if (search) testFilter.title = new RegExp(escapeRegex(search), 'i');
+        if (searchParams.get('pyq') === 'true') testFilter.isPYQ = true;
+        if (searchParams.get('pyq') === 'false') testFilter.isPYQ = { $ne: true };
+        const yr = parseInt(searchParams.get('year'));
+        if (yr) testFilter.pyqYear = yr;
+
         const [testsRaw, total] = await Promise.all([
-            PracticeTest.find({ examPattern: { $in: patternIds } })
+            PracticeTest.find(testFilter)
                 .populate({ path: 'examPattern', select: 'title duration totalMarks sections negativeMarking' })
                 .select('-questions.correctAnswerIndex')
                 .sort({ publishedAt: -1 })
                 .skip(skip)
                 .limit(limit),
-            PracticeTest.countDocuments({ examPattern: { $in: patternIds } })
+            PracticeTest.countDocuments(testFilter)
         ]);
 
         const tests = await markPyqAccess(testsRaw);

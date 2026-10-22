@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
@@ -20,14 +21,22 @@ export async function GET(req, { params }) {
             return NextResponse.json({ message: 'User not found' }, { status: 404 });
         }
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const baseFilter = { follower: userId, status: 'active' };
+        if (search) {
+            const rx = new RegExp(escapeRegex(search), 'i');
+            const matches = await User.find({ $or: [{ name: rx }, { username: rx }] }).select('_id').limit(500).lean();
+            baseFilter.following = { $in: matches.map(u => u._id) };
+        }
+
         const [following, total] = await Promise.all([
-            Follow.find({ follower: userId, status: 'active' })
+            Follow.find(baseFilter)
                 .populate('following', 'name username profilePicture followersCount followingCount')
                 .skip(skip)
                 .limit(limit)
                 .sort({ createdAt: -1 })
                 .lean(),
-            Follow.countDocuments({ follower: userId, status: 'active' })
+            Follow.countDocuments(baseFilter)
         ]);
 
         return NextResponse.json({

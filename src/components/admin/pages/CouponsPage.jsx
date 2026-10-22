@@ -13,6 +13,10 @@ import { useSSR } from '../../../hooks/useSSR';
 import { AdminTableSkeleton } from '../Skeletons';
 import Sidebar from '../Sidebar';
 import ResponsiveTable from '../../common/ResponsiveTable';
+import Pagination from '../../common/Pagination';
+import SearchFilter from '../../common/SearchFilter';
+import useDebounce from '../../../hooks/useDebounce';
+import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import AnnounceModal from '../AnnounceModal';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
 
@@ -419,6 +423,11 @@ const CouponsPage = () => {
   const [announcing, setAnnouncing] = useState(null);
   const [viewing, setViewing] = useState(null);
   const [viewMode, setViewMode] = useState('table');
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 500);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+  const [total, setTotal] = useState(0);
 
   // Phones get the list view (a wide table does not fit), desktop defaults to the table.
   useEffect(() => {
@@ -431,14 +440,17 @@ const CouponsPage = () => {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await API.getAdminCoupons();
-      if (res?.success) setCoupons(res.data || []);
+      const res = await API.getAdminCoupons({ page, limit: pageSize, search: debouncedSearch || undefined });
+      if (res?.success) {
+        setCoupons(res.data || []);
+        setTotal(res.pagination?.total ?? (res.data || []).length);
+      }
     } catch (e) {
       toast.error(e?.message || 'Could not load coupons');
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [page, pageSize, debouncedSearch]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -523,7 +535,11 @@ const CouponsPage = () => {
     </button>
   );
 
-  useAdminMobileHeader({ title: 'Coupons', count: coupons.length, filters: <>{viewToggle}{newButton}</> });
+  const searchInput = (
+    <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search coupon code..." className="w-full xl:w-64" compact />
+  );
+
+  useAdminMobileHeader({ title: 'Coupons', count: total, filters: <>{searchInput}{viewToggle}{newButton}</> });
 
   if (!isMounted) return null;
 
@@ -625,6 +641,10 @@ const CouponsPage = () => {
                 ))}
               </div>
             )}
+
+            <div className="pt-2 pb-6">
+              <Pagination currentPage={page} totalPages={Math.max(1, Math.ceil(total / pageSize))} onPageChange={setPage} totalItems={total} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} sticky={false} />
+            </div>
           </>
         )}
       </div>

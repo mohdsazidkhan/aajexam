@@ -8,6 +8,7 @@ import PracticeTest from '@/models/PracticeTest';
 import Quiz from '@/models/Quiz';
 import Subject from '@/models/Subject';
 import { protect, admin } from '@/middleware/auth';
+import { escapeRegex } from '@/lib/utils/pagination';
 
 // Referenced only so their schemas are registered for populate() below.
 void User; void ExamCategory; void Subject;
@@ -30,6 +31,13 @@ export async function GET(req) {
         // they're addressed to the student, not an admin activity-log entry, so
         // they belong in the student's own inbox, not this feed.
         const activityFilter = { type: { $ne: 'announcement' } };
+        const typeParam = searchParams.get('type');
+        const searchParam = (searchParams.get('search') || '').trim().slice(0, 100);
+        if (typeParam && typeParam !== 'all') activityFilter.type = typeParam;
+        if (searchParam) {
+            const rx = new RegExp(escapeRegex(searchParam), 'i');
+            activityFilter.$or = [{ title: rx }, { description: rx }];
+        }
 
         const [notifications, total, typeCountsAgg] = await Promise.all([
             Notification.find(activityFilter)
@@ -40,7 +48,7 @@ export async function GET(req) {
                 .lean(),
             Notification.countDocuments(activityFilter),
             Notification.aggregate([
-                { $match: activityFilter },
+                { $match: { type: { $ne: 'announcement' } } }, // type tabs keep showing totals for every type
                 { $group: { _id: '$type', count: { $sum: 1 } } },
                 { $sort: { count: -1 } }
             ])

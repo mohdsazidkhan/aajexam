@@ -1,3 +1,4 @@
+import { recordAttemptStat } from '@/lib/utils/leaderboardStats';
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
@@ -107,6 +108,13 @@ export async function POST(req, { params }) {
         attempt.status = 'Completed';
         attempt.submittedAt = new Date();
         await attempt.save();
+
+        // Feed the precomputed leaderboard totals (never throws).
+        await recordAttemptStat('quiz', {
+            user: attempt.user, createdAt: attempt.createdAt, accuracy: attempt.accuracy,
+            percentage: attempt.percentage, score: attempt.score, marks: attempt.totalMarks,
+            correct: attempt.correctCount, time: attempt.totalTime, best: attempt.percentage,
+        });
 
         // update quiz stats
         await Quiz.findByIdAndUpdate(quiz._id, {

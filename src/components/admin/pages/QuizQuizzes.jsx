@@ -9,6 +9,8 @@ import { AdminTableSkeleton } from '../Skeletons';
 import ResponsiveTable from '../../common/ResponsiveTable';
 import Pagination from '../../common/Pagination';
 import StyledSelect from '../../common/ui/StyledSelect';
+import SearchFilter from '../../common/SearchFilter';
+import useDebounce from '../../../hooks/useDebounce';
 import Sidebar from '../Sidebar';
 import { DEFAULT_PAGE_SIZE } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
@@ -30,6 +32,8 @@ const AdminQuizQuizzes = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [filters, setFilters] = useState({ exam: "", subject: "", status: "" });
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearch = useDebounce(searchTerm, 500);
   const [form, setForm] = useState({ title: "", description: "", exam: "", subject: "", topic: "", duration: 10, marksPerQuestion: 1, negativeMarking: 0, difficulty: "mixed", type: "topic_practice", tags: "", isFree: true });
   const [qFilters, setQFilters] = useState({ subject: "", topic: "" });
   const [availableQuestions, setAvailableQuestions] = useState([]);
@@ -41,7 +45,7 @@ const AdminQuizQuizzes = () => {
   }, []);
 
   useEffect(() => { fetchDropdowns(); }, []);
-  useEffect(() => { fetchQuizzes(); }, [page, itemsPerPage, filters.exam, filters.subject, filters.status]);
+  useEffect(() => { fetchQuizzes(); }, [page, itemsPerPage, filters.exam, filters.subject, filters.status, debouncedSearch]);
 
   const fetchDropdowns = async () => {
     try {
@@ -59,6 +63,7 @@ const AdminQuizQuizzes = () => {
       if (filters.exam) params.exam = filters.exam;
       if (filters.subject) params.subject = filters.subject;
       if (filters.status) params.status = filters.status;
+      if (debouncedSearch) params.search = debouncedSearch;
       const res = await API.getAdminQuizzes(params);
       if (res?.success) { setQuizzes(res.data || []); setTotalPages(res.pagination?.totalPages || 1); setTotalItems(res.pagination?.total ?? (res.data || []).length); }
     } catch (e) { toast.error("Failed to load"); }
@@ -173,6 +178,10 @@ const AdminQuizQuizzes = () => {
     }
   ];
 
+  const searchFilterInput = (
+    <SearchFilter searchTerm={searchTerm} onSearch={(v) => { setSearchTerm(v); setPage(1); }} placeholder="Search quizzes..." className="w-full xl:w-64" compact />
+  );
+
   const examFilterSelect = (
     <StyledSelect
       value={filters.exam}
@@ -241,6 +250,7 @@ const AdminQuizQuizzes = () => {
     count: totalItems,
     filters: (
       <>
+        {searchFilterInput}
         {examFilterSelect}
         {subjectFilterSelect}
         {statusFilterSelect}

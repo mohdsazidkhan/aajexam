@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import PracticeTest from '@/models/PracticeTest';
@@ -19,12 +20,20 @@ export async function GET(req, { params }) {
 
         const auth = await protect(req);
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const testFilter = { examPattern: id };
+        if (search) testFilter.title = new RegExp(escapeRegex(search), 'i');
+        if (searchParams.get('pyq') === 'true') testFilter.isPYQ = true;
+        if (searchParams.get('pyq') === 'false') testFilter.isPYQ = { $ne: true };
+        const yr = parseInt(searchParams.get('year'));
+        if (yr) testFilter.pyqYear = yr;
+
         const [testsRaw, total, pattern] = await Promise.all([
-            PracticeTest.find({ examPattern: id })
+            PracticeTest.find(testFilter)
                 .populate('examPattern', 'title duration totalMarks sections')
                 .select('-questions.correctAnswerIndex')
                 .sort({ publishedAt: -1 }).skip(skip).limit(limit),
-            PracticeTest.countDocuments({ examPattern: id }),
+            PracticeTest.countDocuments(testFilter),
             ExamPattern.findById(id).populate({ path: 'exam', populate: { path: 'category', select: 'name type' } }).lean()
         ]);
 

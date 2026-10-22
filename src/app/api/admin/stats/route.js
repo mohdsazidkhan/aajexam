@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import dbConnect from '@/lib/db';
 import { protect, admin } from '@/middleware/auth';
 import User from '@/models/User';
@@ -36,6 +37,10 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        const __ck = 'admin-stats';
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
 
         const now = new Date();
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -179,7 +184,7 @@ export async function GET(req) {
             User.countDocuments({ role: 'student', createdAt: { $gte: last30Days } }),
         ]);
 
-        return NextResponse.json({
+        const __body = {
             // Users
             students,
             newStudentsToday,
@@ -239,7 +244,9 @@ export async function GET(req) {
             bankDetails,
             walletBalance: walletBalanceAgg[0]?.total || 0,
             totalExpenses: expenseAgg[0]?.total || 0,
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 60);
+        return NextResponse.json(__body);
     } catch (error) {
         console.error('Admin stats error:', error);
         return NextResponse.json({ message: error.message }, { status: 500 });

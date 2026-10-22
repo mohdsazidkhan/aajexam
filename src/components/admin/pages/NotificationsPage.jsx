@@ -41,6 +41,8 @@ import {
 } from 'lucide-react';
 import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from '../../../lib/constants/pagination';
 import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext';
+import SearchFilter from '../../common/SearchFilter';
+import useDebounce from '../../../hooks/useDebounce';
 
 const AdminNotificationsPage = () => {
   const { isMounted, router } = useSSR();
@@ -51,6 +53,9 @@ const AdminNotificationsPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
   const [typeCounts, setTypeCounts] = useState([]);
+  const [typeFilter, setTypeFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 500);
   const [loading, setLoading] = useState(false);
 
   const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userInfo') || 'null') : null;
@@ -118,7 +123,7 @@ const AdminNotificationsPage = () => {
   const fetchPage = useCallback(async (p = 1, perPage = limit) => {
     try {
       setLoading(true);
-      const res = await API.getAdminNotifications(p, perPage, { unreadOnly: false });
+      const res = await API.getAdminNotifications(p, perPage, { unreadOnly: false, type: typeFilter || undefined, search: debouncedSearch || undefined });
       const data = res?.data || res?.notifications || [];
       setItems(Array.isArray(data) ? data : []);
       const pg = res?.pagination || { page: p, totalPages: 1, total: data.length };
@@ -131,7 +136,7 @@ const AdminNotificationsPage = () => {
     } finally {
       setLoading(false);
     }
-  }, [limit]);
+  }, [limit, typeFilter, debouncedSearch]);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -226,6 +231,7 @@ const AdminNotificationsPage = () => {
     count: total,
     filters: (
       <>
+        <SearchFilter searchTerm={searchTerm} onSearch={setSearchTerm} placeholder="Search notifications..." className="w-full xl:w-64" compact />
         {limitSelect}
         {clearAllButton}
         {paginationControl}
@@ -255,9 +261,12 @@ const AdminNotificationsPage = () => {
             {typeCounts.filter((tc) => tc.count > 0).length > 0 && (
               <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-4">
                 {typeCounts.filter((tc) => tc.count > 0).map((tc) => (
-                  <div
+                  <button
+                    type="button"
                     key={tc.type}
-                    className="group relative overflow-hidden flex items-center gap-3 px-4 xl:px-5 py-4 bg-white/80 dark:bg-white/5 border-2 border-slate-100 dark:border-white/10 rounded-lg xl:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all"
+                    onClick={() => setTypeFilter((cur) => (cur === tc.type ? '' : tc.type))}
+                    aria-pressed={typeFilter === tc.type}
+                    className={`group relative overflow-hidden flex items-center gap-3 px-4 xl:px-5 py-4 bg-white/80 dark:bg-white/5 border-2 rounded-lg xl:rounded-[2rem] shadow-sm hover:border-primary-500/30 hover:scale-[1.02] transition-all text-left ${typeFilter === tc.type ? 'border-primary-600' : 'border-slate-100 dark:border-white/10'}`}
                   >
                     <div className="p-2 xl:p-3 rounded-xl xl:rounded-2xl bg-primary-600 text-white shadow-sm shrink-0 group-hover:scale-110 transition-transform">
                       {getIconByType(tc.type, 'w-3.5 h-3.5 xl:w-5 xl:h-5')}
@@ -271,7 +280,7 @@ const AdminNotificationsPage = () => {
                       </p>
                     </div>
                     <div className="absolute -right-4 -bottom-4 w-16 h-16 rounded-full bg-primary-700/5 dark:bg-primary-500/10 pointer-events-none" />
-                  </div>
+                  </button>
                 ))}
               </div>
             )}

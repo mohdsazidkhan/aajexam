@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import PaymentOrder from '@/models/PaymentOrder';
@@ -29,6 +30,10 @@ export async function GET(req) {
         }
 
         await dbConnect();
+
+        const __ck = `admin-analytics:${new URL(req.url).searchParams.get('page') || 1}:${new URL(req.url).searchParams.get('limit') || 10}`;
+        const __hit = await readCache(__ck);
+        if (__hit) return NextResponse.json(__hit);
         const { searchParams } = new URL(req.url);
         const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 10, 1), 1000);
@@ -116,7 +121,7 @@ export async function GET(req) {
         const totalActivityItems = totalAttempts;
         const totalActivityPages = Math.max(1, Math.ceil(totalActivityItems / limit));
 
-        return NextResponse.json({
+        const __body = {
             success: true,
             data: {
                 overview: {
@@ -139,7 +144,9 @@ export async function GET(req) {
                     totalPages: totalActivityPages
                 }
             }
-        });
+        };
+        await writeCache(__ck, JSON.parse(JSON.stringify(__body)), 60);
+        return NextResponse.json(__body);
 
     } catch (error) {
         console.error('Dashboard analytics error:', error);

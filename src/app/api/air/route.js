@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import mongoose from 'mongoose';
+import { readCache, writeCache } from '@/lib/utils/sharedCache';
+import { statsReady, topLifetime, examScopeTotals } from '@/lib/utils/leaderboardStats';
+
+// This ranks every completed attempt on the platform (several full scans), so the result is
+// cached (shared across server instances) per (examId, limit) instead of recomputed per request.
+const CACHE_TTL_SEC = 5 * 60;
 
 // GET /api/air?examId=optional&limit=20
 export async function GET(req) {
@@ -10,6 +16,31 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const examId = searchParams.get('examId');
         const limit = Math.min(Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200), 100);
+
+        const cacheKey = `${examId || 'all'}:${limit}`;
+        const useStats = await statsReady();
+        const hit = await readCache(`air:${useStats ? 's:' : ''}${cacheKey}`);
+        if (hit) return NextResponse.json(hit);
+
+        // Precomputed path (after the stats backfill): per-exam lifetime rows are index-ordered,
+        // so no attempt scan at all.
+        if (useStats) {
+            const scope = examId || 'all';
+            const [rows, totals] = await Promise.all([
+                topLifetime({ kind: 'exam', scope, pool: limit, countKey: 'totalExams' }),
+                examScopeTotals(scope),
+            ]);
+            const body = {
+                success: true,
+                data: rows.map((entry, idx) => ({ rank: idx + 1, ...entry })),
+                examId,
+                totalAttempts: totals.attempts,
+                totalUsers: totals.users,
+                totalTimeSpentSeconds: Math.round(totals.time / 1000),
+            };
+            await writeCache(`air:s:${cacheKey}`, body, CACHE_TTL_SEC);
+            return NextResponse.json(body);
+        }
 
         // Stages shared between the leaderboard pipeline and the total-attempts
         // count below, so both respect the same "Completed" + optional examId filter.
@@ -156,14 +187,16 @@ export async function GET(req) {
             ...entry,
         }));
 
-        return NextResponse.json({
+        const body = {
             success: true,
             data: ranked,
             examId,
             totalAttempts: totalAttemptsResult[0]?.total || 0,
             totalUsers: rankedUsersResult[0]?.total || 0,
             totalTimeSpentSeconds: Math.round((totalTimeResult[0]?.totalMs || 0) / 1000),
-        });
+        };
+        await writeCache(`air:${cacheKey}`, body, CACHE_TTL_SEC);
+        return NextResponse.json(body);
     } catch (error) {
         console.error('AIR API error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

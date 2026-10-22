@@ -5,12 +5,13 @@ import UserTestAttempt from '@/models/UserTestAttempt';
 import UserStreak from '@/models/UserStreak';
 import mongoose from 'mongoose';
 import { protect } from '@/middleware/auth';
+import { cached } from '@/lib/utils/sharedCache';
+import { statsReady, topLifetime, topWindow } from '@/lib/utils/leaderboardStats';
 
 // Ranked pool is capped; results are cached per (type, period) so a million-user
 // table is aggregated at most once per TTL per server instance, not per request.
 const RANK_POOL = 1000;
-const CACHE_TTL_MS = 5 * 60 * 1000;
-const cache = new Map();
+const CACHE_TTL_SEC = 5 * 60;
 
 // GET /api/leaderboard?type=quiz|exam&period=all-time|weekly|monthly&limit=20
 export async function GET(req) {
@@ -78,14 +79,16 @@ export async function GET(req) {
             { $addFields: { practiceTestMarks: { $ifNull: ['$practiceTestDoc.totalMarks', 0] } } },
         ] : [];
 
-        const cacheKey = `${type}:${period}`;
-        const hit = cache.get(cacheKey);
-        let leaderboard;
-        if (hit && Date.now() - hit.at < CACHE_TTL_MS) {
-            leaderboard = hit.rows;
-        } else {
-        // Aggregate attempts grouped by user
-        leaderboard = await Model.aggregate([
+        // Shared across instances (Mongo-backed) so the full aggregate runs at most once per TTL platform-wide.
+        // Once the stats backfill has run, boards come from the precomputed per-user totals
+        // (index read / small daily-row sum) instead of scanning every attempt.
+        const useStats = await statsReady();
+        const statKind = type === 'exam' ? 'exam' : 'quiz';
+        const leaderboard = await cached(`leaderboard:${useStats ? 's' : 'a'}:${type}:${period}`, CACHE_TTL_SEC, () => useStats
+            ? (period === 'all-time'
+                ? topLifetime({ kind: statKind, pool: RANK_POOL, countKey: 'totalQuizzes' })
+                : topWindow({ kind: statKind, days: period === 'weekly' ? 7 : 30, pool: RANK_POOL, countKey: 'totalQuizzes' }))
+            : Model.aggregate([
             {
                 $match: {
                     status: 'Completed',
@@ -152,10 +155,7 @@ export async function GET(req) {
                     longestStreak: { $ifNull: ['$streak.longestStreak', 0] },
                 }
             }
-        ], { allowDiskUse: true });
-        cache.set(cacheKey, { at: Date.now(), rows: leaderboard });
-        if (cache.size > 20) cache.delete(cache.keys().next().value);
-        }
+        ], { allowDiskUse: true }));
 
         // Add rank numbers — computed across the full ranked pool so a user
         // outside the displayed top `limit` still gets their real rank.

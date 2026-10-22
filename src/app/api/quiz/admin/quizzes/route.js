@@ -1,3 +1,4 @@
+import { escapeRegex } from '@/lib/utils/pagination';
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Quiz from '@/models/Quiz';
@@ -26,6 +27,8 @@ export async function GET(req) {
         if (topic) filter.topic = topic;
         if (status) filter.status = status;
         if (type) filter.type = type;
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        if (search) filter.title = new RegExp(escapeRegex(search), 'i');
 
         const [quizzes, total] = await Promise.all([
             Quiz.find(filter)

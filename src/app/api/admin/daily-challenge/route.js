@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { escapeRegex } from '@/lib/utils/pagination';
 import dbConnect from '@/lib/db';
 import DailyChallenge from '@/models/DailyChallenge';
 import { protect, admin } from '@/middleware/auth';
@@ -15,9 +16,15 @@ export async function GET(req) {
         const page = parseInt(searchParams.get('page')) || 1;
         const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
 
+        const search = (searchParams.get('search') || '').trim().slice(0, 100);
+        const status = searchParams.get('status');
+        const filter = {};
+        if (status) filter.status = status;
+        if (search) filter.title = new RegExp(escapeRegex(search), 'i');
+
         const [challenges, total] = await Promise.all([
-            DailyChallenge.find().sort({ date: -1 }).skip((page - 1) * limit).limit(limit).lean(),
-            DailyChallenge.countDocuments()
+            DailyChallenge.find(filter).sort({ date: -1 }).skip((page - 1) * limit).limit(limit).lean(),
+            DailyChallenge.countDocuments(filter)
         ]);
 
         return NextResponse.json({
