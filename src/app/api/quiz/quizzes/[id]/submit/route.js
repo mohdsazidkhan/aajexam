@@ -166,6 +166,8 @@ export async function POST(req, { params }) {
 
         // compute rank
         const rank = await recomputeRanksForQuiz(quiz._id, attempt._id);
+        // Keep rank-at-submission on the attempt (shown in history / my-attempts).
+        if (rank.rank) await QuizAttempt.updateOne({ _id: attempt._id }, { $set: { rank: rank.rank, percentile: rank.percentile } });
 
         // populate answers.question for review
         const populated = await QuizAttempt.findById(attempt._id)

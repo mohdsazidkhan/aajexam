@@ -66,21 +66,23 @@ const LeaderboardTable = ({ leaderboard, currentUser }) => {
       {/* Mobile List */}
       <div className="space-y-2">
         {leaderboard.map((entry, index) => {
+          const rank = entry.rank || index + 1; // API sends the live rank (ties share a rank)
           const myId = currentUser?._id || currentUser?.id;
           const isCurrentUser = !!myId && String(entry.user?._id) === String(myId);
           return (
             <div key={entry._id} className={`flex items-center gap-3 p-3 rounded-lg xl:rounded-xl ${isCurrentUser ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white' : 'bg-white/60 dark:bg-slate-700/60'}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${index === 0 ?'bg-primary-600':
-                  index === 1 ? 'bg-slate-400' :
-                    index === 2 ?'bg-primary-600':
+              <div className={`min-w-8 h-8 px-2 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 ${rank === 1 ? 'bg-primary-600' :
+                  rank === 2 ? 'bg-slate-400' :
+                    rank === 3 ? 'bg-primary-600' :
                       'bg-slate-300 dark:bg-slate-600'
                 }`}>
-                {index === 0 ? <Crown className="w-4 h-4" /> : index + 1}
+                #{rank}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-slate-800 dark:text-white truncate">
-                  {entry.user?.name || translate('Anonymous')}
-                  {isCurrentUser && <span className="text-xs text-black dark:text-white ml-1">{translate('(You)')}</span>}
+                <p className="text-sm font-semibold text-slate-800 dark:text-white truncate flex items-center gap-1">
+                  {rank === 1 && <Crown className="w-4 h-4 shrink-0 text-primary-600" />}
+                  <span className="truncate">{entry.user?.name || translate('Anonymous')}</span>
+                  {isCurrentUser && <span className="text-xs text-black dark:text-white ml-1 shrink-0">{translate('(You)')}</span>}
                 </p>
               </div>
               <span className="text-sm font-bold text-slate-800 dark:text-white">{Math.round(entry.percentage || 0)}%</span>
