@@ -15,8 +15,8 @@ import { useAdminMobileHeader } from '../../../contexts/AdminMobileHeaderContext
 import { formatTimeSpent } from '../../../lib/utils/timeFormat';
 
 const TYPE_OPTIONS = [
-  { value: 'quiz', label: 'QUIZ LEADERBOARD', tooltip: 'Ranked by: Quizzes Attempted, then Accuracy, then Total Score' },
-  { value: 'exam', label: 'EXAM LEADERBOARD', tooltip: 'Ranked by: Exams Attempted, then Accuracy, then Total Score' },
+  { value: 'quiz', label: 'QUIZ LEADERBOARD', tooltip: 'Ranked by: Total Time Spent' },
+  { value: 'exam', label: 'EXAM LEADERBOARD', tooltip: 'Ranked by: Total Time Spent' },
 ];
 
 const PERIOD_OPTIONS = [

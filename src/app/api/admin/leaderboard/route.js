@@ -83,10 +83,10 @@ export async function GET(req) {
             ...examMarksLookupStages,
             { $group: groupStage },
             { $match: { totalQuizzes: { $gte: 1 } } },
-            // Rank by: most quizzes/tests attempted, then accuracy, then total score —
+            // Rank by: total time spent, then attempts, accuracy and total score —
             // must match /api/leaderboard's sort exactly, since this is meant to be
             // the same ranking pipeline just paginated/searchable for admin use.
-            { $sort: { totalQuizzes: -1, avgAccuracy: -1, totalScore: -1 } },
+            { $sort: { totalTimeSpent: -1, totalQuizzes: -1, avgAccuracy: -1, totalScore: -1, _id: 1 } },
             {
                 $lookup: {
                     from: 'users',

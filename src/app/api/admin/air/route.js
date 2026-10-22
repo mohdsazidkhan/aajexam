@@ -85,7 +85,7 @@ export async function GET(req) {
             // Rank by: most exams attempted, then accuracy, then total score —
             // must match /api/air's sort exactly (this is meant to be the same
             // ranking pipeline, just paginated/searchable for admin use).
-            { $sort: { totalExams: -1, avgAccuracy: -1, totalScore: -1 } },
+            { $sort: { totalTimeSpent: -1, totalExams: -1, avgAccuracy: -1, totalScore: -1, _id: 1 } },
             {
                 $lookup: {
                     from: 'users',

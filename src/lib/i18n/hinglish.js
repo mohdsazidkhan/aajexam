@@ -1197,6 +1197,7 @@ const HINGLISH = {
   'Quizzes Done': 'Quizzes Done',
   'Quizzes, Exams, Reels & Blogs — all in one place': 'Quizzes, Exams, Reels aur Blogs — sab ek hi jagah',
   'Rank: {rank}': 'Rank: {rank}',
+  'Ranked by: Total Time Spent': 'Ranking: Total Time Spent ke hisaab se',
   'Ranked by: Exams Attempted, then Accuracy, then Total Score': 'Ranking: pehle Exams Attempted, phir Accuracy, phir Total Score',
   'Ranked by: Quizzes Attempted, then Accuracy, then Total Score': 'Ranking: pehle Quizzes Attempted, phir Accuracy, phir Total Score',
   'Ranked by: {what} Attempted, then Accuracy, then Total Score': 'Ranking: pehle {what} Attempted, phir Accuracy, phir Total Score',

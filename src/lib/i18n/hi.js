@@ -1204,6 +1204,7 @@ const HI = {
   'Quizzes Done': 'दिए गए क्विज़',
   'Quizzes, Exams, Reels & Blogs — all in one place': 'क्विज़, परीक्षाएँ, रील्स और ब्लॉग — सब एक जगह',
   'Rank: {rank}': 'रैंक: {rank}',
+  'Ranked by: Total Time Spent': 'क्रम: कुल बिताया गया समय',
   'Ranked by: Exams Attempted, then Accuracy, then Total Score': 'क्रम: दी गई परीक्षाएँ, फिर सटीकता, फिर कुल स्कोर',
   'Ranked by: Quizzes Attempted, then Accuracy, then Total Score': 'क्रम: दिए गए क्विज़, फिर सटीकता, फिर कुल स्कोर',
   'Ranked by: {what} Attempted, then Accuracy, then Total Score': 'क्रम: दिए गए {what}, फिर सटीकता, फिर कुल स्कोर',

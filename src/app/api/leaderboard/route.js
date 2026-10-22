@@ -88,8 +88,8 @@ export async function GET(req) {
                 $match: { totalQuizzes: { $gte: 1 } }
             },
             {
-                // Rank by: most quizzes/tests attempted, then accuracy, then total score.
-                $sort: { totalQuizzes: -1, avgAccuracy: -1, totalScore: -1, _id: 1 }
+                // Rank by: total time spent, then attempts, accuracy and total score as tie-breakers.
+                $sort: { totalTimeSpent: -1, totalQuizzes: -1, avgAccuracy: -1, totalScore: -1, _id: 1 }
             },
             // Join User data
             {

@@ -408,7 +408,7 @@ const LeaderboardPage = () => {
               <div className="flex p-1 bg-black/10 dark:bg-white/20 backdrop-blur-md rounded-full border border-black/20 dark:border-white/20 shadow-sm">
                 <button
                   onClick={() => setType('quiz')}
-                  title={translate('Ranked by: Quizzes Attempted, then Accuracy, then Total Score')}
+                  title={translate('Ranked by: Total Time Spent')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
                     type === 'quiz' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
@@ -417,7 +417,7 @@ const LeaderboardPage = () => {
                 </button>
                 <button
                   onClick={() => setType('exam')}
-                  title={translate('Ranked by: Exams Attempted, then Accuracy, then Total Score')}
+                  title={translate('Ranked by: Total Time Spent')}
                   className={`flex items-center gap-1.5 px-5 py-1.5 rounded-full text-xs font-black uppercase transition-all ${
                     type === 'exam' ? 'bg-primary-600 text-white shadow-sm' : 'text-black/60 dark:text-white/80 hover:text-black dark:hover:text-white'
                   }`}
