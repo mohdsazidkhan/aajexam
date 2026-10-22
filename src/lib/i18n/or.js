@@ -2033,6 +2033,7 @@ const OR_ = {
   'Please enter a valid 10-digit mobile number.': 'ଦୟାକରି ଏକ ବୈଧ ୧୦ ଅଙ୍କର ମୋବାଇଲ୍ ନମ୍ବର ଦିଅନ୍ତୁ।',
   'Everything in Unlimited FREE': 'ଅନଲିମିଟେଡ୍‌ର ସବୁକିଛି ମାଗଣା',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ଏବେ ମାଗଣା! ସବୁକିଛି ୩୧ ଡିସେମ୍ବର ୨୦୨୬ ପର୍ଯ୍ୟନ୍ତ ମାଗଣା।',
+  'Ranked pool is capped at the top 1000 players.': 'ର‍୍ୟାଙ୍କିଂ କେବଳ ଶୀର୍ଷ ୧୦୦୦ ଖେଳାଳି ପର୍ଯ୍ୟନ୍ତ ସୀମିତ।',
 };
 
 export default OR_;

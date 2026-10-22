@@ -2007,6 +2007,7 @@ const SAT = {
   'Start the quiz': 'ᱠᱣᱤᱡ ᱮᱛᱦᱚᱵ ᱢᱮ',
   'Your score': 'ᱟᱢᱟᱜ ᱥᱠᱳᱨ',
   'Your mobile number': 'ᱟᱢᱟᱜ ᱢᱚᱵᱟᱭᱤᱞ ᱱᱚᱢᱵᱚᱨ',
+  'Ranked pool is capped at the top 1000 players.': 'ᱨᱮᱱᱠᱤᱝ ᱫᱚ ᱪᱮᱛᱟᱱ ᱑᱐᱐᱐ ᱠᱷᱮᱞᱚᱢᱤᱭᱟᱹ ᱠᱷᱚᱱ ᱵᱟᱹᱲᱛᱤ ᱵᱟᱝ ᱠᱟᱱᱟ᱾',
 };
 
 export default SAT;

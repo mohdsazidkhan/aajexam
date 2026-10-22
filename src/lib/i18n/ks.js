@@ -2033,6 +2033,7 @@ const KS = {
   'Please enter a valid 10-digit mobile number.': 'مہربانی کرِتھ صحیح 10 ہندسن ہند موبائل نمبر درج کٔرِو۔',
   'Everything in Unlimited FREE': 'ان لمیٹڈ منز سب کانہہ مفت',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO چھُ ہُنہ مفت! سب کانہہ 31 دسمبر 2026 تام مفت۔',
+  'Ranked pool is capped at the top 1000 players.': 'رینکنگ چھُ صرف ٹاپ 1000 کھیلنہ وٲلین تام محدود۔',
 };
 
 export default KS;

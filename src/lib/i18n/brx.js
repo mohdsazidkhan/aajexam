@@ -2007,6 +2007,7 @@ const BODO = {
   'Start the quiz': 'क्विज जागाय',
   'Your score': 'नोंनि स्कोर',
   'Your mobile number': 'नोंनि मोबाइल नम्बर',
+  'Ranked pool is capped at the top 1000 players.': 'रैंकिं बिबां 1000 खेलायारि सोमजों सिमांनायनाय।',
 };
 
 export default BODO;

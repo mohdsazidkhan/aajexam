@@ -2033,6 +2033,7 @@ const TE = {
   'Please enter a valid 10-digit mobile number.': 'దయచేసి సరైన 10 అంకెల మొబైల్ నంబర్ నమోదు చేయండి.',
   'Everything in Unlimited FREE': 'అన్‌లిమిటెడ్‌లో ప్రతిదీ ఉచితం',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ఇప్పుడు ఉచితం! అన్నీ 2026 డిసెంబర్ 31 వరకు ఉచితం.',
+  'Ranked pool is capped at the top 1000 players.': 'ర్యాంకింగ్ మొదటి 1000 ఆటగాళ్లకు మాత్రమే పరిమితం.',
 };
 
 export default TE;

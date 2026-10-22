@@ -2007,6 +2007,7 @@ const MANIPURI = {
   'Start the quiz': 'ꯀ꯭ꯋꯤꯖ ꯍꯧꯎ',
   'Your score': 'ꯅꯪꯒꯤ ꯁ꯭ꯀꯣꯔ',
   'Your mobile number': 'ꯅꯪꯒꯤ ꯃꯣꯕꯥꯏꯜ ꯅꯝꯕꯔ',
+  'Ranked pool is capped at the top 1000 players.': 'ꯔꯦꯟꯀꯤꯡ ꯑꯁꯤ ꯊꯥꯗꯣꯀꯄꯥ 1000 ꯐꯥꯎꯕꯥ ꯃꯤꯑꯣꯏꯁꯤꯡꯗꯥ ꯈꯛꯇꯥ ꯆꯦꯛꯁꯤꯟꯅꯕꯥ ꯂꯩ꯫',
 };
 
 export default MANIPURI;

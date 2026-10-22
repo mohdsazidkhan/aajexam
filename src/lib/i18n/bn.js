@@ -2033,6 +2033,7 @@ const BN = {
   'Please enter a valid 10-digit mobile number.': 'অনুগ্রহ করে সঠিক ১০ সংখ্যার মোবাইল নম্বর দিন।',
   'Everything in Unlimited FREE': 'আনলিমিটেডের সবকিছু ফ্রি',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO এখন ফ্রি! সবকিছু ৩১ ডিসেম্বর ২০২৬ পর্যন্ত ফ্রি।',
+  'Ranked pool is capped at the top 1000 players.': 'র‍্যাঙ্কিং শুধুমাত্র শীর্ষ ১০০০ খেলোয়াড় পর্যন্ত সীমাবদ্ধ।',
 };
 
 export default BN;

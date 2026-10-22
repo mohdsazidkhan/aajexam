@@ -2033,6 +2033,7 @@ const TA = {
   'Please enter a valid 10-digit mobile number.': 'சரியான 10 இலக்க கைப்பேசி எண்ணை உள்ளிடவும்.',
   'Everything in Unlimited FREE': 'அன்லிமிடெட்டில் அனைத்தும் இலவசம்',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO இப்போது இலவசம்! அனைத்தும் 31 டிசம்பர் 2026 வரை இலவசம்.',
+  'Ranked pool is capped at the top 1000 players.': 'தரவரிசை முதல் 1000 வீரர்களுக்கு மட்டுமே வரையறுக்கப்பட்டுள்ளது.',
 };
 
 export default TA;

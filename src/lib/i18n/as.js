@@ -2033,6 +2033,7 @@ const AS = {
   'Please enter a valid 10-digit mobile number.': 'অনুগ্ৰহ কৰি শুদ্ধ ১০ অংকৰ মোবাইল নম্বৰ দিয়ক।',
   'Everything in Unlimited FREE': 'আনলিমিটেডৰ সকলোবোৰ বিনামূলীয়া',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO এতিয়া বিনামূলীয়া! সকলো ৩১ ডিচেম্বৰ ২০২৬ লৈকে বিনামূলীয়া।',
+  'Ranked pool is capped at the top 1000 players.': 'ৰেংকিং কেৱল শীৰ্ষ ১০০০ খেলুৱৈলৈ সীমাবদ্ধ।',
 };
 
 export default AS;

@@ -2033,6 +2033,7 @@ const GU = {
   'Please enter a valid 10-digit mobile number.': 'કૃપા કરી સાચો ૧૦ અંકનો મોબાઇલ નંબર દાખલ કરો.',
   'Everything in Unlimited FREE': 'અનલિમિટેડમાં બધું જ મફત',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO હવે મફત! બધું ૩૧ ડિસેમ્બર ૨૦૨૬ સુધી મફત.',
+  'Ranked pool is capped at the top 1000 players.': 'રેન્કિંગ ફક્ત ટોચના 1000 ખેલાડીઓ સુધી મર્યાદિત છે.',
 };
 
 export default GU;

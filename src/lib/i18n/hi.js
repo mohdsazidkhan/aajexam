@@ -2054,6 +2054,7 @@ const HI = {
   'Please enter a valid 10-digit mobile number.': 'कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।',
   'Everything in Unlimited FREE': 'अनलिमिटेड में सब कुछ मुफ़्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO अब मुफ़्त है! सब कुछ 31 दिसंबर 2026 तक मुफ़्त।',
+  'Ranked pool is capped at the top 1000 players.': 'रैंकिंग केवल शीर्ष 1000 खिलाड़ियों तक सीमित है।',
 };
 
 export default HI;

@@ -2033,6 +2033,7 @@ const UrduDict = {
   'Please enter a valid 10-digit mobile number.': 'براہ کرم درست 10 ہندسوں کا موبائل نمبر درج کریں۔',
   'Everything in Unlimited FREE': 'ان لمیٹڈ میں سب کچھ مفت',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO اب مفت ہے! سب کچھ 31 دسمبر 2026 تک مفت۔',
+  'Ranked pool is capped at the top 1000 players.': 'رینکنگ صرف سرفہرست 1000 کھلاڑیوں تک محدود ہے۔',
 };
 
 export default UrduDict;

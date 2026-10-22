@@ -2033,6 +2033,7 @@ const ML = {
   'Please enter a valid 10-digit mobile number.': 'ദയവായി ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക.',
   'Everything in Unlimited FREE': 'അൺലിമിറ്റഡിലെ എല്ലാം സൗജന്യം',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ഇപ്പോൾ സൗജന്യം! എല്ലാം 2026 ഡിസംബർ 31 വരെ സൗജന്യം.',
+  'Ranked pool is capped at the top 1000 players.': 'റാങ്കിംഗ് ആദ്യ 1000 കളിക്കാർക്ക് മാത്രമായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു.',
 };
 
 export default ML;

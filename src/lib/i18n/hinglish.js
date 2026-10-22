@@ -2042,6 +2042,7 @@ const HINGLISH = {
   'Please enter a valid 10-digit mobile number.': 'Sahi 10 digit ka mobile number daalo.',
   'Everything in Unlimited FREE': 'Unlimited me sab kuch FREE',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ab FREE hai! Sab kuch 31 Dec 2026 tak FREE.',
+  'Ranked pool is capped at the top 1000 players.': 'Ranking sirf top 1000 players tak limited hai.',
 };
 
 export default HINGLISH;

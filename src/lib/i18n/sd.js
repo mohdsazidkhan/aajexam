@@ -2033,6 +2033,7 @@ const SD = {
   'Please enter a valid 10-digit mobile number.': 'मेहरबानी करे सही 10 अंकनि जो मोबाइल नंबर दर्ज कयो।',
   'Everything in Unlimited FREE': 'अनलिमिटेड में सभु कुझ मुफ़्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO हाणे मुफ़्त! सभु कुझ 31 डिसेम्बर 2026 ताईं मुफ़्त।',
+  'Ranked pool is capped at the top 1000 players.': 'रैंकिंग फ़क़त मथांहें 1000 रांदीगरनि तां सीमित आहे.',
 };
 
 export default SD;

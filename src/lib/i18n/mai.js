@@ -2033,6 +2033,7 @@ const MAI = {
   'Please enter a valid 10-digit mobile number.': 'कृपया सही १० अंकक मोबाइल नंबर दर्ज करू।',
   'Everything in Unlimited FREE': 'अनलिमिटेडमे सभ किछु मुफ्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO आब मुफ्त! सभ किछु ३१ दिसम्बर २०२६ धरि मुफ्त।',
+  'Ranked pool is capped at the top 1000 players.': 'रैंकिंग मात्र शीर्ष 1000 खिलाड़ी धरि सीमित अछि।',
 };
 
 export default MAI;

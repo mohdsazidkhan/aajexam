@@ -2033,6 +2033,7 @@ const KOK = {
   'Please enter a valid 10-digit mobile number.': 'कृपा करून बरोबर १० आंकड्यांचो मोबाइल नंबर घालात.',
   'Everything in Unlimited FREE': 'अनलिमिटेडांतलें सगळें मोफत',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO आतां मोफत! सगळें ३१ डिसेंबर २०२६ मेरेन मोफत.',
+  'Ranked pool is capped at the top 1000 players.': 'रँकिंग फकत वयल्या 1000 खेळगड्यां मेरेन मर्यादित आसा.',
 };
 
 export default KOK;

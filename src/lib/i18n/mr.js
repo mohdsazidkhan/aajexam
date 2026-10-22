@@ -2033,6 +2033,7 @@ const MR = {
   'Please enter a valid 10-digit mobile number.': 'कृपया योग्य १० अंकी मोबाइल नंबर टाका.',
   'Everything in Unlimited FREE': 'अनलिमिटेडमधील सर्वकाही मोफत',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO आता मोफत! सर्वकाही ३१ डिसेंबर २०२६ पर्यंत मोफत.',
+  'Ranked pool is capped at the top 1000 players.': 'रँकिंग फक्त पहिल्या 1000 खेळाडूंपुरती मर्यादित आहे.',
 };
 
 export default MR;

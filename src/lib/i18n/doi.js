@@ -2033,6 +2033,7 @@ const DogriDict = {
   'Please enter a valid 10-digit mobile number.': 'मेहरबानी करियै सही 10 अंकें दा मोबाइल नंबर पाओ।',
   'Everything in Unlimited FREE': 'अनलिमिटेड च सब किश मुफ्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO हून मुफ्त ऐ! सब किश 31 दिसंबर 2026 तकर मुफ्त।',
+  'Ranked pool is capped at the top 1000 players.': 'रैंकिंग सिर्फ शीर्ष 1000 खिलाड़ियें तकर सीमत ऐ।',
 };
 
 export default DogriDict;

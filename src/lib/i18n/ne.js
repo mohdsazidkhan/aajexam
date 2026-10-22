@@ -2033,6 +2033,7 @@ const NE = {
   'Please enter a valid 10-digit mobile number.': 'कृपया सही १० अंकको मोबाइल नम्बर राख्नुहोस्।',
   'Everything in Unlimited FREE': 'अनलिमिटेडमा सबै कुरा निःशुल्क',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO अब निःशुल्क! सबै कुरा ३१ डिसेम्बर २०२६ सम्म निःशुल्क।',
+  'Ranked pool is capped at the top 1000 players.': 'र्याङ्किङ शीर्ष १००० खेलाडीसम्म मात्र सीमित छ।',
 };
 
 export default NE;

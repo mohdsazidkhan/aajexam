@@ -2033,6 +2033,7 @@ const PA = {
   'Please enter a valid 10-digit mobile number.': 'ਕਿਰਪਾ ਕਰਕੇ ਸਹੀ 10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਦਾਖਲ ਕਰੋ।',
   'Everything in Unlimited FREE': 'ਅਨਲਿਮਿਟਿਡ ਵਿੱਚ ਸਭ ਕੁਝ ਮੁਫ਼ਤ',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ਹੁਣ ਮੁਫ਼ਤ! ਸਭ ਕੁਝ 31 ਦਸੰਬਰ 2026 ਤੱਕ ਮੁਫ਼ਤ।',
+  'Ranked pool is capped at the top 1000 players.': 'ਰੈਂਕਿੰਗ ਸਿਰਫ਼ ਚੋਟੀ ਦੇ 1000 ਖਿਡਾਰੀਆਂ ਤੱਕ ਸੀਮਿਤ ਹੈ।',
 };
 
 export default PA;

@@ -2033,6 +2033,7 @@ const SA = {
   'Please enter a valid 10-digit mobile number.': 'कृपया शुद्धां १०-अङ्कीयां चलदूरवाणी-सङ्ख्यां प्रविशन्तु।',
   'Everything in Unlimited FREE': 'अनलिमिटेड्-मध्ये सर्वं निःशुल्कम्',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO अधुना निःशुल्कम्! सर्वं ३१ दिसम्बर २०२६ पर्यन्तं निःशुल्कम्।',
+  'Ranked pool is capped at the top 1000 players.': 'क्रमाङ्कनं केवलं प्रथमेषु १००० क्रीडकेषु सीमितम् अस्ति।',
 };
 
 export default SA;
