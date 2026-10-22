@@ -63,23 +63,23 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 
 // --- Helper: Stat Mini Card ---
 const StatMini = ({ icon: Icon, label, value, color = 'text-primary-600', bg = 'bg-primary-50' }) => (
-   <div className="flex items-center gap-3 p-3 rounded-2xl bg-background-surface-secondary/50">
-      <div className={`p-2 rounded-lg xl:rounded-xl ${bg} dark:bg-slate-700/50 ${color}`}>
+   <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm min-w-0">
+      <div className={`p-2 rounded-lg shrink-0 ${bg} dark:bg-slate-700/50 ${color}`}>
          <Icon className="w-4 h-4" />
       </div>
       <div>
-         <p className="text-lg font-black font-outfit leading-tight">{value}</p>
-         <p className="text-[10px] font-bold text-content-secondary uppercase">{label}</p>
+         <p className="text-base xl:text-lg font-black font-outfit leading-tight">{value}</p>
+         <p className="text-[9px] font-black text-content-secondary uppercase leading-tight truncate">{label}</p>
       </div>
    </div>
 );
 
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
-   <div className="flex items-center gap-3 px-1">
-      {Icon && <div className="p-2.5 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl"><Icon className="w-5 h-5" /></div>}
+   <div className="flex items-center gap-2 px-1">
+      {Icon && <div className="p-1.5 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-lg"><Icon className="w-4 h-4" /></div>}
       <div>
-         <h2 className="text-lg xl:text-xl font-black font-outfit">{title}</h2>
+         <h2 className="text-base xl:text-lg font-black font-outfit">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
       </div>
    </div>
@@ -148,48 +148,48 @@ const MyAnalyticsPage = () => {
    const totalActivity = (quiz?.totalAttempts || 0) + (exam?.totalAttempts || 0) + (reel?.totalAnswered || 0);
 
    return (
-      <div className="space-y-3 xl:space-y-6 animate-fade-in mt-4 pb-4">
+      <div className="space-y-2 xl:space-y-3 animate-fade-in mt-2 pb-4">
          <Head><title>My Analytics - AajExam</title></Head>
 
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative rounded-[2rem] xl:rounded-[3rem]">
-                  <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-5 xl:gap-8">
-                     <div className="space-y-2 text-center xl:text-left">
-                        <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
-                           <Star className="w-4 h-4 fill-white text-white" />
+               <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative rounded-2xl">
+                  <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-2 xl:gap-6">
+                     <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
+                        <div className="inline-flex items-center gap-1.5 bg-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-sm">
+                           <Star className="w-3.5 h-3.5 fill-white text-white" />
                            {translate('My Analytics')}
                         </div>
-                        <h1 className="text-xl xl:text-3xl font-black font-outfit">{translate('Performance Dashboard')}</h1>
+                        <h1 className="text-lg xl:text-xl font-black font-outfit">{translate('Performance Dashboard')}</h1>
                      </div>
-                     <div className="flex items-center gap-5 xl:gap-8">
+                     <div className="flex items-center gap-4 xl:gap-6">
                         <div className="text-center">
-                           <p className="text-2xl xl:text-4xl font-black font-outfit">{overallAccuracy.toFixed(0)}%</p>
+                           <p className="text-lg xl:text-xl font-black font-outfit leading-tight">{overallAccuracy.toFixed(0)}%</p>
                            <p className="text-[10px] font-black opacity-60 uppercase">{translate('Quiz Accuracy')}</p>
                         </div>
-                        <div className="h-12 xl:h-16 w-0.5 bg-white/20 rounded-full" />
+                        <div className="h-8 xl:h-10 w-0.5 bg-white/20 rounded-full" />
                         <div className="text-center">
-                           <p className="text-2xl xl:text-4xl font-black font-outfit">{totalActivity}</p>
+                           <p className="text-lg xl:text-xl font-black font-outfit leading-tight">{totalActivity}</p>
                            <p className="text-[10px] font-black opacity-60 uppercase">{translate('Total Activity')}</p>
                         </div>
-                        <div className="h-12 xl:h-16 w-0.5 bg-white/20 rounded-full hidden sm:block" />
+                        <div className="h-8 xl:h-10 w-0.5 bg-white/20 rounded-full hidden sm:block" />
                         <div className="text-center hidden sm:block">
-                           <p className="text-2xl xl:text-4xl font-black font-outfit">{wallet?.balance || 0}</p>
+                           <p className="text-lg xl:text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
                            <p className="text-[10px] font-black opacity-60 uppercase">{translate('Wallet')}</p>
                         </div>
                      </div>
                   </div>
-                  <GraduationCap className="absolute -bottom-10 -right-10 w-64 h-64 text-white/10 rotate-12" />
+                  <GraduationCap className="absolute -bottom-6 -right-6 w-32 h-32 text-white/10 rotate-12" />
                </Card>
             </section>
 
             {/* --- Tab Switcher --- */}
-            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-2 rounded-[2rem] max-w-full px-0 py-4 xl:py-8">
+            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full px-0 py-0.5">
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-5 py-2.5 rounded-full font-black text-xs uppercase transition-all ${activeTab === tab.key ? 'bg-primary-600 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>
-                     <tab.icon className="w-4 h-4" />
+                     className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-3.5 py-2 rounded-full font-black text-[11px] uppercase transition-all ${activeTab === tab.key ? 'bg-primary-600 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>
+                     <tab.icon className="w-3.5 h-3.5" />
                      {translate(tab.label)}
                   </button>
                ))}
@@ -197,67 +197,41 @@ const MyAnalyticsPage = () => {
 
             {/* --- Tab Content --- */}
             <AnimatePresence mode="wait">
-               <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.2 }} className="space-y-6">
+               <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.2 }} className="space-y-3 xl:space-y-4">
 
                   {/* ======================== OVERVIEW TAB ======================== */}
                   {activeTab === 'overview' && (
                      <>
-                        {/* Quick Stats Grid */}
-                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Zap className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{quiz?.totalAttempts || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Quizzes Done')}</p>
-                           </Card>
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><GraduationCap className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{exam?.totalAttempts || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Exams Done')}</p>
-                           </Card>
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Play className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{reel?.totalViewed || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Reels Viewed')}</p>
-                           </Card>
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><FileText className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{data?.myReels?.totalPosted || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Reels Posted')}</p>
-                           </Card>
-                        </div>
-
-                        {/* Social + Wallet Row */}
-                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><Users className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{followersCount || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Followers')}</p>
-                           </Card>
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-2xl w-fit mx-auto mb-2"><Target className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{followingCount || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Following')}</p>
-                           </Card>
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><Wallet className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{wallet?.balance || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Wallet Balance')}</p>
-                           </Card>
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                              <div className="p-3 bg-slate-100 dark:bg-slate-800 dark:bg-slate-700/50 text-black dark:text-white rounded-2xl w-fit mx-auto mb-2"><UserPlus className="w-6 h-6" /></div>
-                              <p className="text-xl font-black font-outfit">{referral?.count || 0}</p>
-                              <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Referrals')}</p>
-                           </Card>
+                        {/* Quick stats — one compact grid */}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                           {[
+                              { icon: Zap, value: quiz?.totalAttempts || 0, label: 'Quizzes Done', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: GraduationCap, value: exam?.totalAttempts || 0, label: 'Exams Done', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: Play, value: reel?.totalViewed || 0, label: 'Reels Viewed', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: FileText, value: data?.myReels?.totalPosted || 0, label: 'Reels Posted', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
+                              { icon: Users, value: followersCount || 0, label: 'Followers', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
+                              { icon: Target, value: followingCount || 0, label: 'Following', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
+                              { icon: Wallet, value: wallet?.balance || 0, label: 'Wallet Balance', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: UserPlus, value: referral?.count || 0, label: 'Referrals', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                           ].map((tile) => (
+                              <Card key={tile.label} padded={false} radius="xl" className="flex items-center gap-2.5 p-2.5 border-slate-200 dark:border-slate-800">
+                                 <div className={`w-9 h-9 shrink-0 rounded-lg flex items-center justify-center ${tile.tone}`}><tile.icon className="w-4 h-4" /></div>
+                                 <div className="min-w-0">
+                                    <p className="text-base xl:text-lg font-black font-outfit leading-tight">{tile.value}</p>
+                                    <p className="text-[9px] font-black text-content-secondary uppercase leading-tight truncate">{translate(tile.label)}</p>
+                                 </div>
+                              </Card>
+                           ))}
                         </div>
 
                         {/* Subject-wise Quick View (from quiz) */}
                         {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 xl:space-y-4">
-                              <SectionHeader icon={BarChart3} title={translate('Subject Performance')} subtitle={translate('Based on your quiz attempts')} />
-                              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={BarChart3} title={translate('Subject Performance')} />
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {quiz.subjectWise.map((s, idx) => {
                                     return (
-                                       <Card key={idx} className="border-slate-200 dark:border-slate-800 space-y-3 rounded-3xl">
+                                       <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800 space-y-2">
                                           <div className="flex justify-between items-center">
                                              <span className="font-black text-base">{translateData(s.name)}</span>
                                              <span className="text-xs font-bold text-content-secondary">{translate('{count} attempts', { count: s.attempts })}</span>
@@ -276,7 +250,7 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'quizzes' && (
                      <>
                         {/* Overall Quiz Stats */}
-                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                            <StatMini icon={Zap} label={translate('Total Quizzes')} value={quiz?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Target} label={translate('Avg Accuracy')} value={`${quiz?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label={translate('Best Score')} value={`${quiz?.bestScore || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
@@ -284,26 +258,26 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Correct / Wrong / Skipped */}
-                        <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
-                           <div className="grid grid-cols-3 gap-4 text-center">
+                        <Card radius="2xl" className="border-slate-200 dark:border-slate-800">
+                           <div className="grid grid-cols-3 gap-2 text-center">
                               <div>
-                                 <div className="flex items-center justify-center gap-2 mb-1">
-                                    <CheckCircle className="w-5 h-5 text-primary-600" />
-                                    <span className="text-2xl font-black font-outfit text-primary-600">{quiz?.totalCorrect || 0}</span>
+                                 <div className="flex items-center justify-center gap-2 mb-0.5">
+                                    <CheckCircle className="w-4 h-4 text-primary-600" />
+                                    <span className="text-xl font-black font-outfit text-primary-600">{quiz?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Correct')}</p>
                               </div>
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <XCircle className="w-5 h-5 text-black dark:text-white" />
-                                    <span className="text-2xl font-black font-outfit text-black dark:text-white">{quiz?.totalWrong || 0}</span>
+                                    <XCircle className="w-4 h-4 text-black dark:text-white" />
+                                    <span className="text-xl font-black font-outfit text-black dark:text-white">{quiz?.totalWrong || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Wrong')}</p>
                               </div>
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <Clock className="w-5 h-5 text-gray-400" />
-                                    <span className="text-2xl font-black font-outfit text-gray-500">{quiz?.totalSkipped || 0}</span>
+                                    <Clock className="w-4 h-4 text-gray-400" />
+                                    <span className="text-xl font-black font-outfit text-gray-500">{quiz?.totalSkipped || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Skipped')}</p>
                               </div>
@@ -312,17 +286,17 @@ const MyAnalyticsPage = () => {
 
                         {/* Subject Wise */}
                         {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 xl:space-y-4">
+                           <div className="space-y-2 xl:space-y-3">
                               <SectionHeader icon={BookOpen} title={translate('Subject Wise Performance')} />
-                              <div className="space-y-3">
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {quiz.subjectWise.map((s, idx) => {
                                     return (
-                                       <Card key={idx} className="border-slate-200 dark:border-slate-800 rounded-3xl">
+                                       <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
                                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                                             <div className="flex-1 space-y-3">
-                                                <div className="flex justify-between items-center">
+                                             <div className="flex-1 space-y-2">
+                                                <div className="flex flex-wrap justify-between items-center gap-x-3 gap-y-1">
                                                    <span className="font-black text-base">{translateData(s.name)}</span>
-                                                   <div className="flex items-center gap-3 text-xs font-bold text-content-secondary">
+                                                   <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs font-bold text-content-secondary">
                                                       <span className="text-primary-600">{translate('{count} correct', { count: s.totalCorrect })}</span>
                                                       <span className="text-black dark:text-white">{translate('{count} wrong', { count: s.totalWrong })}</span>
                                                       <span>{translate('{count} attempts', { count: s.attempts })}</span>
@@ -340,12 +314,12 @@ const MyAnalyticsPage = () => {
 
                         {/* Topic Wise */}
                         {quiz?.topicWise?.length > 0 && (
-                           <div className="space-y-2 xl:space-y-4">
-                              <SectionHeader icon={Target} title={translate('Topic Wise Performance')} subtitle={translate('Top topics by attempts')} />
-                              <div className="space-y-2">
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={Target} title={translate('Topic Wise Performance')} />
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((tp, idx) => (
-                                    <Card key={idx} className="border-slate-200 dark:border-slate-800 rounded-2xl">
-                                       <div className="flex items-center justify-between">
+                                    <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
+                                       <div className="flex items-center justify-between gap-2">
                                           <div>
                                              <p className="font-black text-sm">{translateData(tp.name)}</p>
                                              <p className="text-[10px] font-bold text-content-secondary">{translateData(tp.subjectName)} &bull; {translate('{count} attempts', { count: tp.attempts })}</p>
@@ -360,7 +334,7 @@ const MyAnalyticsPage = () => {
                                  ))}
                                  {quiz.topicWise.length > 6 && (
                                     <button onClick={() => setShowAllTopics(!showAllTopics)}
-                                       className="flex items-center gap-2 mx-auto text-primary-600 font-black text-sm py-2">
+                                       className="xl:col-span-3 flex items-center justify-center gap-2 mx-auto text-primary-600 font-black text-sm py-2">
                                        {showAllTopics ? <><ChevronUp className="w-4 h-4" /> {translate('Show Less')}</> : <><ChevronDown className="w-4 h-4" /> {translate('Show All {count} Topics', { count: quiz.topicWise.length })}</>}
                                     </button>
                                  )}
@@ -369,7 +343,7 @@ const MyAnalyticsPage = () => {
                         )}
 
                         {quiz?.totalAttempts === 0 && (
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
                               <Zap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">{translate('No quiz attempts yet')}</p>
                               <p className="text-xs text-content-secondary mt-1">{translate('Start practicing to see your performance here!')}</p>
@@ -381,25 +355,25 @@ const MyAnalyticsPage = () => {
                   {/* ======================== EXAMS TAB ======================== */}
                   {activeTab === 'exams' && (
                      <>
-                        <div className="grid grid-cols-2 xl:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                            <StatMini icon={GraduationCap} label={translate('Total Exams')} value={exam?.totalAttempts || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={Target} label={translate('Avg Accuracy')} value={`${exam?.avgAccuracy || 0}%`} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Trophy} label={translate('Best Accuracy')} value={`${exam?.bestAccuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                         </div>
 
-                        <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
-                           <div className="grid grid-cols-2 gap-4 text-center">
+                        <Card radius="2xl" className="border-slate-200 dark:border-slate-800">
+                           <div className="grid grid-cols-2 gap-2 text-center">
                               <div>
-                                 <div className="flex items-center justify-center gap-2 mb-1">
-                                    <CheckCircle className="w-5 h-5 text-primary-600" />
-                                    <span className="text-2xl font-black font-outfit text-primary-600">{exam?.totalCorrect || 0}</span>
+                                 <div className="flex items-center justify-center gap-2 mb-0.5">
+                                    <CheckCircle className="w-4 h-4 text-primary-600" />
+                                    <span className="text-xl font-black font-outfit text-primary-600">{exam?.totalCorrect || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Correct')}</p>
                               </div>
                               <div>
                                  <div className="flex items-center justify-center gap-2 mb-1">
-                                    <XCircle className="w-5 h-5 text-black dark:text-white" />
-                                    <span className="text-2xl font-black font-outfit text-black dark:text-white">{exam?.totalWrong || 0}</span>
+                                    <XCircle className="w-4 h-4 text-black dark:text-white" />
+                                    <span className="text-xl font-black font-outfit text-black dark:text-white">{exam?.totalWrong || 0}</span>
                                  </div>
                                  <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Wrong')}</p>
                               </div>
@@ -407,7 +381,7 @@ const MyAnalyticsPage = () => {
                         </Card>
 
                         {exam?.totalAttempts === 0 && (
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
                               <GraduationCap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">{translate('No exam attempts yet')}</p>
                               <p className="text-xs text-content-secondary mt-1">{translate('Attempt practice tests to track your exam performance!')}</p>
@@ -419,7 +393,7 @@ const MyAnalyticsPage = () => {
                   {/* ======================== REELS TAB ======================== */}
                   {activeTab === 'reels' && (
                      <>
-                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                            <StatMini icon={Eye} label={translate('Reels Viewed')} value={reel?.totalViewed || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
                            <StatMini icon={CheckCircle} label={translate('Questions Answered')} value={reel?.totalAnswered || 0} color="text-primary-600" bg="bg-primary-50" />
                            <StatMini icon={Target} label={translate('Reel Accuracy')} value={`${reel?.accuracy || 0}%`} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
@@ -427,9 +401,9 @@ const MyAnalyticsPage = () => {
                         </div>
 
                         {/* Engagement Stats */}
-                        <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
-                           <p className="font-black text-sm uppercase text-content-secondary mb-4">{translate('Engagement')}</p>
-                           <div className="grid grid-cols-3 gap-4 text-center">
+                        <Card radius="2xl" className="border-slate-200 dark:border-slate-800">
+                           <p className="font-black text-xs uppercase text-content-secondary mb-2">{translate('Engagement')}</p>
+                           <div className="grid grid-cols-3 gap-2 text-center">
                               <div>
                                  <Heart className="w-5 h-5 text-black dark:text-white mx-auto mb-1" />
                                  <p className="text-xl font-black font-outfit">{reel?.totalLiked || 0}</p>
@@ -450,13 +424,13 @@ const MyAnalyticsPage = () => {
 
                         {/* Reel Subject Wise */}
                         {reel?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 xl:space-y-4">
-                              <SectionHeader icon={BookOpen} title={translate('Reel Subject Performance')} subtitle={translate('Question reels you answered')} />
-                              <div className="space-y-3">
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={BookOpen} title={translate('Reel Subject Performance')} />
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
                                  {reel.subjectWise.map((s, idx) => {
                                     return (
-                                       <Card key={idx} className="border-slate-200 dark:border-slate-800 rounded-3xl">
-                                          <div className="flex justify-between items-center mb-3">
+                                       <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
+                                          <div className="flex flex-wrap justify-between items-center gap-x-3 gap-y-1 mb-2">
                                              <span className="font-black text-base">{s.subject}</span>
                                              <span className="text-xs font-bold text-content-secondary">{translate('{correct}/{attempted} correct', { correct: s.correct, attempted: s.attempted })}</span>
                                           </div>
@@ -469,7 +443,7 @@ const MyAnalyticsPage = () => {
                         )}
 
                         {reel?.totalViewed === 0 && (
-                           <Card className="text-center border-slate-200 dark:border-slate-800 rounded-3xl">
+                           <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
                               <Play className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">{translate('No reel activity yet')}</p>
                               <p className="text-xs text-content-secondary mt-1">{translate('Start watching reels to learn on the go!')}</p>
@@ -478,80 +452,73 @@ const MyAnalyticsPage = () => {
                      </>
                   )}
 
-                  {/* ======================== WALLET TAB ======================== */}
-                  {activeTab === 'wallet' && (
+                  {/* ======================== MY REELS TAB ======================== */}
+                  {activeTab === 'my-reels' && (
                      <>
-                        {/* Balance Card */}
-                        <Card className="bg-primary-600 text-white border-none shadow-sm rounded-[2rem] xl:rounded-[3rem]">
-                           <div className="flex justify-between items-start mb-6">
-                              <div className="p-3 bg-white/20 rounded-2xl"><Wallet className="w-8 h-8" /></div>
-                              <span className="text-xs font-black opacity-60 uppercase">{translate('Wallet Balance')}</span>
-                           </div>
-                           <div>
-                              <p className="text-xs font-black opacity-60">{translate('Current Balance')}</p>
-                              <h3 className="text-4xl xl:text-5xl font-black font-outfit">{wallet?.balance || 0}</h3>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                           <StatMini icon={FileText} label={translate('Reels Posted')} value={data?.myReels?.totalPosted || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={Eye} label={translate('Views')} value={data?.myReels?.totalViews || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Heart} label={translate('Liked')} value={data?.myReels?.totalLikes || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Bookmark} label={translate('Saved')} value={data?.myReels?.totalBookmarks || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Share2} label={translate('Shared')} value={data?.myReels?.totalShares || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={CheckCircle} label={translate('Questions Answered')} value={data?.myReels?.totalAnswered || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Target} label={translate('Correct')} value={data?.myReels?.totalCorrect || 0} color="text-primary-600" bg="bg-primary-50" />
+                        </div>
+
+                        <Card radius="2xl" className="border-slate-200 dark:border-slate-800">
+                           <p className="font-black text-xs uppercase text-content-secondary mb-2">{translate('Status')}</p>
+                           <div className="grid grid-cols-4 gap-2 text-center">
+                              {[
+                                 { label: 'Published', value: data?.myReels?.published || 0, tone: 'text-primary-600' },
+                                 { label: 'Pending', value: data?.myReels?.pending || 0, tone: 'text-black dark:text-white' },
+                                 { label: 'Rejected', value: data?.myReels?.rejected || 0, tone: 'text-black dark:text-white' },
+                                 { label: 'Draft', value: data?.myReels?.draft || 0, tone: 'text-gray-500' },
+                              ].map((item) => (
+                                 <div key={item.label}>
+                                    <p className={`text-xl font-black font-outfit ${item.tone}`}>{item.value}</p>
+                                    <p className="text-[10px] font-black text-content-secondary uppercase">{translate(item.label)}</p>
+                                 </div>
+                              ))}
                            </div>
                         </Card>
 
-                        {/* Earned / Spent */}
-                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                           <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
-                              <div className="p-4 bg-primary-100 dark:bg-primary-900/30 text-primary-600 rounded-2xl"><TrendingUp className="w-7 h-7" /></div>
-                              <div>
-                                 <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Total Earned')}</p>
-                                 <p className="text-2xl font-black font-outfit">{wallet?.totalEarnings || 0}</p>
+                        {!data?.myReels?.totalPosted && (
+                           <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
+                              <FileText className="w-10 h-10 text-content-secondary mx-auto mb-2 opacity-30" />
+                              <p className="font-black text-content-secondary">{translate('No reels posted yet')}</p>
+                           </Card>
+                        )}
+                     </>
+                  )}
+
+                  {/* ======================== WALLET TAB ======================== */}
+                  {activeTab === 'wallet' && (
+                     <>
+                        <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">
+                           <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 bg-primary-600 text-white border-none shadow-sm flex items-center gap-2.5 p-2.5">
+                              <div className="p-2 bg-white/20 rounded-lg shrink-0"><Wallet className="w-4 h-4" /></div>
+                              <div className="min-w-0">
+                                 <p className="text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
+                                 <p className="text-[9px] font-black opacity-70 uppercase leading-tight">{translate('Wallet Balance')}</p>
                               </div>
                            </Card>
-                           <Card className="flex items-center gap-5 border-slate-200 dark:border-slate-800 rounded-3xl">
-                              <div className="p-4 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-2xl"><TrendingDown className="w-7 h-7" /></div>
-                              <div>
-                                 <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Total Spent')}</p>
-                                 <p className="text-2xl font-black font-outfit">{wallet?.totalExpenses || 0}</p>
-                              </div>
-                           </Card>
+                           <StatMini icon={TrendingUp} label={translate('Total Earned')} value={wallet?.totalEarnings || 0} color="text-primary-600" bg="bg-primary-50" />
+                           <StatMini icon={TrendingDown} label={translate('Total Spent')} value={wallet?.totalExpenses || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={Coins} label={translate('Total Referral Rewards')} value={referral?.totalRewards || 0} color="text-primary-600" bg="bg-primary-50" />
                         </div>
 
-                        {/* Earnings Breakdown */}
-                        <div className="space-y-2 xl:space-y-4">
-                           <SectionHeader icon={Coins} title={translate('Earnings Breakdown')} />
-                           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
-                              <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
-                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><BookOpen className="w-5 h-5" /></div>
-                                    <span className="font-black text-sm">{translate('Blog Earnings')}</span>
-                                 </div>
-                                 <span className="font-black text-lg text-black dark:text-white">{wallet?.blogEarnings || 0}</span>
-                              </Card>
-                              <Card className="border-slate-200 dark:border-slate-800 flex items-center justify-between rounded-3xl">
-                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 text-black dark:text-white rounded-lg xl:rounded-xl flex items-center justify-center"><UserPlus className="w-5 h-5" /></div>
-                                    <span className="font-black text-sm">{translate('Referral Rewards')}</span>
-                                 </div>
-                                 <span className="font-black text-lg text-black dark:text-white">{wallet?.referralRewards || 0}</span>
-                              </Card>
-                           </div>
-                        </div>
-
-                        {/* Referral Section */}
-                        <div className="space-y-2 xl:space-y-4">
-                           <SectionHeader icon={UserPlus} title={translate('Referral')} subtitle={`${referral?.count || 0} people joined using your code`} />
-                           <Card className="border-slate-200 dark:border-slate-800 rounded-3xl">
-                              <div className="flex flex-col sm:flex-row items-center gap-4">
-                                 <div className="flex-1 w-full">
-                                    <p className="text-xs font-bold text-content-secondary mb-2">{translate('Your Referral Code')}</p>
-                                    <div className="flex items-center gap-2 bg-background-surface-secondary p-3 rounded-2xl">
-                                       <span className="flex-1 font-black text-lg font-mono tracking-wider">{referral?.code || '---'}</span>
-                                       <button onClick={copyReferralCode}
-                                          className="p-2 bg-primary-600 text-white rounded-lg xl:rounded-xl hover:bg-primary-600 transition-colors">
-                                          {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
-                                       </button>
-                                    </div>
-                                 </div>
-                                 <div className="text-center sm:text-right">
-                                    <p className="text-3xl font-black font-outfit text-primary-600">{referral?.totalRewards || 0}</p>
-                                    <p className="text-[10px] font-black text-content-secondary uppercase">{translate('Total Referral Rewards')}</p>
-                                 </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                           <StatMini icon={BookOpen} label={translate('Blog Earnings')} value={wallet?.blogEarnings || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <StatMini icon={UserPlus} label={translate('Referral Rewards')} value={wallet?.referralRewards || 0} color="text-black dark:text-white" bg="bg-slate-100 dark:bg-slate-800" />
+                           <Card padded={false} radius="xl" className="flex items-center gap-2.5 p-2.5 border-slate-200 dark:border-slate-800">
+                              <div className="min-w-0 flex-1">
+                                 <p className="text-[9px] font-black text-content-secondary uppercase leading-tight">{translate('Your Referral Code')}</p>
+                                 <p className="font-black text-base font-mono tracking-wider leading-tight truncate">{referral?.code || '---'}</p>
                               </div>
+                              <button onClick={copyReferralCode} aria-label={translate('Copy')}
+                                 className="p-2 bg-primary-600 text-white rounded-lg shrink-0 transition-colors">
+                                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                              </button>
                            </Card>
                         </div>
                      </>
