@@ -113,7 +113,7 @@ export async function GET() {
                 totalExams,
                 totalQuizzes,
                 totalPracticeTests,
-                totalPyqPapers: pyqTests.length,
+                totalPyqPapers: await PracticeTest.countDocuments({ isPYQ: true, slug: { $exists: true, $ne: null } }),
                 totalSubjects,
                 totalTopics,
                 totalQuestions: quizQuestions + practiceTestQuestions,

@@ -91,7 +91,7 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     () => (exams || []).slice(0, 8).map(e => e.name).filter(Boolean).join(', '),
     [exams]
   );
-  const seoDescription = seo?.description || `Browse ${exams.length || 20}+ government exam preparation pages on AajExam${examNamesPreview ? ` – ${examNamesPreview} and more` : ''}. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams.`;
+  const seoDescription = seo?.description || `Browse ${exams.length} government exam preparation pages on AajExam${examNamesPreview ? ` – ${examNamesPreview} and more` : ''}. Free practice tests, previous year question papers (PYQs) and topic-wise quizzes for SSC, UPSC, Banking, Railway, Defence and State PSC exams.`;
 
   const itemListSchema = useMemo(() => generateItemListSchema({
     name: 'Government Exam Preparation',
@@ -259,7 +259,7 @@ export async function getServerSideProps() {
     await dbConnect();
 
     const [examDocs, testCounts, quizCounts] = await Promise.all([
-      Exam.find({ isActive: true }).populate('category', 'name type').sort({ name: 1 }).lean(),
+      Exam.find({ isActive: true, actualExam: { $ne: false }, name: { $not: /Central Board of Secondary Education|CBSE/i } }).populate('category', 'name type').sort({ name: 1 }).lean(),
       PracticeTest.aggregate([
         { $lookup: { from: 'exampatterns', localField: 'examPattern', foreignField: '_id', as: 'pattern' } },
         { $unwind: '$pattern' },

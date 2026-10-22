@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from '@/components/common/AppLink';
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
@@ -31,6 +31,10 @@ import { getPostLoginPath } from '../../../lib/utils/authUtils';
 const RegisterPageInner = () => {
   const { translate, rich } = useTranslate();
   const freePromoActive = useFreePromoActive();
+  const [pyqCount, setPyqCount] = useState(null);
+  useEffect(() => {
+    API.getPublicLandingStats().then((res) => { if (res?.success) setPyqCount(res.data?.totalPyqPapers || null); }).catch(() => {});
+  }, []);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -161,7 +165,7 @@ const RegisterPageInner = () => {
                   <div className="p-2 bg-primary-500/10 rounded-lg xl:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                   </div>
-                  <span className="text-sm font-black tracking-[0.04em]">{translate(item.text)}</span>
+                  <span className="text-sm font-black tracking-[0.04em]">{pyqCount ? translate(item.text).replace(/500\+/, String(pyqCount)) : translate(item.text)}</span>
                 </div>
               ))}
             </div>
