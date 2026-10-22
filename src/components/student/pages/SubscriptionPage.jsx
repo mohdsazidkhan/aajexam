@@ -135,7 +135,7 @@ const SubscriptionPage = () => {
 
       <div className="space-y-2 xl:space-y-4 xl:space-y-8 animate-fade-in mx-auto mt-2 xl:mt-4">
         {subscription && (
-          <Card variant="dark" depth={false} className={`p-3 xl:p-4 border-none overflow-hidden relative rounded-2xl xl:rounded-[3rem] text-white ${subscription.status === 'active' ? 'bg-primary-600' : 'bg-slate-950 shadow-sm'}`}>
+          <Card variant="primary" depth={false} className="p-3 xl:p-4 border-none overflow-hidden relative rounded-2xl xl:rounded-[3rem] text-white">
             <div className="relative z-10 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 xl:gap-8">
               <div className="flex items-start gap-3 xl:gap-6">
                 <div className="w-10 h-10 xl:w-16 xl:h-16 bg-white/20 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center flex-shrink-0">

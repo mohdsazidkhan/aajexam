@@ -210,19 +210,18 @@ const PaymentTransactions = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit mb-4 xl:mb-6">
       {/* Header */}
-      <div className="bg-primary-600 p-4 xl:p-8 text-white shadow-sm border-b-2 xl:border-b-2 border-white/20 relative overflow-hidden group">
+      <div className="bg-primary-600 p-3 xl:p-4 text-white shadow-sm border-b-2 xl:border-b-2 border-white/20 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-8 relative z-10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-4 relative z-10">
           <div>
-            <h2 className="text-lg xl:text-4xl font-black mb-1 xl:mb-3 uppercase tracking-tight xl:tracking-tighter">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-100">{c}</span>])}</h2>
-            <p className="text-[8px] xl:text-[10px] font-black uppercase tracking-[0.15em] xl:tracking-[0.3em] text-primary-100 opacity-80">{translate('All your AajExam plan purchases & receipts')}</p>
+            <h2 className="text-lg xl:text-2xl font-black uppercase tracking-tight">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-100">{c}</span>])}</h2>
           </div>
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-4 py-2.5 xl:px-8 xl:py-5 rounded-lg xl:rounded-xl xl:rounded-2xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 xl:space-x-3 border-2 xl:border-2 border-white/10 shadow-sm"
+              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 xl:space-x-3 border-2 xl:border-2 border-white/10 shadow-sm"
             >
               <FaFilter className="text-xs xl:text-sm" />
               <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">{translate('Filters')}</span>
@@ -233,44 +232,44 @@ const PaymentTransactions = () => {
 
       {/* Summary Cards */}
       {summary && (
-        <div className="p-3 xl:p-14 bg-white dark:bg-slate-900/50">
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 xl:gap-8">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl xl:rounded-[2.5rem] p-4 xl:p-10 border-2 xl:border-2 border-slate-100 dark:border-slate-700 shadow-sm xl:shadow-sm transition-all hover:-translate-y-2 group">
+        <div className="p-2 xl:p-3 bg-white dark:bg-slate-900/50">
+          <div className="grid grid-cols-3 gap-2 xl:gap-3">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">{translate('Total Investment')}</p>
-                  <p className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Investment')}</p>
+                  <p className="text-base xl:text-2xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-10 h-10 xl:w-20 xl:h-20 bg-primary-600 text-white rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-sm border-2 xl:border-2 border-white dark:border-slate-700 rotate-3 group-hover:rotate-6 transition-transform flex-shrink-0">
-                  <FaRupeeSign className="text-sm xl:text-3xl" />
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-600 text-white rounded-lg hidden sm:flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-700 transition-transform flex-shrink-0">
+                  <FaRupeeSign className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl xl:rounded-[2.5rem] p-4 xl:p-10 border-2 xl:border-2 border-slate-100 dark:border-slate-700 shadow-sm xl:shadow-sm transition-all hover:-translate-y-2 group">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">{translate('Total Transactions')}</p>
-                  <p className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Transactions')}</p>
+                  <p className="text-base xl:text-2xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 xl:w-20 xl:h-20 bg-primary-600 text-white rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-sm border-2 xl:border-2 border-white dark:border-slate-700 -rotate-3 group-hover:-rotate-6 transition-transform flex-shrink-0">
-                  <FaReceipt className="text-sm xl:text-3xl" />
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-600 text-white rounded-lg hidden sm:flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-700 transition-transform flex-shrink-0">
+                  <FaReceipt className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl xl:rounded-[2.5rem] p-4 xl:p-10 border-2 xl:border-2 border-slate-100 dark:border-slate-700 shadow-sm xl:shadow-sm transition-all hover:-translate-y-2 group">
+            <div className="bg-white dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all group">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 xl:mb-3">{translate('Successful Clear')}</p>
-                  <p className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
+                  <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Successful Clear')}</p>
+                  <p className="text-base xl:text-2xl font-black text-slate-900 dark:text-white tracking-tighter group-hover:text-primary-600 transition-colors">
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-10 h-10 xl:w-20 xl:h-20 bg-primary-600 text-white rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-sm border-2 xl:border-2 border-white dark:border-slate-700 rotate-6 group-hover:rotate-12 transition-transform flex-shrink-0">
-                  <FaCheckCircle className="text-sm xl:text-3xl" />
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-600 text-white rounded-lg hidden sm:flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-700 transition-transform flex-shrink-0">
+                  <FaCheckCircle className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
@@ -280,8 +279,8 @@ const PaymentTransactions = () => {
 
       {/* Filters */}
       {showFilters && (
-        <div className="p-3 xl:p-12 bg-white dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-slate-800">
-          <div className="grid grid-cols-1 xl:grid-cols-4 gap-3 xl:gap-6 mb-4 xl:mb-8">
+        <div className="p-2 xl:p-3 bg-white dark:bg-slate-900/50 border-b-2 border-slate-100 dark:border-slate-800">
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 xl:gap-3 mb-2 xl:mb-3">
             {/* Search */}
             <div className="relative">
               <FaSearch className="absolute left-3 xl:left-4 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400 text-xs xl:text-base" />
@@ -290,7 +289,7 @@ const PaymentTransactions = () => {
                 placeholder={translate('Search history...')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
+                className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
               />
             </div>
 
@@ -298,7 +297,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 xl:px-6 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value={1}>{translate('January')}</option>
               <option value={2}>{translate('February')}</option>
@@ -318,7 +317,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 xl:px-6 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -329,7 +328,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 xl:px-6 py-2.5 xl:py-4 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value="all">{translate('All Status')}</option>
               <option value="paid">{translate('Paid')}</option>
@@ -353,27 +352,27 @@ const PaymentTransactions = () => {
       )}
 
       {/* Transactions List */}
-      <div className="p-3 xl:p-12">
+      <div className="p-2 xl:p-3">
         {error ? (
-          <div className="text-center py-10 xl:py-20">
-            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-3 xl:mb-6 shadow-sm border-2 border-white">
+          <div className="text-center py-6 xl:py-10">
+            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-2 xl:mb-3 shadow-sm border-2 border-white">
               <FaExclamationTriangle className="text-black dark:text-white text-base xl:text-2xl" />
             </div>
             <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{error}</p>
           </div>
         ) : filteredTransactions.length === 0 ? (
-          <div className="text-center py-10 xl:py-20">
-            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-3 xl:mb-6 shadow-sm border-2 border-white">
+          <div className="text-center py-6 xl:py-10">
+            <div className="w-12 h-12 xl:w-16 xl:h-16 bg-slate-100 rounded-lg xl:rounded-xl xl:rounded-2xl flex items-center justify-center mx-auto mb-2 xl:mb-3 shadow-sm border-2 border-white">
               <FaReceipt className="text-slate-600 dark:text-slate-400 text-base xl:text-2xl" />
             </div>
             <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate('No records found')}</p>
           </div>
         ) : (
-          <div className="space-y-3 xl:space-y-6">
+          <div className="space-y-2 xl:space-y-3">
             {filteredTransactions.map((transaction) => (
-              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl xl:rounded-[2rem] shadow-sm xl:shadow-sm border-2 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
+              <div key={transaction.id} className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-xl xl:rounded-xl shadow-sm xl:shadow-sm border-2 border-slate-100 dark:border-slate-700 overflow-hidden transition-all hover:-translate-y-1">
                 {/* Transaction Header */}
-                <div className="p-3 xl:p-8 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                <div className="p-3 xl:p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
                   <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 xl:gap-6">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 xl:gap-4 mb-2 xl:mb-4">
@@ -422,11 +421,11 @@ const PaymentTransactions = () => {
 
                 {/* Expanded Details */}
                 {expandedTransaction === transaction.id && (
-                  <div className="border-t-2 border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-3 xl:p-8">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-8">
+                  <div className="border-t-2 border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-3 xl:p-4">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
                       {/* Payment Details */}
-                      <div className="bg-white dark:bg-slate-800 p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
-                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
+                      <div className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
                           <FaCreditCard className="text-primary-600" />
                           {translate('Payment Details')}
                         </h3>
@@ -447,8 +446,8 @@ const PaymentTransactions = () => {
                       </div>
 
                       {/* Info Details */}
-                      <div className="bg-white dark:bg-slate-800 p-3 xl:p-6 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
-                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-3 xl:mb-6 flex items-center gap-2 xl:gap-3">
+                      <div className="bg-white dark:bg-slate-800 p-3 xl:p-4 rounded-lg xl:rounded-xl xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700 shadow-sm">
+                        <h3 className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-2 xl:mb-3 flex items-center gap-2 xl:gap-3">
                           <FaReceipt className="text-primary-600" />
                           {translate('Transaction Details')}
                         </h3>
