@@ -1,4 +1,5 @@
 'use client';
+import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import Link from '@/components/common/AppLink';
 import { Flame, Trophy, Calendar, Shield, Snowflake, TrendingUp } from 'lucide-react';
@@ -8,7 +9,6 @@ import API from '../../lib/api';
 import Card from '../../components/common/ui/Card';
 import Loading from '../../components/common/Loading';
 import Seo from '../../components/common/Seo';
-import { DashboardSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
 const StreakPage = () => {
@@ -43,7 +43,7 @@ const StreakPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-6 xl:pb-12">
-      <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
+      <div className="py-2 xl:py-4"><ListPageSkeleton chips={4} rows={3} /></div>
     </div>
   );
 

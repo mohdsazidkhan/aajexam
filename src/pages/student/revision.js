@@ -1,4 +1,5 @@
 'use client';
+import { RevisionPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { RotateCcw, Brain, CheckCircle, XCircle, BarChart3, ArrowRight, Zap, BookOpen, FileText, Target, Film, Layers } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -7,7 +8,6 @@ import Card from '../../components/common/ui/Card';
 import Loading from '../../components/common/Loading';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 import Seo from '../../components/common/Seo';
-import { RevisionSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import LanguageToggle from '../../components/common/LanguageToggle';
 import useStoredTranslations from '../../hooks/useStoredTranslations';
 import useTranslate from '../../hooks/useTranslate';
@@ -73,7 +73,7 @@ const RevisionPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-6 xl:pb-12">
-      <div className="py-4 xl:py-6"><RevisionSkeleton /></div>
+      <div className="py-2 xl:py-4"><RevisionPageSkeleton /></div>
     </div>
   );
 

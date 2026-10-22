@@ -1,5 +1,6 @@
 'use client';
 
+import { AnalyticsPageSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import {
@@ -38,7 +39,6 @@ import Card from '../../common/ui/Card';
 import Button from '../../common/ui/Button';
 import ProgressBar from '../../common/ui/ProgressBar';
 import UnifiedFooter from '../../common/UnifiedFooter';
-import { DashboardSkeleton } from '../../common/skeletons/PrivateSkeletons';
 import SubscriptionGuard from '../SubscriptionGuard';
 import useTranslate from '../../../hooks/useTranslate';
 
@@ -129,7 +129,7 @@ const MyAnalyticsPage = () => {
 
    if (loading) return (
       <div className="min-h-screen pb-6 xl:pb-12">
-         <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
+         <div className="py-2 xl:py-4"><AnalyticsPageSkeleton /></div>
       </div>
    );
 

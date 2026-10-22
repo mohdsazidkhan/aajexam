@@ -1,5 +1,6 @@
 'use client';
 
+import { ChallengesPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
    Swords, Search, Clock, Trophy, Target, ChevronRight, Copy, CheckCircle
@@ -10,7 +11,6 @@ import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 
 import API from '../../lib/api';
-import { ListSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import Card from '../../components/common/ui/Card';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 import useTranslate from '../../hooks/useTranslate';
@@ -59,7 +59,7 @@ const MyChallengesPage = () => {
 
    if (loading && challenges.length === 0) return (
       <div className="min-h-screen bg-background-page pb-20 font-outfit selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
-         <div className="py-8"><ListSkeleton rows={6} /></div>
+         <div className="py-2 xl:py-4"><ChallengesPageSkeleton count={3} /></div>
       </div>
    );
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { ProfilePageSkeleton } from '../../common/skeletons/PageSkeletons';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -42,7 +43,6 @@ import Button from '../../common/ui/Button';
 import Card from '../../common/ui/Card';
 import ProgressBar from '../../common/ui/ProgressBar';
 import ReferralBanner from '../ReferralBanner';
-import { ProfileSkeleton } from '../../common/skeletons/PrivateSkeletons';
 import useTranslate from '../../../hooks/useTranslate';
 
 const formatCurrency = (value) => `Rs.${Number(value || 0).toLocaleString('en-IN')}`;
@@ -177,7 +177,7 @@ const ProfilePage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background-page font-outfit">
-        <div className="py-4 xl:py-12"><ProfileSkeleton /></div>
+        <div className="py-2 xl:py-4"><ProfilePageSkeleton /></div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 'use client';
 
+import { CardGridSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -9,7 +10,6 @@ import { getStoredTargetExamIds } from '../../../lib/utils/targetExams';
 import Card from '../../common/ui/Card';
 import Button from '../../common/ui/Button';
 import { isAuthenticated, getCurrentUser } from '../../../lib/utils/authUtils';
-import { ListSkeleton } from '../../common/skeletons/PrivateSkeletons';
 import {
   MessageSquarePlus,
   Heart,
@@ -199,7 +199,7 @@ const CommunityQuestionsPage = () => {
 
         {/* Content */}
         {loading ? (
-          <ListSkeleton rows={6} />
+          <CardGridSkeleton count={6} cols="grid-cols-1 xl:grid-cols-2" />
         ) : error ? (
           <Card className="text-center py-2 xl:py-4">
             <p className="text-content-muted text-sm">{error}</p>

@@ -1,5 +1,6 @@
 'use client';
 
+import { SubscriptionPageSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -13,7 +14,6 @@ import { PRO_PLAN_FEATURES } from '../../../lib/config/planFeatures';
 import Card from '../../common/ui/Card';
 import Button from '../../common/ui/Button';
 import Skeleton from '../../common/Skeleton';
-import { SubscriptionSkeleton } from '../../common/skeletons/PrivateSkeletons';
 import PaymentTransactions from "../PaymentTransactions";
 import { launchPayuCheckout } from '../../../lib/utils/payu';
 import useTranslate from '../../../hooks/useTranslate';
@@ -115,15 +115,7 @@ const SubscriptionPage = () => {
 
   if (loading) {
     return (
-      <div className="space-y-8 mx-auto">
-        <Skeleton height="200px" borderRadius="2.5rem" />
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-8">
-          <Skeleton height="300px" borderRadius="2rem" />
-          <Skeleton height="300px" borderRadius="2rem" />
-          <Skeleton height="300px" borderRadius="2rem" />
-          <Skeleton height="300px" borderRadius="2rem" />
-        </div>
-      </div>
+      <SubscriptionPageSkeleton />
     );
   }
 

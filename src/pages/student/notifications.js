@@ -1,5 +1,6 @@
 'use client';
 
+import { NotificationsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
   Bell,
@@ -20,7 +21,6 @@ import { toast } from 'react-hot-toast';
 
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/common/MobileAppWrapper';
-import { ListSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import Card from '../../components/common/ui/Card';
 import Button from '../../components/common/ui/Button';
 import Loading from '../../components/common/Loading';
@@ -78,7 +78,7 @@ const NotificationsPage = () => {
 
   if (loading) return (
     <MobileAppWrapper title={translate('Notifications')}>
-      <div className="py-8"><ListSkeleton rows={7} /></div>
+      <div className="py-2 xl:py-4"><NotificationsPageSkeleton rows={7} /></div>
     </MobileAppWrapper>
   );
 

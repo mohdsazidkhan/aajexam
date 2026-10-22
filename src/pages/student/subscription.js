@@ -1,11 +1,11 @@
+import { SubscriptionPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import dynamic from 'next/dynamic';
 import Seo from '../../components/common/Seo';
 import { generateBreadcrumbSchema } from '../../utils/schema';
-import { SubscriptionSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
 const SubscriptionPage = dynamic(() => import('../../components/student/pages/SubscriptionPage'), {
   ssr: false,
-  loading: () => <SubscriptionSkeleton />
+  loading: () => <SubscriptionPageSkeleton />
 });
 
 export default function Subscription() {

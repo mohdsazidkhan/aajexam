@@ -1,4 +1,5 @@
 'use client';
+import { TitleRowSkeleton, CardGridSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { CalendarDays, Sparkles, CheckCircle, Clock, Target, Plus, Trash2, Play, Pause, Calendar, LayoutGrid } from 'lucide-react';
 import { toast } from 'react-hot-toast';
@@ -8,7 +9,6 @@ import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../../components/common/ui/Card';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 import Seo from '../../components/common/Seo';
-import { ListSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
 const StudyPlanPage = () => {
@@ -108,7 +108,7 @@ const StudyPlanPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-6 xl:pb-12">
-      <div className="py-4 xl:py-6"><ListSkeleton rows={7} /></div>
+      <div className="py-2 xl:py-4"><div className="space-y-3 xl:space-y-4"><TitleRowSkeleton icon action /><CardGridSkeleton count={4} cols="grid-cols-1 xl:grid-cols-2" /></div></div>
     </div>
   );
 

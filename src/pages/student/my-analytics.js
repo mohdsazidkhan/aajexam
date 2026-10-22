@@ -1,11 +1,11 @@
+import { AnalyticsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Seo from '../../components/common/Seo';
-import { DashboardSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 
 const MyAnalyticsPage = dynamic(() => import('../../components/student/pages/UserAnalyticsPage'), {
   ssr: false,
-  loading: () => <DashboardSkeleton />
+  loading: () => <AnalyticsPageSkeleton />
 });
 
 export default function MyAnalytics() {

@@ -1,11 +1,11 @@
 'use client';
 
+import { CardGridSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useCallback, useEffect, useState } from 'react';
 import { m as motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from '@/components/common/AppLink';
 import API from '../../../lib/api';
-import { GridSkeleton } from '../../common/skeletons/PrivateSkeletons';
 import MobileAppWrapper from '../../common/MobileAppWrapper';
 import {
   Bookmark, ArrowLeft, Heart, Eye, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Flame
@@ -67,7 +67,7 @@ const ReelsSaved = () => {
         </div>
 
         <div className="max-w-2xl mx-auto p-4">
-          {loading ? <GridSkeleton count={6} /> : reels.length === 0 ? (
+          {loading ? <CardGridSkeleton count={6} variant="media" /> : reels.length === 0 ? (
             <div className="text-center py-20 px-6">
               <div className="w-20 h-20 rounded-[2rem] bg-slate-100 dark:bg-slate-900 flex items-center justify-center mx-auto mb-6">
                 <Bookmark className="w-10 h-10 text-slate-300 dark:text-slate-600" />

@@ -1,5 +1,6 @@
 'use client';
 
+import { PaymentsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
    CreditCard,
@@ -24,7 +25,6 @@ import { toast } from 'react-hot-toast';
 
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/common/MobileAppWrapper';
-import { ListSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import Card from '../../components/common/ui/Card';
 import Seo from '../../components/common/Seo';
 import Pagination from '../../components/common/Pagination';
@@ -246,7 +246,7 @@ const PaymentHistoryPage = () => {
 
    if (loading && transactions.length === 0) return (
       <MobileAppWrapper title={translate('Payment History')}>
-         <div className="py-8"><ListSkeleton rows={6} /></div>
+         <div className="py-2 xl:py-4"><PaymentsPageSkeleton /></div>
       </MobileAppWrapper>
    );
 

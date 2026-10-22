@@ -1,5 +1,6 @@
 'use client';
 
+import { CardsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
    PlayCircle,
@@ -25,7 +26,6 @@ import { useRouter } from 'next/navigation';
 
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/common/MobileAppWrapper';
-import { GridSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import Card from '../../components/common/ui/Card';
 import Button from '../../components/common/ui/Button';
 import Loading from '../../components/common/Loading';
@@ -92,7 +92,7 @@ const MyReelsPage = () => {
 
    if (loading && reels.length === 0) return (
       <MobileAppWrapper title={translate('My Reels')}>
-         <div className="py-8"><GridSkeleton count={8} /></div>
+         <div className="py-2 xl:py-4"><CardsPageSkeleton action count={6} /></div>
       </MobileAppWrapper>
    );
 

@@ -1,4 +1,5 @@
 'use client';
+import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { Target, CheckCircle2, Circle, ChevronDown, ChevronUp, PlayCircle, BookOpen, Layers } from 'lucide-react';
 import Link from '@/components/common/AppLink';
@@ -7,7 +8,6 @@ import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../../components/common/ui/Card';
 import Seo from '../../components/common/Seo';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
-import { DashboardSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../../hooks/useTranslate';
 import useRequireLogin from '../../hooks/useRequireLogin';
@@ -173,7 +173,7 @@ const SyllabusTrackerPage = () => {
 
   if (loadingExams) return (
     <div className="min-h-screen pb-8 xl:pb-16 font-outfit">
-      <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
+      <div className="py-2 xl:py-4"><ListPageSkeleton chips={4} rows={5} /></div>
     </div>
   );
 

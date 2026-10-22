@@ -1,4 +1,5 @@
 'use client';
+import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { Target, TrendingUp, TrendingDown, BarChart3, AlertTriangle, CheckCircle, ArrowRight } from 'lucide-react';
 import API from '../../lib/api';
@@ -7,7 +8,6 @@ import Card from '../../components/common/ui/Card';
 import Loading from '../../components/common/Loading';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 import Seo from '../../components/common/Seo';
-import { DashboardSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 
 // --- Readiness Skeleton (matches the loaded result view) ---
@@ -78,7 +78,7 @@ const ReadinessPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-6 xl:pb-12">
-      <div className="py-4 xl:py-6"><DashboardSkeleton /></div>
+      <div className="py-2 xl:py-4"><ListPageSkeleton chips={4} rows={4} /></div>
     </div>
   );
 

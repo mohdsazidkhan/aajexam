@@ -1,4 +1,5 @@
 'use client';
+import { MentorsPageSkeleton } from '../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { Users, Star, Award, MessageCircle, ChevronRight, Shield, Search } from 'lucide-react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -7,7 +8,6 @@ import Card from '../components/common/ui/Card';
 import Loading from '../components/common/Loading';
 import SubscriptionGuard from '../components/student/SubscriptionGuard';
 import Seo from '../components/common/Seo';
-import { GridSkeleton } from '../components/common/skeletons/PrivateSkeletons';
 import { generateBreadcrumbSchema } from '../utils/schema';
 import useTranslate from '../hooks/useTranslate';
 import Pagination from '../components/common/Pagination';
@@ -38,7 +38,7 @@ const MentorsPage = () => {
 
   if (loading) return (
     <div className="min-h-screen pb-8 xl:pb-16">
-      <div className="py-4 xl:py-6"><GridSkeleton count={8} /></div>
+      <div className="py-2 xl:py-4"><MentorsPageSkeleton /></div>
     </div>
   );
 

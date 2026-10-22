@@ -1,5 +1,6 @@
 'use client';
 
+import { CardsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
    MessageSquare,
@@ -20,7 +21,6 @@ import { useRouter } from 'next/navigation';
 
 import API from '../../lib/api';
 import MobileAppWrapper from '../../components/common/MobileAppWrapper';
-import { GridSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import Card from '../../components/common/ui/Card';
 import Button from '../../components/common/ui/Button';
 import Loading from '../../components/common/Loading';
@@ -83,7 +83,7 @@ const MyQuestionsPage = () => {
 
    if (loading && questions.length === 0) return (
       <MobileAppWrapper title={translate('My Questions')}>
-         <div className="py-8"><GridSkeleton count={6} /></div>
+         <div className="py-2 xl:py-4"><CardsPageSkeleton action variant="text" count={6} /></div>
       </MobileAppWrapper>
    );
 

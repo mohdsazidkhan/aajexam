@@ -1,5 +1,6 @@
 'use client';
 
+import { SettingsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, m as motion } from 'framer-motion';
 import { Building2, CreditCard, Eye, EyeOff, Facebook, Globe, Info, Instagram, Lock, ShieldCheck, Twitter, User, Youtube } from 'lucide-react';
@@ -13,7 +14,6 @@ import Card from '../../components/common/ui/Card';
 import Button from '../../components/common/ui/Button';
 import Loading from '../../components/common/Loading';
 import Seo from '../../components/common/Seo';
-import { ProfileSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import useTranslate from '../../hooks/useTranslate';
 import { QUALIFICATIONS, GENDERS, HEARD_FROM, MIN_AGE_YEARS, MAX_AGE_YEARS } from '../../lib/constants/profileOptions';
 import { calcAge } from '../../lib/utils/age';
@@ -138,7 +138,7 @@ const SettingsPage = () => {
   if (loading) {
     return (
       <MobileAppWrapper title={translate('Account Settings')}>
-        <div className="container mx-auto mt-4 py-0 xl:py-8"><ProfileSkeleton /></div>
+        <div className="container mx-auto mt-2"><SettingsPageSkeleton /></div>
       </MobileAppWrapper>
     );
   }

@@ -1,5 +1,6 @@
 'use client';
 
+import { HistoryPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
    History, Search, Clock, Trophy, BrainCircuit, Eye, Calendar, Target
@@ -10,7 +11,6 @@ import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 
 import API from '../../lib/api';
-import { ListSkeleton } from '../../components/common/skeletons/PrivateSkeletons';
 import Card from '../../components/common/ui/Card';
 import Button from '../../components/common/ui/Button';
 import ProgressBar from '../../components/common/ui/ProgressBar';
@@ -55,7 +55,7 @@ const QuizHistoryPage = () => {
 
    if (loading && attempts.length === 0) return (
       <div className="min-h-screen bg-background-page pb-20 font-outfit selection:bg-primary-600 selection:text-white">
-         <div className="py-8"><ListSkeleton rows={6} /></div>
+         <div className="py-2 xl:py-4"><HistoryPageSkeleton count={6} /></div>
       </div>
    );
 

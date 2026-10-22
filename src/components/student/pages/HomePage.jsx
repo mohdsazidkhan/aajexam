@@ -1,5 +1,6 @@
 'use client';
 
+import { HomeSectionSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
@@ -61,13 +62,7 @@ const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) 
 };
 
 // ─── Skeleton for sections ───
-const SectionSkeleton = () => (
-   <div className="flex gap-3 overflow-hidden pb-1">
-      {[1, 2, 3, 4].map(i => (
-         <div key={i} className="min-w-[140px] xl:min-w-[160px] h-[130px] rounded-2xl bg-primary-500/15 dark:bg-primary-500/20 animate-pulse" />
-      ))}
-   </div>
-);
+const SectionSkeleton = HomeSectionSkeleton;
 
 // ─── Govt Exam Card ───
 const GovtExamCard = ({ item, onClick }) => {
