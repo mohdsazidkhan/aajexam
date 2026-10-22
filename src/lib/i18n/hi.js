@@ -2058,6 +2058,13 @@ const HI = {
   'Top 1000 students ranking based on total time spent': 'कुल बिताए गए समय के आधार पर शीर्ष 1000 छात्रों की रैंकिंग',
   'Top {percent}% of {total} ranked students': 'शीर्ष {percent}% — कुल {total} रैंक किए गए छात्रों में',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड एक PRO फ़ीचर है। टॉप रैंकर्स देखने और अपनी स्थिति जानने के लिए अपग्रेड करें!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टूडेंट प्रोफ़ाइल',
+  'Registered on': 'पंजीकरण तिथि',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'जब आपका दोस्त PRO प्लान खरीदे तो ₹{amount} कमाएँ',
+  'Share your code': 'अपना कोड शेयर करें',
+  'Friend signs up': 'दोस्त साइन अप करे',
+  'You earn rewards': 'आप रिवॉर्ड कमाएँ',
 };
 
 export default HI;

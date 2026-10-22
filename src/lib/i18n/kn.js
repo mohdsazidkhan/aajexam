@@ -2037,6 +2037,13 @@ const KN = {
   'Top 1000 students ranking based on total time spent': 'ಒಟ್ಟು ಕಳೆದ ಸಮಯದ ಆಧಾರದ ಮೇಲೆ ಅಗ್ರ 1000 ವಿದ್ಯಾರ್ಥಿಗಳ ರ‍್ಯಾಂಕಿಂಗ್',
   'Top {percent}% of {total} ranked students': '{total} ರ‍್ಯಾಂಕ್ ಪಡೆದ ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಅಗ್ರ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ಲೀಡರ್‌ಬೋರ್ಡ್ ಒಂದು PRO ವೈಶಿಷ್ಟ್ಯ. ಅಗ್ರ ರ‍್ಯಾಂಕರ್‌ಗಳನ್ನು ನೋಡಲು ಮತ್ತು ನಿಮ್ಮ ಸ್ಥಾನ ತಿಳಿಯಲು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ!',
+  'Grade': 'ಗ್ರೇಡ್',
+  'Student profile': 'ಸ್ಟೂಡೆಂಟ್ ಪ್ರೊಫೈಲ್',
+  'Registered on': 'ನೋಂದಣಿ ದಿನಾಂಕ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'ನಿಮ್ಮ ಸ್ನೇಹಿತ PRO ಪ್ಲಾನ್ ಖರೀದಿಸಿದಾಗ ₹{amount} ಗಳಿಸಿ',
+  'Share your code': 'ನಿಮ್ಮ ಕೋಡ್ ಹಂಚಿಕೊಳ್ಳಿ',
+  'Friend signs up': 'ಸ್ನೇಹಿತ ಸೈನ್ ಅಪ್ ಮಾಡುತ್ತಾರೆ',
+  'You earn rewards': 'ನೀವು ರಿವಾರ್ಡ್ ಗಳಿಸುತ್ತೀರಿ',
 };
 
 export default KN;

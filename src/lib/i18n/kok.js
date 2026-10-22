@@ -2037,6 +2037,13 @@ const KOK = {
   'Top 1000 students ranking based on total time spent': 'एकूण घालयिल्या वेळाच्या आधारान वयल्या 1000 विद्यार्थ्यांची रँकिंग',
   'Top {percent}% of {total} ranked students': '{total} रँक मेळिल्ल्या विद्यार्थ्यांमदीं वयले {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड हें एक PRO फीचर. वयले रँकर पळोवपाक आनी तुमची जागा जाणून घेवपाक अपग्रेड करात!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टुडंट प्रोफाइल',
+  'Registered on': 'नोंदणी तारीख',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'तुमच्या इश्टान PRO प्लॅन घेतल्यार ₹{amount} कमाय',
+  'Share your code': 'तुमचो कोड शेअर करात',
+  'Friend signs up': 'इश्ट साइन अप करता',
+  'You earn rewards': 'तुमकां रिवॉर्ड मेळटात',
 };
 
 export default KOK;

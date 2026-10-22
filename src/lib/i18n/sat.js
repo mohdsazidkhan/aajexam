@@ -2011,6 +2011,13 @@ const SAT = {
   'Top 1000 students ranking based on total time spent': 'ᱥᱚᱵ ᱠᱷᱟᱛᱟ ᱥᱚᱢᱚᱭ ᱪᱮᱛᱟᱱ ᱑᱐᱐᱐ ᱵᱤᱫᱮᱥᱤ ᱠᱚᱨᱮᱭᱟᱜ ᱨᱮᱱᱠᱤᱝ᱾',
   'Top {percent}% of {total} ranked students': '{total} ᱨᱮᱱᱠ ᱞᱮᱱ ᱵᱤᱫᱮᱥᱤ ᱛᱮ ᱪᱮᱛᱟᱱ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ᱞᱤᱰᱟᱨᱵᱚᱨᱰ ᱫᱚ PRO ᱯᱷᱤᱪᱟᱨ ᱠᱟᱱᱟ᱾ ᱪᱮᱛᱟᱱ ᱨᱮᱱᱠᱟᱨ ᱠᱚ ᱧᱮᱞ ᱟᱨ ᱟᱢᱟᱜ ᱵᱤᱥᱛᱟᱨ ᱥᱮᱱᱚᱛ ᱞᱟᱹᱜᱤᱫ ᱟᱯᱜᱨᱮᱰ ᱢᱮ!',
+  'Grade': 'ᱜᱨᱮᱰ',
+  'Student profile': 'ᱪᱷᱟᱛᱨᱚ ᱯᱨᱚᱯᱷᱟᱤᱞ',
+  'Registered on': 'ᱨᱮᱡᱤᱥᱴᱨᱮᱥᱚᱱ ᱢᱟᱦᱟᱛᱟ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'ᱟᱢᱟᱜ ᱜᱟᱛᱮ PRO ᱯᱞᱟᱱ ᱥᱟᱱᱟᱢ ᱥᱟᱨ ₹{amount} ᱚᱨᱡᱚᱱ ᱢᱮ',
+  'Share your code': 'ᱟᱢᱟᱜ ᱠᱳᱰ ᱥᱮᱭᱟᱨ ᱢᱮ',
+  'Friend signs up': 'ᱜᱟᱛᱮ ᱥᱟᱭᱤᱱ ᱟᱯ ᱠᱟᱱᱟ',
+  'You earn rewards': 'ᱟᱢ ᱨᱤᱣᱟᱨᱰ ᱛᱟᱢ',
 };
 
 export default SAT;

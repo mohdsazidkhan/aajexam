@@ -2037,6 +2037,13 @@ const ML = {
   'Top 1000 students ranking based on total time spent': 'ആകെ ചെലവഴിച്ച സമയത്തിന്റെ അടിസ്ഥാനത്തിൽ മികച്ച 1000 വിദ്യാർത്ഥികളുടെ റാങ്കിംഗ്',
   'Top {percent}% of {total} ranked students': '{total} റാങ്ക് ചെയ്ത വിദ്യാർത്ഥികളിൽ മികച്ച {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ലീഡർബോർഡ് ഒരു PRO ഫീച്ചറാണ്. മുൻനിര റാങ്കർമാരെ കാണാനും നിങ്ങളുടെ സ്ഥാനം അറിയാനും അപ്ഗ്രേഡ് ചെയ്യൂ!',
+  'Grade': 'ഗ്രേഡ്',
+  'Student profile': 'സ്റ്റുഡന്റ് പ്രൊഫൈൽ',
+  'Registered on': 'രജിസ്റ്റർ ചെയ്ത തീയതി',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'നിങ്ങളുടെ സുഹൃത്ത് PRO പ്ലാൻ വാങ്ങുമ്പോൾ ₹{amount} നേടൂ',
+  'Share your code': 'നിങ്ങളുടെ കോഡ് പങ്കിടൂ',
+  'Friend signs up': 'സുഹൃത്ത് സൈൻ അപ്പ് ചെയ്യുന്നു',
+  'You earn rewards': 'നിങ്ങൾക്ക് റിവാർഡ് ലഭിക്കുന്നു',
 };
 
 export default ML;

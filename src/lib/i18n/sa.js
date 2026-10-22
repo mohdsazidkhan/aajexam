@@ -2037,6 +2037,13 @@ const SA = {
   'Top 1000 students ranking based on total time spent': 'कुलव्ययितसमयाधारेण प्रथमानां १००० छात्राणां क्रमाङ्कनम्',
   'Top {percent}% of {total} ranked students': '{total} क्रमाङ्कितेषु छात्रेषु प्रथमाः {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड् इति PRO विशेषता अस्ति। शीर्षक्रमाङ्कितान् द्रष्टुं स्वस्थानं ज्ञातुं च उन्नयनं कुर्वन्तु!',
+  'Grade': 'श्रेणी',
+  'Student profile': 'छात्र-परिचयपत्रम्',
+  'Registered on': 'पञ्जीकरणदिनाङ्कः',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'मित्रे PRO योजनां क्रीणाति चेत् ₹{amount} अर्जयतु',
+  'Share your code': 'स्वसङ्केतं साझां कुरुत',
+  'Friend signs up': 'मित्रं पञ्जीकरणं करोति',
+  'You earn rewards': 'भवान् पुरस्कारान् लभते',
 };
 
 export default SA;

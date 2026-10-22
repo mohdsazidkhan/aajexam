@@ -2011,6 +2011,13 @@ const BODO = {
   'Top 1000 students ranking based on total time spent': 'फुरायनाय समयनि गोनां 1000 सिख्लायारिनि रैंकिं',
   'Top {percent}% of {total} ranked students': '{total} रैंक खालामनाय सिख्लायारिनि गेजेरजों गोजौ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लिडारबोर्ड PRO फिचार। गेजेरथाव रैंकारफोरखौ नुनो आरो गावनि थानाय सायनो अपग्रेड खालाम!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टुडेन्ट प्रोफाइल',
+  'Registered on': 'रेजिस्ट्रेशन सानहारि',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'गावनि दावखौ PRO प्लान बेसेबनाय खन्थाय ₹{amount} रां',
+  'Share your code': 'गावनि कोड बाहायना',
+  'Friend signs up': 'दावखौ साइन आप खालामो',
+  'You earn rewards': 'नों रिवार्ड लाइयो',
 };
 
 export default BODO;

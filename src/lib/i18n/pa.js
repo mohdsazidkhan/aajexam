@@ -2037,6 +2037,13 @@ const PA = {
   'Top 1000 students ranking based on total time spent': 'ਕੁੱਲ ਬਿਤਾਏ ਸਮੇਂ ਦੇ ਆਧਾਰ ਤੇ ਚੋਟੀ ਦੇ 1000 ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਰੈਂਕਿੰਗ',
   'Top {percent}% of {total} ranked students': '{total} ਰੈਂਕ ਵਾਲੇ ਵਿਦਿਆਰਥੀਆਂ ਵਿੱਚੋਂ ਚੋਟੀ ਦੇ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ਲੀਡਰਬੋਰਡ ਇੱਕ PRO ਫੀਚਰ ਹੈ। ਟੌਪ ਰੈਂਕਰ ਦੇਖਣ ਅਤੇ ਆਪਣੀ ਸਥਿਤੀ ਜਾਣਨ ਲਈ ਅੱਪਗ੍ਰੇਡ ਕਰੋ!',
+  'Grade': 'ਗ੍ਰੇਡ',
+  'Student profile': 'ਸਟੂਡੈਂਟ ਪ੍ਰੋਫਾਈਲ',
+  'Registered on': 'ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਦੀ ਮਿਤੀ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'ਜਦੋਂ ਤੁਹਾਡਾ ਦੋਸਤ PRO ਪਲਾਨ ਖਰੀਦੇ ਤਾਂ ₹{amount} ਕਮਾਓ',
+  'Share your code': 'ਆਪਣਾ ਕੋਡ ਸਾਂਝਾ ਕਰੋ',
+  'Friend signs up': 'ਦੋਸਤ ਸਾਈਨ ਅੱਪ ਕਰੇ',
+  'You earn rewards': 'ਤੁਸੀਂ ਇਨਾਮ ਕਮਾਓ',
 };
 
 export default PA;

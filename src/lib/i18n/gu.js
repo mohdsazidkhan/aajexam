@@ -2037,6 +2037,13 @@ const GU = {
   'Top 1000 students ranking based on total time spent': 'કુલ વિતાવેલા સમયના આધારે ટોચના 1000 વિદ્યાર્થીઓનું રેન્કિંગ',
   'Top {percent}% of {total} ranked students': '{total} રેન્ક્ડ વિદ્યાર્થીઓમાં ટોચના {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'લીડરબોર્ડ એક PRO ફીચર છે. ટોચના રેન્કર્સ જોવા અને તમારી સ્થિતિ જાણવા અપગ્રેડ કરો!',
+  'Grade': 'ગ્રેડ',
+  'Student profile': 'સ્ટુડન્ટ પ્રોફાઇલ',
+  'Registered on': 'નોંધણીની તારીખ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'તમારો મિત્ર PRO પ્લાન ખરીદે ત્યારે ₹{amount} કમાઓ',
+  'Share your code': 'તમારો કોડ શેર કરો',
+  'Friend signs up': 'મિત્ર સાઇન અપ કરે',
+  'You earn rewards': 'તમને રિવોર્ડ મળે',
 };
 
 export default GU;

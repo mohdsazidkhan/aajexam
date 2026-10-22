@@ -2011,6 +2011,13 @@ const MANIPURI = {
   'Top 1000 students ranking based on total time spent': 'ꯃꯄꯨꯡ ꯆꯥꯕꯥ ꯃꯇꯝꯒꯤ ꯃꯇꯦꯡꯗꯥ ꯊꯥꯗꯣꯀꯄꯥ 1000 ꯁ꯭ꯇꯨꯗꯦꯟꯇꯁꯤꯡꯒꯤ ꯔꯦꯟꯀꯤꯡ꯫',
   'Top {percent}% of {total} ranked students': 'ꯔꯦꯟꯀ ꯐꯪꯈꯤꯕꯥ ꯁ꯭ꯇꯨꯗꯦꯟꯇ {total} ꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯊꯥꯗꯣꯛꯄꯥ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ꯂꯤꯗꯔꯕꯣꯔꯗ ꯑꯁꯤ PRO ꯐꯤꯆꯔ ꯑꯃꯅꯤ꯫ ꯊꯥꯗꯣꯀꯄꯥ ꯔꯦꯟꯀꯔꯁꯤꯡ ꯌꯦꯡꯅꯕꯥ ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯀꯤ ꯃꯐꯝ ꯈꯉꯅꯕꯥ ꯑꯞꯒ꯭ꯔꯦꯗ ꯇꯧꯕꯤꯌꯨ!',
+  'Grade': 'ꯒ꯭ꯔꯦꯗ',
+  'Student profile': 'ꯁ꯭ꯇꯨꯗꯦꯟꯇ ꯄ꯭ꯔꯣꯐꯥꯏꯜ',
+  'Registered on': 'ꯔꯦꯖꯤꯁ꯭ꯇꯔ ꯇꯧꯈꯤꯕꯥ ꯃꯇꯪ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'ꯅꯍꯥꯛꯀꯤ ꯃꯔꯨꯞꯅ PRO ꯄ꯭ꯂꯥꯟ ꯂꯧꯔꯀꯄꯥ ꯃꯇꯃꯗ ₹{amount} ꯃꯥꯌꯣꯛꯅꯨ',
+  'Share your code': 'ꯅꯍꯥꯛꯀꯤ ꯀꯣꯗ ꯁꯦꯌꯔ ꯇꯧꯕꯤꯌꯨ',
+  'Friend signs up': 'ꯃꯔꯨꯞ ꯁꯥꯏꯟ ꯑꯞ ꯇꯧꯒꯅꯤ',
+  'You earn rewards': 'ꯅꯍꯥꯛꯅ ꯔꯤꯕꯣꯔꯗ ꯐꯪꯒꯅꯤ',
 };
 
 export default MANIPURI;

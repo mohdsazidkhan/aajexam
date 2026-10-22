@@ -2037,6 +2037,13 @@ const SD = {
   'Top 1000 students ranking based on total time spent': 'कुल गुज़ारियल वक़्त जे आधार ते मथांहें 1000 विद्यार्थियुनि जी रैंकिंग',
   'Top {percent}% of {total} ranked students': '{total} रैंक वारा विद्यार्थियुनि मां मथांहें {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड हिकु PRO फीचर आहे. मथांहें रैंकर्स डिसण ऐं पंहिंजी स्थिति जाणण लाइ अपग्रेड करियो!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टूडेंट प्रोफाइल',
+  'Registered on': 'रजिस्ट्रेशन जी तारीख',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'जڏहिं तव्हां जो दोस्त PRO प्लान खरीद करे त ₹{amount} कमायो',
+  'Share your code': 'पंहिंजो कोड शेयर करियो',
+  'Friend signs up': 'दोस्त साइन अप करे',
+  'You earn rewards': 'तव्हां इनाम कमायो',
 };
 
 export default SD;

@@ -2037,6 +2037,13 @@ const DogriDict = {
   'Top 1000 students ranking based on total time spent': 'कुल बिताए गेदे समें दे आधार उप्पर शीर्ष 1000 छात्रें दी रैंकिंग',
   'Top {percent}% of {total} ranked students': '{total} रैंक पाने आले छात्रें च शीर्ष {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड इक PRO फीचर ऐ। टॉप रैंकर दिखने ते अपनी स्थिति जानने लेई अपग्रेड करो!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टूडेंट प्रोफाइल',
+  'Registered on': 'पंजीकरण तारीख',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'तुंदे दोस्त नै PRO प्लान खरीदे ते ₹{amount} कमाओ',
+  'Share your code': 'अपना कोड शेयर करो',
+  'Friend signs up': 'दोस्त साइन अप करग',
+  'You earn rewards': 'तुस रिवार्ड कमाओ',
 };
 
 export default DogriDict;

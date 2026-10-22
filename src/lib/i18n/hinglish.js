@@ -2046,6 +2046,13 @@ const HINGLISH = {
   'Top 1000 students ranking based on total time spent': 'Total time spent ke aadhar par top 1000 students ki ranking',
   'Top {percent}% of {total} ranked students': '{total} ranked students me top {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'Leaderboard ek PRO feature hai. Top rankers dekhne aur apni position jaanne ke liye upgrade karein!',
+  'Grade': 'Grade',
+  'Student profile': 'Student profile',
+  'Registered on': 'Registered on',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'Jab aapka dost PRO plan kharide to ₹{amount} kamayein',
+  'Share your code': 'Apna code share karein',
+  'Friend signs up': 'Dost sign up kare',
+  'You earn rewards': 'Aap rewards kamayein',
 };
 
 export default HINGLISH;

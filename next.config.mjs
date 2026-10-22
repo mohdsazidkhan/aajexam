@@ -67,7 +67,6 @@ const nextConfig = {
   images: {
     unoptimized: false,
     formats: ['image/avif', 'image/webp'],
-    domains: ['res.cloudinary.com', 'lh3.googleusercontent.com'],
     remotePatterns: [
       {
         protocol: 'https',

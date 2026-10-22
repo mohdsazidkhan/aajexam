@@ -2037,6 +2037,13 @@ const MR = {
   'Top 1000 students ranking based on total time spent': 'एकूण घालवलेल्या वेळेनुसार पहिल्या 1000 विद्यार्थ्यांची रँकिंग',
   'Top {percent}% of {total} ranked students': '{total} रँक मिळवलेल्या विद्यार्थ्यांमध्ये पहिले {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लीडरबोर्ड हे PRO फीचर आहे. टॉप रँकर्स पाहण्यासाठी आणि तुमचे स्थान जाणून घेण्यासाठी अपग्रेड करा!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टुडंट प्रोफाइल',
+  'Registered on': 'नोंदणी दिनांक',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'तुमच्या मित्राने PRO प्लॅन घेतल्यावर ₹{amount} कमवा',
+  'Share your code': 'तुमचा कोड शेअर करा',
+  'Friend signs up': 'मित्र साइन अप करतो',
+  'You earn rewards': 'तुम्हाला रिवॉर्ड मिळतात',
 };
 
 export default MR;

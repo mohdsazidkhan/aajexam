@@ -2037,6 +2037,13 @@ const BN = {
   'Top 1000 students ranking based on total time spent': 'মোট ব্যয়িত সময়ের ভিত্তিতে শীর্ষ ১০০০ শিক্ষার্থীর র‍্যাঙ্কিং',
   'Top {percent}% of {total} ranked students': '{total} জন র‍্যাঙ্কড শিক্ষার্থীর মধ্যে শীর্ষ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'লিডারবোর্ড একটি PRO ফিচার। শীর্ষ র‍্যাঙ্কারদের দেখতে ও নিজের অবস্থান জানতে আপগ্রেড করুন!',
+  'Grade': 'গ্রেড',
+  'Student profile': 'স্টুডেন্ট প্রোফাইল',
+  'Registered on': 'নিবন্ধনের তারিখ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'বন্ধু PRO প্ল্যান কিনলে ₹{amount} আয় করুন',
+  'Share your code': 'আপনার কোড শেয়ার করুন',
+  'Friend signs up': 'বন্ধু সাইন আপ করবে',
+  'You earn rewards': 'আপনি রিওয়ার্ড পাবেন',
 };
 
 export default BN;

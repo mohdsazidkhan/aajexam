@@ -2037,6 +2037,13 @@ const KS = {
   'Top 1000 students ranking based on total time spent': 'کل گژھرومت وقتکی بنیادس پیٹھ ٹاپ 1000 طالب علمن ہند رینکنگ',
   'Top {percent}% of {total} ranked students': '{total} رینک شدہ طالب علمن منز ٹاپ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'لیڈربورڈ چھُ اکھ PRO فیچر۔ ٹاپ رینکر وچھنہ تہٕ پنُن پوزیشن زاننہ خاطرٕ اپ گریڈ کرو!',
+  'Grade': 'گریڈ',
+  'Student profile': 'سٹوڈنٹ پروفائل',
+  'Registered on': 'رجسٹریشن تاریخ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'یُتھ وقتہ ییتھ توہندِ دوست PRO پلان خریدِ تتھ ₹{amount} کمایو',
+  'Share your code': 'پننہ کوڈ شیئر کرو',
+  'Friend signs up': 'دوست سائن اپ کرِ',
+  'You earn rewards': 'توہہ چھوِ انعام ملان',
 };
 
 export default KS;

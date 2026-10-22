@@ -2037,6 +2037,13 @@ const NE = {
   'Top 1000 students ranking based on total time spent': 'कुल बिताएको समयका आधारमा शीर्ष १००० विद्यार्थीको र्याङ्किङ',
   'Top {percent}% of {total} ranked students': '{total} र्याङ्क पाएका विद्यार्थीमध्ये शीर्ष {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'लिडरबोर्ड एक PRO सुविधा हो। शीर्ष र्याङ्करहरू हेर्न र आफ्नो स्थान जान्न अपग्रेड गर्नुहोस्!',
+  'Grade': 'ग्रेड',
+  'Student profile': 'स्टुडेन्ट प्रोफाइल',
+  'Registered on': 'दर्ता मिति',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'साथीले PRO प्लान किन्दा ₹{amount} कमाउनुहोस्',
+  'Share your code': 'आफ्नो कोड सेयर गर्नुहोस्',
+  'Friend signs up': 'साथीले साइन अप गर्छ',
+  'You earn rewards': 'तपाईंले रिवार्ड कमाउनुहुन्छ',
 };
 
 export default NE;

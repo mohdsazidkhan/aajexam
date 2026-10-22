@@ -2037,6 +2037,13 @@ const OR_ = {
   'Top 1000 students ranking based on total time spent': 'ମୋଟ ବିତାଇଥିବା ସମୟ ଆଧାରରେ ଶୀର୍ଷ ୧୦୦୦ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ର‍୍ୟାଙ୍କିଂ',
   'Top {percent}% of {total} ranked students': '{total} ର‍୍ୟାଙ୍କ୍ ପାଇଥିବା ଛାତ୍ରଛାତ୍ରୀଙ୍କ ମଧ୍ୟରେ ଶୀର୍ଷ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'ଲିଡରବୋର୍ଡ ଏକ PRO ଫିଚର। ଶୀର୍ଷ ର‍୍ୟାଙ୍କରଙ୍କୁ ଦେଖିବା ଓ ନିଜର ସ୍ଥାନ ଜାଣିବା ପାଇଁ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ!',
+  'Grade': 'ଗ୍ରେଡ୍',
+  'Student profile': 'ଷ୍ଟୁଡେଣ୍ଟ ପ୍ରୋଫାଇଲ୍',
+  'Registered on': 'ପଞ୍ଜିକରଣ ତାରିଖ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'ଆପଣଙ୍କ ବନ୍ଧୁ PRO ପ୍ଲାନ୍ କିଣିଲେ ₹{amount} ଉପାର୍ଜନ କରନ୍ତୁ',
+  'Share your code': 'ଆପଣଙ୍କ କୋଡ୍ ସେୟାର କରନ୍ତୁ',
+  'Friend signs up': 'ବନ୍ଧୁ ସାଇନ୍ ଅପ୍ କରିବେ',
+  'You earn rewards': 'ଆପଣ ରିୱାର୍ଡ ପାଇବେ',
 };
 
 export default OR_;

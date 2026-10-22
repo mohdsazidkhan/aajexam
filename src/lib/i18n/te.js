@@ -2037,6 +2037,13 @@ const TE = {
   'Top 1000 students ranking based on total time spent': 'మొత్తం గడిపిన సమయం ఆధారంగా టాప్ 1000 విద్యార్థుల ర్యాంకింగ్',
   'Top {percent}% of {total} ranked students': '{total} ర్యాంక్ పొందిన విద్యార్థులలో టాప్ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'లీడర్‌బోర్డ్ ఒక PRO ఫీచర్. టాప్ ర్యాంకర్లను చూడటానికి మరియు మీ స్థానం తెలుసుకోవడానికి అప్‌గ్రేడ్ చేయండి!',
+  'Grade': 'గ్రేడ్',
+  'Student profile': 'స్టూడెంట్ ప్రొఫైల్',
+  'Registered on': 'నమోదు చేసిన తేదీ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'మీ స్నేహితుడు PRO ప్లాన్ కొన్నప్పుడు ₹{amount} సంపాదించండి',
+  'Share your code': 'మీ కోడ్‌ను షేర్ చేయండి',
+  'Friend signs up': 'స్నేహితుడు సైన్ అప్ చేస్తారు',
+  'You earn rewards': 'మీరు రివార్డ్‌లు పొందుతారు',
 };
 
 export default TE;

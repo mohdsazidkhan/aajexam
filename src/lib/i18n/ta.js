@@ -2037,6 +2037,13 @@ const TA = {
   'Top 1000 students ranking based on total time spent': 'மொத்தமாக செலவிட்ட நேரத்தின் அடிப்படையில் முதல் 1000 மாணவர்களின் தரவரிசை',
   'Top {percent}% of {total} ranked students': '{total} தரவரிசை பெற்ற மாணவர்களில் முதல் {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'லீடர்போர்டு ஒரு PRO அம்சம். முன்னணி ரேங்கர்களைப் பார்க்கவும் உங்கள் நிலையை அறியவும் மேம்படுத்தவும்!',
+  'Grade': 'தரம்',
+  'Student profile': 'மாணவர் சுயவிவரம்',
+  'Registered on': 'பதிவு செய்த தேதி',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'உங்கள் நண்பர் PRO திட்டம் வாங்கினால் ₹{amount} சம்பாதியுங்கள்',
+  'Share your code': 'உங்கள் குறியீட்டைப் பகிருங்கள்',
+  'Friend signs up': 'நண்பர் பதிவு செய்கிறார்',
+  'You earn rewards': 'நீங்கள் பரிசுகள் பெறுவீர்கள்',
 };
 
 export default TA;

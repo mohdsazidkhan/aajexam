@@ -2037,6 +2037,13 @@ const AS = {
   'Top 1000 students ranking based on total time spent': 'মুঠ ব্যয় কৰা সময়ৰ ভিত্তিত শীৰ্ষ ১০০০ ছাত্ৰ-ছাত্ৰীৰ ৰেংকিং',
   'Top {percent}% of {total} ranked students': '{total} জন ৰেংক কৰা ছাত্ৰ-ছাত্ৰীৰ ভিতৰত শীৰ্ষ {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'লিডাৰবৰ্ড এটা PRO ফিচাৰ। শীৰ্ষ ৰেংকাৰসকলক চাবলৈ আৰু নিজৰ স্থান জানিবলৈ আপগ্ৰেড কৰক!',
+  'Grade': 'গ্ৰেড',
+  'Student profile': 'ষ্টুডেণ্ট প্ৰফাইল',
+  'Registered on': 'পঞ্জীয়ন কৰাৰ তাৰিখ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'বন্ধুৱে PRO প্লেন কিনিলে ₹{amount} উপাৰ্জন কৰক',
+  'Share your code': 'আপোনাৰ ক\'ড শ্বেয়াৰ কৰক',
+  'Friend signs up': 'বন্ধুৱে ছাইন আপ কৰিব',
+  'You earn rewards': 'আপুনি ৰিৱাৰ্ড পাব',
 };
 
 export default AS;

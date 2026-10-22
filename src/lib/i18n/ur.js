@@ -2037,6 +2037,13 @@ const UrduDict = {
   'Top 1000 students ranking based on total time spent': 'کل گزارے گئے وقت کی بنیاد پر سرفہرست 1000 طلبہ کی رینکنگ',
   'Top {percent}% of {total} ranked students': '{total} رینک شدہ طلبہ میں سرفہرست {percent}%',
   'Leaderboard is a PRO feature. Upgrade to see the top rankers and where you stand!': 'لیڈر بورڈ ایک PRO فیچر ہے۔ ٹاپ رینکرز دیکھنے اور اپنی پوزیشن جاننے کے لیے اپ گریڈ کریں!',
+  'Grade': 'گریڈ',
+  'Student profile': 'اسٹوڈنٹ پروفائل',
+  'Registered on': 'رجسٹریشن کی تاریخ',
+  'Earn ₹{amount} when your friend buys a PRO plan': 'جب آپ کا دوست PRO پلان خریدے تو ₹{amount} کمائیں',
+  'Share your code': 'اپنا کوڈ شیئر کریں',
+  'Friend signs up': 'دوست سائن اپ کرے',
+  'You earn rewards': 'آپ انعام کمائیں',
 };
 
 export default UrduDict;
