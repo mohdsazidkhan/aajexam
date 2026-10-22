@@ -54,12 +54,15 @@ import { isAdmin, hasAdminPrivileges, logAdminAction } from '../../lib/utils/adm
 import { secureLogout } from '../../lib/utils/authUtils';
 import { toggleSidebar } from '../../lib/store/sidebarSlice';
 import { ProBadge } from '../common/ui';
+import useScrollActiveIntoView from '../../hooks/useScrollActiveIntoView';
 
 const Sidebar = () => {
   const { isMounted, router } = useSSR();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.sidebar.isOpen);
   const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
+  const navRef = React.useRef(null);
+  useScrollActiveIntoView(navRef, [router?.pathname, isOpen, isMounted]);
 
   const handleNavClick = (page) => {
     if (window.innerWidth < 1024) dispatch(toggleSidebar());
@@ -189,7 +192,7 @@ const Sidebar = () => {
   return (
     <div className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-slate-50 dark:bg-slate-950 border-r-2 border-slate-100 dark:border-slate-800 overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium relative z-10">
+      <nav ref={navRef} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium relative z-10">
         {displaySections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
@@ -199,7 +202,7 @@ const Sidebar = () => {
               {section.items.map((item, itemIdx) => {
                 const active = isActiveRoute(item.path);
                 return (
-                  <Link key={itemIdx} href={item.path} onClick={() => handleNavClick(item.key)}>
+                  <Link key={itemIdx} href={item.path} onClick={() => handleNavClick(item.key)} data-active={isActiveRoute(item.path) ? 'true' : undefined}>
                     <button className={`w-full flex items-center gap-3 px-3 py-2 transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'

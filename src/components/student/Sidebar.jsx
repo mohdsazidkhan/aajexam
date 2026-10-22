@@ -48,6 +48,7 @@ import { useSSR } from '../../hooks/useSSR';
 import API from '../../lib/api';
 import { ProBadge } from '../common/ui';
 import useTranslate from '../../hooks/useTranslate';
+import useScrollActiveIntoView from '../../hooks/useScrollActiveIntoView';
 
 const StudentSidebar = () => {
   const { isMounted, router } = useSSR();
@@ -57,6 +58,8 @@ const StudentSidebar = () => {
   const darkMode = useSelector((state) => state.darkMode?.isDark ?? false);
   const user = getCurrentUser();
   const authenticated = isAuthenticated();
+  const navRef = useRef(null);
+  useScrollActiveIntoView(navRef, [router?.pathname, isOpen, isMounted, authenticated]);
 
   const [walletBalance, setWalletBalance] = useState(0);
   const fetchRef = useRef(false);
@@ -181,7 +184,7 @@ const StudentSidebar = () => {
     >
 
       {/* Navigation */}
-      <nav aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
+      <nav ref={navRef} aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
         {displaySections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
@@ -191,7 +194,7 @@ const StudentSidebar = () => {
               {section.items.map((item, itemIdx) => {
                 const active = isActiveRoute(item.path);
                 return (
-                  <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined}>
+                  <Link key={itemIdx} href={item.path} onClick={handleNavClick} aria-current={active ? 'page' : undefined} data-active={active ? 'true' : undefined}>
                     <button className={`w-full flex items-center justify-between px-2 py-2 transition-all duration-200 relative group overflow-hidden ${active
                       ? 'text-white'
                       : darkMode ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
