@@ -329,23 +329,22 @@ const AllIndiaRankPage = () => {
                 <div className="space-y-1.5 xl:space-y-3 text-center xl:text-left pb-1 xl:pb-4">
                 
                 <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
-                {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/40 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-black dark:text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
-                >
-                  <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
-                    <Sparkles className="w-3.5 h-3.5 text-black dark:text-white" />
-                  </motion.span>
-                  {translate('PRO Exclusive')}
-                </motion.div>
-                
                 <motion.h1
                   initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
                   className="text-lg xl:text-3xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
                 >
                   {translate('All India Rank')}
                 </motion.h1>
+                {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+                  className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/40 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-black dark:text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_0_20px_rgba(251,191,36,0.15)]"
+                >
+                  <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
+                    <Sparkles className="w-3.5 h-3.5 text-black dark:text-white" />
+                  </motion.span>
+                  {translate('PRO Exclusive')}
+                </motion.div>
                 </div>
 
                 {/* Exam Filter Dropdown */}
