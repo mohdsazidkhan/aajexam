@@ -11,7 +11,7 @@ function Error({ statusCode }) {
   const handleGoHome = () => {
     // Check if user is logged in, redirect to home if logged in, otherwise to landing page
     const token = safeLocalStorage.getItem('token')
-    router.push(token ? '/home' : '/')
+    router.push(token ? '/dashboard' : '/')
   }
 
   const handleGoBack = () => {

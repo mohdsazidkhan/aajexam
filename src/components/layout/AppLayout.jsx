@@ -60,7 +60,7 @@ const AppLayout = ({ children }) => {
   const isBlockedFromAdmin = isClient && isAuthenticated && isAdminRoute && !isUserAdmin;
 
   useEffect(() => {
-    if (isBlockedFromAdmin) router.replace('/home');
+    if (isBlockedFromAdmin) router.replace('/dashboard');
   }, [isBlockedFromAdmin, router]);
 
   const [isDesktop, setIsDesktop] = useState(false);

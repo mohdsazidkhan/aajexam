@@ -80,7 +80,7 @@ const StudentSidebar = () => {
   const isActiveRoute = (path) => {
     const pathname = router?.pathname;
     if (!pathname) return false;
-    if (path === '/home') return pathname === '/home' || pathname === '/';
+    if (path === '/dashboard') return pathname === '/dashboard' || pathname === '/';
     if (pathname === path) return true;
     if (!pathname.startsWith(path + '/')) return false;
     // Sibling-aware: if any other sidebar path is a longer prefix of pathname, this parent is NOT active
@@ -97,7 +97,7 @@ const StudentSidebar = () => {
     {
       title: 'MAIN',
       items: [
-        { path: '/home', icon: Home, label: 'Home' },
+        { path: '/dashboard', icon: Home, label: 'Dashboard' },
         { path: '/notifications', icon: Bell, label: 'Notifications' },
         { path: '/features', icon: Sparkles, label: 'Features' },
         { path: '/search', icon: Search, label: 'Search' },
@@ -161,6 +161,13 @@ const StudentSidebar = () => {
     }
   ];
 
+  // Display order: every free menu together first, then every PRO menu together.
+  const allItems = sidebarSections.flatMap((s) => s.items);
+  const displaySections = [
+    { title: 'FREE', items: allItems.filter((i) => !i.isPro) },
+    { title: 'PRO', items: allItems.filter((i) => i.isPro) },
+  ];
+
   if (!isMounted || !authenticated || !user) return null;
 
   const initials = (user.name || user.username || 'U').charAt(0).toUpperCase();
@@ -173,7 +180,7 @@ const StudentSidebar = () => {
 
       {/* Navigation */}
       <nav aria-label={translate('Sidebar navigation')} className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium min-w-[240px] relative z-10">
-        {sidebarSections.map((section, idx) => (
+        {displaySections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-2 mb-2">
               {translate(section.title)}

@@ -75,7 +75,7 @@ const GovtExamCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <GraduationCap className="w-6 h-6 text-black dark:text-white" />
@@ -96,7 +96,7 @@ const QuizCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[160px] xl:min-w-[180px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+      className="min-w-[160px] xl:min-w-0 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
    >
       <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <Brain className="w-5 h-5 text-black dark:text-white" />
@@ -119,7 +119,7 @@ const SubjectCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <BookOpen className="w-6 h-6 text-black dark:text-white" />
@@ -142,7 +142,7 @@ const TopicCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-[160px] p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
    >
       <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
          <Layers className="w-5 h-5 text-black dark:text-white" />
@@ -170,7 +170,7 @@ const REEL_TYPE_CONFIG = {
 const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-[200px] xl:min-w-[220px] rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
+      className="min-w-0 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
    >
       <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
          {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -199,7 +199,7 @@ const ReelCard = ({ item, onClick }) => {
    return (
       <div
          onClick={onClick}
-         className="min-w-[180px] xl:min-w-[200px] p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+         className="min-w-0 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
       >
          <div className={`flex items-center gap-1.5 self-start px-2 py-1 rounded-lg ${cfg.bg}`}>
             <TypeIcon className={`w-3.5 h-3.5 ${cfg.color}`} />
@@ -287,7 +287,7 @@ const HomePage = () => {
             .finally(() => setSectionsLoading(prev => ({ ...prev, topics: false }))),
 
          // Reels
-         API.getTrendingReels()
+         API.getTrendingReels(4, 'latest')
             .then(res => {
                if (res.success && res.data) setReels(res.data);
                else if (res.success && res.reels) setReels(res.reels);
@@ -321,7 +321,12 @@ const HomePage = () => {
       fetchAllData();
    }, [fetchAllData, targetVersion]);
 
-   if (!authLoading || loading) {
+   const isAdmin = authLoading && user?.role === 'admin';
+   useEffect(() => {
+      if (isAdmin) router.replace('/admin/dashboard');
+   }, [isAdmin, router]);
+
+   if (!authLoading || loading || isAdmin) {
       return <HomePageSkeleton />;
    }
 
@@ -352,7 +357,7 @@ const HomePage = () => {
                )}
 
                {/* Stats grid — compact chips */}
-               <div className="grid grid-cols-2 xl:grid-cols-3 gap-1.5 md:gap-2 xl:gap-3">
+               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-9 gap-1.5 md:gap-2 xl:gap-3">
                   {[
                      { icon: TrendingUp, value: `${overallReadiness}%`, label: 'Readiness', accent: true },
                      { icon: Brain, value: quizzesAttempted, label: 'Quizzes' },
@@ -364,11 +369,11 @@ const HomePage = () => {
                      { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
                      { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
                   ].map(({ icon: Icon, value, label, accent }, idx) => (
-                     <div key={idx} className="flex items-center gap-1.5 xl:gap-2 bg-white dark:bg-slate-900 rounded-xl xl:rounded-2xl p-2 xl:p-2.5 border border-slate-100 dark:border-slate-800">
+                     <div key={idx} className="flex items-center xl:flex-col xl:text-center gap-1.5 xl:gap-1.5 bg-white dark:bg-slate-900 rounded-xl xl:rounded-2xl p-2 xl:p-2.5 border border-slate-100 dark:border-slate-800">
                         <div className={`w-7 h-7 xl:w-8 xl:h-8 shrink-0 rounded-lg flex items-center justify-center ${accent ? 'bg-primary-500/10' : 'bg-slate-100 dark:bg-slate-800'}`}>
                            <Icon className={`w-3.5 h-3.5 xl:w-4 xl:h-4 ${accent ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`} />
                         </div>
-                        <div className="min-w-0">
+                        <div className="min-w-0 xl:w-full">
                            <p className="text-xs xl:text-sm font-black text-slate-900 dark:text-white leading-tight truncate">{value}</p>
                            <p className="text-[8px] xl:text-[9px] font-bold text-slate-400 uppercase tracking-tight leading-tight truncate">{translate(label)}</p>
                         </div>
@@ -378,8 +383,8 @@ const HomePage = () => {
             </section>
 
             {/* ── Quick Actions ── */}
-            <section className="px-0 py-2 xl:py-2">
-               <div className="grid grid-cols-3 gap-1.5 xl:gap-3">
+            <section className="px-0 py-2">
+               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1.5 xl:gap-3">
                   <button
                      onClick={() => router.push('/govt-exams')}
                      className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
@@ -438,7 +443,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ GOVT EXAMS ═══════ */}
-            <section className="px-0 py-2 xl:py-4">
+            <section className="px-0 py-2 xl:pt-4 xl:pb-2">
                <SectionHeader
                   title={translate('Govt. Exams')}
                   icon={GraduationCap}
@@ -448,7 +453,7 @@ const HomePage = () => {
                />
                {sectionsLoading.exams ? <SectionSkeleton /> :
                   exams.length > 0 ? (
-                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar xl:grid xl:grid-cols-6 xl:overflow-visible xl:[&>*:nth-child(n+7)]:hidden">
                         {exams.slice(0, 10).map(item => (
                            <GovtExamCard
                               key={item._id}
@@ -464,7 +469,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ QUIZZES ═══════ */}
-            <section className="px-0 py-2 xl:py-4">
+            <section className="px-0 py-2">
                <SectionHeader
                   title={translate('Quizzes')}
                   icon={Brain}
@@ -474,7 +479,7 @@ const HomePage = () => {
                />
                {sectionsLoading.quizzes ? <SectionSkeleton /> :
                   quizzes.length > 0 ? (
-                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar xl:grid xl:grid-cols-6 xl:overflow-visible xl:[&>*:nth-child(n+7)]:hidden">
                         {quizzes.slice(0, 10).map(item => (
                            <QuizCard
                               key={item._id}
@@ -490,7 +495,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ SUBJECTS ═══════ */}
-            <section className="px-0 py-2 xl:py-4">
+            <section className="px-0 py-2">
                <SectionHeader
                   title={translate('Subjects')}
                   icon={BookOpen}
@@ -500,7 +505,7 @@ const HomePage = () => {
                />
                {sectionsLoading.subjects ? <SectionSkeleton /> :
                   subjects.length > 0 ? (
-                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar xl:grid xl:grid-cols-6 xl:overflow-visible xl:[&>*:nth-child(n+7)]:hidden">
                         {subjects.slice(0, 10).map(item => (
                            <SubjectCard
                               key={item._id}
@@ -516,7 +521,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ TOPICS ═══════ */}
-            <section className="px-0 py-2 xl:py-4">
+            <section className="px-0 py-2">
                <SectionHeader
                   title={translate('Topics')}
                   icon={Layers}
@@ -526,7 +531,7 @@ const HomePage = () => {
                />
                {sectionsLoading.topics ? <SectionSkeleton /> :
                   topics.length > 0 ? (
-                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar xl:grid xl:grid-cols-6 xl:overflow-visible xl:[&>*:nth-child(n+7)]:hidden">
                         {topics.slice(0, 10).map(item => (
                            <TopicCard
                               key={item._id}
@@ -542,7 +547,7 @@ const HomePage = () => {
             </section>
 
             {/* ═══════ REELS ═══════ */}
-            <section className="px-0 py-2 xl:py-4">
+            <section className="px-0 py-2">
                <SectionHeader
                   title={translate('Reels')}
                   icon={PlayCircle}
@@ -552,8 +557,8 @@ const HomePage = () => {
                />
                {sectionsLoading.reels ? <SectionSkeleton /> :
                   reels.length > 0 ? (
-                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
-                        {reels.slice(0, 10).map(item => (
+                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+                        {reels.slice(0, 4).map(item => (
                            <ReelCard
                               key={item._id}
                               item={item}
@@ -578,8 +583,8 @@ const HomePage = () => {
                />
                {sectionsLoading.blogs ? <SectionSkeleton /> :
                   blogs.length > 0 ? (
-                     <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
-                        {blogs.slice(0, 10).map(item => (
+                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+                        {blogs.slice(0, 4).map(item => (
                            <BlogCard
                               key={item._id}
                               item={item}

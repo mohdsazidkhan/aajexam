@@ -268,7 +268,7 @@ const TermsAndConditions = () => {
                               <p className="text-xl xl:text-2xl font-black text-primary-600 tracking-tight">{config.CONTACT.EMAIL}</p>
                            </div>
                            <button
-                              onClick={() => router.push('/home')}
+                              onClick={() => router.push('/dashboard')}
                               className="w-full bg-slate-900 dark:bg-slate-700 text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-xs shadow-sm active:scale-95 transition-all font-outfit"
                            >
                               BACK TO HOME

@@ -36,7 +36,7 @@ const NudgeInner = ({ onClose }) => {
           window.dispatchEvent(new CustomEvent('authStateChanged'));
           toast.success(translate('Welcome to AajExam! 🎉 Progress saved.'));
           onClose();
-          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
+          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/dashboard');
         }
       } catch (error) {
         toast.error(translate('Google sign-up failed. Please try again.'));

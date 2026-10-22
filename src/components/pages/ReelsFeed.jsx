@@ -891,7 +891,7 @@ const ReelsFeed = () => {
             {/* ── Top: minimal header (like Insta) ── */}
             <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-3 pt-2 pb-8 bg-black/50">
               <div className="flex items-center gap-2">
-                <Link href="/home" className="p-1.5">
+                <Link href="/dashboard" className="p-1.5">
                   <ArrowLeft className="w-5 h-5 text-white" />
                 </Link>
                 <span className="text-sm font-black text-white uppercase tracking-wider">{translate('Reels')}</span>

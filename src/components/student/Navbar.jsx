@@ -76,16 +76,16 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
-              className={`hidden xl:flex w-12 h-12 rounded-xl xl:rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
+              className={`hidden xl:flex w-10 h-10 rounded-2xl items-center justify-center transition-all active:scale-95 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   : 'bg-primary-600 text-white shadow-sm hover:scale-105'
                 }`}
             >
-              {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
             {/* Logo — desktop */}
-            <Link href="/home" className="relative hidden xl:flex items-start gap-1">
+            <Link href="/dashboard" className="relative hidden xl:flex items-start gap-1">
               <span className="flex flex-col leading-none">
                 <span className="text-2xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                   AAJ<span className="text-primary-600">{translate('EXAM')}</span>
@@ -98,7 +98,7 @@ const StudentNavbar = () => {
             </Link>
 
             {/* Logo — mobile, smaller, left-aligned */}
-            <Link href="/home" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
+            <Link href="/dashboard" className="relative xl:hidden flex items-center gap-1.5 shrink-0">
               <span className="text-xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">
                 AAJ<span className="text-primary-600">{translate('EXAM')}</span>
               </span>
@@ -167,7 +167,7 @@ const StudentNavbar = () => {
               onClick={() => dispatch(toggleSidebar())}
               aria-label={isSidebarOpen ? translate('Close menu') : translate('Open menu')}
               aria-expanded={isSidebarOpen}
-              className={`xl:hidden flex w-8 h-8 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
+              className={`xl:hidden flex w-9 h-9 rounded-lg items-center justify-center transition-all active:scale-95 flex-shrink-0 ${isSidebarOpen
                   ? 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   : 'bg-primary-600 text-white shadow-sm'
                 }`}

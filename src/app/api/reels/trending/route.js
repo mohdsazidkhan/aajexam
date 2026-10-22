@@ -8,6 +8,15 @@ export async function GET(req) {
 		await dbConnect();
 		const { searchParams } = new URL(req.url);
 		const limit = parseInt(searchParams.get('limit') || '20');
+		// sort=latest returns the newest published reels instead of the 30-day trending set
+		if (searchParams.get('sort') === 'latest') {
+			const latest = await Reel.find({ status: 'published' })
+				.sort({ publishedAt: -1, createdAt: -1 })
+				.limit(limit)
+				.populate('createdBy', 'name username profilePicture')
+				.lean();
+			return NextResponse.json({ success: true, data: latest });
+		}
 
 		// Try last 30 days first, fall back to all-time if fewer than 3 results
 		const thirtyDaysAgo = new Date();

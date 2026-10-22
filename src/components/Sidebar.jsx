@@ -177,13 +177,20 @@ const Sidebar = () => {
     },
   ];
 
+  // Display order: every free menu together first, then every PRO menu together.
+  const allItems = sidebarSections.flatMap((s) => s.items);
+  const displaySections = [
+    { title: 'FREE', items: allItems.filter((i) => !i.isPro) },
+    { title: 'PRO', items: allItems.filter((i) => i.isPro) },
+  ];
+
   if (!isMounted || !isAdmin() || !hasAdminPrivileges()) return null;
 
   return (
     <div className={`fixed left-0 top-12 xl:top-16 bottom-0 z-[140] flex flex-col transition-all duration-700 ease-out bg-slate-50 dark:bg-slate-950 border-r-2 border-slate-100 dark:border-slate-800 overflow-hidden ${isOpen ? 'translate-x-0 w-60' : '-translate-x-full w-0 opacity-0'}`}>
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto py-2 px-0 space-y-2 xl:space-y-4 scrollbar-premium relative z-10">
-        {sidebarSections.map((section, idx) => (
+        {displaySections.map((section, idx) => (
           <div key={idx}>
             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] px-3 mb-2">
               {section.title}

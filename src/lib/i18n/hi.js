@@ -654,6 +654,7 @@ const HI = {
   'Get PRO — Unlock All PYQs →': 'PRO लें — सभी PYQ अनलॉक करें →',
   'Go home': 'होम पर जाएँ',
   'Go to Challenge': 'चैलेंज पर जाएँ',
+  'Dashboard': 'डैशबोर्ड',
   'Go to Dashboard': 'डैशबोर्ड पर जाएँ',
   'Grid': 'ग्रिड',
   'How well did you know this?': 'आपको यह कितना अच्छा आता था?',

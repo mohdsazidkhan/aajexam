@@ -16,7 +16,7 @@ Disallow: /forgot-password
 Disallow: /reset-password
 
 # Authenticated user dashboards
-Disallow: /home
+Disallow: /dashboard
 Disallow: /profile
 Disallow: /profile/
 Disallow: /settings

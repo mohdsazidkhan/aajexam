@@ -200,7 +200,7 @@ const PayuSuccess = () => {
               {success ? (
                 <>
                   <button
-                    onClick={() => router.push('/home')}
+                    onClick={() => router.push('/dashboard')}
                     className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 px-6 rounded-2xl font-semibold transition-all duration-300 shadow-sm flex items-center justify-center gap-3"
                   >
                     <LayoutDashboard className="w-5 h-5" />

@@ -214,5 +214,5 @@ export const getPostLoginPath = (user) => {
   try {
     if (localStorage.getItem('pendingCoupon')) return '/subscription'
   } catch { /* storage blocked */ }
-  return '/home'
+  return '/dashboard'
 }

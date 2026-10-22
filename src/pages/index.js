@@ -50,7 +50,7 @@ export async function getServerSideProps(context) {
 
       return {
         redirect: {
-          destination: isAdminUser ? '/admin/dashboard' : '/home',
+          destination: isAdminUser ? '/admin/dashboard' : '/dashboard',
           permanent: false,
         },
       };

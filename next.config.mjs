@@ -79,6 +79,11 @@ const nextConfig = {
       },
     ],
   },
+  // Student home moved from /home to /dashboard; keep old links and bookmarks working.
+  async redirects() {
+    return [{ source: '/home', destination: '/dashboard', permanent: true }];
+  },
+
   async headers() {
     // Content Security Policy
     const ContentSecurityPolicy = [

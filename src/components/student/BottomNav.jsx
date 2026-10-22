@@ -35,7 +35,7 @@ const StudentBottomNav = () => {
   const [showCreate, setShowCreate] = useState(false);
 
   const navItems = [
-    { name: 'Home', path: '/home', icon: Home },
+    { name: 'Dashboard', path: '/dashboard', icon: Home },
     { name: 'Blogs', path: '/blog', icon: Newspaper },
     { name: 'Exams', path: '/govt-exams', icon: BookOpen },
     { name: 'CREATE', path: null, icon: Plus },

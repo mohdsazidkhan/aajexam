@@ -39,7 +39,7 @@ const SignupGate = ({ score, total }) => {
           localStorage.setItem('token', authRes.token);
           window.dispatchEvent(new CustomEvent('authStateChanged'));
           toast.success(translate('Welcome to AajExam! 🎉 Your free PRO access is unlocked.'));
-          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
+          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/dashboard');
         }
       } catch (e) {
         toast.error(translate('Google sign-up failed. Please try again.'));

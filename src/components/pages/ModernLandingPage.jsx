@@ -80,7 +80,7 @@ const ModernLandingPage = () => {
    useEffect(() => {
       const token = localStorage.getItem("token");
       if (token) {
-         router.push("/home");
+         router.push("/dashboard");
          return;
       }
       fetchStats();

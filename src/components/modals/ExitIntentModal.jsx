@@ -67,7 +67,7 @@ const ExitIntentModalInner = ({ onClose }) => {
           window.dispatchEvent(new CustomEvent('authStateChanged'));
           toast.success(translate('Welcome to AajExam! 🎉 Your free mock test is unlocked.'));
           onClose();
-          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
+          router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/dashboard');
         }
       } catch (error) {
         toast.error(translate('Google sign-up failed. Please try again.'));

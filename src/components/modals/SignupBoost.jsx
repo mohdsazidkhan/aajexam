@@ -77,7 +77,7 @@ const Inner = () => {
         window.dispatchEvent(new CustomEvent('authStateChanged'));
         toast.success(translate('Welcome to AajExam! 🎉 Your free PRO access is unlocked.'));
         setOpen(false);
-        router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/home');
+        router.push(authRes.user.role === 'admin' ? '/admin/dashboard' : '/dashboard');
       }
     } catch (e) {
       toast.error(translate('Google sign-up failed. Please try again.'));

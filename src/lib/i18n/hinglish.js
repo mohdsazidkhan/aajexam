@@ -649,6 +649,7 @@ const HINGLISH = {
   'Get PRO — Unlock All PYQs →': 'PRO lo — Saare PYQs Unlock karo →',
   'Go home': 'Home par jaayein',
   'Go to Challenge': 'Challenge par jaayein',
+  'Dashboard': 'Dashboard',
   'Go to Dashboard': 'Dashboard par jaayein',
   'Grid': 'Grid',
   'How well did you know this?': 'Aapko ye kitna acche se aata tha?',

@@ -1404,8 +1404,8 @@ class ApiService {
     return this.request(`/api/reels/bookmarked${queryString ? `?${queryString}` : ''}`);
   }
 
-  async getTrendingReels(limit = 12) {
-    return this.request(`/api/reels/trending?limit=${limit}`);
+  async getTrendingReels(limit = 12, sort = '') {
+    return this.request(`/api/reels/trending?limit=${limit}${sort ? `&sort=${sort}` : ''}`);
   }
 
   async getMyReels(params = {}) {
