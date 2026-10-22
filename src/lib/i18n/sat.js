@@ -1040,6 +1040,7 @@ const SAT = {
   'Generate Study Plan': 'ᱥᱴᱚᱰᱤ ᱯᱞᱟᱱ ᱛᱮᱭᱟᱨ ᱢᱮ',
   'Generates custom difficulty based on your past accuracy.': 'ᱟᱢᱟᱜ ᱢᱟᱲᱟᱝ ᱴᱷᱤᱠ ᱞᱮᱠᱟ ᱪᱮᱛ ᱛᱮ ᱠᱷᱟᱴᱤᱱ ᱴᱷᱤᱠ ᱮᱫᱟ.',
   'Generating...': 'ᱛᱮᱭᱟᱨ ᱦᱩᱭ ᱠᱟᱱᱟ...',
+  'All Student Ranks': 'ᱡᱷᱚᱛᱚ ᱪᱟᱛᱨᱚ ᱨᱮᱸᱠ',
   'Global Ranks': 'ᱡᱟᱜᱟᱛ ᱨᱮᱸᱠ',
   'Go Back': 'ᱫᱚᱦᱲᱟ ᱥᱮᱱ ᱢᱮ',
   'Go to Home': 'ᱚᱲᱟᱜ ᱥᱮᱱ ᱢᱮ',

@@ -1040,6 +1040,7 @@ const BODO = {
   'Generate Study Plan': 'स्टडी प्लान सोरजि',
   'Generates custom difficulty based on your past accuracy.': 'नोंनि सिगांनि सटीकतानि आधाराव बिसेस गोहोमानि थाखो सोरजि।',
   'Generating...': 'सोरजिनो दं...',
+  'All Student Ranks': 'सोलोंथाइफोरनि रैंकफोर',
   'Global Ranks': 'ग्लोबल रैंकफोर',
   'Go Back': 'उनफिन',
   'Go to Home': 'होमआव थां',

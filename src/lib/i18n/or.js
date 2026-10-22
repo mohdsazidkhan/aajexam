@@ -1040,6 +1040,7 @@ const OR_ = {
   'Generate Study Plan': 'ଷ୍ଟଡି ପ୍ଲାନ୍ ତିଆରି କରନ୍ତୁ',
   'Generates custom difficulty based on your past accuracy.': 'ଆପଣଙ୍କ ଅତୀତ ସଠିକତା ଆଧାରରେ କଷ୍ଟମ୍ କଠିନତା ତିଆରି କରେ।',
   'Generating...': 'ତିଆରି ହେଉଛି...',
+  'All Student Ranks': 'ସମସ୍ତ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ର‍୍ୟାଙ୍କ',
   'Global Ranks': 'ଗ୍ଲୋବାଲ୍ ର‍୍ୟାଙ୍କ',
   'Go Back': 'ପଛକୁ ଯାଆନ୍ତୁ',
   'Go to Home': 'ହୋମ୍‌କୁ ଯାଆନ୍ତୁ',

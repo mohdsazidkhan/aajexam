@@ -1040,6 +1040,7 @@ const MAI = {
   'Generate Study Plan': 'स्टडी प्लान बनाउ',
   'Generates custom difficulty based on your past accuracy.': 'अहाँक पछिला सटीकताक आधार पर कठिनाई तय करैत अछि।',
   'Generating...': 'बनि रहल अछि...',
+  'All Student Ranks': 'सभ छात्रक रैंक',
   'Global Ranks': 'वैश्विक रैंक',
   'Go Back': 'वापस जाउ',
   'Go to Home': 'होम पर जाउ',

@@ -1040,6 +1040,7 @@ const KN = {
   'Generate Study Plan': 'ಅಧ್ಯಯನ ಪ್ಲಾನ್ ರಚಿಸಿ',
   'Generates custom difficulty based on your past accuracy.': 'ನಿಮ್ಮ ಹಿಂದಿನ ನಿಖರತೆಯ ಆಧಾರದ ಮೇಲೆ ಕಸ್ಟಮ್ ಕಷ್ಟದ ಮಟ್ಟ ರಚಿಸುತ್ತದೆ.',
   'Generating...': 'ರಚಿಸಲಾಗುತ್ತಿದೆ...',
+  'All Student Ranks': 'ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳ ರ‍್ಯಾಂಕ್‌ಗಳು',
   'Global Ranks': 'ಜಾಗತಿಕ ರ‍್ಯಾಂಕ್‌ಗಳು',
   'Go Back': 'ಹಿಂದೆ ಹೋಗಿ',
   'Go to Home': 'ಮುಖಪುಟಕ್ಕೆ ಹೋಗಿ',

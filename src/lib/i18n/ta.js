@@ -1040,6 +1040,7 @@ const TA = {
   'Generate Study Plan': 'படிப்புத் திட்டத்தை உருவாக்கு',
   'Generates custom difficulty based on your past accuracy.': 'உங்கள் கடந்தகாலத் துல்லியத்தின் அடிப்படையில் தனிப்பயன் கடினத்தன்மையை உருவாக்கும்.',
   'Generating...': 'உருவாக்குகிறது...',
+  'All Student Ranks': 'அனைத்து மாணவர்களின் தரவரிசைகள்',
   'Global Ranks': 'உலகளாவிய தரவரிசைகள்',
   'Go Back': 'பின்செல்',
   'Go to Home': 'முகப்புக்குச் செல்',

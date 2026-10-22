@@ -1040,6 +1040,7 @@ const AS = {
   'Generate Study Plan': 'অধ্যয়ন প্লেন সৃষ্টি কৰক',
   'Generates custom difficulty based on your past accuracy.': 'আপোনাৰ পূৰ্বৰ নিখুঁততাৰ ভিত্তিত কঠিনতা ঠিক কৰে।',
   'Generating...': 'সৃষ্টি কৰি আছে...',
+  'All Student Ranks': 'সকলো ছাত্ৰ-ছাত্ৰীৰ ৰেংক',
   'Global Ranks': 'বিশ্ব ৰেংক',
   'Go Back': 'উভতি যাওক',
   'Go to Home': 'হোমলৈ যাওক',

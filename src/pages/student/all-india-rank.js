@@ -52,7 +52,7 @@ const AVATAR_COLORS = ['bg-primary-600', 'bg-blue-600', 'bg-rose-600', 'bg-amber
 
 const Avatar = ({ entry, size = 'md', ring = false }) => {
   const liteMode = useSelector((s) => s.display?.liteMode);
-  const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-14 h-14 text-lg', xl: 'w-16 h-16 text-xl' };
+  const sizes = { sm: 'w-8 h-8 text-[11px]', md: 'w-10 h-10 text-sm', lg: 'w-11 h-11 sm:w-14 sm:h-14 text-base sm:text-lg', xl: 'w-14 h-14 sm:w-16 sm:h-16 text-lg sm:text-xl' };
   const initial = ((entry?.name || entry?.username) || 'A').charAt(0).toUpperCase();
   const colorIdx = initial.charCodeAt(0) % AVATAR_COLORS.length;
   const rc = rankConfig[entry?.rank];
@@ -71,12 +71,12 @@ const Avatar = ({ entry, size = 'md', ring = false }) => {
 const Podium = ({ top3, currentUserId }) => {
   const { translate, translateData } = useTranslate();
   const ordered = [top3[1], top3[0], top3[2]].filter(Boolean);
-  const podiumH = { 1: 'h-20 xl:h-24', 2: 'h-14 xl:h-16', 3: 'h-10 xl:h-12' };
+  const podiumH = { 1: 'h-12 sm:h-20 xl:h-24', 2: 'h-9 sm:h-14 xl:h-16', 3: 'h-7 sm:h-10 xl:h-12' };
   const podiumGradient = { 1: 'bg-primary-600', 2: 'bg-slate-400', 3: 'bg-slate-100 dark:bg-slate-800' };
   const podiumTextColor = { 1: 'text-white', 2: 'text-white', 3: 'text-black dark:text-white' };
 
   return (
-    <div className="flex items-end justify-center gap-2 sm:gap-4 pt-6 pb-0 px-2">
+    <div className="flex items-end justify-center gap-2 sm:gap-4 pt-1 sm:pt-4 pb-0 px-2">
       {ordered.map((entry) => {
         if (!entry) return null;
         const isMe = String(entry.userId) === String(currentUserId);
@@ -86,18 +86,18 @@ const Podium = ({ top3, currentUserId }) => {
           <Link href={entry.username ? `/u/${entry.username}` : '#'} key={entry.rank}>
             <motion.div
               initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 * entry.rank, type: 'spring', stiffness: 120 }}
-              className={`flex flex-col items-center gap-1.5 ${isFirst ? 'scale-105 sm:scale-110 -mb-1' : ''}`}
+              className={`flex flex-col items-center gap-1 sm:gap-1.5 ${isFirst ? 'sm:scale-110 -mb-1' : ''}`}
             >
-              {isFirst && <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
+              {isFirst && <Crown className="w-4 h-4 sm:w-6 sm:h-6 text-black dark:text-white animate-bounce" />}
               <Avatar entry={entry} size={isFirst ? 'xl' : 'lg'} ring />
               {isMe && <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full">{translate('You')}</span>}
               <div className="text-center max-w-[76px] sm:max-w-[96px]">
                 <p className="text-[11px] sm:text-xs font-black leading-tight break-words text-black dark:text-white">
                   {entry.name || entry.username || translate('User')}
                 </p>
-                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{translate('{count} exams', { count: entry.totalExams })}</p>
+                <p className="text-[10px] font-bold text-black/60 dark:text-white/60">{formatTimeSpent(entry.totalTimeSpent, 'exam')}</p>
               </div>
-              <div className={`w-16 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
+              <div className={`w-14 sm:w-20 ${podiumH[entry.rank] || 'h-10'} ${podiumGradient[entry.rank] || 'bg-slate-400'} rounded-t-xl sm:rounded-t-2xl flex items-end justify-center pb-2`}>
                 <span className={`font-black text-sm ${podiumTextColor[entry.rank] || 'text-white'}`}>#{entry.rank}</span>
               </div>
             </motion.div>
@@ -318,19 +318,21 @@ const AllIndiaRankPage = () => {
         noIndex={true}
       />
 
-      <div className="py-4 xl:py-6 space-y-6">
+      <div className="py-2 xl:py-4 space-y-3 xl:space-y-4">
         <SubscriptionGuard message="All India Rank (AIR) is a PRO feature. Upgrade to see where you stand globally and by exam!">
-          <div className="space-y-5 xl:space-y-8">
+          <div className="space-y-3 xl:space-y-4">
             
             {/* ── Hero Banner — gold-accented premium treatment, distinct from the free Leaderboard page ── */}
-            <section className="relative rounded-[2rem] xl:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/30 dark:border-white/30 bg-white dark:bg-slate-900">
+            <section className="relative rounded-2xl overflow-hidden shadow-sm border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
 
-              <div className="relative z-10 px-5 sm:px-8 pt-6 sm:pt-8 pb-0 text-center">
+              <div className="relative z-10 grid grid-cols-1 xl:grid-cols-2 items-center gap-2 xl:gap-6 px-3 xl:px-6 pt-2 xl:pt-4 pb-0">
+                <div className="space-y-1.5 xl:space-y-3 text-center xl:text-left pb-1 xl:pb-4">
                 
+                <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
                 {/* AIR Badge — gold, animated shimmer to read as a genuine PRO perk */}
                 <motion.div
                   initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
+                  className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/40 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-black dark:text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest mb-3 shadow-[0_0_20px_rgba(251,191,36,0.15)]"
                 >
                   <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                     <Sparkles className="w-3.5 h-3.5 text-black dark:text-white" />
@@ -340,20 +342,22 @@ const AllIndiaRankPage = () => {
                 
                 <motion.h1
                   initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                  className="text-xl xl:text-3xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
+                  className="text-lg xl:text-3xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
                 >
                   {translate('All India Rank')}
                 </motion.h1>
+                </div>
 
                 {/* Exam Filter Dropdown */}
-                <div className="max-w-xs mx-auto mb-6 relative">
+                <div className="max-w-sm mx-auto xl:mx-0">
+                <div className="relative">
                   <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                     <Target className="w-4 h-4 text-black dark:text-white" />
                   </div>
                   <select
                     value={selectedExamId}
                     onChange={(e) => setSelectedExamId(e.target.value)}
-                    className="w-full appearance-none bg-black/10 dark:bg-black border border-black/20 dark:border-slate-700 text-black dark:text-white text-sm font-bold rounded-2xl py-2.5 pl-9 pr-10 outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/50 focus:border-black/30 dark:focus:border-white/50 backdrop-blur-md cursor-pointer transition-all"
+                    className="w-full appearance-none bg-black/10 dark:bg-black border border-black/20 dark:border-slate-700 text-black dark:text-white text-sm font-bold rounded-xl h-9 sm:h-10 pl-9 pr-10 outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/50 focus:border-black/30 dark:focus:border-white/50 backdrop-blur-md cursor-pointer transition-all"
                   >
                     <option value="" className="bg-white dark:bg-slate-800 text-black dark:text-white">{translate('🌍 All Exams (Overall AIR)')}</option>
                     {exams.map(e => (
@@ -365,6 +369,10 @@ const AllIndiaRankPage = () => {
                   <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
                     <ChevronDown className="w-4 h-4 text-black dark:text-white" />
                   </div>
+                </div>
+                <p className="mt-1 text-[9px] xl:text-xs font-bold text-black/70 dark:text-white/70 uppercase tracking-wider text-center xl:text-left">{translate('Ranking based on total time spent')}</p>
+                </div>
+
                 </div>
 
                 {/* Podium */}
@@ -384,15 +392,15 @@ const AllIndiaRankPage = () => {
             {!loading && myEntry && <MyRankCard entry={myEntry} />}
 
             {/* ── List Actions ── */}
-            <div className="flex justify-between items-center px-1">
+            <div className="flex justify-between items-center">
                <h3 className="text-sm font-black text-content-primary uppercase">
-                  {selectedExamId ? translate('Filtered Ranks') : translate('Global Ranks')}
+                  {selectedExamId ? translate('Filtered Ranks') : translate('All Student Ranks')}
                </h3>
                <button
                 onClick={() => fetchAIR(true)}
                 disabled={refreshing || loading}
                 title={translate('Refresh Ranks')}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg xl:rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
+                className="flex items-center gap-1.5 px-3 h-9 rounded-xl font-black text-[10px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-muted hover:border-slate-200 dark:hover:border-white transition-all disabled:opacity-40"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">{translate('Refresh')}</span>
@@ -401,7 +409,7 @@ const AllIndiaRankPage = () => {
 
             {/* ── Quick Stats ── */}
             {!loading && data.length > 0 && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-5 gap-2 sm:gap-3">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2">
                 {[
                   { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, color: 'text-black dark:text-white' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, color: 'text-black dark:text-white' },
@@ -409,11 +417,13 @@ const AllIndiaRankPage = () => {
                   { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, color: 'text-primary-600 dark:text-primary-400' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, color: 'text-black dark:text-white' },
                 ].map((stat, i) => (
-                  <Card key={i} padded={false} className="p-3 sm:p-4 text-center">
-                    <stat.icon className={`w-4 h-4 ${stat.color} mx-auto mb-1`} />
-                    <p className="text-base sm:text-lg font-black text-content-primary">{stat.value}</p>
-                    <p className="text-[9px] sm:text-[10px] font-bold text-content-muted uppercase">{translate(stat.label)}</p>
-                  </Card>
+                  <div key={i} className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm min-w-0">
+                    <stat.icon className={`w-4 h-4 shrink-0 ${stat.color}`} />
+                    <div className="min-w-0">
+                      <p className="text-sm sm:text-base font-black text-content-primary leading-tight truncate">{stat.value}</p>
+                      <p className="text-[8px] sm:text-[9px] font-bold text-content-muted uppercase leading-tight truncate">{translate(stat.label)}</p>
+                    </div>
+                  </div>
                 ))}
               </motion.div>
             )}

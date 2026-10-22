@@ -1040,6 +1040,7 @@ const MR = {
   'Generate Study Plan': 'अभ्यास प्लॅन तयार करा',
   'Generates custom difficulty based on your past accuracy.': 'तुमच्या मागील अचूकतेनुसार सानुकूल काठिण्य पातळी तयार करते.',
   'Generating...': 'तयार होत आहे...',
+  'All Student Ranks': 'सर्व विद्यार्थ्यांचे रँक',
   'Global Ranks': 'ग्लोबल रँक',
   'Go Back': 'मागे जा',
   'Go to Home': 'मुख्यपृष्ठावर जा',

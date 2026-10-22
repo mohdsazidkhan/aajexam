@@ -1040,6 +1040,7 @@ const MANIPURI = {
   'Generate Study Plan': 'ꯁ꯭ꯇꯗꯤ ꯄ꯭ꯂꯥꯟ ꯁꯦꯝꯕꯤꯌꯨ',
   'Generates custom difficulty based on your past accuracy.': 'ꯅꯪꯒꯤ ꯃꯃꯥꯡꯒꯤ ꯁꯠꯇꯥꯏꯀꯇꯥꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅꯥ ꯁꯦꯝꯕꯥ ꯅꯥꯏꯅꯕꯥ ꯆꯤꯊꯤꯂꯣꯟ ꯁꯦꯝꯕꯤꯌꯨ',
   'Generating...': 'ꯁꯦꯝꯕꯥ ꯇꯧꯔꯤ...',
+  'All Student Ranks': 'ꯁ꯭ꯇꯨꯗꯦꯟꯇ ꯄꯨꯝꯅꯃꯛꯀꯤ ꯔꯥꯡꯀꯁꯤꯡ',
   'Global Ranks': 'ꯒ꯭ꯂꯣꯕꯦꯜ ꯔꯥꯡꯀꯁꯤꯡ',
   'Go Back': 'ꯍꯟꯗꯣꯛꯄꯥ',
   'Go to Home': 'ꯍꯣꯝꯗꯥ ꯆꯠꯂꯨ',

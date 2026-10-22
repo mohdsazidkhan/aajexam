@@ -1040,6 +1040,7 @@ const KS = {
   'Generate Study Plan': 'اسٹڈی پلان بنائیں',
   'Generates custom difficulty based on your past accuracy.': 'تُہنٕز پچھلی درستگی کی بنیاد پر مشکل سطح طے کرتا چھُ۔',
   'Generating...': 'بن رہا ہے...',
+  'All Student Ranks': 'تمام طالب علمن ہند رینکس',
   'Global Ranks': 'عالمی رینکس',
   'Go Back': 'واپس جائیں',
   'Go to Home': 'ہوم پر جائیں',

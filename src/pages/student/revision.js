@@ -82,19 +82,26 @@ const RevisionPage = () => {
   return (
     <div className="min-h-screen pb-6 xl:pb-12">
       <Seo title="Revision Queue – AajExam" description="Spaced-repetition revision queue for your AajExam practice." noIndex={true} />
-      <div className="py-4 xl:py-6 space-y-6">
+      <div className="py-2 xl:py-4 space-y-3 xl:space-y-4">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
-          <div className="space-y-1">
-            <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-6 h-6 text-primary-600" /> {translate('Revision Queue')}</h1>
+          <div>
+            <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-5 h-5 xl:w-6 xl:h-6 text-primary-600" /> {translate('Revision Queue')}</h1>
           </div>
 
           {/* Stats */}
           {stats && (
-            <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.dueToday}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Due Today')}</p></Card>
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-black dark:text-white">{stats.upcoming7Days}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('This Week')}</p></Card>
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-primary-600">{stats.accuracy}%</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Accuracy')}</p></Card>
-              <Card className="text-center space-y-1"><p className="text-2xl font-black text-slate-600 dark:text-slate-300">{stats.totalItems}</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">{translate('Total Items')}</p></Card>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { value: stats.dueToday, label: 'Due Today', tone: 'text-black dark:text-white' },
+                { value: stats.upcoming7Days, label: 'This Week', tone: 'text-black dark:text-white' },
+                { value: `${stats.accuracy}%`, label: 'Accuracy', tone: 'text-primary-600' },
+                { value: stats.totalItems, label: 'Total Items', tone: 'text-slate-600 dark:text-slate-300' },
+              ].map((stat) => (
+                <div key={stat.label} className="flex items-baseline justify-center gap-1.5 px-2 py-1.5 rounded-xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm">
+                  <span className={`text-base xl:text-lg font-black leading-none ${stat.tone}`}>{stat.value}</span>
+                  <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider truncate">{translate(stat.label)}</span>
+                </div>
+              ))}
             </div>
           )}
 
@@ -117,10 +124,13 @@ const RevisionPage = () => {
 
           {/* Review Card */}
           {currentItem ? (
-            <Card className="space-y-5">
+            <Card radius="2xl" className="space-y-3 xl:space-y-4 xl:p-5">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] font-bold text-slate-400">{translate('Card {current} of {total}', { current: currentIdx + 1, total: dueItems.length })}</span>
                 <span className="text-[10px] font-bold text-slate-400">{translate('Reviews: {count}', { count: currentItem.totalReviews || 0 })}</span>
+              </div>
+              <div className="h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-full bg-primary-600 rounded-full transition-all duration-300" style={{ width: `${Math.round(((currentIdx + 1) / Math.max(1, dueItems.length)) * 100)}%` }} />
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
@@ -137,16 +147,18 @@ const RevisionPage = () => {
 
               {!showAnswer ? (
                 <div className="space-y-3">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3">
                   {currentItem.questionSnapshot?.options?.map((opt, i) => (
                     <div key={i} className="px-4 py-3 rounded-lg xl:rounded-xl text-sm font-bold border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
                       <span className="font-black mr-2">{String.fromCharCode(65 + i)}.</span> {getHindi(currentItem.questionRef)?.optionTexts?.[i] || opt}
                     </div>
                   ))}
+                  </div>
                   <button onClick={() => setShowAnswer(true)} className="w-full py-3 bg-primary-600 hover:bg-primary-600 transition text-white rounded-lg xl:rounded-xl text-sm font-bold mt-2">{translate('Show Answer')}</button>
                 </div>
               ) : (
                 <div className="space-y-2 xl:space-y-4">
-                  <div className="space-y-3">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3">
                     {currentItem.questionSnapshot?.options?.map((opt, i) => {
                       const isCorrect = i === currentItem.questionSnapshot?.correctAnswerIndex;
                       return (
@@ -171,7 +183,7 @@ const RevisionPage = () => {
               )}
             </Card>
           ) : (
-            <Card className="text-center space-y-2 xl:space-y-4">
+            <Card radius="2xl" className="text-center space-y-2 xl:space-y-3">
               <Zap className="w-12 h-12 text-primary-600 mx-auto" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white">{activeTab === 'all' ? translate('All Caught Up!') : translate('No items here')}</h2>
               <p className="text-sm text-slate-400 leading-relaxed">

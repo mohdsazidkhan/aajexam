@@ -1040,6 +1040,7 @@ const ML = {
   'Generate Study Plan': 'സ്റ്റഡി പ്ലാൻ സൃഷ്ടിക്കുക',
   'Generates custom difficulty based on your past accuracy.': 'നിങ്ങളുടെ മുൻകാല കൃത്യതയെ അടിസ്ഥാനമാക്കി ബുദ്ധിമുട്ട് നിശ്ചയിക്കുന്നു.',
   'Generating...': 'സൃഷ്ടിക്കുന്നു...',
+  'All Student Ranks': 'എല്ലാ വിദ്യാർത്ഥികളുടെയും റാങ്കുകൾ',
   'Global Ranks': 'ആഗോള റാങ്കുകൾ',
   'Go Back': 'തിരികെ പോകുക',
   'Go to Home': 'ഹോമിലേക്ക് പോകുക',

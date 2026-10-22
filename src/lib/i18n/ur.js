@@ -1040,6 +1040,7 @@ const UrduDict = {
   'Generate Study Plan': 'اسٹڈی پلان بنائیں',
   'Generates custom difficulty based on your past accuracy.': 'آپ کی پچھلی درستگی کی بنیاد پر مشکل کی سطح طے کرتا ہے۔',
   'Generating...': 'بن رہا ہے...',
+  'All Student Ranks': 'تمام طلبہ کی رینک',
   'Global Ranks': 'عالمی رینک',
   'Go Back': 'واپس جائیں',
   'Go to Home': 'ہوم پر جائیں',

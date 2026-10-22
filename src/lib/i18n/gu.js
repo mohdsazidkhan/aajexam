@@ -1040,6 +1040,7 @@ const GU = {
   'Generate Study Plan': 'અભ્યાસ પ્લાન બનાવો',
   'Generates custom difficulty based on your past accuracy.': 'તમારી ભૂતકાળની ચોકસાઈના આધારે કસ્ટમ મુશ્કેલી સ્તર બનાવે છે.',
   'Generating...': 'બનાવી રહ્યા છીએ...',
+  'All Student Ranks': 'બધા વિદ્યાર્થીઓની રેન્ક',
   'Global Ranks': 'ગ્લોબલ રેન્ક',
   'Go Back': 'પાછા જાઓ',
   'Go to Home': 'હોમ પર જાઓ',

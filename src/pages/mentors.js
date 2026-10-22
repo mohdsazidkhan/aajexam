@@ -64,17 +64,14 @@ const MentorsPage = () => {
       />
       <div className="py-4 xl:py-6 space-y-3 xl:space-y-6">
         <SubscriptionGuard message="Access to Mentors is a PRO feature. Connect with students who have successfully cleared exams to get personalized guidance!">
-          <div className="flex items-start justify-between">
-            <div className="space-y-1">
-              <h1 className="text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-6 h-6 text-primary-600" /> {translate('Mentors')}</h1>
+          <div className="flex flex-wrap items-center gap-2 xl:gap-4">
+            <h1 className="w-full xl:w-auto text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><Users className="w-5 h-5 xl:w-6 xl:h-6 text-primary-600" /> {translate('Mentors')}</h1>
+            <div className="flex-1 min-w-0 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 h-10">
+              <Search className="w-4 h-4 text-slate-400 shrink-0" />
+              <input type="text" placeholder={translate('Search by exam name...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
+                className="flex-1 min-w-0 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
             </div>
-            <button onClick={() => router.push('/mentor/apply')} className="px-4 py-2 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold">{translate('Become Mentor')}</button>
-          </div>
-
-          <div className="my-2 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg xl:rounded-xl px-3 py-2">
-            <Search className="w-4 h-4 text-slate-400" />
-            <input type="text" placeholder={translate('Search by exam name...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-              className="flex-1 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
+            <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-primary-600 text-white rounded-xl text-xs font-bold shrink-0">{translate('Become Mentor')}</button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

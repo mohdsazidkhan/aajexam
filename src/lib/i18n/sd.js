@@ -1040,6 +1040,7 @@ const SD = {
   'Generate Study Plan': 'स्टडी प्लान ठाहियो',
   'Generates custom difficulty based on your past accuracy.': 'तव्हां जी पिछिली दुरुस्तीअ जे आधार ते मुश्किल दरजो मुक़र्रर कंदो आहे.',
   'Generating...': 'ठहिजी रहियो आहे...',
+  'All Student Ranks': 'सभ शागिर्दन जो रैंक',
   'Global Ranks': 'आलमी रैंक',
   'Go Back': 'पुठि वञो',
   'Go to Home': 'घर वञो',

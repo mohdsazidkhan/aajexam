@@ -1040,6 +1040,7 @@ const KOK = {
   'Generate Study Plan': 'स्टडी प्लॅन तयार करात',
   'Generates custom difficulty based on your past accuracy.': 'तुमच्या फाटल्या अचूकतायेवयल्यार कठीणताय थारायता.',
   'Generating...': 'तयार जाता...',
+  'All Student Ranks': 'सगळ्या विद्यार्थ्यांचे रँक',
   'Global Ranks': 'जागतीक रँक',
   'Go Back': 'फाटीं वचात',
   'Go to Home': 'होमाक वचात',

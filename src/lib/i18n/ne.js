@@ -1040,6 +1040,7 @@ const NE = {
   'Generate Study Plan': 'अध्ययन प्लान बनाउनुहोस्',
   'Generates custom difficulty based on your past accuracy.': 'तपाईंको पहिलेको शुद्धताका आधारमा कठिनाइ तय गर्छ।',
   'Generating...': 'बन्दै छ...',
+  'All Student Ranks': 'सबै विद्यार्थीको र्याङ्क',
   'Global Ranks': 'विश्वव्यापी र्याङ्क',
   'Go Back': 'फर्कनुहोस्',
   'Go to Home': 'होममा जानुहोस्',

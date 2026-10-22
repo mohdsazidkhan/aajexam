@@ -1040,6 +1040,7 @@ const SA = {
   'Generate Study Plan': 'अध्ययनयोजनां रचयत',
   'Generates custom difficulty based on your past accuracy.': 'भवतां पूर्वशुद्धतायाः आधारेण कठिनतां निश्चिनोति।',
   'Generating...': 'रच्यते...',
+  'All Student Ranks': 'सर्वेषां छात्राणां क्रमाङ्काः',
   'Global Ranks': 'वैश्विकक्रमाङ्काः',
   'Go Back': 'प्रतिगच्छत',
   'Go to Home': 'गृहं गच्छत',

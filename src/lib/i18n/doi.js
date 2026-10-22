@@ -1040,6 +1040,7 @@ const DogriDict = {
   'Generate Study Plan': 'स्टडी प्लान बनाओ',
   'Generates custom difficulty based on your past accuracy.': 'तुंदी पिछली सटीकता दे आधार पर कठनाई तय करदा ऐ।',
   'Generating...': 'बनी करदा ऐ...',
+  'All Student Ranks': 'सारे विद्यार्थियें दी रैंक',
   'Global Ranks': 'वैश्विक रैंक',
   'Go Back': 'परतोओ',
   'Go to Home': 'होम पर जाओ',

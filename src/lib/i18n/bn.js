@@ -1040,6 +1040,7 @@ const BN = {
   'Generate Study Plan': 'স্টাডি প্ল্যান তৈরি করুন',
   'Generates custom difficulty based on your past accuracy.': 'আপনার আগের নির্ভুলতার ভিত্তিতে কাস্টম কাঠিন্য তৈরি করে।',
   'Generating...': 'তৈরি হচ্ছে...',
+  'All Student Ranks': 'সব শিক্ষার্থীর র‍্যাঙ্ক',
   'Global Ranks': 'গ্লোবাল র‍্যাঙ্ক',
   'Go Back': 'ফিরে যান',
   'Go to Home': 'হোমে যান',

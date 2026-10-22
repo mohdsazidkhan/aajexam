@@ -1040,6 +1040,7 @@ const TE = {
   'Generate Study Plan': 'స్టడీ ప్లాన్ రూపొందించండి',
   'Generates custom difficulty based on your past accuracy.': 'మీ గత ఖచ్చితత్వం ఆధారంగా కస్టమ్ కష్టతర స్థాయిని రూపొందిస్తుంది.',
   'Generating...': 'రూపొందిస్తోంది...',
+  'All Student Ranks': 'అందరు విద్యార్థుల ర్యాంక్‌లు',
   'Global Ranks': 'గ్లోబల్ ర్యాంక్‌లు',
   'Go Back': 'వెనక్కి వెళ్లండి',
   'Go to Home': 'హోమ్‌కి వెళ్లండి',

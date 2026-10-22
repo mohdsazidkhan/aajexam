@@ -1040,6 +1040,7 @@ const PA = {
   'Generate Study Plan': 'ਸਟੱਡੀ ਪਲਾਨ ਬਣਾਓ',
   'Generates custom difficulty based on your past accuracy.': 'ਤੁਹਾਡੀ ਪਿਛਲੀ ਸ਼ੁੱਧਤਾ ਦੇ ਆਧਾਰ \'ਤੇ ਕਸਟਮ ਮੁਸ਼ਕਲ ਪੱਧਰ ਬਣਾਉਂਦਾ ਹੈ।',
   'Generating...': 'ਬਣਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...',
+  'All Student Ranks': 'ਸਾਰੇ ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਰੈਂਕ',
   'Global Ranks': 'ਗਲੋਬਲ ਰੈਂਕ',
   'Go Back': 'ਵਾਪਸ ਜਾਓ',
   'Go to Home': 'ਹੋਮ \'ਤੇ ਜਾਓ',
