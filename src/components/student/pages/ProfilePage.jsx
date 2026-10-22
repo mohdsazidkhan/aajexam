@@ -37,6 +37,7 @@ import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import API from '../../../lib/api';
 import { handleAuthError } from '../../../lib/utils/authUtils';
+import { formatTimeSpent } from '../../../lib/utils/timeFormat';
 import Button from '../../common/ui/Button';
 import Card from '../../common/ui/Card';
 import ProgressBar from '../../common/ui/ProgressBar';
@@ -273,11 +274,13 @@ const ProfilePage = () => {
               <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest opacity-80 mb-1">{translate('Exam AIR')}</p>
               <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
               <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider opacity-80 mt-1">{student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}</p>
+              {student?.examAIR && <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider opacity-90 mt-1">{translate('{time} spent', { time: formatTimeSpent(student.examAIR.totalTimeSpent, 'exam') })}</p>}
             </div>
             <div className="rounded-[1.5rem] bg-background-surface-secondary border border-slate-200 dark:border-slate-800 p-4 xl:p-6 text-center">
               <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-content-secondary mb-1">{translate('Quiz AIR')}</p>
               <p className="text-xl xl:text-3xl font-black font-outfit tracking-tight text-content-primary">{student?.quizAIR ? `#${student.quizAIR.rank}` : '—'}</p>
               <p className="text-[9px] xl:text-[10px] font-bold uppercase tracking-wider text-content-secondary mt-1">{student?.quizAIR ? translate('of {total}', { total: student.quizAIR.total }) : translate('No quizzes yet')}</p>
+              {student?.quizAIR && <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider text-content-primary mt-1">{translate('{time} spent', { time: formatTimeSpent(student.quizAIR.totalTimeSpent, 'quiz') })}</p>}
             </div>
           </div>
         </Card>

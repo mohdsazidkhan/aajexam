@@ -16,8 +16,7 @@ import {
    ChevronRight,
    ArrowRight,
    Gift,
-   Coins,
-   ArrowUpRight
+   Coins
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
@@ -183,15 +182,15 @@ export default function ReferralHistory() {
    return (
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white">
 
-         <div className="container mx-auto mt-0 space-y-2 xl:space-y-4 xl:space-y-8">
+         <div className="container mx-auto mt-0 space-y-2 xl:space-y-3">
 
             {/* --- Header Section --- */}
-            <section className="relative px-0 py-2 xl:py-8">
-               <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3 xl:gap-12">
+            <section className="relative px-0 py-1">
+               <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3 xl:gap-6">
 
-                  <div className="flex flex-row items-center gap-2 xl:gap-6 text-left">
-                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-8 h-8 xl:w-20 xl:h-20 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-[2rem] flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
-                        <Users className="w-4 h-4 xl:w-10 xl:h-10" />
+                  <div className="flex flex-row items-center gap-2 xl:gap-3 text-left">
+                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
+                        <Users className="w-4 h-4 xl:w-5 xl:h-5" />
                      </motion.div>
                      <div className="space-y-0.5 xl:space-y-4">
                         <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight leading-none">{rich('Referral <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
@@ -200,12 +199,12 @@ export default function ReferralHistory() {
 
                   {/* Referral Link Card */}
                   {user && (
-                     <Card className="w-full xl:w-auto xl:min-w-[360px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-2xl xl:rounded-[2.5rem]">
-                        <div className="p-1 xl:p-2 space-y-1.5 xl:space-y-3 text-left">
+                     <Card className="w-full xl:w-auto xl:min-w-[300px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-xl">
+                        <div className="p-1 space-y-1 text-left">
                            <p className="text-[9px] xl:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">{translate('Your Referral Code')}</p>
                            <div className="flex items-center gap-2 xl:gap-3">
                               <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
-                              <Button variant="primary" size="sm" className="xl:px-8 xl:py-4 xl:rounded-full shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                              <Button variant="primary" size="sm" className="xl:px-4 xl:py-2 shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
                                  <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4 mx-auto" /> COPY LINK
                               </Button>
                            </div>
@@ -217,7 +216,7 @@ export default function ReferralHistory() {
 
             {/* --- Stats Grid --- */}
             {user && (
-               <section className="grid grid-cols-2 xl:grid-cols-5 gap-2 xl:gap-6">
+               <section className="grid grid-cols-2 xl:grid-cols-5 gap-2 xl:gap-3">
                   {[
                      { label: 'Referral Rewards', val: `₹${(user.walletBalance || 0).toLocaleString()}`, icon: Coins, color: 'primary' },
                      { label: 'Money You Earned', val: `₹${(user.referralRewards?.reduce((s, r) => s + (r.amount || 0), 0) || 0).toLocaleString()}`, icon: Wallet, color: 'primary' },
@@ -225,15 +224,14 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl xl:rounded-[2.5rem]">
-                        <div className="flex justify-between items-start mb-1.5 xl:mb-6">
-                           <div className={`p-1.5 xl:p-4 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-lg xl:rounded-2xl`}>
-                              <s.icon className="w-3.5 h-3.5 xl:w-6 xl:h-6" />
+                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl">
+                        <div className="flex justify-between items-start mb-1">
+                           <div className={`p-1.5 xl:p-2 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-lg`}>
+                              <s.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                            </div>
-                           <ArrowUpRight className="hidden xl:block w-4 h-4 text-slate-200 group-hover:text-content-secondary transition-colors" />
                         </div>
                         <p className="text-[8px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 xl:mb-1">{translate(s.label)}</p>
-                        <p className="text-sm xl:text-3xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
+                        <p className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
                      </Card>
                   ))}
                </section>
@@ -242,8 +240,8 @@ export default function ReferralHistory() {
             {/* --- Payout Section --- */}
             {user && bankDetailLoaded && (
                <section>
-                  <Card className="border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
-                     <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6">
+                  <Card className="border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-2xl">
+                     <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
                         <div className="space-y-2">
                            <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2">
                               <Zap className="w-5 h-5 text-primary-600" /> Referral Payouts
@@ -274,11 +272,11 @@ export default function ReferralHistory() {
 
                         {(user.walletBalance || 0) >= MIN_PAYOUT && !showPayoutForm && !showBankForm && (
                            bankDetail ? (
-                              <Button variant="primary" className="rounded-full px-8 py-3 text-xs font-black shadow-sm shrink-0" onClick={() => { setPayoutAmount(String(user.walletBalance)); setShowPayoutForm(true); }}>
+                              <Button variant="primary" className="rounded-full px-5 py-2 text-xs font-black shadow-sm shrink-0" onClick={() => { setPayoutAmount(String(user.walletBalance)); setShowPayoutForm(true); }}>
                                  {translate('Request Withdrawal')} <ArrowRight className="w-4 h-4 ml-1" />
                               </Button>
                            ) : (
-                              <Button variant="primary" className="rounded-full px-8 py-3 text-xs font-black shadow-sm shrink-0" onClick={() => setShowBankForm(true)}>
+                              <Button variant="primary" className="rounded-full px-5 py-2 text-xs font-black shadow-sm shrink-0" onClick={() => setShowBankForm(true)}>
                                  {translate('Add Bank Details')} <ArrowRight className="w-4 h-4 ml-1" />
                               </Button>
                            )
@@ -287,7 +285,7 @@ export default function ReferralHistory() {
 
                      {/* Saved bank details + edit link */}
                      {bankDetail && !showBankForm && (user.walletBalance || 0) >= MIN_PAYOUT && (
-                        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                        <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
                            <p className="text-xs font-bold text-content-secondary">
                               {bankDetail.bankName} •••• {bankDetail.accountNumber?.slice(-4)} ({bankDetail.accountHolderName})
                            </p>
@@ -299,7 +297,7 @@ export default function ReferralHistory() {
 
                      {/* Bank details form */}
                      {showBankForm && (
-                        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                        <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-4">
                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               {[
                                  { key: 'accountHolderName', label: 'Account Holder Name' },
@@ -321,10 +319,10 @@ export default function ReferralHistory() {
                               ))}
                            </div>
                            <div className="flex gap-3">
-                              <Button variant="primary" disabled={savingBank} className="rounded-full px-8 py-3 text-xs font-black shadow-sm" onClick={handleSaveBankDetail}>
+                              <Button variant="primary" disabled={savingBank} className="rounded-full px-5 py-2 text-xs font-black shadow-sm" onClick={handleSaveBankDetail}>
                                  {savingBank ? translate('Saving...') : translate('Save Bank Details')}
                               </Button>
-                              <Button variant="secondary" className="rounded-full px-8 py-3 text-xs font-black" onClick={() => setShowBankForm(false)}>
+                              <Button variant="secondary" className="rounded-full px-5 py-2 text-xs font-black" onClick={() => setShowBankForm(false)}>
                                  {translate('Cancel')}
                               </Button>
                            </div>
@@ -333,7 +331,7 @@ export default function ReferralHistory() {
 
                      {/* Withdrawal amount form */}
                      {showPayoutForm && (
-                        <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                        <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-4">
                            <div className="max-w-xs">
                               <label className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('Amount (min ₹{min}, max ₹{max})', { min: MIN_PAYOUT, max: (user.walletBalance || 0).toLocaleString() })}</label>
                               <input
@@ -349,10 +347,10 @@ export default function ReferralHistory() {
                               {translate('Paid to: {bank}', { bank: bankDetail?.bankName })} •••• {bankDetail?.accountNumber?.slice(-4)}
                            </p>
                            <div className="flex gap-3">
-                              <Button variant="primary" disabled={submittingPayout} className="rounded-full px-8 py-3 text-xs font-black shadow-sm" onClick={handleRequestPayout}>
+                              <Button variant="primary" disabled={submittingPayout} className="rounded-full px-5 py-2 text-xs font-black shadow-sm" onClick={handleRequestPayout}>
                                  {submittingPayout ? translate('Submitting...') : translate('Submit Request')}
                               </Button>
-                              <Button variant="secondary" className="rounded-full px-8 py-3 text-xs font-black" onClick={() => setShowPayoutForm(false)}>
+                              <Button variant="secondary" className="rounded-full px-5 py-2 text-xs font-black" onClick={() => setShowPayoutForm(false)}>
                                  {translate('Cancel')}
                               </Button>
                            </div>
@@ -366,14 +364,13 @@ export default function ReferralHistory() {
             )}
 
             {/* --- Main Content Area --- */}
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-4">
 
                {/* Left Sidebar: Breakdown */}
-               <div className="space-y-8">
+               <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <div className="space-y-2">
                         <h2 className="text-xl font-black font-outfit uppercase tracking-tight">{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
-                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('See which type of referral gave you how much money')}</p>
                      </div>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -402,11 +399,10 @@ export default function ReferralHistory() {
                </div>
 
                {/* Right Area: Friend List */}
-               <div className="space-y-3 xl:space-y-8">
+               <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <div className="space-y-1 xl:space-y-2">
                         <h2 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
-                        <p className="text-[9px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest">{translate('Students who signed up using your referral link')}</p>
                      </div>
                      <div className="p-2 xl:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700">
                         <History className="w-4 h-4 xl:w-5 xl:h-5 text-content-secondary" />
@@ -417,8 +413,8 @@ export default function ReferralHistory() {
                      {loading ? (
                         <ListSkeleton rows={6} />
                      ) : transactions.length === 0 ? (
-                        <Card className="py-4 xl:py-8 text-center space-y-2 xl:space-y-6 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl xl:rounded-[4rem]">
-                           <Users className="w-8 h-8 xl:w-16 xl:h-16 text-slate-200 mx-auto" />
+                        <Card className="py-4 text-center space-y-2 xl:space-y-3 border-dashed border-2 border-slate-200 dark:border-slate-800 bg-transparent rounded-2xl">
+                           <Users className="w-8 h-8 xl:w-10 xl:h-10 text-slate-200 mx-auto" />
                            <div className="space-y-1 xl:space-y-2">
                               <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate('No Referrals Yet')}</h3>
                               <p className="text-[10px] xl:text-xs font-bold text-content-secondary uppercase tracking-widest">{translate('You have not referred anyone yet. Share your link and start earning.')}</p>
@@ -429,23 +425,23 @@ export default function ReferralHistory() {
                         </Card>
                      ) : (
                         <div className="space-y-2 xl:space-y-4">
-                           <Card className="overflow-hidden border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-[3rem]">
+                           <Card className="overflow-hidden border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-2xl">
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
                                     <thead className="bg-slate-50/50 dark:bg-slate-900/50">
                                        <tr>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Student')}</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward Type')}</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward')}</th>
-                                          <th className="px-8 py-5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 text-right">{translate('Status')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Student')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward Type')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 text-right">{translate('Status')}</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-border-primary">
                                        {transactions.map((tx, idx) => (
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
-                                             <td className="px-8 py-6">
-                                                <div className="flex items-center gap-4">
-                                                   <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
+                                             <td className="px-4 py-3">
+                                                <div className="flex items-center gap-3">
+                                                   <div className="w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -454,15 +450,15 @@ export default function ReferralHistory() {
                                                    </div>
                                                 </div>
                                              </td>
-                                             <td className="px-8 py-6">
-                                                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border border-current bg-current opacity-10 text-${rewardColors[tx.rewardType]}-500`}>
+                                             <td className="px-4 py-3">
+                                                <span className={`px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase border border-current bg-current opacity-10 text-${rewardColors[tx.rewardType]}-500`}>
                                                    {translate(rewardLabels[tx.rewardType] || '')}
                                                 </span>
                                              </td>
-                                             <td className="px-8 py-6">
+                                             <td className="px-4 py-3">
                                                 <p className="text-sm font-black text-primary-600 uppercase">+₹{tx.amount}</p>
                                              </td>
-                                             <td className="px-8 py-6 text-right">
+                                             <td className="px-4 py-3 text-right">
                                                 <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none mb-1">{translate('Balance')}</p>
                                                 <p className="text-sm font-black font-outfit uppercase tracking-tight text-content-secondary">₹{tx.balance?.toLocaleString()}</p>
                                              </td>
@@ -475,7 +471,7 @@ export default function ReferralHistory() {
 
                            {/* Pagination Controls */}
                            {pagination.totalPages > 1 && (
-                              <div className="flex justify-center gap-2 pt-6">
+                              <div className="flex justify-center gap-2 pt-2">
                                  {[...Array(pagination.totalPages)].map((_, i) => (
                                     <button
                                        key={i}
