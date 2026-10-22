@@ -15,6 +15,7 @@ import useTranslate from '../../hooks/useTranslate';
 import Pagination from '../../components/common/Pagination';
 import { PUBLIC_PAGE_SIZE_OPTIONS, PUBLIC_DEFAULT_PAGE_SIZE } from '../../lib/constants/pagination';
 import useRequireLogin from '../../hooks/useRequireLogin';
+import { ProBadge } from '../../components/common/ui';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 
 // ─── Skeleton ──────────────────────────────────────────────────────────────────
@@ -172,7 +173,7 @@ const LeaderboardRow = ({ entry, index, currentUserId, type }) => {
           <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('You')}</span>
         )}
         {entry.subscriptionStatus === 'PRO' && (
-          <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('PRO')}</span>
+          <ProBadge size="xs" className="flex-shrink-0" />
         )}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -305,7 +306,15 @@ const MyRankCard = ({ entry, type }) => {
             <span className="text-xl sm:text-2xl font-black leading-none text-amber-200">#{entry.rank}</span>
           </div>
           <Avatar entry={entry} size="sm" />
-          <p className="text-sm font-black truncate min-w-0">{entry.name || entry.username}</p>
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <p className="text-sm font-black truncate leading-tight">{entry.name || entry.username}</p>
+              {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              {entry.username && <p className="text-[10px] font-bold text-white/70 truncate">@{entry.username}</p>}
+            </div>
+          </div>
           <div className="flex flex-wrap gap-1.5 xl:ml-auto">
             {chips.map((c) => (
               <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-black/30 ring-1 ring-white/25 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
@@ -361,7 +370,7 @@ const LeaderboardContent = () => {
   const pagedRest = data.slice((page - 1) * ROWS_PER_PAGE, page * ROWS_PER_PAGE);
 
   return (
-    <div className="min-h-screen pb-32 font-outfit">
+    <div className="min-h-screen pb-32 pt-2 xl:pt-4 font-outfit">
       <div className="space-y-3 xl:space-y-4">
 
         {/* ── Hero Banner — green gradient with gold podium (same look as All India Rank) ── */}

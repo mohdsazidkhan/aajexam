@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import API from '../../lib/api';
 import Card from '../../components/common/ui/Card';
 import Seo from '../../components/common/Seo';
+import { ProBadge } from '../../components/common/ui';
 import SubscriptionGuard from '../../components/student/SubscriptionGuard';
 import { getCurrentUser } from '../../lib/utils/authUtils';
 import { formatTimeSpent, formatSecondsSpent } from '../../lib/utils/timeFormat';
@@ -134,7 +135,7 @@ const LeaderboardRow = ({ entry, index, currentUserId }) => {
           {entry.name || entry.username || translate('Anonymous')}
         </p>
         {isMe && <span className="text-[9px] font-black uppercase bg-primary-600 text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('You')}</span>}
-        {entry.subscriptionStatus === 'PRO' && <span className="text-[9px] font-black uppercase bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-1.5 py-0.5 rounded-full flex-shrink-0">{translate('PRO')}</span>}
+        {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
         {entry.username && <p className="text-[10px] font-bold text-content-muted/80 truncate">@{entry.username}</p>}
@@ -247,11 +248,17 @@ const MyRankCard = ({ entry, totalUsers }) => {
             <span className="text-xl sm:text-2xl font-black leading-none text-amber-200">#{entry.rank}</span>
           </div>
           <Avatar entry={entry} size="sm" />
-          <div className="flex items-baseline gap-2 min-w-0">
-            <p className="text-sm font-black truncate">{entry.name || entry.username}</p>
-            {topPct !== null && (
-              <p className="text-[11px] font-bold text-amber-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
-            )}
+<div className="min-w-0">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <p className="text-sm font-black truncate leading-tight">{entry.name || entry.username}</p>
+              {entry.subscriptionStatus === 'PRO' && <ProBadge size="xs" className="flex-shrink-0" />}
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              {entry.username && <p className="text-[10px] font-bold text-white/70 truncate">@{entry.username}</p>}
+              {topPct !== null && (
+                <p className="text-[10px] font-bold text-amber-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
+              )}
+            </div>
           </div>
           <div className="flex flex-wrap gap-1.5 xl:ml-auto">
             {chips.map((c) => (
