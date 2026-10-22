@@ -412,6 +412,7 @@ class ApiService {
     if (filters.year) queryParams.set('year', filters.year);
     if (filters.type) queryParams.set('type', filters.type);
     if (filters.status) queryParams.set('status', filters.status);
+    if (filters.search) queryParams.set('search', filters.search);
     if (filters.limit) queryParams.set('limit', filters.limit);
     if (filters.page) queryParams.set('page', filters.page);
 
@@ -879,9 +880,16 @@ class ApiService {
   }
 
   // forUser: true limits the list to the user's target exams (settings/admin need the full list).
-  async getAllExams({ forUser = false } = {}) {
+  async getAllExams({ forUser = false, search, type, page, limit } = {}) {
     const ids = forUser ? getStoredTargetExamIds() : [];
-    return this.request(`/api/real-exams/all-exams${ids.length ? `?examIds=${ids.join(',')}` : ''}`);
+    const qs = new URLSearchParams();
+    if (ids.length) qs.set('examIds', ids.join(','));
+    if (search) qs.set('search', search);
+    if (type && type !== 'all') qs.set('type', type);
+    if (page) qs.set('page', page);
+    if (limit) qs.set('limit', limit);
+    const q = qs.toString();
+    return this.request(`/api/real-exams/all-exams${q ? `?${q}` : ''}`);
   }
 
   async getPracticeTestsByExam(examId, params = {}) {

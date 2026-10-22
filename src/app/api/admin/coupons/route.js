@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { parsePaging, pagingMeta, escapeRegex } from '@/lib/utils/pagination';
 import dbConnect from '@/lib/db';
 import Coupon from '@/models/Coupon';
 import { protect, admin } from '@/middleware/auth';
@@ -17,8 +18,14 @@ export async function GET(req) {
         const { error } = await guard(req);
         if (error) return error;
         await dbConnect();
-        const coupons = await Coupon.find({}).sort({ createdAt: -1 }).lean();
-        return NextResponse.json({ success: true, data: coupons });
+        const { searchParams } = new URL(req.url);
+        const paging = parsePaging(searchParams, { defaultLimit: 20, maxLimit: 100, legacyCap: 500 });
+        const filter = paging.search ? { code: new RegExp(escapeRegex(paging.search), 'i') } : {};
+        const [coupons, total] = await Promise.all([
+            Coupon.find(filter).sort({ createdAt: -1 }).skip(paging.skip).limit(paging.limit).lean(),
+            paging.paged ? Coupon.countDocuments(filter) : Promise.resolve(0),
+        ]);
+        return NextResponse.json({ success: true, data: coupons, ...(paging.paged ? { pagination: pagingMeta(paging, total) } : {}) });
     } catch (e) {
         return NextResponse.json({ success: false, message: e.message }, { status: 500 });
     }

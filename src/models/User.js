@@ -154,6 +154,8 @@ userSchema.index({ referredBy: 1 });
 userSchema.index({ subscriptionStatus: 1, subscriptionExpiry: 1 });
 userSchema.index({ status: 1 });
 userSchema.index({ createdAt: -1 });
+userSchema.index({ role: 1, createdAt: -1 });
+userSchema.index({ lastLoginDate: 1 }); // inactivity reminder cron
 
 // Method to update exam performance metrics
 userSchema.methods.updatePerformanceMetrics = function (quiz, scorePercentage) {

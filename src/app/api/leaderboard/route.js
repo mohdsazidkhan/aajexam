@@ -6,6 +6,12 @@ import UserStreak from '@/models/UserStreak';
 import mongoose from 'mongoose';
 import { protect } from '@/middleware/auth';
 
+// Ranked pool is capped; results are cached per (type, period) so a million-user
+// table is aggregated at most once per TTL per server instance, not per request.
+const RANK_POOL = 1000;
+const CACHE_TTL_MS = 5 * 60 * 1000;
+const cache = new Map();
+
 // GET /api/leaderboard?type=quiz|exam&period=all-time|weekly|monthly&limit=20
 export async function GET(req) {
     try {
@@ -72,8 +78,14 @@ export async function GET(req) {
             { $addFields: { practiceTestMarks: { $ifNull: ['$practiceTestDoc.totalMarks', 0] } } },
         ] : [];
 
+        const cacheKey = `${type}:${period}`;
+        const hit = cache.get(cacheKey);
+        let leaderboard;
+        if (hit && Date.now() - hit.at < CACHE_TTL_MS) {
+            leaderboard = hit.rows;
+        } else {
         // Aggregate attempts grouped by user
-        const leaderboard = await Model.aggregate([
+        leaderboard = await Model.aggregate([
             {
                 $match: {
                     status: 'Completed',
@@ -91,6 +103,8 @@ export async function GET(req) {
                 // Rank by: total time spent, then attempts, accuracy and total score as tie-breakers.
                 $sort: { totalTimeSpent: -1, totalQuizzes: -1, avgAccuracy: -1, totalScore: -1, _id: 1 }
             },
+            // Bound the ranked pool before the joins so cost doesn't grow with total users.
+            { $limit: RANK_POOL },
             // Join User data
             {
                 $lookup: {
@@ -138,7 +152,10 @@ export async function GET(req) {
                     longestStreak: { $ifNull: ['$streak.longestStreak', 0] },
                 }
             }
-        ]);
+        ], { allowDiskUse: true });
+        cache.set(cacheKey, { at: Date.now(), rows: leaderboard });
+        if (cache.size > 20) cache.delete(cache.keys().next().value);
+        }
 
         // Add rank numbers — computed across the full ranked pool so a user
         // outside the displayed top `limit` still gets their real rank.

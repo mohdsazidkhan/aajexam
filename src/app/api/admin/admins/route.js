@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import { protect, admin } from '@/middleware/auth';
+import { parsePaging, pagingMeta } from '@/lib/utils/pagination';
 import { escapeRegex } from '@/lib/utils/regex';
 
 // GET - List all admin accounts
@@ -22,12 +23,18 @@ export async function GET(req) {
             query.$or = [{ name: regex }, { email: regex }];
         }
 
-        const admins = await User.find(query)
-            .select('name email phone username createdAt')
-            .sort({ createdAt: 1 })
-            .lean();
+        const paging = parsePaging(searchParams, { defaultLimit: 20, maxLimit: 100, legacyCap: 500 });
+        const [admins, total] = await Promise.all([
+            User.find(query)
+                .select('name email phone username createdAt')
+                .sort({ createdAt: 1 })
+                .skip(paging.skip)
+                .limit(paging.limit)
+                .lean(),
+            paging.paged ? User.countDocuments(query) : Promise.resolve(0),
+        ]);
 
-        return NextResponse.json({ success: true, admins });
+        return NextResponse.json({ success: true, admins, ...(paging.paged ? { pagination: pagingMeta(paging, total) } : {}) });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

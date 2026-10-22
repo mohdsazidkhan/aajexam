@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
@@ -59,11 +59,23 @@ const TopicListPage = ({ initialTopics = [] } = {}) => {
   const [pageSize, setPageSize] = useState(PUBLIC_DEFAULT_PAGE_SIZE);
   const targetVersion = useTargetExamsVersion();
 
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [total, setTotal] = useState(initialTopics.length);
   useEffect(() => {
-    API.getAllTopics().then(res => {
-      if (res.success) setTopics(res.data || []);
-    }).finally(() => setLoading(false));
-  }, [targetVersion]);
+    const t = setTimeout(() => setDebouncedSearch(search.trim()), 350);
+    return () => clearTimeout(t);
+  }, [search]);
+
+  // Search, filter and pagination all run on the server.
+  useEffect(() => {
+    let alive = true;
+    API.getAllTopics({ page, limit: pageSize, search: debouncedSearch || undefined, has: activeFilter !== 'all' ? activeFilter : undefined }).then(res => {
+      if (!alive || !res.success) return;
+      setTopics(res.data || []);
+      setTotal(res.pagination?.total ?? (res.data || []).length);
+    }).finally(() => { if (alive) setLoading(false); });
+    return () => { alive = false; };
+  }, [targetVersion, page, pageSize, debouncedSearch, activeFilter]);
 
   const filters = [
     { id: 'all', label: 'All', icon: Sparkles },
@@ -71,28 +83,10 @@ const TopicListPage = ({ initialTopics = [] } = {}) => {
     { id: 'question', label: 'Has Questions', icon: HelpCircle },
   ];
 
-  const filtered = useMemo(() => {
-    let list = topics;
-    if (activeFilter === 'quiz') list = list.filter(t => (t.quizCount || 0) > 0);
-    if (activeFilter === 'question') list = list.filter(t => (t.questionCount || 0) > 0);
-    if (search.trim()) {
-      const q = search.trim().toLowerCase();
-      list = list.filter(t =>
-        t.name?.toLowerCase().includes(q) ||
-        t.subject?.name?.toLowerCase().includes(q)
-      );
-    }
-    return list;
-  }, [topics, activeFilter, search]);
-
-  // Client-side pagination; filter/search/list changes restart from page 1.
-  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
   const currentPage = Math.min(page, totalPages);
-  const pageItems = useMemo(
-    () => filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize),
-    [filtered, currentPage, pageSize]
-  );
-  useEffect(() => { setPage(1); }, [activeFilter, search, targetVersion]);
+  const pageItems = topics.slice(0, pageSize);
+  useEffect(() => { setPage(1); }, [activeFilter, debouncedSearch, targetVersion]);
 
   if (loading) return <TopicListSkeleton />;
 
@@ -110,7 +104,7 @@ const TopicListPage = ({ initialTopics = [] } = {}) => {
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
-            <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Topics Available', { count: topics.length })}
+            <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Topics Available', { count: total })}
           </motion.div>
           <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Topics')}</h1>
           <div className="w-full max-w-lg px-2 xl:px-0">
@@ -186,7 +180,7 @@ const TopicListPage = ({ initialTopics = [] } = {}) => {
             </motion.div>
           ))}
 
-          {filtered.length === 0 && !loading && (
+          {pageItems.length === 0 && !loading && (
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Layers className="w-20 h-20 text-slate-200 mx-auto" />
               <h2 className="text-xl font-black text-slate-400 uppercase">{translate('No topics found')}</h2>
@@ -197,7 +191,7 @@ const TopicListPage = ({ initialTopics = [] } = {}) => {
         </div>
 
         {/* Pagination */}
-        <div className="pt-6"><Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setPage} totalItems={filtered.length} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
+        <div className="pt-6"><Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setPage} totalItems={total} itemsPerPage={pageSize} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} sticky={false} /></div>
       </section>
     </div>
   );

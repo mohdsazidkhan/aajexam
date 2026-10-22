@@ -65,21 +65,23 @@ const GovernmentExamsLanding = ({ initialExams = [], initialError = '', seo }) =
     if (!exams.length && !initialError) fetchExams();
   }, [exams.length, fetchExams, initialError]);
 
-  const filteredExams = useMemo(() => {
-    let list = exams;
-    if (activeFilter !== 'all') {
-      list = list.filter(e => e.category?.type?.toLowerCase() === activeFilter.toLowerCase());
-    }
-    if (searchQuery.trim()) {
-      const q = searchQuery.trim().toLowerCase();
-      list = list.filter(e =>
-        e.name?.toLowerCase().includes(q) ||
-        e.code?.toLowerCase().includes(q) ||
-        e.category?.name?.toLowerCase().includes(q)
-      );
-    }
-    return list;
-  }, [exams, activeFilter, searchQuery]);
+  // Search and Central/State filter run on the server. With neither active we show the
+  // SSR/target-exam list as is; otherwise the API returns the matching exams.
+  const [serverExams, setServerExams] = useState(null);
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearch(searchQuery.trim()), 350);
+    return () => clearTimeout(t);
+  }, [searchQuery]);
+  useEffect(() => {
+    if (!debouncedSearch && activeFilter === 'all') { setServerExams(null); return; }
+    let alive = true;
+    API.getAllExams({ forUser: true, search: debouncedSearch || undefined, type: activeFilter, limit: 100 })
+      .then((res) => { if (alive && res?.success) setServerExams(res.data || []); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [debouncedSearch, activeFilter, targetVersion]);
+  const filteredExams = serverExams ?? exams;
 
   const filters = [
     { id: 'all', label: 'All', icon: Sparkles },

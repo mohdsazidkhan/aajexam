@@ -556,6 +556,8 @@ const LeaderboardPage = () => {
                 />
               ))}
 
+              <p className="pt-3 text-center text-[10px] sm:text-xs font-bold text-content-muted">{translate('Ranked pool is capped at the top 1000 players.')}</p>
+
               {/* Pagination */}
               <div className="pt-4"><Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} itemsPerPage={ROWS_PER_PAGE} onItemsPerPageChange={(n) => { setPageSize(n); setPage(1); }} itemsPerPageOptions={PUBLIC_PAGE_SIZE_OPTIONS} totalItems={data.length} sticky={false} /></div>
             </motion.div>

@@ -4,6 +4,9 @@ import User from '@/models/User';
 import { sendBrevoEmail } from '@/utils/email';
 
 // GET - Send Inactivity Reminders (Triggered by Vercel Cron)
+// One run never mails more than this (Brevo's daily quota); keeps the run short as the user base grows.
+const MAX_PER_RUN = 280;
+
 export async function GET(req) {
     try {
         // Vercel Cron Authentication
@@ -30,7 +33,7 @@ export async function GET(req) {
                 $lte: sevenDaysAgoEnd
             },
             email: { $exists: true, $ne: null }
-        }).select('name email').lean();
+        }).select('name email').sort({ _id: 1 }).limit(MAX_PER_RUN).lean();
 
         let emailsSent = 0;
 

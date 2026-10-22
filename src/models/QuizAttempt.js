@@ -28,5 +28,6 @@ quizAttemptSchema.index({ user: 1, quiz: 1 });
 quizAttemptSchema.index({ quiz: 1, status: 1, score: -1 });
 quizAttemptSchema.index({ user: 1, status: 1, createdAt: -1 });
 quizAttemptSchema.index({ quiz: 1, status: 1, score: -1, totalTime: 1 });
+quizAttemptSchema.index({ status: 1, createdAt: -1 }); // leaderboard periods, last-30-days stats
 
 export default mongoose.models.QuizAttempt || mongoose.model('QuizAttempt', quizAttemptSchema);

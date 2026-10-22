@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import dbConnect from '@/lib/db';
 import UserTestAttempt from '@/models/UserTestAttempt';
 import PracticeTest from '@/models/PracticeTest'; // Needed for populate
@@ -15,39 +16,23 @@ export async function GET(req) {
             return NextResponse.json({ message: auth.message }, { status: 401 });
         }
 
-        // Fetch all completed test attempts for the user
-        // Populate the chain to reach the Exam's slug
-        const attempts = await UserTestAttempt.find({ user: auth.user.id, status: 'Completed' })
-            .populate({
-                path: 'practiceTest',
-                match: { isPYQ: true }, // Only keep attempts that are PYQs
-                select: 'examPattern',
-                populate: {
-                    path: 'examPattern',
-                    select: 'exam',
-                    populate: {
-                        path: 'exam',
-                        select: 'slug'
-                    }
-                }
-            })
-            .lean();
+        // Count per exam slug inside the DB instead of loading + populating every attempt.
+        const rows = await UserTestAttempt.aggregate([
+            { $match: { user: new mongoose.Types.ObjectId(auth.user.id), status: 'Completed' } },
+            { $group: { _id: '$practiceTest', n: { $sum: 1 } } },
+            { $lookup: { from: 'practicetests', localField: '_id', foreignField: '_id', as: 'pt' } },
+            { $unwind: '$pt' },
+            { $match: { 'pt.isPYQ': true } },
+            { $lookup: { from: 'exampatterns', localField: 'pt.examPattern', foreignField: '_id', as: 'pat' } },
+            { $unwind: '$pat' },
+            { $lookup: { from: 'exams', localField: 'pat.exam', foreignField: '_id', as: 'ex' } },
+            { $unwind: '$ex' },
+            { $match: { 'ex.slug': { $exists: true, $ne: null } } },
+            { $group: { _id: '$ex.slug', count: { $sum: '$n' } } },
+        ]);
 
-        // Calculate progress mapping: { 'ssc-cgl': 4, 'ssc-chsl': 1 }
-        const progressMap = {};
-        
-        attempts.forEach(att => {
-            if (
-                att.practiceTest && 
-                att.practiceTest.examPattern && 
-                att.practiceTest.examPattern.exam && 
-                att.practiceTest.examPattern.exam.slug
-            ) {
-                const slug = att.practiceTest.examPattern.exam.slug;
-                if (!progressMap[slug]) progressMap[slug] = 0;
-                progressMap[slug]++;
-            }
-        });
+        // { 'ssc-cgl': 4, 'ssc-chsl': 1 }
+        const progressMap = Object.fromEntries(rows.map(r => [r._id, r.count]));
 
         return NextResponse.json({
             success: true,

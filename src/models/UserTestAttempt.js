@@ -25,5 +25,7 @@ userTestAttemptSchema.index({ user: 1, practiceTest: 1 });
 userTestAttemptSchema.index({ practiceTest: 1, score: -1 });
 userTestAttemptSchema.index({ practiceTest: 1, status: 1 });
 userTestAttemptSchema.index({ practiceTest: 1, status: 1, score: -1, totalTime: 1 });
+userTestAttemptSchema.index({ user: 1, status: 1, submittedAt: -1 }); // attempt history / pyq-progress
+userTestAttemptSchema.index({ status: 1, createdAt: -1 }); // leaderboard periods, last-30-days stats
 
 export default mongoose.models.UserTestAttempt || mongoose.model('UserTestAttempt', userTestAttemptSchema);

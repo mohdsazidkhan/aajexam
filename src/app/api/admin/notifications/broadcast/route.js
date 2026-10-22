@@ -35,32 +35,45 @@ export async function POST(req) {
             query._id = { $in: userIds };
         }
 
-        const users = await User.find(query).select(target === 'users' ? '_id name email' : '_id').lean();
-
         const finalTitle = trimmedTitle.slice(0, 200);
         const finalDescription = trimmedDescription.slice(0, 500);
 
-        if (users.length > 0) {
-            const docs = users.map((u) => ({
+        // Stream recipients and insert in batches so a broadcast to millions of students
+        // never holds the whole user list (or one giant insertMany) in memory.
+        const BATCH = 1000;
+        let count = 0;
+        let batch = [];
+        const flush = async () => {
+            if (!batch.length) return;
+            await Notification.insertMany(batch, { ordered: false });
+            batch = [];
+        };
+        const named = [];
+        const cursor = User.find(query).select(target === 'users' ? '_id name email' : '_id').lean().cursor({ batchSize: BATCH });
+        for await (const u of cursor) {
+            count++;
+            if (target === 'users' && named.length < 1000) named.push({ userId: u._id, name: u.name, email: u.email });
+            batch.push({
                 userId: u._id,
                 type: 'announcement',
                 title: finalTitle,
                 description: finalDescription,
                 meta: { sentBy: auth.user._id, target }
-            }));
-            await Notification.insertMany(docs, { ordered: false });
+            });
+            if (batch.length >= BATCH) await flush();
         }
+        await flush();
 
         await Announcement.create({
             title: finalTitle,
             description: finalDescription,
             target,
-            recipientCount: users.length,
-            recipients: target === 'users' ? users.map((u) => ({ userId: u._id, name: u.name, email: u.email })) : [],
+            recipientCount: count,
+            recipients: named,
             sentBy: auth.user._id
         });
 
-        return NextResponse.json({ success: true, count: users.length });
+        return NextResponse.json({ success: true, count });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

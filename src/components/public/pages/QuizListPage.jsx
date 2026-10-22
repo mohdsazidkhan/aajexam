@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import {
@@ -72,10 +72,17 @@ const QuizListPage = ({ initialQuizzes = [] } = {}) => {
   const [totalCount, setTotalCount] = useState(0);
   const targetVersion = useTargetExamsVersion();
 
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearch(search.trim()), 350);
+    return () => clearTimeout(t);
+  }, [search]);
+
   useEffect(() => {
     setLoading(true);
     const params = { page, limit: pageSize };
     if (activeFilter !== 'all') params.difficulty = activeFilter;
+    if (debouncedSearch) params.search = debouncedSearch;
     API.getQuizzes(params).then(res => {
       if (res.success) {
         setQuizzes(res.data || []);
@@ -83,14 +90,14 @@ const QuizListPage = ({ initialQuizzes = [] } = {}) => {
         setTotalCount(res.pagination?.total || res.data?.length || 0);
       }
     }).finally(() => setLoading(false));
-  }, [page, pageSize, activeFilter, targetVersion]);
+  }, [page, pageSize, activeFilter, debouncedSearch, targetVersion]);
 
   // Difficulty is now filtered server-side (see effect above) — switching
   // tabs must restart from page 1, since the old page number may not exist
   // in the newly-filtered result set.
   useEffect(() => {
     setPage(1);
-  }, [activeFilter]);
+  }, [activeFilter, debouncedSearch]);
 
   const filters = [
     { id: 'all', label: 'All', icon: Sparkles },
@@ -99,18 +106,8 @@ const QuizListPage = ({ initialQuizzes = [] } = {}) => {
     { id: 'hard', label: 'Hard', icon: Star },
   ];
 
-  const filtered = useMemo(() => {
-    let list = quizzes;
-    if (search.trim()) {
-      const q = search.trim().toLowerCase();
-      list = list.filter(qu =>
-        qu.title?.toLowerCase().includes(q) ||
-        qu.subject?.name?.toLowerCase().includes(q) ||
-        qu.topic?.name?.toLowerCase().includes(q)
-      );
-    }
-    return list;
-  }, [quizzes, activeFilter, search]);
+  // Search + difficulty filter + paging are applied by the API.
+  const filtered = quizzes;
 
   if (loading && page === 1 && quizzes.length === 0) return <QuizListSkeleton />;
 

@@ -5,6 +5,7 @@ import Subject from '@/models/Subject';
 import Topic from '@/models/Topic';
 import Exam from '@/models/Exam';
 import { parseExamIds } from '@/lib/utils/targetExams';
+import { parsePaging, escapeRegex } from '@/lib/utils/pagination';
 
 // GET - public: list published quizzes with filters
 export async function GET(req) {
@@ -17,8 +18,7 @@ export async function GET(req) {
         const topic = searchParams.get('topic');
         const type = searchParams.get('type');
         const difficulty = searchParams.get('difficulty');
-        const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const { page, limit, search } = parsePaging(searchParams, { defaultLimit: 20, maxLimit: 100, legacyCap: 20 });
 
         const filter = { status: 'published' };
         const examIds = parseExamIds(searchParams.get('examIds'));
@@ -28,6 +28,19 @@ export async function GET(req) {
         if (topic) filter.topic = topic;
         if (type) filter.type = type;
         if (difficulty) filter.difficulty = difficulty;
+        if (search) {
+            // title, or the quiz's subject / topic name
+            const rx = new RegExp(escapeRegex(search), 'i');
+            const [subjIds, topicIds] = await Promise.all([
+                Subject.find({ name: rx }).select('_id').limit(100).lean(),
+                Topic.find({ name: rx }).select('_id').limit(200).lean(),
+            ]);
+            filter.$or = [
+                { title: rx },
+                ...(subjIds.length ? [{ subject: { $in: subjIds.map(x => x._id) } }] : []),
+                ...(topicIds.length ? [{ topic: { $in: topicIds.map(x => x._id) } }] : []),
+            ];
+        }
 
         let [quizzes, total] = await Promise.all([
             Quiz.find(filter)

@@ -37,6 +37,7 @@ const PaymentTransactions = () => {
         year: filters.year,
         type: filters.type !== 'all' ? filters.type : undefined,
         status: filters.status !== 'all' ? filters.status : undefined,
+        search: debouncedSearch || undefined,
         page: filters.page,
         limit: filters.limit
       });
@@ -67,9 +68,19 @@ const PaymentTransactions = () => {
     }
   };
 
+  // Search is applied by the API; debounce so each keystroke isn't a request.
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setDebouncedSearch(searchTerm.trim());
+      setFilters(prev => (prev.page === 1 ? prev : { ...prev, page: 1 }));
+    }, 400);
+    return () => clearTimeout(t);
+  }, [searchTerm]);
+
   useEffect(() => {
     fetchTransactions();
-  }, [filters]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [filters, debouncedSearch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     fetchFilterOptions();
@@ -174,20 +185,8 @@ const PaymentTransactions = () => {
     return 'text-gray-600 dark:text-gray-400';
   };
 
-  // Filter transactions based on search term (PaymentOrder fields only)
-  const filteredTransactions = transactions.filter(transaction => {
-    if (!searchTerm) return true;
-    const searchLower = searchTerm.toLowerCase();
-    return (
-      transaction.paymentDesc?.toLowerCase().includes(searchLower) ||
-      transaction.orderId?.toLowerCase().includes(searchLower) ||
-      transaction.transactionId?.toLowerCase().includes(searchLower) ||
-      transaction.paymentId?.toLowerCase().includes(searchLower) ||
-      transaction.subscriptionName?.toLowerCase().includes(searchLower) ||
-      transaction.paymentMethod?.toLowerCase().includes(searchLower) ||
-      transaction.paymentStatus?.toLowerCase().includes(searchLower)
-    );
-  });
+  // Search + filters are applied server-side; the list is already the filtered page.
+  const filteredTransactions = transactions;
 
   const clearFilters = () => {
     setFilters({

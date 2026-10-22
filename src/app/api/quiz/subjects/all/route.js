@@ -5,18 +5,28 @@ import Question from '@/models/Question';
 import Quiz from '@/models/Quiz';
 import Topic from '@/models/Topic';
 import { parseExamIds } from '@/lib/utils/targetExams';
+import { parsePaging, pagingMeta, escapeRegex } from '@/lib/utils/pagination';
 
 export async function GET(req) {
     try {
         await dbConnect();
 
-        const examIds = parseExamIds(new URL(req.url).searchParams.get('examIds'));
-        const subjects = await Subject.find({ isActive: true, ...(examIds.length ? { exams: { $in: examIds } } : {}) })
-            .sort({ order: 1, name: 1 })
-            .lean();
+        const { searchParams } = new URL(req.url);
+        const examIds = parseExamIds(searchParams.get('examIds'));
+        const paging = parsePaging(searchParams, { defaultLimit: 24, maxLimit: 100, legacyCap: 2000 });
+        const filter = { isActive: true, ...(examIds.length ? { exams: { $in: examIds } } : {}) };
+        if (paging.search) filter.name = new RegExp(escapeRegex(paging.search), 'i');
+        const has = searchParams.get('has'); // 'quiz' | 'topic' -> only subjects that have quizzes / topics
+        if (has === 'quiz') filter._id = { $in: await Quiz.distinct('subject', { status: 'published' }) };
+        else if (has === 'topic') filter._id = { $in: await Topic.distinct('subject', { isActive: true }) };
+
+        const [subjects, totalCount] = await Promise.all([
+            Subject.find(filter).sort({ order: 1, name: 1 }).skip(paging.skip).limit(paging.limit).lean(),
+            paging.paged ? Subject.countDocuments(filter) : Promise.resolve(0),
+        ]);
 
         const subjectIds = subjects.map(s => s._id);
-        if (!subjectIds.length) return NextResponse.json({ success: true, data: [], count: 0 });
+        if (!subjectIds.length) return NextResponse.json({ success: true, data: [], count: 0, ...(paging.paged ? { pagination: pagingMeta(paging, totalCount) } : {}) });
 
         const [quizCounts, questionCounts, topicCounts] = await Promise.all([
             Quiz.aggregate([
@@ -44,7 +54,7 @@ export async function GET(req) {
             topicCount: topicMap[s._id.toString()] || 0,
         }));
 
-        return NextResponse.json({ success: true, data, count: data.length });
+        return NextResponse.json({ success: true, data, count: data.length, ...(paging.paged ? { pagination: pagingMeta(paging, totalCount) } : {}) });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

@@ -28,6 +28,8 @@ const paymentOrderSchema = new mongoose.Schema({
   refundReason: { type: String }
 }, { timestamps: true });
 
+paymentOrderSchema.index({ user: 1, createdAt: -1 });
+
 const PaymentOrder = mongoose.models.PaymentOrder || mongoose.model('PaymentOrder', paymentOrderSchema);
 export default PaymentOrder;
 

@@ -3,6 +3,7 @@ import dbConnect from '@/lib/db';
 import User from '@/models/User';
 import Follow from '@/models/Follow';
 import { protect } from '@/middleware/auth';
+import { parsePaging } from '@/lib/utils/pagination';
 
 export async function GET(req, { params }) {
     try {
@@ -17,9 +18,7 @@ export async function GET(req, { params }) {
         // Ensure parameters are resolved
         const { id: userId } = await params;
         const { searchParams } = new URL(req.url);
-        const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
-        const skip = (page - 1) * limit;
+        const { page, limit, skip } = parsePaging(searchParams, { defaultLimit: 20, maxLimit: 100, legacyCap: 20 });
 
         // We implement getMutualFollowers in-line if the static method isn't fully ported to aajexam yet
         // Mutual strategy: users that I follow, who also follow me (this is getMutualFollowers(currentUserId))
@@ -35,16 +34,17 @@ export async function GET(req, { params }) {
                 Follow.find({ following: currentUserId, status: 'active' }).distinct('follower')
             ]);
 
-            const followingStrs = following.map(id => id.toString());
-            const followersStrs = followers.map(id => id.toString());
-
-            mutualIds = followingStrs.filter(id => followersStrs.includes(id));
+            const followersSet = new Set(followers.map(id => id.toString()));
+            mutualIds = following.map(id => id.toString()).filter(id => followersSet.has(id));
         }
 
-        const targetFollowerIds = await Follow.find({ following: userId }).select('follower').lean();
-        const targetFollowerIdStrings = targetFollowerIds.map(f => f.follower.toString());
+        // Only check the candidates against the target's followers (indexed $in), not the target's whole follower list.
+        const targetFollowerIds = mutualIds.length
+            ? await Follow.find({ following: userId, follower: { $in: mutualIds } }).select('follower').lean()
+            : [];
+        const targetFollowerSet = new Set(targetFollowerIds.map(f => f.follower.toString()));
 
-        const mutual = mutualIds.filter(id => targetFollowerIdStrings.includes(id.toString()));
+        const mutual = mutualIds.filter(id => targetFollowerSet.has(id.toString()));
         const total = mutual.length;
         const pagedMutualIds = mutual.slice(skip, skip + limit);
 

@@ -6,6 +6,7 @@ import ExamPattern from '@/models/ExamPattern';
 import Exam from '@/models/Exam';
 import ExamCategory from '@/models/ExamCategory';
 import { protect } from '@/middleware/auth';
+import { parsePaging, escapeRegex } from '@/lib/utils/pagination';
 
 export async function GET(req) {
     try {
@@ -14,31 +15,41 @@ export async function GET(req) {
         if (!auth.authenticated) return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
 
         const { searchParams } = new URL(req.url);
-        const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
-        const skip = (page - 1) * limit;
-        const search = searchParams.get('search') || '';
+        const { page, limit, skip, search } = parsePaging(searchParams, { defaultLimit: 20, maxLimit: 100, legacyCap: 20 });
 
-        let allAttempts = await UserTestAttempt.find({ user: auth.user.id, status: 'Completed' })
-            .populate({
-                path: 'practiceTest',
-                select: 'title totalMarks duration',
-                populate: { path: 'examPattern', select: 'title', populate: { path: 'exam', select: 'name', populate: { path: 'category', select: 'name type' } } }
-            })
-            .sort({ submittedAt: -1 }).lean();
+        const filter = { user: auth.user.id, status: 'Completed' };
 
+        // Search runs in the DB: resolve matching tests (title / pattern / exam / category)
+        // first, then restrict the attempts to those tests instead of loading every attempt.
         if (search) {
-            const s = search.toLowerCase();
-            allAttempts = allAttempts.filter(a =>
-                a.practiceTest?.title?.toLowerCase().includes(s) ||
-                a.practiceTest?.examPattern?.title?.toLowerCase().includes(s) ||
-                a.practiceTest?.examPattern?.exam?.name?.toLowerCase().includes(s) ||
-                a.practiceTest?.examPattern?.exam?.category?.name?.toLowerCase().includes(s)
-            );
+            const rx = new RegExp(escapeRegex(search), 'i');
+            const [cats, exams0] = await Promise.all([
+                ExamCategory.find({ name: rx }).select('_id').limit(50).lean(),
+                Exam.find({ name: rx }).select('_id').limit(200).lean(),
+            ]);
+            const catExams = cats.length ? await Exam.find({ category: { $in: cats.map(c => c._id) } }).select('_id').limit(500).lean() : [];
+            const examIds = [...exams0, ...catExams].map(e => e._id);
+            const patterns = await ExamPattern.find({ $or: [{ title: rx }, ...(examIds.length ? [{ exam: { $in: examIds } }] : [])] }).select('_id').limit(1000).lean();
+            const tests = await PracticeTest.find({ $or: [{ title: rx }, ...(patterns.length ? [{ examPattern: { $in: patterns.map(p => p._id) } }] : [])] }).select('_id').limit(5000).lean();
+            filter.practiceTest = { $in: tests.map(t => t._id) };
         }
 
-        const total = allAttempts.length;
-        const attempts = allAttempts.slice(skip, skip + limit).map(a => ({
+        const [total, pageDocs] = await Promise.all([
+            UserTestAttempt.countDocuments(filter),
+            UserTestAttempt.find(filter)
+                .select('-answers')
+                .populate({
+                    path: 'practiceTest',
+                    select: 'title totalMarks duration',
+                    populate: { path: 'examPattern', select: 'title', populate: { path: 'exam', select: 'name', populate: { path: 'category', select: 'name type' } } }
+                })
+                .sort({ submittedAt: -1, _id: -1 })
+                .skip(skip)
+                .limit(limit)
+                .lean(),
+        ]);
+
+        const attempts = pageDocs.map(a => ({
             _id: a._id,
             testTitle: a.practiceTest?.title || 'Unknown',
             examName: a.practiceTest?.examPattern?.exam?.name || 'Unknown',
