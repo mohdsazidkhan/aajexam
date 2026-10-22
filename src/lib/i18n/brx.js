@@ -2008,6 +2008,8 @@ const BODO = {
   'Your score': 'नोंनि स्कोर',
   'Your mobile number': 'नोंनि मोबाइल नम्बर',
   'Ranked pool is capped at the top 1000 players.': 'रैंकिं बिबां 1000 खेलायारि सोमजों सिमांनायनाय।',
+  'Top 1000 students ranking based on total time spent': 'फुरायनाय समयनि गोनां 1000 सिख्लायारिनि रैंकिं',
+  'Top {percent}% of {total} ranked students': '{total} रैंक खालामनाय सिख्लायारिनि गेजेरजों गोजौ {percent}%',
 };
 
 export default BODO;

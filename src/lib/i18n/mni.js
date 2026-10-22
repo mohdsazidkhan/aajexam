@@ -2008,6 +2008,8 @@ const MANIPURI = {
   'Your score': 'ꯅꯪꯒꯤ ꯁ꯭ꯀꯣꯔ',
   'Your mobile number': 'ꯅꯪꯒꯤ ꯃꯣꯕꯥꯏꯜ ꯅꯝꯕꯔ',
   'Ranked pool is capped at the top 1000 players.': 'ꯔꯦꯟꯀꯤꯡ ꯑꯁꯤ ꯊꯥꯗꯣꯀꯄꯥ 1000 ꯐꯥꯎꯕꯥ ꯃꯤꯑꯣꯏꯁꯤꯡꯗꯥ ꯈꯛꯇꯥ ꯆꯦꯛꯁꯤꯟꯅꯕꯥ ꯂꯩ꯫',
+  'Top 1000 students ranking based on total time spent': 'ꯃꯄꯨꯡ ꯆꯥꯕꯥ ꯃꯇꯝꯒꯤ ꯃꯇꯦꯡꯗꯥ ꯊꯥꯗꯣꯀꯄꯥ 1000 ꯁ꯭ꯇꯨꯗꯦꯟꯇꯁꯤꯡꯒꯤ ꯔꯦꯟꯀꯤꯡ꯫',
+  'Top {percent}% of {total} ranked students': 'ꯔꯦꯟꯀ ꯐꯪꯈꯤꯕꯥ ꯁ꯭ꯇꯨꯗꯦꯟꯇ {total} ꯒꯤ ꯃꯅꯨꯡꯗꯥ ꯊꯥꯗꯣꯛꯄꯥ {percent}%',
 };
 
 export default MANIPURI;

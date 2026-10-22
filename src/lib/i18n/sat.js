@@ -2008,6 +2008,8 @@ const SAT = {
   'Your score': 'ᱟᱢᱟᱜ ᱥᱠᱳᱨ',
   'Your mobile number': 'ᱟᱢᱟᱜ ᱢᱚᱵᱟᱭᱤᱞ ᱱᱚᱢᱵᱚᱨ',
   'Ranked pool is capped at the top 1000 players.': 'ᱨᱮᱱᱠᱤᱝ ᱫᱚ ᱪᱮᱛᱟᱱ ᱑᱐᱐᱐ ᱠᱷᱮᱞᱚᱢᱤᱭᱟᱹ ᱠᱷᱚᱱ ᱵᱟᱹᱲᱛᱤ ᱵᱟᱝ ᱠᱟᱱᱟ᱾',
+  'Top 1000 students ranking based on total time spent': 'ᱥᱚᱵ ᱠᱷᱟᱛᱟ ᱥᱚᱢᱚᱭ ᱪᱮᱛᱟᱱ ᱑᱐᱐᱐ ᱵᱤᱫᱮᱥᱤ ᱠᱚᱨᱮᱭᱟᱜ ᱨᱮᱱᱠᱤᱝ᱾',
+  'Top {percent}% of {total} ranked students': '{total} ᱨᱮᱱᱠ ᱞᱮᱱ ᱵᱤᱫᱮᱥᱤ ᱛᱮ ᱪᱮᱛᱟᱱ {percent}%',
 };
 
 export default SAT;

@@ -2034,6 +2034,8 @@ const PA = {
   'Everything in Unlimited FREE': 'ਅਨਲਿਮਿਟਿਡ ਵਿੱਚ ਸਭ ਕੁਝ ਮੁਫ਼ਤ',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ਹੁਣ ਮੁਫ਼ਤ! ਸਭ ਕੁਝ 31 ਦਸੰਬਰ 2026 ਤੱਕ ਮੁਫ਼ਤ।',
   'Ranked pool is capped at the top 1000 players.': 'ਰੈਂਕਿੰਗ ਸਿਰਫ਼ ਚੋਟੀ ਦੇ 1000 ਖਿਡਾਰੀਆਂ ਤੱਕ ਸੀਮਿਤ ਹੈ।',
+  'Top 1000 students ranking based on total time spent': 'ਕੁੱਲ ਬਿਤਾਏ ਸਮੇਂ ਦੇ ਆਧਾਰ ਤੇ ਚੋਟੀ ਦੇ 1000 ਵਿਦਿਆਰਥੀਆਂ ਦੀ ਰੈਂਕਿੰਗ',
+  'Top {percent}% of {total} ranked students': '{total} ਰੈਂਕ ਵਾਲੇ ਵਿਦਿਆਰਥੀਆਂ ਵਿੱਚੋਂ ਚੋਟੀ ਦੇ {percent}%',
 };
 
 export default PA;

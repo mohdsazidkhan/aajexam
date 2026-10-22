@@ -2034,6 +2034,8 @@ const SA = {
   'Everything in Unlimited FREE': 'अनलिमिटेड्-मध्ये सर्वं निःशुल्कम्',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO अधुना निःशुल्कम्! सर्वं ३१ दिसम्बर २०२६ पर्यन्तं निःशुल्कम्।',
   'Ranked pool is capped at the top 1000 players.': 'क्रमाङ्कनं केवलं प्रथमेषु १००० क्रीडकेषु सीमितम् अस्ति।',
+  'Top 1000 students ranking based on total time spent': 'कुलव्ययितसमयाधारेण प्रथमानां १००० छात्राणां क्रमाङ्कनम्',
+  'Top {percent}% of {total} ranked students': '{total} क्रमाङ्कितेषु छात्रेषु प्रथमाः {percent}%',
 };
 
 export default SA;

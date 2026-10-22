@@ -2055,6 +2055,8 @@ const HI = {
   'Everything in Unlimited FREE': 'अनलिमिटेड में सब कुछ मुफ़्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO अब मुफ़्त है! सब कुछ 31 दिसंबर 2026 तक मुफ़्त।',
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग केवल शीर्ष 1000 खिलाड़ियों तक सीमित है।',
+  'Top 1000 students ranking based on total time spent': 'कुल बिताए गए समय के आधार पर शीर्ष 1000 छात्रों की रैंकिंग',
+  'Top {percent}% of {total} ranked students': 'शीर्ष {percent}% — कुल {total} रैंक किए गए छात्रों में',
 };
 
 export default HI;

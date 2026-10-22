@@ -2034,6 +2034,8 @@ const GU = {
   'Everything in Unlimited FREE': 'અનલિમિટેડમાં બધું જ મફત',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO હવે મફત! બધું ૩૧ ડિસેમ્બર ૨૦૨૬ સુધી મફત.',
   'Ranked pool is capped at the top 1000 players.': 'રેન્કિંગ ફક્ત ટોચના 1000 ખેલાડીઓ સુધી મર્યાદિત છે.',
+  'Top 1000 students ranking based on total time spent': 'કુલ વિતાવેલા સમયના આધારે ટોચના 1000 વિદ્યાર્થીઓનું રેન્કિંગ',
+  'Top {percent}% of {total} ranked students': '{total} રેન્ક્ડ વિદ્યાર્થીઓમાં ટોચના {percent}%',
 };
 
 export default GU;

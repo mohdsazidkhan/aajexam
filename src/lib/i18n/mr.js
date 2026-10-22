@@ -2034,6 +2034,8 @@ const MR = {
   'Everything in Unlimited FREE': 'अनलिमिटेडमधील सर्वकाही मोफत',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO आता मोफत! सर्वकाही ३१ डिसेंबर २०२६ पर्यंत मोफत.',
   'Ranked pool is capped at the top 1000 players.': 'रँकिंग फक्त पहिल्या 1000 खेळाडूंपुरती मर्यादित आहे.',
+  'Top 1000 students ranking based on total time spent': 'एकूण घालवलेल्या वेळेनुसार पहिल्या 1000 विद्यार्थ्यांची रँकिंग',
+  'Top {percent}% of {total} ranked students': '{total} रँक मिळवलेल्या विद्यार्थ्यांमध्ये पहिले {percent}%',
 };
 
 export default MR;

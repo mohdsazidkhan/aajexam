@@ -2034,6 +2034,8 @@ const OR_ = {
   'Everything in Unlimited FREE': 'ଅନଲିମିଟେଡ୍‌ର ସବୁକିଛି ମାଗଣା',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ଏବେ ମାଗଣା! ସବୁକିଛି ୩୧ ଡିସେମ୍ବର ୨୦୨୬ ପର୍ଯ୍ୟନ୍ତ ମାଗଣା।',
   'Ranked pool is capped at the top 1000 players.': 'ର‍୍ୟାଙ୍କିଂ କେବଳ ଶୀର୍ଷ ୧୦୦୦ ଖେଳାଳି ପର୍ଯ୍ୟନ୍ତ ସୀମିତ।',
+  'Top 1000 students ranking based on total time spent': 'ମୋଟ ବିତାଇଥିବା ସମୟ ଆଧାରରେ ଶୀର୍ଷ ୧୦୦୦ ଛାତ୍ରଛାତ୍ରୀଙ୍କ ର‍୍ୟାଙ୍କିଂ',
+  'Top {percent}% of {total} ranked students': '{total} ର‍୍ୟାଙ୍କ୍ ପାଇଥିବା ଛାତ୍ରଛାତ୍ରୀଙ୍କ ମଧ୍ୟରେ ଶୀର୍ଷ {percent}%',
 };
 
 export default OR_;

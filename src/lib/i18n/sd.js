@@ -2034,6 +2034,8 @@ const SD = {
   'Everything in Unlimited FREE': 'अनलिमिटेड में सभु कुझ मुफ़्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO हाणे मुफ़्त! सभु कुझ 31 डिसेम्बर 2026 ताईं मुफ़्त।',
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग फ़क़त मथांहें 1000 रांदीगरनि तां सीमित आहे.',
+  'Top 1000 students ranking based on total time spent': 'कुल गुज़ारियल वक़्त जे आधार ते मथांहें 1000 विद्यार्थियुनि जी रैंकिंग',
+  'Top {percent}% of {total} ranked students': '{total} रैंक वारा विद्यार्थियुनि मां मथांहें {percent}%',
 };
 
 export default SD;

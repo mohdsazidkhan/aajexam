@@ -2034,6 +2034,8 @@ const TA = {
   'Everything in Unlimited FREE': 'அன்லிமிடெட்டில் அனைத்தும் இலவசம்',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO இப்போது இலவசம்! அனைத்தும் 31 டிசம்பர் 2026 வரை இலவசம்.',
   'Ranked pool is capped at the top 1000 players.': 'தரவரிசை முதல் 1000 வீரர்களுக்கு மட்டுமே வரையறுக்கப்பட்டுள்ளது.',
+  'Top 1000 students ranking based on total time spent': 'மொத்தமாக செலவிட்ட நேரத்தின் அடிப்படையில் முதல் 1000 மாணவர்களின் தரவரிசை',
+  'Top {percent}% of {total} ranked students': '{total} தரவரிசை பெற்ற மாணவர்களில் முதல் {percent}%',
 };
 
 export default TA;

@@ -2034,6 +2034,8 @@ const KN = {
   'Everything in Unlimited FREE': 'ಅನ್‌ಲಿಮಿಟೆಡ್‌ನಲ್ಲಿರುವ ಎಲ್ಲವೂ ಉಚಿತ',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ಈಗ ಉಚಿತ! ಎಲ್ಲವೂ 31 ಡಿಸೆಂಬರ್ 2026ರವರೆಗೆ ಉಚಿತ.',
   'Ranked pool is capped at the top 1000 players.': 'ರ‍್ಯಾಂಕಿಂಗ್ ಕೇವಲ ಅಗ್ರ 1000 ಆಟಗಾರರಿಗೆ ಸೀಮಿತವಾಗಿದೆ.',
+  'Top 1000 students ranking based on total time spent': 'ಒಟ್ಟು ಕಳೆದ ಸಮಯದ ಆಧಾರದ ಮೇಲೆ ಅಗ್ರ 1000 ವಿದ್ಯಾರ್ಥಿಗಳ ರ‍್ಯಾಂಕಿಂಗ್',
+  'Top {percent}% of {total} ranked students': '{total} ರ‍್ಯಾಂಕ್ ಪಡೆದ ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ಅಗ್ರ {percent}%',
 };
 
 export default KN;

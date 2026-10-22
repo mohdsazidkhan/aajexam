@@ -2043,6 +2043,8 @@ const HINGLISH = {
   'Everything in Unlimited FREE': 'Unlimited me sab kuch FREE',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO ab FREE hai! Sab kuch 31 Dec 2026 tak FREE.',
   'Ranked pool is capped at the top 1000 players.': 'Ranking sirf top 1000 players tak limited hai.',
+  'Top 1000 students ranking based on total time spent': 'Total time spent ke aadhar par top 1000 students ki ranking',
+  'Top {percent}% of {total} ranked students': '{total} ranked students me top {percent}%',
 };
 
 export default HINGLISH;

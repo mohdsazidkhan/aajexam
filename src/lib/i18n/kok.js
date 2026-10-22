@@ -2034,6 +2034,8 @@ const KOK = {
   'Everything in Unlimited FREE': 'अनलिमिटेडांतलें सगळें मोफत',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO आतां मोफत! सगळें ३१ डिसेंबर २०२६ मेरेन मोफत.',
   'Ranked pool is capped at the top 1000 players.': 'रँकिंग फकत वयल्या 1000 खेळगड्यां मेरेन मर्यादित आसा.',
+  'Top 1000 students ranking based on total time spent': 'एकूण घालयिल्या वेळाच्या आधारान वयल्या 1000 विद्यार्थ्यांची रँकिंग',
+  'Top {percent}% of {total} ranked students': '{total} रँक मेळिल्ल्या विद्यार्थ्यांमदीं वयले {percent}%',
 };
 
 export default KOK;

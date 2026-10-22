@@ -2034,6 +2034,8 @@ const KS = {
   'Everything in Unlimited FREE': 'ان لمیٹڈ منز سب کانہہ مفت',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO چھُ ہُنہ مفت! سب کانہہ 31 دسمبر 2026 تام مفت۔',
   'Ranked pool is capped at the top 1000 players.': 'رینکنگ چھُ صرف ٹاپ 1000 کھیلنہ وٲلین تام محدود۔',
+  'Top 1000 students ranking based on total time spent': 'کل گژھرومت وقتکی بنیادس پیٹھ ٹاپ 1000 طالب علمن ہند رینکنگ',
+  'Top {percent}% of {total} ranked students': '{total} رینک شدہ طالب علمن منز ٹاپ {percent}%',
 };
 
 export default KS;

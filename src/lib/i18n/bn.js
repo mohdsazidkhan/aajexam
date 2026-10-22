@@ -2034,6 +2034,8 @@ const BN = {
   'Everything in Unlimited FREE': 'আনলিমিটেডের সবকিছু ফ্রি',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO এখন ফ্রি! সবকিছু ৩১ ডিসেম্বর ২০২৬ পর্যন্ত ফ্রি।',
   'Ranked pool is capped at the top 1000 players.': 'র‍্যাঙ্কিং শুধুমাত্র শীর্ষ ১০০০ খেলোয়াড় পর্যন্ত সীমাবদ্ধ।',
+  'Top 1000 students ranking based on total time spent': 'মোট ব্যয়িত সময়ের ভিত্তিতে শীর্ষ ১০০০ শিক্ষার্থীর র‍্যাঙ্কিং',
+  'Top {percent}% of {total} ranked students': '{total} জন র‍্যাঙ্কড শিক্ষার্থীর মধ্যে শীর্ষ {percent}%',
 };
 
 export default BN;

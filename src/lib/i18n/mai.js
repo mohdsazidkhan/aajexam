@@ -2034,6 +2034,8 @@ const MAI = {
   'Everything in Unlimited FREE': 'अनलिमिटेडमे सभ किछु मुफ्त',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO आब मुफ्त! सभ किछु ३१ दिसम्बर २०२६ धरि मुफ्त।',
   'Ranked pool is capped at the top 1000 players.': 'रैंकिंग मात्र शीर्ष 1000 खिलाड़ी धरि सीमित अछि।',
+  'Top 1000 students ranking based on total time spent': 'कुल बितायल समयक आधार पर शीर्ष 1000 विद्यार्थीक रैंकिंग',
+  'Top {percent}% of {total} ranked students': '{total} रैंक पओनिहार विद्यार्थीमे शीर्ष {percent}%',
 };
 
 export default MAI;

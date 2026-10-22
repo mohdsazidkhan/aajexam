@@ -2034,6 +2034,8 @@ const NE = {
   'Everything in Unlimited FREE': 'अनलिमिटेडमा सबै कुरा निःशुल्क',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO अब निःशुल्क! सबै कुरा ३१ डिसेम्बर २०२६ सम्म निःशुल्क।',
   'Ranked pool is capped at the top 1000 players.': 'र्याङ्किङ शीर्ष १००० खेलाडीसम्म मात्र सीमित छ।',
+  'Top 1000 students ranking based on total time spent': 'कुल बिताएको समयका आधारमा शीर्ष १००० विद्यार्थीको र्याङ्किङ',
+  'Top {percent}% of {total} ranked students': '{total} र्याङ्क पाएका विद्यार्थीमध्ये शीर्ष {percent}%',
 };
 
 export default NE;

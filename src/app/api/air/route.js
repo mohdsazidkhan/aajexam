@@ -15,7 +15,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const examId = searchParams.get('examId');
-        const limit = Math.min(Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200), 100);
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
 
         const cacheKey = `${examId || 'all'}:${limit}`;
         const useStats = await statsReady();

@@ -2034,6 +2034,8 @@ const AS = {
   'Everything in Unlimited FREE': 'আনলিমিটেডৰ সকলোবোৰ বিনামূলীয়া',
   'AajExam PRO is FREE now. Everything is FREE till 31 Dec 2026.': 'AajExam PRO এতিয়া বিনামূলীয়া! সকলো ৩১ ডিচেম্বৰ ২০২৬ লৈকে বিনামূলীয়া।',
   'Ranked pool is capped at the top 1000 players.': 'ৰেংকিং কেৱল শীৰ্ষ ১০০০ খেলুৱৈলৈ সীমাবদ্ধ।',
+  'Top 1000 students ranking based on total time spent': 'মুঠ ব্যয় কৰা সময়ৰ ভিত্তিত শীৰ্ষ ১০০০ ছাত্ৰ-ছাত্ৰীৰ ৰেংকিং',
+  'Top {percent}% of {total} ranked students': '{total} জন ৰেংক কৰা ছাত্ৰ-ছাত্ৰীৰ ভিতৰত শীৰ্ষ {percent}%',
 };
 
 export default AS;
