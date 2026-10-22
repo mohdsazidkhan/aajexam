@@ -7,7 +7,7 @@ export async function GET(req) {
 	try {
 		await dbConnect();
 		const { searchParams } = new URL(req.url);
-		const limit = parseInt(searchParams.get('limit') || '20');
+		const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
 		// sort=latest returns the newest published reels instead of the 30-day trending set
 		if (searchParams.get('sort') === 'latest') {
 			const latest = await Reel.find({ status: 'published' })

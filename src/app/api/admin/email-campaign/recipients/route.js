@@ -19,7 +19,7 @@ export async function GET(req) {
     }
 
     const page = Math.max(1, parseInt(searchParams.get('page'), 10) || 1);
-    const limit = Math.min(200, Math.max(1, parseInt(searchParams.get('limit'), 10) || 20));
+    const limit = Math.min(200, Math.max(1, Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000)));
     const status = searchParams.get('status');
 
     await dbConnect();

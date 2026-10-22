@@ -13,7 +13,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
 
         const [challenges, total] = await Promise.all([
             DailyChallenge.find().sort({ date: -1 }).skip((page - 1) * limit).limit(limit).lean(),

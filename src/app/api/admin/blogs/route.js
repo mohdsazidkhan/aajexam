@@ -20,7 +20,7 @@ export async function GET(req) {
         const isFeatured = searchParams.get('isFeatured');
         const isPinned = searchParams.get('isPinned');
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
         const skip = (page - 1) * limit;
 
         const query = {};

@@ -150,13 +150,15 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const page = Math.max(1, parseInt(searchParams.get('page')) || 1);
-        const limit = Math.min(250, parseInt(searchParams.get('limit')) || 25);
+        const limit = Math.min(250, Math.min(Math.max(parseInt(searchParams.get('limit')) || 25, 1), 1000));
         const riskFilter = searchParams.get('risk') || 'all'; // all | high | medium | low
         const search = (searchParams.get('search') || '').trim();
 
         // Referrers = anyone who has invited at least one user.
         const referrers = await User.find({ referralCount: { $gt: 0 } })
             .select('name email phone referralCode referredBy referralCount referralRewards walletBalance status createdAt')
+            .sort({ referralCount: -1 })
+            .limit(20000)
             .lean();
 
         const codes = referrers.map(r => r.referralCode).filter(Boolean);

@@ -31,7 +31,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
-        const limit = parseInt(searchParams.get('limit') || '10');
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 10, 1), 1000);
         const fetchCount = page * limit;
 
         const totalUsers = await User.countDocuments({ role: 'student' });

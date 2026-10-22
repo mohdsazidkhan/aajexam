@@ -13,7 +13,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
         const search = searchParams.get('search');
 
         let query = { role: 'student' };
@@ -43,6 +43,7 @@ export async function GET(req) {
             const students = await User.find(query)
                 .select('name email phone username walletBalance role subscriptionStatus referralCode status socialLinks city createdAt')
                 .sort({ createdAt: -1 })
+                .limit(5000)
                 .lean();
 
             return NextResponse.json({ success: true, students });

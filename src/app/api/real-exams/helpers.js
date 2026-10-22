@@ -89,31 +89,35 @@ export function evaluateAnswers(questions, submittedAnswers, sections) {
     return { totalScore: round2(totalScore), correctCount, wrongCount, attemptedCount, accuracy, answerDetails, sectionWiseScore };
 }
 
+// Rank of ONE attempt among the test's completed attempts, computed with two indexed
+// counts. The old version re-sorted and bulk-rewrote every attempt's rank on every
+// submit (O(N) writes per submit), which doesn't survive a popular test with
+// millions of attempts. Ranks of other attempts are not rewritten; the test
+// leaderboard derives live ranks at read time, and a stored rank is "rank at submission".
 export async function recomputeRanksForTest(testId, targetAttemptId = null) {
     try {
-        const allAttempts = await UserTestAttempt.find({ practiceTest: testId, status: 'Completed' })
-            .select('_id score accuracy totalTime submittedAt')
-            .sort({ score: -1, accuracy: -1, totalTime: 1, submittedAt: 1 })
-            .lean();
-        const totalAttempts = allAttempts.length;
-        if (totalAttempts === 0) return { rank: null, percentile: null };
-        const bulkOps = [];
-        let previousMetrics = null, previousRank = null, rankForTarget = { rank: null, percentile: null };
-        allAttempts.forEach((attemptDoc, index) => {
-            const { score: s = 0, accuracy: a = 0, totalTime: t = Infinity } = attemptDoc;
-            let currentRank = index + 1;
-            if (previousMetrics && previousMetrics.score === s && previousMetrics.accuracy === a && previousMetrics.totalTime === t) currentRank = previousRank;
-            const percentileValue = totalAttempts > 1 ? Number((((totalAttempts - currentRank) / (totalAttempts - 1)) * 100).toFixed(2)) : 100;
-            bulkOps.push({ updateOne: { filter: { _id: attemptDoc._id }, update: { $set: { rank: currentRank, percentile: percentileValue } } } });
-            if (targetAttemptId && attemptDoc._id.toString() === targetAttemptId.toString()) rankForTarget = { rank: currentRank, percentile: percentileValue };
-            previousMetrics = { score: s, accuracy: a, totalTime: t };
-            previousRank = currentRank;
-        });
-        if (bulkOps.length > 0) await UserTestAttempt.bulkWrite(bulkOps);
-        if (!targetAttemptId && totalAttempts > 0) rankForTarget = { rank: allAttempts[0].rank ?? 1, percentile: totalAttempts > 1 ? Number((((totalAttempts - 1) / (totalAttempts - 1)) * 100).toFixed(2)) : 100 };
-        return rankForTarget;
+        if (!targetAttemptId) return { rank: null, percentile: null };
+        const target = await UserTestAttempt.findById(targetAttemptId).select('score accuracy totalTime').lean();
+        if (!target) return { rank: null, percentile: null };
+        const { score = 0, accuracy = 0, totalTime = 0 } = target;
+        const base = { practiceTest: testId, status: 'Completed' };
+        const [total, better] = await Promise.all([
+            UserTestAttempt.countDocuments(base),
+            UserTestAttempt.countDocuments({
+                ...base,
+                $or: [
+                    { score: { $gt: score } },
+                    { score, accuracy: { $gt: accuracy } },
+                    { score, accuracy, totalTime: { $lt: totalTime } },
+                ],
+            }),
+        ]);
+        if (!total) return { rank: null, percentile: null };
+        const rank = better + 1;
+        const percentile = total > 1 ? Number((((total - rank) / (total - 1)) * 100).toFixed(2)) : 100;
+        return { rank, percentile };
     } catch (error) {
-        console.error('Error recalculating ranks:', error);
+        console.error('Error computing rank:', error);
         return { rank: null, percentile: null };
     }
 }

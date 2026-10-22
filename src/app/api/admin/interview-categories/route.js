@@ -10,7 +10,7 @@ export async function GET(req) {
         await dbConnect();
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 50;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 50, 1), 1000);
         const search = searchParams.get('search');
 
         const query = search ? { name: { $regex: search, $options: 'i' } } : {};

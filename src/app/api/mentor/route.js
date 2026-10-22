@@ -22,7 +22,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const examName = searchParams.get('exam');
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
 
         let query = { status: 'active', isVerified: true };
         if (examName) query['examsCleared.examName'] = { $regex: examName, $options: 'i' };

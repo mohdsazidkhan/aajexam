@@ -13,6 +13,7 @@ export async function GET(req, { params }) {
         const exams = await Exam.find({ category: id, isActive: true })
             .populate('category', 'name type')
             .sort({ name: 1 })
+            .limit(1000)
             .lean();
 
         const examIds = exams.map(e => e._id);

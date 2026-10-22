@@ -38,7 +38,7 @@ export async function GET(req, { params }) {
                     user: userId,
                     quiz: { $in: quizIds },
                     status: 'Completed'
-                }).populate('quiz', 'subject totalMarks').lean();
+                }).sort({ createdAt: -1 }).limit(2000).populate('quiz', 'subject totalMarks').lean();
             })(),
             (async () => {
                 // Get practice test attempts for this exam
@@ -50,7 +50,7 @@ export async function GET(req, { params }) {
                     user: userId,
                     practiceTest: { $in: testIds },
                     status: 'Completed'
-                }).lean();
+                }).select('-answers').sort({ createdAt: -1 }).limit(2000).lean();
             })()
         ]);
 

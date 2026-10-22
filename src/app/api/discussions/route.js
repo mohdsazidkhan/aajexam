@@ -16,7 +16,7 @@ export async function GET(req) {
     const questionId = searchParams.get('questionId');
     const sort = searchParams.get('sort') || 'top';
     const page = Math.max(1, parseInt(searchParams.get('page')) || 1);
-    const limit = Math.min(50, parseInt(searchParams.get('limit')) || 20);
+    const limit = Math.min(50, Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200));
 
     if (!questionId) return errorResponse('questionId is required', 400);
 

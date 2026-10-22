@@ -188,33 +188,27 @@ async function getAvgScore(quizId) {
     return result[0]?.avg || 0;
 }
 
+// Rank of ONE attempt via two indexed counts (see recomputeRanksForTest) instead of
+// re-sorting and rewriting every attempt of the quiz on each submit.
 async function recomputeRanksForQuiz(quizId, targetAttemptId) {
-    const attempts = await QuizAttempt.find({ quiz: quizId, status: 'Completed' })
-        .select('_id score accuracy totalTime')
-        .sort({ score: -1, accuracy: -1, totalTime: 1 });
-
-    const total = attempts.length;
+    if (!targetAttemptId) return { rank: null, percentile: null };
+    const target = await QuizAttempt.findById(targetAttemptId).select('score accuracy totalTime').lean();
+    if (!target) return { rank: null, percentile: null };
+    const { score = 0, accuracy = 0, totalTime = 0 } = target;
+    const base = { quiz: quizId, status: 'Completed' };
+    const [total, better] = await Promise.all([
+        QuizAttempt.countDocuments(base),
+        QuizAttempt.countDocuments({
+            ...base,
+            $or: [
+                { score: { $gt: score } },
+                { score, accuracy: { $gt: accuracy } },
+                { score, accuracy, totalTime: { $lt: totalTime } },
+            ],
+        }),
+    ]);
     if (!total) return { rank: null, percentile: null };
-
-    const bulkOps = [];
-    let prevMetrics = null, prevRank = null, targetRank = { rank: null, percentile: null };
-
-    attempts.forEach((a, i) => {
-        let currentRank = i + 1;
-        if (prevMetrics && prevMetrics.score === a.score && prevMetrics.accuracy === a.accuracy && prevMetrics.totalTime === a.totalTime) {
-            currentRank = prevRank;
-        }
-        const percentile = total > 1 ? Number((((total - currentRank) / (total - 1)) * 100).toFixed(2)) : 100;
-
-        bulkOps.push({ updateOne: { filter: { _id: a._id }, update: { $set: { rank: currentRank, percentile } } } });
-
-        if (targetAttemptId && a._id.toString() === targetAttemptId.toString()) {
-            targetRank = { rank: currentRank, percentile };
-        }
-        prevMetrics = { score: a.score, accuracy: a.accuracy, totalTime: a.totalTime };
-        prevRank = currentRank;
-    });
-
-    if (bulkOps.length) await QuizAttempt.bulkWrite(bulkOps);
-    return targetRank;
+    const rank = better + 1;
+    const percentile = total > 1 ? Number((((total - rank) / (total - 1)) * 100).toFixed(2)) : 100;
+    return { rank, percentile };
 }

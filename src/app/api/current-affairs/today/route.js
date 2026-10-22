@@ -17,7 +17,7 @@ export async function GET(req) {
             parseExamIds(new URL(req.url).searchParams.get('examIds')),
             { includeGeneric: true }
         );
-        const affairs = await CurrentAffair.find(query).sort({ category: 1 }).lean();
+        const affairs = await CurrentAffair.find(query).sort({ category: 1 }).limit(500).lean();
 
         // Group by category
         const grouped = {};

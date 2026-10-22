@@ -14,7 +14,7 @@ export async function GET(req) {
 
         const { searchParams } = new URL(req.url);
         const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
-        const limit = Math.min(250, Math.max(1, parseInt(searchParams.get('limit') || '25')));
+        const limit = Math.min(250, Math.max(1, Math.min(Math.max(parseInt(searchParams.get('limit')) || 25, 1), 1000)));
         const search = searchParams.get('search') || '';
         const subscriptionStatus = searchParams.get('subscriptionStatus') || '';
 

@@ -289,7 +289,7 @@ export async function GET(req) {
 		const rawQuery = (searchParams.get('query') || '').trim();
 		const type = searchParams.get('type') || 'all';
 		const page = Math.max(parseInt(searchParams.get('page')) || 1, 1);
-		const limit = Math.max(parseInt(searchParams.get('limit')) || DEFAULT_LIMIT, 1);
+		const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || DEFAULT_LIMIT, 1), 100);
 		const skip = (page - 1) * limit;
 
 		const cleanQuery = escapeRegex(rawQuery.replace(/^#/, '').trim().slice(0, 100));

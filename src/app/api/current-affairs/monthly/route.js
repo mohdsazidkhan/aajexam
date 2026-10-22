@@ -16,7 +16,7 @@ export async function GET(req) {
         const affairs = await CurrentAffair.find({
             date: { $gte: startDate, $lte: endDate },
             status: 'published'
-        }).sort({ date: 1, category: 1 }).lean();
+        }).sort({ date: 1, category: 1 }).limit(3000).lean();
 
         // Group by date then category
         const byDate = {};

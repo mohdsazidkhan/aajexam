@@ -19,7 +19,7 @@ export async function GET(req) {
         const userId = searchParams.get('userId');
         const search = (searchParams.get('search') || '').trim();
         const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
-        const limit = Math.min(250, Math.max(1, parseInt(searchParams.get('limit') || '25')));
+        const limit = Math.min(250, Math.max(1, Math.min(Math.max(parseInt(searchParams.get('limit')) || 25, 1), 1000)));
         const skip = (page - 1) * limit;
 
         const filter = {};

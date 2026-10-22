@@ -8,7 +8,7 @@ export async function GET() {
     try {
         await dbConnect();
         const [categories, examCounts, testCounts] = await Promise.all([
-            ExamCategory.find().sort({ type: 1, name: 1 }).lean(),
+            ExamCategory.find().sort({ type: 1, name: 1 }).limit(500).lean(),
             Exam.aggregate([
                 { $match: { isActive: true } },
                 { $group: { _id: '$category', total: { $sum: 1 } } }

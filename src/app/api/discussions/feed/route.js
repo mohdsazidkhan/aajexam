@@ -18,7 +18,7 @@ export async function GET(req) {
     const sort = searchParams.get('sort') || 'trending';
     const examId = searchParams.get('exam');
     const page = Math.max(1, parseInt(searchParams.get('page')) || 1);
-    const limit = Math.min(50, parseInt(searchParams.get('limit')) || 20);
+    const limit = Math.min(50, Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200));
 
     const filter = { parent: null, status: 'approved', deletedAt: null };
 
@@ -37,7 +37,7 @@ export async function GET(req) {
     // If exam filter, need to filter by question.exam — do a join
     let matchQuestionIds = null;
     if (examId) {
-      const qIds = await Question.find({ exam: examId, isActive: true }).select('_id').lean();
+      const qIds = await Question.find({ exam: examId, isActive: true }).select('_id').limit(50000).lean();
       matchQuestionIds = qIds.map(q => q._id);
       filter.question = { $in: matchQuestionIds };
     }

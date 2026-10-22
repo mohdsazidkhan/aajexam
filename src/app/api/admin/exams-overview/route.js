@@ -78,9 +78,11 @@ export async function GET(req) {
             ExamPattern.find().lean(),
             Subject.find().lean(),
             Topic.find(notEmbedded).lean(),
-            Quiz.find().lean(),
-            PracticeTest.find().lean(),
-            Blog.find().lean(),
+            // Project only what the overview shows (+ a question count) so the question
+            // arrays of every quiz / test are never pulled into memory.
+            Quiz.aggregate([{ $project: { title: 1, status: 1, applicableExams: 1, qCount: { $size: { $ifNull: ['$questions', []] } } } }]),
+            PracticeTest.aggregate([{ $project: { title: 1, pyqYear: 1, duration: 1, isPYQ: 1, examPattern: 1, qCount: { $size: { $ifNull: ['$questions', []] } } } }]),
+            Blog.find().select('title status views exam').lean(),
             Question.aggregate([
                 { $match: notEmbedded },
                 { $group: { _id: '$exam', count: { $sum: 1 } } }
@@ -102,7 +104,7 @@ export async function GET(req) {
         });
 
         // Add embedded practice test questions to overall statistics
-        const totalPracticeTestQuestions = allPracticeTests.reduce((acc, pt) => acc + (pt.questions?.length || 0), 0);
+        const totalPracticeTestQuestions = allPracticeTests.reduce((acc, pt) => acc + (pt.qCount || 0), 0);
         overallStats.questions = questionsCount + totalPracticeTestQuestions;
         overallStats.practiceTestQuestions = totalPracticeTestQuestions;
         overallStats.questionBankQuestions = questionsCount;
@@ -196,8 +198,8 @@ export async function GET(req) {
             const blogs = examBlogsMap[examIdStr] || [];
 
             // Questions calculations (Mocks + PYQs + Question Bank)
-            const mockQuestionsCount = mocks.reduce((acc, m) => acc + (m.questions?.length || 0), 0);
-            const pyqQuestionsCount = pyqs.reduce((acc, p) => acc + (p.questions?.length || 0), 0);
+            const mockQuestionsCount = mocks.reduce((acc, m) => acc + (m.qCount || 0), 0);
+            const pyqQuestionsCount = pyqs.reduce((acc, p) => acc + (p.qCount || 0), 0);
             const qBankQuestionsCount = examQuestionsMap[examIdStr] || 0;
             const totalExamQuestions = mockQuestionsCount + pyqQuestionsCount + qBankQuestionsCount;
 
@@ -246,7 +248,7 @@ export async function GET(req) {
                 quizzes: quizzes.map(q => ({
                     _id: q._id,
                     title: q.title,
-                    totalQuestions: q.questions?.length || 0,
+                    totalQuestions: q.qCount || 0,
                     status: q.status
                 })),
                 
@@ -254,13 +256,13 @@ export async function GET(req) {
                     _id: p._id,
                     title: p.title,
                     pyqYear: p.pyqYear,
-                    totalQuestions: p.questions?.length || 0
+                    totalQuestions: p.qCount || 0
                 })),
                 
                 practiceTests: mocks.map(m => ({
                     _id: m._id,
                     title: m.title,
-                    totalQuestions: m.questions?.length || 0,
+                    totalQuestions: m.qCount || 0,
                     duration: m.duration
                 })),
                 

@@ -16,7 +16,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const search = searchParams.get('search');
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000);
         const sortBy = searchParams.get('sortBy') || 'walletBalance';
         const sortOrder = searchParams.get('sortOrder') === 'asc' ? 1 : -1;
         const skip = (page - 1) * limit;

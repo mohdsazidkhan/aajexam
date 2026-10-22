@@ -21,7 +21,7 @@ export async function GET(req) {
         const type = searchParams.get('type') || 'quiz'; // 'quiz' or 'exam'
         const period = searchParams.get('period') || 'all-time';
         const page = Math.max(parseInt(searchParams.get('page'), 10) || 1, 1);
-        const limit = Math.min(parseInt(searchParams.get('limit'), 10) || 20, 100);
+        const limit = Math.min(Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 1000), 100);
         const search = (searchParams.get('search') || '').trim();
 
         let dateFilter = {};

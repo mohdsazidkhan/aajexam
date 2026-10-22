@@ -13,7 +13,7 @@ export async function GET(req) {
         const { searchParams } = new URL(req.url);
         const status = searchParams.get('status');
         const page = parseInt(searchParams.get('page')) || 1;
-        const limit = parseInt(searchParams.get('limit')) || 20;
+        const limit = Math.min(Math.max(parseInt(searchParams.get('limit')) || 20, 1), 200);
 
         const filter = { user: auth.user._id };
         if (status) filter.status = status;

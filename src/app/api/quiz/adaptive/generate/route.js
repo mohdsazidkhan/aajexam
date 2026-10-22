@@ -85,7 +85,7 @@ export async function POST(req) {
         const availableQuestions = await Question.find({ 
             topic: objectIdTopic, 
             isActive: true 
-        }, '_id difficulty').lean();
+        }, '_id difficulty').limit(5000).lean();
 
         if (availableQuestions.length === 0) {
             return NextResponse.json({ success: false, message: 'No questions available for this topic yet.' }, { status: 404 });

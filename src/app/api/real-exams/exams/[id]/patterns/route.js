@@ -15,6 +15,7 @@ export async function GET(req, { params }) {
             ExamPattern.find({ exam: id })
                 .populate('exam', 'name code description')
                 .sort({ title: 1 })
+                .limit(500)
                 .lean()
         ]);
 
