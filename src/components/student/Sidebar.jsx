@@ -130,7 +130,7 @@ const StudentSidebar = () => {
     {
       title: 'STUDY',
       items: [
-        { path: '/pyq', icon: FileText, label: 'Previous Year Q', isPro: true },
+        { path: '/pyq', icon: FileText, label: "PYQ's", isPro: true },
         { path: '/student/syllabus-tracker', icon: Layers, label: 'Syllabus Tracker', isPro: true },
         { path: '/student/revision', icon: RotateCcw, label: 'Revision Queue', isPro: true },
         { path: '/student/study-plan', icon: CalendarDays, label: 'Study Planner', isPro: true },
