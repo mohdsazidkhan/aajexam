@@ -69,18 +69,19 @@ const MentorsPage = () => {
             icon={Users}
             eyebrow={translate('Mentors')}
             title={translate('Mentors')}
-          >
-            <div className="flex flex-wrap items-center gap-2 xl:gap-4">
-            <div className="flex-1 min-w-0 flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 h-10">
-              <Search className="w-4 h-4 text-slate-400 shrink-0" />
-              <input type="text" placeholder={translate('Search by exam name...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-                className="flex-1 min-w-0 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
-            </div>
-            <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-primary-600 text-white rounded-xl text-xs font-bold shrink-0">{translate('Become Mentor')}</button>
-            </div>
-          </PageHero>
+            center={
+              <div className="flex items-center gap-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-xl px-3 h-10">
+                <Search className="w-4 h-4 text-slate-400 shrink-0" />
+                <input type="text" placeholder={translate('Search by exam name...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
+                  className="flex-1 min-w-0 bg-transparent outline-none text-sm text-slate-700 dark:text-slate-300" />
+              </div>
+            }
+            actions={
+              <button onClick={() => router.push('/mentor/apply')} className="px-4 h-10 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-xl text-xs font-black shrink-0 hover:brightness-105 transition-all">{translate('Become Mentor')}</button>
+            }
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {mentors.map((mentor, i) => (
               <Card key={mentor._id || i} className="hover:shadow-sm transition-all cursor-pointer border-2 border-slate-100 dark:border-slate-800 hover:border-primary-700"
                 onClick={() => router.push(`/mentor/${mentor._id}`)}>

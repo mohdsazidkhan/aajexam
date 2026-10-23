@@ -78,7 +78,12 @@ const MyChallengesPage = () => {
                   icon={Swords}
                   eyebrow={translate('My Challenges')}
                   title={translate('My Challenges')}
-                  stats={[{ label: translate('My Challenges'), value: challenges.length, icon: Swords }]}
+                  actions={
+                     <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-4 py-1.5 min-w-[96px]" style={{ borderRadius: 10 }}>
+                        <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{challenges.length}</p>
+                        <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{translate('My Challenges')}</p>
+                     </div>
+                  }
                />
 
                {/* Results */}

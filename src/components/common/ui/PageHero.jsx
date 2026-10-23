@@ -17,7 +17,7 @@ import { m as motion } from 'framer-motion';
  *   badge    optional small gold pill next to the title (already translated)
  *   actions  optional node rendered on the right (buttons)
  *   center   optional node (e.g. a search box) rendered between the title and the actions on desktop
- *   stats    optional [{ label, value, icon }] rendered as a scorecard strip
+ *   stats    optional [{ label, value }] rendered as compact cells in the top row, before the actions
  */
 const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center, stats, children, className = '' }) => (
   <motion.section
@@ -54,20 +54,18 @@ const PageHero = ({ icon: Icon, eyebrow, title, subtitle, badge, actions, center
           </div>
         </div>
         {center && <div className="w-full min-w-0">{center}</div>}
-        {actions && <div className="flex flex-wrap items-center gap-2 xl:justify-end min-w-0 max-w-full xl:shrink-0">{actions}</div>}
+        {(actions || stats?.length > 0) && (
+          <div className="flex flex-wrap items-center gap-2 xl:justify-end min-w-0 max-w-full xl:shrink-0">
+            {stats?.map((st) => (
+              <div key={st.label} className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+                <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200 whitespace-nowrap">{st.value}</p>
+                <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{st.label}</p>
+              </div>
+            ))}
+            {actions}
+          </div>
+        )}
       </div>
-
-      {stats?.length > 0 && (
-        <div className="grid gap-2 border-t border-dashed border-primary-300 dark:border-white/25 pt-4" style={{ gridTemplateColumns: `repeat(auto-fit, minmax(120px, 1fr))` }}>
-          {stats.map((st) => (
-            <div key={st.label} className="relative overflow-hidden bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
-              {st.icon && <st.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />}
-              <p className="relative text-lg xl:text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{st.value}</p>
-              <p className="relative mt-1 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{st.label}</p>
-            </div>
-          ))}
-        </div>
-      )}
 
       {children}
     </div>
