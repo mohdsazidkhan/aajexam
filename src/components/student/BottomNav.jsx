@@ -22,11 +22,11 @@ import { m as motion, AnimatePresence } from 'framer-motion';
 import useTranslate from '../../hooks/useTranslate';
 
 const REEL_TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-primary-600', iconColor: 'text-white', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, gradient: 'bg-gradient-to-br from-primary-300 to-primary-500 shadow rotate-[-4deg]', iconColor: 'text-primary-950', desc: 'Community poll' },
 ];
 
 const StudentBottomNav = () => {
@@ -63,7 +63,7 @@ const StudentBottomNav = () => {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed bottom-0 left-0 right-0 z-[70] max-h-[85%] flex flex-col rounded-t-3xl bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-sm"
+              className="fixed bottom-0 left-0 right-0 z-[70] max-h-[85%] flex flex-col rounded-t-3xl bg-white dark:bg-slate-900 border-t-4 border-primary-300 shadow-2xl"
             >
               <div className="shrink-0">
                 <div className="flex justify-center pt-3 pb-2">
@@ -87,7 +87,7 @@ const StudentBottomNav = () => {
                         setShowCreate(false);
                         router.push(`/reels/create?type=${type.value}`);
                       }}
-                      className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary-500/30 dark:hover:border-primary-500/30 transition-all active:bg-slate-50 dark:active:bg-slate-800"
+                      className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg hover:border-primary-500 transition-all active:bg-slate-50 dark:active:bg-slate-800"
                     >
                       <div className={`w-11 h-11 rounded-lg xl:rounded-xl ${type.gradient} flex items-center justify-center shrink-0`}>
                         <type.icon className={`w-5 h-5 ${type.iconColor}`} />
@@ -118,8 +118,8 @@ const StudentBottomNav = () => {
                 onClick={() => setShowCreate((prev) => !prev)}
                 className="flex-1 min-w-0 flex items-center justify-center -translate-y-5"
               >
-                <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center shadow-lg">
-                  {showCreate ? <X className="w-6 h-6 text-white" /> : <Plus className="w-7 h-7 text-white" />}
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary-300 to-primary-500 ring-4 ring-white dark:ring-black flex items-center justify-center shadow-lg">
+                  {showCreate ? <X className="w-6 h-6 text-primary-950" /> : <Plus className="w-7 h-7 text-primary-950" />}
                 </div>
               </button>
             );
@@ -130,7 +130,7 @@ const StudentBottomNav = () => {
           return (
             <Link key={item.path} href={item.path} className="flex-1 min-w-0 flex justify-center" aria-current={isActive ? 'page' : undefined}>
               <div className={`w-full flex flex-col items-center justify-center gap-0.5 transition-all ${
-                isActive ? 'bg-primary-600 text-white' : 'text-slate-400 dark:text-slate-500'
+                isActive ? 'bg-gradient-to-t from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950' : 'text-slate-400 dark:text-slate-500'
               }`}>
                 <item.icon className="w-[22px] h-[22px]" strokeWidth={isActive ? 2.5 : 1.8} />
                 <span className={`text-[11px] ${isActive ? 'font-bold' : 'font-medium'}`}>{translate(item.name)}</span>

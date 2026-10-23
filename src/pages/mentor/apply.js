@@ -4,6 +4,7 @@ import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import { Users, Plus, X, Send } from 'lucide-react';
 import API from '../../lib/api';
 import { toast } from 'react-hot-toast';
+import PageHero from '../../components/common/ui/PageHero';
 import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
 
@@ -69,22 +70,16 @@ export default function MentorApply() {
         canonical="/mentor/apply"
       />
       <div className="max-w-2xl mx-auto py-4 xl:py-8 px-4">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
-            <Users className="w-5 h-5" />
-          </div>
-          <div>
-            <h1 className="text-xl font-black text-slate-900 dark:text-white uppercase">{translate('Become a Mentor')}</h1>
-          </div>
-        </div>
+        <PageHero icon={Users} eyebrow={translate('Become a Mentor')} title={translate('Become a Mentor')} className="mb-4" />
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="relative overflow-hidden space-y-6 p-4 xl:p-6 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
           {/* Exams Cleared */}
           <div>
             <label className={labelClass}>{translate('Exams Cleared *')}</label>
             <div className="space-y-3">
               {form.examsCleared.map((exam, i) => (
-                <div key={i} className="flex flex-wrap gap-2 items-start p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl border border-slate-200 dark:border-slate-700">
+                <div key={i} className="flex flex-wrap gap-2 items-start p-3 bg-primary-50/50 dark:bg-white/5 rounded-lg xl:rounded-xl border border-dashed border-primary-300 dark:border-slate-700">
                   <input placeholder={translate('Exam name *')} value={exam.examName} onChange={e => updateExam(i, 'examName', e.target.value)} className={`${inputClass} flex-1 min-w-[150px]`} />
                   <input type="number" placeholder={translate('Year *')} value={exam.year} onChange={e => updateExam(i, 'year', e.target.value)} className={`${inputClass} w-24`} />
                   <input type="number" placeholder={translate('Rank')} value={exam.rank} onChange={e => updateExam(i, 'rank', e.target.value)} className={`${inputClass} w-24`} />
@@ -95,7 +90,7 @@ export default function MentorApply() {
                 </div>
               ))}
             </div>
-            <button type="button" onClick={addExam} className="mt-2 flex items-center gap-1 text-xs font-bold text-primary-600 hover:text-primary-600">
+            <button type="button" onClick={addExam} className="mt-2 flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300 hover:underline">
               <Plus className="w-3 h-3" /> Add another exam
             </button>
           </div>
@@ -127,7 +122,7 @@ export default function MentorApply() {
                 {form.tips.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('tips', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add tip')}</button>
+            <button type="button" onClick={() => addField('tips')} className="flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300"><Plus className="w-3 h-3" /> {translate('Add tip')}</button>
           </div>
 
           {/* Books */}
@@ -139,7 +134,7 @@ export default function MentorApply() {
                 {form.booksRecommended.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('booksRecommended', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add book')}</button>
+            <button type="button" onClick={() => addField('booksRecommended')} className="flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300"><Plus className="w-3 h-3" /> {translate('Add book')}</button>
           </div>
 
           {/* Specialization */}
@@ -151,12 +146,12 @@ export default function MentorApply() {
                 {form.specialization.length > 1 && <button aria-label={translate('Close')} type="button" onClick={() => removeField('specialization', i)} className="p-2 text-black dark:text-white"><X className="w-4 h-4" /></button>}
               </div>
             ))}
-            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-bold text-primary-600"><Plus className="w-3 h-3" /> {translate('Add specialization')}</button>
+            <button type="button" onClick={() => addField('specialization')} className="flex items-center gap-1 text-xs font-black text-primary-700 dark:text-primary-300"><Plus className="w-3 h-3" /> {translate('Add specialization')}</button>
           </div>
 
           {/* Submit */}
           <button type="submit" disabled={loading}
-            className="w-full bg-primary-600 hover:bg-primary-600 text-white font-black py-3 px-8 rounded-2xl transition-all shadow-sm border-b-2 border-primary-600 active:translate-y-1 active:border-b-0 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
+            style={{ borderRadius: 14 }} className="w-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105 font-black py-3 px-8 transition-all shadow-lg active:translate-y-0.5 uppercase tracking-widest text-xs flex items-center justify-center gap-2 disabled:opacity-50">
             <Send className="w-4 h-4" /> {loading ? translate('Submitting...') : translate('Submit Application')}
           </button>
         </form>

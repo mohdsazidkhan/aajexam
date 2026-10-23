@@ -217,16 +217,16 @@ const ProfilePage = () => {
         >
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-24 w-80 h-80 bg-amber-300/15 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-24 w-80 h-80 bg-primary-300/15 blur-3xl" style={{ borderRadius: '50%' }} />
 
           {/* Ticket header strip */}
           <div className="relative flex items-center justify-between gap-3 px-4 xl:px-6 py-2 bg-primary-600/10 dark:bg-black/25 border-b border-primary-200 dark:border-white/15">
             <div className="flex items-center gap-2 min-w-0">
-              <Award className="w-4 h-4 text-amber-600 dark:text-amber-300 shrink-0" />
+              <Award className="w-4 h-4 text-primary-600 dark:text-primary-300 shrink-0" />
               <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.25em] truncate">AajExam · {translate('Student profile')}</span>
             </div>
             <span
-              className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
+              className={`shrink-0 px-2.5 py-0.5 text-[10px] xl:text-xs font-black uppercase tracking-widest ${isPro ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-[0_2px_12px_rgba(251,191,36,0.45)]' : 'bg-slate-200 text-slate-700 ring-1 ring-slate-300 dark:bg-white/15 dark:text-white dark:ring-white/30'}`}
             >
               {isPro ? 'PRO' : translate('FREE')}
             </span>
@@ -244,7 +244,7 @@ const ProfilePage = () => {
                 <div className="flex-1 min-w-0 space-y-2.5">
                   <div>
                     <p className="text-[9px] xl:text-[10px] font-black uppercase tracking-[0.25em] text-slate-500 dark:text-white/60">{translate('Username')}</p>
-                    <p className="text-sm xl:text-base font-black tracking-wide text-primary-700 dark:text-amber-200 truncate">@{student?.username || 'guest'}</p>
+                    <p className="text-sm xl:text-base font-black tracking-wide text-primary-700 dark:text-primary-200 truncate">@{student?.username || 'guest'}</p>
                   </div>
                   <h1 className="text-2xl xl:text-4xl font-black font-outfit tracking-tight leading-none break-words">
                     {student?.name || translate('Student')}
@@ -281,7 +281,7 @@ const ProfilePage = () => {
                 {statTiles.map((item) => (
                   <div key={item.label} className="relative overflow-hidden bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-2.5 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
                     <item.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
-                    <p className="relative text-base xl:text-xl font-black font-outfit leading-none text-primary-700 dark:text-amber-200 truncate">{item.value}</p>
+                    <p className="relative text-base xl:text-xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{item.value}</p>
                     <p className="relative mt-1 text-[8px] xl:text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(item.label)}</p>
                   </div>
                 ))}
@@ -321,7 +321,7 @@ const ProfilePage = () => {
               <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
 
               <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-amber-600 dark:text-amber-300" />
+                <Trophy className="w-4 h-4 text-primary-600 dark:text-primary-300" />
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-700 dark:text-white/80">{translate('All India Rank')}</p>
               </div>
 
@@ -329,7 +329,7 @@ const ProfilePage = () => {
                 <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-2" style={{ borderRadius: 10 }}>
                   <p className="text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-white/70 leading-none">{translate('Exam AIR')}</p>
                   <div className="flex items-baseline justify-between gap-2">
-                    <p className="text-3xl font-black font-outfit leading-tight text-primary-700 dark:text-amber-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
+                    <p className="text-3xl font-black font-outfit leading-tight text-primary-700 dark:text-primary-200">{student?.examAIR ? `#${student.examAIR.rank}` : '—'}</p>
                     <p className="text-[10px] font-bold text-slate-600 dark:text-white/70 text-right leading-tight">
                       {student?.examAIR ? translate('of {total}', { total: student.examAIR.total }) : translate('No exams yet')}
                       {student?.examAIR && <><br />{translate('{time} spent', { time: formatTimeSpent(student.examAIR.totalTimeSpent, 'exam') })}</>}
@@ -367,7 +367,7 @@ const ProfilePage = () => {
               onClick={() => setActiveSubTab(tab.id)}
               className={`flex items-center gap-2 px-5 py-2.5 font-black uppercase text-[10px] xl:text-[11px] tracking-wider transition-all whitespace-nowrap flex-shrink-0 ${activeSubTab === tab.id ? 'bg-primary-600 text-white dark:bg-white dark:text-primary-700 shadow' : 'text-slate-600 hover:bg-primary-50 dark:text-white/90 dark:hover:bg-white/15'}`}
             >
-              <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white dark:text-primary-600' : 'text-primary-600 dark:text-amber-300'}`} />
+              <tab.icon className={`w-3.5 h-3.5 ${activeSubTab === tab.id ? 'text-white dark:text-primary-600' : 'text-primary-600 dark:text-primary-300'}`} />
               {translate(tab.label)}
             </button>
           ))}
@@ -453,7 +453,7 @@ const ProfilePage = () => {
                   {(student?.badges?.length ? student.badges : ['Student']).map((badge, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-amber-200 text-xs font-black uppercase tracking-wider border-2 border-dashed border-amber-400/70"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-primary-200 text-xs font-black uppercase tracking-wider border-2 border-dashed border-primary-400/70"
                       style={{ borderRadius: 10, transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)` }}
                     >
                       <Award className="w-3.5 h-3.5" />
@@ -496,16 +496,16 @@ const ProfilePage = () => {
                 icon={Wallet}
                 title={translate('Payout details')}
                 subtitle={translate('Add your bank details to receive Referral Rewards')}
-                right={bankDetails ? <span className="px-3 py-1 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 text-[10px] font-black uppercase tracking-widest">{translate('Linked')}</span> : null}
+                right={bankDetails ? <span className="px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-[10px] font-black uppercase tracking-widest">{translate('Linked')}</span> : null}
               >
                 {bankDetails ? (
                   <div className="flex flex-col lg:flex-row lg:items-center gap-5">
                     {/* Bank card visual */}
                     <div className="relative overflow-hidden w-full max-w-md p-5 text-white shadow-xl bg-gradient-to-br from-slate-800 via-slate-900 to-black ring-1 ring-white/10" style={{ borderRadius: 16 }}>
-                      <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-amber-300/15 blur-3xl" style={{ borderRadius: '50%' }} />
+                      <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-primary-300/15 blur-3xl" style={{ borderRadius: '50%' }} />
                       <div className="relative flex items-center justify-between">
                         <p className="text-sm font-black uppercase tracking-widest truncate">{bankDetails.bankName}</p>
-                        <Building2 className="w-6 h-6 text-amber-300 shrink-0" />
+                        <Building2 className="w-6 h-6 text-primary-300 shrink-0" />
                       </div>
                       <div className="relative mt-5 w-11 h-8 bg-gradient-to-br from-amber-200 to-amber-500" style={{ borderRadius: 6 }} />
                       <p className="relative mt-4 font-mono text-lg xl:text-xl font-black tracking-[0.25em]">•••• •••• {bankDetails.accountNumber?.slice(-4) || '----'}</p>

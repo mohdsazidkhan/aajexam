@@ -145,16 +145,16 @@ const RegisterPageInner = () => {
         <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <div className="space-y-2 xl:space-y-4">
               {freePromoActive && (
-                <span className="inline-block text-xs font-black uppercase tracking-widest text-amber-950 bg-gradient-to-r from-amber-300 to-amber-400 shadow px-3 py-1.5 rounded-full">
+                <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-950 bg-gradient-to-r from-primary-300 to-primary-400 shadow px-3 py-1.5 rounded-full">
                   {translate('🎁 Register now — Get PRO Free till 31 Dec 2026')}
                 </span>
               )}
               <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
-                {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600 dark:text-amber-300">{c}</span>])}
+                {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
               </h1>
             </div>
 

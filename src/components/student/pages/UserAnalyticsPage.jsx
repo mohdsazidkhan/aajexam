@@ -36,6 +36,7 @@ import { m as motion, AnimatePresence } from 'framer-motion';
 
 import API from '../../../lib/api';
 import Card from '../../common/ui/Card';
+import PageHero from '../../common/ui/PageHero';
 import Button from '../../common/ui/Button';
 import ProgressBar from '../../common/ui/ProgressBar';
 import UnifiedFooter from '../../common/UnifiedFooter';
@@ -62,24 +63,25 @@ const CircleProgress = ({ value = 0, size = 80, strokeWidth = 8, color = '#6366f
 };
 
 // --- Helper: Stat Mini Card ---
-const StatMini = ({ icon: Icon, label, value, color = 'text-primary-600', bg = 'bg-primary-50' }) => (
-   <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm min-w-0">
-      <div className={`p-2 rounded-lg shrink-0 ${bg} dark:bg-slate-700/50 ${color}`}>
+const StatMini = ({ icon: Icon, label, value }) => (
+   <div className="relative overflow-hidden flex items-center gap-2.5 p-2.5 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all min-w-0" style={{ borderRadius: 12 }}>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
+      <div className="ml-1 w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
          <Icon className="w-4 h-4" />
       </div>
-      <div>
-         <p className="text-base xl:text-lg font-black font-outfit leading-tight">{value}</p>
-         <p className="text-[9px] font-black text-content-secondary uppercase leading-tight truncate">{label}</p>
+      <div className="min-w-0">
+         <p className="text-base xl:text-lg font-black font-outfit leading-tight text-primary-700 dark:text-primary-200 truncate">{value}</p>
+         <p className="text-[9px] font-black text-content-secondary uppercase tracking-wide leading-tight truncate">{label}</p>
       </div>
    </div>
 );
 
 // --- Helper: Section Header ---
 const SectionHeader = ({ icon: Icon, title, subtitle }) => (
-   <div className="flex items-center gap-2 px-1">
-      {Icon && <div className="p-1.5 bg-primary-50 dark:bg-slate-700/50 text-primary-600 rounded-lg"><Icon className="w-4 h-4" /></div>}
+   <div className="flex items-center gap-2.5 px-1 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
+      {Icon && <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Icon className="w-4 h-4" /></div>}
       <div>
-         <h2 className="text-base xl:text-lg font-black font-outfit">{title}</h2>
+         <h2 className="text-base xl:text-lg font-black font-outfit uppercase tracking-tight">{title}</h2>
          {subtitle && <p className="text-xs text-content-secondary font-bold">{subtitle}</p>}
       </div>
    </div>
@@ -153,42 +155,22 @@ const MyAnalyticsPage = () => {
 
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
-            <section className="relative">
-               <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10 overflow-hidden relative rounded-2xl">
-                  <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-2 xl:gap-6">
-                     <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
-                        <div className="inline-flex items-center gap-1.5 bg-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-sm">
-                           <Star className="w-3.5 h-3.5 fill-white text-white" />
-                           {translate('My Analytics')}
-                        </div>
-                        <h1 className="text-lg xl:text-xl font-black font-outfit">{translate('Performance Dashboard')}</h1>
-                     </div>
-                     <div className="flex items-center gap-4 xl:gap-6">
-                        <div className="text-center">
-                           <p className="text-lg xl:text-xl font-black font-outfit leading-tight">{overallAccuracy.toFixed(0)}%</p>
-                           <p className="text-[10px] font-black opacity-60 uppercase">{translate('Quiz Accuracy')}</p>
-                        </div>
-                        <div className="h-8 xl:h-10 w-0.5 bg-white/20 rounded-full" />
-                        <div className="text-center">
-                           <p className="text-lg xl:text-xl font-black font-outfit leading-tight">{totalActivity}</p>
-                           <p className="text-[10px] font-black opacity-60 uppercase">{translate('Total Activity')}</p>
-                        </div>
-                        <div className="h-8 xl:h-10 w-0.5 bg-white/20 rounded-full hidden sm:block" />
-                        <div className="text-center hidden sm:block">
-                           <p className="text-lg xl:text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
-                           <p className="text-[10px] font-black opacity-60 uppercase">{translate('Wallet')}</p>
-                        </div>
-                     </div>
-                  </div>
-                  <GraduationCap className="absolute -bottom-6 -right-6 w-32 h-32 text-white/10 rotate-12" />
-               </Card>
-            </section>
+            <PageHero
+               icon={Star}
+               eyebrow={translate('My Analytics')}
+               title={translate('Performance Dashboard')}
+               stats={[
+                  { icon: Target, value: `${overallAccuracy.toFixed(0)}%`, label: translate('Quiz Accuracy') },
+                  { icon: Zap, value: totalActivity, label: translate('Total Activity') },
+                  { icon: Wallet, value: wallet?.balance || 0, label: translate('Wallet') },
+               ]}
+            />
 
             {/* --- Tab Switcher --- */}
-            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full px-0 py-0.5">
+            <section className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1.5 max-w-full p-1.5 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 14 }}>
                {TABS.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                     className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-3.5 py-2 rounded-full font-black text-[11px] uppercase transition-all ${activeTab === tab.key ? 'bg-primary-600 text-white shadow-sm' : 'text-content-secondary hover:text-content-primary'}`}>
+                     style={{ borderRadius: 999 }} className={`flex-shrink-0 whitespace-nowrap flex items-center gap-1.5 px-4 py-2 font-black text-[11px] xl:text-xs uppercase tracking-wide transition-all ${activeTab === tab.key ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-content-secondary hover:text-primary-700 dark:hover:text-primary-200 hover:bg-primary-50 dark:hover:bg-white/10'}`}>
                      <tab.icon className="w-3.5 h-3.5" />
                      {translate(tab.label)}
                   </button>
@@ -214,13 +196,7 @@ const MyAnalyticsPage = () => {
                               { icon: Wallet, value: wallet?.balance || 0, label: 'Wallet Balance', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                               { icon: UserPlus, value: referral?.count || 0, label: 'Referrals', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                            ].map((tile) => (
-                              <Card key={tile.label} padded={false} radius="xl" className="flex items-center gap-2.5 p-2.5 border-slate-200 dark:border-slate-800">
-                                 <div className={`w-9 h-9 shrink-0 rounded-lg flex items-center justify-center ${tile.tone}`}><tile.icon className="w-4 h-4" /></div>
-                                 <div className="min-w-0">
-                                    <p className="text-base xl:text-lg font-black font-outfit leading-tight">{tile.value}</p>
-                                    <p className="text-[9px] font-black text-content-secondary uppercase leading-tight truncate">{translate(tile.label)}</p>
-                                 </div>
-                              </Card>
+                              <StatMini key={tile.label} icon={tile.icon} value={tile.value} label={translate(tile.label)} />
                            ))}
                         </div>
 
@@ -495,8 +471,8 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'wallet' && (
                      <>
                         <div className="grid grid-cols-2 xl:grid-cols-4 gap-2">
-                           <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 bg-primary-600 text-white border-none shadow-sm flex items-center gap-2.5 p-2.5">
-                              <div className="p-2 bg-white/20 rounded-lg shrink-0"><Wallet className="w-4 h-4" /></div>
+                           <Card padded={false} radius="xl" className="col-span-2 xl:col-span-1 bg-gradient-to-br from-primary-600 to-primary-800 text-white border-none shadow-lg flex items-center gap-2.5 p-2.5">
+                              <div className="w-9 h-9 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Wallet className="w-4 h-4" /></div>
                               <div className="min-w-0">
                                  <p className="text-xl font-black font-outfit leading-tight">{wallet?.balance || 0}</p>
                                  <p className="text-[9px] font-black opacity-70 uppercase leading-tight">{translate('Wallet Balance')}</p>
@@ -516,7 +492,7 @@ const MyAnalyticsPage = () => {
                                  <p className="font-black text-base font-mono tracking-wider leading-tight truncate">{referral?.code || '---'}</p>
                               </div>
                               <button onClick={copyReferralCode} aria-label={translate('Copy')}
-                                 className="p-2 bg-primary-600 text-white rounded-lg shrink-0 transition-colors">
+                                 className="p-2 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow hover:brightness-105 rounded-lg shrink-0 transition-all">
                                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                               </button>
                            </Card>

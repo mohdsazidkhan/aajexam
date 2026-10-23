@@ -63,7 +63,7 @@ const UnifiedFooter = ({ isLandingPage: _isLandingPage = false }) => {
   const formattedPhone = config.CONTACT.PHONE.replace(/\D/g, '');
 
   return (
-    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-white dark:bg-black border-t border-slate-200 dark:border-slate-800/50 font-outfit before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-primary-500 before:via-amber-300 before:to-primary-500">
+    <footer className="relative pt-4 xl:pt-8 pb-4 xl:pb-8 overflow-hidden bg-white dark:bg-black border-t border-slate-200 dark:border-slate-800/50 font-outfit before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-8 mb-4 xl:mb-8">

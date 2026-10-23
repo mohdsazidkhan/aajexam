@@ -122,7 +122,7 @@ export default function QuizPreview({
           <header className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-3 md:p-6 xl:p-8" style={{ borderRadius: 16 }}>
             <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
             <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
             <div className="relative">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {subjectName && <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 rounded-full text-[10px] font-black text-primary-600 dark:text-primary-300 uppercase tracking-widest">{translateData(subjectName)}</span>}

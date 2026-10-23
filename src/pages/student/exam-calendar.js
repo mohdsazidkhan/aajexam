@@ -10,6 +10,7 @@ import Link from '@/components/common/AppLink';
 import API from '../../lib/api';
 import useTargetExamsVersion from '../../hooks/useTargetExamsVersion';
 import Card from '../../components/common/ui/Card';
+import PageHero from '../../components/common/ui/PageHero';
 import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
 import useRequireLogin from '../../hooks/useRequireLogin';
@@ -35,7 +36,7 @@ const Sh = ({ className = '' }) => (
 );
 const CalendarSkeleton = () => (
   <div className="space-y-2 xl:space-y-4">
-    <Sh className="h-48 xl:h-52 w-full rounded-[2.5rem]" />
+    <Sh className="h-48 xl:h-52 w-full rounded-2xl" />
     <div className="flex gap-2">
       {Array.from({ length: 10 }).map((_, i) => <Sh key={i} className="shrink-0 w-14 sm:w-16 h-20 sm:h-24 rounded-2xl" />)}
     </div>
@@ -77,9 +78,10 @@ const EventCard = ({ event, compact = false }) => {
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`flex items-start gap-3 p-3.5 rounded-2xl border-2 ${cfg.border} bg-background-surface hover:border-opacity-80 transition-all group cursor-pointer`}
+        style={{ borderRadius: 14 }} className="relative overflow-hidden flex items-start gap-3 p-3.5 pl-4 border border-slate-200 dark:border-slate-800 bg-background-surface shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all group cursor-pointer"
       >
-        <div className={`w-9 h-9 rounded-lg xl:rounded-xl ${cfg.color} flex items-center justify-center flex-shrink-0`}>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
+        <div className="w-9 h-9 flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
@@ -92,7 +94,7 @@ const EventCard = ({ event, compact = false }) => {
           <div className="flex items-center gap-1 mt-1.5">
             <Clock className="w-3 h-3 text-content-muted" />
             <span className="text-[10px] font-bold text-content-muted">{dateStr}</span>
-            <span className={`ml-1 text-[9px] font-black uppercase px-1.5 py-0.5 rounded-full ${cfg.color}`}>
+            <span className="ml-1 text-[9px] font-black uppercase px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950" style={{ borderRadius: 999 }}>
               {translate(cfg.label)}
             </span>
           </div>
@@ -118,17 +120,17 @@ const DayPanel = ({ date, events, onClose }) => {
         className="mt-4"
       >
         <Card padded={false} className="overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
             <div className="flex items-center gap-2">
-              <CalendarDays className="w-4 h-4 text-primary-600" />
-              <span className="text-sm font-black text-content-primary">{dateLabel}</span>
-              <span className="text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-2 py-0.5 rounded-full">
+              <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><CalendarDays className="w-4 h-4" /></span>
+              <span className="text-sm font-black">{dateLabel}</span>
+              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-2 py-0.5 rounded-full">
                 {events.length} event{events.length > 1 ? 's' : ''}
               </span>
             </div>
             <button
               onClick={onClose}
-              className="text-content-muted hover:text-content-primary transition-colors text-[10px] font-black uppercase"
+              className="text-primary-800/70 dark:text-white/70 hover:text-primary-900 dark:hover:text-white transition-colors text-[10px] font-black uppercase"
             >
               {translate('Close')}
             </button>
@@ -226,57 +228,39 @@ const ExamCalendarPage = () => {
       <div className="space-y-5 xl:space-y-8">
 
         {/* ── Hero ── */}
-        <section className="relative rounded-[2rem] xl:rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-black/20 dark:border-white/20 px-0 py-4 xl:py-8">
-          <div className="absolute inset-0 bg-white dark:bg-black" />
-          <div className="absolute -top-8 -right-8 w-48 h-48 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-black/5 dark:bg-white/5 rounded-full pointer-events-none" />
-          <CalendarDays className="absolute -bottom-8 -right-8 w-56 h-56 text-black/10 dark:text-white/10 pointer-events-none" />
-
-          <div className="relative p-2 xl:p-4 z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 bg-black/10 dark:bg-white/20 border border-black/20 dark:border-white/30 backdrop-blur-md px-4 py-1.5 rounded-full text-black dark:text-white text-[10px] font-black uppercase tracking-widest mb-3"
-              >
-                <CalendarDays className="w-3.5 h-3.5" />
-                {translate('{count} events this month', { count: totalEvents })}
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="text-xl xl:text-3xl font-black uppercase text-black dark:text-white tracking-tight leading-tight"
-              >
-                {translate('Exam Calendar')}
-              </motion.h1>
-            </div>
-
-            {/* Type legend */}
-            <div className="flex gap-2 overflow-x-auto no-scrollbar">
+        <PageHero
+          icon={CalendarDays}
+          eyebrow={translate('Exam Calendar')}
+          title={translate('Exam Calendar')}
+          badge={translate('{count} events this month', { count: totalEvents })}
+          actions={
+            <div className="flex gap-2 overflow-x-auto no-scrollbar max-w-full">
               {['admit_card', 'result', 'vacancy', 'notification'].map(typeKey => {
                 const cfg = getType(typeKey);
                 return (
-                  <div key={typeKey} className="flex items-center gap-1.5 bg-black/10 dark:bg-white/15 backdrop-blur-sm border border-black/20 dark:border-white/20 px-2.5 py-1 rounded-full shrink-0 whitespace-nowrap">
+                  <div key={typeKey} className="flex items-center gap-1.5 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-2.5 py-1 shrink-0 whitespace-nowrap" style={{ borderRadius: 999 }}>
                     <div className={`w-2 h-2 rounded-full ${cfg.dot}`} />
-                    <span className="text-[10px] font-black text-black dark:text-white uppercase">{translate(cfg.label)}</span>
+                    <span className="text-[10px] font-black text-slate-800 dark:text-white uppercase">{translate(cfg.label)}</span>
                   </div>
                 );
               })}
             </div>
-          </div>
-        </section>
+          }
+        />
 
         {/* ── Month Navigation ── */}
         <div className="flex items-center justify-between gap-3">
           <button
             onClick={prevMonth}
             aria-label={translate('Previous month')}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            style={{ borderRadius: 999 }} className="flex items-center gap-1 px-3 sm:px-4 py-2.5 font-black text-[11px] uppercase border border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary shadow-md hover:border-primary-500 hover:shadow-lg transition-all active:translate-y-0.5"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">{translate('Prev')}</span>
           </button>
 
           <div className="flex-1 text-center">
-            <h2 className="text-lg sm:text-xl xl:text-2xl font-black text-content-primary tracking-tight">
+            <h2 className="text-lg sm:text-xl xl:text-2xl font-black font-outfit uppercase text-primary-700 dark:text-primary-200 tracking-tight">
               {translate(MONTHS[month - 1])} {year}
             </h2>
             {(month !== now.getMonth() + 1 || year !== now.getFullYear()) && (
@@ -292,7 +276,7 @@ const ExamCalendarPage = () => {
           <button
             onClick={nextMonth}
             aria-label={translate('Next month')}
-            className="flex items-center gap-1 px-3 sm:px-4 py-2.5 rounded-lg xl:rounded-xl font-black text-[11px] uppercase border-2 border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary hover:border-primary-400 dark:hover:border-primary-600 transition-all active:translate-y-0.5"
+            style={{ borderRadius: 999 }} className="flex items-center gap-1 px-3 sm:px-4 py-2.5 font-black text-[11px] uppercase border border-slate-200 dark:border-slate-800 bg-background-surface text-content-primary shadow-md hover:border-primary-500 hover:shadow-lg transition-all active:translate-y-0.5"
           >
             <span className="hidden sm:inline">{translate('Next')}</span>
             <ChevronRight className="w-4 h-4" />
@@ -315,28 +299,29 @@ const ExamCalendarPage = () => {
                 onClick={() => setSelectedDate(isSelected ? null : (hasEvents ? dateStr : null))}
                 disabled={!hasEvents}
                 className={`
-                  shrink-0 w-14 sm:w-16 py-2.5 sm:py-3 rounded-2xl border-2
+                  shrink-0 w-14 sm:w-16 py-2.5 sm:py-3 border shadow-sm
                   flex flex-col items-center justify-center gap-1
                   transition-all duration-150
                   ${hasEvents ? 'cursor-pointer' : 'cursor-default opacity-60'}
                   ${isToday
-                    ? 'bg-primary-600 border-primary-600'
+                    ? 'bg-gradient-to-br from-primary-300 to-primary-500 border-primary-400 shadow-lg'
                     : isSelected
-                      ? 'bg-primary-50 dark:bg-primary-950/30 border-primary-400 dark:border-primary-600'
+                      ? 'bg-primary-50 dark:bg-primary-950/30 border-primary-500 ring-2 ring-primary-500/30'
                       : 'bg-background-surface border-slate-200 dark:border-slate-800 hover:border-primary-300 dark:hover:border-primary-700'}
                 `}
+                style={{ borderRadius: 14 }}
               >
-                <span className={`text-[9px] font-black uppercase tracking-wide ${isToday ? 'text-white' : 'text-content-muted'}`}>
+                <span className={`text-[9px] font-black uppercase tracking-wide ${isToday ? 'text-primary-950' : 'text-content-muted'}`}>
                   {dayName}
                 </span>
-                <span className={`text-base sm:text-lg font-black ${isToday ? 'text-white' : 'text-content-primary'}`}>
+                <span className={`text-base sm:text-lg font-black ${isToday ? 'text-primary-950' : 'text-content-primary'}`}>
                   {day}
                 </span>
                 <div className="flex items-center gap-1 h-1.5">
                   {hasEvents && (
                     <>
                       <EventDot event={eventsForDay[0]} />
-                      <span className={`text-[8px] font-black ${isToday ? 'text-white' : 'text-content-muted'}`}>{eventsForDay.length}</span>
+                      <span className={`text-[8px] font-black ${isToday ? 'text-primary-950' : 'text-content-muted'}`}>{eventsForDay.length}</span>
                     </>
                   )}
                 </div>
@@ -360,11 +345,11 @@ const ExamCalendarPage = () => {
               onClick={() => setShowUpcoming(v => !v)}
             >
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary-600" />
+                <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><Clock className="w-4 h-4" /></span>
                 <h2 className="text-base sm:text-lg font-black text-content-primary uppercase tracking-tight">
                   {translate('Upcoming (Next 30 Days)')}
                 </h2>
-                <span className="text-[10px] font-black bg-primary-100 dark:bg-primary-900/30 text-primary-600 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-2 py-0.5 rounded-full">
                   {upcoming.length}
                 </span>
               </div>
@@ -405,7 +390,7 @@ const ExamCalendarPage = () => {
             <h3 className="text-lg font-black text-content-muted uppercase">{translate('No events this month')}</h3>
             <p className="text-sm text-content-muted font-bold">{translate('Check back later or navigate to another month.')}</p>
             <Link href="/exam-news">
-              <button className="px-6 py-2.5 bg-primary-600 hover:bg-primary-800 text-white rounded-full font-black text-xs uppercase mt-2 transition-colors">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-lg hover:brightness-105 rounded-full font-black text-xs uppercase mt-2 transition-all">
                 {translate('View Exam News')}
               </button>
             </Link>

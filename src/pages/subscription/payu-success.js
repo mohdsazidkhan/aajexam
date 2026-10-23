@@ -141,7 +141,7 @@ const PayuSuccess = () => {
       <MobileAppWrapper title={translate('Verifying payment')}>
         <Seo title="Verifying Payment - AajExam" description="We are checking your payment status." noIndex={true} />
         <div className="min-h-screen flex items-center justify-center p-6">
-          <div className="max-w-md w-full text-center relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-amber-300 before:to-primary-500">
+          <div className="max-w-md w-full text-center relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-5 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
             <div className="w-20 h-20 rounded-[2rem] bg-primary-500/10 text-primary-600 flex items-center justify-center mx-auto">
               <LoaderCircle className="w-10 h-10 animate-spin" />
             </div>
@@ -168,7 +168,7 @@ const PayuSuccess = () => {
       />
       <div className="min-h-screen py-8">
         <div className="max-w-3xl mx-auto">
-          <div className="relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-amber-300 before:to-primary-500">
+          <div className="relative overflow-hidden bg-background-surface p-6 xl:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-primary-300 before:to-primary-500">
             <div className="text-center space-y-2 xl:space-y-4">
               <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto ${success ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600' : 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white '}`}>
                 {success ? <CheckCircle2 className="w-12 h-12" /> : <CircleAlert className="w-12 h-12" />}

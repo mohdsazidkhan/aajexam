@@ -148,7 +148,7 @@ const SubscriptionPage = () => {
           >
             <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
             <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-28 right-24 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="pointer-events-none absolute -bottom-28 right-24 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
             <Crown className="pointer-events-none absolute right-6 top-6 w-36 h-36 text-primary-600/10 dark:text-white/5 rotate-12" />
 
             <div className="relative grid grid-cols-1 xl:grid-cols-[1fr_260px]">
@@ -160,7 +160,7 @@ const SubscriptionPage = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
+                  <div className="shrink-0 w-14 h-14 xl:w-16 xl:h-16 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg]" style={{ borderRadius: 14 }}>
                     <Crown className="w-7 h-7 xl:w-8 xl:h-8" />
                   </div>
                   <div className="min-w-0">
@@ -197,7 +197,7 @@ const SubscriptionPage = () => {
                 <span className="hidden xl:block absolute left-0 bottom-0 -translate-x-1/2 translate-y-1/2 w-5 h-5 bg-background-page" style={{ borderRadius: '50%' }} />
                 {daysLeft !== null ? (
                   <div>
-                    <div className="text-5xl xl:text-6xl font-black font-outfit leading-none text-primary-700 dark:text-amber-200">{daysLeft}</div>
+                    <div className="text-5xl xl:text-6xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{daysLeft}</div>
                     <div className="mt-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-white/75">{translate('Days left')}</div>
                   </div>
                 ) : (
@@ -206,7 +206,7 @@ const SubscriptionPage = () => {
                 {(isFreePlan || !isActive) && (
                   <button
                     onClick={() => document.getElementById('pro-plans')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 font-black uppercase tracking-widest text-xs shadow-lg hover:brightness-105 active:translate-y-0.5 transition-all"
                   >
                     <Sparkles className="w-4 h-4" /> {translate('View PRO plans')}
                   </button>
@@ -220,7 +220,7 @@ const SubscriptionPage = () => {
           <div className="text-center space-y-2 xl:space-y-3 max-w-3xl mx-auto px-2">
             <h2 className="text-xl xl:text-4xl font-black font-outfit tracking-tight">{translate('Choose your exam prep plan')}</h2>
             {freePromoActive && (
-              <p className="inline-block text-xs xl:text-base font-bold text-amber-800 dark:text-amber-200 bg-amber-100 dark:bg-amber-500/15 border-2 border-dashed border-amber-400/70 px-4 py-2" style={{ borderRadius: 12 }}>
+              <p className="inline-block text-xs xl:text-base font-bold text-primary-800 dark:text-primary-200 bg-primary-100 dark:bg-primary-500/15 border-2 border-dashed border-primary-400/70 px-4 py-2" style={{ borderRadius: 12 }}>
                 {translate('🎁 PRO is free for everyone till 31 Dec 2026 — every registered student already gets full access to all practice tests, mock exams, and detailed performance reports.')}
               </p>
             )}
@@ -274,21 +274,21 @@ const SubscriptionPage = () => {
               return (
                 <div
                   key={plan.key}
-                  className={`relative flex flex-col overflow-hidden h-full transition-transform hover:-translate-y-1 ${hl ? 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-2 ring-amber-300/70' : 'bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md'}`}
+                  className={`relative flex flex-col overflow-hidden h-full transition-transform hover:-translate-y-1 ${hl ? 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-2 ring-primary-300/70' : 'bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md'}`}
                   style={{ borderRadius: 16 }}
                 >
-                  {hl && <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />}
+                  {hl && <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />}
 
                   <div className="relative p-4 xl:p-6 space-y-3 flex-1">
                     <div className="flex items-start justify-between gap-2 min-h-[28px]">
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950' : 'bg-primary-500/10 text-primary-600 dark:text-primary-300'}`} style={{ borderRadius: 10 }}>
+                        <span className={`w-8 h-8 flex items-center justify-center shrink-0 ${hl ? 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950' : 'bg-primary-500/10 text-primary-600 dark:text-primary-300'}`} style={{ borderRadius: 10 }}>
                           <Crown className="w-4 h-4" />
                         </span>
                         <h3 className="text-base xl:text-xl font-black font-outfit tracking-tight truncate">{translate(plan.label)}</h3>
                       </div>
                       {plan.badge && (
-                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
+                        <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-wider px-2 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow whitespace-nowrap" style={{ borderRadius: 999 }}>
                           {translate(plan.badge)}
                         </span>
                       )}
@@ -325,7 +325,7 @@ const SubscriptionPage = () => {
                     <button
                       disabled={!!buyingPlan}
                       onClick={() => handleBuy(plan)}
-                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
+                      className={`w-full flex items-center justify-center gap-2 py-3.5 text-xs xl:text-sm font-black uppercase tracking-widest shadow-lg transition-all active:translate-y-0.5 disabled:opacity-60 ${hl ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105' : 'bg-primary-600 hover:bg-primary-700 text-white'}`}
                     >
                       {isBuying ? (
                         <>

@@ -72,36 +72,36 @@ export default function ChallengePage() {
                 </button>
 
                 {/* Challenge Header Card */}
-                <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 ring-1 ring-white/10 p-6 xl:p-8 text-center shadow-xl relative overflow-hidden mb-8" style={{ borderRadius: 16 }}>
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-black opacity-10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4" />
+                <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-1 ring-primary-200 dark:ring-white/10 p-6 xl:p-8 text-center shadow-xl relative isolate overflow-hidden mb-8" style={{ borderRadius: 16 }}>
+                    <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+                    <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
                     
                     <div className="relative z-10 flex flex-col items-center">
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30 rotate-12 shadow-sm">
-                            <Swords className="w-10 h-10 text-white drop-shadow-sm" />
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow flex items-center justify-center mb-4 rotate-[-4deg]" style={{ borderRadius: 22 }}>
+                            <Swords className="w-10 h-10" />
                         </div>
                         
-                        <h1 className="text-white text-3xl font-black mb-2 uppercase tracking-wide">
+                        <h1 className="text-slate-900 dark:text-white text-3xl font-black mb-2 uppercase tracking-wide">
                             {translate('{name} Challenged You!', { name: challenge.host?.name || translate('Someone') })}
                         </h1>
-                        <p className="text-black dark:text-white font-medium mb-6 text-lg">
-                            {rich('Quiz: <0></0>', [() => <span className="text-white font-bold">{challenge.quiz?.title || translate('Unknown')}</span>])}
+                        <p className="text-slate-700 dark:text-white/80 font-medium mb-6 text-lg">
+                            {rich('Quiz: <0></0>', [() => <span className="text-primary-700 dark:text-primary-200 font-bold">{challenge.quiz?.title || translate('Unknown')}</span>])}
                         </p>
 
-                        <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-lg xl:rounded-xl px-6 py-3 mb-6">
-                            <p className="text-black dark:text-white text-xs font-bold uppercase tracking-wider mb-1">{translate('Target to beat')}</p>
-                            <p className="text-white text-4xl font-black">{Math.round(hostScore?.percentage || 0)}%</p>
+                        <div className="inline-block bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 px-6 py-3 mb-6" style={{ borderRadius: 12 }}>
+                            <p className="text-slate-600 dark:text-white/75 text-xs font-bold uppercase tracking-wider mb-1">{translate('Target to beat')}</p>
+                            <p className="text-primary-700 dark:text-primary-200 text-4xl font-black font-outfit">{Math.round(hostScore?.percentage || 0)}%</p>
                         </div>
 
                         {!challenge.hasPlayed ? (
                             <button 
                                 onClick={handleAcceptChallenge}
-                                className="w-full bg-white text-black dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 font-black text-xl py-4 rounded-2xl shadow-sm transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                                style={{ borderRadius: 14 }} className="w-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105 font-black text-xl py-4 shadow-lg transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
                             >
                                 <Play className="w-6 h-6 fill-current" /> ACCEPT CHALLENGE
                             </button>
                         ) : (
-                            <div className="bg-primary-500/20 border border-primary-400/30 text-primary-100 px-6 py-3 rounded-lg xl:rounded-xl font-bold flex items-center gap-2">
+                            <div className="bg-primary-100 dark:bg-primary-500/20 border border-primary-300 dark:border-primary-400/30 text-primary-800 dark:text-primary-100 px-6 py-3 rounded-lg xl:rounded-xl font-bold flex items-center gap-2">
                                 <Trophy className="w-5 h-5" /> You have completed this challenge!
                             </div>
                         )}
@@ -110,10 +110,11 @@ export default function ChallengePage() {
 
                 {/* Private Leaderboard */}
                 {challenge.hasPlayed && (
-                    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+                    <div className="relative overflow-hidden bg-background-surface p-6 shadow-md border border-slate-200 dark:border-slate-700" style={{ borderRadius: 16 }}>
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg xl:rounded-xl">
-                                <Users className="w-6 h-6 text-black dark:text-white" />
+                            <div className="bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow p-2.5" style={{ borderRadius: 12 }}>
+                                <Users className="w-5 h-5" />
                             </div>
                             <h2 className="text-xl font-black text-slate-800 dark:text-white uppercase tracking-tight">{translate('Challenge Leaderboard')}</h2>
                         </div>
@@ -121,25 +122,25 @@ export default function ChallengePage() {
                         <div className="space-y-3">
                             {leaderboard.map((entry, index) => (
                                 <div key={index} className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
-                                    index === 0 ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white' :
+                                    index === 0 ? 'bg-primary-50 dark:bg-primary-400/10 border border-primary-300 dark:border-primary-400/40' :
                                     'bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 border border-transparent'
                                 }`}>
                                     <div className="flex-shrink-0">
-                                        {index === 0 ? <Crown className="w-8 h-8 text-black dark:text-white drop-shadow-sm" /> :
+                                        {index === 0 ? <Crown className="w-8 h-8 text-amber-500 drop-shadow-sm" /> :
                                          index === 1 ? <Medal className="w-8 h-8 text-slate-400 drop-shadow-sm" /> :
-                                         index === 2 ? <Medal className="w-8 h-8 text-black dark:text-white drop-shadow-sm" /> :
+                                         index === 2 ? <Medal className="w-8 h-8 text-orange-500 drop-shadow-sm" /> :
                                          <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-500">#{index + 1}</div>}
                                     </div>
                                     
                                     <div className="flex-grow min-w-0">
                                         <h3 className="font-bold text-slate-800 dark:text-white truncate text-lg">
                                             {entry.user?.name || translate('Anonymous')}
-                                            {entry.isHost && <span className="ml-2 text-[10px] bg-slate-100 dark:bg-slate-800 text-black dark:text-white px-2 py-0.5 rounded-full uppercase tracking-wider">{translate('Host')}</span>}
+                                            {entry.isHost && <span className="ml-2 text-[10px] bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200 px-2 py-0.5 rounded-full uppercase tracking-wider">{translate('Host')}</span>}
                                         </h3>
                                     </div>
 
                                     <div className="text-right">
-                                        <p className={`font-black text-2xl ${index === 0 ? 'text-black dark:text-white ' : 'text-slate-800 dark:text-white'}`}>
+                                        <p className={`font-black text-2xl ${index === 0 ? 'text-primary-700 dark:text-primary-200' : 'text-slate-800 dark:text-white'}`}>
                                             {Math.round(entry.percentage)}%
                                         </p>
                                         <p className="text-xs text-slate-400 font-medium">{Math.round(entry.totalTime)}s</p>

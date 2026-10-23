@@ -8,6 +8,7 @@ import { m as motion } from 'framer-motion';
 import API from '../../../lib/api';
 import MobileAppWrapper from '../../common/MobileAppWrapper';
 import Button from '../../common/ui/Button';
+import PageHero from '../../common/ui/PageHero';
 import { isAuthenticated } from '../../../lib/auth';
 import {
   ArrowLeft, Flame, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Plus, Trash2,
@@ -16,14 +17,14 @@ import {
 import useTranslate from '../../../hooks/useTranslate';
 
 const TYPES = [
-  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'MCQ with explanation' },
-  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Quick fact or one-liner' },
-  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Shortcut or formula' },
-  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Daily CA card' },
-  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-black dark:border-white bg-white dark:bg-black', desc: 'Community poll' },
+  { value: 'question', label: 'Question', icon: HelpCircle, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'MCQ with explanation' },
+  { value: 'fact', label: 'Fact', icon: BookOpen, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Quick fact or one-liner' },
+  { value: 'tip', label: 'Tip / Trick', icon: Zap, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Shortcut or formula' },
+  { value: 'current_affairs', label: 'Current Affairs', icon: Newspaper, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Daily CA card' },
+  { value: 'poll', label: 'Poll', icon: BarChart3, color: 'border-slate-200 dark:border-slate-800 bg-background-surface hover:border-primary-500', desc: 'Community poll' },
 ];
 
-const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-black/10 dark:focus:ring-white/10 focus:border-transparent placeholder:text-slate-400";
+const inputClass = "w-full px-4 py-2.5 rounded-lg xl:rounded-xl bg-white dark:bg-black border border-slate-300 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 outline-none placeholder:text-slate-400";
 const labelClass = "block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5";
 
 const ReelCreate = () => {
@@ -175,7 +176,7 @@ const ReelCreate = () => {
         <div className="min-h-screen flex items-center justify-center bg-background-page px-4">
           <div className="text-center">
             <p className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-3">{translate('Login required to create reels')}</p>
-            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-primary-600 text-white text-sm font-semibold">{translate('Login')}</Link>
+            <Link href="/login"className="px-6 py-2.5 rounded-lg xl:rounded-xl bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow text-sm font-black uppercase">{translate('Login')}</Link>
           </div>
         </div>
       </MobileAppWrapper>
@@ -204,22 +205,17 @@ const ReelCreate = () => {
   return (
     <MobileAppWrapper>
       <div className="min-h-screen">
-        <div className="sticky top-0 z-20 py-3">
-          <div className="flex justify-between items-center gap-3">
-            <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Flame className="w-5 h-5 text-black dark:text-white" /> Create Reel
-            </h1>
-          </div>
-        </div>
+        <PageHero icon={Flame} eyebrow="Create Reel" title="Create Reel" />
 
-        <div className="py-0 xl:py-6">
+        <div className="py-3 xl:py-4">
           {!type ? (
             <div className="space-y-2 xl:space-y-4">
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3">
                 {TYPES.map(rt => (
                   <motion.button key={rt.value} onClick={() => setType(rt.value)}
-                    className={`p-2.5 xl:p-5 rounded-xl xl:rounded-2xl border-2 text-left transition-all ${rt.color}`}>
-                    <rt.icon className="w-8 h-8 mb-3 opacity-70" />
+                    style={{ borderRadius: 14 }} className={`relative overflow-hidden p-2.5 xl:p-5 border text-left shadow-md hover:shadow-xl hover:-translate-y-1 transition-all ${rt.color}`}>
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                    <span className="w-11 h-11 mb-3 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><rt.icon className="w-6 h-6" /></span>
                     <h2 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm">{translate(rt.label)}</h2>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">{translate(rt.desc)}</p>
                   </motion.button>
@@ -228,16 +224,17 @@ const ReelCreate = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
+              <div className="flex items-center justify-between bg-background-surface p-3 border border-slate-200 dark:border-slate-800 shadow-md" style={{ borderRadius: 14 }}>
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-black bg-primary-600 text-white uppercase tracking-widest">{type === 'current_affairs' ? 'CA' : type}</span>
+                  <span className="px-3 py-1 text-[10px] font-black bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow uppercase tracking-widest" style={{ borderRadius: 999 }}>{type === 'current_affairs' ? 'CA' : type}</span>
                   <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">{translate('New Reel')}</p>
                 </div>
                 <button type="button" onClick={() => setType('')} className="text-[10px] font-black text-primary-600 hover:text-primary-600 uppercase tracking-widest bg-primary-50 dark:bg-primary-950/30 px-3 py-1 rounded-lg">{translate('Change Type')}</button>
               </div>
 
               {/* Common */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-3">
+              <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                 <div className="grid grid-cols-2 gap-3">
                   <div><label className={labelClass}>{translate('Exam')}</label>
                     <select value={examType} onChange={e => { setExamType(e.target.value); setSubject(''); setTopic(''); }} className={inputClass}>
@@ -268,13 +265,14 @@ const ReelCreate = () => {
 
               {/* Question */}
               {type === 'question' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div><label className={labelClass}>{translate('Question *')}</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
                   <div className="space-y-2">
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}
-                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-600 bg-primary-600 text-white' : 'border-slate-300 text-slate-400'}`}>
+                          className={`w-7 h-7 rounded-full border-2 text-xs font-bold flex items-center justify-center ${correctAnswerIndex === i ? 'border-primary-400 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow' : 'border-slate-300 text-slate-400'}`}>
                           {String.fromCharCode(65 + i)}
                         </button>
                         <input value={o} onChange={e => { const n = [...options]; n[i] = e.target.value; setOptions(n); }} placeholder={translate('Option {letter}', { letter: String.fromCharCode(65 + i) })} className={`flex-1 ${inputClass}`} required />
@@ -288,7 +286,8 @@ const ReelCreate = () => {
 
               {/* Fact */}
               {type === 'fact' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div><label className={labelClass}>{translate('Highlight Text')}</label><input value={highlightText} onChange={e => setHighlightText(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -306,7 +305,8 @@ const ReelCreate = () => {
 
               {/* Tip */}
               {type === 'tip' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div><label className={labelClass}>{translate('Formula')}</label><input value={formula} onChange={e => setFormula(e.target.value)} className={inputClass} /></div>
                   <div><label className={labelClass}>{translate('Content')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={3} className={inputClass} /></div>
                   <div>
@@ -325,7 +325,8 @@ const ReelCreate = () => {
 
               {/* Poll */}
               {type === 'poll' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-primary-200 dark:border-primary-600 p-4 space-y-3">
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div><label className={labelClass}>{translate('Poll Question *')}</label><input value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} className={inputClass} required /></div>
                   <div>
                     {pollOptions.map((o, i) => (
@@ -341,14 +342,16 @@ const ReelCreate = () => {
 
               {/* CA */}
               {type === 'current_affairs' && (
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white p-4 space-y-3">
+                <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div><label className={labelClass}>{translate('Title *')}</label><input value={title} onChange={e => setTitle(e.target.value)} className={inputClass} required /></div>
                   <div><label className={labelClass}>{translate('Content *')}</label><textarea value={content} onChange={e => setContent(e.target.value)} rows={4} className={inputClass} required /></div>
                 </div>
               )}
 
               {/* Audio & Duration — Instagram Style */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 dark:border-white/40 p-4 space-y-3">
+              <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                 <div className="flex items-center justify-between">
                   <h2 className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">
                     <Music className="w-4 h-4 text-black dark:text-white" /> Add Audio
@@ -371,13 +374,13 @@ const ReelCreate = () => {
                     <div key={a.value}
                       onClick={() => handleAudioSelect(a.value)}
                       className={`flex items-center gap-3 p-2.5 rounded-lg xl:rounded-xl cursor-pointer transition-all ${audioFile === a.value
-                        ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 dark:border-white'
+                        ? 'bg-primary-50 dark:bg-white/10 border border-primary-300 dark:border-white/30'
                         : 'hover:bg-slate-50 dark:hover:bg-slate-800 border border-transparent'}`}
                     >
                       {/* Play/Pause */}
                       <button type="button" onClick={e => { e.stopPropagation(); handleAudioPlayPause(a.value); }}
                         className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${audioPlaying === a.value
-                          ?'bg-primary-600 text-white':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
+                          ?'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow':'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                         {audioPlaying === a.value ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                       </button>
                       {/* Info */}
@@ -392,8 +395,8 @@ const ReelCreate = () => {
                       </div>
                       {/* Selected check */}
                       {audioFile === a.value && (
-                        <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center shrink-0">
-                          <span className="text-white text-[10px] font-bold">✓</span>
+                        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary-300 to-primary-500 flex items-center justify-center shrink-0">
+                          <span className="text-primary-950 text-[10px] font-bold">✓</span>
                         </div>
                       )}
                     </div>

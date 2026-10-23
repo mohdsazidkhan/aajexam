@@ -52,7 +52,7 @@ const SignupGate = ({ score, total }) => {
 
   return (
     <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
         <span className="text-2xl font-black">{score}/{total}</span>
       </div>
       <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
@@ -142,11 +142,11 @@ export default function SampleQuiz() {
   return (
     <section className="container mx-auto px-3 xl:px-0 py-4 xl:py-8">
       <div className="relative overflow-hidden w-full bg-background-surface border border-slate-200 dark:border-slate-800 shadow-xl p-4 xl:p-6" style={{ borderRadius: 16 }}>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
-        <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+        <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
         {phase === 'idle' || phase === 'loading' ? (
           <div className="text-center">
-            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
+            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
               <Sparkles className="w-7 h-7" />
             </div>
             <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">

@@ -7,6 +7,7 @@ import { toast } from 'react-hot-toast';
 import Link from '@/components/common/AppLink';
 import API from '../../../lib/api';
 import MobileAppWrapper from '../../common/MobileAppWrapper';
+import PageHero from '../../common/ui/PageHero';
 import {
   Bookmark, ArrowLeft, Heart, Eye, HelpCircle, BookOpen, Zap, Newspaper, BarChart3, Flame
 } from 'lucide-react';
@@ -54,27 +55,28 @@ const ReelsSaved = () => {
   return (
     <MobileAppWrapper>
       <div className="min-h-screen bg-background-page">
-        {/* Header */}
-        <div className="sticky top-0 z-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
-          <div className="flex items-center gap-3 max-w-2xl mx-auto">
-            <Link href="/reels" className="p-2 rounded-lg xl:rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
-              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            </Link>
-            <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Bookmark className="w-5 h-5 text-black dark:text-white" /> Saved Reels
-            </h1>
-          </div>
+        <div className="max-w-2xl mx-auto px-4 pt-4">
+          <PageHero
+            icon={Bookmark}
+            eyebrow="Saved Reels"
+            title="Saved Reels"
+            actions={
+              <Link href="/reels" aria-label="Back" className="w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/20 dark:ring-white/20 text-primary-700 dark:text-white transition-colors" style={{ borderRadius: 999 }}>
+                <ArrowLeft className="w-5 h-5" />
+              </Link>
+            }
+          />
         </div>
 
         <div className="max-w-2xl mx-auto p-4">
           {loading ? <CardGridSkeleton count={6} variant="media" /> : reels.length === 0 ? (
             <div className="text-center py-20 px-6">
-              <div className="w-20 h-20 rounded-[2rem] bg-slate-100 dark:bg-slate-900 flex items-center justify-center mx-auto mb-6">
-                <Bookmark className="w-10 h-10 text-slate-300 dark:text-slate-600" />
+              <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 24 }}>
+                <Bookmark className="w-10 h-10" />
               </div>
               <p className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('No saved reels yet')}</p>
               <p className="text-sm text-slate-400 dark:text-slate-500 mt-2 max-w-[200px] mx-auto">{translate('Bookmark interesting reels to revisit them anytime')}</p>
-              <Link href="/reels" className="inline-block mt-8 px-8 py-3 rounded-2xl bg-primary-600 text-white text-sm font-black uppercase tracking-widest hover:bg-primary-700 transition-all shadow-sm active:scale-95">
+              <Link href="/reels" style={{ borderRadius: 14 }} className="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-sm font-black uppercase tracking-widest hover:brightness-105 transition-all shadow-lg active:scale-95">
                 {translate('Browse Reels')}
               </Link>
             </div>
@@ -88,10 +90,11 @@ const ReelsSaved = () => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-5 hover:shadow-sm transition-all group active:scale-[0.98]"
+                    style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-5 hover:shadow-xl hover:-translate-y-0.5 transition-all group active:scale-[0.98]"
                   >
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                     <div className="flex items-start gap-4">
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm ${TYPE_COLORS[reel.type]}`}>
+                      <div style={{ borderRadius: 14 }} className="w-12 h-12 flex items-center justify-center shrink-0 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]">
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -124,7 +127,7 @@ const ReelsSaved = () => {
               {hasMore && (
                 <button
                   onClick={() => setPage(p => p + 1)}
-                  className="w-full py-3 text-sm font-semibold text-black dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-lg xl:rounded-xl"
+                  style={{ borderRadius: 12 }} className="w-full py-3 text-sm font-black uppercase tracking-wide text-primary-700 dark:text-primary-200 bg-background-surface border border-slate-200 dark:border-slate-800 hover:border-primary-500 shadow-sm transition-all"
                 >
                   {translate('Load more')}
                 </button>

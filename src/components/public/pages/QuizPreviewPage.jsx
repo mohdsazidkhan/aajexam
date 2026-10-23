@@ -123,9 +123,9 @@ const QuizPreviewPage = ({ resolvedId, initialQuiz } = {}) => {
         <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-5 xl:p-8 mb-6" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="flex items-center mb-4">
-            <div className="w-8 xl:w-12 h-8 xl:h-12 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] flex items-center justify-center mr-4 shrink-0" style={{ borderRadius: 12 }}>
+            <div className="w-8 xl:w-12 h-8 xl:h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] flex items-center justify-center mr-4 shrink-0" style={{ borderRadius: 12 }}>
               <BrainCircuit className="w-5 xl:w-6 h-5 xl:h-6" />
             </div>
             <h1 className="text-xl xl:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">

@@ -227,7 +227,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       {/* Exam Hero */}
       <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10 overflow-hidden relative">
         <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
           <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>

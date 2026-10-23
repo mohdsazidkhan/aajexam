@@ -59,13 +59,13 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-xl ring-1 ring-white/10 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white p-6 xl:p-10">
-              <div className="absolute top-0 right-0 opacity-10">
+            <Card className="relative overflow-hidden border-none shadow-xl ring-1 ring-primary-200 dark:ring-white/10 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 text-slate-900 dark:text-white p-6 xl:p-10">
+              <div className="absolute top-0 right-0 opacity-10 text-primary-600 dark:text-white">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>
 
               <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white text-xs font-black uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow text-xs font-black uppercase tracking-widest" style={{ borderRadius: 999 }}>
                   <Crown className="w-4 h-4" />
                   {translate(band)}
                 </div>
@@ -81,7 +81,7 @@ export default function SharedResult({ stats }) {
 
                 {rank && total && (
                   <div className="flex flex-wrap items-baseline gap-3">
-                    <span className="text-5xl xl:text-7xl font-black tracking-tighter text-black dark:text-white">
+                    <span className="text-5xl xl:text-7xl font-black tracking-tighter text-primary-700 dark:text-primary-200">
                       #{rank}
                     </span>
                     <span className="text-xl xl:text-2xl font-bold opacity-80">
@@ -92,7 +92,7 @@ export default function SharedResult({ stats }) {
 
                 {pctNum > 0 && (
                   <p className="text-lg xl:text-xl font-bold opacity-90">
-                    {rich('Beat <0></0> of candidates on AajExam', [() => <span className="text-black dark:text-white">{pctNum.toFixed(1)}%</span>])}
+                    {rich('Beat <0></0> of candidates on AajExam', [() => <span className="text-primary-700 dark:text-primary-200">{pctNum.toFixed(1)}%</span>])}
                   </p>
                 )}
               </div>
@@ -101,13 +101,13 @@ export default function SharedResult({ stats }) {
 
           <section className="grid grid-cols-2 xl:grid-cols-4 gap-4">
             {[
-              { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: 'text-black dark:text-white' },
-              { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: 'text-primary-600' },
-              { label: 'Score', value: score ?? '—', icon: Zap, color: 'text-primary-600' },
-              { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: 'text-black dark:text-white' },
+              { label: 'Rank', value: rank ? `#${rank}` : '—', icon: Award, color: '' },
+              { label: 'Percentile', value: pctNum > 0 ? pctNum.toFixed(1) : '—', icon: TrendingUp, color: '' },
+              { label: 'Score', value: score ?? '—', icon: Zap, color: '' },
+              { label: 'Accuracy', value: accuracy != null ? `${parseFloat(accuracy).toFixed(0)}%` : '—', icon: Target, color: '' },
             ].map((item, idx) => (
-              <Card key={idx} className="flex flex-col items-center text-center gap-2 border-2">
-                <div className={`w-12 h-12 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
+              <Card key={idx} className="flex flex-col items-center text-center gap-2">
+                <div className="w-12 h-12 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow" style={{ borderRadius: 14 }}>
                   <item.icon className="w-6 h-6" />
                 </div>
                 <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
@@ -116,7 +116,7 @@ export default function SharedResult({ stats }) {
             ))}
           </section>
 
-          <Card className="p-8 xl:p-10 border-2 text-center space-y-5 bg-white dark:bg-slate-800">
+          <Card className="p-8 xl:p-10 text-center space-y-5">
             <h2 className="text-2xl xl:text-3xl font-black font-outfit uppercase">
               Think you can beat this?
             </h2>

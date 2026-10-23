@@ -152,7 +152,7 @@ const PaymentTransactions = () => {
       case 'created':
       case 'authorized':
       case 'pending':
-        return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300';
+        return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-primary-300';
       case 'refunded':
         return 'bg-primary-100 text-primary-600 dark:bg-primary-900/30 dark:text-primary-300';
       default:
@@ -209,18 +209,19 @@ const PaymentTransactions = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-2xl xl:rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 overflow-hidden font-outfit mb-4 xl:mb-6">
+    <div className="relative bg-background-surface shadow-md border border-slate-200 dark:border-slate-800 overflow-hidden font-outfit mb-4 xl:mb-6" style={{ borderRadius: 16 }}>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       {/* Header */}
-      <div className="bg-primary-600 p-3 xl:p-4 text-white shadow-sm border-b-2 xl:border-b-2 border-white/20 relative overflow-hidden group">
+      <div className="bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white p-3 xl:p-4 pt-4 relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none group-hover:bg-white/10 transition-colors"></div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 xl:gap-4 relative z-10">
           <div>
-            <h2 className="text-lg xl:text-2xl font-black uppercase tracking-tight">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-100">{c}</span>])}</h2>
+            <h2 className="text-lg xl:text-2xl font-black uppercase tracking-tight">{rich('Payment <0>History</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
           </div>
           <div className="flex items-center w-full sm:w-auto">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto bg-white/20 hover:bg-white/30 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-1 flex items-center justify-center space-x-2 xl:space-x-3 border-2 xl:border-2 border-white/10 shadow-sm"
+              className="w-full sm:w-auto bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105 px-3 py-2 xl:px-4 xl:py-2 rounded-lg xl:rounded-xl transition-all active:translate-y-0.5 flex items-center justify-center space-x-2 xl:space-x-3 shadow-md"
             >
               <FaFilter className="text-xs xl:text-sm" />
               <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest">{translate('Filters')}</span>
@@ -233,7 +234,7 @@ const PaymentTransactions = () => {
       {summary && (
         <div className="p-2 xl:p-3 bg-white dark:bg-slate-900/50">
           <div className="grid grid-cols-3 gap-2 xl:gap-3">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all group">
+            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-primary-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Investment')}</p>
@@ -241,12 +242,12 @@ const PaymentTransactions = () => {
                     {formatCurrency(summary.totalAmount || 0)}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-600 text-white rounded-lg hidden sm:flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-700 transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaRupeeSign className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all group">
+            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-primary-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Total Transactions')}</p>
@@ -254,12 +255,12 @@ const PaymentTransactions = () => {
                     {summary.totalTransactions || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-600 text-white rounded-lg hidden sm:flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-700 transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaReceipt className="text-xs xl:text-lg" />
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border-2 border-slate-100 dark:border-slate-700 shadow-sm transition-all group">
+            <div className="relative overflow-hidden bg-primary-50/60 dark:bg-slate-800 rounded-xl p-2.5 xl:p-3 border border-primary-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all group">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[9px] xl:text-[10px] font-black text-slate-600 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-0.5">{translate('Successful Clear')}</p>
@@ -267,7 +268,7 @@ const PaymentTransactions = () => {
                     {summary.paymentOrders?.completed || 0}
                   </p>
                 </div>
-                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-600 text-white rounded-lg hidden sm:flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-700 transition-transform flex-shrink-0">
+                <div className="w-8 h-8 xl:w-10 xl:h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg hidden sm:flex items-center justify-center transition-transform flex-shrink-0">
                   <FaCheckCircle className="text-xs xl:text-lg" />
                 </div>
               </div>
@@ -288,7 +289,7 @@ const PaymentTransactions = () => {
                 placeholder={translate('Search history...')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
+                className="w-full pl-9 xl:pl-12 pr-3 xl:pr-4 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all"
               />
             </div>
 
@@ -296,7 +297,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.month}
               onChange={(e) => handleFilterChange('month', parseInt(e.target.value))}
-              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value={1}>{translate('January')}</option>
               <option value={2}>{translate('February')}</option>
@@ -316,7 +317,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.year}
               onChange={(e) => handleFilterChange('year', parseInt(e.target.value))}
-              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               {filterOptions.years?.map(year => (
                 <option key={year.value || year} value={year.value || year}>{year.label || year}</option>
@@ -327,7 +328,7 @@ const PaymentTransactions = () => {
             <select
               value={filters.status}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-slate-50 dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
+              className="px-4 xl:px-6 py-2 xl:py-2.5 border-2 border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl xl:rounded-2xl bg-white dark:bg-black text-[9px] xl:text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white focus:ring-4 focus:ring-primary-500/20 focus:border-primary-700 outline-none transition-all appearance-none cursor-pointer"
             >
               <option value="all">{translate('All Status')}</option>
               <option value="paid">{translate('Paid')}</option>

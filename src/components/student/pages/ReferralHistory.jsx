@@ -26,6 +26,8 @@ import { ListSkeleton } from "../../common/skeletons/PrivateSkeletons";
 import { useSSR } from '../../../hooks/useSSR';
 import Card from '../../common/ui/Card';
 import Button from '../../common/ui/Button';
+import PageHero from '../../common/ui/PageHero';
+import TicketCard from '../TicketCard';
 import useTranslate from '../../../hooks/useTranslate';
 
 const PAGE_LIMIT = 20;
@@ -185,34 +187,21 @@ export default function ReferralHistory() {
          <div className="container mx-auto mt-0 space-y-2 xl:space-y-3">
 
             {/* --- Header Section --- */}
-            <section className="relative px-0 py-1">
-               <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3 xl:gap-6">
-
-                  <div className="flex flex-row items-center gap-2 xl:gap-3 text-left">
-                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-8 h-8 xl:w-10 xl:h-10 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-xl flex items-center justify-center shrink-0 shadow-sm border-2 border-primary-500/10">
-                        <Users className="w-4 h-4 xl:w-5 xl:h-5" />
-                     </motion.div>
-                     <div className="space-y-0.5 xl:space-y-4">
-                        <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight leading-none">{rich('Referral <0>History</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
+            <PageHero
+               icon={Users}
+               title={rich('Referral <0>History</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
+               actions={user && (
+                  <div className="w-full xl:w-auto xl:min-w-[300px] px-3 py-2 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 text-left" style={{ borderRadius: 12 }}>
+                     <p className="text-[9px] xl:text-xs font-black text-slate-600 dark:text-white/75 uppercase tracking-widest leading-none mb-1">{translate('Your Referral Code')}</p>
+                     <div className="flex items-center gap-2 xl:gap-3">
+                        <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-700 dark:text-primary-200">{user.referralCode}</p>
+                        <button type="button" className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }} onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
+                           <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4" /> COPY LINK
+                        </button>
                      </div>
                   </div>
-
-                  {/* Referral Link Card */}
-                  {user && (
-                     <Card className="w-full xl:w-auto xl:min-w-[300px] bg-background-surface/80 backdrop-blur-xl border-none shadow-sm rounded-xl">
-                        <div className="p-1 space-y-1 text-left">
-                           <p className="text-[9px] xl:text-xs font-black text-content-secondary uppercase tracking-widest leading-none">{translate('Your Referral Code')}</p>
-                           <div className="flex items-center gap-2 xl:gap-3">
-                              <p className="flex-1 text-sm xl:text-lg font-bold font-mono tracking-wider truncate text-primary-600">{user.referralCode}</p>
-                              <Button variant="primary" size="sm" className="xl:px-4 xl:py-2 shadow-sm shrink-0" onClick={() => copyToClipboard(`https://aajexam.com/register?ref=${user.referralCode}`)}>
-                                 <Copy className="w-3.5 h-3.5 xl:w-4 xl:h-4 mx-auto" /> COPY LINK
-                              </Button>
-                           </div>
-                        </div>
-                     </Card>
-                  )}
-               </div>
-            </section>
+               )}
+            />
 
             {/* --- Stats Grid --- */}
             {user && (
@@ -224,15 +213,16 @@ export default function ReferralHistory() {
                      { label: 'Times Rewarded', val: user.referralRewards?.length || 0, icon: Gift, color: 'primary' },
                      { label: 'Who Referred You', val: user.referredBy || 'Direct', icon: ShieldCheck, color: 'primary' }
                   ].map((s, i) => (
-                     <Card key={i} className="group hover:scale-[1.02] transition-transform border-b-2 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-xl">
-                        <div className="flex justify-between items-start mb-1">
-                           <div className={`p-1.5 xl:p-2 bg-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500/10 text-${s.color === 'primary' ? 'primary' : s.color === 'secondary' ? 'secondary' : s.color}-500 rounded-lg`}>
-                              <s.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
+                     <div key={i} className="group relative overflow-hidden p-3 bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 12 }}>
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+                        <div className="flex justify-between items-start mb-1.5">
+                           <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+                              <s.icon className="w-4 h-4" />
                            </div>
                         </div>
                         <p className="text-[8px] xl:text-[10px] font-black text-content-secondary uppercase tracking-widest mb-0.5 xl:mb-1">{translate(s.label)}</p>
-                        <p className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{s.val}</p>
-                     </Card>
+                        <p className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight text-primary-700 dark:text-primary-200 truncate">{s.val}</p>
+                     </div>
                   ))}
                </section>
             )}
@@ -240,12 +230,9 @@ export default function ReferralHistory() {
             {/* --- Payout Section --- */}
             {user && bankDetailLoaded && (
                <section>
-                  <Card className="border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-2xl">
+                  <TicketCard icon={Zap} title="Referral Payouts">
                      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
                         <div className="space-y-2">
-                           <h2 className="text-xl font-black font-outfit uppercase tracking-tight flex items-center gap-2">
-                              <Zap className="w-5 h-5 text-primary-600" /> Referral Payouts
-                           </h2>
                            {(user.walletBalance || 0) >= MIN_PAYOUT ? (
                               <div className="flex items-start gap-2">
                                  <CircleCheck className="w-4 h-4 text-primary-600 shrink-0 mt-0.5" />
@@ -264,7 +251,7 @@ export default function ReferralHistory() {
                                     </p>
                                  </div>
                                  <div className="w-full h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                                    <div className="h-full bg-primary-600 rounded-full" style={{ width: `${Math.min(100, ((user.walletBalance || 0) / MIN_PAYOUT) * 100)}%` }} />
+                                    <div className="h-full bg-gradient-to-r from-primary-500 via-primary-300 to-primary-400 rounded-full" style={{ width: `${Math.min(100, ((user.walletBalance || 0) / MIN_PAYOUT) * 100)}%` }} />
                                  </div>
                               </div>
                            )}
@@ -313,7 +300,7 @@ export default function ReferralHistory() {
                                        type="text"
                                        value={bankForm[f.key]}
                                        onChange={(e) => setBankForm((prev) => ({ ...prev, [f.key]: e.target.value }))}
-                                       className="w-full mt-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-bold text-sm"
+                                       className="w-full mt-1 px-4 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-black font-bold text-sm focus:border-primary-600 outline-none"
                                     />
                                  </div>
                               ))}
@@ -340,7 +327,7 @@ export default function ReferralHistory() {
                                  max={user.walletBalance}
                                  value={payoutAmount}
                                  onChange={(e) => setPayoutAmount(e.target.value)}
-                                 className="w-full mt-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 font-bold text-sm"
+                                 className="w-full mt-1 px-4 py-3 border border-slate-300 dark:border-slate-700 bg-white dark:bg-black font-bold text-sm focus:border-primary-600 outline-none"
                               />
                            </div>
                            <p className="text-[11px] font-bold text-content-secondary uppercase tracking-widest">
@@ -359,7 +346,7 @@ export default function ReferralHistory() {
                            </p>
                         </div>
                      )}
-                  </Card>
+                  </TicketCard>
                </section>
             )}
 
@@ -370,7 +357,7 @@ export default function ReferralHistory() {
                <div className="space-y-3">
                   <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4 xl:gap-8">
                      <div className="space-y-2">
-                        <h2 className="text-xl font-black font-outfit uppercase tracking-tight">{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
+                        <h2 className="flex items-center gap-2.5 text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><TrendingUp className="w-4 h-4" /></span>{rich('How You <0>Earned</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
                      </div>
 
                      <div className="w-full xl:w-auto xl:min-w-[320px] space-y-2 xl:space-y-4">
@@ -380,17 +367,17 @@ export default function ReferralHistory() {
                            const amount = user?.referralRewards?.filter(r => r.type === b.type).reduce((s, r) => s + (r.amount || 0), 0) || 0;
                            const count = user?.referralRewards?.filter(r => r.type === b.type).length || 0;
                            return (
-                              <Card key={i} className="relative overflow-hidden group rounded-2xl">
+                              <Card key={i} className="relative overflow-hidden group">
                                  <div className="flex justify-between items-center relative z-10">
                                     <div className="space-y-1">
                                        <p className="text-[10px] font-black text-content-secondary uppercase tracking-widest leading-none">{translate(b.label)}</p>
                                        <p className="text-xl font-black font-outfit text-content-primary uppercase">₹{amount.toLocaleString()}</p>
                                     </div>
-                                    <div className={`text-[10px] font-black px-3 py-1 rounded-full bg-${b.color}-500/10 text-${b.color}-500 border border-${b.color}-500/20`}>
+                                    <div className="text-[10px] font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow" style={{ borderRadius: 999 }}>
                                        {translate('{count} FRIENDS', { count })}
                                     </div>
                                  </div>
-                                 <div className={`absolute top-0 right-0 w-1.5 h-full bg-${b.color}-500`} />
+                                 <div className="absolute top-0 right-0 w-1.5 h-full bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
                               </Card>
                            );
                         })}
@@ -402,10 +389,7 @@ export default function ReferralHistory() {
                <div className="space-y-2 xl:space-y-3">
                   <div className="flex items-center justify-between">
                      <div className="space-y-1 xl:space-y-2">
-                        <h2 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h2>
-                     </div>
-                     <div className="p-2 xl:p-3 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-2xl border-2 border-slate-100 dark:border-slate-700">
-                        <History className="w-4 h-4 xl:w-5 xl:h-5 text-content-secondary" />
+                        <h2 className="flex items-center gap-2.5 text-sm xl:text-xl font-black font-outfit uppercase tracking-tight"><span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}><History className="w-4 h-4" /></span>{rich('Referral <0>Logs</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}</h2>
                      </div>
                   </div>
 
@@ -425,15 +409,15 @@ export default function ReferralHistory() {
                         </Card>
                      ) : (
                         <div className="space-y-2 xl:space-y-4">
-                           <Card className="overflow-hidden border-none shadow-sm bg-white dark:bg-slate-800/80 rounded-2xl">
+                           <Card className="overflow-hidden" padded={false}>
                               <div className="overflow-x-auto">
                                  <table className="w-full text-left border-collapse">
-                                    <thead className="bg-slate-50/50 dark:bg-slate-900/50">
+                                    <thead className="bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
                                        <tr>
-                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Student')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward Type')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800">{translate('Reward')}</th>
-                                          <th className="px-4 py-2.5 text-[10px] font-black text-content-secondary uppercase tracking-widest border-b border-slate-200 dark:border-slate-800 text-right">{translate('Status')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent">{translate('Student')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent">{translate('Reward Type')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent">{translate('Reward')}</th>
+                                          <th className="px-4 py-2.5 text-[10px] font-black uppercase tracking-widest border-b border-primary-200 dark:border-transparent text-right">{translate('Status')}</th>
                                        </tr>
                                     </thead>
                                     <tbody className="divide-y divide-border-primary">
@@ -441,7 +425,7 @@ export default function ReferralHistory() {
                                           <motion.tr key={tx._id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }} className="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors">
                                              <td className="px-4 py-3">
                                                 <div className="flex items-center gap-3">
-                                                   <div className="w-8 h-8 rounded-lg xl:rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center font-black text-sm text-slate-700 dark:text-slate-400">
+                                                   <div className="w-8 h-8 flex items-center justify-center font-black text-sm bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                                                       {(tx.invitee?.name || 'S').charAt(0).toUpperCase()}
                                                    </div>
                                                    <div>
@@ -451,7 +435,7 @@ export default function ReferralHistory() {
                                                 </div>
                                              </td>
                                              <td className="px-4 py-3">
-                                                <span className={`px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase border border-current bg-current opacity-10 text-${rewardColors[tx.rewardType]}-500`}>
+                                                <span className="px-3 py-1 text-[10px] font-black tracking-widest uppercase bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/10" style={{ borderRadius: 999 }}>
                                                    {translate(rewardLabels[tx.rewardType] || '')}
                                                 </span>
                                              </td>
@@ -476,7 +460,7 @@ export default function ReferralHistory() {
                                     <button
                                        key={i}
                                        onClick={() => setPage(i + 1)}
-                                       className={`w-10 h-10 rounded-lg xl:rounded-xl text-xs font-black transition-all ${page === i + 1 ? 'bg-primary-600 text-white shadow-sm' : 'bg-white dark:bg-slate-800 text-content-secondary border border-slate-200 dark:border-slate-700'}`}
+                                       style={{ borderRadius: 10 }} className={`w-10 h-10 text-xs font-black transition-all ${page === i + 1 ? 'bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow' : 'bg-background-surface text-content-secondary border border-slate-200 dark:border-slate-700 hover:border-primary-500'}`}
                                     >
                                        {i + 1}
                                     </button>

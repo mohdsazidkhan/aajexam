@@ -197,7 +197,7 @@ const HowItWorks = () => {
             {/* --- CTA --- */}
             <section className="pb-10 xl:pb-14">
                <Card className="p-6 xl:p-12 text-center bg-primary-50 dark:bg-slate-900 border-none ring-1 ring-primary-200 dark:ring-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-amber-300/20 dark:bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary-300/20 dark:bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
                   <div className="relative z-10 space-y-10">

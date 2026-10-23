@@ -106,8 +106,8 @@ const PublicNavbar = () => {
       {promoActive && <PromoTopBar />}
       <nav
         className={`fixed ${promoActive ? 'top-8' : 'top-0'} left-0 right-0 z-[100] transition-all duration-500 pointer-events-none ${scrolled
-          ? 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-amber-300 after:to-primary-500'
-          : 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-amber-300 after:to-primary-500'
+          ? 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500'
+          : 'py-2.5 bg-white dark:bg-black border-b border-slate-100 dark:border-slate-800 shadow-md after:content-[""] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500'
           }`}
       >
         <div className="container mx-auto px-4 xxl:px-0 pointer-events-auto">

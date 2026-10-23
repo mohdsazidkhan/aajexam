@@ -113,7 +113,7 @@ const NotesPage = ({ initialItems = [], initialTotalPages = 1 } = {}) => {
               <button key={f.id} onClick={() => { setType(f.id); setPage(1); }}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   type === f.id
-                    ?'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 border-amber-500'
+                    ?'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 border-primary-500'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}

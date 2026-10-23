@@ -139,13 +139,13 @@ const TestResult = ({ resolvedId } = {}) => {
             animate={{ scale: 1, opacity: 1 }}
             className="absolute -top-12 -left-12 z-20 pointer-events-none"
           >
-            <Trophy className="w-20 xl:w-32 h-20 xl:h-32 text-black dark:text-white rotate-[-15deg] drop-shadow-sm" />
+            <Trophy className="w-20 xl:w-32 h-20 xl:h-32 text-primary-500 dark:text-primary-200 rotate-[-15deg] drop-shadow-sm" />
           </motion.div>
         )}
 
         <Card className={`
           relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none shadow-sm
-          ${isGreat ? 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10' : 'bg-background-surface'}
+          ${isGreat ? 'bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 text-slate-900 dark:text-white shadow-xl ring-1 ring-primary-200 dark:ring-white/10' : 'bg-background-surface'}
         `}>
           <div className="relative z-10 space-y-6">
             <motion.div
@@ -166,7 +166,7 @@ const TestResult = ({ resolvedId } = {}) => {
                 <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{fmtNum(result?.score)}</span>
                 <span className="text-sm font-black uppercase opacity-60">{translate('Score')}</span>
               </div>
-              <div className="h-20 w-1 bg-white/20 rounded-full" />
+              <div className="h-20 w-1 bg-primary-300/60 dark:bg-white/20 rounded-full" />
               <div className="flex flex-col items-center">
                 <span className="text-xl xl:text-5xl font-black font-outfit tracking-tighter">{accuracy.toFixed(0)}%</span>
                 <span className="text-sm font-black uppercase opacity-60">{translate('Accuracy')}</span>
@@ -185,13 +185,13 @@ const TestResult = ({ resolvedId } = {}) => {
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm"
+                className="mt-6 inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20"
               >
                 <span className="text-base xl:text-lg font-black tracking-wide">
-                  {translate('All India Rank')} <span className="text-black dark:text-white">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
+                  {translate('All India Rank')} <span className="text-primary-700 dark:text-primary-200">#{result.rank}</span> {translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') })}
                 </span>
-                <span className="hidden sm:inline h-5 w-px bg-white/30" />
-                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+                <span className="hidden sm:inline h-5 w-px bg-primary-300 dark:bg-white/30" />
+                <span className="text-xs xl:text-sm font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow">
                   {translate('{band} · Beat {pct}% candidates', { band: translate(percentileBand), pct: beatPct })}
                 </span>
               </motion.div>
@@ -213,32 +213,32 @@ const TestResult = ({ resolvedId } = {}) => {
             value: result?.rank ? `#${result.rank}` : 'N/A',
             sub: lbStats.totalParticipants > 0 ? translate('of {total}', { total: lbStats.totalParticipants.toLocaleString('en-IN') }) : null,
             icon: Award,
-            color: 'text-black dark:text-white'
+            color: ''
           },
           {
             label: 'Percentile',
             value: result?.percentile != null ? `${percentile.toFixed(1)}` : 'N/A',
             sub: result?.percentile != null ? translate('Beat {pct}%', { pct: beatPct }) : null,
             icon: TrendingUp,
-            color: 'text-primary-600'
+            color: ''
           },
           {
             label: 'Top Score',
             value: lbStats.topScore ? fmtNum(lbStats.topScore) : '—',
             sub: result?.score != null ? translate('You: {score}', { score: fmtNum(result.score) }) : null,
             icon: Crown,
-            color: 'text-black dark:text-white'
+            color: ''
           },
           {
             label: 'Time',
             value: formatTime(result?.totalTime),
             sub: translate('Avg: {time}', { time: formatTime(lbStats.avgTime) }),
             icon: Clock,
-            color: 'text-black dark:text-white'
+            color: ''
           }
         ].map((item, idx) => (
-          <Card key={idx} className="flex flex-col items-center text-center gap-1.5 border-2 hover:border-primary-700 transition-colors">
-            <div className={`w-14 h-14 shrink-0 rounded-2xl bg-gray-50 dark:bg-slate-700/50 flex items-center justify-center ${item.color}`}>
+          <Card key={idx} className="flex flex-col items-center text-center gap-1.5 hover:-translate-y-0.5 hover:shadow-xl transition-all">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rotate-[-4deg] bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow" style={{ borderRadius: 16 }}>
               <item.icon className="w-6 h-6 xl:w-7 xl:h-7" />
             </div>
             <span className="text-xl xl:text-2xl font-black font-outfit">{item.value}</span>
@@ -257,7 +257,7 @@ const TestResult = ({ resolvedId } = {}) => {
               onClick={() => setActiveTab(tab)}
               className={`
                  px-8 py-3 rounded-full font-black uppercase text-sm transition-all
-                 ${activeTab === tab ? 'bg-primary-600 text-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}
+                 ${activeTab === tab ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-gray-400 hover:text-gray-600'}
                `}
             >
               {translate(tab)}
@@ -284,9 +284,9 @@ const TestResult = ({ resolvedId } = {}) => {
                     </span>
                   )}
                 </div>
-                <Card padded={false} className="overflow-hidden border-2">
+                <Card padded={false} className="overflow-hidden">
                   <table className="w-full">
-                    <thead className="bg-gray-50 dark:bg-slate-800/50 text-xs font-black uppercase text-gray-400 border-b">
+                    <thead className="bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white text-xs font-black uppercase border-b border-primary-200 dark:border-transparent">
                       <tr>
                         <th className="px-6 py-4 text-left">{translate('Player')}</th>
                         <th className="px-6 py-4 text-center">{translate('Score')}</th>
@@ -301,7 +301,7 @@ const TestResult = ({ resolvedId } = {}) => {
                           <tr key={idx} className={`border-b dark:border-slate-700 last:border-0 ${isUser ? 'bg-primary-500/10' : ''}`}>
                             <td className="px-6 py-4">
                               <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ?'bg-primary-600 text-white':'bg-gray-100 dark:bg-slate-700'}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-xs ${displayRank === 1 ? 'bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow' : 'bg-gray-100 dark:bg-slate-700'}`}>
                                   {displayRank === 1 ? <Crown className="w-4 h-4" /> : displayRank}
                                 </div>
                                 <span className="font-bold text-sm">{entry.user?.name || translate('Anonymous Player')}</span>
@@ -339,14 +339,14 @@ const TestResult = ({ resolvedId } = {}) => {
                 <h2 className="text-xl font-black font-outfit uppercase px-2">{translate('Section Performance')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {Object.entries(result?.sectionWiseScore || {}).map(([name, stats], idx) => (
-                    <Card key={idx} className="border-2">
+                    <Card key={idx}>
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-black text-xs uppercase tracking-wider">{name}</span>
                         <span className="font-black text-primary-600">{translate('{score} pts', { score: fmtNum(stats.score) })}</span>
                       </div>
                       <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 dark:bg-slate-700">
                         <div className="bg-primary-600 h-full" style={{ width: `${(stats.correct / (stats.correct + stats.wrong || 1)) * 100}%` }} />
-                        <div className="bg-primary-600 h-full flex-1"/>
+                        <div className="bg-red-500/70 h-full flex-1"/>
                       </div>
                       <div className="flex justify-between text-[10px] font-black mt-2 text-gray-400 uppercase">
                         <span>{translate('{count} Correct', { count: stats.correct })}</span>
@@ -371,15 +371,15 @@ const TestResult = ({ resolvedId } = {}) => {
                 const isSkipped = attempt?.selectedIndex === -1 || !attempt;
 
                 return (
-                  <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-black/20 dark:border-white/20'}`}>
-                    <div className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-black/5 dark:bg-white/5'}`}>
+                  <Card key={idx} className={`p-0 overflow-hidden border-2 ${isCorrect ? 'border-primary-500/20' : isSkipped ? 'border-gray-200' : 'border-red-300 dark:border-red-500/40'}`}>
+                    <div className={`p-3 xl:p-6 border-b flex justify-between items-start ${isCorrect ? 'bg-primary-500/5' : isSkipped ? 'bg-gray-50' : 'bg-red-50 dark:bg-red-500/10'}`}>
                       <div className="space-y-1">
-                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-black dark:text-white'}`}>
+                        <span className={`text-[10px] font-black uppercase tracking-widest ${isCorrect ? 'text-primary-600' : isSkipped ? 'text-gray-400' : 'text-red-600 dark:text-red-400'}`}>
                           {isCorrect ? translate('PERFECT') : isSkipped ? translate('SKIPPED') : translate('INCORRECT')}
                         </span>
                         <h3 className="text-lg font-bold leading-tight whitespace-pre-wrap">{q.questionText}</h3>
                       </div>
-                      {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-black dark:text-white w-8 h-8" />}
+                      {isCorrect ? <CircleCheck className="text-primary-600 w-8 h-8" /> : isSkipped ? <Target className="text-gray-300 w-8 h-8" /> : <XCircle className="text-red-600 dark:text-red-400 w-8 h-8" />}
                     </div>
 
                     <div className="p-3 xl:p-6 space-y-2 xl:space-y-4">
@@ -438,7 +438,7 @@ const TestResult = ({ resolvedId } = {}) => {
       {/* --- Share Result --- */}
       {mounted && result && (
         <section className="px-0 py-4 xl:py-8">
-          <Card className="border-2 bg-primary-50 dark:bg-slate-800">
+          <Card className="bg-primary-50 dark:bg-slate-800">
             <div className="text-center space-y-2 mb-4">
               <h2 className="text-xl xl:text-2xl font-black font-outfit uppercase">{translate('Flex your result')}</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">

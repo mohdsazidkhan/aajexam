@@ -43,7 +43,7 @@ const LeaderboardSkeleton = () => (
 
 // ─── Rank visual config ────────────────────────────────────────────────────────
 const rankConfig = {
-  1: { gradient: 'bg-gradient-to-br from-amber-300 to-amber-500', ringColor: 'ring-amber-300', textColor: 'text-amber-600 dark:text-amber-400', accent: 'border-l-amber-400', badgeText: 'text-amber-950', rowBg: 'border-amber-300 dark:border-amber-500/50 bg-gradient-to-r from-amber-200 via-amber-100 to-amber-50 dark:from-amber-500/30 dark:via-amber-500/15 dark:to-amber-500/5 hover:shadow-md' },
+  1: { gradient: 'bg-gradient-to-br from-amber-300 to-amber-500', ringColor: 'ring-amber-300', textColor: 'text-amber-600 dark:text-amber-400', accent: 'border-l-amber-400', badgeText: 'text-amber-950', rowBg: 'border-amber-300 dark:border-primary-500/50 bg-gradient-to-r from-amber-200 via-amber-100 to-amber-50 dark:from-amber-500/30 dark:via-amber-500/15 dark:to-amber-500/5 hover:shadow-md' },
   2: { gradient: 'bg-gradient-to-br from-slate-200 to-slate-400', ringColor: 'ring-slate-200', textColor: 'text-slate-500 dark:text-slate-300', accent: 'border-l-slate-400', badgeText: 'text-slate-800', rowBg: 'border-slate-300 dark:border-slate-400/50 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-50 dark:from-slate-400/30 dark:via-slate-400/15 dark:to-slate-400/5 hover:shadow-md' },
   3: { gradient: 'bg-gradient-to-br from-orange-300 to-orange-500', ringColor: 'ring-orange-300', textColor: 'text-orange-600 dark:text-orange-400', accent: 'border-l-orange-400', badgeText: 'text-orange-950', rowBg: 'border-orange-300 dark:border-orange-500/50 bg-gradient-to-r from-orange-200 via-orange-100 to-orange-50 dark:from-orange-500/30 dark:via-orange-500/15 dark:to-orange-500/5 hover:shadow-md' },
 };
@@ -245,7 +245,7 @@ const MyRankCard = ({ entry, totalUsers }) => {
         <div className="relative flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <div className="flex items-baseline gap-1.5 rounded-xl bg-white/15 px-2.5 py-1 ring-1 ring-white/25">
             <span className="text-sm sm:text-base font-black uppercase tracking-wide text-white">{translate('Your Rank')}</span>
-            <span className="text-xl sm:text-2xl font-black leading-none text-amber-200">#{entry.rank}</span>
+            <span className="text-xl sm:text-2xl font-black leading-none text-primary-200">#{entry.rank}</span>
           </div>
           <Avatar entry={entry} size="sm" />
 <div className="min-w-0">
@@ -256,7 +256,7 @@ const MyRankCard = ({ entry, totalUsers }) => {
             <div className="flex items-center gap-2 flex-wrap">
               {entry.username && <p className="text-[10px] font-bold text-white/70 truncate">@{entry.username}</p>}
               {topPct !== null && (
-                <p className="text-[10px] font-bold text-amber-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
+                <p className="text-[10px] font-bold text-primary-200 whitespace-nowrap">{translate('Top {percent}% of {total} ranked students', { percent: topPct, total: totalUsers })}</p>
               )}
             </div>
           </div>
@@ -264,7 +264,7 @@ const MyRankCard = ({ entry, totalUsers }) => {
             {chips.map((c) => (
               <span key={c.label} className="inline-flex items-center gap-1 rounded-full bg-black/30 ring-1 ring-white/25 px-2.5 py-1 text-[11px] font-bold whitespace-nowrap text-white">
                 <span className="text-white/90">{c.label}</span>
-                <span className="font-black text-amber-200">{c.value}</span>
+                <span className="font-black text-primary-200">{c.value}</span>
               </span>
             ))}
           </div>
@@ -354,7 +354,7 @@ const AllIndiaRankPage = () => {
             {/* ── Hero Banner — green gradient with gold podium ── */}
             <section className="relative rounded-2xl overflow-hidden shadow-md bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white">
               <div className="pointer-events-none absolute -top-24 -left-16 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
-              <div className="pointer-events-none absolute -bottom-32 right-8 w-96 h-96 rounded-full bg-amber-300/20 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-32 right-8 w-96 h-96 rounded-full bg-primary-300/20 blur-3xl" />
               <Trophy className="pointer-events-none absolute right-3 top-2 w-28 h-28 text-white/5 rotate-12" />
 
               <div className="relative z-10 grid grid-cols-1 xl:grid-cols-2 items-end gap-2 xl:gap-6 px-3 xl:px-6 pt-3 xl:pt-4 pb-0">
@@ -369,7 +369,7 @@ const AllIndiaRankPage = () => {
                     {/* PRO badge — gold, animated sparkle */}
                     <motion.div
                       initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
+                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest shadow-[0_2px_12px_rgba(251,191,36,0.4)]"
                     >
                       <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}>
                         <Sparkles className="w-3.5 h-3.5" />
@@ -379,7 +379,7 @@ const AllIndiaRankPage = () => {
                   </div>
 
                   <p className="text-[11px] xl:text-xs font-bold text-white/80 max-w-md mx-auto xl:mx-0 flex items-center justify-center xl:justify-start gap-1.5">
-                    <Trophy className="w-3.5 h-3.5 shrink-0 text-amber-300" />
+                    <Trophy className="w-3.5 h-3.5 shrink-0 text-primary-300" />
                     {translate('Top 1000 students ranking based on total time spent')}
                   </p>
 
@@ -450,7 +450,7 @@ const AllIndiaRankPage = () => {
                   { label: 'Ranked Users', value: `${totalUsers}+`, icon: Users, tile: 'bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300' },
                   { label: 'Total Exams Attempted', value: `${totalAttempts}`, icon: Target, tile: 'bg-sky-50 text-sky-600 dark:bg-sky-500/15 dark:text-sky-300' },
                   { label: selectedExamId ? 'Time Spent On This Exam' : 'Total All Exams Time Spent', value: formatSecondsSpent(totalTimeSpentSeconds), icon: Clock, tile: 'bg-violet-50 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300' },
-                  { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, tile: 'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-amber-300' },
+                  { label: 'Top Score', value: `${data[0]?.totalScore ?? 0}`, icon: TrendingUp, tile: 'bg-primary-50 text-primary-600 dark:bg-primary-500/15 dark:text-primary-300' },
                   { label: 'Top Streak', value: `${Math.max(0, ...data.map(d => d.currentStreak || 0))}🔥`, icon: Flame, tile: 'bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-300' },
                 ].map((stat, i) => (
                   <div key={i} className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow min-w-0">

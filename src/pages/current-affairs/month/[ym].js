@@ -30,8 +30,8 @@ const CurrentAffairsMonth = ({ year, month, total, groups, prevKey, nextKey, ind
       <header className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-4 xl:p-6 space-y-2" style={{ borderRadius: 16 }}>
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-        <Link href="/current-affairs" className="block text-right text-sm font-bold text-primary-600 dark:text-amber-300 hover:underline">← Current Affairs</Link>
+          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+        <Link href="/current-affairs" className="block text-right text-sm font-bold text-primary-600 dark:text-primary-300 hover:underline">← Current Affairs</Link>
         <h1 className="text-2xl xl:text-4xl font-black text-slate-900 dark:text-white">Current Affairs {label} – Monthly Digest</h1>
         <p className="text-sm xl:text-base font-semibold text-slate-600 dark:text-slate-500 dark:text-white/60">
           {total} important updates from {label}, grouped by category, for SSC, UPSC, Banking, Railway and State PSC exams.

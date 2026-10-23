@@ -59,7 +59,7 @@ const Card = ({
     >
       {/* Signature ticket accent: a thin green-gold line along the top edge of every surface card */}
       {variant === 'white' && !noBorder && (
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary-500/70 via-amber-300/70 to-primary-500/70" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary-500/70 via-primary-300/70 to-primary-500/70" />
       )}
 
       {/* Premium Shimmer for Highlights */}

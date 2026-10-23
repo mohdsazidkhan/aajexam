@@ -41,21 +41,21 @@ import useTranslate from "../../../hooks/useTranslate";
 const SectionHeader = ({ title, icon: IconComp, iconColor, iconBg, onViewAll }) => {
    const { translate } = useTranslate();
    return (
-   <div className="flex items-center justify-between mb-4">
+   <div className="flex items-center justify-between mb-4 pb-2 border-b border-dashed border-primary-300/70 dark:border-white/15">
       <div className="flex items-center gap-2.5">
-         <div className={`w-9 h-9 rounded-lg xl:rounded-xl flex items-center justify-center ${iconBg}`}>
-            <IconComp className={`w-[18px] h-[18px] ${iconColor}`} />
+         <div className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
+            <IconComp className="w-[18px] h-[18px]" />
          </div>
-         <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight">
+         <h2 className="text-base xl:text-lg font-black text-slate-900 dark:text-white tracking-tight uppercase">
             {translate(title)}
          </h2>
       </div>
       <button
          onClick={onViewAll}
-         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-primary-500/10 hover:bg-primary-500/20 transition-colors"
+         className="flex items-center gap-0.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all"
       >
-         <span className="text-xs font-extrabold text-black dark:text-white">{translate('View All')}</span>
-         <ChevronRight className="w-3.5 h-3.5 text-black dark:text-white" />
+         <span className="text-xs font-extrabold text-primary-950">{translate('View All')}</span>
+         <ChevronRight className="w-3.5 h-3.5 text-primary-950" />
       </button>
    </div>
    );
@@ -70,10 +70,11 @@ const GovtExamCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-0 p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
-         <GraduationCap className="w-6 h-6 text-black dark:text-white" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+         <GraduationCap className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {translateData(item.name)}
@@ -91,10 +92,11 @@ const QuizCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[160px] xl:min-w-0 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+      className="min-w-[160px] xl:min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
    >
-      <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
-         <Brain className="w-5 h-5 text-black dark:text-white" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+         <Brain className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {translateData(item.title || item.name)}
@@ -114,10 +116,11 @@ const SubjectCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-0 p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-12 h-12 rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
-         <BookOpen className="w-6 h-6 text-black dark:text-white" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+      <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+         <BookOpen className="w-6 h-6" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {translateData(item.name)}
@@ -137,10 +140,11 @@ const TopicCard = ({ item, onClick }) => {
    return (
    <div
       onClick={onClick}
-      className="min-w-[140px] xl:min-w-0 p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col items-center gap-2 text-center"
+      className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
    >
-      <div className="w-10 h-10 rounded-lg xl:rounded-xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
-         <Layers className="w-5 h-5 text-black dark:text-white" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+      <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+         <Layers className="w-5 h-5" />
       </div>
       <p className="text-[13px] font-extrabold text-slate-900 dark:text-white leading-tight line-clamp-2">
          {translateData(item.name)}
@@ -165,8 +169,9 @@ const REEL_TYPE_CONFIG = {
 const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
-      className="min-w-0 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden flex flex-col"
+      className="min-w-0 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all overflow-hidden flex flex-col"
    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
          {/* eslint-disable-next-line @next/next/no-img-element */}
          <img
@@ -194,11 +199,12 @@ const ReelCard = ({ item, onClick }) => {
    return (
       <div
          onClick={onClick}
-         className="min-w-0 p-3.5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 cursor-pointer hover:scale-[1.02] transition-transform flex flex-col gap-2"
+         className="min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
       >
-         <div className={`flex items-center gap-1.5 self-start px-2 py-1 rounded-lg ${cfg.bg}`}>
-            <TypeIcon className={`w-3.5 h-3.5 ${cfg.color}`} />
-            <span className={`text-[10px] font-extrabold uppercase tracking-wide ${cfg.color}`}>{translate(cfg.label)}</span>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
+         <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-lg">
+            <TypeIcon className="w-3.5 h-3.5" />
+            <span className="text-[10px] font-extrabold uppercase tracking-wide">{translate(cfg.label)}</span>
          </div>
          <p className="text-xs font-bold text-slate-900 dark:text-white leading-[1.4] line-clamp-3">
             {item.questionText || item.factText || item.tipText || item.newsContent || item.pollQuestion || translate('Reel')}
@@ -340,100 +346,80 @@ const HomePage = () => {
 
    return (
       <div className="relative selection:bg-primary-600 selection:text-white font-outfit mt-2 xl:mt-4">
-            {/* ── Stats ── */}
-            <section className="px-0 py-2 xl:py-4">
-               {streakCount > 0 && (
-                  <div className="flex items-center justify-end mb-3 xl:mb-6">
-                     <div className="flex items-center gap-1 px-2.5 py-1.5 bg-black/10 dark:bg-white/10 rounded-lg xl:rounded-xl">
-                        <Flame className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />
-                        <span className="text-xs font-black text-black dark:text-white">{streakCount}</span>
+            {/* ── Scorecard hero ── */}
+            <section className="px-0 py-2 xl:py-3">
+               <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-3 xl:p-5" style={{ borderRadius: 16 }}>
+                  <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+                  <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+                  <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
+
+                  <div className="grid grid-cols-1 xl:grid-cols-[240px_minmax(0,1fr)] gap-3 xl:gap-4">
+                     {/* Readiness */}
+                     <div className="relative overflow-hidden flex flex-col justify-center gap-2 px-4 py-3 bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20" style={{ borderRadius: 12 }}>
+                        <TrendingUp className="absolute -right-3 -bottom-3 w-20 h-20 text-primary-600/10 dark:text-white/10" />
+                        <div className="relative flex items-center justify-between gap-2">
+                           <span className="text-[10px] xl:text-xs font-black uppercase tracking-[0.2em] text-slate-600 dark:text-white/75">{translate('Readiness')}</span>
+                           {streakCount > 0 && (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow" style={{ borderRadius: 999 }}>
+                                 <Flame className="w-3.5 h-3.5 fill-current" />
+                                 <span className="text-xs font-black">{streakCount}</span>
+                              </span>
+                           )}
+                        </div>
+                        <p className="relative text-4xl xl:text-5xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{overallReadiness}%</p>
+                        <div className="relative h-2 bg-primary-600/15 dark:bg-white/15 overflow-hidden" style={{ borderRadius: 999 }}>
+                           <div className="h-full bg-gradient-to-r from-primary-500 via-primary-300 to-primary-400" style={{ width: `${Math.min(100, Math.max(0, overallReadiness))}%` }} />
+                        </div>
+                     </div>
+
+                     {/* Stat cells */}
+                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        {[
+                           { icon: Brain, value: quizzesAttempted, label: 'Quizzes' },
+                           { icon: GraduationCap, value: pyqTestsAttempted, label: "PYQ's" },
+                           { icon: BookOpen, value: practiceTestsAttempted, label: 'Practice Tests' },
+                           { icon: Clock, value: formatSecondsSpent(totalTimeSpentSeconds), label: 'Total Time' },
+                           { icon: Clock, value: formatSecondsSpent(quizTimeSpentSeconds), label: 'Quiz Time' },
+                           { icon: Clock, value: formatSecondsSpent(examTimeSpentSeconds), label: 'Exam Time' },
+                           { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
+                           { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
+                        ].map(({ icon: Icon, value, label }, idx) => (
+                           <div key={idx} className="relative overflow-hidden bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 px-3 py-2.5 transition-colors" style={{ borderRadius: 10 }}>
+                              <Icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-primary-600/10 dark:text-white/10" />
+                              <p className="relative text-base xl:text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200 truncate">{value}</p>
+                              <p className="relative mt-1 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 leading-tight truncate">{translate(label)}</p>
+                           </div>
+                        ))}
                      </div>
                   </div>
-               )}
-
-               {/* Stats grid — compact chips */}
-               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-9 gap-1.5 md:gap-2 xl:gap-3">
-                  {[
-                     { icon: TrendingUp, value: `${overallReadiness}%`, label: 'Readiness', accent: true },
-                     { icon: Brain, value: quizzesAttempted, label: 'Quizzes' },
-                     { icon: GraduationCap, value: pyqTestsAttempted, label: "PYQ's" },
-                     { icon: BookOpen, value: practiceTestsAttempted, label: 'Practice Tests' },
-                     { icon: Clock, value: formatSecondsSpent(totalTimeSpentSeconds), label: 'Total Time', accent: true },
-                     { icon: Clock, value: formatSecondsSpent(quizTimeSpentSeconds), label: 'Quiz Time' },
-                     { icon: Clock, value: formatSecondsSpent(examTimeSpentSeconds), label: 'Exam Time' },
-                     { icon: Flame, value: formatSecondsSpent(dailyChallengeTimeSpentSeconds), label: 'Challenge Time' },
-                     { icon: Film, value: formatSecondsSpent(reelTimeSpentSeconds), label: 'Reels Time' },
-                  ].map(({ icon: Icon, value, label, accent }, idx) => (
-                     <div key={idx} className="flex items-center xl:flex-col xl:text-center gap-1.5 xl:gap-1.5 bg-white dark:bg-slate-900 rounded-xl xl:rounded-2xl p-2 xl:p-2.5 border border-slate-100 dark:border-slate-800">
-                        <div className={`w-7 h-7 xl:w-8 xl:h-8 shrink-0 rounded-lg flex items-center justify-center ${accent ? 'bg-primary-500/10' : 'bg-slate-100 dark:bg-slate-800'}`}>
-                           <Icon className={`w-3.5 h-3.5 xl:w-4 xl:h-4 ${accent ? 'text-primary-600' : 'text-slate-700 dark:text-slate-300'}`} />
-                        </div>
-                        <div className="min-w-0 xl:w-full">
-                           <p className="text-xs xl:text-sm font-black text-slate-900 dark:text-white leading-tight truncate">{value}</p>
-                           <p className="text-[8px] xl:text-[9px] font-bold text-slate-400 uppercase tracking-tight leading-tight truncate">{translate(label)}</p>
-                        </div>
-                     </div>
-                  ))}
                </div>
             </section>
 
             {/* ── Quick Actions ── */}
             <section className="px-0 py-2">
-               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-1.5 xl:gap-3">
-                  <button
-                     onClick={() => router.push('/govt-exams')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <Zap className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Start Test')}</p>
-                  </button>
-                  <button
-                     onClick={() => router.push('/quizzes')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <PlayCircle className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Start Quiz')}</p>
-                  </button>
-                  <button
-                     onClick={() => router.push('/blog')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <FileText className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Read Blog')}</p>
-                  </button>
-                  <button
-                     onClick={() => router.push('/daily-challenge')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <Flame className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Daily Challenge')}</p>
-                  </button>
-                  <button
-                     onClick={() => router.push('/student/revision')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <RotateCcw className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('Revision')}</p>
-                  </button>
-                  <button
-                     onClick={() => router.push('/student/all-india-rank')}
-                     className="bg-white dark:bg-slate-800 rounded-lg xl:rounded-2xl p-1.5 xl:p-3 flex items-center gap-1 xl:gap-3 active:scale-[0.98] transition-transform relative overflow-hidden border-b-2 border-slate-200 dark:border-slate-700"
-                  >
-                     <div className="w-6 h-6 xl:w-9 xl:h-9 shrink-0 rounded-md xl:rounded-xl bg-slate-900/10 dark:bg-white/10 flex items-center justify-center">
-                        <Award className="w-3.5 h-3.5 xl:w-5 xl:h-5 text-slate-900 dark:text-white" />
-                     </div>
-                     <p className="text-slate-900 dark:text-white text-[8px] xl:text-xs font-black uppercase tracking-tight xl:tracking-wider leading-tight">{translate('All India Rank')}</p>
-                  </button>
+               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-2 xl:gap-3">
+                  {[
+                     { path: '/govt-exams', icon: Zap, label: 'Start Test' },
+                     { path: '/quizzes', icon: PlayCircle, label: 'Start Quiz' },
+                     { path: '/blog', icon: FileText, label: 'Read Blog' },
+                     { path: '/daily-challenge', icon: Flame, label: 'Daily Challenge' },
+                     { path: '/student/revision', icon: RotateCcw, label: 'Revision' },
+                     { path: '/student/all-india-rank', icon: Award, label: 'All India Rank' },
+                  ].map(({ path, icon: Icon, label }) => (
+                     <button
+                        key={path}
+                        onClick={() => router.push(path)}
+                        className="group relative overflow-hidden flex items-center gap-2.5 p-2.5 xl:p-3 text-left bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] transition-all"
+                        style={{ borderRadius: 12 }}
+                     >
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary-500 via-primary-300 to-primary-500" />
+                        <span className="ml-1 w-9 h-9 xl:w-10 xl:h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                           <Icon className="w-4 h-4 xl:w-5 xl:h-5" />
+                        </span>
+                        <p className="flex-1 min-w-0 text-slate-900 dark:text-white text-[11px] xl:text-xs font-black uppercase tracking-wide leading-tight">{translate(label)}</p>
+                        <ChevronRight className="w-4 h-4 shrink-0 text-primary-600 dark:text-primary-300 group-hover:translate-x-0.5 transition-transform" />
+                     </button>
+                  ))}
                </div>
             </section>
 

@@ -53,19 +53,20 @@ const TestStartModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-md flex items-end sm:items-center justify-center z-[9999] p-2 sm:p-4 font-outfit">
-      <div className="bg-background-surface rounded-3xl sm:rounded-[2.5rem] p-4 sm:p-6 xl:p-10 max-w-lg w-full shadow-sm border-2 border-slate-200 dark:border-slate-800 max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh' }}>
+      <div className="relative bg-background-surface p-4 sm:p-6 xl:p-10 max-w-lg w-full shadow-2xl border border-slate-200 dark:border-slate-800 max-h-[92vh] overflow-y-auto scrollbar-none animate-bounce-in" style={{ maxHeight: '92dvh', borderRadius: 20 }}>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 z-10 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
         <div className="text-center">
           {/* Header */}
-          <div className="w-10 xl:w-20 h-10 xl:h-20 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-white dark:border-slate-700">
-            <FaSchool className="text-white text-xl xl:text-3xl" />
+          <div className="w-10 xl:w-20 h-10 xl:h-20 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center mx-auto mb-6 shadow-lg" style={{ borderRadius: 18 }}>
+            <FaSchool className="text-xl xl:text-3xl" />
           </div>
 
           <h2 className="text-md md:text-xl xl:text-2xl font-black text-content-primary mb-3 xl:mb-6 uppercase tracking-tighter">
-            {rich('Exam <0>Practice</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+            {rich('Exam <0>Practice</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
           </h2>
 
           {/* Test Info */}
-          <div className="bg-background-surface-secondary rounded-[1rem] xl:rounded-[2rem] p-3 xl:p-6 mb-3 xl:mb-6 border-2 border-slate-200 dark:border-slate-800/50 shadow-sm">
+          <div className="bg-primary-50/60 dark:bg-background-surface-secondary p-3 xl:p-6 mb-3 xl:mb-6 border border-dashed border-primary-300 dark:border-slate-700 shadow-sm" style={{ borderRadius: 16 }}>
             <h3 className="text-content-primary text-sm xl:text-md mb-3 xl:mb-6 uppercase font-black tracking-widest leading-relaxed text-center px-2 break-words">
               {translateData(testTitle)}
             </h3>
@@ -93,26 +94,26 @@ const TestStartModal = ({
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translateData(categoryName)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translateData(examTitle)}</span>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                   <Clock className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{durationText}</span>
               </div>
               {pattern?.totalMarks && (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                     <Trophy className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-content-secondary uppercase tracking-widest text-center">{translate('{count} Marks', { count: pattern.totalMarks })}</span>
@@ -120,7 +121,7 @@ const TestStartModal = ({
               )}
               {pattern?.negativeMarking > 0 ? (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg xl:rounded-xl flex items-center justify-center text-black dark:text-white shadow-sm">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                     <Info className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-black dark:text-white uppercase tracking-widest text-center">
@@ -129,7 +130,7 @@ const TestStartModal = ({
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 col-span-2">
-                  <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center text-primary-600 shadow-sm">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] rounded-lg xl:rounded-xl flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest text-center">
@@ -142,7 +143,7 @@ const TestStartModal = ({
 
           {/* Sections Preview */}
           {sections.length > 0 && (
-            <div className="bg-white dark:bg-slate-800/30 rounded-[1rem] xl:rounded-[2rem] p-3 xl:p-6 mb-3 xl:mb-6 border-2 border-slate-200/50 dark:border-slate-700/30">
+            <div className="bg-background-surface p-3 xl:p-6 mb-3 xl:mb-6 border border-slate-200 dark:border-slate-700 shadow-sm" style={{ borderRadius: 16 }}>
               <h4 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.3em] mb-6 text-center flex items-center justify-center gap-2">
                 <FaList className="w-3 h-3" />
                 Exam Stages ({sections.length})
@@ -218,7 +219,7 @@ const TestStartModal = ({
               onClick={() => onConfirm()}
               disabled={!acceptedRules}
               className={`flex-[2] px-5 sm:px-8 py-4 sm:py-5 rounded-2xl sm:rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all border-2 ${acceptedRules
-                ? 'bg-primary-600 text-white border-white/20 shadow-sm border-b-[8px] border-primary-600 active:translate-y-2 active:border-b-0'
+                ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 border-primary-300 shadow-lg hover:brightness-105 active:translate-y-0.5'
                 : 'bg-slate-200 dark:bg-slate-700 text-content-secondary border-slate-300 dark:border-slate-600 cursor-not-allowed opacity-50'
                 }`}
             >

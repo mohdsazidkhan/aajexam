@@ -122,20 +122,20 @@ const ModernLandingPage = () => {
          <section className="relative overflow-hidden -mx-4 xl:-mx-8 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-900 dark:via-slate-950 dark:to-black text-slate-900 dark:text-white">
             <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '22px 22px' }} />
             <div className="pointer-events-none absolute -top-32 -left-24 w-96 h-96 bg-primary-300/30 dark:bg-primary-500/20 blur-3xl" style={{ borderRadius: '50%' }} />
-            <div className="pointer-events-none absolute -bottom-40 right-10 w-[28rem] h-[28rem] bg-amber-300/25 dark:bg-amber-300/10 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="pointer-events-none absolute -bottom-40 right-10 w-[28rem] h-[28rem] bg-primary-300/25 dark:bg-primary-300/10 blur-3xl" style={{ borderRadius: '50%' }} />
 
             <div className="container mx-auto px-3 xl:px-6 relative z-10">
                <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] items-center gap-6 xl:gap-10 py-5 xl:py-10">
                   {/* Copy */}
                   <div className="space-y-5 xl:space-y-7 text-center xl:text-left">
-                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
+                     <div className="inline-flex uppercase items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-[10px] xl:text-xs font-black tracking-[0.15em] shadow-[0_4px_20px_rgba(251,191,36,0.4)]" style={{ borderRadius: 999 }}>
                         <Sparkles className="w-4 h-4" />
                         {translate('Trusted by students across India')}
                      </div>
 
                      <h1 className="text-3xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[1.05]">
                         {translate('Prepare Today.')}
-                        <span className="block text-primary-600 dark:text-amber-300">{translate('Succeed Tomorrow.')}</span>
+                        <span className="block text-primary-600 dark:text-primary-300">{translate('Succeed Tomorrow.')}</span>
                      </h1>
 
                      <p className="text-base xl:text-xl text-slate-700 dark:text-slate-300 font-bold max-w-xl mx-auto xl:mx-0 leading-relaxed">
@@ -173,7 +173,7 @@ const ModernLandingPage = () => {
                            { icon: Trophy, label: 'Practice with topic-wise quizzes' },
                         ].map((t) => (
                            <div key={t.label} className="flex items-center gap-2 font-black text-[11px] xl:text-xs tracking-[0.06em] text-slate-700 dark:text-slate-300">
-                              <t.icon className="w-4 h-4 text-primary-600 dark:text-amber-300" /> {translate(t.label)}
+                              <t.icon className="w-4 h-4 text-primary-600 dark:text-primary-300" /> {translate(t.label)}
                            </div>
                         ))}
                      </div>
@@ -188,13 +188,13 @@ const ModernLandingPage = () => {
                      style={{ borderRadius: 16 }}
                   >
                      <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '16px 16px' }} />
-                     <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+                     <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
 
                      <div className="relative flex items-center justify-between gap-3 px-4 py-2.5 bg-black/25 border-b border-white/15">
                         <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.25em]">
-                           <Trophy className="w-4 h-4 text-amber-300" /> AajExam · {translate('Student profile')}
+                           <Trophy className="w-4 h-4 text-primary-300" /> AajExam · {translate('Student profile')}
                         </span>
-                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950">{translate('FREE')}</span>
+                        <span className="px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950">{translate('FREE')}</span>
                      </div>
 
                      <div className="relative p-4 xl:p-5 space-y-4">
@@ -205,7 +205,7 @@ const ModernLandingPage = () => {
                            <div className="min-w-0">
                               <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/60">{translate('Target exams')}</p>
                               <p className="text-xl xl:text-2xl font-black font-outfit uppercase leading-tight">{translate('Your Dream Job')}</p>
-                              <p className="text-xs font-bold text-amber-200">{translate('Join Now For Free')}</p>
+                              <p className="text-xs font-bold text-primary-200">{translate('Join Now For Free')}</p>
                            </div>
                         </div>
 
@@ -218,7 +218,7 @@ const ModernLandingPage = () => {
                            ].map((c) => (
                               <div key={c.label} className="relative overflow-hidden bg-white/10 ring-1 ring-white/20 px-3 py-2.5" style={{ borderRadius: 10 }}>
                                  <c.icon className="absolute -right-1.5 -bottom-1.5 w-9 h-9 text-white/10" />
-                                 <p className="relative text-xl font-black font-outfit leading-none text-amber-200">{c.val}</p>
+                                 <p className="relative text-xl font-black font-outfit leading-none text-primary-200">{c.val}</p>
                                  <p className="relative mt-1 text-[9px] font-black uppercase tracking-[0.12em] text-white/75">{translate(c.label)}</p>
                               </div>
                            ))}
@@ -260,23 +260,23 @@ const ModernLandingPage = () => {
                {[0, 1].map((iteration) => (
                   <div key={iteration} className="flex items-center gap-12 pr-12">
                      <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse"></span>
-                        <span className="text-amber-300 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-300 font-bold text-lg">🔥 {stats.registeredLast30Days}</span>
                         {translate('Registered Users (Last 30 Days)')}
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse"></span>
-                        <span className="text-amber-300 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-300 font-bold text-lg">📝 {stats.practiceTestAttemptsLast30Days}</span>
                         {translate('Practice Test Attempts (Last 30 Days)')}
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse"></span>
-                        <span className="text-amber-300 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-300 font-bold text-lg">📚 {stats.pyqAttemptsLast30Days}</span>
                         {translate("PYQ's Attempts (Last 30 Days)")}
                      </div>
                      <div className="flex items-center gap-2 font-semibold text-white/90">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse"></span>
-                        <span className="text-amber-300 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary-300 animate-pulse"></span>
+                        <span className="text-primary-300 font-bold text-lg">📈 {stats.quizAttemptsLast30Days}</span>
                         {translate('Quiz Attempts (Last 30 Days)')}
                      </div>
                   </div>
@@ -293,12 +293,12 @@ const ModernLandingPage = () => {
                <div className="w-full">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-6 relative">
                      {[
-                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-amber-950", bg: "bg-gradient-to-br from-amber-300 to-amber-500" },
-                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-amber-950", bg: "bg-gradient-to-br from-amber-300 to-amber-500" },
-                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-amber-950", bg: "bg-gradient-to-br from-amber-300 to-amber-500" }
+                        { step: 1, title: "Choose Your Exam", desc: "Select from SSC, UPSC, Police, Banking etc.", icon: Target, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-500" },
+                        { step: 2, title: "Practice Daily", desc: "Take Subject or Topic wise quizzes and tests.", icon: Zap, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-500" },
+                        { step: 3, title: "Track & Get Job", desc: "Analyze performance and get your dream job.", icon: Trophy, color: "text-primary-950", bg: "bg-gradient-to-br from-primary-300 to-primary-500" }
                      ].map((item, i) => (
                         <div key={i} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all" style={{ borderRadius: 16 }}>
-                           <div className="h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+                           <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                            <div className="flex-1 flex flex-col items-center text-center p-4 xl:p-6">
                               <div className={`w-16 h-16 ${item.bg} flex items-center justify-center mb-3 xl:mb-4 shadow-lg rotate-[-4deg]`} style={{ borderRadius: 14 }}>
                                  <item.icon className={`w-8 h-8 ${item.color}`} />
@@ -313,7 +313,7 @@ const ModernLandingPage = () => {
                            <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 flex items-center justify-center">
                               <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                               <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                              <span className="text-2xl font-black font-outfit text-primary-600/40 dark:text-amber-300/50 leading-none">0{item.step}</span>
+                              <span className="text-2xl font-black font-outfit text-primary-600/40 dark:text-primary-300/50 leading-none">0{item.step}</span>
                            </div>
                         </div>
                      ))}
@@ -338,7 +338,7 @@ const ModernLandingPage = () => {
                      ].map((stat, index) => (
                         <div key={index} className="relative overflow-hidden bg-white/80 hover:bg-white ring-1 ring-primary-200 dark:bg-white/10 dark:hover:bg-white/15 dark:ring-white/20 px-3 py-4 transition-colors" style={{ borderRadius: 12 }}>
                            <stat.icon className="absolute -right-2 -bottom-2 w-14 h-14 text-primary-600/10 dark:text-white/10" />
-                           <div className="relative text-2xl xl:text-4xl font-black font-outfit text-primary-700 dark:text-amber-200 leading-none">{stat.val}</div>
+                           <div className="relative text-2xl xl:text-4xl font-black font-outfit text-primary-700 dark:text-primary-200 leading-none">{stat.val}</div>
                            <div className="relative mt-1.5 text-[10px] xl:text-xs font-black tracking-[0.12em] uppercase text-slate-600 dark:text-white/75">{translate(stat.label)}</div>
                         </div>
                      ))}
@@ -354,12 +354,12 @@ const ModernLandingPage = () => {
             </div>
             <div className="container mx-auto px-3 xl:px-0 relative z-10">
                <div className="text-center space-y-2 xl:space-y-3 mb-5 xl:mb-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-[0_4px_20px_rgba(251,191,36,0.35)] rounded-full text-xs font-black tracking-[0.1em] uppercase">
                      <span className="w-2 h-2 rounded-full bg-amber-950 animate-pulse" />
                      {translate('Last Year PYQ — Always Free')}
                   </div>
                   <h2 className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white leading-none">
-                     {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600 dark:text-amber-300">{c}</span>])}
+                     {rich('Practice with <0>Real Papers</0>', [(c) => <span className="text-primary-600 dark:text-primary-300">{c}</span>])}
                   </h2>
                   <p className="text-base xl:text-xl font-bold text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                      {stats.totalPyqPapers > 0
@@ -378,10 +378,10 @@ const ModernLandingPage = () => {
                         style={{ borderRadius: 14 }}
                      >
                         <Link href={exam.slug ? `/pyq/${exam.slug}` : '/pyq'} className="absolute inset-0 z-10" aria-label={`${exam.name} Previous Year Question Papers`} />
-                        <div className="h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+                        <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
 
                         <div className="flex-1 p-3 xl:p-4 flex flex-col items-center text-center gap-2.5">
-                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
+                           <span className="w-9 h-9 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 10 }}>
                               <BookOpen className="w-4 h-4" />
                            </span>
                            <span className="text-sm xl:text-base font-black text-slate-900 dark:text-white leading-tight">{exam.name}</span>
@@ -402,7 +402,7 @@ const ModernLandingPage = () => {
                         <div className="relative border-t-2 border-dashed border-primary-500/30 bg-primary-600/5 py-2 text-center">
                            <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
                            <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
-                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
+                           <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 text-[10px] font-black uppercase tracking-wider shadow" style={{ borderRadius: 999 }}>{translate('Latest Free')}</span>
                         </div>
                      </motion.div>
                   )) : null}
@@ -411,7 +411,7 @@ const ModernLandingPage = () => {
                {/* Crawlable PYQ links (server-rendered, one per exam) */}
                <nav aria-label="Previous year papers by exam" className="flex flex-wrap items-center justify-center gap-2 mb-5 xl:mb-6">
                   {POPULAR_PYQ_EXAMS.map((e) => (
-                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="group inline-flex items-center gap-2 px-3 py-1.5 bg-background-surface border-2 border-dashed border-primary-500/30 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-amber-200 hover:border-primary-600 hover:bg-primary-500/5 hover:-translate-y-0.5 transition-all" style={{ borderRadius: 10 }}>
+                     <Link key={e.slug} href={`/pyq/${e.slug}`} className="group inline-flex items-center gap-2 px-3 py-1.5 bg-background-surface border-2 border-dashed border-primary-500/30 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-primary-700 dark:hover:text-primary-200 hover:border-primary-600 hover:bg-primary-500/5 hover:-translate-y-0.5 transition-all" style={{ borderRadius: 10 }}>
                         <span className="w-1.5 h-1.5 bg-amber-400 group-hover:scale-150 transition-transform" style={{ borderRadius: '50%' }} />
                         {e.name} {translate('Previous Year Papers')}
                      </Link>
@@ -425,7 +425,7 @@ const ModernLandingPage = () => {
                      whileTap={{ scale: 0.97 }}
                      data-cta="landing_pyq_start"
                      onClick={() => router.push('/register')}
-                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
+                     className="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 hover:brightness-105 font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all text-sm"
                   >
                      {translate('Start Free PYQ Practice →')}
                   </motion.button>
@@ -468,7 +468,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between hover:border-primary-700 transition-all group rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Flame className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('Practice every day')}</h3>
@@ -480,7 +480,7 @@ const ModernLandingPage = () => {
                               <motion.div
                                  initial={{ width: 0 }}
                                  whileInView={{ width: `${width}%` }}
-                                 className="h-full bg-gradient-to-r from-primary-500 via-primary-600 to-amber-300 shadow-sm"
+                                 className="h-full bg-gradient-to-r from-primary-500 via-primary-600 to-primary-300 shadow-sm"
                               />
                            </div>
                         ))}
@@ -489,7 +489,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-4 p-4 xl:p-6 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 flex flex-col justify-between group overflow-hidden rounded-[2rem] xl:rounded-[4rem] shadow-sm">
                      <div className="space-y-2 xl:space-y-4">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl">
                            <Zap className="w-8 h-8 xl:w-10 xl:h-10" />
                         </div>
                         <h3 className="text-xl xl:text-3xl font-black font-outfit uppercase leading-tight text-slate-900 dark:text-white">{translate('See your test results')}</h3>
@@ -510,7 +510,7 @@ const ModernLandingPage = () => {
 
                   <Card className="xl:col-span-8 p-4 xl:p-8 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-white/5 shadow-sm flex flex-col xl:flex-row items-center gap-6 xl:gap-10 overflow-hidden group rounded-[2rem] xl:rounded-[4rem]">
                      <div className="flex-1 space-y-2 xl:space-y-4 relative z-10 text-center xl:text-left">
-                        <div className="p-3 xl:p-4 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
+                        <div className="p-3 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow-lg rotate-[-4deg] w-fit rounded-2xl mx-auto xl:mx-0">
                            <Medal className="w-10 h-10 xl:w-12 xl:h-12" />
                         </div>
                         <h3 className="text-xl md:text-2xl xl:text-3xl font-black font-outfit uppercase leading-[0.9] text-slate-900 dark:text-white">{translate('Refer & Earn')}</h3>
@@ -545,9 +545,9 @@ const ModernLandingPage = () => {
                            { title: "Detailed Solutions", desc: "Get in-depth explanations for every question to understand concepts better.", icon: BookOpen }
                         ].map((item, index) => (
                            <div key={index} className="relative flex flex-col overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all group" style={{ borderRadius: 16 }}>
-                              <div className="h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+                              <div className="h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                               <div className="flex flex-col items-center p-4 xl:p-6">
-                                 <div className="w-14 h-14 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
+                                 <div className="w-14 h-14 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 flex items-center justify-center mb-3 shadow-lg rotate-[-4deg] group-hover:rotate-0 transition-transform" style={{ borderRadius: 14 }}>
                                     <item.icon className="w-8 h-8" />
                                  </div>
                                  <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2">{translate(item.title)}</h3>
@@ -569,21 +569,21 @@ const ModernLandingPage = () => {
             <div className="relative overflow-hidden text-white shadow-2xl ring-1 ring-white/10 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-950 p-6 xl:p-10 text-center" style={{ borderRadius: 20 }}>
                <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '20px 20px' }} />
                <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
-               <div className="pointer-events-none absolute -bottom-32 right-10 w-96 h-96 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+               <div className="pointer-events-none absolute -bottom-32 right-10 w-96 h-96 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
                <Trophy className="pointer-events-none absolute right-6 top-6 w-40 h-40 xl:w-56 xl:h-56 text-white/5 rotate-12" />
                <div className="relative z-10 space-y-3 xl:space-y-5">
                   <motion.h2
                      whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
                      className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter leading-[0.98]"
                   >
-                     {translate('Your Dream Job')} <br /><span className="text-amber-300">{translate('Is Waiting.')}</span>
+                     {translate('Your Dream Job')} <br /><span className="text-primary-300">{translate('Is Waiting.')}</span>
                   </motion.h2>
                   <p className="text-base md:text-xl font-bold text-white/85 max-w-3xl mx-auto leading-relaxed">{translate('Start today. Join AajExam, practice every day, and get the government job you want.')}</p>
                   <div className="pt-2 xl:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
                      <button
                         data-cta="landing_final_cta"
                         onClick={() => router.push('/register')}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
+                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 font-outfit font-black uppercase tracking-[0.1em] text-sm shadow-xl hover:brightness-105 active:scale-95 transition-all"
                      >
                         {translate('Join Now For Free')} <ArrowRight className="w-5 h-5" />
                      </button>
