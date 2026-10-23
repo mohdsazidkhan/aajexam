@@ -303,17 +303,17 @@ const FeaturesPage = () => {
 
         {/* --- CTA --- */}
         <section className="px-0 py-4 xl:py-8">
-          <Card className="p-5 xl:p-16 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[2rem] xl:rounded-[4rem]">
+          <Card className="p-5 xl:p-16 text-center bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 border border-primary-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
             <div className="relative z-10 space-y-2 xl:space-y-4 xl:space-y-8">
-              <h2 className="text-lg xl:text-4xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-400">{c}</span>])}</h2>
+              <h2 className="text-lg xl:text-4xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter">{rich('Ready to go <0>PRO</0>?', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}</h2>
               <p className="text-xs xl:text-lg font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-1">
                 {translate('Two tiers only — Free and PRO from ₹{price}/month ({plan} plan). No confusing add-ons.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 items-center justify-center">
                 <Button variant="primary" size="md" fullWidth icon={Crown} className="sm:w-fit" onClick={() => router.push('/student/subscription')}>{translate('Upgrade to PRO')}</Button>
-                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-white/5 !border-white/10 !text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
+                <Button variant="secondary" size="md" fullWidth className="sm:w-fit !bg-white !border-primary-200 !text-slate-900 dark:!bg-white/5 dark:!border-white/10 dark:!text-white" onClick={() => router.push('/register')}>{translate('Start free')}</Button>
               </div>
             </div>
           </Card>

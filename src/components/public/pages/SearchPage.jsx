@@ -503,7 +503,7 @@ const SearchPage = () => {
          {/* ── Fixed Header: Search bar + Tabs — truly pinned to top on web and mobile ── */}
          <div
             ref={headerRef}
-            className={`fixed ${isAuthenticated() ? 'top-12' : 'top-0'} xl:top-16 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-primary-300 after:to-primary-500 border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
+            className={`fixed ${isAuthenticated() ? 'top-12' : 'top-0'} xl:top-16 left-0 right-0 z-40 bg-gradient-to-b from-primary-50 via-white to-white dark:from-primary-900 dark:via-slate-900 dark:to-slate-900 backdrop-blur-xl border-b border-primary-200 dark:border-slate-800 shadow-md transition-[left] duration-300 ease-in-out ${
                isAuthenticated() && isSidebarOpen ? 'xl:left-60' : ''
             }`}
          >
@@ -516,14 +516,14 @@ const SearchPage = () => {
                      </button>
                   )}
                   <div className="flex-1 relative">
-                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                     <span className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 xl:w-8 xl:h-8 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 8 }}><Search className="w-4 h-4" /></span>
                      <input
                         ref={inputRef}
                         type="text"
                         autoFocus
                         enterKeyHint="search"
                         inputMode="search"
-                        className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2 xl:py-3 pl-9 pr-8 text-sm xl:text-base font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none transition-all"
+                        className="w-full bg-white dark:bg-black rounded-lg xl:rounded-xl py-2.5 xl:py-3.5 pl-12 xl:pl-14 pr-8 text-sm xl:text-base font-bold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 border border-slate-300 dark:border-slate-700 shadow-sm transition-all"
                         placeholder={translate('Search')}
                         value={query}
                         onFocus={() => setIsFocused(true)}
@@ -560,16 +560,17 @@ const SearchPage = () => {
             </div>
 
             {/* Tabs — always visible, right after the search input */}
-            <div className="pb-0 border-b border-slate-100 dark:border-slate-800/50">
-               <div className="flex overflow-x-auto no-scrollbar gap-1 px-3 xl:px-8">
+            <div className="pb-2.5 pt-0.5">
+               <div className="flex overflow-x-auto no-scrollbar gap-2 px-3 xl:px-8">
                   {TABS.map(tab => (
                      <button
                         key={tab.key}
                         onClick={() => handleTabChange(tab.key)}
-                        className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2.5 text-[11px] xl:text-xs font-bold uppercase tracking-wider transition-all border-b-2 ${
+                        style={{ borderRadius: 999 }}
+                        className={`flex-shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5 px-4 py-2 text-[11px] xl:text-xs font-black uppercase tracking-wider transition-all border ${
                            activeTab === tab.key
-                              ? 'text-slate-900 dark:text-white border-slate-900 dark:border-white'
-                              : 'text-slate-400 border-transparent'
+                              ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 border-transparent shadow-md'
+                              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-primary-400 hover:text-primary-700 dark:hover:text-primary-300'
                         }`}
                      >
                         <tab.icon className="w-3.5 h-3.5" />
@@ -599,15 +600,15 @@ const SearchPage = () => {
 
                            if (key === 'reel') {
                               return (
-                                 <div key={key}>
-                                    <div className="flex items-center justify-between px-4 mb-2">
+                                 <div key={key} className="px-3 xl:px-8">
+                                    <div className="flex items-center justify-between mb-2">
                                        <div className="flex items-center gap-1.5">
                                           <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                                           <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
                                        </div>
-                                       <button onClick={() => handleTabChange('reel')} className="text-[11px] font-bold text-primary-600">{translate('See all')}</button>
+                                       <button onClick={() => handleTabChange('reel')} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all">{translate('See all')}</button>
                                     </div>
-                                    <div className="flex overflow-x-auto no-scrollbar gap-1.5 px-4 pb-1">
+                                    <div className="flex overflow-x-auto no-scrollbar gap-1.5 pb-1">
                                        {section.items.map(reel => renderReelCard(reel, 'small'))}
                                     </div>
                                  </div>
@@ -616,16 +617,18 @@ const SearchPage = () => {
 
                            return (
                               <div key={key} className="px-3 xl:px-8">
-                                 <div className="flex items-center gap-1.5 mb-2">
-                                    <Icon className={`w-4 h-4 ${meta.color}`} />
-                                    <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
+                                 <div className="flex items-center justify-between gap-2 mb-2">
+                                    <div className="flex items-center gap-1.5 min-w-0">
+                                       <Icon className={`w-4 h-4 ${meta.color}`} />
+                                       <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{translate(meta.label)}</h3>
+                                    </div>
+                                    {section.hasMore && (
+                                       <button onClick={() => handleTabChange(key)} style={{ borderRadius: 999 }} className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all">{translate('See all')}</button>
+                                    )}
                                  </div>
                                  <div className="grid grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-1">
                                     {section.items.map((item, idx) => <ResultRow item={item} key={item._id || item.tag || idx} />)}
                                  </div>
-                                 {section.hasMore && (
-                                    <button onClick={() => handleTabChange(key)} className="text-[11px] font-bold text-primary-600 px-1 py-2">{translate('See all {name} →', { name: translate(meta.label).toLowerCase() })}</button>
-                                 )}
                               </div>
                            );
                         })}
