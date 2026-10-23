@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageHero from '@/components/common/ui/PageHero';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import { FaGraduationCap, FaChartLine, FaQuestionCircle } from 'react-icons/fa';
@@ -66,15 +67,13 @@ export default function GovtExamsPreparation({ initialData }) {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-                <div className="py-0 xl:py-6">
-                    <div className="text-center mb-4 xl:mb-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-full text-primary-600 dark:text-primary-400 text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-white dark:border-slate-800 mb-3 xl:mb-6">
-                            <FaQuestionCircle className="w-4 h-4" />
-                            <span>{translate('{count} Exams Available', { count: pagination.totalExams || 0 })}</span>
-                        </div>
-                        <h1 className="text-xl xl:text-5xl font-black text-slate-900 dark:text-white mb-3 xl:mb-6 uppercase tracking-tighter">
-                            {rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600">{c}</span>])}
-                        </h1>
+                <div className="py-3 xl:py-6">
+                    <div className="mb-4 xl:mb-6">
+                        <PageHero
+                            icon={FaQuestionCircle}
+                            title={rich('Government Exams <0>Preparation</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+                            subtitle={translate('{count} Exams Available', { count: pagination.totalExams || 0 })}
+                        />
                     </div>
 
                     {loading ? (

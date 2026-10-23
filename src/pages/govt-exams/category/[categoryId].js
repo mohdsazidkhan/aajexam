@@ -105,18 +105,18 @@ const CategoryExams = ({ initialCategory = null, initialExams = [], initialError
           {translate('Back')}
         </button>
 
-        <div className="bg-slate-950 rounded-[2rem] xl:rounded-[3rem] p-6 xl:p-14 shadow-sm relative overflow-hidden border-2 border-slate-800">
+        <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 p-5 xl:p-8 shadow-xl relative overflow-hidden ring-1 ring-white/10" style={{ borderRadius: 16 }}>
           {/* Background atmosphere */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl -mr-32 -mt-32" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 dark:bg-white/10 rounded-full blur-3xl -ml-32 -mb-32" />
 
           <div className="relative z-10 space-y-6">
-            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-primary-400">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 shadow px-4 py-1.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em]">
               <Target className="w-3 h-3" />
               {translate('{type} Category', { type: category?.type || translate('Competitive') })}
             </div>
-            <h1 className="text-2xl xl:text-4xl xl:text-6xl font-black text-white uppercase tracking-tighter leading-none">{categoryName}</h1>
-            <p className="text-lg font-bold text-slate-400 max-w-2xl leading-relaxed">
+            <h1 className="text-2xl xl:text-4xl font-black text-white uppercase tracking-tighter leading-none">{categoryName}</h1>
+            <p className="text-base xl:text-lg font-bold text-white/80 max-w-2xl leading-relaxed">
               {category?.description || translate('Everything you need to master exams in this category. Start your journey today!')}
             </p>
           </div>

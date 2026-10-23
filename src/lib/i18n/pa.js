@@ -2049,6 +2049,8 @@ const PA = {
   '{plan} plan has expired': '{plan} ਪਲਾਨ ਦੀ ਮਿਆਦ ਖਤਮ ਹੋ ਗਈ ਹੈ',
   'Expired': 'ਮਿਆਦ ਖਤਮ',
   'Days left': 'ਦਿਨ ਬਾਕੀ',
+  'Unread': 'ਅਣਪੜ੍ਹੇ',
+  'Your Streak': 'ਤੁਹਾਡੀ ਸਟ੍ਰੀਕ',
 };
 
 export default PA;

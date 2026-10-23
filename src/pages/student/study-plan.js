@@ -1,4 +1,5 @@
 'use client';
+import PageHero from '@/components/common/ui/PageHero';
 import { TitleRowSkeleton, CardGridSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { CalendarDays, Sparkles, CheckCircle, Clock, Target, Plus, Trash2, Play, Pause, Calendar, LayoutGrid } from 'lucide-react';
@@ -117,14 +118,16 @@ const StudyPlanPage = () => {
       <Seo title="AI Study Planner – AajExam" description="Generate a personalised AI study plan for your government exam." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="AI Study Planner is a PRO feature. Upgrade to get a personalized roadmap and master your exams!">
-          <div className="flex items-center justify-between gap-3">
-            <div className="space-y-1">
-              <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><CalendarDays className="w-6 h-6 text-primary-600" /> {translate('Study Planner')}</h1>
-            </div>
+          <PageHero
+            icon={CalendarDays}
+            eyebrow={translate('Study Planner')}
+            title={translate('Study Planner')}
+            actions={
             <button onClick={() => setShowForm(!showForm)} className="px-4 py-2.5 bg-primary-600 text-white rounded-lg xl:rounded-xl text-xs font-bold hover:bg-primary-600 transition flex-shrink-0">
               <Plus className="w-3 h-3 inline mr-1" /> New Plan
             </button>
-          </div>
+            }
+          />
 
           {/* Create Form */}
           {showForm && (

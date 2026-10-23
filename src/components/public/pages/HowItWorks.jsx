@@ -1,5 +1,6 @@
 ﻿'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import {
@@ -89,14 +90,11 @@ const HowItWorks = () => {
          <div className="space-y-20 mt-4">
 
             {/* --- Hero Section --- */}
-            <section className="text-center space-y-6 relative overflow-hidden px-0 py-4 xl:py-8">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
-                  <Rocket className="w-10 h-10" />
-               </motion.div>
-               <div className="space-y-2 xl:space-y-4">
-                  <h1 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{rich('How It <0>Works</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
-               </div>
-            </section>
+            <PageHero
+               icon={Rocket}
+               eyebrow={translate('How It Works')}
+               title={rich('How It <0>Works</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+            />
 
             {/* --- Step-by-Step Path --- */}
             <section className="relative space-y-12">
@@ -167,17 +165,17 @@ const HowItWorks = () => {
 
             {/* --- Skill-Based Callout --- */}
             <section>
-               <Card className="border-none bg-slate-900 text-white shadow-sm relative overflow-hidden text-center xl:text-left">
+               <Card className="border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm relative overflow-hidden text-center xl:text-left">
                   <div className="relative z-10 flex flex-col xl:flex-row items-center gap-8">
                      <div className="w-20 h-20 bg-primary-500/20 text-primary-600 rounded-[2rem] flex items-center justify-center flex-shrink-0 backdrop-blur-sm border border-primary-500/30">
                         <Lightbulb className="w-10 h-10" />
                      </div>
                      <div className="space-y-2">
                         <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('Important Note')}</h3>
-                        <p className="text-sm font-bold text-slate-300 leading-relaxed uppercase tracking-wide">{translate('AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.')}</p>
+                        <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed uppercase tracking-wide">{translate('AajExam is about your knowledge and your hard work. The more you study and practice, the better your score. Only your effort takes you to the top.')}</p>
                      </div>
                   </div>
-                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-white/5 -rotate-12" />
+                  <ShieldCheck className="absolute -bottom-10 -right-10 w-24 xl:w-48 h-24 xl:h-48 text-slate-900/5 dark:text-white/5 -rotate-12" />
                </Card>
             </section>
 
@@ -197,13 +195,13 @@ const HowItWorks = () => {
             </section>
 
             {/* --- CTA --- */}
-            <section>
-               <Card className="p-10 xl:p-20 text-center bg-slate-950 dark:bg-slate-900 border-2 border-slate-800 text-white shadow-sm relative overflow-hidden rounded-[3rem] xl:rounded-[4rem]">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
+            <section className="pb-10 xl:pb-14">
+               <Card className="p-6 xl:p-12 text-center bg-primary-50 dark:bg-slate-900 border-none ring-1 ring-primary-200 dark:ring-slate-800 text-slate-900 dark:text-white shadow-xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-amber-300/20 dark:bg-primary-500/10 rounded-full blur-[80px] -mr-32 -mt-32" />
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
                   <div className="relative z-10 space-y-10">
-                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">{rich('Get Started <0>Today</0>', [(c) => <span className="text-primary-400">{c}</span>])}</h2>
+                     <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tighter">{rich('Get Started <0>Today</0>', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}</h2>
                      <p className="text-base xl:text-xl font-bold opacity-80 max-w-2xl mx-auto uppercase tracking-wide leading-relaxed px-4">{translate('Thousands of students are already studying, scoring better, and earning by inviting friends. Join them today.')}</p>
                      <Button
                         onClick={() => router.push('/')}

@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { CardsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
@@ -93,16 +94,16 @@ const MyQuestionsPage = () => {
             <Seo title="My Q&A - AajExam" noIndex={true} />
 
             <div className="py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6 xl:space-y-4 mt-0">
-               {/* Header */}
-               <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
-                  <div className="flex justify-between items-center gap-4">
-                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{translate('My Q&A')}</h1>
-                  </div>
-
+               <PageHero
+                  icon={MessageSquare}
+                  eyebrow={translate('My Q&A')}
+                  title={translate('My Q&A')}
+                  actions={
                   <Button variant="primary" className="text-xs" onClick={() => router.push('/community-questions/ask')}>
                      <Plus className="w-4 h-4 mr-1" /> {translate('Post Question')}
                   </Button>
-               </div>
+                  }
+               />
 
                {/* Questions Grid */}
                {questions.length === 0 ? (

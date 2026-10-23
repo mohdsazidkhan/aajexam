@@ -90,10 +90,13 @@ const LoginPage = () => {
   return (
     <MobileAppWrapper showHeader={true} title={translate('Login')}>
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
-        <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
+        <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+          <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <motion.div animate={{ rotate: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-              <div className="p-5 bg-primary-600 rounded-[2.5rem] shadow-sm w-fit text-white">
+              <div className="p-5 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-xl w-fit rotate-[-4deg]" style={{ borderRadius: 18 }}>
                 <Trophy className="w-12 h-12" />
               </div>
             </motion.div>
@@ -112,9 +115,9 @@ const LoginPage = () => {
                 { icon: Brain, text: 'Check your progress and complete daily challenge' },
                 { icon: Sparkles, text: 'Play daily quizzes subject & topic wise' }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
-                  <div className="p-2 bg-primary-500/10 rounded-lg xl:rounded-xl">
-                    <item.icon className="w-5 h-5 text-primary-600" />
+                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-white font-bold">
+                  <div className="p-2 bg-primary-500/10 dark:bg-white/15 rounded-lg xl:rounded-xl">
+                    <item.icon className="w-5 h-5 text-primary-600 dark:text-amber-300" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{translate(item.text)}</span>
                 </div>
@@ -126,7 +129,7 @@ const LoginPage = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-center">
-          <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm space-y-8 rounded-[3rem]">
+          <Card className="w-full max-w-md p-5 xl:p-8 shadow-xl space-y-6">
             <div className="text-center space-y-3">
               <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{translate('Welcome back')}</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">

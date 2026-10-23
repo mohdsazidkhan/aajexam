@@ -2049,6 +2049,8 @@ const TE = {
   '{plan} plan has expired': '{plan} ప్లాన్ గడువు ముగిసింది',
   'Expired': 'గడువు ముగిసింది',
   'Days left': 'రోజులు మిగిలి ఉన్నాయి',
+  'Unread': 'చదవనివి',
+  'Your Streak': 'మీ స్ట్రీక్',
 };
 
 export default TE;

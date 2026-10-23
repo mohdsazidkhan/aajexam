@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import {
@@ -154,16 +155,11 @@ const FeaturesPage = () => {
       <div className="container mx-auto py-2 xl:py-4 space-y-4 xl:space-y-8">
 
         {/* --- Hero --- */}
-        <section className="text-center space-y-3 xl:space-y-6 px-0 py-4 xl:py-8">
-          <div className="w-14 h-14 xl:w-20 xl:h-20 bg-primary-600 text-white rounded-2xl xl:rounded-[2rem] flex items-center justify-center mx-auto shadow-sm rotate-6">
-            <Sparkles className="w-6 h-6 xl:w-9 xl:h-9" />
-          </div>
-          <div className="space-y-2 xl:space-y-4">
-            <h1 className="text-xl xl:text-5xl font-black font-outfit uppercase tracking-tight xl:tracking-tighter text-slate-900 dark:text-white">
-              {rich('Everything on <0>AajExam</0>', [(c) => <span className="text-primary-600">{c}</span>])}
-            </h1>
-          </div>
-        </section>
+        <PageHero
+          icon={Sparkles}
+          eyebrow={translate('Features')}
+          title={rich('Everything on <0>AajExam</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+        />
 
         {/* --- Plan Summary Cards --- */}
         <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">

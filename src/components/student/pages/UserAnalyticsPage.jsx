@@ -154,7 +154,7 @@ const MyAnalyticsPage = () => {
          <SubscriptionGuard message="Upgrade to PRO to unlock advanced analytics, detailed performance tracking, and comprehensive insights into your learning progress.">
             {/* --- Hero Section --- */}
             <section className="relative">
-               <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative rounded-2xl">
+               <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10 overflow-hidden relative rounded-2xl">
                   <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between gap-2 xl:gap-6">
                      <div className="flex flex-wrap items-center justify-center xl:justify-start gap-2 xl:gap-3">
                         <div className="inline-flex items-center gap-1.5 bg-white/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-sm">

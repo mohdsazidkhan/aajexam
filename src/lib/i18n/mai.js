@@ -2049,6 +2049,8 @@ const MAI = {
   '{plan} plan has expired': '{plan} प्लान समाप्त भ गेल अछि',
   'Expired': 'समाप्त',
   'Days left': 'दिन बाकी',
+  'Unread': 'नहि पढ़ल',
+  'Your Streak': 'अहाँक स्ट्रीक',
 };
 
 export default MAI;

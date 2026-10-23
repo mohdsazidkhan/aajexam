@@ -78,7 +78,7 @@ export default function SubjectPractice({
 
       <div className="min-h-screen pb-12 font-outfit">
         <div className="py-4 xl:py-6 space-y-8">
-          <nav aria-label={translate('Breadcrumb')} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
+          <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
             <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
             <span className="text-slate-400">/</span>
             <Link href="/quizzes" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Quizzes')}</Link>
@@ -92,30 +92,35 @@ export default function SubjectPractice({
             <span className="text-slate-600 dark:text-slate-400">{translate('{name} PYQ', { name: translateData(subjectName) })}</span>
           </nav>
 
-          <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-3 md:p-6 xl:p-12 shadow-sm border-2 border-slate-200 dark:border-slate-800">
-            <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">
+          <header className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-3 md:p-6 xl:p-8" style={{ borderRadius: 16 }}>
+            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="relative">
+            <span className="block text-[10px] font-black text-primary-700 dark:text-amber-300 uppercase tracking-widest mb-2">
               Previous year questions · {translateData(examName)}
             </span>
-            <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
+            <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter mb-3">
               {heading}
             </h1>
-            <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mb-5">
+            <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 leading-relaxed max-w-3xl mb-5">
               {totalQuestions} {translateData(subjectName)} questions asked in past {translateData(examName)} papers, split into {quizCount} timed practice sets — every question with its answer and explanation.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-center">
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 p-3">
                 <div className="text-lg font-black text-slate-900 dark:text-white">{totalQuestions}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Questions')}</div>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 p-3">
                 <div className="text-lg font-black text-slate-900 dark:text-white">{quizCount}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Practice sets')}</div>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg xl:rounded-xl p-3 border-2 border-slate-100 dark:border-slate-800">
+              <div className="bg-white/80 dark:bg-white/10 ring-1 ring-primary-200 dark:ring-white/20 p-3">
                 <div className="text-lg font-black text-primary-600">{translate('FREE')}</div>
                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('Access')}</div>
               </div>
             </div>
+          </div>
           </header>
 
           {aboutText && (

@@ -2023,6 +2023,8 @@ const SAT = {
   '{plan} plan has expired': '{plan} ᱯᱞᱟᱱ ᱥᱟᱸᱠᱷᱟ ᱦᱩᱭ ᱟᱠᱟᱫ',
   'Expired': 'ᱢᱟᱦᱟ ᱥᱟᱸᱠᱷᱟ',
   'Days left': 'ᱥᱟᱸᱥᱟᱨ ᱢᱟᱦᱟ',
+  'Unread': 'ᱵᱟᱝ ᱯᱟᱲᱦᱟᱣᱠᱟᱱ',
+  'Your Streak': 'ᱟᱢᱟᱜ ᱥᱴᱨᱤᱠ',
 };
 
 export default SAT;

@@ -1,5 +1,7 @@
 'use client';
 
+import { BookOpen } from 'lucide-react';
+import PageHero from '@/components/common/ui/PageHero';
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -105,76 +107,94 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
     router.push({ pathname: '/blog', query: page > 1 ? { page } : {} }, undefined, { shallow: true });
   };
 
+  // Shared pieces for the ticket-style article cards (grid + list). Radii are inline because
+  // styles/index.css forces every [class*="rounded"] to a flat 8px with !important.
+  const cardBase = 'group relative flex overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300';
+
+  const FlagPills = ({ blog }) => (
+    <>
+      {blog.isFeatured && (
+        <span className="w-7 h-7 flex items-center justify-center bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg" style={{ borderRadius: 8 }}>
+          <Star className="w-4 h-4 fill-current" />
+        </span>
+      )}
+      {blog.isPinned && (
+        <span className="w-7 h-7 flex items-center justify-center bg-white/90 text-primary-700 shadow-lg" style={{ borderRadius: 8 }}>
+          <Pin className="w-4 h-4 fill-current" />
+        </span>
+      )}
+    </>
+  );
+
+  const Stub = ({ blog, readLabel }) => (
+    <div className="relative flex items-center justify-between gap-3 px-4 py-3 border-t-2 border-dashed border-primary-500/30 bg-primary-600/5">
+      <span className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
+      <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background-page" style={{ borderRadius: '50%' }} />
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-bold text-slate-500 dark:text-slate-400 min-w-0">
+        <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {blog.views || 0}</span>
+        <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" /> {blog.likes || 0}</span>
+        <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {readLabel}</span>
+      </div>
+      <span className="shrink-0 px-3 py-1 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 text-[11px] font-black uppercase tracking-wider shadow group-hover:brightness-105" style={{ borderRadius: 999 }}>
+        {translate('Read More')}
+      </span>
+    </div>
+  );
+
   const GridView = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6">
       {blogs.map((blog) => (
-        <Link key={blog._id} href={`/blog/${blog.slug}`}
-          className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
-          <div className="w-full h-48 bg-center bg-cover"
-            style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }} />
-          <div className="p-4">
-            <div className="flex items-center gap-2 mb-2">
-              {blog.isFeatured && <Star className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
-              {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
-              <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
-            </div>
-            <h2 className="text-base xl:text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
+        <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col`} style={{ borderRadius: 16 }}>
+          <div className="relative w-full h-44 sm:h-48 bg-center bg-cover" style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
+            {blog.exam && (
+              <span className="absolute bottom-3 left-3 max-w-[85%] truncate px-2.5 py-1 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 text-[11px] font-black shadow" style={{ borderRadius: 999 }}>
+                {blog.exam.name}
+              </span>
+            )}
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+          </div>
+          <div className="flex-1 p-4 xl:p-5">
+            <span className="text-primary-700 dark:text-amber-300 text-[11px] font-black uppercase tracking-wider">{formatDate(blog.publishedAt || blog.createdAt)}</span>
+            <h2 className="mt-1 text-base xl:text-lg font-black text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-amber-300 transition-colors mb-2 line-clamp-2">
               {blog.title}
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-3 line-clamp-2">
+            <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">
               {truncateText(blog.excerpt || blog.content, 120)}
             </p>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-                <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
-                <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
-                <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {translate('{count} min', { count: blog.readingTime || 5 })}</span>
-              </div>
-              <span className="text-primary-600 text-xs font-bold">{translate('Read More')}</span>
-            </div>
-            {blog.exam && (
-              <div className="mt-3">
-                <span className="inline-block bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 text-xs px-2 py-1 rounded-full font-medium">
-                  {blog.exam.name}
-                </span>
-              </div>
-            )}
           </div>
+          <Stub blog={blog} readLabel={translate('{count} min', { count: blog.readingTime || 5 })} />
         </Link>
       ))}
     </div>
   );
 
   const ListView = () => (
-    <div className="space-y-2 xl:space-y-4">
+    <div className="space-y-3 xl:space-y-4">
       {blogs.map((blog) => (
-        <Link key={blog._id} href={`/blog/${blog.slug}`}
-          className="group bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-sm transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row">
-          <div className="md:w-64 w-full h-48 md:h-auto flex-shrink-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }} />
-          <div className="p-5 flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              {blog.isFeatured && <Star className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
-              {blog.isPinned && <Pin className="w-4 h-4 text-black dark:text-white fill-black dark:fill-white" />}
-              <span className="text-gray-500 dark:text-gray-400 text-xs">{formatDate(blog.publishedAt || blog.createdAt)}</span>
-              {blog.exam && (
-                <span className="ml-auto bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-300 text-xs px-2 py-1 rounded-full font-medium">
-                  {blog.exam.name}
-                </span>
-              )}
-            </div>
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
-              {blog.title}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">{truncateText(blog.excerpt || blog.content, 200)}</p>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-                <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {blog.views || 0}</span>
-                <span className="flex items-center gap-1"><Heart className="w-3 h-3" /> {blog.likes || 0}</span>
-                <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {translate('{count} min read', { count: blog.readingTime || 5 })}</span>
+        <Link key={blog._id} href={`/blog/${blog.slug}`} className={`${cardBase} flex-col md:flex-row`} style={{ borderRadius: 16 }}>
+          <div className="relative md:w-72 w-full h-44 md:h-auto flex-shrink-0 bg-cover bg-center" style={{ backgroundImage: `url(${blog.featuredImage || '/default_banner.png'})` }}>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-gradient-to-r" />
+            <div className="absolute top-3 left-3 flex items-center gap-1.5"><FlagPills blog={blog} /></div>
+            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+          </div>
+          <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 p-4 xl:p-5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-primary-700 dark:text-amber-300 text-[11px] font-black uppercase tracking-wider">{formatDate(blog.publishedAt || blog.createdAt)}</span>
+                {blog.exam && (
+                  <span className="ml-auto px-2.5 py-1 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 text-[11px] font-black shadow" style={{ borderRadius: 999 }}>
+                    {blog.exam.name}
+                  </span>
+                )}
               </div>
-              <span className="text-primary-600 text-xs font-bold">{translate('Read More')}</span>
+              <h2 className="mt-1 text-lg font-black text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-amber-300 transition-colors mb-2">
+                {blog.title}
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-sm">{truncateText(blog.excerpt || blog.content, 200)}</p>
             </div>
+            <Stub blog={blog} readLabel={translate('{count} min read', { count: blog.readingTime || 5 })} />
           </div>
         </Link>
       ))}
@@ -188,54 +208,53 @@ const BlogsPage = ({ initialBlogs = [], initialTotal = 0 } = {}) => {
   return (
     <div className="min-h-screen bg-background-page">
       <div className="container mx-auto py-2 xl:py-4">
-        {/* Header & Filters */}
-        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between mb-6 gap-4">
-          <div>
-            <h1 className="text-2xl xl:text-3xl font-black text-gray-900 dark:text-white uppercase tracking-tight">
-              Blog ({pagination.total || 0})
-            </h1>
-          </div>
-
-          <div className="flex flex-col xl:flex-row items-center gap-3 bg-white dark:bg-gray-800 rounded-lg xl:rounded-xl p-3 shadow-sm border border-gray-200 dark:border-gray-700">
-            {/* View Toggle */}
-            <div className="flex items-center gap-2">
-              <button onClick={() => setViewMode('grid')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
-                {translate('Grid')}
-              </button>
-              <button onClick={() => setViewMode('list')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
-                {translate('List')}
-              </button>
-            </div>
-
-            {/* Exam Filter */}
-            <select name="exam" value={filters.exam} onChange={handleFilterChange}
-              className="px-3 py-2 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white">
-              <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
-              {hasTargets && <option value="all">{translate('All Exams')}</option>}
-              {exams.map(exam => (
-                <option key={exam._id} value={exam._id}>{exam.name}</option>
-              ))}
-            </select>
-
-            {/* Featured Toggle */}
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="featured" checked={filters.featured} onChange={handleFilterChange}
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
-              <span className="text-xs font-bold text-gray-600 dark:text-gray-300">{translate('Featured')}</span>
-            </label>
-
-            {/* Search */}
-            <form onSubmit={handleSearch} className="relative">
+        <PageHero
+          icon={BookOpen}
+          eyebrow="Blog"
+          title={`Blog (${pagination.total || 0})`}
+          center={
+            <form onSubmit={handleSearch} className="relative w-full">
               <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder={translate('Search blogs...')}
-                className="w-full xl:w-64 px-4 py-2 pr-10 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-slate-50 dark:bg-black dark:text-white" />
+                className="w-full pl-4 pr-12 py-2 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-slate-900 dark:text-white placeholder:text-slate-400" />
               <button aria-label={translate('Search')} type="submit" className="absolute right-0 top-0 h-full w-10 flex items-center justify-center bg-primary-600 text-white rounded-r-lg">
                 <Search className="w-4 h-4" />
               </button>
             </form>
-          </div>
-        </div>
+          }
+          actions={
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              {/* View Toggle */}
+              <div className="flex items-center gap-1">
+                <button onClick={() => setViewMode('grid')}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-black uppercase transition-all border-b-2 ${viewMode === 'grid' ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 border-amber-500' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'}`}>
+                  {translate('Grid')}
+                </button>
+                <button onClick={() => setViewMode('list')}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-black uppercase transition-all border-b-2 ${viewMode === 'list' ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 border-amber-500' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'}`}>
+                  {translate('List')}
+                </button>
+              </div>
+
+              {/* Exam Filter */}
+              <select name="exam" value={filters.exam} onChange={handleFilterChange}
+                className="px-3 py-1.5 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-bold focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-slate-900 dark:text-white">
+                <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
+                {hasTargets && <option value="all">{translate('All Exams')}</option>}
+                {exams.map(exam => (
+                  <option key={exam._id} value={exam._id}>{exam.name}</option>
+                ))}
+              </select>
+
+              {/* Featured Toggle */}
+              <label className="flex items-center gap-2 cursor-pointer px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg">
+                <input type="checkbox" name="featured" checked={filters.featured} onChange={handleFilterChange}
+                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" />
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{translate('Featured')}</span>
+              </label>
+            </div>
+          }
+        />
+        <div className="mb-4" />
 
         {/* Blog Content */}
         {blogs.length > 0 ? (

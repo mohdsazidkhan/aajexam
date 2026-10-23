@@ -72,7 +72,7 @@ export default function ChallengePage() {
                 </button>
 
                 {/* Challenge Header Card */}
-                <div className="bg-primary-600 rounded-[2rem] p-8 text-center shadow-sm relative overflow-hidden mb-8">
+                <div className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 ring-1 ring-white/10 p-6 xl:p-8 text-center shadow-xl relative overflow-hidden mb-8" style={{ borderRadius: 16 }}>
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-black opacity-10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4" />
                     

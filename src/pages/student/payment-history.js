@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { PaymentsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
@@ -256,27 +257,19 @@ const PaymentHistoryPage = () => {
             <Seo title="Payment History - AajExam" noIndex={true} />
 
             <div className="py-2 xl:py-4 space-y-2 xl:space-y-4 mt-0">
-               {/* Mobile header: heading + filters share a row, stats and toggle stack below */}
-               <div className="flex flex-col gap-3 xl:hidden">
-                  <div className="flex items-center justify-between gap-3">
-                     <h1 className="text-xl font-black font-outfit tracking-tight truncate min-w-0">
-                        {translate('Payment History')}{totalCount > 0 ? ` (${totalCount})` : ''}
-                     </h1>
-                     <div className="shrink-0">{filtersGroup}</div>
-                  </div>
+               <PageHero
+                  icon={Receipt}
+                  eyebrow={translate('Payment History')}
+                  title={`${translate('Payment History')}${totalCount > 0 ? ` (${totalCount})` : ''}`}
+                  actions={
+                     <>
+                        {viewToggleButtons}
+                        {filtersGroup}
+                     </>
+                  }
+               >
                   {statsBar}
-                  {viewToggleButtons}
-               </div>
-
-               {/* Desktop header: heading, stats, view toggle, filters share a single row */}
-               <div className="hidden xl:flex xl:items-center gap-4">
-                  <h1 className="text-3xl font-black font-outfit tracking-tight truncate shrink-0">
-                     {translate('Payment History')}{totalCount > 0 ? ` (${totalCount})` : ''}
-                  </h1>
-                  <div className="flex-1">{statsBar}</div>
-                  <div className="shrink-0">{viewToggleButtons}</div>
-                  <div className="shrink-0">{filtersGroup}</div>
-               </div>
+               </PageHero>
 
                {/* Transactions */}
                {transactions.length === 0 ? (

@@ -153,7 +153,10 @@ const DailyChallengePage = () => {
       />
       <div className="py-4 xl:py-6 space-y-4 sm:space-y-6">
         {/* Header */}
-        <div className="text-center space-y-2 relative">
+        <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 text-center space-y-2 p-4 xl:p-6" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <LanguageToggle
             language={language}
             onToggle={toggleLanguage}
@@ -161,10 +164,10 @@ const DailyChallengePage = () => {
             className="absolute top-0 right-0 flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
           />
           <div className="flex items-center justify-center gap-2 px-14">
-            <Target className="w-6 h-6 text-primary-600" />
+            <Target className="w-6 h-6 text-primary-600 dark:text-amber-300" />
             <h1 className="text-xl sm:text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white break-words min-w-0">{challenge.title}</h1>
           </div>
-          <p className="text-sm text-slate-400 font-bold">{translate('{questions} Questions | {minutes} Minutes', { questions: challenge.questions.length, minutes: challenge.duration })}</p>
+          <p className="text-sm text-slate-500 dark:text-white/65 font-bold">{translate('{questions} Questions | {minutes} Minutes', { questions: challenge.questions.length, minutes: challenge.duration })}</p>
         </div>
 
         {/* Not started yet */}

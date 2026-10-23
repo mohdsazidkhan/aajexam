@@ -1,4 +1,5 @@
 'use client';
+import PageHero from '@/components/common/ui/PageHero';
 import { RevisionPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { RotateCcw, Brain, CheckCircle, XCircle, BarChart3, ArrowRight, Zap, BookOpen, FileText, Target, Film, Layers } from 'lucide-react';
@@ -84,26 +85,18 @@ const RevisionPage = () => {
       <Seo title="Revision Queue – AajExam" description="Spaced-repetition revision queue for your AajExam practice." noIndex={true} />
       <div className="py-2 xl:py-4 space-y-3 xl:space-y-4">
         <SubscriptionGuard message="Revision Queue is a PRO feature. Upgrade to enable smart spaced-repetition and master your weak topics!">
-          <div>
-            <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-2"><RotateCcw className="w-5 h-5 xl:w-6 xl:h-6 text-primary-600" /> {translate('Revision Queue')}</h1>
-          </div>
+          <PageHero
+            icon={RotateCcw}
+            eyebrow={translate('Revision Queue')}
+            title={translate('Revision Queue')}
+            stats={stats ? [
+              { label: translate('Due Today'), value: stats.dueToday, icon: RotateCcw },
+              { label: translate('This Week'), value: stats.upcoming7Days, icon: Zap },
+              { label: translate('Accuracy'), value: `${stats.accuracy}%`, icon: Target },
+              { label: translate('Total Items'), value: stats.totalItems, icon: Layers },
+            ] : undefined}
+          />
 
-          {/* Stats */}
-          {stats && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {[
-                { value: stats.dueToday, label: 'Due Today', tone: 'text-black dark:text-white' },
-                { value: stats.upcoming7Days, label: 'This Week', tone: 'text-black dark:text-white' },
-                { value: `${stats.accuracy}%`, label: 'Accuracy', tone: 'text-primary-600' },
-                { value: stats.totalItems, label: 'Total Items', tone: 'text-slate-600 dark:text-slate-300' },
-              ].map((stat) => (
-                <div key={stat.label} className="flex items-baseline justify-center gap-1.5 px-2 py-1.5 rounded-xl bg-background-surface border-2 border-slate-200 dark:border-slate-800 shadow-sm">
-                  <span className={`text-base xl:text-lg font-black leading-none ${stat.tone}`}>{stat.value}</span>
-                  <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider truncate">{translate(stat.label)}</span>
-                </div>
-              ))}
-            </div>
-          )}
 
           {/* Source tabs */}
           <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-1">

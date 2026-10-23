@@ -1,4 +1,5 @@
 import React from 'react';
+import PageHero from '@/components/common/ui/PageHero';
 import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import UnifiedFooter from '../components/common/UnifiedFooter';
 import { FaExclamationTriangle, FaInfoCircle, FaShieldAlt } from 'react-icons/fa';
@@ -25,17 +26,17 @@ export default function Disclaimer() {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
+                <div className="container mx-auto pt-2 xl:pt-4">
+                    <PageHero
+                        icon={FaExclamationTriangle}
+                        title="Disclaimer"
+                        subtitle="Last Updated: February 27, 2026"
+                    />
+                </div>
                 <div className="py-0 xl:py-6 my-4">
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-sm p-4 md:p-8 xl:p-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
-                        <div className="text-center mb-12">
-                            <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                                <FaExclamationTriangle className="text-white text-3xl" />
-                            </div>
-                            <h1 className="text-2xl xl:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter">Disclaimer</h1>
-                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Last Updated: February 27, 2026</p>
-                        </div>
 
                         <div className="space-y-12 relative z-10">
                             {[
@@ -65,7 +66,7 @@ export default function Disclaimer() {
                                 </section>
                             ))}
 
-                            <section className="rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 px-0 py-4 xl:py-8">
+                            <section className="py-2">
                                 <h2 className="text-md md:text-xl xl:text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">External Links Disclaimer</h2>
                                 <p className="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
                                     Our platform may contain links to external websites that are not provided or maintained by or in any way affiliated with AajExam. Please note that AajExam does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.

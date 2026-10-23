@@ -2049,6 +2049,8 @@ const AS = {
   '{plan} plan has expired': '{plan} প্লেনৰ ম্যাদ শেষ হৈছে',
   'Expired': 'ম্যাদ উকলিছে',
   'Days left': 'দিন বাকী',
+  'Unread': 'অপঠিত',
+  'Your Streak': 'আপোনাৰ ষ্ট্ৰীক',
 };
 
 export default AS;

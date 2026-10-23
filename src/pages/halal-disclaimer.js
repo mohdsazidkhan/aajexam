@@ -1,4 +1,5 @@
 import React from 'react';
+import PageHero from '@/components/common/ui/PageHero';
 import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import UnifiedFooter from '../components/common/UnifiedFooter';
 import { FaMosque, FaCheckCircle, FaBookOpen } from 'react-icons/fa';
@@ -25,23 +26,23 @@ export default function HalalDisclaimer() {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
+                <div className="container mx-auto pt-2 xl:pt-4">
+                    <PageHero
+                        icon={FaMosque}
+                        title="Halal Disclaimer"
+                    />
+                </div>
                 <div className="py-0 xl:py-6 my-4">
                     <div className="bg-white dark:bg-slate-900 rounded-[3rem] shadow-sm p-4 md:p-8 xl:p-12 border-2 border-slate-200 dark:border-slate-800 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
-                        <div className="text-center mb-12">
-                            <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                                <FaMosque className="text-white text-3xl" />
-                            </div>
-                            <h1 className="text-2xl xl:text-4xl xl:text-6xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tighter leading-tight">Halal Disclaimer</h1>
-                        </div>
 
                         <div className="space-y-12 relative z-10">
                             <p className="text-lg xl:text-xl leading-relaxed text-center font-bold text-slate-600 dark:text-slate-400">
                                 We at AajExam are committed to ensuring that our platform aligns with the ethical and spiritual guidelines of Islamic Shariah, offering educational quizzes in a way that is Halal, transparent, and fair.
                             </p>
 
-                            <section className="rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-800 px-0 py-4 xl:py-8">
+                            <section className="py-2">
                                 <h2 className="text-md md:text-xl md:text-2xl xl:text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tight flex items-center gap-4">
                                     <div className="w-2 h-10 bg-primary-600 rounded-full" />
                                     Why AajExam is Halal

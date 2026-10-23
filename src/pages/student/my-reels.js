@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { CardsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
@@ -101,13 +102,12 @@ const MyReelsPage = () => {
          <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
             <Seo title="My Reels - AajExam" noIndex={true} />
             <div className="py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6 xl:space-y-4 mt-0">
-               {/* Header */}
-               <div className="flex flex-col xl:flex-row items-center justify-between gap-3 xl:gap-6">
-                  <div className="flex gap-4 justify-between items-center">
-                     <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{translate('My Reels')}</h1>
-                  </div>
-
-                  <div className="flex gap-3 justify-between items-center">
+               <PageHero
+                  icon={PlayCircle}
+                  eyebrow={translate('My Reels')}
+                  title={translate('My Reels')}
+                  actions={
+                     <>
                      <select
                         className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
                         value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setCurrentPage(1); }}
@@ -121,8 +121,9 @@ const MyReelsPage = () => {
                      <Button variant="primary" className="text-xs" onClick={() => router.push('/reels/create')}>
                         <Plus className="w-4 h-4 mr-1" /> Create Reel
                      </Button>
-                  </div>
-               </div>
+                     </>
+                  }
+               />
 
                {/* Reels Grid */}
                {reels.length === 0 ? (

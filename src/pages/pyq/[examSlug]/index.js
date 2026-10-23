@@ -93,7 +93,7 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
 
                 <div className="py-0 xl:py-6 relative">
                     {/* Breadcrumb */}
-                    <nav aria-label={translate('Breadcrumb')} className="mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
+                    <nav aria-label={translate('Breadcrumb')} className="pt-3 xl:pt-4 mb-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest flex-wrap">
                         <Link href="/" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('Home')}</Link>
                         <span className="text-slate-400">/</span>
                         <Link href="/pyq" className="text-primary-600 dark:text-primary-400 hover:text-primary-600">{translate('PYQ')}</Link>
@@ -102,19 +102,23 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                     </nav>
 
                     {/* Hero */}
-                    <header className="bg-white dark:bg-slate-900 rounded-[3rem] p-6 md:p-10 xl:p-12 shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800">
+                    <header className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-6 md:p-6 xl:p-8 mb-10" style={{ borderRadius: 16 }}>
+            <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+            <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="pointer-events-none absolute -bottom-28 right-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="relative">
                         <div className="flex items-center mb-6 gap-4 flex-wrap">
                             <div className="w-14 h-14 xl:w-16 xl:h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-800 flex-shrink-0">
                                 <FaGraduationCap className="text-2xl xl:text-3xl text-primary-600" />
                             </div>
                             <div>
                                 <span className="block text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">{translate('Previous Year Papers')}</span>
-                                <h1 className="text-2xl md:text-4xl xl:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+                                <h1 className="text-2xl md:text-3xl xl:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
                                     {translate('{name} Previous Year Papers', { name: translateData(examName) })}
                                 </h1>
                             </div>
                         </div>
-                        <p className="text-md xl:text-xl font-bold text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-4xl">
+                        <p className="text-md xl:text-lg font-bold text-slate-600 dark:text-white/80 mb-8 leading-relaxed max-w-4xl">
                             {translate('All {name} previous year question papers in one place — {papers} solved papers across {years} {yearWord}, attemptable as free timed mock tests with detailed answer explanations.', { name: translateData(examName), papers: totalPapers, years: years.length, yearWord: years.length === 1 ? translate('year') : translate('years') })}
                         </p>
 
@@ -135,7 +139,8 @@ export default function PYQExamIndexPage({ exam, papersByYear, totalPapers, faqs
                                 <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{translate('To Attempt')}</div>
                             </div>
                         </div>
-                    </header>
+                    </div>
+          </header>
 
                     {/* Long-form intro */}
                     <section className="rounded-[3rem] shadow-sm mb-10 border-2 border-slate-200 dark:border-slate-800 px-0 py-4 xl:py-8">

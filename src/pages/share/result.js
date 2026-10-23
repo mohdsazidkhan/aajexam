@@ -59,7 +59,7 @@ export default function SharedResult({ stats }) {
             animate={{ y: 0, opacity: 1 }}
             className="relative"
           >
-            <Card className="relative overflow-hidden border-none shadow-sm bg-primary-600 text-white p-8 xl:p-12">
+            <Card className="relative overflow-hidden border-none shadow-xl ring-1 ring-white/10 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white p-6 xl:p-10">
               <div className="absolute top-0 right-0 opacity-10">
                 <Trophy className="w-64 h-64 rotate-12" />
               </div>

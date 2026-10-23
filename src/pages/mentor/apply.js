@@ -70,8 +70,8 @@ export default function MentorApply() {
       />
       <div className="max-w-2xl mx-auto py-4 xl:py-8 px-4">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg xl:rounded-xl flex items-center justify-center">
-            <Users className="w-5 h-5 text-primary-600" />
+          <div className="w-10 h-10 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+            <Users className="w-5 h-5" />
           </div>
           <div>
             <h1 className="text-xl font-black text-slate-900 dark:text-white uppercase">{translate('Become a Mentor')}</h1>

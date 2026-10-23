@@ -2049,6 +2049,8 @@ const ML = {
   '{plan} plan has expired': '{plan} പ്ലാൻ കാലഹരണപ്പെട്ടു',
   'Expired': 'കാലഹരണപ്പെട്ടു',
   'Days left': 'ദിവസം ബാക്കി',
+  'Unread': 'വായിക്കാത്തത്',
+  'Your Streak': 'നിങ്ങളുടെ സ്ട്രീക്ക്',
 };
 
 export default ML;

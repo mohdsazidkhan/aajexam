@@ -1,4 +1,5 @@
 'use client';
+import BackButton from '@/components/common/ui/BackButton';
 import React, { useState } from 'react';
 import { StickyNote, Bookmark, Eye, ArrowLeft, Tag } from 'lucide-react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -91,18 +92,21 @@ const NoteDetailPage = ({ note }) => {
           ])
         ]}
       />
-      <div className="py-0 xl:py-6">
-        <button onClick={() => router.push('/notes')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> {translate('Back to Notes')}</button>
+      <div className="py-0 xl:py-6 space-y-3 xl:space-y-4">
+        <div className="flex justify-end"><BackButton onClick={() => router.push('/notes')}><ArrowLeft className="w-4 h-4" /> {translate('Back to Notes')}</BackButton></div>
 
-        <div className="flex items-start justify-between gap-4">
+        <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-4 xl:p-6 flex items-start justify-between gap-4" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-2">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{note.noteType?.replace('_', ' ')}</span>
-              {note.subject?.name && <span className="text-[10px] font-bold text-slate-400">{note.subject.name}</span>}
-              {note.topic?.name && <span className="text-[10px] font-bold text-slate-400">/ {note.topic.name}</span>}
+              {note.subject?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">{note.subject.name}</span>}
+              {note.topic?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">/ {note.topic.name}</span>}
             </div>
             <h1 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white">{note.title}</h1>
-            <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
+            <div className="flex items-center gap-3 text-[10px] text-slate-500 dark:text-white/60 font-bold">
               <span><Eye className="w-3 h-3 inline" /> {translate('{count} views', { count: note.views })}</span>
               <span><Bookmark className="w-3 h-3 inline" /> {translate('{count} saved', { count: note.bookmarks })}</span>
               {note.contributor?.name && <span>{translate('By {name}', { name: note.contributor.name })}</span>}

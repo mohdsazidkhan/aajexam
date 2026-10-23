@@ -2049,6 +2049,8 @@ const SD = {
   '{plan} plan has expired': '{plan} प्लान जी मुद्दत पूरी थी वेई आहे',
   'Expired': 'मुद्दत पूरी',
   'Days left': 'डींहं बाक़ी',
+  'Unread': 'न पढ़ियल',
+  'Your Streak': 'तव्हां जी स्ट्रीक',
 };
 
 export default SD;

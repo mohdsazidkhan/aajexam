@@ -20,7 +20,7 @@ const Card = ({
   glow = false
 }) => {
   const variants = {
-    white: 'bg-background-surface text-content-primary border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-sm',
+    white: 'bg-background-surface text-content-primary border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg',
     glass: 'glass border-white/20 dark:border-slate-800/20 shadow-sm',
     'glass-light': 'glass-light border-white/10 shadow-sm',
     'glass-dark': 'glass-dark border-white/10 shadow-sm text-white',
@@ -49,7 +49,7 @@ const Card = ({
       className={`
         ${variants[variant]} 
         ${radii[radius]}
-        ${noBorder ? 'border-none' : 'border-2'}
+        ${noBorder ? 'border-none' : 'border'}
         ${padded ? 'p-2 xl:p-4' : ''}
         ${hoverable ? 'cursor-pointer group' : ''} 
         ${glow ? 'glow-border' : ''}
@@ -57,6 +57,11 @@ const Card = ({
         ${className}
       `}
     >
+      {/* Signature ticket accent: a thin green-gold line along the top edge of every surface card */}
+      {variant === 'white' && !noBorder && (
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary-500/70 via-amber-300/70 to-primary-500/70" />
+      )}
+
       {/* Premium Shimmer for Highlights */}
       {variant.includes('glass') && (
         <div className="absolute inset-0 bg-white/5 pointer-events-none" />

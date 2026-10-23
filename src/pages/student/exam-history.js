@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { HistoryPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { fmtNum } from '../../lib/utils/formatNumber';
@@ -78,12 +79,12 @@ const ExamHistoryPage = () => {
 
             <div className="py-4 py-6 xl:py-12 space-y-6 xl:space-y-12 mt-0">
                <SubscriptionGuard message="Upgrade to PRO to view your complete exam history and detailed performance analytics across all mock tests.">
-                  <div className="flex flex-col xl:flex-row items-center justify-between gap-8">
-                     <div className="space-y-2 text-center xl:text-left">
-                        <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{translate('Exam History')}</h1>
-                     </div>
-
-                     <div className="flex flex-wrap gap-4 justify-center">
+                  <PageHero
+                     icon={History}
+                     eyebrow={translate('Exam History')}
+                     title={translate('Exam History')}
+                     actions={
+                        <>
                         <div className="relative group">
                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary-600 transition-colors" />
                            <input
@@ -101,8 +102,9 @@ const ExamHistoryPage = () => {
                            <option value="Completed">{translate('Completed')}</option>
                            <option value="InProgress">{translate('In Progress')}</option>
                         </select>
-                     </div>
-                  </div>
+                        </>
+                     }
+                  />
 
                   {history.length === 0 ? (
                      <div className="py-4 xl:py-8 text-center space-y-3 xl:space-y-6">

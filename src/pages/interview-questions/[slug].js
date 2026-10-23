@@ -1,4 +1,5 @@
 'use client';
+import BackButton from '@/components/common/ui/BackButton';
 import React, { useState } from 'react';
 import { MessageCircleQuestion, Lightbulb, Eye, ArrowLeft, Tag } from 'lucide-react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -78,9 +79,9 @@ const InterviewQuestionDetailPage = ({ question }) => {
           ])
         ]}
       />
-      <div className="py-0 xl:py-6">
-        <div className="flex items-center justify-between gap-3 flex-wrap">
-          <button onClick={() => router.push(question.category?.slug ? `/${question.category.slug}-interview-questions` : '/interview-questions')} className="text-sm font-bold text-primary-600 flex items-center gap-1 hover:underline"><ArrowLeft className="w-4 h-4" /> Back to <span className="capitalize text-black dark:text-white">{question.category?.name || 'Interview Questions'}</span></button>
+      <div className="py-0 xl:py-6 space-y-3 xl:space-y-4">
+        <div className="flex flex-row-reverse items-center justify-between gap-3 flex-wrap">
+          <BackButton onClick={() => router.push(question.category?.slug ? `/${question.category.slug}-interview-questions` : '/interview-questions')}><ArrowLeft className="w-4 h-4" /> Back to <span className="capitalize text-black dark:text-white">{question.category?.name || 'Interview Questions'}</span></BackButton>
           {hasHindi && (
             <div className="flex rounded-full overflow-auto border-2 border-slate-200 dark:border-slate-700 shrink-0">
               {[{ id: 'en', label: 'EN' }, { id: 'hi', label: 'HI' }].map(l => (
@@ -95,13 +96,16 @@ const InterviewQuestionDetailPage = ({ question }) => {
           )}
         </div>
 
-        <div className="space-y-2">
+        <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-4 xl:p-6 space-y-2" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+          <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="flex items-center gap-2 flex-wrap">
             {question.category?.type && <span className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 rounded text-[9px] font-black text-primary-600 uppercase">{translate('{type} job', { type: question.category.type })}</span>}
-            {question.category?.name && <span className="text-[10px] font-bold text-slate-400">{translate('{name} Interview Questions', { name: question.category.name })}</span>}
+            {question.category?.name && <span className="text-[10px] font-bold text-slate-500 dark:text-white/60">{translate('{name} Interview Questions', { name: question.category.name })}</span>}
           </div>
           <h1 className="text-xl xl:text-2xl font-black text-slate-900 dark:text-white">{displayQuestion}</h1>
-          <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
+          <div className="flex items-center gap-3 text-[10px] text-slate-500 dark:text-white/60 font-bold">
             <span><Eye className="w-3 h-3 inline" /> {translate('{count} views', { count: question.views })}</span>
           </div>
         </div>

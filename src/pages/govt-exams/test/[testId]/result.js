@@ -145,7 +145,7 @@ const TestResult = ({ resolvedId } = {}) => {
 
         <Card className={`
           relative overflow-hidden text-center py-8 px-5 xl:py-12 xl:px-8 border-none shadow-sm
-          ${isGreat ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800'}
+          ${isGreat ? 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10' : 'bg-background-surface'}
         `}>
           <div className="relative z-10 space-y-6">
             <motion.div

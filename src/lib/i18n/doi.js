@@ -2049,6 +2049,8 @@ const DogriDict = {
   '{plan} plan has expired': '{plan} प्लान खत्म होई गेया ऐ',
   'Expired': 'खत्म',
   'Days left': 'दिन बचे',
+  'Unread': 'अनपढ़े',
+  'Your Streak': 'तुंदी स्ट्रीक',
 };
 
 export default DogriDict;

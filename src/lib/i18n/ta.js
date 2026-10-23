@@ -2049,6 +2049,8 @@ const TA = {
   '{plan} plan has expired': '{plan} திட்டம் காலாவதியாகிவிட்டது',
   'Expired': 'காலாவதியானது',
   'Days left': 'நாட்கள் மீதம்',
+  'Unread': 'படிக்காதவை',
+  'Your Streak': 'உங்கள் ஸ்ட்ரீக்',
 };
 
 export default TA;

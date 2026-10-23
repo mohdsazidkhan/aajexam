@@ -2049,6 +2049,8 @@ const KN = {
   '{plan} plan has expired': '{plan} ಪ್ಲಾನ್ ಮುಗಿದಿದೆ',
   'Expired': 'ಅವಧಿ ಮುಗಿದಿದೆ',
   'Days left': 'ದಿನ ಬಾಕಿ',
+  'Unread': 'ಓದದ',
+  'Your Streak': 'ನಿಮ್ಮ ಸ್ಟ್ರೀಕ್',
 };
 
 export default KN;

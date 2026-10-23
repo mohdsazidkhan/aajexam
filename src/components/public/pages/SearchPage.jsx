@@ -503,7 +503,7 @@ const SearchPage = () => {
          {/* ── Fixed Header: Search bar + Tabs — truly pinned to top on web and mobile ── */}
          <div
             ref={headerRef}
-            className={`fixed ${isAuthenticated() ? 'top-12' : 'top-0'} xl:top-16 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
+            className={`fixed ${isAuthenticated() ? 'top-12' : 'top-0'} xl:top-16 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-gradient-to-r after:from-primary-500 after:via-amber-300 after:to-primary-500 border-slate-100 dark:border-slate-800/50 transition-[left] duration-300 ease-in-out ${
                isAuthenticated() && isSidebarOpen ? 'xl:left-60' : ''
             }`}
          >

@@ -52,8 +52,8 @@ const SignupGate = ({ score, total }) => {
 
   return (
     <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900/30 mb-3">
-        <span className="text-2xl font-black text-primary-600">{score}/{total}</span>
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg mb-3 rotate-[-4deg]" style={{ borderRadius: 14 }}>
+        <span className="text-2xl font-black">{score}/{total}</span>
       </div>
       <h3 className="text-xl xl:text-2xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
         {score >= 4 ? translate('Great score! Imagine a full mock test.') : translate('Good start! Let\'s fix the gaps.')}
@@ -140,12 +140,14 @@ export default function SampleQuiz() {
   const q = questions[idx];
 
   return (
-    <section className="px-0 py-4 xl:py-8">
-      <div className="max-w-2xl mx-auto bg-white dark:bg-slate-900 rounded-[2rem] border-2 border-primary-500/20 shadow-sm p-5 xl:p-8">
+    <section className="container mx-auto px-3 xl:px-0 py-4 xl:py-8">
+      <div className="relative overflow-hidden w-full bg-background-surface border border-slate-200 dark:border-slate-800 shadow-xl p-4 xl:p-6" style={{ borderRadius: 16 }}>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+        <div className="pointer-events-none absolute -top-16 -right-10 w-56 h-56 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
         {phase === 'idle' || phase === 'loading' ? (
           <div className="text-center">
-            <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-              <Sparkles className="w-7 h-7 text-primary-600" />
+            <div className="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg flex items-center justify-center rotate-[-4deg]" style={{ borderRadius: 14 }}>
+              <Sparkles className="w-7 h-7" />
             </div>
             <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white mb-2">
               {translate('Try 5 free questions. No signup.')}
@@ -156,7 +158,7 @@ export default function SampleQuiz() {
             <button
               onClick={start}
               disabled={phase === 'loading'}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-600 hover:bg-primary-500 text-white font-black uppercase tracking-widest rounded-2xl shadow-sm disabled:opacity-70"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:brightness-110 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg disabled:opacity-70"
             >
               {phase === 'loading' ? translate('Loading...') : translate('Start the quiz')}
               {phase !== 'loading' && <ArrowRight className="w-4 h-4" />}

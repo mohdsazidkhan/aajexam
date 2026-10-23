@@ -1,4 +1,5 @@
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import PageHero from '@/components/common/ui/PageHero';
 import { FaShieldAlt, FaCheckCircle, FaUserGraduate, FaBook, FaAward, FaHandshake } from 'react-icons/fa';
 import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import UnifiedFooter from '../components/common/UnifiedFooter';
@@ -23,18 +24,13 @@ export default function EditorialPolicy() {
             />
 
             <div className="min-h-screen">
-                <div className="container mx-auto">
-                    {/* Hero */}
-                    <div className="text-center mb-12">
-                        <div className="w-20 h-20 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FaShieldAlt className="text-white text-4xl" />
-                        </div>
-                        <h1 className="text-2xl xl:text-5xl font-bold text-primary-600 mb-4">
-                            Editorial Policy
-                        </h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                            Last Updated: 1st April 2026
-                        </p>
+                <div className="container mx-auto pt-3 xl:pt-4">
+                    <div className="mb-6 xl:mb-8">
+                        <PageHero
+                            icon={FaShieldAlt}
+                            title="Editorial Policy"
+                            subtitle="Last Updated: 1st April 2026"
+                        />
                     </div>
 
                     {/* Mission Statement */}

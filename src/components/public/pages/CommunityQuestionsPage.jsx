@@ -1,5 +1,7 @@
 'use client';
 
+import { MessageSquare } from 'lucide-react';
+import PageHero from '@/components/common/ui/PageHero';
 import { CardGridSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useState, useEffect, useCallback } from 'react';
 import Link from '@/components/common/AppLink';
@@ -154,13 +156,14 @@ const CommunityQuestionsPage = () => {
   return (
     <div className="min-h-screen bg-background-primary">
       <div className="mx-auto py-2 xl:py-4">
-        {/* Header */}
+        <PageHero
+          icon={MessageSquare}
+          eyebrow={translate('Community Questions')}
+          title={translate('Community Questions')}
+        />
+        <div className="mb-4" />
+        {/* Filters */}
         <div className="flex flex-col xl:flex-row items-center justify-between gap-4">
-          <div>
-            <h1 className="text-xl xl:text-2xl font-black text-content-primary uppercase tracking-tight">
-              {translate('Community Questions')}
-            </h1>
-          </div>
           {/* Filters */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <select

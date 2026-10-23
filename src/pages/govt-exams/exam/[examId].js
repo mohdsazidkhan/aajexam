@@ -225,9 +225,9 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
       </section>
 
       {/* Exam Hero */}
-      <Card className="bg-primary-600 text-white border-none shadow-sm overflow-hidden relative">
+      <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10 overflow-hidden relative">
         <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow">
             <ShieldCheck className="w-4 h-4" /> Verified Exam
           </div>
           <h1 className="text-xl md:text-2xl xl:text-4xl font-black uppercase tracking-tight">{translate('{name} Preparation', { name: translateData(examName) })}</h1>
@@ -701,7 +701,7 @@ const ExamDetails = ({ initialExam = null, initialPracticeTests = [], initialPyq
 
       {/* Contextual registration CTA — only for logged-out visitors */}
       {!isAuthenticated() && (
-        <Card className="bg-primary-600 text-white border-none">
+        <Card className="bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white border-none shadow-xl ring-1 ring-white/10">
           <div className="flex items-start gap-4">
             <UserPlus className="w-8 h-8 shrink-0" />
             <div>

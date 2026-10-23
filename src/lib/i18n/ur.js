@@ -2049,6 +2049,8 @@ const UrduDict = {
   '{plan} plan has expired': '{plan} پلان کی مدت ختم ہو گئی ہے',
   'Expired': 'میعاد ختم',
   'Days left': 'دن باقی',
+  'Unread': 'غیر پڑھے ہوئے',
+  'Your Streak': 'آپ کی اسٹریک',
 };
 
 export default UrduDict;

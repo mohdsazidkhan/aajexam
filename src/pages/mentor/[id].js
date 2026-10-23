@@ -140,9 +140,9 @@ export default function MentorProfilePage() {
       <div className="container mx-auto py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6">
 
         {/* Profile Header */}
-        <Card>
+        <Card className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10">
           <div className="flex items-start gap-4">
-            <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center text-primary-600 font-black text-2xl shrink-0">
+            <div className="w-16 h-16 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] flex items-center justify-center font-black text-2xl shrink-0">
               {mentor.user?.name?.charAt(0) || 'M'}
             </div>
             <div className="flex-1">
@@ -150,8 +150,8 @@ export default function MentorProfilePage() {
                 <h1 className="text-xl font-black text-slate-900 dark:text-white">{mentor.user?.name || translate('Mentor')}</h1>
                 {mentor.isVerified && <Shield className="w-4 h-4 text-primary-600" />}
               </div>
-              {mentor.user?.bio && <p className="text-sm text-slate-500 mb-3">{mentor.user.bio}</p>}
-              <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-500">
+              {mentor.user?.bio && <p className="text-sm text-slate-600 dark:text-white/70 mb-3">{mentor.user.bio}</p>}
+              <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-600 dark:text-white/70">
                 <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 text-black dark:text-white fill-black dark:fill-white" /> {mentor.rating?.toFixed(1) || '0.0'} ({mentor.totalRatings || 0})</span>
                 <span className="flex items-center gap-1"><MessageCircle className="w-3.5 h-3.5" /> {translate('{count} helped', { count: mentor.helpedStudents || 0 })}</span>
                 {mentor.preparationMonths > 0 && <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {translate('{count} months prep', { count: mentor.preparationMonths })}</span>}

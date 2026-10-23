@@ -1,4 +1,5 @@
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import PageHero from '@/components/common/ui/PageHero';
 import { FaUserGraduate, FaTrophy, FaCode, FaChalkboardTeacher, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import UnifiedFooter from '../components/common/UnifiedFooter';
@@ -51,21 +52,14 @@ export default function AboutAuthor() {
             />
 
             <div className="min-h-screen">
-                <div className="container mx-auto">
-                    {/* Hero */}
-                    <div className="text-center mb-12">
-                        <div className="w-24 h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FaUserGraduate className="text-white text-5xl" />
-                        </div>
-                        <h1 className="text-2xl xl:text-5xl font-bold text-primary-600 mb-4">
-                            {translate('Mohd Sazid Khan')}
-                        </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
-                            {translate('Founder & CEO, AajExam')}
-                        </p>
-                        <p className="text-lg text-gray-500 dark:text-gray-400">
-                            {translate('Full-Stack Developer | Educational Technology Expert | UDYAM Registered Entrepreneur')}
-                        </p>
+                <div className="container mx-auto pt-3 xl:pt-4">
+                    <div className="mb-6 xl:mb-8">
+                        <PageHero
+                            icon={FaUserGraduate}
+                            eyebrow={translate('Founder & CEO, AajExam')}
+                            title={translate('Mohd Sazid Khan')}
+                            subtitle={translate('Full-Stack Developer | Educational Technology Expert | UDYAM Registered Entrepreneur')}
+                        />
                     </div>
 
                     {/* About */}
@@ -163,7 +157,7 @@ export default function AboutAuthor() {
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800">
                                     <div className={`w-10 h-10 ${item.color} rounded-full flex items-center justify-center flex-shrink-0 text-white font-black shadow-sm border-b-2 border-black/20`}>
-                                        âœ“
+                                        ✓
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-black text-slate-900 dark:text-white mb-1 uppercase tracking-tight">{translate(item.title)}</h3>
@@ -175,10 +169,11 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Philosophy */}
-                    <div className="bg-slate-950 rounded-[3rem] p-4 md:p-8 xl:p-12 mb-16 border-2 border-slate-800 shadow-sm relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
-                        <h2 className="text-xl xl:text-4xl font-black text-white mb-8 uppercase tracking-tight relative z-10">{translate('Educational Philosophy')}</h2>
-                        <div className="space-y-6 text-slate-400 text-md xl:text-xl font-bold leading-relaxed relative z-10">
+                    <div className="bg-primary-50 dark:bg-slate-950 p-4 md:p-8 xl:p-10 mb-10 xl:mb-12 ring-1 ring-primary-200 dark:ring-slate-800 shadow-xl relative overflow-hidden" style={{ borderRadius: 16 }}>
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-amber-300 to-primary-500" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                        <h2 className="text-xl xl:text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight relative z-10">{translate('Educational Philosophy')}</h2>
+                        <div className="space-y-5 text-slate-700 dark:text-slate-400 text-base xl:text-lg font-bold leading-relaxed relative z-10">
                             <p>
                                 {translate('Sazid believes that effective exam preparation requires more than just access to questions, it requires a structured, progressive learning path that builds confidence and competence systematically.')}
                             </p>
@@ -189,34 +184,38 @@ export default function AboutAuthor() {
                     </div>
 
                     {/* Contact */}
-                    <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-3xl shadow-sm p-4 xl:p-8 mb-8">
-                        <h2 className="text-2xl xl:text-3xl font-bold text-gray-800 dark:text-white mb-6">{translate('Connect with Sazid')}</h2>
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <a
-                                href={`mailto:${config.CONTACT.EMAIL}`}
-                                className="flex items-center gap-3 bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl hover:bg-primary-800 transition-all"
-                            >
-                                <FaEnvelope className="text-xl" />
-                                <span>{translate('Email')}</span>
-                            </a>
-                            <a
-                                href="https://www.linkedin.com/in/mohd-sazid-khan"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl hover:bg-primary-800 transition-all"
-                            >
-                                <FaLinkedin className="text-xl" />
-                                <span>{translate('LinkedIn')}</span>
-                            </a>
-                            <a
-                                href="https://github.com/mohdsazidkhan"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-3 bg-primary-600 text-white px-6 py-3 rounded-lg xl:rounded-xl hover:bg-primary-700 transition-all"
-                            >
-                                <FaGithub className="text-xl" />
-                                <span>{translate('GitHub')}</span>
-                            </a>
+                    <div className="relative isolate overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 shadow-xl ring-1 ring-primary-200 dark:ring-white/10 p-4 xl:p-8 mb-8" style={{ borderRadius: 16 }}>
+                        <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+                        <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+                        <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-amber-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
+
+                        <div className="flex items-center gap-3 mb-5 xl:mb-6">
+                            <div className="w-11 h-11 xl:w-12 xl:h-12 bg-gradient-to-br from-amber-300 to-amber-500 text-amber-950 shadow-lg rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
+                                <FaEnvelope className="text-lg xl:text-xl" />
+                            </div>
+                            <h2 className="text-xl xl:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{translate('Connect with Sazid')}</h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 xl:gap-4 pt-4 border-t border-dashed border-primary-300 dark:border-white/25">
+                            {[
+                                { href: `mailto:${config.CONTACT.EMAIL}`, icon: FaEnvelope, label: translate('Email'), external: false },
+                                { href: 'https://www.linkedin.com/in/mohd-sazid-khan', icon: FaLinkedin, label: translate('LinkedIn'), external: true },
+                                { href: 'https://github.com/mohdsazidkhan', icon: FaGithub, label: translate('GitHub'), external: true },
+                            ].map((c) => (
+                                <a
+                                    key={c.label}
+                                    href={c.href}
+                                    {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                    className="group relative flex items-center gap-3 px-4 py-3.5 bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15 ring-1 ring-primary-200 dark:ring-white/20 hover:-translate-y-1 hover:shadow-lg transition-all"
+                                    style={{ borderRadius: 12 }}
+                                >
+                                    <span className="w-10 h-10 shrink-0 bg-gradient-to-br from-primary-600 to-primary-800 text-white flex items-center justify-center shadow group-hover:rotate-[-4deg] transition-transform" style={{ borderRadius: 10 }}>
+                                        <c.icon className="text-xl" />
+                                    </span>
+                                    <span className="font-black text-sm xl:text-base text-slate-900 dark:text-white">{c.label}</span>
+                                    <span className="ml-auto text-primary-600 dark:text-amber-300 font-black group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+                                </a>
+                            ))}
                         </div>
                     </div>
 

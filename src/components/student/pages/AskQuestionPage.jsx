@@ -1,5 +1,7 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
+import { MessageSquare } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import API from '../../../lib/api';
@@ -178,13 +180,12 @@ const AskQuestionPage = () => {
   return (
     <div className="min-h-screen bg-background-primary">
       <div className="mx-auto py-4 xl:py-8">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <div>
-            <h1 className="text-xl xl:text-3xl font-black text-content-primary uppercase tracking-tight">
-              {translate('Post a Question')}
-            </h1>
-          </div>
+        <div className="mb-4 xl:mb-6">
+          <PageHero
+            icon={MessageSquare}
+            eyebrow={translate('Post a Question')}
+            title={translate('Post a Question')}
+          />
         </div>
 
         <form onSubmit={handleSubmit}>

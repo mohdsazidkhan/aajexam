@@ -2049,6 +2049,8 @@ const OR_ = {
   '{plan} plan has expired': '{plan} ପ୍ଲାନ୍ ମିଆଦ ସରିଛି',
   'Expired': 'ମିଆଦ ସରିଛି',
   'Days left': 'ଦିନ ବାକି',
+  'Unread': 'ଅପଠିତ',
+  'Your Streak': 'ଆପଣଙ୍କ ଷ୍ଟ୍ରିକ୍',
 };
 
 export default OR_;

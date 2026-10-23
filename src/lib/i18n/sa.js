@@ -2049,6 +2049,8 @@ const SA = {
   '{plan} plan has expired': '{plan} योजना समाप्ता',
   'Expired': 'समाप्तम्',
   'Days left': 'अवशिष्टानि दिनानि',
+  'Unread': 'अपठितानि',
+  'Your Streak': 'भवतः अनुक्रमः',
 };
 
 export default SA;

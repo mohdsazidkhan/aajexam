@@ -50,7 +50,7 @@ const ForgotPasswordPage = () => {
     <MobileAppWrapper showHeader={true} title={translate('Forgot Password')}>
       <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
         {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-300/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         <motion.div
@@ -58,7 +58,7 @@ const ForgotPasswordPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md relative z-10"
         >
-          <Card className="p-10 border-none shadow-sm bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl space-y-8 rounded-[3rem]">
+          <Card className="p-6 xl:p-8 border-none shadow-xl space-y-6">
 
             {/* Header */}
             <div className="text-center space-y-2 xl:space-y-4">

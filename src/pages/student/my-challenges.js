@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { ChallengesPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
@@ -73,12 +74,12 @@ const MyChallengesPage = () => {
 
          <div className="container mx-auto py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view and track your multiplayer challenges.">
-               {/* Header */}
-               <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
-                  <div className="space-y-1 text-center xl:text-left">
-                     <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{translate('My Challenges')}</h1>
-                  </div>
-               </div>
+               <PageHero
+                  icon={Swords}
+                  eyebrow={translate('My Challenges')}
+                  title={translate('My Challenges')}
+                  stats={[{ label: translate('My Challenges'), value: challenges.length, icon: Swords }]}
+               />
 
                {/* Results */}
                {challenges.length === 0 ? (

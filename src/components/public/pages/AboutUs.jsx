@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import React, { useState, useEffect } from 'react';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Head from 'next/head';
@@ -79,49 +80,32 @@ const AboutUs = () => {
          <div className="py-4 md:py-6 xl:py-12 space-y-6 xl:space-y-12 mt-0">
 
             {/* --- Hero Section --- */}
-            <section className="text-center space-y-6 relative overflow-hidden">
-               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-sm rotate-12">
-                  <Sparkles className="text-white w-10 h-10" />
-               </motion.div>
-               <div className="space-y-2 xl:space-y-4">
-                  <h1 className="text-xl xl:text-5xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{rich('About <0>Us</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
-               </div>
-
-               {/* Stats Ribbon */}
-               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 xl:gap-4 pt-12 max-w-6xl mx-auto">
-                  {stats.map((stat, i) => (
-                     <Card key={i} className="flex items-center justify-center gap-3 xl:gap-4 border-2 border-slate-100 dark:border-slate-800">
-                        <div className={`p-4 bg-${stat.color}-500/10 text-${stat.color}-500 rounded-2xl`}>
-                           <stat.icon className="w-6 h-6" />
-                        </div>
-                        <div className="text-left">
-                           <p className="text-xl xl:text-3xl font-black font-outfit text-slate-900 dark:text-white leading-none">{stat.value}</p>
-                           <p className="text-[10px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">{translate(stat.label)}</p>
-                        </div>
-                     </Card>
-                  ))}
-               </div>
-            </section>
+            <PageHero
+               icon={Sparkles}
+               eyebrow={translate('About Us')}
+               title={rich('About <0>Us</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+               stats={stats.map((st) => ({ label: translate(st.label), value: st.value, icon: st.icon }))}
+            />
 
             {/* --- Mission & Vision --- */}
             <section className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
-               <Card className="p-10 space-y-8 border-none bg-slate-900 text-white shadow-sm relative overflow-hidden">
+               <Card className="p-6 xl:p-10 space-y-8 border-none bg-primary-50 dark:bg-slate-900 text-slate-900 dark:text-white shadow-xl ring-1 ring-primary-200 dark:ring-white/10 relative overflow-hidden">
                   <div className="relative z-10 space-y-6">
-                     <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-400 backdrop-blur-sm border border-primary-500/30">
+                     <div className="inline-flex items-center gap-2 bg-primary-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest text-primary-700 dark:text-primary-400 backdrop-blur-sm border border-primary-500/30">
                         <Rocket className="w-4 h-4" /> OUR MISSION
                      </div>
                      <h2 className="text-xl md:text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none">Good Education <br />{translate('For Every Student')}</h2>
-                     <p className="text-slate-300 font-bold leading-relaxed">{translate('AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.')}</p>
+                     <p className="text-slate-700 dark:text-slate-300 font-bold leading-relaxed">{translate('AajExam helps students across India prepare for government exams. We believe every student deserves good study material, no matter where they come from.')}</p>
                      <div className="space-y-2 xl:space-y-4">
                         {['All About Your Knowledge', 'Proven Study Methods', 'Top Students Get Rewarded'].map((pill, i) => (
                            <div key={i} className="flex items-center gap-3">
                               <div className="w-5 h-5 bg-primary-600 rounded-full flex items-center justify-center text-[10px] font-black text-slate-900">✓</div>
-                              <span className="text-sm font-black uppercase tracking-widest text-slate-300">{pill}</span>
+                              <span className="text-sm font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">{pill}</span>
                            </div>
                         ))}
                      </div>
                   </div>
-                  <ShieldCheck className="absolute -bottom-10 -right-10 w-64 h-64 text-white/5 -rotate-12" />
+                  <ShieldCheck className="absolute -bottom-10 -right-10 w-64 h-64 text-primary-600/10 dark:text-white/5 -rotate-12" />
                </Card>
 
                <div className="space-y-10 px-4">
@@ -181,7 +165,7 @@ const AboutUs = () => {
 
             {/* --- CTA --- */}
             <section>
-               <Card className="p-12 text-center bg-primary-600 border-none text-white shadow-sm relative overflow-hidden">
+               <Card className="p-8 xl:p-12 text-center bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 border-none text-white shadow-xl ring-1 ring-white/10 relative overflow-hidden">
                   <div className="relative z-10 space-y-8">
                      <h2 className="text-2xl xl:text-5xl font-black font-outfit uppercase tracking-tight">{translate('Ready to Begin?')}</h2>
                      <p className="text-lg font-medium opacity-90 max-w-2xl mx-auto leading-relaxed">{translate('Join thousands of students who are already passing exams and earning cash by referring friends to AajExam.')}</p>

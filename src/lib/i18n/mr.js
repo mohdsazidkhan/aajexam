@@ -2049,6 +2049,8 @@ const MR = {
   '{plan} plan has expired': '{plan} प्लॅनची मुदत संपली आहे',
   'Expired': 'मुदत संपली',
   'Days left': 'दिवस शिल्लक',
+  'Unread': 'न वाचलेले',
+  'Your Streak': 'तुमची स्ट्रीक',
 };
 
 export default MR;

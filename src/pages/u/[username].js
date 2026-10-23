@@ -121,11 +121,15 @@ const PublicProfilePage = ({ username: ssrUsername, seo }) => {
         {/* Profile Header */}
         <div className="mb-6">
           {/* Banner */}
-          <div className="h-32 sm:h-40 xl:h-48 bg-primary-600 rounded-2xl md:rounded-3xl relative border-2 border-slate-200 dark:border-slate-800" />
+          <div className="h-32 sm:h-40 xl:h-48 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 relative overflow-hidden shadow-xl ring-1 ring-white/10" style={{ borderRadius: 16 }}>
+            <div className="pointer-events-none absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+            <div className="pointer-events-none absolute -top-16 -left-10 w-64 h-64 bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+            <div className="pointer-events-none absolute -bottom-24 right-10 w-72 h-72 bg-amber-300/25 blur-3xl" style={{ borderRadius: '50%' }} />
+          </div>
 
           {/* Profile Card - overlaps banner */}
           <div className="-mt-16 sm:-mt-20 relative z-10">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl md:rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-sm p-4 sm:p-5 xl:p-6">
+            <div className="relative bg-background-surface border border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-5 xl:p-6 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:via-amber-300 before:to-primary-500" style={{ borderRadius: 16 }}>
               {/* Avatar + Info + Action */}
               <div className="flex items-start gap-3 sm:gap-4">
                 {/* Avatar */}

@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { CardsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
@@ -106,10 +107,12 @@ const BookmarksPage = () => {
             <Seo title="Bookmarks - AajExam" noIndex={true} />
 
             <div className="container mx-auto py-2 xl:py-4 space-y-3 xl:space-y-4 mt-0">
-               {/* Header */}
-               <div className="flex items-center justify-between gap-6">
-                  <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tight">{translate('Bookmarks')}</h1>
-               </div>
+               <PageHero
+                  icon={Bookmark}
+                  eyebrow={translate('Bookmarks')}
+                  title={translate('Bookmarks')}
+                  stats={[{ label: translate('Saved'), value: total, icon: Bookmark }]}
+               />
 
                {/* Bookmarked Reels Grid */}
                {reels.length === 0 ? (

@@ -142,16 +142,19 @@ const RegisterPageInner = () => {
     <MobileAppWrapper showHeader={true} title={translate('Register')}>
       <div className="flex-1 flex flex-col xl:flex-row items-stretch">
         {/* Left panel */}
-        <div className="hidden xl:flex w-1/2 bg-slate-50 dark:bg-slate-800/50 p-20 flex-col justify-center items-start relative overflow-hidden">
+        <div className="hidden xl:flex w-1/2 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-800 dark:via-primary-900 dark:to-primary-950 p-16 flex-col justify-center items-start relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+          <div className="pointer-events-none absolute -top-24 -left-20 w-80 h-80 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="pointer-events-none absolute -bottom-28 right-10 w-96 h-96 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="space-y-4 xl:space-y-8 relative z-10">
             <div className="space-y-2 xl:space-y-4">
               {freePromoActive && (
-                <span className="inline-block text-xs font-black uppercase tracking-widest text-primary-600 dark:text-primary-400 bg-primary-500/10 px-3 py-1.5 rounded-full">
+                <span className="inline-block text-xs font-black uppercase tracking-widest text-amber-950 bg-gradient-to-r from-amber-300 to-amber-400 shadow px-3 py-1.5 rounded-full">
                   {translate('🎁 Register now — Get PRO Free till 31 Dec 2026')}
                 </span>
               )}
               <h1 className="text-2xl md:text-3xl xl:text-4xl font-black font-outfit uppercase tracking-tight leading-none text-slate-900 dark:text-white">
-                {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600 dark:text-primary-400">{c}</span>])}
+                {rich('Join the <0>community</0>.', [(c) => <span className="text-primary-600 dark:text-amber-300">{c}</span>])}
               </h1>
             </div>
 
@@ -161,8 +164,8 @@ const RegisterPageInner = () => {
                 { icon: Brain, text: 'Attempt 500+ Previous Year Papers free' },
                 { icon: ShieldCheck, text: 'See your score and rank anytime' }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-slate-300 font-bold">
-                  <div className="p-2 bg-primary-500/10 rounded-lg xl:rounded-xl">
+                <div key={index} className="flex items-center gap-4 text-slate-700 dark:text-white font-bold">
+                  <div className="p-2 bg-primary-500/10 dark:bg-white/15 rounded-lg xl:rounded-xl">
                     <item.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                   </div>
                   <span className="text-sm font-black tracking-[0.04em]">{pyqCount ? translate(item.text).replace(/500\+/, String(pyqCount)) : translate(item.text)}</span>
@@ -175,7 +178,7 @@ const RegisterPageInner = () => {
 
         {/* Right panel — form */}
         <div className="flex-1 flex items-center justify-center overflow-y-auto py-4 xl:py-8">
-          <Card className="w-full max-w-md p-5 xl:p-10 border-2 shadow-sm space-y-6 rounded-[3rem]">
+          <Card className="w-full max-w-md p-5 xl:p-8 shadow-xl space-y-5">
             <div className="text-center space-y-3">
               <h2 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight text-slate-900 dark:text-white">{translate('Register')}</h2>
               <p className="text-sm font-bold text-slate-600 dark:text-slate-400 tracking-[0.04em]">

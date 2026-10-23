@@ -2023,6 +2023,8 @@ const MANIPURI = {
   '{plan} plan has expired': '{plan} ꯄ꯭ꯂꯥꯟꯒꯤ ꯃꯇꯝ ꯂꯣꯏꯔꯦ',
   'Expired': 'ꯃꯇꯝ ꯂꯣꯏꯔꯦ',
   'Days left': 'ꯅꯨꯃꯤꯠ ꯑꯅꯤꯅ ꯂꯩ',
+  'Unread': 'ꯄꯥꯕ ꯅꯥꯏꯗꯕ',
+  'Your Streak': 'ꯅꯍꯥꯛꯀꯤ ꯁ꯭ꯇ꯭ꯔꯤꯛ',
 };
 
 export default MANIPURI;

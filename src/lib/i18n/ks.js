@@ -2049,6 +2049,8 @@ const KS = {
   '{plan} plan has expired': '{plan} پلانچ میعاد چھ ختم گمت',
   'Expired': 'میعاد ختم',
   'Days left': 'دۄہ باقی',
+  'Unread': 'نہ پڑھمُت',
+  'Your Streak': 'توہندِ اسٹریک',
 };
 
 export default KS;

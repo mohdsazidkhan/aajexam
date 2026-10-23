@@ -2049,6 +2049,8 @@ const NE = {
   '{plan} plan has expired': '{plan} प्लानको म्याद सकियो',
   'Expired': 'म्याद सकियो',
   'Days left': 'दिन बाँकी',
+  'Unread': 'नपढिएका',
+  'Your Streak': 'तपाईंको स्ट्रिक',
 };
 
 export default NE;

@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import React, { useState } from 'react';
 import {
    Mail,
@@ -84,14 +85,11 @@ const ContactUs = ({ contactInfo = {
             <div className="py-10 xl:py-20 space-y-12 xl:space-y-20">
 
                {/* --- Header Section --- */}
-               <section className="text-center space-y-6 relative overflow-hidden">
-                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="w-24 h-24 bg-primary-600 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-sm border-2 border-white/10 rotate-12">
-                     <MessageSquare className="w-10 h-10" />
-                  </motion.div>
-                  <div className="space-y-2 xl:space-y-4">
-                     <h1 className="text-2xl xl:text-4xl font-black font-outfit uppercase tracking-tighter text-slate-900 dark:text-white">{rich('Contact <0>Support</0>', [(c) => <span className="text-primary-600">{c}</span>])}</h1>
-                  </div>
-               </section>
+               <PageHero
+                  icon={MessageSquare}
+                  eyebrow={translate('Contact Support')}
+                  title={rich('Contact <0>Support</0>', [(c) => <span className="text-primary-600">{c}</span>])}
+               />
 
                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10 items-start">
 
@@ -136,7 +134,7 @@ const ContactUs = ({ contactInfo = {
                      </Card>
 
                      {/* Support Info */}
-                     <Card className="border-none bg-primary-600 text-white shadow-sm rounded-[3rem] overflow-hidden group relative">
+                     <Card className="border-none bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10 overflow-hidden group relative">
                         <div className="flex items-center gap-5 relative z-10">
                            <div className="w-14 h-14 bg-white/20 rounded-2xl backdrop-blur-md border-2 border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 shadow-sm">
                               <Headset className="w-8 h-8" />

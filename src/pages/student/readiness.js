@@ -1,4 +1,5 @@
 'use client';
+import PageHero from '@/components/common/ui/PageHero';
 import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import { Target, TrendingUp, TrendingDown, BarChart3, AlertTriangle, CheckCircle, ArrowRight } from 'lucide-react';
@@ -89,11 +90,11 @@ const ReadinessPage = () => {
       <Seo title="Exam Readiness – AajExam" description="Track how exam-ready you are with AajExam." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
         <SubscriptionGuard message="Readiness Score is a PRO feature. Upgrade to unlock deep insights into your exam preparation!">
-          <div className="flex justify-between items-center flex-col xl:flex-row gap-4">
-          <div className="space-y-1 text-center xl:text-left">
-            <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center xl:justify-start gap-2"><Target className="w-6 h-6 text-primary-600" /> {translate('Exam Readiness')}</h1>
-          </div>
-
+          <PageHero
+            icon={Target}
+            eyebrow={translate('Exam Readiness')}
+            title={translate('Exam Readiness')}
+            actions={
           <div className="flex flex-col xl:flex-row gap-3 xl:gap-5 w-full xl:w-auto">
             <select value={selectedExam} onChange={e => setSelectedExam(e.target.value)}
               className="w-full xl:flex-1 px-3 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-sm outline-none">
@@ -105,7 +106,8 @@ const ReadinessPage = () => {
               {analyzing ? translate('Analyzing...') : translate('Analyze')}
             </button>
           </div>
-          </div>
+            }
+          />
 
           {readiness && (
             <div className="space-y-5">

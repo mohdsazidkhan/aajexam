@@ -1,4 +1,5 @@
 'use client';
+import PageHero from '@/components/common/ui/PageHero';
 import React, { useState, useEffect, useMemo } from 'react';
 import { Newspaper, Calendar, Tag, Eye, ChevronRight, Search, X, TrendingUp, Sparkles, Globe, Flame, Trophy, Sword, Leaf } from 'lucide-react';
 import Link from '@/components/common/AppLink';
@@ -111,59 +112,57 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
         schemas={generateBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Current Affairs', url: '/current-affairs' }])} />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 xl:py-8">
-        <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
-        <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
-            <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Updates Available', { count: affairs.length })}
-          </motion.div>
-          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Current Affairs')}</h1>
+      <PageHero
+        icon={Newspaper}
+        eyebrow={translate('Current Affairs')}
+        title={translate('Current Affairs')}
+        subtitle={translate('{count} Updates Available', { count: affairs.length })}
+        actions={
+<>
           {/* Search + Date */}
-          <div className="w-full max-w-lg px-2 xl:px-0 flex flex-col xl:flex-row justify-between items-center gap-2 xl:gap-4">
-            <div className="w-full relative flex-1">
+          <div className="w-full xl:w-auto flex flex-col xl:flex-row justify-between items-center gap-2">
+            <div className="w-full xl:w-56 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder={translate('Search current affairs...')} value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} autoFocus
-                className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
+                className="w-full bg-white dark:bg-black rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-600" />
             </div>
             <div className="relative flex gap-2 mt-2 xl:mt-0">
               <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none z-10" />
               <select value={selectedMonth} onChange={e => { setSelectedMonth(Number(e.target.value)); setPage(1); }}
-                className="bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                className="bg-white dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border border-slate-300 dark:border-slate-600 appearance-none cursor-pointer">
                 {MONTH_NAMES.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
               </select>
               <select value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setPage(1); }}
-                className="bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border-none appearance-none cursor-pointer">
+                className="bg-white dark:bg-black rounded-lg xl:rounded-xl py-2.5 px-3 text-sm font-semibold text-slate-900 dark:text-white outline-none border border-slate-300 dark:border-slate-600 appearance-none cursor-pointer">
                 {YEAR_OPTIONS.map(y => <option key={y} value={y}>{y}</option>)}
               </select>
             </div>
             {hasFilters && (
               <button onClick={() => { setSearch(''); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); setPage(1); }}
-                className="flex items-center gap-1 px-4 py-2.5 bg-white/20 text-white rounded-lg xl:rounded-xl text-xs font-black uppercase border border-white/30">
+                className="flex items-center gap-1 px-4 py-2.5 bg-primary-600/10 text-primary-800 dark:bg-white/20 dark:text-white rounded-lg xl:rounded-xl text-xs font-black uppercase border border-primary-300 dark:border-white/30">
                 <X className="w-3 h-3" /> Clear
               </button>
             )}
           </div>
-        </div>
-        <Newspaper className="absolute -bottom-10 -right-10 w-80 h-80 text-white/10 rotate-12 pointer-events-none" />
-      </section>
-
-      {/* ── Filters ── */}
-      <section className="space-y-2 xl:space-y-4">
-        <div className="sticky top-16 xl:top-20 z-20 backdrop-blur-xl py-0 xl:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
-          <div className="flex gap-2 overflow-x-auto no-scrollbar">
+</>
+        }
+      >
+        <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
             {filterPills.map(f => (
               <button key={f.id} onClick={() => { setCategory(f.id); setPage(1); }}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   category === f.id
-                    ? 'bg-primary-600 text-white border-primary-600'
+                    ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 border-amber-500'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
               </button>
             ))}
-          </div>
         </div>
+      </PageHero>
+
+      {/* ── Filters ── */}
+      <section className="space-y-2 xl:space-y-4">
 
         {/* Today highlight */}
         {todayAffairs?.total > 0 && !search && isCurrentMonth && category === 'all' && (
@@ -236,7 +235,7 @@ const CurrentAffairsPage = ({ initialItems = [], initialTotalPages = 1 } = {}) =
             <div className="col-span-full py-20 text-center space-y-2 xl:space-y-4">
               <Newspaper className="w-20 h-20 text-slate-200 mx-auto" />
               <h3 className="text-xl font-black text-slate-400 uppercase">{translate('No current affairs found')}</h3>
-              <button onClick={() => { setSearch(''); setSelectedDate(null); setCategory('all'); }}
+              <button onClick={() => { setSearch(''); setSelectedMonth(now.getMonth() + 1); setSelectedYear(CURRENT_YEAR); setCategory('all'); }}
                 className="px-6 py-2.5 bg-primary-600 text-white rounded-full font-black text-xs uppercase">{translate('View All')}</button>
             </div>
           )}

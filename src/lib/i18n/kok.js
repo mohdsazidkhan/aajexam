@@ -2049,6 +2049,8 @@ const KOK = {
   '{plan} plan has expired': '{plan} प्लॅनाची मुदत सोंपल्या',
   'Expired': 'मुदत सोंपली',
   'Days left': 'दीस उरले',
+  'Unread': 'वाचक नाशिल्ले',
+  'Your Streak': 'तुमची स्ट्रीक',
 };
 
 export default KOK;

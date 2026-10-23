@@ -2070,6 +2070,8 @@ const HI = {
   '{plan} plan has expired': '{plan} प्लान समाप्त हो गया है',
   'Expired': 'समाप्त',
   'Days left': 'दिन शेष',
+  'Unread': 'अपठित',
+  'Your Streak': 'आपकी स्ट्रीक',
 };
 
 export default HI;

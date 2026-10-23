@@ -2058,6 +2058,8 @@ const HINGLISH = {
   '{plan} plan has expired': '{plan} plan expire ho gaya hai',
   'Expired': 'Expired',
   'Days left': 'Din bache',
+  'Unread': 'Unread',
+  'Your Streak': 'Aapki Streak',
 };
 
 export default HINGLISH;

@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Target } from 'lucide-react';
+import PageHero from '@/components/common/ui/PageHero';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
 import Link from '@/components/common/AppLink';
 import { FileText, Clock, Trophy, BookOpen, ChevronRight } from 'lucide-react';
@@ -209,23 +211,15 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="py-2 xl:py-4 space-y-3 xl:space-y-5 relative">
-                    {/* Hero */}
-                    <header className="bg-white dark:bg-slate-900 rounded-2xl p-3 xl:p-5 shadow-sm border-2 border-slate-200 dark:border-slate-800">
-                        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3 xl:gap-6">
-                            <div className="space-y-2 min-w-0">
-                                <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase flex items-center gap-2 xl:gap-3">
-                                    <FileText className="w-6 h-6 xl:w-8 xl:h-8 text-primary-600 shrink-0" />
-                                    {translate('Previous Year Papers')}
-                                </h1>
-                                <div className="flex flex-wrap items-center gap-2">
-                                    <span className="px-2.5 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-[10px] xl:text-xs font-black text-primary-600 uppercase tracking-wider">
-                                        {totalPYQs} verified PYQ {totalPYQs === 1 ? 'paper' : 'papers'}
-                                    </span>
-                                    <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] xl:text-xs font-black text-slate-600 dark:text-slate-300 uppercase tracking-wider">
-                                        {examsWithPYQ.length} {examsWithPYQ.length === 1 ? 'exam' : 'exams'}
-                                    </span>
-                                </div>
-                            </div>
+                    <PageHero
+                        icon={FileText}
+                        eyebrow={translate('Previous Year Papers')}
+                        title={translate('Previous Year Papers')}
+                        stats={[
+                            { label: totalPYQs === 1 ? 'verified PYQ paper' : 'verified PYQ papers', value: totalPYQs, icon: FileText },
+                            { label: examsWithPYQ.length === 1 ? 'exam' : 'exams', value: examsWithPYQ.length, icon: Target },
+                        ]}
+                        actions={
                             <div className="flex flex-wrap items-center gap-2 xl:justify-end">
                                 {examIdsFilter && (
                                     <button
@@ -253,8 +247,8 @@ export default function PYQIndexPage({ tests, totalPages, page, pageSize, year, 
                                     {years.map((y) => <option key={y} value={y}>{y}</option>)}
                                 </select>
                             </div>
-                        </div>
-                    </header>
+                        }
+                    />
 
                     {isFiltered && papersSection}
 

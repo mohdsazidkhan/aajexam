@@ -2049,6 +2049,8 @@ const GU = {
   '{plan} plan has expired': '{plan} પ્લાનની મુદત પૂરી થઈ છે',
   'Expired': 'સમાપ્ત',
   'Days left': 'દિવસ બાકી',
+  'Unread': 'વણવાંચેલા',
+  'Your Streak': 'તમારી સ્ટ્રીક',
 };
 
 export default GU;

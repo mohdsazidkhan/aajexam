@@ -1,4 +1,5 @@
 'use client';
+import PageHero from '@/components/common/ui/PageHero';
 import { useEffect, useState } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -120,41 +121,38 @@ const QuizListPage = ({ initialQuizzes = [] } = {}) => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative rounded-[2.5rem] overflow-hidden shadow-sm border-b-2 border-primary-600/20 dark:border-primary-900/30 px-0 py-4 xl:py-8">
-        <div className="absolute inset-0 bg-primary-600 dark:bg-slate-900" />
-        <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-widest backdrop-blur-md border border-white/30">
-            <TrendingUp className="w-3.5 h-3.5" /> {translate('{count} Quizzes Available', { count: totalCount })}
-          </motion.div>
-          <h1 className="text-2xl xl:text-5xl font-black uppercase leading-tight text-white tracking-tighter">{translate('Quizzes')}</h1>
-          <div className="w-full max-w-lg px-2 xl:px-0">
+      <PageHero
+        icon={BrainCircuit}
+        eyebrow={translate('Quizzes')}
+        title={translate('Quizzes')}
+        subtitle={translate('{count} Quizzes Available', { count: totalCount })}
+        center={
+          <div className="w-full">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input type="text" placeholder={translate('Search quizzes...')} value={search} onChange={e => setSearch(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-black rounded-lg xl:rounded-xl py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border-none" />
+                className="w-full bg-white dark:bg-black rounded-lg xl:rounded-xl py-2 pl-9 pr-3 text-sm font-semibold text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-primary-500/30 border border-slate-300 dark:border-slate-600" />
             </div>
           </div>
-        </div>
-        <BrainCircuit className="absolute -bottom-10 -right-10 w-80 h-80 text-white/10 rotate-12 pointer-events-none" />
-      </section>
-
-      {/* ── Filters ── */}
-      <section className="space-y-2 xl:space-y-4">
-        <div className="sticky top-16 xl:top-20 z-20 backdrop-blur-xl py-0 xl:py-4 -mx-4 px-4 border-b border-slate-200/50 dark:border-slate-700/50">
-          <div className="flex gap-2 overflow-x-auto no-scrollbar">
+        }
+        actions={
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar max-w-full">
             {filters.map(f => (
               <button key={f.id} onClick={() => setActiveFilter(f.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-black uppercase text-xs whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-full font-black uppercase text-[11px] whitespace-nowrap transition-all border-b-2 active:translate-y-0.5 ${
                   activeFilter === f.id
-                    ? 'bg-primary-600 text-white border-primary-600'
+                    ? 'bg-gradient-to-r from-amber-300 to-amber-400 text-amber-950 border-amber-500'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                 }`}>
                 <f.icon className="w-3.5 h-3.5" /> {translate(f.label)}
               </button>
             ))}
           </div>
-        </div>
+        }
+      />
+
+      {/* ── Filters ── */}
+      <section className="space-y-2 xl:space-y-4">
 
         {/* ── Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-6 pt-2">

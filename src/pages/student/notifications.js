@@ -23,6 +23,7 @@ import API from '../../lib/api';
 import MobileAppWrapper from '../../components/common/MobileAppWrapper';
 import Card from '../../components/common/ui/Card';
 import Button from '../../components/common/ui/Button';
+import PageHero from '../../components/common/ui/PageHero';
 import Loading from '../../components/common/Loading';
 import Seo from '../../components/common/Seo';
 import useTranslate from '../../hooks/useTranslate';
@@ -106,19 +107,23 @@ const NotificationsPage = () => {
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white mt-0">
       <Seo title={`Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''} - AajExam`} noIndex={true} />
 
-      <div className="container mx-auto py-12 space-y-10 mt-0">
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center xl:text-left">
-            <h1 className="text-xl xl:text-3xl font-black font-outfit uppercase tracking-tight flex items-center gap-4 justify-center xl:justify-start">
-              {translate('Notifications')} {unreadCount > 0 && <span className="bg-primary-600 text-white text-xs px-3 py-1 rounded-full">{unreadCount}</span>}
-            </h1>
-          </div>
-
-          <div className="flex gap-2">
-            {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>{translate('MARK ALL READ')}</Button>}
-            {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-black tracking-widest" onClick={clearAll}>{translate('CLEAR ALL')}</Button>}
-          </div>
-        </div>
+      <div className="container mx-auto py-2 xl:py-4 space-y-3 xl:space-y-5 mt-0">
+        <PageHero
+          icon={Bell}
+          eyebrow={translate('Notifications')}
+          title={translate('Notifications')}
+          badge={unreadCount > 0 ? String(unreadCount) : undefined}
+          stats={[
+            { label: translate('Notifications'), value: notifications.length, icon: Inbox },
+            { label: translate('Unread'), value: unreadCount, icon: Bell },
+          ]}
+          actions={
+            <>
+              {unreadCount > 0 && <Button variant="primary" size="sm" className="text-[10px] font-black tracking-widest" onClick={markAllRead}>{translate('MARK ALL READ')}</Button>}
+              {notifications.length > 0 && <Button variant="secondary" size="sm" className="text-[10px] font-black tracking-widest" onClick={clearAll}>{translate('CLEAR ALL')}</Button>}
+            </>
+          }
+        />
 
         <Card className="overflow-hidden">
           <AnimatePresence mode="popLayout">

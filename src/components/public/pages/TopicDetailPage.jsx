@@ -1,4 +1,5 @@
 'use client';
+import BackButton from '@/components/common/ui/BackButton';
 import { useEffect, useState } from 'react';
 import Link from '@/components/common/AppLink';
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
@@ -84,16 +85,19 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
   return (
     <div className="min-h-screen pb-6 xl:pb-12">
       <div className="py-0 xl:py-6">
-        <button onClick={() => router.back()} className="hidden xl:flex items-center gap-1 text-sm text-primary-600 mb-4 font-bold"><ArrowLeft className="w-4 h-4" /> {translate('Back')}</button>
+        <div className="hidden xl:flex justify-end mb-4"><BackButton onClick={() => router.back()}><ArrowLeft className="w-4 h-4" /> {translate('Back')}</BackButton></div>
 
         {/* Hero */}
-        <div className="bg-primary-600 rounded-2xl p-6 text-white mb-5">
-          <Layers className="w-8 h-8 mb-2" />
+        <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 text-white shadow-xl ring-1 ring-white/10 p-5 xl:p-6 mb-5" style={{ borderRadius: 16 }}>
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+          <div className="pointer-events-none absolute -bottom-24 right-6 w-72 h-72 bg-amber-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
+          <div className="relative">
+          <Layers className="w-8 h-8 mb-2 text-amber-300" />
           <h1 className="text-xl xl:text-3xl font-black uppercase">{translateData(topic.name)}</h1>
           <p className="text-sm opacity-80 mt-1">{topic.subject?.name || ''}{topic.exams?.length ? ` · ${topic.exams.map(e => e.name).join(', ')}` : ''}</p>
           <div className="flex gap-3 mt-3">
-            <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
-            <span className="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{translate('{count} Tests', { count: practiceTests.length })}</span>
+            <span className="text-xs font-bold bg-white/15 ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><BrainCircuit className="w-3 h-3 inline mr-1" />{translate('{count} Quizzes', { count: quizzes.length })}</span>
+            <span className="text-xs font-bold bg-white/15 ring-1 ring-white/25 px-3 py-1.5 rounded-lg"><FileText className="w-3 h-3 inline mr-1" />{translate('{count} Tests', { count: practiceTests.length })}</span>
           </div>
           
           {/* Adaptive Practice Button */}
@@ -110,6 +114,7 @@ const TopicDetailPage = ({ resolvedId, initialTopic } = {}) => {
               )}
             </button>
             <p className="text-[10px] font-bold text-white/80 mt-2 pl-1">{translate('Generates custom difficulty based on your past accuracy.')}</p>
+          </div>
           </div>
         </div>
 

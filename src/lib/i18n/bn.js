@@ -2049,6 +2049,8 @@ const BN = {
   '{plan} plan has expired': '{plan} প্ল্যানের মেয়াদ শেষ',
   'Expired': 'মেয়াদোত্তীর্ণ',
   'Days left': 'দিন বাকি',
+  'Unread': 'অপঠিত',
+  'Your Streak': 'আপনার স্ট্রিক',
 };
 
 export default BN;

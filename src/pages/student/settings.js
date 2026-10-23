@@ -1,5 +1,7 @@
 'use client';
 
+import { Settings as SettingsIcon } from 'lucide-react';
+import PageHero from '@/components/common/ui/PageHero';
 import { SettingsPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, m as motion } from 'framer-motion';
@@ -149,11 +151,11 @@ const SettingsPage = () => {
         <Seo title="Account Settings - AajExam" noIndex={true} />
 
         <div className="container mx-auto mt-2 space-y-3 xl:space-y-4">
-          <div className="flex flex-row items-center justify-between gap-3">
-            <div>
-              <h1 className="text-xl xl:text-3xl font-black font-outfit tracking-tighter leading-none text-content-primary">{translate('Settings')}</h1>
-            </div>
-
+          <PageHero
+            icon={SettingsIcon}
+            eyebrow={translate('Settings')}
+            title={translate('Settings')}
+          >
             <div className="flex flex-nowrap overflow-x-auto no-scrollbar gap-1 p-1 bg-background-surface-secondary dark:bg-slate-800/50 rounded-xl w-fit max-w-[70%] border border-slate-200 dark:border-slate-800/50 shadow-sm relative z-20 flex-shrink-0">
               {tabs.map((tab) => (
                 <button
@@ -169,7 +171,7 @@ const SettingsPage = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </PageHero>
 
           <AnimatePresence mode="wait">
             <motion.div

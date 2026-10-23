@@ -2023,6 +2023,8 @@ const BODO = {
   '{plan} plan has expired': '{plan} प्लाननि सोमोय जोबोदनो',
   'Expired': 'सोमोय जोबोद',
   'Days left': 'सान बाकि',
+  'Unread': 'फरायनि नाय',
+  'Your Streak': 'नोंथांनि स्ट्रीक',
 };
 
 export default BODO;

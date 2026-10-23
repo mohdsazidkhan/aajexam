@@ -1,4 +1,5 @@
 import { useAppRouter as useRouter } from '@/hooks/useAppRouter';
+import PageHero from '@/components/common/ui/PageHero';
 import { FaQuestionCircle, FaGraduationCap, FaCreditCard, FaTrophy, FaUserShield, FaBook, FaChartLine } from 'react-icons/fa';
 import MobileAppWrapper from '../components/common/MobileAppWrapper';
 import AuthorBio from '../components/common/AuthorBio';
@@ -191,15 +192,13 @@ const FAQ = () => {
             />
 
             <div className="min-h-screen">
-                <div className="container mx-auto mt-0">
-                    {/* Hero Section */}
-                    <div className="text-center mb-8 xl:mb-12">
-                        <div className="w-16 xl:w-24 h-16 xl:h-24 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FaQuestionCircle className="text-white text-3xl" />
-                        </div>
-                        <h1 className="text-2xl xl:text-3xl xl:text-5xl font-bold text-primary-600 mb-4">
-                            {translate('Frequently Asked Questions')}
-                        </h1>
+                <div className="container mx-auto pt-3 xl:pt-4">
+                    <div className="mb-4 xl:mb-6">
+                        <PageHero
+                            icon={FaQuestionCircle}
+                            eyebrow={translate('Frequently Asked Questions')}
+                            title={translate('Frequently Asked Questions')}
+                        />
                     </div>
 
                     {/* FAQ Categories */}

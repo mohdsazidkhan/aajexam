@@ -1,5 +1,6 @@
 'use client';
 
+import PageHero from '@/components/common/ui/PageHero';
 import { HistoryPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import {
@@ -69,12 +70,11 @@ const QuizHistoryPage = () => {
 
          <div className="container mx-auto py-4 xl:py-4 xl:py-8 space-y-3 xl:space-y-6">
             <SubscriptionGuard message="Upgrade to PRO to view your detailed quiz attempt history and performance insights.">
-               {/* Header */}
-               <div className="flex items-center justify-between gap-6">
-                  <div className="space-y-1">
-                     <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white">{translate('Quiz History')}</h1>
-                  </div>
-                  <div className="flex gap-3">
+               <PageHero
+                  icon={History}
+                  eyebrow={translate('Quiz History')}
+                  title={translate('Quiz History')}
+                  actions={
                      <select
                         className="px-4 py-2.5 bg-slate-50 dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-bold outline-none focus:border-primary-700"
                         value={filter} onChange={e => { setFilter(e.target.value); setCurrentPage(1); }}
@@ -83,8 +83,8 @@ const QuizHistoryPage = () => {
                         <option value="Completed">{translate('Completed')}</option>
                         <option value="InProgress">{translate('In Progress')}</option>
                      </select>
-                  </div>
-               </div>
+                  }
+               />
 
                {/* Results */}
                {attempts.length === 0 ? (

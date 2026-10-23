@@ -1,4 +1,5 @@
 'use client';
+import PageHero from '@/components/common/ui/PageHero';
 import { ListPageSkeleton } from '../../components/common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import Link from '@/components/common/AppLink';
@@ -51,11 +52,15 @@ const StreakPage = () => {
     <div className="min-h-screen pb-6 xl:pb-12">
       <Seo title="Your Streak – AajExam" description="Track your daily AajExam streak." noIndex={true} />
       <div className="py-4 xl:py-6 space-y-6">
-        <div className="text-center space-y-2">
-          <h1 className="text-xl xl:text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center justify-center gap-2">
-            <Flame className="w-8 h-8 text-black dark:text-white" /> Your Streak
-          </h1>
-        </div>
+        <PageHero
+          icon={Flame}
+          eyebrow={translate('Current Streak')}
+          title={translate('Your Streak')}
+          stats={[
+            { label: translate('Current Streak'), value: streak?.currentStreak || 0, icon: Flame },
+            { label: translate('Longest Streak'), value: streak?.longestStreak || 0, icon: Trophy },
+          ]}
+        />
 
         {/* Streak Stats */}
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
