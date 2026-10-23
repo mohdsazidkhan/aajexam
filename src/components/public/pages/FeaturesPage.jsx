@@ -139,9 +139,9 @@ const HIGHLIGHTS = [
 
 const Cell = ({ value }) => {
   const { translate } = useTranslate();
-  if (value === true) return <CircleCheck className="w-4 h-4 xl:w-5 xl:h-5 text-primary-600 mx-auto" />;
+  if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
   if (value === false) return <X className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
-  return <span className="text-[9px] xl:text-[11px] font-black uppercase tracking-wide text-black dark:text-white">{translate(value)}</span>;
+  return <span className="inline-block px-2 py-0.5 text-[9px] xl:text-[10px] font-black uppercase tracking-wide bg-primary-50 dark:bg-white/10 text-primary-800 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
 };
 
 const FeaturesPage = () => {
@@ -163,12 +163,12 @@ const FeaturesPage = () => {
 
         {/* --- Plan Summary Cards --- */}
         <section className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8">
-          <Card className="p-4 xl:p-10 space-y-3 xl:space-y-6 border-2">
+          <Card className="relative overflow-hidden p-4 xl:p-10 space-y-3 xl:space-y-6">
             <div className="flex items-center justify-between">
-              <div className="p-2.5 xl:p-4 bg-slate-500/10 text-slate-500 rounded-lg xl:rounded-xl xl:rounded-2xl">
+              <div className="p-2.5 xl:p-4 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" style={{ borderRadius: 14 }}>
                 <GraduationCap className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
-              <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 xl:px-3 py-1 rounded-full bg-slate-500/10 text-slate-500">{translate('Free forever')}</span>
+              <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 xl:px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-700" style={{ borderRadius: 999 }}>{translate('Free forever')}</span>
             </div>
             <div>
               <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('Free')}</h2>
@@ -177,7 +177,7 @@ const FeaturesPage = () => {
             <ul className="space-y-1.5 xl:space-y-2.5">
               {FREE_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-primary-600 mt-0.5 flex-shrink-0" />
+                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
                   {f}
                 </li>
               ))}
@@ -187,22 +187,23 @@ const FeaturesPage = () => {
             </div>
           </Card>
 
-          <Card className="p-4 xl:p-10 space-y-3 xl:space-y-6 border-2 border-primary-500/40 relative overflow-hidden">
-            <Crown className="absolute -bottom-8 -right-8 w-40 h-40 text-primary-500/5" />
+          <Card className="isolate p-4 xl:p-10 space-y-3 xl:space-y-6 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-primary-700 dark:via-primary-800 dark:to-primary-950 ring-2 ring-primary-400/60 dark:ring-white/20 shadow-xl relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
+            <Crown className="absolute -bottom-8 -right-8 w-44 h-44 text-primary-600/10 dark:text-white/5 rotate-[-12deg]" />
             <div className="flex items-center justify-between relative z-10">
-              <div className="p-2.5 xl:p-4 bg-primary-500/10 text-primary-600 rounded-lg xl:rounded-xl xl:rounded-2xl">
+              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 14 }}>
                 <Crown className="w-5 h-5 xl:w-7 xl:h-7" />
               </div>
               <ProBadge size="sm" />
             </div>
             <div className="relative z-10">
               <h2 className="text-lg xl:text-2xl font-black font-outfit uppercase tracking-tight">{translate('PRO')}</h2>
-              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })} <span className="block mt-1 text-primary-600">{translate('Plans: {durations}', { durations: PRO_PLANS.map((p) => translate(p.label)).join(' · ') })}</span></p>
+              <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400 mt-1">{translate('From ₹{price}/month with the {plan} plan — unlock the full exam-prep engine.', { price: lowestPerMonth, plan: translate(cheapestPlan.label) })} <span className="block mt-1 text-primary-700 dark:text-primary-200">{translate('Plans: {durations}', { durations: PRO_PLANS.map((p) => translate(p.label)).join(' · ') })}</span></p>
             </div>
             <ul className="space-y-1.5 xl:space-y-2.5 relative z-10">
               {PRO_PLAN_FEATURES.map((f) => (
                 <li key={f} className="flex items-start gap-2 text-xs xl:text-sm font-bold text-slate-700 dark:text-slate-300">
-                  <CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-primary-600 mt-0.5 flex-shrink-0" />
+                  <span className="mt-0.5 w-5 h-5 flex-shrink-0 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5" /></span>
                   {f}
                 </li>
               ))}
@@ -215,22 +216,22 @@ const FeaturesPage = () => {
 
         {/* --- PRO plan comparison (prices/durations come from .env via lib/plans) --- */}
         <section className="space-y-3 xl:space-y-6">
-          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto">
+          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
             <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Compare PRO plans')}</h2>
             <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Same PRO features in every plan — the longer you commit, the more you save')}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 xl:gap-6">
             {PRO_PLANS.map((plan) => (
-              <Card key={plan.id} className={`p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 border-2 ${plan.badge ? 'border-primary-500/60' : ''}`}>
+              <Card key={plan.id} className={`relative overflow-hidden p-4 xl:p-8 flex flex-col justify-between space-y-4 xl:space-y-6 hover:-translate-y-1 hover:shadow-xl transition-all ${plan.badge ? 'ring-2 ring-primary-400/70 shadow-xl' : ''}`}>
                 <div className="space-y-2 xl:space-y-4">
                   <div className="flex items-center justify-between gap-2 min-h-[24px]">
                     <h3 className="text-sm xl:text-xl font-black font-outfit uppercase tracking-tight">{translate(plan.label)}</h3>
                     {plan.badge && (
-                      <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-primary-600 text-white whitespace-nowrap">{translate(plan.badge)}</span>
+                      <span className="text-[9px] xl:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow whitespace-nowrap" style={{ borderRadius: 999 }}>{translate(plan.badge)}</span>
                     )}
                   </div>
                   <div className="flex items-end gap-2">
-                    <span className="text-3xl xl:text-4xl font-black font-outfit leading-none">₹{plan.price}</span>
+                    <span className="text-3xl xl:text-4xl font-black font-outfit leading-none text-primary-700 dark:text-primary-200">₹{plan.price}</span>
                     {plan.saving > 0 && <span className="text-xs xl:text-sm font-bold text-slate-500 line-through pb-0.5">₹{plan.normalPrice}</span>}
                   </div>
                   <p className="text-xs xl:text-sm font-bold text-slate-600 dark:text-slate-400">
@@ -238,7 +239,7 @@ const FeaturesPage = () => {
                     {plan.saving > 0 && <> · {translate('Save ₹{amount}', { amount: plan.saving })}</>}
                   </p>
                   {plan.discountPct > 0 && (
-                    <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-600">{plan.discountPct}% OFF</span>
+                    <span className="inline-block text-[10px] xl:text-xs font-black px-2.5 py-1 bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{plan.discountPct}% OFF</span>
                   )}
                 </div>
                 <Button variant={plan.badge ? 'primary' : 'secondary'} size="sm" fullWidth icon={ArrowRight} iconPosition="right" onClick={() => router.push('/student/subscription')}>{translate('Choose plan')}</Button>
@@ -250,8 +251,8 @@ const FeaturesPage = () => {
         {/* --- Highlights --- */}
         <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-8">
           {HIGHLIGHTS.map((h, i) => (
-            <Card key={i} className="group space-y-2.5 xl:space-y-5 border-2 hover:border-primary-500/50 transition-all duration-300">
-              <div className={`p-2.5 xl:p-4 bg-${h.color}-500/10 text-${h.color}-500 rounded-lg xl:rounded-xl xl:rounded-2xl group-hover:scale-110 transition-transform w-fit shadow-sm`}>
+            <Card key={i} className="group relative overflow-hidden space-y-2.5 xl:space-y-5 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="p-2.5 xl:p-4 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] group-hover:rotate-0 transition-transform w-fit" style={{ borderRadius: 14 }}>
                 <h.icon className="w-4 h-4 xl:w-6 xl:h-6" />
               </div>
               <div className="space-y-1 xl:space-y-2">
@@ -264,23 +265,24 @@ const FeaturesPage = () => {
 
         {/* --- Full comparison --- */}
         <section className="space-y-2 xl:space-y-4 xl:space-y-8">
-          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto">
+          <div className="text-center space-y-1.5 xl:space-y-2 max-w-2xl mx-auto pb-3 border-b border-dashed border-primary-300/70 dark:border-white/15">
             <h2 className="text-base xl:text-3xl font-black font-outfit uppercase tracking-tight">{translate('Full feature comparison')}</h2>
             <p className="text-[10px] xl:text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.06em] xl:tracking-[0.15em] px-2">{translate('Enforced on the server — locked content shows a real upgrade gate, not just a hidden button')}</p>
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-6">
             {FEATURE_GROUPS.map((group) => (
-              <Card key={group.title} className="p-0 overflow-hidden border-2" padded={false}>
-                <div className="flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 border-b-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
-                  <div className={`p-2 xl:p-2.5 bg-${group.color}-500/10 text-${group.color}-500 rounded-lg xl:rounded-xl`}>
+              <Card key={group.title} className="p-0 overflow-hidden" padded={false}>
+                <div className="relative flex items-center gap-2 xl:gap-3 px-3 py-2.5 xl:px-6 xl:py-4 bg-gradient-to-r from-primary-100 via-primary-50 to-white text-primary-900 border-b border-primary-200 dark:border-transparent dark:from-primary-700 dark:via-primary-800 dark:to-primary-900 dark:text-white">
+                  <div className="pointer-events-none absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '16px 16px' }} />
+                  <div className="relative p-2 xl:p-2.5 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 10 }}>
                     <group.icon className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                   </div>
-                  <h3 className="text-xs xl:text-sm font-black font-outfit uppercase tracking-wide">{translate(group.title)}</h3>
+                  <h3 className="relative text-xs xl:text-sm font-black font-outfit uppercase tracking-[0.14em]">{translate(group.title)}</h3>
                 </div>
                 <table className="w-full">
                   <thead>
-                    <tr className="text-[8px] xl:text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    <tr className="text-[8px] xl:text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 bg-primary-50/50 dark:bg-white/5">
                       <th className="text-left px-3 py-1.5 xl:px-6 xl:py-2 font-black">{translate('Feature')}</th>
                       <th className="w-12 xl:w-16 py-1.5 xl:py-2 font-black">{translate('Free')}</th>
                       <th className="w-12 xl:w-16 py-1.5 xl:py-2 font-black">{translate('Pro')}</th>
@@ -288,7 +290,7 @@ const FeaturesPage = () => {
                   </thead>
                   <tbody>
                     {group.items.map((item, idx) => (
-                      <tr key={item.label} className={idx !== 0 ? 'border-t border-slate-200 dark:border-slate-800' : ''}>
+                      <tr key={item.label} className={`hover:bg-primary-50/40 dark:hover:bg-white/5 transition-colors ${idx !== 0 ? 'border-t border-dashed border-slate-200 dark:border-slate-800' : ''}`}>
                         <td className="px-3 py-2 xl:px-6 xl:py-3 text-[11px] xl:text-xs font-bold text-slate-700 dark:text-slate-300">{translate(item.label)}</td>
                         <td className="text-center py-2 xl:py-3"><Cell value={item.free} /></td>
                         <td className="text-center py-2 xl:py-3"><Cell value={item.pro} /></td>
