@@ -1,6 +1,6 @@
 'use client';
 
-import { AnalyticsPageSkeleton } from '../../common/skeletons/PageSkeletons';
+import { AnalyticsPageSkeleton, CardGridSkeleton } from '../../common/skeletons/PageSkeletons';
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import {
@@ -34,11 +34,14 @@ import {
 } from 'lucide-react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 
+import Link from '@/components/common/AppLink';
 import API from '../../../lib/api';
+import { fmtNum } from '../../../lib/utils/formatNumber';
 import Card from '../../common/ui/Card';
 import PageHero from '../../common/ui/PageHero';
 import Button from '../../common/ui/Button';
 import ProgressBar from '../../common/ui/ProgressBar';
+import Pagination from '../../common/Pagination';
 import UnifiedFooter from '../../common/UnifiedFooter';
 import SubscriptionGuard from '../SubscriptionGuard';
 import useTranslate from '../../../hooks/useTranslate';
@@ -91,6 +94,8 @@ const TABS = [
    { key: 'overview', label: 'Overview', icon: BarChart3 },
    { key: 'quizzes', label: 'Quizzes', icon: Zap },
    { key: 'exams', label: 'Exams', icon: GraduationCap },
+   { key: 'subjects', label: 'Subjects', icon: BookOpen },
+   { key: 'topics', label: 'Topics', icon: Target },
    { key: 'reels', label: 'Reels', icon: Play },
    { key: 'my-reels', label: 'My Reels', icon: FileText },
    { key: 'wallet', label: 'Wallet', icon: Wallet },
@@ -104,6 +109,16 @@ const MyAnalyticsPage = () => {
    const [activeTab, setActiveTab] = useState('overview');
    const [showAllTopics, setShowAllTopics] = useState(false);
    const [copied, setCopied] = useState(false);
+   const [examAttempts, setExamAttempts] = useState([]);
+   const [examAttemptsLoaded, setExamAttemptsLoaded] = useState(false);
+   const [quizAttempts, setQuizAttempts] = useState([]);
+   const [quizPage, setQuizPage] = useState(1);
+   const [quizLoading, setQuizLoading] = useState(true);
+   const [myReelsList, setMyReelsList] = useState([]);
+   const [myReelsPage, setMyReelsPage] = useState(1);
+   const [myReelsTotalPages, setMyReelsTotalPages] = useState(1);
+   const [myReelsLoading, setMyReelsLoading] = useState(true);
+   const [quizTotalPages, setQuizTotalPages] = useState(1);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -120,6 +135,58 @@ const MyAnalyticsPage = () => {
       };
       fetchData();
    }, []);
+
+   // Attempted exams list: loaded the first time the Exams tab is opened
+   useEffect(() => {
+      if (activeTab !== 'exams' || examAttemptsLoaded) return;
+      API.getExamAttemptHistory({ page: 1, limit: 12 })
+         .then((res) => {
+            const payload = res?.data || res;
+            setExamAttempts(payload?.attempts || payload?.items || []);
+         })
+         .catch(() => {})
+         .finally(() => setExamAttemptsLoaded(true));
+   }, [activeTab, examAttemptsLoaded]);
+
+   // Attempted quizzes list: server-side paginated, loaded when the Quizzes tab is open
+   useEffect(() => {
+      if (activeTab !== 'quizzes') return;
+      let alive = true;
+      setQuizLoading(true);
+      API.getMyQuizAttempts({ page: quizPage, limit: 12, status: 'Completed' })
+         .then((res) => {
+            if (!alive || !res?.success) return;
+            setQuizAttempts(res.data || []);
+            setQuizTotalPages(res.pagination?.totalPages || 1);
+         })
+         .catch(() => {})
+         .finally(() => { if (alive) setQuizLoading(false); });
+      return () => { alive = false; };
+   }, [activeTab, quizPage]);
+
+   // Posted reels list: server-side paginated, loaded when the My Reels tab is open
+   useEffect(() => {
+      if (activeTab !== 'my-reels') return;
+      let alive = true;
+      setMyReelsLoading(true);
+      API.getMyReels({ page: myReelsPage, limit: 12 })
+         .then((res) => {
+            if (!alive || !res?.success) return;
+            setMyReelsList(res.data || []);
+            setMyReelsTotalPages(res.pagination?.totalPages || 1);
+         })
+         .catch(() => {})
+         .finally(() => { if (alive) setMyReelsLoading(false); });
+      return () => { alive = false; };
+   }, [activeTab, myReelsPage]);
+
+   const getReelTitle = (r) => {
+      if (r.title) return r.title;
+      if (r.type === 'question' && r.questionText) return r.questionText;
+      if (r.type === 'poll' && r.pollQuestion) return r.pollQuestion;
+      if (r.content) return r.content;
+      return 'Untitled Reel';
+   };
 
    const copyReferralCode = () => {
       if (data?.referral?.code) {
@@ -185,10 +252,12 @@ const MyAnalyticsPage = () => {
                   {activeTab === 'overview' && (
                      <>
                         {/* Quick stats — one compact grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 gap-2">
                            {[
-                              { icon: Zap, value: quiz?.totalAttempts || 0, label: 'Quizzes Done', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                               { icon: GraduationCap, value: exam?.totalAttempts || 0, label: 'Exams Done', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: Zap, value: quiz?.totalAttempts || 0, label: 'Quizzes Done', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
+                              { icon: BookOpen, value: quiz?.subjectWise?.length || 0, label: 'Subjects' },
+                              { icon: Target, value: quiz?.topicWise?.length || 0, label: 'Topics' },
                               { icon: Play, value: reel?.totalViewed || 0, label: 'Reels Viewed', tone: 'bg-slate-100 dark:bg-slate-800 text-black dark:text-white' },
                               { icon: FileText, value: data?.myReels?.totalPosted || 0, label: 'Reels Posted', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
                               { icon: Users, value: followersCount || 0, label: 'Followers', tone: 'bg-primary-50 dark:bg-slate-700/50 text-primary-600' },
@@ -199,26 +268,6 @@ const MyAnalyticsPage = () => {
                               <StatMini key={tile.label} icon={tile.icon} value={tile.value} label={translate(tile.label)} />
                            ))}
                         </div>
-
-                        {/* Subject-wise Quick View (from quiz) */}
-                        {quiz?.subjectWise?.length > 0 && (
-                           <div className="space-y-2 xl:space-y-3">
-                              <SectionHeader icon={BarChart3} title={translate('Subject Performance')} />
-                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
-                                 {quiz.subjectWise.map((s, idx) => {
-                                    return (
-                                       <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800 space-y-2">
-                                          <div className="flex justify-between items-center">
-                                             <span className="font-black text-base">{translateData(s.name)}</span>
-                                             <span className="text-xs font-bold text-content-secondary">{translate('{count} attempts', { count: s.attempts })}</span>
-                                          </div>
-                                          <ProgressBar progress={s.avgAccuracy} height="sm" showPercentage label={translate('Accuracy')} />
-                                       </Card>
-                                    );
-                                 })}
-                              </div>
-                           </div>
-                        )}
                      </>
                   )}
 
@@ -260,61 +309,45 @@ const MyAnalyticsPage = () => {
                            </div>
                         </Card>
 
-                        {/* Subject Wise */}
-                        {quiz?.subjectWise?.length > 0 && (
+                        {quizLoading && quiz?.totalAttempts > 0 && (
                            <div className="space-y-2 xl:space-y-3">
-                              <SectionHeader icon={BookOpen} title={translate('Subject Wise Performance')} />
-                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
-                                 {quiz.subjectWise.map((s, idx) => {
-                                    return (
-                                       <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
-                                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                                             <div className="flex-1 space-y-2">
-                                                <div className="flex flex-wrap justify-between items-center gap-x-3 gap-y-1">
-                                                   <span className="font-black text-base">{translateData(s.name)}</span>
-                                                   <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs font-bold text-content-secondary">
-                                                      <span className="text-primary-600">{translate('{count} correct', { count: s.totalCorrect })}</span>
-                                                      <span className="text-black dark:text-white">{translate('{count} wrong', { count: s.totalWrong })}</span>
-                                                      <span>{translate('{count} attempts', { count: s.attempts })}</span>
-                                                   </div>
-                                                </div>
-                                                <ProgressBar progress={s.avgAccuracy} height="sm" showPercentage label={translate('Accuracy')} />
-                                             </div>
-                                          </div>
-                                       </Card>
-                                    );
-                                 })}
-                              </div>
+                              <SectionHeader icon={Zap} title={translate('Quiz History')} />
+                              <CardGridSkeleton count={6} cols="grid-cols-1 xl:grid-cols-3" />
                            </div>
                         )}
 
-                        {/* Topic Wise */}
-                        {quiz?.topicWise?.length > 0 && (
+                        {!quizLoading && quizAttempts.length > 0 && (
                            <div className="space-y-2 xl:space-y-3">
-                              <SectionHeader icon={Target} title={translate('Topic Wise Performance')} />
-                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
-                                 {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((tp, idx) => (
-                                    <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
-                                       <div className="flex items-center justify-between gap-2">
-                                          <div>
-                                             <p className="font-black text-sm">{translateData(tp.name)}</p>
-                                             <p className="text-[10px] font-bold text-content-secondary">{translateData(tp.subjectName)} &bull; {translate('{count} attempts', { count: tp.attempts })}</p>
-                                          </div>
-                                          <div className="flex items-center gap-3">
-                                             <span className="text-primary-600 text-xs font-bold">{tp.totalCorrect}  </span>
-                                             <span className="text-black dark:text-white text-xs font-bold">{tp.totalWrong}  </span>
-                                             <span className="font-black text-sm text-primary-600">{tp.avgAccuracy}%</span>
-                                          </div>
-                                       </div>
-                                    </Card>
-                                 ))}
-                                 {quiz.topicWise.length > 6 && (
-                                    <button onClick={() => setShowAllTopics(!showAllTopics)}
-                                       className="xl:col-span-3 flex items-center justify-center gap-2 mx-auto text-primary-600 font-black text-sm py-2">
-                                       {showAllTopics ? <><ChevronUp className="w-4 h-4" /> {translate('Show Less')}</> : <><ChevronDown className="w-4 h-4" /> {translate('Show All {count} Topics', { count: quiz.topicWise.length })}</>}
-                                    </button>
-                                 )}
+                              <div className="flex items-center justify-between gap-2">
+                                 <SectionHeader icon={Zap} title={translate('Quiz History')} />
+                                 <Link href="/student/quiz-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
                               </div>
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
+                                 {quizAttempts.map((a, idx) => (
+                                    <Link key={a._id || idx} href={`/student/quiz-result/${a._id}`}>
+                                       <Card padded={false} className="p-3 hover:shadow-xl hover:-translate-y-0.5 transition-all h-full">
+                                          <div className="flex items-start justify-between gap-2">
+                                             <div className="min-w-0">
+                                                <p className="font-black text-sm line-clamp-1">{translateData(a.quiz?.title) || translate('Quiz')}</p>
+                                                <p className="text-[10px] font-bold text-content-secondary line-clamp-1">{translateData(a.quiz?.subject?.name || '')}{a.quiz?.topic?.name ? ` • ${translateData(a.quiz.topic.name)}` : ''}</p>
+                                             </div>
+                                             <span className="shrink-0 font-black text-sm text-primary-700 dark:text-primary-200">{Math.round(a.accuracy || 0)}%</span>
+                                          </div>
+                                          <ProgressBar progress={a.accuracy || 0} height="sm" />
+                                          <div className="flex items-center justify-between mt-2 text-[10px] font-black uppercase tracking-wide text-content-secondary">
+                                             <span>{translate('Score')}: {Math.round(a.percentage || 0)}%</span>
+                                             <span>{translate('Rank')}: #{a.rank || '-'}</span>
+                                             <span>{new Date(a.submittedAt || a.createdAt).toLocaleDateString()}</span>
+                                          </div>
+                                       </Card>
+                                    </Link>
+                                 ))}
+                              </div>
+                              {quizTotalPages > 1 && (
+                                 <div className="flex justify-center pt-2">
+                                    <Pagination currentPage={quizPage} totalPages={quizTotalPages} onPageChange={setQuizPage} />
+                                 </div>
+                              )}
                            </div>
                         )}
 
@@ -356,11 +389,132 @@ const MyAnalyticsPage = () => {
                            </div>
                         </Card>
 
+                        {!examAttemptsLoaded && exam?.totalAttempts > 0 && (
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={GraduationCap} title={translate('Exam History')} />
+                              <CardGridSkeleton count={6} cols="grid-cols-1 xl:grid-cols-3" />
+                           </div>
+                        )}
+
+                        {examAttempts.length > 0 && (
+                           <div className="space-y-2 xl:space-y-3">
+                              <div className="flex items-center justify-between gap-2">
+                                 <SectionHeader icon={GraduationCap} title={translate('Exam History')} />
+                                 <Link href="/student/exam-history" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                              </div>
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
+                                 {examAttempts.map((a, idx) => (
+                                    <Link key={a._id || idx} href={`/govt-exams/test/${a.practiceTest}/result?attempt=${a._id}`}>
+                                       <Card padded={false} className="p-3 hover:shadow-xl hover:-translate-y-0.5 transition-all h-full">
+                                          <div className="flex items-start justify-between gap-2">
+                                             <div className="min-w-0">
+                                                <p className="font-black text-sm line-clamp-1">{translateData(a.testTitle) || translate('Exam')}</p>
+                                                <p className="text-[10px] font-bold text-content-secondary line-clamp-1">{translateData(a.examName) || translate('Standard Exam')}{a.patternTitle ? ` • ${translateData(a.patternTitle)}` : ''}</p>
+                                             </div>
+                                             <span className="shrink-0 font-black text-sm text-primary-700 dark:text-primary-200">{Math.round(a.accuracy || 0)}%</span>
+                                          </div>
+                                          <ProgressBar progress={a.accuracy || 0} height="sm" />
+                                          <div className="flex items-center justify-between mt-2 text-[10px] font-black uppercase tracking-wide text-content-secondary">
+                                             <span>{translate('Score')}: {fmtNum(a.score)} / {fmtNum(a.totalMarks)}</span>
+                                             <span>{translate('Rank')}: #{a.rank || 'N/A'}</span>
+                                             <span>{a.submittedAt ? new Date(a.submittedAt).toLocaleDateString() : ''}</span>
+                                          </div>
+                                       </Card>
+                                    </Link>
+                                 ))}
+                              </div>
+                           </div>
+                        )}
+
                         {exam?.totalAttempts === 0 && (
                            <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
                               <GraduationCap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
                               <p className="font-black text-content-secondary">{translate('No exam attempts yet')}</p>
                               <p className="text-xs text-content-secondary mt-1">{translate('Attempt practice tests to track your exam performance!')}</p>
+                           </Card>
+                        )}
+                     </>
+                  )}
+
+                  {/* ======================== SUBJECTS TAB ======================== */}
+                  {activeTab === 'subjects' && (
+                     <>
+                        {/* Subject Wise */}
+                        {quiz?.subjectWise?.length > 0 && (
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={BookOpen} title={translate('Subject Wise Performance')} />
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
+                                 {quiz.subjectWise.map((s, idx) => {
+                                    return (
+                                       <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
+                                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                             <div className="flex-1 space-y-2">
+                                                <div className="flex flex-wrap justify-between items-center gap-x-3 gap-y-1">
+                                                   <span className="font-black text-base">{translateData(s.name)}</span>
+                                                   <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs font-bold text-content-secondary">
+                                                      <span className="text-primary-600">{translate('{count} correct', { count: s.totalCorrect })}</span>
+                                                      <span className="text-black dark:text-white">{translate('{count} wrong', { count: s.totalWrong })}</span>
+                                                      <span>{translate('{count} attempts', { count: s.attempts })}</span>
+                                                   </div>
+                                                </div>
+                                                <ProgressBar progress={s.avgAccuracy} height="sm" showPercentage label={translate('Accuracy')} />
+                                             </div>
+                                          </div>
+                                       </Card>
+                                    );
+                                 })}
+                              </div>
+                           </div>
+                        )}
+
+                        {quiz?.totalAttempts === 0 && (
+                           <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
+                              <Zap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
+                              <p className="font-black text-content-secondary">{translate('No quiz attempts yet')}</p>
+                              <p className="text-xs text-content-secondary mt-1">{translate('Start practicing to see your performance here!')}</p>
+                           </Card>
+                        )}
+                     </>
+                  )}
+
+                  {/* ======================== TOPICS TAB ======================== */}
+                  {activeTab === 'topics' && (
+                     <>
+                        {/* Topic Wise */}
+                        {quiz?.topicWise?.length > 0 && (
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={Target} title={translate('Topic Wise Performance')} />
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
+                                 {(showAllTopics ? quiz.topicWise : quiz.topicWise.slice(0, 6)).map((tp, idx) => (
+                                    <Card key={idx} radius="2xl" className="border-slate-200 dark:border-slate-800">
+                                       <div className="flex items-center justify-between gap-2">
+                                          <div>
+                                             <p className="font-black text-sm">{translateData(tp.name)}</p>
+                                             <p className="text-[10px] font-bold text-content-secondary">{translateData(tp.subjectName)} &bull; {translate('{count} attempts', { count: tp.attempts })}</p>
+                                          </div>
+                                          <div className="flex items-center gap-3">
+                                             <span className="text-primary-600 text-xs font-bold">{tp.totalCorrect}  </span>
+                                             <span className="text-black dark:text-white text-xs font-bold">{tp.totalWrong}  </span>
+                                             <span className="font-black text-sm text-primary-600">{tp.avgAccuracy}%</span>
+                                          </div>
+                                       </div>
+                                    </Card>
+                                 ))}
+                                 {quiz.topicWise.length > 6 && (
+                                    <button onClick={() => setShowAllTopics(!showAllTopics)}
+                                       className="xl:col-span-3 flex items-center justify-center gap-2 mx-auto text-primary-600 font-black text-sm py-2">
+                                       {showAllTopics ? <><ChevronUp className="w-4 h-4" /> {translate('Show Less')}</> : <><ChevronDown className="w-4 h-4" /> {translate('Show All {count} Topics', { count: quiz.topicWise.length })}</>}
+                                    </button>
+                                 )}
+                              </div>
+                           </div>
+                        )}
+
+                        {quiz?.totalAttempts === 0 && (
+                           <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
+                              <Zap className="w-12 h-12 text-content-secondary mx-auto mb-3 opacity-30" />
+                              <p className="font-black text-content-secondary">{translate('No quiz attempts yet')}</p>
+                              <p className="text-xs text-content-secondary mt-1">{translate('Start practicing to see your performance here!')}</p>
                            </Card>
                         )}
                      </>
@@ -457,6 +611,47 @@ const MyAnalyticsPage = () => {
                               ))}
                            </div>
                         </Card>
+
+                        {myReelsLoading && data?.myReels?.totalPosted > 0 && (
+                           <div className="space-y-2 xl:space-y-3">
+                              <SectionHeader icon={FileText} title={translate('My Reels')} />
+                              <CardGridSkeleton count={6} cols="grid-cols-1 xl:grid-cols-3" />
+                           </div>
+                        )}
+
+                        {!myReelsLoading && myReelsList.length > 0 && (
+                           <div className="space-y-2 xl:space-y-3">
+                              <div className="flex items-center justify-between gap-2">
+                                 <SectionHeader icon={FileText} title={translate('My Reels')} />
+                                 <Link href="/student/my-reels" className="shrink-0 px-3 py-1 text-[11px] font-black uppercase tracking-wide bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow hover:brightness-105 transition-all" style={{ borderRadius: 999 }}>{translate('View All')}</Link>
+                              </div>
+                              <div className="grid grid-cols-1 xl:grid-cols-3 gap-2 xl:gap-3">
+                                 {myReelsList.map((r, idx) => (
+                                    <Card key={r._id || idx} padded={false} className="p-3 h-full flex flex-col gap-2">
+                                       <div className="flex items-center justify-between gap-2">
+                                          <span className="px-2.5 py-0.5 text-[10px] font-black uppercase bg-primary-100 dark:bg-primary-400/20 text-primary-800 dark:text-primary-200" style={{ borderRadius: 999 }}>{translate(r.type === 'current_affairs' ? 'Current Affairs' : r.type === 'tip' ? 'Tip' : r.type === 'fact' ? 'Fact' : r.type === 'poll' ? 'Poll' : 'Question')}</span>
+                                          <span className={`px-2.5 py-0.5 text-[10px] font-black uppercase ${r.status === 'published' ? 'bg-primary-500 text-white' : r.status === 'rejected' ? 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-300' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'}`} style={{ borderRadius: 999 }}>{translate(r.status === 'published' ? 'Published' : r.status === 'pending' ? 'Pending' : r.status === 'rejected' ? 'Rejected' : r.status === 'archived' ? 'Archived' : 'Draft')}</span>
+                                       </div>
+                                       <p className="flex-1 font-black text-sm line-clamp-3 leading-snug">{getReelTitle(r)}</p>
+                                       <div className="flex items-center justify-between text-[10px] font-black text-content-secondary pt-2 border-t border-slate-100 dark:border-slate-800">
+                                          <div className="flex items-center gap-3">
+                                             <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{r.viewsCount || 0}</span>
+                                             <span className="flex items-center gap-1"><Heart className="w-3 h-3" />{r.likesCount || 0}</span>
+                                             <span className="flex items-center gap-1"><Bookmark className="w-3 h-3" />{r.bookmarksCount || 0}</span>
+                                             <span className="flex items-center gap-1"><Share2 className="w-3 h-3" />{r.sharesCount || 0}</span>
+                                          </div>
+                                          <span>{new Date(r.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                                       </div>
+                                    </Card>
+                                 ))}
+                              </div>
+                              {myReelsTotalPages > 1 && (
+                                 <div className="flex justify-center pt-2">
+                                    <Pagination currentPage={myReelsPage} totalPages={myReelsTotalPages} onPageChange={setMyReelsPage} />
+                                 </div>
+                              )}
+                           </div>
+                        )}
 
                         {!data?.myReels?.totalPosted && (
                            <Card radius="2xl" className="text-center border-slate-200 dark:border-slate-800">
