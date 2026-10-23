@@ -160,44 +160,41 @@ const CommunityQuestionsPage = () => {
           icon={MessageSquare}
           eyebrow={translate('Community Questions')}
           title={translate('Community Questions')}
+          actions={
+            <div className="w-full xl:w-auto flex flex-col sm:flex-row sm:items-center gap-2">
+              <select
+                value={filters.exam}
+                onChange={(e) => handleFilterChange('exam', e.target.value)}
+                className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
+              >
+                <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
+                {hasTargets && <option value="all">{translate('All Exams')}</option>}
+                {exams.map(exam => (
+                  <option key={exam._id} value={exam._id}>
+                    {exam.name}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={filters.sort}
+                onChange={(e) => handleFilterChange('sort', e.target.value)}
+                className="w-full sm:w-44 px-3 py-2 rounded-lg xl:rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-black text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-600 transition-colors"
+              >
+                <option value="latest">{translate('Latest First')}</option>
+                <option value="popular">{translate('Most Popular')}</option>
+              </select>
+              {authenticated && (
+                <Link href="/community-questions/ask" className="shrink-0">
+                  <Button variant="primary" size="sm" icon={MessageSquarePlus}>
+                    {translate('Post Question')}
+                  </Button>
+                </Link>
+              )}
+            </div>
+          }
         />
         <div className="mb-4" />
-        {/* Filters */}
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-4">
-          {/* Filters */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <select
-              value={filters.exam}
-              onChange={(e) => handleFilterChange('exam', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
-            >
-              <option value="">{hasTargets ? translate('My target exams') : translate('All Exams')}</option>
-              {hasTargets && <option value="all">{translate('All Exams')}</option>}
-              {exams.map(exam => (
-                <option key={exam._id} value={exam._id}>
-                  {exam.name}
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={filters.sort}
-              onChange={(e) => handleFilterChange('sort', e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg xl:rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-background-surface text-sm font-semibold text-content-primary focus:outline-none focus:border-primary-700 transition-colors"
-            >
-              <option value="latest">{translate('Latest First')}</option>
-              <option value="popular">{translate('Most Popular')}</option>
-            </select>
-          </div>
-          {authenticated && (
-            <Link href="/community-questions/ask">
-              <Button variant="primary" size="sm" icon={MessageSquarePlus}>
-                {translate('Post Question')}
-              </Button>
-            </Link>
-          )}
-        </div>
-
      
 
         {/* Content */}

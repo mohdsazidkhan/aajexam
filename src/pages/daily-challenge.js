@@ -157,12 +157,14 @@ const DailyChallengePage = () => {
           <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '18px 18px' }} />
           <div className="pointer-events-none absolute -top-24 -left-20 -z-10 w-72 h-72 bg-primary-300/30 dark:bg-white/10 blur-3xl" style={{ borderRadius: '50%' }} />
           <div className="pointer-events-none absolute -bottom-28 right-10 -z-10 w-80 h-80 bg-primary-300/20 blur-3xl" style={{ borderRadius: '50%' }} />
-          <LanguageToggle
-            language={language}
-            onToggle={toggleLanguage}
-            translating={translating}
-            className="absolute top-0 right-0 flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
-          />
+          {attempted && (
+            <LanguageToggle
+              language={language}
+              onToggle={toggleLanguage}
+              translating={translating}
+              className="absolute top-0 right-0 flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] sm:min-w-[52px] px-2 sm:px-3 py-1.5 rounded-lg xl:rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+            />
+          )}
           <div className="flex items-center justify-center gap-2 px-14">
             <span className="w-10 h-10 shrink-0 flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg]" style={{ borderRadius: 12 }}><Target className="w-5 h-5" /></span>
             <h1 className="text-xl sm:text-2xl xl:text-4xl font-black tracking-tight text-slate-900 dark:text-white break-words min-w-0">{challenge.title}</h1>
@@ -189,9 +191,17 @@ const DailyChallengePage = () => {
           <div className="space-y-2 xl:space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-xs font-black px-3 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow-lg" style={{ borderRadius: 999 }}>Q {currentQ + 1}/{challenge.questions.length}</span>
-              <span style={{ borderRadius: 999 }} className={`text-sm font-black flex items-center gap-1 px-3 py-1 bg-background-surface border ${timeLeft < 60 ? 'border-red-400 text-red-600 dark:text-red-400 animate-pulse' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'}`}>
+              <div className="flex items-center gap-2">
+                <LanguageToggle
+                  language={language}
+                  onToggle={toggleLanguage}
+                  translating={translating}
+                  className="flex shrink-0 items-center justify-center gap-1.5 min-w-[44px] px-3 py-1 rounded-lg font-black text-xs sm:text-sm bg-background-surface border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-primary-500 transition-colors"
+                />
+                <span style={{ borderRadius: 999 }} className={`text-sm font-black flex items-center gap-1 px-3 py-1 bg-background-surface border ${timeLeft < 60 ? 'border-red-400 text-red-600 dark:text-red-400 animate-pulse' : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'}`}>
                 <Clock className="w-4 h-4" /> {formatTime(timeLeft)}
               </span>
+              </div>
             </div>
             <Card className="space-y-2 xl:space-y-4">
               <h3 className="text-[15px] sm:text-base xl:text-lg font-black text-slate-900 dark:text-white leading-relaxed break-words">{getHindi(challenge.questions[currentQ].question)?.questionText || challenge.questions[currentQ].questionText}</h3>

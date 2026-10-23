@@ -204,7 +204,7 @@ const ReelCreate = () => {
 
   return (
     <MobileAppWrapper>
-      <div className="min-h-screen">
+      <div className="min-h-screen pt-3 xl:pt-4">
         <PageHero icon={Flame} eyebrow="Create Reel" title="Create Reel" />
 
         <div className="py-3 xl:py-4">
@@ -268,7 +268,7 @@ const ReelCreate = () => {
                 <div style={{ borderRadius: 16 }} className="relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md p-4 space-y-3">
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
                   <div><label className={labelClass}>{translate('Question *')}</label><textarea value={questionText} onChange={e => setQuestionText(e.target.value)} rows={3} className={inputClass} required /></div>
-                  <div className="space-y-2">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {options.map((o, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <button type="button" onClick={() => setCorrectAnswerIndex(i)}

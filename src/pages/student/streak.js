@@ -56,35 +56,27 @@ const StreakPage = () => {
           icon={Flame}
           eyebrow={translate('Current Streak')}
           title={translate('Your Streak')}
-          stats={[
-            { label: translate('Current Streak'), value: streak?.currentStreak || 0, icon: Flame },
-            { label: translate('Longest Streak'), value: streak?.longestStreak || 0, icon: Trophy },
-          ]}
+          actions={
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full xl:w-auto">
+            <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+              <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{streak?.currentStreak || 0}</p>
+              <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{translate('Current Streak')}</p>
+            </div>
+            <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+              <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{streak?.longestStreak || 0}</p>
+              <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{translate('Longest Streak')}</p>
+            </div>
+            <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+              <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{streak?.totalActiveDays || 0}</p>
+              <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{translate('Active Days')}</p>
+            </div>
+            <div className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+              <p className="text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200">{streak?.freezesAvailable || 0}</p>
+              <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{translate('Freezes Left')}</p>
+            </div>
+            </div>
+          }
         />
-
-        {/* Streak Stats */}
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
-          <Card className="text-center space-y-1">
-            <Flame className="w-8 h-8 text-black dark:text-white mx-auto" />
-            <p className="text-3xl font-black text-black dark:text-white">{streak?.currentStreak || 0}</p>
-            <p className="text-[10px] font-bold text-slate-400 uppercase">{translate('Current Streak')}</p>
-          </Card>
-          <Card className="text-center space-y-1">
-            <Trophy className="w-8 h-8 text-black dark:text-white mx-auto" />
-            <p className="text-3xl font-black text-black dark:text-white">{streak?.longestStreak || 0}</p>
-            <p className="text-[10px] font-bold text-slate-400 uppercase">{translate('Longest Streak')}</p>
-          </Card>
-          <Card className="text-center space-y-1">
-            <Calendar className="w-8 h-8 text-primary-600 mx-auto" />
-            <p className="text-3xl font-black text-primary-600">{streak?.totalActiveDays || 0}</p>
-            <p className="text-[10px] font-bold text-slate-400 uppercase">{translate('Active Days')}</p>
-          </Card>
-          <Card className="text-center space-y-1">
-            <Snowflake className="w-8 h-8 text-black dark:text-white mx-auto" />
-            <p className="text-3xl font-black text-black dark:text-white">{streak?.freezesAvailable || 0}</p>
-            <p className="text-[10px] font-bold text-slate-400 uppercase">{translate('Freezes Left')}</p>
-          </Card>
-        </div>
 
         {/* Today Status */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
