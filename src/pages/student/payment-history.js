@@ -175,7 +175,7 @@ const PaymentHistoryPage = () => {
    ];
 
    const viewToggleButtons = (
-      <div className="flex items-center gap-1 p-2 w-full bg-slate-100/50 dark:bg-slate-800/40 rounded-2xl border-2 border-slate-200/40 dark:border-slate-700/40">
+      <div className="flex items-center gap-1 p-1 bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20" style={{ borderRadius: 10 }}>
          {[
             { icon: TableIcon, id: 'table', label: translate('Table') },
             { icon: LayoutGrid, id: 'grid', label: translate('Grid') },
@@ -185,7 +185,7 @@ const PaymentHistoryPage = () => {
                key={mode.id}
                onClick={() => setViewMode(mode.id)}
                title={mode.label}
-               className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg transition-all ${viewMode === mode.id ? 'bg-primary-600 text-white shadow-sm' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-white/5'}`}
+               className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg transition-all ${viewMode === mode.id ? 'bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow' : 'text-slate-500 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-white/10'}`}
             >
                <mode.icon className="w-4 h-4" />
                <span className="text-[9px] font-black uppercase tracking-widest">{mode.label}</span>
@@ -195,29 +195,26 @@ const PaymentHistoryPage = () => {
    );
 
    const statsBar = (
-      <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-0 xl:divide-x divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 xl:p-0 p-2">
+      <>
          {[
-            { label: translate('Total Spent'), val: summary.totalSpent || 0, icon: IndianRupee, isCurrency: true },
-            { label: translate('Total Transactions'), val: summary.totalTransactions || 0, icon: Receipt },
-            { label: translate('Successful'), val: summary.successCount || 0, icon: TrendingUp },
-            { label: translate('Pending Amount'), val: summary.pendingAmount || 0, icon: AlertCircle, isCurrency: true }
+            { label: translate('Total Spent'), val: summary.totalSpent || 0, isCurrency: true },
+            { label: translate('Total Transactions'), val: summary.totalTransactions || 0 },
+            { label: translate('Successful'), val: summary.successCount || 0 },
+            { label: translate('Pending Amount'), val: summary.pendingAmount || 0, isCurrency: true }
          ].map((stat) => (
-            <div key={stat.label} className="flex items-center gap-2 px-3 py-2">
-               <div className="p-1.5 bg-primary-500/10 text-primary-600 rounded-lg shrink-0"><stat.icon className="w-3.5 h-3.5" /></div>
-               <div className="min-w-0">
-                  <div className="text-sm font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</div>
-                  <div className="text-[9px] font-bold text-slate-400 uppercase tracking-widest truncate">{stat.label}</div>
-               </div>
+            <div key={stat.label} className="bg-white/80 ring-1 ring-primary-200 dark:bg-white/10 dark:ring-white/20 px-3 py-1.5 min-w-[88px]" style={{ borderRadius: 10 }}>
+               <p className="text-base xl:text-lg font-black font-outfit leading-none text-primary-700 dark:text-primary-200 tabular-nums whitespace-nowrap">{stat.isCurrency ? formatCurrency(stat.val) : stat.val.toLocaleString()}</p>
+               <p className="mt-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-slate-600 dark:text-white/75 whitespace-nowrap">{stat.label}</p>
             </div>
          ))}
-      </div>
+      </>
    );
 
    const filtersGroup = (
-      <div className="flex flex-wrap gap-3 justify-end items-center">
+      <div className="flex flex-wrap gap-2 items-center">
          {filterOptions.months?.length > 0 && (
             <select
-               className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
+               className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-black outline-none focus:border-primary-600"
                value={filterMonth} onChange={e => { setFilterMonth(e.target.value); setCurrentPage(1); }}
             >
                <option value="">{translate('All Months')}</option>
@@ -228,7 +225,7 @@ const PaymentHistoryPage = () => {
          )}
          {filterOptions.years?.length > 0 && (
             <select
-               className="px-4 py-3 bg-slate-50 dark:bg-black border-2 border-slate-300 dark:border-slate-700 rounded-2xl text-xs font-black outline-none focus:border-primary-700"
+               className="px-3 py-2 bg-white dark:bg-black border border-slate-300 dark:border-slate-700 rounded-lg xl:rounded-xl text-xs font-black outline-none focus:border-primary-600"
                value={filterYear} onChange={e => { setFilterYear(e.target.value); setCurrentPage(1); }}
             >
                <option value="">{translate('All Years')}</option>
@@ -238,7 +235,7 @@ const PaymentHistoryPage = () => {
             </select>
          )}
          {(filterMonth || filterYear) && (
-            <button onClick={clearFilters} className="px-4 py-3 text-xs font-black text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-500/10 rounded-2xl transition-colors">
+            <button onClick={clearFilters} className="px-3 py-2 text-xs font-black text-primary-700 dark:text-primary-200 hover:bg-white/60 dark:hover:bg-white/10 rounded-lg transition-colors">
                {translate('Clear')}
             </button>
          )}
@@ -262,14 +259,13 @@ const PaymentHistoryPage = () => {
                   eyebrow={translate('Payment History')}
                   title={`${translate('Payment History')}${totalCount > 0 ? ` (${totalCount})` : ''}`}
                   actions={
-                     <>
+                     <div className="flex flex-wrap items-center gap-2 xl:justify-end">
+                        {statsBar}
                         {viewToggleButtons}
                         {filtersGroup}
-                     </>
+                     </div>
                   }
-               >
-                  {statsBar}
-               </PageHero>
+               />
 
                {/* Transactions */}
                {transactions.length === 0 ? (

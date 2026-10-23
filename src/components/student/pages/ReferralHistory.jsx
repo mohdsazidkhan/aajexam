@@ -184,7 +184,7 @@ export default function ReferralHistory() {
    return (
       <div className="min-h-screen animate-fade-in selection:bg-primary-600 selection:text-white">
 
-         <div className="container mx-auto mt-0 space-y-2 xl:space-y-3">
+         <div className="container mx-auto pt-3 xl:pt-4 pb-6 xl:pb-10 space-y-2 xl:space-y-3">
 
             {/* --- Header Section --- */}
             <PageHero
@@ -243,14 +243,14 @@ export default function ReferralHistory() {
                                  </p>
                               </div>
                            ) : (
-                              <div className="space-y-3 max-w-xs">
+                              <div className="space-y-2 xl:space-y-0 xl:flex xl:items-center xl:gap-4">
                                  <div className="flex items-start gap-2">
                                     <Clock className="w-4 h-4 shrink-0 mt-0.5" />
-                                    <p className="text-sm font-bold text-content-secondary">
+                                    <p className="text-sm font-bold text-content-secondary xl:whitespace-nowrap">
                                        {rich('Minimum withdrawal is <0></0> — earn <1></1> more to unlock it', [() => <span className="font-black text-primary-600">₹{MIN_PAYOUT.toLocaleString()}</span>, () => <span className="font-black text-primary-600">₹{(MIN_PAYOUT - (user.walletBalance || 0)).toLocaleString()}</span>])}
                                     </p>
                                  </div>
-                                 <div className="w-full h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                                 <div className="w-full xl:w-56 xl:shrink-0 h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
                                     <div className="h-full bg-gradient-to-r from-primary-500 via-primary-300 to-primary-400 rounded-full" style={{ width: `${Math.min(100, ((user.walletBalance || 0) / MIN_PAYOUT) * 100)}%` }} />
                                  </div>
                               </div>

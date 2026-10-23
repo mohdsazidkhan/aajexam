@@ -225,7 +225,7 @@ const ExamCalendarPage = () => {
         noIndex={true}
       />
 
-      <div className="space-y-5 xl:space-y-8">
+      <div className="space-y-5 xl:space-y-8 pt-3 xl:pt-4">
 
         {/* ── Hero ── */}
         <PageHero
@@ -246,8 +246,8 @@ const ExamCalendarPage = () => {
               })}
             </div>
           }
-        />
-
+        >
+          <div className="space-y-3 border-t border-dashed border-primary-300 dark:border-white/25 pt-4">
         {/* ── Month Navigation ── */}
         <div className="flex items-center justify-between gap-3">
           <button
@@ -284,7 +284,7 @@ const ExamCalendarPage = () => {
         </div>
 
         {/* ── Calendar Strip (single scrollable row) ── */}
-        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 xl:mx-0 xl:px-0">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
           {cells.filter(Boolean).map(cell => {
             const { day, dateStr, eventsForDay } = cell;
             const isToday = dateStr === todayStr;
@@ -329,6 +329,9 @@ const ExamCalendarPage = () => {
             );
           })}
         </div>
+
+          </div>
+        </PageHero>
 
         {/* ── Selected Day Events ── */}
         <DayPanel
