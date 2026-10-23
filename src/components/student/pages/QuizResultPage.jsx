@@ -139,7 +139,7 @@ const QuizResultPage = () => {
               const badge = getSpeedBadge(ans.timeTaken);
 
               return (
-                <div key={index} className={`rounded-lg xl:rounded-xl p-4 border ${isSkipped ? 'bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600' : isCorrect ? 'bg-primary-50 dark:bg-primary-900/20 border-primary-200 dark:border-primary-600' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700'}`}>
+                <div key={index} style={{ borderRadius: 14 }} className={`relative overflow-hidden p-4 xl:p-5 border border-l-4 shadow-sm ${isSkipped ? 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 border-l-slate-400' : isCorrect ? 'bg-primary-50/60 dark:bg-primary-900/20 border-primary-200 dark:border-primary-700 border-l-primary-500' : 'bg-red-50/70 dark:bg-red-900/20 border-red-200 dark:border-red-800 border-l-red-500'}`}>
                   <div className="flex items-start gap-3 mb-3">
                     <div style={{ borderRadius: 10 }} className={`w-8 h-8 flex items-center justify-center text-sm font-black shrink-0 shadow ${isSkipped ? 'bg-slate-400 text-white' : isCorrect ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white' : 'bg-gradient-to-br from-red-500 to-red-700 text-white'}`}>
                       {index + 1}
@@ -159,9 +159,12 @@ const QuizResultPage = () => {
                         </div>
                       )}
                     </div>
+                    <span style={{ borderRadius: 999 }} className={`shrink-0 inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${isSkipped ? 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200' : isCorrect ? 'bg-primary-500 text-white' : 'bg-red-500 text-white'}`}>
+                      {isSkipped ? translate('Skipped') : isCorrect ? translate('Correct') : translate('Wrong')}
+                    </span>
                   </div>
 
-                  <div className="space-y-1.5 ml-11">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
                     {question.options?.map((opt, optIdx) => {
                       const isSelected = ans.selectedOptionIndex === optIdx;
                       const isCorrectOpt = optIdx === correctIndex;
@@ -170,18 +173,18 @@ const QuizResultPage = () => {
                       if (isSelected && !isCorrect) optClass = 'bg-red-50 dark:bg-red-900/30 border-red-400 dark:border-red-600';
 
                       return (
-                        <div key={optIdx} className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${optClass}`}>
+                        <div key={optIdx} style={{ borderRadius: 10 }} className={`flex items-center gap-2.5 px-3 py-2.5 border text-sm ${optClass}`}>
+                          <span style={{ borderRadius: 8 }} className={`w-6 h-6 shrink-0 flex items-center justify-center text-[11px] font-black ${isCorrectOpt ? 'bg-primary-500 text-white' : isSelected && !isCorrect ? 'bg-red-500 text-white' : 'bg-slate-100 dark:bg-slate-600 text-slate-600 dark:text-slate-200'}`}>{String.fromCharCode(65 + optIdx)}</span>
+                          <span className="flex-1 min-w-0 break-words font-medium text-slate-700 dark:text-slate-200">{opt.text}</span>
                           {isCorrectOpt && <CheckCircle className="w-4 h-4 text-primary-600 shrink-0" />}
                           {isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />}
-                          {!isCorrectOpt && !isSelected && <div className="w-4 h-4 shrink-0" />}
-                          <span className="text-slate-700 dark:text-slate-300">{opt.text}</span>
                         </div>
                       );
                     })}
                   </div>
 
                   {question.explanation && (
-                    <div className="ml-11 mt-2 p-2.5 bg-primary-50 dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg">
+                    <div className="mt-3 p-2.5 bg-primary-50 dark:bg-white/5 border border-dashed border-primary-300 dark:border-white/20 rounded-lg">
                       <p className="text-xs text-black dark:text-white"><span className="font-semibold">{translate('Explanation:')}</span> {question.explanation}</p>
                     </div>
                   )}
