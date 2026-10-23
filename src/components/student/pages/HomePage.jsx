@@ -71,6 +71,7 @@ const GovtExamCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
+      style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
@@ -93,6 +94,7 @@ const QuizCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[160px] xl:min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
+      style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
@@ -117,6 +119,7 @@ const SubjectCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
+      style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       <div className="w-12 h-12 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
@@ -141,6 +144,7 @@ const TopicCard = ({ item, onClick }) => {
    <div
       onClick={onClick}
       className="min-w-[140px] xl:min-w-0 p-4 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col items-center gap-2 text-center"
+      style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       <div className="w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-200 dark:to-primary-400 text-primary-950 shadow rotate-[-4deg] flex items-center justify-center" style={{ borderRadius: 12 }}>
@@ -170,6 +174,7 @@ const BlogCard = ({ item, onClick }) => (
    <div
       onClick={onClick}
       className="min-w-0 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all overflow-hidden flex flex-col"
+      style={{ borderRadius: 14 }}
    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
       <div className="w-full h-24 bg-slate-100 dark:bg-slate-800 overflow-hidden">
@@ -187,6 +192,10 @@ const BlogCard = ({ item, onClick }) => (
          {item.excerpt && (
             <p className="text-[11px] font-semibold text-slate-400 leading-snug line-clamp-2">{item.excerpt}</p>
          )}
+         <div className="flex items-center gap-3 mt-0.5 text-[11px] font-black text-slate-500 dark:text-slate-400">
+            <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {item.views || 0}</span>
+            <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" /> {item.likes || 0}</span>
+         </div>
       </div>
    </div>
 );
@@ -200,6 +209,7 @@ const ReelCard = ({ item, onClick }) => {
       <div
          onClick={onClick}
          className="min-w-0 p-3.5 relative overflow-hidden bg-background-surface border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all flex flex-col gap-2"
+      style={{ borderRadius: 14 }}
       >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-500 via-primary-300 to-primary-500" />
          <div className="flex items-center gap-1.5 self-start px-2.5 py-1 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-200 dark:to-primary-300 text-primary-950 shadow rounded-lg">
