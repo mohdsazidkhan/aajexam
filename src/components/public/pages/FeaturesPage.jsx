@@ -141,7 +141,7 @@ const Cell = ({ value }) => {
   const { translate } = useTranslate();
   if (value === true) return <span className="mx-auto w-5 h-5 xl:w-6 xl:h-6 flex items-center justify-center bg-primary-100 dark:bg-primary-400/20 text-primary-700 dark:text-primary-200" style={{ borderRadius: 999 }}><CircleCheck className="w-3.5 h-3.5 xl:w-4 xl:h-4" /></span>;
   if (value === false) return <X className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-slate-300 dark:text-slate-700 mx-auto" />;
-  return <span className="inline-block px-2 py-0.5 text-[9px] xl:text-[10px] font-black uppercase tracking-wide bg-primary-50 dark:bg-white/10 text-primary-800 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
+  return <span className="inline-block whitespace-nowrap px-2.5 py-0.5 text-[9px] xl:text-[10px] font-black uppercase tracking-wide bg-primary-50 dark:bg-white/10 text-primary-800 dark:text-primary-200 ring-1 ring-primary-200 dark:ring-white/15" style={{ borderRadius: 999 }}>{translate(value)}</span>;
 };
 
 const FeaturesPage = () => {
@@ -284,16 +284,16 @@ const FeaturesPage = () => {
                   <thead>
                     <tr className="text-[8px] xl:text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 bg-primary-50/50 dark:bg-white/5">
                       <th className="text-left px-3 py-1.5 xl:px-6 xl:py-2 font-black">{translate('Feature')}</th>
-                      <th className="w-12 xl:w-16 py-1.5 xl:py-2 font-black">{translate('Free')}</th>
-                      <th className="w-12 xl:w-16 py-1.5 xl:py-2 font-black">{translate('Pro')}</th>
+                      <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-black">{translate('Free')}</th>
+                      <th className="whitespace-nowrap px-2 xl:px-3 py-1.5 xl:py-2 font-black">{translate('Pro')}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {group.items.map((item, idx) => (
                       <tr key={item.label} className={`hover:bg-primary-50/40 dark:hover:bg-white/5 transition-colors ${idx !== 0 ? 'border-t border-dashed border-slate-200 dark:border-slate-800' : ''}`}>
-                        <td className="px-3 py-2 xl:px-6 xl:py-3 text-[11px] xl:text-xs font-bold text-slate-700 dark:text-slate-300">{translate(item.label)}</td>
-                        <td className="text-center py-2 xl:py-3"><Cell value={item.free} /></td>
-                        <td className="text-center py-2 xl:py-3"><Cell value={item.pro} /></td>
+                        <td className="w-full px-3 py-2 xl:px-6 xl:py-3 text-[11px] xl:text-xs font-bold text-slate-700 dark:text-slate-300">{translate(item.label)}</td>
+                        <td className="text-center whitespace-nowrap px-2 xl:px-3 py-2 xl:py-3"><Cell value={item.free} /></td>
+                        <td className="text-center whitespace-nowrap px-2 xl:px-3 py-2 xl:py-3"><Cell value={item.pro} /></td>
                       </tr>
                     ))}
                   </tbody>
